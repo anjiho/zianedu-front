@@ -30,7 +30,7 @@
             sPage : 1,
             listLimit : 20
         };
-        
+
         var boardList = getApi("/board/getNoticeList/", "10025", data);
 
         if (boardList.result.length == 0) return;
@@ -43,7 +43,6 @@
                 function(data) {return data.indate;},
             ], {escapeHtml:false});
         }
-
     }
 </script>
 <body>
