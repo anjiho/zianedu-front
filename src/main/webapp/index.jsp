@@ -6,14 +6,21 @@
     <meta http-equiv="content-Type" content="text/html;charset=utf-8">
 
     <script src="common/assets/jquery/dist/jquery.min.js"></script>
+    <script src="common/js/blank-check.js"></script>
+    <script src="common/js/comment.js"></script>
     <script src="common/js/common.js"></script>
+    <script src="common/js/rest-api.js"></script>
     <script type='text/javascript' src='/dwr/engine.js'></script>
     <script type='text/javascript' src='/dwr/util.js'></script>
     <title>지안에듀</title>
 </head>
 <script>
     function modifyBoard() {
-        var data = {
+        var check = new isCheck();
+        if (check.input("title", comment.input_title) == false) return;
+        if (check.input("content", comment.input_content) == false) return;
+
+        /*var data = {
             bbsMasterKey : $("#bbsMasterKey").val(),
             userKey : $("#userKey").val(),
             title : $("#title").val(),
@@ -22,7 +29,7 @@
             fileName : ""
         };
        var test =  postApi("/board/saveBoard", data);
-       console.log(test);
+       console.log(test);*/
     }
     
     function boardList() {
@@ -46,17 +53,15 @@
     }
 </script>
 <body>
-<form id="boardForm">
     <div>
         <input type="hidden" name="bbsMasterKey" id="bbsMasterKey" value="10025">
         <input type="hidden" name="userKey" id="userKey" value="112629">
-        <input type="text" name="title" id="title">
-        <input type="text" name="content" id="content">
+         제목<input type="text" name="title" id="title">
+         내용<input type="text" name="content" id="content">
         <input type="text" name="isSecret" id="isSecret" value="1">
         <input type="text" name="fileName" value="" id="fileName">
         <button onclick="modifyBoard();">저장</button>
     </div>
-</form>
 <div>
     <button onclick="boardList();">게시글가져오기</button>
 </div>
