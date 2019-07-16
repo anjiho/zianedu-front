@@ -1,20 +1,22 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="content-Type" content="text/html;charset=utf-8">
-
-    <script src="common/assets/jquery/dist/jquery.min.js"></script>
-    <script src="common/js/blank-check.js"></script>
-    <script src="common/js/comment.js"></script>
-    <script src="common/js/common.js"></script>
-    <script src="common/js/rest-api.js"></script>
-    <script type='text/javascript' src='/dwr/engine.js'></script>
-    <script type='text/javascript' src='/dwr/util.js'></script>
-    <title>지안에듀</title>
-</head>
+<script type='text/javascript' src='/dwr/engine.js'></script>
+<script type='text/javascript' src='/dwr/util.js'></script>
+<%@include file="/common/jsp/common.jsp" %>
 <script>
+    $( document ).ready(function() {
+        var test = divisionPcMobile();
+        alert(test);
+    });
+
+    function test() {
+        var loginState = getLoginState();
+        if (loginState == true){
+            location.href = "/jsp/test.jsp";
+        }else{
+            alert("로그인해주세연.");
+            return;
+        }
+    }
     function modifyBoard() {
         var check = new isCheck();
         if (check.input("title", comment.input_title) == false) return;
@@ -31,7 +33,7 @@
        var test =  postApi("/board/saveBoard", data);
        console.log(test);*/
     }
-    
+
     function boardList() {
         var data = {
             sPage : 1,
@@ -47,36 +49,35 @@
                 function(data) {return data.bbsKey;},
                 function(data) {return data.createDate;},
                 function(data) {return data.title;},
-                function(data) {return data.indate;},
+                function(data) {return data.indate;}
             ], {escapeHtml:false});
         }
     }
 </script>
-<body>
-    <div>
-        <input type="hidden" name="bbsMasterKey" id="bbsMasterKey" value="10025">
-        <input type="hidden" name="userKey" id="userKey" value="112629">
-         제목<input type="text" name="title" id="title">
-         내용<input type="text" name="content" id="content">
-        <input type="text" name="isSecret" id="isSecret" value="1">
-        <input type="text" name="fileName" value="" id="fileName">
-        <button onclick="modifyBoard();">저장</button>
-    </div>
 <div>
-    <button onclick="boardList();">게시글가져오기</button>
+    <button onclick="test();">testpage이동</button>
 </div>
-
-<table>
-    <thead>
-        <th>bbsKey</th>
-        <th>createDate</th>
-        <th>title</th>
-        <th>indate</th>
-    </thead>
-    <tbody id="dataList">
-    </tbody>
-</table>
-
-</body>
-
+<%--        <div>--%>
+<%--            <input type="hidden" name="bbsMasterKey" id="bbsMasterKey" value="10025">--%>
+<%--            <input type="hidden" name="userKey" id="userKey" value="112629">--%>
+<%--             제목<input type="text" name="title" id="title">--%>
+<%--             내용<input type="text" name="content" id="content">--%>
+<%--            <input type="text" name="isSecret" id="isSecret" value="1">--%>
+<%--            <input type="text" name="fileName" value="" id="fileName">--%>
+<%--            <button onclick="modifyBoard();">저장</button>--%>
+<%--        </div>--%>
+<%--        <div>--%>
+<%--            <button onclick="boardList();">게시글가져오기</button>--%>
+<%--        </div>--%>
+<%--        <table>--%>
+<%--            <thead>--%>
+<%--                <th>bbsKey</th>--%>
+<%--                <th>createDate</th>--%>
+<%--                <th>title</th>--%>
+<%--                <th>indate</th>--%>
+<%--            </thead>--%>
+<%--            <tbody id="dataList">--%>
+<%--            </tbody>--%>
+<%--        </table>--%>
+    </body>
 </html>

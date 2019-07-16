@@ -2677,3 +2677,18 @@ jQuery.download = function(url, data, method){
             .appendTo('body').submit().remove();
     };
 };
+
+//pc,mobile 구분
+function divisionPcMobile() {
+    var filter = "win16|win32|win64|mac|macintel";
+    var result = "";
+    if ( navigator.platform ) {
+        if ( filter.indexOf( navigator.platform.toLowerCase() ) < 0 ) {
+            result = "mobile";
+        } else {
+            result = "pc";
+        }
+        return result;
+    }
+
+}
