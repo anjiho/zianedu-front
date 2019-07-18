@@ -3,10 +3,9 @@
 <script type='text/javascript' src='/dwr/util.js'></script>
 <%@include file="/common/jsp/common.jsp" %>
 <script>
-    $( document ).ready(function() {
-        var test = divisionPcMobile();
-        alert(test);
-    });
+    function init() {
+        getLeftMenuCtgKey('dataList');
+    }
 
     function test() {
         var loginState = getLoginState();
@@ -57,6 +56,16 @@
 <div>
     <button onclick="test();">testpage이동</button>
 </div>
+<table>
+    <thead>
+        <th>bbsKey</th>
+        <th>createDate</th>
+        <th>title</th>
+        <th>indate</th>
+    </thead>
+    <tbody id="dataList">
+    </tbody>
+</table>
 <%--        <div>--%>
 <%--            <input type="hidden" name="bbsMasterKey" id="bbsMasterKey" value="10025">--%>
 <%--            <input type="hidden" name="userKey" id="userKey" value="112629">--%>
