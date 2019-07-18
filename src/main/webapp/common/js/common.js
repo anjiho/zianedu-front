@@ -2524,7 +2524,7 @@ function deleteTableRow(tableId, className) {
     }
 }
 
-//다음지도
+//다음주소
 function execDaumPostcode() {
     new daum.Postcode({
         oncomplete: function(data) {
@@ -2592,7 +2592,7 @@ function pubByteCheckTextarea(oid, tid, maxlength){
         //SET
         $(tid).html( strlength +"/"+ maxlength);
     }
-};
+}
 
 function  InputPhoneNumCheck(phoneNum) {
     return phoneNum.replace(/(^02.{0}|^01.{1}|[0-9]{3})([0-9]+)([0-9]{4})/,"$1-$2-$3");
