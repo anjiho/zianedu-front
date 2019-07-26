@@ -35,6 +35,9 @@
     <script src="/common/js/view/payment-controller.js"></script>
     <script src="/common/js/view/teacher-controller.js"></script>
     <!--//api controller-->
+    <!-- dwr -->
+    <script type='text/javascript' src='/dwr/engine.js'></script>
+    <script type='text/javascript' src='/dwr/util.js'></script>
 </head>
 <body onload="init();">
 <%@include file="/common/jsp/header.jsp" %>

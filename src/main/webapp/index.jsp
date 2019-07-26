@@ -1,6 +1,4 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
-<script type='text/javascript' src='/dwr/engine.js'></script>
-<script type='text/javascript' src='/dwr/util.js'></script>
 <%@include file="/common/jsp/common.jsp" %>
 <div id="wrap">
     <div id="skipLink">
