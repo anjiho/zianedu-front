@@ -1,101 +1,16 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/jsp/common.jsp" %>
 <div id="wrap">
-    <div id="skipLink">
-        <a href="#">본문바로가기</a>
-        <a href="#">주메뉴바로가기</a>
-    </div>
     <!--좌측사이트메뉴-->
-    <div id="aside">
-        <h1><a href="#"><img src="/common/zian/images/common/logo_notext.png" alt="zion edu"></a></h1>
-        <div id="siteNav">
-            <ul>
-                <li class="item1"><a href="#">행정직</a></li>
-                <li class="item2"><a href="#">기술직</a></li>
-                <li class="item3"><a href="#">계리직</a></li>
-                <li class="item4"><a href="#">온라인 서점</a></li>
-                <li class="item5"><a href="#">자격증/가산점</a></li>
-            </ul>
-        </div>
-        <div id="quickNav">
-            <b>바로가기메뉴</b>
-            <ul>
-                <li class="noBg"><a href="#"><span class="icon item1"></span>강의실배정표</a></li>
-                <li class="noBg"><a href="#"><span class="icon item2"></span>학원시간표</a></li>
-                <li class="noBg"><a href="#"><span class="icon item3"></span>수험가이드</a></li>
-                <li><a href="#"><span class="icon item4"></span>수강중인강좌</a></li>
-                <li><a href="#"><span class="icon item5"></span>학원수강내역</a></li>
-                <li><a href="#"><span class="icon item6"><em>30</em></span>장바구니</a></li>
-                <li><a href="#"><span class="icon item7"></span>쿠폰 마일리지</a></li>
-                <li><a href="#"><span class="icon item8"></span>1:1문의</a></li>
-            </ul>
-        </div>
-        <div id="examBanner" class="slider useBx">
-            <ul>
-                <li>
-                    <span>2019 국가직 7급 필기시험</span>
-                    <b>D-116</b>
-                    <a href="#">상세정보</a>
-                </li>
-                <li>
-                    <span>2019 국가직 7급 필기시험</span>
-                    <b>D-116</b>
-                    <a href="#">상세정보</a>
-                </li>
-                <li>
-                    <span>2019 국가직 7급 필기시험</span>
-                    <b>D-116</b>
-                    <a href="#">상세정보</a>
-                </li>
-            </ul>
-        </div>
-        <div id="snsLink">
-            <b>지안에듀 SNS</b>
-            <ul>
-                <li><a href="#"><img src="/common/zian/images/common/btn_snsLinkFacebook.png" alt="페이스북"></a></li>
-                <li><a href="#"><img src="/common/zian/images/common/btn_snsLinkInstgram.png" alt="인스타그램"></a></li>
-                <li><a href="#"><img src="/common/zian/images/common/btn_snsLinkYoutube.png" alt="유투브"></a></li>
-                <li><a href="#"><img src="/common/zian/images/common/btn_snsLinkBlog.png" alt="네이버블로그"></a></li>
-            </ul>
-        </div>
-        <a href="#" id="btn_asideToggle">죄측메뉴열기/닫기</a>
-    </div>
+    <%@include file="/common/jsp/leftMenu.jsp" %>
     <!--//좌측사이트메뉴-->
+
     <!--최상단배너-->
-    <div id="topBanner" style="background-color:#520404;">
-        <div class="inner">
-            <a href="#"><img src="/common/zian/images/content/img_topBanner.jpg" alt=""></a>
-        </div>
-    </div>
     <!--//최상단배너-->
+    <%@include file="/common/jsp/header.jsp" %>
     <!--상단-->
-    <div id="header" class="landing">
-        <!--최상단메뉴-->
-        <div id="topBar">
-            <div class="inner">
-                <div class="left">
-                    <a href="#">지안에듀를 즐겨찾기로 &gt;</a>
-                </div>
-                <div class="right">
-                    <ul>
-                        <li><a href="#">회원가입</a></li>
-                        <li><a href="#">로그인</a></li>
-                        <li><a href="#">내강의실</a></li>
-                        <li><a href="#">장바구니<em>30</em></a></li>
-                        <li><a href="#">공지사항</a></li>
-                        <li><a href="#">고객센터</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <!--//최상단메뉴-->
-        <div class="inner">
-            <h1><a href="#"><img src="/common/zian/images/common/logo.png" alt="지안에듀"></a></h1>
-            <a href="#" class="titleBarLeft"><img src="/common/zian/images/content/img_titleBarLeft.jpg" alt=""></a>
-            <a href="#" class="titleBarRight"><img src="/common/zian/images/content/img_titleBarRight.jpg" alt=""></a>
-        </div>
-    </div>
     <!--//상단-->
+
     <!--본문-->
     <div id="container">
         <div id="mainVisual">
@@ -390,62 +305,17 @@
         </div>
     </div>
     <!--//본문-->
+
     <!--하단-->
-    <div id="footer">
-        <div id="footerNav">
-            <div class="inner">
-                <ul>
-                    <li><a href="#">회사소개</a></li>
-                    <li><a href="#">이용약관</a></li>
-                    <li><a href="#">개인정보취급방침</a></li>
-                    <li><a href="#">강사모집</a></li>
-                    <li><a href="#">고객센터</a></li>
-                    <li class="last"><a href="#">찾아오시는 길</a></li>
-                </ul>
-            </div>
-        </div>
-        <div id="footerCopyright">
-            <div class="inner">
-                <img src="/common/zian/images/common/logo_footer.png" class="footerLogo">
-                <p>
-                    (주)지안에듀<br />
-                    대표이사 : 박태순  |  사업자등록번호 : 108-86-01777   |   통신판매업 신고번호 : 제2012-서울동작-00172호<br />
-                    개인정보관리책임자 : 고명수  |  전화 : 02-6080-1725   |   팩스 : 02-816-1721  | 학원등록번호 : 제2923호<br />
-                    <br />
-                    06913 서울특별시 동작구 노량진로 166 영빌딩 2층 지안공무원학원 1관 <a href="#">정보조회</a><br />
-                    06913 서울특별시 동작구 노량진로 196 JH빌딩 6층 지안공무원학원 2관 <a href="#">정보조회</a><br />
-                    <br />
-                    COPYRIGHT ⓒ  ZIANEDU.CO.Lte. ALL RIGHT RESERVED
-                </p>
-                <div id="footerMark">
-                    <img src="/common/zian/images/content/img_footerMark1.png" alt="에스크로 이니페이 - KG이니시스">
-                </div>
-            </div>
-        </div>
-    </div>
+    <%@include file="/common/jsp/footer.jsp" %>
     <!--//하단-->
     <!--우측따라다니는영역-->
-    <div id="quickBar">
-        <b>초시생<br />맞춤컨설팅<br />& 상담</b>
-        <ul>
-            <li><a href="#" class="btn_apply1">1:1컨설팅 <br />상담 예약</a></li>
-            <li class="last"><a href="#" class="btn_apply2">전화상담 <br />예약</a></li>
-        </ul>
-        <div class="quickBottom">
-            <label><input type="checkbox" name="" value=""> 오늘하루닫기</label>
-        </div>
-    </div>
+    <%@include file="/common/jsp/rightMenu.jsp" %>
     <!--//우측따라다니는영역-->
     <!--하단고정식배너-->
-    <div id="bottomBanner" class="active" style="background-color:#610c6b;">
-        <div class="inner">
-            <a href="#"><img src="/common/zian/images/content/img_bottomBanner.jpg" alt=""></a>
-            <a href="#" class="btn_bottomClose">하단배너 창닫기</a>
-        </div>
-    </div>
+    <%@include file="/common/jsp/footerBanner.jsp" %>
     <!--//하단고정식배너-->
 </div>
 <div id="overlay"></div>
-
-    </body>
+</body>
 </html>
