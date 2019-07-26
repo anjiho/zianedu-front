@@ -1,0 +1,416 @@
+@charset "utf-8";
+
+body{color:#1b1b1b;}
+#wrap{position:relative;padding-bottom:100px;min-height:1340px;}
+
+#skipLink a{display:block;position:fixed;top:-9999px;left:0;right:0;height:30px;font-size:14px;color:#fff;line-height:30px;text-align:center;background:#134c97;z-index:9999;}
+#skipLink a:focus, #skipLink a:hover, #skipLink a:focus, #skipLink a:active{top:0;}
+
+.inner{width:1000px;}
+
+#aside{position:absolute;top:0;bottom:0;left:0;width:140px;background:#fff;box-shadow:0 0 8px rgba(0,0,0,0.2);transition-duration:0.4s;z-index:90;}
+#aside h1{display:block;}
+#aside h1 a{display:block;height:100px;line-height:100px;text-align:center;}
+#aside #siteNav{margin-bottom:30px;}
+#aside #siteNav ul{display:block;}
+#aside #siteNav ul li{display:block;}
+#aside #siteNav ul li a{display:block;position:relative;padding-left:20px;height:50px;font-size:15px;color:#252525;line-height:50px;}
+#aside #siteNav ul li.item1.active a{font-weight:bold;color:#134c97;}
+#aside #siteNav ul li.item2.active a{font-weight:bold;color:#f69321;}
+#aside #siteNav ul li.item3.active a{font-weight:bold;color:#ce1717;}
+#aside #siteNav ul li.item4.active a{font-weight:bold;color:#f69321;}
+#aside #siteNav ul li.item5.active a{font-weight:bold;color:#f69321;}
+#aside #siteNav ul li.active a:after{display:block;content:'';position:absolute;top:50%;left:0;margin-top:-10px;height:20px;border-left:4px #134c97 solid;}
+#aside #quickNav{}
+#aside #quickNav b{display:block;height:30px;font-size:11px;color:#1b1b1b;line-height:30px;text-align:center;background:#f2f2f2;border-bottom:1px #e2e2e2 solid;}
+#aside #quickNav ul{display:block;}
+#aside #quickNav ul li{display:block;background:#f2f2f2;border-bottom:1px #e2e2e2 solid;}
+#aside #quickNav ul li.noBg{background:none;}
+#aside #quickNav ul li a{display:block;position:relative;padding-left:56px;height:70px;font-size:12px;color:#252525;line-height:70px;}
+#aside #quickNav ul li a .icon{display:block;position:absolute;top:50%;left:15px;margin-top:-16px;width:32px;height:32px;background-repeat:no-repeat;background-position:center;}
+#aside #quickNav ul li a .icon.item1{background-image:url(/common/zian/images/common/icon_lnb1.png);}
+#aside #quickNav ul li a .icon.item2{background-image:url(/common/zian/images/common/icon_lnb2.png);}
+#aside #quickNav ul li a .icon.item3{background-image:url(/common/zian/images/common/icon_lnb3.png);}
+#aside #quickNav ul li a .icon.item4{background-image:url(/common/zian/images/common/icon_lnb4.png);}
+#aside #quickNav ul li a .icon.item5{background-image:url(/common/zian/images/common/icon_lnb5.png);}
+#aside #quickNav ul li a .icon.item6{background-image:url(/common/zian/images/common/icon_lnb6.png);}
+#aside #quickNav ul li a .icon.item7{background-image:url(/common/zian/images/common/icon_lnb7.png);}
+#aside #quickNav ul li a .icon.item8{background-image:url(/common/zian/images/common/icon_lnb8.png);}
+#aside #quickNav ul li a .icon em{display:block;position:absolute;top:0;right:-5px;width:20px;height:20px;font-size:11px;color:#fff;line-height:20px;text-align:center;background:#ff0000;border-radius:50%;}
+#aside #examBanner{position:relative;border-bottom:1px #e2e2e2 solid;}
+#aside #examBanner li{display:block;padding-top:12px;height:140px;font-size:12px;line-height:160%;text-align:center;box-sizing:border-box;}
+#aside #examBanner li span{display:block;padding:0 35px;}
+#aside #examBanner li b{display:block;margin-top:10px;font-size:18px;}
+#aside #examBanner li a{display:block;margin:10px auto 0;width:100px;height:32px;font-size:13px;line-height:32px;text-align:center;border:1px #e2e2e2 solid;}
+#aside #examBanner .bx-pager,
+#aside #examBanner .bx-controls-auto{display:none;}
+#aside #examBanner .bx-wrapper .bx-controls{position:static;}
+#aside #examBanner .bx-prev{display:block;position:absolute;top:50%;left:0;margin-top:-14px;width:22px;height:28px;text-indent:-9999em;background:url(/common/zian/images/common/btn_slidePrev.png) no-repeat center center;}
+#aside #examBanner .bx-next{display:block;position:absolute;top:50%;right:0;margin-top:-14px;width:22px;height:28px;text-indent:-9999em;background:url(/common/zian/images/common/btn_slideNext.png) no-repeat center center;}
+#aside #snsLink{padding-top:14px;}
+#aside #snsLink b{display:block;margin-bottom:5px;font-size:13px;font-weight:normal;text-align:center;}
+#aside #snsLink ul{display:block;margin:0 auto;width:86px;text-align:center;}
+#aside #snsLink ul:after{display:block;content:'';clear:both;}
+#aside #snsLink ul li{display:block;float:left;margin-top:10px;width:50%;}
+#aside #btn_asideToggle{display:block;position:absolute;top:40px;right:-41px;width:41px;height:50px;text-indent:-9999em;background:url(/common/zian/images/common/btn_asideClose.png) no-repeat;}
+#aside.active{left:-140px;}
+#aside.active #btn_asideToggle{background:url(/common/zian/images/common/btn_asideOpen.png) no-repeat;}
+
+#header{border-bottom:1px #e5e5e5 solid;}
+#header > .inner{position:relative;height:80px;overflow:hidden;}
+#header > .inner h1{display:block;float:left;margin:18px 10px 0 60px;}
+#header #topBar{height:50px;line-height:50px;border-bottom:1px #e5e5e5 solid;}
+#header #topBar .left{float:left;padding-left:20px;}
+#header #topBar .left a{font-size:12px;color:#1b1b1b;}
+#header #topBar .right{float:right;text-align:center;}
+#header #topBar .right ul{display:block;overflow:hidden;}
+#header #topBar .right ul li{display:block;position:relative;float:left;padding:0 10px;min-width:70px;box-sizing:border-box;}
+#header #topBar .right ul li:after{display:block;content:'';position:absolute;top:50%;right:-1px;margin-top:-7px;height:14px;border-right:1px #1b1b1b solid;}
+#header #topBar .right ul li a{font-size:12px;color:#1b1b1b;}
+#header #topBar .right ul li a em{display:inline-block;margin-left:5px;width:20px;height:20px;font-size:11px;color:#fff;line-height:20px;text-align:center;background:#ff0000;border-radius:50%;}
+#header #topSelect{float:left;height:80px;}
+#header #topSelect ul{display:block;margin-top:28px;}
+#header #topSelect ul li{display:block;float:left;margin-right:5px;}
+#header #topSelect ul li a{display:block;width:65px;height:22px;font-size:12px;text-align:center;line-height:20px;border:1px #e5e5e5 solid;box-sizing:border-box;}
+#header #topSelect ul li.active a{color:#fff;background:#134c97;border-color:#134c97;}
+#header #topNav{margin-top:28px;float:right;text-align:center;}
+#header #topNav ul{display:block;overflow:hidden;}
+#header #topNav ul li{display:block;position:relative;float:left;padding:0 10px;min-width:70px;box-sizing:border-box;}
+#header #topNav ul li:after{display:block;content:'';position:absolute;top:50%;right:-1px;margin-top:-7px;height:14px;border-right:1px #1b1b1b solid;}
+#header #topNav ul li a{font-size:12px;color:#1b1b1b;}
+#header #topNav ul li a em{display:inline-block;margin-left:5px;width:20px;height:20px;font-size:11px;color:#fff;line-height:20px;text-align:center;background:#ff0000;border-radius:50%;}
+#header #gnb{border-top:1px #e1e1e1 solid;}
+#header #gnb ul{display:block;padding-right:60px;}
+#header #gnb ul li{display:block;float:left;box-sizing:border-box;}
+#header #gnb ul.cols5 li{width:20%;}
+#header #gnb ul.cols6 li{width:16.6666%;}
+#header #gnb ul.cols7 li{width:14.2857%;}
+#header #gnb ul.cols8 li{width:12.5%;}
+#header #gnb ul li a{display:block;height:60px;font-size:15px;font-weight:bold;text-align:center;line-height:60px;}
+#header #gnb ul li.active a{color:#134c97;}
+#header #gnb .btn_navOpen{display:block;position:absolute;top:0;right:0;bottom:0;width:60px;text-indent:-999em;background:url(/common/zian/images/common/btn_navOpen.png) no-repeat center center;border-left:1px #e1e1e1 solid;border-right:1px #e1e1e1 solid;box-sizing:border-box;}
+#header.landing > .inner{height:120px;}
+#header.landing > .inner .titleBarLeft{display:block;position:absolute;top:0;left:0;height:120px;line-height:120px;overflow:hidden;}
+#header.landing > .inner .titleBarRight{display:block;position:absolute;top:0;right:0;height:120px;line-height:120px;overflow:hidden;}
+#header.landing > .inner h1{display:block;position:relative;float:none;margin:0 auto;width:280px;height:120px;line-height:120px;text-align:center;}
+#header > .inner #topSelect{}
+#container{min-height:600px;}
+#container #lnb{position:absolute;top:110px;left:0;width:140px;}
+#container #lnb ul{display:block;border:1px #e1e1e1 solid;border-bottom:0px none;}
+#container #lnb ul li{display:block;border-bottom:1px #e1e1e1 solid;}
+#container #lnb ul li a{display:block;padding:14px 10px 14px 20px;font-size:12px;color:#1b1b1b;}
+#container #lnb ul li.active a{color:#fff;background:#134c97;}
+#container #content{margin-left:160px;padding-top:70px;}
+#container #content h3{font-size:24px;color:#1b1b1b;}
+#container #content h6{font-size:15px;color:#1b1b1b;}
+#container #content p{margin-bottom:20px;font-size:12px;line-height:140%;}
+#container #content .titleBar{position:relative;margin-bottom:20px;height:45px;line-height:45px;border-bottom:1px #e5e5e5 solid;}
+#container #content .titleBar + p{margin-top:-10px;}
+#container #content .bannerArea{margin-bottom:40px;}
+#container #content .tabBar{height:48px;border:1px #e5e5e5 solid;border-right:0px none;}
+#container #content .tabBar.noMargin{margin:0;}
+#container #content .tabBar li{position:relative;margin:0;width:50%;height:48px;border:0px none;border-right:1px #e5e5e5 solid;box-sizing:border-box;}
+#container #content .tabBar li a{height:48px;font-size:15px;color:#959595;text-align:center;line-height:48px;border:0px none;}
+#container #content .tabBar li.active a{color:#134c97;}
+#container #content .tabBar li.active:after{display:block;content:'';position:absolute;bottom:0;left:0;right:0;border-bottom:4px #134c97 solid;}
+#container #content .textBox{padding:30px 20px;font-size:12px;line-height:150%;text-align:left;}
+#container #content .textBox.bordered{border:1px #e5e5e5 solid;}
+#container #content .textBox.gray{background:#eee;}
+#footer{margin-top:80px;padding-bottom:100px;border-top:1px #e1e1e1 solid;}
+#footerNav{height:38px;border-bottom:1px #e1e1e1 solid;}
+#footerNav ul{display:block;padding-top:5px;text-align:center;}
+#footerNav ul li{display:inline-block;position:relative;padding:0 15px;line-height:28px;}
+#footerNav ul li a{font-size:12px;}
+#footerNav ul li:after{display:block;content:'';position:absolute;top:50%;right:0;margin-top:-7px;height:14px;border-right:1px #1b1b1b solid;}
+#footerNav ul li.last:after{display:none;}
+#footerCopyright{padding-top:15px;}
+#footerCopyright .footerLogo{display:block;margin-bottom:20px;}
+#footerCopyright p{font-size:12px;color:#626262;line-height:170%;}
+#footerCopyright a{display:inline-block;padding:1px 4px;font-size:11px;line-height:130%;border:1px #e1e1e1 solid;}
+#footerCopyright #footerMark{position:absolute;top:20px;right:0;}
+
+#quickBar{display:block;position:fixed;top:280px;left:50%;margin-left:510px;width:120px;background:#fff;border:1px #e1e1e1 solid;}
+#quickBar b{display:block;margin:15px;font-size:18px;}
+#quickBar ul{display:block;margin:20px 15px;}
+#quickBar ul li{display:block;margin:15px 0;border-bottom:1px #e1e1e1 solid;}
+#quickBar ul li.last{border-bottom:0px none;}
+#quickBar ul li a{display:block;padding-top:60px;height:100px;font-size:13px;line-height:120%;text-align:center;box-sizing:border-box;}
+#quickBar ul li a.btn_apply1{background:url(/common/zian/images/common/icon_message_bl.png) no-repeat center top;}
+#quickBar ul li a.btn_apply2{background:url(/common/zian/images/common/icon_call_bl.png) no-repeat center top;}
+#quickBar .quickBottom{padding:5px;font-size:11px;background:#ebebeb;border-top:1px #e1e1e1 solid;}
+#topBanner{height:100px;}
+#bottomBanner{position:fixed;bottom:-100px;left:0;right:0;height:100px;z-index:100;transition-duration:0.3s;}
+#bottomBanner .btn_bottomClose{display:none;position:absolute;top:-20px;right:20px;width:20px;height:20px;text-indent:-9999em;background:url(/common/zian/images/common/btn_bannerClose.jpg) no-repeat;}
+#bottomBanner.active{bottom:0;}
+#bottomBanner.active .btn_bottomClose{display:block;}
+
+#mainVisual:after{display:block;content:'';clear:both;}
+#mainVisual .left{float:left;width:700px;}
+#mainVisual .right{float:right;width:300px;}
+#mainVisual .bx-wrapper .bx-controls{bottom:20px;}
+#mainVisual .bx-controls-direction,
+#mainVisual .bx-controls-auto{display:none;}
+#mainVisual .bx-wrapper .bx-pager-item a{background:#959595;border:0px none;border-radius:8px;}
+#mainVisual .bx-wrapper .bx-pager-item a.active{width:30px;background:#134c97;}
+.visualPager{display:block;border:1px #e5e5e5 solid;border-right:0px none;}
+.visualPager:after{display:block;content:'';clear:both;}
+.visualPager li{display:block;float:left;width:20%;border-right:1px #e5e5e5 solid;box-sizing:border-box;}
+.visualPager li a{display:block;height:48px;font-size:13px;line-height:48px;text-align:center;box-sizing:border-box;}
+.visualPager li a.active{color:#144b95;border-bottom:4px #144b95 solid;}
+.titleBar{display:block;position:relative;margin-bottom:10px;height:30px;line-height:30px;}
+.titleBar .btn_more{display:block;position:absolute;top:0;right:0;padding-right:17px;font-size:13px;background:url(/common/zian/images/common/icon_more.png) no-repeat center right;}
+.titleBar h5{display:block;margin:0;font-size:19px;}
+.titleBar h6{}
+.mainBanner{margin:40px 0;}
+.mainBanner img{width:100%;}
+.divGroup .mainBanner{margin:0;}
+.mainBanner.cols3{margin:0 -24px 40px;}
+.mainBanner.cols3 > div{padding:0 24px;}
+.mainBanner.cols3 > div img{width:100%;}
+.mainBanner.cols3.noMargin{margin:0 0 40px;}
+.mainBanner.cols3.noMargin > div{padding:0;width:auto;}
+.mainLatest > div{margin-bottom:50px;padding:35px 30px 0;height:280px;border:1px #e1e1e1 solid;box-sizing:border-box;}
+.mainLatest .latestList{position:relative;margin-bottom:30px;height:50px;border:1px #e1e1e1 solid;box-sizing:border-box;overflow:hidden;}
+.mainLatest .latestList ul li{padding:0 57px 0 17px;}
+.mainLatest .latestList ul li a{display:block;position:relative;padding-right:70px;height:50px;font-size:13px;line-height:50px;}
+.mainLatest .latestList ul li a span.date{position:absolute;top:0;right:0;}
+.mainLatest .latestList .bx-pager{display:none;}
+.mainLatest .latestList .bx-wrapper .bx-controls{top:0;bottom:inherit;left:inherit;right:0;width:40px;height:50px;}
+.mainLatest .latestList .bx-prev{display:block;position:absolute;top:0;right:0;width:38px;height:24px;text-indent:-9999em;background:url(/common/zian/images/common/icon_up.png) no-repeat center center;border-left:1px #e1e1e1 solid;border-bottom:1px #e1e1e1 solid;}
+.mainLatest .latestList .bx-next{display:block;position:absolute;bottom:0;right:0;width:38px;height:24px;text-indent:-9999em;background:url(/common/zian/images/common/icon_down.png) no-repeat center center;border-left:1px #e1e1e1 solid;}
+.mainTaecher{margin-bottom:40px;}
+.mainTaecher .titleBar{margin-bottom:20px;}
+.mainTaecher h5{text-align:center;}
+.mainTaecher h6{margin-bottom:10px;padding-left:48px;font-size:15px;color:#134c97;}
+.teacherList{margin:0 20px 20px;padding-bottom:30px;}
+.teacherList li{padding:0 20px;}
+.teacherList li > div{position:relative;height:240px;text-align:right;border:1px #e1e1e1 solid;box-sizing:border-box;}
+.teacherList li > div img{display:inline-block;width:auto;height:200px;}
+.teacherList li > div .name{position:absolute;top:10px;left:10px;font-size:13px;text-align:left;}
+.teacherList li > div .name span{display:block;margin-top:5px;font-size:19px;}
+.teacherList li > div .btn_teacherHome{display:block;position:absolute;bottom:0;left:0;width:50%;height:40px;font-size:13px;text-align:center;line-height:39px;background:#fff;border-top:1px #e1e1e1 solid;border-right:1px #e1e1e1 solid;box-sizing:border-box;}
+.teacherList li > div .btn_teacherReview{display:block;position:absolute;bottom:0;right:0;width:50%;height:40px;font-size:13px;text-align:center;line-height:39px;background:#fff;border-top:1px #e1e1e1 solid;box-sizing:border-box;}
+.teacherList .slick-dots{bottom:0;}
+.teacherList .slick-dots li{padding:0;}
+.teacherList .slick-dots li button{background:#959595;border:0px none;border-radius:8px;}
+.teacherList .slick-dots li.slick-active button{width:30px;background:#134c97;}
+.teacherList .slick-prev{left:-20px;margin-top:-15px;width:30px;height:30px;background:url(/common/zian/images/common/btn_slidePrev.png) no-repeat center center;border:1px #e1e1e1 solid;}
+.teacherList .slick-next{right:-20px;margin-top:-15px;width:30px;height:30px;background:url(/common/zian/images/common/btn_slideNext.png) no-repeat center center;border:1px #e1e1e1 solid;}
+.mainApply > div{position:relative;margin-bottom:40px;padding:25px 265px 0 25px;height:260px;font-size:12px;line-height:180%;border:1px #e1e1e1 solid;box-sizing:border-box;word-break:keep-all;}
+.mainApply > div b{display:block;margin-bottom:10px;font-size:17px;}
+.mainApply > div .btn_apply1{position:absolute;bottom:104px;right:20px;padding:15px 0 0 90px;width:200px;height:74px;font-size:15px;color:#fff;line-height:22px;background:#0072bc url(/common/zian/images/common/icon_message.png) no-repeat 30px center;box-sizing:border-box;}
+.mainApply > div .btn_apply2{position:absolute;bottom:20px;right:20px;padding:15px 0 0 90px;width:200px;height:74px;font-size:15px;color:#fff;line-height:22px;background:#003471 url(/common/zian/images/common/icon_call.png) no-repeat 30px center;box-sizing:border-box;}
+.mainGuide > div{position:relative;margin-bottom:40px;padding:25px 265px 0 25px;height:260px;font-size:13px;color:#fff;line-height:180%;background:#7e0b0b url(/common/zian/images/content/bg_info.png) no-repeat right bottom;border:1px #7e0b0b solid;box-sizing:border-box;word-break:keep-all;}
+.mainGuide > div b{display:block;margin-bottom:20px;font-size:17px;}
+.mainGuide > div ul{display:block;width:310px;border-top:1px #fff solid;border-left:1px #fff solid;}
+.mainGuide > div ul:after{display:block;content:'';clear:both;}
+.mainGuide > div ul li{display:block;float:left;width:33.3333%;border-bottom:1px #fff solid;border-right:1px #fff solid;box-sizing:border-box;}
+.mainGuide > div ul li a{display:block;height:30px;font-size:13px;color:#fff;line-height:30px;text-align:center;}
+.mainInfo{width:55%;}
+.mainInfo > div{position:relative;margin-bottom:40px;padding:15px 25px 0;height:310px;font-size:12px;line-height:180%;border:1px #e1e1e1 solid;box-sizing:border-box;word-break:keep-all;}
+.mainInfo > div a{display:block;margin-bottom:20px;padding-top:70px;height:100px;font-size:15px;line-height:120%;text-align:center;border:1px #e1e1e1 solid;box-sizing:border-box;}
+.mainInfo > div a.item1{background:url(/common/zian/images/common/icon_info1.png) no-repeat center 10px;}
+.mainInfo > div a.item2{background:url(/common/zian/images/common/icon_info2.png) no-repeat center 10px;}
+.mainInfo > div a.item3{background:url(/common/zian/images/common/icon_info3.png) no-repeat center 10px;}
+.mainInfo > div a.item4{background:url(/common/zian/images/common/icon_info4.png) no-repeat center 10px;}
+.mainInfo > div a.item5{height:220px;padding-top:110px;background:url(/common/zian/images/common/icon_info5.png) no-repeat center 60px;}
+.mainCustomer{position:relative;padding:25px 0 0 145px;height:130px;border:1px #e1e1e1 solid;box-sizing:border-box;}
+.mainCustomer > h5{position:absolute;top:25px;left:30px;}
+.mainCustomer .btn_apply{display:inline-block;margin:10px 0 0;width:250px;height:34px;font-size:14px;color:#fff;line-height:34px;text-align:center;background:#134c97;}
+.mainCustomer .desc{display:block;margin-bottom:10px;line-height:150%;}
+.mainCustomer ul{display:block;}
+.mainCustomer ul li{display:block;position:relative;margin-bottom:10px;padding-left:75px;line-height:30px;}
+.mainCustomer ul li .title{display:block;position:absolute;top:0;left:0;}
+.mainCustomer ul li b{color:#134c97;}
+.mainCustomer ul li b.phone{font-size:24px;}
+.mainCustomer ul li .btn_apply{display:block;margin:20px auto 0;}
+.divGroup .mainCustomer{padding:0;width:45%;border:0px none;}
+.divGroup .mainCustomer > div{position:relative;margin-bottom:40px;padding:15px 25px 0;height:310px;font-size:12px;line-height:180%;border:1px #e1e1e1 solid;box-sizing:border-box;word-break:keep-all;}
+.mainBannerReview{margin-bottom:60px;/*height:200px;*/}
+/*.mainBannerReview .inner{height:200px;background:url(/common/zian/images/common/bg_mainBannerReview.jpg) no-repeat center top;}
+.mainBannerReview .inner a{display:block;height:200px;}
+.mainBannerReview h5{position:absolute;top:35px;left:25px;font-size:22px;}
+.mainBannerReview p{position:absolute;top:35px;right:30px;width:320px;font-size:16px;font-weight:bold;line-height:140%;word-break:keep-all;}
+.mainBannerReview p .name{display:block;margin-top:10px;font-size:12px;font-weight:normal;}*/
+
+.mainBoard{position:relative;height:305px;border:1px #e1e1e1 solid;}
+.mainBoard ul.tabBar{margin-right:-1px;border:0px none;}
+.mainBoard ul.tabBar li{margin-right:0;width:50%;box-sizing:border-box;}
+.mainBoard ul.tabBar li a{padding:0;height:60px;font-size:18px;font-weight:bold;color:#a0a0a0;line-height:60px;text-align:center;border:0px none;border-bottom:1px #e1e1e1 solid;border-right:1px #e1e1e1 solid;}
+.mainBoard ul.tabBar li.active a{color:#1b1b1b;border-bottom:1px #fff solid;}
+.mainBoard .tabPage{padding-bottom:40px;}
+.mainBoard .tabPage ul{display:block;padding:0 20px;}
+.mainBoard .tabPage ul li{display:block;border-bottom:1px #e1e1e1 solid;}
+.mainBoard .tabPage ul li a{display:block;position:relative;padding-right:70px;height:50px;font-size:13px;line-height:50px;}
+.mainBoard .tabPage ul li a span.date{position:absolute;top:0;right:0;}
+.mainBoard .tabPage .btn_more{display:block;position:absolute;bottom:0;right:30px;padding-right:17px;font-size:13px;line-height:40px;background:url(/common/zian/images/common/icon_more.png) no-repeat center right;}
+.mainBoard.noTab{margin-bottom:40px;padding:20px;height:auto;}
+.mainBoard.noTab h5{display:block;padding:0;height:50px;font-size:18px;font-weight:bold;line-height:50px;}
+.mainBoard.noTab ul{display:block;}
+.mainBoard.noTab ul li{display:block;border-top:1px #e1e1e1 solid;}
+.mainBoard.noTab ul li a{display:block;position:relative;padding-right:70px;height:50px;font-size:13px;line-height:50px;}
+.mainBoard.noTab ul li a span.date{position:absolute;top:0;right:0;}
+.mainBoard.noTab .btn_more{display:block;position:absolute;top:20px;right:20px;padding-right:17px;font-size:13px;line-height:50px;background:url(/common/zian/images/common/icon_more.png) no-repeat center right;}
+.mainBoard.noTab.blue ul li{border-color:#2b6ec6;}
+.mainBoard.noTab.blue .btn_more{background:url(/common/zian/images/common/icon_more_wh.png) no-repeat center right;}
+.mainBoard.blue{color:#fff;background:#134c97;border-color:#2b6ec6;}
+.mainBoard.blue a{color:#fff;border-color:#2b6ec6;}
+.mainBoard.blue ul.tabBar li a{color:#588acf;background:none;border-color:#2b6ec6;}
+.mainBoard.blue ul.tabBar li.active a{color:#fff;border-bottom:1px #134c97 solid;}
+.mainBoard.blue .tabPage ul li{border-color:#2b6ec6;}
+.mainBoard.blue .tabPage .btn_more{background:url(/common/zian/images/common/icon_more_wh.png) no-repeat center right;}
+.mainBoard.yellow{color:#fff;background:#c16a06;border-color:#dc841e;}
+.mainBoard.yellow a{color:#fff;border-color:#dc841e;}
+.mainBoard.yellow ul.tabBar li a{color:#f69321;background:none;border-color:#dc841e;}
+.mainBoard.yellow ul.tabBar li.active a{color:#fff;border-bottom:1px #c16a06 solid;}
+.mainBoard.yellow .tabPage ul li{border-color:#dc841e;}
+.mainBoard.yellow .tabPage .btn_more{background:url(/common/zian/images/common/icon_more_wh.png) no-repeat center right;}
+.mainBoard.red{color:#fff;background:#ac1616;border-color:#c72d2d;}
+.mainBoard.red a{color:#fff;border-color:#c72d2d;}
+.mainBoard.red ul.tabBar li a{color:#de5c5c;background:none;border-color:#c72d2d;}
+.mainBoard.red ul.tabBar li.active a{color:#fff;border-bottom:1px #ac1616 solid;}
+.mainBoard.red .tabPage ul li{border-color:#c72d2d;}
+.mainBoard.red .tabPage .btn_more{background:url(/common/zian/images/common/icon_more_wh.png) no-repeat center right;}
+
+.mainQuickLink{margin-bottom:40px;}
+.mainQuickLink ul{display:block;border:1px #e1e1e1 solid;border-right:0px none;}
+.mainQuickLink ul:after{display:block;content:'';clear:both;}
+.mainQuickLink ul li{display:block;float:left;width:20%;border-right:1px #e1e1e1 solid;box-sizing:border-box;}
+.mainQuickLink ul li a{display:block;padding-left:80px;height:68px;font-size:15px;line-height:68px;}
+.mainQuickLink ul li.item1 a{background:url(/common/zian/images/common/icon_quickLink1.png) no-repeat 22px center;}
+.mainQuickLink ul li.item2 a{background:url(/common/zian/images/common/icon_quickLink2.png) no-repeat 22px center;}
+.mainQuickLink ul li.item3 a{background:url(/common/zian/images/common/icon_quickLink3.png) no-repeat 22px center;}
+.mainQuickLink ul li.item4 a{background:url(/common/zian/images/common/icon_quickLink4.png) no-repeat 22px center;}
+.mainQuickLink ul li.item5 a{background:url(/common/zian/images/common/icon_quickLink5.png) no-repeat 22px center;}
+
+.mainQuickShop{margin-bottom:40px;}
+.mainQuickShop ul{display:block;border:1px #e1e1e1 solid;border-right:0px none;}
+.mainQuickShop ul:after{display:block;content:'';clear:both;}
+.mainQuickShop ul li{display:block;float:left;width:16.6666%;border-right:1px #e1e1e1 solid;box-sizing:border-box;}
+.mainQuickShop ul li a{display:block;padding-top:130px;height:165px;font-size:14px;text-align:center;box-sizing:border-box;}
+.mainQuickShop ul li.item1 a{background:url(/common/zian/images/common/icon_shopQuick1.png) no-repeat center 40px;}
+.mainQuickShop ul li.item2 a{background:url(/common/zian/images/common/icon_shopQuick2.png) no-repeat center 40px;}
+.mainQuickShop ul li.item3 a{background:url(/common/zian/images/common/icon_shopQuick3.png) no-repeat center 40px;}
+.mainQuickShop ul li.item4 a{background:url(/common/zian/images/common/icon_shopQuick4.png) no-repeat center 40px;}
+.mainQuickShop ul li.item5 a{background:url(/common/zian/images/common/icon_shopQuick5.png) no-repeat center 40px;}
+.mainQuickShop ul li.item6 a{background:url(/common/zian/images/common/icon_shopQuick6.png) no-repeat center 40px;}
+
+#mainShopVisual{margin-bottom:40px;}
+#mainShopVisual:after{display:block;content:'';clear:both;}
+#mainShopVisual .mainBanner{margin:0;}
+#mainShopVisual .left{float:left;width:700px;height:302px;font-size:12px;border:1px #e5e5e5 solid;box-sizing:border-box;}
+#mainShopVisual .left .thumb{position:absolute;top:30px;left:70px;}
+#mainShopVisual .left .thumb img{width:120px;height:170px;}
+#mainShopVisual .left li div{margin:30px 0 0 220px;}
+#mainShopVisual .left li div .tags{display:block;margin-bottom:10px;}
+#mainShopVisual .left li div .tags span{display:inline-block;margin-right:5px;width:60px;height:22px;font-size:12px;color:#fff;line-height:22px;text-align:center;border-radius:11px;}
+#mainShopVisual .left li div .tags span.tagNew{background:#22ac38;}
+#mainShopVisual .left li div .tags span.tagHit{background:#e60012;}
+#mainShopVisual .left li div .title{display:block;}
+#mainShopVisual .left li div .writer{display:block;margin-bottom:10px;}
+#mainShopVisual .left li div .price{display:block;margin-bottom:20px;font-size:15px;}
+#mainShopVisual .left li div .price b{font-size:22px;font-weight:bold;}
+#mainShopVisual .left li div .price span{color:#ff0000;}
+#mainShopVisual .left li div .desc{display:block;margin-bottom:10px;width:320px;}
+#mainShopVisual .left li div a{display:inline-block;width:200px;height:34px;font-size:15px;line-height:32px;text-align:center;border:1px #e5e5e5 solid;box-sizing:border-box;}
+#mainShopVisual .left li div a.btn_cart{color:#1b1b1b;}
+#mainShopVisual .left li div a.btn_buy{color:#fff;background:#134c97;border-color:#134c97;}
+#mainShopVisual .left .bx-wrapper{height:300px;}
+#mainShopVisual .left .bx-controls-auto{display:none;}
+#mainShopVisual .left .bx-wrapper .bx-pager-item a{background:#959595;border:0px none;border-radius:8px;}
+#mainShopVisual .left .bx-wrapper .bx-pager-item a.active{width:30px;background:#134c97;}
+#mainShopVisual .left .bx-prev{display:block;position:absolute;top:50%;left:10px;margin-top:-15px;width:30px;height:30px;text-indent:-9999em;background:url(/common/zian/images/common/btn_slidePrev.png) no-repeat center center;border:1px #e1e1e1 solid;}
+#mainShopVisual .left .bx-next{display:block;position:absolute;top:50%;right:10px;margin-top:-15px;width:30px;height:30px;text-indent:-9999em;background:url(/common/zian/images/common/btn_slideNext.png) no-repeat center center;border:1px #e1e1e1 solid;}
+#mainShopVisual .right{float:right;width:300px;height:302px;border-right:1px #e5e5e5 solid;border-bottom:1px #e5e5e5 solid;box-sizing:border-box;}
+#mainShopVisual .right ul{display:block;}
+#mainShopVisual .right ul li{display:block;border-top:1px #e5e5e5 solid;}
+#mainShopVisual .right ul li > a{display:block;padding:0 60px 0 20px;height:48px;font-size:13px;line-height:48px;background:url(/common/zian/images/common/icon_down.png) no-repeat 90% center;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;}
+#mainShopVisual .right ul li > div{display:none;position:relative;padding:5px 20px 0;height:95px;box-sizing:border-box;}
+#mainShopVisual .right ul li > div .desc{display:block;display:-webkit-box;height:50px;font-size:12px;line-height:17px;overflow:hidden;text-overflow:ellipsis;-webkit-line-clamp:3;-webkit-box-orient:vertical;word-wrap:break-word;}
+#mainShopVisual .right ul li > div .price{display:block;position:absolute;bottom:10px;left:20px;font-size:12px;}
+#mainShopVisual .right ul li > div .price b{font-size:16px;font-weight:bold;}
+#mainShopVisual .right ul li > div .price span{color:#ff0000;}
+#mainShopVisual .right ul li > div .btnArea{position:absolute;bottom:8px;right:20px;margin:0;}
+#mainShopVisual .right ul li > div .btnArea a{display:inline-block;width:60px;height:22px;font-size:11px;line-height:20px;text-align:center;border:1px #e5e5e5 solid;box-sizing:border-box;}
+#mainShopVisual .right ul li.active > a{background:url(/common/zian/images/common/icon_up.png) no-repeat 90% center;}
+#mainShopVisual .right ul li.active > div{display:block;}
+
+.mainShopSearch{margin-bottom:20px;padding:0 30px;font-size:13px;}
+.mainShopSearch:after{display:block;content:'';clear:both;}
+.mainShopSearch .left{float:left;}
+.mainShopSearch .right{float:right;}
+.mainShopSearch .left select{margin-right:20px;}
+.mainShopSearch .btn_search{padding:0 20px 0 40px;height:30px;font-size:13px;color:#fff;line-height:30px;background:#134c97 url(/common/zian/images/common/icon_search.png) no-repeat 20px center;border:0px none;}
+
+.mainShopProduct{border:1px #e1e1e1 solid;border-bottom:0px none;}
+.mainShopProduct > div{padding:20px 10px;border-bottom:1px #e1e1e1 solid;}
+.mainShopProduct h5{padding:0 10px;}
+.mainShopProduct .item2 h5{color:#134c97;}
+.mainShopProduct .item3 h5{color:#f69321;}
+.mainShopProduct .item4{margin-bottom:50px;}
+.mainShopProduct .item4 h5{color:#ce1717;}
+.mainShopProduct .productList .slick-dots li.slick-active button{background:#1b1b1b;}
+
+.productList{position:relative;margin:0 20px 20px;padding-bottom:30px;}
+.productList li{padding:0 20px;}
+.productList li > div{position:relative;height:260px;text-align:center;box-sizing:border-box;}
+.productList li > div img{display:inline-block;max-width:100%;width:auto;height:170px;}
+.productList li > div .name{display:block;margin-top:5px;font-size:13px;display:-webkit-box;max-height:33px;line-height:17px;overflow:hidden;text-overflow:ellipsis;-webkit-line-clamp:3;-webkit-box-orient:vertical;word-wrap:break-word;}
+.productList li > div .writer{display:block;margin-top:5px;font-size:13px;}
+.productList li > div .price{display:block;margin-top:5px;font-size:12px;}
+.productList li > div .price b{font-size:16px;font-weight:bold;}
+.productList li > div .price span{color:#ff0000;}
+.productList .slick-dots{bottom:0;}
+.productList .slick-dots li{padding:0;}
+.productList .slick-dots li button{background:#959595;border:0px none;border-radius:8px;}
+.productList .slick-dots li.slick-active button{width:30px;background:#134c97;}
+.productList .slick-prev{left:-20px;margin-top:-40px;width:30px;height:30px;background:url(/common/zian/images/common/btn_slidePrev.png) no-repeat center center;border:1px #e1e1e1 solid;}
+.productList .slick-next{right:-20px;margin-top:-40px;width:30px;height:30px;background:url(/common/zian/images/common/btn_slideNext.png) no-repeat center center;border:1px #e1e1e1 solid;}
+
+.classList{position:relative;}
+.classList dl{display:block;margin:10px 0;}
+.classList dl dt{display:block;height:50px;background:#eee;}
+.classList dl dt a{display:block;padding:0 20px;height:50px;font-size:13px;line-height:50px;background:url(/common/zian/images/common/btn_classArrowUp.png) no-repeat 97% center;}
+.classList dl dd{display:block;border:1px #e5e5e5 solid;}
+.classList dl dd table{margin-top:-1px;width:100%;}
+.classList dl dd table td.col1{font-size:13px;text-align:left;}
+.classList dl dd table td.col4{position:relative;}
+.classList dl dd table .detail{display:none;}
+.classList dl dd table .detail.active{display:table-row;}
+.classList dl dd table .detail td{padding:15px 20px;text-align:left !important;}
+.classList dl dd table .col2{width:20%;}
+.classList dl dd table .col3{width:15%;}
+.classList dl dd table .col4{width:20%;}
+.classList dl dd table th{padding:15px 20px;font-size:12px;font-weight:normal;text-align:center;border-top:1px #e5e5e5 solid;}
+.classList dl dd table td{padding:15px 20px 30px 20px;font-size:12px;line-height:160%;text-align:center;border-top:1px #e5e5e5 solid;}
+.classList dl dd table td .tag{display:inline-block;margin:0 0 5px 5px;padding:0 10px;height:22px;font-size:11px;color:#fff;line-height:22px;background:#1b1b1b;border-radius:11px;}
+.classList dl dd table td .tag.green{background:#22ac38;}
+.classList dl dd table td .tag.blue{background:#0072bc;}
+.classList dl dd table td .tag.purple{background:#630460;}
+.classList dl dd table td .dateLabel{color:#335d9f;}
+.classList dl dd table td .btn_inline{color:#fff;background:#134c97;border-color:#134c97;border-radius:0px;}
+.classList dl dd table td .btn_toggleDetail{position:absolute;bottom:0;right:0;padding:0 26px 0 18px;height:18px;border-top:1px #e5e5e5 solid;border-left:1px #e5e5e5 solid;background:url(/common/zian/images/common/icon_down.png) no-repeat 90px center;}
+.classList dl dd table td .btn_toggleDetail.active{background:url(/common/zian/images/common/icon_up.png) no-repeat 90px center;}
+.classList dl.hidden dt a{background:url(/common/zian/images/common/btn_classArrowDown.png) no-repeat 97% center;}
+.classList dl.hidden dd{display:none;}
+
+#wrap.skill #header #topSelect ul li.active a{background:#f69321;border-color:#f69321;}
+#wrap.skill #mainVisual .bx-wrapper .bx-pager-item a.active,
+#wrap.skill .teacherList .slick-dots li.slick-active button,
+#wrap.skill .productList .slick-dots li.slick-active button,
+#wrap.skill .mainCustomer .btn_apply{background:#f69321;}
+#wrap.skill .mainTaecher h6{color:#f69321;}
+#wrap.skill #aside #siteNav ul li.active a:after{border-color:#f69321;}
+
+#wrap.accounting #header #topSelect ul li.active a{background:#ce1717;border-color:#ce1717;}
+#wrap.accounting #mainVisual .bx-wrapper .bx-pager-item a.active,
+#wrap.accounting .teacherList .slick-dots li.slick-active button,
+#wrap.accounting .productList .slick-dots li.slick-active button,
+#wrap.accounting .mainCustomer .btn_apply{background:#ce1717;}
+#wrap.accounting .mainTaecher h6{color:#ce1717;}
+#wrap.accounting #aside #siteNav ul li.active a:after{border-color:#ce1717;}
+
+
+
+
+
