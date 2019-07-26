@@ -37,4 +37,3 @@
     <!--//api controller-->
 </head>
 <body onload="init();">
-<%@include file="/common/jsp/header.jsp" %>
