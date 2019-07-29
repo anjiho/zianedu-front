@@ -44,10 +44,24 @@ function getMainBigBanner(tagId, listNum) {
     if (bannerInfoList.result.length > 0) {
         var selList = bannerInfoList.result;
         dwr.util.addOptions(tagId, selList, function (data) {
-            //return "<a href='"+ data.targetUrl +"'><img src='"+ data.fullFileUrl +"' alt=''></a>"
-            return "<a href='#'><img src='/common/zian/images/content/img_mainVisual.jpg' alt=''></a>";
+            return "<a href='#'><img src='"+ data.fullFileUrl +"' alt=''></a>"
         }, {escapeHtml: false});
     }
+
+    $(function(){
+        var sliderOption1 = {
+            auto:true,
+            pagerCustom:'.visualPager'
+        };
+        kiplayer.sliderBx($(".visualSlider"), sliderOption1);
+
+    });
+
+    $(window).resize(function(){
+    });
+
+    $(window).scroll(function(){
+    });
 }
 
 //메인페이지 최상단 배너
@@ -126,10 +140,10 @@ function getPopulateVideoLectureList(tagId) {
 //직렬별 팝업 리스트
 function getPopupList(ctgKey, tagId) {
     if (ctgKey == null || ctgKey == undefined) return;
-    var InfoList = getApi("/banner/getPopupList/", ctgKey,"");
+    var infoList = getApi("/banner/getPopupList/", ctgKey,"");
 
     if (InfoList.result.length > 0) {
-        var selList = InfoList.result;
+        var selList = infoList.result;
         dwr.util.addRows(tagId, selList, [
             //function(data) {return "<img src='"+ data.targetUrl +"'>";}
         ], {escapeHtml:false});
@@ -149,14 +163,59 @@ function getSearchKeywordList(className) {
     }
 }
 
-//강사(지안교수진) 배너 리스트
-function getTeacherBannerList(ctgKey, tagId) {
-    var InfoList = getApi("/banner/getTeacherBannerList/", ctgKey,"");
+//강사(지안교수진) 배너 리스트 [ 공통과목 교수진 ]
+function getTeacherBannerList(tagId, ctgKey, subjectType) {
+    var data = {
+        subjectType : subjectType
+    };
+    var infoList = getApi("/banner/getTeacherBannerList/", ctgKey, data);
+    if (infoList.result.length > 0) {
+        var selList = infoList.result;
 
-    if (InfoList.result.length > 0) {
-        var selList = InfoList.result;
-        dwr.util.addRows(tagId, selList, [
-            //function(data) {return "<img src='"+ data.targetUrl +"'>";}
-        ], {escapeHtml:false});
+        dwr.util.addOptions(tagId, selList, function (data) {
+            return "<div>" +
+                        "<span class=\"name\">"+ data.subjectName +"<span>"+ data.teacherName +"</span></span>"+
+                        "<img src='"+ data.teacherImageUrl +"' alt=''>"+
+                        "<a href='' class=\"btn_teacherHome\"><span class=\"icon\"></span>교수홈</a>"+
+                        "<a href='' class=\"btn_teacherReview\"><span class=\"icon\"></span>수강후기</a>"+
+                    "</div>"
+        }, {escapeHtml: false});
     }
+    $(function(){
+        kiplayer.sliderSlick($("#teacherList"));
+    });
+
+    $(window).resize(function(){
+    });
+
+    $(window).scroll(function(){
+    });
+}
+
+//강사(지안교수진) 배너 리스트 [ 전공과목 교수진 ]
+function getMajorTeacherBannerList(tagId, ctgKey, subjectType) {
+    var data = {
+        subjectType : subjectType
+    };
+    var infoList = getApi("/banner/getTeacherBannerList/", ctgKey, data);
+
+    if (infoList.result.length > 0) {
+        var selList = infoList.result;
+
+        dwr.util.addOptions(tagId, selList, function (data) {
+            return "<div>" +
+                "<span class=\"name\">"+ data.subjectName +"<span>"+ data.teacherName +"</span></span>"+
+                "<img src='"+ data.teacherImageUrl +"' alt=''>"+
+                "<a href='' class=\"btn_teacherHome\"><span class=\"icon\"></span>교수홈</a>"+
+                "<a href='' class=\"btn_teacherReview\"><span class=\"icon\"></span>수강후기</a>"+
+                "</div>"
+        }, {escapeHtml: false});
+    }
+    $(function(){
+        kiplayer.sliderSlick($("#majorTeacherList"));
+    });
+    $(window).resize(function(){
+    });
+    $(window).scroll(function(){
+    });
 }

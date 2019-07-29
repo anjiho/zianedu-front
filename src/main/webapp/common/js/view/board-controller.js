@@ -94,3 +94,56 @@ function getNoticeList(bbsMaterKey, tagId) {
     }
 }
 
+function getPassReviewList(tagId, reviewType, listLimit) {
+    var data = {
+        listLimit : listLimit
+    };
+    var infoList = getApi("/board/getReviewList/", reviewType, data);
+
+    if (infoList.result.length > 0) {
+        var selList = infoList.result;
+        dwr.util.addOptions(tagId, selList, function (data) {
+            return "<a href='#'>"+ data.title +"<span class='date'>"+ data.createDate +"</span></a>"
+        }, {escapeHtml: false});
+    }
+    $(function(){
+        var sliderOption2 = {
+            auto:true,
+            mode:'vertical'
+        };
+        kiplayer.sliderBx($("#passLatestList ul"), sliderOption2);
+    });
+
+    $(window).resize(function(){
+    });
+
+    $(window).scroll(function(){
+    });
+}
+
+function getLecReviewList(tagId, reviewType, listLimit) {
+    var data = {
+        listLimit : listLimit
+    };
+    var infoList = getApi("/board/getReviewList/", reviewType, data);
+
+    if (infoList.result.length > 0) {
+        var selList = infoList.result;
+        dwr.util.addOptions(tagId, selList, function (data) {
+            return "<a href='#'>"+ data.title +"<span class='date'>"+ data.createDate +"</span></a>"
+        }, {escapeHtml: false});
+    }
+    $(function(){
+        var sliderOption2 = {
+            auto:true,
+            mode:'vertical'
+        };
+        kiplayer.sliderBx($("#lecLatestList ul"), sliderOption2);
+    });
+
+    $(window).resize(function(){
+    });
+
+    $(window).scroll(function(){
+    });
+}
