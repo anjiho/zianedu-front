@@ -14,6 +14,7 @@
     <!--본문-->
     <script>
         function init() {
+            getExamScheduleList("dDayBanner");
             getMainBigBanner("bigBanner", "visualPager", 5);//메인 대 배너
             getTeacherBannerList("teacherList", 228, 0);//공통과목 교수진
             getMajorTeacherBannerList("majorTeacherList", 228, 1);//전공과목 교수진

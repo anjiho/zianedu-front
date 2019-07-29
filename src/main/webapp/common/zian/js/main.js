@@ -53,6 +53,14 @@ function initSliderOption2(tagId) {
 	});
 }
 
+function initExamSlideBanner() {
+	if($(".slider.useBx").length > 0){
+		$(".slider.useBx").each(function(){
+			kiplayer.sliderBx($(this).children("ul"));
+		});
+	}
+}
+
 function initMainJs() {
 	$(function(){
 		var sliderOption1 = {
