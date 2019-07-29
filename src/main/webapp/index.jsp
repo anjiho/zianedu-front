@@ -86,7 +86,7 @@
                 </div>
             </div>
             <div class="mainBanner divGroup cols3">
-                <div><a href="#"><img id="mainBanner1" src="" alt=""></a></div> 
+                <div><a href="#"><img id="mainBanner1" src="" alt=""></a></div>
                 <div><a href="#"><img id="mainBanner2" src="" alt=""></a></div>
                 <div><a href="#"><img id="mainBanner3" src="" alt=""></a></div>
             </div>
