@@ -22,7 +22,6 @@ function getBookStoreCenterRightBanner(tagId) {
     }
 }
 
-
 //대 배너 밑 미니 배너
 function getMainMiniBanner(tagId, ctgKey, listNum) {
     if (ctgKey == null || ctgKey == undefined) return;
