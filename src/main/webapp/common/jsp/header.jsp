@@ -12,7 +12,7 @@
     <div id="topBar">
         <div class="inner">
             <div class="left">
-                <a href="#">지안에듀를 즐겨찾기로 &gt;</a>
+                <a href="javascript:addFavorite();">지안에듀를 즐겨찾기로 &gt;</a>
             </div>
             <div class="right">
                 <ul>
