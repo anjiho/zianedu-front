@@ -14,12 +14,12 @@
     <!--본문-->
     <script>
         function init() {
-            getMainBigBanner("bigBanner", 5, ""); //메인 대 배너
+            getMainBigBanner("bigBanner", "visualPager", 5);//메인 대 배너
             getTeacherBannerList("teacherList", 228, 0);//공통과목 교수진
             getMajorTeacherBannerList("majorTeacherList", 228, 1);//전공과목 교수진
-            getPassReviewList("passReviewList", "PASS", 3);
-            getLecReviewList("lecReviewList", "SIGN", 3);
-            getMainMiniBanner("mainMiniBanner", 224, 3);
+            getPassReviewList("passReviewList", "PASS", 10);//합격후기
+            getLecReviewList("lecReviewList", "SIGN", 10);//수강후기
+            getMainMiniBanner("mainMiniBanner", 224, 3);//미니배너
         }
     </script>
     <div id="container">
@@ -27,13 +27,7 @@
             <div class="inner" id="inner">
                 <ul id="bigBanner" class="visualSlider"> <!--메인 대 배너-->
                 </ul>
-                <ul id="visualPager" class="visualPager">
-                    <li><a href="#" data-slide-index="0">지안 90 PASS</a></li>
-                    <li><a href="#" data-slide-index="1">지안 365 패스</a></li>
-                    <li><a href="#" data-slide-index="2">1:1 맞춤 관리반</a></li>
-                    <li><a href="#" data-slide-index="3">기술직 전공 지안패스</a></li>
-                    <li><a href="#" data-slide-index="4">계리직 패스</a></li>
-                </ul>
+                <ul id="visualPager" class="visualPager"></ul>
             </div>
         </div>
         <div class="inner">
@@ -86,9 +80,9 @@
                 </div>
             </div>
             <div class="mainBanner divGroup cols3">
+                <div><a href="#"><img id="mainBanner0" src="" alt=""></a></div>
                 <div><a href="#"><img id="mainBanner1" src="" alt=""></a></div>
                 <div><a href="#"><img id="mainBanner2" src="" alt=""></a></div>
-                <div><a href="#"><img id="mainBanner3" src="" alt=""></a></div>
             </div>
             <div class="divGroup cols2">
                 <div class="mainApply">

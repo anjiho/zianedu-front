@@ -11,7 +11,6 @@ function postApi(url, paramData) {
     }).fail(function() {
         alert( "통신 에러" );
     });
-    console.log(resultData);
     return resultData;
 }
 
@@ -28,7 +27,6 @@ function getApi(url, pathData, paramData) {
     }).fail(function() {
         alert("통신 에러");
     });
-    console.log(resultData);
     return resultData;
 }
 

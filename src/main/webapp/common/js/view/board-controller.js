@@ -99,13 +99,14 @@ function getPassReviewList(tagId, reviewType, listLimit) {
         listLimit : listLimit
     };
     var infoList = getApi("/board/getReviewList/", reviewType, data);
-
     if (infoList.result.length > 0) {
         var selList = infoList.result;
+        var i =0;
         dwr.util.addOptions(tagId, selList, function (data) {
-            return "<a href='#'>"+ data.title +"<span class='date'>"+ data.createDate +"</span></a>"
+            return "<a href='#'>"+ gfn_substr(data.title,0,25) +"<span class='date'>"+ data.createDate +"</span></a>"
         }, {escapeHtml: false});
     }
+
     $(function(){
         var sliderOption2 = {
             auto:true,
@@ -130,7 +131,7 @@ function getLecReviewList(tagId, reviewType, listLimit) {
     if (infoList.result.length > 0) {
         var selList = infoList.result;
         dwr.util.addOptions(tagId, selList, function (data) {
-            return "<a href='#'>"+ data.title +"<span class='date'>"+ data.createDate +"</span></a>"
+            return "<a href='#'>"+ gfn_substr(data.title,0,25) +"<span class='date'>"+ data.createDate +"</span></a>"
         }, {escapeHtml: false});
     }
     $(function(){
