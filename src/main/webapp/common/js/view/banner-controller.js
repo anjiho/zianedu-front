@@ -211,3 +211,18 @@ function getMajorTeacherBannerList(tagId, ctgKey, subjectType) {
     $(window).scroll(function(){
     });
 }
+
+function getExamScheduleList(tagId) {
+    var infoList = getApi("/banner/getExamScheduleList","" ,"");
+
+    if (infoList.result.length > 0) {
+        var selList = infoList.result;
+        console.log(selList);
+        dwr.util.addOptions(tagId, selList, function (data) {
+            return "<span>"+ data.title +"</span>"+
+                "<b>" + data.dday + "</b>"+
+                "<a href=\"#\">상세정보</a>";
+        }, {escapeHtml: false});
+    }
+    
+}
