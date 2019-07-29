@@ -15,12 +15,12 @@
     <div id="container">
         <div id="mainVisual">
             <div class="inner">
-                <ul class="visualSlider">
-                    <li><a href="#"><img src="/common/zian/images/content/img_mainVisual.jpg" alt=""></a></li>
-                    <li><a href="#"><img src="/common/zian/images/content/img_mainVisual.jpg" alt=""></a></li>
-                    <li><a href="#"><img src="/common/zian/images/content/img_mainVisual.jpg" alt=""></a></li>
-                    <li><a href="#"><img src="/common/zian/images/content/img_mainVisual.jpg" alt=""></a></li>
-                    <li><a href="#"><img src="/common/zian/images/content/img_mainVisual.jpg" alt=""></a></li>
+                <ul id="bigBanner" class="visualSlider">
+<%--                    <li><a href="#"><img src="/common/zian/images/content/img_mainVisual.jpg" alt=""></a></li>--%>
+<%--                    <li><a href="#"><img src="/common/zian/images/content/img_mainVisual.jpg" alt=""></a></li>--%>
+<%--                    <li><a href="#"><img src="/common/zian/images/content/img_mainVisual.jpg" alt=""></a></li>--%>
+<%--                    <li><a href="#"><img src="/common/zian/images/content/img_mainVisual.jpg" alt=""></a></li>--%>
+<%--                    <li><a href="#"><img src="/common/zian/images/content/img_mainVisual.jpg" alt=""></a></li>--%>
                 </ul>
                 <ul class="visualPager">
                     <li><a href="#" data-slide-index="0">지안 90 PASS</a></li>
@@ -319,3 +319,8 @@
 <div id="overlay"></div>
 </body>
 </html>
+<script>
+    function init() {
+        getMainBigBanner("bigBanner", 5, "");
+    }
+</script>

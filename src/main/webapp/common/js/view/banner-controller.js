@@ -39,14 +39,14 @@ function getMainMiniBanner(ctgKey, tagId) {
 }
 
 //메인 대 배너
-function getMainBigBanner(tagId) {
-    var bannerInfoList = getApi("/banner/getMainBigBanner","" ,"");
-
+function getMainBigBanner(tagId, listNum) {
+    var bannerInfoList = getApi("/banner/getMainBigBanner/", listNum ,"");
     if (bannerInfoList.result.length > 0) {
         var selList = bannerInfoList.result;
-        dwr.util.addRows(tagId, selList, [
-            function(data) {return "<img src='"+ data.targetUrl +"'>";}
-        ], {escapeHtml:false});
+        dwr.util.addOptions("bigBanner", selList, function (data) {
+            // return "<a href='"+ data.targetUrl +"'><img src='"+ data.fullFileUrl +"' alt=''></a>"
+            return "<a href=''><img src='/common/zian/images/content/img_mainVisual.jpg' alt=''></a>";
+        }, {escapeHtml: false});
     }
 }
 
