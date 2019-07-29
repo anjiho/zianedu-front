@@ -173,11 +173,7 @@ function getTeacherBannerList(tagId, ctgKey, subjectType) {
                     "</div>"
         }, {escapeHtml: false});
     }
-    $(function(){
-        kiplayer.sliderSlick($("#teacherList"));
-    });
-    $(window).resize(function(){});
-    $(window).scroll(function(){});
+    initTeacherListBanner("teacherList");
 }
 
 //강사(지안교수진) 배너 리스트 [ 전공과목 교수진 ]
@@ -199,19 +195,15 @@ function getMajorTeacherBannerList(tagId, ctgKey, subjectType) {
                 "</div>"
         }, {escapeHtml: false});
     }
-    $(function(){
-        kiplayer.sliderSlick($("#majorTeacherList"));
-    });
-    $(window).resize(function(){});
-    $(window).scroll(function(){});
+    initTeacherListBanner("majorTeacherList");
 }
 
+//leftMenu D-day 리스트 불러오기
 function getExamScheduleList(tagId) {
     var infoList = getApi("/banner/getExamScheduleList","" ,"");
 
     if (infoList.result.length > 0) {
         var selList = infoList.result;
-        console.log(selList);
         dwr.util.addOptions(tagId, selList, function (data) {
             return "<span>"+ data.title +"</span>"+
                 "<b>" + data.dday + "</b>"+

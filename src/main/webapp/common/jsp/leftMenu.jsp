@@ -46,6 +46,6 @@
 <!--//좌측사이트메뉴-->
 <script>
     $( document ).ready(function() {
-       //getExamScheduleList("dDayBanner");
+        getExamScheduleList("dDayBanner"); //d-day 슬라이드 배너
     });
 </script>
