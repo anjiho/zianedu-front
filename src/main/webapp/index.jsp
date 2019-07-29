@@ -12,9 +12,14 @@
     <!--//상단-->
 
     <!--본문-->
+    <script>
+        function init() {
+            getMainBigBanner("bigBanner", 5, "");
+        }
+    </script>
     <div id="container">
         <div id="mainVisual">
-            <div class="inner">
+            <div class="inner" id="inner">
                 <ul id="bigBanner" class="visualSlider">
 <%--                    <li><a href="#"><img src="/common/zian/images/content/img_mainVisual.jpg" alt=""></a></li>--%>
 <%--                    <li><a href="#"><img src="/common/zian/images/content/img_mainVisual.jpg" alt=""></a></li>--%>
@@ -319,8 +324,3 @@
 <div id="overlay"></div>
 </body>
 </html>
-<script>
-    function init() {
-        getMainBigBanner("bigBanner", 5, "");
-    }
-</script>

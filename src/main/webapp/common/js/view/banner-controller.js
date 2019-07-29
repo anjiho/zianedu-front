@@ -43,9 +43,9 @@ function getMainBigBanner(tagId, listNum) {
     var bannerInfoList = getApi("/banner/getMainBigBanner/", listNum ,"");
     if (bannerInfoList.result.length > 0) {
         var selList = bannerInfoList.result;
-        dwr.util.addOptions("bigBanner", selList, function (data) {
-            // return "<a href='"+ data.targetUrl +"'><img src='"+ data.fullFileUrl +"' alt=''></a>"
-            return "<a href=''><img src='/common/zian/images/content/img_mainVisual.jpg' alt=''></a>";
+        dwr.util.addOptions(tagId, selList, function (data) {
+            //return "<a href='"+ data.targetUrl +"'><img src='"+ data.fullFileUrl +"' alt=''></a>"
+            return "<a href='#'><img src='/common/zian/images/content/img_mainVisual.jpg' alt=''></a>";
         }, {escapeHtml: false});
     }
 }
