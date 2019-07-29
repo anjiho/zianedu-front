@@ -31,12 +31,17 @@ function getMainMiniBanner(tagId, ctgKey, listNum) {
     var bannerInfoList = getApi("/banner/getMainMiniBanner/", ctgKey, data);
     if (bannerInfoList.result.length > 0) {
         var selList = bannerInfoList.result;
-        function formatter(selList) {
-            return "<div>" +
-                "<a href='#'><img src='"+ selList.fullFileUrl +"' alt=''></a>"+
-                "</div>"
+        for (var i=0; i<selList.length; i++) {
+            var cmpList = selList[i];
+            $("#mainBanner" + i).attr("src", cmpList.fullFileUrl);
         }
-        dwr.util.addOptions(tagId, selList, formatter, {escapeHtml: false});
+
+        // function formatter(selList) {
+        //     return "<div>" +
+        //         "<a href='#'><img src='"+ selList.fullFileUrl +"' alt=''></a>"+
+        //         "</div>"
+        // }
+        // dwr.util.addOptions(tagId, selList, formatter, {escapeHtml: false});
         // dwr.util.addOptions(tagId, selList, function (data) {
         //     return "<div>" +
         //               "<a href='#'><img src='"+ data.fullFileUrl +"' alt=''></a>"+
