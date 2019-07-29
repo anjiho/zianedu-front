@@ -63,5 +63,4 @@
     $( document ).ready(function() {
        getExamScheduleList("dDayBanner");
     });
-
 </script>

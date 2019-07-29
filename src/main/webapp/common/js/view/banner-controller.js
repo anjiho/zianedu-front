@@ -224,5 +224,4 @@ function getExamScheduleList(tagId) {
                 "<a href=\"#\">상세정보</a>";
         }, {escapeHtml: false});
     }
-    
 }
