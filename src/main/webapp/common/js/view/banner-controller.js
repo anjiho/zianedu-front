@@ -24,17 +24,25 @@ function getBookStoreCenterRightBanner(tagId) {
 
 
 //대 배너 밑 미니 배너
-function getMainMiniBanner(ctgKey, tagId) {
+function getMainMiniBanner(tagId, ctgKey, listNum) {
     if (ctgKey == null || ctgKey == undefined) return;
-    var bannerInfoList = getApi("/banner/getMainMiniBanner/", ctgKey);
+    var data = {
+        listNumber : listNum
+    };
+    var bannerInfoList = getApi("/banner/getMainMiniBanner/", ctgKey, data);
     if (bannerInfoList.result.length > 0) {
         var selList = bannerInfoList.result;
-        dwr.util.addRows(tagId, selList, [
-            /*
-                TODO : addoption 추가
-             */
-            function(data) {return data.fullFileUrl;}
-        ], {escapeHtml:false});
+        function formatter(selList) {
+            return "<div>" +
+                "<a href='#'><img src='"+ selList.fullFileUrl +"' alt=''></a>"+
+                "</div>"
+        }
+        dwr.util.addOptions(tagId, selList, formatter, {escapeHtml: false});
+        // dwr.util.addOptions(tagId, selList, function (data) {
+        //     return "<div>" +
+        //               "<a href='#'><img src='"+ data.fullFileUrl +"' alt=''></a>"+
+        //             "</div>"
+        // }, {escapeHtml: false});
     }
 }
 

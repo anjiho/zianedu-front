@@ -19,6 +19,7 @@
             getMajorTeacherBannerList("majorTeacherList", 228, 1);//전공과목 교수진
             getPassReviewList("passReviewList", "PASS", 3);
             getLecReviewList("lecReviewList", "SIGN", 3);
+            getMainMiniBanner("mainMiniBanner", 224, 3);
         }
     </script>
     <div id="container">
@@ -85,9 +86,10 @@
                 </div>
             </div>
             <div class="mainBanner divGroup cols3">
-                <div><a href="#"><img src="/common/zian/images/content/img_banner3.jpg" alt=""></a></div>
-                <div><a href="#"><img src="/common/zian/images/content/img_banner4.jpg" alt=""></a></div>
-                <div><a href="#"><img src="/common/zian/images/content/img_banner5.jpg" alt=""></a></div>
+                <ul id="mainMiniBanner"></ul>
+<%--                <div><a href="#"><img src="/common/zian/images/content/img_banner3.jpg" alt=""></a></div>--%>
+<%--                <div><a href="#"><img src="/common/zian/images/content/img_banner4.jpg" alt=""></a></div>--%>
+<%--                <div><a href="#"><img src="/common/zian/images/content/img_banner5.jpg" alt=""></a></div>--%>
             </div>
             <div class="divGroup cols2">
                 <div class="mainApply">
