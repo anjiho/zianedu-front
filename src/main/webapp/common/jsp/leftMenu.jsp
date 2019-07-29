@@ -23,28 +23,28 @@
             <li class="noBg"><a href="#"><span class="icon item3"></span>수험가이드</a></li>
             <li><a href="#"><span class="icon item4"></span>수강중인강좌</a></li>
             <li><a href="#"><span class="icon item5"></span>학원수강내역</a></li>
-            <li><a href="#"><span class="icon item6"><em>30</em></span>장바구니</a></li>
+            <li><a href="#"><span class="icon item6"><!--<em>30</em>--></span>장바구니</a></li>
             <li><a href="#"><span class="icon item7"></span>쿠폰 마일리지</a></li>
             <li><a href="#"><span class="icon item8"></span>1:1문의</a></li>
         </ul>
     </div>
     <div id="examBanner" class="slider useBx">
-        <ul>
-            <li>
-                <span>2019 국가직 7급 필기시험</span>
-                <b>D-116</b>
-                <a href="#">상세정보</a>
-            </li>
-            <li>
-                <span>2019 국가직 7급 필기시험</span>
-                <b>D-116</b>
-                <a href="#">상세정보</a>
-            </li>
-            <li>
-                <span>2019 국가직 7급 필기시험</span>
-                <b>D-116</b>
-                <a href="#">상세정보</a>
-            </li>
+        <ul id="dDayBanner">
+<%--            <li>--%>
+<%--                <span>2019 국가직 7급 필기시험</span>--%>
+<%--                <b>D-116</b>--%>
+<%--                <a href="#">상세정보</a>--%>
+<%--            </li>--%>
+<%--            <li>--%>
+<%--                <span>2019 국가직 7급 필기시험</span>--%>
+<%--                <b>D-116</b>--%>
+<%--                <a href="#">상세정보</a>--%>
+<%--            </li>--%>
+<%--            <li>--%>
+<%--                <span>2019 국가직 7급 필기시험</span>--%>
+<%--                <b>D-116</b>--%>
+<%--                <a href="#">상세정보</a>--%>
+<%--            </li>--%>
         </ul>
     </div>
     <div id="snsLink">
@@ -59,3 +59,9 @@
     <a href="#" id="btn_asideToggle">죄측메뉴열기/닫기</a>
 </div>
 <!--//좌측사이트메뉴-->
+<script>
+    $( document ).ready(function() {
+       getExamScheduleList("dDayBanner");
+    });
+
+</script>
