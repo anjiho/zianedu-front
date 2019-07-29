@@ -19,7 +19,7 @@
                     <li><a href="#">회원가입</a></li>
                     <li><a href="#">로그인</a></li>
                     <li><a href="#">내강의실</a></li>
-                    <li><a href="#">장바구니<em>30</em></a></li>
+                    <li><a href="#">장바구니<!--<em>30</em>--></a></li>
                     <li><a href="#">공지사항</a></li>
                     <li><a href="#">고객센터</a></li>
                 </ul>
