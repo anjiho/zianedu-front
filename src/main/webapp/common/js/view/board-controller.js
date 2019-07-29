@@ -94,6 +94,7 @@ function getNoticeList(bbsMaterKey, tagId) {
     }
 }
 
+//합격후기 리스트 불러오기
 function getPassReviewList(tagId, reviewType, listLimit) {
     var data = {
         listLimit : listLimit
@@ -109,6 +110,7 @@ function getPassReviewList(tagId, reviewType, listLimit) {
     initSliderOption2("passLatestList");
 }
 
+//수강후기 리스트 불러오기
 function getLecReviewList(tagId, reviewType, listLimit) {
     var data = {
         listLimit : listLimit

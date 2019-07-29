@@ -84,3 +84,12 @@ function initMainJs() {
 	$(window).scroll(function(){
 	});
 }
+
+//지안에듀 교수진 리스트 슬라이드
+function initTeacherListBanner(bannerId){
+	$(function(){
+		kiplayer.sliderSlick($("#"+bannerId));
+	});
+	$(window).resize(function(){});
+	$(window).scroll(function(){});
+}
