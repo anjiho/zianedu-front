@@ -16,7 +16,7 @@
     <script src="/common/js/common.js"></script>
     <script src="/common/zian/js/common.js"></script>
     <script src="/common/zian/js/kiplayer/common.js"></script>
-<%--    <script src="/common/zian/js/main.js"></script>--%>
+    <script src="/common/zian/js/main.js"></script>
 
     <!--<script src="/common/assets/jquery/dist/jquery.min.js"></script>-->
     <script src="/common/js/blank-check.js"></script>

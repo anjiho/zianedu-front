@@ -53,20 +53,7 @@ function getMainBigBanner(tagId, titleTagId, listNum) {
                 return "<a href='#' data-slide-index='"+ i++ +"'>"+ data.title +"</a>"
             }, {escapeHtml: false});
     }
-    $(function(){
-        var sliderOption1 = {
-            auto:true,
-            pagerCustom:'.visualPager'
-        };
-        kiplayer.sliderBx($(".visualSlider"), sliderOption1);
-
-    });
-
-    $(window).resize(function(){
-    });
-
-    $(window).scroll(function(){
-    });
+    initSliderOption1("visualSlider");
 }
 
 //메인페이지 최상단 배너
@@ -223,58 +210,4 @@ function getMajorTeacherBannerList(tagId, ctgKey, subjectType) {
     });
     $(window).scroll(function(){
     });
-}
-
-
-//시험 일정 리스트 가져오기
-function getExamScheduleList(tagId) {
-    var infoList = getApi("/banner/getExamScheduleList","" ,"");
-
-    if (infoList.result.length > 0) {
-        var selList = infoList.result;
-        console.log(selList);
-        dwr.util.addOptions(tagId, selList, function (data) {
-            return  "<span>"+ data.title +"</span>"+
-                "<b>"+ data.dday +"</b>"+
-                "<a href=\"#\">상세정보</a>";
-        }, {escapeHtml: false});
-    }
-    var kiplayer = {
-        'slider':function(){
-            if($(".slider.useBx").length > 0){
-                $(".slider.useBx").each(function(){
-                    kiplayer.sliderBx($(this).children("ul"));
-                });
-            }
-            if($(".slider.useSlick").length > 0){
-                $(".slider.useSlick").each(function(){
-                    kiplayer.sliderSlick($(this).children("ul"));
-                });
-            }
-            $(".bx-viewport ul").each(function(){
-                $(this).find("li a").focus(function(){
-                    //$(this).parents(".bx-wrapper").eq(0).find(".bx-stop").trigger("click");
-                    var slideNo = $(this).parent().index();
-                    if(slideNo < $(this).parent().parent().children("li").length - 3){
-                        var sliderNo = parseInt($(this).parent().parent().attr("data-sliderNo"));
-                        sliderItem[sliderNo].goToSlide(slideNo);
-                        console.log(sliderNo+"|"+slideNo);
-                    }
-                });
-            });
-        },
-        'sliderBx':function(ul, option){
-            var sliderOption = default_Bxslider;
-            if(option) sliderOption = option;
-            var sliderNo = sliderItem.length + 1;
-            ul.attr("data-sliderNo",sliderNo);
-            sliderItem[sliderNo] = ul.bxSlider(sliderOption);
-        },
-        'sliderSlick':function(ul, option){
-            var sliderOption = default_Slick;
-            if(option) sliderOption = option;
-            ul.slick(sliderOption);
-        }
-    };
-
 }
