@@ -48,6 +48,7 @@ function getMainBigBanner(tagId, listNum) {
             return "<a href=''><img src='/common/zian/images/content/img_mainVisual.jpg' alt=''></a>";
         }, {escapeHtml: false});
     }
+    initMainJs();
 }
 
 //메인페이지 최상단 배너
@@ -160,3 +161,4 @@ function getTeacherBannerList(ctgKey, tagId) {
         ], {escapeHtml:false});
     }
 }
+

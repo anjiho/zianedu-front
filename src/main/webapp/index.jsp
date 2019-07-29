@@ -15,13 +15,7 @@
     <div id="container">
         <div id="mainVisual">
             <div class="inner">
-                <ul id="bigBanner" class="visualSlider">
-<%--                    <li><a href="#"><img src="/common/zian/images/content/img_mainVisual.jpg" alt=""></a></li>--%>
-<%--                    <li><a href="#"><img src="/common/zian/images/content/img_mainVisual.jpg" alt=""></a></li>--%>
-<%--                    <li><a href="#"><img src="/common/zian/images/content/img_mainVisual.jpg" alt=""></a></li>--%>
-<%--                    <li><a href="#"><img src="/common/zian/images/content/img_mainVisual.jpg" alt=""></a></li>--%>
-<%--                    <li><a href="#"><img src="/common/zian/images/content/img_mainVisual.jpg" alt=""></a></li>--%>
-                </ul>
+                <ul id="bigBanner" class="visualSlider"></ul>
                 <ul class="visualPager">
                     <li><a href="#" data-slide-index="0">지안 90 PASS</a></li>
                     <li><a href="#" data-slide-index="1">지안 365 패스</a></li>
@@ -323,4 +317,5 @@
     function init() {
         getMainBigBanner("bigBanner", 5, "");
     }
+
 </script>
