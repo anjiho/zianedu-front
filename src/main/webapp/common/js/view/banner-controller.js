@@ -31,34 +31,29 @@ function getMainMiniBanner(tagId, ctgKey, listNum) {
     var bannerInfoList = getApi("/banner/getMainMiniBanner/", ctgKey, data);
     if (bannerInfoList.result.length > 0) {
         var selList = bannerInfoList.result;
+
         for (var i=0; i<selList.length; i++) {
             var cmpList = selList[i];
             $("#mainBanner" + i).attr("src", cmpList.fullFileUrl);
         }
-
-        // function formatter(selList) {
-        //     return "<div>" +
-        //         "<a href='#'><img src='"+ selList.fullFileUrl +"' alt=''></a>"+
-        //         "</div>"
-        // }
-        // dwr.util.addOptions(tagId, selList, formatter, {escapeHtml: false});
-        // dwr.util.addOptions(tagId, selList, function (data) {
-        //     return "<div>" +
-        //               "<a href='#'><img src='"+ data.fullFileUrl +"' alt=''></a>"+
-        //             "</div>"
-        // }, {escapeHtml: false});
     }
 }
 
 //메인 대 배너
-function getMainBigBanner(tagId, listNum) {
+function getMainBigBanner(tagId, titleTagId, listNum) {
     var bannerInfoList = getApi("/banner/getMainBigBanner/", listNum ,"");
     if (bannerInfoList.result.length > 0) {
         var selList = bannerInfoList.result;
-        dwr.util.addOptions(tagId, selList, function (data) {
-            return "<a href='#'><img src='"+ data.fullFileUrl +"' alt=''></a>"
-        }, {escapeHtml: false});
+            dwr.util.addOptions(tagId, selList, function (data) {
+                return "<a href='#'><img src='"+ data.fullFileUrl +"' alt=''></a>"
+            }, {escapeHtml: false});
+
+            var i = 0;
+            dwr.util.addOptions(titleTagId, selList, function (data) {
+                return "<a href='#' data-slide-index='"+ i++ +"'>"+ data.title +"</a>"
+            }, {escapeHtml: false});
     }
+
 
     $(function(){
         var sliderOption1 = {
