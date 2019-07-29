@@ -86,10 +86,9 @@
                 </div>
             </div>
             <div class="mainBanner divGroup cols3">
-                <ul id="mainMiniBanner"></ul>
-<%--                <div><a href="#"><img src="/common/zian/images/content/img_banner3.jpg" alt=""></a></div>--%>
-<%--                <div><a href="#"><img src="/common/zian/images/content/img_banner4.jpg" alt=""></a></div>--%>
-<%--                <div><a href="#"><img src="/common/zian/images/content/img_banner5.jpg" alt=""></a></div>--%>
+                <div><a href="#"><img id="mainBanner1" src="" alt=""></a></div>
+                <div><a href="#"><img id="mainBanner2" src="" alt=""></a></div>
+                <div><a href="#"><img id="mainBanner3" src="" alt=""></a></div>
             </div>
             <div class="divGroup cols2">
                 <div class="mainApply">
