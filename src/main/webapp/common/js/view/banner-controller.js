@@ -53,22 +53,7 @@ function getMainBigBanner(tagId, titleTagId, listNum) {
                 return "<a href='#' data-slide-index='"+ i++ +"'>"+ data.title +"</a>"
             }, {escapeHtml: false});
     }
-
-
-    $(function(){
-        var sliderOption1 = {
-            auto:true,
-            pagerCustom:'.visualPager'
-        };
-        kiplayer.sliderBx($(".visualSlider"), sliderOption1);
-
-    });
-
-    $(window).resize(function(){
-    });
-
-    $(window).scroll(function(){
-    });
+    initSliderOption1("visualSlider");
 }
 
 //메인페이지 최상단 배너

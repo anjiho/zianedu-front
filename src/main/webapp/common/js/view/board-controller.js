@@ -39,12 +39,12 @@ function getBoardDetailInfo(bbsKey, tagId) {
 
 //게시판 답글 저장
 function saveBoardCommnet() {
-    
+
 }
 
 //게시판 답글 수정
 function updateBoardComment() {
-    
+
 }
 
 //게시판 답글 삭제
@@ -64,7 +64,7 @@ function deleteBoard(bbsCommentKey) {
 
 //상품 리뷰 저장
 function saveProductReview() {
-    
+
 }
 
 //커뮤니티 리스트
@@ -106,20 +106,7 @@ function getPassReviewList(tagId, reviewType, listLimit) {
             return "<a href='#'>"+ gfn_substr(data.title,0,25) +"<span class='date'>"+ data.createDate +"</span></a>"
         }, {escapeHtml: false});
     }
-
-    $(function(){
-        var sliderOption2 = {
-            auto:true,
-            mode:'vertical'
-        };
-        kiplayer.sliderBx($("#passLatestList ul"), sliderOption2);
-    });
-
-    $(window).resize(function(){
-    });
-
-    $(window).scroll(function(){
-    });
+    initSliderOption2("passLatestList");
 }
 
 function getLecReviewList(tagId, reviewType, listLimit) {
@@ -134,17 +121,5 @@ function getLecReviewList(tagId, reviewType, listLimit) {
             return "<a href='#'>"+ gfn_substr(data.title,0,25) +"<span class='date'>"+ data.createDate +"</span></a>"
         }, {escapeHtml: false});
     }
-    $(function(){
-        var sliderOption2 = {
-            auto:true,
-            mode:'vertical'
-        };
-        kiplayer.sliderBx($("#lecLatestList ul"), sliderOption2);
-    });
-
-    $(window).resize(function(){
-    });
-
-    $(window).scroll(function(){
-    });
+    initSliderOption2("lecLatestList");
 }

@@ -1,24 +1,57 @@
-$(function(){
-	var sliderOption1 = {
-		auto:true,
-		pagerCustom:'.visualPager'
-	};
-	kiplayer.sliderBx($(".visualSlider"), sliderOption1);
+// $(function(){
+// 	var sliderOption1 = {
+// 		auto:true,
+// 		pagerCustom:'.visualPager'
+// 	};
+// 	kiplayer.sliderBx($(".visualSlider"), sliderOption1);
+//
+// 	var sliderOption2 = {
+// 		auto:true,
+// 		mode:'vertical'
+// 	};
+// 	kiplayer.sliderBx($(".latestList ul"), sliderOption2);
+//
+// 	kiplayer.sliderSlick($(".teacherList"));
+// });
+//
+// $(window).resize(function(){
+// });
+//
+// $(window).scroll(function(){
+// });
 
-	var sliderOption2 = {
-		auto:true,
-		mode:'vertical'
-	};
-	kiplayer.sliderBx($(".latestList ul"), sliderOption2);
+function initSliderOption1(className) {
+	$(function(){
+		var sliderOption1 = {
+			auto:true,
+			pagerCustom:'.visualPager'
+		};
+		kiplayer.sliderBx($("." + className), sliderOption1);
 
-	kiplayer.sliderSlick($(".teacherList"));
-});
+	});
 
-$(window).resize(function(){
-});
+	$(window).resize(function(){
+	});
 
-$(window).scroll(function(){
-});
+	$(window).scroll(function(){
+	});
+}
+
+function initSliderOption2(tagId) {
+	$(function(){
+		var sliderOption2 = {
+			auto:true,
+			mode:'vertical'
+		};
+		kiplayer.sliderBx($("#" + tagId +" ul"), sliderOption2);
+	});
+
+	$(window).resize(function(){
+	});
+
+	$(window).scroll(function(){
+	});
+}
 
 function initMainJs() {
 	$(function(){
@@ -42,5 +75,4 @@ function initMainJs() {
 
 	$(window).scroll(function(){
 	});
-
 }
