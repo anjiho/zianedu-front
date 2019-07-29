@@ -30,21 +30,6 @@
     </div>
     <div id="examBanner" class="slider useBx">
         <ul id="dDayBanner">
-<%--            <li>--%>
-<%--                <span>2019 국가직 7급 필기시험</span>--%>
-<%--                <b>D-116</b>--%>
-<%--                <a href="#">상세정보</a>--%>
-<%--            </li>--%>
-<%--            <li>--%>
-<%--                <span>2019 국가직 7급 필기시험</span>--%>
-<%--                <b>D-116</b>--%>
-<%--                <a href="#">상세정보</a>--%>
-<%--            </li>--%>
-<%--            <li>--%>
-<%--                <span>2019 국가직 7급 필기시험</span>--%>
-<%--                <b>D-116</b>--%>
-<%--                <a href="#">상세정보</a>--%>
-<%--            </li>--%>
         </ul>
     </div>
     <div id="snsLink">
@@ -61,6 +46,6 @@
 <!--//좌측사이트메뉴-->
 <script>
     $( document ).ready(function() {
-       getExamScheduleList("dDayBanner");
+       //getExamScheduleList("dDayBanner");
     });
 </script>

@@ -176,12 +176,8 @@ function getTeacherBannerList(tagId, ctgKey, subjectType) {
     $(function(){
         kiplayer.sliderSlick($("#teacherList"));
     });
-
-    $(window).resize(function(){
-    });
-
-    $(window).scroll(function(){
-    });
+    $(window).resize(function(){});
+    $(window).scroll(function(){});
 }
 
 //강사(지안교수진) 배너 리스트 [ 전공과목 교수진 ]
@@ -206,10 +202,8 @@ function getMajorTeacherBannerList(tagId, ctgKey, subjectType) {
     $(function(){
         kiplayer.sliderSlick($("#majorTeacherList"));
     });
-    $(window).resize(function(){
-    });
-    $(window).scroll(function(){
-    });
+    $(window).resize(function(){});
+    $(window).scroll(function(){});
 }
 
 function getExamScheduleList(tagId) {
@@ -224,4 +218,5 @@ function getExamScheduleList(tagId) {
                 "<a href=\"#\">상세정보</a>";
         }, {escapeHtml: false});
     }
+    initExamSlideBanner();
 }
