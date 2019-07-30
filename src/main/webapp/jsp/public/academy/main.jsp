@@ -1,25 +1,10 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: woneunjeong
-  Date: 2019-07-30
-  Time: 오전 9:11
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/jsp/common.jsp" %>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
     <div id="wrap">
-        <!--좌측사이트메뉴-->
         <%@include file="/common/jsp/leftMenu.jsp" %>
-        <!--//좌측사이트메뉴-->
-
-        <!--최상단배너-->
-        <!--//최상단배너-->
         <%@include file="/common/jsp/public/header.jsp" %>
-        <!--상단-->
-        <!--//상단-->
-
         <!--본문-->
         <script>
             function init() {
@@ -29,6 +14,10 @@
                 getPublicOnlineMainMiniBanner("mainVisualSlider2", 793, 5);//대배너 옆 미니 배너
                 getTeacherBannerList("teacherList1", 823, 0);//공통과목 교수진
                 getMajorTeacherBannerList("teacherList2", 823, 1);//전공과목 교수진
+                getNoticeList("examNotice", 1, 4, 10010);//행정직 시험공고 리스트
+                getNoticeList("openInfo", 1, 4, 10001);//행정직 개강안내 리스트
+                getNoticeList("lecInfo", 1, 4, 10015);//행정직 수강후기 리스트
+                getNoticeList("passInfo", 1, 4, 10013);//행정직 합격후기 리스트
             }
         </script>
         <div id="container">
@@ -70,21 +59,11 @@
                                 <li><a href="#">개강안내</a></li>
                             </ul>
                             <div class="tabPage active">
-                                <ul>
-                                    <li><a href="#">2018 지방직 9급 통신직 합격수기 <span class="date">2019.07.06</span></a></li>
-                                    <li><a href="#">2018 지방직 9급 통신직 합격수기 <span class="date">2019.07.06</span></a></li>
-                                    <li><a href="#">2018 지방직 9급 통신직 합격수기 <span class="date">2019.07.06</span></a></li>
-                                    <li><a href="#">2018 지방직 9급 통신직 합격수기 <span class="date">2019.07.06</span></a></li>
-                                </ul>
+                                <ul id="examNotice"></ul>
                                 <a href="#" class="btn_more">전체보기</a>
                             </div>
                             <div class="tabPage">
-                                <ul>
-                                    <li><a href="#">2018 지방직 9급 통신직 합격수기 <span class="date">2019.07.06</span></a></li>
-                                    <li><a href="#">2018 지방직 9급 통신직 합격수기 <span class="date">2019.07.06</span></a></li>
-                                    <li><a href="#">2018 지방직 9급 통신직 합격수기 <span class="date">2019.07.06</span></a></li>
-                                    <li><a href="#">2018 지방직 9급 통신직 합격수기 <span class="date">2019.07.06</span></a></li>
-                                </ul>
+                                <ul id="openInfo"></ul>
                                 <a href="#" class="btn_more">전체보기</a>
                             </div>
                         </div>
@@ -96,21 +75,11 @@
                                 <li><a href="#">행정직 합격수기</a></li>
                             </ul>
                             <div class="tabPage active">
-                                <ul>
-                                    <li><a href="#">2018 지방직 9급 통신직 합격수기 <span class="date">2019.07.06</span></a></li>
-                                    <li><a href="#">2018 지방직 9급 통신직 합격수기 <span class="date">2019.07.06</span></a></li>
-                                    <li><a href="#">2018 지방직 9급 통신직 합격수기 <span class="date">2019.07.06</span></a></li>
-                                    <li><a href="#">2018 지방직 9급 통신직 합격수기 <span class="date">2019.07.06</span></a></li>
-                                </ul>
+                                <ul id="lecInfo"></ul>
                                 <a href="#" class="btn_more">전체보기</a>
                             </div>
                             <div class="tabPage">
-                                <ul>
-                                    <li><a href="#">2018 지방직 9급 통신직 합격수기 <span class="date">2019.07.06</span></a></li>
-                                    <li><a href="#">2018 지방직 9급 통신직 합격수기 <span class="date">2019.07.06</span></a></li>
-                                    <li><a href="#">2018 지방직 9급 통신직 합격수기 <span class="date">2019.07.06</span></a></li>
-                                    <li><a href="#">2018 지방직 9급 통신직 합격수기 <span class="date">2019.07.06</span></a></li>
-                                </ul>
+                                <ul id="passInfo"></ul>
                                 <a href="#" class="btn_more">전체보기</a>
                             </div>
                         </div>
