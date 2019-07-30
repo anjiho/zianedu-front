@@ -11,7 +11,7 @@ $(function(){
 	// };
 	//kiplayer.sliderSlick($(".teacherList"), sliderOption1);
 
-	kiplayer.sliderSlick($(".productList"));
+	//kiplayer.sliderSlick($(".productList"));
 
 	$("#mainShopVisual .right ul li > a").click(function(){
 		$("#mainShopVisual .right ul li").removeClass("active");

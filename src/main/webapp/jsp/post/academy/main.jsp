@@ -6,6 +6,7 @@
         getPublicOnlineMainMiniBanner("mainVisualSlider2", 1077, 5);//대배너 옆 미니 배너
         getTeacherBannerList("teacherList1", 1080, 0);//공통과목 교수진
         getMajorTeacherBannerList("teacherList2", 1080, 1);//전공과목 교수진
+        getEventMiniBanner("", 6288, 5);//이벤트 배너
     }
 </script>
 <form name="frm" method="get">

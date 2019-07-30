@@ -6,6 +6,7 @@
         getPublicOnlineMainMiniBanner("mainVisualSlider2", 822, 5);//대배너 옆 미니 배너
         getTeacherBannerList("teacherList1", 823, 0);//공통과목 교수진
         getMajorTeacherBannerList("teacherList2", 829, 1);//전공과목 교수진
+        getEventMiniBanner("", 6286, 5);//이벤트 배너
     }
 </script>
 <form name="frm" method="get">
@@ -106,8 +107,8 @@
                 </div>
             </div>
             <div class="mainBanner divGroup cols2">
-                <div><a href="#"><img src="/common/zian/images/content/img_banner0102.jpg" alt=""></a></div>
-                <div><a href="#"><img src="/common/zian/images/content/img_banner0201.jpg" alt=""></a></div>
+                <div><a href="#"><img src="" id="eventBanner0" alt=""></a></div>
+                <div><a href="#"><img src="" id="eventBanner1" alt=""></a></div>
             </div>
             <div class="mainQuickLink">
                 <ul>

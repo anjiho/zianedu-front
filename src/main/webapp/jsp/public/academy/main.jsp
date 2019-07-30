@@ -19,6 +19,7 @@
                 getBannerNoticeList("lecInfo", 1, 4, 10015);//행정직 수강후기 리스트
                 getBannerNoticeList("passInfo", 1, 4, 10013);//행정직 합격후기 리스트
                 getEventMiniBanner("", 6285, 5);//이벤트 배너
+                getBookList("productList1", 843, 1, 10);//행정직 온라인 서점
             }
         </script>
         <div id="container">
@@ -135,48 +136,7 @@
                     <div class="titleBar">
                         <h5>행정직 온라인 서점</h5>
                     </div>
-                    <ul class="productList" id="productList1">
-                        <li>
-                            <div>
-                                <img src="/common/zian/images/content/img_book1.jpg" alt="">
-                                <span class="name">건축사공학</span>
-                                <span class="writer">김설 | 탑스팟</span>
-                                <span class="price"><b>24,000</b>원 <span>(10% off)</span></span>
-                            </div>
-                        </li>
-                        <li>
-                            <div>
-                                <img src="/common/zian/images/content/img_book2.jpg" alt="">
-                                <span class="name">2019 정보보안기사&산업기사</span>
-                                <span class="writer">김설 | 탑스팟</span>
-                                <span class="price"><b>24,000</b>원 <span>(10% off)</span></span>
-                            </div>
-                        </li>
-                        <li>
-                            <div>
-                                <img src="/common/zian/images/content/img_book3.jpg" alt="">
-                                <span class="name">토목설계</span>
-                                <span class="writer">이학민 | 탑스팟</span>
-                                <span class="price"><b>24,000</b>원 <span>(10% off)</span></span>
-                            </div>
-                        </li>
-                        <li>
-                            <div>
-                                <img src="/common/zian/images/content/img_book4.jpg" alt="">
-                                <span class="name">지안영어기출문제집</span>
-                                <span class="writer">조경훈 | 탑스팟</span>
-                                <span class="price"><b>24,000</b>원 <span>(10% off)</span></span>
-                            </div>
-                        </li>
-                        <li>
-                            <div>
-                                <img src="/common/zian/images/content/img_book1.jpg" alt="">
-                                <span class="name">건축사공학</span>
-                                <span class="writer">김설 | 탑스팟</span>
-                                <span class="price"><b>24,000</b>원 <span>(10% off)</span></span>
-                            </div>
-                        </li>
-                    </ul>
+                    <ul class="productList" id="productList1"></ul>
                 </div>
                 <div class="mainCustomer full">
                     <h5>고객센터</h5>
