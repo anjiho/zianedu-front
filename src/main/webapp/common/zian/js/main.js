@@ -65,6 +65,11 @@ function activeLeftMenu(className) {
 	$("#siteNav " + "."+className).addClass("active");
 }
 
+function activeHeaderBtn(tagId) {
+	$("#topSelect > ul > li").removeClass("active");
+	$("#" + tagId).addClass("active");
+}
+
 function initMainJs() {
 	$(function(){
 		var sliderOption1 = {

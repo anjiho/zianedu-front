@@ -16,22 +16,19 @@
 
         <!--최상단배너-->
         <!--//최상단배너-->
-        <%@include file="/common/jsp/header.jsp" %>
+        <%@include file="/common/jsp/public/header.jsp" %>
         <!--상단-->
         <!--//상단-->
 
         <!--본문-->
         <script>
             function init() {
+                activeHeaderBtn("publicHeaderLi_2");
                 activeLeftMenu("item1");
                 getMainBigBanner("mainVisualSlider1", 5);//메인 대 배너
                 getPublicOnlineMainMiniBanner("mainVisualSlider2", 793, 5);//대배너 옆 미니 배너
-                // getMainBigBanner("bigBanner", "visualPager", 5);//메인 대 배너
-                // getTeacherBannerList("teacherList", 228, 0);//공통과목 교수진
-                // getMajorTeacherBannerList("majorTeacherList", 228, 1);//전공과목 교수진
-                // getPassReviewList("passReviewList", "PASS", 10);//합격후기
-                // getLecReviewList("lecReviewList", "SIGN", 10);//수강후기
-                // getMainMiniBanner("mainMiniBanner", 224, 3);//미니배너
+                getTeacherBannerList("teacherList1", 823, 0);//공통과목 교수진
+                getMajorTeacherBannerList("teacherList2", 823, 1);//전공과목 교수진
             }
         </script>
         <div id="container">
@@ -46,7 +43,7 @@
                 </div>
                 <div class="mainBannerReview">
                     <div class="inner">
-                        <a href="#"><img src="../images/content/img_banner0104.jpg" alt=""></a>
+                        <a href="#"><img src="/common/zian/images/content/img_banner0104.jpg" alt=""></a>
                     </div>
                 </div>
                 <div class="mainTaecher">
@@ -57,77 +54,11 @@
                     <div class="divGroup cols2">
                         <div>
                             <h6>공통과목</h6>
-                            <ul class="teacherList" id="teacherList1">
-                                <li>
-                                    <div>
-                                        <span class="name">영어<span>윤광덕</span></span>
-                                        <img src="../images/content/img_teacher1.jpg" alt="">
-                                        <a href="#" class="btn_teacherHome"><span class="icon"></span>교수홈</a>
-                                        <a href="#" class="btn_teacherReview"><span class="icon"></span>수강후기</a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div>
-                                        <span class="name">영어<span>조재권</span></span>
-                                        <img src="../images/content/img_teacher2.jpg" alt="">
-                                        <a href="#" class="btn_teacherHome"><span class="icon"></span>교수홈</a>
-                                        <a href="#" class="btn_teacherReview"><span class="icon"></span>수강후기</a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div>
-                                        <span class="name">영어<span>김현숙</span></span>
-                                        <img src="../images/content/img_teacher3.jpg" alt="">
-                                        <a href="#" class="btn_teacherHome"><span class="icon"></span>교수홈</a>
-                                        <a href="#" class="btn_teacherReview"><span class="icon"></span>수강후기</a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div>
-                                        <span class="name">국어<span>안효선</span></span>
-                                        <img src="../images/content/img_teacher4.jpg" alt="">
-                                        <a href="#" class="btn_teacherHome"><span class="icon"></span>교수홈</a>
-                                        <a href="#" class="btn_teacherReview"><span class="icon"></span>수강후기</a>
-                                    </div>
-                                </li>
-                            </ul>
+                            <ul class="teacherList" id="teacherList1"></ul>
                         </div>
                         <div>
                             <h6>전공과목</h6>
-                            <ul class="teacherList" id="teacherList2">
-                                <li>
-                                    <div>
-                                        <span class="name">행정학<span>염오봉</span></span>
-                                        <img src="../images/content/img_teacher5.jpg" alt="">
-                                        <a href="#" class="btn_teacherHome"><span class="icon"></span>교수홈</a>
-                                        <a href="#" class="btn_teacherReview"><span class="icon"></span>수강후기</a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div>
-                                        <span class="name">사회<span>함보연</span></span>
-                                        <img src="../images/content/img_teacher6.jpg" alt="">
-                                        <a href="#" class="btn_teacherHome"><span class="icon"></span>교수홈</a>
-                                        <a href="#" class="btn_teacherReview"><span class="icon"></span>수강후기</a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div>
-                                        <span class="name">경영학<span>박병호</span></span>
-                                        <img src="../images/content/img_teacher7.jpg" alt="">
-                                        <a href="#" class="btn_teacherHome"><span class="icon"></span>교수홈</a>
-                                        <a href="#" class="btn_teacherReview"><span class="icon"></span>수강후기</a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div>
-                                        <span class="name">행정법<span>장다훈</span></span>
-                                        <img src="../images/content/img_teacher8.jpg" alt="">
-                                        <a href="#" class="btn_teacherHome"><span class="icon"></span>교수홈</a>
-                                        <a href="#" class="btn_teacherReview"><span class="icon"></span>수강후기</a>
-                                    </div>
-                                </li>
-                            </ul>
+                            <ul class="teacherList" id="teacherList2"></ul>
                         </div>
                     </div>
                 </div>

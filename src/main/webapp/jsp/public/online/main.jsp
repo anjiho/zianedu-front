@@ -2,6 +2,7 @@
 <%@include file="/common/jsp/common.jsp" %>
 <script>
     function init(){
+        activeHeaderBtn("publicHeaderLi_1");
         activeLeftMenu("item1");
         getMainBigBanner("mainVisualSlider1", 5);//메인 대 배너
         getPublicOnlineMainMiniBanner("mainVisualSlider2", 793, 5);//대배너 옆 미니 배너
@@ -13,7 +14,7 @@
     <input type="hidden" name="page_gbn" id="page_gbn">
 <div id="wrap">
     <%@include file="/common/jsp/leftMenu.jsp" %>
-    <%@include file="/common/jsp/header.jsp" %>
+    <%@include file="/common/jsp/public/header.jsp" %>
     <!--본문-->
     <div id="container">
         <div class="inner">
