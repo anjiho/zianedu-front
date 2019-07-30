@@ -8,7 +8,7 @@
     <h1><a href="#"><img src="/common/zian/images/common/logo_notext.png" alt="zion edu"></a></h1>
     <div id="siteNav">
         <ul>
-            <li class="item1"><a href="#">행정직</a></li>
+            <li class="item1"><a href="javascript:goPage('publicOnline', 'main')">행정직</a></li>
             <li class="item2"><a href="#">기술직</a></li>
             <li class="item3"><a href="javascript:goPage('postOnline', 'main')">계리직</a></li>
             <li class="item4"><a href="#">온라인 서점</a></li>
