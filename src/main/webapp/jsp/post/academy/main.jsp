@@ -1,5 +1,13 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/jsp/common.jsp" %>
+<script>
+    function init() {
+        getMainBigBanner("mainVisualSlider1", 5);//메인 대 배너
+        getPublicOnlineMainMiniBanner("mainVisualSlider2", 1077, 5);//대배너 옆 미니 배너
+        getTeacherBannerList("teacherList1", 1080, 0);//공통과목 교수진
+        getMajorTeacherBannerList("teacherList2", 1080, 1);//전공과목 교수진
+    }
+</script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
 <div id="wrap" class="accounting">
@@ -10,27 +18,15 @@
         <div class="inner">
             <div id="mainVisual">
                 <div class="left">
-                    <ul id="mainVisualSlider1">
-                        <li><a href="#"><img src="../images/content/img_mainVisual0301.jpg" alt=""></a></li>
-                        <li><a href="#"><img src="../images/content/img_mainVisual0301.jpg" alt=""></a></li>
-                        <li><a href="#"><img src="../images/content/img_mainVisual0301.jpg" alt=""></a></li>
-                        <li><a href="#"><img src="../images/content/img_mainVisual0301.jpg" alt=""></a></li>
-                        <li><a href="#"><img src="../images/content/img_mainVisual0301.jpg" alt=""></a></li>
-                    </ul>
+                    <ul id="mainVisualSlider1"></ul>
                 </div>
                 <div class="right">
-                    <ul id="mainVisualSlider2">
-                        <li><a href="#"><img src="../images/content/img_mainVisual0302.jpg" alt=""></a></li>
-                        <li><a href="#"><img src="../images/content/img_mainVisual0302.jpg" alt=""></a></li>
-                        <li><a href="#"><img src="../images/content/img_mainVisual0302.jpg" alt=""></a></li>
-                        <li><a href="#"><img src="../images/content/img_mainVisual0302.jpg" alt=""></a></li>
-                        <li><a href="#"><img src="../images/content/img_mainVisual0302.jpg" alt=""></a></li>
-                    </ul>
+                    <ul id="mainVisualSlider2"></ul>
                 </div>
             </div>
             <div class="mainBannerReview">
                 <div class="inner">
-                    <a href="#"><img src="../images/content/img_mainVisual0303.jpg" alt=""></a>
+                    <a href="#"><img src="/common/zian/images/content/img_mainVisual0303.jpg" alt=""></a>
                 </div>
             </div>
             <div class="mainTaecher">
@@ -45,7 +41,7 @@
                             <li>
                                 <div>
                                     <span class="name">영어<span>윤광덕</span></span>
-                                    <img src="../images/content/img_teacher1.jpg" alt="">
+                                    <img src="/common/zian/images/content/img_teacher1.jpg" alt="">
                                     <a href="#" class="btn_teacherHome"><span class="icon"></span>교수홈</a>
                                     <a href="#" class="btn_teacherReview"><span class="icon"></span>수강후기</a>
                                 </div>
@@ -53,7 +49,7 @@
                             <li>
                                 <div>
                                     <span class="name">영어<span>조재권</span></span>
-                                    <img src="../images/content/img_teacher2.jpg" alt="">
+                                    <img src="/common/zian/images/content/img_teacher2.jpg" alt="">
                                     <a href="#" class="btn_teacherHome"><span class="icon"></span>교수홈</a>
                                     <a href="#" class="btn_teacherReview"><span class="icon"></span>수강후기</a>
                                 </div>
@@ -61,7 +57,7 @@
                             <li>
                                 <div>
                                     <span class="name">영어<span>김현숙</span></span>
-                                    <img src="../images/content/img_teacher3.jpg" alt="">
+                                    <img src="/common/zian/images/content/img_teacher3.jpg" alt="">
                                     <a href="#" class="btn_teacherHome"><span class="icon"></span>교수홈</a>
                                     <a href="#" class="btn_teacherReview"><span class="icon"></span>수강후기</a>
                                 </div>
@@ -69,7 +65,7 @@
                             <li>
                                 <div>
                                     <span class="name">국어<span>안효선</span></span>
-                                    <img src="../images/content/img_teacher4.jpg" alt="">
+                                    <img src="/common/zian/images/content/img_teacher4.jpg" alt="">
                                     <a href="#" class="btn_teacherHome"><span class="icon"></span>교수홈</a>
                                     <a href="#" class="btn_teacherReview"><span class="icon"></span>수강후기</a>
                                 </div>
@@ -82,7 +78,7 @@
                             <li>
                                 <div>
                                     <span class="name">행정학<span>염오봉</span></span>
-                                    <img src="../images/content/img_teacher5.jpg" alt="">
+                                    <img src="/common/zian/images/content/img_teacher5.jpg" alt="">
                                     <a href="#" class="btn_teacherHome"><span class="icon"></span>교수홈</a>
                                     <a href="#" class="btn_teacherReview"><span class="icon"></span>수강후기</a>
                                 </div>
@@ -90,7 +86,7 @@
                             <li>
                                 <div>
                                     <span class="name">사회<span>함보연</span></span>
-                                    <img src="../images/content/img_teacher6.jpg" alt="">
+                                    <img src="/common/zian/images/content/img_teacher6.jpg" alt="">
                                     <a href="#" class="btn_teacherHome"><span class="icon"></span>교수홈</a>
                                     <a href="#" class="btn_teacherReview"><span class="icon"></span>수강후기</a>
                                 </div>
@@ -98,7 +94,7 @@
                             <li>
                                 <div>
                                     <span class="name">경영학<span>박병호</span></span>
-                                    <img src="../images/content/img_teacher7.jpg" alt="">
+                                    <img src="/common/zian/images/content/img_teacher7.jpg" alt="">
                                     <a href="#" class="btn_teacherHome"><span class="icon"></span>교수홈</a>
                                     <a href="#" class="btn_teacherReview"><span class="icon"></span>수강후기</a>
                                 </div>
@@ -106,7 +102,7 @@
                             <li>
                                 <div>
                                     <span class="name">행정법<span>장다훈</span></span>
-                                    <img src="../images/content/img_teacher8.jpg" alt="">
+                                    <img src="/common/zian/images/content/img_teacher8.jpg" alt="">
                                     <a href="#" class="btn_teacherHome"><span class="icon"></span>교수홈</a>
                                     <a href="#" class="btn_teacherReview"><span class="icon"></span>수강후기</a>
                                 </div>
@@ -170,8 +166,8 @@
                 </div>
             </div>
             <div class="mainBanner divGroup cols2">
-                <div><a href="#"><img src="../images/content/img_banner0102.jpg" alt=""></a></div>
-                <div><a href="#"><img src="../images/content/img_banner0301.jpg" alt=""></a></div>
+                <div><a href="#"><img src="/common/zian/images/content/img_banner0102.jpg" alt=""></a></div>
+                <div><a href="#"><img src="/common/zian/images/content/img_banner0301.jpg" alt=""></a></div>
             </div>
             <div class="mainQuickLink">
                 <ul>
@@ -221,7 +217,7 @@
                 <ul class="productList" id="productList1">
                     <li>
                         <div>
-                            <img src="../images/content/img_book1.jpg" alt="">
+                            <img src="/common/zian/images/content/img_book1.jpg" alt="">
                             <span class="name">건축사공학</span>
                             <span class="writer">김설 | 탑스팟</span>
                             <span class="price"><b>24,000</b>원 <span>(10% off)</span></span>
@@ -229,7 +225,7 @@
                     </li>
                     <li>
                         <div>
-                            <img src="../images/content/img_book2.jpg" alt="">
+                            <img src="/common/zian/images/content/img_book2.jpg" alt="">
                             <span class="name">2019 정보보안기사&산업기사</span>
                             <span class="writer">김설 | 탑스팟</span>
                             <span class="price"><b>24,000</b>원 <span>(10% off)</span></span>
@@ -237,7 +233,7 @@
                     </li>
                     <li>
                         <div>
-                            <img src="../images/content/img_book3.jpg" alt="">
+                            <img src="/common/zian/images/content/img_book3.jpg" alt="">
                             <span class="name">토목설계</span>
                             <span class="writer">이학민 | 탑스팟</span>
                             <span class="price"><b>24,000</b>원 <span>(10% off)</span></span>
@@ -245,7 +241,7 @@
                     </li>
                     <li>
                         <div>
-                            <img src="../images/content/img_book4.jpg" alt="">
+                            <img src="/common/zian/images/content/img_book4.jpg" alt="">
                             <span class="name">지안영어기출문제집</span>
                             <span class="writer">조경훈 | 탑스팟</span>
                             <span class="price"><b>24,000</b>원 <span>(10% off)</span></span>
@@ -253,7 +249,7 @@
                     </li>
                     <li>
                         <div>
-                            <img src="../images/content/img_book1.jpg" alt="">
+                            <img src="/common/zian/images/content/img_book1.jpg" alt="">
                             <span class="name">건축사공학</span>
                             <span class="writer">김설 | 탑스팟</span>
                             <span class="price"><b>24,000</b>원 <span>(10% off)</span></span>
