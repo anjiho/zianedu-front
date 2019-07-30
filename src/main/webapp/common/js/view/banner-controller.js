@@ -29,6 +29,7 @@ function getMainMiniBanner(tagId, ctgKey, listNum) {
         listNumber : listNum
     };
     var bannerInfoList = getApi("/banner/getMainMiniBanner/", ctgKey, data);
+
     if (bannerInfoList.result.length > 0) {
         var selList = bannerInfoList.result;
 
@@ -39,8 +40,24 @@ function getMainMiniBanner(tagId, ctgKey, listNum) {
     }
 }
 
+//행적직 온라인 - 대 배너 옆 미니배너 리스트 불러오기
+function getPublicOnlineMainMiniBanner(tagId, ctgKey, listNum) { //행적직 온라인
+    var data = {
+        listNumber : listNum
+    };
+    var bannerInfoList = getApi("/banner/getMainMiniBanner/", ctgKey , data);
+    if (bannerInfoList.result.length > 0) {
+        var selList = bannerInfoList.result;
+        dwr.util.addOptions(tagId, selList, function (data) {
+            return "<a href='#'><img src='"+ data.fullFileUrl +"' alt=''></a>"
+        }, {escapeHtml: false});
+    }
+    kiplayer.sliderBx($("#mainVisual ul"));
+}
+
+
 //메인 대 배너
-function getMainBigBanner(tagId, titleTagId, listNum) {
+function getIndexMainBigBanner(tagId, titleTagId, listNum) {
     var bannerInfoList = getApi("/banner/getMainBigBanner/", listNum ,"");
     if (bannerInfoList.result.length > 0) {
         var selList = bannerInfoList.result;
@@ -54,6 +71,17 @@ function getMainBigBanner(tagId, titleTagId, listNum) {
             }, {escapeHtml: false});
     }
     initSliderOption1("visualSlider");
+}
+
+function getMainBigBanner(tagId, listNum) { //행적직 온라인
+    var bannerInfoList = getApi("/banner/getMainBigBanner/", listNum ,"");
+    if (bannerInfoList.result.length > 0) {
+        var selList = bannerInfoList.result;
+        dwr.util.addOptions(tagId, selList, function (data) {
+            return "<a href='#'><img src='"+ data.fullFileUrl +"' alt=''></a>"
+        }, {escapeHtml: false});
+    }
+    kiplayer.sliderBx($("#mainVisual ul"));
 }
 
 //메인페이지 최상단 배너
@@ -174,6 +202,7 @@ function getTeacherBannerList(tagId, ctgKey, subjectType) {
         }, {escapeHtml: false});
     }
     initTeacherListBanner("teacherList");
+    initTeacherListBanner("teacherList1");
 }
 
 //강사(지안교수진) 배너 리스트 [ 전공과목 교수진 ]
@@ -196,6 +225,7 @@ function getMajorTeacherBannerList(tagId, ctgKey, subjectType) {
         }, {escapeHtml: false});
     }
     initTeacherListBanner("majorTeacherList");
+    initTeacherListBanner("teacherList2");
 }
 
 //leftMenu D-day 리스트 불러오기
