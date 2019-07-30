@@ -24,6 +24,8 @@
         <script>
             function init() {
                 activeLeftMenu("item1");
+                getMainBigBanner("mainVisualSlider1", 5);//메인 대 배너
+                getPublicOnlineMainMiniBanner("mainVisualSlider2", 793, 5);//대배너 옆 미니 배너
                 // getMainBigBanner("bigBanner", "visualPager", 5);//메인 대 배너
                 // getTeacherBannerList("teacherList", 228, 0);//공통과목 교수진
                 // getMajorTeacherBannerList("majorTeacherList", 228, 1);//전공과목 교수진
@@ -36,23 +38,10 @@
             <div class="inner">
                 <div id="mainVisual">
                     <div class="left">
-                        <ul id="mainVisualSlider1">
-
-<%--                            <li><a href="#"><img src="../images/content/img_mainVisual0103.jpg" alt=""></a></li>--%>
-<%--                            <li><a href="#"><img src="../images/content/img_mainVisual0103.jpg" alt=""></a></li>--%>
-<%--                            <li><a href="#"><img src="../images/content/img_mainVisual0103.jpg" alt=""></a></li>--%>
-<%--                            <li><a href="#"><img src="../images/content/img_mainVisual0103.jpg" alt=""></a></li>--%>
-<%--                            <li><a href="#"><img src="../images/content/img_mainVisual0103.jpg" alt=""></a></li>--%>
-                        </ul>
+                        <ul id="mainVisualSlider1"></ul>
                     </div>
                     <div class="right">
-                        <ul id="mainVisualSlider2">
-                            <li><a href="#"><img src="../images/content/img_mainVisual0104.jpg" alt=""></a></li>
-                            <li><a href="#"><img src="../images/content/img_mainVisual0104.jpg" alt=""></a></li>
-                            <li><a href="#"><img src="../images/content/img_mainVisual0104.jpg" alt=""></a></li>
-                            <li><a href="#"><img src="../images/content/img_mainVisual0104.jpg" alt=""></a></li>
-                            <li><a href="#"><img src="../images/content/img_mainVisual0104.jpg" alt=""></a></li>
-                        </ul>
+                        <ul id="mainVisualSlider2"></ul>
                     </div>
                 </div>
                 <div class="mainBannerReview">

@@ -2,6 +2,7 @@
 <%@include file="/common/jsp/common.jsp" %>
 <script>
     function init(){
+        activeLeftMenu("item1");
         getMainBigBanner("mainVisualSlider1", 5);//메인 대 배너
         getPublicOnlineMainMiniBanner("mainVisualSlider2", 793, 5);//대배너 옆 미니 배너
         getTeacherBannerList("teacherList1", 823, 0);//공통과목 교수진
