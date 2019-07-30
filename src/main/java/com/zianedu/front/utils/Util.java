@@ -1,17 +1,17 @@
 package com.zianedu.front.utils;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.util.EntityUtils;
-import org.joda.time.DateTime;
-import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
+//import org.apache.http.HttpResponse;
+//import org.apache.http.client.methods.HttpPost;
+//import org.apache.http.entity.StringEntity;
+//import org.apache.http.impl.client.CloseableHttpClient;
+//import org.apache.http.impl.client.HttpClientBuilder;
+//import org.apache.http.util.EntityUtils;
+//import org.joda.time.DateTime;
+//import org.joda.time.format.DateTimeFormat;
+//import org.joda.time.format.DateTimeFormatter;
+//import org.json.simple.JSONArray;
+//import org.json.simple.JSONObject;
+//import org.json.simple.parser.JSONParser;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -789,12 +789,12 @@ public class Util {
      *
      * @return 현재 시각의 데이트 객체.
      */
-    public static Date now() {
-        DateTime dt = new DateTime();
-        Calendar jdkCal = dt.toCalendar(LOCALE);
-        dt = new DateTime(jdkCal);
-        return dt.toDate();
-    }
+//    public static Date now() {
+//        DateTime dt = new DateTime();
+//        Calendar jdkCal = dt.toCalendar(LOCALE);
+//        dt = new DateTime(jdkCal);
+//        return dt.toDate();
+//    }
 
 
 
@@ -892,12 +892,12 @@ public class Util {
      * @param pattern 변환 패턴.
      * @return 결과값 데이트 객체.
      */
-    public static Date stringToDate(String dateStr, String pattern) {
-        if(dateStr == null) return null;
-        DateTimeFormatter df = DateTimeFormat.forPattern(pattern);
-        long mills = df.parseMillis(dateStr);
-        return new Date(mills);
-    }
+//    public static Date stringToDate(String dateStr, String pattern) {
+//        if(dateStr == null) return null;
+//        DateTimeFormatter df = DateTimeFormat.forPattern(pattern);
+//        long mills = df.parseMillis(dateStr);
+//        return new Date(mills);
+//    }
 
     /**
      * 랜덤 값 생성
@@ -929,57 +929,57 @@ public class Util {
         return (df.format(cal.getTime()));
     }
 
-    public static HttpResponse http(String url, String body) {
-
-        try (CloseableHttpClient httpClient = HttpClientBuilder.create().build()) {
-            JSONObject jsonParam = new JSONObject();
-            jsonParam.put("receipt-data", body);
-            System.out.println("json : " + jsonParam);
-            HttpPost request = new HttpPost(url);
-            StringEntity params = new StringEntity(jsonParam.toString());
-            request.addHeader("content-type", "application/json");
-            request.setEntity(params);
-            HttpResponse result = httpClient.execute(request);
-
-            String json = EntityUtils.toString(result.getEntity(), "UTF-8");
-            try {
-                JSONParser parser = new JSONParser();
-                Object resultObject = parser.parse(json);
-
-                if (resultObject instanceof JSONArray) {
-                    JSONArray array=(JSONArray)resultObject;
-                    for (Object object : array) {
-                        JSONObject obj =(JSONObject)object;
-                        System.out.println("status ::::" + obj.get("status"));
-                    }
-
-                } else if (resultObject instanceof JSONObject) {
-                    JSONObject obj =(JSONObject)resultObject;
-                    System.out.println("status :: " + obj.get("status"));
-                    System.out.println(obj.get("environment"));
-                    System.out.println( obj.get("receipt"));
-                    JSONObject obj2 =(JSONObject)obj.get("receipt");
-                    System.out.println(obj2.get("application_version"));
-                    System.out.println(obj2.get("bundle_id"));
-                    /*
-                    JSONArray array = (JSONArray)obj.get("receipt");
-                    for (Object object : array) {
-                        JSONObject obj2 =(JSONObject)object;
-                        System.out.println(obj2.get("transaction_id"));
-                    }
-                    */
-                }
-
-            } catch (Exception e) {
-                // TODO: handle exception
-                e.printStackTrace();
-            }
-
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-        return null;
-    }
+//    public static HttpResponse http(String url, String body) {
+//
+//        try (CloseableHttpClient httpClient = HttpClientBuilder.create().build()) {
+//            JSONObject jsonParam = new JSONObject();
+//            jsonParam.put("receipt-data", body);
+//            System.out.println("json : " + jsonParam);
+//            HttpPost request = new HttpPost(url);
+//            StringEntity params = new StringEntity(jsonParam.toString());
+//            request.addHeader("content-type", "application/json");
+//            request.setEntity(params);
+//            HttpResponse result = httpClient.execute(request);
+//
+//            String json = EntityUtils.toString(result.getEntity(), "UTF-8");
+//            try {
+//                JSONParser parser = new JSONParser();
+//                Object resultObject = parser.parse(json);
+//
+//                if (resultObject instanceof JSONArray) {
+//                    JSONArray array=(JSONArray)resultObject;
+//                    for (Object object : array) {
+//                        JSONObject obj =(JSONObject)object;
+//                        System.out.println("status ::::" + obj.get("status"));
+//                    }
+//
+//                } else if (resultObject instanceof JSONObject) {
+//                    JSONObject obj =(JSONObject)resultObject;
+//                    System.out.println("status :: " + obj.get("status"));
+//                    System.out.println(obj.get("environment"));
+//                    System.out.println( obj.get("receipt"));
+//                    JSONObject obj2 =(JSONObject)obj.get("receipt");
+//                    System.out.println(obj2.get("application_version"));
+//                    System.out.println(obj2.get("bundle_id"));
+//                    /*
+//                    JSONArray array = (JSONArray)obj.get("receipt");
+//                    for (Object object : array) {
+//                        JSONObject obj2 =(JSONObject)object;
+//                        System.out.println(obj2.get("transaction_id"));
+//                    }
+//                    */
+//                }
+//
+//            } catch (Exception e) {
+//                // TODO: handle exception
+//                e.printStackTrace();
+//            }
+//
+//        } catch (IOException ex) {
+//            ex.printStackTrace();
+//        }
+//        return null;
+//    }
 
     public static int getCornRewardByPercent(int corn, int percent) {
         float calcPercent = percent * (float) 0.01;

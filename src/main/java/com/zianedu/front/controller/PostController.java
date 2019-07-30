@@ -19,9 +19,8 @@ public class PostController {
         page_gbn = Util.isNullValue(page_gbn, "");
 
         if ("main".equals(page_gbn)) {
-            mvc.setViewName();
+            mvc.setViewName("/post/academy/main");
         }
-
         return mvc;
     }
 }

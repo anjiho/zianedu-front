@@ -19,7 +19,9 @@ public class PostOnlineController {
         page_gbn = Util.isNullValue(page_gbn, "");
 
         if ("main".equals(page_gbn)) {
-            mvc.setViewName();
+            mvc.setViewName("post/online/main");
+        } else {
+
         }
 
         return mvc;
