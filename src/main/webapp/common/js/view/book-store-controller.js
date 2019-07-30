@@ -29,11 +29,15 @@ function getBookList(tagId , leftMenuCtgKey, sPage, listLimit) {
     if (infoList.result.length > 0) {
         var selList = infoList.result;
         dwr.util.addOptions(tagId, selList, function (data) {
+            var name = "";
+            if(data.name == null) name = "";
+            else name = "|" + data.name;
+
             return "<div>" +
                 "<img src='"+ data.bookImageUrl +"' alt=''>"+
                 "<span class=\"name\">"+ data.goodsName +"</span>"+
-                "<span class=\"writer\">"+ data.writer +"|" + data.name +"</span>" +
-                "<span class=\"price\"><b>"+ data.price +"</b>원 <span>"+ data.accrualRate +"</span></span>";
+                "<span class=\"writer\">"+ data.writer + name +"</span>" +
+                "<span class=\"price\"><b>"+ data.price +"</b>원 <span>"+"("+data.accrualRate+")"+"</span></span>";
         }, {escapeHtml: false});
     }
     $(function(){
