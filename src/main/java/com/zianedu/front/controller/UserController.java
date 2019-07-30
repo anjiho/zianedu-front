@@ -15,7 +15,7 @@ public class UserController {
         page_gbn = Util.isNullValue(page_gbn, "");
 
         if ("joinAgree".equals(page_gbn)) {
-            mvc.setViewName("post/online/main");
+            mvc.setViewName("user/joinAgree");
         } else {
 
         }
