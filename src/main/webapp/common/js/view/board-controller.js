@@ -93,10 +93,30 @@ function getNoticeList(tagId, sPage, listLimit, bbsMaterKey) {
     if (InfoList.result.length > 0) {
         var selList = InfoList.result;
         dwr.util.addOptions(tagId, selList, function (data) {
+            /*
+            TODO :
+             */
+        }, {escapeHtml: false});
+    }
+}
+
+//배너 공지사항 리스트
+function getBannerNoticeList(tagId, sPage, listLimit, bbsMaterKey) {
+    if (bbsMaterKey == null || bbsMaterKey == undefined) return;
+    var data = {
+        sPage : sPage,
+        listLimit : listLimit
+    };
+    var InfoList = getApi("/board/getBannerNoticeList/", bbsMaterKey, data);
+
+    if (InfoList.result.length > 0) {
+        var selList = InfoList.result;
+        dwr.util.addOptions(tagId, selList, function (data) {
             return "<a href=''>"+ gfn_substr(data.title, 0, 27) +"<span class='date'>" + data.createDate + "</span></a>"
         }, {escapeHtml: false});
     }
 }
+
 
 //합격후기 리스트 불러오기
 function getPassReviewList(tagId, reviewType, listLimit) {

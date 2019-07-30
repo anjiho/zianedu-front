@@ -206,7 +206,13 @@ function gfn_substr(str, start, end) {
     if (str != "") {
         substr = str.substring(start, end);
     }
-    return substr;
+    var result = "";
+    if(str.length > 28){
+        result = substr+"...";
+    }else{
+        result = substr
+    }
+    return result;
 }
 
 //--------------------------------------------------

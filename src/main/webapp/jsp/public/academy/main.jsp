@@ -14,10 +14,10 @@
                 getPublicOnlineMainMiniBanner("mainVisualSlider2", 793, 5);//대배너 옆 미니 배너
                 getTeacherBannerList("teacherList1", 823, 0);//공통과목 교수진
                 getMajorTeacherBannerList("teacherList2", 823, 1);//전공과목 교수진
-                getNoticeList("examNotice", 1, 4, 10010);//행정직 시험공고 리스트
-                getNoticeList("openInfo", 1, 4, 10001);//행정직 개강안내 리스트
-                getNoticeList("lecInfo", 1, 4, 10015);//행정직 수강후기 리스트
-                getNoticeList("passInfo", 1, 4, 10013);//행정직 합격후기 리스트
+                getBannerNoticeList("examNotice", 1, 4, 10010);//행정직 시험공고 리스트
+                getBannerNoticeList("openInfo", 1, 4, 10001);//행정직 개강안내 리스트
+                getBannerNoticeList("lecInfo", 1, 4, 10015);//행정직 수강후기 리스트
+                getBannerNoticeList("passInfo", 1, 4, 10013);//행정직 합격후기 리스트
             }
         </script>
         <div id="container">
@@ -86,8 +86,8 @@
                     </div>
                 </div>
                 <div class="mainBanner divGroup cols2">
-                    <div><a href="#"><img src="../images/content/img_banner0102.jpg" alt=""></a></div>
-                    <div><a href="#"><img src="../images/content/img_banner0103.jpg" alt=""></a></div>
+                    <div><a href="#"><img src="/common/zian/images/content/img_banner0102.jpg" alt=""></a></div>
+                    <div><a href="#"><img src="/common/zian/images/content/img_banner0103.jpg" alt=""></a></div>
                 </div>
                 <div class="mainQuickLink">
                     <ul>
@@ -137,7 +137,7 @@
                     <ul class="productList" id="productList1">
                         <li>
                             <div>
-                                <img src="../images/content/img_book1.jpg" alt="">
+                                <img src="/common/zian/images/content/img_book1.jpg" alt="">
                                 <span class="name">건축사공학</span>
                                 <span class="writer">김설 | 탑스팟</span>
                                 <span class="price"><b>24,000</b>원 <span>(10% off)</span></span>
@@ -145,7 +145,7 @@
                         </li>
                         <li>
                             <div>
-                                <img src="../images/content/img_book2.jpg" alt="">
+                                <img src="/common/zian/images/content/img_book2.jpg" alt="">
                                 <span class="name">2019 정보보안기사&산업기사</span>
                                 <span class="writer">김설 | 탑스팟</span>
                                 <span class="price"><b>24,000</b>원 <span>(10% off)</span></span>
@@ -153,7 +153,7 @@
                         </li>
                         <li>
                             <div>
-                                <img src="../images/content/img_book3.jpg" alt="">
+                                <img src="/common/zian/images/content/img_book3.jpg" alt="">
                                 <span class="name">토목설계</span>
                                 <span class="writer">이학민 | 탑스팟</span>
                                 <span class="price"><b>24,000</b>원 <span>(10% off)</span></span>
@@ -161,7 +161,7 @@
                         </li>
                         <li>
                             <div>
-                                <img src="../images/content/img_book4.jpg" alt="">
+                                <img src="/common/zian/images/content/img_book4.jpg" alt="">
                                 <span class="name">지안영어기출문제집</span>
                                 <span class="writer">조경훈 | 탑스팟</span>
                                 <span class="price"><b>24,000</b>원 <span>(10% off)</span></span>
@@ -169,7 +169,7 @@
                         </li>
                         <li>
                             <div>
-                                <img src="../images/content/img_book1.jpg" alt="">
+                                <img src="/common/zian/images/content/img_book1.jpg" alt="">
                                 <span class="name">건축사공학</span>
                                 <span class="writer">김설 | 탑스팟</span>
                                 <span class="price"><b>24,000</b>원 <span>(10% off)</span></span>
