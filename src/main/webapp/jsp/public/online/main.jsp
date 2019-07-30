@@ -12,7 +12,7 @@
     <input type="hidden" name="page_gbn" id="page_gbn">
 <div id="wrap">
     <%@include file="/common/jsp/leftMenu.jsp" %>
-    <%@include file="/common/jsp/header.jsp" %>
+    <%@include file="/common/jsp/public/header.jsp" %>
     <!--본문-->
     <div id="container">
         <div class="inner">
