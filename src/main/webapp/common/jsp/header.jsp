@@ -28,7 +28,7 @@
     </div>
     <!--//최상단메뉴-->
     <div class="inner">
-        <h1><a href="#"><img src="/common/zian/images/common/logo.png" alt="지안에듀"></a></h1>
+        <h1><a href="javascript:goMain()"><img src="/common/zian/images/common/logo.png" alt="지안에듀"></a></h1>
         <a href="#" class="titleBarLeft"><img src="/common/zian/images/content/img_titleBarLeft.jpg" alt=""></a>
         <a href="#" class="titleBarRight"><img src="/common/zian/images/content/img_titleBarRight.jpg" alt=""></a>
     </div>

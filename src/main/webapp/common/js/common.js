@@ -15,6 +15,10 @@ function goPage(mapping_value, page_value) {
     }
 }
 
+function goMain() {
+    location.href = "/";
+}
+
 // 공통 스크립트 파일
 var tot = "0";
 var webRoot = "";
