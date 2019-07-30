@@ -93,3 +93,19 @@ function initTeacherListBanner(bannerId){
 	$(window).resize(function(){});
 	$(window).scroll(function(){});
 }
+
+//지안에듀 교수진 리스트 슬라이드 - 2개씩 리스트 노출불러오기
+function initTeacherListBanner1(bannerId){
+	$(function(){
+		var sliderOption1 = {
+			autoplay:true,dots:true,infinite:true,slidesToShow:2,slidesToScroll:1,
+			responsive:[{
+				breakpoint:767,
+				settings:{autoplay:true,slidesToShow:1,centerMode:true}
+			}]
+		};
+		kiplayer.sliderSlick($("#"+bannerId), sliderOption1);
+	});
+	$(window).resize(function(){});
+	$(window).scroll(function(){});
+}

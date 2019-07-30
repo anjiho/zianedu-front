@@ -18,7 +18,7 @@
         <div class="inner">
             <div id="mainVisual">
                 <div class="left">
-                    <ul id="mainVisualSlider1"></ul>
+                    <ul id="mainVisualSlider1" class="visualSlider"></ul>
                 </div>
                 <div class="right">
                     <ul id="mainVisualSlider2"></ul>
