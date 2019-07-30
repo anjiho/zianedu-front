@@ -99,19 +99,6 @@ function getMainPageTopBanner(tagId) {
     }
 }
 
-//배너 공지사항 리스트
-function getNoticeList(subject, tagId) {
-    if (subject == null || subject == undefined) return;
-    var InfoList = getApi("/banner/getNoticeList/", subject,"");
-
-    if (InfoList.result.length > 0) {
-        var selList = InfoList.result;
-        dwr.util.addRows(tagId, selList, [
-            //function(data) {return "<img src='"+ data.targetUrl +"'>";}
-        ], {escapeHtml:false});
-    }
-}
-
 //배너 온라인 서점 리스트
 function getOnlineBookList(tagId) {
     var infoList = getApi("/banner/getOnlineBookList","" ,"");

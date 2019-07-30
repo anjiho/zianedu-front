@@ -10,6 +10,7 @@
     <link rel="stylesheet" type="text/css" href="/common/zian/css/kiplayer/font.css" />
     <link rel="stylesheet" type="text/css" href="/common/zian/css/kiplayer/base.css" />
     <link rel="stylesheet" type="text/css" href="/common/zian/css/base.css">
+    <link rel="stylesheet" type="text/css" href="/common/zian/css/content.css">
     <!-- zian js-->
     <script src="/common/zian/js/kiplayer/jquery.min.js"></script>
     <script src="/common/zian/js/kiplayer/jquery.plugin.js"></script>

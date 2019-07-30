@@ -206,7 +206,13 @@ function gfn_substr(str, start, end) {
     if (str != "") {
         substr = str.substring(start, end);
     }
-    return substr;
+    var result = "";
+    if(str.length > 28){
+        result = substr+"...";
+    }else{
+        result = substr
+    }
+    return result;
 }
 
 //--------------------------------------------------
@@ -2707,4 +2713,8 @@ function addFavorite() {
         alert("해당브라우저는 즐겨찾기 추가기능이 지원되지 않습니다.\n\n수동으로 즐겨찾기에 추가해주세요.");
         return true;
     }
+}
+
+function goBack() {
+    history.back();
 }

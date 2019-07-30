@@ -16,8 +16,8 @@ public class UserController {
 
         if ("joinAgree".equals(page_gbn)) {
             mvc.setViewName("user/joinAgree");
-        } else {
-
+        } else if ("joinForm".equals(page_gbn)){
+            mvc.setViewName("user/joinForm");
         }
 
         return mvc;

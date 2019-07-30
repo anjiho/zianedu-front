@@ -93,10 +93,30 @@ function getNoticeList(tagId, sPage, listLimit, bbsMaterKey) {
     if (InfoList.result.length > 0) {
         var selList = InfoList.result;
         dwr.util.addOptions(tagId, selList, function (data) {
-            return "<a href=''>"+ gfn_substr(data.title, 0, 27) +"<span class='date'>" + data.createDate + "</span></a>"
+            /*
+            TODO :
+             */
         }, {escapeHtml: false});
     }
 }
+
+//배너 공지사항 리스트
+function getBannerNoticeList(tagId, sPage, listLimit, bbsMaterKey) {
+    if (bbsMaterKey == null || bbsMaterKey == undefined) return;
+    var data = {
+        sPage : sPage,
+        listLimit : listLimit
+    };
+    var InfoList = getApi("/board/getBannerNoticeList/", bbsMaterKey, data);
+
+    if (InfoList.result.length > 0) {
+        var selList = InfoList.result;
+        dwr.util.addOptions(tagId, selList, function (data) {
+            return "<a href=''>"+ ellipsis(data.title,28) +"<span class='date'>" + data.createDate + "</span></a>"
+        }, {escapeHtml: false});
+    }
+}
+
 
 //합격후기 리스트 불러오기
 function getPassReviewList(tagId, reviewType, listLimit) {
@@ -108,7 +128,7 @@ function getPassReviewList(tagId, reviewType, listLimit) {
         var selList = infoList.result;
         var i =0;
         dwr.util.addOptions(tagId, selList, function (data) {
-            return "<a href='#'>"+ gfn_substr(data.title,0,25) +"<span class='date'>"+ data.createDate +"</span></a>"
+            return "<a href='#'>"+ ellipsis(data.title,25) +"<span class='date'>"+ data.createDate +"</span></a>"
         }, {escapeHtml: false});
     }
     initSliderOption2("passLatestList");
@@ -124,7 +144,7 @@ function getLecReviewList(tagId, reviewType, listLimit) {
     if (infoList.result.length > 0) {
         var selList = infoList.result;
         dwr.util.addOptions(tagId, selList, function (data) {
-            return "<a href='#'>"+ gfn_substr(data.title,0,25) +"<span class='date'>"+ data.createDate +"</span></a>"
+            return "<a href='#'>"+ ellipsis(data.title,25) +"<span class='date'>"+ data.createDate +"</span></a>"
         }, {escapeHtml: false});
     }
     initSliderOption2("lecLatestList");

@@ -8,10 +8,10 @@
         getPublicOnlineMainMiniBanner("mainVisualSlider2", 793, 5);//대배너 옆 미니 배너
         getTeacherBannerList("teacherList1", 823, 0);//공통과목 교수진
         getMajorTeacherBannerList("teacherList2", 823, 1);//전공과목 교수진
-        getNoticeList("examNotice", 1, 4, 10010);//행정직 시험공고 리스트
-        getNoticeList("openInfo", 1, 4, 10001);//행정직 개강안내 리스트
-        getNoticeList("lecInfo", 1, 4, 10015);//행정직 수강후기 리스트
-        getNoticeList("passInfo", 1, 4, 10013);//행정직 합격후기 리스트
+        getBannerNoticeList("examNotice", 1, 4, 10010);//행정직 시험공고 리스트
+        getBannerNoticeList("openInfo", 1, 4, 10001);//행정직 개강안내 리스트
+        getBannerNoticeList("lecInfo", 1, 4, 10015);//행정직 수강후기 리스트
+        getBannerNoticeList("passInfo", 1, 4, 10013);//행정직 합격후기 리스트
     }
 </script>
 <form name="frm" method="get">
