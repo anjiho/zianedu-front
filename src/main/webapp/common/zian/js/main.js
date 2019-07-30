@@ -61,6 +61,10 @@ function initExamSlideBanner() {
 	}
 }
 
+function activeLeftMenu(className) {
+	$("#siteNav " + "."+className).addClass("active");
+}
+
 function initMainJs() {
 	$(function(){
 		var sliderOption1 = {
