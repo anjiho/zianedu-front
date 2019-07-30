@@ -12,6 +12,7 @@
         getBannerNoticeList("openInfo", 1, 4, 10001);//행정직 개강안내 리스트
         getBannerNoticeList("lecInfo", 1, 4, 10015);//행정직 수강후기 리스트
         getBannerNoticeList("passInfo", 1, 4, 10013);//행정직 합격후기 리스트
+        getEventMiniBanner("", 793, 5);//이벤트 배너
     }
 </script>
 <form name="frm" method="get">
@@ -95,8 +96,8 @@
                 </div>
             </div>
             <div class="mainBanner divGroup cols2">
-                <div><a href="#"><img src="/common/zian/images/content/img_banner0102.jpg" alt=""></a></div>
-                <div><a href="#"><img src="/common/zian/images/content/img_banner0103.jpg" alt=""></a></div>
+                <div><a href="#"><img src="" id="eventBanner0" alt=""></a></div>
+                <div><a href="#"><img src="" id="eventBanner1" alt=""></a></div>
             </div>
             <div class="mainQuickLink">
                 <ul>

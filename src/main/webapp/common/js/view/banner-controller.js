@@ -55,6 +55,23 @@ function getPublicOnlineMainMiniBanner(tagId, ctgKey, listNum) {
     kiplayer.sliderBx($("#mainVisualSlider2"));
 }
 
+//헹정직 온라인 - 이벤트 배너
+function getEventMiniBanner(tagId, ctgKey, listNum) {
+    var data = {
+        listNumber : listNum
+    };
+    var bannerInfoList = getApi("/banner/getMainMiniBanner/", ctgKey , data);
+    if (bannerInfoList.result.length > 0) {
+        var selList = bannerInfoList.result;
+
+        for (var i=0; i<selList.length; i++) {
+            var cmpList = selList[i];
+            console.log(cmpList);
+            $("#eventBanner" + i).attr("src", cmpList.fullFileUrl);
+        }
+    }
+}
+
 
 //index 페이지 - 메인 대 배너
 function getIndexMainBigBanner(tagId, titleTagId, listNum) {
