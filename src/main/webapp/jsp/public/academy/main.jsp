@@ -11,13 +11,14 @@
                 activeHeaderBtn("publicHeaderLi_2");
                 activeLeftMenu("item1");
                 getMainBigBanner("mainVisualSlider1", 5);//메인 대 배너
-                getPublicOnlineMainMiniBanner("mainVisualSlider2", 793, 5);//대배너 옆 미니 배너
+                getPublicOnlineMainMiniBanner("mainVisualSlider2", 787, 5);//대배너 옆 미니 배너
                 getTeacherBannerList("teacherList1", 823, 0);//공통과목 교수진
                 getMajorTeacherBannerList("teacherList2", 823, 1);//전공과목 교수진
                 getBannerNoticeList("examNotice", 1, 4, 10010);//행정직 시험공고 리스트
                 getBannerNoticeList("openInfo", 1, 4, 10001);//행정직 개강안내 리스트
                 getBannerNoticeList("lecInfo", 1, 4, 10015);//행정직 수강후기 리스트
                 getBannerNoticeList("passInfo", 1, 4, 10013);//행정직 합격후기 리스트
+                getEventMiniBanner("", 6285, 5);//이벤트 배너
             }
         </script>
         <div id="container">
@@ -86,8 +87,8 @@
                     </div>
                 </div>
                 <div class="mainBanner divGroup cols2">
-                    <div><a href="#"><img src="/common/zian/images/content/img_banner0102.jpg" alt=""></a></div>
-                    <div><a href="#"><img src="/common/zian/images/content/img_banner0103.jpg" alt=""></a></div>
+                    <div><a href="#"><img src="" id="eventBanner0" alt=""></a></div>
+                    <div><a href="#"><img src="" id="eventBanner1" alt=""></a></div>
                 </div>
                 <div class="mainQuickLink">
                     <ul>
