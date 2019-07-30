@@ -78,7 +78,6 @@ function getMainBigBanner(tagId, listNum) {
     var bannerInfoList = getApi("/banner/getMainBigBanner/", listNum ,"");
     if (bannerInfoList.result.length > 0) {
         var selList = bannerInfoList.result;
-        console.log(selList);
         dwr.util.addOptions(tagId, selList, function (data) {
             return "<a href='#'><img src='"+ data.fullFileUrl +"' alt=''></a>"
         }, {escapeHtml: false});
