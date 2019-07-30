@@ -13,7 +13,7 @@
         <h1><a href="javascript:goPage('publicOnline', 'main')"><img src="/common/zian/images/common/logo01.png" alt="지안에듀 행정직"></a></h1>
         <div id="topSelect">
             <ul>
-                <li id="publicHeaderLi_1" class="active"><a href="javascript:goPage('publicOnline', 'main')">온라인</a></li>
+                <li id="publicHeaderLi_1"><a href="javascript:goPage('publicOnline', 'main')">온라인</a></li>
                 <li id="publicHeaderLi_2"><a href="javascript:goPage('publicAcademy', 'main')">학원</a></li>
             </ul>
         </div>
