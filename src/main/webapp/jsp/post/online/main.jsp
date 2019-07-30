@@ -1,45 +1,41 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/jsp/common.jsp" %>
-<div id="wrap" class="skill">
+<form name="frm" method="get">
+    <input type="hidden" name="page_gbn" id="page_gbn">
+<div id="wrap" class="accounting">
     <%@include file="/common/jsp/leftMenu.jsp" %>
-    <%@include file="/common/jsp/header.jsp" %>
+    <%@include file="/common/jsp/post/header.jsp" %>
     <!--본문-->
     <div id="container">
         <div class="inner">
             <div id="mainVisual">
                 <div class="left">
                     <ul id="mainVisualSlider1">
-                        <li><a href="#"><img src="/common/zian/images/content/img_mainVisual0201.jpg" alt=""></a></li>
-                        <li><a href="#"><img src="/common/zian/images/content/img_mainVisual0201.jpg" alt=""></a></li>
-                        <li><a href="#"><img src="/common/zian/images/content/img_mainVisual0201.jpg" alt=""></a></li>
-                        <li><a href="#"><img src="/common/zian/images/content/img_mainVisual0201.jpg" alt=""></a></li>
-                        <li><a href="#"><img src="/common/zian/images/content/img_mainVisual0201.jpg" alt=""></a></li>
+                        <li><a href="#"><img src="/common/zian/images/content/img_mainVisual0301.jpg" alt=""></a></li>
+                        <li><a href="#"><img src="/common/zian/images/content/img_mainVisual0301.jpg" alt=""></a></li>
+                        <li><a href="#"><img src="/common/zian/images/content/img_mainVisual0301.jpg" alt=""></a></li>
+                        <li><a href="#"><img src="/common/zian/images/content/img_mainVisual0301.jpg" alt=""></a></li>
+                        <li><a href="#"><img src="/common/zian/images/content/img_mainVisual0301.jpg" alt=""></a></li>
                     </ul>
                 </div>
                 <div class="right">
                     <ul id="mainVisualSlider2">
-                        <li><a href="#"><img src="/common/zian/images/content/img_mainVisual0202.jpg" alt=""></a></li>
-                        <li><a href="#"><img src="/common/zian/images/content/img_mainVisual0202.jpg" alt=""></a></li>
-                        <li><a href="#"><img src="/common/zian/images/content/img_mainVisual0202.jpg" alt=""></a></li>
-                        <li><a href="#"><img src="/common/zian/images/content/img_mainVisual0202.jpg" alt=""></a></li>
-                        <li><a href="#"><img src="/common/zian/images/content/img_mainVisual0202.jpg" alt=""></a></li>
+                        <li><a href="#"><img src="/common/zian/images/content/img_mainVisual0302.jpg" alt=""></a></li>
+                        <li><a href="#"><img src="/common/zian/images/content/img_mainVisual0302.jpg" alt=""></a></li>
+                        <li><a href="#"><img src="/common/zian/images/content/img_mainVisual0302.jpg" alt=""></a></li>
+                        <li><a href="#"><img src="/common/zian/images/content/img_mainVisual0302.jpg" alt=""></a></li>
+                        <li><a href="#"><img src="/common/zian/images/content/img_mainVisual0302.jpg" alt=""></a></li>
                     </ul>
                 </div>
             </div>
-            <div class="mainBanner divGroup cols3 noMargin">
-                <div>
-                    <a href="#"><img src="/common/zian/images/content/img_mainVisual0203.jpg" alt=""></a>
-                </div>
-                <div>
-                    <a href="#"><img src="/common/zian/images/content/img_mainVisual0204.jpg" alt=""></a>
-                </div>
-                <div>
-                    <a href="#"><img src="/common/zian/images/content/img_mainVisual0205.jpg" alt=""></a>
+            <div class="mainBannerReview">
+                <div class="inner">
+                    <a href="#"><img src="/common/zian/images/content/img_mainVisual0303.jpg" alt=""></a>
                 </div>
             </div>
             <div class="mainTaecher">
                 <div class="titleBar">
-                    <h5>지안에듀 기술직 교수진</h5>
+                    <h5>지안에듀 계리직 교수진</h5>
                     <a href="#" class="btn_more">전체보기</a>
                 </div>
                 <div class="divGroup cols2">
@@ -123,7 +119,7 @@
                 <div>
                     <div class="mainBoard tabContent">
                         <ul class="tabBar">
-                            <li class="active"><a href="#">기술직 시험공고</a></li>
+                            <li class="active"><a href="#">계리직 시험공고</a></li>
                             <li><a href="#">개강안내</a></li>
                         </ul>
                         <div class="tabPage active">
@@ -147,10 +143,10 @@
                     </div>
                 </div>
                 <div>
-                    <div class="mainBoard tabContent yellow">
+                    <div class="mainBoard tabContent red">
                         <ul class="tabBar">
-                            <li class="active"><a href="#">기술직 수강후기</a></li>
-                            <li><a href="#">기술직 합격수기</a></li>
+                            <li class="active"><a href="#">계리직 수강후기</a></li>
+                            <li><a href="#">계리직 합격수기</a></li>
                         </ul>
                         <div class="tabPage active">
                             <ul>
@@ -175,7 +171,7 @@
             </div>
             <div class="mainBanner divGroup cols2">
                 <div><a href="#"><img src="/common/zian/images/content/img_banner0102.jpg" alt=""></a></div>
-                <div><a href="#"><img src="/common/zian/images/content/img_banner0201.jpg" alt=""></a></div>
+                <div><a href="#"><img src="/common/zian/images/content/img_banner0301.jpg" alt=""></a></div>
             </div>
             <div class="mainQuickLink">
                 <ul>
@@ -220,7 +216,7 @@
             </div>
             <div class="mainShop">
                 <div class="titleBar">
-                    <h5>기술직 온라인 서점</h5>
+                    <h5>계리직 온라인 서점</h5>
                 </div>
                 <ul class="productList" id="productList1">
                     <li>
@@ -304,5 +300,6 @@
     <%@include file="/common/jsp/footerBanner.jsp" %>
 </div>
 <div id="overlay"></div>
+</form>
 </body>
 </html>
