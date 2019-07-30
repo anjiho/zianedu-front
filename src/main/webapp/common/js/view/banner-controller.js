@@ -41,7 +41,7 @@ function getMainMiniBanner(tagId, ctgKey, listNum) {
 }
 
 //행적직 온라인 - 대 배너 옆 미니배너 리스트 불러오기
-function getPublicOnlineMainMiniBanner(tagId, ctgKey, listNum) { //행적직 온라인
+function getPublicOnlineMainMiniBanner(tagId, ctgKey, listNum) {
     var data = {
         listNumber : listNum
     };
@@ -52,7 +52,7 @@ function getPublicOnlineMainMiniBanner(tagId, ctgKey, listNum) { //행적직 온
             return "<a href='#'><img src='"+ data.fullFileUrl +"' alt=''></a>"
         }, {escapeHtml: false});
     }
-    kiplayer.sliderBx($("#mainVisual ul"));
+    kiplayer.sliderBx($("#mainVisualSlider2"));
 }
 
 
@@ -82,7 +82,7 @@ function getMainBigBanner(tagId, listNum) {
             return "<a href='#'><img src='"+ data.fullFileUrl +"' alt=''></a>"
         }, {escapeHtml: false});
     }
-    kiplayer.sliderBx($("#mainVisual ul"));
+    kiplayer.sliderBx($("#mainVisualSlider1"));
     $(window).resize(function(){});
     $(window).scroll(function(){});
 }
