@@ -43,7 +43,7 @@
                             <td>
                                 <input type="text" id="userId" name="userId" class="w270">
                                 (6~12자 영문+숫자 조합)
-                                <div class="captionText">아이디를 입력해주세요.</div>
+                                <div class="captionText" style="display: none;">아이디를 입력해주세요.</div>
                             </td>
                         </tr>
                         <tr>
@@ -51,14 +51,14 @@
                             <td>
                                 <input type="password" id="pwd" name="pwd" class="w270">
                                 (특수문자+영문+숫자 8자 이상으로 조합)
-                                <div class="captionText">비밀번호를 입력해주세요.</div>
+                                <div class="captionText" style="display: none;">비밀번호를 입력해주세요.</div>
                             </td>
                         </tr>
                         <tr>
                             <th scope="col">비밀번호 확인</th>
                             <td>
                                 <input type="password" id="rePwd" name="rePwd" class="w270">
-                                <div class="captionText">비밀번호가 일치하지 않습니다.</div>
+                                <div class="captionText" style="display: none;">비밀번호가 일치하지 않습니다.</div>
                             </td>
                         </tr>
                         <tr>
