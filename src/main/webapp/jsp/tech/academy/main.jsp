@@ -7,6 +7,13 @@
         getTeacherBannerList("teacherList1", 823, 0);//공통과목 교수진
         getMajorTeacherBannerList("teacherList2", 829, 1);//전공과목 교수진
         getEventMiniBanner("", 6286, 5);//이벤트 배너
+
+        getBannerNoticeList("examNotice", 1, 4, 10010);//행정직 시험공고 리스트
+        getBannerNoticeList("openInfo", 1, 4, 10001);//행정직 개강안내 리스트
+        getBannerNoticeList("lecInfo", 1, 4, 10015);//행정직 수강후기 리스트
+        getBannerNoticeList("passInfo", 1, 4, 10013);//행정직 합격후기 리스트
+
+        getBookList("productList1", 843, 1, 10);//행정직 온라인 서점
     }
 </script>
 <form name="frm" method="get">
@@ -60,20 +67,20 @@
                             <li><a href="#">개강안내</a></li>
                         </ul>
                         <div class="tabPage active">
-                            <ul>
-                                <li><a href="#">2018 지방직 9급 통신직 합격수기 <span class="date">2019.07.06</span></a></li>
-                                <li><a href="#">2018 지방직 9급 통신직 합격수기 <span class="date">2019.07.06</span></a></li>
-                                <li><a href="#">2018 지방직 9급 통신직 합격수기 <span class="date">2019.07.06</span></a></li>
-                                <li><a href="#">2018 지방직 9급 통신직 합격수기 <span class="date">2019.07.06</span></a></li>
+                            <ul id="examNotice">
+<%--                                <li><a href="#">2018 지방직 9급 통신직 합격수기 <span class="date">2019.07.06</span></a></li>--%>
+<%--                                <li><a href="#">2018 지방직 9급 통신직 합격수기 <span class="date">2019.07.06</span></a></li>--%>
+<%--                                <li><a href="#">2018 지방직 9급 통신직 합격수기 <span class="date">2019.07.06</span></a></li>--%>
+<%--                                <li><a href="#">2018 지방직 9급 통신직 합격수기 <span class="date">2019.07.06</span></a></li>--%>
                             </ul>
                             <a href="#" class="btn_more">전체보기</a>
                         </div>
                         <div class="tabPage">
-                            <ul>
-                                <li><a href="#">2018 지방직 9급 통신직 합격수기 <span class="date">2019.07.06</span></a></li>
-                                <li><a href="#">2018 지방직 9급 통신직 합격수기 <span class="date">2019.07.06</span></a></li>
-                                <li><a href="#">2018 지방직 9급 통신직 합격수기 <span class="date">2019.07.06</span></a></li>
-                                <li><a href="#">2018 지방직 9급 통신직 합격수기 <span class="date">2019.07.06</span></a></li>
+                            <ul id="openInfo">
+<%--                                <li><a href="#">2018 지방직 9급 통신직 합격수기 <span class="date">2019.07.06</span></a></li>--%>
+<%--                                <li><a href="#">2018 지방직 9급 통신직 합격수기 <span class="date">2019.07.06</span></a></li>--%>
+<%--                                <li><a href="#">2018 지방직 9급 통신직 합격수기 <span class="date">2019.07.06</span></a></li>--%>
+<%--                                <li><a href="#">2018 지방직 9급 통신직 합격수기 <span class="date">2019.07.06</span></a></li>--%>
                             </ul>
                             <a href="#" class="btn_more">전체보기</a>
                         </div>
@@ -86,20 +93,20 @@
                             <li><a href="#">기술직 합격수기</a></li>
                         </ul>
                         <div class="tabPage active">
-                            <ul>
-                                <li><a href="#">2018 지방직 9급 통신직 합격수기 <span class="date">2019.07.06</span></a></li>
-                                <li><a href="#">2018 지방직 9급 통신직 합격수기 <span class="date">2019.07.06</span></a></li>
-                                <li><a href="#">2018 지방직 9급 통신직 합격수기 <span class="date">2019.07.06</span></a></li>
-                                <li><a href="#">2018 지방직 9급 통신직 합격수기 <span class="date">2019.07.06</span></a></li>
+                            <ul id="lecInfo">
+<%--                                <li><a href="#">2018 지방직 9급 통신직 합격수기 <span class="date">2019.07.06</span></a></li>--%>
+<%--                                <li><a href="#">2018 지방직 9급 통신직 합격수기 <span class="date">2019.07.06</span></a></li>--%>
+<%--                                <li><a href="#">2018 지방직 9급 통신직 합격수기 <span class="date">2019.07.06</span></a></li>--%>
+<%--                                <li><a href="#">2018 지방직 9급 통신직 합격수기 <span class="date">2019.07.06</span></a></li>--%>
                             </ul>
                             <a href="#" class="btn_more">전체보기</a>
                         </div>
                         <div class="tabPage">
-                            <ul>
-                                <li><a href="#">2018 지방직 9급 통신직 합격수기 <span class="date">2019.07.06</span></a></li>
-                                <li><a href="#">2018 지방직 9급 통신직 합격수기 <span class="date">2019.07.06</span></a></li>
-                                <li><a href="#">2018 지방직 9급 통신직 합격수기 <span class="date">2019.07.06</span></a></li>
-                                <li><a href="#">2018 지방직 9급 통신직 합격수기 <span class="date">2019.07.06</span></a></li>
+                            <ul id="passInfo">
+<%--                                <li><a href="#">2018 지방직 9급 통신직 합격수기 <span class="date">2019.07.06</span></a></li>--%>
+<%--                                <li><a href="#">2018 지방직 9급 통신직 합격수기 <span class="date">2019.07.06</span></a></li>--%>
+<%--                                <li><a href="#">2018 지방직 9급 통신직 합격수기 <span class="date">2019.07.06</span></a></li>--%>
+<%--                                <li><a href="#">2018 지방직 9급 통신직 합격수기 <span class="date">2019.07.06</span></a></li>--%>
                             </ul>
                             <a href="#" class="btn_more">전체보기</a>
                         </div>
@@ -156,46 +163,46 @@
                     <h5>기술직 온라인 서점</h5>
                 </div>
                 <ul class="productList" id="productList1">
-                    <li>
-                        <div>
-                            <img src="/common/zian/images/content/img_book1.jpg" alt="">
-                            <span class="name">건축사공학</span>
-                            <span class="writer">김설 | 탑스팟</span>
-                            <span class="price"><b>24,000</b>원 <span>(10% off)</span></span>
-                        </div>
-                    </li>
-                    <li>
-                        <div>
-                            <img src="/common/zian/images/content/img_book2.jpg" alt="">
-                            <span class="name">2019 정보보안기사&산업기사</span>
-                            <span class="writer">김설 | 탑스팟</span>
-                            <span class="price"><b>24,000</b>원 <span>(10% off)</span></span>
-                        </div>
-                    </li>
-                    <li>
-                        <div>
-                            <img src="/common/zian/images/content/img_book3.jpg" alt="">
-                            <span class="name">토목설계</span>
-                            <span class="writer">이학민 | 탑스팟</span>
-                            <span class="price"><b>24,000</b>원 <span>(10% off)</span></span>
-                        </div>
-                    </li>
-                    <li>
-                        <div>
-                            <img src="/common/zian/images/content/img_book4.jpg" alt="">
-                            <span class="name">지안영어기출문제집</span>
-                            <span class="writer">조경훈 | 탑스팟</span>
-                            <span class="price"><b>24,000</b>원 <span>(10% off)</span></span>
-                        </div>
-                    </li>
-                    <li>
-                        <div>
-                            <img src="/common/zian/images/content/img_book1.jpg" alt="">
-                            <span class="name">건축사공학</span>
-                            <span class="writer">김설 | 탑스팟</span>
-                            <span class="price"><b>24,000</b>원 <span>(10% off)</span></span>
-                        </div>
-                    </li>
+<%--                    <li>--%>
+<%--                        <div>--%>
+<%--                            <img src="/common/zian/images/content/img_book1.jpg" alt="">--%>
+<%--                            <span class="name">건축사공학</span>--%>
+<%--                            <span class="writer">김설 | 탑스팟</span>--%>
+<%--                            <span class="price"><b>24,000</b>원 <span>(10% off)</span></span>--%>
+<%--                        </div>--%>
+<%--                    </li>--%>
+<%--                    <li>--%>
+<%--                        <div>--%>
+<%--                            <img src="/common/zian/images/content/img_book2.jpg" alt="">--%>
+<%--                            <span class="name">2019 정보보안기사&산업기사</span>--%>
+<%--                            <span class="writer">김설 | 탑스팟</span>--%>
+<%--                            <span class="price"><b>24,000</b>원 <span>(10% off)</span></span>--%>
+<%--                        </div>--%>
+<%--                    </li>--%>
+<%--                    <li>--%>
+<%--                        <div>--%>
+<%--                            <img src="/common/zian/images/content/img_book3.jpg" alt="">--%>
+<%--                            <span class="name">토목설계</span>--%>
+<%--                            <span class="writer">이학민 | 탑스팟</span>--%>
+<%--                            <span class="price"><b>24,000</b>원 <span>(10% off)</span></span>--%>
+<%--                        </div>--%>
+<%--                    </li>--%>
+<%--                    <li>--%>
+<%--                        <div>--%>
+<%--                            <img src="/common/zian/images/content/img_book4.jpg" alt="">--%>
+<%--                            <span class="name">지안영어기출문제집</span>--%>
+<%--                            <span class="writer">조경훈 | 탑스팟</span>--%>
+<%--                            <span class="price"><b>24,000</b>원 <span>(10% off)</span></span>--%>
+<%--                        </div>--%>
+<%--                    </li>--%>
+<%--                    <li>--%>
+<%--                        <div>--%>
+<%--                            <img src="/common/zian/images/content/img_book1.jpg" alt="">--%>
+<%--                            <span class="name">건축사공학</span>--%>
+<%--                            <span class="writer">김설 | 탑스팟</span>--%>
+<%--                            <span class="price"><b>24,000</b>원 <span>(10% off)</span></span>--%>
+<%--                        </div>--%>
+<%--                    </li>--%>
                 </ul>
             </div>
             <div class="mainCustomer full">
