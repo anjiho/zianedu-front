@@ -13,8 +13,8 @@
         <h1><a href="#"><img src="/common/zian/images/common/logo02.png" alt="지안에듀 기술직"></a></h1>
         <div id="topSelect">
             <ul>
-                <li class="active"><a href="javascript:goPage('techOnline', 'main')">온라인</a></li>
-                <li><a href="javascript:goPage('techAcademy', 'main')">학원</a></li>
+                <li id="publicHeaderLi_1"><a href="javascript:goPage('techOnline', 'main')">온라인</a></li>
+                <li id="publicHeaderLi_2"><a href="javascript:goPage('techAcademy', 'main')">학원</a></li>
             </ul>
         </div>
         <!--최상단메뉴-->

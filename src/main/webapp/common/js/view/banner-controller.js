@@ -64,17 +64,15 @@ function getEventMiniBanner(tagId, ctgKey, listNum) {
     var bannerInfoList = getApi("/banner/getMainMiniBanner/", ctgKey , data);
     if (bannerInfoList.result.length > 0) {
         var selList = bannerInfoList.result;
-
         for (var i=0; i<selList.length; i++) {
             var cmpList = selList[i];
-            console.log(cmpList);
             $("#eventBanner" + i).attr("src", cmpList.fullFileUrl);
         }
     }
 }
 
 
-//index 페이지 - 메인 대 배너
+//index 페이지 - 메인 대 배너s
 function getIndexMainBigBanner(tagId, titleTagId, listNum) {
     var bannerInfoList = getApi("/banner/getMainBigBanner/", listNum ,"");
     if (bannerInfoList.result.length > 0) {

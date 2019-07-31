@@ -1186,10 +1186,25 @@ function genderTrans(sex) {
  * @param tagName
  */
 function checkall(checkBoxId) {
+    alert(checkBoxId);
     if ($("#" + checkBoxId).prop("checked")) {
         $("input[type=checkbox]").prop("checked", true);
     } else {
         $("input[type=checkbox]").prop("checked", false);
+    }
+}
+
+/**
+ * 체크박스 전체 체크및 삭제 ( 회원가입 - 약관동의)
+ * @param tagName
+ */
+function checkallJoinAgree(allCheckBoxId, checkBoxId) {
+    for(var i=0; i<3; i++){
+        if ($("#" + allCheckBoxId).prop("checked")) {
+            $("input:checkbox[id=" + "'" + checkBoxId + i + "'" + "]").prop("checked", true);
+        } else {
+            $("input:checkbox[id=" + "'" + checkBoxId + i + "'" + "]").prop("checked", false);
+        }
     }
 }
 

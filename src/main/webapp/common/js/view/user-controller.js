@@ -9,3 +9,8 @@
 //회원 비밀번호 변경
 
 //회원가입
+//장바구니 리스트 삭제
+function reg(data) {
+    var result = postApi("/user/reg", data);
+    console.log(result);
+}

@@ -25,7 +25,7 @@ function getBookList(tagId , leftMenuCtgKey, sPage, listLimit) {
         listLimit : listLimit
     };
     var infoList = getApi("/bookStore/getBookList/", leftMenuCtgKey, data);
-
+    console.log(infoList);
     if (infoList.result.length > 0) {
         var selList = infoList.result;
         dwr.util.addOptions(tagId, selList, function (data) {

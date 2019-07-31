@@ -2,18 +2,20 @@
 <%@include file="/common/jsp/common.jsp" %>
 <script>
     function init() {
+        activeHeaderBtn("publicHeaderLi_2");
+        activeLeftMenu("item2");
         getMainBigBanner("mainVisualSlider1", 5);//메인 대 배너
         getPublicOnlineMainMiniBanner("mainVisualSlider2", 822, 5);//대배너 옆 미니 배너
         getTeacherBannerList("teacherList1", 823, 0);//공통과목 교수진
         getMajorTeacherBannerList("teacherList2", 823, 1);//전공과목 교수진
         getEventMiniBanner("", 6286, 5);//이벤트 배너
 
-        getBannerNoticeList("examNotice", 1, 4, 10010);//행정직 시험공고 리스트
-        getBannerNoticeList("openInfo", 1, 4, 10001);//행정직 개강안내 리스트
-        getBannerNoticeList("lecInfo", 1, 4, 10015);//행정직 수강후기 리스트
-        getBannerNoticeList("passInfo", 1, 4, 10013);//행정직 합격후기 리스트
+        getBannerNoticeList("examNotice", 1, 4, 10030);//행정직 시험공고 리스트
+        getBannerNoticeList("openInfo", 1, 4, 10026);//행정직 개강안내 리스트
+        getBannerNoticeList("lecInfo", 1, 4, 10033);//행정직 수강후기 리스트
+        getBannerNoticeList("passInfo", 1, 4, 10032);//행정직 합격후기 리스트
 
-        getBookList("productList1", 843, 1, 10);//행정직 온라인 서점
+        getBookList("productList1", 844, 1, 10);//행정직 온라인 서점
     }
 </script>
 <form name="frm" method="get">
