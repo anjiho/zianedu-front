@@ -45,7 +45,7 @@
                         <tr>
                             <th scope="col">아이디</th>
                             <td>
-                                <input type="text" name="" value="zianedu12" class="w270">
+                                <input type="text" name="userId" value="zianedu12" class="w270">
                                 (6~12자 영문+숫자 조합)
                                 <div class="captionText">아이디를 입력해주세요.</div>
                             </td>
@@ -53,7 +53,7 @@
                         <tr>
                             <th scope="col">비밀번호</th>
                             <td>
-                                <input type="password" name="" value="zianedu12" class="w270">
+                                <input type="password" name="password" value="zianedu12" class="w270">
                                 (특수문자+영문+숫자 8자 이상으로 조합)
                                 <div class="captionText">비밀번호를 입력해주세요.</div>
                             </td>
@@ -79,20 +79,20 @@
                         <tr>
                             <th scope="col">휴대전화</th>
                             <td>
-                                <input type="text" name="" value="01000000000" class="w270">
-                                <a href="#" class="btn_inline">인증번호 발송</a>
+<%--                                <input type="text" name="" value="" class="w270" disabled>--%>
+                                <a href="#" class="btn_inline">휴대푠 인증받기</a>
                             </td>
                         </tr>
-                        <tr>
-                            <th scope="col">인증번호</th>
-                            <td>
-								<span class="timerWrap">
-									<input type="text" name="" value="123456" class="w270">
-									<span class="timer">02:59</span>
-								</span>
-                                <a href="#" class="btn_inline">인증번호 확인</a>
-                            </td>
-                        </tr>
+<%--                        <tr>--%>
+<%--                            <th scope="col">인증번호</th>--%>
+<%--                            <td>--%>
+<%--								<span class="timerWrap">--%>
+<%--									<input type="text" name="" value="123456" class="w270">--%>
+<%--									<span class="timer">02:59</span>--%>
+<%--								</span>--%>
+<%--                                <a href="#" class="btn_inline">인증번호 확인</a>--%>
+<%--                            </td>--%>
+<%--                        </tr>--%>
                         <tr>
                             <th scope="col">주소</th>
                             <td class="multiLine">
@@ -114,7 +114,7 @@
                     </table>
                 </div>
                 <div class="btnArea">
-                    <a href="#" class="btn_l w130 on">가입하기</a>
+                    <a href="javascript:;" class="btn_l w130 on">가입하기</a>
                     <a href="javascript:goMain();" class="btn_l w130">취소</a>
                 </div>
             </div>

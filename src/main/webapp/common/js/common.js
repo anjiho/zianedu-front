@@ -2767,3 +2767,24 @@ function login() {
     var targetUrl = getParameterByName("target_url");
     location.href = targetUrl;
 }
+//아이디 6~12자 영문+숫자 조합여부 체크
+function validationUserId() {
+    var userId = $("input[name=userId]").val();
+    var reg1 = /^[a-z0-9]{5,12}$/;
+    var reg2 = /[a-z]/g;
+    var reg3 = /[0-9]/g;
+    if (!reg1.test(userId) || !reg2.test(userId) || !reg3.test(userId)) {
+        alert("아이디는 6~12자 영문+숫자조합이여야 합니다.");
+        return;
+    }
+}
+//비밀번호 8자이상 특수문자+영문+숫자 조합여부 체크
+function validationPassword() {
+    var password = $("input[name=password]").val();
+    alert(password);
+    var check = /^(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9])(?=.*[0-9]).{8,30}/;
+    if (!check.test(password)) {
+        alert("비밀번호는 특수문자+영문+숫자 8자 이상으로 조합이여야 합니다.");
+        return;
+    }
+}
