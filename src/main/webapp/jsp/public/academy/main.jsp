@@ -12,8 +12,8 @@
                 activeLeftMenu("item1");
                 getMainBigBanner("mainVisualSlider1", 5);//메인 대 배너
                 getPublicOnlineMainMiniBanner("mainVisualSlider2", 787, 5);//대배너 옆 미니 배너
-                getTeacherBannerList("teacherList1", 823, 0);//공통과목 교수진
-                getMajorTeacherBannerList("teacherList2", 823, 1);//전공과목 교수진
+                getTeacherBannerList("teacherList1", 788, 0);//공통과목 교수진
+                getMajorTeacherBannerList("teacherList2", 788, 1);//전공과목 교수진
                 getBannerNoticeList("examNotice", 1, 4, 10010);//행정직 시험공고 리스트
                 getBannerNoticeList("openInfo", 1, 4, 10001);//행정직 개강안내 리스트
                 getBannerNoticeList("lecInfo", 1, 4, 10014);//행정직 수강후기 리스트

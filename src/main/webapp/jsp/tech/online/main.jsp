@@ -2,18 +2,18 @@
 <%@include file="/common/jsp/common.jsp" %>
 <script>
     function init() {
+        activeHeaderBtn("publicHeaderLi_1");
+        activeLeftMenu("item2");
         getMainBigBanner("mainVisualSlider1", 5);//메인 대 배너
         getPublicOnlineMainMiniBanner("mainVisualSlider2", 828, 8);//대배너 옆 미니 배너
-        getTeacherBannerList("teacherList1", 1080, 0);//공통과목 교수진
-        getMajorTeacherBannerList("teacherList2", 1080, 1);//전공과목 교수진
+        getTeacherBannerList("teacherList1", 829, 0);//공통과목 교수진
+        getMajorTeacherBannerList("teacherList2", 829, 1);//전공과목 교수진
         getEventMiniBanner("", 6287, 5);//이벤트 배너
-
-        getBannerNoticeList("examNotice", 1, 4, 10010);//시험공고 리스트
-        getBannerNoticeList("openInfo", 1, 4, 10001);//개강안내 리스트
-        getBannerNoticeList("lecInfo", 1, 4, 10015);//수강후기 리스트
-        getBannerNoticeList("passInfo", 1, 4, 10013);//합격후기 리스트
-
-        getBookList("productList1", 843, 1, 10);//온라인 서점 배너
+        getBannerNoticeList("examNotice", 1, 4, 10030);//시험공고 리스트
+        getBannerNoticeList("openInfo", 1, 4, 10026);//개강안내 리스트
+        getBannerNoticeList("lecInfo", 1, 4, 10033);//수강후기 리스트
+        getBannerNoticeList("passInfo", 1, 4, 10032);//합격후기 리스트
+        getBookList("productList1", 844, 1, 10);//온라인 서점 배너
     }
 </script>
 <form name="frm" method="get">
