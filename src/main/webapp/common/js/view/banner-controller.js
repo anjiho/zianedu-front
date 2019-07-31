@@ -46,6 +46,7 @@ function getPublicOnlineMainMiniBanner(tagId, ctgKey, listNum) {
         listNumber : listNum
     };
     var bannerInfoList = getApi("/banner/getMainMiniBanner/", ctgKey , data);
+    console.log(bannerInfoList);
     if (bannerInfoList.result.length > 0) {
         var selList = bannerInfoList.result;
         dwr.util.addOptions(tagId, selList, function (data) {
