@@ -2741,11 +2741,13 @@ function goBack() {
     history.back();
 }
 
+//기능준비중입니다 알림함수
 function readyFunctionAlert() {
     alert(comment.ready_function);
     return;
 }
 
+//로그인 페이지 이동하기
 function goLoginPage() {
     fnAppendHidden(document.frm, "target_url", "");
     with (document.frm) {
@@ -2757,6 +2759,7 @@ function goLoginPage() {
     }
 }
 
+//로그인하기
 function login() {
     /**
      * TODO 로그인 로직 추가
