@@ -16,17 +16,14 @@
     <!--본문-->
     <script>
         function init() {
+            activeJoinHeaderBtn("statusBar_02");
         }
     </script>
     <div id="container">
         <div class="inner">
             <div class="joinWrap">
                 <h2>회원가입</h2>
-                <ul class="statusBar">
-                    <li><b>01.</b>약관동의</li>
-                    <li class="active"><b>02.</b>회원정보</li>
-                    <li class="last"><b>03.</b>가입완료</li>
-                </ul>
+                <%@include file="/common/jsp/user/joinHeader.jsp" %>
                 <div class="tableBox">
                     <table class="form">
                         <caption>회원가입 등록폼</caption>
@@ -118,7 +115,7 @@
                 </div>
                 <div class="btnArea">
                     <a href="#" class="btn_l w130 on">가입하기</a>
-                    <a href="#" class="btn_l w130">취소</a>
+                    <a href="javascript:goMain();" class="btn_l w130">취소</a>
                 </div>
             </div>
         </div>

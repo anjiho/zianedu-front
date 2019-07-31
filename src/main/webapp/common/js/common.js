@@ -2719,6 +2719,48 @@ function addFavorite() {
     }
 }
 
+function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+function fnAppendHidden(p_form, p_nm, p_val){
+    if(!p_form) return;
+    //Hidden 항목을 생성합니다.
+    var o_hidden = document.createElement("input");
+    o_hidden.type = "hidden";
+    o_hidden.name = p_nm;
+    o_hidden.value = p_val;
+    //폼에 히든항목을 붙입니다.
+    p_form.appendChild(o_hidden);
+}
+
 function goBack() {
     history.back();
+}
+
+function readyFunctionAlert() {
+    alert(comment.ready_function);
+    return;
+}
+
+function goLoginPage() {
+    fnAppendHidden(document.frm, "target_url", "");
+    with (document.frm) {
+        var targetUrl = window.location.href;
+        page_gbn.value = "login";
+        target_url.value = targetUrl;
+        action = "/user";
+        submit();
+    }
+}
+
+function login() {
+    /**
+     * TODO 로그인 로직 추가
+     */
+    var targetUrl = getParameterByName("target_url");
+    location.href = targetUrl;
 }
