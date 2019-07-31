@@ -113,7 +113,7 @@ function initTeacherListBanner(bannerId){
 function initTeacherListBanner1(bannerId){
 	$(function(){
 		var sliderOption1 = {
-			autoplay:true,dots:true,infinite:true,slidesToShow:2,slidesToScroll:1,
+			autoplay:true,dots:false,infinite:true,slidesToShow:2,slidesToScroll:1,
 			responsive:[{
 				breakpoint:767,
 				settings:{autoplay:true,slidesToShow:1,centerMode:true}
