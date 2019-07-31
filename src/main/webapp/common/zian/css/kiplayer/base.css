@@ -53,6 +53,7 @@ caption, .soundOnly{display:block !important;position:absolute !important;top:-9
 = 폼 아이템별 기본스타일 지정
 ============================================================================================================== */
 input[type='text'],input[type='password'],input[type='number'],select{height:30px;max-width:100%;text-indent:5px;border:1px #ddd solid;box-sizing:border-box;}
+select{text-indent:0;}
 select.useStyle{padding-right:20px;background:#fff url(../../images/injeinc/bg_selectBox.png) no-repeat right center;-webkit-appearance:none;}
 textarea{padding:5px;border:1px #ddd solid;box-sizing:border-box;resize:vertical;}
 *:disabled,*:readonly{color:#777 !important;background:#eee !important;}
@@ -60,6 +61,11 @@ input[type='checkbox'],input[type='radio']{margin-right:5px;}
 .inputBtn{display:inline-block;position:relative;margin-right:5px;padding-right:53px;box-sizing:border-box;vertical-align:middle;}
 .inputBtn > *{vertical-align:top;}
 .inputBtn .btn_inline{position:absolute;top:0;right:0;width:50px;text-align:center;}
+.radioGroup{display:inline-block;position:relative;margin-left:10px;height:30px;border:1px #e1e1e1 solid;border-right:0px none;vertical-align:middle;box-sizing:border-box;overflow:hidden;}
+.radioGroup input[type='radio']{position:absolute;top:-9999px;}
+.radioGroup label{display:block;float:left;padding:0 5px;height:28px;color:#333;line-height:28px;text-align:center;background:#fff;border-right:1px #e1e1e1 solid;cursor:pointer;box-sizing:border-box;}
+.radioGroup.cols2 label{width:50%;}
+.radioGroup input:checked + label{color:#fff;background:#aaa;}
 
 
 /* ==============================================================================================================
@@ -102,42 +108,46 @@ input.useMonthpicker{width:90px;background:#fff url(../../images/injeinc/bg_inpu
 = Table 기본스타일 지정
 = 테이블을 크게 목록형(list), 입력형(form), 상세형(view)으로 나눔
 ============================================================================================================== */
-.tableBox{margin-bottom:20px;border-top:1px #e5e5e5 solid;overflow:hidden;}
+.tableBox{margin-bottom:20px;verflow:hidden;}
 .tableBox.scrolled{overflow-y:auto;border:1px #e5e5e5 solid;border-top:1px #e5e5e5 solid;}
 .tableBox.scrolled table{margin:0 -1px;}
-.tableBox table{width:100%;font-size:12px;border:0px none;border-left:1px #e5e5e5 solid;}
+.tableBox table{width:100%;font-size:13px;border-top:2px #1b1b1b solid;border-left:1px #e5e5e5 solid;}
 .tableBox table table{width:auto;table-layout:auto;}
 .tableBox table .tableBox{margin-bottom:0;}
 .tableBox table th,
 .tableBox table td{border-bottom:1px #e5e5e5 solid;border-right:1px #e5e5e5 solid;box-sizing:border-box;}
-.tableBox table th{background:#f7f7f7;font-weight:bold;}
+.tableBox table th{background:#f5f5f5;font-weight:bold;}
 .tableBox table.list{text-align:center;}
 .tableBox table.list th,
-.tableBox table.list td{padding:10px 5px;}
+.tableBox table.list td{padding:10px;}
 .tableBox table.list.hover tbody tr{cursor:pointer;}
-.tableBox table.list.hover tbody tr:hover{background:#f7f7f7;}
+.tableBox table.list.hover tbody tr:hover{background:#f5f5f5;}
 .tableBox table.form th,
-.tableBox table.form td{padding:5px 10px;height:30px;}
+.tableBox table.form td{padding:10px 25px;height:30px;text-align:left;}
 .tableBox table.form td *{max-width:100%;}
 .tableBox table.form td.textContent{height:200px;line-height:160%;vertical-align:top;}
 .tableBox table.form td.onlyCheck{line-height:200%;}
 .tableBox table.form td.onlyText{line-height:160%;}
 .tableBox table.view th,
-.tableBox table.view td{padding:5px 10px;line-height:160%;}
+.tableBox table.view td{padding:10px 25px;line-height:160%;}
 .tableBox table.view td *{max-width:100%;}
+.tableBox table .captionText{display:block;margin-top:8px;font-size:11px;color:#de2c2c;}
+.tableBox table .multiLine{padding:5px 25px;line-height:40px;}
+.tableBox table .timerWrap{display:inline-block;position:relative;vertical-align:middle;}
+.tableBox table .timerWrap input + .timer{position:absolute;top:0;bottom:0;right:0;width:50px;text-align:center;color:#de2c2c;line-height:30px;}
 
 
 /* ==============================================================================================================
 = Paging 기본스타일 지정
 ============================================================================================================== */
-.paging{margin-bottom:20px;min-height:27px;font-size:0;text-align:center;}
-.paging > a{display:inline-block;margin:0 2px;padding:0 3px;min-width:27px;height:27px;line-height:25px;font-size:13px;text-align:center;color:#888888;border:1px solid #d9d9d9;box-sizing:border-box;}
+.paging{margin:20px 0;min-height:20px;font-size:0;text-align:center;}
+.paging > a{display:inline-block;margin:0 5px;padding:0 3px;min-width:20px;height:20px;line-height:18px;font-size:11px;text-align:center;color:#1b1b1b;border:1px solid #ebebeb;box-sizing:border-box;}
 .paging > a.active{background-color:#143046 ;border:1px solid #143046 ;color:#fff;}
-.paging > a.first{background:url(../../images/injeinc/btn_pageFirst.png) no-repeat center center;text-indent:-9999px;}
-.paging > a.prev{background:url(../../images/injeinc/btn_pagePrev.png) no-repeat center center;text-indent:-9999px;}
-.paging > a.next{background:url(../../images/injeinc/btn_pageNext.png) no-repeat center center;text-indent:-9999px;}
-.paging > a.last{background:url(../../images/injeinc/btn_pageLast.png) no-repeat center center;text-indent:-9999px;}
-.paging > select{margin-left:5px;height:27px;line-height:27px;font-size:13px;color:#888888;vertical-align:top;border:1px solid #d9d9d9}
+/*.paging > a.btn_first{background:url(../../images/common/btn_pageFirst.png) no-repeat center center;text-indent:-9999px;}*/
+.paging > a.btn_prev{background:url(../../images/common/btn_slidePrev.png) no-repeat center center;background-size:auto 50%;text-indent:-9999px;}
+.paging > a.btn_next{background:url(../../images/common/btn_slideNext.png) no-repeat center center;background-size:auto 50%;text-indent:-9999px;}
+/*.paging > a.btn_last{background:url(../../images/common/btn_pageLast.png) no-repeat center center;text-indent:-9999px;}*/
+.paging > select{margin-left:5px;height:20px;line-height:18px;font-size:11px;color:#1b1b1b;vertical-align:top;border:1px solid #ebebeb}
 
 
 /* ==============================================================================================================
@@ -168,17 +178,26 @@ input.useMonthpicker{width:90px;background:#fff url(../../images/injeinc/bg_inpu
 .btn_s,
 .btn_m,
 .btn_l,
-.btn_inline{display:inline-block;font-weight:bold;color:#666;background-color:#fff;border:1px #666 solid;vertical-align:middle;box-sizing:border-box;}
+.btn_inline{display:inline-block;font-weight:bold;color:#333;text-align:center;background-color:#fff;border:1px #e1e1e1 solid;vertical-align:middle;box-sizing:border-box;}
 .btn_ss.on,
 .btn_s.on,
 .btn_m.on,
 .btn_l.on,
-.btn_inline.on{color:#fff;background-color:#666;border:1px #666 solid;}
-.btn_ss{padding:0 6px;height:18px;font-size:11px;line-height:16px;border-radius:3px;}
-.btn_s{padding:0 8px;height:24px;font-size:12px;line-height:22px;border-radius:4px;}
-.btn_m{padding:0 14px;height:30px;font-size:12px;line-height:28px;border-radius:5px;}
-.btn_l{padding:0 18px;height:40px;font-size:15px;line-height:38px;border-radius:7px;}
-.btn_inline{padding:0 10px;height:30px;font-size:12px;line-height:28px;border-radius:5px;border-radius:5px;}
+.btn_inline.on{color:#fff;background-color:#134c97;border:1px #134c97 solid;}
+/*
+{color:#333;background-color:#fff;border:1px #e1e1e1 solid;}
+.btn_ss,
+.btn_s,
+.btn_m,
+.btn_l,
+.btn_inline{color:#fff;background-color:#666;border:1px #666 solid;}
+*/
+.btn_ss{padding:0 6px;height:18px;font-size:11px;line-height:16px;/*border-radius:3px;*/}
+.btn_s{padding:0 8px;height:24px;font-size:12px;line-height:22px;/*border-radius:4px;*/}
+.btn_m{padding:0 20px;height:34px;font-size:13px;line-height:32px;/*border-radius:5px;*/}
+.btn_l{padding:0 28px;height:45px;font-size:15px;line-height:43px;/*border-radius:7px;*/}
+.btn_inline{padding:0 10px;height:30px;font-size:12px;line-height:28px;/*border-radius:5px;*/}
+input + .btn_inline{margin-left:5px;}
 
 
 /* ==============================================================================================================

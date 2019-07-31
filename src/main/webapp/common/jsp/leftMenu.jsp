@@ -5,7 +5,7 @@
 </div>
 <!--좌측사이트메뉴-->
 <div id="aside">
-    <h1><a href="#"><img src="/common/zian/images/common/logo_notext.png" alt="zion edu"></a></h1>
+    <h1><a href="javascript:goMain();"><img src="/common/zian/images/common/logo_notext.png" alt="zion edu"></a></h1>
     <div id="siteNav">
         <ul>
             <li class="item1"><a href="javascript:goPage('publicOnline', 'main')">행정직</a></li>

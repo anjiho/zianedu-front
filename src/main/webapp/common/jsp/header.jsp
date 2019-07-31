@@ -17,7 +17,7 @@
             <div class="right">
                 <ul>
                     <li><a href="javascript:goPage('user', 'joinAgree');">회원가입</a></li>
-                    <li><a href="#">로그인</a></li>
+                    <li><a href="javascript:goLoginPage();">로그인</a></li>
                     <li><a href="#">내강의실</a></li>
                     <li><a href="#">장바구니<!--<em>30</em>--></a></li>
                     <li><a href="#">공지사항</a></li>
@@ -28,7 +28,7 @@
     </div>
     <!--//최상단메뉴-->
     <div class="inner">
-        <h1><a href="#"><img src="/common/zian/images/common/logo.png" alt="지안에듀"></a></h1>
+        <h1><a href="javascript:goMain()"><img src="/common/zian/images/common/logo.png" alt="지안에듀"></a></h1>
         <a href="#" class="titleBarLeft"><img src="/common/zian/images/content/img_titleBarLeft.jpg" alt=""></a>
         <a href="#" class="titleBarRight"><img src="/common/zian/images/content/img_titleBarRight.jpg" alt=""></a>
     </div>

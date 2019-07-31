@@ -16,7 +16,7 @@
     <!--본문-->
     <script>
         function init() {
-            activeJoinHeaderBtn("statusBar_01");
+            activeJoinHeaderBtn("statusBar_03");
         }
     </script>
     <div id="container">
@@ -24,28 +24,16 @@
             <div class="joinWrap">
                 <h2>회원가입</h2>
                 <%@include file="/common/jsp/user/joinHeader.jsp" %>
-                <div class="joinAgreeAll">
-                    <label for="">회원 이용약관, 개인정보 수집 및 이용, 이벤트 및 광고알림 sms / 메일수신(선택)에 모두 동의합니다.</label>
-                    <input type="checkbox" name="" value="">
-                </div>
-                <div class="joinAgree">
-                    <label for="">이용 약관 동의 <b>(필수)</b></label>
-                    <input type="checkbox" name="" value="">
-                    <p>내용</p>
-                </div>
-                <div class="joinAgree">
-                    <label for="">개인정보 수집 및 허용에 관한 안내 <b>(필수)</b></label>
-                    <input type="checkbox" name="" value="">
-                    <p>내용</p>
-                </div>
-                <div class="joinAgree">
-                    <label for="">이벤트 및 광고 알림  sns / 메일 수신 <b>(필수)</b></label>
-                    <input type="checkbox" name="" value="">
-                    <p>내용</p>
+                <div class="joinResult">
+                    <b>가입을 축하드립니다.</b>
+                    <p>
+                        지안에듀 가입을 축하드립니다 다양한 컨텐츠들을 이용바랍니다.<br />
+                        지금 바로 서비스를 이용해보세요.
+                    </p>
                 </div>
                 <div class="btnArea">
-                    <a href="#" class="btn_l w130 on">동의합니다</a>
-                    <a href="javascript:goBack();" class="btn_l w130">돌아가기</a>
+                    <a href="#" class="btn_l w130 on">로그인</a>
+                    <a href="javascript:goMain();" class="btn_l w130">메인이동</a>
                 </div>
             </div>
         </div>

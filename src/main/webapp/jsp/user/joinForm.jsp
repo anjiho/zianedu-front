@@ -16,39 +16,106 @@
     <!--본문-->
     <script>
         function init() {
+            activeJoinHeaderBtn("statusBar_02");
         }
     </script>
     <div id="container">
         <div class="inner">
             <div class="joinWrap">
                 <h2>회원가입</h2>
-                <ul class="statusBar">
-                    <li class="active"><b>01.</b>약관동의</li>
-                    <li><b>02.</b>회원정보</li>
-                    <li class="last"><b>03.</b>가입완료</li>
-                </ul>
-                <div class="joinAgreeAll">
-                    <label for="">회원 이용약관, 개인정보 수집 및 이용, 이벤트 및 광고알림 sms / 메일수신(선택)에 모두 동의합니다.</label>
-                    <input type="checkbox" name="" value="">
-                </div>
-                <div class="joinAgree">
-                    <label for="">이용 약관 동의 <b>(필수)</b></label>
-                    <input type="checkbox" name="" value="">
-                    <p>내용</p>
-                </div>
-                <div class="joinAgree">
-                    <label for="">개인정보 수집 및 허용에 관한 안내 <b>(필수)</b></label>
-                    <input type="checkbox" name="" value="">
-                    <p>내용</p>
-                </div>
-                <div class="joinAgree">
-                    <label for="">이벤트 및 광고 알림  sns / 메일 수신 <b>(필수)</b></label>
-                    <input type="checkbox" name="" value="">
-                    <p>내용</p>
+                <%@include file="/common/jsp/user/joinHeader.jsp" %>
+                <div class="tableBox">
+                    <table class="form">
+                        <caption>회원가입 등록폼</caption>
+                        <colgroup>
+                            <col class="w150">
+                            <col>
+                        </colgroup>
+                        <tbody>
+                        <tr>
+                            <th scope="col">이름</th>
+                            <td>
+                                <input type="text" name="" value="홍길동" class="w150">
+                                <span class="radioGroup w60 cols2">
+									<input type="radio" name="sex" id="sex_m" value="" checked><label for="sex_m">남</label>
+									<input type="radio" name="sex" id="sex_f" value=""><label for="sex_f">여</label>
+								</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="col">아이디</th>
+                            <td>
+                                <input type="text" name="" value="zianedu12" class="w270">
+                                (6~12자 영문+숫자 조합)
+                                <div class="captionText">아이디를 입력해주세요.</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="col">비밀번호</th>
+                            <td>
+                                <input type="password" name="" value="zianedu12" class="w270">
+                                (특수문자+영문+숫자 8자 이상으로 조합)
+                                <div class="captionText">비밀번호를 입력해주세요.</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="col">비밀번호 확인</th>
+                            <td>
+                                <input type="password" name="" value="zianedu12" class="w270">
+                                <div class="captionText">비밀번호가 일치하지 않습니다.</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="col">이메일</th>
+                            <td>
+                                <input type="text" name="" value="bakseungho" class="w180"> @
+                                <input type="text" name="" value="naver.com" class="w180">
+                                <select name="" class="w180">
+                                    <option value="">직접입력</option>
+                                </select>
+                                <div class="captionText">※등록된 기기변경시 인증번호가 전송됩니다. 신중히 등록해주세요.</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="col">휴대전화</th>
+                            <td>
+                                <input type="text" name="" value="01000000000" class="w270">
+                                <a href="#" class="btn_inline">인증번호 발송</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="col">인증번호</th>
+                            <td>
+								<span class="timerWrap">
+									<input type="text" name="" value="123456" class="w270">
+									<span class="timer">02:59</span>
+								</span>
+                                <a href="#" class="btn_inline">인증번호 확인</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="col">주소</th>
+                            <td class="multiLine">
+                                <input type="text" name="" value="12345" class="w150">
+                                <a href="#" class="btn_inline">우편번호 찾기</a><br />
+                                <input type="text" name="" value="서울특별시 관악구 신림로 00길 00 00아파트 5층 500호" class="w400"> (상세주소)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="col">준비직렬</th>
+                            <td>
+                                <select name="" class="w180">
+                                    <option value="">선택</option>
+                                </select>
+                            </td>
+                        </tr>
+                        </tbody>
+                        </tbody>
+                    </table>
                 </div>
                 <div class="btnArea">
-                    <a href="#" class="btn_l w130 on">동의합니다</a>
-                    <a href="javascript:goBack();" class="btn_l w130">돌아가기</a>
+                    <a href="#" class="btn_l w130 on">가입하기</a>
+                    <a href="javascript:goMain();" class="btn_l w130">취소</a>
                 </div>
             </div>
         </div>

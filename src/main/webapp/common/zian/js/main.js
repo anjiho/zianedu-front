@@ -70,6 +70,11 @@ function activeHeaderBtn(tagId) {
 	$("#" + tagId).addClass("active");
 }
 
+function activeJoinHeaderBtn(tagId) {
+	$(".statusBar > li").removeClass("active");
+	$("#" + tagId).addClass("active");
+}
+
 function initMainJs() {
 	$(function(){
 		var sliderOption1 = {
