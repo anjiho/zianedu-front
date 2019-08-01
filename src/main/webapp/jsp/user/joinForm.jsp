@@ -179,9 +179,8 @@
                             <th scope="col">휴대전화</th>
                             <td>
                                 <input type="text" id="telephoneMobile"  name="telephoneMobile" class="w270" disabled>
-                                <a href="#" class="btn_inline">휴대폰 인증받기</a>
 <%--                                <input type="text" name="" value="" class="w270" disabled>--%>
-                                <a href="javascript:fnNicePopup();" class="btn_inline">휴대푠 인증받기</a>
+                                <a href="javascript:fnNicePopup();" class="btn_inline">휴대폰 인증받기</a>
                             </td>
                         </tr>
 <%--                        <tr>--%>
