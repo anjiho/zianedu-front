@@ -6,6 +6,7 @@ var apiHost = "http://52.79.40.214:9090";
 function postApi(url, paramData) {
     var resultData = null;
 
+    console.log(paramData);
     $.post(apiHost + url, paramData, function (response) {
         resultData = response;
     }).fail(function() {
@@ -24,6 +25,20 @@ function getApi(url, pathData, paramData) {
                 result : response.result
             };
         }
+    }).fail(function() {
+        alert("통신 에러");
+    });
+    return resultData;
+}
+
+/* get */
+function getLoginApi(url, pathData, paramData) {
+    var resultData = null;
+
+    $.get(apiHost + url + pathData, paramData, function (response) {
+        resultData = {
+            result : response.resultCode
+        };
     }).fail(function() {
         alert("통신 에러");
     });

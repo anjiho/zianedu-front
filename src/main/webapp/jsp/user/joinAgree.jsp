@@ -45,6 +45,9 @@
                     <label>이용 약관 동의 <b>(필수)</b></label>
                     <input type="checkbox" id="joinAgreeChk0" value="">
                     <p>내용</p>
+
+
+
                 </div>
                 <div class="joinAgree">
                     <label>개인정보 수집 및 허용에 관한 안내 <b>(필수)</b></label>

@@ -16,8 +16,10 @@
             </div>
             <div class="right">
                 <ul>
-                    <li><a href="javascript:goPage('user', 'joinAgree');">회원가입</a></li>
-                    <li><a href="javascript:goLoginPage();">로그인</a></li>
+                    <li id="userName" style="display: none;"></li>
+                    <li id="join"><a href="javascript:goPage('user', 'joinAgree');">회원가입</a></li>
+                    <li id="login"><a href="javascript:goLoginPage();">로그인</a></li>
+                    <li id="logout" style="display: none;"><a href="javascript:goLogout();">로그아웃</a></li>
                     <li><a href="#">내강의실</a></li>
                     <li><a href="#">장바구니<!--<em>30</em>--></a></li>
                     <li><a href="#">공지사항</a></li>
@@ -34,64 +36,3 @@
     </div>
 </div>
 <!--//상단-->
-<%--<div style="text-align: center">--%>
-<%--    <div id="login">--%>
-<%--        <label>아이디</label><input type="text" id="userId">--%>
-<%--        <label>비밀번호</label><input type="password" id="userPwd">--%>
-<%--        <input type="button" value="로그인" onclick="loginCheck();">--%>
-<%--    </div>--%>
-<%--    <div id="logout" style="display: none;">--%>
-<%--        <span id="userName"></span><input type="button" value="로그아웃" onclick="logout();">--%>
-<%--    </div>--%>
-<%--</div>--%>
-
-<%--<script>--%>
-<%--    $( document ).ready(function() {--%>
-<%--        var user = JSON.parse(sessionStorage.getItem('userInfo'));--%>
-<%--        if(user != null){--%>
-<%--            var userName = user.name;--%>
-<%--            innerHTML("userName", userName);--%>
-<%--            gfn_display("logout", true);--%>
-<%--            gfn_display("login", false);--%>
-<%--        }--%>
-<%--    });--%>
-
-<%--    function loginCheck() {--%>
-<%--        var userId  = getInputTextValue("userId");--%>
-<%--        var userPwd = getInputTextValue("userPwd");--%>
-<%--        var data = {--%>
-<%--            userId : userId,--%>
-<%--            userPwd : userPwd--%>
-<%--        };--%>
-<%--        var loginChk =  postApi("/user/login", data);--%>
-
-<%--        if(loginChk.resultCode == 200){--%>
-<%--            var result  = loginChk.result;--%>
-<%--            sessionStorage.setItem("userInfo", JSON.stringify(result));--%>
-
-<%--            gfn_display("logout", true);--%>
-<%--            gfn_display("login", false);--%>
-<%--        }else if(loginChk.resultCode == 900){--%>
-<%--            alert(comment.blank_login_check);--%>
-<%--            return;--%>
-<%--        }--%>
-<%--    }--%>
-
-<%--    function logout() {--%>
-<%--        sessionStorage.clear();--%>
-<%--        gfn_display("logout", false);--%>
-<%--        gfn_display("login", true);--%>
-<%--    }--%>
-<%--    --%>
-<%--    function getLoginState() {--%>
-<%--        var user = JSON.parse(sessionStorage.getItem('userInfo'));--%>
-<%--        var boolean = false;--%>
-<%--        if(user != null){--%>
-<%--            boolean = true;--%>
-<%--        }--%>
-<%--        /**--%>
-<%--         * TODO : 로그인 팝업 or 로그인 페이지로 이동하는 로직 추가 해야함--%>
-<%--         */--%>
-<%--        return boolean;--%>
-<%--    }--%>
-<%--</script>--%>

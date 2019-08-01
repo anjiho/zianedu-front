@@ -32,7 +32,7 @@
                     </p>
                 </div>
                 <div class="btnArea">
-                    <a href="#" class="btn_l w130 on">로그인</a>
+                    <a href="javascript:goPage('user', 'login');" class="btn_l w130 on">로그인</a>
                     <a href="javascript:goMain();" class="btn_l w130">메인이동</a>
                 </div>
             </div>

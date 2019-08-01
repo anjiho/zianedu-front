@@ -43,7 +43,11 @@ var comment = {
     load_data : "데이타를 불러오는중..",
 
     input_zip_code : "우편번호를 입력하세요.",
+    input_address : "상세주소를 입력하세요.",
     input_member_email : "이메일주소를 입력해주세요.",
+    input_id_gender : "이름을 입력해주세요.",
+    input_id_telphone : "휴대전화를 입력해주세요.",
+    input_id_address : "주소를 입력해주세요.",
 
     file_name_not_allow_korean : "파일명이 한글입니다. 영문으로 바꿔주세요.",
     file_extension_not_allow : "파일확장자는 'JPG, GIF'만 가능합니다.",
@@ -64,6 +68,8 @@ var comment = {
     input_content : "내용을 입력해 주세요.",
 
     is_change_confirm : "작성한 내용이 저장되지 않습니다.\n계속하시겠습니까?",
-    ready_function : "기능준비중입니다."
+    ready_function : "기능준비중입니다.",
+
+    sel_ctgkey_: "준비직렬을 선택해 주세요.",
 }
 

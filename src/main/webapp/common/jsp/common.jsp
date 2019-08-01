@@ -37,9 +37,37 @@
     <script src="/common/js/view/order-controller.js"></script>
     <script src="/common/js/view/payment-controller.js"></script>
     <script src="/common/js/view/teacher-controller.js"></script>
+    <script src="/common/js/view/user-controller.js"></script>
     <!--//api controller-->
     <!-- dwr -->
     <script type='text/javascript' src='/dwr/engine.js'></script>
     <script type='text/javascript' src='/dwr/util.js'></script>
+    <!-- 다음 주소 api -->
+    <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 </head>
 <body onload="init();">
+<script>
+    $(document).ready(function () {
+        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        if(sessionUserInfo != null){ //로그인했을경우,
+            var userName = sessionUserInfo.name;
+            innerHTML("userName", userName+" 님");
+            gfn_display("userName", true);
+            gfn_display("logout", true);
+            gfn_display("login", false);
+            gfn_display("join", false);
+        }
+    });
+
+    function goLogout() {
+        if(confirm("로그아웃 하시겠습니까?")){
+            sessionStorage.clear();
+            innerHTML("userName", "");
+            gfn_display("userName", false);
+            gfn_display("logout", false);
+            gfn_display("login", true);
+            gfn_display("join", true);
+            goMain();
+        }
+    }
+</script>

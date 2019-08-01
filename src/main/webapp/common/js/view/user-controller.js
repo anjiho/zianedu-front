@@ -1,6 +1,31 @@
 //회원 아이디 중복체크
+function checkDuplicate(userId) {
+    if (userId == null || userId == undefined) return;
 
+    var data = {
+        userId : userId
+    };
+    var info = getLoginApi("/user/checkDuplicate", "", data);
+    return info.result;
+}
 //로그인
+function login(userId, userPwd) {
+    var data = {
+        userId : userId,
+        userPwd: userPwd
+    };
+    var loginChk =  postApi("/user/login", data);
+    if(loginChk.resultCode == 200){
+        var result  = loginChk.result;
+        sessionStorage.setItem("userInfo", JSON.stringify(result));
+        //gfn_display("logout", true);
+        //gfn_display("login", false);
+        goMain();
+    }else if(loginChk.resultCode == 900){
+        alert(comment.blank_login_check);
+        return;
+    }
+}
 
 //회원탈퇴
 
@@ -10,7 +35,7 @@
 
 //회원가입
 //장바구니 리스트 삭제
-function reg(data) {
+function userReg(data) {
     var result = postApi("/user/reg", data);
-    console.log(result);
+    return result;
 }

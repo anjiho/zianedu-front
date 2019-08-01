@@ -1109,6 +1109,7 @@ function fn_isemail(str) {
 
     if (!str.match(regExp)) {
         alert("지원되지 않는 이메일 형식입니다. 다시 입력해 주세요.");
+        focusInputText("email");
         return true;
     }
 }
@@ -1469,7 +1470,7 @@ function getDateTimeSplitComma(date_time) {
 }
 
 function innerHTML(tagId, val) {
-    if (val != "" && tagId != "") {
+    if (tagId != "") {
         $("#" + tagId).html(val);
     }
 }
@@ -1481,7 +1482,7 @@ function innerHTMLAddColor(tagId, color) {
 }
 
 function innerValue(tagId, val) {
-    if (val != "" && tagId != "") {
+    if (tagId != "") {
         $("#" + tagId).val(val);
     }
 }
@@ -2422,7 +2423,26 @@ function pagingListCount() {
     return "10";
 }
 
+/*원은정 추가*/
+function serializeDiv( $div, serialize_method ) {
+    // Accepts 'serialize', 'serializeArray'; Implicit 'serialize'
+    serialize_method = serialize_method || 'serialize';
 
+    // Unique selector for wrapper forms
+    var inner_wrapper_class = 'any_unique_class_for_wrapped_content';
+
+    // Wrap content with a form
+    $div.wrapInner( "<form class='"+inner_wrapper_class+"'></form>" );
+
+    // Serialize inputs
+    var result = $('.'+inner_wrapper_class, $div)[serialize_method]();
+
+    // Eliminate newly created form
+    $('.script_wrap_inner_div_form', $div).contents().unwrap();
+
+    // Return result
+    return result;
+}
 
 function menuActive(mainMenuId, index) {
 
@@ -2544,7 +2564,6 @@ function deleteTableRow(tableId, className) {
     }
 }
 
-//다음주소
 function execDaumPostcode() {
     new daum.Postcode({
         oncomplete: function(data) {
@@ -2565,14 +2584,7 @@ function execDaumPostcode() {
 
             document.getElementById('postcode').value = data.zonecode;
             document.getElementById("roadAddress").value = roadAddr;
-            document.getElementById("jibunAddress").value = data.jibunAddress;
-
-            // 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
-            /*if(roadAddr !== ''){
-                document.getElementById("extraAddress").value = extraRoadAddr;
-            } else {
-                document.getElementById("extraAddress").value = '';
-            }*/
+            //document.getElementById("jibunAddress").value = data.jibunAddress;
 
             var guideTextBox = document.getElementById("guide");
             // 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
@@ -2775,31 +2787,50 @@ function goLoginPage() {
 }
 
 //로그인하기
-function login() {
-    /**
-     * TODO 로그인 로직 추가
-     */
-    var targetUrl = getParameterByName("target_url");
-    location.href = targetUrl;
-}
+// function login() {
+//     /**
+//      * TODO 로그인 로직 추가
+//      */
+//     var targetUrl = getParameterByName("target_url");
+//     location.href = targetUrl;
+// }
+
 //아이디 6~12자 영문+숫자 조합여부 체크
-function validationUserId() {
-    var userId = $("input[name=userId]").val();
+function validationUserId(userId) {
+    var isDuplicate = checkDuplicate(userId);
     var reg1 = /^[a-z0-9]{5,12}$/;
     var reg2 = /[a-z]/g;
     var reg3 = /[0-9]/g;
-    if (!reg1.test(userId) || !reg2.test(userId) || !reg3.test(userId)) {
-        alert("아이디는 6~12자 영문+숫자조합이여야 합니다.");
-        return;
+    if (isDuplicate == 902) {
+        gfn_display("idCaption", true);
+        innerHTML("idCaption","아이디 중복");
+    } else if (!reg1.test(userId) || !reg2.test(userId) || !reg3.test(userId)) {
+        gfn_display("idCaption", true);
+        innerHTML("idCaption","아이디는 6~12자 영문+숫자조합이여야 합니다.");
+    } else{
+        gfn_display("idCaption", false);
+        innerValue("idValidation", 1); // 0 : 실패 , 1 : 성공
     }
 }
 //비밀번호 8자이상 특수문자+영문+숫자 조합여부 체크
-function validationPassword() {
-    var password = $("input[name=password]").val();
-    alert(password);
-    var check = /^(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9])(?=.*[0-9]).{8,30}/;
-    if (!check.test(password)) {
-        alert("비밀번호는 특수문자+영문+숫자 8자 이상으로 조합이여야 합니다.");
-        return;
+function validationPassword(pwd) {
+    if (pwd.length > 0){
+        var check = /^(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9])(?=.*[0-9]).{8,30}/;
+        if (!check.test(pwd)) {
+            gfn_display("pwdCaption", true);
+            innerHTML("pwdCaption","비밀번호는 특수문자+영문+숫자 8자 이상으로 조합이여야 합니다.");
+        } else {
+            gfn_display("pwdCaption", false);
+            innerValue("pwdValidation", 1); // 0 : 실패 , 1 : 성공
+        }
+    }
+}
+
+//이메일 주소 셀렉트박스 선택 :  tagId (emailAddress)
+function selEmail(val) {
+    if(val == ""){
+        innerValue("emailAddress", "");
+    }else{
+        innerValue("emailAddress", val);
     }
 }
