@@ -2,7 +2,9 @@
 <%@include file="/common/jsp/common.jsp" %>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
-<div id="wrap">
+    <input type="hidden" name="m" value="checkplusSerivce">				<!-- 필수 데이타로, 누락하시면 안됩니다. -->
+    <input type="hidden" name="EncodeData" value="AgAFRzQ1Mjhag/PvTlE5vxpWm8KC252gwjUnsw0g8O+tj+r7Gd6aG75S49ZNORP1/FUJpGiUujufqGX6E2fn1EK5iOl4bITVHUBYIggLo8iiH5TeogMG9W6Ae0tg5wPd5wv+CD+0bKpqNrtrOkveiCGFoxhr3wl4Lujm2rxo3r+ac16vYzlOjUoNuFsu1AUYos8q0szHNcSAj61tI05R9nMEEfcXo69Y7KkM0THceYKGG4J8tCnUyvhd9PG0OEgi+mPNzTTwZV7u73mXWWgWyQcKfBzWLUDz2QeIK7PddxYK5p0azcBjuNvqq/W2+Lkn5GFFQSkGzKU2G2Ep3YJlOTgrwSG7rhvktnZbCabSJOsT3hX/mrcG0T4Jd3OblrMk//wgHst4wG0VsxKRi6TsHr3VX2gwlRC8xqxGRcWLlUdF7jZdewolYS6YqMwHdW7w6krwq1oJ5dQvdBFMySk3lvZAORxPwICzUuv5tk9urY+OCtkXGZ/myQ==">
+    <div id="wrap">
     <!--좌측사이트메뉴-->
     <%@include file="/common/jsp/leftMenu.jsp" %>
     <!--//좌측사이트메뉴-->
@@ -178,6 +180,8 @@
                             <td>
                                 <input type="text" id="telephoneMobile"  name="telephoneMobile" class="w270" disabled>
                                 <a href="#" class="btn_inline">휴대폰 인증받기</a>
+<%--                                <input type="text" name="" value="" class="w270" disabled>--%>
+                                <a href="javascript:fnNicePopup();" class="btn_inline">휴대푠 인증받기</a>
                             </td>
                         </tr>
 <%--                        <tr>--%>

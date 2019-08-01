@@ -2826,6 +2826,7 @@ function validationPassword(pwd) {
     }
 }
 
+
 //이메일 주소 셀렉트박스 선택 :  tagId (emailAddress)
 function selEmail(val) {
     if(val == ""){
@@ -2834,3 +2835,11 @@ function selEmail(val) {
         innerValue("emailAddress", val);
     }
 }
+
+function fnNicePopup() {
+    window.open('', 'popupChk', 'width=500, height=550, top=100, left=100, fullscreen=no, menubar=no, status=no, toolbar=no, titlebar=yes, location=no, scrollbar=no');
+    document.frm.action = "https://nice.checkplus.co.kr/CheckPlusSafeModel/checkplus.cb";
+    document.frm.target = "popupChk";
+    document.frm.submit();
+}
+
