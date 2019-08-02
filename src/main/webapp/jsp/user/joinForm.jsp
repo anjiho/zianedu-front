@@ -26,6 +26,8 @@
             //비밀번호 정규식 체크
             $("#password").keyup(function () {
                 var password = getInputTextValue("password");
+                innerHTML("rePwdCaption","");
+                innerValue("pwdValidation", 0); // 0 : 실패 , 1 : 성공
                 validationPassword(password);
             });
             //아이디 정규식 체크 /  중복체크
@@ -38,6 +40,7 @@
                     }
                 }
                 var userId = getInputTextValue("userId");
+                innerValue("idValidation", 0); // 0 : 실패 , 1 : 성공
                 validationUserId(userId);
             });
             //비밀번호 확인 체크
@@ -63,11 +66,6 @@
         });
 
         function goJoin() {
-            /**
-             * TODO 1. 비빌번호 공백체크,
-             *      2. 이메일 정규식이 정상 작동 여부 확인,
-             *      3. 회원가입 서버통신 시 아이디 중복 에러(902) 일때 예외 처리
-             */
             var check = new isCheck();
             if (check.input("name", comment.search_input_id_name) == false) return;
             if (check.input("userId", comment.insert_id) == false) return;
