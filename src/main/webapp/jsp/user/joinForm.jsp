@@ -27,10 +27,8 @@
 
     if( iReturn == 0 )
     {
-
         sPlainData = niceCheck.getPlainData();
         sCipherTime = niceCheck.getCipherDateTime();
-        System.out.println(">>>>>" + sPlainData);
         // 데이타를 추출합니다.
         java.util.HashMap mapresult = niceCheck.fnParse(sPlainData);
 
