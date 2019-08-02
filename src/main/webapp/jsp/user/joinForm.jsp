@@ -135,7 +135,7 @@
             if (check.input("roadAddress", comment.input_id_address) == false) return;
             if (check.input("address", comment.input_address) == false) return;
             if (check.selectbox("interestCtgKey0", comment.sel_ctgkey) == false) return;
-            //if (check.input("telephoneMobile", comment.input_id_telphone) == false) return;
+            if (check.input("telephoneMobile", comment.input_id_telphone) == false) return;
             var email    = getInputTextValue("email");
             var emailAdd = getInputTextValue("emailAddress");
             var allEmail = email+"@"+emailAdd;
@@ -143,6 +143,8 @@
             if(fnEmail == true) return;
             var gender  = get_radio_value("gender");//성별
             var interestCtgKey0 = getSelectboxValue("interestCtgKey0");
+            var telPhoneNum   = getInputTextValue("telephoneMobile");
+            var telPhoneHypen = getPhoneNumHypen(telPhoneNum);
 
             var data = getJsonObjectFromDiv("joinDiv");
 
@@ -150,8 +152,8 @@
             data.email = allEmail;
             data.addressNumber = "";
             data.interestCtgKey0 = interestCtgKey0;
-            data.certCode = "sdfsdfsdfsdfsdfasfs";
-            data.telephoneMobile = "010-5053-4564";
+            data.certCode = "sdfsdfsdfsdfsdfasfs"; //휴대폰인증받기 - 인증확인코드값
+            data.telephoneMobile = telPhoneHypen;
 
             var idValidation  = getInputTextValue("idValidation");//아이디 확인
             var pwdValidation = getInputTextValue("pwdValidation");//비밀번호 확인
