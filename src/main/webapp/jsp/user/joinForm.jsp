@@ -103,8 +103,8 @@
                 var result  =  userReg(data);
                 if(result.resultCode == 200){
                     goPage('user', 'joinResult');
-                }else{
-                    alert("관리자에게 문의해주세요.");
+                }else if(result.resultCode == 902){
+                    alert("아이디가 중복되었습니다.");
                     return false;
                 }
             }else if(idValidation == 0){
