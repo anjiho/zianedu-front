@@ -1,6 +1,12 @@
 <%@ page import="com.zianedu.front.utils.Util" %>
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%
+    //라이브
+    //String EncodeData = "AgAFRzQ1MjhHewqvSQtQvwP2Qc0Vc9UUiFD/jiCDmmu5SMzWK49aLr5S49ZNORP1/FUJpGiUujufqGX6E2fn1EK5iOl4bITVxtptW9FRxtXIUAl7eO5A3wuRwbSpNOpou0rNS3fLmpBzDzJY7UUJyfRn51LjXeAbcTnSmtrX6nwOY9NC67esjpNiQfNFzQFyCxOOwBwIWv6rKKF07ABca1QP+o7EHdozTWmIeNs9YAF6iYFliYsOiA67r/p2snXvAGPzGFI71iv/xEyX+hMlZNn1NXVlmIrKA4hug3ge+Uyhh6xiLTY/bItD4UONsNC9CfvdfrK+Qis+SNv3hkGHJ8liWtFxEJYOnHA6OK770k9XAtYnfTd4bTFyifta2S71gWXwaX5UJPFCzLMaA/V7/s19LIVTWPC2RBCCoApGQOTUITAgknI1MBAyxQVPrCIKkA3WpoW5CPEi/kmgZfgBKZGRGRBT98NmIuguSPh21sxz9doSBYPLTA==";
+    //개발
+    String EncodeData = "AgAFRzQ1MjgEcYPg+9kV2Z0A1ygHMMSItIyAkxsv0dPppz2BN/JiH75S49ZNORP1/FUJpGiUujufqGX6E2fn1EK5iOl4bITVpCHdvpRA1h+Qg/CWNQN1+/SIXnGNoKZqKhohWZmP/q4h6HpAE91icmtyopcYPQu8XP82I79LHNq4jwmbZh+/jhE1DYCCjh3cjsfRxkQH3oqtAFWkVsfQx6OXGWrfX10tdkpgpxLEAbT+DtwNQqFqEtUNbeMpE0JKCoXuVMM3ZjS8etJyx45Kt5YC278vmfLJnfzRzeGTuKjGhQMW3eswjhoQdui4qQBDDx0wLsTE9UKRdBIFXJ6QC1S+2fELfa6HmorHNaKrz5EZI2usEzpG5ThFVNBHcstdzYDZI6S5RCKwVLD2Ljbjz+cciLlxunIupju4D/6oAYmAMjINA/Ni1TfRGQkneivColiJEH6nx8c5wXn3joKfOJQApHWQw/tgIbKjus2gAFEIfusOyLHG5g==";
+%>
+<%
     NiceID.Check.CPClient niceCheck = new  NiceID.Check.CPClient();
 
     String sEncodeData = Util.requestReplace(request.getParameter("EncodeData"), "encodeData");
@@ -56,9 +62,12 @@
 <%@include file="/common/jsp/common.jsp" %>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
-    <input type="hidden" name="m" value="checkplusSerivce">				<!-- 필수 데이타로, 누락하시면 안됩니다. -->
+    <input type="hidden" name="m" value="checkplusSerivce">
+    <!-- 필수 데이타로, 누락하시면 안됩니다. -->
+    <!-- 로컬 개발 핸드폰인증 키값 -->
 <%--    <input type="hidden" name="EncodeData" value="AgAFRzQ1MjgEcYPg+9kV2Z0A1ygHMMSItIyAkxsv0dPppz2BN/JiH75S49ZNORP1/FUJpGiUujufqGX6E2fn1EK5iOl4bITVpCHdvpRA1h+Qg/CWNQN1+/SIXnGNoKZqKhohWZmP/q4h6HpAE91icmtyopcYPQu8XP82I79LHNq4jwmbZh+/jhE1DYCCjh3cjsfRxkQH3oqtAFWkVsfQx6OXGWrfX10tdkpgpxLEAbT+DtwNQqFqEtUNbeMpE0JKCoXuVMM3ZjS8etJyx45Kt5YC278vmfLJnfzRzeGTuKjGhQMW3eswjhoQdui4qQBDDx0wLsTE9UKRdBIFXJ6QC1S+2fELfa6HmorHNaKrz5EZI2usEzpG5ThFVNBHcstdzYDZI6S5RCKwVLD2Ljbjz+cciLlxunIupju4D/6oAYmAMjINA/Ni1TfRGQkneivColiJEH6nx8c5wXn3joKfOJQApHWQw/tgIbKjus2gAFEIfusOyLHG5g==">--%>
-    <input type="hidden" name="EncodeData" value="AgAFRzQ1MjhHewqvSQtQvwP2Qc0Vc9UUiFD/jiCDmmu5SMzWK49aLr5S49ZNORP1/FUJpGiUujufqGX6E2fn1EK5iOl4bITVxtptW9FRxtXIUAl7eO5A3wuRwbSpNOpou0rNS3fLmpBzDzJY7UUJyfRn51LjXeAbcTnSmtrX6nwOY9NC67esjpNiQfNFzQFyCxOOwBwIWv6rKKF07ABca1QP+o7EHdozTWmIeNs9YAF6iYFliYsOiA67r/p2snXvAGPzGFI71iv/xEyX+hMlZNn1NXVlmIrKA4hug3ge+Uyhh6xiLTY/bItD4UONsNC9CfvdfrK+Qis+SNv3hkGHJ8liWtFxEJYOnHA6OK770k9XAtYnfTd4bTFyifta2S71gWXwaX5UJPFCzLMaA/V7/s19LIVTWPC2RBCCoApGQOTUITAgknI1MBAyxQVPrCIKkA3WpoW5CPEi/kmgZfgBKZGRGRBT98NmIuguSPh21sxz9doSBYPLTA==">
+    <!-- 라이브 서버 핸드폰인증 키값 -->
+    <input type="hidden" name="EncodeData" value="<%=EncodeData%>">
     <div id="wrap">
     <!--좌측사이트메뉴-->
     <%@include file="/common/jsp/leftMenu.jsp" %>
