@@ -70,6 +70,6 @@ var comment = {
     is_change_confirm : "작성한 내용이 저장되지 않습니다.\n계속하시겠습니까?",
     ready_function : "기능준비중입니다.",
 
-    sel_ctgkey_: "준비직렬을 선택해 주세요.",
+    sel_ctgkey: "준비직렬을 선택해 주세요.",
 }
 
