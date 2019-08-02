@@ -2814,6 +2814,7 @@ function validationUserId(userId) {
     } else if (!reg1.test(userId) || !reg2.test(userId) || !reg3.test(userId)) {
         gfn_display("idCaption", true);
         innerHTML("idCaption","아이디는 6~12자 영문+숫자조합이여야 합니다.");
+        innerValue("idValidation", 0); // 0 : 실패 , 1 : 성공
     } else{
         gfn_display("idCaption", false);
         innerValue("idValidation", 1); // 0 : 실패 , 1 : 성공
@@ -2825,6 +2826,7 @@ function validationPassword(pwd) {
         var check = /^(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9])(?=.*[0-9]).{8,30}/;
         if (!check.test(pwd)) {
             gfn_display("pwdCaption", true);
+            innerValue("pwdValidation", 0); // 0 : 실패 , 1 : 성공
             innerHTML("pwdCaption","비밀번호는 특수문자+영문+숫자 8자 이상으로 조합이여야 합니다.");
         } else {
             gfn_display("pwdCaption", false);
