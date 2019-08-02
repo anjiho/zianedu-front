@@ -135,7 +135,7 @@
             if (check.input("roadAddress", comment.input_id_address) == false) return;
             if (check.input("address", comment.input_address) == false) return;
             if (check.selectbox("interestCtgKey0", comment.sel_ctgkey) == false) return;
-            //if (check.input("telephoneMobile", comment.input_id_telphone) == false) return;
+            if (check.input("telephoneMobile", comment.input_id_telphone) == false) return;
             var email    = getInputTextValue("email");
             var emailAdd = getInputTextValue("emailAddress");
             var allEmail = email+"@"+emailAdd;
@@ -143,18 +143,22 @@
             if(fnEmail == true) return;
             var gender  = get_radio_value("gender");//성별
             var interestCtgKey0 = getSelectboxValue("interestCtgKey0");
-
+            var phoneNum = getInputTextValue("telephoneMobile");
+            var phoneNumHypen = getPhoneNumHypen(phoneNum);
+            var name = getInputTextValue("name");
             var data = getJsonObjectFromDiv("joinDiv");
 
             data.gender = gender;
             data.email = allEmail;
-            data.addressNumber = "";
+            data.addressNumber = "1231231231";
             data.interestCtgKey0 = interestCtgKey0;
             data.certCode = getInputTextValue("certCode");
-            data.telephoneMobile = "010-5053-4564";
+            data.telephoneMobile = phoneNumHypen;
+            data.name = name;
 
             var idValidation  = getInputTextValue("idValidation");//아이디 확인
             var pwdValidation = getInputTextValue("pwdValidation");//비밀번호 확인
+
             //회원가입 전송
             if(idValidation == 1 && pwdValidation ==1){
                 var result  =  userReg(data);
@@ -242,7 +246,7 @@
                         <tr>
                             <th scope="col">휴대전화</th>
                             <td>
-                                <input type="text" id="telephoneMobile"  name="telephoneMobile" class="w270">
+                                <input type="text" id="telephoneMobile"  name="telephoneMobile" class="w270" placeholder="입력 시 '-' 없이 적어주세요.">
 <%--                                <input type="text" name="" value="" class="w270" disabled>--%>
                                 <a href="javascript:fnNicePopup();" class="btn_inline">휴대폰 인증받기</a>
                             </td>
