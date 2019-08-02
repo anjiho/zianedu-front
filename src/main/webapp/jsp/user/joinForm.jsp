@@ -27,9 +27,10 @@
 
     if( iReturn == 0 )
     {
+
         sPlainData = niceCheck.getPlainData();
         sCipherTime = niceCheck.getCipherDateTime();
-
+        System.out.println(">>>>>" + sPlainData);
         // 데이타를 추출합니다.
         java.util.HashMap mapresult = niceCheck.fnParse(sPlainData);
 
@@ -45,12 +46,13 @@
         sConnInfo		= (String)mapresult.get("CI");
         sMobileNo		= (String)mapresult.get("MOBILE_NO");
         sMobileCo		= (String)mapresult.get("MOBILE_CO");
-
 %>
     <script language="javascript">
         var name = '<%=sName%>';
+        var certCode = '<%=sDupInfo%>';
         window.opener.document.getElementById("name").value = name;
         window.opener.document.getElementById("name").disabled = true;
+        window.opener.document.getElementById("certCode").value = certCode;
     </script>
 <% } %>
 <%@include file="/common/jsp/common.jsp" %>
@@ -72,9 +74,7 @@
     <!--본문-->
     <script>
         window.name ="Parent_window";
-        //window.opener.location.reload();
         window.close();
-
 
         function init() {
             activeJoinHeaderBtn("statusBar_02");
@@ -135,7 +135,7 @@
             if (check.input("roadAddress", comment.input_id_address) == false) return;
             if (check.input("address", comment.input_address) == false) return;
             if (check.selectbox("interestCtgKey0", comment.sel_ctgkey) == false) return;
-            if (check.input("telephoneMobile", comment.input_id_telphone) == false) return;
+            //if (check.input("telephoneMobile", comment.input_id_telphone) == false) return;
             var email    = getInputTextValue("email");
             var emailAdd = getInputTextValue("emailAddress");
             var allEmail = email+"@"+emailAdd;
@@ -143,8 +143,6 @@
             if(fnEmail == true) return;
             var gender  = get_radio_value("gender");//성별
             var interestCtgKey0 = getSelectboxValue("interestCtgKey0");
-            var telPhoneNum   = getInputTextValue("telephoneMobile");
-            var telPhoneHypen = getPhoneNumHypen(telPhoneNum);
 
             var data = getJsonObjectFromDiv("joinDiv");
 
@@ -152,8 +150,8 @@
             data.email = allEmail;
             data.addressNumber = "";
             data.interestCtgKey0 = interestCtgKey0;
-            data.certCode = "sdfsdfsdfsdfsdfasfs"; //휴대폰인증받기 - 인증확인코드값
-            data.telephoneMobile = telPhoneHypen;
+            data.certCode = getInputTextValue("certCode");
+            data.telephoneMobile = "010-5053-4564";
 
             var idValidation  = getInputTextValue("idValidation");//아이디 확인
             var pwdValidation = getInputTextValue("pwdValidation");//비밀번호 확인
