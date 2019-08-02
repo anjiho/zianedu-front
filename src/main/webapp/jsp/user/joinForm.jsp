@@ -1,9 +1,63 @@
+<%@ page import="com.zianedu.front.utils.Util" %>
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+<%
+    NiceID.Check.CPClient niceCheck = new  NiceID.Check.CPClient();
+
+    String sEncodeData = Util.requestReplace(request.getParameter("EncodeData"), "encodeData");
+
+    String sSiteCode = "G4528";				// NICE로부터 부여받은 사이트 코드
+    String sSitePassword = "H9NGAJRFE6WF";			// NICE로부터 부여받은 사이트 패스워드
+
+    String sCipherTime = "";			// 복호화한 시간
+    String sRequestNumber = "";			// 요청 번호
+    String sResponseNumber = "";		// 인증 고유번호
+    String sAuthType = "";				// 인증 수단
+    String sName = "";					// 성명
+    String sDupInfo = "";				// 중복가입 확인값 (DI_64 byte)
+    String sConnInfo = "";				// 연계정보 확인값 (CI_88 byte)
+    String sBirthDate = "";				// 생년월일(YYYYMMDD)
+    String sGender = "";				// 성별
+    String sNationalInfo = "";			// 내/외국인정보 (개발가이드 참조)
+    String sMobileNo = "";				// 휴대폰번호
+    String sMobileCo = "";				// 통신사
+    String sMessage = "";
+    String sPlainData = "";
+
+    int iReturn = niceCheck.fnDecode(sSiteCode, sSitePassword, sEncodeData);
+
+    if( iReturn == 0 )
+    {
+        sPlainData = niceCheck.getPlainData();
+        sCipherTime = niceCheck.getCipherDateTime();
+
+        // 데이타를 추출합니다.
+        java.util.HashMap mapresult = niceCheck.fnParse(sPlainData);
+
+        sRequestNumber  = (String)mapresult.get("REQ_SEQ");
+        sResponseNumber = (String)mapresult.get("RES_SEQ");
+        sAuthType		= (String)mapresult.get("AUTH_TYPE");
+        sName			= (String)mapresult.get("NAME");
+        //sName			= (String)mapresult.get("UTF8_NAME"); //charset utf8 사용시 주석 해제 후 사용
+        sBirthDate		= (String)mapresult.get("BIRTHDATE");
+        sGender			= (String)mapresult.get("GENDER");
+        sNationalInfo  	= (String)mapresult.get("NATIONALINFO");
+        sDupInfo		= (String)mapresult.get("DI");
+        sConnInfo		= (String)mapresult.get("CI");
+        sMobileNo		= (String)mapresult.get("MOBILE_NO");
+        sMobileCo		= (String)mapresult.get("MOBILE_CO");
+
+%>
+    <script language="javascript">
+        var name = '<%=sName%>';
+        window.opener.document.getElementById("name").value = name;
+        window.opener.document.getElementById("name").disabled = true;
+    </script>
+<% } %>
 <%@include file="/common/jsp/common.jsp" %>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
     <input type="hidden" name="m" value="checkplusSerivce">				<!-- 필수 데이타로, 누락하시면 안됩니다. -->
-    <input type="hidden" name="EncodeData" value="AgAFRzQ1Mjhag/PvTlE5vxpWm8KC252gwjUnsw0g8O+tj+r7Gd6aG75S49ZNORP1/FUJpGiUujufqGX6E2fn1EK5iOl4bITVHUBYIggLo8iiH5TeogMG9W6Ae0tg5wPd5wv+CD+0bKpqNrtrOkveiCGFoxhr3wl4Lujm2rxo3r+ac16vYzlOjUoNuFsu1AUYos8q0szHNcSAj61tI05R9nMEEfcXo69Y7KkM0THceYKGG4J8tCnUyvhd9PG0OEgi+mPNzTTwZV7u73mXWWgWyQcKfBzWLUDz2QeIK7PddxYK5p0azcBjuNvqq/W2+Lkn5GFFQSkGzKU2G2Ep3YJlOTgrwSG7rhvktnZbCabSJOsT3hX/mrcG0T4Jd3OblrMk//wgHst4wG0VsxKRi6TsHr3VX2gwlRC8xqxGRcWLlUdF7jZdewolYS6YqMwHdW7w6krwq1oJ5dQvdBFMySk3lvZAORxPwICzUuv5tk9urY+OCtkXGZ/myQ==">
+    <input type="hidden" name="EncodeData" value="AgAFRzQ1MjgEcYPg+9kV2Z0A1ygHMMSItIyAkxsv0dPppz2BN/JiH75S49ZNORP1/FUJpGiUujufqGX6E2fn1EK5iOl4bITVpCHdvpRA1h+Qg/CWNQN1+/SIXnGNoKZqKhohWZmP/q4h6HpAE91icmtyopcYPQu8XP82I79LHNq4jwmbZh+/jhE1DYCCjh3cjsfRxkQH3oqtAFWkVsfQx6OXGWrfX10tdkpgpxLEAbT+DtwNQqFqEtUNbeMpE0JKCoXuVMM3ZjS8etJyx45Kt5YC278vmfLJnfzRzeGTuKjGhQMW3eswjhoQdui4qQBDDx0wLsTE9UKRdBIFXJ6QC1S+2fELfa6HmorHNaKrz5EZI2usEzpG5ThFVNBHcstdzYDZI6S5RCKwVLD2Ljbjz+cciLlxunIupju4D/6oAYmAMjINA/Ni1TfRGQkneivColiJEH6nx8c5wXn3joKfOJQApHWQw/tgIbKjus2gAFEIfusOyLHG5g==">
     <div id="wrap">
     <!--좌측사이트메뉴-->
     <%@include file="/common/jsp/leftMenu.jsp" %>
@@ -17,6 +71,11 @@
 
     <!--본문-->
     <script>
+        window.name ="Parent_window";
+        //window.opener.location.reload();
+        window.close();
+
+
         function init() {
             activeJoinHeaderBtn("statusBar_02");
             getUserRegSerialList("interestCtgKey0"); //준비직렬
