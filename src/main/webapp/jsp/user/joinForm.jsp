@@ -89,7 +89,7 @@
 
             data.gender = gender;
             data.email = allEmail;
-            data.addressNumber = "구주소testtest";
+            data.addressNumber = "";
             data.interestCtgKey0 = interestCtgKey0;
             data.certCode = "sdfsdfsdfsdfsdfasfs";
             data.telephoneMobile = "010-5053-4564";
@@ -183,7 +183,7 @@
                         <tr>
                             <th scope="col">휴대전화</th>
                             <td>
-                                <input type="text" id="telephoneMobile"  name="telephoneMobile" class="w270" disabled>
+                                <input type="text" id="telephoneMobile"  name="telephoneMobile" class="w270">
 <%--                                <input type="text" name="" value="" class="w270" disabled>--%>
                                 <a href="javascript:fnNicePopup();" class="btn_inline">휴대폰 인증받기</a>
                             </td>
