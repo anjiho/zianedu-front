@@ -27,9 +27,10 @@
 
     if( iReturn == 0 )
     {
+
         sPlainData = niceCheck.getPlainData();
         sCipherTime = niceCheck.getCipherDateTime();
-
+        System.out.println(">>>>>" + sPlainData);
         // 데이타를 추출합니다.
         java.util.HashMap mapresult = niceCheck.fnParse(sPlainData);
 
@@ -45,12 +46,13 @@
         sConnInfo		= (String)mapresult.get("CI");
         sMobileNo		= (String)mapresult.get("MOBILE_NO");
         sMobileCo		= (String)mapresult.get("MOBILE_CO");
-
 %>
     <script language="javascript">
         var name = '<%=sName%>';
+        var certCode = '<%=sDupInfo%>';
         window.opener.document.getElementById("name").value = name;
         window.opener.document.getElementById("name").disabled = true;
+        window.opener.document.getElementById("certCode").value = certCode;
     </script>
 <% } %>
 <%@include file="/common/jsp/common.jsp" %>
@@ -72,9 +74,7 @@
     <!--본문-->
     <script>
         window.name ="Parent_window";
-        //window.opener.location.reload();
         window.close();
-
 
         function init() {
             activeJoinHeaderBtn("statusBar_02");
@@ -150,7 +150,7 @@
             data.email = allEmail;
             data.addressNumber = "구주소testtest";
             data.interestCtgKey0 = interestCtgKey0;
-            data.certCode = "sdfsdfsdfsdfsdfasfs";
+            data.certCode = getInputTextValue("certCode");
             data.telephoneMobile = "010-5053-4564";
 
             var idValidation  = getInputTextValue("idValidation");//아이디 확인
