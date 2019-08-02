@@ -70,6 +70,8 @@
              */
             var check = new isCheck();
             if (check.input("name", comment.search_input_id_name) == false) return;
+            if (check.input("userId", comment.insert_id) == false) return;
+            if (check.input("password", comment.insert_password) == false) return;
             if (check.input("email", comment.input_member_email) == false) return;
             if (check.input("emailAddress", comment.input_member_email) == false) return;
             if (check.input("zipcode", comment.input_zip_code) == false) return;
@@ -102,7 +104,8 @@
                 if(result.resultCode == 200){
                     goPage('user', 'joinResult');
                 }else{
-                    alert("에러");
+                    alert("관리자에게 문의해주세요.");
+                    return false;
                 }
             }else if(idValidation == 0){
                 alert("아이디를 확인해 주세요.");
