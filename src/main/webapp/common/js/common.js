@@ -2565,7 +2565,11 @@ function deleteTableRow(tableId, className) {
 }
 
 function execDaumPostcode() {
+    var width = 500; //팝업의 너비
+    var height = 600; //팝업의 높이
     new daum.Postcode({
+        width: width, //생성자에 크기 값을 명시적으로 지정해야 합니다.
+        height: height,
         oncomplete: function(data) {
             var roadAddr = data.roadAddress; // 도로명 주소 변수
             var extraRoadAddr = ''; // 참고 항목 변수
@@ -2602,7 +2606,10 @@ function execDaumPostcode() {
                 guideTextBox.style.display = 'none';
             }
         }
-    }).open();
+    }).open({
+        left: (window.screen.width / 2) - (width / 2),
+        top: (window.screen.height / 2) - (height / 2)
+    });
 }
 
 //textarea Byte수 제한하기

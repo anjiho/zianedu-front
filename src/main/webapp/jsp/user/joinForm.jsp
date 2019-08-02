@@ -64,7 +64,6 @@
 
         function goJoin() {
             var check = new isCheck();
-            //이메일 정규식 체크 넣기
             if (check.input("name", comment.search_input_id_name) == false) return;
             if (check.input("email", comment.input_member_email) == false) return;
             if (check.input("emailAddress", comment.input_member_email) == false) return;
@@ -76,9 +75,9 @@
             var email    = getInputTextValue("email");
             var emailAdd = getInputTextValue("emailAddress");
             var allEmail = email+"@"+emailAdd;
-            var fnEmail =  fn_isemail(allEmail);//이메일 형식 체크
+            var fnEmail  =  fn_isemail(allEmail);//이메일 형식 체크
             if(fnEmail == true) return;
-            var gender = get_radio_value("gender");//성별
+            var gender  = get_radio_value("gender");//성별
             var interestCtgKey0 = getSelectboxValue("interestCtgKey0");
 
             var data = getJsonObjectFromDiv("joinDiv");
@@ -90,8 +89,8 @@
             data.certCode = "sdfsdfsdfsdfsdfasfs";
             data.telephoneMobile = "010-5053-4564";
 
-            var idValidation  = getInputTextValue("idValidation");
-            var pwdValidation = getInputTextValue("pwdValidation");
+            var idValidation  = getInputTextValue("idValidation");//아이디 확인
+            var pwdValidation = getInputTextValue("pwdValidation");//비밀번호 확인
             //회원가입 전송
             if(idValidation == 1 && pwdValidation ==1){
                 var result  =  userReg(data);
