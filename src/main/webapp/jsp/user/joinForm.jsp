@@ -158,7 +158,7 @@
 
             data.gender = gender;
             data.email = allEmail;
-            data.addressNumber = "1231231231";
+            data.addressNumber = "";
             data.interestCtgKey0 = interestCtgKey0;
             data.certCode = getInputTextValue("certCode");
             data.telephoneMobile = phoneNumHypen;
