@@ -9,7 +9,7 @@ function postApi(url, paramData) {
     $.post(apiHost + url, paramData, function (response) {
         resultData = response;
     }).fail(function() {
-        alert( "통신 에러" );
+        alert(comment.error);
     });
     return resultData;
 }
@@ -25,7 +25,7 @@ function getApi(url, pathData, paramData) {
             };
         }
     }).fail(function() {
-        alert("통신 에러");
+        alert(comment.error);
     });
     return resultData;
 }
@@ -39,7 +39,7 @@ function getLoginApi(url, pathData, paramData) {
             result : response.resultCode
         };
     }).fail(function() {
-        alert("통신 에러");
+        alert(comment.error);
     });
     return resultData;
 }
@@ -56,7 +56,7 @@ function getPageApi(url, pathData, paramData) {
             };
         }
     }).fail(function() {
-        alert("통신 에러");
+        alert(comment.error);
     });
     return resultData;
 }

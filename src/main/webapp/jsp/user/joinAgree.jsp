@@ -25,7 +25,7 @@
             var chk1 = isCheckedCheckbox("joinAgreeChk1", "ID");
             var chk2 = isCheckedCheckbox("joinAgreeChk2", "ID");
             if(chk0 == false || chk1 == false || chk2 == false){
-                    alert("약관동의 체크 해주세요.");
+                    alert(comment.check_agreement);
                     return false;
             }else{
                 goPage('user', 'joinForm')

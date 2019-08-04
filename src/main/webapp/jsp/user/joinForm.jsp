@@ -113,7 +113,7 @@
                             innerHTML("rePwdCaption","비밀번호가 일치하지 않습니다. 다시 확번 확인해주세요.");
                         }
                     }else{
-                        alert("비밀번호를 입력해 주세요.");
+                        alert(comment.insert_password);
                         innerValue("rePassword", "");
                         focusInputText("password");
                         return false;
@@ -163,15 +163,15 @@
                 if(result.resultCode == 200){
                     goPage('user', 'joinResult');
                 }else if(result.resultCode == 902){
-                    alert("아이디가 중복되었습니다.");
+                    alert(comment.overlap_user_id);
                     return false;
                 }
             }else if(idValidation == 0){
-                alert("아이디를 확인해 주세요.");
+                alert(comment.check_user_id);
                 focusInputText("userId");
                 return false;
             }else{
-                alert("비밀번호를 확인해 주세요.");
+                alert(comment.check_user_pwd);
                 focusInputText("password");
                 return false;
             }
