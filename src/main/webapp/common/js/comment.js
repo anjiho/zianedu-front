@@ -23,6 +23,9 @@ var comment = {
     isChange : "변경하시겠습니까?",
 
     check_item : "항목을 체크하세요.",
+    check_agreement : "약관동의를 체크해 주세요.",
+    check_user_id : "아이디를 다시 확인해 주세요.",
+    check_user_pwd : "비밀번호를 다시 확인해 주세요.",
     not_update_item : "변경될 항목이 없습니다.",
 
     blank_list : "목록이 없습니다.",
@@ -39,6 +42,8 @@ var comment = {
     success_delete : "삭제되었습니다.",
     success_cancel : "취소되었습니다.",
     success_update : "수정됬습니다.",
+
+    overlap_user_id : "아이디가 중복되었습니다.",
 
     load_data : "데이타를 불러오는중..",
 
@@ -71,5 +76,7 @@ var comment = {
     ready_function : "기능준비중입니다.",
 
     sel_ctgkey: "준비직렬을 선택해 주세요.",
+
+
 }
 
