@@ -52,6 +52,7 @@ var comment = {
     input_member_email : "이메일주소를 입력해주세요.",
     input_id_gender : "이름을 입력해주세요.",
     input_id_telphone : "휴대전화를 입력해주세요.",
+    access_telphone : "휴대폰 인증받기를 진행해주세요",
     input_id_address : "주소를 입력해주세요.",
 
     file_name_not_allow_korean : "파일명이 한글입니다. 영문으로 바꿔주세요.",

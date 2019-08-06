@@ -4,7 +4,7 @@
     //라이브
     //String EncodeData = "AgAFRzQ1MjhHewqvSQtQvwP2Qc0Vc9UUiFD/jiCDmmu5SMzWK49aLr5S49ZNORP1/FUJpGiUujufqGX6E2fn1EK5iOl4bITVxtptW9FRxtXIUAl7eO5A3wuRwbSpNOpou0rNS3fLmpBzDzJY7UUJyfRn51LjXeAbcTnSmtrX6nwOY9NC67esjpNiQfNFzQFyCxOOwBwIWv6rKKF07ABca1QP+o7EHdozTWmIeNs9YAF6iYFliYsOiA67r/p2snXvAGPzGFI71iv/xEyX+hMlZNn1NXVlmIrKA4hug3ge+Uyhh6xiLTY/bItD4UONsNC9CfvdfrK+Qis+SNv3hkGHJ8liWtFxEJYOnHA6OK770k9XAtYnfTd4bTFyifta2S71gWXwaX5UJPFCzLMaA/V7/s19LIVTWPC2RBCCoApGQOTUITAgknI1MBAyxQVPrCIKkA3WpoW5CPEi/kmgZfgBKZGRGRBT98NmIuguSPh21sxz9doSBYPLTA==";
     //개발
-    String EncodeData = "AgAFRzQ1MjgEcYPg+9kV2Z0A1ygHMMSItIyAkxsv0dPppz2BN/JiH75S49ZNORP1/FUJpGiUujufqGX6E2fn1EK5iOl4bITVpCHdvpRA1h+Qg/CWNQN1+/SIXnGNoKZqKhohWZmP/q4h6HpAE91icmtyopcYPQu8XP82I79LHNq4jwmbZh+/jhE1DYCCjh3cjsfRxkQH3oqtAFWkVsfQx6OXGWrfX10tdkpgpxLEAbT+DtwNQqFqEtUNbeMpE0JKCoXuVMM3ZjS8etJyx45Kt5YC278vmfLJnfzRzeGTuKjGhQMW3eswjhoQdui4qQBDDx0wLsTE9UKRdBIFXJ6QC1S+2fELfa6HmorHNaKrz5EZI2usEzpG5ThFVNBHcstdzYDZI6S5RCKwVLD2Ljbjz+cciLlxunIupju4D/6oAYmAMjINA/Ni1TfRGQkneivColiJEH6nx8c5wXn3joKfOJQApHWQw/tgIbKjus2gAFEIfusOyLHG5g==";
+    String EncodeData = "AgAFRzQ1MjggmBc4FV2hsPk60S+onp/sPGguP/iH2IcLPYHRsyy1o75S49ZNORP1/FUJpGiUujufqGX6E2fn1EK5iOl4bITVW5OwueNZi7WXOXlvTLPDad7mZmTui1jNlT8Hwtvjwj6dWWOFOBi1pyFMYhWlKY9YjcYFYIxit58BaCJiOktYyUjw981KqnSD8mTh5v5j0o7FbAQZGgHWomubJYsH4odO7fu1IZZ2ZAihdqQUw9tJGjXfwShalrvgRp/jWWioBEmuz/EoubTtVE338M1ALBn+7+l63fIRxSeVgoNxY6dHYBLv94Aqzrv8bPiqIe7c6p6m9so+k+V/9HD1QvK5UbV1m+g3qOAxnyuCRV9FaaDPbWdl81QuHBjWL9bae4Ygp/nn28h+4JfefW1R/U8mP4jJA7a4B2xPu0DEyIPU49647KIlSAaQopATlkp+0mZoVsoKAn9YEiIG3jfJQCLl5LsgpcX7Wmll11trgCTkcmjbzQ==";
 %>
 <%
     NiceID.Check.CPClient niceCheck = new  NiceID.Check.CPClient();
@@ -54,9 +54,11 @@
     <script language="javascript">
         var name = '<%=sName%>';
         var certCode = '<%=sDupInfo%>';
+        var mobileNo = '<%=sMobileNo%>';
         window.opener.document.getElementById("name").value = name;
         window.opener.document.getElementById("name").disabled = true;
         window.opener.document.getElementById("certCode").value = certCode;
+        window.opener.document.getElementById("telephoneMobile").value = mobileNo;
     </script>
 <% } %>
 <%@include file="/common/jsp/common.jsp" %>
@@ -143,7 +145,7 @@
             if (check.input("roadAddress", comment.input_id_address) == false) return;
             if (check.input("address", comment.input_address) == false) return;
             if (check.selectbox("interestCtgKey0", comment.sel_ctgkey) == false) return;
-            if (check.input("telephoneMobile", comment.input_id_telphone) == false) return;
+            if (check.input("telephoneMobile", comment.access_telphone) == false) return;
             var email    = getInputTextValue("email");
             var emailAdd = getInputTextValue("emailAddress");
             var allEmail = email+"@"+emailAdd;
@@ -254,7 +256,7 @@
                         <tr>
                             <th scope="col">휴대전화</th>
                             <td>
-                                <input type="text" id="telephoneMobile"  name="telephoneMobile" class="w270" placeholder="입력 시 '-' 없이 적어주세요.">
+                                <input type="text" id="telephoneMobile"  name="telephoneMobile" class="w270" placeholder="" disabled>
 <%--                                <input type="text" name="" value="" class="w270" disabled>--%>
                                 <a href="javascript:fnNicePopup();" class="btn_inline">휴대폰 인증받기</a>
                             </td>
