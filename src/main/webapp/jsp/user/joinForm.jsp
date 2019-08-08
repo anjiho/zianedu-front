@@ -274,7 +274,7 @@
                         <tr>
                             <th scope="col">주소</th>
                             <td class="multiLine">
-                                <input type="text" class="w150" id="postcode" name="zipcode">
+                                <input type="text" class="w150" id="postcode" name="zipcode" disabled>
                                 <a href="#" onclick="execDaumPostcode()" class="btn_inline">우편번호 찾기</a><br />
                                 <input type="text" id="roadAddress" name="addressRoad" class="w400">
                                 <input type="text" id="address" name="address" class="w200" placeholder="상세주소">
