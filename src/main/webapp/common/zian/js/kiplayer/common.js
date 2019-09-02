@@ -9,10 +9,10 @@ var default_Slick = {
 		breakpoint:1024,
 		settings:{autoplay:true,slidesToShow:3,centerMode:true}
 	},
-	{
-		breakpoint:767,
-		settings:{autoplay:true,slidesToShow:1,centerMode:true}
-	}]
+		{
+			breakpoint:767,
+			settings:{autoplay:true,slidesToShow:1,centerMode:true}
+		}]
 };
 var sliderItem = [];
 
@@ -76,7 +76,7 @@ var kiplayer = {
 			eventType = "keyup";
 		}
 		var handlerFunc = conditions.handler;
-		if((!handlerFunc)){ 
+		if((!handlerFunc)){
 			handlerFunc = function(event){
 				var regEx = null;
 				switch(dataType){
@@ -248,7 +248,7 @@ var kiplayer = {
 				changeYear: false,
 				yearRange: 'c-2:c+2',
 				dateFormat: 'yy-mm',
-				onSelect: function(){	
+				onSelect: function(){
 				},
 				onClose: function(selectedMonth){
 					if($(this).hasClass("dateFrom")) {
@@ -339,19 +339,19 @@ var kiplayer = {
 				if($(this).attr("data-param")){
 					_param = $(this).attr("data-param");
 				}
-			    $.ajax({
-			        type:"POST",
-			        url:_url,
-			        dataType:"text",
-			        data:_param,
-			        timeout:10000,
-			        success:function(data){
-			        	_target.addClass("active").html(data);
-			        },
-			        error: function(response){
-			        	console.log(response);
-			        }
-			    });
+				$.ajax({
+					type:"POST",
+					url:_url,
+					dataType:"text",
+					data:_param,
+					timeout:10000,
+					success:function(data){
+						_target.addClass("active").html(data);
+					},
+					error: function(response){
+						console.log(response);
+					}
+				});
 			}
 		});
 	},
@@ -390,7 +390,7 @@ var kiplayer = {
 		}
 		$(".bx-viewport ul").each(function(){
 			$(this).find("li a").focus(function(){
-				//$(this).parents(".bx-wrapper").eq(0).find(".bx-stop").trigger("click");		
+				//$(this).parents(".bx-wrapper").eq(0).find(".bx-stop").trigger("click");
 				var slideNo = $(this).parent().index();
 				if(slideNo < $(this).parent().parent().children("li").length - 3){
 					var sliderNo = parseInt($(this).parent().parent().attr("data-sliderNo"));
@@ -415,5 +415,5 @@ var kiplayer = {
 	'findFocusItem':function(area){
 		return area.find("input, select, textarea, button, a");
 	}
-	
+
 };
