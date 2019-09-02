@@ -48,7 +48,7 @@
     </div>
     <!--본문-->
     <div id="container">
-        <div class="inner">
+        <div class="inner"> 
             <div id="lendingVisual">
                 <div class="lendingVisualText">
                     지안에듀 하나면 끝
@@ -103,6 +103,7 @@
                     <a href="#"><img src="/common/zian/images/content/img_banner0003.jpg" alt=""></a>
                 </div>
                 <div class="divGroup cols3">
+                    <!-- DB 배너 -->
                     <div><a href="#"><img id="mainBanner0" src="" alt=""></a></div>
                     <div><a href="#"><img id="mainBanner1" src="" alt=""></a></div>
                     <div><a href="#"><img id="mainBanner2" src="" alt=""></a></div>
