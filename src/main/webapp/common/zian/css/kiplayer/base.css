@@ -47,6 +47,8 @@ caption, .soundOnly{display:block !important;position:absolute !important;top:-9
 .divGroup.cols3 > div{width:33.3333%;}
 .divGroup.cols4 > div{width:25%;}
 .divGroup.cols5 > div{width:20%;}
+.divGroup.noMargin{margin:0;}
+.divGroup.noMargin > div{padding:0;}
 
 
 /* ==============================================================================================================
@@ -221,7 +223,7 @@ input + .btn_inline{margin-left:5px;}
 ============================================================================================================== */
 .bx-wrapper{position:relative;}
 .bx-wrapper .bx-viewport img{width:100%;}
-.bx-wrapper .bx-controls div{display:inline-block;}
+.bx-wrapper .bx-controls .bx-pager > div{display:inline-block;}
 .bx-wrapper .bx-controls{}
 .bx-wrapper .bx-pager{position:absolute;bottom:30px;left:0;right:0;text-align:center;}
 .bx-wrapper .bx-pager-item a{display:inline-block;margin:0 5px;width:15px;height:15px;background:none;border:1px #111 solid;text-indent:-9999em;border-radius:50%;}
