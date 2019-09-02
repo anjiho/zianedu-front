@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!--최상단배너-->
+<!--최상단배너
 <div id="topBanner" style="background-color:#520404;">
     <div class="inner">
         <a href="#"><img src="/common/zian/images/content/img_topBanner0101.jpg" alt=""></a>
     </div>
-</div>
+</div>-->
 <!--//최상단배너-->
 <!--상단-->
 <div id="header">

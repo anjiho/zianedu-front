@@ -25,7 +25,7 @@ function getBookList(tagId , leftMenuCtgKey, sPage, listLimit) {
         listLimit : listLimit
     };
     var infoList = getApi("/bookStore/getBookList/", leftMenuCtgKey, data);
-    console.log(infoList);
+
     if (infoList.result.length > 0) {
         var selList = infoList.result;
         dwr.util.addOptions(tagId, selList, function (data) {
@@ -33,7 +33,7 @@ function getBookList(tagId , leftMenuCtgKey, sPage, listLimit) {
             if(data.name == null) name = "";
             else name = "|" + data.name;
 
-            return "<div>" +
+            return "<div class=\"item\">" +
                 "<img src='"+ data.bookImageUrl +"' alt=''>"+
                 "<span class=\"name\">"+ data.goodsName +"</span>"+
                 "<span class=\"writer\">"+ data.writer + name +"</span>" +
