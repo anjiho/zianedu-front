@@ -2,8 +2,10 @@
 <%@include file="/common/jsp/common.jsp" %>
 <script>
     function init(){
+        //alert(leftMenuSession);
+        //console.log(sessionStorage.getItem("leftMenu"));
         activeHeaderBtn("publicHeaderLi_1");
-        activeLeftMenu("item1");
+        activeLeftMenu(sessionStorage.getItem("leftMenu"));
         getMainBigBanner("mainVisualSlider1", 5);//메인 대 배너
         getPublicOnlineMainMiniBanner("mainVisualSlider2", 793, 5);//대배너 옆 미니 배너
         getTeacherBannerList("teacherList1", 794, 0);//공통과목 교수진

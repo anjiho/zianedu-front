@@ -1,16 +1,31 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+<script>
+    function setLeftMenu(val) {
+        //if (leftMenuSession == undefined || leftMenuSession == null) {
+        sessionStorage.setItem("leftMenu", val);
+
+
+        // }else{
+        //     alert("2");
+        //     activeLeftMenu(val);
+        // }
+    }
+
+</script>
 <div id="skipLink">
     <a href="#">본문바로가기</a>
     <a href="#">주메뉴바로가기</a>
 </div>
 <!--좌측사이트메뉴-->
 <div id="aside">
+
+
     <h1><a href="javascript:goMain();"><img src="/common/zian/images/common/logo_notext.png" alt="zion edu"></a></h1>
     <div id="siteNav">
         <ul>
-            <li class="item1"><a href="javascript:goPage('publicOnline', 'main')">행정직</a></li>
-            <li class="item2"><a href="javascript:goPage('techOnline', 'main')">기술직</a></li>
-            <li class="item3"><a href="javascript:goPage('postOnline', 'main')">계리직</a></li>
+            <li class="item1" id="item1" onclick="setLeftMenu(this.id);"><a href="javascript:goPage('publicOnline', 'main')">행정직</a></li>
+            <li class="item2" id="item2" onclick="setLeftMenu(this.id);"><a href="javascript:goPage('techOnline', 'main')">기술직</a></li>
+            <li class="item3" id="item3" onclick="setLeftMenu(this.id);"><a href="javascript:goPage('postOnline', 'main')">계리직</a></li>
             <li class="item4"><a href="#">온라인 서점</a></li>
             <li class="item5"><a href="#">자격증/가산점</a></li>
         </ul>

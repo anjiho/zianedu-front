@@ -3,7 +3,7 @@
 <script>
     function init() {
         activeHeaderBtn("publicHeaderLi_1");
-        activeLeftMenu("item2");
+        activeLeftMenu(sessionStorage.getItem("leftMenu"));
         getMainBigBanner("mainVisualSlider1", 5);//메인 대 배너
         getPublicOnlineMainMiniBanner("mainVisualSlider2", 828, 8);//대배너 옆 미니 배너
         getTeacherBannerList("teacherList1", 829, 0);//공통과목 교수진
