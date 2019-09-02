@@ -6,7 +6,7 @@
         //console.log(sessionStorage.getItem("leftMenu"));
         activeHeaderBtn("publicHeaderLi_1");
         activeLeftMenu(sessionStorage.getItem("leftMenu"));
-        getPublicOnlineMainBanner("mainVisualSlider1", 786, 6);//메인 대 배너
+        getPublicOnlineMainBanner("mainVisualSlider1", 792, 5);//메인 대 배너
         getPublicOnlineMainMiniBanner("mainVisualSlider2", 793, 5);//대배너 옆 미니 배너
         getTeacherBannerList("teacherList1", 794, 0);//공통과목 교수진
         getMajorTeacherBannerList("teacherList2", 794, 1);//전공과목 교수진
