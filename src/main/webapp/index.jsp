@@ -16,11 +16,13 @@
     <!--본문-->
     <script>
         function init() {
-            getIndexMainBigBanner("bigBanner", "visualPager", 5);//메인 대 배너
-            getTeacherBannerList("teacherList", 228, 0);//공통과목 교수진
-            getMajorTeacherBannerList("majorTeacherList", 228, 1);//전공과목 교수진
-            getPassReviewList("passReviewList", "PASS", 10);//합격후기
-            getLecReviewList("lecReviewList", "SIGN", 10);//수강후기
+            // getIndexMainBigBanner("bigBanner", "visualPager", 5);//메인 대 배너
+            // getTeacherBannerList("teacherList", 228, 0);//공통과목 교수진
+            // getMajorTeacherBannerList("majorTeacherList", 228, 1);//전공과목 교수진
+            // getPassReviewList("passReviewList", "PASS", 10);//합격후기
+            // getLecReviewList("lecReviewList", "SIGN", 10);//수강후기
+
+            getEventMiniBanner("", 6283, 1);//이벤트 배너
             getMainMiniBanner("mainMiniBanner", 224, 3);//미니배너
         }
     </script>
@@ -35,8 +37,8 @@
             <!--최상단메뉴-->
             <div id="topNav">
                 <ul>
-                    <li><a href="#">로그인</a></li>
-                    <li><a href="#">회원가입</a></li>
+                    <li><a href="javascript:goLoginPage();">로그인</a></li>
+                    <li><a href="javascript:goPage('user', 'joinAgree');">회원가입</a></li>
                     <li><a href="#">합격수기</a></li>
                     <li><a href="#">이벤트</a></li>
                 </ul>
@@ -95,15 +97,15 @@
             <div class="lendingBanner">
                 <div>
                     <!-- DB 배너 -->
-                    <a href="#"><img src="/common/zian/images/content/img_banner0002.jpg" alt=""></a>
+                    <a href="#"><img id="eventBanner0" src="" alt=""></a>
                 </div>
                 <div>
                     <a href="#"><img src="/common/zian/images/content/img_banner0003.jpg" alt=""></a>
                 </div>
                 <div class="divGroup cols3">
-                    <div><a href="#"><img src="/common/zian/images/content/img_banner0004.jpg" alt=""></a></div>
-                    <div><a href="#"><img src="/common/zian/images/content/img_banner0005.jpg" alt=""></a></div>
-                    <div><a href="#"><img src="/common/zian/images/content/img_banner0006.jpg" alt=""></a></div>
+                    <div><a href="#"><img id="mainBanner0" src="" alt=""></a></div>
+                    <div><a href="#"><img id="mainBanner1" src="" alt=""></a></div>
+                    <div><a href="#"><img id="mainBanner2" src="" alt=""></a></div>
                 </div>
             </div>
 
@@ -158,7 +160,7 @@
     <%@include file="/common/jsp/rightMenu.jsp" %>
     <!--//우측따라다니는영역-->
     <!--하단고정식배너-->
-    <%@include file="/common/jsp/footerBanner.jsp" %>
+<%--    <%@include file="/common/jsp/footerBanner.jsp" %>--%>
     <!--//하단고정식배너-->
 </div>
 <div id="overlay"></div>
