@@ -20,7 +20,9 @@ function login(userId, userPwd) {
         sessionStorage.setItem("userInfo", JSON.stringify(result));
         //gfn_display("logout", true);
         //gfn_display("login", false);
-        goMain();
+        //goMain();
+        var targetUrl = getParameterByName("target_url");
+        location.href = targetUrl;
     }else if(loginChk.resultCode == 900){
         alert(comment.blank_login_check);
         return;

@@ -50,10 +50,10 @@
     <div id="snsLink">
         <b>지안에듀 SNS</b>
         <ul>
-            <li><a href="#"><img src="/common/zian/images/common/btn_snsLinkFacebook.png" alt="페이스북"></a></li>
-            <li><a href="#"><img src="/common/zian/images/common/btn_snsLinkInstgram.png" alt="인스타그램"></a></li>
-            <li><a href="#"><img src="/common/zian/images/common/btn_snsLinkYoutube.png" alt="유투브"></a></li>
-            <li><a href="#"><img src="/common/zian/images/common/btn_snsLinkBlog.png" alt="네이버블로그"></a></li>
+            <li><a href="https://www.facebook.com/zianedu/" target="_blank"><img src="/common/zian/images/common/btn_snsLinkFacebook.png" alt="페이스북"></a></li>
+            <li><a href="https://www.instagram.com/zianedu_algisa/" target="_blank"><img src="/common/zian/images/common/btn_snsLinkInstgram.png" alt="인스타그램"></a></li>
+            <li><a href="https://www.youtube.com/channel/UCVggN-Fjn55m-v6SposcJJw/featured?view_as=subscriber" target="_blank"><img src="/common/zian/images/common/btn_snsLinkYoutube.png" alt="유투브"></a></li>
+            <li><a href="https://blog.naver.com/dreamart0829" target="_blank"><img src="/common/zian/images/common/btn_snsLinkBlog.png" alt="네이버블로그"></a></li>
         </ul>
     </div>
     <a href="#" id="btn_asideToggle">죄측메뉴열기/닫기</a>

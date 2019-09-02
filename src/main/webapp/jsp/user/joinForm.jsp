@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%
     //라이브
-    //String EncodeData = "AgAFRzQ1MjhHewqvSQtQvwP2Qc0Vc9UUiFD/jiCDmmu5SMzWK49aLr5S49ZNORP1/FUJpGiUujufqGX6E2fn1EK5iOl4bITVxtptW9FRxtXIUAl7eO5A3wuRwbSpNOpou0rNS3fLmpBzDzJY7UUJyfRn51LjXeAbcTnSmtrX6nwOY9NC67esjpNiQfNFzQFyCxOOwBwIWv6rKKF07ABca1QP+o7EHdozTWmIeNs9YAF6iYFliYsOiA67r/p2snXvAGPzGFI71iv/xEyX+hMlZNn1NXVlmIrKA4hug3ge+Uyhh6xiLTY/bItD4UONsNC9CfvdfrK+Qis+SNv3hkGHJ8liWtFxEJYOnHA6OK770k9XAtYnfTd4bTFyifta2S71gWXwaX5UJPFCzLMaA/V7/s19LIVTWPC2RBCCoApGQOTUITAgknI1MBAyxQVPrCIKkA3WpoW5CPEi/kmgZfgBKZGRGRBT98NmIuguSPh21sxz9doSBYPLTA==";
+    //String EncodeData = "AgAFRzQ1Mjg6q1gKtIomHHQfqhgggExsYJ0wCVLILRqMAFwGtHvGwb5S49ZNORP1/FUJpGiUujufqGX6E2fn1EK5iOl4bITV5n7E/js77nTKceZ73OuimMsCPTkVRdCMEU/jeEa+JSg042/6P3reRDZHRO6zpvINhdQGNQChUdFhYLvqyTJGDi3vHnsZtYUw7KikpmMJddPdeP4NKaPSuNScP1UT+68bLJZCyWWLumXSRVuRF5wlLibQuhycI+nSnOoJs23EWbKnuxTrJjwld36yFOphecfC7GBzS7NMrCSWFao9tnRwBlFIo92zRmY98WL/3ZXBGLgfaMwllP7xOPtz3h3s2nVxh8/3y9w5V1htuA7YxmniGBs7unNrN4zo+/VoFKbMG0MEqMXKtw8mhA+N7AQ8spRDK4KsUX9UjxFT3d1COHtKaNyW+vkrmMzUtHwfR5+UBDvw/HG5P/YNj1PJF+ZkiJPRFccYDhoy/0pvNtgPczUGmg==";
     //개발
     String EncodeData = "AgAFRzQ1MjggmBc4FV2hsPk60S+onp/sPGguP/iH2IcLPYHRsyy1o75S49ZNORP1/FUJpGiUujufqGX6E2fn1EK5iOl4bITVW5OwueNZi7WXOXlvTLPDad7mZmTui1jNlT8Hwtvjwj6dWWOFOBi1pyFMYhWlKY9YjcYFYIxit58BaCJiOktYyUjw981KqnSD8mTh5v5j0o7FbAQZGgHWomubJYsH4odO7fu1IZZ2ZAihdqQUw9tJGjXfwShalrvgRp/jWWioBEmuz/EoubTtVE338M1ALBn+7+l63fIRxSeVgoNxY6dHYBLv94Aqzrv8bPiqIe7c6p6m9so+k+V/9HD1QvK5UbV1m+g3qOAxnyuCRV9FaaDPbWdl81QuHBjWL9bae4Ygp/nn28h+4JfefW1R/U8mP4jJA7a4B2xPu0DEyIPU49647KIlSAaQopATlkp+0mZoVsoKAn9YEiIG3jfJQCLl5LsgpcX7Wmll11trgCTkcmjbzQ==";
 %>
@@ -274,7 +274,7 @@
                         <tr>
                             <th scope="col">주소</th>
                             <td class="multiLine">
-                                <input type="text" class="w150" id="postcode" name="zipcode">
+                                <input type="text" class="w150" id="postcode" name="zipcode" disabled>
                                 <a href="#" onclick="execDaumPostcode()" class="btn_inline">우편번호 찾기</a><br />
                                 <input type="text" id="roadAddress" name="addressRoad" class="w400">
                                 <input type="text" id="address" name="address" class="w200" placeholder="상세주소">

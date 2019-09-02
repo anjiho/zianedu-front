@@ -20,22 +20,23 @@
 // $(window).scroll(function(){
 // });
 
-function initSliderOption1(className) {
-	$(function(){
-		var sliderOption1 = {
-			auto:true,
-			pagerCustom:'.visualPager'
-		};
-		kiplayer.sliderBx($("." + className), sliderOption1);
 
-	});
-
-	$(window).resize(function(){
-	});
-
-	$(window).scroll(function(){
-	});
-}
+// function initSliderOption1(className) {
+// 	$(function(){
+// 		var sliderOption1 = {
+// 			auto:true,
+// 			pagerCustom:'.visualPager'
+// 		};
+// 		kiplayer.sliderBx($("." + className), sliderOption1);
+//
+// 	});
+//
+// 	$(window).resize(function(){
+// 	});
+//
+// 	$(window).scroll(function(){
+// 	});
+// }
 
 function initSliderOption2(tagId) {
 	$(function(){

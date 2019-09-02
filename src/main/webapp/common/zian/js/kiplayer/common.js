@@ -76,7 +76,7 @@ var kiplayer = {
 			eventType = "keyup";
 		}
 		var handlerFunc = conditions.handler;
-		if((!handlerFunc)){
+		if((!handlerFunc)){ 
 			handlerFunc = function(event){
 				var regEx = null;
 				switch(dataType){
@@ -248,7 +248,7 @@ var kiplayer = {
 				changeYear: false,
 				yearRange: 'c-2:c+2',
 				dateFormat: 'yy-mm',
-				onSelect: function(){
+				onSelect: function(){	
 				},
 				onClose: function(selectedMonth){
 					if($(this).hasClass("dateFrom")) {
@@ -378,11 +378,11 @@ var kiplayer = {
 		$("a.btn_modalOpen[href='#"+modalId+"']").focus();
 	},
 	'slider':function(){
-		// if($(".slider.useBx").length > 0){
-		// 	$(".slider.useBx").each(function(){
-		// 		kiplayer.sliderBx($(this).children("ul"));
-		// 	});
-		// }
+		if($(".slider.useBx").length > 0){
+			$(".slider.useBx").each(function(){
+				kiplayer.sliderBx($(this).children("ul"));
+			});
+		}
 		if($(".slider.useSlick").length > 0){
 			$(".slider.useSlick").each(function(){
 				kiplayer.sliderSlick($(this).children("ul"));
@@ -390,7 +390,7 @@ var kiplayer = {
 		}
 		$(".bx-viewport ul").each(function(){
 			$(this).find("li a").focus(function(){
-				//$(this).parents(".bx-wrapper").eq(0).find(".bx-stop").trigger("click");
+				//$(this).parents(".bx-wrapper").eq(0).find(".bx-stop").trigger("click");		
 				var slideNo = $(this).parent().index();
 				if(slideNo < $(this).parent().parent().children("li").length - 3){
 					var sliderNo = parseInt($(this).parent().parent().attr("data-sliderNo"));
@@ -415,5 +415,5 @@ var kiplayer = {
 	'findFocusItem':function(area){
 		return area.find("input, select, textarea, button, a");
 	}
-
+	
 };
