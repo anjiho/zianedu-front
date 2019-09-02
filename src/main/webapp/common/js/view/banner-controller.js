@@ -41,6 +41,21 @@ function getMainMiniBanner(tagId, ctgKey, listNum) {
 }
 
 //행적직 온라인 - 대 배너 옆 미니배너 리스트 불러오기
+function getPublicOnlineMainBanner(tagId, ctgKey, listNum) {
+    var data = {
+        listNumber : listNum
+    };
+    var bannerInfoList = getApi("/banner/getMainMiniBanner/", ctgKey , data);
+    if (bannerInfoList.result.length > 0) {
+        var selList = bannerInfoList.result;
+        dwr.util.addOptions(tagId, selList, function (data) {
+            return "<a href='#'><img src='"+ data.fullFileUrl +"' alt=''></a>"
+        }, {escapeHtml: false});
+    }
+    kiplayer.sliderBx($("#mainVisualSlider1"));
+}
+
+//행적직 온라인 - 대 배너 옆 미니배너 리스트 불러오기
 function getPublicOnlineMainMiniBanner(tagId, ctgKey, listNum) {
     var data = {
         listNumber : listNum
