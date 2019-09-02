@@ -22,26 +22,8 @@ function getBookStoreCenterRightBanner(tagId) {
     }
 }
 
-//대 배너 밑 미니 배너
-function getMainMiniBanner(tagId, ctgKey, listNum) {
-    if (ctgKey == null || ctgKey == undefined) return;
-    var data = {
-        listNumber : listNum
-    };
-    var bannerInfoList = getApi("/banner/getMainMiniBanner/", ctgKey, data);
-
-    if (bannerInfoList.result.length > 0) {
-        var selList = bannerInfoList.result;
-
-        for (var i=0; i<selList.length; i++) {
-            var cmpList = selList[i];
-            $("#mainBanner" + i).attr("src", cmpList.fullFileUrl);
-        }
-    }
-}
-
-//행적직 온라인 - 대 배너 옆 미니배너 리스트 불러오기
-function getPublicOnlineMainBanner(tagId, ctgKey, listNum) {
+//직렬별 메인 대 배너 불러오기
+function getMainBigBanner(tagId, ctgKey, listNum) {
     var data = {
         listNumber : listNum
     };
@@ -55,8 +37,8 @@ function getPublicOnlineMainBanner(tagId, ctgKey, listNum) {
     kiplayer.sliderBx($("#mainVisualSlider1"));
 }
 
-//행적직 온라인 - 대 배너 옆 미니배너 리스트 불러오기
-function getPublicOnlineMainMiniBanner(tagId, ctgKey, listNum) {
+//직렬별 메인 옆 미니배너 불러오기
+function getMainMiniBanner(tagId, ctgKey, listNum) {
     var data = {
         listNumber : listNum
     };
@@ -85,8 +67,8 @@ function getEventMiniBanner(tagId, ctgKey, listNum) {
     }
 }
 
-
 //index 페이지 - 메인 대 배너s
+/*
 function getIndexMainBigBanner(tagId, titleTagId, listNum) {
     var bannerInfoList = getApi("/banner/getMainBigBanner/", listNum ,"");
     if (bannerInfoList.result.length > 0) {
@@ -102,8 +84,11 @@ function getIndexMainBigBanner(tagId, titleTagId, listNum) {
     }
     initSliderOption1("visualSlider");
 }
+*/
+
 
 //행적직 온라인 - 대배너
+/*
 function getMainBigBanner(tagId, listNum) {
     var bannerInfoList = getApi("/banner/getMainBigBanner/", listNum ,"");
     if (bannerInfoList.result.length > 0) {
@@ -116,6 +101,7 @@ function getMainBigBanner(tagId, listNum) {
     $(window).resize(function(){});
     $(window).scroll(function(){});
 }
+ */
 
 //메인페이지 최상단 배너
 function getMainPageTopBanner(tagId) {
