@@ -2,8 +2,6 @@
 <%@include file="/common/jsp/common.jsp" %>
 <script>
     function init(){
-        //alert(leftMenuSession);
-        //console.log(sessionStorage.getItem("leftMenu"));
         activeHeaderBtn("publicHeaderLi_1");
         activeLeftMenu(sessionStorage.getItem("leftMenu"));
         getMainBigBanner("mainVisualSlider1", 5);//메인 대 배너
