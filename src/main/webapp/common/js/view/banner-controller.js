@@ -196,14 +196,11 @@ function getTeacherBannerList(tagId, ctgKey, subjectType) {
     var infoList = getApi("/banner/getTeacherBannerList/", ctgKey, data);
     if (infoList.result.length > 0) {
         var selList = infoList.result;
-
         dwr.util.addOptions(tagId, selList, function (data) {
-            return "<div>" +
-                        "<span class=\"name\">"+ data.subjectName +"<span>"+ data.teacherName +"</span></span>"+
-                        "<img src='"+ data.teacherImageUrl +"' alt=''>"+
-                        "<a href='' class=\"btn_teacherHome\"><span class=\"icon\"></span>교수홈</a>"+
-                        "<a href='' class=\"btn_teacherReview\"><span class=\"icon\"></span>수강후기</a>"+
-                    "</div>"
+            return "<a href=\"#\" data-slide-index=\"0\" class=\"active\">"+
+                    "<span class='category'>"+ data.subjectName + "</span>" + "<b>"+ data.teacherName + "</b>"+
+                    "<span class='thumb'><img src='/common/zian/images/content/img_teacher2.png' alt=''></span>"+
+                    "</a>"
         }, {escapeHtml: false});
     }
     initTeacherListBanner("teacherList");
