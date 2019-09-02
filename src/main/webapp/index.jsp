@@ -48,7 +48,7 @@
     </div>
     <!--본문-->
     <div id="container">
-        <div class="inner"> 
+        <div class="inner">
             <div id="lendingVisual">
                 <div class="lendingVisualText">
                     지안에듀 하나면 끝
