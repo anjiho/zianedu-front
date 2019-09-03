@@ -34,7 +34,7 @@ function getMainBigBanner(tagId, ctgKey, listNum) {
             return "<a href='#'><img src='"+ data.fullFileUrl +"' alt=''></a>"
         }, {escapeHtml: false});
     }
-    kiplayer.sliderBx($("#mainVisualSlider1"));
+    kiplayer.sliderBx($("#" + tagId));
 }
 
 //직렬별 메인 옆 미니배너 불러오기
@@ -49,7 +49,7 @@ function getMainMiniBanner(tagId, ctgKey, listNum) {
             return "<a href='#'><img src='"+ data.fullFileUrl +"' alt=''></a>"
         }, {escapeHtml: false});
     }
-    kiplayer.sliderBx($("#mainVisualSlider2"));
+    kiplayer.sliderBx($("#" + tagId));
 }
 
 //헹정직 온라인 - 이벤트 배너
