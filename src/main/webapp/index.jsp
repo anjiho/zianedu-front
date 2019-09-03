@@ -25,6 +25,16 @@
             getEventMiniBanner("", 6283, 1);//이벤트 배너
             getMainMiniBanner("mainMiniBanner", 224, 3);//미니배너
         }
+
+        //직렬별 leftMenu 세션 셋팅
+        function setLeftMenu(val) {
+            if(val != ""){
+                sessionStorage.setItem("leftMenu", val);
+                if(val == 'item1'){
+                    goPage('publicOnline', 'main');
+                }
+            }
+        }
     </script>
     <div id="skipLink">
         <a href="#">본문바로가기</a>
@@ -59,7 +69,7 @@
                     </div>
                 </div>
                 <ul>
-                    <li class="item1"><a href="javascript:goPage('publicOnline', 'main')"><b>지안에듀 행정직</b>지안과 함께라면 합격의 길이 보입니다</a></li>
+                    <li class="item1"><a href="javascript:void(0);" onclick="setLeftMenu('item1')"><b>지안에듀 행정직</b>지안과 함께라면 합격의 길이 보입니다</a></li>
                     <li class="item2"><a href="javascript:goPage('techOnline', 'main')"><b>지안에듀 기술직</b>지안과 함께라면 합격의 길이 보입니다</a></li>
                     <li class="item3"><a href="javascript:goPage('postOnline', 'main')"><b>지안에듀 계리직</b>지안과 함께라면 합격의 길이 보입니다</a></li>
                     <li class="item4"><a href="#"><b>자격증/가산점</b>지안과 함께라면 합격의 길이 보입니다</a></li>

@@ -1,14 +1,28 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <script>
     function setLeftMenu(val) {
-        //if (leftMenuSession == undefined || leftMenuSession == null) {
-        sessionStorage.setItem("leftMenu", val);
-        // }else{
-        //     alert("2");
-        //     activeLeftMenu(val);
-        // }
+        if(val != ""){
+            sessionStorage.setItem("leftMenu", val);
+            if(val == "item1"){
+                goPage("publicOnline", "main");
+            }else if(val == "item2"){
+                goPage("publicAcademy", "main");
+            }
+        }
     }
 
+    $(document).ready(function () {
+        var leftMenuInfo = sessionStorage.getItem('leftMenu');
+        if(leftMenuInfo != null){
+            if(leftMenuInfo == "item1"){
+                gfn_display("siteTab", true);
+                gfn_display("siteTab1", false);
+            }else if(leftMenuInfo == "item2"){
+                gfn_display("siteTab", false);
+                gfn_display("siteTab1", true);
+            }
+        }
+    });
 </script>
 <div id="skipLink">
     <a href="#">본문바로가기</a>
@@ -17,8 +31,12 @@
 <!--좌측사이트메뉴-->
 <div id="aside">
     <div id="siteTab">
-        <h1><a href="#">행정직<br />온라인</a></h1>
-        <a href="javascript:goPage('publicAcademy', 'main')">행정직 학원</a>
+        <h1><a href="javascript:void(0);" onclick="setLeftMenu('item1')">행정직<br />온라인</a></h1>
+        <a href="javascript:void(0);" onclick="setLeftMenu('item2')">행정직 학원</a>
+    </div>
+    <div id="siteTab1" style="display: none;">
+        <h1><a href="javascript:void(0);" onclick="setLeftMenu('item2')">행정직<br />학원</a></h1>
+        <a href="javascript:void(0);" onclick="setLeftMenu('item1')">행정직 온라인</a>
     </div>
     <div id="siteNav">
         <ul>
