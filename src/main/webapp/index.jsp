@@ -60,8 +60,8 @@
                 </div>
                 <ul>
                     <li class="item1"><a href="javascript:goPage('publicOnline', 'main')"><b>지안에듀 행정직</b>지안과 함께라면 합격의 길이 보입니다</a></li>
-                    <li class="item2"><a href="#"><b>지안에듀 기술직</b>지안과 함께라면 합격의 길이 보입니다</a></li>
-                    <li class="item3"><a href="#"><b>지안에듀 계리직</b>지안과 함께라면 합격의 길이 보입니다</a></li>
+                    <li class="item2"><a href="javascript:goPage('techOnline', 'main')"><b>지안에듀 기술직</b>지안과 함께라면 합격의 길이 보입니다</a></li>
+                    <li class="item3"><a href="javascript:goPage('postOnline', 'main')"><b>지안에듀 계리직</b>지안과 함께라면 합격의 길이 보입니다</a></li>
                     <li class="item4"><a href="#"><b>자격증/가산점</b>지안과 함께라면 합격의 길이 보입니다</a></li>
                 </ul>
             </div>

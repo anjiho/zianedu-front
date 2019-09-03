@@ -14,7 +14,7 @@ public class TechController {
 
     @RequestMapping(value = "/techAcademy")
     public ModelAndView techAcademyManage(@RequestParam(value = "page_gbn", required = false) String page_gbn) {
-        ModelAndView mvc = new ModelAndView();
+        ModelAndView mvc = nepublicOnlinew ModelAndView();
 
         page_gbn = Util.isNullValue(page_gbn, "");
 
