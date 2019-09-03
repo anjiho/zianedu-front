@@ -1,28 +1,28 @@
 // 신규로 만들어진 스크립트 2019.09.02 임의 주석처리
-// $(function(){
-// 	if($("#mainVisualSlider1").length > 0){
-// 		kiplayer.sliderBx($("#mainVisualSlider1"));
-// 	}
-// 	if($("#mainVisualSlider2").length > 0){
-// 		kiplayer.sliderBx($("#mainVisualSlider2"));
-// 	}
-// 	$(".mainProductList").each(function(){
-// 		kiplayer.sliderSlick($(this));
-// 	});
-// 	$(".mainStoryList").each(function(){
-// 		kiplayer.sliderSlick($(this));
-// 	});
-// 	$(".mainTeacherPage").each(function(){
-// 		var sliderOption = {auto:true,autoControls:true,controls:true,pagerCustom:'#bx-pager'};
-// 		kiplayer.sliderBx($(this), sliderOption);
-// 	});
-// });
-//
-// $(window).resize(function(){
-// });
-//
-// $(window).scroll(function(){
-// });
+$(function(){
+	if($("#mainVisualSlider1").length > 0){
+		kiplayer.sliderBx($("#mainVisualSlider1"));
+	}
+	if($("#mainVisualSlider2").length > 0){
+		kiplayer.sliderBx($("#mainVisualSlider2"));
+	}
+	$(".mainProductList").each(function(){
+		kiplayer.sliderSlick($(this));
+	});
+	$(".mainStoryList").each(function(){
+		kiplayer.sliderSlick($(this));
+	});
+	$(".mainTeacherPage").each(function(){
+		var sliderOption = {auto:true,autoControls:true,controls:true,pagerCustom:'#bx-pager'};
+		kiplayer.sliderBx($(this), sliderOption);
+	});
+});
+
+$(window).resize(function(){
+});
+
+$(window).scroll(function(){
+});
 
 
 

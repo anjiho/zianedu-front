@@ -159,15 +159,15 @@
                                 <ul class="mainTeacherList">
                                     <li><a href="#" data-slide-index="0" class="active">
                                         <span class="category">영어</span> <b>윤광덕</b>
-                                        <span class="thumb"><img src="../images/content/img_teacher1.png" alt=""></span>
+                                        <span class="thumb"><img src="/common/zian/images/content/img_teacher1.png" alt=""></span>
                                     </a></li>
                                     <li><a href="#" data-slide-index="1">
                                         <span class="category">영어</span> <b>조재권</b>
-                                        <span class="thumb"><img src="../images/content/img_teacher2.png" alt=""></span>
+                                        <span class="thumb"><img src="/common/zian/images/content/img_teacher2.png" alt=""></span>
                                     </a></li>
                                     <li><a href="#" data-slide-index="2">
                                         <span class="category">국어</span> <b>안효선</b>
-                                        <span class="thumb"><img src="../images/content/img_teacher3.png" alt=""></span>
+                                        <span class="thumb"><img src="/common/zian/images/content/img_teacher3.png" alt=""></span>
                                     </a></li>
                                 </ul>
                             </li>
@@ -175,28 +175,28 @@
                                 <ul class="mainTeacherList">
                                     <li><a href="#" data-slide-index="3">
                                         <span class="category">경영학</span> <b>박병호</b>
-                                        <span class="thumb"><img src="../images/content/img_teacher4.png" alt=""></span>
+                                        <span class="thumb"><img src="/common/zian/images/content/img_teacher4.png" alt=""></span>
                                     </a></li>
                                     <li><a href="#" data-slide-index="4">
                                         <span class="category">행정법</span> <b>장다훈</b>
-                                        <span class="thumb"><img src="../images/content/img_teacher5.png" alt=""></span>
+                                        <span class="thumb"><img src="/common/zian/images/content/img_teacher5.png" alt=""></span>
                                     </a></li>
                                     <li><a href="#" data-slide-index="5">
                                         <span class="category">사회</span> <b>강나현</b>
-                                        <span class="thumb"><img src="../images/content/img_teacher6.png" alt=""></span>
+                                        <span class="thumb"><img src="/common/zian/images/content/img_teacher6.png" alt=""></span>
                                     </a></li>
                                 </ul>
                             </li>
                         </ul>
                         <ul class="mainTeacherPage">
                             <li><div>
-                                <div class="thumb"><span><img src="../images/content/img_teacher1_b.png" alt=""></span></div>
+                                <div class="thumb"><span><img src="/common/zian/images/content/img_teacher1_b.png" alt=""></span></div>
                                 <div class="teacherInfo">
                                     <span class="category">영어</span>
                                     <b>윤광덕</b>
                                     <span class="btnArea">
-									<a href="#"><img src="../images/common/icon_home.png" alt=""> 교수홈</a>
-									<a href="#"><img src="../images/common/icon_review.png" alt=""> 수강후기</a>
+									<a href="#"><img src="/common/zian/images/common/icon_home.png" alt=""> 교수홈</a>
+									<a href="#"><img src="/common/zian/images/common/icon_review.png" alt=""> 수강후기</a>
 								</span>
                                     <span class="desc">
 									<b>약력</b>
@@ -212,13 +212,13 @@
                                 </div>
                             </div></li>
                             <li><div>
-                                <div class="thumb"><span><img src="../images/content/img_teacher2_b.png" alt=""></span></div>
+                                <div class="thumb"><span><img src="/common/zian/images/content/img_teacher2_b.png" alt=""></span></div>
                                 <div class="teacherInfo">
                                     <span class="category">영어</span>
                                     <b>조재권</b>
                                     <span class="btnArea">
-									<a href="#"><img src="../images/common/icon_home.png" alt=""> 교수홈</a>
-									<a href="#"><img src="../images/common/icon_review.png" alt=""> 수강후기</a>
+									<a href="#"><img src="/common/zian/images/common/icon_home.png" alt=""> 교수홈</a>
+									<a href="#"><img src="/common/zian/images/common/icon_review.png" alt=""> 수강후기</a>
 								</span>
                                     <span class="desc">
 									<b>약력</b>
@@ -234,13 +234,13 @@
                                 </div>
                             </div></li>
                             <li><div>
-                                <div class="thumb"><span><img src="../images/content/img_teacher3_b.png" alt=""></span></div>
+                                <div class="thumb"><span><img src="/common/zian/images/content/img_teacher3_b.png" alt=""></span></div>
                                 <div class="teacherInfo">
                                     <span class="category">국어</span>
                                     <b>안효선</b>
                                     <span class="btnArea">
-									<a href="#"><img src="../images/common/icon_home.png" alt=""> 교수홈</a>
-									<a href="#"><img src="../images/common/icon_review.png" alt=""> 수강후기</a>
+									<a href="#"><img src="/common/zian/images/common/icon_home.png" alt=""> 교수홈</a>
+									<a href="#"><img src="/common/zian/images/common/icon_review.png" alt=""> 수강후기</a>
 								</span>
                                     <span class="desc">
 									<b>약력</b>
@@ -256,13 +256,13 @@
                                 </div>
                             </div></li>
                             <li><div>
-                                <div class="thumb"><span><img src="../images/content/img_teacher4_b.png" alt=""></span></div>
+                                <div class="thumb"><span><img src="/common/zian/images/content/img_teacher4_b.png" alt=""></span></div>
                                 <div class="teacherInfo">
                                     <span class="category">경영학</span>
                                     <b>박병호</b>
                                     <span class="btnArea">
-									<a href="#"><img src="../images/common/icon_home.png" alt=""> 교수홈</a>
-									<a href="#"><img src="../images/common/icon_review.png" alt=""> 수강후기</a>
+									<a href="#"><img src="/common/zian/images/common/icon_home.png" alt=""> 교수홈</a>
+									<a href="#"><img src="/common/zian/images/common/icon_review.png" alt=""> 수강후기</a>
 								</span>
                                     <span class="desc">
 									<b>약력</b>
@@ -278,13 +278,13 @@
                                 </div>
                             </div></li>
                             <li><div>
-                                <div class="thumb"><span><img src="../images/content/img_teacher5_b.png" alt=""></span></div>
+                                <div class="thumb"><span><img src="/common/zian/images/content/img_teacher5_b.png" alt=""></span></div>
                                 <div class="teacherInfo">
                                     <span class="category">행정법</span>
                                     <b>장다훈</b>
                                     <span class="btnArea">
-									<a href="#"><img src="../images/common/icon_home.png" alt=""> 교수홈</a>
-									<a href="#"><img src="../images/common/icon_review.png" alt=""> 수강후기</a>
+									<a href="#"><img src="/common/zian/images/common/icon_home.png" alt=""> 교수홈</a>
+									<a href="#"><img src="/common/zian/images/common/icon_review.png" alt=""> 수강후기</a>
 								</span>
                                     <span class="desc">
 									<b>약력</b>
@@ -300,13 +300,13 @@
                                 </div>
                             </div></li>
                             <li><div>
-                                <div class="thumb"><span><img src="../images/content/img_teacher6_b.png" alt=""></span></div>
+                                <div class="thumb"><span><img src="/common/zian/images/content/img_teacher6_b.png" alt=""></span></div>
                                 <div class="teacherInfo">
                                     <span class="category">사회</span>
                                     <b>강나현</b>
                                     <span class="btnArea">
-									<a href="#"><img src="../images/common/icon_home.png" alt=""> 교수홈</a>
-									<a href="#"><img src="../images/common/icon_review.png" alt=""> 수강후기</a>
+									<a href="#"><img src="/common/zian/images/common/icon_home.png" alt=""> 교수홈</a>
+									<a href="#"><img src="/common/zian/images/common/icon_review.png" alt=""> 수강후기</a>
 								</span>
                                     <span class="desc">
 									<b>약력</b>
@@ -328,11 +328,11 @@
                 <!-- 지안에듀 바로가기 -->
                 <div class="mainQuickLink">
                     <ul>
-                        <li><a href="#"><img src="../images/common/icon_quickLink1.png" alt=""> 1:1 학습컨설팅</a></li>
-                        <li><a href="#"><img src="../images/common/icon_quickLink2.png" alt=""> 학원실강접수</a></li>
-                        <li ><a href="#"><img src="../images/common/icon_quickLink3.png" alt=""> 학원개강안내</a></li>
-                        <li><a href="#"><img src="../images/common/icon_quickLink4.png" alt=""> 강의실배정표</a></li>
-                        <li><a href="#"><img src="../images/common/icon_quickLink5.png" alt=""> 모의고사신청</a></li>
+                        <li><a href="#"><img src="/common/zian/images/common/icon_quickLink1.png" alt=""> 1:1 학습컨설팅</a></li>
+                        <li><a href="#"><img src="/common/zian/images/common/icon_quickLink2.png" alt=""> 학원실강접수</a></li>
+                        <li ><a href="#"><img src="/common/zian/images/common/icon_quickLink3.png" alt=""> 학원개강안내</a></li>
+                        <li><a href="#"><img src="/common/zian/images/common/icon_quickLink4.png" alt=""> 강의실배정표</a></li>
+                        <li><a href="#"><img src="/common/zian/images/common/icon_quickLink5.png" alt=""> 모의고사신청</a></li>
                     </ul>
                 </div>
 
