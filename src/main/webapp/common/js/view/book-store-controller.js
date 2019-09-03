@@ -37,7 +37,7 @@ function getBookList(tagId , leftMenuCtgKey, sPage, listLimit) {
                 "<img src='"+ data.bookImageUrl +"' alt=''>"+
                 "<span class=\"name\">"+ data.goodsName +"</span>"+
                 "<span class=\"writer\">"+ data.writer + name +"</span>" +
-                "<span class=\"price\"><b>"+ data.price +"</b>원 <span>"+"("+data.accrualRate+")"+"</span></span>";
+                "<span class=\"price\"><b>"+ data.price +"</b>원 <span style='color: red;'>"+"("+data.accrualRate+")"+"</span></span>";
         }, {escapeHtml: false});
     }
     $(function(){

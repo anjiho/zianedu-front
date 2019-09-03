@@ -52,6 +52,32 @@ function getMainMiniBanner(tagId, ctgKey, listNum) {
     kiplayer.sliderBx($("#mainVisualSlider2"));
 }
 
+function getMainreviewBanner(tagId, ctgKey, listNum) {
+    var data = {
+        listNumber : listNum
+    };
+    var bannerInfoList = getApi("/banner/getMainMiniBanner/", ctgKey , data);
+    if (bannerInfoList.result.length > 0) {
+        var selList = bannerInfoList.result;
+        dwr.util.addOptions(tagId, selList, function (data) {
+            return "<a href='#'><img src='"+ data.fullFileUrl +"' alt=''></a>"
+        }, {escapeHtml: false});
+    }
+}
+
+//최하단 배너
+function getMainBottomBanner(ctgKey, listNum) {
+    var data = {
+        listNumber : listNum
+    };
+    var bannerInfoList = getApi("/banner/getMainMiniBanner/", ctgKey , data);
+    if (bannerInfoList.result.length > 0) {
+        var selList = bannerInfoList.result;
+        console.log(selList);
+        $("#bottomBanner1").attr("src", selList[1].fullFileUrl);
+    }
+}
+
 //헹정직 온라인 - 이벤트 배너
 function getEventMiniBanner(tagId, ctgKey, listNum) {
     var data = {
