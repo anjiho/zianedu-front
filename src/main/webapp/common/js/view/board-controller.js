@@ -68,7 +68,7 @@ function saveProductReview() {
 }
 
 //커뮤니티 리스트
-function getCommunityList(bbsMaterKey, sPage, listLimit, tagId) {
+function getCommunityList(bbsMaterKey, sPage, listLimit) {
     if (bbsMaterKey == null || bbsMaterKey == undefined) return;
     var data = {
         sPage : sPage,
@@ -78,9 +78,8 @@ function getCommunityList(bbsMaterKey, sPage, listLimit, tagId) {
 
     if (InfoList.result.length > 0) {
         var selList = InfoList.result;
-        dwr.util.addOptions(tagId, selList, function (data) {
-            return "<div><a href='#'><img src='"+ data.fileUrl +"' alt=''></a></div>"
-        }, {escapeHtml: false});
+        $("#movieBanner0").attr("src", selList[0].fileUrl);
+        $("#movieBanner1").attr("src", selList[1].fileUrl);
     }
 }
 
