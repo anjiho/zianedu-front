@@ -17,6 +17,12 @@
 // 		kiplayer.sliderBx($(this), sliderOption);
 // 	});
 // });
+$(function(){
+    $(".mainTeacherPage").each(function(){
+ 		var sliderOption = {auto:true,autoControls:true,controls:true,pagerCustom:'#bx-pager'};
+ 		kiplayer.sliderBx($(this), sliderOption);
+ 	});
+});
 //
 // $(window).resize(function(){
 // });
