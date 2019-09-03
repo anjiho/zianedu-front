@@ -22,8 +22,8 @@
     </div>
     <div id="siteNav">
         <ul>
-            <li class="item2"><a href="#">기술직</a></li>
-            <li class="item3"><a href="#">계리직</a></li>
+            <li class="item2"><a href="javascript:goPage('techOnline', 'main')">기술직</a></li>
+            <li class="item3"><a href="javascript:goPage('postOnline', 'main')">계리직</a></li>
             <li class="item5"><a href="#">자격증/가산점</a></li>
             <li class="item4"><a href="#">온라인 서점</a></li>
             <li class="item4"><a href="#">빅모의고사</a></li>

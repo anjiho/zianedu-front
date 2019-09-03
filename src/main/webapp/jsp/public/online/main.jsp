@@ -24,7 +24,7 @@
     <!--상단-->
     <div id="header">
         <div class="inner">
-            <h1><a href="#"><img src="../images/common/logo01.png" alt="지안에듀 행정직"> 온라인</a></h1>
+            <h1><a href="#"><img src="/common/zian/images/common/logo01.png" alt="지안에듀 행정직"> 온라인</a></h1>
             <!--최상단메뉴-->
             <div id="topNav">
                 <ul>
@@ -69,15 +69,6 @@
             <div class="mainBannerReview">
                 <div class="inner">
                     <a href="#"><img src="/common/zian/images/content/img_banner0101.jpg" alt=""></a>
-                    <!-- <h5>행정직 수험생<br />합격수기</h5>
-                    <p>
-                        비용을 생각하다보니 프리패스를 수강하게
-                        되었고 지안프리패스를 선택하게 되었습니다. <br />
-                        처음 학원에 상담하러 갔을 때 제 이야기를 듣고
-                        부원장님이 지안패스를 추천해주셔서 그걸로
-                        시험 볼때까지 수강하게 되었습니다.
-                        <span class="name">국가직 일반행정 합격 이OO님</span>
-                    </p> -->
                 </div>
             </div>
             <!-- 지안에듀 합격자 영상 -->
@@ -338,11 +329,11 @@
             <!-- 지안에듀 바로가기 -->
             <div class="mainQuickLink">
                 <ul>
-                    <li><a href="#"><img src="../images/common/icon_quickLink1.png" alt=""> 1:1 학습컨설팅</a></li>
-                    <li><a href="#"><img src="../images/common/icon_quickLink2.png" alt=""> 학원실강접수</a></li>
-                    <li ><a href="#"><img src="../images/common/icon_quickLink3.png" alt=""> 학원개강안내</a></li>
-                    <li><a href="#"><img src="../images/common/icon_quickLink4.png" alt=""> 강의실배정표</a></li>
-                    <li><a href="#"><img src="../images/common/icon_quickLink5.png" alt=""> 모의고사신청</a></li>
+                    <li><a href="#"><img src="/common/zian/images/common/icon_quickLink1.png" alt=""> 1:1 학습컨설팅</a></li>
+                    <li><a href="#"><img src="/common/zian/images/common/icon_quickLink2.png" alt=""> 학원실강접수</a></li>
+                    <li ><a href="#"><img src="/common/zian/images/common/icon_quickLink3.png" alt=""> 학원개강안내</a></li>
+                    <li><a href="#"><img src="/common/zian/images/common/icon_quickLink4.png" alt=""> 강의실배정표</a></li>
+                    <li><a href="#"><img src="/common/zian/images/common/icon_quickLink5.png" alt=""> 모의고사신청</a></li>
                 </ul>
             </div>
 
@@ -380,27 +371,15 @@
                     </div>
                 </div>
             </div>
-
             <!-- 지안에듀 배너 -->
             <div class="mainBanner">
                 <div class="inner">
                     <a href="#"><img src="/common/zian/images/content/img_banner0001.jpg" alt=""></a>
                 </div>
             </div>
-
-
             <!--<div class="mainBanner divGroup cols2">
                 <div><a href="#"><img src="" id="eventBanner0" alt=""></a></div>
                 <div><a href="#"><img src="" id="eventBanner1" alt=""></a></div>
-            </div>
-            <div class="mainQuickLink">
-                <ul>
-                    <li class="item1"><a href="#">1:1 학습컨설팅</a></li>
-                    <li class="item2"><a href="#">학원실강접수</a></li>
-                    <li class="item3"><a href="#">학원개강안내</a></li>
-                    <li class="item4"><a href="#">강의실배정표</a></li>
-                    <li class="item5"><a href="#">모의고사신청</a></li>
-                </ul>
             </div>-->
             <!-- 온라인서점 -->
             <div class="mainProduct">
