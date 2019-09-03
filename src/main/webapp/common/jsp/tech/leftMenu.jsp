@@ -1,20 +1,39 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <script>
     function setLeftMenu(val) {
-        //if (leftMenuSession == undefined || leftMenuSession == null) {
-        sessionStorage.setItem("leftMenu", val);
-        // }else{
-        //     alert("2");
-        //     activeLeftMenu(val);
-        // }
+        if(val != ""){
+            sessionStorage.setItem("leftMenu", val);
+            if(val == "item3"){
+                goPage("techOnline", "main");
+            }else if(val == "item4"){
+                goPage("techAcademy", "main");
+            }
+        }
     }
+
+    $(document).ready(function () {
+        var leftMenuInfo = sessionStorage.getItem('leftMenu');
+        if(leftMenuInfo != null){
+            if(leftMenuInfo == "item3"){
+                gfn_display("siteTab", true);
+                gfn_display("siteTab1", false);
+            }else if(leftMenuInfo == "item4"){
+                gfn_display("siteTab", false);
+                gfn_display("siteTab1", true);
+            }
+        }
+    });
 
 </script>
 <!--좌측사이트메뉴-->
 <div id="aside">
     <div id="siteTab">
-        <h1><a href="javascript:goPage('techOnline', 'main')">기술직<br />온라인</a></h1>
-        <a href="javascript:goPage('techAcademy', 'main')">기술직 학원</a>
+        <h1><a href="javascript:void(0);" onclick="setLeftMenu('item3')">기술직<br />온라인</a></h1>
+        <a href="javascript:void(0);" onclick="setLeftMenu('item4')">기술직 학원</a>
+    </div>
+    <div id="siteTab1" style="display: none;">
+        <h1><a href="javascript:void(0);" onclick="setLeftMenu('item4')">기술직<br />학원</a></h1>
+        <a href="javascript:void(0);" onclick="setLeftMenu('item3')">기술직 온라인</a>
     </div>
     <div id="siteNav">
         <ul>

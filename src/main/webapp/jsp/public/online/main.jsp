@@ -5,6 +5,7 @@
         activeHeaderBtn("publicHeaderLi_1");
         getMainBigBanner("mainVisualSlider1", 792, 5);//메인 대 배너
         getMainMiniBanner("mainVisualSlider2", 793, 5);//대배너 옆 미니 배너
+        getMainMiniBanner("reviewBanner", 795, 1);//대배너 옆 미니 배너
         //getTeacherBannerList("teacherList1", 794, 0);//공통과목 교수진
        //getMajorTeacherBannerList("teacherList2", 794, 1);//전공과목 교수진
         getBannerNoticeList("examNotice", 1, 4, 10010);//행정직 시험공고 리스트
@@ -13,6 +14,7 @@
         getBannerNoticeList("passInfo", 1, 4, 10013);//행정직 합격후기 리스트
         getEventMiniBanner("", 6284, 5);//이벤트 배너
         getBookList("productList1", 843, 1, 10);//행정직 온라인 서점
+        getCommunityList(10970, 1, 2, 'movie');
     }
 </script>
 <form name="frm" method="get">
@@ -56,7 +58,8 @@
             </div>
             <div class="mainBannerReview">
                 <div class="inner">
-                    <a href="#"><img src="/common/zian/images/content/img_banner0101.jpg" alt=""></a>
+                    <ul id="reviewBanner"></ul>
+<%--                    <a href="#"><img src="/common/zian/images/content/img_banner0101.jpg" alt=""></a>--%>
                 </div>
             </div>
             <!-- 지안에듀 합격자 영상 -->
@@ -67,8 +70,13 @@
                         <a href="#" class="btn_more">전체보기</a>
                     </div>
                     <div class="divGroup cols2">
-                        <div><a href="#"><img src="/common/zian/images/content/img_movie01.jpg" alt=""></a></div>
-                        <div><a href="#"><img src="/common/zian/images/content/img_movie02.jpg" alt=""></a></div>
+                        <ul id="movie"></ul>
+<%--                        <div><a href="#"><img src="/common/zian/images/content/img_movie01.jpg" alt=""></a></div>--%>
+<%--                        <div><a href="#"><img src="/common/zian/images/content/img_movie02.jpg" alt=""></a></div>--%>
+                    </div>
+                    <div class="divGroup cols2">
+                        <div><a href="#"><img src="" id="eventBanner0" alt=""></a></div>
+                        <div><a href="#"><img src="" id="eventBanner1" alt=""></a></div>
                     </div>
                 </div>
             </div>

@@ -1,20 +1,38 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <script>
     function setLeftMenu(val) {
-        //if (leftMenuSession == undefined || leftMenuSession == null) {
-        sessionStorage.setItem("leftMenu", val);
-        // }else{
-        //     alert("2");
-        //     activeLeftMenu(val);
-        // }
+        if(val != ""){
+            sessionStorage.setItem("leftMenu", val);
+            if(val == "item5"){
+                goPage("postOnline", "main");
+            }else if(val == "item6"){
+                goPage("postAcademy", "main");
+            }
+        }
     }
 
+    $(document).ready(function () {
+        var leftMenuInfo = sessionStorage.getItem('leftMenu');
+        if(leftMenuInfo != null){
+            if(leftMenuInfo == "item5"){
+                gfn_display("siteTab", true);
+                gfn_display("siteTab1", false);
+            }else if(leftMenuInfo == "item6"){
+                gfn_display("siteTab", false);
+                gfn_display("siteTab1", true);
+            }
+        }
+    });
 </script>
 <!--좌측사이트메뉴-->
 <div id="aside">
     <div id="siteTab">
-        <h1><a href="javascript:goPage('postOnline', 'main')">계리직<br />온라인</a></h1>
-        <a href="javascript:goPage('postAcademy', 'main')">계리직 학원</a>
+        <h1><a href="javascript:void(0);" onclick="setLeftMenu('item5')">계리직<br />온라인</a></h1>
+        <a href="javascript:void(0);" onclick="setLeftMenu('item6')">계리직 학원</a>
+    </div>
+    <div id="siteTab1" style="display: none;">
+        <h1><a href="javascript:void(0);" onclick="setLeftMenu('item6')">계리직<br />학원</a></h1>
+        <a href="javascript:void(0);" onclick="setLeftMenu('item5')">계리직 온라인</a>
     </div>
     <div id="siteNav">
         <ul>

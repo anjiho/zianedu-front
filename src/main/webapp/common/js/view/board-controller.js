@@ -68,15 +68,19 @@ function saveProductReview() {
 }
 
 //커뮤니티 리스트
-function getCommunityList(bbsMaterKey, tagId) {
+function getCommunityList(bbsMaterKey, sPage, listLimit, tagId) {
     if (bbsMaterKey == null || bbsMaterKey == undefined) return;
-    var InfoList = getApi("/banner/getCommunityList/", bbsMaterKey,"");
+    var data = {
+        sPage : sPage,
+        listLimit : listLimit
+    };
+    var InfoList = getApi("/board/getCommunityList/", bbsMaterKey, data);
 
     if (InfoList.result.length > 0) {
         var selList = InfoList.result;
-        dwr.util.addRows(tagId, selList, [
-            //function(data) {return "<img src='"+ data.targetUrl +"'>";}
-        ], {escapeHtml:false});
+        dwr.util.addOptions(tagId, selList, function (data) {
+            return "<div><a href='#'><img src='"+ data.fileUrl +"' alt=''></a></div>"
+        }, {escapeHtml: false});
     }
 }
 
