@@ -200,7 +200,7 @@ function getTeacherBannerList(tagId, ctgKey, subjectType) {
         dwr.util.addOptions(tagId, selList, function (data) {
             return "<a href=\"#\" data-slide-index=\"0\" class=\"active\">"+
                     "<span class='category'>"+ data.subjectName + "</span>" + "<b>"+ data.teacherName + "</b>"+
-                    "<span class='thumb'><img src='/common/zian/images/content/img_teacher2.png' alt=''></span>"+
+                    "<span class='thumb'><img src='"+ data.teacherImageUrl +"' alt='' style='width: 100px;height: 140px'></span>"+
                     "</a>"
         }, {escapeHtml: false});
     }

@@ -19,23 +19,12 @@
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
 <div id="wrap">
-    <%@include file="/common/jsp/leftMenu.jsp" %>
-<%--    <%@include file="/common/jsp/public/header.jsp" %>--%>
+    <%@include file="/common/jsp/public/leftMenu.jsp" %>
     <!--상단-->
     <div id="header">
         <div class="inner">
             <h1><a href="#"><img src="/common/zian/images/common/logo01.png" alt="지안에듀 행정직"> 온라인</a></h1>
-            <!--최상단메뉴-->
-            <div id="topNav">
-                <ul>
-                    <li><a href="#" class="btn_bookmark">즐겨찾기에 등록</a></li>
-                    <li><a href="#">로그인</a></li>
-                    <li><a href="#">회원가입</a></li>
-                    <li><a href="#">합격수기</a></li>
-                    <li><a href="#">이벤트</a></li>
-                </ul>
-            </div>
-            <!--//최상단메뉴-->
+            <%@include file="/common/jsp/topHeader.jsp" %>
         </div>
         <!--주메뉴-->
         <div id="gnb">
@@ -166,12 +155,23 @@
             <div class="mainTeacher">
                 <div class="inner">
                     <ul id="bx-pager" class="mainTeacherTitle">
-                        <li>
-                            <b>공통과목</b>
-                            <ul class="mainTeacherList" id="teacherList1"></ul>
+                        <li><b>공통과목</b>
+                            <ul class="mainTeacherList">
+                                <li><a href="#" data-slide-index="0" class="active">
+                                    <span class="category">영어</span> <b>윤광덕</b>
+                                    <span class="thumb"><img src="../images/content/img_teacher1.png" alt=""></span>
+                                </a></li>
+                                <li><a href="#" data-slide-index="1">
+                                    <span class="category">영어</span> <b>조재권</b>
+                                    <span class="thumb"><img src="../images/content/img_teacher2.png" alt=""></span>
+                                </a></li>
+                                <li><a href="#" data-slide-index="2">
+                                    <span class="category">국어</span> <b>안효선</b>
+                                    <span class="thumb"><img src="../images/content/img_teacher3.png" alt=""></span>
+                                </a></li>
+                            </ul>
                         </li>
-                        <li>
-                            <b>전공과목</b>
+                        <li><b>전공과목</b>
                             <ul class="mainTeacherList">
                                 <li><a href="#" data-slide-index="3">
                                     <span class="category">경영학</span> <b>박병호</b>
@@ -324,7 +324,6 @@
                     </ul>
                 </div>
             </div>
-            <!-- 지안교수진 끝 -->
 
             <!-- 지안에듀 바로가기 -->
             <div class="mainQuickLink">

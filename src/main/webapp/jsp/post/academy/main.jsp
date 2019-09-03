@@ -20,22 +20,11 @@
     <input type="hidden" name="page_gbn" id="page_gbn">
 <div id="wrap" class="accounting">
     <%@include file="/common/jsp/post/leftMenu.jsp" %>
-<%--    <%@include file="/common/jsp/post/header.jsp" %>--%>
     <!--상단-->
     <div id="header">
         <div class="inner">
             <h1><a href="#"><img src="/common/zian/images/common/logo03.png" alt="지안에듀 계리직"> 학원</a></h1>
-            <!--최상단메뉴-->
-            <div id="topNav">
-                <ul>
-                    <li><a href="#" class="btn_bookmark">즐겨찾기에 등록</a></li>
-                    <li><a href="#">로그인</a></li>
-                    <li><a href="#">회원가입</a></li>
-                    <li><a href="#">합격수기</a></li>
-                    <li><a href="#">이벤트</a></li>
-                </ul>
-            </div>
-            <!--//최상단메뉴-->
+            <%@include file="/common/jsp/topHeader.jsp" %>
         </div>
         <!--주메뉴-->
         <div id="gnb">
