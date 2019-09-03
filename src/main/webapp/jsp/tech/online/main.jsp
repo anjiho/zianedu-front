@@ -59,18 +59,6 @@
                     <a href="#"><img src="/common/zian/images/content/img_banner0201.jpg" alt=""></a>
                 </div>
             </div>
-
-        <%--            <div class="mainBanner divGroup cols3 noMargin">--%>
-<%--                <div>--%>
-<%--                    <a href="#"><img src="/common/zian/images/content/img_mainVisual0203.jpg" alt=""></a>--%>
-<%--                </div>--%>
-<%--                <div>--%>
-<%--                    <a href="#"><img src="/common/zian/images/content/img_mainVisual0204.jpg" alt=""></a>--%>
-<%--                </div>--%>
-<%--                <div>--%>
-<%--                    <a href="#"><img src="/common/zian/images/content/img_mainVisual0205.jpg" alt=""></a>--%>
-<%--                </div>--%>
-<%--            </div>--%>
             <!-- 지안에듀 합격자 영상 -->
             <div class="mainBanner">
                 <div class="inner">

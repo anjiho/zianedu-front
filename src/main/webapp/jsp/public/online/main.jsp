@@ -3,11 +3,10 @@
 <script>
     function init(){
         activeHeaderBtn("publicHeaderLi_1");
-        activeLeftMenu(sessionStorage.getItem("leftMenu"));
         getMainBigBanner("mainVisualSlider1", 792, 5);//메인 대 배너
         getMainMiniBanner("mainVisualSlider2", 793, 5);//대배너 옆 미니 배너
-        getTeacherBannerList("teacherList1", 794, 0);//공통과목 교수진
-        getMajorTeacherBannerList("teacherList2", 794, 1);//전공과목 교수진
+        //getTeacherBannerList("teacherList1", 794, 0);//공통과목 교수진
+       //getMajorTeacherBannerList("teacherList2", 794, 1);//전공과목 교수진
         getBannerNoticeList("examNotice", 1, 4, 10010);//행정직 시험공고 리스트
         getBannerNoticeList("openInfo", 1, 4, 10001);//행정직 개강안내 리스트
         getBannerNoticeList("lecInfo", 1, 4, 10014);//행정직 수강후기 리스트
