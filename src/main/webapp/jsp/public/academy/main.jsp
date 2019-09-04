@@ -19,7 +19,7 @@
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
     <div id="wrap">
-        <%@include file="/common/jsp/public/leftMenu.jsp" %>
+        <%@include file="/common/jsp/leftMenu.jsp" %>
         <!--본문-->
         <!--상단-->
         <div id="header">
