@@ -60,7 +60,7 @@ $(document).ready(function () {
         <div id="siteNav">
             <ul>
                 <li class="item2"><a href="javascript:void(0);" onclick="setLeftMenu('techOnline')">기술직</a></li>
-                <li class="item3"><a href="#">계리직</a></li>
+                <li class="item3"><a href="javascript:void(0);" onclick="setLeftMenu('postOnline')">계리직</a></li>
                 <li class="item5"><a href="#">자격증/가산점</a></li>
                 <li class="item4"><a href="#">온라인 서점</a></li>
                 <li class="item4"><a href="#">빅모의고사</a></li>
@@ -119,7 +119,7 @@ $(document).ready(function () {
         <div id="siteNav">
             <ul>
                 <li class="item2"><a href="javascript:void(0);" onclick="setLeftMenu('techOnline')">기술직</a></li>
-                <li class="item3"><a href="#">계리직</a></li>
+                <li class="item3"><a href="javascript:void(0);" onclick="setLeftMenu('postOnline')">계리직</a></li>
                 <li class="item5"><a href="#">자격증/가산점</a></li>
                 <li class="item4"><a href="#">온라인 서점</a></li>
                 <li class="item4"><a href="#">빅모의고사</a></li>
@@ -166,7 +166,7 @@ $(document).ready(function () {
                 <li><a href="#"><img src="/common/zian/images/common/btn_snsLinkBlog.png" alt="네이버블로그"></a></li>
             </ul>
         </div>
-        <a href="#" id="btn_asideToggle">죄측메뉴열기/닫기</a>
+        <a href="#" id="btn_asideToggle1">죄측메뉴열기/닫기</a>
     </div>
 </div>
 <!-- 기술직 leftMenu -->
@@ -179,7 +179,7 @@ $(document).ready(function () {
         <div id="siteNav">
             <ul>
                 <li class="item2"><a href="javascript:void(0);" onclick="setLeftMenu('publicOnline')">행정직</a></li>
-                <li class="item3"><a href="#">계리직</a></li>
+                <li class="item3"><a href="javascript:void(0);" onclick="setLeftMenu('postOnline')">계리직</a></li>
                 <li class="item5"><a href="#">자격증/가산점</a></li>
                 <li class="item4"><a href="#">온라인 서점</a></li>
                 <li class="item4"><a href="#">빅모의고사</a></li>
@@ -226,7 +226,7 @@ $(document).ready(function () {
                 <li><a href="#"><img src="/common/zian/images/common/btn_snsLinkBlog.png" alt="네이버블로그"></a></li>
             </ul>
         </div>
-        <a href="#" id="btn_asideToggle">죄측메뉴열기/닫기</a>
+        <a href="#" id="btn_asideToggle2">죄측메뉴열기/닫기</a>
     </div>
 </div>
 
@@ -286,7 +286,7 @@ $(document).ready(function () {
                 <li><a href="#"><img src="/common/zian/images/common/btn_snsLinkBlog.png" alt="네이버블로그"></a></li>
             </ul>
         </div>
-        <a href="#" id="btn_asideToggle">죄측메뉴열기/닫기</a>
+        <a href="#" id="btn_asideToggle3">죄측메뉴열기/닫기</a>
     </div>
 </div>
 
@@ -347,7 +347,7 @@ $(document).ready(function () {
                 <li><a href="#"><img src="/common/zian/images/common/btn_snsLinkBlog.png" alt="네이버블로그"></a></li>
             </ul>
         </div>
-        <a href="#" id="btn_asideToggle">죄측메뉴열기/닫기</a>
+        <a href="#" id="btn_asideToggle4">죄측메뉴열기/닫기</a>
     </div>
 </div>
 
@@ -407,7 +407,7 @@ $(document).ready(function () {
                 <li><a href="#"><img src="/common/zian/images/common/btn_snsLinkBlog.png" alt="네이버블로그"></a></li>
             </ul>
         </div>
-        <a href="#" id="btn_asideToggle">죄측메뉴열기/닫기</a>
+        <a href="#" id="btn_asideToggle5">죄측메뉴열기/닫기</a>
     </div>
 </div>
 <script>

@@ -4,7 +4,7 @@
     <input type="hidden" name="page_gbn" id="page_gbn">
 <div id="wrap">
     <!--좌측사이트메뉴-->
-    <%@include file="/common/jsp/leftMenu.jsp" %>
+    <%@include file="/common/jsp/leftMenu2.jsp" %>
     <!--//좌측사이트메뉴-->
 
     <!--최상단배너-->

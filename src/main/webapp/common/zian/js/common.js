@@ -3,6 +3,26 @@ $(function(){
 		e.preventDefault();
 		$("#aside").toggleClass("active");
 	});
+	$("#btn_asideToggle1").click(function(e){
+		e.preventDefault();
+		$("#aside1").toggleClass("active");
+	});
+	$("#btn_asideToggle2").click(function(e){
+		e.preventDefault();
+		$("#aside2").toggleClass("active");
+	});
+	$("#btn_asideToggle3").click(function(e){
+		e.preventDefault();
+		$("#aside3").toggleClass("active");
+	});
+	$("#btn_asideToggle4").click(function(e){
+		e.preventDefault();
+		$("#aside4").toggleClass("active");
+	});
+	$("#btn_asideToggle5").click(function(e){
+		e.preventDefault();
+		$("#aside5").toggleClass("active");
+	});
 	$(".btn_quickToggle").click(function(e){
 		e.preventDefault();
 		$("#quickBar").toggleClass("min");

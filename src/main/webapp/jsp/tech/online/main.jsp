@@ -14,12 +14,15 @@
         getBannerNoticeList("lecInfo", 1, 4, 10033);//수강후기 리스트
         getBannerNoticeList("passInfo", 1, 4, 10032);//합격후기 리스트
         getBookList("productList1", 844, 1, 10);//온라인 서점 배너
+        getCommunityList(830, 1, 2);//중앙 소 배너
+        getMainreviewBanner("reviewBanner", 830, 1);//중앙 소 배너
+        getCommunityList(10970, 1, 2);//합격자 영상
     }
 </script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
 <div id="wrap" class="skill">
-    <%@include file="/common/jsp/leftMenu.jsp" %>
+    <%@include file="/common/jsp/leftMenu2.jsp" %>
     <!--상단-->
     <div id="header">
         <div class="inner">
@@ -56,7 +59,7 @@
             </div>
             <div class="mainBannerReview">
                 <div class="inner">
-                    <a href="#"><img src="/common/zian/images/content/img_banner0201.jpg" alt=""></a>
+                    <ul id="reviewBanner"></ul>
                 </div>
             </div>
             <!-- 지안에듀 합격자 영상 -->
@@ -67,8 +70,8 @@
                         <a href="#" class="btn_more">전체보기</a>
                     </div>
                     <div class="divGroup cols2">
-                        <div><a href="#"><img src="/common/zian/images/content/img_movie01.jpg" alt=""></a></div>
-                        <div><a href="#"><img src="/common/zian/images/content/img_movie02.jpg" alt=""></a></div>
+                        <div><a href="#"><img src="" id="movieBanner0" alt=""></a></div>
+                        <div><a href="#"><img src="" id="movieBanner1" alt=""></a></div>
                     </div>
                 </div>
             </div>
