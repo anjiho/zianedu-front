@@ -31,9 +31,11 @@ $(document).ready(function () {
         }else if(leftMenuInfo == "techOnline"){
             gfn_display("techOnline", true);
             gfn_display("techAcademy", false);
+            $("#siteTab").css("background", "#f69321");
         }else if(leftMenuInfo == "techAcademy"){
             gfn_display("techOnline", false);
             gfn_display("techAcademy", true);
+            $("#wrap.skill .mainCustomer .btn_apply").backgroundColor("#f69321");
         }else if(leftMenuInfo == "postOnline"){
             gfn_display("postAcademy", false);
             gfn_display("postOnline", true);
@@ -170,7 +172,7 @@ $(document).ready(function () {
 <!-- 기술직 leftMenu -->
 <div id="techOnline" style="display: none;">
     <div id="aside">
-        <div id="siteTab">
+        <div id="siteTab" style="background: #f69321;">
             <h1><a href="#">기술직<br />온라인</a></h1>
             <a href="javascript:void(0);" onclick="setLeftMenu('techAcademy')">기술직 학원</a>
         </div>
@@ -230,7 +232,7 @@ $(document).ready(function () {
 
 <div id="techAcademy" style="display: none;">
     <div id="aside">
-        <div id="siteTab">
+        <div id="siteTab" style="background: #f69321;">
             <h1><a href="#">기술직<br />학원</a></h1>
             <a href="javascript:void(0);" onclick="setLeftMenu('techOnline')">기술직 온라인</a>
         </div>

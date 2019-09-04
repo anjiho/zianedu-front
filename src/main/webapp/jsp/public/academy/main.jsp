@@ -23,7 +23,7 @@
         <!--상단-->
         <div id="header">
             <div class="inner">
-                <h1><a href="#"><img src="/common/zian/images/common/logo01.png" alt="지안에듀 행정직"> 학원</a></h1>
+                <h1><a href="javascript:goPage('publicAcademy', 'main')"><img src="/common/zian/images/common/logo01.png" alt="지안에듀 행정직"> 학원</a></h1>
                 <%@include file="/common/jsp/topHeader.jsp" %>
             </div>
             <!--주메뉴-->

@@ -3,14 +3,14 @@
 <!--최상단배너-->
 <div id="topBanner" style="background-color:#2b1807;">
     <div class="inner">
-        <a href="#"><img src="/common/zian/images/content/img_topBanner0201.jpg" alt=""></a>
+        <a href=""><img src="/common/zian/images/content/img_topBanner0201.jpg" alt=""></a>
     </div>
 </div>
 <!--//최상단배너-->
 <!--상단-->
 <div id="header">
     <div class="inner">
-        <h1><a href="#"><img src="/common/zian/images/common/logo02.png" alt="지안에듀 기술직"></a></h1>
+        <h1><a href="javascript:goPage('techOnline', 'main')"><img src="/common/zian/images/common/logo02.png" alt="지안에듀 기술직"></a></h1>
         <div id="topSelect">
             <ul>
                 <li id="publicHeaderLi_1"><a href="javascript:goPage('techOnline', 'main')">온라인</a></li>
