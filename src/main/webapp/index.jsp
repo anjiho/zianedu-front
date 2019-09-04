@@ -14,32 +14,6 @@
     <!--//상단-->
 
     <!--본문-->
-    <script>
-        function init() {
-            // getIndexMainBigBanner("bigBanner", "visualPager", 5);//메인 대 배너
-            // getTeacherBannerList("teacherList", 228, 0);//공통과목 교수진
-            // getMajorTeacherBannerList("majorTeacherList", 228, 1);//전공과목 교수진
-            // getPassReviewList("passReviewList", "PASS", 10);//합격후기
-            // getLecReviewList("lecReviewList", "SIGN", 10);//수강후기
-
-            getEventMiniBanner("", 6283, 1);//이벤트 배너
-            getRandingBannerList(224, 3);//미니배너
-        }
-
-        //직렬별 leftMenu 세션 셋팅
-        function setLeftMenu(val) {
-            if(val != ""){
-                sessionStorage.setItem("leftMenu", val);
-                if(val == 'publicOnline'){
-                    goPage('publicOnline', 'main');
-                }else if(val == 'techOnline'){
-                    goPage('techOnline', 'main');
-                }else if(val == 'postOnline'){
-                    goPage('postOnline', 'main')
-                }
-            }
-        }
-    </script>
     <div id="skipLink">
         <a href="#">본문바로가기</a>
         <a href="#">주메뉴바로가기</a>
@@ -182,3 +156,29 @@
 </form>
 </body>
 </html>
+<script>
+    function init() {
+        // getIndexMainBigBanner("bigBanner", "visualPager", 5);//메인 대 배너
+        // getTeacherBannerList("teacherList", 228, 0);//공통과목 교수진
+        // getMajorTeacherBannerList("majorTeacherList", 228, 1);//전공과목 교수진
+        // getPassReviewList("passReviewList", "PASS", 10);//합격후기
+        // getLecReviewList("lecReviewList", "SIGN", 10);//수강후기
+
+        getEventMiniBanner("", 6283, 1);//이벤트 배너
+        getRandingBannerList(224, 3);//미니배너
+    }
+
+    //직렬별 leftMenu 세션 셋팅
+    function setLeftMenu(val) {
+        if(val != ""){
+            sessionStorage.setItem("leftMenu", val);
+            if(val == 'publicOnline'){
+                goPage('publicOnline', 'main');
+            }else if(val == 'techOnline'){
+                goPage('techOnline', 'main');
+            }else if(val == 'postOnline'){
+                goPage('postOnline', 'main')
+            }
+        }
+    }
+</script>
