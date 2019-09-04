@@ -73,7 +73,6 @@ function getMainBottomBanner(ctgKey, listNum) {
     var bannerInfoList = getApi("/banner/getMainMiniBanner/", ctgKey , data);
     if (bannerInfoList.result.length > 0) {
         var selList = bannerInfoList.result;
-        console.log(selList);
         $("#bottomBanner1").attr("src", selList[1].fullFileUrl);
     }
 }
