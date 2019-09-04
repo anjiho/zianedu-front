@@ -32,9 +32,9 @@
                 sessionStorage.setItem("leftMenu", val);
                 if(val == 'publicOnline'){
                     goPage('publicOnline', 'main');
-                }else if(val == 'item3'){
+                }else if(val == 'techOnline'){
                     goPage('techOnline', 'main');
-                }else if(val == 'item5'){
+                }else if(val == 'postOnline'){
                     goPage('postOnline', 'main')
                 }
             }
@@ -74,8 +74,8 @@
                 </div>
                 <ul>
                     <li class="item1"><a href="javascript:void(0);" onclick="setLeftMenu('publicOnline')"><b>지안에듀 행정직</b>지안과 함께라면 합격의 길이 보입니다</a></li>
-                    <li class="item2"><a href="javascript:void(0);" onclick="setLeftMenu('item3')"><b>지안에듀 기술직</b>지안과 함께라면 합격의 길이 보입니다</a></li>
-                    <li class="item3"><a href="javascript:void(0);" onclick="setLeftMenu('item5')"><b>지안에듀 계리직</b>지안과 함께라면 합격의 길이 보입니다</a></li>
+                    <li class="item2"><a href="javascript:void(0);" onclick="setLeftMenu('techOnline')"><b>지안에듀 기술직</b>지안과 함께라면 합격의 길이 보입니다</a></li>
+                    <li class="item3"><a href="javascript:void(0);" onclick="setLeftMenu('postOnline')"><b>지안에듀 계리직</b>지안과 함께라면 합격의 길이 보입니다</a></li>
                     <li class="item4"><a href="#"><b>자격증/가산점</b>지안과 함께라면 합격의 길이 보입니다</a></li>
                 </ul>
             </div>
