@@ -5,7 +5,7 @@
         activeHeaderBtn("publicHeaderLi_1");
         getMainBigBanner("mainVisualSlider1", 792, 5);//메인 대 배너
         getMainMiniBanner("mainVisualSlider2", 793, 5);//대배너 옆 미니 배너
-        getMainreviewBanner("reviewBanner", 795, 1);//대배너 옆 미니 배너
+        getMainreviewBanner("reviewBanner", 795, 1);//중앙 소 배너
         //getTeacherBannerList("teacherList1", 794, 0);//공통과목 교수진
        //getMajorTeacherBannerList("teacherList2", 794, 1);//전공과목 교수진
         getBannerNoticeList("examNotice", 1, 4, 10010);//행정직 시험공고 리스트
@@ -14,13 +14,13 @@
         getBannerNoticeList("passInfo", 1, 4, 10013);//행정직 합격후기 리스트
         getEventMiniBanner("", 6284, 5);//이벤트 배너
         getBookList("productList1", 843, 1, 10);//행정직 온라인 서점
-        getCommunityList(10970, 1, 2);
+        getCommunityList(10970, 1, 2);//합격자 영상
     }
 </script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
 <div id="wrap">
-    <%@include file="/common/jsp/leftMenu.jsp" %>
+    <%@include file="/common/jsp/leftMenu2.jsp" %>
     <!--상단-->
     <div id="header">
         <div class="inner">

@@ -164,7 +164,7 @@ $(document).ready(function () {
                 <li><a href="#"><img src="/common/zian/images/common/btn_snsLinkBlog.png" alt="네이버블로그"></a></li>
             </ul>
         </div>
-        <a href="#" id="btn_asideToggle">죄측메뉴열기/닫기</a>
+        <a href="#" id="btn_asideToggle1">죄측메뉴열기/닫기</a>
     </div>
 </div>
 <!-- 기술직 leftMenu -->
@@ -224,7 +224,7 @@ $(document).ready(function () {
                 <li><a href="#"><img src="/common/zian/images/common/btn_snsLinkBlog.png" alt="네이버블로그"></a></li>
             </ul>
         </div>
-        <a href="#" id="btn_asideToggle">죄측메뉴열기/닫기</a>
+        <a href="#" id="btn_asideToggle2">죄측메뉴열기/닫기</a>
     </div>
 </div>
 
@@ -284,7 +284,7 @@ $(document).ready(function () {
                 <li><a href="#"><img src="/common/zian/images/common/btn_snsLinkBlog.png" alt="네이버블로그"></a></li>
             </ul>
         </div>
-        <a href="#" id="btn_asideToggle">죄측메뉴열기/닫기</a>
+        <a href="#" id="btn_asideToggle3">죄측메뉴열기/닫기</a>
     </div>
 </div>
 
@@ -345,7 +345,7 @@ $(document).ready(function () {
                 <li><a href="#"><img src="/common/zian/images/common/btn_snsLinkBlog.png" alt="네이버블로그"></a></li>
             </ul>
         </div>
-        <a href="#" id="btn_asideToggle">죄측메뉴열기/닫기</a>
+        <a href="#" id="btn_asideToggle4">죄측메뉴열기/닫기</a>
     </div>
 </div>
 
@@ -405,7 +405,7 @@ $(document).ready(function () {
                 <li><a href="#"><img src="/common/zian/images/common/btn_snsLinkBlog.png" alt="네이버블로그"></a></li>
             </ul>
         </div>
-        <a href="#" id="btn_asideToggle">죄측메뉴열기/닫기</a>
+        <a href="#" id="btn_asideToggle5">죄측메뉴열기/닫기</a>
     </div>
 </div>
 <script>
