@@ -57,7 +57,7 @@
             gfn_display("login", false);
             gfn_display("join", false);
         }
-
+        //오른쪽메뉴 오늘 안보기 클릭 이벤트
         $("#todayClose").click(function () {
             setCookieMobile( "todayCookie", "done" , 1);
             $("#quickBar").hide();
