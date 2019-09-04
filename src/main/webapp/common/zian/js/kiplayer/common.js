@@ -378,11 +378,11 @@ var kiplayer = {
 		$("a.btn_modalOpen[href='#"+modalId+"']").focus();
 	},
 	'slider':function(){
-		if($(".slider.useBx").length > 0){
-			$(".slider.useBx").each(function(){
-				kiplayer.sliderBx($(this).children("ul"));
-			});
-		}
+		// if($(".slider.useBx").length > 0){
+		// 	$(".slider.useBx").each(function(){
+		// 		kiplayer.sliderBx($(this).children("ul"));
+		// 	});
+		// }
 		if($(".slider.useSlick").length > 0){
 			$(".slider.useSlick").each(function(){
 				kiplayer.sliderSlick($(this).children("ul"));
