@@ -73,7 +73,6 @@ function getMainBottomBanner(ctgKey, listNum) {
     var bannerInfoList = getApi("/banner/getMainMiniBanner/", ctgKey , data);
     if (bannerInfoList.result.length > 0) {
         var selList = bannerInfoList.result;
-        console.log(selList);
         $("#bottomBanner1").attr("src", selList[1].fullFileUrl);
     }
 }
@@ -89,6 +88,7 @@ function getEventMiniBanner(tagId, ctgKey, listNum) {
         for (var i=0; i<selList.length; i++) {
             var cmpList = selList[i];
             $("#eventBanner" + i).attr("src", cmpList.fullFileUrl);
+            $("#eventBannerHref" + i).attr("href", cmpList.targetUrl);
         }
     }
 }
@@ -270,4 +270,19 @@ function getExamScheduleList(tagId) {
         }, {escapeHtml: false});
     }
     initExamSlideBanner();
+}
+
+//커뮤니티 리스트
+function getRandingBannerList(ctgKey, listNum) {
+    var data = {
+        listNumber : listNum
+    };
+    var bannerInfoList = getApi("/banner/getMainMiniBanner/", ctgKey , data);
+    if (bannerInfoList.result.length > 0) {
+        var selList = bannerInfoList.result;
+        for (var i=0; i<3; i++) {
+            $("#mainBanner" + i).attr("src", selList[i].fullFileUrl);
+            $("#mainBannerHref" + i).attr("href", selList[i].targetUrl);
+        }
+    }
 }

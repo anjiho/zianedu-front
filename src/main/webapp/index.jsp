@@ -23,14 +23,14 @@
             // getLecReviewList("lecReviewList", "SIGN", 10);//수강후기
 
             getEventMiniBanner("", 6283, 1);//이벤트 배너
-            getMainMiniBanner("mainMiniBanner", 224, 3);//미니배너
+            getRandingBannerList(224, 3);//미니배너
         }
 
         //직렬별 leftMenu 세션 셋팅
         function setLeftMenu(val) {
             if(val != ""){
                 sessionStorage.setItem("leftMenu", val);
-                if(val == 'item1'){
+                if(val == 'publicOnline'){
                     goPage('publicOnline', 'main');
                 }else if(val == 'item3'){
                     goPage('techOnline', 'main');
@@ -73,7 +73,7 @@
                     </div>
                 </div>
                 <ul>
-                    <li class="item1"><a href="javascript:void(0);" onclick="setLeftMenu('item1')"><b>지안에듀 행정직</b>지안과 함께라면 합격의 길이 보입니다</a></li>
+                    <li class="item1"><a href="javascript:void(0);" onclick="setLeftMenu('publicOnline')"><b>지안에듀 행정직</b>지안과 함께라면 합격의 길이 보입니다</a></li>
                     <li class="item2"><a href="javascript:void(0);" onclick="setLeftMenu('item3')"><b>지안에듀 기술직</b>지안과 함께라면 합격의 길이 보입니다</a></li>
                     <li class="item3"><a href="javascript:void(0);" onclick="setLeftMenu('item5')"><b>지안에듀 계리직</b>지안과 함께라면 합격의 길이 보입니다</a></li>
                     <li class="item4"><a href="#"><b>자격증/가산점</b>지안과 함께라면 합격의 길이 보입니다</a></li>
@@ -111,16 +111,16 @@
             <div class="lendingBanner">
                 <div>
                     <!-- DB 배너 -->
-                    <a href="#"><img id="eventBanner0" src="" alt=""></a>
+                    <a id="eventBannerHref0" href=""><img id="eventBanner0" src="" alt=""></a>
                 </div>
                 <div>
                     <a href="#"><img src="/common/zian/images/content/img_banner0003.jpg" alt=""></a>
                 </div>
                 <div class="divGroup cols3">
                     <!-- DB 배너 -->
-                    <div><a href="#"><img id="mainBanner0" src="" alt=""></a></div>
-                    <div><a href="#"><img id="mainBanner1" src="" alt=""></a></div>
-                    <div><a href="#"><img id="mainBanner2" src="" alt=""></a></div>
+                    <div><a id="mainBannerHref0" href=""><img id="mainBanner0"></a></div>
+                    <div><a id="mainBannerHref1" href=""><img id="mainBanner1" src="" alt=""></a></div>
+                    <div><a id="mainBannerHref2" href=""><img id="mainBanner2" src="" alt=""></a></div>
                 </div>
             </div>
 
