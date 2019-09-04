@@ -1,23 +1,5 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/jsp/common.jsp" %>
-<script>
-    function init() {
-        activeHeaderBtn("publicHeaderLi_2");
-        //activeLeftMenu("item3");
-        getMainBigBanner("mainVisualSlider1", 1078, 5);//메인 대 배너
-        getMainMiniBanner("mainVisualSlider2", 1079, 5);//대배너 옆 미니 배너
-        getTeacherBannerList("teacherList1", 1080, 0);//공통과목 교수진
-        getMajorTeacherBannerList("teacherList2", 1080, 1);//전공과목 교수진
-        getEventMiniBanner("", 6288, 5);//이벤트 배너
-        getBannerNoticeList("examNotice", 1, 4, 10010);//시험공고 리스트
-        getBannerNoticeList("openInfo", 1, 4, 10026);//개강안내 리스트
-        getBannerNoticeList("lecInfo", 1, 4, 10033);//수강후기 리스트
-        getBannerNoticeList("passInfo", 1, 4, 10032);//합격후기 리스트
-        getBookList("productList1", 845, 1, 10);//온라인 서점
-        getCommunityList(10970, 1, 2);//합격자 영상
-        getMainreviewBanner("reviewBanner", 1081, 1);//중앙 소 배너
-    }
-</script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
 <div id="wrap" class="accounting">
@@ -425,3 +407,21 @@
 </form>
 </body>
 </html>
+<script>
+    function init() {
+        activeHeaderBtn("publicHeaderLi_2");
+        //activeLeftMenu("item3");
+        getMainBigBanner("mainVisualSlider1", 1078, 5);//메인 대 배너
+        getMainMiniBanner("mainVisualSlider2", 1079, 5);//대배너 옆 미니 배너
+        getTeacherBannerList("teacherList1", 1080, 0);//공통과목 교수진
+        getMajorTeacherBannerList("teacherList2", 1080, 1);//전공과목 교수진
+        getEventMiniBanner("", 6288, 5);//이벤트 배너
+        getBannerNoticeList("examNotice", 1, 4, 10010);//시험공고 리스트
+        getBannerNoticeList("openInfo", 1, 4, 10026);//개강안내 리스트
+        getBannerNoticeList("lecInfo", 1, 4, 10033);//수강후기 리스트
+        getBannerNoticeList("passInfo", 1, 4, 10032);//합격후기 리스트
+        getBookList("productList1", 845, 1, 10);//온라인 서점
+        getCommunityList(10970, 1, 2);//합격자 영상
+        getMainreviewBanner("reviewBanner", 1081, 1);//중앙 소 배너
+    }
+</script>

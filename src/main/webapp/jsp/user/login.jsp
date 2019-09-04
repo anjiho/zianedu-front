@@ -1,20 +1,5 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/jsp/common.jsp" %>
-<script>
-        function loginCheck() {
-            var userId  = getInputTextValue("userId");
-            var userPwd = getInputTextValue("userPwd");
-            if(userId == ""){
-                alert(comment.insert_id);
-                return false;
-            }else if(userPwd == ""){
-                alert(comment.insert_password);
-                return false;
-            }else{
-                login(userId, userPwd);
-            }
-        }
-</script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
     <div id="wrap">
@@ -45,3 +30,18 @@
 </form>
 </body>
 </html>
+<script>
+    function loginCheck() {
+        var userId  = getInputTextValue("userId");
+        var userPwd = getInputTextValue("userPwd");
+        if(userId == ""){
+            alert(comment.insert_id);
+            return false;
+        }else if(userPwd == ""){
+            alert(comment.insert_password);
+            return false;
+        }else{
+            login(userId, userPwd);
+        }
+    }
+</script>

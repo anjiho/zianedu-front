@@ -4,7 +4,7 @@
     <input type="hidden" name="page_gbn" id="page_gbn">
 <div id="wrap">
     <!--좌측사이트메뉴-->
-    <%@include file="/common/jsp/leftMenu2.jsp" %>
+    <%@include file="/common/jsp/leftMenu.jsp" %>
     <!--//좌측사이트메뉴-->
 
     <!--최상단배너-->
@@ -14,24 +14,6 @@
     <!--//상단-->
 
     <!--본문-->
-    <script>
-        function init() {
-            activeJoinHeaderBtn("statusBar_01");
-        }
-
-        //동의합니다 버튼
-        function goAgree() {
-            var chk0 = isCheckedCheckbox("joinAgreeChk0", "ID");
-            var chk1 = isCheckedCheckbox("joinAgreeChk1", "ID");
-            var chk2 = isCheckedCheckbox("joinAgreeChk2", "ID");
-            if(chk0 == false || chk1 == false || chk2 == false){
-                    alert(comment.check_agreement);
-                    return false;
-            }else{
-                goPage('user', 'joinForm')
-            }
-        }
-    </script>
     <div id="container">
         <div class="inner">
             <div class="joinWrap">
@@ -82,3 +64,21 @@
 </form>
 </body>
 </html>
+<script>
+    function init() {
+        activeJoinHeaderBtn("statusBar_01");
+    }
+
+    //동의합니다 버튼
+    function goAgree() {
+        var chk0 = isCheckedCheckbox("joinAgreeChk0", "ID");
+        var chk1 = isCheckedCheckbox("joinAgreeChk1", "ID");
+        var chk2 = isCheckedCheckbox("joinAgreeChk2", "ID");
+        if(chk0 == false || chk1 == false || chk2 == false){
+            alert(comment.check_agreement);
+            return false;
+        }else{
+            goPage('user', 'joinForm')
+        }
+    }
+</script>

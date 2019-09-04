@@ -1,22 +1,5 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/jsp/common.jsp" %>
-<script>
-    function init() {
-        activeHeaderBtn("publicHeaderLi_2");
-        getMainBigBanner("mainVisualSlider1", 786, 5);//메인 대 배너
-        getMainMiniBanner("mainVisualSlider2", 787, 5);//대배너 옆 미니 배너
-        getTeacherBannerList("teacherList1", 788, 0);//공통과목 교수진
-        getMajorTeacherBannerList("teacherList2", 788, 1);//전공과목 교수진
-        getBannerNoticeList("examNotice", 1, 4, 10010);//행정직 시험공고 리스트
-        getBannerNoticeList("openInfo", 1, 4, 10001);//행정직 개강안내 리스트
-        getBannerNoticeList("lecInfo", 1, 4, 10014);//행정직 수강후기 리스트
-        getBannerNoticeList("passInfo", 1, 4, 10013);//행정직 합격후기 리스트
-        getEventMiniBanner("", 6285, 5);//이벤트 배너
-        getBookList("productList1", 843, 1, 10);//행정직 온라인 서점
-        getCommunityList(10970, 1, 2);//합격자 영상
-        getMainreviewBanner("reviewBanner", 789, 1);//중앙 소 배너
-    }
-</script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
     <div id="wrap">
@@ -449,4 +432,20 @@
 </form>
 </body>
 </html>
-
+    <script>
+    function init() {
+        activeHeaderBtn("publicHeaderLi_2");
+        getMainBigBanner("mainVisualSlider1", 786, 5);//메인 대 배너
+        getMainMiniBanner("mainVisualSlider2", 787, 5);//대배너 옆 미니 배너
+        getTeacherBannerList("teacherList1", 788, 0);//공통과목 교수진
+        getMajorTeacherBannerList("teacherList2", 788, 1);//전공과목 교수진
+        getBannerNoticeList("examNotice", 1, 4, 10010);//행정직 시험공고 리스트
+        getBannerNoticeList("openInfo", 1, 4, 10001);//행정직 개강안내 리스트
+        getBannerNoticeList("lecInfo", 1, 4, 10014);//행정직 수강후기 리스트
+        getBannerNoticeList("passInfo", 1, 4, 10013);//행정직 합격후기 리스트
+        getEventMiniBanner("", 6285, 5);//이벤트 배너
+        getBookList("productList1", 843, 1, 10);//행정직 온라인 서점
+        getCommunityList(10970, 1, 2);//합격자 영상
+        getMainreviewBanner("reviewBanner", 789, 1);//중앙 소 배너
+    }
+</script>

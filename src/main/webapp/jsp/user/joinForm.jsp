@@ -82,113 +82,6 @@
     <!--//상단-->
 
     <!--본문-->
-    <script>
-        window.name ="Parent_window";
-        window.close();
-
-        function init() {
-            activeJoinHeaderBtn("statusBar_02");
-            getUserRegSerialList("interestCtgKey0"); //준비직렬
-        }
-
-        $(document).ready(function () {
-            //비밀번호 정규식 체크
-            $("#password").keyup(function () {
-                var password = getInputTextValue("password");
-                innerHTML("rePwdCaption","");
-                innerValue("pwdValidation", 0); // 0 : 실패 , 1 : 성공
-                validationPassword(password);
-            });
-            //아이디 정규식 체크 /  중복체크
-            $("#userId").keyup(function (e) {
-                var objTarget = e.srcElement || e.target;
-                if(objTarget.type == 'text') { //한글 입력 방지
-                    var value = objTarget.value;
-                    if(/[ㄱ-ㅎㅏ-ㅡ가-핳]/.test(value)) {
-                        objTarget.value = objTarget.value.replace(/[ㄱ-ㅎㅏ-ㅡ가-핳]/g,'');
-                    }
-                }
-                var userId = getInputTextValue("userId");
-                innerValue("idValidation", 0); // 0 : 실패 , 1 : 성공
-                validationUserId(userId);
-            });
-            //비밀번호 확인 체크
-            $("#rePassword").keyup(function () {
-                var password   = getInputTextValue("password");
-                var rePassword = getInputTextValue("rePassword");
-                if(rePassword != ""){
-                    if(password != ""){
-                        gfn_display("rePwdCaption", true);
-                        if(password == rePassword){
-                            innerHTML("rePwdCaption","비밀번호 일치");
-                        }else{
-                            innerHTML("rePwdCaption","비밀번호가 일치하지 않습니다. 다시 확번 확인해주세요.");
-                        }
-                    }else{
-                        alert(comment.insert_password);
-                        innerValue("rePassword", "");
-                        focusInputText("password");
-                        return false;
-                    }
-                }
-            });
-        });
-
-        function goJoin() {
-            var check = new isCheck();
-            if (check.input("name", comment.search_input_id_name) == false) return;
-            if (check.input("userId", comment.insert_id) == false) return;
-            if (check.input("password", comment.insert_password) == false) return;
-            if (check.input("email", comment.input_member_email) == false) return;
-            if (check.input("emailAddress", comment.input_member_email) == false) return;
-            if (check.input("zipcode", comment.input_zip_code) == false) return;
-            if (check.input("roadAddress", comment.input_id_address) == false) return;
-            if (check.input("address", comment.input_address) == false) return;
-            if (check.selectbox("interestCtgKey0", comment.sel_ctgkey) == false) return;
-            if (check.input("telephoneMobile", comment.access_telphone) == false) return;
-            var email    = getInputTextValue("email");
-            var emailAdd = getInputTextValue("emailAddress");
-            var allEmail = email+"@"+emailAdd;
-            var fnEmail  =  fn_isemail(allEmail);//이메일 형식 체크
-            if(fnEmail == true) return;
-            var gender  = get_radio_value("gender");//성별
-            var interestCtgKey0 = getSelectboxValue("interestCtgKey0");
-            var phoneNum = getInputTextValue("telephoneMobile");
-            var phoneNumHypen = getPhoneNumHypen(phoneNum);
-            var name = getInputTextValue("name");
-            var data = getJsonObjectFromDiv("joinDiv");
-
-            data.gender = gender;
-            data.email = allEmail;
-            data.addressNumber = "";
-            data.interestCtgKey0 = interestCtgKey0;
-            data.certCode = getInputTextValue("certCode");
-            data.telephoneMobile = phoneNumHypen;
-            data.name = name;
-
-            var idValidation  = getInputTextValue("idValidation");//아이디 확인
-            var pwdValidation = getInputTextValue("pwdValidation");//비밀번호 확인
-
-            //회원가입 전송
-            if(idValidation == 1 && pwdValidation ==1){
-                var result  =  userReg(data);
-                if(result.resultCode == 200){
-                    goPage('user', 'joinResult');
-                }else if(result.resultCode == 902){
-                    alert(comment.overlap_user_id);
-                    return false;
-                }
-            }else if(idValidation == 0){
-                alert(comment.check_user_id);
-                focusInputText("userId");
-                return false;
-            }else{
-                alert(comment.check_user_pwd);
-                focusInputText("password");
-                return false;
-            }
-        }
-    </script>
     <div id="container">
         <div class="inner">
             <div class="joinWrap">
@@ -316,3 +209,110 @@
 </form>
 </body>
 </html>
+<script>
+    window.name ="Parent_window";
+    window.close();
+
+    function init() {
+        activeJoinHeaderBtn("statusBar_02");
+        getUserRegSerialList("interestCtgKey0"); //준비직렬
+    }
+
+    $(document).ready(function () {
+        //비밀번호 정규식 체크
+        $("#password").keyup(function () {
+            var password = getInputTextValue("password");
+            innerHTML("rePwdCaption","");
+            innerValue("pwdValidation", 0); // 0 : 실패 , 1 : 성공
+            validationPassword(password);
+        });
+        //아이디 정규식 체크 /  중복체크
+        $("#userId").keyup(function (e) {
+            var objTarget = e.srcElement || e.target;
+            if(objTarget.type == 'text') { //한글 입력 방지
+                var value = objTarget.value;
+                if(/[ㄱ-ㅎㅏ-ㅡ가-핳]/.test(value)) {
+                    objTarget.value = objTarget.value.replace(/[ㄱ-ㅎㅏ-ㅡ가-핳]/g,'');
+                }
+            }
+            var userId = getInputTextValue("userId");
+            innerValue("idValidation", 0); // 0 : 실패 , 1 : 성공
+            validationUserId(userId);
+        });
+        //비밀번호 확인 체크
+        $("#rePassword").keyup(function () {
+            var password   = getInputTextValue("password");
+            var rePassword = getInputTextValue("rePassword");
+            if(rePassword != ""){
+                if(password != ""){
+                    gfn_display("rePwdCaption", true);
+                    if(password == rePassword){
+                        innerHTML("rePwdCaption","비밀번호 일치");
+                    }else{
+                        innerHTML("rePwdCaption","비밀번호가 일치하지 않습니다. 다시 확번 확인해주세요.");
+                    }
+                }else{
+                    alert(comment.insert_password);
+                    innerValue("rePassword", "");
+                    focusInputText("password");
+                    return false;
+                }
+            }
+        });
+    });
+
+    function goJoin() {
+        var check = new isCheck();
+        if (check.input("name", comment.search_input_id_name) == false) return;
+        if (check.input("userId", comment.insert_id) == false) return;
+        if (check.input("password", comment.insert_password) == false) return;
+        if (check.input("email", comment.input_member_email) == false) return;
+        if (check.input("emailAddress", comment.input_member_email) == false) return;
+        if (check.input("zipcode", comment.input_zip_code) == false) return;
+        if (check.input("roadAddress", comment.input_id_address) == false) return;
+        if (check.input("address", comment.input_address) == false) return;
+        if (check.selectbox("interestCtgKey0", comment.sel_ctgkey) == false) return;
+        if (check.input("telephoneMobile", comment.access_telphone) == false) return;
+        var email    = getInputTextValue("email");
+        var emailAdd = getInputTextValue("emailAddress");
+        var allEmail = email+"@"+emailAdd;
+        var fnEmail  =  fn_isemail(allEmail);//이메일 형식 체크
+        if(fnEmail == true) return;
+        var gender  = get_radio_value("gender");//성별
+        var interestCtgKey0 = getSelectboxValue("interestCtgKey0");
+        var phoneNum = getInputTextValue("telephoneMobile");
+        var phoneNumHypen = getPhoneNumHypen(phoneNum);
+        var name = getInputTextValue("name");
+        var data = getJsonObjectFromDiv("joinDiv");
+
+        data.gender = gender;
+        data.email = allEmail;
+        data.addressNumber = "";
+        data.interestCtgKey0 = interestCtgKey0;
+        data.certCode = getInputTextValue("certCode");
+        data.telephoneMobile = phoneNumHypen;
+        data.name = name;
+
+        var idValidation  = getInputTextValue("idValidation");//아이디 확인
+        var pwdValidation = getInputTextValue("pwdValidation");//비밀번호 확인
+
+        //회원가입 전송
+        if(idValidation == 1 && pwdValidation ==1){
+            var result  =  userReg(data);
+            if(result.resultCode == 200){
+                goPage('user', 'joinResult');
+            }else if(result.resultCode == 902){
+                alert(comment.overlap_user_id);
+                return false;
+            }
+        }else if(idValidation == 0){
+            alert(comment.check_user_id);
+            focusInputText("userId");
+            return false;
+        }else{
+            alert(comment.check_user_pwd);
+            focusInputText("password");
+            return false;
+        }
+    }
+</script>
