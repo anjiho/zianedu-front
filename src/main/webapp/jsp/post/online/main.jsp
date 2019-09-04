@@ -19,7 +19,7 @@
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
 <div id="wrap" class="accounting">
-    <%@include file="/common/jsp/post/leftMenu.jsp" %>
+    <%@include file="/common/jsp/leftMenu.jsp" %>
     <!--상단-->
     <div id="header">
         <div class="inner">
