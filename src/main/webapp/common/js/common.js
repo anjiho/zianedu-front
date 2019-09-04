@@ -2239,6 +2239,21 @@ function getCookie(cName) {
     return unescape(cValue);
 }
 
+function setCookieMobile ( name, value, expiredays ) {
+    var todayDate = new Date();
+    todayDate.setDate( todayDate.getDate() + expiredays );
+    document.cookie = name + "=" + escape( value ) + "; path=/; expires=" + todayDate.toGMTString() + ";"
+}
+
+function getCookieMobile () {
+    var cookie = getCookie("todayCookie");
+    if ( cookie == 'done' ){
+        gfn_display("quickBar", false);
+    } else {
+        $("#quickBar").show();
+    }
+}
+
 //이메일 만들기
 function make_email(emailStr, emailDomain) {
     var email;

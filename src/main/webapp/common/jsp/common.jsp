@@ -57,6 +57,11 @@
             gfn_display("login", false);
             gfn_display("join", false);
         }
+
+        $("#todayClose").click(function () {
+            setCookieMobile( "todayCookie", "done" , 1);
+            $("#quickBar").hide();
+        });
     });
 
     function goLogout() {
