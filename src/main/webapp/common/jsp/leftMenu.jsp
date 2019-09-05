@@ -31,13 +31,13 @@
         var subMenuHtml = $("#subMenu1").html();
         if(subMenuHtml == '기술직'){
             sessionStorage.setItem("leftMenu", "techOnline");
-            goPage("techOnline", "main");
+            //goPage("techOnline", "main");
         }else if(subMenuHtml == '행정직'){
             sessionStorage.setItem("leftMenu", "publicOnline");
             goPage("publicOnline", "main");
         }else if(subMenuHtml == '계리직'){
             sessionStorage.setItem("leftMenu", "postOnline");
-            goPage("postOnline", "main");
+            //goPage("postOnline", "main");
         }
     }
 
@@ -45,13 +45,13 @@
         var subMenuHtml = $("#subMenu2").html();
         if(subMenuHtml == '기술직'){
             sessionStorage.setItem("leftMenu", "techOnline");
-            goPage("techOnline", "main");
+            //goPage("techOnline", "main");
         }else if(subMenuHtml == '행정직'){
             sessionStorage.setItem("leftMenu", "publicOnline");
             goPage("publicOnline", "main");
         }else if(subMenuHtml == '계리직'){
             sessionStorage.setItem("leftMenu", "postOnline");
-            goPage("postOnline", "main");
+            //goPage("postOnline", "main");
         }
     }
 
