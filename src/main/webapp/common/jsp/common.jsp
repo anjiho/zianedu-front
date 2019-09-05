@@ -52,6 +52,7 @@
         if(sessionUserInfo != null){ //로그인했을경우,
             var userName = sessionUserInfo.name;
             innerHTML("userName", userName+" 님");
+            gfn_display("myPage", true);
             gfn_display("userName", true);
             gfn_display("logout", true);
             gfn_display("login", false);
