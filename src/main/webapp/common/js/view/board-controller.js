@@ -80,6 +80,7 @@ function getCommunityList(bbsMaterKey, sPage, listLimit) {
         var selList = InfoList.result;
         $("#movieBanner0").attr("src", selList[0].fileUrl);
         $("#movieBanner1").attr("src", selList[1].fileUrl);
+
     }
 }
 

@@ -31,7 +31,7 @@ function getMainBigBanner(tagId, ctgKey, listNum) {
     if (bannerInfoList.result.length > 0) {
         var selList = bannerInfoList.result;
         dwr.util.addOptions(tagId, selList, function (data) {
-            return "<a href='#'><img src='"+ data.fullFileUrl +"' alt=''></a>"
+            return "<a href='"+ data.targetUrl +"'><img src='"+ data.fullFileUrl +"' alt=''></a>"
         }, {escapeHtml: false});
     }
     kiplayer.sliderBx($("#" + tagId));
@@ -46,7 +46,7 @@ function getMainMiniBanner(tagId, ctgKey, listNum) {
     if (bannerInfoList.result.length > 0) {
         var selList = bannerInfoList.result;
         dwr.util.addOptions(tagId, selList, function (data) {
-            return "<a href='#'><img src='"+ data.fullFileUrl +"' alt=''></a>"
+            return "<a href='"+ data.targetUrl +"'><img src='"+ data.fullFileUrl +"' alt=''></a>"
         }, {escapeHtml: false});
     }
     kiplayer.sliderBx($("#" + tagId));
@@ -60,7 +60,7 @@ function getMainreviewBanner(tagId, ctgKey, listNum) {
     if (bannerInfoList.result.length > 0) {
         var selList = bannerInfoList.result;
         dwr.util.addOptions(tagId, selList, function (data) {
-            return "<a href='#'><img src='"+ data.fullFileUrl +"' alt=''></a>"
+            return "<a href='"+ data.targetUrl +"'><img src='"+ data.fullFileUrl +"' alt=''></a>"
         }, {escapeHtml: false});
     }
 }
@@ -73,6 +73,7 @@ function getMainBottomBanner(ctgKey, listNum) {
     var bannerInfoList = getApi("/banner/getMainMiniBanner/", ctgKey , data);
     if (bannerInfoList.result.length > 0) {
         var selList = bannerInfoList.result;
+        $("#ABottomBanner1").attr("href", selList[1].targetUrl == null ? "#" : selList[1].targetUrl);
         $("#bottomBanner1").attr("src", selList[1].fullFileUrl);
     }
 }
