@@ -42,8 +42,6 @@
     <!-- dwr -->
     <script type='text/javascript' src='/dwr/engine.js'></script>
     <script type='text/javascript' src='/dwr/util.js'></script>
-    <!-- 다음 주소 api -->
-    <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 </head>
 <body onload="init();">
 <script>

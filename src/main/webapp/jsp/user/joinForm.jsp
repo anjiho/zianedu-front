@@ -62,6 +62,8 @@
     </script>
 <% } %>
 <%@include file="/common/jsp/common.jsp" %>
+<!-- 다음 주소 api -->
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
     <input type="hidden" name="m" value="checkplusSerivce">

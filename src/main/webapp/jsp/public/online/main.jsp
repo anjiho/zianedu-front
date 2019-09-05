@@ -435,7 +435,7 @@
 </body>
 </html>
 <script>
-    function init(){
+    $( document ).ready(function() {
         activeHeaderBtn("publicHeaderLi_1");
         getMainBigBanner("mainVisualSlider1", 792, 5);//메인 대 배너
         getMainMiniBanner("mainVisualSlider2", 793, 5);//대배너 옆 미니 배너
@@ -449,5 +449,5 @@
         getEventMiniBanner("", 6284, 5);//이벤트 배너
         getBookList("productList1", 843, 1, 10);//행정직 온라인 서점
         getCommunityList(10970, 1, 2);//합격자 영상
-    }
+    });
 </script>
