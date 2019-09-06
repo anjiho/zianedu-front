@@ -52,8 +52,14 @@
                             <a href="#" class="btn_more">전체보기</a>
                         </div>
                         <div class="divGroup cols2">
-                            <div><a href="#"><img src="" id="movieBanner0" alt=""></a></div>
-                            <div><a href="#"><img src="" id="movieBanner1" alt=""></a></div>
+                            <div>
+                                <%--                            <a href="#"><img src="" id="movieBanner0" alt=""></a>--%>
+                                <iframe width="500" height="280" src="https://www.youtube.com/embed/aeBl2GEuMdA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <div>
+                                <%--                            <a href="#"><img src="" id="movieBanner1" alt=""></a>--%>
+                                <iframe width="500" height="280" src="https://www.youtube.com/embed/q6Cu1LWNHmc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
                         </div>
                     </div>
                 </div>
