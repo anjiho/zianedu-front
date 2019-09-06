@@ -31,17 +31,17 @@
 </body>
 </html>
 <script>
-    function loginCheck() {
-        var userId  = getInputTextValue("userId");
-        var userPwd = getInputTextValue("userPwd");
-        if(userId == ""){
-            alert(comment.insert_id);
-            return false;
-        }else if(userPwd == ""){
-            alert(comment.insert_password);
-            return false;
-        }else{
-            login(userId, userPwd);
-        }
+function loginCheck() {
+    var userId  = getInputTextValue("userId");
+    var userPwd = getInputTextValue("userPwd");
+    if(userId == ""){
+        alert(comment.insert_id);
+        return false;
+    }else if(userPwd == ""){
+        alert(comment.insert_password);
+        return false;
+    }else{
+        login(userId, userPwd);
     }
+}
 </script>

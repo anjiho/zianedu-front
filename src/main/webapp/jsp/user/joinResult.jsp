@@ -14,11 +14,6 @@
     <!--//상단-->
 
     <!--본문-->
-    <script>
-        function init() {
-            activeJoinHeaderBtn("statusBar_03");
-        }
-    </script>
     <div id="container">
         <div class="inner">
             <div class="joinWrap">
@@ -54,3 +49,8 @@
 </form>
 </body>
 </html>
+<script>
+$( document ).ready(function() {
+    activeJoinHeaderBtn("statusBar_03");
+});
+</script>

@@ -48,10 +48,10 @@
     $(document).ready(function () {
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         if(sessionUserInfo != null){ //로그인했을경우,
-            var userName = sessionUserInfo.name;
-            innerHTML("userName", userName+" 님");
-            gfn_display("myPage", true);
-            gfn_display("userName", true);
+            //var userName = sessionUserInfo.name;
+           // innerHTML("userName", userName+" 님");
+            gfn_display("mypage", true);
+           // gfn_display("userName", true);
             gfn_display("logout", true);
             gfn_display("login", false);
             gfn_display("join", false);
@@ -66,8 +66,9 @@
     function goLogout() {
         if(confirm("로그아웃 하시겠습니까?")){
             sessionStorage.clear();
-            innerHTML("userName", "");
-            gfn_display("userName", false);
+           // innerHTML("userName", "");
+            gfn_display("mypage", false);
+            //gfn_display("userName", false);
             gfn_display("logout", false);
             gfn_display("login", true);
             gfn_display("join", true);

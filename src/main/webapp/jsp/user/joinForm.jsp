@@ -215,12 +215,14 @@
     window.name ="Parent_window";
     window.close();
 
-    function init() {
-        activeJoinHeaderBtn("statusBar_02");
-        getUserRegSerialList("interestCtgKey0"); //준비직렬
-    }
+    // function init() {
+    //     activeJoinHeaderBtn("statusBar_02");
+    //     getUserRegSerialList("interestCtgKey0"); //준비직렬
+    // }
 
     $(document).ready(function () {
+        activeJoinHeaderBtn("statusBar_02");
+        getUserRegSerialList("interestCtgKey0"); //준비직렬
         //비밀번호 정규식 체크
         $("#password").keyup(function () {
             var password = getInputTextValue("password");

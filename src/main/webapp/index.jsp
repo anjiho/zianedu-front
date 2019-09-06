@@ -25,7 +25,7 @@
             <!--최상단메뉴-->
             <div id="topNav">
                 <ul>
-                    <li id="myPage" style="display: none;"><a href="#">마이페이지</a></li>
+                    <li id="mypage" style="display: none;"><a href="#">마이페이지</a></li>
                     <li id="login"><a href="javascript:goLoginPage();">로그인</a></li>
                     <li id="logout" style="display: none;"><a href="javascript:goLogout();">로그아웃</a></li>
                     <li id="join"><a href="javascript:goPage('user', 'joinAgree');">회원가입</a></li>
@@ -159,17 +159,10 @@
 </body>
 </html>
 <script>
-    function init() {
-        // getIndexMainBigBanner("bigBanner", "visualPager", 5);//메인 대 배너
-        // getTeacherBannerList("teacherList", 228, 0);//공통과목 교수진
-        // getMajorTeacherBannerList("majorTeacherList", 228, 1);//전공과목 교수진
-        // getPassReviewList("passReviewList", "PASS", 10);//합격후기
-        // getLecReviewList("lecReviewList", "SIGN", 10);//수강후기
-
+    $(document).ready(function () {
         getEventMiniBanner("", 6283, 1);//이벤트 배너
         getRandingBannerList(224, 3);//미니배너
-    }
-
+    });
     //직렬별 leftMenu 세션 셋팅
     function setLeftMenu(val) {
         if(val != ""){

@@ -424,21 +424,21 @@
 </body>
 </html>
 <script>
-    function init() {
-        activeHeaderBtn("publicHeaderLi_1");
-        activeLeftMenu(sessionStorage.getItem("leftMenu"));
-        getMainBigBanner("mainVisualSlider1", 827, 5);//메인 대 배너
-        getMainMiniBanner("mainVisualSlider2", 828, 5);//대배너 옆 미니 배너
-        getTeacherBannerList("teacherList1", 829, 0);//공통과목 교수진
-        getMajorTeacherBannerList("teacherList2", 829, 1);//전공과목 교수진
-        getEventMiniBanner("", 6287, 5);//이벤트 배너
-        getBannerNoticeList("examNotice", 1, 4, 10030);//시험공고 리스트
-        getBannerNoticeList("openInfo", 1, 4, 10026);//개강안내 리스트
-        getBannerNoticeList("lecInfo", 1, 4, 10033);//수강후기 리스트
-        getBannerNoticeList("passInfo", 1, 4, 10032);//합격후기 리스트
-        getBookList("productList1", 844, 1, 10);//온라인 서점 배너
-        getCommunityList(830, 1, 2);//중앙 소 배너
-        getMainreviewBanner("reviewBanner", 830, 1);//중앙 소 배너
-        getCommunityList(10970, 1, 2);//합격자 영상
-    }
+$( document ).ready(function() {
+    activeHeaderBtn("publicHeaderLi_1");
+    activeLeftMenu(sessionStorage.getItem("leftMenu"));
+    getMainBigBanner("mainVisualSlider1", 827, 5);//메인 대 배너
+    getMainMiniBanner("mainVisualSlider2", 828, 5);//대배너 옆 미니 배너
+    getTeacherBannerList("teacherList1", 829, 0);//공통과목 교수진
+    getMajorTeacherBannerList("teacherList2", 829, 1);//전공과목 교수진
+    getEventMiniBanner("", 6287, 5);//이벤트 배너
+    getBannerNoticeList("examNotice", 1, 4, 10030);//시험공고 리스트
+    getBannerNoticeList("openInfo", 1, 4, 10026);//개강안내 리스트
+    getBannerNoticeList("lecInfo", 1, 4, 10033);//수강후기 리스트
+    getBannerNoticeList("passInfo", 1, 4, 10032);//합격후기 리스트
+    getBookList("productList1", 844, 1, 10);//온라인 서점 배너
+    getCommunityList(830, 1, 2);//중앙 소 배너
+    getMainreviewBanner("reviewBanner", 830, 1);//중앙 소 배너
+    getCommunityList(10970, 1, 2);//합격자 영상
+});
 </script>

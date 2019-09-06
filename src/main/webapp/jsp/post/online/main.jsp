@@ -423,20 +423,20 @@
 </body>
 </html>
 <script>
-    function init() {
-        activeHeaderBtn("publicHeaderLi_1");
-        //activeLeftMenu("item3");
-        getMainBigBanner("mainVisualSlider1", 1084, 5);//메인 대 배너
-        getMainMiniBanner("mainVisualSlider2", 1085, 5);//대배너 옆 미니 배너
-        getTeacherBannerList("teacherList1", 1086, 0);//공통과목 교수진
-        getMajorTeacherBannerList("teacherList2", 1086, 1);//전공과목 교수진
-        getEventMiniBanner("", 6289, 5);//이벤트 배너
-        getBannerNoticeList("examNotice", 1, 4, 10010);//시험공고 리스트
-        getBannerNoticeList("openInfo", 1, 4, 10026);//개강안내 리스트
-        getBannerNoticeList("lecInfo", 1, 4, 10033);//수강후기 리스트
-        getBannerNoticeList("passInfo", 1, 4, 10032);//합격후기 리스트
-        getBookList("productList1", 845, 1, 10);//온라인 서점
-        getCommunityList(10970, 1, 2);//합격자 영상
-        getMainreviewBanner("reviewBanner", 1087, 1);//중앙 소 배너
-    }
+$( document ).ready(function() {
+    activeHeaderBtn("publicHeaderLi_1");
+    //activeLeftMenu("item3");
+    getMainBigBanner("mainVisualSlider1", 1084, 5);//메인 대 배너
+    getMainMiniBanner("mainVisualSlider2", 1085, 5);//대배너 옆 미니 배너
+    getTeacherBannerList("teacherList1", 1086, 0);//공통과목 교수진
+    getMajorTeacherBannerList("teacherList2", 1086, 1);//전공과목 교수진
+    getEventMiniBanner("", 6289, 5);//이벤트 배너
+    getBannerNoticeList("examNotice", 1, 4, 10010);//시험공고 리스트
+    getBannerNoticeList("openInfo", 1, 4, 10026);//개강안내 리스트
+    getBannerNoticeList("lecInfo", 1, 4, 10033);//수강후기 리스트
+    getBannerNoticeList("passInfo", 1, 4, 10032);//합격후기 리스트
+    getBookList("productList1", 845, 1, 10);//온라인 서점
+    getCommunityList(10970, 1, 2);//합격자 영상
+    getMainreviewBanner("reviewBanner", 1087, 1);//중앙 소 배너
+});
 </script>
