@@ -45,7 +45,7 @@
         var subMenuHtml = $("#subMenu2").html();
         if(subMenuHtml == '기술직'){
             sessionStorage.setItem("leftMenu", "techOnline");
-            goPage("techOnline", "main");
+            //goPage("techOnline", "main");
         }else if(subMenuHtml == '행정직'){
             sessionStorage.setItem("leftMenu", "publicOnline");
             goPage("publicOnline", "main");
