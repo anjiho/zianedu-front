@@ -141,178 +141,42 @@
                     </div>
                 </div>
             </div> -->
-
+            
             <!-- 지안에듀 교수진 -->
             <div class="mainTeacher">
-                <div class="inner">
-                    <ul id="bx-pager" class="mainTeacherTitle">
-                        <li><b>공통과목</b>
-                            <ul class="mainTeacherList">
-                                <li><a href="#" data-slide-index="0" class="active">
-                                    <span class="category">영어</span> <b>윤광덕</b>
-                                    <span class="thumb"><img src="/common/zian/images/content/img_teacher1.png" alt=""></span>
-                                </a></li>
-                                <li><a href="#" data-slide-index="1">
-                                    <span class="category">영어</span> <b>조재권</b>
-                                    <span class="thumb"><img src="/common/zian/images/content/img_teacher2.png" alt=""></span>
-                                </a></li>
-                                <li><a href="#" data-slide-index="2">
-                                    <span class="category">국어</span> <b>안효선</b>
-                                    <span class="thumb"><img src="/common/zian/images/content/img_teacher3.png" alt=""></span>
-                                </a></li>
-                            </ul>
-                        </li>
-                        <li><b>전공과목</b>
-                            <ul class="mainTeacherList">
-                                <li><a href="#" data-slide-index="3">
-                                    <span class="category">경영학</span> <b>박병호</b>
-                                    <span class="thumb"><img src="/common/zian/images/content/img_teacher4.png" alt=""></span>
-                                </a></li>
-                                <li><a href="#" data-slide-index="4">
-                                    <span class="category">행정법</span> <b>장다훈</b>
-                                    <span class="thumb"><img src="/common/zian/images/content/img_teacher5.png" alt=""></span>
-                                </a></li>
-                                <li><a href="#" data-slide-index="5">
-                                    <span class="category">사회</span> <b>강나현</b>
-                                    <span class="thumb"><img src="/common/zian/images/content/img_teacher6.png" alt=""></span>
-                                </a></li>
-                            </ul>
-                        </li>
+                <div class="inner tabContent">
+                    <ul class="tabBar">
+                        <li class="active"><a href="#">공통과목</a></li>
+                        <li><a href="#">전공과목</a></li>
                     </ul>
-                    <ul class="mainTeacherPage">
-                        <li><div>
-                            <div class="thumb"><span><img src="/common/zian/images/content/img_teacher1_b.png" alt=""></span></div>
-                            <div class="teacherInfo">
-                                <span class="category">영어</span>
-                                <b>윤광덕</b>
-                                <span class="btnArea">
-									<a href="#"><img src="/common/zian/images/common/icon_home.png" alt=""> 교수홈</a>
-									<a href="#"><img src="/common/zian/images/common/icon_review.png" alt=""> 수강후기</a>
-								</span>
-                                <span class="desc">
-									<b>약력</b>
-									동국대학교 영어통번역&영어영문학과 졸업<br />
-									미국 Arkansas State University 영문학 수료<br />
-									現 지안공무원학원 영어담당<br />
-									現 공무원 영어 교재 개발담당
-								</span>
-                                <span class="desc">
-									<b>저서</b>
-									가나다라마바사
-								</span>
+                    <div class="tabPage active" id="mainTeacherTab1">
+                        <!-- Swiper -->
+                        <div class="sliderWrap">
+                            <div class="swiper-container mainTeacherTitle">
+                                <div class="swiper-wrapper" id="teacherList1"></div><!--공통과목 선생님 리스트-->
                             </div>
-                        </div></li>
-                        <li><div>
-                            <div class="thumb"><span><img src="/common/zian/images/content/img_teacher2_b.png" alt=""></span></div>
-                            <div class="teacherInfo">
-                                <span class="category">영어</span>
-                                <b>조재권</b>
-                                <span class="btnArea">
-									<a href="#"><img src="/common/zian/images/common/icon_home.png" alt=""> 교수홈</a>
-									<a href="#"><img src="/common/zian/images/common/icon_review.png" alt=""> 수강후기</a>
-								</span>
-                                <span class="desc">
-									<b>약력</b>
-									동국대학교 영어통번역&영어영문학과 졸업<br />
-									미국 Arkansas State University 영문학 수료<br />
-									現 지안공무원학원 영어담당<br />
-									現 공무원 영어 교재 개발담당
-								</span>
-                                <span class="desc">
-									<b>저서</b>
-									가나다라마바사
-								</span>
+                            <div class="swiper-container mainTeacherPage">
+                                <div class="swiper-wrapper" id="teacherPage1"></div><!--공통과목 선생님 페이지 리스트-->
+                                <!-- Add Arrows -->
+                                <div class="swiper-button-next swiper-button-white"></div>
+                                <div class="swiper-button-prev swiper-button-white"></div>
                             </div>
-                        </div></li>
-                        <li><div>
-                            <div class="thumb"><span><img src="/common/zian/images/content/img_teacher3_b.png" alt=""></span></div>
-                            <div class="teacherInfo">
-                                <span class="category">국어</span>
-                                <b>안효선</b>
-                                <span class="btnArea">
-									<a href="#"><img src="/common/zian/images/common/icon_home.png" alt=""> 교수홈</a>
-									<a href="#"><img src="/common/zian/images/common/icon_review.png" alt=""> 수강후기</a>
-								</span>
-                                <span class="desc">
-									<b>약력</b>
-									동국대학교 영어통번역&영어영문학과 졸업<br />
-									미국 Arkansas State University 영문학 수료<br />
-									現 지안공무원학원 영어담당<br />
-									現 공무원 영어 교재 개발담당
-								</span>
-                                <span class="desc">
-									<b>저서</b>
-									가나다라마바사
-								</span>
+                        </div>
+                    </div>
+                    <div class="tabPage" id="mainTeacherTab2">
+                        <!-- Swiper -->
+                        <div class="sliderWrap">
+                            <div class="swiper-container mainTeacherTitle">
+                                <div class="swiper-wrapper" id="teacherList2"></div>
                             </div>
-                        </div></li>
-                        <li><div>
-                            <div class="thumb"><span><img src="/common/zian/images/content/img_teacher4_b.png" alt=""></span></div>
-                            <div class="teacherInfo">
-                                <span class="category">경영학</span>
-                                <b>박병호</b>
-                                <span class="btnArea">
-									<a href="#"><img src="/common/zian/images/common/icon_home.png" alt=""> 교수홈</a>
-									<a href="#"><img src="/common/zian/images/common/icon_review.png" alt=""> 수강후기</a>
-								</span>
-                                <span class="desc">
-									<b>약력</b>
-									동국대학교 영어통번역&영어영문학과 졸업<br />
-									미국 Arkansas State University 영문학 수료<br />
-									現 지안공무원학원 영어담당<br />
-									現 공무원 영어 교재 개발담당
-								</span>
-                                <span class="desc">
-									<b>저서</b>
-									가나다라마바사
-								</span>
+                            <div class="swiper-container mainTeacherPage">
+                                <div class="swiper-wrapper" id="teacherPage2"></div>
+                                <!-- Add Arrows -->
+                                <div class="swiper-button-next swiper-button-white"></div>
+                                <div class="swiper-button-prev swiper-button-white"></div>
                             </div>
-                        </div></li>
-                        <li><div>
-                            <div class="thumb"><span><img src="/common/zian/images/content/img_teacher5_b.png" alt=""></span></div>
-                            <div class="teacherInfo">
-                                <span class="category">행정법</span>
-                                <b>장다훈</b>
-                                <span class="btnArea">
-									<a href="#"><img src="/common/zian/images/common/icon_home.png" alt=""> 교수홈</a>
-									<a href="#"><img src="/common/zian/images/common/icon_review.png" alt=""> 수강후기</a>
-								</span>
-                                <span class="desc">
-									<b>약력</b>
-									동국대학교 영어통번역&영어영문학과 졸업<br />
-									미국 Arkansas State University 영문학 수료<br />
-									現 지안공무원학원 영어담당<br />
-									現 공무원 영어 교재 개발담당
-								</span>
-                                <span class="desc">
-									<b>저서</b>
-									가나다라마바사
-								</span>
-                            </div>
-                        </div></li>
-                        <li><div>
-                            <div class="thumb"><span><img src=/common/zian/images/content/img_teacher6_b.png" alt=""></span></div>
-                            <div class="teacherInfo">
-                                <span class="category">사회</span>
-                                <b>강나현</b>
-                                <span class="btnArea">
-									<a href="#"><img src="/common/zian/images/common/icon_home.png" alt=""> 교수홈</a>
-									<a href="#"><img src="/common/zian/images/common/icon_review.png" alt=""> 수강후기</a>
-								</span>
-                                <span class="desc">
-									<b>약력</b>
-									동국대학교 영어통번역&영어영문학과 졸업<br />
-									미국 Arkansas State University 영문학 수료<br />
-									現 지안공무원학원 영어담당<br />
-									現 공무원 영어 교재 개발담당
-								</span>
-                                <span class="desc">
-									<b>저서</b>
-									가나다라마바사
-								</span>
-                            </div>
-                        </div></li>
-                    </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -440,8 +304,10 @@ $( document ).ready(function() {
     getMainBigBanner("mainVisualSlider1", 792, 5);//메인 대 배너
     getMainMiniBanner("mainVisualSlider2", 793, 5);//대배너 옆 미니 배너
     getMainreviewBanner("reviewBanner", 795, 1);//중앙 소 배너
-    //getTeacherBannerList("teacherList1", 794, 0);//공통과목 교수진
-    //getMajorTeacherBannerList("teacherList2", 794, 1);//전공과목 교수진
+    getTeacherPageList("teacherPage1", 794, 0);//공통과목 교수진 페이지 리스트
+    getTeacherBannerList("teacherList1", 794, 0);//공통과목 교수진 리스트
+    getMajorTeacherPageList("teacherPage2", 794, 1);//전공과목 교수진 페이지 리스트
+    getMajorTeacherBannerList("teacherList2", 794, 1);//전공과목 교수진 리스트
     getBannerNoticeList("examNotice", 1, 4, 10010);//행정직 시험공고 리스트
     getBannerNoticeList("openInfo", 1, 4, 10001);//행정직 개강안내 리스트
     getBannerNoticeList("lecInfo", 1, 4, 10014);//행정직 수강후기 리스트

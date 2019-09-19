@@ -224,15 +224,83 @@ function getTeacherBannerList(tagId, ctgKey, subjectType) {
     var infoList = getApi("/banner/getTeacherBannerList/", ctgKey, data);
     if (infoList.result.length > 0) {
         var selList = infoList.result;
-        dwr.util.addOptions(tagId, selList, function (data) {
-            return "<a href=\"#\" data-slide-index=\"0\" class=\"active\">"+
-                    "<span class='category'>"+ data.subjectName + "</span>" + "<b>"+ data.teacherName + "</b>"+
-                    "<span class='thumb'><img src='"+ data.teacherImageUrl +"' alt='' style='width: 100px;height: 140px'></span>"+
-                    "</a>"
-        }, {escapeHtml: false});
+        for(var i = 0; i < selList.length; i++) {
+            var cmpList = selList[i];
+            var retrunHtml = "<div class='swiper-slide'>";
+            retrunHtml += '<div>';
+            retrunHtml += "<span class='category'>"+ cmpList.subjectName + "</span>" + "<b>"+ cmpList.teacherName + "</b>";
+            retrunHtml += "<span class='thumb'><img src='"+ cmpList.teacherImageUrl +"' alt='' style='width: 100px;height: 140px'></span>";
+            retrunHtml += '</div>';
+            retrunHtml += '</div>';
+            $("#teacherList1").append(retrunHtml);
+        }
+        var galleryThumbs1 = new Swiper('#mainTeacherTab1 .mainTeacherTitle', {
+            spaceBetween:0,
+            slidesPerView:6,
+            loop:true,
+            freeMode:true,
+            loopedSlides:7, //looped slides should be the same
+            watchSlidesVisibility:true,
+            watchSlidesProgress:true,
+        });
+        var galleryTop1 = new Swiper('#mainTeacherTab1 .mainTeacherPage', {
+            spaceBetween:0,
+            loop:true,
+            loopedSlides:7, //looped slides should be the same
+            navigation:{
+                nextEl:'#mainTeacherTab1 .swiper-button-next',
+                prevEl:'#mainTeacherTab1 .swiper-button-prev',
+            },
+            thumbs:{
+                swiper:galleryThumbs1,
+            },
+        });
+        $(window).resize(function(){
+        });
+        $(window).scroll(function(){
+        });
     }
-    initTeacherListBanner("teacherList");
-    initTeacherListBanner1("teacherList1");
+}
+
+//공통과목 교수진 페이지
+function getTeacherPageList(tagId, ctgKey, subjectType) {
+    var data = {
+        subjectType : subjectType
+    };
+    var infoList = getApi("/banner/getTeacherBannerList/", ctgKey, data);
+    if (infoList.result.length > 0) {
+
+        var selList = infoList.result;
+        for(var i = 0; i < selList.length; i++) {
+            var cmpList = selList[i];
+
+            var retrunHtml = "<div class=\"swiper-slide\">";
+            retrunHtml += '<div>';
+            retrunHtml += '<div class="thumb"><span><img src="'+ cmpList.teacherImageUrl +'" alt=""></span></div>';
+            retrunHtml += '<div class="teacherInfo">';
+            retrunHtml += '<span class="category">'+ cmpList.subjectName +'</span>';
+            retrunHtml += '<b>'+ cmpList.teacherName +'</b>';
+            retrunHtml += '<span class="btnArea">';
+            retrunHtml += '<a href="#"><img src="/common/zian/images/common/icon_home.png" alt=""> 교수홈</a>';
+            retrunHtml += '<a href="#"><img src="/common/zian/images/common/icon_review.png" alt=""> 수강후기</a>';
+            retrunHtml += '</span>';
+            retrunHtml += '<span class="desc">';
+            retrunHtml += '<b>약력</b>';
+            retrunHtml += cmpList.teacherInfo.history+'<br />';
+            retrunHtml += '</span>';
+            if(cmpList.teacherInfo.bookWriting != null){
+                retrunHtml += '<span class="desc">';
+                retrunHtml += '<b>저서</b>';
+                retrunHtml += cmpList.teacherInfo.bookWriting +'<br />';
+                retrunHtml += '</span>';
+            }
+            retrunHtml += '</span>';
+            retrunHtml += '</div>';
+            retrunHtml += '</div>';
+            retrunHtml += '</div>';
+            $("#teacherPage1").append(retrunHtml);
+        }
+    }
 }
 
 //강사(지안교수진) 배너 리스트 [ 전공과목 교수진 ]
@@ -244,18 +312,80 @@ function getMajorTeacherBannerList(tagId, ctgKey, subjectType) {
 
     if (infoList.result.length > 0) {
         var selList = infoList.result;
-
-        dwr.util.addOptions(tagId, selList, function (data) {
-            return "<div>" +
-                "<span class=\"name\">"+ data.subjectName +"<span>"+ data.teacherName +"</span></span>"+
-                "<img src='"+ data.teacherImageUrl +"' alt=''>"+
-                "<a href='' class=\"btn_teacherHome\"><span class=\"icon\"></span>교수홈</a>"+
-                "<a href='' class=\"btn_teacherReview\"><span class=\"icon\"></span>수강후기</a>"+
-                "</div>"
-        }, {escapeHtml: false});
+        for (var i = 0; i < selList.length; i++) {
+            var cmpList = selList[i];
+            var retrunHtml = "<div class='swiper-slide'>";
+            retrunHtml += '<div>';
+            retrunHtml += "<span class='category'>" + cmpList.subjectName + "</span>" + "<b>" + cmpList.teacherName + "</b>";
+            retrunHtml += "<span class='thumb'><img src='" + cmpList.teacherImageUrl + "' alt='' style='width: 100px;height: 140px'></span>";
+            retrunHtml += '</div>';
+            retrunHtml += '</div>';
+            $("#teacherList2").append(retrunHtml);
+        }
     }
-    initTeacherListBanner("majorTeacherList");
-    initTeacherListBanner1("teacherList2");
+    var galleryThumbs2 = new Swiper('#mainTeacherTab2 .mainTeacherTitle', {
+        spaceBetween:0,
+        slidesPerView:6,
+        loop:true,
+        freeMode:true,
+        loopedSlides:7, //looped slides should be the same
+        watchSlidesVisibility:true,
+        watchSlidesProgress:true,
+    });
+    var galleryTop2 = new Swiper('#mainTeacherTab2 .mainTeacherPage', {
+        spaceBetween:0,
+        loop:true,
+        loopedSlides:7, //looped slides should be the same
+        navigation:{
+            nextEl:'#mainTeacherTab2 .swiper-button-next',
+            prevEl:'#mainTeacherTab2 .swiper-button-prev',
+        },
+        thumbs:{
+            swiper:galleryThumbs2,
+        },
+    });
+}
+
+function getMajorTeacherPageList(tagId, ctgKey, subjectType) {
+    var data = {
+        subjectType : subjectType
+    };
+    var infoList = getApi("/banner/getTeacherBannerList/", ctgKey, data);
+    if (infoList.result.length > 0) {
+
+        var selList = infoList.result;
+        for(var i = 0; i < selList.length; i++) {
+            var cmpList = selList[i];
+
+            var retrunHtml = "<div class=\"swiper-slide\">";
+            retrunHtml += '<div>';
+            retrunHtml += '<div class="thumb"><span><img src="'+ cmpList.teacherImageUrl +'" alt=""></span></div>';
+            retrunHtml += '<div class="teacherInfo">';
+            retrunHtml += '<span class="category">'+ cmpList.subjectName +'</span>';
+            retrunHtml += '<b>'+ cmpList.teacherName +'</b>';
+            retrunHtml += '<span class="btnArea">';
+            retrunHtml += '<a href="#"><img src="/common/zian/images/common/icon_home.png" alt=""> 교수홈</a>';
+            retrunHtml += '<a href="#"><img src="/common/zian/images/common/icon_review.png" alt=""> 수강후기</a>';
+            retrunHtml += '</span>';
+            retrunHtml += '<span class="desc">';
+            retrunHtml += '<b>약력</b>';
+            retrunHtml += cmpList.teacherInfo.history+'<br />';
+            retrunHtml += '</span>';
+            if(cmpList.teacherInfo.bookWriting != null) {
+                retrunHtml += '<span class="desc">';
+                retrunHtml += '<b>저서</b>';
+                retrunHtml += cmpList.teacherInfo.bookWriting + '<br />';
+                retrunHtml += '</span>';
+            }
+            retrunHtml += '</span>';
+            retrunHtml += '</div>';
+            retrunHtml += '</div>';
+            retrunHtml += '</div>';
+            $("#teacherPage2").append(retrunHtml);
+        }
+    }
+
+
 }
 
 //leftMenu D-day 리스트 불러오기
