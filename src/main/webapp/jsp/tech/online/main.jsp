@@ -213,7 +213,7 @@
             <!-- 지안에듀 배너 -->
             <div class="mainBanner">
                 <div class="inner">
-                    <a href="#"><img src="../images/content/img_banner0001.jpg" alt=""></a>
+                    <a href="#"><img src="/common/zian/images/content/img_banner0001.jpg" alt=""></a>
                 </div>
             </div>
 
