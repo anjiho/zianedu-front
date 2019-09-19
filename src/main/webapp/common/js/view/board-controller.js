@@ -9,7 +9,7 @@ function updateBoard() {
 
 }
 
-//게시판 글 삭제
+//게 시판 글 삭제
 function deleteBoard(bbsKey) {
     if (bbsKey == null || bbsKey == undefined) return;
 
