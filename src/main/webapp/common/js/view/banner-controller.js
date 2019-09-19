@@ -224,6 +224,7 @@ function getTeacherBannerList(tagId, ctgKey, subjectType) {
     var infoList = getApi("/banner/getTeacherBannerList/", ctgKey, data);
     if (infoList.result.length > 0) {
         var selList = infoList.result;
+        console.log(selList);
         for(var i = 0; i < selList.length; i++) {
             var cmpList = selList[i];
             var retrunHtml = "<div class='swiper-slide'>";
