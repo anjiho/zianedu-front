@@ -248,7 +248,7 @@ body{color:#1b1b1b;}
 .mainTeacher .mainTeacherPage .swiper-slide > div .teacherInfo .btnArea{display:inline-block;margin:0;height:40px;border:1px #e1e1e1 solid;border-right:0px none;box-sizing:border-box;vertical-align:middle;}
 .mainTeacher .mainTeacherPage .swiper-slide > div .teacherInfo .btnArea a{display:block;float:left;margin:0;width:98px;height:38px;font-size:13px;line-height:38px;text-align:center;border-right:1px #e1e1e1 solid;}
 .mainTeacher .mainTeacherPage .swiper-slide > div .teacherInfo .desc{display:block;margin-top:25px;font-size:16px;line-height:140%;}
-.mainTeacher .mainTeacherPage .swiper-slide > div .teacherInfo .desc + .desc{margin-top:;}
+.mainTeacher .mainTeacherPage .swiper-slide > div .teacherInfo .desc + .desc{margin-top:0;}
 .mainTeacher .mainTeacherPage .swiper-slide > div .teacherInfo .desc b{display:block;font-size:16px;color:#144b95;line-height:inherit;}
 .mainTeacher .mainTeacherPage .swiper-slide > div .thumb{position:absolute;top:0;right:0;}
 .mainTeacher .mainTeacherPage .swiper-slide > div .thumb span{display:table-cell;width:348px;height:348px;text-align:center;background:url(/common/zian/images/content/bg_teacher.png) no-repeat center center;vertical-align:bottom;}
