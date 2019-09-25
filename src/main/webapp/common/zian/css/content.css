@@ -14,9 +14,9 @@
 .loginWrap .loginSns:after{display:block;content:'';clear:both;}
 .loginWrap .loginSns b{display:block;margin-bottom:20px;font-size:20px;font-weight:bold;color:#444;text-align:center;}
 .loginWrap .loginSns a{display:;padding-left:70px;width:245px;height:65px;font-size:15px;color:#999;line-height:63px;border:1px #e5e5e5 solid;background:#fff;box-sizing:border-box;}
-.loginWrap .loginSns a.btn_loginNaver{float:left;background:url(../images/common/btn_loginNaver.png) no-repeat 20px center;}
+.loginWrap .loginSns a.btn_loginNaver{float:left;background:url(/common/zian/images/common/btn_loginNaver.png) no-repeat 20px center;}
 .loginWrap .loginSns a.btn_loginNaver:hover{color:#4ec513;border-color:#4ec513;}
-.loginWrap .loginSns a.btn_loginKakao{float:right;background:url(../images/common/btn_loginKakao.png) no-repeat 20px center;}
+.loginWrap .loginSns a.btn_loginKakao{float:right;background:url(/common/zian/images/common/btn_loginKakao.png) no-repeat 20px center;}
 .loginWrap .loginSns a.btn_loginKakao:hover{color:#cfb800;border-color:#f5df34;}
 .loginWrap .loginBanner img{width:100%;}
 
@@ -25,26 +25,345 @@
 .joinWrap .statusBar{display:block;margin-bottom:45px;border-bottom:1px #e5e5e5 solid;}
 .joinWrap .statusBar:after{display:block;content:'';clear:both;}
 .joinWrap .statusBar li{display:block;position:relative;float:left;width:33.3333%;height:70px;font-size:20px;font-weight:bold;color:#999;text-align:center;line-height:70px;}
-.joinWrap .statusBar li:after{display:block;content:'';position:absolute;top:50%;right:-5px;margin-top:-10px;width:10px;height:20px;background:url(../images/common/icon_statusBar.png) no-repeat center center;}
+.joinWrap .statusBar li:after{display:block;content:'';position:absolute;top:50%;right:-5px;margin-top:-10px;width:10px;height:20px;background:url(/common/zian/images/common/icon_statusBar.png) no-repeat center center;}
 .joinWrap .statusBar li.last:after{display:none;}
-.joinWrap .statusBar li label{}
-.joinWrap .statusBar li b{font-size:22px;}
+.joinWrap .statusBar li label{font-size:24px;}
+.joinWrap .statusBar li b{font-size:20px;}
 .joinWrap .statusBar li.active{color:#000;}
-.joinWrap .statusBar li.active b{color:#134c97;}
-.joinWrap .statusBar li.active:after{background:url(../images/common/icon_statusBar_active.png) no-repeat center center;}
-.joinWrap .joinAgreeAll{position:relative;padding:30px 25px;font-size:15px;background:#e5e5e5;}
+.joinWrap .statusBar li.active label{color:#134c97;}
+.joinWrap .statusBar li.active b{color:#000;}
+.joinWrap .statusBar li.active:after{background:url(/common/zian/images/common/icon_statusBar_active.png) no-repeat center center;}
+.joinWrap .joinAgreeAll{position:relative;padding:30px 25px;font-size:15px;background:#e5e5e5;font-weight:bold;}
 .joinWrap .joinAgreeAll input[type='checkbox']{position:absolute;top:30px;right:25px;}
 .joinWrap .joinAgree{position:relative;padding:25px 25px 25px 10px;border-bottom:1px #e5e5e5 solid;}
-.joinWrap .joinAgree label{font-size:17px;color:#666;}
+.joinWrap .joinAgree label{font-size:17px;color:#666;cursor:pointer;}
 .joinWrap .joinAgree b{color:#134c97;}
+.joinWrap .joinAgree b:after{display:inline-block;content:'';clear:both;width:11px;height:6px;margin-left:5px;background:url(/common/zian/images/common/icon_down_blue.png) no-repeat center center;}
 .joinWrap .joinAgree input[type='checkbox']{position:absolute;top:25px;right:25px;}
-.joinWrap .joinAgree p{margin:20px 0 0 15px;padding:15px;min-height:100px;font-size:13px;color:#666;border:1px #e5e5e5 solid;}
+.joinWrap .joinAgree p{display:none;margin:20px 0 0 15px;padding:15px;height:100px;font-size:13px;color:#666;border:1px #e5e5e5 solid;white-space:pre-line;overflow-y:auto;}
+.joinWrap .joinAgree.active b:after{background:url(/common/zian/images/common/icon_up_blue.png) no-repeat center center;}
+.joinWrap .joinAgree.active p{display:block;}
+.joinWrap .tableBox table.form input[type='text'],
+.joinWrap .tableBox table.form select{min-width:150px;}
 .joinWrap .btnArea{margin:25px 0;}
 .joinWrap .btnArea .btn_l{margin:0 5px;}
 .joinWrap .btnArea .btn_ss,
 .joinWrap .btnArea .btn_s,
 .joinWrap .btnArea .btn_m,
 .joinWrap .btnArea .btn_l,
-.joinWrap .btnArea .btn_inline{color:#fff;background-color:#666;border:1px #666 solid;}
-.joinWrap .joinResult{padding:75px 0;font-size:15px;color:#888;text-align:center;border:1px #e5e5e5 solid;}
-.joinWrap .joinResult b{display:block;margin-bottom:20px;font-size:26px;color:#000;}
+.joinWrap .btnArea .btn_inline{color:#fff;font-size:14px;background-color:#666;border:1px #666 solid;}
+.joinWrap .btnArea .btn_l.on{color:#fff;background-color:#134c97;border:1px #134c97 solid;}
+.joinWrap .btnArea .btn_l.white{color:#58595b;background-color:#fff;border:1px #e5e5e5 solid;}
+.joinWrap .joinResult{padding:75px 0;font-size:16px;line-height:24px;color:#888;text-align:center;border:1px #e5e5e5 solid;}
+.joinWrap .joinResult b{display:block;margin-bottom:20px;font-size:28px;color:#000;}
+
+/* 교수소개 > 목록 */
+.subIntroduction{margin:5px 0 20px;font-size:16px;color:#000;font-weight:bold;}
+
+.teacherThumb{margin:-10px -17px;}
+.teacherThumb:after{display:block;content:'';clear:both;}
+.teacherThumb > li{float:left;width:33.3333%;padding:10px 17px;box-sizing:border-box;}
+.teacherThumb > li > div{height:240px;position:relative;border:1px #e5e5e5 solid;}
+.teacherThumb > li .thumb{display:block;width:50%;height:200px;position:absolute;top:0;right:0;overflow:hidden;}
+.teacherThumb > li .category{display:block;width:50%;position:absolute;top:30px;left:30px;font-size:16px;color:#111;font-weight:bold;}
+.teacherThumb > li .name{display:block;width:50%;position:absolute;top:60px;left:30px;font-size:24px;color:#000;}
+.teacherThumb > li .link_home,
+.teacherThumb > li .link_comment{display:block;width:50%;height:40px;line-height:40px;position:absolute;bottom:0;font-size:12px;text-align:center;border-top:1px #e5e5e5 solid;background-color:#fff;}
+.teacherThumb > li .link_home{left:0;}
+.teacherThumb > li .link_home:before{display:inline-block;content:'';clear:both;vertical-align:sub;width:14px;height:14px;margin-right:5px;background:url(/common/zian/images/common/icon_home.png) no-repeat center center;}
+.teacherThumb > li .link_home:after{display:block;content:'';clear:both;width:1px;position:absolute;top:0;right:0;bottom:0;background-color:#e5e5e5;}
+.teacherThumb > li .link_comment{right:0;}
+.teacherThumb > li .link_comment:before{display:inline-block;content:'';clear:both;vertical-align:sub;width:14px;height:14px;margin-right:5px;background:url(/common/zian/images/common/icon_comment.png) no-repeat center center;}
+
+/* 교수소개 > 상세 */
+.teacherView{overflow:hidden;}
+.teacherView .lectureWrap{margin-top:0;}
+.btn_quality{width:80px;border:1px solid #313131;color:#fff;background-color:#313131;}
+.btn_quality.on{border:1px solid #134c97;background-color:#134c97;}
+
+.teacherInfo{border:1px #e5e5e5 solid;border-bottom:0;}
+.teacherInfo:after{display:block;content:'';clear:both;}
+.teacherInfo .thumb,
+.teacherInfo .info{float:left;width:50%;height:520px;position:relative;}
+.teacherInfo .thumb img{display:block;position:absolute;left:0;bottom:0;}
+.teacherInfo .thumb .btn_teacherThumb{display:inline-block;height:30px;line-height:28px;padding:0 30px 0 50px;position:absolute;bottom:20px;left:20px;color:#fff;background:#134c97 url(/common/zian/images/common/icon_arrow_prev.png) no-repeat 14px center;border-radius:15px;}
+.teacherInfo .info .category{display:block;margin-top:30px;font-size:30px;}
+.teacherInfo .info .name{display:block;margin-top:10px;font-size:30px;}
+.teacherInfo .info .name b{font-size:46px;}
+.teacherInfo .info .infoText{display:block;margin-top:10px;font-size:18px;}
+.teacherInfo .info .profile{width:338px;margin-top:20px;position:absolute;border:1px #e5e5e5 solid;background-color:#fff;z-index:9;}
+.teacherInfo .info .profile > dt{display:block;height:28px;line-height:28px;text-align:center;font-size:16px;font-weight:bold;background:url(/common/zian/images/common/icon_arrowDown.png) no-repeat 95% center;cursor:pointer;}
+.teacherInfo .info .profile > dd{display:none;height:160px;padding:20px 25px;line-height:160%;font-size:12px;border-top:1px #e5e5e5 solid;overflow-y:auto;}
+.teacherInfo .info .profile.active > dt{background:url(/common/zian/images/common/icon_arrowUp.png) no-repeat 95% center;}
+.teacherInfo .info .profile.active > dd{display:block;}
+.teacherInfo .info .teacherInfoTab{width:340px;margin-top:100px;}
+.teacherInfo .info .teacherInfoTab .tabBar{height:30px;margin-bottom:0;border:0;}
+.teacherInfo .info .teacherInfoTab .tabBar > li{width:50%;margin-right:0;}
+.teacherInfo .info .teacherInfoTab .tabBar > li > a{height:30px;line-height:30px;border:0;font-size:12px;color:#1b1b1b;text-align:center;background-color:#ebebeb;}
+.teacherInfo .info .teacherInfoTab .tabBar > li.active > a{background-color:#134c97;color:#fff;}
+.teacherInfo .info .teacherInfoTab .tabPage{height:190px;background-color:#f7f7f7;overflow:hidden;}
+.teacherInfo .info .teacherInfoTab .lectureList{height:190px;padding:20px 25px;line-height:180%;font-size:12px;box-sizing:border-box;overflow-y:auto;}
+
+.teacherContentsTab > .tabBar{height:48px;margin-bottom:0;border:1px #e5e5e5 solid;}
+.teacherContentsTab > .tabBar > li{width:20%;margin:0;}
+.teacherContentsTab > .tabBar > li > a{height:48px;line-height:48px;border:0;font-size:16px;font-weight:bold;color:#000;text-align:center;}
+.teacherContentsTab > .tabBar > li.active > a{background-color:#144b95;color:#fff;}
+.teacherContentsTab > .tabPage{overflow:hidden;}
+.teacherContentsTab > .tabPage img{max-width:100%;}
+.teacherContentsTab .searchArea{border-left:1px #e5e5e5 solid;border-right:1px #e5e5e5 solid;}
+.teacherContentsTab .tableBox{margin:0;border-left:1px #e5e5e5 solid;border-right:1px #e5e5e5 solid;}
+.teacherContentsTab .toggleWrap .tableBox{border:0;}
+.teacherContentsTab .tableBox.noLine{border:0;}
+
+.ta_left{text-align:left;}
+.ta_center{text-align:center;}
+.ta_right{text-align:right;}
+
+.colorRed{font-weight:bold;color:#ff0000;}
+.colorBlue{font-weight:bold;color:#144b95;}
+.tab_lecture .tabContent,
+.tab_learning .tabContent{position:relative;}
+.tab_curriculum{border-left:1px #e5e5e5 solid;border-right:1px #e5e5e5 solid;border-bottom:1px #e5e5e5 solid;}
+
+.tabBar.tabLecture{width:50%;height:48px;padding:40px 0;margin:0 auto;border:0px;}
+.tabBar.tabLecture:before,
+.tabBar.tabLecture:after{display:block;content:'';clear:both;width:1px;height:128px;position:absolute;top:0;background:#e5e5e5;}
+.tabBar.tabLecture:before{left:0;}
+.tabBar.tabLecture:after{right:0;}
+.tabBar.tabLecture > li{width:50%;margin:0;}
+.tabBar.tabLecture > li > a{height:46px;line-height:46px;color:#000;font-size:16px;text-align:center;border:1px solid #e5e5e5;}
+.tabBar.tabLecture > li.active > a{color:#fff;border:1px solid #144b95;background-color:#144b95;}
+
+.typeSelect{padding:10px 0 50px;text-align:center;border-left:1px #e5e5e5 solid;border-right:1px #e5e5e5 solid;}
+.btn_quality:before{display:inline-block;content:'';clear:both;width:15px;height:11px;background:url(/common/zian/images/common/icon_arrowRight.png) no-repeat left top;}
+.btn_divTag{font-size:14px;}
+.btn_learnType{display:inline-block;min-width:106px;height:33px;line-height:33px;margin:0 5px;text-align:center;border-radius:16px;color:#fff;font-size:14px;}
+.btn_learnType.green{background-color:#00a651;}
+.btn_learnType.orange{background-color:#f7941d;}
+.btn_learnType.blue{background-color:#00aeef;}
+.btn_learnType.navy{background-color:#0072bc;}
+.btn_learnType.purple{background-color:#2e3192;}
+.btn_learnType.gray{background-color:#636363;}
+
+.toggleWrap{position:relative;}
+.toggleWrap > .btn_toggle{display:block;height:30px;background:url(/common/zian/images/common/icon_lecture_down.png) no-repeat center center;cursor:pointer;}
+.toggleWrap > .btn_toggle.lock{position:absolute;top:-30px;left:0;right:0;}
+.toggleWrap > .div_toggle{display:none;}
+.toggleWrap.active > .btn_toggle{background:url(/common/zian/images/common/icon_lecture_up.png) no-repeat center center;}
+.toggleWrap.active > .div_toggle{display:block;}
+
+.lectureWrap{margin-top:40px;border-top:1px #e5e5e5 solid;}
+.lectureTotal{padding:25px 30px;border-left:1px #e5e5e5 solid;border-right:1px #e5e5e5 solid;}
+.lectureTotal:after{display:block;content:'';clear:both;}
+.lectureTotal > li{width:50%;}
+.lectureTotal > .left{float:left;font-size:24px;font-weight:bold;}
+.lectureTotal > .right{float:right;text-align:right;}
+.lectureWrap .lectureHead{display:table;width:100%;border:1px solid #e5e5e5;box-sizing:border-box;}
+.lectureWrap .lectureHead:after{display:block;content:'';clear:both;}
+.lectureWrap .lectureHead > li{display:table-cell;vertical-align:middle;padding:10px;font-size:16px;text-align:center;font-weight:bold;box-sizing:border-box;}
+.lectureWrap .lectureBody{border-left:1px #e5e5e5 solid;border-right:1px #e5e5e5 solid;}
+.lectureWrap .lectureRow{border-bottom:1px #e5e5e5 solid;}
+.lectureWrap .lectureList{display:table;width:100%;padding:10px 0;border:0;box-sizing:border-box;}
+.lectureWrap .lectureList:after{display:block;content:'';clear:both;}
+.lectureWrap .lectureList > li{display:table-cell;vertical-align:middle;padding:10px;line-height:180%;font-size:16px;box-sizing:border-box;}
+.lectureWrap .tableBox{margin:0 20px;}
+
+.lectureWrap .teacherBody{border-top:1px #e5e5e5 solid;}
+.lectureWrap .teacherRow{border-bottom:1px #e5e5e5 solid;}
+.lectureWrap .teacherRow .toggleWrap.active .btn_toggle{margin-top:0;}
+.lectureWrap .teacherList{display:table;width:100%;border-left:1px #e5e5e5 solid;border-right:1px #e5e5e5 solid;box-sizing:border-box;}
+.lectureWrap .teacherList:after{display:block;content:'';clear:both;}
+.lectureWrap .teacherList > li{display:table-cell;vertical-align:middle;width:14.285%;height:160px;position:relative;font-size:18px;text-align:center;box-sizing:border-box;}
+.lectureWrap .teacherList > li.on{color:#fff;}
+.lectureWrap .teacherList > li.on:before{display:block;content:'';clear:both;width:100px;height:100px;position:absolute;top:50%;left:50%;margin-top:-50px;margin-left:-50px;border-radius:50px;background-color:#144b95;z-index:-1;}
+.lectureWrap .teacherList > li > .thumb{display:block;height:160px;text-align:center;}
+.lectureWrap .teacherList > li > .thumb > img{max-height:160px;}
+.lectureWrap .teacherList > li > b{display:block;padding-bottom:10px;font-size:20px;}
+
+.tableBox table.lecture{border:1px solid #e5e5e5;border-bottom:0px;}
+.tableBox table.lecture th,
+.tableBox table.lecture td{border-left:0;border-right:0;background-color:#fff;}
+.tableBox table.lecture th{padding:10px;font-size:16px;}
+.tableBox table.lecture td{height:60px;padding:12px;font-size:14px;}
+
+.lectureWrap .cost{display:inline-block;min-width:80px;padding:0 10px;text-align:right;font-size:16px;}
+.lectureWrap .learnName{display:block;font-size:18px;font-weight:bold;letter-spacing:-1px;}
+.lectureWrap .learnNum{display:inline-block;margin-bottom:10px;font-size:14px;}
+.lectureWrap .learnView{display:block;font-size:14px;}
+.lectureWrap ul.costList > li{padding:2px;}
+
+.wishGroup{display:inline-block;position:relative;height:20px;vertical-align:middle;box-sizing:border-box;overflow:hidden;}
+.wishGroup input[type='checkbox']{position:absolute;top:-9999px;}
+.wishGroup label{display:block;float:left;width:20px;height:20px;background:url(/common/zian/images/common/btn_star_off.png) no-repeat center center;cursor:pointer;box-sizing:border-box;}
+.wishGroup input:checked + label{background:url(/common/zian/images/common/btn_star_on.png) no-repeat center center;}
+
+.selectArea{margin-top:20px;border:1px #e5e5e5 solid;}
+.selectArea dl{padding:30px 40px 0;}
+.selectArea dl > dt{padding:0 8px;font-size:18px;font-weight:bold;}
+.selectArea dl > dd{}
+.selectArea ul:after{display:block;content:'';clear:both;}
+.selectArea ul > li{float:left;width:16.6666%;}
+.selectArea ul > li > a{display:block;height:40px;line-height:40px;margin:8px;border:1px #000 solid;color:#000;text-align:center;font-weight:bold;}
+.selectArea ul > li > a.active{border:1px #144b95 solid;color:#fff;background-color:#144b95;}
+.selectArea .btn_release{width:220px;height:40px;line-height:40px;font-weight:bold;}
+.selectArea .btn_release:before{display:inline-block;content:'';clear:both;width:24px;height:15px;vertical-align:middle;background:url(/common/zian/images/common/icon_release.png) no-repeat left center;}
+
+.zianPass{position:relative;}
+.zianPass:before{display:block;content:'';clear:both;position:absolute;top:0;left:0;right:0;min-height:820px;background:#2b80fd url(/common/zian/images/content/bg_zian.jpg) no-repeat center top;z-index:-1;}
+.zianPass:after{display:block;content:'';clear:both;height:35px;background-color:#b8ff99;}
+
+.zianPass .tabContent{padding:413px 110px 0;}
+.zianPass .tabBar{height:auto;margin:0;}
+.zianPass .tabBar > li{width:25%;margin-right:0;position:relative;}
+.zianPass .tabBar > li:before{display:block;content:'';clear:both;height:30px;position:absolute;top:0;left:0;right:0;background:url(/common/zian/images/common/icon_arrow_zian.gif) no-repeat center top;}
+.zianPass .tabBar > li.active:before{top:-25px;background:url(/common/zian/images/common/icon_arrow_zian_on.gif) no-repeat center top;}
+.zianPass .tabBar > li > a{height:60px;padding-top:10px;margin-top:34px;line-height:120%;font-weight:bold;text-align:center;font-size:20px;color:#abc6fd;background-color:#fff;border:0;}
+.zianPass .tabBar > li.active > a{height:84px;padding-top:20px;margin-top:0px;font-size:30px;color:#2d81fb;background-color:#b8ff99;}
+.zianPass .tabPage{min-height:500px;}
+.zianPass .txtBox1{padding:30px 0;margin:0 auto;line-height:140%;font-size:14px;text-align:center;color:#fff;}
+.zianPass .txtBox1 > span{font-size:11px;}
+.zianPass .txtBox2{padding:30px 60px;background-color:#b8ff99;}
+.zianPass .txtBox2 > b{display:block;width:130px;height:30px;margin:0 auto 30px;line-height:30px;font-size:20px;text-align:center;color:#fff;background-color:#2b80fd;}
+.zianPass .txtBox2 > ul{}
+.zianPass .txtBox2 > ul > li{padding:5px 0 5px 10px;line-height:130%;color:#292728;font-size:13px;letter-spacing:-1px;}
+.zianPass .txtBox2 > ul > li:before{display:inline-block;content:'ㆍ';clear:both;width:10px;height:10px;font-weight:bold;}
+
+.zianPass dl{margin:80px 0 100px;color:#2c82fd;}
+.zianPass dl > dt{text-align:center;font-size:20px;}
+.zianPass dl > dt > em{font-weight:bold;}
+.zianPass dl > dt > b{font-size:36px;}
+.zianPass dl > dd{padding:30px 0;}
+
+.zianPass dl > dd > ul{border:1px #2d83fe solid;box-shadow:5px 5px 15px #e5e5e5;box-sizing:border-box;}
+.zianPass dl > dd > ul:after{display:block;content:'';clear:both;}
+.zianPass dl > dd > ul > li{float:left;}
+.zianPass dl > dd > ul.cols3{padding:40px;}
+.zianPass dl > dd > ul.cols3 > li{font-size:14px;font-weight:bold;}
+.zianPass dl > dd > ul.cols3 > li.col1{width:40%;padding-top:140px;background:url(/common/zian/images/content/img_zian02.gif) no-repeat center top;font-size:20px;letter-spacing:-1px;}
+.zianPass dl > dd > ul.cols3 > li.col2{width:36%;padding-top:140px;background:url(/common/zian/images/content/img_zian03.gif) no-repeat center top;font-size:32px;text-align:center;letter-spacing:-1px;}
+.zianPass dl > dd > ul.cols3 > li.col3{width:24%;padding-top:30px;text-align:center;}
+.zianPass dl > dd > ul.cols3 > li.col3 .btn_click{display:inline-block;width:120px;padding:35px 0;line-height:150%;font-size:16px;text-align:center;color:#fff;background-color:#2b80fd;}
+.zianPass dl > dd > ul.cols3 > li .unit{padding-left:2px;font-size:14px;}
+.zianPass dl > dd > ul.cols4{margin:40px 0;}
+.zianPass dl > dd > ul.cols4 > li{width:25%;height:300px;position:relative;padding:40px 20px;font-size:12px;text-align:center;box-sizing:border-box;}
+.zianPass dl > dd > ul.cols4 > li:before,
+.zianPass dl > dd > ul.cols4 > li:after{display:block;content:'';clear:both;}
+.zianPass dl > dd > ul.cols4 > li:before{height:40px;line-height:40px;position:absolute;top:-40px;left:0;right:2px;font-size:16px;font-weight:bold;text-align:center;color:#fff;border-radius:30px 30px 0 0;background:#2b81fc;}
+.zianPass dl > dd > ul.cols4 > li:after{width:1px;position:absolute;top:25px;bottom:25px;right:0;background-color:#2b81fc;}
+.zianPass dl > dd > ul.cols4 > li:last-child:after{display:none;}
+.zianPass dl > dd > ul.cols4 > li b{display:inline-block;padding:10px;position:relative;font-size:16px;text-align:center;letter-spacing:-1px;}
+.zianPass dl > dd > ul.cols4 > li b:after{display:block;content:'';clear:both;height:10px;position:absolute;left:0;right:0;bottom:5px;background:#b7fd9a;z-index:-1;}
+.zianPass dl > dd > ul.cols4 > li.col1:before{content:'STEP1';left:-1px;}
+.zianPass dl > dd > ul.cols4 > li.col2:before{content:'STEP2';}
+.zianPass dl > dd > ul.cols4 > li.col3:before{content:'STEP3';}
+.zianPass dl > dd > ul.cols4 > li.col4:before{content:'STEP4';right:-1px;}
+.zianPass dl > dd > ul.cols4 > li > ul{margin:20px 0;}
+.zianPass dl > dd > ul.cols4 > li > ul > li{padding:15px 0 15px 15px;line-height:130%;background:url(/common/zian/images/content/img_zian06.gif) no-repeat left 18px;text-align:left;letter-spacing:-1px;}
+.zianPass dl .btn_link{display:block;height:50px;line-height:50px;position:relative;text-align:center;font-size:18px;font-weight:bold;color:#fff;background:#2b80fd;}
+.zianPass dl .btn_link:before,
+.zianPass dl .btn_link:after{display:block;content:'';clear:both;width:80px;height:50px;position:absolute;top:0;}
+.zianPass dl .btn_link:before{left:0;background:url(/common/zian/images/content/img_zian04.gif) no-repeat right center;}
+.zianPass dl .btn_link:after{right:0;background:url(/common/zian/images/content/img_zian05.gif) no-repeat left center;}
+
+.tabBox{display:block;margin:45px auto;width:640px;border-top:2px #000000 solid;border-left:1px #e5e5e5 solid;}
+.tabBox:after{display:block;content:'';clear:both;}
+.tabBox li{display:block;float:left;width:33.3333%;}
+.tabBox li a{display:block;height:50px;font-size:15px;color:#707070;line-height:50px;text-align:center;border-bottom:1px #e5e5e5 solid;border-right:1px #e5e5e5 solid;}
+.tabBox li.active a{color:#fff;background:#134c97;}
+
+.boardWrap{}
+.boardWrap h4{}
+.boardWrap h5{display:block;padding:0 20px;font-size:17px;font-weight:bold;color:#000;line-height:45px;}
+.boardWrap .boardSearch{margin:25px 0;padding:0 20px;}
+.boardWrap input[type='text'],
+.boardWrap input[type='password'],
+.boardWrap input[type='number'],
+.boardWrap select{height:34px;}
+.boardWrap .btn_inline{height:34px;font-size:13px;line-height:32px;}
+.boardWrap .btn_ss.on,
+.boardWrap .btn_s.on,
+.boardWrap .btn_m.on,
+.boardWrap .btn_l.on,
+.boardWrap .btn_inline.on{background:#000;}
+.boardWrap .btn_ss,
+.boardWrap .btn_s,
+.boardWrap .btn_m,
+.boardWrap .btn_l,
+.boardWrap .btn_inline{border-color:#000;}
+.boardWrap .btn_ss.gray,
+.boardWrap .btn_s.gray,
+.boardWrap .btn_m.gray,
+.boardWrap .btn_l.gray,
+.boardWrap .btn_inline.gray{color:#444444;border-color:#aeaeae;}
+.boardWrap .btn_ss.blue,
+.boardWrap .btn_s.blue,
+.boardWrap .btn_m.blue,
+.boardWrap .btn_l.blue,
+.boardWrap .btn_inline.blue{color:#134c97;border-color:#134c97;}
+.boardWrap .btn_m.radius{border-radius:20px;}
+.boardWrap .btn_l.radius{border-radius:23px;}
+.boardWrap .btn_inline.radius{border-radius:17px;}
+.boardWrap .btn_m{height:40px;line-height:38px;}
+.boardWrap .boardSearch .btnArea{float:right;margin:0;}
+.boardWrap .tableBox table{font-size:15px;color:#1b1b1b;}
+.boardWrap .tableBox table.list{border-left:0px none;border-top:1px #e5e5e5 solid;}
+.boardWrap .tableBox table.list th{padding:10px;font-weight:bold;height:50px;background:none;border-right:0px none;border-bottom:1px #e1e1e1 solid;}
+.boardWrap .tableBox table.list td{padding:10px;height:50px;background:none;border-right:0px none;border-bottom:1px #e1e1e1 solid;}
+.boardWrap .tableBox table.list .notice td{background:#f4f4f4;}
+.boardWrap .tableBox table.view{border-left:0px none;border-top:1px #e5e5e5 solid;}
+.boardWrap .tableBox table.view thead{background:#ebebeb;}
+.boardWrap .tableBox table.view th,
+.boardWrap .tableBox table.view td{padding:10px 20px;height:50px;font-weight:normal;text-align:left;background:none;border-right:0px none;border-bottom:1px #e1e1e1 solid;}
+.boardWrap .tableBox table.form th,
+.boardWrap .tableBox table.form td{padding:15px 25px;height:50px;}
+.boardWrap .tableBox table.form td input[type='text'],
+.boardWrap .tableBox table.form td input[type='password'],
+.boardWrap .tableBox table.form td input[type='number'],
+.boardWrap .tableBox table.form td select{padding-left:15px;height:45px;}
+.boardWrap .tableBox table.form td textarea{padding:15px;}
+.boardWrap .tableBox table.form t .btn_inline{height:45px;line-height:43px;}
+.boardWrap .tableBox table td.left{text-align:left;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;}
+.boardWrap .tableBox table td.center{text-align:center;}
+.boardWrap .tableBox table td.right{text-align:right;}
+.boardWrap .tableBox table.list.noEllipsis td{text-overflow:inherit;white-space:inherit;overflow:inherit;}
+.boardWrap .tableBox table td.tdEditorContent{padding:20px 30px;height:180px;color:#646464;line-height:160%;vertical-align:top;}
+.boardWrap .tableBox + .btnArea{margin-top:30px;}
+.boardWrap .paging{margin:25px 0;}
+.boardWrap .paging > a.active{background:#134c97;border:1px #134c97 solid;}
+.boardWrap .paging > a{border:1px #e1e1e1 solid;}
+.boardWrap .fileWrap{position:relative;padding-left:80px;}
+.boardWrap .fileWrap .label{display:block;position:absolute;top:0;left:0;}
+.boardWrap .fileList{display:block;}
+.boardWrap .fileList li{display:block;margin:5px 0;}
+
+.calendarWrap{}
+.calendarWrap p{text-align:center;}
+.calendarWrap .calendarBox{margin:20px auto;padding:20px 80px;width:740px;background:#fcfbfb;border:1px #e7e7e7 solid;box-sizing:border-box;}
+.calendarWrap .calendarBox .calendarHeader{padding:20px 0;line-height:30px;text-align:center;}
+.calendarWrap .calendarBox .calendarHeader h6{display:inline-block;padding:0 20px;font-size:24px;font-weight:800;color:#000;vertical-align:middle;}
+.calendarWrap .calendarBox .calendarHeader a.btn_monthPrev{display:inline-block;width:40px;height:30px;text-indent:-9999em;background:url(/common/zian/images/common/btn_monthPrev.png) no-repeat center center;vertical-align:middle;}
+.calendarWrap .calendarBox .calendarHeader a.btn_monthNext{display:inline-block;width:40px;height:30px;text-indent:-9999em;background:url(/common/zian/images/common/btn_monthNext.png) no-repeat center center;vertical-align:middle;}
+.calendarWrap .calendarBox .calendarTable{}
+.calendarWrap .calendarBox .calendarTable table{width:100%;font-size:17px;border:0px none;}
+.calendarWrap .calendarBox .calendarTable table th{height:50px;font-weight:bold;color:#262626;text-align:center;border:0px none;}
+.calendarWrap .calendarBox .calendarTable table td{height:50px;color:#c8c8c8;text-align:center;border:0px none;}
+.calendarWrap .calendarBox .calendarTable table td a{display:block;height:50px;line-height:50px;}
+.calendarWrap .calendarBox .calendarTable table td.active,
+.calendarWrap .calendarBox .calendarTable table td.active a{color:#000;}
+.calendarWrap .calendarBox .calendarTable table td.active.sun,
+.calendarWrap .calendarBox .calendarTable table td.active.sun a{color:#c70202;}
+.calendarWrap .calendarBox .calendarTable table td.active.sat,
+.calendarWrap .calendarBox .calendarTable table td.active.sat a{color:#0263c7;}
+.calendarWrap .calendarBox .calendarLegend{margin:20px 0;}
+.calendarWrap .calendarBox .calendarLegend > span{display:inline-block;position:relative;margin-right:20px;padding-left:25px;font-size:13px;}
+.calendarWrap .calendarBox .calendarLegend > span:after{display:block;content:'';position:absolute;top:50%;left:0;margin-top:-8px;width:16px;height:16px;}
+.calendarWrap .calendarBox .calendarLegend > span.none:after{background:#c3c1c1;}
+.calendarWrap .calendarBox .calendarLegend > span.active:after{background:#ec6941;}
+
+.noticeGuideWrap{margin:0 auto;width:640px;}
+.noticeGuideWrap .tabBar{padding:15px 30px;height:auto;background:#fcfbfb;border:1px #e7e7e7 solid;}
+.noticeGuideWrap .tabBar li{margin:0;width:16.6666%;border:0px none;}
+.noticeGuideWrap .tabBar li a{margin:0;height:40px;font-size:15px;color:#333;line-height:40px;background:none;border:0px none;}
+.noticeGuideWrap .tabBar li.active a{color:#335d9f;}
+.noticeGuideWrap .tabPage{}
+.noticeGuideWrap .tabPage img{max-width:100%;}

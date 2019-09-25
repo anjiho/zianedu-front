@@ -78,9 +78,100 @@
     <!--//좌측사이트메뉴-->
 
     <!--최상단배너-->
-    <!--//최상단배너-->
-    <%@include file="/common/jsp/header.jsp" %>
-    <!--상단-->
+        <!--상단-->
+        <div id="header">
+            <div class="inner">
+                <h1><a href="#"><img src="../images/common/logo01.png" alt="지안에듀 행정직"> 온라인</a></h1>
+                <!--최상단메뉴-->
+                <div id="topNav">
+                    <ul>
+                        <li><a href="#" class="btn_bookmark">즐겨찾기에 등록</a></li>
+                        <li><a href="#">로그인</a></li>
+                        <li><a href="#">회원가입</a></li>
+                        <li><a href="#">합격수기</a></li>
+                        <li><a href="#">이벤트</a></li>
+                    </ul>
+                </div>
+                <!--//최상단메뉴-->
+            </div>
+            <!--주메뉴-->
+            <div id="gnb">
+                <div class="inner">
+                    <ul class="deaph1 cols7">
+                        <li><a href="#">내강의실</a>
+                            <%--                        <ul class="deaph2">--%>
+                            <%--                            <li><a href="#">수강중</a></li>--%>
+                            <%--                            <li><a href="#">일시정지</a></li>--%>
+                            <%--                            <li><a href="#">수강완료</a></li>--%>
+                            <%--                        </ul>--%>
+                        </li>
+                        <li><a href="#">교수소개</a>
+                            <ul class="deaph2 cols3">
+                                <%--                            <li>--%>
+                                <%--                                <label>국어</label>--%>
+                                <%--                                <a href="#">윤서영</a>--%>
+                                <%--                                <a href="#">오선희</a>--%>
+                                <%--                                <a href="#">안효선</a>--%>
+                                <%--                            </li>--%>
+                                <%--                            <li>--%>
+                                <%--                                <label>영어</label>--%>
+                                <%--                                <a href="#">김성익</a>--%>
+                                <%--                                <a href="#">윤광덕</a>--%>
+                                <%--                                <a href="#">조재권</a>--%>
+                                <%--                            </li>--%>
+                                <%--                            <li>--%>
+                                <%--                                <label>한국사</label>--%>
+                                <%--                                <a href="#">임찬호</a>--%>
+                                <%--                                <a href="#">김준호</a>--%>
+                                <%--                            </li>--%>
+                                <%--                            <li>--%>
+                                <%--                                <label>사회</label>--%>
+                                <%--                                <a href="#">함보연</a>--%>
+                                <%--                                <a href="#">이동훈</a>--%>
+                                <%--                            </li>--%>
+                                <%--                            <li>--%>
+                                <%--                                <label>경영학</label>--%>
+                                <%--                                <a href="#">박병호</a>--%>
+                                <%--                            </li>--%>
+                                <%--                            <li>--%>
+                                <%--                                <label>행정법</label>--%>
+                                <%--                                <a href="#">장다훈</a>--%>
+                                <%--                                <a href="#">조대진</a>--%>
+                                <%--                            </li>--%>
+                                <%--                            <li>--%>
+                                <%--                                <label>행정학</label>--%>
+                                <%--                                <a href="#">천정운</a>--%>
+                                <%--                                <a href="#">염오봉</a>--%>
+                                <%--                            </li>--%>
+                                <%--                            <li>--%>
+                                <%--                                <label>면접</label>--%>
+                                <%--                                <a href="#">오재우</a>--%>
+                                <%--                            </li>--%>
+                            </ul>
+                        </li>
+                        <li><a href="#">수강신청</a></li>
+                        <li><a href="#">지안패스</a></li>
+                        <li><a href="#">무료강좌</a>
+                            <ul class="deaph2">
+                                <%--                            <li><a href="#">이론</a></li>--%>
+                                <%--                            <li><a href="#">기출풀이</a></li>--%>
+                            </ul>
+                        </li>
+                        <li><a href="#">빅모의고사</a></li>
+                        <li><a href="#">합격수기</a>
+                            <ul class="deaph2">
+                                <%--                            <li><a href="#">합격영상</a></li>--%>
+                                <%--                            <li><a href="#">합겨수기</a></li>--%>
+                                <%--                            <li><a href="#">수강후기</a></li>--%>
+                                <%--                            <li><a href="#">도서후기</a></li>--%>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!--//주메뉴-->
+        </div>
+        <!--//상단-->
     <!--//상단-->
 
     <!--본문-->
@@ -88,7 +179,12 @@
         <div class="inner">
             <div class="joinWrap">
                 <h2>회원가입</h2>
-                <%@include file="/common/jsp/user/joinHeader.jsp" %>
+<%--                <%@include file="/common/jsp/user/joinHeader.jsp" %>--%>
+                <ul class="statusBar">
+                    <li><label>01.<b>약관동의</b></label></li>
+                    <li class="active"><label>02.<b>회원정보</b></label></li>
+                    <li class="last"><label>03.<b>가입완료</b></label></li>
+                </ul>
                 <div class="tableBox" id="joinDiv">
                     <table class="form">
                         <input type="hidden" id="certCode" name="certCode" value="">
@@ -104,18 +200,19 @@
                             <th scope="col">이름</th>
                             <td>
                                 <input type="text" name="name" id="name" class="w150">
-                                <span class="radioGroup w60 cols2">
-									<input type="radio" name="gender" id="sex_m" value="0" checked><label for="sex_m">남</label>
-									<input type="radio" name="gender" id="sex_f" value="1"><label for="sex_f">여</label>
-								</span>
+                                <div class="radioGroup">
+                                    <input type="radio" name="gender" id="sex_m" value="0"  checked><label>남</label>
+                                    <input type="radio" name="gender" id="sex_f" value="1"><label>여</label>
+                                </div>
                             </td>
                         </tr>
                         <tr>
-                            <th scope="col">아이디</th>
+                            <th>아이디</th>
                             <td>
                                 <input type="text" id="userId" name="userId" class="w270">
                                 (6~12자 영문+숫자 조합)
-                                <div class="captionText" id="idCaption" style="display:none;"></div>
+<%--                                <div class="requiredText" id="idCaption" style="display:none;"></div>--%>
+                                <span class="requiredText" id="idCaption" style="display:none;"></span>
                             </td>
                         </tr>
                         <tr>
@@ -123,14 +220,14 @@
                             <td>
                                 <input type="password" id="password" name="pwd" class="w270">
                                 (특수문자+영문+숫자 8자 이상으로 조합)
-                                <div class="captionText" id="pwdCaption" style="display:none;"></div>
+                                <div class="requiredText" id="pwdCaption" style="display:none;"></div>
                             </td>
                         </tr>
                         <tr>
                             <th scope="col">비밀번호 확인</th>
                             <td>
                                 <input type="password" id="rePassword" class="w270">
-                                <div class="captionText" id="rePwdCaption" style="display:none;"></div>
+                                <div class="requiredText" id="rePwdCaption" style="display:none;"></div>
                             </td>
                         </tr>
                         <tr>
@@ -167,12 +264,19 @@
 <%--                            </td>--%>
 <%--                        </tr>--%>
                         <tr>
-                            <th scope="col">주소</th>
-                            <td class="multiLine">
-                                <input type="text" class="w150" id="postcode" name="zipcode" disabled>
-                                <a href="#" onclick="execDaumPostcode()" class="btn_inline">우편번호 찾기</a><br />
-                                <input type="text" id="roadAddress" name="addressRoad" class="w400">
-                                <input type="text" id="address" name="address" class="w200" placeholder="상세주소">
+<%--                            <td class="multiLine">--%>
+<%--                                <input type="text" class="w150" id="postcode" name="zipcode" disabled>--%>
+<%--                                <a href="#" onclick="execDaumPostcode()" class="btn_inline">우편번호 찾기</a><br />--%>
+<%--                                <input type="text" id="roadAddress" name="addressRoad" class="w400">--%>
+<%--                                <input type="text" id="address" name="address" class="w200" placeholder="상세주소">--%>
+<%--                                <span id="guide" style="color:#999;display:none"></span>--%>
+<%--                            </td>--%>
+                            <th>주소</th>
+                            <td>
+                                <input type="text" value="" placeholder="" title="주소 입력" id="postcode" name="zipcode" disabled>
+                                <input type="button" value="우편번호 찾기" class="btn_inline"  onclick="execDaumPostcode()"><br>
+                                <input type="text" value="" id="roadAddress" name="addressRoad" title="주소 입력" class="w60p"><br>
+                                <input type="text" value="" id="address" name="address" title="상세주소 입력" class="w60p">
                                 <span id="guide" style="color:#999;display:none"></span>
                             </td>
                         </tr>
@@ -212,16 +316,15 @@
 </body>
 </html>
 <script>
+    $(function(){
+        $(".joinAgree label b").click(function(){
+            $(this).parent().parent().toggleClass("active");
+        });
+    });
     window.name ="Parent_window";
     window.close();
 
-    // function init() {
-    //     activeJoinHeaderBtn("statusBar_02");
-    //     getUserRegSerialList("interestCtgKey0"); //준비직렬
-    // }
-
     $(document).ready(function () {
-        activeJoinHeaderBtn("statusBar_02");
         getUserRegSerialList("interestCtgKey0"); //준비직렬
         //비밀번호 정규식 체크
         $("#password").keyup(function () {
