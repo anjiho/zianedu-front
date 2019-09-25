@@ -12,7 +12,7 @@
         <!--상단-->
         <div id="header">
             <div class="inner">
-                <h1><a href="#"><img src="../images/common/logo01.png" alt="지안에듀 행정직"> 온라인</a></h1>
+                <h1><a href="#"><img src="/common/zian/images/common/logo.png" alt="지안에듀"></a></h1>
                 <!--최상단메뉴-->
                 <div id="topNav">
                     <ul>
