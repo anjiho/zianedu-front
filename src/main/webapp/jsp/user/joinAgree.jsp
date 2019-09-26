@@ -1047,10 +1047,6 @@
             $(this).parent().toggleClass("active");
         });
     });
-    // $(document).ready(function () {
-    //     activeJoinHeaderBtn("statusBar_01");
-    // });
-    //동의합니다 버튼
     function goAgree() {
         var chk0 = isCheckedCheckbox("joinAgreeChk0", "ID");
         var chk1 = isCheckedCheckbox("joinAgreeChk1", "ID");

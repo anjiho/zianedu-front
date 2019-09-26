@@ -2866,7 +2866,6 @@ function fnNicePopup() {
     document.frm.target = "popupChk";
     document.frm.submit();
 }
-
 //휴대전화번호 하이픈 붙이기
 function getPhoneNumHypen(val) {
     var phoneNum = "";
