@@ -59,6 +59,13 @@
         window.opener.document.getElementById("name").disabled = true;
         window.opener.document.getElementById("certCode").value = certCode;
         window.opener.document.getElementById("telephoneMobile").value = mobileNo;
+
+        var browse = navigator.userAgent.toLowerCase();
+        if( (navigator.appName == 'Netscape' && browse.indexOf('trident') != -1) || (browse.indexOf("msie") != -1)) {
+            window.open("about:blank","_self").close();
+        } else {
+            self.close();
+        }
     </script>
 <% } %>
 <%@include file="/common/jsp/common.jsp" %>
@@ -322,7 +329,7 @@
         });
     });
     window.name ="Parent_window";
-    window.close();
+    //window.close();
 
     $(document).ready(function () {
         getUserRegSerialList("interestCtgKey0"); //준비직렬

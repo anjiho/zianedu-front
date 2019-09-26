@@ -17,8 +17,8 @@
                 <div id="topNav">
                     <ul>
                         <li><a href="#" class="btn_bookmark">즐겨찾기에 등록</a></li>
-                        <li><a href="#">로그인</a></li>
-                        <li><a href="#">회원가입</a></li>
+                        <li id="login"><a href="javascript:goLoginPage();">로그인</a></li>
+                        <li id="join"><a href="javascript:goPage('user', 'joinAgree');">회원가입</a></li>
                         <li><a href="#">합격수기</a></li>
                         <li><a href="#">이벤트</a></li>
                     </ul>
@@ -37,48 +37,6 @@
                             <%--                        </ul>--%>
                         </li>
                         <li><a href="#">교수소개</a>
-                            <ul class="deaph2 cols3">
-                                <%--                            <li>--%>
-                                <%--                                <label>국어</label>--%>
-                                <%--                                <a href="#">윤서영</a>--%>
-                                <%--                                <a href="#">오선희</a>--%>
-                                <%--                                <a href="#">안효선</a>--%>
-                                <%--                            </li>--%>
-                                <%--                            <li>--%>
-                                <%--                                <label>영어</label>--%>
-                                <%--                                <a href="#">김성익</a>--%>
-                                <%--                                <a href="#">윤광덕</a>--%>
-                                <%--                                <a href="#">조재권</a>--%>
-                                <%--                            </li>--%>
-                                <%--                            <li>--%>
-                                <%--                                <label>한국사</label>--%>
-                                <%--                                <a href="#">임찬호</a>--%>
-                                <%--                                <a href="#">김준호</a>--%>
-                                <%--                            </li>--%>
-                                <%--                            <li>--%>
-                                <%--                                <label>사회</label>--%>
-                                <%--                                <a href="#">함보연</a>--%>
-                                <%--                                <a href="#">이동훈</a>--%>
-                                <%--                            </li>--%>
-                                <%--                            <li>--%>
-                                <%--                                <label>경영학</label>--%>
-                                <%--                                <a href="#">박병호</a>--%>
-                                <%--                            </li>--%>
-                                <%--                            <li>--%>
-                                <%--                                <label>행정법</label>--%>
-                                <%--                                <a href="#">장다훈</a>--%>
-                                <%--                                <a href="#">조대진</a>--%>
-                                <%--                            </li>--%>
-                                <%--                            <li>--%>
-                                <%--                                <label>행정학</label>--%>
-                                <%--                                <a href="#">천정운</a>--%>
-                                <%--                                <a href="#">염오봉</a>--%>
-                                <%--                            </li>--%>
-                                <%--                            <li>--%>
-                                <%--                                <label>면접</label>--%>
-                                <%--                                <a href="#">오재우</a>--%>
-                                <%--                            </li>--%>
-                            </ul>
                         </li>
                         <li><a href="#">수강신청</a></li>
                         <li><a href="#">지안패스</a></li>
