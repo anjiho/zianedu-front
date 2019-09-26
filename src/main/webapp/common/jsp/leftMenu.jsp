@@ -24,6 +24,8 @@
         }else if(topSubHtml == '계리직 온라인'){
             sessionStorage.setItem("leftMenu", "postOnline");
             goPage("postOnline", "main");
+        }else {
+            sessionStorage.setItem("leftMenu", "publicOnline");
         }
     }
 
@@ -38,6 +40,8 @@
         }else if(subMenuHtml == '계리직'){
             sessionStorage.setItem("leftMenu", "postOnline");
             goPage("postOnline", "main");
+        }else{
+            sessionStorage.setItem("leftMenu", "publicOnline");
         }
     }
 
@@ -52,6 +56,8 @@
         }else if(subMenuHtml == '계리직'){
             sessionStorage.setItem("leftMenu", "postOnline");
             goPage("postOnline", "main");
+        }else{
+            sessionStorage.setItem("leftMenu", "publicOnline");
         }
     }
 
@@ -101,6 +107,13 @@
                 innerHTML("subMenu1", "행정직");
                 innerHTML("subMenu2", "기술직");
             }
+        }else{
+            $("#siteTab").css("background","#134c97");
+            var html = "행정직"+"<br />"+"온라인";
+            innerHTML("topName", html);
+            innerHTML("topSub", "행정직 학원");
+            innerHTML("subMenu1", "기술직");
+            innerHTML("subMenu2", "계리직");
         }
         getExamScheduleList("dDayBanner"); //d-day 슬라이드 배너
     });
