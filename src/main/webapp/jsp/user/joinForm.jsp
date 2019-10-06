@@ -429,4 +429,11 @@
             return false;
         }
     }
+
+    $(function(){
+        $(".radioGroup > label").click(function(){
+            $(this).parent().find("input[type='radio']").prop("checked", false);
+            $(this).prev().prop("checked", true);
+        });
+    });
 </script>
