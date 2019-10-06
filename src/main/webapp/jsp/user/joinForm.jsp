@@ -429,7 +429,7 @@
             return false;
         }
     }
-
+    //남,여 선택 라디오버튼 이벤트 스트립트
     $(function(){
         $(".radioGroup > label").click(function(){
             $(this).parent().find("input[type='radio']").prop("checked", false);
