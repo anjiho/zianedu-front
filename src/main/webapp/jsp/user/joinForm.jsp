@@ -81,7 +81,7 @@
     <input type="hidden" name="EncodeData" value="<%=EncodeData%>">
     <div id="wrap">
     <!--좌측사이트메뉴-->
-    <%@include file="/common/jsp/leftMenu.jsp" %>
+<%--    <%@include file="/common/jsp/leftMenu.jsp" %>--%>
     <!--//좌측사이트메뉴-->
 
     <!--최상단배너-->
@@ -102,80 +102,80 @@
                 <!--//최상단메뉴-->
             </div>
             <!--주메뉴-->
-            <div id="gnb">
-                <div class="inner">
-                    <ul class="deaph1 cols7">
-                        <li><a href="#">내강의실</a>
-                            <%--                        <ul class="deaph2">--%>
-                            <%--                            <li><a href="#">수강중</a></li>--%>
-                            <%--                            <li><a href="#">일시정지</a></li>--%>
-                            <%--                            <li><a href="#">수강완료</a></li>--%>
-                            <%--                        </ul>--%>
-                        </li>
-                        <li><a href="#">교수소개</a>
-                            <ul class="deaph2 cols3">
-                                <%--                            <li>--%>
-                                <%--                                <label>국어</label>--%>
-                                <%--                                <a href="#">윤서영</a>--%>
-                                <%--                                <a href="#">오선희</a>--%>
-                                <%--                                <a href="#">안효선</a>--%>
-                                <%--                            </li>--%>
-                                <%--                            <li>--%>
-                                <%--                                <label>영어</label>--%>
-                                <%--                                <a href="#">김성익</a>--%>
-                                <%--                                <a href="#">윤광덕</a>--%>
-                                <%--                                <a href="#">조재권</a>--%>
-                                <%--                            </li>--%>
-                                <%--                            <li>--%>
-                                <%--                                <label>한국사</label>--%>
-                                <%--                                <a href="#">임찬호</a>--%>
-                                <%--                                <a href="#">김준호</a>--%>
-                                <%--                            </li>--%>
-                                <%--                            <li>--%>
-                                <%--                                <label>사회</label>--%>
-                                <%--                                <a href="#">함보연</a>--%>
-                                <%--                                <a href="#">이동훈</a>--%>
-                                <%--                            </li>--%>
-                                <%--                            <li>--%>
-                                <%--                                <label>경영학</label>--%>
-                                <%--                                <a href="#">박병호</a>--%>
-                                <%--                            </li>--%>
-                                <%--                            <li>--%>
-                                <%--                                <label>행정법</label>--%>
-                                <%--                                <a href="#">장다훈</a>--%>
-                                <%--                                <a href="#">조대진</a>--%>
-                                <%--                            </li>--%>
-                                <%--                            <li>--%>
-                                <%--                                <label>행정학</label>--%>
-                                <%--                                <a href="#">천정운</a>--%>
-                                <%--                                <a href="#">염오봉</a>--%>
-                                <%--                            </li>--%>
-                                <%--                            <li>--%>
-                                <%--                                <label>면접</label>--%>
-                                <%--                                <a href="#">오재우</a>--%>
-                                <%--                            </li>--%>
-                            </ul>
-                        </li>
-                        <li><a href="#">수강신청</a></li>
-                        <li><a href="#">지안패스</a></li>
-                        <li><a href="#">무료강좌</a>
-                            <ul class="deaph2">
-                                <%--                            <li><a href="#">이론</a></li>--%>
-                                <%--                            <li><a href="#">기출풀이</a></li>--%>
-                            </ul>
-                        </li>
-                        <li><a href="#">빅모의고사</a></li>
-                        <li><a href="#">합격수기</a>
-                            <ul class="deaph2">
-                                <%--                            <li><a href="#">합격영상</a></li>--%>
-                                <%--                            <li><a href="#">합겨수기</a></li>--%>
-                                <%--                            <li><a href="#">수강후기</a></li>--%>
-                                <%--                            <li><a href="#">도서후기</a></li>--%>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+<%--            <div id="gnb">--%>
+<%--                <div class="inner">--%>
+<%--                    <ul class="deaph1 cols7">--%>
+<%--                        <li><a href="#">내강의실</a>--%>
+<%--                            &lt;%&ndash;                        <ul class="deaph2">&ndash;%&gt;--%>
+<%--                            &lt;%&ndash;                            <li><a href="#">수강중</a></li>&ndash;%&gt;--%>
+<%--                            &lt;%&ndash;                            <li><a href="#">일시정지</a></li>&ndash;%&gt;--%>
+<%--                            &lt;%&ndash;                            <li><a href="#">수강완료</a></li>&ndash;%&gt;--%>
+<%--                            &lt;%&ndash;                        </ul>&ndash;%&gt;--%>
+<%--                        </li>--%>
+<%--                        <li><a href="#">교수소개</a>--%>
+<%--                            <ul class="deaph2 cols3">--%>
+<%--                                &lt;%&ndash;                            <li>&ndash;%&gt;--%>
+<%--                                &lt;%&ndash;                                <label>국어</label>&ndash;%&gt;--%>
+<%--                                &lt;%&ndash;                                <a href="#">윤서영</a>&ndash;%&gt;--%>
+<%--                                &lt;%&ndash;                                <a href="#">오선희</a>&ndash;%&gt;--%>
+<%--                                &lt;%&ndash;                                <a href="#">안효선</a>&ndash;%&gt;--%>
+<%--                                &lt;%&ndash;                            </li>&ndash;%&gt;--%>
+<%--                                &lt;%&ndash;                            <li>&ndash;%&gt;--%>
+<%--                                &lt;%&ndash;                                <label>영어</label>&ndash;%&gt;--%>
+<%--                                &lt;%&ndash;                                <a href="#">김성익</a>&ndash;%&gt;--%>
+<%--                                &lt;%&ndash;                                <a href="#">윤광덕</a>&ndash;%&gt;--%>
+<%--                                &lt;%&ndash;                                <a href="#">조재권</a>&ndash;%&gt;--%>
+<%--                                &lt;%&ndash;                            </li>&ndash;%&gt;--%>
+<%--                                &lt;%&ndash;                            <li>&ndash;%&gt;--%>
+<%--                                &lt;%&ndash;                                <label>한국사</label>&ndash;%&gt;--%>
+<%--                                &lt;%&ndash;                                <a href="#">임찬호</a>&ndash;%&gt;--%>
+<%--                                &lt;%&ndash;                                <a href="#">김준호</a>&ndash;%&gt;--%>
+<%--                                &lt;%&ndash;                            </li>&ndash;%&gt;--%>
+<%--                                &lt;%&ndash;                            <li>&ndash;%&gt;--%>
+<%--                                &lt;%&ndash;                                <label>사회</label>&ndash;%&gt;--%>
+<%--                                &lt;%&ndash;                                <a href="#">함보연</a>&ndash;%&gt;--%>
+<%--                                &lt;%&ndash;                                <a href="#">이동훈</a>&ndash;%&gt;--%>
+<%--                                &lt;%&ndash;                            </li>&ndash;%&gt;--%>
+<%--                                &lt;%&ndash;                            <li>&ndash;%&gt;--%>
+<%--                                &lt;%&ndash;                                <label>경영학</label>&ndash;%&gt;--%>
+<%--                                &lt;%&ndash;                                <a href="#">박병호</a>&ndash;%&gt;--%>
+<%--                                &lt;%&ndash;                            </li>&ndash;%&gt;--%>
+<%--                                &lt;%&ndash;                            <li>&ndash;%&gt;--%>
+<%--                                &lt;%&ndash;                                <label>행정법</label>&ndash;%&gt;--%>
+<%--                                &lt;%&ndash;                                <a href="#">장다훈</a>&ndash;%&gt;--%>
+<%--                                &lt;%&ndash;                                <a href="#">조대진</a>&ndash;%&gt;--%>
+<%--                                &lt;%&ndash;                            </li>&ndash;%&gt;--%>
+<%--                                &lt;%&ndash;                            <li>&ndash;%&gt;--%>
+<%--                                &lt;%&ndash;                                <label>행정학</label>&ndash;%&gt;--%>
+<%--                                &lt;%&ndash;                                <a href="#">천정운</a>&ndash;%&gt;--%>
+<%--                                &lt;%&ndash;                                <a href="#">염오봉</a>&ndash;%&gt;--%>
+<%--                                &lt;%&ndash;                            </li>&ndash;%&gt;--%>
+<%--                                &lt;%&ndash;                            <li>&ndash;%&gt;--%>
+<%--                                &lt;%&ndash;                                <label>면접</label>&ndash;%&gt;--%>
+<%--                                &lt;%&ndash;                                <a href="#">오재우</a>&ndash;%&gt;--%>
+<%--                                &lt;%&ndash;                            </li>&ndash;%&gt;--%>
+<%--                            </ul>--%>
+<%--                        </li>--%>
+<%--                        <li><a href="#">수강신청</a></li>--%>
+<%--                        <li><a href="#">지안패스</a></li>--%>
+<%--                        <li><a href="#">무료강좌</a>--%>
+<%--                            <ul class="deaph2">--%>
+<%--                                &lt;%&ndash;                            <li><a href="#">이론</a></li>&ndash;%&gt;--%>
+<%--                                &lt;%&ndash;                            <li><a href="#">기출풀이</a></li>&ndash;%&gt;--%>
+<%--                            </ul>--%>
+<%--                        </li>--%>
+<%--                        <li><a href="#">빅모의고사</a></li>--%>
+<%--                        <li><a href="#">합격수기</a>--%>
+<%--                            <ul class="deaph2">--%>
+<%--                                &lt;%&ndash;                            <li><a href="#">합격영상</a></li>&ndash;%&gt;--%>
+<%--                                &lt;%&ndash;                            <li><a href="#">합겨수기</a></li>&ndash;%&gt;--%>
+<%--                                &lt;%&ndash;                            <li><a href="#">수강후기</a></li>&ndash;%&gt;--%>
+<%--                                &lt;%&ndash;                            <li><a href="#">도서후기</a></li>&ndash;%&gt;--%>
+<%--                            </ul>--%>
+<%--                        </li>--%>
+<%--                    </ul>--%>
+<%--                </div>--%>
+<%--            </div>--%>
             <!--//주메뉴-->
         </div>
         <!--//상단-->
@@ -204,11 +204,11 @@
                         </colgroup>
                         <tbody>
                         <tr>
-                            <th scope="col">이름</th>
+                            <th>이름</th>
                             <td>
-                                <input type="text" name="name" id="name" class="w150">
+                                <input type="text" value="" placeholder="홍길동" title="이름 입력">
                                 <div class="radioGroup">
-                                    <input type="radio" name="gender" id="sex_m" value="0"  checked><label>남</label>
+                                    <input type="radio" name="gender" id="sex_m" value="0" checked><label>남</label>
                                     <input type="radio" name="gender" id="sex_f" value="1"><label>여</label>
                                 </div>
                             </td>
@@ -315,7 +315,7 @@
     <%@include file="/common/jsp/rightMenu.jsp" %>
     <!--//우측따라다니는영역-->
     <!--하단고정식배너-->
-    <%@include file="/common/jsp/footerBanner.jsp" %>
+<%--    <%@include file="/common/jsp/footerBanner.jsp" %>--%>
     <!--//하단고정식배너-->
 </div>
 <div id="overlay"></div>
@@ -429,4 +429,11 @@
             return false;
         }
     }
+
+    $(function(){
+        $(".radioGroup > label").click(function(){
+            $(this).parent().find("input[type='radio']").prop("checked", false);
+            $(this).prev().prop("checked", true);
+        });
+    });
 </script>

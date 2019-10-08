@@ -23,7 +23,7 @@ article,aside,hgroup,header,footer,figure,figcaption,nav,section{display:block;}
 .clear{display:block;height:0px;font-size:0px;font-size:0em;line-height:0px;content:'';overflow:hidden;clear:both;}
 .inner{display:block;position:relative;margin:0 auto;width:1200px;box-sizing:border-box;}
 .inner:after{display:block;content:'';clear:both;}
-caption, .soundOnly{display:block !important;position:absolute !important;top:-9999px !important;}
+caption{display: none;} .soundOnly{display:block !important;position:absolute !important;top:-9999px !important;}
 .alignCenter{text-align:center;}
 .alignLeft{text-align:left;}
 .alignRight{text-align:right;}
