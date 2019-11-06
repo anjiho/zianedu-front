@@ -119,7 +119,7 @@
             innerHTML("subMenu1", "기술직");
             innerHTML("subMenu2", "계리직");
         }
-        getExamScheduleList("dDayBanner"); //d-day 슬라이드 배너
+        //getExamScheduleList("dDayBanner"); //d-day 슬라이드 배너
     });
 
 
