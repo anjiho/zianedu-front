@@ -2,7 +2,7 @@
 <%@include file="/common/jsp/common.jsp" %>
 <script>
     $( document ).ready(function() {
-        var leftMenuInfo = sessionStorage.getItem('noticeHeader');
+        //리스트불러오기
         fn_search('new');
     });
 
@@ -16,14 +16,36 @@
     function fn_search(val) {
         var sPage = getInputTextValue("sPage");
         var searchType = getSelectboxValue("searchType");
-        var searchText = getInputTextValue("optionSearchType");
+        var searchText = getInputTextValue("searchText");
         if(searchType == undefined) searchType = "";
         if(searchText == undefined) searchText = "";
 
         if(val == "new") sPage = "1";
 
-        getNoticeList(sPage, 10, '10001', searchType, searchText);//리스트 불러오기
+        var bbsmasterKey = "";
+        var leftMenuInfo = sessionStorage.getItem('leftMenu');//직렬 구분
+        var noticeHeaderInfo = sessionStorage.getItem('noticeHeader');//공지사항 메뉴 구분
 
+        if(leftMenuInfo == "publicOnline" || leftMenuInfo == "publicAcademy"){//행정직 온라인, 행정직학원
+            if(noticeHeaderInfo == "openMenu")        bbsmasterKey = "10001";//개강안내
+            else if(noticeHeaderInfo == "acaNotice")  bbsmasterKey = "10007";//학원소식
+            else if(noticeHeaderInfo == "examNotice") bbsmasterKey = "10010";//시험공고
+            else if(noticeHeaderInfo == "lectureRoom") bbsmasterKey = "10008";//강의실배정표
+            else bbsmasterKey = "10057";//온라인서점
+        }else if(leftMenuInfo == "techOnline" || leftMenuInfo == "techAcademy"){//기술직 온라인. 기술직학원
+            if(noticeHeaderInfo == "openMenu")        bbsmasterKey = "10026";
+            else if(noticeHeaderInfo == "acaNotice")  bbsmasterKey = "10027";
+            else if(noticeHeaderInfo == "examNotice") bbsmasterKey = "10030";
+            else if(noticeHeaderInfo == "lectureRoom") bbsmasterKey = "10008";
+            else bbsmasterKey = "10057";
+        }else{//계리직 온라인. 계리직 학원
+            if(noticeHeaderInfo == "openMenu")        bbsmasterKey = "10041";
+            else if(noticeHeaderInfo == "acaNotice")  bbsmasterKey = "10042";
+            else if(noticeHeaderInfo == "examNotice") bbsmasterKey = "10044";
+            else if(noticeHeaderInfo == "lectureRoom") bbsmasterKey = "10008";
+            else bbsmasterKey = "10057";
+        }
+        getNoticeList(sPage, 10, bbsmasterKey, searchType, searchText);
     }
 
 </script>
@@ -64,10 +86,10 @@
                     <input type="hidden" id="sPage">
                     <div class="boardSearch">
                         <select id="searchType" class="w90">
-                            <option value="">제목</option>
-                            <option value="">내용</option>
+                            <option value="title">제목</option>
+                            <option value="content">내용</option>
                         </select>
-                        <input type="text" id="searchText" value="" class="w240">
+                        <input type="text" id="searchText" onkeypress="if(event.keyCode==13) {fn_search('new'); return false;}" class="w240">
                         <a href="javascript:fn_search('new');" class="btn_inline on w140">검색</a>
                         <div class="btnArea">
                             <a href="javascript:goPage('notice','write')" class="btn_inline w140">글쓰기</a>

@@ -24,6 +24,10 @@ public class NoticeController {
             mvc.setViewName("/notice/detail");
         } else if ("write".equals(page_gbn)) {
             mvc.setViewName("/notice/write");
+        } else if ("lecRoom".equals(page_gbn)) {
+            mvc.setViewName("/notice/lectureRoom");
+        } else if ("examGuide".equals(page_gbn)) {
+            mvc.setViewName("/notice/examGuide");
         }
         return mvc;
     }
