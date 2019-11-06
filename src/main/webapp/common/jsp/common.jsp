@@ -12,7 +12,8 @@
     <link rel="stylesheet" type="text/css" href="/common/zian/css/base.css">
     <link rel="stylesheet" type="text/css" href="/common/zian/css/content.css">
     <link rel="stylesheet" type="text/css" href="/common/zian/css/swiper.min.css">
-
+    <link rel="stylesheet" type="text/css" href="/common/calendar/css/fullcalendar.min.css">
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <!-- zian js-->
     <script src="/common/zian/js/kiplayer/jquery.min.js"></script>
     <script src="/common/zian/js/kiplayer/jquery.plugin.js"></script>
@@ -23,8 +24,6 @@
     <script src="/common/zian/js/submain.js"></script>
     <script src="/common/zian/js/swiper.min.js"></script>
 
-    <script type='text/javascript' src="/common/calendar/lib/moment.min.js"></script>
-    <script type='text/javascript' src="/common/calendar/js/fullcalendar.js"></script>
 
     <!--<script src="/common/assets/jquery/dist/jquery.min.js"></script>-->
     <script src="/common/js/blank-check.js"></script>
@@ -33,6 +32,10 @@
     <script src="/common/js/rest-api.js"></script>
     <!--paging-->
     <script src="common/js/paging-count-check.js"></script>
+
+    <script type='text/javascript' src="/common/calendar/lib/moment.min.js"></script>
+    <script type='text/javascript' src="/common/calendar/js/fullcalendar.js"></script>
+    <script src='//cdn.rawgit.com/fgelinas/timepicker/master/jquery.ui.timepicker.js'></script>
 
     <!--api controller-->
     <script src="/common/js/view/banner-controller.js"></script>

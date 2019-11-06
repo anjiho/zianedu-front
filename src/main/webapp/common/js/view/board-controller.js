@@ -106,13 +106,35 @@ function getNoticeList(sPage, listLimit, bbsMaterKey, searchType, searchText) {
         paging.count(sPage, cnt, '10', '10', comment.blank_list);
         var listNum = ((cnt-1)+1)-((sPage-1)*10); //리스트 넘버링
         var selList = InfoList.result;
-        dwr.util.addRows("dataList", selList, [
+        for(var i=0; i < selList.length; i++){
+            var cmpList = selList[i];
+            if (cmpList != undefined) {
+                var cellData = [
+                    function(data) {return cmpList.isNotice == 1 ?  "<img src=\"/common/zian/images/common/icon_notice.png\" alt=\"\">"  : listNum--;},
+                    function(data) {return "<a href='javascript:void(0);' onclick='goDetailNotice("+ cmpList.bbsKey +");'>" + gfn_substr(cmpList.title, 0, 40) + "</a>";},
+                    function(data) {return cmpList.writerName;},
+                    function(data) {return cmpList.createDate;},
+                    function(data) {return cmpList.readCount;},
+                    function(data) {return cmpList.isNotice == 1 ?  "1"  : "0";}
+                ];
+                dwr.util.addRows("dataList", [0], cellData, {escapeHtml: false});
+                $('#dataList tr').each(function(){
+                    var tr = $(this);
+                    tr.children().eq(1).attr("class", "left");
+                    tr.children().eq(5).attr("style", "display:none");
+                    if(tr.children().eq(5).text() == 1){
+                        tr.attr("class", "notice");
+                    }
+                });
+            }
+        }
+        /*dwr.util.addRows("dataList", selList, [
             function(data) {return listNum--;},
             function(data) {return "<a href='javascript:void(0);' onclick='goDetailNotice("+ data.bbsKey +");'>" + gfn_substr(data.title, 0, 37) + "</a>";},
             function(data) {return data.writerName;},
             function(data) {return data.createDate;},
             function(data) {return data.readCount;},
-        ], {escapeHtml:false});
+        ], {escapeHtml:false});*/
     }
 }
 
