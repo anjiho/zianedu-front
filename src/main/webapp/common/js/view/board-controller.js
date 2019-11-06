@@ -106,7 +106,7 @@ function getNoticeList(sPage, listLimit, bbsMaterKey, searchType, searchText) {
         paging.count(sPage, cnt, '10', '10', comment.blank_list);
         var selList = InfoList.result;
         dwr.util.addRows("dataList", selList, [
-            function(data) {return --cnt;},
+            function(data) {return cnt--;},
             function(data) {return "<a href='javascript:void(0);' onclick='goDetailNotice("+ data.bbsKey +");'>" + data.title + "</a>";},
             function(data) {return data.writerName;},
             function(data) {return data.indate;},
