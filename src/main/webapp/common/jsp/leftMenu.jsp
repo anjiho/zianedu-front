@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <script>
+    function setNoticeMenu() {
+        sessionStorage.setItem("noticeHeader", "openMenu");
+        goPage("notice", "list");
+    }
     function setLeftMenu() {
         var topSubHtml = $("#topSub").html();
 
@@ -117,6 +121,9 @@
         }
         getExamScheduleList("dDayBanner"); //d-day 슬라이드 배너
     });
+
+
+
 </script>
 <div id="skipLink">
     <a href="#">본문바로가기</a>
@@ -147,7 +154,8 @@
                 <li><a href="#"><span class="icon item4"></span>내강의실</a></li>
                 <li><a href="#"><span class="icon item5"></span>학원수강내역</a></li>
                 <li><a href="#"><span class="icon item6"><!--<em>30</em>--></span>장바구니</a></li>
-                <li><a href="#"><span class="icon item7"></span>공지사항</a></li>
+<%--                <li><a href="javascript:goPage('notice', 'list')"><span class="icon item7"></span>공지사항</a></li>--%>
+                <li><a href="javascript:void(0);" onclick="setNoticeMenu()"><span class="icon item7"></span>공지사항</a></li>
                 <li><a href="#"><span class="icon item8"></span>1:1문의</a></li>
             </ul>
         </div>

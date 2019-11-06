@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/jsp/common.jsp" %>
+<script>
+    $( document ).ready(function() {
+        var leftMenuInfo = sessionStorage.getItem('noticeHeader');
+
+    });
+</script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
     <div id="wrap">
@@ -7,7 +13,7 @@
         <!--상단-->
         <div id="header">
             <div class="inner">
-                <h1><a href="javascript:goPage('publicAcademy', 'main')"><img src="/common/zian/images/common/logo01.png" alt="지안에듀 행정직"> 학원</a></h1>
+                <h1><a href="#"><img src="/common/zian/images/common/logo.png" alt="지안에듀"></a></h1>
                 <%@include file="/common/jsp/topHeader.jsp" %>
             </div>
             <!--주메뉴-->
@@ -31,22 +37,12 @@
         <div id="container">
             <div class="inner">
                 <!--서브 컨텐츠-->
-
-                <div class="tabBox">
-                    <ul>
-                        <li class="active"><a href="#">개강안내</a></li>
-                        <li><a href="#">학원소식</a></li>
-                        <li><a href="#">강의실배정표</a></li>
-                        <li><a href="#">시험공고</a></li>
-                        <li><a href="#">수험가이드</a></li>
-                        <li><a href="#">온라인서점안내</a></li>
-                    </ul>
-                </div>
-                <br />
+                <%@include file="/common/jsp/noticeHeader.jsp" %>
                 <div class="boardWrap">
                     <div class="boardSearch">
                         <select name="" class="w90">
                             <option value="">제목</option>
+                            <option value="">내용</option>
                         </select>
                         <input type="text" name="" value="" class="w240">
                         <a href="#" class="btn_inline on w140">검색</a>
@@ -81,90 +77,6 @@
                                 <td>2019.08.09</td>
                                 <td>31</td>
                             </tr>
-                            <tr>
-                                <td>12</td>
-                                <td class="left"><a href="#">[2관학원실강] 2020군무원 행정9급 대비 전과목(국어+행정법+2020군무원 행정9급 대비 전과목(국어+행정법+...</a></td>
-                                <td>지안에듀</td>
-                                <td>2019.08.09</td>
-                                <td>31</td>
-                            </tr>
-                            <tr>
-                                <td>11</td>
-                                <td class="left"><a href="#">[2관학원실강] 2020군무원 행정9급 대비 전과목(국어+행정법+2020군무원 행정9급 대비 전과목(국어+행정법+...</a></td>
-                                <td>지안에듀</td>
-                                <td>2019.08.09</td>
-                                <td>31</td>
-                            </tr>
-                            <tr>
-                                <td>10</td>
-                                <td class="left"><a href="#">[2관학원실강] 2020군무원 행정9급 대비 전과목(국어+행정법+2020군무원 행정9급 대비 전과목(국어+행정법+...</a></td>
-                                <td>지안에듀</td>
-                                <td>2019.08.09</td>
-                                <td>31</td>
-                            </tr>
-                            <tr>
-                                <td>9</td>
-                                <td class="left"><a href="#">[2관학원실강] 2020군무원 행정9급 대비 전과목(국어+행정법+2020군무원 행정9급 대비 전과목(국어+행정법+...</a></td>
-                                <td>지안에듀</td>
-                                <td>2019.08.09</td>
-                                <td>31</td>
-                            </tr>
-                            <tr>
-                                <td>8</td>
-                                <td class="left"><a href="#">[2관학원실강] 2020군무원 행정9급 대비 전과목(국어+행정법+2020군무원 행정9급 대비 전과목(국어+행정법+...</a></td>
-                                <td>지안에듀</td>
-                                <td>2019.08.09</td>
-                                <td>31</td>
-                            </tr>
-                            <tr>
-                                <td>7</td>
-                                <td class="left"><a href="#">[2관학원실강] 2020군무원 행정9급 대비 전과목(국어+행정법+2020군무원 행정9급 대비 전과목(국어+행정법+...</a></td>
-                                <td>지안에듀</td>
-                                <td>2019.08.09</td>
-                                <td>31</td>
-                            </tr>
-                            <tr>
-                                <td>6</td>
-                                <td class="left"><a href="#">[2관학원실강] 2020군무원 행정9급 대비 전과목(국어+행정법+2020군무원 행정9급 대비 전과목(국어+행정법+...</a></td>
-                                <td>지안에듀</td>
-                                <td>2019.08.09</td>
-                                <td>31</td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td class="left"><a href="#">[2관학원실강] 2020군무원 행정9급 대비 전과목(국어+행정법+2020군무원 행정9급 대비 전과목(국어+행정법+...</a></td>
-                                <td>지안에듀</td>
-                                <td>2019.08.09</td>
-                                <td>31</td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td class="left"><a href="#">[2관학원실강] 2020군무원 행정9급 대비 전과목(국어+행정법+2020군무원 행정9급 대비 전과목(국어+행정법+...</a></td>
-                                <td>지안에듀</td>
-                                <td>2019.08.09</td>
-                                <td>31</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td class="left"><a href="#">[2관학원실강] 2020군무원 행정9급 대비 전과목(국어+행정법+2020군무원 행정9급 대비 전과목(국어+행정법+...</a></td>
-                                <td>지안에듀</td>
-                                <td>2019.08.09</td>
-                                <td>31</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td class="left"><a href="#">[2관학원실강] 2020군무원 행정9급 대비 전과목(국어+행정법+2020군무원 행정9급 대비 전과목(국어+행정법+...</a></td>
-                                <td>지안에듀</td>
-                                <td>2019.08.09</td>
-                                <td>31</td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td class="left"><a href="#">[2관학원실강] 2020군무원 행정9급 대비 전과목(국어+행정법+2020군무원 행정9급 대비 전과목(국어+행정법+...</a></td>
-                                <td>지안에듀</td>
-                                <td>2019.08.09</td>
-                                <td>31</td>
-                            </tr>
                             </tbody>
                         </table>
                     </div>
@@ -193,8 +105,3 @@
 </form>
 </body>
 </html>
-<script>
-    $( document ).ready(function() {
-        activeHeaderBtn("publicHeaderLi_2");
-    });
-</script>
