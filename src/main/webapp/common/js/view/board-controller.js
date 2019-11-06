@@ -89,21 +89,24 @@ function getCommunityList(bbsMaterKey, sPage, listLimit) {
 function getNoticeList(sPage, listLimit, bbsMaterKey, searchType, searchText) {
     if (bbsMaterKey == null || bbsMaterKey == undefined) return;
     var paging = new Paging();
+
+    dwr.util.removeAllRows("dataList"); //테이블 리스트 초기화
+    gfn_emptyView("H", "");//페이징 예외사항처리
+
     var data = {
         sPage : sPage,
         listLimit : listLimit,
         searchType : searchType,
         searchText : searchText
     };
-    var InfoList = getApi("/board/getNoticeList/", bbsMaterKey, data);
 
+    var InfoList = getPageApi("/board/getNoticeList/", bbsMaterKey, data);
+    var cnt = InfoList.cnt;
     if (InfoList.result.length > 0) {
-        var cnt = InfoList.cnt;
         paging.count(sPage, cnt, '10', '10', comment.blank_list);
-        var listNum = ((cnt-1)+1)-((sPage-1)*10); //리스트 넘버링
         var selList = InfoList.result;
         dwr.util.addRows("dataList", selList, [
-            function(data) {return listNum;},
+            function(data) {return --cnt;},
             function(data) {return "<a href='javascript:void(0);' onclick='goDetailNotice("+ data.bbsKey +");'>" + data.title + "</a>";},
             function(data) {return data.writerName;},
             function(data) {return data.indate;},

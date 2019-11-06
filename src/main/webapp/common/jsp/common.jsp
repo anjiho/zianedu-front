@@ -46,6 +46,8 @@
     <!-- dwr -->
     <script type='text/javascript' src='/dwr/engine.js'></script>
     <script type='text/javascript' src='/dwr/util.js'></script>
+    <!--paging-->
+    <script type='text/javascript' src='/common/js/comPage.js'></script>
 </head>
 <body>
 <script>

@@ -3,7 +3,7 @@
 <script>
     $( document ).ready(function() {
         var leftMenuInfo = sessionStorage.getItem('noticeHeader');
-        getNoticeList(1, 10, '10001', "", "");//리스트 불러오기
+        fn_search('new');
     });
 
     //상세보기
@@ -14,7 +14,6 @@
 
     //검색
     function fn_search(val) {
-        var paging = new Paging();
         var sPage = getInputTextValue("sPage");
         var searchType = getSelectboxValue("searchType");
         var searchText = getInputTextValue("optionSearchType");
@@ -94,16 +93,13 @@
                             </tr>
                             </thead>
                             <tbody id="dataList"></tbody>
+                            <tr>
+                                <td id="emptys" colspan='23' bgcolor="#ffffff" align='center' valign='middle' style="visibility:hidden"></td>
+                            </tr>
                         </table>
                     </div>
-<%--                    <div class="paging">--%>
-<%--                        <a href="#" class="btn_prev">이전</a>--%>
-<%--                        <a href="#" class="active">1</a>--%>
-<%--                        <a href="#" class="btn_next">다음</a>--%>
-<%--                    </div>--%>
                     <%@ include file="/common/inc/com_pageNavi.inc" %>
                 </div>
-
                 <!--//서브 컨텐츠-->
             </div>
         </div>
