@@ -34,7 +34,6 @@
     <!--paging-->
     <script src="common/js/paging-count-check.js"></script>
 
-    <script src="/common/calendar/lang/ko.js"/>
     <!--api controller-->
     <script src="/common/js/view/banner-controller.js"></script>
     <script src="/common/js/view/board-controller.js"></script>
@@ -54,6 +53,7 @@
     <script type='text/javascript' src='/dwr/util.js'></script>
     <!--paging-->
     <script type='text/javascript' src='/common/js/comPage.js'></script>
+    <script src="/common/calendar/lang/ko.js"/>
 </head>
 <body>
 <script>

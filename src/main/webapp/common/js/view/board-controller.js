@@ -91,7 +91,7 @@ function getNoticeList(sPage, listLimit, bbsMaterKey, searchType, searchText) {
     var paging = new Paging();
 
     dwr.util.removeAllRows("dataList"); //테이블 리스트 초기화
-    gfn_emptyView("H", "");//페이징 예외사항처리
+    //gfn_emptyView("H", "");//페이징 예외사항처리
 
     var data = {
         sPage : sPage,

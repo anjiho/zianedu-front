@@ -125,9 +125,6 @@
                             </tr>
                             </thead>
                             <tbody id="dataList"></tbody>
-                            <tr>
-                                <td id="emptys" colspan='23' bgcolor="#ffffff" align='center' valign='middle' style="visibility:hidden"></td>
-                            </tr>
                         </table>
                     </div>
                     <%@ include file="/common/inc/com_pageNavi.inc" %>
