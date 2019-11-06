@@ -23,6 +23,7 @@
             $("#noticeMenu li").removeClass('active');
             if($(this).index() == 0){
                 sessionStorage.setItem("noticeHeader", "openMenu");
+                $("#noticeMenu li:eq(0)").addClass('active');
             }else if($(this).index() == 1){
                 sessionStorage.setItem("noticeHeader", "acaNotice");
                 $("#noticeMenu li:eq(1)").addClass('active');

@@ -86,21 +86,29 @@ function getCommunityList(bbsMaterKey, sPage, listLimit) {
 
 
 //공지사항 리스트
-function getNoticeList(tagId, sPage, listLimit, bbsMaterKey) {
+function getNoticeList(sPage, listLimit, bbsMaterKey, searchType, searchText) {
     if (bbsMaterKey == null || bbsMaterKey == undefined) return;
+    var paging = new Paging();
     var data = {
         sPage : sPage,
-        listLimit : listLimit
+        listLimit : listLimit,
+        searchType : searchType,
+        searchText : searchText
     };
     var InfoList = getApi("/board/getNoticeList/", bbsMaterKey, data);
 
     if (InfoList.result.length > 0) {
+        var cnt = InfoList.cnt;
+        paging.count(sPage, cnt, '10', '10', comment.blank_list);
+        var listNum = ((cnt-1)+1)-((sPage-1)*10); //리스트 넘버링
         var selList = InfoList.result;
-        dwr.util.addOptions(tagId, selList, function (data) {
-            /*
-            TODO :
-             */
-        }, {escapeHtml: false});
+        dwr.util.addRows("dataList", selList, [
+            function(data) {return listNum;},
+            function(data) {return "<a href='javascript:void(0);' onclick='goDetailNotice("+ data.bbsKey +");'>" + data.title + "</a>";},
+            function(data) {return data.writerName;},
+            function(data) {return data.indate;},
+            function(data) {return data.readCount;},
+        ], {escapeHtml:false});
     }
 }
 

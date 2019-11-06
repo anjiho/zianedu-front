@@ -3,8 +3,30 @@
 <script>
     $( document ).ready(function() {
         var leftMenuInfo = sessionStorage.getItem('noticeHeader');
-
+        getNoticeList(1, 10, '10001', "", "");//리스트 불러오기
     });
+
+    //상세보기
+    function goDetailNotice(bbsKey) {
+        innerValue("bbsKey", bbsKey);
+        goPage("notice", "detail");
+    }
+
+    //검색
+    function fn_search(val) {
+        var paging = new Paging();
+        var sPage = getInputTextValue("sPage");
+        var searchType = getSelectboxValue("searchType");
+        var searchText = getInputTextValue("optionSearchType");
+        if(searchType == undefined) searchType = "";
+        if(searchText == undefined) searchText = "";
+
+        if(val == "new") sPage = "1";
+
+        getNoticeList(sPage, 10, '10001', searchType, searchText);//리스트 불러오기
+
+    }
+
 </script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
@@ -39,15 +61,17 @@
                 <!--서브 컨텐츠-->
                 <%@include file="/common/jsp/noticeHeader.jsp" %>
                 <div class="boardWrap">
+                    <input type="hidden" id="bbsKey" name="bbsKey">
+                    <input type="hidden" id="sPage">
                     <div class="boardSearch">
-                        <select name="" class="w90">
+                        <select id="searchType" class="w90">
                             <option value="">제목</option>
                             <option value="">내용</option>
                         </select>
-                        <input type="text" name="" value="" class="w240">
-                        <a href="#" class="btn_inline on w140">검색</a>
+                        <input type="text" id="searchText" value="" class="w240">
+                        <a href="javascript:fn_search('new');" class="btn_inline on w140">검색</a>
                         <div class="btnArea">
-                            <a href="#" class="btn_inline w140">글쓰기</a>
+                            <a href="javascript:goPage('notice','write')" class="btn_inline w140">글쓰기</a>
                         </div>
                     </div>
                     <div class="tableBox">
@@ -69,15 +93,7 @@
                                 <th scope="col">조회</th>
                             </tr>
                             </thead>
-                            <tbody>
-                            <tr>
-                                <td>13</td>
-                                <td class="left"><a href="#">[2관학원실강] 2020군무원 행정9급 대비 전과목(국어+행정법+2020군무원 행정9급 대비 전과목(국어+행정법+...</a></td>
-                                <td>지안에듀</td>
-                                <td>2019.08.09</td>
-                                <td>31</td>
-                            </tr>
-                            </tbody>
+                            <tbody id="dataList"></tbody>
                         </table>
                     </div>
 <%--                    <div class="paging">--%>
