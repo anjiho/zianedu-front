@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/jsp/common.jsp" %>
+
 <script>
     $( document ).ready(function() {
         var leftMenuInfo = sessionStorage.getItem('noticeHeader');
@@ -8,6 +9,53 @@
             sessionStorage.setItem("noticeHeader", "openMenu");
         }
         fn_search('new');
+
+        $('#calendar').fullCalendar({
+            lang:'ko',
+            header: {
+                left: 'prev,next,today',
+                center: 'title',
+                right: ''
+            },
+            selectable:true,
+            editable: true,
+            defaultView: 'month',
+            dayPopoverFormat: 'MM/DD dddd',
+            select: function (startDate, endDate, jsEvent, view) {
+                alert(startDate);
+                $(".fc-body").unbind('click');
+                $(".fc-body").on('click', 'td', function (e) {
+
+                    $("#contextMenu")
+                        .addClass("contextOpened")
+                        .css({
+                            display: "block",
+                            left: e.pageX,
+                            top: e.pageY
+                        });
+                    return false;
+                });
+            },
+            // put your options and callbacks here
+            eventDrop: function(event, delta, revertFunc) {
+                //alert(event.id);
+                alert("강의달력은 변경할수 없습니다.");
+                revertFunc();
+                /*
+                 if (!confirm("change??")) {
+                 revertFunc();
+                 }
+                 */
+            },
+            eventRender: function (event, element, view) {
+                return (event.ranges.filter(function (range) {
+                    return (event.start.isBefore(range.end) &&
+                        event.end.isAfter(range.start));
+                }).length) > 0;
+            },
+           // events:calendarInfo
+
+        });
     });
 
     //상세보기
@@ -132,6 +180,7 @@
                     </div>
                     <%@ include file="/common/inc/com_pageNavi.inc" %>
                 </div>
+                <div id="calendar"></div>
                 <!--//서브 컨텐츠-->
             </div>
         </div>
@@ -150,3 +199,5 @@
 </form>
 </body>
 </html>
+
+<%--<script src="/common/calendar/js/jquery3.min.js"></script>--%>
