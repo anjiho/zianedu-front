@@ -1,2 +1,1 @@
-<div id="pages" class="tb_navi" align="center">
-</div>
+<div id="pages" class="paging"></div>

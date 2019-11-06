@@ -85,6 +85,7 @@
 <%--                        <a href="#" class="active">1</a>--%>
 <%--                        <a href="#" class="btn_next">다음</a>--%>
 <%--                    </div>--%>
+                    <%@ include file="/common/inc/com_pageNavi.inc" %>
                 </div>
 
                 <!--//서브 컨텐츠-->

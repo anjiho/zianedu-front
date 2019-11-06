@@ -147,7 +147,8 @@ function gfn_getPageNav_new(totalPageCnt,printNum,curPage) {
     if (iEnd  > totalPageCnt) {
         iEnd = totalPageCnt;
     }
-    var sHtml = '<div class = "paging">';
+    var sHtml = '';
+    //var sHtml = '<div class = "paging">';
     var ibefore = parseInt(curPage) - parseInt(printNum) ;
     if (ibefore < 1) ibefore = 1;
     //sHtml += "<li class='page-item'><a class='page-link' href='javascript:gfn_fnList2(1)' >&laquo;</a></li>";
@@ -170,9 +171,9 @@ function gfn_getPageNav_new(totalPageCnt,printNum,curPage) {
     if (inext > totalPageCnt) inext = totalPageCnt;
     //sHtml += "<li><a href='javascript:gfn_fnList2(" + inext + ")' ><img src='"+webRoot+"/img/arrow3.png' border='0' align='absmiddle'></a></li>";
     //sHtml += "<li><a href='javascript:gfn_fnList2(" + totalPageCnt + ")'><img src='"+webRoot+"/img/arrow4.png' border='0' align='absmiddle'></a></li>";
-    sHtml += "<a class='btn_next' href='javascript:gfn_fnList2(" + inext + ")' >다음</a>";
+    sHtml += "<a class='btn_next' href='javascript:gfn_fnList2(" + inext + ")'>다음</a>";
     //sHtml += "<li class='page-item'><a class='page-link' href='javascript:gfn_fnList2(" + totalPageCnt + ")'>&raquo;</a></li>";
-    sHtml += "</div>";
+    //sHtml += "</div>";
     return sHtml;
 }
 
