@@ -22,6 +22,9 @@
     <script src="/common/zian/js/submain.js"></script>
     <script src="/common/zian/js/swiper.min.js"></script>
 
+    <script type='text/javascript' src="/common/calendar/lib/moment.min.js"></script>
+    <script type='text/javascript' src="/common/calendar/js/fullcalendar.js"></script>
+
     <!--<script src="/common/assets/jquery/dist/jquery.min.js"></script>-->
     <script src="/common/js/blank-check.js"></script>
     <script src="/common/js/comment.js"></script>
@@ -29,6 +32,8 @@
     <script src="/common/js/rest-api.js"></script>
     <!--paging-->
     <script src="common/js/paging-count-check.js"></script>
+
+    <script src="/common/calendar/lang/ko.js"/>
     <!--api controller-->
     <script src="/common/js/view/banner-controller.js"></script>
     <script src="/common/js/view/board-controller.js"></script>
