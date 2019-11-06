@@ -27,6 +27,8 @@
     <script src="/common/js/comment.js"></script>
     <!--<script src="/common/js/common.js"></script>-->
     <script src="/common/js/rest-api.js"></script>
+    <!--paging-->
+    <script src="common/js/paging-count-check.js"></script>
     <!--api controller-->
     <script src="/common/js/view/banner-controller.js"></script>
     <script src="/common/js/view/board-controller.js"></script>

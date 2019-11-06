@@ -168,11 +168,11 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="paging">
-                        <a href="#" class="btn_prev">이전</a>
-                        <a href="#" class="active">1</a>
-                        <a href="#" class="btn_next">다음</a>
-                    </div>
+<%--                    <div class="paging">--%>
+<%--                        <a href="#" class="btn_prev">이전</a>--%>
+<%--                        <a href="#" class="active">1</a>--%>
+<%--                        <a href="#" class="btn_next">다음</a>--%>
+<%--                    </div>--%>
                 </div>
 
                 <!--//서브 컨텐츠-->
