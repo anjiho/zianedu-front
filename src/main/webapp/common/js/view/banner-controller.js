@@ -391,7 +391,6 @@ function getMajorTeacherPageList(tagId, ctgKey, subjectType) {
 //leftMenu D-day 리스트 불러오기
 function getExamScheduleList(tagId) {
     var infoList = getApi("/banner/getExamScheduleList","" ,"");
-
     if (infoList.result.length > 0) {
         var selList = infoList.result;
         dwr.util.addOptions(tagId, selList, function (data) {

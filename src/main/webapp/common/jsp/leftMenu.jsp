@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <script>
     function setNoticeMenu() {
-        sessionStorage.setItem("noticeHeader", "openMenu");
+        sessionStorage.setItem("leftMenu", "techAcademy");
         goPage("notice", "list");
     }
     function setLeftMenu() {
@@ -174,8 +174,3 @@
         <a href="#" id="btn_asideToggle">죄측메뉴열기/닫기</a>
     </div>
 </div>
-<script>
-    $( document ).ready(function() {
-        getExamScheduleList("dDayBanner"); //d-day 슬라이드 배너
-    });
-</script>

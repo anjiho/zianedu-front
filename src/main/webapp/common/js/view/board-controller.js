@@ -155,7 +155,6 @@ function getBannerNoticeList(tagId, sPage, listLimit, bbsMaterKey) {
     }
 }
 
-
 //합격후기 리스트 불러오기
 function getPassReviewList(tagId, reviewType, listLimit) {
     var data = {
