@@ -108,7 +108,7 @@ function getNoticeList(sPage, listLimit, bbsMaterKey, searchType, searchText) {
         var selList = InfoList.result;
         dwr.util.addRows("dataList", selList, [
             function(data) {return listNum--;},
-            function(data) {return "<a href='javascript:void(0);' onclick='goDetailNotice("+ data.bbsKey +");'>" + gfn_substr(data.title, 0, 48) + "</a>";},
+            function(data) {return "<a href='javascript:void(0);' onclick='goDetailNotice("+ data.bbsKey +");'>" + gfn_substr(data.title, 0, 37) + "</a>";},
             function(data) {return data.writerName;},
             function(data) {return data.createDate;},
             function(data) {return data.readCount;},

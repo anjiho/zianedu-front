@@ -2,6 +2,7 @@
 <script>
     $(document).ready(function () {
         var leftMenuInfo = sessionStorage.getItem('noticeHeader');
+
         if(leftMenuInfo != null){
             if(leftMenuInfo == "openMenu"){
                $("#noticeMenu li:eq(0)").addClass('active');
@@ -13,7 +14,7 @@
                 $("#noticeMenu li:eq(3)").addClass('active');
             }else if(leftMenuInfo == "examGuide"){
                 $("#noticeMenu li:eq(4)").addClass('active');
-            }else{
+            }else if(leftMenuInfo == "onlineStore"){
                 $("#noticeMenu li:eq(5)").addClass('active');
             }
         }
@@ -24,22 +25,18 @@
             if($(this).index() == 0){
                 sessionStorage.setItem("noticeHeader", "openMenu");
                 $("#noticeMenu li:eq(0)").addClass('active');
-               // fn_search('new');
                 goPage('notice', 'list');
             }else if($(this).index() == 1){
                 sessionStorage.setItem("noticeHeader", "acaNotice");
                 $("#noticeMenu li:eq(1)").addClass('active');
-                // fn_search('new');
                 goPage('notice', 'list');
             }else if($(this).index() == 2){
                 sessionStorage.setItem("noticeHeader", "lectureRoom");
                 $("#noticeMenu li:eq(2)").addClass('active');
                 goPage('notice', 'list');
-                //goPage('notice', 'lecRoom');
             }else if($(this).index() == 3){
                 sessionStorage.setItem("noticeHeader", "examNotice");
                 $("#noticeMenu li:eq(3)").addClass('active');
-                // fn_search('new');
                 goPage('notice', 'list');
             }else if($(this).index() == 4){
                 sessionStorage.setItem("noticeHeader", "examGuide");
@@ -48,7 +45,6 @@
             }else if($(this).index() == 5){
                 sessionStorage.setItem("noticeHeader", "onlineStore");
                 $("#noticeMenu li:eq(5)").addClass('active');
-                // fn_search('new');
                 goPage('notice', 'list');
             }
         });

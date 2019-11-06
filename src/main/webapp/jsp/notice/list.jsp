@@ -2,7 +2,11 @@
 <%@include file="/common/jsp/common.jsp" %>
 <script>
     $( document ).ready(function() {
-        //리스트불러오기
+        var leftMenuInfo = sessionStorage.getItem('noticeHeader');
+        if(leftMenuInfo == null){
+            $("#noticeMenu li:eq(0)").addClass('active');
+            sessionStorage.setItem("noticeHeader", "openMenu");
+        }
         fn_search('new');
     });
 
