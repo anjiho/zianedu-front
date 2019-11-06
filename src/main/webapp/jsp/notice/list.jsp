@@ -29,7 +29,7 @@
         var bbsmasterKey = "";
         var leftMenuInfo = sessionStorage.getItem('leftMenu');//직렬 구분
         var noticeHeaderInfo = sessionStorage.getItem('noticeHeader');//공지사항 메뉴 구분
-        
+
         if(leftMenuInfo == "publicOnline" || leftMenuInfo == "publicAcademy"){//행정직 온라인, 행정직학원
             if(noticeHeaderInfo == "openMenu")        bbsmasterKey = "10001";//개강안내
             else if(noticeHeaderInfo == "acaNotice")  bbsmasterKey = "10007";//학원소식
