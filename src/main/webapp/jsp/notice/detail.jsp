@@ -38,7 +38,19 @@
         var result = getBoardDetailInfo(bbsmasterKey, bbsKey);
         if(result != undefined){
             var detailInfo = result.boardDetailInfo;
-            $("#content").text(detailInfo.contents);
+
+            var data = $.parseHTML(detailInfo.contents);
+            // console.log(data[0]);
+
+            //$("#content").html(data[0]);
+
+            var s = data[0];
+            var htmlObject = $(s); // jquery call
+
+            console.log(htmlObject);
+
+            $("#content").appendTo(htmlObject);
+
             $("#indate").text(detailInfo.indate);
             $("#userName").text(detailInfo.userName);
             $("#userId").text(detailInfo.userId);
@@ -55,6 +67,61 @@
     
     function goModify() {
         goPage("notice", "modify");
+    }
+
+    function WCString_stringToHtml(sSrc)
+    {
+        if (sSrc == null)
+            return "";
+        var sData = new String(sSrc);
+        var sBuf = "";
+        var nCount = sData.length;
+        for (var i=0;i<nCount;i++)
+        {
+            var cChar = sData.charAt(i);
+            if (cChar == '\"')
+            {
+                sBuf += "&#34;";
+                continue;
+            }
+            // &#39; = '
+            if (cChar == '\'')
+            {
+                sBuf += "&#39;";
+                continue;
+            }
+            if (cChar == '#')
+            {
+                sBuf += "&#35;";
+                continue;
+            }
+            if (cChar == '&')
+            {
+                sBuf += "&#38;";
+                continue;
+            }
+            if (cChar == '<')
+            {
+                sBuf += "&#60;";
+                continue;
+            }
+            if (cChar == '>')
+            {
+                sBuf += "&#62;";
+                continue;
+            }
+            if (cChar == '\r')
+            {
+                continue;
+            }
+            if (cChar == '\n')
+            {
+                sBuf += "<br>"; // "\\n ";
+                continue;
+            }
+            sBuf += sData.charAt(i);
+        }
+        return sBuf;
     }
 </script>
 <form name="frm" method="get">

@@ -20,7 +20,7 @@
         if (check.input("title", comment.input_title) == false) return;
         var data = new FormData();
         $.each($('#attachFile')[0].files, function(i, file) {
-            data.append('file_name', file);
+            data.append('file', file);
         });
 
         $.ajax({
@@ -82,6 +82,7 @@
             }
         });
     }
+
 </script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
