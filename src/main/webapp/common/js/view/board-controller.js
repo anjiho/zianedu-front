@@ -17,8 +17,17 @@ function saveBoard(bbsMasterKey, userKey, title, content, isSecret, fileName) {
 
 
 //게시판 글 수정
-function updateBoard() {
-
+function updateBoard(bbskey, title, content, isSecret, fileName) {
+    if(bbskey == null || bbskey == undefined) return;
+    var data = {
+        bbskey : bbskey,
+        title : title,
+        content : content,
+        isSecret : isSecret,
+        fileName : fileName
+    };
+    var result = postApi("/board/updateBoard", data);
+    return result;
 }
 
 //게 시판 글 삭제

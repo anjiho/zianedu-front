@@ -5,6 +5,7 @@
 %>
 <script>
     var bbsKey = '<%=bbsKey%>';
+    innerValue("bbsKey", bbsKey);
     $( document ).ready(function() {
         var bbsmasterKey = '';
         var noticeHeaderInfo = sessionStorage.getItem('noticeHeader');
@@ -44,8 +45,17 @@
             $("#title").text(detailInfo.title);
             $("#readCount").text(detailInfo.readCount);
             //$("#readCount").text(detailInfo.readCount);
+            var prevNextInfo = result.prevNextInfo;
+            $("#prevTitle").html(prevNextInfo.prevTitle);
+            $("#nextTitle").html(prevNextInfo.nextTitle);
+            $("#prevCreateDate").html(prevNextInfo.prevCreateDate);
+            $("#nextCreateDate").html(prevNextInfo.nextCreateDate);
         }
     });
+    
+    function goModify() {
+        goPage("notice", "modify");
+    }
 </script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
@@ -82,6 +92,7 @@
                 <div class="boardWrap">
                     <div class="tableBox">
                         <table class="view">
+                            <input type="hidden" id="bbsKey" name="bbsKey" value="<%=bbsKey%>">
                             <caption></caption>
                             <colgroup>
                                 <col class="w110">
@@ -90,8 +101,8 @@
                             </colgroup>
                             <thead>
                             <tr>
-                                <th colspan="2" id="title">[2관학원실강] 2020군무원 행정9급 대비 전과목(국어+행정법+행정학) 이론 종합반 [9월 접수중]</th>
-                                <th id="indate">2019.08.09</th>
+                                <th colspan="2" id="title"></th>
+                                <th id="indate"></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -105,20 +116,20 @@
                             </tr>
                             <tr>
                                 <td class="center">이전글 ▲</td>
-                                <td class="left"><a href="#">[2관 학원실강] 2020 행정직9급 전과목(공통3+선택2) 기본이론 종합반 [ 9월개강 접수중]</a></td>
-                                <td class="right">2019.08.09</td>
+                                <td class="left"><a href="#"><span id="prevTitle"></span></a></td>
+                                <td class="right"><span id="prevCreateDate"></span></td>
                             </tr>
                             <tr>
                                 <td class="center">다음글 ▼</td>
-                                <td class="left"><a href="#">	[1관학원실강] 2020 공통과목(국어+영어+한국사) 드림팀 기본+심화 이론반 [9월개강 접수중]</a></td>
-                                <td class="right">2019.08.09</td>
+                                <td class="left"><a href="#"><span id="nextTitle"></span></a></td>
+                                <td class="right"><span id="nextCreateDate"></span></td>
                             </tr>
                             </tbody>
                         </table>
                     </div>
                     <div class="btnArea divGroup noMargin">
                         <div class="left">
-                            <a href="#" class="btn_inline gray w110">수정</a>
+                            <a href="javascript:goModify()" class="btn_inline gray w110">수정</a>
                         </div>
                         <div class="right">
                             <a href="javascript:goPage('notice', 'list')" class="btn_inline blue w110">목록</a>
