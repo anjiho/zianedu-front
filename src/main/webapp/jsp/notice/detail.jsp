@@ -38,7 +38,19 @@
         var result = getBoardDetailInfo(bbsmasterKey, bbsKey);
         if(result != undefined){
             var detailInfo = result.boardDetailInfo;
-            innerHTML("content", detailInfo.contents);
+
+            //본문 내용 파싱작업 시작
+            var detailInfoStr = JSON.stringify(detailInfo);
+            var detailInfoStrObj = JSON.parse(detailInfoStr);
+            var contentsObj = detailInfoStrObj.contents;
+            var contentsStr = JSON.stringify(contentsObj);
+            var contentsStrRep = contentsStr.replace(/['"]+/g, '');
+
+            var contentsHTML = $.parseHTML(contentsStrRep);
+            var contents = contentsHTML[0].data.replace(/(?:\\[rn]|[\r\n]+)+/g, "");
+            //봄문 내용 파징작업 끝
+
+            innerHTML("content", contents);
             innerHTML("indate", detailInfo.indate);
             innerHTML("userName", detailInfo.userName);
             innerHTML("userId", detailInfo.userId);
@@ -70,6 +82,10 @@
         innerValue("bbsKey", nextKey);
         goPage("notice", "detail");
     }
+
+    function htmlEscape(str) { var stringval=""; $.each(str, function (i, element) { alert(element); stringval += element .replace(/&/g, '&amp;') .replace(/"/g, '&quot;') .replace(/'/g, '&#39;') .replace(/</g, '&lt;') .replace(/>/g, '&gt;') .replace(' ', '-') .replace('?', '-') .replace(':', '-') .replace('|', '-') .replace('.', '-'); }); alert(stringval); return String(stringval); }
+
+
 </script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
