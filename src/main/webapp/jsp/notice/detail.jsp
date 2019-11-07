@@ -46,11 +46,20 @@
             innerHTML("readCount", detailInfo.readCount);
 
             var prevNextInfo = result.prevNextInfo;
-            innerHTML("prevTitle", prevNextInfo.prevTitle);
+
+            if(prevNextInfo.prevBbsKey == 0){
+                $("#prev").hide();
+                innerHTML("prevTitle", "");
+                innerHTML("prevCreateDate", "");
+                innerValue("prevNum", "");
+            }else{
+                $("#prev").show();
+                innerHTML("prevTitle", prevNextInfo.prevTitle);
+                innerHTML("prevCreateDate", prevNextInfo.prevCreateDate);
+                innerValue("prevNum", prevNextInfo.prevBbsKey);
+            }
             innerHTML("nextTitle", prevNextInfo.nextTitle);
-            innerHTML("prevCreateDate", prevNextInfo.prevCreateDate);
             innerHTML("nextCreateDate", prevNextInfo.nextCreateDate);
-            innerValue("prevNum", prevNextInfo.prevBbsKey);
             innerValue("nextNum", prevNextInfo.nextBbsKey);
         }
     });
@@ -131,7 +140,7 @@
                                     </div>
                                 </td>
                             </tr>
-                            <tr>
+                            <tr id="prev">
                                 <td class="center">이전글 ▲</td>
                                 <td class="left"><a href="javascript:goPrev();"><span id="prevTitle"></span></a></td>
                                 <td class="right"><span id="prevCreateDate"></span></td>
