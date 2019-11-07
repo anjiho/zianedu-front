@@ -1,21 +1,23 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/jsp/common.jsp" %>
-<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
-<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
-<!-- include summernote css/js-->
-<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.css" rel="stylesheet">
-<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.js"></script>
-<script src="lang/summernote-ko-KR.js"></script>
 <script>
     $(document).ready(function() {
-        $('#summernote').summernote({
-            placeholder: 'Hello bootstrap 4',
-            tabsize: 2,
-            height: 100
+        $('#content').summernote({
+            height: 300,                 // set editor height
+            minHeight: null,             // set minimum height of editor
+            maxHeight: null,             // set maximum height of editor
+            focus: true                  // set focus to editable area after initializing summernote
         });
     });
-    function save() {
+    $(document).on('change', '#attachFile', function() {
+        var fileValue = $("#attachFile").val().split("\\");
+        var fileName = fileValue[fileValue.length-1]; // 파일명
+        $("#fileList").append("<li><a href=\"#\"><img src=\"../images/common/icon_file.png\" alt=\"\">"+ fileName +"</a></li>");
+    });
+
+    function save(){
+        var content =  $('textarea[name="content"]').val();
+        console.log(content);
         // var check = new isCheck();
         //
         // if (check.input("title", comment.input_title) == false) return;
@@ -53,7 +55,7 @@
         //
         // var userKey = sessionUserInfo.userKey;
         // var title   = getInputTextValue("title");
-        // var content = $(".content").val();
+        // var content =  $('textarea[name="content"]').val();
         // var isSecret = 0;
         // var fileName = '';
         //
@@ -68,7 +70,7 @@
             data.append('file_name', file);
         });
         $.ajax({
-            url: "/fileUpload/boardFile",
+            url: "http://52.79.40.214:9090/fileUpload/boardFile",
             method: "post",
             dataType: "JSON",
             data: data,
@@ -77,7 +79,7 @@
             contentType: false,
             success: function (data) {
                 if(data.result){
-                    alert(data.result);
+                    console.log(data.result);
                     // goPage('productManage', 'academyLectureList');
                 }
             }
@@ -133,17 +135,13 @@
                             </tr>
                             <tr>
                                 <th scope="row">내용</th>
-<%--                                <td><textarea placeholder="내용을 입력해주세요." name="content" class="w100p h240 content"></textarea></td>--%>
-                                <div id="summernote"></div>
+                                <td><textarea name="content" id="content" value=""></textarea></td>
                             </tr>
                             <tr>
                                 <th scope="row">첨부파일</th>
                                 <td class="">
-                                    <input type="file" id="attachFile" class="fileBtn noline nobg">
-<%--                                    <ul class="fileList">--%>
-<%--                                        <li><a href="#"><img src="../images/common/icon_file.png" alt=""> 파일001.jpg</a></li>--%>
-<%--                                        <li><a href="#"><img src="../images/common/icon_file.png" alt=""> 파일002.jpg</a></li>--%>
-<%--                                    </ul>--%>
+                                    <div class="inputWrapper"><input type="file" id="attachFile" class="fileBtn noline nobg"></div>
+                                    <ul id='fileList' class="fileList"></ul>
                                 </td>
                             </tr>
                             </tbody>

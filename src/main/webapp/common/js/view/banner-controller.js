@@ -71,10 +71,12 @@ function getMainBottomBanner(ctgKey, listNum) {
         listNumber : listNum
     };
     var bannerInfoList = getApi("/banner/getMainMiniBanner/", ctgKey , data);
-    if (bannerInfoList.result.length > 0) {
+    if (bannerInfoList != null) {
         var selList = bannerInfoList.result;
         $("#ABottomBanner1").attr("href", selList[1].targetUrl == null ? "#" : selList[1].targetUrl);
         $("#bottomBanner1").attr("src", selList[1].fullFileUrl);
+    }else{
+        return;
     }
 }
 

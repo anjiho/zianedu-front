@@ -6,14 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
     <title>지안에듀</title>
-    <!-- zian css-->
-    <link rel="stylesheet" type="text/css" href="/common/zian/css/kiplayer/font.css" />
-    <link rel="stylesheet" type="text/css" href="/common/zian/css/kiplayer/base.css" />
-    <link rel="stylesheet" type="text/css" href="/common/zian/css/base.css">
-    <link rel="stylesheet" type="text/css" href="/common/zian/css/content.css">
-    <link rel="stylesheet" type="text/css" href="/common/zian/css/swiper.min.css">
-    <link rel="stylesheet" type="text/css" href="/common/calendar/css/fullcalendar.min.css">
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <!-- zian js-->
     <script src="/common/zian/js/kiplayer/jquery.min.js"></script>
     <script src="/common/zian/js/kiplayer/jquery.plugin.js"></script>
@@ -23,7 +15,20 @@
     <script src="/common/zian/js/main.js"></script>
     <script src="/common/zian/js/submain.js"></script>
     <script src="/common/zian/js/swiper.min.js"></script>
-
+    <!-- include libraries(jQuery, bootstrap) -->
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+    <!-- include summernote css/js-->
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
+    <!-- zian css-->
+    <link rel="stylesheet" type="text/css" href="/common/zian/css/kiplayer/font.css" />
+    <link rel="stylesheet" type="text/css" href="/common/zian/css/kiplayer/base.css" />
+    <link rel="stylesheet" type="text/css" href="/common/zian/css/base.css">
+    <link rel="stylesheet" type="text/css" href="/common/zian/css/content.css">
+    <link rel="stylesheet" type="text/css" href="/common/zian/css/swiper.min.css">
+    <link rel="stylesheet" type="text/css" href="/common/calendar/css/fullcalendar.min.css">
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
     <!--<script src="/common/assets/jquery/dist/jquery.min.js"></script>-->
     <script src="/common/js/blank-check.js"></script>
