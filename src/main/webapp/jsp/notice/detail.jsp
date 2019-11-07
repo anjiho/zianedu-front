@@ -136,8 +136,7 @@
                             </tr>
                             <tr>
                                 <td colspan="3" class="tdEditorContent">
-                                    <div class="alignCenter" id="content">
-                                    </div>
+                                    <div class="alignCenter" id="content"></div>
                                 </td>
                             </tr>
                             <tr id="prev">
