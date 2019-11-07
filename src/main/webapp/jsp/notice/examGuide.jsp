@@ -53,40 +53,40 @@
                         <li><a href="#">군수직</a></li>
                     </ul>
                     <div class="tabPage active"><!-- 행정직 탭컨텐츠 -->
-                        <img src="../images/content/img_sub01000501.jpg" alt="">
+                        <img src="http://52.79.40.214/Upload/exam_guide/zian_guide_hang.jpg" alt="">
                     </div>
                     <div class="tabPage">
-                        계리직 탭컨텐츠
+                        <img src="http://52.79.40.214/Upload/exam_guide/zian_guide_geri.jpg" alt="">
                     </div>
                     <div class="tabPage">
-                        전산직 탭컨텐츠
+                        <img src="http://52.79.40.214/Upload/exam_guide/zian_guide_jun.jpg" alt="">
                     </div>
                     <div class="tabPage">
-                        토목직 탭컨텐츠
+                        <img src="http://52.79.40.214/Upload/exam_guide/zian_guide_tomok.jpg" alt="">
                     </div>
                     <div class="tabPage">
-                        임업직 탭컨텐츠
+                        <img src="http://52.79.40.214/Upload/exam_guide/zian_guide_im.jpg" alt="">
                     </div>
                     <div class="tabPage">
-                        농업직 탭컨텐츠
+                        <img src="http://52.79.40.214/Upload/exam_guide/zian_guide_nong.jpg" alt="">
                     </div>
                     <div class="tabPage">
-                        건축직 탭컨텐츠
+                        <img src="http://52.79.40.214/Upload/exam_guide/zian_guide_gun.jpg" alt="">
                     </div>
                     <div class="tabPage">
-                        환경직 탭컨텐츠
+                        <img src="http://52.79.40.214/Upload/exam_guide/zian_guide_hwan.jpg" alt="">
                     </div>
                     <div class="tabPage">
-                        운전직 탭컨텐츠
+                        <img src="http://52.79.40.214/Upload/exam_guide/zian_guide_unjun.jpg" alt="">
                     </div>
                     <div class="tabPage">
-                        통신직 탭컨텐츠
+                        <img src="http://52.79.40.214/Upload/exam_guide/zian_guide_tongsin.jpg" alt="">
                     </div>
                     <div class="tabPage">
-                        전기직 탭컨텐츠
+                        <img src="http://52.79.40.214/Upload/exam_guide/zian_guide_jungi.jpg" alt="">
                     </div>
                     <div class="tabPage">
-                        군수직 탭컨텐츠
+
                     </div>
                 </div>
                 <!--//서브 컨텐츠-->

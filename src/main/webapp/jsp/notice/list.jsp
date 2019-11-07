@@ -9,7 +9,7 @@
             sessionStorage.setItem("noticeHeader", "openMenu");
         }
         fn_search('new');
-
+        //달력 주입 시작
         $('#calendar').fullCalendar({
             lang:'ko',
             header: {
@@ -18,14 +18,14 @@
                 right: ''
             },
             selectable:true,
-            editable: true,
+            //editable: true,
             defaultView: 'month',
-            dayPopoverFormat: 'MM/DD dddd',
+            dayPopoverFormat: 'yyyy-MM-dd',
             select: function (startDate, endDate, jsEvent, view) {
-                alert(startDate);
+                var dt_start = moment(startDate).format('YYYY-MM-DD');
+                alert(dt_start)
                 $(".fc-body").unbind('click');
                 $(".fc-body").on('click', 'td', function (e) {
-
                     $("#contextMenu")
                         .addClass("contextOpened")
                         .css({
@@ -54,8 +54,8 @@
                 }).length) > 0;
             },
            // events:calendarInfo
-
         });
+        //달력 주입 끝
     });
 
     //상세보기
@@ -106,6 +106,11 @@
         getNoticeList(sPage, 10, bbsmasterKey, searchType, searchText);
     }
 </script>
+<style>
+    /*달력 토,일 색변경*/
+    .fc-sat { color: blue; }
+    .fc-sun { color: red; }
+</style>    
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
     <div id="wrap">
