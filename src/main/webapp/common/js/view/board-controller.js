@@ -1,6 +1,18 @@
 //게시판 글 저장
-function saveBoard(data) {
+function saveBoard(bbsMasterKey, userKey, title, content, isSecret, fileName) {
+    if(bbsMasterKey == null || bbsMasterKey == undefined) return;
+    if(userKey == null || userKey == undefined) return;
 
+    var data = {
+        bbsMasterKey : bbsMasterKey,
+        userKey : userKey,
+        title : title,
+        content : content,
+        isSecret : isSecret,
+        fileName : fileName
+    };
+    var result = postApi("/board/saveBoard", data);
+    return result;
 }
 
 
@@ -25,16 +37,20 @@ function deleteBoard(bbsKey) {
 }
 
 //게시판 상세정보(공지,커뮤니티)
-function getBoardDetailInfo(bbsKey, tagId) {
+function getBoardDetailInfo(bbsMasterKey, bbsKey) {
     if (bbsKey == null || bbsKey == undefined) return;
-    var InfoList = getApi("/board/getBoardDetailInfo/", bbsKey,"");
-
-    if (InfoList.result.length > 0) {
-        var selList = InfoList.result;
-        dwr.util.addRows(tagId, selList, [
-            //function(data) {return "<img src='"+ data.targetUrl +"'>";}
-        ], {escapeHtml:false});
+    var data = {
+        bbsKey : bbsKey
+    };
+    var InfoList = getApi("/board/getBoardDetailInfo/", bbsMasterKey, data);
+    var result = InfoList.result;
+    if(result != undefined){
+       return result;
+    }else{
+        alert("오류가 발생했습니다. 관리자 문의 바랍니다.");
+        return;
     }
+
 }
 
 //게시판 답글 저장

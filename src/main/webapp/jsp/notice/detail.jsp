@@ -1,9 +1,50 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/jsp/common.jsp" %>
+<%
+    String bbsKey = request.getParameter("bbsKey");
+%>
 <script>
+    var bbsKey = '<%=bbsKey%>';
     $( document ).ready(function() {
-        var leftMenuInfo = sessionStorage.getItem('noticeHeader');
-        //getNoticeList(1, 10, '10001', "", "");
+        var bbsmasterKey = '';
+        var noticeHeaderInfo = sessionStorage.getItem('noticeHeader');
+        var leftMenuInfo = sessionStorage.getItem('leftMenu');//직렬 구분
+        if(leftMenuInfo == "publicOnline" || leftMenuInfo == "publicAcademy"){//행정직 온라인, 행정직학원
+            if(noticeHeaderInfo == "openMenu")         bbsmasterKey = "10001";//개강안내
+            else if(noticeHeaderInfo == "acaNotice")   bbsmasterKey = "10007";//학원소식
+            else if(noticeHeaderInfo == "examNotice")  bbsmasterKey = "10010";//시험공고
+            else if(noticeHeaderInfo == "lectureRoom") bbsmasterKey = "10008";//강의실배정표
+            else bbsmasterKey = "10057";//온라인서점
+        }else if(leftMenuInfo == "techOnline" || leftMenuInfo == "techAcademy"){//기술직 온라인. 기술직학원
+            if(noticeHeaderInfo == "openMenu")         bbsmasterKey = "10026";
+            else if(noticeHeaderInfo == "acaNotice")   bbsmasterKey = "10027";
+            else if(noticeHeaderInfo == "examNotice")  bbsmasterKey = "10030";
+            else if(noticeHeaderInfo == "lectureRoom") bbsmasterKey = "10008";
+            else bbsmasterKey = "10057";
+        }else if(leftMenuInfo == "postOnline" || leftMenuInfo == "postAcademy"){//계리직 온라인. 계리직 학원
+            if(noticeHeaderInfo == "openMenu")         bbsmasterKey = "10041";
+            else if(noticeHeaderInfo == "acaNotice")   bbsmasterKey = "10042";
+            else if(noticeHeaderInfo == "examNotice")  bbsmasterKey = "10044";
+            else if(noticeHeaderInfo == "lectureRoom") bbsmasterKey = "10008";
+            else bbsmasterKey = "10057";
+        }else{
+            if(noticeHeaderInfo == "openMenu")         bbsmasterKey = "10001";//개강안내
+            else if(noticeHeaderInfo == "acaNotice")   bbsmasterKey = "10007";//학원소식
+            else if(noticeHeaderInfo == "examNotice")  bbsmasterKey = "10010";//시험공고
+            else if(noticeHeaderInfo == "lectureRoom") bbsmasterKey = "10008";//강의실배정표
+            else bbsmasterKey = "10057";//온라인서점
+        }
+        var result = getBoardDetailInfo(bbsmasterKey, bbsKey);
+        if(result != undefined){
+            var detailInfo = result.boardDetailInfo;
+            $("#content").text(detailInfo.contents);
+            $("#indate").text(detailInfo.indate);
+            $("#userName").text(detailInfo.userName);
+            $("#userId").text(detailInfo.userId);
+            $("#title").text(detailInfo.title);
+            $("#readCount").text(detailInfo.readCount);
+            //$("#readCount").text(detailInfo.readCount);
+        }
     });
 </script>
 <form name="frm" method="get">
@@ -49,17 +90,17 @@
                             </colgroup>
                             <thead>
                             <tr>
-                                <th colspan="2">[2관학원실강] 2020군무원 행정9급 대비 전과목(국어+행정법+행정학) 이론 종합반 [9월 접수중]</th>
-                                <th>2019.08.09</th>
+                                <th colspan="2" id="title">[2관학원실강] 2020군무원 행정9급 대비 전과목(국어+행정법+행정학) 이론 종합반 [9월 접수중]</th>
+                                <th id="indate">2019.08.09</th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr>
-                                <td colspan="3">작성자 : 지안에듀 (zian0103)  |   조회수 : 31</td>
+                                <td colspan="3">작성자 : <span id="userName"></span> <span id="userId"></span>  |   조회수 : <span id="readCount"></span></td>
                             </tr>
                             <tr>
                                 <td colspan="3" class="tdEditorContent">
-                                    <div class="alignCenter"><img src="../images/content/img_sub00010101.jpg" alt=""></div>
+                                    <div class="alignCenter" id="content"></div>
                                 </td>
                             </tr>
                             <tr>

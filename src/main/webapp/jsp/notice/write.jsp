@@ -1,10 +1,88 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/jsp/common.jsp" %>
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+<!-- include summernote css/js-->
+<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.css" rel="stylesheet">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.js"></script>
+<script src="lang/summernote-ko-KR.js"></script>
 <script>
-    $( document ).ready(function() {
-        var leftMenuInfo = sessionStorage.getItem('noticeHeader');
-        //getNoticeList(1, 10, '10001', "", "");
+    $(document).ready(function() {
+        $('#summernote').summernote({
+            placeholder: 'Hello bootstrap 4',
+            tabsize: 2,
+            height: 100
+        });
     });
+    function save() {
+        // var check = new isCheck();
+        //
+        // if (check.input("title", comment.input_title) == false) return;
+        //
+        // var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        // var noticeHeaderInfo = sessionStorage.getItem('noticeHeader');
+        // var leftMenuInfo = sessionStorage.getItem('leftMenu');//직렬 구분
+        //
+        // var bbsmasterKey = '';
+        // if(leftMenuInfo == "publicOnline" || leftMenuInfo == "publicAcademy"){//행정직 온라인, 행정직학원
+        //     if(noticeHeaderInfo == "openMenu")         bbsmasterKey = "10001";//개강안내
+        //     else if(noticeHeaderInfo == "acaNotice")   bbsmasterKey = "10007";//학원소식
+        //     else if(noticeHeaderInfo == "examNotice")  bbsmasterKey = "10010";//시험공고
+        //     else if(noticeHeaderInfo == "lectureRoom") bbsmasterKey = "10008";//강의실배정표
+        //     else bbsmasterKey = "10057";//온라인서점
+        // }else if(leftMenuInfo == "techOnline" || leftMenuInfo == "techAcademy"){//기술직 온라인. 기술직학원
+        //     if(noticeHeaderInfo == "openMenu")         bbsmasterKey = "10026";
+        //     else if(noticeHeaderInfo == "acaNotice")   bbsmasterKey = "10027";
+        //     else if(noticeHeaderInfo == "examNotice")  bbsmasterKey = "10030";
+        //     else if(noticeHeaderInfo == "lectureRoom") bbsmasterKey = "10008";
+        //     else bbsmasterKey = "10057";
+        // }else if(leftMenuInfo == "postOnline" || leftMenuInfo == "postAcademy"){//계리직 온라인. 계리직 학원
+        //     if(noticeHeaderInfo == "openMenu")         bbsmasterKey = "10041";
+        //     else if(noticeHeaderInfo == "acaNotice")   bbsmasterKey = "10042";
+        //     else if(noticeHeaderInfo == "examNotice")  bbsmasterKey = "10044";
+        //     else if(noticeHeaderInfo == "lectureRoom") bbsmasterKey = "10008";
+        //     else bbsmasterKey = "10057";
+        // }else{
+        //     if(noticeHeaderInfo == "openMenu")         bbsmasterKey = "10001";//개강안내
+        //     else if(noticeHeaderInfo == "acaNotice")   bbsmasterKey = "10007";//학원소식
+        //     else if(noticeHeaderInfo == "examNotice")  bbsmasterKey = "10010";//시험공고
+        //     else if(noticeHeaderInfo == "lectureRoom") bbsmasterKey = "10008";//강의실배정표
+        //     else bbsmasterKey = "10057";//온라인서점
+        // }
+        //
+        // var userKey = sessionUserInfo.userKey;
+        // var title   = getInputTextValue("title");
+        // var content = $(".content").val();
+        // var isSecret = 0;
+        // var fileName = '';
+        //
+        // var result = saveBoard(bbsmasterKey, userKey, title, content, isSecret, fileName);
+        // if(result.resultCode == 200){
+        //     alert("글쓰기등록완료");
+        // }else{
+        //     alert("오류");
+        // }
+        var data = new FormData();
+        $.each($('#attachFile')[0].files, function(i, file) {
+            data.append('file_name', file);
+        });
+        $.ajax({
+            url: "/fileUpload/boardFile",
+            method: "post",
+            dataType: "JSON",
+            data: data,
+            cache: false,
+            processData: false,
+            contentType: false,
+            success: function (data) {
+                if(data.result){
+                    alert(data.result);
+                    // goPage('productManage', 'academyLectureList');
+                }
+            }
+        });
+    }
 </script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
@@ -42,6 +120,7 @@
                     <h5>글 등록하기</h5>
                     <div class="tableBox">
                         <table class="form">
+                            <input type="hidden" id="menuInfoKey" value="">
                             <caption></caption>
                             <colgroup>
                                 <col class="w130">
@@ -50,28 +129,29 @@
                             <tbody>
                             <tr>
                                 <th scope="row">제목</th>
-                                <td><input type="text" name="" value="" class="w100p"></td>
+                                <td><input type="text" id="title" value="" class="w100p"></td>
                             </tr>
                             <tr>
                                 <th scope="row">내용</th>
-                                <td><textarea name="" placeholder="내용을 입력해주세요." class="w100p h240"></textarea></td>
+<%--                                <td><textarea placeholder="내용을 입력해주세요." name="content" class="w100p h240 content"></textarea></td>--%>
+                                <div id="summernote"></div>
                             </tr>
                             <tr>
                                 <th scope="row">첨부파일</th>
                                 <td class="">
-                                    <input type="file" id="file1" class="fileBtn noline nobg">
-                                    <ul class="fileList">
-                                        <li><a href="#"><img src="../images/common/icon_file.png" alt=""> 파일001.jpg</a></li>
-                                        <li><a href="#"><img src="../images/common/icon_file.png" alt=""> 파일002.jpg</a></li>
-                                    </ul>
+                                    <input type="file" id="attachFile" class="fileBtn noline nobg">
+<%--                                    <ul class="fileList">--%>
+<%--                                        <li><a href="#"><img src="../images/common/icon_file.png" alt=""> 파일001.jpg</a></li>--%>
+<%--                                        <li><a href="#"><img src="../images/common/icon_file.png" alt=""> 파일002.jpg</a></li>--%>
+<%--                                    </ul>--%>
                                 </td>
                             </tr>
                             </tbody>
                         </table>
                     </div>
                     <div class="btnArea">
-                        <a href="#" class="btn_m gray radius w110">취소</a> &nbsp;&nbsp;&nbsp;
-                        <a href="#" class="btn_m blue radius w110">등록</a>
+                        <a href="javascript:goPage('notice','list');" class="btn_m gray radius w110">취소</a> &nbsp;&nbsp;&nbsp;
+                        <a href="javascript:save();" class="btn_m blue radius w110">등록</a>
                     </div>
                 </div>
 
