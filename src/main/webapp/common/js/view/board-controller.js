@@ -20,7 +20,7 @@ function saveBoard(bbsMasterKey, userKey, title, content, isSecret, fileName) {
 function updateBoard(bbskey, title, content, isSecret, fileName) {
     if(bbskey == null || bbskey == undefined) return;
     var data = {
-        bbskey : bbskey,
+        bbsKey : bbskey,
         title : title,
         content : content,
         isSecret : isSecret,
