@@ -15,6 +15,13 @@ function goPage(mapping_value, page_value) {
     }
 }
 
+function goPageNoSubmit(mapping_value, page_value) {
+    if (mapping_value != "" && page_value != "") {
+        $("#page_gbn").val(page_value);
+    }
+    location.href = "/" + mapping_value + "?page_gbn=" + page_value;
+}
+
 function goMain() {
     location.href = "/";
 }
