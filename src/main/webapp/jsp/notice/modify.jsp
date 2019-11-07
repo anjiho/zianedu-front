@@ -51,38 +51,51 @@
     function modify(){
         var check = new isCheck();
         if (check.input("title", comment.input_title) == false) return;
-        var data = new FormData();
-        $.each($('#attachFile')[0].files, function(i, file) {
-            data.append('file_name', file);
-        });
 
-        $.ajax({
-            url: "http://52.79.40.214:9090/fileUpload/boardFile",
-            method: "post",
-            dataType: "JSON",
-            data: data,
-            cache: false,
-            processData: false,
-            contentType: false,
-            success: function (data) {
-                if(data.resultCode == 0){
-                    var bbsKey   = getInputTextValue("bbsKey");
-                    var title    = getInputTextValue("title");
-                    var content  =  $('textarea[name="content"]').val();
-                    var isSecret = 0;
-                    var fileName = '';
+        var filechk = $("#attachFile").val();
 
-                    var result = updateBoard(bbsKey, title, content, isSecret, fileName);
-                    if(result.resultCode == 200){
-                        alert("글쓰기수정완료");
-                    }else{
-                        alert("오류");
-                    }
-                }else{
-                    alert("관리자 문의");
-                }
+        if(filechk == "") { //파일 없을때
+            var bbsKey   = getInputTextValue("bbsKey");
+            var title    = getInputTextValue("title");
+            var content  =  $('textarea[name="content"]').val();
+            var isSecret = 0;
+
+            var result = updateBoard(bbsKey, title, content, isSecret, "");
+
+            if(result.resultCode == 200){
+                alert("성공적으로 수정 완료되었습니다");
             }
-        });
+        }else{
+            var data = new FormData();
+            $.each($('#attachFile')[0].files, function(i, file) {
+                data.append('file', file);
+            });
+
+            $.ajax({
+                url: "http://52.79.40.214:9090/fileUpload/boardFile",
+                method: "post",
+                dataType: "JSON",
+                data: data,
+                cache: false,
+                processData: false,
+                contentType: false,
+                success: function (data) {
+                    if(data.resultCode == 200){
+                        var bbsKey   = getInputTextValue("bbsKey");
+                        var title    = getInputTextValue("title");
+                        var content  =  $('textarea[name="content"]').val();
+                        var isSecret = 0;
+                        var fileName = data.keyValue;
+
+                        var result = updateBoard(bbsKey, title, content, isSecret, fileName);
+
+                        if(result.resultCode == 200){
+                            alert("성공적으로 수정 완료되었습니다");
+                        }
+                    }
+                }
+            });
+        }
     }
 
     $(document).on('change', '#attachFile', function() {

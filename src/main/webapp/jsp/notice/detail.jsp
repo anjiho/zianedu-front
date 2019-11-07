@@ -38,90 +38,37 @@
         var result = getBoardDetailInfo(bbsmasterKey, bbsKey);
         if(result != undefined){
             var detailInfo = result.boardDetailInfo;
+            innerHTML("content", detailInfo.contents);
+            innerHTML("indate", detailInfo.indate);
+            innerHTML("userName", detailInfo.userName);
+            innerHTML("userId", detailInfo.userId);
+            innerHTML("title", detailInfo.title);
+            innerHTML("readCount", detailInfo.readCount);
 
-            var data = $.parseHTML(detailInfo.contents);
-            // console.log(data[0]);
-
-            //$("#content").html(data[0]);
-
-            var s = data[0];
-            var htmlObject = $(s); // jquery call
-
-            console.log(htmlObject);
-
-            $("#content").appendTo(htmlObject);
-
-            $("#indate").text(detailInfo.indate);
-            $("#userName").text(detailInfo.userName);
-            $("#userId").text(detailInfo.userId);
-            $("#title").text(detailInfo.title);
-            $("#readCount").text(detailInfo.readCount);
-            //$("#readCount").text(detailInfo.readCount);
             var prevNextInfo = result.prevNextInfo;
-            $("#prevTitle").html(prevNextInfo.prevTitle);
-            $("#nextTitle").html(prevNextInfo.nextTitle);
-            $("#prevCreateDate").html(prevNextInfo.prevCreateDate);
-            $("#nextCreateDate").html(prevNextInfo.nextCreateDate);
+            innerHTML("prevTitle", prevNextInfo.prevTitle);
+            innerHTML("nextTitle", prevNextInfo.nextTitle);
+            innerHTML("prevCreateDate", prevNextInfo.prevCreateDate);
+            innerHTML("nextCreateDate", prevNextInfo.nextCreateDate);
+            innerValue("prevNum", prevNextInfo.prevBbsKey);
+            innerValue("nextNum", prevNextInfo.nextBbsKey);
         }
     });
     
     function goModify() {
         goPage("notice", "modify");
     }
-
-    function WCString_stringToHtml(sSrc)
-    {
-        if (sSrc == null)
-            return "";
-        var sData = new String(sSrc);
-        var sBuf = "";
-        var nCount = sData.length;
-        for (var i=0;i<nCount;i++)
-        {
-            var cChar = sData.charAt(i);
-            if (cChar == '\"')
-            {
-                sBuf += "&#34;";
-                continue;
-            }
-            // &#39; = '
-            if (cChar == '\'')
-            {
-                sBuf += "&#39;";
-                continue;
-            }
-            if (cChar == '#')
-            {
-                sBuf += "&#35;";
-                continue;
-            }
-            if (cChar == '&')
-            {
-                sBuf += "&#38;";
-                continue;
-            }
-            if (cChar == '<')
-            {
-                sBuf += "&#60;";
-                continue;
-            }
-            if (cChar == '>')
-            {
-                sBuf += "&#62;";
-                continue;
-            }
-            if (cChar == '\r')
-            {
-                continue;
-            }
-            if (cChar == '\n')
-            {
-                sBuf += "<br>"; // "\\n ";
-                continue;
-            }
-            sBuf += sData.charAt(i);
-        }
-        return sBuf;
+    
+    function goPrev() {
+        var prevKey = getInputTextValue("prevNum");
+        innerValue("bbsKey", prevKey);
+        goPage("notice", "detail");
+    }
+    
+    function goNext() {
+        var nextKey = getInputTextValue("nextNum");
+        innerValue("bbsKey", nextKey);
+        goPage("notice", "detail");
     }
 </script>
 <form name="frm" method="get">
@@ -160,6 +107,8 @@
                     <div class="tableBox">
                         <table class="view">
                             <input type="hidden" id="bbsKey" name="bbsKey" value="<%=bbsKey%>">
+                            <input type="hidden" id="prevNum">
+                            <input type="hidden" id="nextNum">
                             <caption></caption>
                             <colgroup>
                                 <col class="w110">
@@ -178,17 +127,18 @@
                             </tr>
                             <tr>
                                 <td colspan="3" class="tdEditorContent">
-                                    <div class="alignCenter" id="content"></div>
+                                    <div class="alignCenter" id="content">
+                                    </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="center">이전글 ▲</td>
-                                <td class="left"><a href="#"><span id="prevTitle"></span></a></td>
+                                <td class="left"><a href="javascript:goPrev();"><span id="prevTitle"></span></a></td>
                                 <td class="right"><span id="prevCreateDate"></span></td>
                             </tr>
                             <tr>
                                 <td class="center">다음글 ▼</td>
-                                <td class="left"><a href="#"><span id="nextTitle"></span></a></td>
+                                <td class="left"><a href="javascript:goNext();"><span id="nextTitle"></span></a></td>
                                 <td class="right"><span id="nextCreateDate"></span></td>
                             </tr>
                             </tbody>
