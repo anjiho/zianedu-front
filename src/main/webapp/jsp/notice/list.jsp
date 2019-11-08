@@ -23,7 +23,7 @@
             dayPopoverFormat: 'yyyy-MM-dd',
             select: function (startDate, endDate, jsEvent, view) {
                 var dt_start = moment(startDate).format('YYYY-MM-DD');
-                alert(dt_start)
+                alert(dt_start);
                 $(".fc-body").unbind('click');
                 $(".fc-body").on('click', 'td', function (e) {
                     $("#contextMenu")
