@@ -4,12 +4,48 @@
     String bbsKey = request.getParameter("bbsKey");
 %>
 <script>
+    // 특수 문자가 있나 없나 체크
+    function checkSpecial(str) {
+        var special_pattern = /(?:\\[rn]|[\r\n]+)+/g;
+        if(special_pattern.test(str) == true) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     var bbsKey = '<%=bbsKey%>';
     innerValue("bbsKey", bbsKey);
     $( document ).ready(function() {
-        var bbsmasterKey =  getBbsMasterKey();
+        var bbsmasterKey = '';
+        var noticeHeaderInfo = sessionStorage.getItem('noticeHeader');
+        var leftMenuInfo = sessionStorage.getItem('leftMenu');//직렬 구분
+        if(leftMenuInfo == "publicOnline" || leftMenuInfo == "publicAcademy"){//행정직 온라인, 행정직학원
+            if(noticeHeaderInfo == "openMenu")         bbsmasterKey = "10001";//개강안내
+            else if(noticeHeaderInfo == "acaNotice")   bbsmasterKey = "10007";//학원소식
+            else if(noticeHeaderInfo == "examNotice")  bbsmasterKey = "10010";//시험공고
+            else if(noticeHeaderInfo == "lectureRoom") bbsmasterKey = "10008";//강의실배정표
+            else bbsmasterKey = "10057";//온라인서점
+        }else if(leftMenuInfo == "techOnline" || leftMenuInfo == "techAcademy"){//기술직 온라인. 기술직학원
+            if(noticeHeaderInfo == "openMenu")         bbsmasterKey = "10026";
+            else if(noticeHeaderInfo == "acaNotice")   bbsmasterKey = "10027";
+            else if(noticeHeaderInfo == "examNotice")  bbsmasterKey = "10030";
+            else if(noticeHeaderInfo == "lectureRoom") bbsmasterKey = "10008";
+            else bbsmasterKey = "10057";
+        }else if(leftMenuInfo == "postOnline" || leftMenuInfo == "postAcademy"){//계리직 온라인. 계리직 학원
+            if(noticeHeaderInfo == "openMenu")         bbsmasterKey = "10041";
+            else if(noticeHeaderInfo == "acaNotice")   bbsmasterKey = "10042";
+            else if(noticeHeaderInfo == "examNotice")  bbsmasterKey = "10044";
+            else if(noticeHeaderInfo == "lectureRoom") bbsmasterKey = "10008";
+            else bbsmasterKey = "10057";
+        }else{
+            if(noticeHeaderInfo == "openMenu")         bbsmasterKey = "10001";//개강안내
+            else if(noticeHeaderInfo == "acaNotice")   bbsmasterKey = "10007";//학원소식
+            else if(noticeHeaderInfo == "examNotice")  bbsmasterKey = "10010";//시험공고
+            else if(noticeHeaderInfo == "lectureRoom") bbsmasterKey = "10008";//강의실배정표
+            else bbsmasterKey = "10057";//온라인서점
+        }
         var result = getBoardDetailInfo(bbsmasterKey, bbsKey);
-
         if(result != undefined){
             var detailInfo = result.boardDetailInfo;
 
@@ -19,9 +55,13 @@
             var contentsObj = detailInfoStrObj.contents;
             var contentsStr = JSON.stringify(contentsObj);
             var contentsStrRep = contentsStr.replace(/['"]+/g, '');
-
             var contentsHTML = $.parseHTML(contentsStrRep);
-            var contents = contentsHTML[0].data.replace(/(?:\\[rn]|[\r\n]+)+/g, "");
+            var contents = null;
+
+            var findString = "&lt";
+            //HTML 포함 여부 화인
+            if(detailInfoStr.indexOf(findString) != -1) contents = contentsHTML[0].data.replace(/(?:\\[rn]|[\r\n]+)+/g, "");
+            else contents = contentsHTML;
             //봄문 내용 파징작업 끝
 
             innerHTML("content", contents);
@@ -66,16 +106,8 @@
         goPage("notice", "detail");
     }
 
-    function htmlEscape(str) {
-        var stringval="";
-        $.each(str, function (i, element) {
-            alert(element);
-            stringval += element .replace(/&/g, '&amp;') .replace(/"/g, '&quot;') .replace(/'/g, '&#39;') .replace(/</g, '&lt;') .replace(/>/g, '&gt;') .replace(' ', '-') .replace('?', '-') .replace(':', '-') .replace('|', '-') .replace('.', '-');
-        });
-        alert(stringval);
-        return;
-        String(stringval);
-    }
+
+
 
 
 </script>
@@ -135,7 +167,8 @@
                             </tr>
                             <tr>
                                 <td colspan="3" class="tdEditorContent">
-                                    <div class="alignCenter" id="content"></div>
+                                    <div class="alignCenter" id="content">
+                                    </div>
                                 </td>
                             </tr>
                             <tr id="prev">
