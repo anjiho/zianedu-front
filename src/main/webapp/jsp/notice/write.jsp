@@ -21,6 +21,7 @@
 
         var filechk = $("#attachFile").val();//파일 빈값 체크
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+
         var bbsmasterKey =  getBbsMasterKey();
 
         if(filechk == "") { //파일 없을때
