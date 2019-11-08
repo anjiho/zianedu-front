@@ -18,8 +18,9 @@
     innerValue("bbsKey", bbsKey);
     $( document ).ready(function() {
         var bbsmasterKey =  getBbsMasterKey();
+
         var result = getBoardDetailInfo(bbsmasterKey, bbsKey);
-        console.log(result);
+
         if(result != undefined){
             var detailInfo = result.boardDetailInfo;
 
@@ -31,7 +32,7 @@
             var contentsStrRep = contentsStr.replace(/['"]+/g, '');
             var contentsStrRep3 = contentsStrRep.replace(/\\n/g,'');   //역슬러쉬 제거하기
             var contentsStrRep4 = contentsStrRep3.replace(/\\r/g,'');   //역슬러쉬 제거하기
-            var contentsStrRep5 = contentsStrRep4.replace(/\\/gi, "");;   //역슬러쉬 제거하기
+            var contentsStrRep5 = contentsStrRep4.replace(/\\/gi, "");   //역슬러쉬 제거하기
 
             var contentsHTML = $.parseHTML(contentsStrRep5);
             var contents = null;
