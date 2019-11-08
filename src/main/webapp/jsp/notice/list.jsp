@@ -110,7 +110,7 @@
     /*달력 토,일 색변경*/
     .fc-sat { color: blue; }
     .fc-sun { color: red; }
-</style>    
+</style>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
     <div id="wrap">
