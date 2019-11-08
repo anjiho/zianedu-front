@@ -29,14 +29,22 @@
             var contentsObj = detailInfoStrObj.contents;
             var contentsStr = JSON.stringify(contentsObj);
             var contentsStrRep = contentsStr.replace(/['"]+/g, '');
-            var contentsHTML = $.parseHTML(contentsStrRep);
+            var contentsStrRep2 = contentsStrRep.replace(/\\/gi, "");   //역슬러쉬 제거하기
+            var contentsStrRep3 = contentsStrRep2.replace("rn", "");
+            var contentsHTML = $.parseHTML(contentsStrRep3);
             var contents = null;
 
             var findString = "&lt";
             //HTML 포함 여부 화인
-            if(detailInfoStr.indexOf(findString) != -1) contents = contentsHTML[0].data.replace(/(?:\\[rn]|[\r\n]+)+/g, "");
-            else contents = contentsHTML;
+            if(detailInfoStr.indexOf(findString) != -1) {
+                contents = contentsHTML[0].data.replace("rn", "");
+                //contents = contentsHTML[0].data.replace(/(?:\\[rn]|[\r\n]+)+/g, "");
+            } else {
+                contents = contentsHTML;
+            }
             //봄문 내용 파징작업 끝
+
+            console.log(contents);
 
             innerHTML("content", contents);
             innerHTML("indate", detailInfo.indate);
