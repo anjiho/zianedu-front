@@ -52,6 +52,7 @@ function getBoardDetailInfo(bbsMasterKey, bbsKey) {
         bbsKey : bbsKey
     };
     var InfoList = getApi("/board/getBoardDetailInfo/", bbsMasterKey, data);
+
     var result = InfoList.result;
     if(result != undefined){
        return result;
@@ -210,6 +211,12 @@ function getLecReviewList(tagId, reviewType, listLimit) {
         }, {escapeHtml: false});
     }
     initSliderOption2("lecLatestList");
+}
+
+//강의실 배정표 리스트
+function getLectureRoomTableList(yyyymmdd) {
+   var infoList =  getApi("/board/getLectureRoomTableList/", yyyymmdd, "");
+   return infoList;
 }
 
 //bbsMasterKey
