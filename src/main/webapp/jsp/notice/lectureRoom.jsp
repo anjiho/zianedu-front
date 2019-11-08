@@ -29,7 +29,8 @@
             select: function (startDate, endDate, jsEvent, view) {
                 var dt_start = moment(startDate).format('YYYY-MM-DD');
                 var dayOfWeek = moment(startDate).format('dddd'); //요일
-                getLectureRoom(dt_start);
+                getLectureRoom(dt_start, dayOfWeek);
+                innerValue("yyyymmdd", dt_start);
                 $(".fc-body").unbind('click');
                 $(".fc-body").on('click', 'td', function (e) {
                     $("#contextMenu")
@@ -48,44 +49,85 @@
     });
 
     //강의실 배정표 불러오기
-    function getLectureRoom(yyyymmdd) {
+    function getLectureRoom(yyyymmdd, day) {
         var getRoomList = getLectureRoomTableList(yyyymmdd);
         if(getRoomList.result.length > 0){
             var selList = getRoomList.result;
             for (var i = 0; i<selList.length; i++){
                 if(selList[i].academyNumber == 1){
-                    $("#oneRoom").attr("src", selList[i].fileName);
-                    $(".todayDate").html(selList[i].lectureDate);
+                    //$("#oneRoom").attr("src", selList[i].fileName);
+                    $('#img_box').prepend('<img id="oneRoom" src="'+ selList[i].fileName +'" style="width:100%;height:50%;"/>');
+                    $(".todayDate").html(selList[i].lectureDate+""+day);
                 }else if(selList[i].academyNumber == 2){
-                    $("#twoRoom").attr("src", selList[i].fileName);
-                    $(".todayDate").html(selList[i].lectureDate);
+                    $('#img_box1').prepend('<img id="twoRoom" src="'+ selList[i].fileName +'" style="width:100%;height:50%;"/>');
+                    $(".todayDate").html(selList[i].lectureDate+""+day);
                 }
             }
         }
         else{
             $(".todayDate").html(yyyymmdd);
-            $("#oneRoom").attr("src", "");
-            $("#twoRoom").attr("src", "");
+            $("#oneRoom").remove();
+            $("#twoRoom").remove();
+            //$("#twoRoom").attr("src", "");
 
         }
     }
 
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            alert(2);
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                alert(e.target.result);
-                $('#oneRoom').attr('src', e.target.result);
+    function fileInfo(f, val){
+        var file = f.files;
+        var reader = new FileReader();
+        reader.onload = function(rst){
+            if(val == 1)  $('#img_box').html('<img src="' + rst.target.result + '">');
+            else if(val == 2) $('#img_box1').html('<img src="' + rst.target.result + '">');
+        };
+        reader.readAsDataURL(file[0]);
+    }
+
+    //강의실 배정표 저장하기
+    function saveLecRoom(academyNumber) {
+        var data = new FormData();
+        if(academyNumber == 1){ //1관 저장시
+            var filechk = $("#attachFile").val();
+            if(filechk == "") {
+                alert("1관 배정표 등록된 파일이 없습니다.");
+                return false;
+            }else{
+                $.each($('#attachFile')[0].files, function(i, file) {
+                    data.append('file', file);
+                });
             }
-            reader.readAsDataURL(input.files[0]);
+        }else{ //2관 저장시
+            var filechk = $("#attachFile1").val();
+            if(filechk == "") {
+                alert("2관 배정표 등록된 파일이 없습니다.");
+                return false;
+            }else{
+                $.each($('#attachFile1')[0].files, function(i, file) {
+                    data.append('file', file);
+                });
+            }
         }
-    }
 
-    $(document).on('change', '#attachFile', function() {
-        alert(1);
-        readURL(this);
-    });
+        $.ajax({
+            url: "http://52.79.40.214:9090/fileUpload/boardFile",
+            method: "post",
+            dataType: "JSON",
+            data: data,
+            cache: false,
+            processData: false,
+            contentType: false,
+            success: function (data) {
+                if(data.resultCode == 200){
+                    var lectureDate = getInputTextValue("yyyymmdd");
+                    var fileName = data.keyValue;
+                    var result = saveLectureRoomTabel(academyNumber, lectureDate, fileName);
+                    if(result.resultCode == 200){
+                        alert("성공적으로 등록 완료되었습니다");
+                    }
+                }
+            }
+        });
+    }
 </script>
 <style>
     /*달력 토,일 색변경*/
@@ -94,6 +136,7 @@
 </style>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
+    <input type="hidden" id="yyyymmdd" value="">
     <div id="wrap">
         <%@include file="/common/jsp/leftMenu.jsp" %>
         <!--상단-->
@@ -134,20 +177,22 @@
                             <tr>
                                 <th scope="row">[1관] <span class="todayDate"></span> 강의실배정표 입니다.</th>
                                 <td class="">
-                                    <input type="file" id="attachFile" class="fileBtn noline nobg">
+                                    <input type="file" id="attachFile" class="fileBtn noline nobg" onchange="fileInfo(this, 1)">
+                                    <input type="button" value="등록" onclick="saveLecRoom(1);">
                                 </td>
                             </tr>
                             <tr>
-                                <td class="oneRoom"><img src="" id="oneRoom" style="width:100%;height: 50%;"></td>
+                                <td><div id="img_box"></div><td>
                             <tr>
                             <tr>
                                 <th scope="row">[2관] <span class="todayDate"></span> 강의실배정표 입니다.</th>
                                 <td class="">
-                                    <input type="file" id="attachFile1" class="fileBtn noline nobg">
+                                    <input type="file" id="attachFile1" class="fileBtn noline nobg" onchange="fileInfo(this, 2)">
+                                    <input type="button" value="등록" onclick="saveLecRoom(2);">
                                 </td>
                             </tr>
                             <tr>
-                                <td class="twoRoom"><img src="" id="twoRoom" style="width:100%;height: 50%;"></td>
+                                <td><div id="img_box1"></div><td>
                             <tr>
                         </table>
                     </div>

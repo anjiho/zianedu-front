@@ -219,6 +219,22 @@ function getLectureRoomTableList(yyyymmdd) {
    return infoList;
 }
 
+//강의실 배정표 저장
+function saveLectureRoomTabel(academyNumber, lectureDate, fileName) {
+    if(academyNumber == null || academyNumber == undefined) return;
+    if(lectureDate == null || lectureDate == undefined) return;
+
+    var data = {
+        lectureDate : lectureDate,
+        academyNumber : academyNumber,
+        fileName : fileName
+    };
+    console.log(data);
+    var result = postApi("/board/saveLectureRoomTable", data);
+    console.log(result);
+    return result;
+}
+
 //bbsMasterKey
 function getBbsMasterKey() {
     var bbsmasterKey = '';
