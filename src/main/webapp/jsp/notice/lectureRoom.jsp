@@ -2,20 +2,13 @@
 <%@include file="/common/jsp/common.jsp" %>
 <script>
     $( document ).ready(function() {
-
-        var calendarInfo = [
-            {
-                title: '강의실배정표',
-                start: '2019-11-01'
-            },
-            {
-                title: '강의실배정표',
-                start: '2019-11-11'
-            }
-            // more events here
-        ]
+        var calendarInfo = null;
         //달력 주입 시작
         $('#calendar').fullCalendar({
+            viewRender: function(view, element) {
+            var thisMonth = moment( $('#calendar').fullCalendar('getDate') ).format('YYYY-MM');
+            alert(thisMonth);
+        },
             lang:'ko',
             header: {
                 left: 'prev,next,today',
@@ -170,3 +163,14 @@
 </form>
 </body>
 </html>
+<script>
+    // $(document).ready(function() {
+    //     $('.fc-prev-button').click(function(){
+    //
+    //     });
+    //
+    //     $('.fc-next-button').click(function(){
+    //         alert('nextis clicked, do something');
+    //     });
+    // });
+</script>
