@@ -7,7 +7,6 @@
         $('#calendar').fullCalendar({
             viewRender: function(view, element) {
             var thisMonth = moment( $('#calendar').fullCalendar('getDate') ).format('YYYY-MM');
-            alert(thisMonth);
         },
             lang:'ko',
             header: {
