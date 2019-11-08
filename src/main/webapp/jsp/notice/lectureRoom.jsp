@@ -55,7 +55,6 @@
             var selList = getRoomList.result;
             for (var i = 0; i<selList.length; i++){
                 if(selList[i].academyNumber == 1){
-                    //$("#oneRoom").attr("src", selList[i].fileName);
                     $('#img_box').prepend('<img id="oneRoom" src="'+ selList[i].fileName +'" style="width:100%;height:50%;"/>');
                     $(".todayDate").html(selList[i].lectureDate+""+day);
                 }else if(selList[i].academyNumber == 2){
@@ -65,7 +64,7 @@
             }
         }
         else{
-            $(".todayDate").html(yyyymmdd);
+            $(".todayDate").html(yyyymmdd+""+day);
             $("#oneRoom").remove();
             $("#twoRoom").remove();
             //$("#twoRoom").attr("src", "");

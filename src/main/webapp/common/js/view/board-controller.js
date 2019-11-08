@@ -229,9 +229,7 @@ function saveLectureRoomTabel(academyNumber, lectureDate, fileName) {
         academyNumber : academyNumber,
         fileName : fileName
     };
-    console.log(data);
     var result = postApi("/board/saveLectureRoomTable", data);
-    console.log(result);
     return result;
 }
 
