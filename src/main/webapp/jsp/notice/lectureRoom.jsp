@@ -2,6 +2,18 @@
 <%@include file="/common/jsp/common.jsp" %>
 <script>
     $( document ).ready(function() {
+
+        var calendarInfo = [
+            {
+                title: '강의실배정표',
+                start: '2019-11-01'
+            },
+            {
+                title: '강의실배정표',
+                start: '2019-11-11'
+            }
+            // more events here
+        ]
         //달력 주입 시작
         $('#calendar').fullCalendar({
             lang:'ko',
@@ -16,6 +28,7 @@
             dayPopoverFormat: 'yyyy-MM-dd',
             select: function (startDate, endDate, jsEvent, view) {
                 var dt_start = moment(startDate).format('YYYY-MM-DD');
+                var dayOfWeek = moment(startDate).format('dddd'); //요일
                 getLectureRoom(dt_start);
                 $(".fc-body").unbind('click');
                 $(".fc-body").on('click', 'td', function (e) {
@@ -29,24 +42,7 @@
                     return false;
                 });
             },
-            // put your options and callbacks here
-            eventDrop: function(event, delta, revertFunc) {
-                //alert(event.id);
-                alert("강의달력은 변경할수 없습니다.");
-                revertFunc();
-                /*
-                 if (!confirm("change??")) {
-                 revertFunc();
-                 }
-                 */
-            },
-            eventRender: function (event, element, view) {
-                return (event.ranges.filter(function (range) {
-                    return (event.start.isBefore(range.end) &&
-                        event.end.isAfter(range.start));
-                }).length) > 0;
-            },
-            // events:calendarInfo
+            events:calendarInfo
         });
         //달력 주입 끝
     });
@@ -91,6 +87,11 @@
         readURL(this);
     });
 </script>
+<style>
+    /*달력 토,일 색변경*/
+    .fc-sat { color: blue; }
+    .fc-sun { color: red; }
+</style>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
     <div id="wrap">
