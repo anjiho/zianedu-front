@@ -33,7 +33,7 @@
             }else if($(this).index() == 2){
                 sessionStorage.setItem("noticeHeader", "lectureRoom");
                 $("#noticeMenu li:eq(2)").addClass('active');
-                goPageNoSubmit('notice', 'list');
+                goPageNoSubmit('notice', 'lecRoom');
             }else if($(this).index() == 3){
                 sessionStorage.setItem("noticeHeader", "examNotice");
                 $("#noticeMenu li:eq(3)").addClass('active');
