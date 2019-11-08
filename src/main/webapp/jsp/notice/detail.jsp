@@ -4,6 +4,16 @@
     String bbsKey = request.getParameter("bbsKey");
 %>
 <script>
+    // 특수 문자가 있나 없나 체크
+    function checkSpecial(str) {
+        var special_pattern = /(?:\\[rn]|[\r\n]+)+/g;
+        if(special_pattern.test(str) == true) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     var bbsKey = '<%=bbsKey%>';
     innerValue("bbsKey", bbsKey);
     $( document ).ready(function() {
@@ -45,9 +55,13 @@
             var contentsObj = detailInfoStrObj.contents;
             var contentsStr = JSON.stringify(contentsObj);
             var contentsStrRep = contentsStr.replace(/['"]+/g, '');
-
             var contentsHTML = $.parseHTML(contentsStrRep);
-            var contents = contentsHTML[0].data.replace(/(?:\\[rn]|[\r\n]+)+/g, "");
+            var contents = null;
+
+            var findString = "&lt";
+            //HTML 포함 여부 화인
+            if(detailInfoStr.indexOf(findString) != -1) contents = contentsHTML[0].data.replace(/(?:\\[rn]|[\r\n]+)+/g, "");
+            else contents = contentsHTML;
             //봄문 내용 파징작업 끝
 
             innerHTML("content", contents);
@@ -92,7 +106,8 @@
         goPage("notice", "detail");
     }
 
-    function htmlEscape(str) { var stringval=""; $.each(str, function (i, element) { alert(element); stringval += element .replace(/&/g, '&amp;') .replace(/"/g, '&quot;') .replace(/'/g, '&#39;') .replace(/</g, '&lt;') .replace(/>/g, '&gt;') .replace(' ', '-') .replace('?', '-') .replace(':', '-') .replace('|', '-') .replace('.', '-'); }); alert(stringval); return String(stringval); }
+
+
 
 
 </script>
