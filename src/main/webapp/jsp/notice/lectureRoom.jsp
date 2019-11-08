@@ -6,7 +6,9 @@
         //달력 주입 시작
         $('#calendar').fullCalendar({
             viewRender: function(view, element) {
-            var thisMonth = moment( $('#calendar').fullCalendar('getDate') ).format('YYYY-MM');
+            var dt_start = moment( $('#calendar').fullCalendar('getDate') ).format('YYYY-MM-DD');
+            var dayOfWeek = moment( $('#calendar').fullCalendar('getDate') ).format('dddd');
+            getLectureRoom(dt_start, dayOfWeek);
         },
             lang:'ko',
             header: {
