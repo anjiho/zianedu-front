@@ -33,6 +33,11 @@
             var content  =  $('textarea[name="content"]').val();
             var isSecret = 0;
 
+            console.log($("#content").val());
+            console.log($("#content").html());
+
+            return false;
+
             var result = updateBoard(bbsKey, title, content, isSecret, "");
 
             if(result.resultCode == 200){
