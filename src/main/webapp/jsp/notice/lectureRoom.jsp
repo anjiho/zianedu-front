@@ -29,6 +29,10 @@
             select: function (startDate, endDate, jsEvent, view) {
                 var dt_start = moment(startDate).format('YYYY-MM-DD');
                 var dayOfWeek = moment(startDate).format('dddd'); //요일
+                $('#oneRoom').attr('src', '');
+                $('#twoRoom').attr('src', '');
+                $("#img_box img").remove();
+                $("#img_box1 img").remove();
                 getLectureRoom(dt_start, dayOfWeek);
                 innerValue("yyyymmdd", dt_start);
                 $(".fc-body").unbind('click');
@@ -67,8 +71,6 @@
             $(".todayDate").html(yyyymmdd+""+day);
             $("#oneRoom").remove();
             $("#twoRoom").remove();
-            //$("#twoRoom").attr("src", "");
-
         }
     }
 
