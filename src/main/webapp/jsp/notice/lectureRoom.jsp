@@ -2,9 +2,94 @@
 <%@include file="/common/jsp/common.jsp" %>
 <script>
     $( document ).ready(function() {
-
+        //달력 주입 시작
+        $('#calendar').fullCalendar({
+            lang:'ko',
+            header: {
+                left: 'prev,next,today',
+                center: 'title',
+                right: ''
+            },
+            selectable:true,
+            //editable: true,
+            defaultView: 'month',
+            dayPopoverFormat: 'yyyy-MM-dd',
+            select: function (startDate, endDate, jsEvent, view) {
+                var dt_start = moment(startDate).format('YYYY-MM-DD');
+                getLectureRoom(dt_start);
+                $(".fc-body").unbind('click');
+                $(".fc-body").on('click', 'td', function (e) {
+                    $("#contextMenu")
+                        .addClass("contextOpened")
+                        .css({
+                            display: "block",
+                            left: e.pageX,
+                            top: e.pageY
+                        });
+                    return false;
+                });
+            },
+            // put your options and callbacks here
+            eventDrop: function(event, delta, revertFunc) {
+                //alert(event.id);
+                alert("강의달력은 변경할수 없습니다.");
+                revertFunc();
+                /*
+                 if (!confirm("change??")) {
+                 revertFunc();
+                 }
+                 */
+            },
+            eventRender: function (event, element, view) {
+                return (event.ranges.filter(function (range) {
+                    return (event.start.isBefore(range.end) &&
+                        event.end.isAfter(range.start));
+                }).length) > 0;
+            },
+            // events:calendarInfo
+        });
+        //달력 주입 끝
     });
 
+    //강의실 배정표 불러오기
+    function getLectureRoom(yyyymmdd) {
+        var getRoomList = getLectureRoomTableList(yyyymmdd);
+        if(getRoomList.result.length > 0){
+            var selList = getRoomList.result;
+            for (var i = 0; i<selList.length; i++){
+                if(selList[i].academyNumber == 1){
+                    $("#oneRoom").attr("src", selList[i].fileName);
+                    $(".todayDate").html(selList[i].lectureDate);
+                }else if(selList[i].academyNumber == 2){
+                    $("#twoRoom").attr("src", selList[i].fileName);
+                    $(".todayDate").html(selList[i].lectureDate);
+                }
+            }
+        }
+        else{
+            $(".todayDate").html(yyyymmdd);
+            $("#oneRoom").attr("src", "");
+            $("#twoRoom").attr("src", "");
+
+        }
+    }
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            alert(2);
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                alert(e.target.result);
+                $('#oneRoom').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $(document).on('change', '#attachFile', function() {
+        alert(1);
+        readURL(this);
+    });
 </script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
@@ -41,78 +126,29 @@
                 <div class="calendarWrap">
                     <p>날짜를 선택하시면 강의실배정표를 확인하실 수 있습니다.</p>
                     <div class="calendarBox">
-                        <div class="calendarHeader">
-                            <a href="#" class="btn_monthPrev">이전달</a>
-                            <h6>2019.08</h6>
-                            <a href="#" class="btn_monthNext">다음달</a>
-                        </div>
-                        <div class="calendarTable">
-                            <table>
-                                <caption>강의실배정표 달력</caption>
-                                <thead>
-                                <tr>
-                                    <th class="sun">일</th>
-                                    <th>월</th>
-                                    <th>화</th>
-                                    <th>수</th>
-                                    <th>목</th>
-                                    <th>금</th>
-                                    <th class="sat">토</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td class="sun none">28</td>
-                                    <td class="none">29</td>
-                                    <td class="none">30</td>
-                                    <td class="none">31</td>
-                                    <td class="none">1</td>
-                                    <td class="none">2</td>
-                                    <td class="sat none">3</td>
-                                </tr>
-                                <tr>
-                                    <td class="sun none">4</td>
-                                    <td class="none">5</td>
-                                    <td class="none">6</td>
-                                    <td class="none">7</td>
-                                    <td class="none">8</td>
-                                    <td class="none">9</td>
-                                    <td class="sat none">10</td>
-                                </tr>
-                                <tr>
-                                    <td class="sun none">11</td>
-                                    <td class="none">12</td>
-                                    <td class="none">13</td>
-                                    <td class="none">14</td>
-                                    <td class="none">15</td>
-                                    <td class="none">16</td>
-                                    <td class="sat none">17</td>
-                                </tr>
-                                <tr>
-                                    <td class="sun none">18</td>
-                                    <td class="none">19</td>
-                                    <td class="none">20</td>
-                                    <td class="none">21</td>
-                                    <td class="none">22</td>
-                                    <td class="active"><a href="#">23</a></td>
-                                    <td class="sat active"><a href="#">24</a></td>
-                                </tr>
-                                <tr>
-                                    <td class="sun none">25</td>
-                                    <td class="active"><a href="#">26</a></td>
-                                    <td class="active"><a href="#">27</a></td>
-                                    <td class="active"><a href="#">28</a></td>
-                                    <td class="active"><a href="#">29</a></td>
-                                    <td class="active"><a href="#">30</a></td>
-                                    <td class="sat active"><a href="#">31</a></td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="calendarLegend">
-                            <span class="active">선택</span>
-                            <span class="none">불가</span>
-                        </div>
+                        <div id="calendar"></div>
+                    </div>
+                    <div id="tableBox">
+                        <table>
+                            <tr>
+                                <th scope="row">[1관] <span class="todayDate"></span> 강의실배정표 입니다.</th>
+                                <td class="">
+                                    <input type="file" id="attachFile" class="fileBtn noline nobg">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="oneRoom"><img src="" id="oneRoom" style="width:100%;height: 50%;"></td>
+                            <tr>
+                            <tr>
+                                <th scope="row">[2관] <span class="todayDate"></span> 강의실배정표 입니다.</th>
+                                <td class="">
+                                    <input type="file" id="attachFile1" class="fileBtn noline nobg">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="twoRoom"><img src="" id="twoRoom" style="width:100%;height: 50%;"></td>
+                            <tr>
+                        </table>
                     </div>
                 </div>
                 <!--//서브 컨텐츠-->
