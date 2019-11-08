@@ -125,7 +125,7 @@
                 <%@include file="/common/jsp/noticeHeader.jsp" %>
                 <div class="calendarWrap">
                     <p>날짜를 선택하시면 강의실배정표를 확인하실 수 있습니다.</p>
-                    <div class="calendarBox">
+                    <div class="">
                         <div id="calendar"></div>
                     </div>
                     <div id="tableBox">
