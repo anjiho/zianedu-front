@@ -9,6 +9,20 @@
             sessionStorage.setItem("noticeHeader", "openMenu");
         }
         fn_search('new');
+
+        var calendarInfo = [
+            {
+                title: '강의실배정표',
+                start: '2019-11-01',
+                description: 'This is a cool event'
+            },
+            {
+                title: '강의실배정표',
+                start: '2019-11-11',
+                description: 'This is a cool event'
+            }
+            // more events here
+        ]
         //달력 주입 시작
         $('#calendar').fullCalendar({
             lang:'ko',
@@ -22,8 +36,12 @@
             defaultView: 'month',
             dayPopoverFormat: 'yyyy-MM-dd',
             select: function (startDate, endDate, jsEvent, view) {
-                var dt_start = moment(startDate).format('YYYY-MM-DD');
-                alert(dt_start);
+                var dtStart = moment(startDate).format('YYYY-MM-DD');
+                alert(dtStart);
+                var dayOfWeek = moment(startDate).format('dddd');
+                alert(dayOfWeek);
+                $(".fc-content").css('height', 'auto');
+
                 $(".fc-body").unbind('click');
                 $(".fc-body").on('click', 'td', function (e) {
                     $("#contextMenu")
@@ -36,24 +54,10 @@
                     return false;
                 });
             },
-            // put your options and callbacks here
-            eventDrop: function(event, delta, revertFunc) {
-                //alert(event.id);
-                alert("강의달력은 변경할수 없습니다.");
-                revertFunc();
-                /*
-                 if (!confirm("change??")) {
-                 revertFunc();
-                 }
-                 */
+            eventClick: function(info) {
+                alert('Event: ' + moment(info.start).format('YYYY-MM-DD'));
             },
-            eventRender: function (event, element, view) {
-                return (event.ranges.filter(function (range) {
-                    return (event.start.isBefore(range.end) &&
-                        event.end.isAfter(range.start));
-                }).length) > 0;
-            },
-           // events:calendarInfo
+            events:calendarInfo
         });
         //달력 주입 끝
     });
