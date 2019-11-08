@@ -12,44 +12,16 @@
     $(document).on('change', '#attachFile', function() {
         var fileValue = $("#attachFile").val().split("\\");
         var fileName = fileValue[fileValue.length-1]; // 파일명
-        $("#fileList").append("<li><a href=\"#\"><img src=\"../images/common/icon_file.png\" alt=\"\">"+ fileName +"</a></li>");
+        $("#fileList").append("<li><a href=\"#\"><img src=\"/common/zian/images/common/icon_file.png\" alt=\"\">"+ fileName +"</a></li>");
     });
 
     function save(){
         var check = new isCheck();
         if (check.input("title", comment.input_title) == false) return;
 
-        var filechk = $("#attachFile").val();
-
+        var filechk = $("#attachFile").val();//파일 빈값 체크
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-        var noticeHeaderInfo = sessionStorage.getItem('noticeHeader');
-        var leftMenuInfo = sessionStorage.getItem('leftMenu');//직렬 구분
-        var bbsmasterKey = '';
-        if(leftMenuInfo == "publicOnline" || leftMenuInfo == "publicAcademy"){//행정직 온라인, 행정직학원
-            if(noticeHeaderInfo == "openMenu")         bbsmasterKey = "10001";//개강안내
-            else if(noticeHeaderInfo == "acaNotice")   bbsmasterKey = "10007";//학원소식
-            else if(noticeHeaderInfo == "examNotice")  bbsmasterKey = "10010";//시험공고
-            else if(noticeHeaderInfo == "lectureRoom") bbsmasterKey = "10008";//강의실배정표
-            else bbsmasterKey = "10057";//온라인서점
-        }else if(leftMenuInfo == "techOnline" || leftMenuInfo == "techAcademy"){//기술직 온라인. 기술직학원
-            if(noticeHeaderInfo == "openMenu")         bbsmasterKey = "10026";
-            else if(noticeHeaderInfo == "acaNotice")   bbsmasterKey = "10027";
-            else if(noticeHeaderInfo == "examNotice")  bbsmasterKey = "10030";
-            else if(noticeHeaderInfo == "lectureRoom") bbsmasterKey = "10008";
-            else bbsmasterKey = "10057";
-        }else if(leftMenuInfo == "postOnline" || leftMenuInfo == "postAcademy"){//계리직 온라인. 계리직 학원
-            if(noticeHeaderInfo == "openMenu")         bbsmasterKey = "10041";
-            else if(noticeHeaderInfo == "acaNotice")   bbsmasterKey = "10042";
-            else if(noticeHeaderInfo == "examNotice")  bbsmasterKey = "10044";
-            else if(noticeHeaderInfo == "lectureRoom") bbsmasterKey = "10008";
-            else bbsmasterKey = "10057";
-        }else{
-            if(noticeHeaderInfo == "openMenu")         bbsmasterKey = "10001";//개강안내
-            else if(noticeHeaderInfo == "acaNotice")   bbsmasterKey = "10007";//학원소식
-            else if(noticeHeaderInfo == "examNotice")  bbsmasterKey = "10010";//시험공고
-            else if(noticeHeaderInfo == "lectureRoom") bbsmasterKey = "10008";//강의실배정표
-            else bbsmasterKey = "10057";//온라인서점
-        }
+        var bbsmasterKey =  getBbsMasterKey();
 
         if(filechk == "") { //파일 없을때
             var userKey  = sessionUserInfo.userKey;
@@ -147,8 +119,8 @@
                             <tr>
                                 <th scope="row">첨부파일</th>
                                 <td class="">
-                                    <div class="inputWrapper"><input type="file" id="attachFile" class="fileBtn noline nobg"></div>
-                                    <ul id='fileList' class="fileList"></ul>
+                                   <input type="file" id="attachFile" class="fileBtn noline nobg">
+                                   <ul id='fileList' class="fileList"></ul>
                                 </td>
                             </tr>
                             </tbody>
