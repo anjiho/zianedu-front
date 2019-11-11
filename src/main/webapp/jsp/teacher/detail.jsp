@@ -91,11 +91,7 @@
                                     <li class="active" style="width:340px;"><a href="#">OT영상</a></li>
                                 </ul>
                                 <div class="tabPage active">
-                                    <div class="otMovie video-container" id="youtube">
-<%--                                        <a href="#"><img src="../images/content/img_teacherOt03.jpg" alt=""></a>--%>
-<%--                                        <iframe width="640" height="360" src="http://img.youtube.com/vi/peB0dy_jj1Q/1.jpg" frameborder="0" allowfullscreen></iframe>--%>
-<%--&lt;%&ndash;                                    <iframe width="350" height="538" src="https://www.youtube.com/embed/xFMnAod32zw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>&ndash;%&gt;</iframe>--%>
-                                    </div>
+                                    <div class="otMovie video-container" id="youtube"></div>
                                 </div>
                             </div>
                         </div>
