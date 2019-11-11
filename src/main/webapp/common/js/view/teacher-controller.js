@@ -10,7 +10,7 @@ function getTeacherAcademyLecture(teacherKey, stepCtgKey) {
     }
 }
 
-//강사 홈정보
+//강사 홈 정보
 function getTeacherHomeInfo(teacherKey, device, menuCtgKey, listLimit) {
     if (teacherKey == null || teacherKey == undefined) return;
     var data = {
@@ -18,10 +18,31 @@ function getTeacherHomeInfo(teacherKey, device, menuCtgKey, listLimit) {
         menuCtgKey : menuCtgKey,
         listLimit : listLimit
     };
-    var InfoList = getApi("/teacher/getTeacherHomeInfo/", teacherKey, data);
-    if (InfoList.result.length > 0) {
-        var selList = InfoList.result;
-    }
+    var infoList = getApi("/teacher/getTeacherHomeInfo/", teacherKey, data);
+    var result = infoList.result.teacherInfo;
+    console.log(result);
+    $("#teacherImg").attr("src", result.imageListUrl);
+    innerHTML("history", result.history);
+    innerHTML("youtube", result.youtubeUrl);
+    // innerHTML("teacherName", "");
+}
+
+function getTeacherNameSubjectName(teacherKey, menuCtgKey) {
+    if (teacherKey == null || teacherKey == undefined) return;
+    if (menuCtgKey == null || menuCtgKey == undefined) return;
+    var data = {
+        reqKey : menuCtgKey
+    };
+    var infoList = getApi("/teacher/getTeacherNameSubjectName/", teacherKey, data);
+    console.log(infoList);
+    var result = infoList.result;
+    innerHTML("subject", result.subjectName);
+    innerHTML("teacherName", result.teacherName);
+    // console.log(result);
+    // $("#teacherImg").attr("src", result.imageListUrl);
+    // innerHTML("history", result.history);
+    // innerHTML("youtube", result.youtubeUrl);
+    // innerHTML("teacherName", "");
 }
 
 //직렬별 교수소개 리스트
@@ -139,10 +160,12 @@ function getTeacherCurriculum(teacherKey, device, menuCtgKey) {
     };
 
     var infoList = getResultStrApi("/teacher/getTeacherCurriculum/", teacherKey, data);
-
-    if (infoList.result.length > 0) {
+    console.log(infoList);
+    if (infoList.result != null) {
         var selList = infoList.result;
         innerHTML("curriculum", selList);
+    }else{
+        innerHTML("curriculum", "");
     }
 
 }

@@ -25,7 +25,7 @@ function getTeacherIntroduceLeftMenu(ctgKey, tagId) {
                             "<span class=\"category\">"+ data.subjectName +"</span>"+
                             "<b class=\"name\">"+ data.teacherName +"</b>"+
                             "<span class=\"thumb\"><img src='"+ data.teacherImage + "' alt=\"\"></span>"+
-                            "<a href='javascript:goTeacherDetail("+ data.teacherKey +","+ data.reqKey +");' class=\"link_home\">교수홈</a>"+
+                            "<a href='javascript:goTeacherDetail("+ data.teacherKey +","+ data.reqKey + ");' class=\"link_home\">교수홈</a>"+
                         "</div>";
             }, {escapeHtml: false});
         }

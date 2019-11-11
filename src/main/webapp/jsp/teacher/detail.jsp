@@ -4,12 +4,19 @@
     String teacherKey = request.getParameter("teacherKey");
     String reqKey = request.getParameter("reqKey");
 %>
+<style>
+    .video-container {position: relative;padding-bottom: 56.25%;height: 0;overflow: hidden;}
+    .video-container iframe,.video-container object,.video-container embed{position: absolute; top:0; left:0; width:100%; height: 100%}
+</style>
 <script>
     var teacherKey = '<%=teacherKey%>';
     var menuCtgKey = '<%=reqKey%>';
 
     $( document ).ready(function() {
-        getTeacherCurriculum(teacherKey, 1, menuCtgKey);
+        getTeacherHomeInfo(teacherKey, 1, menuCtgKey, 10);//홈정보
+        getTeacherNameSubjectName(teacherKey, menuCtgKey);
+        //과목, 선생님명 불러오기
+        getTeacherCurriculum(teacherKey, 1, menuCtgKey);//커리큘럼 불러오기
     });
 </script>
 <form name="frm" method="get">
@@ -66,40 +73,26 @@
                 <div class="teacherView">
                     <div class="teacherInfo">
                         <div class="thumb">
-                            <img src="../images/content/img_teacheView03.png" alt="">
-                            <a href="./sub0201.html" class="btn_teacherThumb">교수님 리스트</a>
+                            <img src="" alt="" id="teacherImg">
+                            <a href="javascript:goPage('teacher','main')" class="btn_teacherThumb">교수님 리스트</a>
                         </div>
                         <div class="info">
-                            <span class="category">국어</span>
-                            <span class="name"><b>안효선</b> 교수님</span>
-                            <span class="infoText">쉽고 재미있는, 공무원 국어마스터</span>
+                            <span class="category" id="subject"></span>
+                            <span class="name"><b id="teacherName"></b> 교수님</span>
+<%--                            <span class="infoText">쉽고 재미있는, 공무원 국어마스터</span>--%>
                             <dl class="profile">
                                 <dt>약력</dt>
-                                <dd>
-                                    동국대 사범대학 국어교육과<br>
-                                    공무원 국어 교재 집필진<br>
-                                    前 선아그룹강사<br>
-                                    前 정진학원강사<br>
-                                    <br>
-                                    現 지안공무원 학원국어강사<br>
-                                    現 빅모의고사 해설위원<br>
-                                    現 공무원 모의고사 출제위원
-                                </dd>
+                                <dd id="history"></dd>
                             </dl>
                             <div class="teacherInfoTab tabContent">
                                 <ul class="tabBar">
                                     <li class="active"><a href="#">OT영상</a></li>
-                                    <li><a href="#">샘플강의</a></li>
                                 </ul>
                                 <div class="tabPage active">
-                                    <div class="otMovie"><a href="#"><img src="../images/content/img_teacherOt03.jpg" alt=""></a></div>
-                                </div>
-                                <div class="tabPage">
-                                    <div class="lectureList">
-                                        동국대학교 영어통번역&영어영문학과 졸업<br>
-                                        미국 Arkansas State University 영문학 수료<br>
-                                        現 지안공무원학원 영어담당<br>
-                                        現 공무원 영어 교재 개발담당
+                                    <div class="otMovie video-container" id="youtube">
+<%--                                        <a href="#"><img src="../images/content/img_teacherOt03.jpg" alt=""></a>--%>
+<%--                                        <iframe width="640" height="360" src="http://img.youtube.com/vi/peB0dy_jj1Q/1.jpg" frameborder="0" allowfullscreen></iframe>--%>
+<%--&lt;%&ndash;                                    <iframe width="350" height="538" src="https://www.youtube.com/embed/xFMnAod32zw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>&ndash;%&gt;</iframe>--%>
                                     </div>
                                 </div>
                             </div>

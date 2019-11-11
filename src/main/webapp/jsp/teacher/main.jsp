@@ -30,6 +30,8 @@
     <input type="hidden" name="page_gbn" id="page_gbn">
     <input type="hidden" name="teacherKey" id="teacherKey">
     <input type="hidden" name="reqKey" id="reqKey">
+    <input type="hidden" name="subject" id="subject">
+    <input type="hidden" name="name" id="name">
     <div id="wrap">
         <%@include file="/common/jsp/leftMenu.jsp" %>
         <!--상단-->
