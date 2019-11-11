@@ -18,9 +18,18 @@
         dwr.util.removeAllOptions("teacherList");
         getTeacherIntroduceLeftMenu(ctgKey, 'teacherList');
     }
+
+    //교수 상세페이지 이동
+    function goTeacherDetail(teacherKey, reqKey) {
+        innerValue("teacherKey", teacherKey);
+        innerValue("reqKey", reqKey);
+        goPage("teacher", "detail");
+    }
 </script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
+    <input type="hidden" name="teacherKey" id="teacherKey">
+    <input type="hidden" name="reqKey" id="reqKey">
     <div id="wrap">
         <%@include file="/common/jsp/leftMenu.jsp" %>
         <!--상단-->
@@ -72,6 +81,7 @@
                     <ul class="deaph1 cols9" id="subjectMenuList"></ul>
                 </div>
             </div>
+            <br />
             <div class="inner">
                 <!--서브 컨텐츠-->
                 <p class="subIntroduction">지안에듀 최고의 교수진을 소개합니다!</p>

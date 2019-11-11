@@ -61,6 +61,21 @@ function getPageApi(url, pathData, paramData) {
     return resultData;
 }
 
+/* get */
+function getResultStrApi(url, pathData, paramData) {
+    var resultData = null;
+
+    $.get(apiHost + url + pathData, paramData, function (response) {
+        if(response.resultCode == 200){
+            resultData = {
+                result : response.resultStr
+            };
+        }
+    }).fail(function() {
+        alert(comment.error);
+    });
+    return resultData;
+}
 /*************************************************************/
 /*************************************************************/
 

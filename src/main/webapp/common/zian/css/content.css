@@ -105,10 +105,10 @@
 .teacherInfo .info .teacherInfoTab .lectureList{height:190px;padding:20px 25px;line-height:180%;font-size:12px;box-sizing:border-box;overflow-y:auto;}
 
 .teacherContentsTab > .tabBar{height:48px;margin-bottom:0;border:1px #e5e5e5 solid;}
-.teacherContentsTab > .tabBar > li{width:20%;margin:0;}
+.teacherContentsTab > .tabBar > li{width:25%;margin:0;}
 .teacherContentsTab > .tabBar > li > a{height:48px;line-height:48px;border:0;font-size:16px;font-weight:bold;color:#000;text-align:center;}
 .teacherContentsTab > .tabBar > li.active > a{background-color:#144b95;color:#fff;}
-.teacherContentsTab > .tabPage{overflow:hidden;}
+/*.teacherContentsTab > .tabPage{overflow:hidden;}*/
 .teacherContentsTab > .tabPage img{max-width:100%;}
 .teacherContentsTab .searchArea{border-left:1px #e5e5e5 solid;border-right:1px #e5e5e5 solid;}
 .teacherContentsTab .tableBox{margin:0;border-left:1px #e5e5e5 solid;border-right:1px #e5e5e5 solid;}

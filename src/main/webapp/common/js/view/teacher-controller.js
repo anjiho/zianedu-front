@@ -128,3 +128,21 @@ function getTeacherVideoLecture(teacherKey, stepCtgKey) {
         var selList = InfoList.result;
     }
 }
+
+// 강사 커리큘럼 정보
+function getTeacherCurriculum(teacherKey, device, menuCtgKey) {
+    if (teacherKey == null || teacherKey == undefined) return;
+    if (menuCtgKey == null || menuCtgKey == undefined) return;
+    var data = {
+        device : device,
+        menuCtgKey : menuCtgKey
+    };
+
+    var infoList = getResultStrApi("/teacher/getTeacherCurriculum/", teacherKey, data);
+
+    if (infoList.result.length > 0) {
+        var selList = infoList.result;
+        innerHTML("curriculum", selList);
+    }
+
+}
