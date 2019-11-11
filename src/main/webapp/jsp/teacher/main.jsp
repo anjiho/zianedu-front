@@ -2,8 +2,11 @@
 <%@include file="/common/jsp/common.jsp" %>
 <script>
     $( document ).ready(function() {
-        getLeftMenu(337, "subjectMenuList"); //교수 메뉴 불러오기
-        getTeacherIntroduceLeftMenu(352, 'teacherList'); // 교수 전체 리스트
+        var menuCtgKey = getTeacherMenuCtgKey();
+        var teacherCtgKey = getTeacherListCtgKey();
+        getLeftMenu(menuCtgKey, "subjectMenuList"); //교수 메뉴 불러오기
+        getTeacherIntroduceLeftMenu(teacherCtgKey, 'teacherList'); // 교수 전체 리스트
+
         $("#subjectMenuList li:eq(0)").addClass('active');
         $("#subjectMenuList li").click(function () { // 과목메뉴 클릭시 class active 기능
             $(this).addClass('active').siblings().removeClass('active');
@@ -66,17 +69,7 @@
         <div id="container">
             <div id="snb">
                 <div class="inner">
-                    <ul class="deaph1 cols9" id="subjectMenuList">
-<%--                        <li class="active"><a href="#">전체</a></li>--%>
-<%--                        <li><a href="#">국어</a></li>--%>
-<%--                        <li><a href="#">영어</a></li>--%>
-<%--                        <li><a href="#">한국사</a></li>--%>
-<%--                        <li><a href="#">행정법</a></li>--%>
-<%--                        <li><a href="#">행정학</a></li>--%>
-<%--                        <li><a href="#">사회</a></li>--%>
-<%--                        <li><a href="#">경영학</a></li>--%>
-<%--                        <li><a href="#">면접</a></li>--%>
-                    </ul>
+                    <ul class="deaph1 cols9" id="subjectMenuList"></ul>
                 </div>
             </div>
             <div class="inner">

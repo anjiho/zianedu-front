@@ -15,7 +15,7 @@
             <div class="inner">
                 <ul class="cols7">
                     <li><a href="#">내강의실</a></li>
-                    <li><a href="#">교수소개</a></li>
+                    <li><a href="javascript:goPage('teacher', 'main')">교수소개</a></li>
                     <li><a href="#">학원수강신청</a></li>
                     <li><a href="#">연간관리반</a></li>
                     <li><a href="#">무료강좌</a></li>

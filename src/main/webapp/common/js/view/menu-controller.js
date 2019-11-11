@@ -45,3 +45,29 @@ function getTechVodZianPassLeftMenu(tagId) {
         ], {escapeHtml:false});
     }
 }
+
+function getTeacherMenuCtgKey() {
+    var leftMenuInfo = sessionStorage.getItem('leftMenu');//직렬 구분
+    var menuCtgKey = "";
+    if(leftMenuInfo == "publicOnline") menuCtgKey = 242;
+    else if(leftMenuInfo == "publicAcademy") menuCtgKey = 337;
+    else if(leftMenuInfo == "techOnline") menuCtgKey = 457;
+    else if(leftMenuInfo == "techAcademy") menuCtgKey = 396;
+    else if(leftMenuInfo == "postOnline") menuCtgKey = 591;
+    else if(leftMenuInfo == "postAcademy") menuCtgKey = 523;
+    else menuCtgKey = 242;
+    return menuCtgKey;
+}
+
+function getTeacherListCtgKey() {
+    var leftMenuInfo = sessionStorage.getItem('leftMenu');//직렬 구분
+    var teacherCtgKey = "";
+    if(leftMenuInfo == "publicOnline") teacherCtgKey = 328;
+    else if(leftMenuInfo == "publicAcademy") teacherCtgKey = 352;
+    else if(leftMenuInfo == "techOnline") teacherCtgKey = 481;
+    else if(leftMenuInfo == "techAcademy") teacherCtgKey = 414;
+    else if(leftMenuInfo == "postOnline") teacherCtgKey = 632;
+    else if(leftMenuInfo == "postAcademy") teacherCtgKey = 562;
+    else teacherCtgKey = 328;
+    return teacherCtgKey;
+}
