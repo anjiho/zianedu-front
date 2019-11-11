@@ -13,10 +13,12 @@
     var menuCtgKey = '<%=reqKey%>';
 
     $( document ).ready(function() {
-        getTeacherHomeInfo(teacherKey, 1, menuCtgKey, 10);//홈정보
-        getTeacherNameSubjectName(teacherKey, menuCtgKey);
-        //과목, 선생님명 불러오기
-        getTeacherCurriculum(teacherKey, 1, menuCtgKey);//커리큘럼 불러오기
+        var pcMobile = divisionPcMobile();
+        if(pcMobile == 'pc') pcMobile = 1;
+        else if(pcMobile == 'mobile') pcMobile = 3;
+        getTeacherHomeInfo(teacherKey, pcMobile , menuCtgKey, 10);//홈정보
+        getTeacherNameSubjectName(teacherKey, menuCtgKey);//과목, 선생님명 불러오기
+        getTeacherCurriculum(teacherKey, pcMobile, menuCtgKey);//커리큘럼 불러오기
     });
 </script>
 <form name="frm" method="get">
@@ -86,7 +88,7 @@
                             </dl>
                             <div class="teacherInfoTab tabContent">
                                 <ul class="tabBar">
-                                    <li class="active"><a href="#">OT영상</a></li>
+                                    <li class="active" style="width:340px;"><a href="#">OT영상</a></li>
                                 </ul>
                                 <div class="tabPage active">
                                     <div class="otMovie video-container" id="youtube">

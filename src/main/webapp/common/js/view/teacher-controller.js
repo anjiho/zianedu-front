@@ -20,11 +20,14 @@ function getTeacherHomeInfo(teacherKey, device, menuCtgKey, listLimit) {
     };
     var infoList = getApi("/teacher/getTeacherHomeInfo/", teacherKey, data);
     var result = infoList.result.teacherInfo;
-    console.log(result);
+
     $("#teacherImg").attr("src", result.imageListUrl);
-    innerHTML("history", result.history);
-    innerHTML("youtube", result.youtubeUrl);
-    // innerHTML("teacherName", "");
+    if(result.history != null){
+        innerHTML("history", result.history);
+    }
+    if(result.youtubeUrl != null){
+        innerHTML("youtube", result.youtubeUrl);
+    }
 }
 
 function getTeacherNameSubjectName(teacherKey, menuCtgKey) {
@@ -34,15 +37,9 @@ function getTeacherNameSubjectName(teacherKey, menuCtgKey) {
         reqKey : menuCtgKey
     };
     var infoList = getApi("/teacher/getTeacherNameSubjectName/", teacherKey, data);
-    console.log(infoList);
     var result = infoList.result;
     innerHTML("subject", result.subjectName);
     innerHTML("teacherName", result.teacherName);
-    // console.log(result);
-    // $("#teacherImg").attr("src", result.imageListUrl);
-    // innerHTML("history", result.history);
-    // innerHTML("youtube", result.youtubeUrl);
-    // innerHTML("teacherName", "");
 }
 
 //직렬별 교수소개 리스트
@@ -160,7 +157,7 @@ function getTeacherCurriculum(teacherKey, device, menuCtgKey) {
     };
 
     var infoList = getResultStrApi("/teacher/getTeacherCurriculum/", teacherKey, data);
-    console.log(infoList);
+
     if (infoList.result != null) {
         var selList = infoList.result;
         innerHTML("curriculum", selList);
