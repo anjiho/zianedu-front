@@ -233,38 +233,36 @@ function getTeacherVideoLecture(teacherKey, device, stepCtgKey) {
                                     retrunHtml += '</div>';
                                 }
                             retrunHtml += '</div>';
-                            $("#lectureBody").append(retrunHtml);
-                    }
-                    /* 교재 */
-                    for(var j = 0; j < lecList.length; j++){
+                        $("#lectureBody").append(retrunHtml);
+                        /* 교재 */
+                        var returnBookHtml = '';
                         if(lecList[j].teacherLectureBook.length > 0){
-                            for(var k=0; k < lecList[j].teacherLectureBook.length; k++ ){
-                                var lecBook = lecList[j].teacherLectureBook[k];
-                                var retrunHtml = "<div class=\"lectureRow\">";
-                                            retrunHtml += '<ul class="lectureList">';
-                                                retrunHtml += "<li class='w15p'>";
-                                                    retrunHtml += "<span class='btn_learnType gray'>교재</span>";
-                                                retrunHtml += '</li>';
-                                                retrunHtml += '<li class="w45p">';
-                                                    retrunHtml += '<span class="btn_ss btn_divTag">주교재</span>';
-                                                        retrunHtml += '<a href="#" class="learnName">'+ lecBook.bookName +'</a>';
-                                                    retrunHtml += '<span class="learnNum">저자 <b class="colorBlue">'+ lecBook.writer +'</b> | 출판 <b class="colorBlue">' + lecBook.publishDate + '</b></span>';
-                                                retrunHtml += '</li>';
-                                                retrunHtml += '<li class="w40p alignRight">';
-                                                    retrunHtml += '<ul class="costList">';
-                                                        retrunHtml += '<li>';
-                                                            retrunHtml += '<b class="cost">'+ lecBook.priceName +'원</b> <input type="checkbox" name="" value="">';
-                                                            retrunHtml += '<a href="#" class="btn_s">장바구니</a>';
-                                                            retrunHtml += '<a href="#" class="btn_s on">바로구매</a>';
-                                                        retrunHtml += '</li>';
-                                                    retrunHtml += '</ul>';
-                                                 retrunHtml += '</li>';
-                                retrunHtml += '</div>';
-                                $("#lectureBody").append(retrunHtml);
-
+                            for(var b=0; b < lecList[j].teacherLectureBook.length; b++ ){
+                                var lecBook = lecList[j].teacherLectureBook[b];
+                                returnBookHtml = "<div class=\"lectureRow\">";
+                                returnBookHtml += '<ul class="lectureList">';
+                                returnBookHtml += "<li class='w15p'>";
+                                returnBookHtml += "<span class='btn_learnType gray'>교재</span>";
+                                returnBookHtml += '</li>';
+                                returnBookHtml += '<li class="w45p">';
+                                returnBookHtml += '<span class="btn_ss btn_divTag">주교재</span>';
+                                returnBookHtml += '<a href="#" class="learnName">'+ lecBook.bookName +'</a>';
+                                returnBookHtml += '<span class="learnNum">저자 <b class="colorBlue">'+ lecBook.writer +'</b> | 출판 <b class="colorBlue">' + lecBook.publishDate + '</b></span>';
+                                returnBookHtml += '</li>';
+                                returnBookHtml += '<li class="w40p alignRight">';
+                                returnBookHtml += '<ul class="costList">';
+                                returnBookHtml += '<li>';
+                                returnBookHtml += '<b class="cost">'+ lecBook.priceName +'원</b> <input type="checkbox" name="" value="">';
+                                returnBookHtml += '<a href="#" class="btn_s">장바구니</a>';
+                                returnBookHtml += '<a href="#" class="btn_s on">바로구매</a>';
+                                returnBookHtml += '</li>';
+                                returnBookHtml += '</ul>';
+                                returnBookHtml += '</li>';
+                                returnBookHtml += '</div>';
                             }
+                            $("#lectureBody").append(returnBookHtml);
                         }
-                    } /* //교재 끝 */
+                    }
             }
         }
     }
