@@ -22,7 +22,47 @@
         getTeacherCurriculum(teacherKey, pcMobile, menuCtgKey);//커리큘럼 불러오기
         getTeacherVideoLecture(teacherKey, pcMobile, 0);//강좌소개 (동영상) 리스트 불러오기
 
+        $("input[name=selProduct]").click(function(index){
+            var count = $("input[name=selProduct]:checkbox:checked").length;
+            innerHTML("selCount", count);
+        });
     });
+    
+    //단일 장바구니 이동
+    function goShopBasket(gkey, priceKey) {
+        //체크박스 체크 안되어있을경우 예외처리 해야함
+        var list = new Array();
+        var data = {
+            gkey : gkey,
+            priceKey : priceKey
+        };
+       list.push(data);
+       console.log(list);
+    }
+
+    //단일 바로구매
+    function goBuy(gkey, priceKey) {
+
+    }
+
+    //체크박스 장바구니 담기
+    function goCheckedShopBasket() {
+        var arr = new Array();
+        $('input[name="selProduct"]:checked').each(function() {
+            var priceKey = $(this).attr('id');
+            var gkey = $(this).val();
+            var data = {
+                gkey : gkey,
+                priceKey : priceKey
+            };
+            arr.push(data);
+        });
+        console.log(arr);
+    }
+
+    function goCheckedBuy() {
+
+    }
 </script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
@@ -127,9 +167,9 @@
                                                 <ul class="lectureTotal">
                                                     <li class="left"></li>
                                                     <li class="right">
-                                                        선택한 항목 <span class="colorRed">3</span>개를
-                                                        <a href="#" class="btn_m">장바구니 담기</a>
-                                                        <a href="#" class="btn_m on w120">바로구매</a>
+                                                        선택한 항목 <span class="colorRed" id="selCount"></span>개를
+                                                        <a href="javascript:goCheckedShopBasket();" class="btn_m">장바구니 담기</a>
+                                                        <a href="javascript:goCheckedBuy();" class="btn_m on w120">바로구매</a>
                                                     </li>
                                                 </ul>
                                                 <ul class="lectureHead">
@@ -137,7 +177,9 @@
                                                     <li class="w45p">강좌명</li>
                                                     <li class="w40p">수강료</li>
                                                 </ul>
-                                                <div class="lectureBody" id="lectureBody"></div> <!-- 동영상 강좌 리스트 -->
+                                                <div class="lectureBody" id="lectureBody">
+
+                                                </div> <!-- 동영상 강좌 리스트 -->
                                             </div>
                                         </form>
                                     </div>

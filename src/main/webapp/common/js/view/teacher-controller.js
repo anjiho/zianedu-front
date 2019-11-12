@@ -188,9 +188,9 @@ function getTeacherVideoLecture(teacherKey, device, stepCtgKey) {
                                                     }else{ //pc+mobile
                                                         retrunHtml += '<span class="btn_ss btn_divTag">PC</span> <span class="btn_ss btn_divTag">모바일</span> ';
                                                     }
-                                                    retrunHtml += '<b class="cost">'+ lecList[j].videoLectureKindList[a].sellPriceName +'</b> <input type="checkbox" name="" value="">';
-                                                    retrunHtml += '<a href="#" class="btn_s">장바구니</a>';
-                                                    retrunHtml += '<a href="#" class="btn_s on">바로구매</a>';
+                                                    retrunHtml += "<b class='cost'>"+ lecList[j].videoLectureKindList[a].sellPriceName +"</b> <input type='checkbox' name='selProduct' id='"+lecList[j].videoLectureKindList[a].priceKey +"' value='"+ lecList[j].videoLectureKindList[a].gkey +"'>";
+                                                    retrunHtml += "<a href='javascript:goShopBasket("+ lecList[j].videoLectureKindList[a].gkey +","+ lecList[j].videoLectureKindList[a].priceKey +");' class='btn_s'>장바구니</a>";
+                                                    retrunHtml += "<a href='javascript:goBuy("+ lecList[j].videoLectureKindList[a].gkey +","+ lecList[j].videoLectureKindList[a].priceKey +");' class='btn_s on'>바로구매</a>";
                                                     retrunHtml += '</li>';
                                                 }
                                             }
@@ -222,8 +222,13 @@ function getTeacherVideoLecture(teacherKey, device, stepCtgKey) {
                                                             retrunHtml += '<td class="alignCenter">'+ lecList[j].lectureList[k].num +'</td>';
                                                             retrunHtml += '<td>'+ lecList[j].lectureList[k].name +'</td>';
                                                             retrunHtml += '<td class="alignCenter">'+ lecList[j].lectureList[k].vodTime +'</td>';
-                                                            retrunHtml += '<td class="alignCenter"><span class="learnView">샘플보기 <a href="#" class="btn_s btn_quality">일반화질</a> <a href="#" class="btn_s btn_quality on">고화질</a></span></td>';
-                                                        retrunHtml += '</tr>';
+
+                                                            if(lecList[j].lectureList[k].num == 1){
+                                                                retrunHtml += '<td class="alignCenter"><span class="learnView">샘플보기 <a href="#" class="btn_s btn_quality">일반화질</a> <a href="#" class="btn_s btn_quality on">고화질</a></span></td>';
+                                                            }else{
+                                                                retrunHtml += '<td class="alignCenter"><span class="learnView"> </span></td>';
+                                                            }
+                                                            retrunHtml += '</tr>';
                                                     }
                                                     retrunHtml += '<tbody>';
                                                     retrunHtml += '</table>';
@@ -252,7 +257,7 @@ function getTeacherVideoLecture(teacherKey, device, stepCtgKey) {
                                 returnBookHtml += '<li class="w40p alignRight">';
                                 returnBookHtml += '<ul class="costList">';
                                 returnBookHtml += '<li>';
-                                returnBookHtml += '<b class="cost">'+ lecBook.priceName +'원</b> <input type="checkbox" name="" value="">';
+                                returnBookHtml += '<b class="cost">'+ lecBook.priceName +'원</b> <input type="checkbox" name="selProduct" id="'+ lecBook.priceKey +'" value="'+ lecBook.gkey +'">';
                                 returnBookHtml += '<a href="#" class="btn_s">장바구니</a>';
                                 returnBookHtml += '<a href="#" class="btn_s on">바로구매</a>';
                                 returnBookHtml += '</li>';
