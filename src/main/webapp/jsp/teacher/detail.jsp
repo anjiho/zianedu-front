@@ -20,7 +20,7 @@
         getTeacherHomeInfo(teacherKey, pcMobile , menuCtgKey, 10);//홈정보
         getTeacherNameSubjectName(teacherKey, menuCtgKey);//과목, 선생님명 불러오기
         getTeacherCurriculum(teacherKey, pcMobile, menuCtgKey);//커리큘럼 불러오기
-        getTeacherVideoLecture(teacherKey, pcMobile, 0);
+        getTeacherVideoLecture(teacherKey, pcMobile, 0);//강좌소개 (동영상) 리스트 불러오기
 
     });
 </script>
