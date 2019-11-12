@@ -140,109 +140,110 @@ function getTeacherVideoLecture(teacherKey, device, stepCtgKey) {
     if (teacherKey == null || teacherKey == undefined) return;
     if (stepCtgKey == null || stepCtgKey == undefined) return;
     var data = {
-        stepCtgKey : stepCtgKey,
-        device : device
+        stepCtgKey: stepCtgKey,
+        device: device
     };
 
     var infoList = getApi("/teacher/getTeacherVideoLecture/", teacherKey, data);
-    if(infoList.result.length > 0){
-        var selList = infoList.result;
-        for(var i = 0; i < selList.length; i++){
-            var cmpList = selList[i];
-                if(cmpList.teacherLectureList.length > 0){
+    if (infoList != null) {
+        if (infoList.result.length > 0) {
+            var selList = infoList.result;
+            for (var i = 0; i < selList.length; i++) {
+                var cmpList = selList[i];
+                if (cmpList.teacherLectureList.length > 0) {
                     var lecList = cmpList.teacherLectureList;
-                    for(var j = 0; j < lecList.length; j++){ //강의목록리스트
-                         var retrunHtml = "<div class=\"lectureRow\">";
-                                retrunHtml += '<ul class="lectureList">';
-                                    retrunHtml += "<li class='w15p'>";
-                                    /* 유형 */
-                                    if(cmpList.stepCtgKey == 203) {
-                                        retrunHtml += "<span class='btn_learnType green'>이론</span>";
-                                    }else if(cmpList.stepCtgKey == 205){
-                                        retrunHtml += "<span class=\"btn_learnType orange\">문제풀이</span>";
-                                    }else if(cmpList.stepCtgKey == 207){
-                                        retrunHtml += "<span class=\"btn_learnType purple\">모의고사</span>";
-                                    }else if(cmpList.stepCtgKey == 4266){
-                                        retrunHtml += " <span class=\"btn_learnType blue\">단과특강</span>";
-                                    }
+                    for (var j = 0; j < lecList.length; j++) { //강의목록리스트
+                        var retrunHtml = "<div class=\"lectureRow\">";
+                        retrunHtml += '<ul class="lectureList">';
+                        retrunHtml += "<li class='w15p'>";
+                        /* 유형 */
+                        if (cmpList.stepCtgKey == 203) {
+                            retrunHtml += "<span class='btn_learnType green'>이론</span>";
+                        } else if (cmpList.stepCtgKey == 205) {
+                            retrunHtml += "<span class=\"btn_learnType orange\">문제풀이</span>";
+                        } else if (cmpList.stepCtgKey == 207) {
+                            retrunHtml += "<span class=\"btn_learnType purple\">모의고사</span>";
+                        } else if (cmpList.stepCtgKey == 4266) {
+                            retrunHtml += " <span class=\"btn_learnType blue\">단과특강</span>";
+                        }
 
-                                    retrunHtml += '</li>';
-                                    retrunHtml += '<li class="w45p">';
-                                        retrunHtml += '<a href="#" class="learnName">' + lecList[j].goodsName + '</a>';
-                                        retrunHtml += '<span class="learnNum">강의수 <b class="colorBlue">'+ lecList[j].lecCount +'강</b> | 수강일수 <b class="colorBlue">'+ lecList[j].limitDay +'일</b></span>';
-                                        retrunHtml += '<span class="learnView">샘플보기 <a href="#" class="btn_s btn_quality">일반화질</a> <a href="#" class="btn_s btn_quality on">고화질</a></span>';
-                                    retrunHtml += '</li>';
-                                    retrunHtml += '<li class="w40p alignRight">';
-                                        retrunHtml += '<ul class="costList">';
-                                            /* PC MOBILE 가격 */
-                                            if(lecList[j].videoLectureKindList.length > 0){
-                                                for(var a = 0; a < lecList[j].videoLectureKindList.length; a++){
-                                                    retrunHtml += '<li>';
-                                                    if(lecList[j].videoLectureKindList[a].discountPercent != null){ //할인가격 표시
-                                                        retrunHtml += '<span class="colorRed">'+ lecList[j].videoLectureKindList[a].discountPercent +'</span>';
-                                                    }
-                                                    if(lecList[j].videoLectureKindList[a].kind == 100){ //pc
-                                                        retrunHtml += '<span class="btn_ss btn_divTag">PC</span>';
-                                                    }else if(lecList[j].videoLectureKindList[a].kind == 101){ //mobile
-                                                        retrunHtml += '<span class="btn_ss btn_divTag">모바일</span>';
-                                                    }else{ //pc+mobile
-                                                        retrunHtml += '<span class="btn_ss btn_divTag">PC</span> <span class="btn_ss btn_divTag">모바일</span> ';
-                                                    }
-                                                    retrunHtml += "<b class='cost'>"+ lecList[j].videoLectureKindList[a].sellPriceName +"</b> <input type='checkbox' name='selProduct' id='"+lecList[j].videoLectureKindList[a].priceKey +"' value='"+ lecList[j].videoLectureKindList[a].gkey +"'>";
-                                                    retrunHtml += "<a href='javascript:goShopBasket("+ lecList[j].videoLectureKindList[a].gkey +","+ lecList[j].videoLectureKindList[a].priceKey +");' class='btn_s'>장바구니</a>";
-                                                    retrunHtml += "<a href='javascript:goBuy("+ lecList[j].videoLectureKindList[a].gkey +","+ lecList[j].videoLectureKindList[a].priceKey +");' class='btn_s on'>바로구매</a>";
-                                                    retrunHtml += '</li>';
-                                                }
-                                            }
-                                        retrunHtml += '</ul>';
-                                    retrunHtml += '</li>';
-                                retrunHtml += '</ul>';
-                                if(lecList[j].lectureList.length > 0){ /* 강의리스트 회차정보 */
-                                    retrunHtml += '<div class="toggleWrap">';
-                                        retrunHtml += '<div class="div_toggle">';
-                                            retrunHtml += '<div class="tableBox">';
-                                                    retrunHtml += '<table class="lecture">';
-                                                    retrunHtml += '<colgroup>';
-                                                        retrunHtml += '<col class="w10p">';
-                                                        retrunHtml += '<col class="w40p">';
-                                                        retrunHtml += '<col class="w10p">';
-                                                        retrunHtml += '<col class="w40p">';
-                                                    retrunHtml += '</colgroup>';
-                                                    retrunHtml += '<thead>';
-                                                    retrunHtml += '<tr>';
-                                                        retrunHtml += '<th scope="row" class="alignCenter">회차</th>';
-                                                        retrunHtml += '<th scope="row" class="alignCenter">제목</th>';
-                                                        retrunHtml += '<th scope="row" class="alignCenter">시간</th>';
-                                                        retrunHtml += '<th scope="row" class="alignCenter">샘플보기</th>';
-                                                    retrunHtml += '<tr>';
-                                                    retrunHtml += '</thead>';
-                                                    retrunHtml += '<tbody>';
-                                                    for(var k = 0; k < lecList[j].lectureList.length; k++){
-                                                        retrunHtml += '<tr>';
-                                                            retrunHtml += '<td class="alignCenter">'+ lecList[j].lectureList[k].num +'</td>';
-                                                            retrunHtml += '<td>'+ lecList[j].lectureList[k].name +'</td>';
-                                                            retrunHtml += '<td class="alignCenter">'+ lecList[j].lectureList[k].vodTime +'</td>';
-
-                                                            if(lecList[j].lectureList[k].num == 1){
-                                                                retrunHtml += '<td class="alignCenter"><span class="learnView">샘플보기 <a href="#" class="btn_s btn_quality">일반화질</a> <a href="#" class="btn_s btn_quality on">고화질</a></span></td>';
-                                                            }else{
-                                                                retrunHtml += '<td class="alignCenter"><span class="learnView"> </span></td>';
-                                                            }
-                                                            retrunHtml += '</tr>';
-                                                    }
-                                                    retrunHtml += '<tbody>';
-                                                    retrunHtml += '</table>';
-                                                retrunHtml += '</div>';
-                                             retrunHtml += '</div>';
-                                             retrunHtml += '<div class="btn_toggle"><a href="#"></a></div>';
-                                    retrunHtml += '</div>';
+                        retrunHtml += '</li>';
+                        retrunHtml += '<li class="w45p">';
+                        retrunHtml += '<a href="#" class="learnName">' + lecList[j].goodsName + '</a>';
+                        retrunHtml += '<span class="learnNum">강의수 <b class="colorBlue">' + lecList[j].lecCount + '강</b> | 수강일수 <b class="colorBlue">' + lecList[j].limitDay + '일</b></span>';
+                        retrunHtml += '<span class="learnView">샘플보기 <a href="#" class="btn_s btn_quality">일반화질</a> <a href="#" class="btn_s btn_quality on">고화질</a></span>';
+                        retrunHtml += '</li>';
+                        retrunHtml += '<li class="w40p alignRight">';
+                        retrunHtml += '<ul class="costList">';
+                        /* PC MOBILE 가격 */
+                        if (lecList[j].videoLectureKindList.length > 0) {
+                            for (var a = 0; a < lecList[j].videoLectureKindList.length; a++) {
+                                retrunHtml += '<li>';
+                                if (lecList[j].videoLectureKindList[a].discountPercent != null) { //할인가격 표시
+                                    retrunHtml += '<span class="colorRed">' + lecList[j].videoLectureKindList[a].discountPercent + '</span>';
                                 }
+                                if (lecList[j].videoLectureKindList[a].kind == 100) { //pc
+                                    retrunHtml += '<span class="btn_ss btn_divTag">PC</span>';
+                                } else if (lecList[j].videoLectureKindList[a].kind == 101) { //mobile
+                                    retrunHtml += '<span class="btn_ss btn_divTag">모바일</span>';
+                                } else { //pc+mobile
+                                    retrunHtml += '<span class="btn_ss btn_divTag">PC</span> <span class="btn_ss btn_divTag">모바일</span> ';
+                                }
+                                retrunHtml += "<b class='cost'>" + lecList[j].videoLectureKindList[a].sellPriceName + "</b> <input type='checkbox' name='selProduct' id='" + lecList[j].videoLectureKindList[a].priceKey + "' value='" + lecList[j].videoLectureKindList[a].gkey + "'>";
+                                retrunHtml += "<a href='javascript:goShopBasket(" + lecList[j].videoLectureKindList[a].gkey + "," + lecList[j].videoLectureKindList[a].priceKey + ");' class='btn_s'>장바구니</a>";
+                                retrunHtml += "<a href='javascript:goBuy(" + lecList[j].videoLectureKindList[a].gkey + "," + lecList[j].videoLectureKindList[a].priceKey + ");' class='btn_s on'>바로구매</a>";
+                                retrunHtml += '</li>';
+                            }
+                        }
+                        retrunHtml += '</ul>';
+                        retrunHtml += '</li>';
+                        retrunHtml += '</ul>';
+                        if (lecList[j].lectureList.length > 0) { /* 강의리스트 회차정보 */
+                            retrunHtml += '<div class="toggleWrap">';
+                            retrunHtml += '<div class="div_toggle">';
+                            retrunHtml += '<div class="tableBox">';
+                            retrunHtml += '<table class="lecture">';
+                            retrunHtml += '<colgroup>';
+                            retrunHtml += '<col class="w10p">';
+                            retrunHtml += '<col class="w40p">';
+                            retrunHtml += '<col class="w10p">';
+                            retrunHtml += '<col class="w40p">';
+                            retrunHtml += '</colgroup>';
+                            retrunHtml += '<thead>';
+                            retrunHtml += '<tr>';
+                            retrunHtml += '<th scope="row" class="alignCenter">회차</th>';
+                            retrunHtml += '<th scope="row" class="alignCenter">제목</th>';
+                            retrunHtml += '<th scope="row" class="alignCenter">시간</th>';
+                            retrunHtml += '<th scope="row" class="alignCenter">샘플보기</th>';
+                            retrunHtml += '<tr>';
+                            retrunHtml += '</thead>';
+                            retrunHtml += '<tbody>';
+                            for (var k = 0; k < lecList[j].lectureList.length; k++) {
+                                retrunHtml += '<tr>';
+                                retrunHtml += '<td class="alignCenter">' + lecList[j].lectureList[k].num + '</td>';
+                                retrunHtml += '<td>' + lecList[j].lectureList[k].name + '</td>';
+                                retrunHtml += '<td class="alignCenter">' + lecList[j].lectureList[k].vodTime + '</td>';
+
+                                if (lecList[j].lectureList[k].num == 1) {
+                                    retrunHtml += '<td class="alignCenter"><span class="learnView">샘플보기 <a href="#" class="btn_s btn_quality">일반화질</a> <a href="#" class="btn_s btn_quality on">고화질</a></span></td>';
+                                } else {
+                                    retrunHtml += '<td class="alignCenter"><span class="learnView"> </span></td>';
+                                }
+                                retrunHtml += '</tr>';
+                            }
+                            retrunHtml += '<tbody>';
+                            retrunHtml += '</table>';
                             retrunHtml += '</div>';
+                            retrunHtml += '</div>';
+                            retrunHtml += '<div class="btn_toggle"><a href="#"></a></div>';
+                            retrunHtml += '</div>';
+                        }
+                        retrunHtml += '</div>';
                         $("#lectureBody").append(retrunHtml);
                         /* 교재 */
                         var returnBookHtml = '';
-                        if(lecList[j].teacherLectureBook.length > 0){
-                            for(var b=0; b < lecList[j].teacherLectureBook.length; b++ ){
+                        if (lecList[j].teacherLectureBook.length > 0) {
+                            for (var b = 0; b < lecList[j].teacherLectureBook.length; b++) {
                                 var lecBook = lecList[j].teacherLectureBook[b];
                                 returnBookHtml = "<div class=\"lectureRow\">";
                                 returnBookHtml += '<ul class="lectureList">';
@@ -251,13 +252,13 @@ function getTeacherVideoLecture(teacherKey, device, stepCtgKey) {
                                 returnBookHtml += '</li>';
                                 returnBookHtml += '<li class="w45p">';
                                 returnBookHtml += '<span class="btn_ss btn_divTag">주교재</span>';
-                                returnBookHtml += '<a href="#" class="learnName">'+ lecBook.bookName +'</a>';
-                                returnBookHtml += '<span class="learnNum">저자 <b class="colorBlue">'+ lecBook.writer +'</b> | 출판 <b class="colorBlue">' + lecBook.publishDate + '</b></span>';
+                                returnBookHtml += '<a href="#" class="learnName">' + lecBook.bookName + '</a>';
+                                returnBookHtml += '<span class="learnNum">저자 <b class="colorBlue">' + lecBook.writer + '</b> | 출판 <b class="colorBlue">' + lecBook.publishDate + '</b></span>';
                                 returnBookHtml += '</li>';
                                 returnBookHtml += '<li class="w40p alignRight">';
                                 returnBookHtml += '<ul class="costList">';
                                 returnBookHtml += '<li>';
-                                returnBookHtml += '<b class="cost">'+ lecBook.priceName +'원</b> <input type="checkbox" name="selProduct" id="'+ lecBook.priceKey +'" value="'+ lecBook.gkey +'">';
+                                returnBookHtml += '<b class="cost">' + lecBook.priceName + '원</b> <input type="checkbox" name="selProduct" id="' + lecBook.priceKey + '" value="' + lecBook.gkey + '">';
                                 returnBookHtml += '<a href="#" class="btn_s">장바구니</a>';
                                 returnBookHtml += '<a href="#" class="btn_s on">바로구매</a>';
                                 returnBookHtml += '</li>';
@@ -268,9 +269,10 @@ function getTeacherVideoLecture(teacherKey, device, stepCtgKey) {
                             $("#lectureBody").append(returnBookHtml);
                         }
                     }
+                }
             }
-        }
     }
+}
     $(".toggleWrap > .btn_toggle").click(function(){
         if($(this).parent().hasClass("active")){
             $(this).parent().removeClass("active");
