@@ -16,9 +16,12 @@
         var pcMobile = divisionPcMobile();
         if(pcMobile == 'pc') pcMobile = 1;
         else if(pcMobile == 'mobile') pcMobile = 3;
+
         getTeacherHomeInfo(teacherKey, pcMobile , menuCtgKey, 10);//홈정보
         getTeacherNameSubjectName(teacherKey, menuCtgKey);//과목, 선생님명 불러오기
         getTeacherCurriculum(teacherKey, pcMobile, menuCtgKey);//커리큘럼 불러오기
+        getTeacherVideoLecture(teacherKey, pcMobile, 0);
+
     });
 </script>
 <form name="frm" method="get">
@@ -104,19 +107,157 @@
                             <li><a href="#">학습안내</a></li>
                             <li><a href="#">학습 Q&A</a></li>
                         </ul>
-                        <div class="tabPage active">
+                        <div class="tabPage active"><!--커리큘럼 tab-->
                             <div class="tab_curriculum">
                                 <span id="curriculum"></span>
                             </div>
                         </div>
-                        <div class="tabPage">
-                            계리직 탭컨텐츠
+                        <div class="tabPage"><!-- 강좌소개 tab -->
+                            <div class="tab_lecture">
+                                <div class="tabContent">
+                                    <ul class="tabBar tabLecture">
+                                        <li class="active"><a href="">동영상</a></li>
+                                        <li><a href="">학원</a></li>
+                                    </ul>
+                                    <!-- 동영상 -->
+                                    <div class="tabPage active">
+                                        <div class="typeSelect"></div>
+                                        <form>
+                                            <div class="lectureWrap">
+                                                <ul class="lectureTotal">
+                                                    <li class="left"></li>
+                                                    <li class="right">
+                                                        선택한 항목 <span class="colorRed">3</span>개를
+                                                        <a href="#" class="btn_m">장바구니 담기</a>
+                                                        <a href="#" class="btn_m on w120">바로구매</a>
+                                                    </li>
+                                                </ul>
+                                                <ul class="lectureHead">
+                                                    <li class="w15p">유형</li>
+                                                    <li class="w45p">강좌명</li>
+                                                    <li class="w40p">수강료</li>
+                                                </ul>
+                                                <div class="lectureBody" id="lectureBody"></div> <!-- 동영상 강좌 리스트 -->
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <!-- 학원 -->
+                                    <div class="tabPage">
+                                        <div class="typeSelect"></div>
+                                        <form>
+                                            <div class="lectureWrap">
+                                                <ul class="lectureTotal">
+                                                    <li class="left"></li>
+                                                    <li class="right">
+                                                        선택한 항목 <span class="colorRed">3</span>개를
+                                                        <a href="#" class="btn_m">장바구니 담기</a>
+                                                        <a href="#" class="btn_m on w120">바로구매</a>
+                                                    </li>
+                                                </ul>
+                                                <ul class="lectureHead">
+                                                    <li class="w15p">유형</li>
+                                                    <li class="w35p">강좌명</li>
+                                                    <li class="w40p">수강료</li>
+                                                    <li class="w10p">관심</li>
+                                                </ul>
+                                                <div class="lectureBody">
+                                                    <div class="lectureRow">
+                                                        <ul class="lectureList">
+                                                            <li class="w15p">
+                                                                <span class="btn_learnType green">이론</span>
+                                                            </li>
+                                                            <li class="w35p">
+                                                                <a href="#" class="learnName">2020 대비 안효선 국어 기본 + 심화 이론반 [9월 개강]</a>
+                                                                <span class="learnNum">수정기간 <b class="colorBlue">2020.09.02 ~ 2020.11.01 (2개월)</b></span>
+                                                            </li>
+                                                            <li class="w40p alignRight">
+                                                                <ul class="costList">
+                                                                    <li>
+                                                                        <span class="colorRed">20%</span>
+                                                                        <b class="cost">120,000원</b> <input type="checkbox" name="" value="">
+                                                                        <a href="#" class="btn_s">장바구니</a>
+                                                                        <a href="#" class="btn_s on">바로구매</a>
+                                                                    </li>
+                                                                </ul>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="lectureRow">
+                                                        <ul class="lectureList">
+                                                            <li class="w15p">
+                                                                <span class="btn_learnType gray">교재</span>
+                                                            </li>
+                                                            <li class="w35p">
+                                                                <span class="btn_ss btn_divTag">부교재</span>
+                                                                <a href="#" class="learnName">2020 지안국어 기본서(3권)</a>
+                                                                <span class="learnNum">저자 <b class="colorBlue">탑스팟</b> | 출판 <b class="colorBlue">2019.06.28</b></span>
+                                                            </li>
+                                                            <li class="w40p alignRight">
+                                                                <ul class="costList">
+                                                                    <li>
+                                                                        <span class="colorRed">20%</span>
+                                                                        <b class="cost">48,000원</b> <input type="checkbox" name="" value="">
+                                                                        <a href="#" class="btn_s">장바구니</a>
+                                                                        <a href="#" class="btn_s on">바로구매</a>
+                                                                    </li>
+                                                                </ul>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="lectureRow">
+                                                        <ul class="lectureList">
+                                                            <li class="w15p">
+                                                                <span class="btn_learnType purple">종합반</span>
+                                                            </li>
+                                                            <li class="w35p">
+                                                                <a href="#" class="learnName">2020 군무원 행정9급 대비 전과목 (국어+행정+정보) [9월]</a>
+                                                                <span class="learnNum">수정기간 <b class="colorBlue">2020.09.02 ~ 2020.11.01 (2개월)</b></span>
+                                                            </li>
+                                                            <li class="w40p alignRight">
+                                                                <ul class="costList">
+                                                                    <li>
+                                                                        <span class="colorRed">20%</span>
+                                                                        <b class="cost">120,000원</b> <input type="checkbox" name="" value="">
+                                                                        <a href="#" class="btn_s">장바구니</a>
+                                                                        <a href="#" class="btn_s on">바로구매</a>
+                                                                    </li>
+                                                                </ul>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="lectureRow">
+                                                        <ul class="lectureList">
+                                                            <li class="w15p">
+                                                                <span class="btn_learnType purple">종합반</span>
+                                                            </li>
+                                                            <li class="w35p">
+                                                                <a href="#" class="learnName">2020 행정직 9급대비 전과목 (공통 + 행정학 + 사회) 이론 종합반 [9월 개강]</a>
+                                                                <span class="learnNum">수정기간 <b class="colorBlue">2020.09.02 ~ 2020.11.01 (2개월)</b></span>
+                                                            </li>
+                                                            <li class="w40p alignRight">
+                                                                <ul class="costList">
+                                                                    <li>
+                                                                        <span class="colorRed">20%</span>
+                                                                        <b class="cost">120,000원</b> <input type="checkbox" name="" value="">
+                                                                        <a href="#" class="btn_s">장바구니</a>
+                                                                        <a href="#" class="btn_s on">바로구매</a>
+                                                                    </li>
+                                                                </ul>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="tabPage">
-                            전산직 탭컨텐츠
+                            학습안내
                         </div>
                         <div class="tabPage">
-                            토목직 탭컨텐츠
+                            학습 Q&A
                         </div>
                     </div>
                 </div>

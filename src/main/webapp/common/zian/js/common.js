@@ -94,13 +94,13 @@ $(function(){
 		checkBox.prop('checked', !checkBox.prop('checked'));
 	});
 
-	$(".toggleWrap > .btn_toggle").click(function(){
-		if($(this).parent().hasClass("active")){
-			$(this).parent().removeClass("active");
-		}else{
-			$(this).parent().addClass("active");
-		}
-	});
+	// $(".toggleWrap > .btn_toggle").click(function(){
+	// 	if($(this).parent().hasClass("active")){
+	// 		$(this).parent().removeClass("active");
+	// 	}else{
+	// 		$(this).parent().addClass("active");
+	// 	}
+	// });
 
 
 
