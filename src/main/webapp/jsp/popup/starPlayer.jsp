@@ -202,14 +202,12 @@
 
             //var url = "http://zianedu.star.skcdn.com/zian/korean/ahn/01_1911/191105_107422_01_H.mp4"
             var media = {
-                url : "http://zianedu.star.skcdn.com//topspot3/201602산업안전기사필기실기/필기/과년도 문제풀이 - 산업기사/1회/산업안전산업기사_2015_1회/sanup_pilgi_sanupgisa_2015_1_1.mp4",
+                //url : "http://zianedu.star.skcdn.com//topspot3/201602산업안전기사필기실기/필기/과년도 문제풀이 - 산업기사/1회/산업안전산업기사_2015_1회/sanup_pilgi_sanupgisa_2015_1_1.mp4",
                 //url: "<%=encrypt_url%>",
-                //url : "http://algisa.nptechnology.com:8000/file/sample.mp4",
+                url : "http://algisa.nptechnology.com:8000/file/sample.mp4",
                 autoPlay:true,
                 startTime: 0
             };
-            var targer = '<%=encrypt_url%>';
-            console.log(targer);
             player = new StarPlayer(config, media);
 
             player.onOpenStateChange = onOpenStateChange;
