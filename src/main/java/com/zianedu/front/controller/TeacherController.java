@@ -22,6 +22,8 @@ public class TeacherController {
             mvc.setViewName("/teacher/main");
         }else if("detail".equals(page_gbn)){
             mvc.setViewName("/teacher/detail");
+        }else if("referenceDetail".equals(page_gbn)){
+            mvc.setViewName("/teacher/referenceDetail");
         }
         return mvc;
     }

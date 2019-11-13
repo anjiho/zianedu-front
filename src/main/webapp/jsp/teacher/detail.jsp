@@ -27,15 +27,30 @@
         fn_search1('new');//학습안내 (학습공지) 리스트 불러오기
         fn_search('new');//학습안내 (학습자료실) 리스트 불러오기
 
+        $("#referenceList").show();
+        //$("#noticeList").show();
+
+        innerValue("divisionList", 0);
+
         innerHTML("selOnlineCount", 0);
         innerHTML("selAcaCount", 0);
-        $("input[name=selProduct]").click(function(index){
+        $("input[name=selProduct]").click(function(index){//체크박스 카운트 처리(학습자료실)
             var count = $("input[name=selProduct]:checkbox:checked").length;
             innerHTML("selOnlineCount", count);
         });
-        $("input[name=selAcaProduct]").click(function(index){
+        $("input[name=selAcaProduct]").click(function(index){//체크박스 카운트 처리(학습공지)
             var count = $("input[name=selAcaProduct]:checkbox:checked").length;
             innerHTML("selAcaCount", count);
+        });
+        $("#noticeBtn").click(function () {
+            $("#referenceDetail").hide();
+            $("#referenceList").hide();
+            $("#noticeList").show();
+            innerValue("divisionList", 1);
+        });
+        $("#referBtn").click(function () {
+            $("#referenceList").show();
+            innerValue("divisionList", 0);
         });
     });
 
@@ -63,6 +78,46 @@
         getTeacherReferenceRoom(teacherKey, sPage2, 10, searchType2,  searchText2, 1, 'dataList2');//학습안내 (학습자료실) 리스트 불러오기
     }
 
+    //학습안내 - 학습자료실 상세보기
+    function goDetailReference(bbsKey) {
+        var detailInfo = getTeacherReferenceRoomDetail(teacherKey, bbsKey);
+        $("#referenceDetail").show();
+        $("#referenceList").hide();
+        $("#noticeList").hide();
+        if(detailInfo != undefined){
+            console.log(detailInfo);
+            var referenceInfo = detailInfo.result.referenceRoomDetailInfo;
+            var prevNextBbsList = detailInfo.result.prevNextBbsList;
+            innerHTML("referenceTitle",referenceInfo.title);
+            innerHTML("referenceIndate",referenceInfo.indate);
+            innerHTML("referenceCount",referenceInfo.readCount);
+            innerHTML("referenceWriter",referenceInfo.userName);
+            innerHTML("referenceUserId",referenceInfo.userId);
+            innerHTML("referenceContent",referenceInfo.contents);
+            for(var i = 0;  i < prevNextBbsList.length; i++){ /* 이전글 다음글 기능 */
+                innerHTML("referenceNextTitle",prevNextBbsList[i].nextTitle);
+                innerHTML("referencePrevTitle",prevNextBbsList[i].prevTitle);
+                $("#referenceNextLink").attr("href", "javascript:goReferenceDetailPage("+ prevNextBbsList[i].nextBbsKey +");");
+                $("#referencePrevLink").attr("href", "javascript:goReferenceDetailPage("+ prevNextBbsList[i].prevBbsKey +");");
+            }
+        }
+    }
+
+    function goReferenceDetailPage(bbskey) {
+        //goDetailReference(bbsKey);
+    }
+
+    function goReferenceList(){
+        var val = getInputTextValue("divisionList");
+
+        if(val == 0){
+            $("#referenceDetail").hide();
+            $("#referenceList").show();
+        }else {
+            $("#referenceDetail").hide();
+            $("#noticeList").show();
+        }
+    }
 
     //단일 장바구니 이동
     function goShopBasket(gkey, priceKey) {
@@ -114,6 +169,7 @@
 </form>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
+    <input type="hidden" id="divisionList">
     <div id="wrap">
         <%@include file="/common/jsp/leftMenu.jsp" %>
         <!--상단-->
@@ -258,11 +314,11 @@
                             <div class="tab_learning">
                                 <div class="tabContent">
                                     <ul class="tabBar tabLecture">
-                                        <li class="active"><a href="#">학습자료실</a></li>
-                                        <li><a href="#">학습공지</a></li>
+                                        <li class="active"><a href="#" id="referBtn">학습자료실</a></li>
+                                        <li><a href="#" id="noticeBtn">학습공지</a></li>
                                     </ul>
                                     <!-- 학습자료실 -->
-                                    <div class="tabPage active">
+                                    <div class="tabPage" id="referenceList" style="display: none">
                                         <input type="hidden" id="sPage">
                                         <form>
                                             <ul class="searchArea">
@@ -299,7 +355,7 @@
                                         </div>
                                     </div>
                                     <!-- 학습공지 -->
-                                    <div class="tabPage">
+                                    <div class="tabPage" id="noticeList" style="display: none">
                                         <form>
                                             <input type="hidden" id="sPage2">
                                             <ul class="searchArea">
@@ -335,6 +391,61 @@
                                             <%@ include file="/common/inc/com_pageNavi2.inc" %>
                                         </div>
                                     </div>
+
+                                    <!-- 학습자료실 상세 시작-->
+                                    <div class="" id="referenceDetail" style="display: none;">
+                                        <br>
+                                        <br>
+                                        <div class="tableBox">
+                                            <table class="view">
+                                                <colgroup>
+                                                    <col class="w80p">
+                                                    <col class="w20p">
+                                                </colgroup>
+                                                <tbody>
+                                                <tr>
+                                                    <td class="bg_gray" id="referenceTitle"></td>
+                                                    <td class="bg_gray alignRight" id="referenceIndate"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2">작성자 : <span id="referenceWriter"></span> (<span id="referenceUserId"></span>) | 조회수 : <span id="referenceCount"></span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2">첨부파일 : <a href="#" class="iconFile" target="_blank" title="새창열림">보충자료.pdf</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2" class="textContent" id="referenceContent"></td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="btnArea right">
+                                            <a href="javascript:goReferenceList();" class="btn_m w140">목록으로</a>
+                                        </div>
+                                        <div class="tableBox">
+                                            <table class="view">
+                                                <colgroup>
+                                                    <col class="w15p">
+                                                    <col>
+                                                </colgroup>
+                                                <tbody>
+                                                <tr>
+                                                    <td class="linkPrev">윗글</td>
+                                                    <td><a href="" class="subject" id="referenceNextLink"><span id="referenceNextTitle"></span></a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="linkNext">아랫글</td>
+                                                    <td><a href="" class="subject" id="referencePrevLink"><span id="referencePrevTitle"></span></a></td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <!--//학습자료실 상세 끝-->
+
+
+
+
                                 </div>
                             </div>
                         </div>

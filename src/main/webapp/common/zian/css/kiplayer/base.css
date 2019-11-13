@@ -196,8 +196,8 @@ input.useMonthpicker{width:90px;background:#fff url(../../images/injeinc/bg_inpu
 .tableBox table.view td{padding:15px 35px;line-height:160%;color:#1b1b1b;}
 .tableBox table.view td.textContent{padding:65px 35px;line-height:160%;vertical-align:top;}
 .tableBox table.view td *{max-width:100%;}
-.tableBox table.view .linkPrev{background:url(../../images/site/icon_lecture_up.png) no-repeat 80% center;}
-.tableBox table.view .linkNext{background:url(../../images/site/icon_lecture_down.png) no-repeat 80% center;}
+.tableBox table.view .linkPrev{background:url(/common/zian/images/common/icon_lecture_up.png) no-repeat 80% center;}
+.tableBox table.view .linkNext{background:url(/common/zian/images/common/icon_lecture_down.png) no-repeat 80% center;}
 .tableBox table.view .bg_gray{background-color:#ebebeb;}
 .tableBox table.view .iconLock{padding-left:25px;background:url(../../images/common/icon_lock.png) no-repeat left center;}
 .tableBox table.view .iconFile{display:inline-block;padding-right:20px;background:url(../../images/common/icon_file.png) no-repeat right center;}
