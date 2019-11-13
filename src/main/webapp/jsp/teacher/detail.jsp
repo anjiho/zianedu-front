@@ -85,7 +85,6 @@
         $("#referenceList").hide();
         $("#noticeList").hide();
         if(detailInfo != undefined){
-            console.log(detailInfo);
             var referenceInfo = detailInfo.result.referenceRoomDetailInfo;
             var prevNextBbsList = detailInfo.result.prevNextBbsList;
             innerHTML("referenceTitle",referenceInfo.title);
@@ -93,7 +92,28 @@
             innerHTML("referenceCount",referenceInfo.readCount);
             innerHTML("referenceWriter",referenceInfo.userName);
             innerHTML("referenceUserId",referenceInfo.userId);
-            innerHTML("referenceContent",referenceInfo.contents);
+
+            var detailInfoStr = JSON.stringify(detailInfo);
+            var detailInfoStrObj = JSON.parse(detailInfoStr);
+            var contentsObj = detailInfoStrObj.result.referenceRoomDetailInfo.contents;
+            var contentsStr = JSON.stringify(contentsObj);
+            var contentsStrRep = contentsStr.replace(/['"]+/g, '');
+            var contentsStrRep3 = contentsStrRep.replace(/\\n/g,'');   //역슬러쉬 제거하기
+            var contentsStrRep4 = contentsStrRep3.replace(/\\r/g,'');   //역슬러쉬 제거하기
+            var contentsStrRep5 = contentsStrRep4.replace(/\\/gi, "");   //역슬러쉬 제거하기
+            var contentsHTML = $.parseHTML(contentsStrRep5);
+            var contents = null;
+            var findString = "&lt";
+            //HTML 포함 여부 화인
+            if(detailInfoStr.indexOf(findString) != -1) {
+                contents = contentsHTML[0].data.replace("rn", "");
+            } else {
+                contents = contentsHTML;
+            }
+            //봄문 내용 파징작업 끝
+            innerHTML("referenceContent", contents);
+
+
             for(var i = 0;  i < prevNextBbsList.length; i++){ /* 이전글 다음글 기능 */
                 innerHTML("referenceNextTitle",prevNextBbsList[i].nextTitle);
                 innerHTML("referencePrevTitle",prevNextBbsList[i].prevTitle);
