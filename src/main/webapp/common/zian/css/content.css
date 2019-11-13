@@ -14,9 +14,9 @@
 .loginWrap .loginSns:after{display:block;content:'';clear:both;}
 .loginWrap .loginSns b{display:block;margin-bottom:20px;font-size:20px;font-weight:bold;color:#444;text-align:center;}
 .loginWrap .loginSns a{display:;padding-left:70px;width:245px;height:65px;font-size:15px;color:#999;line-height:63px;border:1px #e5e5e5 solid;background:#fff;box-sizing:border-box;}
-.loginWrap .loginSns a.btn_loginNaver{float:left;background:url(../images/common/btn_loginNaver.png) no-repeat 20px center;}
+.loginWrap .loginSns a.btn_loginNaver{float:left;background:url(/common/zian/images/common/btn_loginNaver.png) no-repeat 20px center;}
 .loginWrap .loginSns a.btn_loginNaver:hover{color:#4ec513;border-color:#4ec513;}
-.loginWrap .loginSns a.btn_loginKakao{float:right;background:url(../images/common/btn_loginKakao.png) no-repeat 20px center;}
+.loginWrap .loginSns a.btn_loginKakao{float:right;background:url(/common/zian/images/common/btn_loginKakao.png) no-repeat 20px center;}
 .loginWrap .loginSns a.btn_loginKakao:hover{color:#cfb800;border-color:#f5df34;}
 .loginWrap .loginBanner img{width:100%;}
 
@@ -25,23 +25,23 @@
 .joinWrap .statusBar{display:block;margin-bottom:45px;border-bottom:1px #e5e5e5 solid;}
 .joinWrap .statusBar:after{display:block;content:'';clear:both;}
 .joinWrap .statusBar li{display:block;position:relative;float:left;width:33.3333%;height:70px;font-size:20px;font-weight:bold;color:#999;text-align:center;line-height:70px;}
-.joinWrap .statusBar li:after{display:block;content:'';position:absolute;top:50%;right:-5px;margin-top:-10px;width:10px;height:20px;background:url(../images/common/icon_statusBar.png) no-repeat center center;}
+.joinWrap .statusBar li:after{display:block;content:'';position:absolute;top:50%;right:-5px;margin-top:-10px;width:10px;height:20px;background:url(/common/zian/images/common/icon_statusBar.png) no-repeat center center;}
 .joinWrap .statusBar li.last:after{display:none;}
 .joinWrap .statusBar li label{font-size:24px;}
 .joinWrap .statusBar li b{font-size:20px;}
 .joinWrap .statusBar li.active{color:#000;}
 .joinWrap .statusBar li.active label{color:#134c97;}
 .joinWrap .statusBar li.active b{color:#000;}
-.joinWrap .statusBar li.active:after{background:url(../images/common/icon_statusBar_active.png) no-repeat center center;}
+.joinWrap .statusBar li.active:after{background:url(/common/zian/images/common/icon_statusBar_active.png) no-repeat center center;}
 .joinWrap .joinAgreeAll{position:relative;padding:30px 25px;font-size:15px;background:#e5e5e5;font-weight:bold;}
 .joinWrap .joinAgreeAll input[type='checkbox']{position:absolute;top:30px;right:25px;}
 .joinWrap .joinAgree{position:relative;padding:25px 25px 25px 10px;border-bottom:1px #e5e5e5 solid;}
 .joinWrap .joinAgree label{font-size:17px;color:#666;cursor:pointer;}
 .joinWrap .joinAgree b{color:#134c97;}
-.joinWrap .joinAgree b:after{display:inline-block;content:'';clear:both;width:11px;height:6px;margin-left:5px;background:url(../images/common/icon_down_blue.png) no-repeat center center;}
+.joinWrap .joinAgree b:after{display:inline-block;content:'';clear:both;width:11px;height:6px;margin-left:5px;background:url(/common/zian/images/common/icon_down_blue.png) no-repeat center center;}
 .joinWrap .joinAgree input[type='checkbox']{position:absolute;top:25px;right:25px;}
 .joinWrap .joinAgree p{display:none;margin:20px 0 0 15px;padding:15px;height:100px;font-size:13px;color:#666;border:1px #e5e5e5 solid;white-space:pre-line;overflow-y:auto;}
-.joinWrap .joinAgree.active b:after{background:url(../images/common/icon_up_blue.png) no-repeat center center;}
+.joinWrap .joinAgree.active b:after{background:url(/common/zian/images/common/icon_up_blue.png) no-repeat center center;}
 .joinWrap .joinAgree.active p{display:block;}
 .joinWrap .tableBox table.form input[type='text'], 
 .joinWrap .tableBox table.form select{min-width:150px;}
@@ -70,31 +70,29 @@
 .teacherThumb > li .link_home,
 .teacherThumb > li .link_comment{display:block;width:100%;height:40px;line-height:40px;position:absolute;bottom:0;font-size:12px;text-align:center;border-top:1px #e5e5e5 solid;background-color:#fff;}
 .teacherThumb > li .link_home{left:0;}
-.teacherThumb > li .link_home:before{display:inline-block;content:'';clear:both;vertical-align:sub;width:14px;height:14px;margin-right:5px;background:url(../images/common/icon_home.png) no-repeat center center;}
+.teacherThumb > li .link_home:before{display:inline-block;content:'';clear:both;vertical-align:sub;width:14px;height:14px;margin-right:5px;background:url(/common/zian/images/common/icon_home.png) no-repeat center center;}
 .teacherThumb > li .link_home:after{display:block;content:'';clear:both;width:1px;position:absolute;top:0;right:0;bottom:0;background-color:#e5e5e5;}
 .teacherThumb > li .link_comment{right:0;}
-.teacherThumb > li .link_comment:before{display:inline-block;content:'';clear:both;vertical-align:sub;width:14px;height:14px;margin-right:5px;background:url(../images/common/icon_comment.png) no-repeat center center;}
+.teacherThumb > li .link_comment:before{display:inline-block;content:'';clear:both;vertical-align:sub;width:14px;height:14px;margin-right:5px;background:url(/common/zian/images/common/icon_comment.png) no-repeat center center;}
 
 /* 교수소개 > 상세 */
 .teacherView{overflow:hidden;}
 .teacherView .lectureWrap{margin-top:0;}
-.btn_quality{width:80px;border:1px solid #313131;color:#fff;background-color:#313131;}
-.btn_quality.on{border:1px solid #134c97;background-color:#134c97;}
 
 .teacherInfo{border:1px #e5e5e5 solid;border-bottom:0;}
 .teacherInfo:after{display:block;content:'';clear:both;}
 .teacherInfo .thumb,
 .teacherInfo .info{float:left;width:50%;height:520px;position:relative;}
 .teacherInfo .thumb img{display:block;position:absolute;left:0;bottom:0;}
-.teacherInfo .thumb .btn_teacherThumb{display:inline-block;height:30px;line-height:28px;padding:0 30px 0 50px;position:absolute;bottom:20px;left:20px;color:#fff;background:#134c97 url(../images/common/icon_arrow_prev.png) no-repeat 14px center;border-radius:15px;}
+.teacherInfo .thumb .btn_teacherThumb{display:inline-block;height:30px;line-height:28px;padding:0 30px 0 50px;position:absolute;bottom:20px;left:20px;color:#fff;background:#134c97 url(/common/zian/images/common/icon_arrow_prev.png) no-repeat 14px center;border-radius:15px;}
 .teacherInfo .info .category{display:block;margin-top:30px;font-size:30px;}
 .teacherInfo .info .name{display:block;margin-top:10px;font-size:30px;}
 .teacherInfo .info .name b{font-size:46px;}
 .teacherInfo .info .infoText{display:block;margin-top:10px;font-size:18px;}
 .teacherInfo .info .profile{width:338px;margin-top:20px;position:absolute;border:1px #e5e5e5 solid;background-color:#fff;z-index:9;}
-.teacherInfo .info .profile > dt{display:block;height:28px;line-height:28px;text-align:center;font-size:16px;font-weight:bold;background:url(../images/common/icon_arrowDown.png) no-repeat 95% center;cursor:pointer;}
+.teacherInfo .info .profile > dt{display:block;height:28px;line-height:28px;text-align:center;font-size:16px;font-weight:bold;background:url(/common/zian/images/common/icon_arrowDown.png) no-repeat 95% center;cursor:pointer;}
 .teacherInfo .info .profile > dd{display:none;height:160px;padding:20px 25px;line-height:160%;font-size:12px;border-top:1px #e5e5e5 solid;overflow-y:auto;}
-.teacherInfo .info .profile.active > dt{background:url(../images/common/icon_arrowUp.png) no-repeat 95% center;}
+.teacherInfo .info .profile.active > dt{background:url(/common/zian/images/common/icon_arrowUp.png) no-repeat 95% center;}
 .teacherInfo .info .profile.active > dd{display:block;}
 .teacherInfo .info .teacherInfoTab{width:340px;margin-top:100px;}
 .teacherInfo .info .teacherInfoTab .tabBar{height:30px;margin-bottom:0;border:0;}
@@ -135,8 +133,15 @@
 .tabBar.tabLecture > li > a{height:46px;line-height:46px;color:#000;font-size:16px;text-align:center;border:1px solid #e5e5e5;}
 .tabBar.tabLecture > li.active > a{color:#fff;border:1px solid #144b95;background-color:#144b95;}
 
+
+.lectureWrap .btn_s{height:28px;line-height:26px;}
+.lectureWrap .btn_quality{width:80px;border:1px solid #313131;color:#fff;background-color:#313131;}
+.lectureWrap .btn_quality:before{display:inline-block;content:'';clear:both;width:15px;height:11px;background:url(/common/zian/images/common/icon_arrowRight2.png) no-repeat left center;}
+.lectureWrap .btn_quality.on{border:1px solid #134c97;background-color:#134c97;}
+.lectureWrap .btn_divTag{font-size:14px;}
+
+
 .typeSelect{padding:10px 0 50px;text-align:center;border-left:1px #e5e5e5 solid;border-right:1px #e5e5e5 solid;}
-.btn_quality:before{display:inline-block;content:'';clear:both;width:15px;height:11px;background:url(../images/common/icon_arrowRight.png) no-repeat left top;}
 .btn_divTag{font-size:14px;}
 .btn_learnType{display:inline-block;min-width:106px;height:33px;line-height:33px;margin:0 5px;text-align:center;border-radius:16px;color:#fff;font-size:14px;}
 .btn_learnType.green{background-color:#00a651;}
@@ -147,10 +152,10 @@
 .btn_learnType.gray{background-color:#636363;}
 
 .toggleWrap{position:relative;}
-.toggleWrap > .btn_toggle{display:block;height:30px;background:url(../images/common/icon_lecture_down.png) no-repeat center center;cursor:pointer;}
+.toggleWrap > .btn_toggle{display:block;height:30px;background:url(/common/zian/images/common/icon_lecture_down.png) no-repeat center center;cursor:pointer;}
 .toggleWrap > .btn_toggle.lock{position:absolute;top:-30px;left:0;right:0;}
 .toggleWrap > .div_toggle{display:none;}
-.toggleWrap.active > .btn_toggle{background:url(../images/common/icon_lecture_up.png) no-repeat center center;}
+.toggleWrap.active > .btn_toggle{background:url(/common/zian/images/common/icon_lecture_up.png) no-repeat center center;}
 .toggleWrap.active > .div_toggle{display:block;}
 
 .lectureWrap{margin-top:40px;border-top:1px #e5e5e5 solid;}
@@ -194,15 +199,15 @@
 .lectureWrap ul.costList > li{padding:2px;}
 
 
-.tab_qna .tableBox table.form .for_fileBtn{float:left;display:inline-block;width:140px;height:36px;line-height:34px;padding-left:40px;margin-left:0;color:#fff;font-size:16px;background:#000 url(../../images/common/icon_upload.png) no-repeat 10px center;}
+.tab_qna .tableBox table.form .for_fileBtn{float:left;display:inline-block;width:140px;height:36px;line-height:34px;padding-left:40px;margin-left:0;color:#fff;font-size:16px;background:#000 url(..//common/zian/images/common/icon_upload.png) no-repeat 10px center;}
 .tab_qna .tableBox table.form .fileBtn.noline + span > input[type='text'].noline{min-width:50%;border:1px solid #fff;}
 .boardWrap .tableBox table.form .for_fileBtn{float:left;display:inline-block;width:110px;height:45px;margin-left:0;color:#444;line-height:43px;background:#fff;border:1px #aeaeae solid;}
 .boardWrap .tableBox table.form .fileBtn.noline + span > input[type='text'].noline{min-width:50%;border:0px none;display: none;}
 
 .wishGroup{display:inline-block;position:relative;height:20px;vertical-align:middle;box-sizing:border-box;overflow:hidden;}
 .wishGroup input[type='checkbox']{position:absolute;top:-9999px;}
-.wishGroup label{display:block;float:left;width:20px;height:20px;background:url(../images/common/btn_star_off.png) no-repeat center center;cursor:pointer;box-sizing:border-box;}
-.wishGroup input:checked + label{background:url(../images/common/btn_star_on.png) no-repeat center center;}
+.wishGroup label{display:block;float:left;width:20px;height:20px;background:url(/common/zian/images/common/btn_star_off.png) no-repeat center center;cursor:pointer;box-sizing:border-box;}
+.wishGroup input:checked + label{background:url(/common/zian/images/common/btn_star_on.png) no-repeat center center;}
 
 .selectArea{margin-top:20px;border:1px #e5e5e5 solid;}
 .selectArea dl{padding:30px 40px 0;}
@@ -213,17 +218,17 @@
 .selectArea ul > li > a{display:block;height:40px;line-height:40px;margin:8px;border:1px #000 solid;color:#000;text-align:center;font-weight:bold;}
 .selectArea ul > li > a.active{border:1px #144b95 solid;color:#fff;background-color:#144b95;}
 .selectArea .btn_release{width:220px;height:40px;line-height:40px;font-weight:bold;}
-.selectArea .btn_release:before{display:inline-block;content:'';clear:both;width:24px;height:15px;vertical-align:middle;background:url(../images/common/icon_release.png) no-repeat left center;}
+.selectArea .btn_release:before{display:inline-block;content:'';clear:both;width:24px;height:15px;vertical-align:middle;background:url(/common/zian/images/common/icon_release.png) no-repeat left center;}
 
 .zianPass{position:relative;}
-.zianPass:before{display:block;content:'';clear:both;position:absolute;top:0;left:0;right:0;min-height:820px;background:#2b80fd url(../images/content/bg_zian.jpg) no-repeat center top;z-index:-1;}
+.zianPass:before{display:block;content:'';clear:both;position:absolute;top:0;left:0;right:0;min-height:820px;background:#2b80fd url(/common/zian/images/content/bg_zian.jpg) no-repeat center top;z-index:-1;}
 .zianPass:after{display:block;content:'';clear:both;height:35px;background-color:#b8ff99;}
 
 .zianPass .tabContent{padding:413px 110px 0;}
 .zianPass .tabBar{height:auto;margin:0;}
 .zianPass .tabBar > li{width:25%;margin-right:0;position:relative;}
-.zianPass .tabBar > li:before{display:block;content:'';clear:both;height:30px;position:absolute;top:0;left:0;right:0;background:url(../images/common/icon_arrow_zian.gif) no-repeat center top;}
-.zianPass .tabBar > li.active:before{top:-25px;background:url(../images/common/icon_arrow_zian_on.gif) no-repeat center top;}
+.zianPass .tabBar > li:before{display:block;content:'';clear:both;height:30px;position:absolute;top:0;left:0;right:0;background:url(/common/zian/images/common/icon_arrow_zian.gif) no-repeat center top;}
+.zianPass .tabBar > li.active:before{top:-25px;background:url(/common/zian/images/common/icon_arrow_zian_on.gif) no-repeat center top;}
 .zianPass .tabBar > li > a{height:60px;padding-top:10px;margin-top:34px;line-height:120%;font-weight:bold;text-align:center;font-size:20px;color:#abc6fd;background-color:#fff;border:0;}
 .zianPass .tabBar > li.active > a{height:84px;padding-top:20px;margin-top:0px;font-size:30px;color:#2d81fb;background-color:#b8ff99;}
 .zianPass .tabPage{min-height:500px;}
@@ -246,8 +251,8 @@
 .zianPass dl > dd > ul > li{float:left;}
 .zianPass dl > dd > ul.cols3{padding:40px;}
 .zianPass dl > dd > ul.cols3 > li{font-size:14px;font-weight:bold;}
-.zianPass dl > dd > ul.cols3 > li.col1{width:40%;padding-top:140px;background:url(../images/content/img_zian02.gif) no-repeat center top;font-size:20px;letter-spacing:-1px;}
-.zianPass dl > dd > ul.cols3 > li.col2{width:36%;padding-top:140px;background:url(../images/content/img_zian03.gif) no-repeat center top;font-size:32px;text-align:center;letter-spacing:-1px;}
+.zianPass dl > dd > ul.cols3 > li.col1{width:40%;padding-top:140px;background:url(/common/zian/images/content/img_zian02.gif) no-repeat center top;font-size:20px;letter-spacing:-1px;}
+.zianPass dl > dd > ul.cols3 > li.col2{width:36%;padding-top:140px;background:url(/common/zian/images/content/img_zian03.gif) no-repeat center top;font-size:32px;text-align:center;letter-spacing:-1px;}
 .zianPass dl > dd > ul.cols3 > li.col3{width:24%;padding-top:30px;text-align:center;}
 .zianPass dl > dd > ul.cols3 > li.col3 .btn_click{display:inline-block;width:120px;padding:35px 0;line-height:150%;font-size:16px;text-align:center;color:#fff;background-color:#2b80fd;}
 .zianPass dl > dd > ul.cols3 > li .unit{padding-left:2px;font-size:14px;}
@@ -265,12 +270,12 @@
 .zianPass dl > dd > ul.cols4 > li.col3:before{content:'STEP3';}
 .zianPass dl > dd > ul.cols4 > li.col4:before{content:'STEP4';right:-1px;}
 .zianPass dl > dd > ul.cols4 > li > ul{margin:20px 0;}
-.zianPass dl > dd > ul.cols4 > li > ul > li{padding:15px 0 15px 15px;line-height:130%;background:url(../images/content/img_zian06.gif) no-repeat left 18px;text-align:left;letter-spacing:-1px;}
+.zianPass dl > dd > ul.cols4 > li > ul > li{padding:15px 0 15px 15px;line-height:130%;background:url(/common/zian/images/content/img_zian06.gif) no-repeat left 18px;text-align:left;letter-spacing:-1px;}
 .zianPass dl .btn_link{display:block;height:50px;line-height:50px;position:relative;text-align:center;font-size:18px;font-weight:bold;color:#fff;background:#2b80fd;}
 .zianPass dl .btn_link:before,
 .zianPass dl .btn_link:after{display:block;content:'';clear:both;width:80px;height:50px;position:absolute;top:0;}
-.zianPass dl .btn_link:before{left:0;background:url(../images/content/img_zian04.gif) no-repeat right center;}
-.zianPass dl .btn_link:after{right:0;background:url(../images/content/img_zian05.gif) no-repeat left center;}
+.zianPass dl .btn_link:before{left:0;background:url(/common/zian/images/content/img_zian04.gif) no-repeat right center;}
+.zianPass dl .btn_link:after{right:0;background:url(/common/zian/images/content/img_zian05.gif) no-repeat left center;}
 
 .tabBox{display:block;margin:45px auto;width:640px;border-top:2px #000000 solid;border-left:1px #e5e5e5 solid;}
 .tabBox:after{display:block;content:'';clear:both;}
@@ -348,8 +353,8 @@
 .calendarWrap .calendarBox{margin:20px auto;padding:20px 80px;width:740px;background:#fcfbfb;border:1px #e7e7e7 solid;box-sizing:border-box;}
 .calendarWrap .calendarBox .calendarHeader{padding:20px 0;line-height:30px;text-align:center;}
 .calendarWrap .calendarBox .calendarHeader h6{display:inline-block;padding:0 20px;font-size:24px;font-weight:800;color:#000;vertical-align:middle;}
-.calendarWrap .calendarBox .calendarHeader a.btn_monthPrev{display:inline-block;width:40px;height:30px;text-indent:-9999em;background:url(../images/common/btn_monthPrev.png) no-repeat center center;vertical-align:middle;}
-.calendarWrap .calendarBox .calendarHeader a.btn_monthNext{display:inline-block;width:40px;height:30px;text-indent:-9999em;background:url(../images/common/btn_monthNext.png) no-repeat center center;vertical-align:middle;}
+.calendarWrap .calendarBox .calendarHeader a.btn_monthPrev{display:inline-block;width:40px;height:30px;text-indent:-9999em;background:url(/common/zian/images/common/btn_monthPrev.png) no-repeat center center;vertical-align:middle;}
+.calendarWrap .calendarBox .calendarHeader a.btn_monthNext{display:inline-block;width:40px;height:30px;text-indent:-9999em;background:url(/common/zian/images/common/btn_monthNext.png) no-repeat center center;vertical-align:middle;}
 .calendarWrap .calendarBox .calendarTable{}
 .calendarWrap .calendarBox .calendarTable table{width:100%;font-size:17px;border:0px none;}
 .calendarWrap .calendarBox .calendarTable table th{height:50px;font-weight:bold;color:#262626;text-align:center;border:0px none;}

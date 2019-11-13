@@ -117,7 +117,6 @@ function getNoticeList(sPage, listLimit, bbsMaterKey, searchType, searchText) {
     var paging = new Paging();
 
     dwr.util.removeAllRows("dataList"); //테이블 리스트 초기화
-    //gfn_emptyView("H", "");//페이징 예외사항처리
 
     var data = {
         sPage : sPage,
@@ -126,12 +125,12 @@ function getNoticeList(sPage, listLimit, bbsMaterKey, searchType, searchText) {
         searchText : searchText
     };
 
-    var InfoList = getPageApi("/board/getNoticeList/", bbsMaterKey, data);
-    var cnt = InfoList.cnt;
-    if (InfoList.result.length > 0) {
+    var infoList = getPageApi("/board/getNoticeList/", bbsMaterKey, data);
+    var cnt = infoList.cnt;
+    if (infoList.result.length > 0) {
         paging.count(sPage, cnt, '10', '10', comment.blank_list);
         var listNum = ((cnt-1)+1)-((sPage-1)*10); //리스트 넘버링
-        var selList = InfoList.result;
+        var selList = infoList.result;
         for(var i=0; i < selList.length; i++){
             var cmpList = selList[i];
             if (cmpList != undefined) {
@@ -154,13 +153,6 @@ function getNoticeList(sPage, listLimit, bbsMaterKey, searchType, searchText) {
                 });
             }
         }
-        /*dwr.util.addRows("dataList", selList, [
-            function(data) {return listNum--;},
-            function(data) {return "<a href='javascript:void(0);' onclick='goDetailNotice("+ data.bbsKey +");'>" + gfn_substr(data.title, 0, 37) + "</a>";},
-            function(data) {return data.writerName;},
-            function(data) {return data.createDate;},
-            function(data) {return data.readCount;},
-        ], {escapeHtml:false});*/
     }
 }
 
