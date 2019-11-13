@@ -1,15 +1,3 @@
-//강사소개 > 학원 강좌 정보
-function getTeacherAcademyLecture(teacherKey, stepCtgKey) {
-    if (teacherKey == null || teacherKey == undefined) return;
-    var data = {
-        stepCtgKey: stepCtgKey
-    };
-    var InfoList = getApi("/teacher/getTeacherAcademyLecture/", teacherKey, data);
-    if (InfoList.result.length > 0) {
-        var selList = InfoList.result;
-    }
-}
-
 //강사 홈 정보
 function getTeacherHomeInfo(teacherKey, device, menuCtgKey, listLimit) {
     if (teacherKey == null || teacherKey == undefined) return;
@@ -134,6 +122,94 @@ function getTeacherVideoAcademyProductList(teacherKey) {
     }
 }
 
+//강사소개 > 학원 강좌 정보
+function getTeacherAcademyLecture(teacherKey, stepCtgKey) {
+    if (teacherKey == null || teacherKey == undefined) return;
+    if (stepCtgKey == null || stepCtgKey == undefined) return;
+    var data = {
+        stepCtgKey: stepCtgKey
+    };
+    var infoList = getApi("/teacher/getTeacherAcademyLecture/", teacherKey, data);
+    if (infoList != null) {
+        if (infoList.result.length > 0) {
+            var selList = infoList.result;
+            for (var i = 0; i < selList.length; i++) {
+                var cmpList = selList[i];
+                if(cmpList.teacherAcademyList.length > 0){
+                    console.log(cmpList.teacherAcademyList);
+                    var lecList = cmpList.teacherAcademyList;
+                    for(var j = 0; j < lecList.length; j++){
+                        var returnHtml = '<div class="lectureRow">';
+                        returnHtml += ' <ul class="lectureList">';
+                        returnHtml += '<li class="w15p">';
+                        if (cmpList.stepCtgKey == 203) {
+                            returnHtml += '<span class="btn_learnType green">이론</span>';
+                        }else if(cmpList.stepCtgKey == 767){
+                            returnHtml += '<span class="btn_learnType purple">종합반</span>';
+                        }else if(cmpList.stepCtgKey == 205){
+                            returnHtml += '<span class="btn_learnType orange">문제풀이</span>';
+                        }else if(cmpList.stepCtgKey == 204){
+                            returnHtml += '<span class="btn_learnType blue">단과특강</span>';
+                        }else if(cmpList.stepCtgKey == 774){
+                            returnHtml += '<span class="btn_learnType navy">아침특강</span>';
+                        }
+                        returnHtml += '</li>';
+                        returnHtml += '<li class="w45p">';
+                        returnHtml += '<a href="#" class="learnName">'+ lecList[j].goodsName +'</a>';
+                        returnHtml += '<span class="learnNum">수강기간 <b class="colorBlue">'+ lecList[j].lectureDate +' ('+ lecList[j].kind +'개월)</b></span>';
+                        returnHtml += '</li>';
+                        returnHtml += '<li class="w40p alignRight">';
+                        returnHtml += '<ul class="costList">';
+                        returnHtml += '<li>';
+                        if(lecList[j].discountPercent != null){
+                            returnHtml += '<span class="colorRed">'+ lecList[j].discountPercent +'</span>';
+                        }
+                        returnHtml += '<b class="cost">'+ lecList[j].sellPriceName +'원</b> <input type="checkbox" name="selAcaProduct" id="'+ lecList[j].priceKey +'" value="'+ lecList[j].gkey +'">';
+                        returnHtml += "<a href='javascript:goShopBasket(" + lecList[j].gkey + "," + lecList[j].priceKey + ");' class='btn_s'>장바구니</a>";
+                        returnHtml += '<a href="#" class="btn_s on">바로구매</a>';
+                        returnHtml += '</li>';
+                        returnHtml += '</ul>';
+                        returnHtml += '</li>';
+                        returnHtml += '</ul>';
+                        returnHtml += '</div>';
+                        $("#lecAcaBody").append(returnHtml);
+                        /* 교재 */
+                        var returnBookHtml = '';
+                        if (lecList[j].teacherLectureBook.length > 0) {
+                            console.log(lecList[j].teacherLectureBook);
+                            for (var b = 0; b < lecList[j].teacherLectureBook.length; b++) {
+                                var lecBook = lecList[j].teacherLectureBook[b];
+                                returnBookHtml = "<div class=\"lectureRow\">";
+                                returnBookHtml += '<ul class="lectureList">';
+                                returnBookHtml += "<li class='w15p'>";
+                                    returnBookHtml += "<span class='btn_learnType gray'>교재</span>";
+                                returnBookHtml += '</li>';
+                                returnBookHtml += '<li class="w45p">';
+                                    returnBookHtml += '<span class="btn_ss btn_divTag">부교재</span>';
+                                    returnBookHtml += '<a href="#" class="learnName">'+ lecBook.bookName +'</a>';
+                                    returnBookHtml += '<span class="learnNum">저자 <b class="colorBlue">'+ lecBook.writer +'</b> | 출판 <b class="colorBlue">'+ lecBook.publishDate +'</b></span>';
+                                returnBookHtml += '</li>';
+                                returnBookHtml += '<li class="w40p alignRight">';
+                                    returnBookHtml += '<ul class="costList">';
+                                         returnBookHtml += '<li>';
+                                             returnBookHtml += '<span class="colorRed">'+ lecBook.discountPercent +'</span>';
+                                             returnBookHtml += '<b class="cost">'+ lecBook.sellPriceName +'원</b> <input type="checkbox"  name="selAcaProduct" id="'+lecBook.priceKey +'" value="'+ lecBook.gkey +'">';
+                                             returnBookHtml += "<a href='javascript:goShopBasket(" + lecBook.gkey + "," +lecBook.priceKey + ");' class='btn_s'>장바구니</a>";
+                                             returnBookHtml += '<a href="#" class="btn_s on">바로구매</a>';
+                                         returnBookHtml += '</li>';
+                                     returnBookHtml += '</ul>';
+                                returnBookHtml += '</li>';
+                                returnBookHtml += '</ul>';
+                                returnBookHtml += '</div>';
+                            }
+                            $("#lecAcaBody").append(returnBookHtml);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
 
 //강사소개 > 동영상 강좌 정보
 function getTeacherVideoLecture(teacherKey, device, stepCtgKey) {
@@ -143,7 +219,6 @@ function getTeacherVideoLecture(teacherKey, device, stepCtgKey) {
         stepCtgKey: stepCtgKey,
         device: device
     };
-
     var infoList = getApi("/teacher/getTeacherVideoLecture/", teacherKey, data);
     if (infoList != null) {
         if (infoList.result.length > 0) {
@@ -165,6 +240,8 @@ function getTeacherVideoLecture(teacherKey, device, stepCtgKey) {
                             retrunHtml += "<span class=\"btn_learnType purple\">모의고사</span>";
                         } else if (cmpList.stepCtgKey == 4266) {
                             retrunHtml += " <span class=\"btn_learnType blue\">단과특강</span>";
+                        }else if (cmpList.stepCtgKey == 4172) {
+                            retrunHtml += " <span class=\"btn_learnType navy\">필기대비</span>";
                         }
 
                         retrunHtml += '</li>';
@@ -239,7 +316,7 @@ function getTeacherVideoLecture(teacherKey, device, stepCtgKey) {
                             retrunHtml += '</div>';
                         }
                         retrunHtml += '</div>';
-                        $("#lectureBody").append(retrunHtml);
+                        $("#lecOnlineBody").append(retrunHtml);
                         /* 교재 */
                         var returnBookHtml = '';
                         if (lecList[j].teacherLectureBook.length > 0) {
@@ -266,7 +343,7 @@ function getTeacherVideoLecture(teacherKey, device, stepCtgKey) {
                                 returnBookHtml += '</li>';
                                 returnBookHtml += '</div>';
                             }
-                            $("#lectureBody").append(returnBookHtml);
+                            $("#lecOnlineBody").append(returnBookHtml);
                         }
                     }
                 }
