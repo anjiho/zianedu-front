@@ -1,200 +1,338 @@
-<%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
-<%@include file="/common/jsp/common.jsp" %>
+<%--<%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>--%>
+<%--<%@include file="/common/jsp/common.jsp" %>--%>
+<%--<%--%>
+<%--    String starPlayerFilePath = request.getParameter("a_strPlayer_FilePath");--%>
+<%--    String starPlayerTitle = request.getParameter("a_strPlayer_Title");--%>
+<%--    String starPlayerHigh = request.getParameter("a_bPlayer_High");--%>
+<%--%>--%>
+<%--<script>--%>
+
+<%--</script>--%>
+<%--<form name="frm" method="get">--%>
+<%--    <input type="hidden" name="page_gbn" id="page_gbn">--%>
+<%--    <%=starPlayerFilePath%><br>--%>
+<%--    <%=starPlayerTitle%><br>--%>
+<%--    <%=starPlayerHigh%><br>--%>
+<%--</form>--%>
+<%--</body>--%>
+<%--</html>--%>
+<%@ page import="com.zianedu.front.axis.security.*" %>
 <%
-    String bbsKey = request.getParameter("bbsKey");
+    response.addHeader("Cache-Control", "no-cache");
 %>
-<script>
-    // 특수 문자가 있나 없나 체크
-    function checkSpecial(str) {
-        var special_pattern = /(?:\\[rn]|[\r\n]+)+/g;
-        if(special_pattern.test(str) == true) {
-            return true;
-        } else {
+<%
+    String targetUrl = "http://zianedu.star.skcdn.com/zian/korean/ahn/01_1911/191105_107422_01_H.mp4";
+    String url = request.getParameter(targetUrl);
+    StringEncrypter encrypter = new StringEncrypter("axissoft", "starplayer");
+    String encrypt_url= encrypter.encrypt(url);
+%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Script-Type" content="text/javascript" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta http-equiv="X-UA-Compatible" content="requiresActiveX=true"/>
+    <title>StarPlayer@Axissoft2</title>
+    <link type="text/css" href="/common/starplayer/css/starplayer.css" rel="stylesheet" />
+    <script type="text/javascript" src="/common/starplayer/js/jquery-1.6.2.min.js"></script>
+    <script type="text/javascript" src="/common/starplayer/js/starplayer_config.js"></script>
+    <script type="text/javascript" src="/common/starplayer/js/starplayer.js"></script>
+    <script type="text/javascript" src="/common/starplayer/js/starplayer_ui.js"></script>
+    <script type="text/javascript" src="/common/starplayer/js/htmlparser.js"></script>
+    <script type="text/javascript" src="/common/starplayer/js/sami.js"></script>
+    <script type="text/javascript">
+        var player;
+
+        var step_;
+        step_ = 20;
+        var rate = 1.0;
+        function getStep() {
+            return step_;
+        }
+
+        function setStep(step) {
+            step_ = step;
+        }
+
+        function onMouseDbclick(x, y) {
+            player.setFullscreen(!player.getFullscreen());
+        }
+
+        function onKeyDown(keycode) {
+            if (window.event) {
+                var type = window.event.srcElement.type;
+                if (type == "text" || type == "textarea")
+                    return true;
+            }
+            //alert(keycode);
+            switch (keycode) {
+                case 13: // ENTER
+                    player.setFullscreen(true);
+                    break;
+                case 32: // SPACE
+                    if (player.getPlayState() == PlayState.PLAYING)
+                        player.pause();
+                    else
+                        player.play();
+                    break;
+                case 38: // UP
+                    player.setVolume(player.getVolume() + 0.1);
+                    break;
+                case 40: // DOWN
+                    player.setVolume(player.getVolume() - 0.1);
+                    break;
+                case 37: // LEFT
+                    player.backward(getStep());
+                    break;
+                case 39: // RIGHT
+                    player.forward(getStep());
+                    break;
+                case 190: // >
+                    var newrate = player.getRate() + 0.2;
+                    player.setRate(newrate.toFixed(1));
+                    break;
+                case 188: // <
+                    var newrate = (player.getRate() - 0.2) < 0.6 ? 0.6 : (player.getRate() - 0.2);
+                    player.setRate(newrate.toFixed(1));
+                    break;
+                case 77: // M
+                    player.setMute(!player.getMute());
+                    break;
+                case 82: // R
+                    player.setRepeat(!player.getRepeat());
+                    break;
+                default:
+                    return;
+            }
             return false;
         }
-    }
 
-    var bbsKey = '<%=bbsKey%>';
-    innerValue("bbsKey", bbsKey);
-    $( document ).ready(function() {
-        var bbsmasterKey =  getBbsMasterKey();
-
-        var result = getBoardDetailInfo(bbsmasterKey, bbsKey);
-
-        if(result != undefined){
-            var detailInfo = result.boardDetailInfo;
-
-            //본문 내용 파싱작업 시작
-            var detailInfoStr = JSON.stringify(detailInfo);
-            var detailInfoStrObj = JSON.parse(detailInfoStr);
-            var contentsObj = detailInfoStrObj.contents;
-            var contentsStr = JSON.stringify(contentsObj);
-            var contentsStrRep = contentsStr.replace(/['"]+/g, '');
-            var contentsStrRep3 = contentsStrRep.replace(/\\n/g,'');   //역슬러쉬 제거하기
-            var contentsStrRep4 = contentsStrRep3.replace(/\\r/g,'');   //역슬러쉬 제거하기
-            var contentsStrRep5 = contentsStrRep4.replace(/\\/gi, "");   //역슬러쉬 제거하기
-
-            var contentsHTML = $.parseHTML(contentsStrRep5);
-            var contents = null;
-
-            var findString = "&lt";
-            //HTML 포함 여부 화인
-            if(detailInfoStr.indexOf(findString) != -1) {
-                contents = contentsHTML[0].data.replace("rn", "");
-            } else {
-                contents = contentsHTML;
-            }
-            //봄문 내용 파징작업 끝
-
-            innerHTML("content", contents);
-            innerHTML("indate", detailInfo.indate);
-            innerHTML("userName", detailInfo.userName);
-            innerHTML("userId", detailInfo.userId);
-            innerHTML("title", detailInfo.title);
-            innerHTML("readCount", detailInfo.readCount);
-            innerHTML("fileName", detailInfo.fileName);
-            $("#fileUrl").attr("href", detailInfo.fileUrl);
-
-            var prevNextInfo = result.prevNextInfo;
-
-            if(prevNextInfo.prevBbsKey == 0){
-                $("#prev").hide();
-                innerHTML("prevTitle", "");
-                innerHTML("prevCreateDate", "");
-                innerValue("prevNum", "");
-            }else{
-                $("#prev").show();
-                innerHTML("prevTitle", prevNextInfo.prevTitle);
-                innerHTML("prevCreateDate", prevNextInfo.prevCreateDate);
-                innerValue("prevNum", prevNextInfo.prevBbsKey);
-            }
-            innerHTML("nextTitle", prevNextInfo.nextTitle);
-            innerHTML("nextCreateDate", prevNextInfo.nextCreateDate);
-            innerValue("nextNum", prevNextInfo.nextBbsKey);
+        function getBlockMessenger() {
+            return player.getBlockMessenger();
         }
-    });
-    
-    function goModify() {
-        goPage("notice", "modify");
-    }
-    
-    function goPrev() {
-        var prevKey = getInputTextValue("prevNum");
-        innerValue("bbsKey", prevKey);
-        goPage("notice", "detail");
-    }
-    
-    function goNext() {
-        var nextKey = getInputTextValue("nextNum");
-        innerValue("bbsKey", nextKey);
-        goPage("notice", "detail");
-    }
+
+        function onOpenStateChange(state) {
+            switch (state) {
+                case OpenState.CLOSING:
+                    break;
+                case OpenState.CLOSED:
+                    break;
+                case OpenState.OPENING:
+                    break;
+                case OpenState.OPENED:
+                    player.setVolume(1);
+                    player.setRate(rate);
+
+                    //$('#debug3').text("mac: " + player.getMAC());
+
+                    break;
+            }
+        }
+
+        var complete = false;
+        function onPlayStateChange(state) {
+            switch (state) {
+                case PlayState.PLAYING:
+                    player.setVisible(true);
+                    complete = false;
+                    break;
+                case PlayState.PAUSED:
+                    break;
+                case PlayState.STOPPED:
+                    player.setVisible(false);
+                    break;
+                case PlayState.BUFFERING_STARTED:
+                    break;
+                case PlayState.COMPLETE:
+                    //$('#debug1').text('complete');
+                    rate = player.getRate();
+                    complete = true;
+                    break;
+            }
+        }
 
 
 
+        function onError(errcode) {
+            player.setVisible(true);
+            if (errcode == StarPlayerError.OPEN_FAILURE) {
+            }
+        }
+
+        function onPositionChange(pos) {
+        }
+
+        function onVolumeChange(volume, mute) {
+
+        }
+
+        function onRateChange(rate) {
+
+        }
+
+        function onLoad(){
+            var config = {
+                userId: "ANONYMOUS",
+                id: "starplayer",
+                videoContainer: "video-container",
+                controllerContainer: "controller-container",
+                controllerContainerHtml5: "controller-container2",
+                controllerUrl: "axissoft3.bin",
+                visible:true,
+                auto_progressive_download:false,
+                blockVirtualMachine:true,
+                blockMessenger: false,
+                dualMonitor: true,
+                captionSize:5
+            };
+
+            // var media = {
+            //     url: "http://zianedu.star.skcdn.com//topspot3/201602산업안전기사필기실기/필기/과년도 문제풀이 - 산업기사/1회/산업안전산업기사_2015_1회/sanup_pilgi_sanupgisa_2015_1_1.mp4",
+            //     //url: "http://algisa.nptechnology.com:8000/file/sample.mp4", // 실서버 포팅 시 삭제
+            //     autoPlay:true,
+            //     startTime: 0
+            // };
+
+            //var url = "http://zianedu.star.skcdn.com/zian/korean/ahn/01_1911/191105_107422_01_H.mp4"
+            var media = {
+                url : "http://zianedu.star.skcdn.com//topspot3/201602산업안전기사필기실기/필기/과년도 문제풀이 - 산업기사/1회/산업안전산업기사_2015_1회/sanup_pilgi_sanupgisa_2015_1_1.mp4",
+                //url: "<%=encrypt_url%>",
+                //url : "http://algisa.nptechnology.com:8000/file/sample.mp4",
+                autoPlay:true,
+                startTime: 0
+            };
+            var targer = '<%=encrypt_url%>';
+            console.log(targer);
+            player = new StarPlayer(config, media);
+
+            player.onOpenStateChange = onOpenStateChange;
+            player.onKeyDown = onKeyDown;
+            player.onMouseDbclick = onMouseDbclick;
+            player.onPlayStateChange = onPlayStateChange;
+            player.onVolumeChange = onVolumeChange;
+            player.onRateChange = onRateChange;
+
+            initScriptUI(player);
+        }
+
+        function onUnload() {
+
+        }
+
+        function goSampleYoutube(url) {
+            window.open(url, 'Vod','left=0, top=0, width=1035, height=650, menubar=no, directories=no, resizable=yes, status=no, scrollbars=no');
+        }
+
+        function goSample(movieUrl) {
+            if(movieUrl.match(/youtube/)){
+                window.open(movieUrl, 'Vod','left=0, top=0, width=1035, height=650, menubar=no, directories=no, resizable=yes, status=no, scrollbars=no');
+            }else{
+                //window.open('http://localhost:8080/edu/resources/starPlayer_2017/starPlayerSample_2017.jsp?url=' + encodeURIComponent("http://algisa.nptechnology.com:8000/file/sample.mp4"), 'Vod','left=0, top=0, width=1035, height=650, menubar=no, directories=no, resizable=yes, status=no, scrollbars=no');
+                var pop_title = "starPlayer" ;
+                var frmData = document.frmPlayerData;
+                var url  = "http://www.algisa.com/resources/starPlayer_2017/starPlayers.jsp";
+                $('#url').val(movieUrl); //encodeURIComponent(movieUrl)
+
+                frmData.target = pop_title;
+                frmData.action = url;
 
 
-</script>
-<form name="frm" method="get">
-    <input type="hidden" name="page_gbn" id="page_gbn">
-    <div id="wrap">
-        <%@include file="/common/jsp/leftMenu.jsp" %>
-        <!--상단-->
-        <div id="header">
-            <div class="inner">
-                <h1><a href="#"><img src="/common/zian/images/common/logo.png" alt="지안에듀"></a></h1>
-                <%@include file="/common/jsp/topHeader.jsp" %>
-            </div>
-            <!--주메뉴-->
-            <div id="gnb">
-                <div class="inner">
-                    <ul class="cols7">
-                        <li><a href="#">내강의실</a></li>
-                        <li><a href="#">교수소개</a></li>
-                        <li><a href="#">학원수강신청</a></li>
-                        <li><a href="#">1:1 관리반</a></li>
-                        <li><a href="#">무료강좌</a></li>
-                        <li><a href="#">빅모의고사</a></li>
-                        <li><a href="#">합격수기</a></li>
-                    </ul>
+                window.open("", pop_title,'left=0, top=0, width=1035, height=650, menubar=no, directories=no, resizable=yes, status=no, scrollbars=no');
+                frmData.submit();
+            }
+        }
+
+        //TODO : 모바일 맛보기 공통화 처리 필요.. 왜 안될까..
+        /*function goSampleApp(movieUrl, refererInfo) {
+
+            var sp = StarPlayerApp;
+            sp.license = "FDDFA75E-B718-4DAF-BF57-A8D1FC0299B9";
+            sp.version = "1.0.0";
+            sp.debug = "false";
+            sp.referer = refererInfo;
+            var app = function(info_url) {
+                sp.executeApp(info_url);
+            }
+
+            var url = "http://59.150.150.205:8080/edu/movieLectureInfo/starPlayerM_2017_sample.html?movieUrl=" + movieUrl;
+            app(url);
+        }*/
+
+    </script>
+
+    <style type="text/css">
+        #controller-container2 {
+            position:absolute;
+            display:block;
+            left: 0px;
+            top: 568px;
+        }
+    </style>
+
+</head>
+
+<body style="margin: 0 0 0 0;overflow-x:hidden;overflow-y:hidden;" scroll=no onload="onLoad()" onkeydown="onKeyDown(event.keyCode)" oncontextmenu='return false' ondragstart='return false' onselectstart='return false'>
+<div id="player-container" style="width:1024px;">
+    <div id="video-container" style="height:568px;background:black url('') no-repeat center center;"></div>
+    <div id="controller-container" style="margin: 0 0 0 0;height:81px;"></div>
+    <!-- Start UI -->
+    <div id="controller-container2" class="starplayer_script_ui" style="margin: 0 0 0 0;width:1024px;height:81px;background-color:black;">
+        <div class="top_area">
+            <div class="seekbar_l">
+                <div class="currentbar"></div>
+                <div class="repeatbar"></div>
+                <div class="seekbar_area">
+                    <a class="btn_common btn_seek"></a>
+                    <a class="btn_common btn_repeatA" style="left:0%;display:none;"></a>
+                    <a class="btn_common btn_repeatB" style="left:100%;display:none;"></a>
                 </div>
             </div>
-            <!--//주메뉴-->
-        </div>
-        <!--//상단-->
-        <!--본문-->
-        <div id="container">
-            <div class="inner">
-                <!--서브 컨텐츠-->
-                <%@include file="/common/jsp/noticeHeader.jsp" %>
-                <div class="boardWrap">
-                    <div class="tableBox">
-                        <table class="view">
-                            <input type="hidden" id="bbsKey" name="bbsKey" value="<%=bbsKey%>">
-                            <input type="hidden" id="prevNum">
-                            <input type="hidden" id="nextNum">
-                            <caption></caption>
-                            <colgroup>
-                                <col class="w110">
-                                <col>
-                                <col class="w140">
-                            </colgroup>
-                            <thead>
-                            <tr>
-                                <th colspan="2" id="title"></th>
-                                <th id="indate"></th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td colspan="3">작성자 : <span id="userName"></span> <span id="userId"></span>  |   조회수 : <span id="readCount"></span></td>
-                            </tr>
-                            <tr>
-                                <td colspan="3" class="tdEditorContent">
-                                    <div class="alignCenter" id="content">
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="3">첨부파일  <a href="" id="fileUrl"> <span id="fileName"></span></a> </td>
-                            </tr>
-                            <tr id="prev">
-                                <td class="center">이전글 ▲</td>
-                                <td class="left"><a href="javascript:goPrev();"><span id="prevTitle"></span></a></td>
-                                <td class="right"><span id="prevCreateDate"></span></td>
-                            </tr>
-                            <tr>
-                                <td class="center">다음글 ▼</td>
-                                <td class="left"><a href="javascript:goNext();"><span id="nextTitle"></span></a></td>
-                                <td class="right"><span id="nextCreateDate"></span></td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="btnArea divGroup noMargin">
-                        <div class="left">
-                            <a href="javascript:goModify()" class="btn_inline gray w110">수정</a>
-                        </div>
-                        <div class="right">
-                            <a href="javascript:goPage('notice', 'list')" class="btn_inline blue w110">목록</a>
-                        </div>
+            <div class="seekbar_r">
+                <a class="btn_common btn_repeat"></a>
+                <a class="btn_common btn_fullscreen"></a>
+                <a class="btn_common btn_mute"></a>
+                <div class="volumebar">
+                    <div class="current_volumebar"></div>
+                    <div class="volumebar_area">
+                        <a class="btn_common btn_volume"></a>
                     </div>
                 </div>
-                <!--//서브 컨텐츠-->
             </div>
         </div>
-        <!--//본문-->
-        <!--하단-->
-        <%@include file="/common/jsp/footer.jsp" %>
-        <!--//하단-->
-        <!--우측따라다니는영역-->
-        <%@include file="/common/jsp/rightMenu.jsp" %>
-        <!--//우측따라다니는영역-->
-        <!--하단고정식배너-->
-        <%@include file="/common/jsp/footerBanner.jsp" %>
-        <!--//하단고정식배너-->
+        <div class="bottom_area">
+            <div class="control_l">
+                <div class="basic_controls">
+                    <a class="btn_common btn_play"></a>
+                    <a class="btn_common btn_stop"></a>
+                    <a class="btn_common btn_backward"></a>
+                    <a class="btn_common btn_forward"></a>
+                </div>
+                <div class="control_text_status">준비</div>
+                <div class="control_text_time"><span id="text_currentTime">00:00:00</span> / <span id="text_duration">00:00:00</span></div>
+            </div>
+            <div class="control_r">
+                <ul class="speed_controls">
+                    <li><a class="btn_common btn_speed06"></a></li>
+                    <li><a class="btn_common btn_speed08"></a></li>
+                    <li><a class="btn_common btn_speed10 active"></a></li>
+                    <li><a class="btn_common btn_speed12"></a></li>
+                    <li><a class="btn_common btn_speed14"></a></li>
+                    <li><a class="btn_common btn_speed16"></a></li>
+                    <li><a class="btn_common btn_speed18"></a></li>
+                    <li><a class="btn_common btn_speed20"></a></li>
+                </ul>
+            </div>
+        </div>
     </div>
-    <div id="overlay"></div>
-</form>
+</div>
+<!-- End UI -->
 </body>
 </html>
+

@@ -105,11 +105,12 @@
     }
 </script>
 <form action="/Player/Axis" id="id_frm_player" method="post" name="name_frm_player">
-    <input id="a_lPlayer_JLecKey" name="a_lPlayer_JLecKey" type="hidden" value="" />
-    <input id="a_lPlayer_CurriKey" name="a_lPlayer_CurriKey" type="hidden" value="" />
-    <input id="a_strPlayer_FilePath" name="a_strPlayer_FilePath" type="hidden" value="" />
-    <input id="a_strPlayer_Title" name="a_strPlayer_Title" type="hidden" value="" />
-    <input id="a_bPlayer_High" name="a_bPlayer_High" type="hidden" value="" />
+<%--    <input id="a_lPlayer_JLecKey" name="a_lPlayer_JLecKey" type="hidden" value="" />--%>
+<%--    <input id="a_lPlayer_CurriKey" name="a_lPlayer_CurriKey" type="hidden" value="" />--%>
+<%--    <input id="a_strPlayer_FilePath" name="a_strPlayer_FilePath" type="hidden" value="" />--%>
+<%--    <input id="a_strPlayer_Title" name="a_strPlayer_Title" type="hidden" value="" />--%>
+<%--    <input id="a_bPlayer_High" name="a_bPlayer_High" type="hidden" value="" />--%>
+    <input id="starPlayerUrl" name="starPlayerUrl" type="hidden" value="" />
 </form>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">

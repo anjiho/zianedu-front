@@ -28,14 +28,15 @@ function OpenSamplePlayer( a_strFilePath, a_strTitle, a_lLecKey, a_lCurriKey, a_
     a_bHigh = "1";
     if( pcMobile == 'pc' )
     {
-            window.open( "", "Player", "width=980, height=680, scrollbars=0, menubar=0, resizable=0" );
+            window.open( "", "Player", "width=1000, height=680, scrollbars=0, menubar=0, resizable=0" );
+            //gfn_winPop(980, 680, )
 
-            $("#a_strPlayer_FilePath").val( a_strFilePath );
-            $("#a_strPlayer_Title" ).val( a_strTitle );
-            $("#a_bPlayer_High" ).val( a_bHigh );
+            // $("#a_strPlayer_FilePath").val( a_strFilePath );
+            // $("#a_strPlayer_Title" ).val( a_strTitle );
+            // $("#a_bPlayer_High" ).val( a_bHigh );
 
             $("#id_frm_player").attr( "target", "Player" );
-            $( "#id_frm_player").attr( "action", "/Player/Axiss" );
+            $( "#id_frm_player").attr( "action", "/popup?page_gbn=starPlayer" );
             $( "#id_frm_player" ).submit();
     }
     else
