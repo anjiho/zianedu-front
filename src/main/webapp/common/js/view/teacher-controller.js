@@ -108,13 +108,14 @@ function getTeacherReferenceRoom(teacherKey, sPage, listLimit, searchType,  sear
         var selList = infoList.result;
         for(var i=0; i < selList.length; i++){
             var cmpList = selList[i];
+            console.log(cmpList);
             if (cmpList != undefined) {
                 var cellData = [
                     function(data) {return listNum--;},
-                    function(data) {return "<a href='javascript:void(0);' class='subject' onclick='goDetailNotice("+ cmpList.bbsKey +");'>" + gfn_substr(cmpList.title, 0, 40) + "</a>";},
+                    function(data) {return "<a href='javascript:void(0);' class='subject' onclick='goDetailReference("+ cmpList.bbsKey +");'>" + gfn_substr(cmpList.title, 0, 40) + "</a>";},
                     function(data) {return cmpList.userName;},
                     function(data) {return cmpList.indate;},
-                    function(data) {return cmpList.readCount;},
+                    function(data) {return cmpList.readCount;}
                 ];
                 dwr.util.addRows(tagId, [0], cellData, {escapeHtml: false});
             }
@@ -131,7 +132,7 @@ function getTeacherReferenceRoomDetail(teacherKey, bbsKey) {
         bbsKey : bbsKey
     };
     var infoList = getApi("/teacher/getTeacherReferenceRoomDetail/", teacherKey, data);
-
+    return infoList;
 }
 
 //강사소개 > 수강후기 > 강사의 상품목록 셀렉트박스
