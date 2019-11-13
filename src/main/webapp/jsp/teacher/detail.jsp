@@ -49,7 +49,6 @@
             innerValue("divisionList", 1);
         });
         $("#referBtn").click(function () {
-            alert(11);
             $("#referenceList").show();
             $("#noticeList").hide();
             $("#referenceDetail").hide();
