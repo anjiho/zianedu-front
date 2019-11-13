@@ -61,6 +61,10 @@
     <script type='text/javascript' src='/dwr/util.js'></script>
     <!--paging-->
     <script type='text/javascript' src='/common/js/comPage.js'></script>
+
+    <script src="/common/starplayer/starplayer_popup.js"></script>
+    <script src="/common/starplayer/starplayer_config.js"></script>
+
     <script src="/common/calendar/lang/ko.js"/>
 </head>
 <body>
