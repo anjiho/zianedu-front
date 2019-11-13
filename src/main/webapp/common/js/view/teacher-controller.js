@@ -86,19 +86,43 @@ function getTeacherLectureReview(teacherKey, gKey, sPage, listLimit) {
 }
 
 //강사소개 > 학습 자료실
-function getTeacherReferenceRoom(teacherKey, sPage, listLimit, searchType,  searchText, tagId) {
+function getTeacherReferenceRoom(teacherKey, sPage, listLimit, searchType,  searchText, isNotice, tagId) {
     if (teacherKey == null || teacherKey == undefined) return;
+    var paging = new Paging();
+    dwr.util.removeAllRows(tagId); //테이블 리스트 초기화
+
     var data = {
         sPage : sPage,
         listLimit : listLimit,
         searchType : searchType,
-        searchText : searchText
+        searchText : searchText,
+        isNotice : isNotice
     };
-    var InfoList = getPageApi("/teacher/getTeacherReferenceRoom/", teacherKey, data);
-    if (InfoList.result.length > 0) {
-        var selList = InfoList.result;
+
+    var infoList = getPageApi("/teacher/getTeacherReferenceRoom/", teacherKey, data);
+    var cnt = infoList.cnt;
+
+    if (infoList.result.length > 0) {
+        paging.count(sPage, cnt, '10', '10', comment.blank_list);
+        var listNum = ((cnt-1)+1)-((sPage-1)*10); //리스트 넘버링
+        var selList = infoList.result;
+        for(var i=0; i < selList.length; i++){
+            var cmpList = selList[i];
+            if (cmpList != undefined) {
+                var cellData = [
+                    function(data) {return listNum--;},
+                    function(data) {return "<a href='javascript:void(0);' class='subject' onclick='goDetailNotice("+ cmpList.bbsKey +");'>" + gfn_substr(cmpList.title, 0, 40) + "</a>";},
+                    function(data) {return cmpList.userName;},
+                    function(data) {return cmpList.indate;},
+                    function(data) {return cmpList.readCount;},
+                ];
+                dwr.util.addRows(tagId, [0], cellData, {escapeHtml: false});
+            }
+        }
     }
+
 }
+
 
 //강사소개 > 학습자료실 상세정보
 function getTeacherReferenceRoomDetail(teacherKey, bbsKey) {
@@ -106,10 +130,8 @@ function getTeacherReferenceRoomDetail(teacherKey, bbsKey) {
     var data = {
         bbsKey : bbsKey
     };
-    var InfoList = getApi("/teacher/getTeacherReferenceRoomDetail/", teacherKey, data);
-    if (InfoList.result.length > 0) {
-        var selList = InfoList.result;
-    }
+    var infoList = getApi("/teacher/getTeacherReferenceRoomDetail/", teacherKey, data);
+
 }
 
 //강사소개 > 수강후기 > 강사의 상품목록 셀렉트박스
@@ -154,7 +176,7 @@ function getTeacherAcademyLecture(teacherKey, stepCtgKey) {
                         }
                         returnHtml += '</li>';
                         returnHtml += '<li class="w45p">';
-                        returnHtml += '<a href="#" class="learnName">'+ lecList[j].goodsName +'</a>';
+                        returnHtml += '<span class="learnName">'+ lecList[j].goodsName +'</span>';
                         returnHtml += '<span class="learnNum">수강기간 <b class="colorBlue">'+ lecList[j].lectureDate +' ('+ lecList[j].kind +'개월)</b></span>';
                         returnHtml += '</li>';
                         returnHtml += '<li class="w40p alignRight">';
@@ -177,7 +199,6 @@ function getTeacherAcademyLecture(teacherKey, stepCtgKey) {
                         if (lecList[j].teacherLectureBook.length > 0) {
                             for (var k = 0; k < lecList[j].teacherLectureBook.length; k++) {
                                 var lecBook = lecList[j].teacherLectureBook[k];
-                                console.log(lecBook);
                                 returnBookHtml = "<div class=\"lectureRow\">";
                                 returnBookHtml += '<ul class="lectureList">';
                                 returnBookHtml += "<li class='w15p'>";
@@ -185,7 +206,7 @@ function getTeacherAcademyLecture(teacherKey, stepCtgKey) {
                                 returnBookHtml += '</li>';
                                 returnBookHtml += '<li class="w45p">';
                                     returnBookHtml += '<span class="btn_ss btn_divTag">'+ lecBook.isMain +'</span>';
-                                    returnBookHtml += '<a href="#" class="learnName">'+ lecBook.bookName +'</a>';
+                                    returnBookHtml += '<span class="learnName">'+ lecBook.bookName +'</span>';
                                     if(lecBook.writer != null && lecBook.publishDate != null){
                                         returnBookHtml += '<span class="learnNum">저자 <b class="colorBlue">'+ lecBook.writer +'</b> | 출판 <b class="colorBlue">'+ lecBook.publishDate +'</b></span>';
                                     }
@@ -247,7 +268,7 @@ function getTeacherVideoLecture(teacherKey, device, stepCtgKey) {
 
                         retrunHtml += '</li>';
                         retrunHtml += '<li class="w45p">';
-                        retrunHtml += '<a href="#" class="learnName">' + lecList[j].goodsName + '</a>';
+                        retrunHtml += '<span class="learnName">' + lecList[j].goodsName + '</span>';
                         retrunHtml += '<span class="learnNum">강의수 <b class="colorBlue">' + lecList[j].lecCount + '강</b> | 수강일수 <b class="colorBlue">' + lecList[j].limitDay + '일</b></span>';
                         retrunHtml += '<span class="learnView">샘플보기 <a href="#" class="btn_s btn_quality">일반화질</a> <a href="#" class="btn_s btn_quality on">고화질</a></span>';
                         retrunHtml += '</li>';
@@ -330,7 +351,7 @@ function getTeacherVideoLecture(teacherKey, device, stepCtgKey) {
                                 returnBookHtml += '</li>';
                                 returnBookHtml += '<li class="w45p">';
                                 returnBookHtml += '<span class="btn_ss btn_divTag">주교재</span>';
-                                returnBookHtml += '<a href="#" class="learnName">' + lecBook.bookName + '</a>';
+                                returnBookHtml += '<span class="learnName">' + lecBook.bookName + '</span>';
                                 returnBookHtml += '<span class="learnNum">저자 <b class="colorBlue">' + lecBook.writer + '</b> | 출판 <b class="colorBlue">' + lecBook.publishDate + '</b></span>';
                                 returnBookHtml += '</li>';
                                 returnBookHtml += '<li class="w40p alignRight">';

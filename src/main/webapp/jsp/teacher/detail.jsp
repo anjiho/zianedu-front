@@ -23,6 +23,10 @@
         getTeacherVideoLecture(teacherKey, pcMobile, 0);//강좌소개 (동영상) 리스트 불러오기
         getTeacherAcademyLecture(teacherKey, 0);//강좌소개 (학원) 리스트 불러오기
 
+
+        fn_search1('new');//학습안내 (학습공지) 리스트 불러오기
+        fn_search('new');//학습안내 (학습자료실) 리스트 불러오기
+
         innerHTML("selOnlineCount", 0);
         innerHTML("selAcaCount", 0);
         $("input[name=selProduct]").click(function(index){
@@ -34,7 +38,32 @@
             innerHTML("selAcaCount", count);
         });
     });
-    
+
+    function fn_search(val) {
+        var sPage = getInputTextValue("sPage");
+        var searchType1 = getSelectboxValue("searchType1");
+        var searchText1 = getInputTextValue("searchText1");
+        if(searchType1 == undefined) searchType1 = "";
+        if(searchText1 == undefined) searchText1 = "";
+
+        if(val == "new") sPage = "1";
+
+        getTeacherReferenceRoom(teacherKey, sPage, 10, searchType1,  searchText1, 0, 'dataList');//학습안내 (학습자료실) 리스트 불러오기
+    }
+
+    function fn_search1(val) {
+        var sPage2 = getInputTextValue("sPage2");
+        var searchType2 = getSelectboxValue("searchType2");
+        var searchText2 = getInputTextValue("searchText2");
+        if(searchType2 == undefined) searchType2 = "";
+        if(searchText2 == undefined) searchText2 = "";
+
+        if(val == "new") sPage2 = "1";
+
+        getTeacherReferenceRoom(teacherKey, sPage2, 10, searchType2,  searchText2, 1, 'dataList2');//학습안내 (학습자료실) 리스트 불러오기
+    }
+
+
     //단일 장바구니 이동
     function goShopBasket(gkey, priceKey) {
         //체크박스 체크 안되어있을경우 예외처리 해야함
@@ -217,8 +246,89 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="tabPage">
-                            학습안내
+                        <div class="tabPage"><!--학습안내-->
+                            <div class="tab_learning">
+                                <div class="tabContent">
+                                    <ul class="tabBar tabLecture">
+                                        <li class="active"><a href="#">학습자료실</a></li>
+                                        <li><a href="#">학습공지</a></li>
+                                    </ul>
+                                    <!-- 학습자료실 -->
+                                    <div class="tabPage active">
+                                        <input type="hidden" id="sPage">
+                                        <form>
+                                            <ul class="searchArea">
+                                                <li class="left">
+                                                    <select id="searchType1">
+                                                        <option value="title">제목</option>
+                                                    </select>
+                                                    <input type="text" id="searchText1" onkeypress="if(event.keyCode==13) {fn_search('new'); return false;}" >
+                                                    <a href="javascript:fn_search('new');" class="btn_m on">검색</a>
+                                                </li>
+                                            </ul>
+                                        </form>
+                                        <div class="tableBox">
+                                            <table class="list">
+                                                <colgroup>
+                                                    <col class="w10p">
+                                                    <col class="w50p">
+                                                    <col class="w10p">
+                                                    <col class="w20p">
+                                                    <col class="w10p">
+                                                </colgroup>
+                                                <thead>
+                                                <tr>
+                                                    <th scope="row" style="text-align:center">유형</th>
+                                                    <th scope="row" style="text-align:center">제목</th>
+                                                    <th scope="row" style="text-align:center">작성자</th>
+                                                    <th scope="row" style="text-align:center">등록일</th>
+                                                    <th scope="row" style="text-align:center">조회</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody id="dataList"></tbody>
+                                            </table>
+                                            <%@ include file="/common/inc/com_pageNavi.inc" %>
+                                        </div>
+                                    </div>
+                                    <!-- 학습공지 -->
+                                    <div class="tabPage">
+                                        <form>
+                                            <input type="hidden" id="sPage2">
+                                            <ul class="searchArea">
+                                                <li class="left">
+                                                    <select  id="searchType2">
+                                                        <option value="title">제목</option>
+                                                    </select>
+                                                    <input type="text"  id="searchText2" onkeypress="if(event.keyCode==13) {fn_search1('new'); return false;}">
+                                                    <a href="javascript:fn_search1('new');" class="btn_m on">검색</a>
+                                                </li>
+                                            </ul>
+                                        </form>
+                                        <div class="tableBox">
+                                            <table class="list">
+                                                <colgroup>
+                                                    <col class="w10p">
+                                                    <col class="w50p">
+                                                    <col class="w10p">
+                                                    <col class="w20p">
+                                                    <col class="w10p">
+                                                </colgroup>
+                                                <thead>
+                                                <tr>
+                                                    <th scope="row" style="text-align:center">유형</th>
+                                                    <th scope="row" style="text-align:center">제목</th>
+                                                    <th scope="row" style="text-align:center">작성자</th>
+                                                    <th scope="row" style="text-align:center">등록일</th>
+                                                    <th scope="row" style="text-align:center">조회</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody id="dataList2"></tbody>
+                                            </table>
+                                            <%@ include file="/common/inc/com_pageNavi2.inc" %>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="tabPage">
                             학습 Q&A
