@@ -177,13 +177,14 @@ function getTeacherAcademyLecture(teacherKey, stepCtgKey) {
                         if (lecList[j].teacherLectureBook.length > 0) {
                             for (var k = 0; k < lecList[j].teacherLectureBook.length; k++) {
                                 var lecBook = lecList[j].teacherLectureBook[k];
+                                console.log(lecBook);
                                 returnBookHtml = "<div class=\"lectureRow\">";
                                 returnBookHtml += '<ul class="lectureList">';
                                 returnBookHtml += "<li class='w15p'>";
                                     returnBookHtml += "<span class='btn_learnType gray'>교재</span>";
                                 returnBookHtml += '</li>';
                                 returnBookHtml += '<li class="w45p">';
-                                    returnBookHtml += '<span class="btn_ss btn_divTag">부교재</span>';
+                                    returnBookHtml += '<span class="btn_ss btn_divTag">'+ lecBook.isMain +'</span>';
                                     returnBookHtml += '<a href="#" class="learnName">'+ lecBook.bookName +'</a>';
                                     if(lecBook.writer != null && lecBook.publishDate != null){
                                         returnBookHtml += '<span class="learnNum">저자 <b class="colorBlue">'+ lecBook.writer +'</b> | 출판 <b class="colorBlue">'+ lecBook.publishDate +'</b></span>';
