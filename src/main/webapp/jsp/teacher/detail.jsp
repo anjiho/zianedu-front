@@ -50,6 +50,8 @@
         });
         $("#referBtn").click(function () {
             $("#referenceList").show();
+            $("#noticeList").hide();
+            $("#referenceDetail").hide();
             innerValue("divisionList", 0);
         });
     });
@@ -371,8 +373,8 @@
                                                 </thead>
                                                 <tbody id="dataList"></tbody>
                                             </table>
-                                            <%@ include file="/common/inc/com_pageNavi.inc" %>
                                         </div>
+                                        <%@ include file="/common/inc/com_pageNavi.inc" %>
                                     </div>
                                     <!-- 학습공지 -->
                                     <div class="tabPage" id="noticeList" style="display: none">
@@ -408,8 +410,8 @@
                                                 </thead>
                                                 <tbody id="dataList2"></tbody>
                                             </table>
-                                            <%@ include file="/common/inc/com_pageNavi2.inc" %>
                                         </div>
+                                        <%@ include file="/common/inc/com_pageNavi2.inc" %>
                                     </div>
 
                                     <!-- 학습자료실 상세 시작-->
