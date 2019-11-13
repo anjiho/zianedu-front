@@ -136,7 +136,6 @@ function getTeacherAcademyLecture(teacherKey, stepCtgKey) {
             for (var i = 0; i < selList.length; i++) {
                 var cmpList = selList[i];
                 if(cmpList.teacherAcademyList.length > 0){
-                    console.log(cmpList.teacherAcademyList);
                     var lecList = cmpList.teacherAcademyList;
                     for(var j = 0; j < lecList.length; j++){
                         var returnHtml = '<div class="lectureRow">';
@@ -176,9 +175,8 @@ function getTeacherAcademyLecture(teacherKey, stepCtgKey) {
                         /* 교재 */
                         var returnBookHtml = '';
                         if (lecList[j].teacherLectureBook.length > 0) {
-                            console.log(lecList[j].teacherLectureBook);
-                            for (var b = 0; b < lecList[j].teacherLectureBook.length; b++) {
-                                var lecBook = lecList[j].teacherLectureBook[b];
+                            for (var k = 0; k < lecList[j].teacherLectureBook.length; k++) {
+                                var lecBook = lecList[j].teacherLectureBook[k];
                                 returnBookHtml = "<div class=\"lectureRow\">";
                                 returnBookHtml += '<ul class="lectureList">';
                                 returnBookHtml += "<li class='w15p'>";
@@ -187,7 +185,9 @@ function getTeacherAcademyLecture(teacherKey, stepCtgKey) {
                                 returnBookHtml += '<li class="w45p">';
                                     returnBookHtml += '<span class="btn_ss btn_divTag">부교재</span>';
                                     returnBookHtml += '<a href="#" class="learnName">'+ lecBook.bookName +'</a>';
-                                    returnBookHtml += '<span class="learnNum">저자 <b class="colorBlue">'+ lecBook.writer +'</b> | 출판 <b class="colorBlue">'+ lecBook.publishDate +'</b></span>';
+                                    if(lecBook.writer != null && lecBook.publishDate != null){
+                                        returnBookHtml += '<span class="learnNum">저자 <b class="colorBlue">'+ lecBook.writer +'</b> | 출판 <b class="colorBlue">'+ lecBook.publishDate +'</b></span>';
+                                    }
                                 returnBookHtml += '</li>';
                                 returnBookHtml += '<li class="w40p alignRight">';
                                     returnBookHtml += '<ul class="costList">';
@@ -201,8 +201,8 @@ function getTeacherAcademyLecture(teacherKey, stepCtgKey) {
                                 returnBookHtml += '</li>';
                                 returnBookHtml += '</ul>';
                                 returnBookHtml += '</div>';
+                                $("#lecAcaBody").append(returnBookHtml);
                             }
-                            $("#lecAcaBody").append(returnBookHtml);
                         }
                     }
                 }
@@ -342,8 +342,8 @@ function getTeacherVideoLecture(teacherKey, device, stepCtgKey) {
                                 returnBookHtml += '</ul>';
                                 returnBookHtml += '</li>';
                                 returnBookHtml += '</div>';
+                                $("#lecOnlineBody").append(returnBookHtml);
                             }
-                            $("#lecOnlineBody").append(returnBookHtml);
                         }
                     }
                 }
