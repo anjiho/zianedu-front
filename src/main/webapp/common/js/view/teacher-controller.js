@@ -121,8 +121,46 @@ function getTeacherReferenceRoom(teacherKey, sPage, listLimit, searchType,  sear
             }
         }
     }
-
 }
+
+//강사소개 > 학습 학습공지
+function getTeacherReferenceRoom2(teacherKey, sPage, listLimit, searchType,  searchText, isNotice, tagId) {
+    if (teacherKey == null || teacherKey == undefined) return;
+    var paging = new Paging();
+    dwr.util.removeAllRows(tagId); //테이블 리스트 초기화
+
+    var data = {
+        sPage : sPage,
+        listLimit : listLimit,
+        searchType : searchType,
+        searchText : searchText,
+        isNotice : isNotice
+    };
+
+    var infoList = getPageApi("/teacher/getTeacherReferenceRoom/", teacherKey, data);
+    var cnt = infoList.cnt;
+
+    if (infoList.result.length > 0) {
+        paging.count2(sPage, cnt, '10', '10', comment.blank_list);
+        var listNum = ((cnt-1)+1)-((sPage-1)*10); //리스트 넘버링
+        var selList = infoList.result;
+        for(var i=0; i < selList.length; i++){
+            var cmpList = selList[i];
+            console.log(cmpList);
+            if (cmpList != undefined) {
+                var cellData = [
+                    function(data) {return listNum--;},
+                    function(data) {return "<a href='javascript:void(0);' class='subject' onclick='goDetailReference("+ cmpList.bbsKey +");'>" + gfn_substr(cmpList.title, 0, 40) + "</a>";},
+                    function(data) {return cmpList.userName;},
+                    function(data) {return cmpList.indate;},
+                    function(data) {return cmpList.readCount;}
+                ];
+                dwr.util.addRows(tagId, [0], cellData, {escapeHtml: false});
+            }
+        }
+    }
+}
+
 
 
 //강사소개 > 학습자료실 상세정보

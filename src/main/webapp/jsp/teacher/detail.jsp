@@ -23,12 +23,10 @@
         getTeacherVideoLecture(teacherKey, pcMobile, 0);//강좌소개 (동영상) 리스트 불러오기
         getTeacherAcademyLecture(teacherKey, 0);//강좌소개 (학원) 리스트 불러오기
 
-
         fn_search1('new');//학습안내 (학습공지) 리스트 불러오기
         fn_search('new');//학습안내 (학습자료실) 리스트 불러오기
 
         $("#referenceList").show();
-        //$("#noticeList").show();
 
         innerValue("divisionList", 0);
 
@@ -49,9 +47,9 @@
             innerValue("divisionList", 1);
         });
         $("#referBtn").click(function () {
+            $("#referenceDetail").hide();
             $("#referenceList").show();
             $("#noticeList").hide();
-            $("#referenceDetail").hide();
             innerValue("divisionList", 0);
         });
     });
@@ -77,7 +75,7 @@
 
         if(val == "new") sPage2 = "1";
 
-        getTeacherReferenceRoom(teacherKey, sPage2, 10, searchType2,  searchText2, 1, 'dataList2');//학습안내 (학습자료실) 리스트 불러오기
+        getTeacherReferenceRoom2(teacherKey, sPage2, 10, searchType2,  searchText2, 1, 'dataList2');//학습안내 (학습자료실) 리스트 불러오기
     }
 
     //학습안내 - 학습자료실 상세보기
@@ -125,10 +123,12 @@
         }
     }
 
+    //이전글 다음글 페이지 이동 함수
     function goReferenceDetailPage(bbskey) {
         //goDetailReference(bbsKey);
     }
 
+    //목록으로 이동 버튼 함수
     function goReferenceList(){
         var val = getInputTextValue("divisionList");
 
@@ -464,10 +464,6 @@
                                         </div>
                                     </div>
                                     <!--//학습자료실 상세 끝-->
-
-
-
-
                                 </div>
                             </div>
                         </div>
