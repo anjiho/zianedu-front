@@ -54,3 +54,21 @@ function OpenSamplePlayer( a_strFilePath, a_strTitle, a_lLecKey, a_lCurriKey, a_
             sp.executeApp( GetCurrentSiteAddress() + "Player/AxisSmartStreamingSample?a_lPlayer_LecKey=" + a_lLecKey + "&a_lPlayer_CurriKey=" + a_lCurriKey + "&a_bPlayer_High=" + a_bHigh );
     }
 }
+
+function goSampleM(movieUrl) {
+    var sp = StarPlayerApp;
+    sp.license			= "FD361CA3-5366-4F63-9971-F647AD34DAF4";
+    sp.version			= "1.0.0";
+    sp.android_version	= "1.0.0";
+    sp.ios_version		= "1.0.0";
+    sp.pmp				= "true";
+    sp.debug = "false";
+    //topmenu : 014, searchUserId : zian0071, searchSubjectCode : , searchSubjectCode : , leftMenuLType : T21, lecKType : D, searchLeccode: D2017104419
+    sp.referer = "http://safe.algisa.com/lecture/movieLectureDetail.html?subNo=14&topMenu=" + $("#topMenu").val() + "&searchUserId=" + $("#searchUserId").val() + "&searchSubjectCode=" + $("#searchSubjectCode").val() + "&leftMenuLType=" + $("#leftMenuLType").val() + "&lecKType=" + $("#lecKType").val() + "&searchSubjectCode=" + $("#searchSubjectCode").val() + "&searchLeccode=" + $("#searchLeccode").val();
+    var app = function(info_url) {
+        sp.executeApp(info_url);
+    }
+
+    var url = "http://safe.algisa.com/movieLectureInfo/starPlayerM_2017_sample.html?movieUrl=" + movieUrl;
+    app(url);
+}
