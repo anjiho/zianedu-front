@@ -94,7 +94,7 @@ function getTeacherReferenceRoom(teacherKey, sPage, listLimit, searchType,  sear
                     function(data) {return listNum--;},
                     function(data) {return "<a href='javascript:void(0);' class='subject' onclick='goDetailReference("+ cmpList.bbsKey +");'>" + gfn_substr(cmpList.title, 0, 40) + "</a>";},
                     function(data) {return cmpList.writeUserName;},
-                    function(data) {return cmpList.indate;},
+                    function(data) {return cmpList.indate2;},
                     function(data) {return cmpList.readCount;}
                 ];
                 dwr.util.addRows(tagId, [0], cellData, {escapeHtml: false});
@@ -119,7 +119,7 @@ function getTeacherReferenceRoom2(teacherKey, sPage, listLimit, searchType,  sea
 
     var infoList = getPageApi("/teacher/getTeacherReferenceRoom/", teacherKey, data);
     var cnt = infoList.cnt;
-    console.log(infoList)
+
     if (infoList.result.length > 0) {
         paging.count2(sPage, cnt, '10', '10', comment.blank_list);
         var listNum = ((cnt-1)+1)-((sPage-1)*10); //리스트 넘버링
@@ -131,7 +131,7 @@ function getTeacherReferenceRoom2(teacherKey, sPage, listLimit, searchType,  sea
                     function(data) {return listNum--;},
                     function(data) {return "<a href='javascript:void(0);' class='subject' onclick='goDetailReference("+ cmpList.bbsKey +");'>" + gfn_substr(cmpList.title, 0, 40) + "</a>";},
                     function(data) {return cmpList.writeUserName;},
-                    function(data) {return cmpList.indate;},
+                    function(data) {return cmpList.indate2;},
                     function(data) {return cmpList.readCount;}
                 ];
                 dwr.util.addRows(tagId, [0], cellData, {escapeHtml: false});
@@ -171,7 +171,7 @@ function getTeacherLearningQna(teacherKey, sPage, listLimit, searchType, searchT
                 else if (cmpList.pwd == null) lock = '';
                 returnHtml += '<td><a href="javascript:void(0);" class="subject ' + lock + '" onclick="goDetailqna('+  cmpList.bbsKey +');">' + gfn_substr(cmpList.title, 0, 40) + '</a></td>';
                 returnHtml += '<td>' + cmpList.writeUserName + '</td>';
-                returnHtml += '<td>' + cmpList.indate + '</td>';
+                returnHtml += '<td>' + cmpList.indate2 + '</td>';
                 returnHtml += '<td>' + cmpList.readCount + '</td>';
                 returnHtml += '</tr>';
                 $("#dataList3").append(returnHtml);
@@ -180,7 +180,7 @@ function getTeacherLearningQna(teacherKey, sPage, listLimit, searchType, searchT
                 returnHtml += '<td>' + listNum-- + '</td>';
                 returnHtml += '<td><a href="javascript:void(0);" class="subject reply" onclick="goDetailqna(' + cmpList.bbsKey + ');">' + gfn_substr(cmpList.title, 0, 40) + '</a></td>';
                 returnHtml += '<td>' + cmpList.writeUserName + '</td>';
-                returnHtml += '<td>' + cmpList.indate + '</td>';
+                returnHtml += '<td>' + cmpList.indate2 + '</td>';
                 returnHtml += '<td>' + cmpList.readCount + '</td>';
                 returnHtml += '</tr>';
                 $("#dataList3").append(returnHtml);

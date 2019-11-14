@@ -190,8 +190,12 @@
             var referenceInfo   = detailInfo.result.referenceRoomDetailInfo;
             var prevNextBbsList = detailInfo.result.prevNextBbsList;
 
-            //iconLock
-            console.log(detailInfo);
+            if(referenceInfo.pwd == 1){
+                $("#iconLock").show();
+            }else{
+                $("#iconLock").hide();
+            }
+
             innerHTML("qnaTitle",referenceInfo.title);
             innerHTML("qnaIndate",referenceInfo.indate);
             innerHTML("qnaCount",referenceInfo.readCount);
@@ -229,14 +233,14 @@
                     innerHTML("qnaPrevTitle", "");
                 } else {
                     innerHTML("qnaPrevTitle", prevNextBbsList[i].prevTitle);
-                    $("#qnaPrevLink").attr("href", "javascript:goDetailReference("+ prevNextBbsList[i].prevBbsKey +");");
+                    $("#qnaPrevLink").attr("href", "javascript:goDetailqna("+ prevNextBbsList[i].prevBbsKey +");");
                 }
 
                 if(prevNextBbsList[i].prevTitle == '다음글') {
                     innerHTML("qnaPrevTitle", "");
                 } else {
                     innerHTML("qnaNextTitle", prevNextBbsList[i].nextTitle);
-                    $("#qnaNextLink").attr("href", "javascript:goDetailReference("+ prevNextBbsList[i].nextBbsKey +");");
+                    $("#qnaNextLink").attr("href", "javascript:goDetailqna("+ prevNextBbsList[i].nextBbsKey +");");
                 }
             }
         }
@@ -852,7 +856,7 @@
                                     </tr>
                                     <tr>
                                         <td >작성자 : <span id="qnaWriter"></span> (<span id="qnaUserId"></span>) | 조회수 : <span id="qnaCount"></span></td>
-                                        <td class="alignRight" id="iconLock"><span class="iconLock">비밀글</span></td>
+                                        <td class="alignRight" id="iconLock" style="display: none;"><span class="iconLock">비밀글</span></td>
                                     </tr>
                                     <tr>
                                         <%--                                                    <td colspan="2">--%>
