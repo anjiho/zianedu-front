@@ -96,7 +96,6 @@
     function goDetailReference(bbsKey) {
         innerValue("bbsKey", bbsKey);
         var detailInfo = getTeacherReferenceRoomDetail(teacherKey, bbsKey);
-        console.log(detailInfo);
         $("#referenceDetail").show();
         $("#referenceList").hide();
         $("#noticeList").hide();
