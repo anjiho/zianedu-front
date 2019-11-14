@@ -93,7 +93,7 @@ function getTeacherReferenceRoom(teacherKey, sPage, listLimit, searchType,  sear
                 var cellData = [
                     function(data) {return listNum--;},
                     function(data) {return "<a href='javascript:void(0);' class='subject' onclick='goDetailReference("+ cmpList.bbsKey +");'>" + gfn_substr(cmpList.title, 0, 40) + "</a>";},
-                    function(data) {return cmpList.userName;},
+                    function(data) {return cmpList.writeUserName;},
                     function(data) {return cmpList.indate;},
                     function(data) {return cmpList.readCount;}
                 ];
@@ -119,7 +119,7 @@ function getTeacherReferenceRoom2(teacherKey, sPage, listLimit, searchType,  sea
 
     var infoList = getPageApi("/teacher/getTeacherReferenceRoom/", teacherKey, data);
     var cnt = infoList.cnt;
-
+    console.log(infoList)
     if (infoList.result.length > 0) {
         paging.count2(sPage, cnt, '10', '10', comment.blank_list);
         var listNum = ((cnt-1)+1)-((sPage-1)*10); //리스트 넘버링
@@ -130,7 +130,7 @@ function getTeacherReferenceRoom2(teacherKey, sPage, listLimit, searchType,  sea
                 var cellData = [
                     function(data) {return listNum--;},
                     function(data) {return "<a href='javascript:void(0);' class='subject' onclick='goDetailReference("+ cmpList.bbsKey +");'>" + gfn_substr(cmpList.title, 0, 40) + "</a>";},
-                    function(data) {return cmpList.userName;},
+                    function(data) {return cmpList.writeUserName;},
                     function(data) {return cmpList.indate;},
                     function(data) {return cmpList.readCount;}
                 ];
@@ -154,7 +154,7 @@ function getTeacherLearningQna(teacherKey, sPage, listLimit, searchType, searchT
     };
     var infoList = getPageApi("/teacher/getTeacherLearningQna/", teacherKey, data);
     var cnt = infoList.cnt;
-    console.log(infoList);
+
     if (infoList.result.length > 0) {
         paging.count3(sPage, cnt, '20', '20', comment.blank_list);
         var listNum = ((cnt - 1) + 1) - ((sPage - 1) * 10); //리스트 넘버링
@@ -170,7 +170,7 @@ function getTeacherLearningQna(teacherKey, sPage, listLimit, searchType, searchT
                 if (cmpList.pwd == 1) lock = 'lock';
                 else if (cmpList.pwd == null) lock = '';
                 returnHtml += '<td><a href="javascript:void(0);" class="subject ' + lock + '" onclick="goDetailqna('+  cmpList.bbsKey +');">' + gfn_substr(cmpList.title, 0, 40) + '</a></td>';
-                returnHtml += '<td>' + cmpList.userName + '</td>';
+                returnHtml += '<td>' + cmpList.writeUserName + '</td>';
                 returnHtml += '<td>' + cmpList.indate + '</td>';
                 returnHtml += '<td>' + cmpList.readCount + '</td>';
                 returnHtml += '</tr>';
@@ -179,7 +179,7 @@ function getTeacherLearningQna(teacherKey, sPage, listLimit, searchType, searchT
                 var returnHtml = '<tr>';
                 returnHtml += '<td>' + listNum-- + '</td>';
                 returnHtml += '<td><a href="javascript:void(0);" class="subject reply" onclick="goDetailqna(' + cmpList.bbsKey + ');">' + gfn_substr(cmpList.title, 0, 40) + '</a></td>';
-                returnHtml += '<td>' + cmpList.userName + '</td>';
+                returnHtml += '<td>' + cmpList.writeUserName + '</td>';
                 returnHtml += '<td>' + cmpList.indate + '</td>';
                 returnHtml += '<td>' + cmpList.readCount + '</td>';
                 returnHtml += '</tr>';
