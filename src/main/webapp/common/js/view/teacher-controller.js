@@ -108,7 +108,6 @@ function getTeacherReferenceRoom(teacherKey, sPage, listLimit, searchType,  sear
         var selList = infoList.result;
         for(var i=0; i < selList.length; i++){
             var cmpList = selList[i];
-            console.log(cmpList);
             if (cmpList != undefined) {
                 var cellData = [
                     function(data) {return listNum--;},

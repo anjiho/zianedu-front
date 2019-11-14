@@ -15,6 +15,24 @@ function saveBoard(bbsMasterKey, userKey, title, content, isSecret, fileName) {
     return result;
 }
 
+//강사 게시판 글 저장
+function saveTeacherBoard(bbsMasterKey, teacherKey, userKey, title, content, isNotice, fileName) {
+    if(bbsMasterKey == null || bbsMasterKey == undefined) return;
+    if(userKey == null || userKey == undefined) return;
+    if(teacherKey == null || teacherKey == undefined) return;
+
+    var data = {
+        bbsMasterKey : bbsMasterKey,
+        teacherKey: teacherKey,
+        userKey : userKey,
+        title : title,
+        content : content,
+        isNotice : isNotice,
+        fileName : fileName
+    };
+    var result = postApi("/board/saveTeacherBoard", data);
+    return result;
+}
 
 //게시판 글 수정
 function updateBoard(bbskey, title, content, isSecret, fileName) {

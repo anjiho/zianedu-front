@@ -13,6 +13,12 @@
     var menuCtgKey = '<%=reqKey%>';
 
     $( document ).ready(function() {
+        $('#writeContent').summernote({
+            height: 300,                 // set editor height
+            minHeight: null,             // set minimum height of editor
+            maxHeight: null,             // set maximum height of editor
+            focus: true                  // set focus to editable area after initializing summernote
+        });
         var pcMobile = divisionPcMobile();
         if(pcMobile == 'pc') pcMobile = 1;
         else if(pcMobile == 'mobile') pcMobile = 3;
@@ -43,15 +49,23 @@
         $("#noticeBtn").click(function () {
             $("#referenceDetail").hide();
             $("#referenceList").hide();
+            $("#referenceWriteDiv").hide();
             $("#noticeList").show();
             innerValue("divisionList", 1);
         });
         $("#referBtn").click(function () {
             $("#referenceDetail").hide();
             $("#referenceList").show();
+            $("#referenceWriteDiv").hide();
             $("#noticeList").hide();
             innerValue("divisionList", 0);
         });
+    });
+    
+    $(document).on('change', '#attachFile', function() {
+        var fileValue = $("#attachFile").val().split("\\");
+        var fileName = fileValue[fileValue.length-1]; // 파일명
+        $("#fileList").append("<li><a href=\"#\"><img src=\"/common/zian/images/common/icon_file.png\" alt=\"\">"+ fileName +"</a></li>");
     });
 
     function fn_search(val) {
@@ -80,18 +94,22 @@
 
     //학습안내 - 학습자료실 상세보기
     function goDetailReference(bbsKey) {
+        innerValue("bbsKey", bbsKey);
         var detailInfo = getTeacherReferenceRoomDetail(teacherKey, bbsKey);
+        console.log(detailInfo);
         $("#referenceDetail").show();
         $("#referenceList").hide();
         $("#noticeList").hide();
+        $("#referenceWriteDiv").hide();
         if(detailInfo != undefined){
-            var referenceInfo = detailInfo.result.referenceRoomDetailInfo;
+            var referenceInfo   = detailInfo.result.referenceRoomDetailInfo;
             var prevNextBbsList = detailInfo.result.prevNextBbsList;
             innerHTML("referenceTitle",referenceInfo.title);
             innerHTML("referenceIndate",referenceInfo.indate);
             innerHTML("referenceCount",referenceInfo.readCount);
             innerHTML("referenceWriter",referenceInfo.userName);
             innerHTML("referenceUserId",referenceInfo.userId);
+            innerHTML("fileName",referenceInfo.fileName);
 
             var detailInfoStr = JSON.stringify(detailInfo);
             var detailInfoStrObj = JSON.parse(detailInfoStr);
@@ -112,7 +130,6 @@
             }
             //봄문 내용 파징작업 끝
             innerHTML("referenceContent", contents);
-
 
             for(var i = 0;  i < prevNextBbsList.length; i++){ /* 이전글 다음글 기능 */
                 innerHTML("referenceNextTitle",prevNextBbsList[i].nextTitle);
@@ -180,6 +197,81 @@
     function goCheckedBuy() {
 
     }
+
+    //학습안내 - 학습자료실 - 글쓰기
+    function referenceWrite() {
+        $("#referenceDetail").hide();
+        $("#referenceList").hide();
+        $("#noticeList").hide();
+        $("#referenceWriteDiv").show();
+    }
+
+    //수정버튼 클릭시 상세정보 가져오기
+    function getModifyDetail() {
+        $("#referenceDetail").hide();
+        $("#referenceWriteDiv").show();
+        var bbsKey = getInputTextValue("bbsKey");
+        var result = getBoardDetailInfo(10023, bbsKey);
+        if(result != undefined){
+            var detailInfo = result.boardDetailInfo;
+            $("#writeContent").summernote("code", detailInfo.contents);
+            innerValue("writeTitle", detailInfo.title);
+            innerHTML("fileList", detailInfo.fileName);
+        }
+    }
+
+    //학습자료실 글쓰기 저장 & 수정
+    function goWriteSave() {
+        var check = new isCheck();
+        if (check.input("writeTitle", comment.input_title) == false) return;
+
+        var isNotice = getInputTextValue("divisionList"); // 학습자료실 : 0  , 학습공지 : 1
+        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        var userKey = sessionUserInfo.userKey;
+        var title   = getInputTextValue("writeTitle");
+        var content = $('textarea[name="writeContent"]').val();
+        var filechk = $("#attachFile").val();//파일 빈값 체크
+
+        var bbsKey = getInputTextValue("bbsKey");
+
+        if(filechk == "") { //파일 없을때
+            if(bbsKey == ""){ //등록
+                var result = saveTeacherBoard(10023, teacherKey, userKey, title, content, isNotice, "");
+            }else{ //수정
+                var result = updateBoard(bbsKey, title, content, isNotice, "");
+            }
+            if(result.resultCode == 200){
+                alert("성공적으로 등록 완료되었습니다");
+            }
+        }else{
+            var data = new FormData();
+            $.each($('#attachFile')[0].files, function(i, file) {
+                data.append('file', file);
+            });
+            $.ajax({
+                url: "http://52.79.40.214:9090/fileUpload/boardFile",
+                method: "post",
+                dataType: "JSON",
+                data: data,
+                cache: false,
+                processData: false,
+                contentType: false,
+                success: function (data) {
+                    if(data.resultCode == 200){
+                        var fileName = data.keyValue;
+                        if(bbsKey == ""){ //등록
+                            var result = saveTeacherBoard(10023, teacherKey, userKey, title, content, isNotice, fileName);
+                        }else{ //수정
+                            var result = updateBoard(bbsKey, title, content, isNotice, fileName);
+                        }
+                        if(result.resultCode == 200){
+                            alert("성공적으로 등록 완료되었습니다");
+                        }
+                    }
+                }
+            });
+        }
+    }
 </script>
 <form action="/Player/Axis" id="id_frm_player" method="post" name="name_frm_player">
 <%--    <input id="a_lPlayer_JLecKey" name="a_lPlayer_JLecKey" type="hidden" value="" />--%>
@@ -192,6 +284,7 @@
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
     <input type="hidden" id="divisionList">
+    <input type="hidden" id="bbsKey">
     <div id="wrap">
         <%@include file="/common/jsp/leftMenu.jsp" %>
         <!--상단-->
@@ -351,6 +444,9 @@
                                                     <input type="text" id="searchText1" onkeypress="if(event.keyCode==13) {fn_search('new'); return false;}" >
                                                     <a href="javascript:fn_search('new');" class="btn_m on">검색</a>
                                                 </li>
+                                                <li class="right">
+                                                    <a href="javascript:referenceWrite();" class="btn_inline w140">글쓰기</a>
+                                                </li>
                                             </ul>
                                         </form>
                                         <div class="tableBox">
@@ -388,6 +484,9 @@
                                                     <input type="text"  id="searchText2" onkeypress="if(event.keyCode==13) {fn_search1('new'); return false;}">
                                                     <a href="javascript:fn_search1('new');" class="btn_m on">검색</a>
                                                 </li>
+                                                <li class="right">
+                                                    <a href="javascript:referenceWrite();" class="btn_inline w140">글쓰기</a>
+                                                </li>
                                             </ul>
                                         </form>
                                         <div class="tableBox">
@@ -418,6 +517,11 @@
                                     <div class="" id="referenceDetail" style="display: none;">
                                         <br>
                                         <br>
+                                        <ul class="searchArea">
+                                            <li class="right">
+                                                <a href="javascript:getModifyDetail();" class="btn_m w140">수정</a>
+                                            </li>
+                                        </ul>
                                         <div class="tableBox">
                                             <table class="view">
                                                 <colgroup>
@@ -433,7 +537,7 @@
                                                     <td colspan="2">작성자 : <span id="referenceWriter"></span> (<span id="referenceUserId"></span>) | 조회수 : <span id="referenceCount"></span></td>
                                                 </tr>
                                                 <tr>
-                                                    <td colspan="2">첨부파일 : <a href="#" class="iconFile" target="_blank" title="새창열림">보충자료.pdf</a></td>
+                                                    <td colspan="2">첨부파일 : <a href="#" class="iconFile" target="_blank" title="새창열림"><span id="fileName"></span></a></td>
                                                 </tr>
                                                 <tr>
                                                     <td colspan="2" class="textContent" id="referenceContent"></td>
@@ -464,6 +568,44 @@
                                         </div>
                                     </div>
                                     <!--//학습자료실 상세 끝-->
+                                    <!--학습자료실 글쓰기-->
+                                    <div class="" id="referenceWriteDiv" style="display: none;">
+                                        <form>
+                                            <ul class="searchArea">
+                                                <li class="left"><b>글 등록하기</b></li>
+                                            </ul>
+                                            <div class="tableBox">
+                                                <table class="form">
+                                                    <colgroup>
+                                                        <col class="w15p">
+                                                        <col>
+                                                    </colgroup>
+                                                    <tbody>
+                                                    <tr>
+                                                        <td>제목</td>
+                                                        <td><input type="text" placeholder="제목을 입력하세요" class="w100p" id="writeTitle"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">내용</th>
+                                                        <td><textarea name="writeContent" id="writeContent" value=""></textarea></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">첨부파일</th>
+                                                        <td class="">
+                                                            <input type="file" id="attachFile" class="fileBtn noline nobg">
+                                                            <ul id='fileList' class="fileList"></ul>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="btnArea">
+                                                <a href="javascript:goReferenceList();" class="btn_l w200">취소</a>
+                                                <a href="javascript:goWriteSave();" class="btn_l onBlue w200">등록</a>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <!--//학습자료실 글쓰기 끝-->
                                 </div>
                             </div>
                         </div>
