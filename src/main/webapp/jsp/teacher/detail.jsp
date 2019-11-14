@@ -180,6 +180,8 @@
     function goCheckedBuy() {
 
     }
+
+
 </script>
 <form action="/Player/Axis" id="id_frm_player" method="post" name="name_frm_player">
 <%--    <input id="a_lPlayer_JLecKey" name="a_lPlayer_JLecKey" type="hidden" value="" />--%>
