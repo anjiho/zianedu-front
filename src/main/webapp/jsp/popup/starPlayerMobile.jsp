@@ -7,17 +7,12 @@
     data = "<?xml version='1.0' encoding='UTF-8' ?>";
     data += "<axis-app>";
     data += "<action-type>streaming</action-type>";
-    data += "<user-id><![CDATA[ANONYMOUS]]></user-id>";
-    data += "<folders>";
-    data += "<folder id='1' name='영어' thumbnail='http://domain/xxxx.png' />";
-    data += "<folder id='2' name='기초' thumbnail='http://domain/xxxx.png' />";
-    data += "</folders>";
+    data += "<user-id><![CDATA[ANONYMOUS]]</user-id>";
     data += 	"<content>";
-    data += 		"<id><![CDATA[0001]]></id>";
-    data += 		"<url><![CDATA[http://m.starplayer.net/axsample/vod/480x320.mp4]]></url>";
-    data += 		"<title><![CDATA[기초영어-01]]></title>";
-    data += 		"<category><![CDATA[테스트/다운로드]]></category>";
-    data += 		"<limit-date><![CDATA[20131210120000]]></limit-date>";
+    data += 		"<id></id>";
+    data += 		"<url><![CDATA[http://algisa.nptechnology.com:8000/file/sample.mp4]]></url>";
+    data += 		"<title><![CDATA[맛보기]]></title>";
+    data +=       "<position>0</position>";
     data += 	"</content>";
     data += "</axis-app>";
 
