@@ -199,7 +199,7 @@
 .lectureWrap ul.costList > li{padding:2px;}
 
 
-.tab_qna .tableBox table.form .for_fileBtn{float:left;display:inline-block;width:140px;height:36px;line-height:34px;padding-left:40px;margin-left:0;color:#fff;font-size:16px;background:#000 url(..//common/zian/images/common/icon_upload.png) no-repeat 10px center;}
+.tab_qna .tableBox table.form .for_fileBtn{float:left;display:inline-block;width:140px;height:36px;line-height:34px;padding-left:40px;margin-left:0;color:#fff;font-size:16px;background:#000 url(/common/zian/images/common/icon_upload.png) no-repeat 10px center;}
 .tab_qna .tableBox table.form .fileBtn.noline + span > input[type='text'].noline{min-width:50%;border:1px solid #fff;}
 .boardWrap .tableBox table.form .for_fileBtn{float:left;display:inline-block;width:110px;height:45px;margin-left:0;color:#444;line-height:43px;background:#fff;border:1px #aeaeae solid;}
 .boardWrap .tableBox table.form .fileBtn.noline + span > input[type='text'].noline{min-width:50%;border:0px none;display: none;}

@@ -25,6 +25,25 @@
             maxHeight: null,             // set maximum height of editor
             focus: true                  // set focus to editable area after initializing summernote
         });
+
+        $("#teacherHeader li").click(function() {
+            if($(this).index() == 0 || $(this).index() == 1){
+                $("#qnaDiv").hide();
+                $("#qnaDetail").hide();
+                $("#qnaWriteDiv").hide();
+            }else if($(this).index() == 2){
+                innerValue("divisionList", 0);
+                $("#qnaDiv").hide();
+                $("#qnaDetail").hide();
+                $("#qnaWriteDiv").hide();
+                $("#referenceList").show();
+                $("#referenceWriteDiv").hide();
+            }else if($(this).index() == 3){
+                $("#qnaDiv").show();
+                innerValue("divisionList", 2);
+            }
+        });
+
         var pcMobile = divisionPcMobile();
         if(pcMobile == 'pc') pcMobile = 1;
         else if(pcMobile == 'mobile') pcMobile = 3;
@@ -77,7 +96,7 @@
     $(document).on('change', '#attachFile1', function() {
         var fileValue = $("#attachFile1").val().split("\\");
         var fileName = fileValue[fileValue.length-1]; // 파일명
-        $("#fileList").append("<li><a href=\"#\">"+ fileName +"</a>"+" "+"<img src=\"/common/zian/images/common/icon_file.png\" alt=\"\"></li>");
+        $("#fileList1").append("<li><a href=\"#\">"+ fileName +"</a>"+" "+"<img src=\"/common/zian/images/common/icon_file.png\" alt=\"\"></li>");
     });
 
     function fn_search(val) {
@@ -182,7 +201,6 @@
     function goDetailqna(bbskey) {
         $("#qnaDiv").hide();
         $("#qnaDetail").show();
-        innerValue("divisionList", 2);
         innerValue("bbsKey1", bbskey);
         //var bbsKey = getInputTextValue("bbsKey");
         var detailInfo = getTeacherLearningQnaDetail(teacherKey, bbskey);
@@ -249,15 +267,21 @@
     //목록으로 이동 버튼 함수
     function goReferenceList(){
         var val = getInputTextValue("divisionList");
+        alert(val);
         if(val == 0){
             $("#referenceDetail").hide();
+            $("#referenceWriteDiv").hide();
+            $("#qnaDiv").hide();
             $("#referenceList").show();
         }else if(val == 1) {
+            $("#referenceWriteDiv").hide();
             $("#referenceDetail").hide();
+            $("#qnaDiv").hide();
             $("#noticeList").show();
         }else if(val == 2) {
             $("#qnaDiv").show();
             $("#qnaDetail").hide();
+            $("#qnaWriteDiv").hide();
         }
     }
 
@@ -303,6 +327,7 @@
 
     //학습안내 - 학습자료실 - 글쓰기
     function referenceWrite() {
+        $("#fileList li").remove();
         $("#referenceDetail").hide();
         $("#referenceList").hide();
         $("#noticeList").hide();
@@ -310,6 +335,7 @@
     }
     
     function qnaWrite() {
+        $("#fileList1 li").remove();
         $("#qnaDiv").hide();
         $("#qnaDetail").hide();
         $("#qnaWriteDiv").show();
@@ -354,7 +380,8 @@
         var content = $('textarea[name="qnaWriteContent"]').val();
         var filechk = $("#attachFile1").val();//파일 빈값 체크
         var bbsKey = getInputTextValue("bbsKey1");
-
+            console.log(filechk);
+            return false;
         var isSecret = "";
         if($('input[name="chkPwd"]').is(":checked") == true) isSecret = 1;
         else isSecret = 0;
@@ -540,7 +567,7 @@
                     </div>
 
                     <div class="teacherContentsTab tabContent">
-                        <ul class="tabBar">
+                        <ul class="tabBar" id="teacherHeader">
                             <li><a href="#">커리큘럼</a></li>
                             <li><a href="#">강좌소개</a></li>
                             <li><a href="#">학습안내</a></li>
@@ -777,7 +804,7 @@
                                                     <tr>
                                                         <th scope="row">첨부파일</th>
                                                         <td class="">
-                                                            <input type="file" id="attachFile" class="fileBtn noline nobg">
+                                                            <input type="file" id="attachFile" class="fileBtn noline">
                                                             <ul id='fileList' class="fileList"></ul>
                                                         </td>
                                                     </tr>
@@ -855,8 +882,8 @@
                                         <td class="bg_gray alignRight" id="qnaIndate"></td>
                                     </tr>
                                     <tr>
-                                        <td >작성자 : <span id="qnaWriter"></span> (<span id="qnaUserId"></span>) | 조회수 : <span id="qnaCount"></span></td>
-                                        <td class="alignRight" id="iconLock" style="display: none;"><span class="iconLock">비밀글</span></td>
+                                        <td>작성자 : <span id="qnaWriter"></span> (<span id="qnaUserId"></span>) | 조회수 : <span id="qnaCount"></span></td>
+                                        <td class="alignRight" ><span class="iconLock" id="iconLock" style="display: none;">비밀글</span></td>
                                     </tr>
                                     <tr>
                                         <%--                                                    <td colspan="2">--%>
@@ -922,8 +949,6 @@
 
                         <!--학습qna 등록 -->
                         <div class="" id="qnaWriteDiv" style="display: none;">
-                            <!-- 학습 Q&A 상세 -->
-                            <div class="tab_qna">
                                 <div class="tabPage active">
                                     <form>
                                         <ul class="searchArea">
@@ -951,23 +976,24 @@
                                                 <tr>
                                                     <th scope="row">첨부파일</th>
                                                     <td class="">
-                                                        <input type="file" id="attachFile1" class="fileBtn noline nobg">
+<%--                                                        <input type="file" id="attachFile1" class="fileBtn noline nobg">--%>
+                                                        <input multiple="multiple" type="file" name="file" id="attachFile1" class="fileBtn noline"/>
                                                         <ul id='fileList1' class="fileList"></ul>
                                                     </td>
+
                                                 </tr>
                                                 </tbody>
                                             </table>
                                         </div>
                                         <div class="btnArea">
-                                            <a href="#" class="btn_l w200">취소</a>
+                                            <a href="javascript:goReferenceList();" class="btn_l w200">취소</a>
                                             <a href="javascript:goWriteQnaSave();" class="btn_l onBlue w200">등록</a>
                                         </div>
                                     </form>
                                 </div>
-                            </div>
+
                         </div>
                         <!--//학습qna 등록 끝-->
-
                     </div>
                 </div>
                 <!--//서브 컨텐츠-->
