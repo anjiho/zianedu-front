@@ -16,7 +16,7 @@ function saveBoard(bbsMasterKey, userKey, title, content, isSecret, fileName) {
 }
 
 //강사 게시판 글 저장
-function saveTeacherBoard(bbsMasterKey, teacherKey, userKey, title, content, isNotice, fileName) {
+function saveTeacherBoard(bbsMasterKey, teacherKey, userKey, title, content, isNotice, isSecret, fileName) {
     if(bbsMasterKey == null || bbsMasterKey == undefined) return;
     if(userKey == null || userKey == undefined) return;
     if(teacherKey == null || teacherKey == undefined) return;
@@ -28,6 +28,7 @@ function saveTeacherBoard(bbsMasterKey, teacherKey, userKey, title, content, isN
         title : title,
         content : content,
         isNotice : isNotice,
+        isSecret : isSecret,
         fileName : fileName
     };
     var result = postApi("/board/saveTeacherBoard", data);

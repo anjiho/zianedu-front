@@ -216,14 +216,14 @@ function gfn_getPageNav_new3(totalPageCnt,printNum,curPage) {
     var sHtml = '';
     var ibefore = parseInt(curPage) - parseInt(printNum) ;
     if (ibefore < 1) ibefore = 1;
-    sHtml += "<a class='btn_prev' href='javascript:gfn_fnList2(" + ibefore + ")' >이전</a>";
+    sHtml += "<a class='btn_prev' href='javascript:gfn_fnList3(" + ibefore + ")' >이전</a>";
 
     for(var i=iStart; i<= iEnd; i++) {
         if(curPage== i) {
-            sHtml += "<a class='active' href='javascript:gfn_fnList2(" + i + ")'>" + i + "</a>";
+            sHtml += "<a class='active' href='javascript:gfn_fnList3(" + i + ")'>" + i + "</a>";
             //sHtml += "<strong title=\"현재페이지\"> " + i + " </strong>  ";
         } else {
-            sHtml += "<a class='' href='javascript:gfn_fnList2(" + i + ")'>" + i + "</a>";
+            sHtml += "<a class='' href='javascript:gfn_fnList3(" + i + ")'>" + i + "</a>";
         }
 
         if(i!=iEnd) {// 마지막 라인에는 구분자를 뺌
