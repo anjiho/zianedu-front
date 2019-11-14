@@ -64,6 +64,8 @@
 
     <script src="/common/starplayer/js/starplayer_popup.js"></script>
     <script src="/common/starplayer/js/starplayer_config.js"></script>
+    <script src="/common/starplayer/js/starplayer_app.js"></script>
+    <script src="/common/starplayer/js/starplayer_ui.js"></script>
 
     <script src="/common/calendar/lang/ko.js"/>
 </head>
