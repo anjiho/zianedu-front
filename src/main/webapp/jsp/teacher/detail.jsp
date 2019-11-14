@@ -95,6 +95,7 @@
     //학습안내 - 학습자료실 상세보기
     function goDetailReference(bbsKey) {
         innerValue("bbsKey", bbsKey);
+        $("#fileDetailList").children().remove();
         var detailInfo = getTeacherReferenceRoomDetail(teacherKey, bbsKey);
         $("#referenceDetail").show();
         $("#referenceList").hide();
@@ -108,7 +109,13 @@
             innerHTML("referenceCount",referenceInfo.readCount);
             innerHTML("referenceWriter",referenceInfo.userName);
             innerHTML("referenceUserId",referenceInfo.userId);
-            innerHTML("fileName",referenceInfo.fileName);
+
+            if(referenceInfo.fileInfo != null){
+                for(var i=0; i < referenceInfo.fileInfo.length; i++){
+                    console.log(referenceInfo.fileInfo[i]);
+                    $("#fileDetailList").append("<li><a href='"+ referenceInfo.fileInfo[i].fileUrl +"'>"+ referenceInfo.fileInfo[i].fileName +"</a></li>");
+                }
+            }
 
             var detailInfoStr = JSON.stringify(detailInfo);
             var detailInfoStrObj = JSON.parse(detailInfoStr);
@@ -131,18 +138,23 @@
             innerHTML("referenceContent", contents);
 
             for(var i = 0;  i < prevNextBbsList.length; i++){ /* 이전글 다음글 기능 */
-                innerHTML("referenceNextTitle",prevNextBbsList[i].nextTitle);
-                innerHTML("referencePrevTitle",prevNextBbsList[i].prevTitle);
-                $("#referenceNextLink").attr("href", "javascript:goReferenceDetailPage("+ prevNextBbsList[i].nextBbsKey +");");
-                $("#referencePrevLink").attr("href", "javascript:goReferenceDetailPage("+ prevNextBbsList[i].prevBbsKey +");");
+                if(prevNextBbsList[i].prevTitle == '이전글'){
+                    innerHTML("referencePrevTitle", "");
+                } else {
+                    innerHTML("referencePrevTitle", prevNextBbsList[i].prevTitle);
+                    $("#referencePrevLink").attr("href", "javascript:goDetailReference("+ prevNextBbsList[i].prevBbsKey +");");
+                }
+
+                if(prevNextBbsList[i].prevTitle == '다음글') {
+                    innerHTML("referencePrevTitle", "");
+                } else {
+                    innerHTML("referenceNextTitle", prevNextBbsList[i].nextTitle);
+                    $("#referenceNextLink").attr("href", "javascript:goDetailReference("+ prevNextBbsList[i].nextBbsKey +");");
+                }
             }
         }
     }
 
-    //이전글 다음글 페이지 이동 함수
-    function goReferenceDetailPage(bbskey) {
-        //goDetailReference(bbsKey);
-    }
 
     //목록으로 이동 버튼 함수
     function goReferenceList(){
@@ -536,7 +548,10 @@
                                                     <td colspan="2">작성자 : <span id="referenceWriter"></span> (<span id="referenceUserId"></span>) | 조회수 : <span id="referenceCount"></span></td>
                                                 </tr>
                                                 <tr>
-                                                    <td colspan="2">첨부파일 : <a href="#" class="iconFile" target="_blank" title="새창열림"><span id="fileName"></span></a></td>
+                                                    <td colspan="2">첨부파일 : <a href="#" class="iconFile" target="_blank" title="새창열림">
+<%--                                                        <span id="fileName"></span>--%>
+                                                            <ul id='fileDetailList' class="fileDetailList"></ul>
+                                                    </a></td>
                                                 </tr>
                                                 <tr>
                                                     <td colspan="2" class="textContent" id="referenceContent"></td>
@@ -556,11 +571,11 @@
                                                 <tbody>
                                                 <tr>
                                                     <td class="linkPrev">윗글</td>
-                                                    <td><a href="" class="subject" id="referenceNextLink"><span id="referenceNextTitle"></span></a></td>
+                                                    <td><a href="" class="subject" id="referencePrevLink"><span id="referencePrevTitle"></span></a></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="linkNext">아랫글</td>
-                                                    <td><a href="" class="subject" id="referencePrevLink"><span id="referencePrevTitle"></span></a></td>
+                                                    <td><a href="" class="subject" id="referenceNextLink"><span id="referenceNextTitle"></span></a></td>
                                                 </tr>
                                                 </tbody>
                                             </table>
