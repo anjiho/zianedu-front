@@ -267,7 +267,6 @@
     //목록으로 이동 버튼 함수
     function goReferenceList(){
         var val = getInputTextValue("divisionList");
-        alert(val);
         if(val == 0){
             $("#referenceDetail").hide();
             $("#referenceWriteDiv").hide();
