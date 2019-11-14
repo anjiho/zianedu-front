@@ -19,6 +19,12 @@
             maxHeight: null,             // set maximum height of editor
             focus: true                  // set focus to editable area after initializing summernote
         });
+        $('#qnaWriteContent').summernote({
+            height: 300,                 // set editor height
+            minHeight: null,             // set minimum height of editor
+            maxHeight: null,             // set maximum height of editor
+            focus: true                  // set focus to editable area after initializing summernote
+        });
         var pcMobile = divisionPcMobile();
         if(pcMobile == 'pc') pcMobile = 1;
         else if(pcMobile == 'mobile') pcMobile = 3;
@@ -31,6 +37,7 @@
 
         fn_search1('new');//학습안내 (학습공지) 리스트 불러오기
         fn_search('new');//학습안내 (학습자료실) 리스트 불러오기
+        fn_search3('new');//학습Q&A리스트 불러오기
 
         $("#referenceList").show();
 
@@ -65,7 +72,12 @@
     $(document).on('change', '#attachFile', function() {
         var fileValue = $("#attachFile").val().split("\\");
         var fileName = fileValue[fileValue.length-1]; // 파일명
-        $("#fileList").append("<li><a href=\"#\"><img src=\"/common/zian/images/common/icon_file.png\" alt=\"\">"+ fileName +"</a></li>");
+        $("#fileList").append("<li><a href=\"#\">"+ fileName +"</a>"+" "+"<img src=\"/common/zian/images/common/icon_file.png\" alt=\"\"></li>");
+    });
+    $(document).on('change', '#attachFile1', function() {
+        var fileValue = $("#attachFile1").val().split("\\");
+        var fileName = fileValue[fileValue.length-1]; // 파일명
+        $("#fileList").append("<li><a href=\"#\">"+ fileName +"</a>"+" "+"<img src=\"/common/zian/images/common/icon_file.png\" alt=\"\"></li>");
     });
 
     function fn_search(val) {
@@ -92,6 +104,18 @@
         getTeacherReferenceRoom2(teacherKey, sPage2, 10, searchType2,  searchText2, 1, 'dataList2');//학습안내 (학습자료실) 리스트 불러오기
     }
 
+    function fn_search3(val) {
+        var sPage3 = getInputTextValue("sPage3");
+        var searchType3 = getSelectboxValue("searchType3");
+        var searchText3 = getInputTextValue("searchText3");
+        if(searchType3 == undefined) searchType3 = "";
+        if(searchText3 == undefined) searchText3 = "";
+
+        if(val == "new") sPage3 = "1";
+
+        getTeacherLearningQna(teacherKey, sPage3, 20, searchType3,  searchText3, 'dataList3');//학습안내 (학습자료실) 리스트 불러오기
+    }
+
     //학습안내 - 학습자료실 상세보기
     function goDetailReference(bbsKey) {
         innerValue("bbsKey", bbsKey);
@@ -111,9 +135,8 @@
             innerHTML("referenceUserId",referenceInfo.userId);
 
             if(referenceInfo.fileInfo != null){
-                for(var i=0; i < referenceInfo.fileInfo.length; i++){
-                    console.log(referenceInfo.fileInfo[i]);
-                    $("#fileDetailList").append("<li><a href='"+ referenceInfo.fileInfo[i].fileUrl +"'>"+ referenceInfo.fileInfo[i].fileName +"</a></li>");
+                for(var i = 0; i < referenceInfo.fileInfo.length; i++){
+                    $("#fileDetailList").append("<li><a href='"+ referenceInfo.fileInfo[i].fileUrl +"'>"+ referenceInfo.fileInfo[i].fileName +"</a>"+" "+"<img src=\"/common/zian/images/common/icon_file.png\" alt=\"\"></li>");
                 }
             }
 
@@ -155,17 +178,82 @@
         }
     }
 
+    //학습 Q&A 상세보기
+    function goDetailqna(bbskey) {
+        $("#qnaDiv").hide();
+        $("#qnaDetail").show();
+        innerValue("divisionList", 2);
+        innerValue("bbsKey1", bbskey);
+        //var bbsKey = getInputTextValue("bbsKey");
+        var detailInfo = getTeacherLearningQnaDetail(teacherKey, bbskey);
+        if(detailInfo != null){
+            var referenceInfo   = detailInfo.result.referenceRoomDetailInfo;
+            var prevNextBbsList = detailInfo.result.prevNextBbsList;
+
+            //iconLock
+            console.log(detailInfo);
+            innerHTML("qnaTitle",referenceInfo.title);
+            innerHTML("qnaIndate",referenceInfo.indate);
+            innerHTML("qnaCount",referenceInfo.readCount);
+            innerHTML("qnaWriter",referenceInfo.userName);
+            innerHTML("qnaUserId",referenceInfo.userId);
+
+            if(referenceInfo.fileInfo != null){
+                for(var i = 0; i < referenceInfo.fileInfo.length; i++){
+                    $("#fileDetailList1").append("<li><a href='"+ referenceInfo.fileInfo[i].fileUrl +"'>"+ referenceInfo.fileInfo[i].fileName +"</a>"+" "+"<img src=\"/common/zian/images/common/icon_file.png\" alt=\"\"></li>");
+                }
+            }
+
+            var detailInfoStr = JSON.stringify(detailInfo);
+            var detailInfoStrObj = JSON.parse(detailInfoStr);
+            var contentsObj = detailInfoStrObj.result.referenceRoomDetailInfo.contents;
+            var contentsStr = JSON.stringify(contentsObj);
+            var contentsStrRep = contentsStr.replace(/['"]+/g, '');
+            var contentsStrRep3 = contentsStrRep.replace(/\\n/g,'');   //역슬러쉬 제거하기
+            var contentsStrRep4 = contentsStrRep3.replace(/\\r/g,'');   //역슬러쉬 제거하기
+            var contentsStrRep5 = contentsStrRep4.replace(/\\/gi, "");   //역슬러쉬 제거하기
+            var contentsHTML = $.parseHTML(contentsStrRep5);
+            var contents = null;
+            var findString = "&lt";
+            //HTML 포함 여부 화인
+            if(detailInfoStr.indexOf(findString) != -1) {
+                contents = contentsHTML[0].data.replace("rn", "");
+            } else {
+                contents = contentsHTML;
+            }
+            //봄문 내용 파징작업 끝
+            innerHTML("qnaContent", contents);
+
+            for(var i = 0;  i < prevNextBbsList.length; i++){ /* 이전글 다음글 기능 */
+                if(prevNextBbsList[i].prevTitle == '이전글'){
+                    innerHTML("qnaPrevTitle", "");
+                } else {
+                    innerHTML("qnaPrevTitle", prevNextBbsList[i].prevTitle);
+                    $("#qnaPrevLink").attr("href", "javascript:goDetailReference("+ prevNextBbsList[i].prevBbsKey +");");
+                }
+
+                if(prevNextBbsList[i].prevTitle == '다음글') {
+                    innerHTML("qnaPrevTitle", "");
+                } else {
+                    innerHTML("qnaNextTitle", prevNextBbsList[i].nextTitle);
+                    $("#qnaNextLink").attr("href", "javascript:goDetailReference("+ prevNextBbsList[i].nextBbsKey +");");
+                }
+            }
+        }
+    }
 
     //목록으로 이동 버튼 함수
     function goReferenceList(){
         var val = getInputTextValue("divisionList");
-
         if(val == 0){
             $("#referenceDetail").hide();
             $("#referenceList").show();
-        }else {
+        }else if(val == 1) {
             $("#referenceDetail").hide();
             $("#noticeList").show();
+        }else if(val == 2) {
+            $("#qnaDiv").show();
+            $("#qnaDetail").hide();
         }
     }
 
@@ -216,6 +304,12 @@
         $("#noticeList").hide();
         $("#referenceWriteDiv").show();
     }
+    
+    function qnaWrite() {
+        $("#qnaDiv").hide();
+        $("#qnaDetail").hide();
+        $("#qnaWriteDiv").show();
+    }
 
     //수정버튼 클릭시 상세정보 가져오기
     function getModifyDetail() {
@@ -230,13 +324,83 @@
             innerHTML("fileList", detailInfo.fileName);
         }
     }
+    
+    function getModifyDetailqna() {
+        $("#qnaDiv").hide();
+        $("#qnaDetail").hide();
+        $("#qnaWriteDiv").show();
+        var bbsKey = getInputTextValue("bbsKey1");
+        var result = getBoardDetailInfo(10023, bbsKey);
+        if(result != undefined){
+            var detailInfo = result.boardDetailInfo;
+            $("#qnaWriteContent").summernote("code", detailInfo.contents);
+            innerValue("qnaWriteTitle", detailInfo.title);
+            innerHTML("fileList1", detailInfo.fileName);
+        }
+    }
 
+    //qna 저장 및 수정
+    function goWriteQnaSave() {
+        var check = new isCheck();
+        if (check.input("qnaWriteTitle ", comment.input_title) == false) return;
+
+        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        var userKey = sessionUserInfo.userKey;
+        var title   = getInputTextValue("qnaWriteTitle");
+        var content = $('textarea[name="qnaWriteContent"]').val();
+        var filechk = $("#attachFile1").val();//파일 빈값 체크
+        var bbsKey = getInputTextValue("bbsKey1");
+
+        var isSecret = "";
+        if($('input[name="chkPwd"]').is(":checked") == true) isSecret = 1;
+        else isSecret = 0;
+
+        if(filechk == "") { //파일 없을때
+            if(bbsKey == ""){ //등록
+                var result = saveTeacherBoard(10025, teacherKey, userKey, title, content, 0, isSecret, "");
+            }else{ //수정
+                var result = updateBoard(bbsKey, title, content, isSecret, "");
+            }
+            if(result.resultCode == 200){
+                alert("성공적으로 등록 완료되었습니다");
+            }
+        }else{
+            var data = new FormData();
+            $.each($('#attachFile1')[0].files, function(i, file) {
+                data.append('file', file);
+            });
+            $.ajax({
+                url: "http://52.79.40.214:9090/fileUpload/boardFile",
+                method: "post",
+                dataType: "JSON",
+                data: data,
+                cache: false,
+                processData: false,
+                contentType: false,
+                success: function (data) {
+                    if(data.resultCode == 200){
+                        var fileName = data.keyValue;
+                        if(bbsKey == ""){ //등록
+                            var result = saveTeacherBoard(10025, teacherKey, userKey, title, content, 0, isSecret, fileName);
+                        }else{ //수정
+                            var result = updateBoard(bbsKey, title, content, isSecret, fileName);
+                        }
+                        if(result.resultCode == 200){
+                            alert("성공적으로 등록 완료되었습니다");
+                        }
+                    }
+                }
+            });
+        }
+    }
+    
     //학습자료실 글쓰기 저장 & 수정
     function goWriteSave() {
         var check = new isCheck();
         if (check.input("writeTitle", comment.input_title) == false) return;
 
         var isNotice = getInputTextValue("divisionList"); // 학습자료실 : 0  , 학습공지 : 1
+       
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         var userKey = sessionUserInfo.userKey;
         var title   = getInputTextValue("writeTitle");
@@ -247,7 +411,7 @@
 
         if(filechk == "") { //파일 없을때
             if(bbsKey == ""){ //등록
-                var result = saveTeacherBoard(10023, teacherKey, userKey, title, content, isNotice, "");
+                var result = saveTeacherBoard(10023, teacherKey, userKey, title, content, isNotice, 0, "");
             }else{ //수정
                 var result = updateBoard(bbsKey, title, content, isNotice, "");
             }
@@ -271,7 +435,7 @@
                     if(data.resultCode == 200){
                         var fileName = data.keyValue;
                         if(bbsKey == ""){ //등록
-                            var result = saveTeacherBoard(10023, teacherKey, userKey, title, content, isNotice, fileName);
+                            var result = saveTeacherBoard(10023, teacherKey, userKey, title, content, isNotice, 0, fileName);
                         }else{ //수정
                             var result = updateBoard(bbsKey, title, content, isNotice, fileName);
                         }
@@ -296,6 +460,7 @@
     <input type="hidden" name="page_gbn" id="page_gbn">
     <input type="hidden" id="divisionList">
     <input type="hidden" id="bbsKey">
+    <input type="hidden" id="bbsKey1">
     <div id="wrap">
         <%@include file="/common/jsp/leftMenu.jsp" %>
         <!--상단-->
@@ -535,10 +700,6 @@
                                         </ul>
                                         <div class="tableBox">
                                             <table class="view">
-                                                <colgroup>
-                                                    <col class="w80p">
-                                                    <col class="w20p">
-                                                </colgroup>
                                                 <tbody>
                                                 <tr>
                                                     <td class="bg_gray" id="referenceTitle"></td>
@@ -548,10 +709,16 @@
                                                     <td colspan="2">작성자 : <span id="referenceWriter"></span> (<span id="referenceUserId"></span>) | 조회수 : <span id="referenceCount"></span></td>
                                                 </tr>
                                                 <tr>
-                                                    <td colspan="2">첨부파일 : <a href="#" class="iconFile" target="_blank" title="새창열림">
-<%--                                                        <span id="fileName"></span>--%>
+<%--                                                    <td colspan="2">--%>
+<%--                                                        <span style="text-align: center">첨부파일 :</span>--%>
+<%--                                                         <a href="#" class="iconFile" target="_blank" title="새창열림">--%>
+<%--                                                            <ul id='fileDetailList' class="fileDetailList"></ul>--%>
+<%--                                                         </a>--%>
+<%--                                                    </td>--%>
+                                                        <td>첨부파일 :</td>
+                                                        <td>
                                                             <ul id='fileDetailList' class="fileDetailList"></ul>
-                                                    </a></td>
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                     <td colspan="2" class="textContent" id="referenceContent"></td>
@@ -623,9 +790,180 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="tabPage">
-                            학습 Q&A
+                        <!-- 학습 Q&A -->
+                        <div class="tabPage" id="qnaDiv">
+                            <!-- 학습Q&A -->
+                            <div class="tab_qna">
+                                <form>
+                                    <input type="hidden" id="sPage3">
+                                    <ul class="searchArea">
+                                        <li class="left">
+                                            <select id="searchType3">
+                                                <option value="title">제목</option>
+                                            </select>
+                                            <input type="text"  id="searchText3" onkeypress="if(event.keyCode==13) {fn_search3('new'); return false;}">
+                                            <a href="javascript:fn_search3('new');" class="btn_m on">검색</a>
+                                        </li>
+                                        <li class="right">
+                                            학습에 관련된 질문을 올려주세요&nbsp; <a href="javascript:qnaWrite();" class="btn_m w140">글쓰기</a>
+                                        </li>
+                                    </ul>
+                                </form>
+                                <div class="tableBox">
+                                    <table class="list">
+                                        <colgroup>
+                                            <col width="10%">
+                                            <col width="55%">
+                                            <col width="10%">
+                                            <col width="15%">
+                                            <col width="10%">
+                                        </colgroup>
+                                        <thead>
+                                        <tr>
+                                            <th scope="row" style="text-align:center">유형</th>
+                                            <th scope="row" style="text-align:center">제목</th>
+                                            <th scope="row" style="text-align:center">작성자</th>
+                                            <th scope="row" style="text-align:center">등록일</th>
+                                            <th scope="row" style="text-align:center">조회</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody id="dataList3">
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <%@ include file="/common/inc/com_pageNavi3.inc" %>
+                            </div>
                         </div>
+                        <!-- 학습 Q&A 상세 시작-->
+                        <div class="" id="qnaDetail" style="display: none;">
+                            <br>
+                            <br>
+                            <ul class="searchArea">
+                                <li class="right">
+                                    <a href="javascript:getModifyDetailqna();" class="btn_m w140">수정</a>
+                                </li>
+                            </ul>
+                            <div class="tableBox">
+                                <table class="view">
+                                    <tbody>
+                                    <tr>
+                                        <td class="bg_gray" id="qnaTitle"></td>
+                                        <td class="bg_gray alignRight" id="qnaIndate"></td>
+                                    </tr>
+                                    <tr>
+                                        <td >작성자 : <span id="qnaWriter"></span> (<span id="qnaUserId"></span>) | 조회수 : <span id="qnaCount"></span></td>
+                                        <td class="alignRight" id="iconLock"><span class="iconLock">비밀글</span></td>
+                                    </tr>
+                                    <tr>
+                                        <%--                                                    <td colspan="2">--%>
+                                        <%--                                                        <span style="text-align: center">첨부파일 :</span>--%>
+                                        <%--                                                         <a href="#" class="iconFile" target="_blank" title="새창열림">--%>
+                                        <%--                                                            <ul id='fileDetailList' class="fileDetailList"></ul>--%>
+                                        <%--                                                         </a>--%>
+                                        <%--                                                    </td>--%>
+                                        <td>첨부파일 :</td>
+                                        <td>
+                                            <ul id='fileDetailList1' class="fileDetailList"></ul>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" class="textContent" id="qnaContent"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="btnArea right">
+                                <a href="javascript:goReferenceList();" class="btn_m w140">목록으로</a>
+                            </div>
+
+                            <div class="tableBox noLine">
+                                <form>
+                                    <table class="reply">
+                                        <colgroup>
+                                            <col class="w10p">
+                                            <col>
+                                            <col class="w100">
+                                        </colgroup>
+                                        <tbody>
+                                        <tr>
+                                            <td class="alignCenter">댓글</td>
+                                            <td><textarea class="w100p"></textarea></td>
+                                            <td><input type="submit" value="등록" class="btn_l on"></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </form>
+                            </div>
+
+                            <div class="tableBox">
+                                <table class="view">
+                                    <colgroup>
+                                        <col class="w15p">
+                                        <col>
+                                    </colgroup>
+                                    <tbody>
+                                    <tr>
+                                        <td class="linkPrev">윗글</td>
+                                        <td><a href="" class="subject" id="qnaPrevLink"><span id="qnaPrevTitle"></span></a></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="linkNext">아랫글</td>
+                                        <td><a href="" class="subject" id="qnaNextLink"><span id="qnaNextTitle"></span></a></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!--//학습 qna 상세 끝-->
+
+                        <!--학습qna 등록 -->
+                        <div class="" id="qnaWriteDiv" style="display: none;">
+                            <!-- 학습 Q&A 상세 -->
+                            <div class="tab_qna">
+                                <div class="tabPage active">
+                                    <form>
+                                        <ul class="searchArea">
+                                            <li class="left"><b>글 등록하기</b></li>
+                                            <li class="right">
+                                                <input type="checkbox" name="chkPwd" value="1"> 비공개
+                                            </li>
+                                        </ul>
+
+                                        <div class="tableBox">
+                                            <table class="form">
+                                                <colgroup>
+                                                    <col class="w15p">
+                                                    <col>
+                                                </colgroup>
+                                                <tbody>
+                                                <tr>
+                                                    <td>제목</td>
+                                                    <td><input type="text" placeholder="제목을 입력하세요" class="w100p" id="qnaWriteTitle"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>내용</td>
+                                                    <td><textarea placeholder="내용을 입력하세요" name="qnaWriteContent" id="qnaWriteContent"></textarea></td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">첨부파일</th>
+                                                    <td class="">
+                                                        <input type="file" id="attachFile1" class="fileBtn noline nobg">
+                                                        <ul id='fileList1' class="fileList"></ul>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="btnArea">
+                                            <a href="#" class="btn_l w200">취소</a>
+                                            <a href="javascript:goWriteQnaSave();" class="btn_l onBlue w200">등록</a>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <!--//학습qna 등록 끝-->
+
                     </div>
                 </div>
                 <!--//서브 컨텐츠-->

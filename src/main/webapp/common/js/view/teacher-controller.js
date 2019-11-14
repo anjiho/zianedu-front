@@ -42,33 +42,14 @@ function getTeacherIntroduceList(ctgKey, pos, tagId) {
     }
 }
 
-//강사소개 > 학습 Q/A
-function getTeacherLearningQna(teacherKey, sPage, listLimit, searchType, searchText, tagId) {
-    if (teacherKey == null || teacherKey == undefined) return;
-    var data = {
-        sPage : sPage,
-        listLimit : listLimit,
-        searchType : searchType,
-        searchText : searchText
-    };
-    var InfoList = getApi("/teacher/getTeacherLearningQna/", teacherKey, data);
-                   //getPageApi 확인필요
-
-    if (InfoList.result.length > 0) {
-        var selList = InfoList.result;
-    }
-}
-
 //강사소개 > 학습Q/A 상세정보
 function getTeacherLearningQnaDetail(teacherKey, bbsKey) {
     if (teacherKey == null || teacherKey == undefined) return;
     var data = {
         bbsKey : bbsKey
     };
-    var InfoList = getApi("/teacher/getTeacherLearningQnaDetail/", teacherKey, data);
-    if (InfoList.result.length > 0) {
-        var selList = InfoList.result;
-    }
+    var infoList = getApi("/teacher/getTeacherLearningQnaDetail/", teacherKey, data);
+    return infoList;
 }
 
 //강사소개 > 수강후기, 온라인 상품 상세 > 회원리뷰
@@ -145,7 +126,6 @@ function getTeacherReferenceRoom2(teacherKey, sPage, listLimit, searchType,  sea
         var selList = infoList.result;
         for(var i=0; i < selList.length; i++){
             var cmpList = selList[i];
-            console.log(cmpList);
             if (cmpList != undefined) {
                 var cellData = [
                     function(data) {return listNum--;},
@@ -155,6 +135,55 @@ function getTeacherReferenceRoom2(teacherKey, sPage, listLimit, searchType,  sea
                     function(data) {return cmpList.readCount;}
                 ];
                 dwr.util.addRows(tagId, [0], cellData, {escapeHtml: false});
+            }
+        }
+    }
+}
+
+//강사소개 > 학습 Q/A
+function getTeacherLearningQna(teacherKey, sPage, listLimit, searchType, searchText, tagId) {
+    if (teacherKey == null || teacherKey == undefined) return;
+    var paging = new Paging();
+    dwr.util.removeAllRows(tagId); //테이블 리스트 초기화
+
+    var data = {
+        sPage: sPage,
+        listLimit: listLimit,
+        searchType: searchType,
+        searchText: searchText
+    };
+    var infoList = getPageApi("/teacher/getTeacherLearningQna/", teacherKey, data);
+    var cnt = infoList.cnt;
+    console.log(infoList);
+    if (infoList.result.length > 0) {
+        paging.count3(sPage, cnt, '20', '20', comment.blank_list);
+        var listNum = ((cnt - 1) + 1) - ((sPage - 1) * 10); //리스트 넘버링
+        var selList = infoList.result;
+
+        for (var i = 0; i < selList.length; i++) {
+            var cmpList = selList[i];
+
+            if (cmpList.level == 1) {//본문
+                var returnHtml = '<tr>';
+                returnHtml += '<td>' + listNum-- + '</td>';
+                var lock = '';
+                if (cmpList.pwd == 1) lock = 'lock';
+                else if (cmpList.pwd == null) lock = '';
+                returnHtml += '<td><a href="javascript:void(0);" class="subject ' + lock + '" onclick="goDetailqna('+  cmpList.bbsKey +');">' + gfn_substr(cmpList.title, 0, 40) + '</a></td>';
+                returnHtml += '<td>' + cmpList.userName + '</td>';
+                returnHtml += '<td>' + cmpList.indate + '</td>';
+                returnHtml += '<td>' + cmpList.readCount + '</td>';
+                returnHtml += '</tr>';
+                $("#dataList3").append(returnHtml);
+            } else if (cmpList.level == 2) {//답글
+                var returnHtml = '<tr>';
+                returnHtml += '<td>' + listNum-- + '</td>';
+                returnHtml += '<td><a href="javascript:void(0);" class="subject reply" onclick="goDetailqna(' + cmpList.bbsKey + ');">' + gfn_substr(cmpList.title, 0, 40) + '</a></td>';
+                returnHtml += '<td>' + cmpList.userName + '</td>';
+                returnHtml += '<td>' + cmpList.indate + '</td>';
+                returnHtml += '<td>' + cmpList.readCount + '</td>';
+                returnHtml += '</tr>';
+                $("#dataList3").append(returnHtml);
             }
         }
     }
