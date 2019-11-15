@@ -46,8 +46,18 @@ function gfn_fnList_new(page) {
     }
 }
 
-function gfn_fnList2(page) {
+function gfn_fnList(page) {
     var sPage = document.getElementById("sPage");
+    sPage.value = page;
+    try {
+        fn_search();
+    } catch (e){
+
+    }
+}
+
+function gfn_fnList2(page) {
+    var sPage = document.getElementById("sPage2");
     sPage.value = page;
     try {
         fn_search();
@@ -150,14 +160,14 @@ function gfn_getPageNav_new(totalPageCnt,printNum,curPage) {
     var sHtml = '';
     var ibefore = parseInt(curPage) - parseInt(printNum) ;
     if (ibefore < 1) ibefore = 1;
-    sHtml += "<a class='btn_prev' href='javascript:gfn_fnList2(" + ibefore + ")' >이전</a>";
+    sHtml += "<a class='btn_prev' href='javascript:gfn_fnList(" + ibefore + ")' >이전</a>";
 
     for(var i=iStart; i<= iEnd; i++) {
         if(curPage== i) {
-            sHtml += "<a class='active' href='javascript:gfn_fnList2(" + i + ")'>" + i + "</a>";
+            sHtml += "<a class='active' href='javascript:gfn_fnList(" + i + ")'>" + i + "</a>";
             //sHtml += "<strong title=\"현재페이지\"> " + i + " </strong>  ";
         } else {
-            sHtml += "<a class='' href='javascript:gfn_fnList2(" + i + ")'>" + i + "</a>";
+            sHtml += "<a class='' href='javascript:gfn_fnList(" + i + ")'>" + i + "</a>";
         }
 
         if(i!=iEnd) {// 마지막 라인에는 구분자를 뺌
@@ -166,7 +176,7 @@ function gfn_getPageNav_new(totalPageCnt,printNum,curPage) {
     }
     var inext = parseInt(curPage) + parseInt(printNum) ;
     if (inext > totalPageCnt) inext = totalPageCnt;
-    sHtml += "<a class='btn_next' href='javascript:gfn_fnList2(" + inext + ")'>다음</a>";
+    sHtml += "<a class='btn_next' href='javascript:gfn_fnList(" + inext + ")'>다음</a>";
     return sHtml;
 }
 
@@ -232,7 +242,7 @@ function gfn_getPageNav_new3(totalPageCnt,printNum,curPage) {
     }
     var inext = parseInt(curPage) + parseInt(printNum) ;
     if (inext > totalPageCnt) inext = totalPageCnt;
-    sHtml += "<a class='btn_next' href='javascript:gfn_fnList2(" + inext + ")'>다음</a>";
+    sHtml += "<a class='btn_next' href='javascript:gfn_fnList3(" + inext + ")'>다음</a>";
     return sHtml;
 }
 
