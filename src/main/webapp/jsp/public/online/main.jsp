@@ -11,7 +11,7 @@
             <%@include file="/common/jsp/topHeader.jsp" %>
         </div>
         <!--주메뉴-->
-        <%@include file="/common/jsp/onlineHeader.jsp" %>
+        <%@include file="/common/jsp/headerMenu.jsp" %>
         <!--//주메뉴-->
     </div>
     <!--//상단-->

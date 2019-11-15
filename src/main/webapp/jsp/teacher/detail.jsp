@@ -13,6 +13,7 @@
     var menuCtgKey = '<%=reqKey%>';
 
     $( document ).ready(function() {
+        $("#attachFile1").on("change", addFiles);
         $('#writeContent').summernote({
             height: 300,                 // set editor height
             minHeight: null,             // set minimum height of editor
@@ -93,11 +94,35 @@
         var fileName = fileValue[fileValue.length-1]; // 파일명
         $("#fileList").append("<li><a href=\"#\">"+ fileName +"</a>"+" "+"<img src=\"/common/zian/images/common/icon_file.png\" alt=\"\"></li>");
     });
-    $(document).on('change', '#attachFile1', function() {
-        var fileValue = $("#attachFile1").val().split("\\");
-        var fileName = fileValue[fileValue.length-1]; // 파일명
-        $("#fileList1").append("<li><a href=\"#\">"+ fileName +"</a>"+" "+"<img src=\"/common/zian/images/common/icon_file.png\" alt=\"\"></li>");
-    });
+    // $(document).on('change', '#attachFile1', function() {
+    //     var fileValue = $("#attachFile1").val().split("\\");
+    //     var fileName = fileValue[fileValue.length-1]; // 파일명
+    //     $("#fileList1").append("<li><a href=\"#\">"+ fileName +"</a>"+" "+"<img src=\"/common/zian/images/common/icon_file.png\" alt=\"\"></li>");
+    // });
+
+
+    var filesTempArr = [];
+    function addFiles(e) {
+        var files = e.target.files;
+        var filesArr = Array.prototype.slice.call(files);
+        var filesArrLen = filesArr.length;
+        var filesTempArrLen = filesTempArr.length;
+        for( var i=0; i<filesArrLen; i++ ) {
+            filesTempArr.push(filesArr[i]);
+            $("#fileList1").append("<div>" + filesArr[i].name + "<img src=\"/common/zian/images/common/icon_file.png\" onclick=\"deleteFile(event, " + (filesTempArrLen+i)+ ");\"></div>");
+        }
+        $(this).val('');
+        console.log(filesTempArr);
+    }
+    function deleteFile (eventParam, orderParam) {
+        filesTempArr.splice(orderParam, 1);
+        var innerHtmlTemp = "";
+        var filesTempArrLen = filesTempArr.length;
+        for(var i=0; i<filesTempArrLen; i++) {
+            innerHtmlTemp += "<div>" + filesTempArr[i].name + "<img src=\"/images/deleteImage.png\" onclick=\"deleteFile(event, " + i + ");\"></div>"
+        }
+        $("#fileList1").html(innerHtmlTemp);
+    }
 
     function fn_search(val) {
         var sPage = getInputTextValue("sPage");
@@ -396,6 +421,8 @@
         }else{
             var data = new FormData();
             $.each($('#attachFile1')[0].files, function(i, file) {
+                console.log($('#attachFile1')[0].files);
+                return false;
                 data.append('file', file);
             });
             $.ajax({
@@ -499,37 +526,7 @@
                 <%@include file="/common/jsp/topHeader.jsp" %>
             </div>
             <!--주메뉴-->
-            <div id="gnb">
-                <div class="inner">
-                    <ul class="deaph1 cols7">
-                        <li><a href="#">내강의실</a>
-                            <ul class="deaph2">
-                                <li><a href="#">수강중</a></li>
-                                <li><a href="#">일시정지</a></li>
-                                <li><a href="#">수강완료</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="javascript:goPage('teacher', 'main')">교수소개</a></li>
-                        <li><a href="#">수강신청</a></li>
-                        <li><a href="#">지안패스</a></li>
-                        <li><a href="#">무료강좌</a>
-                            <ul class="deaph2">
-                                <li><a href="#">이론</a></li>
-                                <li><a href="#">기출풀이</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">빅모의고사</a></li>
-                        <li><a href="#">합격수기</a>
-                            <ul class="deaph2">
-                                <li><a href="#">합격영상</a></li>
-                                <li><a href="#">합겨수기</a></li>
-                                <li><a href="#">수강후기</a></li>
-                                <li><a href="#">도서후기</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            <%@include file="/common/jsp/headerMenu.jsp" %>
             <!--//주메뉴-->
         </div>
         <!--//상단-->
@@ -975,7 +972,7 @@
                                                     <th scope="row">첨부파일</th>
                                                     <td class="">
 <%--                                                        <input type="file" id="attachFile1" class="fileBtn noline nobg">--%>
-                                                        <input type="file" name="files[]" id="attachFile1" class="fileBtn noline" multiple/>
+                                                        <input type="file" name="files[]" id="attachFile1" class="fileBtn noline"  multiple/>
                                                         <ul id='fileList1' class="fileList"></ul>
                                                     </td>
 
