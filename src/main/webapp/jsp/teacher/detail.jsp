@@ -957,38 +957,40 @@
                             <br>
                             <br>
                             <!-- ㅋ -->
-                            <div class="tabPage active" style="display: none;" id="replyDiv">
-                                <form>
-                                    <ul class="searchArea" style="border-top: 1px #e5e5e5 solid;background-color: #a3a3a3;">
-                                        <li class="left"><b>답변등록하기</b></li>
-                                        <li class="right">
-                                            <input type="checkbox" name="replyPwd" value="1"> 비공개
-                                        </li>
-                                    </ul>
+                            <div style="display: none;" id="replyDiv">
+                                <div class="tabPage active">
+                                    <form>
+                                        <ul class="searchArea" style="border-top: 1px #e5e5e5 solid;background-color: #a3a3a3;">
+                                            <li class="left"><b>답변등록하기</b></li>
+                                            <li class="right">
+                                                <input type="checkbox" name="replyPwd" value="1"> 비공개
+                                            </li>
+                                        </ul>
 
-                                    <div class="tableBox">
-                                        <table class="form">
-                                            <colgroup>
-                                                <col class="w15p">
-                                                <col>
-                                            </colgroup>
-                                            <tbody>
-                                            <tr>
-                                                <td>제목</td>
-                                                <td><input type="text" placeholder="제목을 입력하세요" class="w100p" id="replyTitle"></td>
-                                            </tr>
-                                            <tr>
-                                                <td>내용</td>
-                                                <td><textarea placeholder="내용을 입력하세요" name="replyContent" id="replyContent"></textarea></td>
-                                            </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="btnArea">
-                                <a href="javascript:goReplyCancel();" class="btn_l w200">취소</a>
-                                <a href="javascript:goReplySave();" class="btn_l onBlue w200">답변등록</a>
+                                        <div class="tableBox">
+                                            <table class="form">
+                                                <colgroup>
+                                                    <col class="w15p">
+                                                    <col>
+                                                </colgroup>
+                                                <tbody>
+                                                <tr>
+                                                    <td>제목</td>
+                                                    <td><input type="text" placeholder="제목을 입력하세요" class="w100p" id="replyTitle"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>내용</td>
+                                                    <td><textarea placeholder="내용을 입력하세요" name="replyContent" id="replyContent"></textarea></td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="btnArea">
+                                    <a href="javascript:goReplyCancel();" class="btn_l w200">취소</a>
+                                    <a href="javascript:goReplySave();" class="btn_l onBlue w200">답변등록</a>
+                                </div>
                             </div>
                             <!-- z -->
                             <div class="btnArea right">
