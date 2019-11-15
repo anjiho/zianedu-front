@@ -100,7 +100,6 @@
     //     $("#fileList1").append("<li><a href=\"#\">"+ fileName +"</a>"+" "+"<img src=\"/common/zian/images/common/icon_file.png\" alt=\"\"></li>");
     // });
 
-
     var filesTempArr = [];
     function addFiles(e) {
         var files = e.target.files;
@@ -114,6 +113,7 @@
         $(this).val('');
         console.log(filesTempArr);
     }
+
     function deleteFile (eventParam, orderParam) {
         filesTempArr.splice(orderParam, 1);
         var innerHtmlTemp = "";
@@ -421,8 +421,6 @@
         }else{
             var data = new FormData();
             $.each($('#attachFile1')[0].files, function(i, file) {
-                console.log($('#attachFile1')[0].files);
-                return false;
                 data.append('file', file);
             });
             $.ajax({
