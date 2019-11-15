@@ -23,9 +23,6 @@ function saveBoardFileList(bbsKey, fileName) {
         bbsKey : bbsKey,
         fileName : fileName
     };
-
-    console.log(data);
-
     var result = postApi("/board/saveBoardFileList", data);
     return result;
 }

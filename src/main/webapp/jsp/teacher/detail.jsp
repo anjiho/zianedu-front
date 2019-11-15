@@ -14,6 +14,7 @@
 
     $( document ).ready(function() {
         $("#attachFile1").on("change", addFiles);
+        $("#attachFile").on("change", addFiles1);
         $('#writeContent').summernote({
             height: 300,                 // set editor height
             minHeight: null,             // set minimum height of editor
@@ -89,11 +90,11 @@
         });
     });
     
-    $(document).on('change', '#attachFile', function() {
-        var fileValue = $("#attachFile").val().split("\\");
-        var fileName = fileValue[fileValue.length-1]; // 파일명
-        $("#fileList").append("<li><a href=\"#\">"+ fileName +"</a>"+" "+"<img src=\"/common/zian/images/common/icon_file.png\" alt=\"\"></li>");
-    });
+    // $(document).on('change', '#attachFile', function() {
+    //     var fileValue = $("#attachFile").val().split("\\");
+    //     var fileName = fileValue[fileValue.length-1]; // 파일명
+    //     $("#fileList").append("<li><a href=\"#\">"+ fileName +"</a>"+" "+"<img src=\"/common/zian/images/common/icon_file.png\" alt=\"\"></li>");
+    // });
     // $(document).on('change', '#attachFile1', function() {
     //     var fileValue = $("#attachFile1").val().split("\\");
     //     var fileName = fileValue[fileValue.length-1]; // 파일명
@@ -187,6 +188,7 @@
         innerValue("bbsKey", bbsKey);
         $("#fileDetailList").children().remove();
         var detailInfo = getTeacherReferenceRoomDetail(teacherKey, bbsKey);
+        console.log(detailInfo);
         $("#referenceDetail").show();
         $("#referenceList").hide();
         $("#noticeList").hide();
@@ -248,6 +250,7 @@
     function goDetailqna(bbskey) {
         $("#qnaDiv").hide();
         $("#qnaDetail").show();
+        $("#fileDetailList1").children().remove();
         innerValue("bbsKey1", bbskey);
         //var bbsKey = getInputTextValue("bbsKey");
         var detailInfo = getTeacherLearningQnaDetail(teacherKey, bbskey);
@@ -486,11 +489,11 @@
         var userKey = sessionUserInfo.userKey;
         var title   = getInputTextValue("writeTitle");
         var content = $('textarea[name="writeContent"]').val();
-        var filechk = $("#attachFile").val();//파일 빈값 체크
+
 
         var bbsKey = getInputTextValue("bbsKey");
 
-        if(filechk == "") { //파일 없을때
+        if(filesTempArr1.length == 0) { //파일 없을때
             if(bbsKey == ""){ //등록
                 var result = saveTeacherBoard(10023, teacherKey, userKey, title, content, isNotice, 0, "");
             }else{ //수정
@@ -502,6 +505,7 @@
         }else{
             var data = new FormData();
             var formData = new FormData();
+            console.log(filesTempArr1);
             for(var i=0, filesTempArrLen = filesTempArr1.length; i<filesTempArrLen; i++) {
                 formData.append("files", filesTempArr1[i]);
             }
@@ -591,7 +595,6 @@
                             </div>
                         </div>
                     </div>
-                    <input type="button" value="1234" onclick="test();">
                     <div class="teacherContentsTab tabContent">
                         <ul class="tabBar" id="teacherHeader">
                             <li><a href="#">커리큘럼</a></li>
