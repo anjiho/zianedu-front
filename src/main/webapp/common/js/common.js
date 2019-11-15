@@ -2880,3 +2880,16 @@ function getPhoneNumHypen(val) {
     phoneNum = val.replace(/(^02.{0}|^01.{1}|[0-9]{3})([0-9]+)([0-9]{4})/,"$1-$2-$3");
     return phoneNum;
 }
+
+function toStrFileName(arr){
+    var str = arr.join(",");
+    var str1 = str.split(",");
+    var arr1 = new Array();
+    for(var i = 0; i < str1.length; i++){
+        var str2 = "'"+str1+"'";
+        arr1.push(str2);
+    }
+    var str3 = arr1.join(",");
+    var result = "["+str3+"]";
+    return result;
+}

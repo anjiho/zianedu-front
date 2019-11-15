@@ -124,6 +124,28 @@
         $("#fileList1").html(innerHtmlTemp);
     }
 
+    var filesTempArr1 = [];
+    function addFiles1(e) {
+        var files = e.target.files;
+        var filesArr = Array.prototype.slice.call(files);
+        var filesArrLen = filesArr.length;
+        var filesTempArrLen = filesTempArr1.length;
+        for( var i=0; i<filesArrLen; i++ ) {
+            filesTempArr1.push(filesArr[i]);
+            $("#fileList").append("<div>" + filesArr[i].name + "<img src=\"/common/zian/images/common/icon_file.png\" onclick=\"deleteFile(event, " + (filesTempArrLen+i)+ ");\"></div>");
+        }
+        $(this).val('');
+    }
+    function deleteFile1 (eventParam, orderParam) {
+        filesTempArr1.splice(orderParam, 1);
+        var innerHtmlTemp = "";
+        var filesTempArrLen = filesTempArr1.length;
+        for(var i=0; i<filesTempArrLen; i++) {
+            innerHtmlTemp += "<div>" + filesTempArr1[i].name + "<img src=\"/images/deleteImage.png\" onclick=\"deleteFile(event, " + i + ");\"></div>"
+        }
+        $("#fileList").html(innerHtmlTemp);
+    }
+
     function fn_search(val) {
         var sPage = getInputTextValue("sPage");
         var searchType1 = getSelectboxValue("searchType1");
@@ -229,6 +251,7 @@
         innerValue("bbsKey1", bbskey);
         //var bbsKey = getInputTextValue("bbsKey");
         var detailInfo = getTeacherLearningQnaDetail(teacherKey, bbskey);
+        console.log(detailInfo);
         if(detailInfo != null){
             var referenceInfo   = detailInfo.result.referenceRoomDetailInfo;
             var prevNextBbsList = detailInfo.result.prevNextBbsList;
@@ -402,14 +425,13 @@
         var userKey = sessionUserInfo.userKey;
         var title   = getInputTextValue("qnaWriteTitle");
         var content = $('textarea[name="qnaWriteContent"]').val();
-        var filechk = $("#attachFile1").val();//파일 빈값 체크
-        var bbsKey = getInputTextValue("bbsKey1");
+        var bbsKey  = getInputTextValue("bbsKey1");
 
         var isSecret = "";
         if($('input[name="chkPwd"]').is(":checked") == true) isSecret = 1;
         else isSecret = 0;
 
-        if(filechk == "") { //파일 없을때
+        if(filesTempArr.length == 0) { //파일 없을때
             if(bbsKey == ""){ //등록
                 var result = saveTeacherBoard(10025, teacherKey, userKey, title, content, 0, isSecret, "");
             }else{ //수정
@@ -420,16 +442,15 @@
             }
         }else{
             var data = new FormData();
-            $.each($('#attachFile1')[0].files, function(i, file) {
-                console.log($('#attachFile1')[0].files);
-                //return false;
-                data.append('file', file);
-            });
+            var formData = new FormData();
+            for(var i=0, filesTempArrLen = filesTempArr.length; i<filesTempArrLen; i++) {
+                formData.append("files", filesTempArr[i]);
+            }
             $.ajax({
-                url: "http://52.79.40.214:9090/fileUpload/boardFile",
+                url: "http://52.79.40.214:9090/fileUpload/boardFileList",
                 method: "post",
                 dataType: "JSON",
-                data: data,
+                data: formData,
                 cache: false,
                 processData: false,
                 contentType: false,
@@ -438,8 +459,12 @@
                         var fileName = data.keyValue;
                         if(bbsKey == ""){ //등록
                             var result = saveTeacherBoard(10025, teacherKey, userKey, title, content, 0, isSecret, fileName);
+                            var str = toStrFileName(fileName);
+                            saveBoardFileList(result.keyValue, str);
                         }else{ //수정
                             var result = updateBoard(bbsKey, title, content, isSecret, fileName);
+                            var str = toStrFileName(fileName);
+                            saveBoardFileList(result.keyValue, str);
                         }
                         if(result.resultCode == 200){
                             alert("성공적으로 등록 완료되었습니다");
@@ -476,14 +501,15 @@
             }
         }else{
             var data = new FormData();
-            $.each($('#attachFile')[0].files, function(i, file) {
-                data.append('file', file);
-            });
+            var formData = new FormData();
+            for(var i=0, filesTempArrLen = filesTempArr1.length; i<filesTempArrLen; i++) {
+                formData.append("files", filesTempArr1[i]);
+            }
             $.ajax({
-                url: "http://52.79.40.214:9090/fileUpload/boardFile",
+                url: "http://52.79.40.214:9090/fileUpload/boardFileList",
                 method: "post",
                 dataType: "JSON",
-                data: data,
+                data: formData,
                 cache: false,
                 processData: false,
                 contentType: false,
@@ -492,8 +518,13 @@
                         var fileName = data.keyValue;
                         if(bbsKey == ""){ //등록
                             var result = saveTeacherBoard(10023, teacherKey, userKey, title, content, isNotice, 0, fileName);
+                            console.log(fileName);
+                            var str = toStrFileName(fileName);
+                            saveBoardFileList(result.keyValue, str);
                         }else{ //수정
                             var result = updateBoard(bbsKey, title, content, isNotice, fileName);
+                            var str = toStrFileName(fileName);
+                            saveBoardFileList(result.keyValue, str);
                         }
                         if(result.resultCode == 200){
                             alert("성공적으로 등록 완료되었습니다");
@@ -502,29 +533,6 @@
                 }
             });
         }
-    }
-
-    function test() {
-        var formData = new FormData();
-        for(var i=0, filesTempArrLen = filesTempArr.length; i<filesTempArrLen; i++) {
-            formData.append("files", filesTempArr[i]);
-        }
-
-        $.ajax({
-            url: "http://52.79.40.214:9090/fileUpload/boardFileList",
-            method: "post",
-            dataType: "JSON",
-            data: formData,
-            cache: false,
-            processData: false,
-            contentType: false,
-            success: function (data) {
-                if(data.resultCode == 200){
-                    var fileName = data.keyValue;
-                    console.log(fileName);
-                }
-            }
-        });
     }
 </script>
 <form action="/Player/Axis" id="id_frm_player" method="post" name="name_frm_player">
@@ -822,7 +830,7 @@
                                                     <tr>
                                                         <th scope="row">첨부파일</th>
                                                         <td class="">
-                                                            <input type="file" id="attachFile" class="fileBtn noline">
+                                                            <input type="file" name="files[]" id="attachFile" class="fileBtn noline"  multiple/>
                                                             <ul id='fileList' class="fileList"></ul>
                                                         </td>
                                                     </tr>

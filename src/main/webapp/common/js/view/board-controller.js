@@ -15,6 +15,21 @@ function saveBoard(bbsMasterKey, userKey, title, content, isSecret, fileName) {
     return result;
 }
 
+//게시판 파일 다중 저장
+function saveBoardFileList(bbsKey, fileName) {
+    if(bbsKey == null || bbsKey == undefined) return;
+
+    var data = {
+        bbsKey : bbsKey,
+        fileName : fileName
+    };
+
+    console.log(data);
+
+    var result = postApi("/board/saveBoardFileList", data);
+    return result;
+}
+
 //강사 게시판 글 저장
 function saveTeacherBoard(bbsMasterKey, teacherKey, userKey, title, content, isNotice, isSecret, fileName) {
     if(bbsMasterKey == null || bbsMasterKey == undefined) return;
