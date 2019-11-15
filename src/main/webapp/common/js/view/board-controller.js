@@ -288,3 +288,33 @@ function getBbsMasterKey() {
     }
     return bbsmasterKey;
 }
+
+function saveBoardComment(bbsKey, userKey, comment) {
+    if(bbsKey == null || bbsKey == undefined) return;
+    if(userKey == null || userKey == undefined) return;
+
+    var data = {
+        bbsKey : bbsKey,
+        userKey : userKey,
+        comment : comment
+    };
+    var result = postApi("/board/saveBoardComment", data);
+    return result;
+}
+
+function saveBoardReply(bbsMasterKey, bbsParentKey, userKey, title, content, isSecret) {
+    if(bbsMasterKey == null || bbsMasterKey == undefined) return;
+    if(bbsParentKey == null || bbsParentKey == undefined) return;
+    if(userKey == null || userKey == undefined) return;
+
+    var data = {
+        bbsMasterKey : bbsMasterKey,
+        bbsParentKey : bbsParentKey,
+        userKey : userKey,
+        title : title,
+        content : content,
+        isSecret : isSecret
+    };
+    var result = postApi("/board/saveBoardReply", data);
+    return result;
+}

@@ -27,7 +27,12 @@
             maxHeight: null,             // set maximum height of editor
             focus: true                  // set focus to editable area after initializing summernote
         });
-
+        $('#replyContent').summernote({
+            height: 300,                 // set editor height
+            minHeight: null,             // set minimum height of editor
+            maxHeight: null,             // set maximum height of editor
+            focus: true                  // set focus to editable area after initializing summernote
+        });
         $("#teacherHeader li").click(function() {
             if($(this).index() == 0 || $(this).index() == 1){
                 $("#qnaDiv").hide();
@@ -89,18 +94,6 @@
             innerValue("divisionList", 0);
         });
     });
-    
-    // $(document).on('change', '#attachFile', function() {
-    //     var fileValue = $("#attachFile").val().split("\\");
-    //     var fileName = fileValue[fileValue.length-1]; // 파일명
-    //     $("#fileList").append("<li><a href=\"#\">"+ fileName +"</a>"+" "+"<img src=\"/common/zian/images/common/icon_file.png\" alt=\"\"></li>");
-    // });
-    // $(document).on('change', '#attachFile1', function() {
-    //     var fileValue = $("#attachFile1").val().split("\\");
-    //     var fileName = fileValue[fileValue.length-1]; // 파일명
-    //     $("#fileList1").append("<li><a href=\"#\">"+ fileName +"</a>"+" "+"<img src=\"/common/zian/images/common/icon_file.png\" alt=\"\"></li>");
-    // });
-
 
     var filesTempArr = [];
     function addFiles(e) {
@@ -183,6 +176,45 @@
         getTeacherLearningQna(teacherKey, sPage3, 20, searchType3,  searchText3, 'dataList3');//학습안내 (학습자료실) 리스트 불러오기
     }
 
+    //학습Q&A 답변등록하기
+    function goReplySave() {
+        var title = getInputTextValue("replyTitle");
+        var content = $('textarea[name="replyContent"]').val();
+        var isSecret = "";
+        if($('input[name="replyPwd"]').is(":checked") == true) isSecret = 1;
+        else isSecret = 0;
+        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        var userKey = sessionUserInfo.userKey;
+        var bbsKey = getInputTextValue("bbsKey1");
+
+        var result = saveBoardReply(10025, bbsKey, userKey, title, content, isSecret);
+        if(result.resultCode == 200){
+            alert("답변이 등록 되었습니다.");
+        }
+    }
+
+    //답변등록 버튼
+    function goReplayWrite() {
+        $("#replyDiv").show();
+    }
+
+    //답변취소
+    function goReplyCancel() {
+        $("#replyDiv").hide();
+    }
+
+    //댓글 저장
+    function commentSave() {
+        var commentContent = getInputTextValue("commentContent");
+        var bbsKey = getInputTextValue("bbsKey1");
+        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        var userKey = sessionUserInfo.userKey;
+        var result = saveBoardComment(bbsKey, userKey, commentContent);
+        if(result.resultCode == 200){
+            alert("댓글이 등록 되었습니다.");
+        }
+    }
+
     //학습안내 - 학습자료실 상세보기
     function goDetailReference(bbsKey) {
         innerValue("bbsKey", bbsKey);
@@ -248,6 +280,7 @@
 
     //학습 Q&A 상세보기
     function goDetailqna(bbskey) {
+        $("#commentDiv").hide();
         $("#qnaDiv").hide();
         $("#qnaDetail").show();
         $("#fileDetailList1").children().remove();
@@ -769,12 +802,6 @@
                                                     <td colspan="2">작성자 : <span id="referenceWriter"></span> (<span id="referenceUserId"></span>) | 조회수 : <span id="referenceCount"></span></td>
                                                 </tr>
                                                 <tr>
-<%--                                                    <td colspan="2">--%>
-<%--                                                        <span style="text-align: center">첨부파일 :</span>--%>
-<%--                                                         <a href="#" class="iconFile" target="_blank" title="새창열림">--%>
-<%--                                                            <ul id='fileDetailList' class="fileDetailList"></ul>--%>
-<%--                                                         </a>--%>
-<%--                                                    </td>--%>
                                                         <td>첨부파일 :</td>
                                                         <td>
                                                             <ul id='fileDetailList' class="fileDetailList"></ul>
@@ -901,6 +928,7 @@
                             <ul class="searchArea">
                                 <li class="right">
                                     <a href="javascript:getModifyDetailqna();" class="btn_m w140">수정</a>
+                                    <a href="javascript:goReplayWrite();" class="btn_m w140">답변등록</a>
                                 </li>
                             </ul>
                             <div class="tableBox">
@@ -915,12 +943,6 @@
                                         <td class="alignRight" ><span class="iconLock" id="iconLock" style="display: none;">비밀글</span></td>
                                     </tr>
                                     <tr>
-                                        <%--                                                    <td colspan="2">--%>
-                                        <%--                                                        <span style="text-align: center">첨부파일 :</span>--%>
-                                        <%--                                                         <a href="#" class="iconFile" target="_blank" title="새창열림">--%>
-                                        <%--                                                            <ul id='fileDetailList' class="fileDetailList"></ul>--%>
-                                        <%--                                                         </a>--%>
-                                        <%--                                                    </td>--%>
                                         <td>첨부파일 :</td>
                                         <td>
                                             <ul id='fileDetailList1' class="fileDetailList"></ul>
@@ -932,6 +954,43 @@
                                     </tbody>
                                 </table>
                             </div>
+                            <br>
+                            <br>
+                            <!-- ㅋ -->
+                            <div class="tabPage active" style="display: none;" id="replyDiv">
+                                <form>
+                                    <ul class="searchArea" style="border-top: 1px #e5e5e5 solid;background-color: #a3a3a3;">
+                                        <li class="left"><b>답변등록하기</b></li>
+                                        <li class="right">
+                                            <input type="checkbox" name="replyPwd" value="1"> 비공개
+                                        </li>
+                                    </ul>
+
+                                    <div class="tableBox">
+                                        <table class="form">
+                                            <colgroup>
+                                                <col class="w15p">
+                                                <col>
+                                            </colgroup>
+                                            <tbody>
+                                            <tr>
+                                                <td>제목</td>
+                                                <td><input type="text" placeholder="제목을 입력하세요" class="w100p" id="replyTitle"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>내용</td>
+                                                <td><textarea placeholder="내용을 입력하세요" name="replyContent" id="replyContent"></textarea></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="btnArea">
+                                <a href="javascript:goReplyCancel();" class="btn_l w200">취소</a>
+                                <a href="javascript:goReplySave();" class="btn_l onBlue w200">답변등록</a>
+                            </div>
+                            <!-- z -->
                             <div class="btnArea right">
                                 <a href="javascript:goReferenceList();" class="btn_m w140">목록으로</a>
                             </div>
@@ -947,8 +1006,8 @@
                                         <tbody>
                                         <tr>
                                             <td class="alignCenter">댓글</td>
-                                            <td><textarea class="w100p"></textarea></td>
-                                            <td><input type="submit" value="등록" class="btn_l on"></td>
+                                            <td><textarea class="w100p" id="commentContent"></textarea></td>
+                                            <td><input type="button" onclick="commentSave();" value="등록" class="btn_l on"></td>
                                         </tr>
                                         </tbody>
                                     </table>
