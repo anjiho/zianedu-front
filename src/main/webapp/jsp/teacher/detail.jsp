@@ -538,7 +538,6 @@
         }else{
             var data = new FormData();
             var formData = new FormData();
-            console.log(filesTempArr1);
             for(var i=0, filesTempArrLen = filesTempArr1.length; i<filesTempArrLen; i++) {
                 formData.append("files", filesTempArr1[i]);
             }
@@ -555,7 +554,6 @@
                         var fileName = data.keyValue;
                         if(bbsKey == ""){ //등록
                             var result = saveTeacherBoard(10023, teacherKey, userKey, title, content, isNotice, 0, fileName);
-                            console.log(fileName);
                             var str = toStrFileName(fileName);
                             saveBoardFileList(result.keyValue, str);
                         }else{ //수정
@@ -923,8 +921,6 @@
                         </div>
                         <!-- 학습 Q&A 상세 시작-->
                         <div class="" id="qnaDetail" style="display: none;">
-                            <br>
-                            <br>
                             <ul class="searchArea">
                                 <li class="right">
                                     <a href="javascript:getModifyDetailqna();" class="btn_m w140">수정</a>
