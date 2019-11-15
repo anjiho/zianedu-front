@@ -2882,14 +2882,12 @@ function getPhoneNumHypen(val) {
 }
 
 function toStrFileName(arr){
-    var str = arr.join(",");
-    var str1 = str.split(",");
-    var arr1 = new Array();
-    for(var i = 0; i < str1.length; i++){
-        var str2 = "'"+str1+"'";
-        arr1.push(str2);
+    var result = "";
+    var str = "";
+    for (var i=0; i<arr.length; i++) {
+        str += '"' + arr[i] + '",';
     }
-    var str3 = arr1.join(",");
-    var result = "["+str3+"]";
+    var str2 = str.substr(0, str.length -1);
+    result = "[" + str2 + "]";
     return result;
 }
