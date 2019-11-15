@@ -379,8 +379,7 @@
         var content = $('textarea[name="qnaWriteContent"]').val();
         var filechk = $("#attachFile1").val();//파일 빈값 체크
         var bbsKey = getInputTextValue("bbsKey1");
-            console.log(filechk);
-            return false;
+
         var isSecret = "";
         if($('input[name="chkPwd"]').is(":checked") == true) isSecret = 1;
         else isSecret = 0;
@@ -976,7 +975,7 @@
                                                     <th scope="row">첨부파일</th>
                                                     <td class="">
 <%--                                                        <input type="file" id="attachFile1" class="fileBtn noline nobg">--%>
-                                                        <input multiple="multiple" type="file" name="file" id="attachFile1" class="fileBtn noline"/>
+                                                        <input type="file" name="files[]" id="attachFile1" class="fileBtn noline" multiple/>
                                                         <ul id='fileList1' class="fileList"></ul>
                                                     </td>
 
