@@ -12,6 +12,8 @@
     var teacherKey = '<%=teacherKey%>';
     var menuCtgKey = '<%=reqKey%>';
 
+    var data2 = new FormData();
+
     $( document ).ready(function() {
         $('#writeContent').summernote({
             height: 300,                 // set editor height
@@ -85,6 +87,23 @@
             $("#referenceWriteDiv").hide();
             $("#noticeList").hide();
             innerValue("divisionList", 0);
+        });
+
+        $("input[type=file]").change(function () {
+            var fileInput = document.getElementById("attachFile1");
+            //var fileInput = $("#attachFile1").val();
+
+            var files = fileInput.files;
+            var file;
+
+            for (var i = 0; i < files.length; i++) {
+
+                file = files[i];
+                //console.log(file[i])
+                data2.append('files[]', file);
+                console.log(data2.get("files"));
+            }
+            //console.log(data2);
         });
     });
     
@@ -476,6 +495,12 @@
             });
         }
     }
+
+    function test() {
+        $.each($("input[type='file']")[0].files, function(i, file) {
+            conss
+        });
+    }
 </script>
 <form action="/Player/Axis" id="id_frm_player" method="post" name="name_frm_player">
 <%--    <input id="a_lPlayer_JLecKey" name="a_lPlayer_JLecKey" type="hidden" value="" />--%>
@@ -536,7 +561,6 @@
 
         <!--본문-->
         <div id="container">
-
             <div class="inner">
                 <!--서브 컨텐츠-->
                 <div class="teacherView">
@@ -563,7 +587,7 @@
                             </div>
                         </div>
                     </div>
-
+                    <input type="button" onclick="test()" value="1234">
                     <div class="teacherContentsTab tabContent">
                         <ul class="tabBar" id="teacherHeader">
                             <li><a href="#">커리큘럼</a></li>
@@ -975,7 +999,7 @@
                                                     <th scope="row">첨부파일</th>
                                                     <td class="">
 <%--                                                        <input type="file" id="attachFile1" class="fileBtn noline nobg">--%>
-                                                        <input type="file" name="files[]" id="attachFile1" class="fileBtn noline" multiple/>
+                                                        <input type="file" name="files" id="attachFile1" class="fileBtn noline" multiple/>
                                                         <ul id='fileList1' class="fileList"></ul>
                                                     </td>
 
