@@ -422,7 +422,7 @@
             var data = new FormData();
             $.each($('#attachFile1')[0].files, function(i, file) {
                 console.log($('#attachFile1')[0].files);
-                return false;
+                //return false;
                 data.append('file', file);
             });
             $.ajax({
@@ -503,6 +503,29 @@
             });
         }
     }
+
+    function test() {
+        var formData = new FormData();
+        for(var i=0, filesTempArrLen = filesTempArr.length; i<filesTempArrLen; i++) {
+            formData.append("files", filesTempArr[i]);
+        }
+
+        $.ajax({
+            url: "http://52.79.40.214:9090/fileUpload/boardFileList",
+            method: "post",
+            dataType: "JSON",
+            data: formData,
+            cache: false,
+            processData: false,
+            contentType: false,
+            success: function (data) {
+                if(data.resultCode == 200){
+                    var fileName = data.keyValue;
+                    console.log(fileName);
+                }
+            }
+        });
+    }
 </script>
 <form action="/Player/Axis" id="id_frm_player" method="post" name="name_frm_player">
 <%--    <input id="a_lPlayer_JLecKey" name="a_lPlayer_JLecKey" type="hidden" value="" />--%>
@@ -560,7 +583,7 @@
                             </div>
                         </div>
                     </div>
-
+                    <input type="button" value="1234" onclick="test();">
                     <div class="teacherContentsTab tabContent">
                         <ul class="tabBar" id="teacherHeader">
                             <li><a href="#">커리큘럼</a></li>
