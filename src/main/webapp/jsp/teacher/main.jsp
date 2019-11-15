@@ -41,37 +41,7 @@
                 <%@include file="/common/jsp/topHeader.jsp" %>
             </div>
             <!--주메뉴-->
-            <div id="gnb">
-                <div class="inner">
-                    <ul class="deaph1 cols7">
-                        <li><a href="#">내강의실</a>
-                            <ul class="deaph2">
-                                <li><a href="#">수강중</a></li>
-                                <li><a href="#">일시정지</a></li>
-                                <li><a href="#">수강완료</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="javascript:goPage('teacher', 'main')">교수소개</a></li>
-                        <li><a href="#">수강신청</a></li>
-                        <li><a href="#">지안패스</a></li>
-                        <li><a href="#">무료강좌</a>
-                            <ul class="deaph2">
-                                <li><a href="#">이론</a></li>
-                                <li><a href="#">기출풀이</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">빅모의고사</a></li>
-                        <li><a href="#">합격수기</a>
-                            <ul class="deaph2">
-                                <li><a href="#">합격영상</a></li>
-                                <li><a href="#">합겨수기</a></li>
-                                <li><a href="#">수강후기</a></li>
-                                <li><a href="#">도서후기</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            <%@include file="/common/jsp/headerMenu.jsp" %>
             <!--//주메뉴-->
         </div>
         <!--//상단-->
