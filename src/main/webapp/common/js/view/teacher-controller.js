@@ -156,7 +156,7 @@ function getTeacherLearningQna(teacherKey, sPage, listLimit, searchType, searchT
     var cnt = infoList.cnt;
 
     if (infoList.result.length > 0) {
-        paging.count3(sPage, cnt, '20', '20', comment.blank_list);
+        paging.count3(sPage, cnt, '5', '20', comment.blank_list);
         var listNum = ((cnt - 1) + 1) - ((sPage - 1) * 10); //리스트 넘버링
         var selList = infoList.result;
 
