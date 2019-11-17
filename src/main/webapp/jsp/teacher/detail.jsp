@@ -106,7 +106,6 @@
             $("#fileList1").append("<div>" + filesArr[i].name + "<img src=\"/common/zian/images/common/icon_file.png\" onclick=\"deleteFile(event, " + (filesTempArrLen+i)+ ");\"></div>");
         }
         $(this).val('');
-        console.log(filesTempArr);
     }
     function deleteFile (eventParam, orderParam) {
         filesTempArr.splice(orderParam, 1);
@@ -522,9 +521,7 @@
         var userKey = sessionUserInfo.userKey;
         var title   = getInputTextValue("writeTitle");
         var content = $('textarea[name="writeContent"]').val();
-
-
-        var bbsKey = getInputTextValue("bbsKey");
+        var bbsKey  = getInputTextValue("bbsKey");
 
         if(filesTempArr1.length == 0) { //파일 없을때
             if(bbsKey == ""){ //등록
@@ -745,7 +742,7 @@
                                             <input type="hidden" id="sPage2">
                                             <ul class="searchArea">
                                                 <li class="left">
-                                                    <select  id="searchType2">
+                                                    <select id="searchType2">
                                                         <option value="title">제목</option>
                                                     </select>
                                                     <input type="text"  id="searchText2" onkeypress="if(event.keyCode==13) {fn_search1('new'); return false;}">

@@ -4,7 +4,7 @@
     <div id="footerNav">
         <div class="inner">
             <ul>
-                <li><a href="#">회사소개</a></li>
+                <li><a href="javascript:goPage('company','main')">회사소개</a></li>
                 <li><a href="#">이용약관</a></li>
                 <li><a href="#">개인정보취급방침</a></li>
                 <li><a href="#">강사모집</a></li>

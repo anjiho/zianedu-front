@@ -162,7 +162,6 @@ function getTeacherLearningQna(teacherKey, sPage, listLimit, searchType, searchT
 
         for (var i = 0; i < selList.length; i++) {
             var cmpList = selList[i];
-            console.log(cmpList);
             if (cmpList.level == 1) {//본문
                 var returnHtml = '<tr>';
                 returnHtml += '<td>' + listNum-- + '</td>';
@@ -181,7 +180,6 @@ function getTeacherLearningQna(teacherKey, sPage, listLimit, searchType, searchT
                 var lock = '';
                 if (cmpList.pwd == 1) lock = 'lock';
                 else if (cmpList.pwd == null) lock = '';
-                console.log(cmpList);
                 returnHtml += '<td><a href="javascript:void(0);" class="subject reply" onclick="goDetailqna(' + cmpList.bbsKey + ');">' + gfn_substr(cmpList.title, 0, 40) + '</a></td>';
                 returnHtml += '<td>' + cmpList.writeUserName + '</td>';
                 returnHtml += '<td>' + cmpList.indate2 + '</td>';
