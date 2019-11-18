@@ -791,7 +791,7 @@
                         <!-- 지안에듀 1관 -->
                         <div class="gallery station1">
                             <h2>지안에듀 1관</h2>
-                            <a href="javascript:upLoadPop2()"><img src="/common/zian/images/common/t_upload.jpg" alt=""></a>
+<%--                            <a href="javascript:upLoadPop2()"><img src="/common/zian/images/common/t_upload.jpg" alt=""></a>--%>
                             <ul class="img-list">
                                 <li><a href="javascript:#myModal"><img class="myImg" src="http://52.79.40.214/Upload/100/company/info_gallery00.jpg" alt="이미지1"></a></li>
                                 <li><a href="javascript:#myModal"><img class="myImg" src="http://52.79.40.214/Upload/100/company/info_gallery01.jpg" alt="이미지2"></a></li>
@@ -806,7 +806,7 @@
                         <!-- 지안에듀 2관 -->
                         <div class="gallery station2">
                             <h2>지안에듀 2관</h2>
-                            <a href="javascript:upLoadPop2()"><img src="/common/zian/images/common/t_upload.jpg" alt=""></a>
+<%--                            <a href="javascript:upLoadPop2()"><img src="/common/zian/images/common/t_upload.jpg" alt=""></a>--%>
                             <ul>
                                 <li><a href="javascript:openLayer('.gList02')"></a></li>
                                 <li><a href="javascript:openLayer('.gList02')"></a></li>
