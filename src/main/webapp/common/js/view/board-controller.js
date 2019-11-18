@@ -187,6 +187,85 @@ function getNoticeList(sPage, listLimit, bbsMaterKey, searchType, searchText) {
     }
 }
 
+function getNoticeList2(sPage, listLimit, bbsMaterKey, searchType, searchText) {
+    if (bbsMaterKey == null || bbsMaterKey == undefined) return;
+    var paging = new Paging();
+
+    dwr.util.removeAllRows("dataList1"); //테이블 리스트 초기화
+
+    var data = {
+        sPage : sPage,
+        listLimit : listLimit,
+        searchType : searchType,
+        searchText : searchText
+    };
+
+    var infoList = getPageApi("/board/getNoticeList/", bbsMaterKey, data);
+    var cnt = infoList.cnt;
+    if (infoList.result.length > 0) {
+        paging.count2(sPage, cnt, '10', '10', comment.blank_list);
+        var listNum = ((cnt-1)+1)-((sPage-1)*10); //리스트 넘버링
+        var selList = infoList.result;
+        for(var i=0; i < selList.length; i++){
+            var cmpList = selList[i];
+            if (cmpList != undefined) {
+                var cellData = [
+                    function(data) {return cmpList.isNotice == 1 ?  "<img src=\"/common/zian/images/common/icon_notice.png\" alt=\"\">"  : listNum--;},
+                    function(data) {return "<a href='javascript:void(0);' onclick='goQuestionDetail("+ cmpList.bbsKey +");'>" + gfn_substr(cmpList.title, 0, 40) + "</a>";},
+                    function(data) {return cmpList.writerName;},
+                    function(data) {return cmpList.createDate;},
+                    function(data) {return cmpList.readCount;},
+                ];
+                dwr.util.addRows("dataList1", [0], cellData, {escapeHtml: false});
+                $('#dataList1 tr').each(function(){
+                    var tr = $(this);
+                    tr.children().eq(1).attr("class", "left");
+                });
+            }
+        }
+    }
+}
+
+//공지사항 리스트
+function getNoticeList3(sPage, listLimit, bbsMaterKey, searchType, searchText) {
+    if (bbsMaterKey == null || bbsMaterKey == undefined) return;
+    var paging = new Paging();
+
+    dwr.util.removeAllRows("dataList"); //테이블 리스트 초기화
+
+    var data = {
+        sPage : sPage,
+        listLimit : listLimit,
+        searchType : searchType,
+        searchText : searchText
+    };
+
+    var infoList = getPageApi("/board/getNoticeList/", bbsMaterKey, data);
+    var cnt = infoList.cnt;
+    if (infoList.result.length > 0) {
+        paging.count(sPage, cnt, '10', '10', comment.blank_list);
+        var listNum = ((cnt-1)+1)-((sPage-1)*10); //리스트 넘버링
+        var selList = infoList.result;
+        for(var i=0; i < selList.length; i++){
+            var cmpList = selList[i];
+            if (cmpList != undefined) {
+                var cellData = [
+                    function(data) {return cmpList.isNotice == 1 ?  "<img src=\"/common/zian/images/common/icon_notice.png\" alt=\"\">"  : listNum--;},
+                    function(data) {return "<a href='javascript:void(0);' onclick='goTeacherDetail("+ cmpList.bbsKey +");'>" + gfn_substr(cmpList.title, 0, 40) + "</a>";},
+                    function(data) {return cmpList.writerName;},
+                    function(data) {return cmpList.createDate;},
+                    function(data) {return cmpList.readCount;},
+                ];
+                dwr.util.addRows("dataList", [0], cellData, {escapeHtml: false});
+                $('#dataList tr').each(function(){
+                    var tr = $(this);
+                    tr.children().eq(1).attr("class", "left");
+                });
+            }
+        }
+    }
+}
+
 //배너 공지사항 리스트
 function getBannerNoticeList(tagId, sPage, listLimit, bbsMaterKey) {
     if (bbsMaterKey == null || bbsMaterKey == undefined) return;

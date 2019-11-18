@@ -219,7 +219,6 @@
         innerValue("bbsKey", bbsKey);
         $("#fileDetailList").children().remove();
         var detailInfo = getTeacherReferenceRoomDetail(teacherKey, bbsKey);
-        console.log(detailInfo);
         $("#referenceDetail").show();
         $("#referenceList").hide();
         $("#noticeList").hide();
