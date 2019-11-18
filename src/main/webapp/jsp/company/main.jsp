@@ -1,6 +1,23 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/jsp/common.jsp" %>
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyDRAKhRNbKf7jjmADK9PXPXw8--PaIoBBc" ></script>
+<%--<script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyDRAKhRNbKf7jjmADK9PXPXw8--PaIoBBc" ></script>--%>
+<script src="https://maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/java-script">
+	/* <![C-DATA[ */
+	var google_conversion_id = 970782078;
+	var google_custom_params = window.google_tag_params;
+	var google_remarketing_only = true;
+	/* ]]> */
+	</script>
+<script type="text/java-script" src="//www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+    <div style="display:inline;">
+        <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/970782078/?value=0&amp;guid=ON&amp;script=0"/>
+    </div>
+</noscript>
+
+<!-- Global site tag (gtag.js) - Google Ads: 856708622 --> <script async src="https://www.googletagmanager.com/gtag/js?id=AW-856708622"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'AW-856708622'); </script>
 
 <style>
     .tab-content{
