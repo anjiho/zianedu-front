@@ -50,7 +50,7 @@
             center: myLatlng,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         }
-        var map = new google.maps.Map(document.getElementById('map_ma'), mapOptions);
+        var map = new google.maps.Map(document.getElementById('mApi'), mapOptions);
         var marker = new google.maps.Marker({
             position: myLatlng,
             map: map,
@@ -543,7 +543,7 @@
                             <div class="location">
                                 <h2>찾아오시는 길</h2>
                                 <div class="company1">
-                                    <div class="mApi">api</div>
+                                    <div class="mApi" id="mApi">api</div>
                                     <h3>1관 찾아오시는 길</h3>
                                     <table>
                                         <colgroup>
