@@ -125,6 +125,52 @@
         $("#teacherList").hide();
         $("#teacherWrite").hide();
         $("#teacherDetail").show();
+        var result = getBoardDetailInfo(10011, bbskey);
+        console.log(result);
+        innerHTML("detailTeacherTitle", result.boardDetailInfo.title);
+        innerHTML("detailTeacherDate", result.boardDetailInfo.indate);
+        innerHTML("detailTeacherName", result.boardDetailInfo.userName);
+        innerHTML("detailTeacherUserId", result.boardDetailInfo.userId);
+        innerHTML("detailTeacherCount", result.boardDetailInfo.readCount);
+
+        /* 파싱 작업 */
+        var detailInfoStr = JSON.stringify(result);
+        var detailInfoStrObj = JSON.parse(detailInfoStr);
+        var contentsObj = detailInfoStrObj.boardDetailInfo.contents;
+        var contentsStr = JSON.stringify(contentsObj);
+        var contentsStrRep = contentsStr.replace(/['"]+/g, '');
+        var contentsStrRep3 = contentsStrRep.replace(/\\n/g,'');   //역슬러쉬 제거하기
+        var contentsStrRep4 = contentsStrRep3.replace(/\\r/g,'');   //역슬러쉬 제거하기
+        var contentsStrRep5 = contentsStrRep4.replace(/\\/gi, "");   //역슬러쉬 제거하기
+        var contentsHTML = $.parseHTML(contentsStrRep5);
+        var contents = null;
+        var findString = "&lt";
+        //HTML 포함 여부 화인
+        if(detailInfoStr.indexOf(findString) != -1) {
+            contents = contentsHTML[0].data.replace("rn", "");
+        } else {
+            contents = contentsHTML;
+        }
+        //봄문 내용 파징작업 끝
+        innerHTML("detailTeacherContent", contents);
+        if(result.prevNextInfo != null){
+            innerHTML("prevTitle", result.prevNextInfo.prevTitle);
+            innerHTML("nextTitle", result.prevNextInfo.nextTitle);
+            innerHTML("prevDate", result.prevNextInfo.prevCreateDate);
+            innerHTML("nextDate", result.prevNextInfo.nextCreateDate);
+
+            if(result.prevNextInfo.prevTitle == '이전글'){
+                innerHTML("prevTitle", "");
+            }else{
+                $("#prevLink").attr("href", "javascript:goTeacherDetail("+ result.prevNextInfo.prevBbsKey +");");
+            }
+
+            if(result.prevNextInfo.nextTitle == '다음글'){
+                innerHTML("nextTitle", "");
+            }else{
+                $("#nextLink").attr("href", "javascript:goTeacherDetail("+ result.prevNextInfo.nextBbsKey +");");
+            }
+        }
     }
     
     function goQuestionDetail(bbskey) {
@@ -132,6 +178,51 @@
         $("#questionList").hide();
         $("#questionWrite").hide();
         $("#questionDetail").show();
+        var result = getBoardDetailInfo(10062, bbskey);
+        console.log(result);
+        innerHTML("detailQuestionTitle", result.boardDetailInfo.title);
+        innerHTML("detailQuestionDate", result.boardDetailInfo.indate);
+        innerHTML("detailQuestionName", result.boardDetailInfo.userName);
+        innerHTML("detailQuestionUserId", result.boardDetailInfo.userId);
+        innerHTML("detailQuestionCount", result.boardDetailInfo.readCount);
+        /* 파싱 작업 */
+        var detailInfoStr = JSON.stringify(result);
+        var detailInfoStrObj = JSON.parse(detailInfoStr);
+        var contentsObj = detailInfoStrObj.boardDetailInfo.contents;
+        var contentsStr = JSON.stringify(contentsObj);
+        var contentsStrRep = contentsStr.replace(/['"]+/g, '');
+        var contentsStrRep3 = contentsStrRep.replace(/\\n/g,'');   //역슬러쉬 제거하기
+        var contentsStrRep4 = contentsStrRep3.replace(/\\r/g,'');   //역슬러쉬 제거하기
+        var contentsStrRep5 = contentsStrRep4.replace(/\\/gi, "");   //역슬러쉬 제거하기
+        var contentsHTML = $.parseHTML(contentsStrRep5);
+        var contents = null;
+        var findString = "&lt";
+        //HTML 포함 여부 화인
+        if(detailInfoStr.indexOf(findString) != -1) {
+            contents = contentsHTML[0].data.replace("rn", "");
+        } else {
+            contents = contentsHTML;
+        }
+        //봄문 내용 파징작업 끝
+        innerHTML("detailQuestionContent", contents);
+        if(result.prevNextInfo != null) {
+            innerHTML("prevTitle1", result.prevNextInfo.prevTitle);
+            innerHTML("nextTitle1", result.prevNextInfo.nextTitle);
+            innerHTML("prevDate1", result.prevNextInfo.prevCreateDate);
+            innerHTML("nextDate1", result.prevNextInfo.nextCreateDate);
+
+            if (result.prevNextInfo.prevTitle == '이전글') {
+                innerHTML("prevTitle1", "");
+            } else {
+                $("#prevLink1").attr("href", "javascript:goQuestionDetail(" + result.prevNextInfo.prevBbsKey + ");");
+            }
+
+            if (result.prevNextInfo.nextTitle == '다음글') {
+                innerHTML("nextTitle", "");
+            } else {
+                $("#nextLink1").attr("href", "javascript:goQuestionDetail(" + result.prevNextInfo.nextBbsKey + ");");
+            }
+        }
     }
     
     function goSave(val) {
@@ -465,28 +556,28 @@
                                 </colgroup>
                                 <thead>
                                 <tr>
-                                    <th colspan="2">지안에듀에서 국가기술 전문강사님을 모십니다.</th>
-                                    <th>2019.08.09</th>
+                                    <th colspan="2" id="detailTeacherTitle"></th>
+                                    <th id="detailTeacherDate"></th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <tr>
-                                    <td colspan="3">작성자 : 지안에듀 (zian0103)  |   조회수 : 31</td>
+                                    <td colspan="3">작성자 : <span id="detailTeacherName"></span> (<span id="detailTeacherUserId"></span>)  |   조회수 : <span id="detailTeacherCount"></span></td>
                                 </tr>
                                 <tr>
                                     <td colspan="3" class="tdEditorContent">
-                                        <div class="alignCenter"><img src="../images/content/img_sub00010101.jpg" alt=""></div>
+                                        <div class="alignCenter" id="detailTeacherContent"></div>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="center">이전글 ▲</td>
-                                    <td class="left"><a href="#">[2관 학원실강] 2020 행정직9급 전과목(공통3+선택2) 기본이론 종합반 [ 9월개강 접수중]</a></td>
-                                    <td class="right">2019.08.09</td>
+                                    <td class="left"><a href=""  id="prevLink"><span id="prevTitle"></span></a></td>
+                                    <td class="right"><span id="prevDate"></span></td>
                                 </tr>
                                 <tr>
                                     <td class="center">다음글 ▼</td>
-                                    <td class="left"><a href="#">	[1관학원실강] 2020 공통과목(국어+영어+한국사) 드림팀 기본+심화 이론반 [9월개강 접수중]</a></td>
-                                    <td class="right">2019.08.09</td>
+                                    <td class="left"><a href=""  id="nextLink"><span id="nextTitle"></span></a></td>
+                                    <td class="right"><span id="nextDate"></span></td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -496,7 +587,7 @@
                                 <a href="#" class="btn_inline gray w110">수정</a>
                             </div>
                             <div class="right">
-                                <a href="#" class="btn_inline blue w110">목록</a>
+                                <a href="javascript:goBackList('teacher')" class="btn_inline blue w110">목록</a>
                             </div>
                         </div>
                     </div>
@@ -598,28 +689,28 @@
                                 </colgroup>
                                 <thead>
                                 <tr>
-                                    <th colspan="2">지안에듀에서 국가기술 전문강사님을 모십니다.</th>
-                                    <th>2019.08.09</th>
+                                    <th colspan="2" id="detailQuestionTitle"></th>
+                                    <th id="detailQuestionDate"></th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <tr>
-                                    <td colspan="3">작성자 : 지안에듀 (zian0103)  |   조회수 : 31</td>
+                                    <td colspan="3">작성자 : <span id="detailQuestionName"></span> (<span id="detailQuestionUserId"></span>)  |   조회수 : <span id="detailQuestionCount"></span></td>
                                 </tr>
                                 <tr>
                                     <td colspan="3" class="tdEditorContent">
-                                        <div class="alignCenter"><img src="../images/content/img_sub00010101.jpg" alt=""></div>
+                                        <div class="alignCenter" id="detailQuestionContent"></div>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="center">이전글 ▲</td>
-                                    <td class="left"><a href="#">[2관 학원실강] 2020 행정직9급 전과목(공통3+선택2) 기본이론 종합반 [ 9월개강 접수중]</a></td>
-                                    <td class="right">2019.08.09</td>
+                                    <td class="left"><a href="" id="nextLink1"><span id="prevTitle1"></span></a></td>
+                                    <td class="right"><span id="prevDate1"></span></td>
                                 </tr>
                                 <tr>
                                     <td class="center">다음글 ▼</td>
-                                    <td class="left"><a href="#">	[1관학원실강] 2020 공통과목(국어+영어+한국사) 드림팀 기본+심화 이론반 [9월개강 접수중]</a></td>
-                                    <td class="right">2019.08.09</td>
+                                    <td class="left"><a href="" id="prevLink1"><span id="nextTitle1"></span></a></td>
+                                    <td class="right"><span id="nextDate1"></span></td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -629,7 +720,7 @@
                                 <a href="#" class="btn_inline gray w110">수정</a>
                             </div>
                             <div class="right">
-                                <a href="#" class="btn_inline blue w110">목록</a>
+                                <a href="javascript:goBackList('question')" class="btn_inline blue w110">목록</a>
                             </div>
                         </div>
                     </div>

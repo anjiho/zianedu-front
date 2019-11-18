@@ -266,7 +266,7 @@
                     $("#referencePrevLink").attr("href", "javascript:goDetailReference("+ prevNextBbsList[i].prevBbsKey +");");
                 }
 
-                if(prevNextBbsList[i].prevTitle == '다음글') {
+                if(prevNextBbsList[i].nextTitle == '다음글') {
                     innerHTML("referencePrevTitle", "");
                 } else {
                     innerHTML("referenceNextTitle", prevNextBbsList[i].nextTitle);
