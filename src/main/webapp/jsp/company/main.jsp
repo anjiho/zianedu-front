@@ -185,7 +185,7 @@
         }else if(val == 'question'){ //제휴문의 글쓰기 저장
             if (check.input("teacherTitle", comment.input_title) == false) return;
 
-            var title = getInputTextValue("questiontitle");
+            var title = getInputTextValue("questionTitle");
             var content = $('textarea[name="writeContent1"]').val();
             var bbsKey  = getInputTextValue("bbsKey");
             if(filesTempArr.length == 0) {
@@ -236,6 +236,7 @@
 </script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
+    <input type="hidden" id="bbsKey">
     <div id="wrap">
         <%@include file="/common/jsp/leftMenu.jsp" %>
         <!--상단-->
@@ -255,10 +256,10 @@
                 <!--서브 컨텐츠-->
                 <div class="tabBox tBox4">
                     <ul class="tabs" id="companyHeader">
-                        <li class="tab-link active" data-tab="tab-1"><a href="#">회사소개</a></li>
-                        <li class="tab-link" data-tab="tab-2"><a href="#">강사모집</a></li>
-                        <li class="tab-link" data-tab="tab-3"><a href="#">제휴문의</a></li>
-                        <li class="tab-link" data-tab="tab-4"><a href="#">학원둘러보기</a></li>
+                        <li class="tab-link active" data-tab="tab-1"><a href="javascript:void(0);">회사소개</a></li>
+                        <li class="tab-link" data-tab="tab-2"><a href="javascript:void(0);">강사모집</a></li>
+                        <li class="tab-link" data-tab="tab-3"><a href="javascript:void(0);">제휴문의</a></li>
+                        <li class="tab-link" data-tab="tab-4"><a href="javascript:void(0);">학원둘러보기</a></li>
                     </ul>
                 </div>
                 <br />
@@ -433,11 +434,12 @@
                                 <tr>
                                     <th scope="row">첨부파일</th>
                                     <td class="">
-                                        <label for="ex_file">업로드</label>
-                                        <input type="file" id="ex_file">
+                                        <label for="attachFile">업로드</label>
+<%--                                        <input type="file" id="ex_file">--%>
+                                        <input type="file" name="files[]" id="attachFile" multiple/>
                                         <ul class="fileList">
-                                            <li><a href="#"><img src="../images/common/icon_file.png" alt=""> 파일001.jpg</a></li>
-                                            <li><a href="#"><img src="../images/common/icon_file.png" alt=""> 파일002.jpg</a></li>
+<%--                                            <li><a href="#"><img src="../images/common/icon_file.png" alt=""> 파일001.jpg</a></li>--%>
+<%--                                            <li><a href="#"><img src="../images/common/icon_file.png" alt=""> 파일002.jpg</a></li>--%>
                                         </ul>
                                     </td>
                                 </tr>
@@ -446,7 +448,7 @@
                         </div>
                         <div class="btnArea">
                             <a href="javascript:goBackList('teacher')" class="btn_m gray radius w110">취소</a> &nbsp;&nbsp;&nbsp;
-                            <a href="" id="mybtn" class="btn_m blue radius w110">등록</a>
+                            <a href="javascript:goSave('teacher');" class="btn_m blue radius w110">등록</a>
                         </div>
                     </div>
                     <!--강사모집 상세보기 -->
@@ -557,7 +559,7 @@
                                 <tbody>
                                 <tr>
                                     <th scope="row">제목</th>
-                                    <td><input type="text" id="questiontitle" placeholder="제목을 입력해주세요." class="w100p"></td>
+                                    <td><input type="text" id="questionTitle" placeholder="제목을 입력해주세요." class="w100p"></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">내용</th>
@@ -566,11 +568,11 @@
                                 <tr>
                                     <th scope="row">첨부파일</th>
                                     <td class="">
-                                        <label for="ex_file">업로드</label>
-                                        <input type="file" id="ex_file">
-                                        <ul class="fileList">
-                                            <li><a href="#"><img src="../images/common/icon_file.png" alt=""> 파일001.jpg</a></li>
-                                            <li><a href="#"><img src="../images/common/icon_file.png" alt=""> 파일002.jpg</a></li>
+                                        <label for="attachFile1">업로드</label>
+                                        <input type="file" name="files[]" id="attachFile1" multiple/>
+                                        <ul class="fileList1">
+<%--                                            <li><a href="#"><img src="../images/common/icon_file.png" alt=""> 파일001.jpg</a></li>--%>
+<%--                                            <li><a href="#"><img src="../images/common/icon_file.png" alt=""> 파일002.jpg</a></li>--%>
                                         </ul>
                                     </td>
                                 </tr>
@@ -579,7 +581,7 @@
                         </div>
                         <div class="btnArea">
                             <a href="javascript:goBackList('question')" class="btn_m gray radius w110">취소</a> &nbsp;&nbsp;&nbsp;
-                            <a href=""  class="btn_m blue radius w110">등록</a>
+                            <a href="javascript:goSave('question');" class="btn_m blue radius w110">등록</a>
                         </div>
                     </div>
                     <!--제휴문의 상세보기 -->
