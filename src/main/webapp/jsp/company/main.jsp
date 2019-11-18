@@ -81,7 +81,7 @@
         if(searchText == undefined) searchText = "";
 
         if(val == "new") sPage = "1";
-        //함수호출
+        getNoticeList3(sPage, 10, 10011, searchType, searchText);
     }
 
     function fn_search1(val) {
@@ -92,7 +92,7 @@
         if(searchText2 == undefined) searchText2 = "";
 
         if(val == "new") sPage2 = "1";
-        //함수호출
+        getNoticeList2(sPage2, 10, 10062, searchType2, searchText2);
     }
 
     //강사모집 글쓰기
@@ -120,16 +120,18 @@
         }
     }
     
-    function goDetail(bbskey, val) {
-        if(val == 'teacher'){
-            $("#teacherList").hide();
-            $("#teacherWrite").hide();
-            $("#teacherDetail").show();
-        }else if(val == 'question'){
-            $("#questionList").hide();
-            $("#questionWrite").hide();
-            $("#questionDetail").show();
-        }
+    function goTeacherDetail(bbskey) {
+        innerValue("bbsKey", bbskey);
+        $("#teacherList").hide();
+        $("#teacherWrite").hide();
+        $("#teacherDetail").show();
+    }
+    
+    function goQuestionDetail(bbskey) {
+        innerValue("bbsKey", bbskey);
+        $("#questionList").hide();
+        $("#questionWrite").hide();
+        $("#questionDetail").show();
     }
     
     function goSave(val) {
@@ -392,21 +394,21 @@
                                 </colgroup>
                                 <thead>
                                 <tr>
-                                    <th scope="col">번호</th>
-                                    <th scope="col">제목</th>
-                                    <th scope="col">작성자</th>
-                                    <th scope="col">등록일</th>
-                                    <th scope="col">조회</th>
+                                    <th scope="col" style="text-align: center">번호</th>
+                                    <th scope="col" style="text-align: center">제목</th>
+                                    <th scope="col" style="text-align: center">작성자</th>
+                                    <th scope="col" style="text-align: center">등록일</th>
+                                    <th scope="col" style="text-align: center">조회</th>
                                 </tr>
                                 </thead>
                                 <tbody id="dataList">
-                                <tr class="notice">
-                                    <td><img src="/common/zian/images/common/icon_notice.png" alt=""></td>
-                                    <td class="left"><a href="javascript:goTeacherDetail('123', 'teacher')">공무원임용시험령 개정</a></td>
-                                    <td>지안에듀</td>
-                                    <td>2019.08.09</td>
-                                    <td>31</td>
-                                </tr>
+<%--                                <tr class="notice">--%>
+<%--                                    <td><img src="/common/zian/images/common/icon_notice.png" alt=""></td>--%>
+<%--                                    <td class="left"><a href="javascript:goTeacherDetail('123', 'teacher')">공무원임용시험령 개정</a></td>--%>
+<%--                                    <td>지안에듀</td>--%>
+<%--                                    <td>2019.08.09</td>--%>
+<%--                                    <td>31</td>--%>
+<%--                                </tr>--%>
                                 </tbody>
                             </table>
                         </div>
@@ -526,21 +528,21 @@
                                 </colgroup>
                                 <thead>
                                 <tr>
-                                    <th scope="col">번호</th>
-                                    <th scope="col">제목</th>
-                                    <th scope="col">작성자</th>
-                                    <th scope="col">등록일</th>
-                                    <th scope="col">조회</th>
+                                    <th scope="col" style="text-align: center">번호</th>
+                                    <th scope="col" style="text-align: center">제목</th>
+                                    <th scope="col" style="text-align: center">작성자</th>
+                                    <th scope="col" style="text-align: center">등록일</th>
+                                    <th scope="col" style="text-align: center">조회</th>
                                 </tr>
                                 </thead>
-                                <tbody id="dataList2">
-                                <tr>
-                                    <td>1</td>
-                                    <td class="left"><a href="javascript:goDetail('123','question');">안녕하세요 교육전문 플랫폼 단골닷컴에서 입점제휴드립니다.</a></td>
-                                    <td>지안에듀</td>
-                                    <td>2019.08.09</td>
-                                    <td>31</td>
-                                </tr>
+                                <tbody id="dataList1">
+<%--                                <tr>--%>
+<%--                                    <td>1</td>--%>
+<%--                                    <td class="left"><a href="javascript:goDetail('123','question');">안녕하세요 교육전문 플랫폼 단골닷컴에서 입점제휴드립니다.</a></td>--%>
+<%--                                    <td>지안에듀</td>--%>
+<%--                                    <td>2019.08.09</td>--%>
+<%--                                    <td>31</td>--%>
+<%--                                </tr>--%>
                                 </tbody>
                             </table>
                         </div>
