@@ -397,3 +397,26 @@ function saveBoardReply(bbsMasterKey, bbsParentKey, userKey, title, content, isS
     var result = postApi("/board/saveBoardReply", data);
     return result;
 }
+
+function saveBoardByAlliance(bbsMasterKey, title, content) {
+    if(bbsMasterKey == null || bbsMasterKey == undefined) return;
+    var data = {
+        bbsMasterKey : bbsMasterKey,
+        title : title,
+        content : content
+    };
+    var result = postApi("/board/saveBoardByAlliance", data);
+    return result;
+}
+
+function updateBoardByAlliance(bbsKey, title, content) {
+    if(bbsKey == null || bbsKey == undefined) return;
+    var data = {
+        bbsKey : bbsKey,
+        title : title,
+        content : content
+    };
+    var result = postApi("/board/updateBoardByAlliance", data);
+    return result;
+    
+}

@@ -12,6 +12,8 @@
 </style>
 <script>
     $(document).ready(function(){
+        $("#attachFile").on("change", addFiles);
+        $("#attachFile1").on("change", addFiles1);
         $('#writeContent').summernote({
             height: 300,
             minHeight: null,
@@ -59,7 +61,7 @@
         var filesTempArrLen = filesTempArr.length;
         for( var i=0; i<filesArrLen; i++ ) {
             filesTempArr.push(filesArr[i]);
-            $("#fileList1").append("<div>" + filesArr[i].name + "<img src=\"/common/zian/images/common/icon_file.png\" onclick=\"deleteFile(event, " + (filesTempArrLen+i)+ ");\"></div>");
+            $("#fileList").append("<div>" + filesArr[i].name + "<img src=\"/common/zian/images/common/icon_file.png\" onclick=\"deleteFile(event, " + (filesTempArrLen+i)+ ");\"></div>");
         }
         $(this).val('');
     }
@@ -68,7 +70,29 @@
         var innerHtmlTemp = "";
         var filesTempArrLen = filesTempArr.length;
         for(var i=0; i<filesTempArrLen; i++) {
-            innerHtmlTemp += "<div>" + filesTempArr[i].name + "<img src=\"/images/deleteImage.png\" onclick=\"deleteFile(event, " + i + ");\"></div>"
+            innerHtmlTemp += "<li>" + filesTempArr[i].name + "<img src=\"/images/deleteImage.png\" onclick=\"deleteFile(event, " + i + ");\"></li>"
+        }
+        $("#fileList").html(innerHtmlTemp);
+    }
+
+    var filesTempArr1 = [];
+    function addFiles1(e) {
+        var files = e.target.files;
+        var filesArr = Array.prototype.slice.call(files);
+        var filesArrLen = filesArr.length;
+        var filesTempArrLen = filesTempArr1.length;
+        for( var i=0; i<filesArrLen; i++ ) {
+            filesTempArr1.push(filesArr[i]);
+            $("#fileList1").append("<li>" + filesArr[i].name + "<img src=\"/common/zian/images/common/icon_file.png\" onclick=\"deleteFile(event, " + (filesTempArrLen+i)+ ");\"></li>");
+        }
+        $(this).val('');
+    }
+    function deleteFile1 (eventParam, orderParam) {
+        filesTempArr1.splice(orderParam, 1);
+        var innerHtmlTemp = "";
+        var filesTempArrLen = filesTempArr1.length;
+        for(var i=0; i<filesTempArrLen; i++) {
+            innerHtmlTemp += "<div>" + filesTempArr1[i].name + "<img src=\"/images/deleteImage.png\" onclick=\"deleteFile(event, " + i + ");\"></div>"
         }
         $("#fileList1").html(innerHtmlTemp);
     }
@@ -98,10 +122,12 @@
     //강사모집 글쓰기
     function goWrite(val) {
         if(val == 'teacher'){
+            $("#fileList li").remove();
             $("#teacherList").hide();
             $("#teacherWrite").show();
             $("#teacherDetail").hide();
         }else if(val == 'question'){
+            $("#fileList1 li").remove();
             $("#questionList").hide();
             $("#questionWrite").show();
             $("#questionDetail").hide();
@@ -233,16 +259,20 @@
             var title = getInputTextValue("teacherTitle");
             var content = $('textarea[name="writeContent"]').val();
             var bbsKey  = getInputTextValue("bbsKey");
+            var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+            var userKey = sessionUserInfo.userKey;
             if(filesTempArr.length == 0) {
                 if(bbsKey == ""){ //등록
-                   //var result = saveTeacherBoard(10025, teacherKey, userKey, title, content, 0, isSecret, "");
+                   var result = saveBoard(10011, userKey, title, content, 0, 0, "");
                 }else{ //수정
-                    //var result = updateBoard(bbsKey, title, content, isSecret, "");
+                    alert(bbsKey);
+                    var result = updateBoard(bbsKey, title, content, 0, "");
                 }
                 if(result.resultCode == 200){
                     alert("성공적으로 등록 완료되었습니다");
                 }
             }else{
+                alert('파일있을때 함수호출');
                 var data = new FormData();
                 var formData = new FormData();
                 for(var i=0, filesTempArrLen = filesTempArr.length; i<filesTempArrLen; i++) {
@@ -259,14 +289,17 @@
                     success: function (data) {
                         if(data.resultCode == 200){
                             var fileName = data.keyValue;
+                            alert(bbsKey);
                             if(bbsKey == ""){ //등록
-                                //var result = saveTeacherBoard(10025, teacherKey, userKey, title, content, 0, isSecret, fileName);
-                                //var str = toStrFileName(fileName);
-                                //saveBoardFileList(result.keyValue, str);
+                                alert('등록');
+                                var result = saveBoard(10011, userKey, title, content, 0, 0, "");
+                                var str = toStrFileName(fileName);
+                                saveBoardFileList(result.keyValue, str);
                             }else{ //수정
-                                //var result = updateBoard(bbsKey, title, content, isSecret, fileName);
-                                //var str = toStrFileName(fileName);
-                                //saveBoardFileList(result.keyValue, str);
+                                alert('수정');
+                                var result = updateBoard(bbsKey, title, content, 0, "");
+                                var str = toStrFileName(fileName);
+                                saveBoardFileList(result.keyValue, str);
                             }
                             if(result.resultCode == 200){
                                 alert("성공적으로 등록 완료되었습니다");
@@ -276,16 +309,16 @@
                 });
             }
         }else if(val == 'question'){ //제휴문의 글쓰기 저장
-            if (check.input("teacherTitle", comment.input_title) == false) return;
+            if (check.input("questionTitle", comment.input_title) == false) return;
 
             var title = getInputTextValue("questionTitle");
             var content = $('textarea[name="writeContent1"]').val();
             var bbsKey  = getInputTextValue("bbsKey");
-            if(filesTempArr.length == 0) {
+            if(filesTempArr1.length == 0) {
                 if(bbsKey == ""){ //등록
-                    //var result = saveTeacherBoard(10025, teacherKey, userKey, title, content, 0, isSecret, "");
+                    var result = saveBoardByAlliance(10062, title, content);
                 }else{ //수정
-                    //var result = updateBoard(bbsKey, title, content, isSecret, "");
+                    var result = updateBoardByAlliance(bbsKey, title, content);
                 }
                 if(result.resultCode == 200){
                     alert("성공적으로 등록 완료되었습니다");
@@ -293,8 +326,8 @@
             }else{
                 var data = new FormData();
                 var formData = new FormData();
-                for(var i=0, filesTempArrLen = filesTempArr.length; i<filesTempArrLen; i++) {
-                    formData.append("files", filesTempArr[i]);
+                for(var i=0, filesTempArrLen = filesTempArr1.length; i<filesTempArrLen; i++) {
+                    formData.append("files", filesTempArr1[i]);
                 }
                 $.ajax({
                     url: "http://52.79.40.214:9090/fileUpload/boardFileList",
@@ -308,13 +341,13 @@
                         if(data.resultCode == 200){
                             var fileName = data.keyValue;
                             if(bbsKey == ""){ //등록
-                                //var result = saveTeacherBoard(10025, teacherKey, userKey, title, content, 0, isSecret, fileName);
-                                //var str = toStrFileName(fileName);
-                                //saveBoardFileList(result.keyValue, str);
+                                var result = saveBoardByAlliance(10062, title, content);
+                                var str = toStrFileName(fileName);
+                                saveBoardFileList(result.keyValue, str);
                             }else{ //수정
-                                //var result = updateBoard(bbsKey, title, content, isSecret, fileName);
-                                //var str = toStrFileName(fileName);
-                                //saveBoardFileList(result.keyValue, str);
+                                var result = updateBoardByAlliance(bbsKey, title, content);
+                                var str = toStrFileName(fileName);
+                                saveBoardFileList(result.keyValue, str);
                             }
                             if(result.resultCode == 200){
                                 alert("성공적으로 등록 완료되었습니다");
@@ -322,6 +355,34 @@
                         }
                     }
                 });
+            }
+        }
+    }
+
+    //수정
+    function modifyDetail(val) {
+        if(val == 'teacher'){
+            $("#teacherList").hide();
+            $("#teacherWrite").show();
+            $("#teacherDetail").hide();
+            var bbsKey = getInputTextValue("bbsKey");
+            var result = getBoardDetailInfo(10011, bbsKey);
+            if(result != undefined){
+                var detailInfo = result.boardDetailInfo;
+                $("#writeContent").summernote("code", detailInfo.contents);
+                innerValue("teacherTitle", detailInfo.title);
+               // innerHTML("fileList", detailInfo.fileName);
+            }
+        }else{
+            $("#questionList").hide();
+            $("#questionWrite").show();
+            $("#questionDetail").hide();
+            var bbsKey = getInputTextValue("bbsKey");
+            var result = getBoardDetailInfo(10062, bbsKey);
+            if(result != undefined){
+                var detailInfo = result.boardDetailInfo;
+                $("#writeContent1").summernote("code", detailInfo.contents);
+                innerValue("questionTitle", detailInfo.title);
             }
         }
     }
@@ -530,7 +591,7 @@
                                         <label for="attachFile">업로드</label>
 <%--                                        <input type="file" id="ex_file">--%>
                                         <input type="file" name="files[]" id="attachFile" multiple/>
-                                        <ul class="fileList">
+                                        <ul class="fileList" id="fileList">
 <%--                                            <li><a href="#"><img src="../images/common/icon_file.png" alt=""> 파일001.jpg</a></li>--%>
 <%--                                            <li><a href="#"><img src="../images/common/icon_file.png" alt=""> 파일002.jpg</a></li>--%>
                                         </ul>
@@ -584,7 +645,7 @@
                         </div>
                         <div class="btnArea divGroup noMargin">
                             <div class="left">
-                                <a href="#" class="btn_inline gray w110">수정</a>
+                                <a href="javascript:modifyDetail('teacher');" class="btn_inline gray w110">수정</a>
                             </div>
                             <div class="right">
                                 <a href="javascript:goBackList('teacher')" class="btn_inline blue w110">목록</a>
@@ -663,10 +724,7 @@
                                     <td class="">
                                         <label for="attachFile1">업로드</label>
                                         <input type="file" name="files[]" id="attachFile1" multiple/>
-                                        <ul class="fileList1">
-<%--                                            <li><a href="#"><img src="../images/common/icon_file.png" alt=""> 파일001.jpg</a></li>--%>
-<%--                                            <li><a href="#"><img src="../images/common/icon_file.png" alt=""> 파일002.jpg</a></li>--%>
-                                        </ul>
+                                        <ul class="fileList1" id="fileList1"></ul>
                                     </td>
                                 </tr>
                                 </tbody>
@@ -717,7 +775,7 @@
                         </div>
                         <div class="btnArea divGroup noMargin">
                             <div class="left">
-                                <a href="#" class="btn_inline gray w110">수정</a>
+                                <a href="javascript:modifyDetail('question');" class="btn_inline gray w110">수정</a>
                             </div>
                             <div class="right">
                                 <a href="javascript:goBackList('question')" class="btn_inline blue w110">목록</a>
