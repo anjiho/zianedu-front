@@ -248,6 +248,7 @@ function getNoticeList3(sPage, listLimit, bbsMaterKey, searchType, searchText) {
         var selList = infoList.result;
         for(var i=0; i < selList.length; i++){
             var cmpList = selList[i];
+            console.log(cmpList);
             if (cmpList != undefined) {
                 var cellData = [
                     function(data) {return cmpList.isNotice == 1 ?  "<img src=\"/common/zian/images/common/icon_notice.png\" alt=\"\">"  : listNum--;},

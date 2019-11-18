@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/jsp/common.jsp" %>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyBPKqMAS38ED9Gnr7g6HXzbh7A5MOB9MXo" ></script>
+
 <style>
     .tab-content{
         display: none;
@@ -9,9 +11,46 @@
     .tab-content.active{
         display: inherit;
     }
+    #map_ma {width:100%; height:400px; clear:both; border:solid 1px red;}
+    #map_ma1 {width:100%; height:400px; clear:both; border:solid 1px red;}
 </style>
 <script>
     $(document).ready(function(){
+        var myLatlng = new google.maps.LatLng(35.837143,128.558612); // 위치값 위도 경도
+        var Y_point			= 35.837143;		// Y 좌표
+        var X_point			= 128.558612;		// X 좌표
+        var zoomLevel		= 18;				// 지도의 확대 레벨 : 숫자가 클수록 확대정도가 큼
+        var markerTitle		= "대구광역시";		// 현재 위치 마커에 마우스를 오버을때 나타나는 정보
+        var markerMaxWidth	= 300;				// 마커를 클릭했을때 나타나는 말풍선의 최대 크기
+
+        var contentString	= '<div>' +
+            '<h2>대구남구</h2>'+
+            '<p>안녕하세요. 구글지도입니다.</p>' +
+
+            '</div>';
+        var myLatlng = new google.maps.LatLng(Y_point, X_point);
+        var mapOptions = {
+            zoom: zoomLevel,
+            center: myLatlng,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+        var map = new google.maps.Map(document.getElementById('map_ma'), mapOptions);
+        var marker = new google.maps.Marker({
+            position: myLatlng,
+            map: map,
+            title: markerTitle
+        });
+        var infowindow = new google.maps.InfoWindow(
+            {
+                content: contentString,
+                maxWizzzdth: markerMaxWidth
+            }
+        );
+        google.maps.event.addListener(marker, 'click', function() {
+            infowindow.open(map, marker);
+        });
+
+
         $("#attachFile").on("change", addFiles);
         $("#attachFile1").on("change", addFiles1);
         $('#writeContent').summernote({
@@ -152,7 +191,6 @@
         $("#teacherWrite").hide();
         $("#teacherDetail").show();
         var result = getBoardDetailInfo(10011, bbskey);
-        console.log(result);
         innerHTML("detailTeacherTitle", result.boardDetailInfo.title);
         innerHTML("detailTeacherDate", result.boardDetailInfo.indate);
         innerHTML("detailTeacherName", result.boardDetailInfo.userName);
@@ -205,7 +243,6 @@
         $("#questionWrite").hide();
         $("#questionDetail").show();
         var result = getBoardDetailInfo(10062, bbskey);
-        console.log(result);
         innerHTML("detailQuestionTitle", result.boardDetailInfo.title);
         innerHTML("detailQuestionDate", result.boardDetailInfo.indate);
         innerHTML("detailQuestionName", result.boardDetailInfo.userName);
@@ -265,14 +302,12 @@
                 if(bbsKey == ""){ //등록
                    var result = saveBoard(10011, userKey, title, content, 0, 0, "");
                 }else{ //수정
-                    alert(bbsKey);
                     var result = updateBoard(bbsKey, title, content, 0, "");
                 }
                 if(result.resultCode == 200){
                     alert("성공적으로 등록 완료되었습니다");
                 }
             }else{
-                alert('파일있을때 함수호출');
                 var data = new FormData();
                 var formData = new FormData();
                 for(var i=0, filesTempArrLen = filesTempArr.length; i<filesTempArrLen; i++) {
@@ -291,12 +326,10 @@
                             var fileName = data.keyValue;
                             alert(bbsKey);
                             if(bbsKey == ""){ //등록
-                                alert('등록');
                                 var result = saveBoard(10011, userKey, title, content, 0, 0, "");
                                 var str = toStrFileName(fileName);
                                 saveBoardFileList(result.keyValue, str);
                             }else{ //수정
-                                alert('수정');
                                 var result = updateBoard(bbsKey, title, content, 0, "");
                                 var str = toStrFileName(fileName);
                                 saveBoardFileList(result.keyValue, str);
@@ -451,7 +484,7 @@
                             <div class="location">
                                 <h2>찾아오시는 길</h2>
                                 <div class="company1">
-                                    <div class="mApi">api</div>
+                                    <div class="mApi" id="map_ma"></div>
                                     <h3>1관 찾아오시는 길</h3>
                                     <table>
                                         <colgroup>
@@ -484,7 +517,7 @@
                                     </table>
                                 </div>
                                 <div class="company2">
-                                    <div class="mApi">api</div>
+                                    <div class="mApi" id="map_ma1"></div>
                                     <h3>2관 찾아오시는 길</h3>
                                     <table>
                                         <colgroup>
@@ -791,7 +824,7 @@
                         <!-- 지안에듀 1관 -->
                         <div class="gallery station1">
                             <h2>지안에듀 1관</h2>
-<%--                            <a href="javascript:upLoadPop2()"><img src="/common/zian/images/common/t_upload.jpg" alt=""></a>--%>
+                            <a href="javascript:upLoadPop2()"><img src="/common/zian/images/common/t_upload.jpg" alt=""></a>
                             <ul class="img-list">
                                 <li><a href="javascript:#myModal"><img class="myImg" src="http://52.79.40.214/Upload/100/company/info_gallery00.jpg" alt="이미지1"></a></li>
                                 <li><a href="javascript:#myModal"><img class="myImg" src="http://52.79.40.214/Upload/100/company/info_gallery01.jpg" alt="이미지2"></a></li>
@@ -806,7 +839,7 @@
                         <!-- 지안에듀 2관 -->
                         <div class="gallery station2">
                             <h2>지안에듀 2관</h2>
-<%--                            <a href="javascript:upLoadPop2()"><img src="/common/zian/images/common/t_upload.jpg" alt=""></a>--%>
+                            <a href="javascript:upLoadPop2()"><img src="/common/zian/images/common/t_upload.jpg" alt=""></a>
                             <ul>
                                 <li><a href="javascript:openLayer('.gList02')"></a></li>
                                 <li><a href="javascript:openLayer('.gList02')"></a></li>
@@ -815,6 +848,36 @@
                         <!-- //지안에듀 1관 -->
                     </div>
                 </div>
+                <!-- 안내 모달창 -->
+                <div id="uploadModal2" class="upmodal">
+                    <!-- Modal content -->
+                    <div class="modal-content">
+                        <div class="mTit">
+                            <h2>시간표 업로드</h2>
+                            <!-- <a href="javascript:" class="btn_modalClose">닫기</a>-->
+                        </div>
+                        <div class="mCont">
+                            <div class="ta_center">
+                                <table class="box">
+                                    <tr>
+                                        <td class="filebox" width="90%">
+                                            <input type="text" class="file-text" disabled>
+                                            <span class="file-btn">찾아보기</span>
+                                            <span class="file-select"><input type="file" class="input-file" size="3"></span>
+                                        </td>
+                                        <td width="10%"><!--<a href="javascript:" class="delRow">빼기</a>--></td>
+                                    </tr>
+                                </table>
+                                <a href="javascript:addRow()" class="add" style="display:block;width:50px;margin: auto"><img src="../images/content/icon_upload_plus.jpg"></a>
+                            </div>
+                            <div class="btnArea">
+                                <a href="javascript:" class="btn_m gray radius w110 btn_modalClose">취소</a> &nbsp;&nbsp;&nbsp;
+                                <a href="javascript:" class="btn_m blue radius w110">등록</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- //안내 모달창 -->
             </div>
         </div>
         <!--//본문-->
@@ -833,6 +896,20 @@
 </body>
 </html>
 <script>
+    function upLoadPop2(){
+        var uModal = $('#uploadModal2');
+        var mClose = $('.btn_modalClose');
+        /* modal */
+        uModal.css('display','block');
+        mClose.click(function(){
+            var $this = $('#uploadModal2 table tr td a');
+            $this.parent().parent().remove();
+            $('.file-text').val('');
+            uModal.css('display','none');
+        });
+
+    }
+
     var modal = $("#myModal");
     var imgUrl;
 
