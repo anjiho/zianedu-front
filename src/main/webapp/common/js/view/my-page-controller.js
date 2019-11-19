@@ -238,7 +238,7 @@ function getVideoSignUpCount(userKey, deviceType) {
     var data = {
         deviceType : deviceType
     };
-    
+
     $.get("http://52.79.40.214:9090" + "/myPage/getVideoSignUpCount/" + userKey, data, function (response) {
         console.log(response);
         innerHTML("playCount", response.keyValue);
