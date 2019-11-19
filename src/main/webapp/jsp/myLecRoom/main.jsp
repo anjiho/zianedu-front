@@ -163,9 +163,6 @@
                                                                         </div>
                                                                         <div class="prograss_wrap">
                                                                             <span class="text">진도율&nbsp;&nbsp; <span id="PlayProgressRate"></span></span>
-                                                                            <span class="prograss">
-								                   		    				<img src="../images/ex/sample-img01.png" alt="">
-								                   		    			</span>
                                                                         </div>
                                                                     </div>
                                                                     <!--//guide-->
