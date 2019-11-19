@@ -184,21 +184,21 @@ function getVideoSignUpLectureNameList(userKey, deviceType, subjectCtgKey, stepC
     if (infoList.result != null) {
         var result = infoList.result;
         if(result.length > 0) {
-            getTypeLectureDetail(result[0].jlecKey);
             innerValue("gKey", result[0].gkey);
             var gKey = getInputTextValue("gKey");
-            getVideoSignUpDetailInfo(gKey, "PC");
+            getTypeLectureDetail(gKey,result[0].jlecKey);
+            getVideoSignUpDetailInfo(gKey, "PC", result[0].jlecKey);
             dwr.util.addOptions('typeLectureList', result, function (data) {
-                return "<a href='javascript:getTypeLectureDetail(" + data.jlecKey + ");'>" + data.name + "</a>"
+                return "<a href='javascript:getTypeLectureDetail(" + data.gkey + ","+ data.jlecKey +");'>" + data.name + "</a>"
             }, {escapeHtml: false});
         }
     }
 }
 
-function getVideoSignUpDetailInfo(gkey, device) {
+function getVideoSignUpDetailInfo(gkey, device, jlecKey) {
     if (gkey == null || gkey == undefined) return;
 
-    var detailInfo = getApi("/myPage/getVideoSignUpDetailInfo/", gkey);
+    var detailInfo = getApi("/myPage/getVideoSignUpDetailInfo/", jlecKey);
 
     var data = {
         device : device
@@ -238,6 +238,7 @@ function getVideoSignUpCount(userKey, deviceType) {
     var data = {
         deviceType : deviceType
     };
+
 
     $.get("http://52.79.40.214:9090" + "/myPage/getVideoSignUpCount/" + userKey, data, function (response) {
         console.log(response);

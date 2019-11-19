@@ -45,8 +45,8 @@
     }
 
     //동영상 - 유형 - 강좌리스트 - 강좌상세보기
-    function getTypeLectureDetail(gkey) {
-        var infoList = getVideoSignUpDetailInfo(gkey, "PC");
+    function getTypeLectureDetail(gkey, jlecKey) {
+        var infoList = getVideoSignUpDetailInfo(gkey, "PC", jlecKey);
         $("#playLecListDiv").show();
         var result = infoList.result;
         innerHTML("playLecName", result.name);
