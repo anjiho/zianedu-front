@@ -189,7 +189,7 @@ function getVideoSignUpLectureNameList(userKey, deviceType, subjectCtgKey, stepC
             var gKey = getInputTextValue("gKey");
             getVideoSignUpDetailInfo(gKey, "PC");
             dwr.util.addOptions('typeLectureList', result, function (data) {
-                return "<a href='javascript:getTypeLectureDetail(" + data.gkey + ");'>" + data.name + "</a>"
+                return "<a href='javascript:getTypeLectureDetail(" + data.jlecKey + ");'>" + data.name + "</a>"
             }, {escapeHtml: false});
         }
     }
