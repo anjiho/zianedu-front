@@ -18,6 +18,7 @@
     //동영상 - 유형 - 강좌명 리스트
     function getPlaySubjectList(stepCtgKey) {
         $("#typeLectureList li").remove();
+        dwr.util.removeAllRows("dataList"); //테이블 리스트 초기화
         var subjectCtgKey = getInputTextValue("subjectCtgKey");
         var userKey = 86942;
         getVideoSignUpLectureNameList(userKey, 'PC', subjectCtgKey, stepCtgKey);
@@ -44,12 +45,12 @@
         innerHTML("limitDay", result.limitDay);
         innerHTML("PlayProgressRate", result.progressRateName);
         //innerHTML("", result.);
-        
     }
 </script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
     <input type="hidden" id="subjectCtgKey">
+    <input type="hidden" id="gKey">
     <div id="wrap">
         <%@include file="/common/jsp/leftMenu.jsp" %>
         <!--상단-->

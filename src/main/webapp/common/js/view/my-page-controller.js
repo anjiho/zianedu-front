@@ -185,7 +185,9 @@ function getVideoSignUpLectureNameList(userKey, deviceType, subjectCtgKey, stepC
         var result = infoList.result;
         if(result.length > 0) {
             getTypeLectureDetail(result[0].jlecKey);
-            console.log(result);
+            innerValue("gKey", result[0].gkey);
+            var gKey = getInputTextValue("gKey");
+            getVideoSignUpDetailInfo(gKey, "PC");
             dwr.util.addOptions('typeLectureList', result, function (data) {
                 return "<a href='javascript:getTypeLectureDetail(" + data.gkey + ");'>" + data.name + "</a>"
             }, {escapeHtml: false});
@@ -202,6 +204,7 @@ function getVideoSignUpDetailInfo(gkey, device) {
         device : device
     };
     var infoList = getApi("/product/getLectureList/", gkey, data);
+    dwr.util.removeAllRows("dataList"); //테이블 리스트 초기화
     if (infoList.result != null) {
         var selList = infoList.result.lectureList;
         innerHTML("lecCount", infoList.result.totalCnt);
