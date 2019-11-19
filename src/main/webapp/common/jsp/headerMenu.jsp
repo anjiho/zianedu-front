@@ -26,7 +26,7 @@
 <div id="gnb" class="acaTopMenu" style="display: none;">
     <div class="inner">
         <ul class="deaph1 cols7">
-            <li><a href="#">내강의실</a></li>
+            <li><a href="javascript:goPage('myLecRoom', 'main')">내강의실</a></li>
             <li><a href="javascript:goPage('teacher', 'main')">교수소개</a></li>
             <li><a href="#">학원수강신청</a></li>
             <li><a href="#">연간관리반</a></li>
@@ -40,7 +40,7 @@
 <div id="gnb" class="onlineTopMenu" style="display: none;">
     <div class="inner">
         <ul class="deaph1 cols7">
-            <li><a href="#">내강의실</a></li>
+            <li><a href="javascript:goPage('myLecRoom', 'main')">내강의실</a></li>
             <li><a href="javascript:goPage('teacher', 'main')">교수소개</a></li>
             <li><a href="#">수강신청</a></li>
             <li><a href="#">지안패스</a></li>

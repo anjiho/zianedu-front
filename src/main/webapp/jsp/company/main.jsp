@@ -791,7 +791,7 @@
                         <!-- 지안에듀 1관 -->
                         <div class="gallery station1">
                             <h2>지안에듀 1관</h2>
-<%--                            <a href="javascript:upLoadPop2()"><img src="/common/zian/images/common/t_upload.jpg" alt=""></a>--%>
+                            <a href="javascript:upLoadPop2()"><img src="/common/zian/images/common/t_upload.jpg" alt=""></a>
                             <ul class="img-list">
                                 <li><a href="javascript:#myModal"><img class="myImg" src="http://52.79.40.214/Upload/100/company/info_gallery00.jpg" alt="이미지1"></a></li>
                                 <li><a href="javascript:#myModal"><img class="myImg" src="http://52.79.40.214/Upload/100/company/info_gallery01.jpg" alt="이미지2"></a></li>
@@ -806,7 +806,7 @@
                         <!-- 지안에듀 2관 -->
                         <div class="gallery station2">
                             <h2>지안에듀 2관</h2>
-<%--                            <a href="javascript:upLoadPop2()"><img src="/common/zian/images/common/t_upload.jpg" alt=""></a>--%>
+                            <a href="javascript:upLoadPop2()"><img src="/common/zian/images/common/t_upload.jpg" alt=""></a>
                             <ul>
                                 <li><a href="javascript:openLayer('.gList02')"></a></li>
                                 <li><a href="javascript:openLayer('.gList02')"></a></li>
@@ -835,7 +835,7 @@
                                         <td width="10%"><!--<a href="javascript:" class="delRow">빼기</a>--></td>
                                     </tr>
                                 </table>
-                                <a href="javascript:addRow()" class="add" style="display:block;width:50px;margin: auto"><img src="../images/content/icon_upload_plus.jpg"></a>
+                                <a href="javascript:addRow()" class="add" style="display:block;width:50px;margin: auto"><img src="/common/zian/images/content/icon_upload_plus.jpg"></a>
                             </div>
                             <div class="btnArea">
                                 <a href="javascript:" class="btn_m gray radius w110 btn_modalClose">취소</a> &nbsp;&nbsp;&nbsp;
@@ -862,130 +862,7 @@
 </form>
 </body>
 </html>
+
 <script>
-    function upLoadPop2(){
-        var uModal = $('#uploadModal2');
-        var mClose = $('.btn_modalClose');
-        /* modal */
-        uModal.css('display','block');
-        mClose.click(function(){
-            var $this = $('#uploadModal2 table tr td a');
-            $this.parent().parent().remove();
-            $('.file-text').val('');
-            uModal.css('display','none');
-        });
 
-    }
-
-    var modal = $("#myModal");
-    var imgUrl;
-
-    $('.img-list li > a').on('click',function(){
-        var _index = $(this).parent().index();
-        var _indexTar = $('.img-list li').eq(_index);
-
-        $('.img-list li').removeClass('open');
-        _indexTar.addClass('open');
-        imgUrl = _indexTar.find('.myImg').attr('src');
-
-        modal.find(".modal-content").attr('src', imgUrl);
-        modal.find('.modal-content').attr('id', '');
-        modal.find('.modal-content').attr('id', 'imgs_' + _index);
-
-        modal.css('display','block');
-    });
-
-    var cnt=0;
-    function openLayer(idName){
-        if(cnt==0){
-            cnt++;
-            var pop = $(idName);
-            pop.css('display','block');
-        }
-    }
-
-    function closelayer(idName){
-        var pop = $(idName);
-        pop.css('display','none');
-        cnt = 0;
-    }
-
-
-    //current position
-    var pos = 0;
-    //number of slides
-    var totalSlides = $('#slider-wrap ul li').length;
-    //get the slide width
-    var sliderWidth = $('#slider-wrap').width();
-
-
-    $(document).ready(function(){
-        //set width to be 'x' times the number of slides
-        $('#slider-wrap ul#slider').width(sliderWidth*totalSlides);
-
-        //next slide
-        $('#next').click(function(){
-            slideRight();
-        });
-
-        //previous slide
-        $('#previous').click(function(){
-            slideLeft();
-        });
-
-
-        //for each slide
-        $.each($('#slider-wrap ul li'), function() {
-
-            //create a pagination
-            var li = document.createElement('li');
-            $('#pagination-wrap ul').append(li);
-        });
-
-        //counter
-        countSlides();
-
-        //pagination
-        pagination();
-
-    });//DOCUMENT READY
-
-
-
-    /***********
-     SLIDE LEFT
-     ************/
-    function slideLeft(){
-        pos--;
-        if(pos==-1){ pos = totalSlides-1; }
-        $('#slider-wrap ul#slider').css('left', -(sliderWidth*pos));
-
-        //*> optional
-        countSlides();
-        pagination();
-    }
-
-
-    /************
-     SLIDE RIGHT
-     *************/
-    function slideRight(){
-        pos++;
-        if(pos==totalSlides){ pos = 0; }
-        $('#slider-wrap ul#slider').css('left', -(sliderWidth*pos));
-
-        //*> 실행
-        countSlides();
-        pagination();
-    }
-
-    function countSlides(){
-        $('#counter').html(pos+1 + ' / ' + totalSlides);
-        $('.cTit').html(totalSlides);
-    }
-
-    function pagination(){
-        $('#pagination-wrap ul li').removeClass('active');
-        $('#pagination-wrap ul li:eq('+pos+')').addClass('active');
-    }
 </script>
