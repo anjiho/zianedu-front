@@ -3,12 +3,12 @@
 <script>
     $( document ).ready(function() {
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-        var userKey = sessionUserInfo.userKey;
-        if(userKey != null){
+     //   var userKey = sessionUserInfo.userKey;
+       // console.log(userKey);
+        //if(userKey != null){
             var userKey = 86942;
             getVideoSignUp(userKey, 'PC');//수강중인강좌 - 동영상 -과목 불러오기
-        }return false;
-
+        //}
         $("#playSubject li:eq(0)").addClass('active');
         $("#playSubject li").click(function () { // 과목메뉴 클릭시 class active 기능
             $(this).addClass('active').siblings().removeClass('active');
