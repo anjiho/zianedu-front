@@ -1,12 +1,18 @@
-
-
-       getVideoSignUp(86942, 'PC', 0, 0);//수강중인강좌 - 동영상 -과목,유형 불러오기
+<%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+<%@include file="/common/jsp/common.jsp" %>
+<script>
+    $( document ).ready(function() {
+       getVideoSignUp(86942, 'PC');//수강중인강좌 - 동영상 -과목,유형 불러오기
        //$("#playSubject li").eq(0).addClass("active");
         $("#playSubject li").eq(0).click();
     });
     function playDepthList(ctgKey) {
         $("#playType li").remove();
-        getVideoTypeList(86942, 'PC', 0, 0, ctgKey);
+        getVideoTypeList(86942, 'PC', ctgKey);
+    }
+    
+    function getPlaySubjectList(ctgKey) {
+        
     }
 </script>
 <form name="frm" method="get">

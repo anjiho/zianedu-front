@@ -130,13 +130,11 @@ function getVideoPauseRequestPopup(jLecKey, tagId) {
 }
 
 //내 강의실 > 수강중인강좌(동영상)
-function getVideoSignUp(userKey, deviceType, subjectCtgKey, stepCtgKey) {
+function getVideoSignUp(userKey, deviceType) {
     if (userKey == null || userKey == undefined) return;
 
     var data = {
-        deviceType : deviceType,
-        subjectCtgKey : subjectCtgKey,
-        stepCtgKey : stepCtgKey
+        deviceType : deviceType
     };
 
     var infoList = getApi("/myPage/getVideoSignUp/", userKey, data);
@@ -151,13 +149,11 @@ function getVideoSignUp(userKey, deviceType, subjectCtgKey, stepCtgKey) {
 }
 
 //내 강의실 > 수강중인강좌(동영상) > 유형불러오기
-function getVideoTypeList(userKey, deviceType, subjectCtgKey, stepCtgKey, ctgKey) {
+function getVideoTypeList(userKey, deviceType, ctgKey) {
     if (userKey == null || userKey == undefined) return;
 
     var data = {
-        deviceType : deviceType,
-        subjectCtgKey : subjectCtgKey,
-        stepCtgKey : stepCtgKey
+        deviceType : deviceType
     };
 
     var infoList = getApi("/myPage/getVideoSignUp/", userKey, data);
