@@ -185,22 +185,23 @@ function getVideoSignUpLectureNameList(userKey, deviceType, subjectCtgKey, stepC
         var result = infoList.result;
         if(result.length > 0) {
             getTypeLectureDetail(result[0].jlecKey);
+            console.log(result);
             dwr.util.addOptions('typeLectureList', result, function (data) {
-                return "<a href='javascript:getTypeLectureDetail(" + data.jlecKey + ");'>" + data.name + "</a>"
+                return "<a href='javascript:getTypeLectureDetail(" + data.gkey + ");'>" + data.name + "</a>"
             }, {escapeHtml: false});
         }
     }
 }
 
-function getVideoSignUpDetailInfo(jLecKey, device) {
-    if (jLecKey == null || jLecKey == undefined) return;
+function getVideoSignUpDetailInfo(gkey, device) {
+    if (gkey == null || gkey == undefined) return;
 
-    var detailInfo = getApi("/myPage/getVideoSignUpDetailInfo/", jLecKey);
+    var detailInfo = getApi("/myPage/getVideoSignUpDetailInfo/", gkey);
 
     var data = {
         device : device
     };
-    var infoList = getApi("/product/getLectureList/", jLecKey, data);
+    var infoList = getApi("/product/getLectureList/", gkey, data);
     if (infoList.result != null) {
         var selList = infoList.result.lectureList;
         innerHTML("lecCount", infoList.result.totalCnt);
