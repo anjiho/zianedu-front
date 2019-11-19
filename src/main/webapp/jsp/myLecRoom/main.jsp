@@ -44,13 +44,21 @@
         var infoList = getVideoSignUpDetailInfo(gkey, "PC");
         $("#playLecListDiv").show();
         var result = infoList.result;
-
+        console.log(result);
         innerHTML("playLecName", result.name);
         innerHTML("playLecStartDate", result.startDate);
         innerHTML("playLecEndDate", result.endDate);
         innerHTML("limitDay", result.limitDay);
         innerHTML("PlayProgressRate", result.progressRateName);
-        //innerHTML("", result.);
+        innerHTML("ctgName", result.ctgName);
+        var pcMobile = divisionPcMobile();
+        if(pcMobile == 'pc'){
+            $("#pc").show();
+            $("#mobile").hide();
+        }else{
+            $("#pc").hide();
+            $("#mobile").show();
+        }
     }
 </script>
 <form name="frm" method="get">
@@ -134,13 +142,13 @@
                                                             <div class="inner">
 <%--                                                                <a href="" class="btn_modalClose">모달팝업닫기</a>--%>
                                                                 <div class="btn_crud">
-                                                                    <span class="black small">단과특강</span>
+                                                                    <span class="black small" id="ctgName">단과특강</span>
                                                                     <a href="#modal3" class="btn_modalOpen">강좌설명</a>
                                                                 </div>
 
                                                                 <div class="txt_area">
-                                                                    <span class="bdbox">PC</span>
-                                                                    <span class="bdbox">모바일</span>
+                                                                    <span class="bdbox" id="pc">PC</span>
+                                                                    <span class="bdbox" id="mobile">모바일</span>
                                                                     <p class="thumb" id="playLecName"></p>
                                                                     <span class="date"><b>수강기간</b><span id="playLecStartDate"></span> ~ <span id="playLecEndDate"></span> (<span id="limitDay"></span>일)</span>
                                                                     <!--guide-->
