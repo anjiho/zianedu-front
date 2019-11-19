@@ -1,5 +1,14 @@
-<%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
-<%@include file="/common/jsp/common.jsp" %>
+
+
+       getVideoSignUp(86942, 'PC', 0, 0);//수강중인강좌 - 동영상 -과목,유형 불러오기
+       //$("#playSubject li").eq(0).addClass("active");
+        $("#playSubject li").eq(0).click();
+    });
+    function playDepthList(ctgKey) {
+        $("#playType li").remove();
+        getVideoTypeList(86942, 'PC', 0, 0, ctgKey);
+    }
+</script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
     <div id="wrap">
@@ -45,12 +54,7 @@
                                         <div class="tabPage active">
                                             <!-- 동영상 하단 메뉴 tab_large_2dept-->
                                             <div class="tab_large_2depth tabContent">
-                                                <ul class="tabBar">
-                                                    <li class="active"><a href="#">한국사</a></li>
-                                                    <li><a href="#">행정학</a></li>
-                                                    <li><a href="#">면접특강</a></li>
-                                                    <li><a href="#">행정법</a></li>
-                                                </ul>
+                                                <ul class="tabBar" id="playSubject"></ul> <!-- 과목리스트 -->
                                                 <!-- 한국사 -->
                                                 <div class="tabPage active">
                                                     <div class="tabContent_2depth">
@@ -60,13 +64,13 @@
                                                         <div class="Dropmenu">
                                                             <div class="lfloat">
                                                                 <p class="tit">유형</p>
-                                                                <ul class="Droptab_wrap">
-                                                                    <li class="tab" data-tab="1depth-1"><a href="#aa">이론</a></li>
-                                                                    <li class="tab" data-tab="1depth-2"><a href="#aa">단과</a></li>
-                                                                    <li class="tab" data-tab="1depth-3"><a href="#aa">문제풀이</a></li>
-                                                                    <li class="tab" data-tab="1depth-4"><a href="#aa">단과특강</a></li>
-                                                                    <li class="tab" data-tab="1depth-5"><a href="#aa">필기대비</a></li>
-                                                                    <li class="tab" data-tab="1depth-6"><a href="#aa">모의고사</a></li>
+                                                                <ul class="Droptab_wrap" id="playType">
+<%--                                                                    <li class="tab" data-tab="1depth-1"><a href="">이론</a></li>--%>
+<%--                                                                    <li class="tab" data-tab="1depth-2"><a href="">단과</a></li>--%>
+<%--                                                                    <li class="tab" data-tab="1depth-3"><a href="">문제풀이</a></li>--%>
+<%--                                                                    <li class="tab" data-tab="1depth-4"><a href="">단과특강</a></li>--%>
+<%--                                                                    <li class="tab" data-tab="1depth-5"><a href="">필기대비</a></li>--%>
+<%--                                                                    <li class="tab" data-tab="1depth-6"><a href="">모의고사</a></li>--%>
                                                                 </ul>
                                                             </div>
                                                             <div class="rfloat">
@@ -162,105 +166,6 @@
                                                                         <tr>
                                                                             <td>01</td>
                                                                             <td>01강 180509_어문규정표준 발음법</td>
-                                                                            <td>56</td>
-                                                                            <td>
-                                                                                <a href="" class="black small">일반화질</a>
-                                                                                <a href="" class="blue small">고화질</a>
-                                                                            </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>02</td>
-                                                                            <td>02강 180509_어휘_테마 어휘: 나이와 한자 </td>
-                                                                            <td>56</td>
-                                                                            <td>
-                                                                                <a href="" class="black small">일반화질</a>
-                                                                                <a href="" class="blue small">고화질</a>
-                                                                            </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>03</td>
-                                                                            <td>03강 180509_한자와 한자성어_육서 및 테마 한자 문제풀이 </td>
-                                                                            <td>56</td>
-                                                                            <td>
-                                                                                <a href="" class="black small">일반화질</a>
-                                                                                <a href="" class="blue small">고화질</a>
-                                                                            </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>04</td>
-                                                                            <td>04강 어문규정_표준 발음법_필수 문법 </td>
-                                                                            <td>56</td>
-                                                                            <td>
-                                                                                <a href="" class="black small">일반화질</a>
-                                                                                <a href="" class="blue small">고화질</a>
-                                                                            </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>05</td>
-                                                                            <td>어문규정_표준 발음법_제10항~제16항</td>
-                                                                            <td>56</td>
-                                                                            <td>
-                                                                                <a href="" class="black small">일반화질</a>
-                                                                                <a href="" class="blue small">고화질</a>
-                                                                            </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>06</td>
-                                                                            <td>어휘_단위어1_한자干,各,古 </td>
-                                                                            <td>56</td>
-                                                                            <td>
-                                                                                <a href="" class="black small">일반화질</a>
-                                                                                <a href="" class="blue small">고화질</a>
-                                                                            </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>07</td>
-                                                                            <td>어문규정_표준 발음법_제10~16항 복습 </td>
-                                                                            <td>56</td>
-                                                                            <td>
-                                                                                <a href="" class="black small">일반화질</a>
-                                                                                <a href="" class="blue small">고화질</a>
-                                                                            </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>08</td>
-                                                                            <td>한자와 한자성어_京, 交, 其_문제풀이 </td>
-                                                                            <td>56</td>
-                                                                            <td>
-                                                                                <a href="" class="black small">일반화질</a>
-                                                                                <a href="" class="blue small">고화질</a>
-                                                                            </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>09</td>
-                                                                            <td>어휘_신체와 관련된 관용구_ 한자와 한자성어 雨, 同, 里 </td>
-                                                                            <td>56</td>
-                                                                            <td>
-                                                                                <a href="" class="black small">일반화질</a>
-                                                                                <a href="" class="blue small">고화질</a>
-                                                                            </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>10</td>
-                                                                            <td>속담_기출학습_한자와 한자성어 不, 莫, 亡 </td>
-                                                                            <td>56</td>
-                                                                            <td>
-                                                                                <a href="" class="black small">일반화질</a>
-                                                                                <a href="" class="blue small">고화질</a>
-                                                                            </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>11</td>
-                                                                            <td>어문규정_표준어 사정 원칙_제1항~제19항</td>
-                                                                            <td>56</td>
-                                                                            <td>
-                                                                                <a href="" class="black small">일반화질</a>
-                                                                                <a href="" class="blue small">고화질</a>
-                                                                            </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>12</td>
-                                                                            <td>어휘_주제별어휘_한자어와 한자성어_言, 方, 常, 目, 牛 </td>
                                                                             <td>56</td>
                                                                             <td>
                                                                                 <a href="" class="black small">일반화질</a>

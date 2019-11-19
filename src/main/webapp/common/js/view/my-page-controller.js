@@ -130,24 +130,47 @@ function getVideoPauseRequestPopup(jLecKey, tagId) {
 }
 
 //내 강의실 > 수강중인강좌(동영상)
-function getVideoSignUp(userKey, deviceType, tagId) {
+function getVideoSignUp(userKey, deviceType, subjectCtgKey, stepCtgKey) {
     if (userKey == null || userKey == undefined) return;
 
     var data = {
-        deviceType : deviceType
+        deviceType : deviceType,
+        subjectCtgKey : subjectCtgKey,
+        stepCtgKey : stepCtgKey
     };
 
-    var InfoList = getApi("/myPage/getVideoSignUp/", userKey, data);
-    if (InfoList.result.length > 0) {
-        var selList = InfoList.result;
-        dwr.util.addRows(tagId, selList, [
-            /*
-                TODO : addoption 추가
-             */
-            //function(data) {return data.fullFileUrl;}
-        ], {escapeHtml:false});
+    var infoList = getApi("/myPage/getVideoSignUp/", userKey, data);
+
+    if (infoList.result.subjectInfo != null) {
+        var result = infoList.result.subjectInfo;
+        console.log(result);
+        dwr.util.addOptions('playSubject', result, function (data) {
+           return "<a href='javascript:playDepthList("+ data.subjectCtgKey +");'>"+ data.subjectName +"</a>"
+        }, {escapeHtml: false});
     }
 }
+
+//내 강의실 > 수강중인강좌(동영상) > 유형불러오기
+function getVideoTypeList(userKey, deviceType, subjectCtgKey, stepCtgKey, ctgKey) {
+    if (userKey == null || userKey == undefined) return;
+
+    var data = {
+        deviceType : deviceType,
+        subjectCtgKey : subjectCtgKey,
+        stepCtgKey : stepCtgKey
+    };
+
+    var infoList = getApi("/myPage/getVideoSignUp/", userKey, data);
+
+    if (infoList.result.subjectInfo != null) {
+        var result = infoList.result.typeInfo;
+        console.log(result);
+        dwr.util.addOptions('playType', result, function (data) {
+            return "<a href='javascript:getPlaySubjectList("+ data.ctgKey +");'>"+ data.ctgName +"</a>"
+        }, {escapeHtml: false});
+    }
+}
+
 
 
 //강좌 일시정지 요청, 일시정지 해제
