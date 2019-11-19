@@ -3,21 +3,22 @@
 <script>
     $( document ).ready(function() {
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-     //   var userKey = sessionUserInfo.userKey;
-       // console.log(userKey);
-        //if(userKey != null){
+        if(sessionUserInfo != null){
             var userKey = 86942;
             getVideoSignUp(userKey, 'PC');//수강중인강좌 - 동영상 -과목 불러오기
-        //}
-        $("#playSubject li:eq(0)").addClass('active');
-        $("#playSubject li").click(function () { // 과목메뉴 클릭시 class active 기능
-            $(this).addClass('active').siblings().removeClass('active');
+            $("#playSubject li:eq(0)").addClass('active');
+            $("#playSubject li").click(function () { // 과목메뉴 클릭시 class active 기능
+                $(this).addClass('active').siblings().removeClass('active');
 
-        });
-        $("#playType li:eq(0)").addClass('active');
-        $("#playType li").click(function () {
-            $(this).addClass('active').siblings().removeClass('active');
-        });
+            });
+            $("#playType li:eq(0)").addClass('active');
+            $("#playType li").click(function () {
+                $(this).addClass('active').siblings().removeClass('active');
+            });
+        }else{
+            alert("로그인이 필요합니다.");
+            return false;
+        }
     });
 
     //동영상 - 유형 - 강좌명 리스트
