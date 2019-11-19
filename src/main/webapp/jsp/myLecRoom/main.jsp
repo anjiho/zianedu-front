@@ -3,35 +3,41 @@
 <script>
     $( document ).ready(function() {
         var userKey = 86942;
-        getVideoSignUp(86942, 'PC');//수강중인강좌 - 동영상 -과목 불러오기
+        getVideoSignUp(userKey, 'PC');//수강중인강좌 - 동영상 -과목 불러오기
         $("#playSubject li:eq(0)").addClass('active');
         $("#playSubject li").click(function () { // 과목메뉴 클릭시 class active 기능
+            $(this).addClass('active').siblings().removeClass('active');
+
+        });
+        $("#playType li:eq(0)").addClass('active');
+        $("#playType li").click(function () {
             $(this).addClass('active').siblings().removeClass('active');
         });
     });
 
-    //동영상 - 유형 리스트
-    function playDepthList(subjectCtgKey) {
-        innerValue("subjectCtgKey", subjectCtgKey);
-        $("#playType li").remove();
-        var userKey = 86942;
-        getVideoTypeList(userKey, 'PC');
-    }
-
     //동영상 - 유형 - 강좌명 리스트
     function getPlaySubjectList(stepCtgKey) {
-        alert(1);
         $("#typeLectureList li").remove();
         var subjectCtgKey = getInputTextValue("subjectCtgKey");
         var userKey = 86942;
         getVideoSignUpLectureNameList(userKey, 'PC', subjectCtgKey, stepCtgKey);
     }
+    
+    function playDepthList(subjectCtgKey) {
+        innerValue("subjectCtgKey", subjectCtgKey);
+        $("#typeLectureList li").remove();
+        $("#playLecListDiv").hide();
+        $("#playType li").addClass('active').siblings().removeClass('active');
+        $("#playType li:eq(0)").addClass('active');
+        changePlayLectureList(86942, 'PC');
+    }
 
     //동영상 - 유형 - 강좌리스트 - 강좌상세보기
     function getTypeLectureDetail(jlecKey) {
-        var infoList = getVideoSignUpDetailInfo(jlecKey);
+        var infoList = getVideoSignUpDetailInfo(jlecKey, "PC");
+        $("#playLecListDiv").show();
         var result = infoList.result;
-        console.log(result);
+
         innerHTML("playLecName", result.name);
         innerHTML("playLecStartDate", result.startDate);
         innerHTML("playLecEndDate", result.endDate);
@@ -106,13 +112,6 @@
 <%--                                                                    <li class="tab" data-tab="1depth-6"><a href="">모의고사</a></li>--%>
                                                                 </ul>
                                                             </div>
-                                                            <!--
-                                                            float: left;
-                                                            width: 828px;
-                                                            min-height: 346px;
-                                                            border: 1px solid #e5e5e5;
-                                                            overflow: hidden;
-                                                            -->
                                                             <div style="float: left;width: 828px;min-height: 346px; border: 1px solid #e5e5e5;overflow: hidden;">
                                                                 <p class="tit">강좌명</p>
                                                                 <ul class="1depth-1" id="typeLectureList">
@@ -123,10 +122,10 @@
                                                         <!--//Dropmenu -->
 
                                                         <!--Dropmenu_down 상단 메뉴 클릭시 내용 드롭다운 -->
-                                                        <div class="Dropmenu_down">
+                                                        <div class="Dropmenu_down" id="playLecListDiv">
                                                             <!--inner-->
                                                             <div class="inner">
-                                                                <a href="" class="btn_modalClose">모달팝업닫기</a>
+<%--                                                                <a href="" class="btn_modalClose">모달팝업닫기</a>--%>
                                                                 <div class="btn_crud">
                                                                     <span class="black small">단과특강</span>
                                                                     <a href="#modal3" class="btn_modalOpen">강좌설명</a>
@@ -156,7 +155,7 @@
                                                                 <div class="tbd_02">
                                                                     <div class="crud_area">
                                                                         <span class="unit">강좌목차</span>
-                                                                        <strong>총20강</strong>
+                                                                        <strong>총<span id="lecCount"></span>강</strong>
                                                                     </div>
                                                                     <table>
                                                                         <caption>최근수강강좌</caption>
@@ -174,35 +173,21 @@
                                                                             <th>동영상</th>
                                                                         </tr>
                                                                         </thead>
-                                                                        <tbody>
-                                                                        <tr>
-                                                                            <td>01</td>
-                                                                            <td>01강 180509_어문규정표준 발음법</td>
-                                                                            <td>56</td>
-                                                                            <td>
-                                                                                <a href="" class="black small">일반화질</a>
-                                                                                <a href="" class="blue small">고화질</a>
-                                                                            </td>
-                                                                        </tr>
+                                                                        <tbody id="dataList">
+<%--                                                                        <tr>--%>
+<%--                                                                            <td>01</td>--%>
+<%--                                                                            <td>01강 180509_어문규정표준 발음법</td>--%>
+<%--                                                                            <td>56</td>--%>
+<%--                                                                            <td>--%>
+<%--                                                                                <a href="" class="black small">일반화질</a>--%>
+<%--                                                                                <a href="" class="blue small">고화질</a>--%>
+<%--                                                                            </td>--%>
+<%--                                                                        </tr>--%>
                                                                         </tbody>
                                                                     </table>
                                                                 </div>
                                                             </div>
                                                             <!--//inner-->
-
-                                                            <!-- paging -->
-                                                            <div class="paging">
-                                                                <div class="boardnavi">
-                                                                    <a class="prev" href="#">이전 목록이동</a>
-                                                                    <span>
-																	<strong class="selected">1</strong>
-																	<a href="#">2</a>
-																	<a href="#">3</a>
-																</span>
-                                                                    <a class="next" href="#">다음 목록이동</a>
-                                                                </div>
-                                                            </div>
-                                                            <!-- //paging -->
                                                         </div>
                                                         <!--//Dropmenu_down -->
 

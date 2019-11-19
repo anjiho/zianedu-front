@@ -139,16 +139,24 @@ function getVideoSignUp(userKey, deviceType) {
 
     var infoList = getApi("/myPage/getVideoSignUp/", userKey, data);
 
-    if (infoList.result.subjectInfo != null) {
+    if (infoList.result.subjectInfo != null) { //과목 리스트
         var result = infoList.result.subjectInfo;
+       innerValue("subjectCtgKey", result[0].subjectCtgKey);
         dwr.util.addOptions('playSubject', result, function (data) {
            return "<a href='javascript:playDepthList("+ data.subjectCtgKey +");' id='"+ data.subjectCtgKey +"'>"+ data.subjectName +"</a>"
         }, {escapeHtml: false});
     }
+
+    if(infoList.result.typeInfo != null){ // 유형 리스트
+        var result = infoList.result.typeInfo;
+        getPlaySubjectList(result[0].ctgKey); // 강좌 리스트 불러오기
+        dwr.util.addOptions('playType', result, function (data) {
+            return "<a href='javascript:getPlaySubjectList("+ data.ctgKey +");'>"+ data.ctgName +"</a>"
+        }, {escapeHtml: false});
+    }
 }
 
-//내 강의실 > 수강중인강좌(동영상) > 유형불러오기
-function getVideoTypeList(userKey, deviceType) {
+function changePlayLectureList(userKey, deviceType) {
     if (userKey == null || userKey == undefined) return;
 
     var data = {
@@ -156,12 +164,9 @@ function getVideoTypeList(userKey, deviceType) {
     };
 
     var infoList = getApi("/myPage/getVideoSignUp/", userKey, data);
-
-    if (infoList.result.subjectInfo != null) {
+    if(infoList.result.typeInfo != null){ // 유형 리스트
         var result = infoList.result.typeInfo;
-        dwr.util.addOptions('playType', result, function (data) {
-            return "<a href='javascript:getPlaySubjectList("+ data.ctgKey +");'>"+ data.ctgName +"</a>"
-        }, {escapeHtml: false});
+        getPlaySubjectList(result[0].ctgKey); // 강좌 리스트 불러오기
     }
 }
 
@@ -178,18 +183,37 @@ function getVideoSignUpLectureNameList(userKey, deviceType, subjectCtgKey, stepC
     var infoList = getApi("/myPage/getVideoSignUpLectureNameList/", userKey, data);
     if (infoList.result != null) {
         var result = infoList.result;
-        dwr.util.addOptions('typeLectureList', result, function (data) {
-            return "<a href='javascript:getTypeLectureDetail("+ data.jlecKey +");'>"+ data.name +"</a>"
-        }, {escapeHtml: false});
+        if(result.length > 0) {
+            getTypeLectureDetail(result[0].jlecKey);
+            dwr.util.addOptions('typeLectureList', result, function (data) {
+                return "<a href='javascript:getTypeLectureDetail(" + data.jlecKey + ");'>" + data.name + "</a>"
+            }, {escapeHtml: false});
+        }
     }
 }
 
-function getVideoSignUpDetailInfo(jLecKey) {
+function getVideoSignUpDetailInfo(jLecKey, device) {
     if (jLecKey == null || jLecKey == undefined) return;
 
-    var infoList = getApi("/myPage/getVideoSignUpDetailInfo/", jLecKey);
-    return infoList;
+    var detailInfo = getApi("/myPage/getVideoSignUpDetailInfo/", jLecKey);
 
+    var data = {
+        device : device
+    };
+    var infoList = getApi("/product/getLectureList/", jLecKey, data);
+    if (infoList.result != null) {
+        var selList = infoList.result.lectureList;
+        innerHTML("lecCount", infoList.result.totalCnt);
+        dwr.util.addRows('dataList', selList, [
+            function(data) {return data.num;},
+            function(data) {return data.name;},
+            function(data) {return data.vodTime;},
+            function(data) {return "<a href='' class='black small'>일반화질</a>&nbsp;&nbsp;<a href='' class='blue small'>고화질</a>";},
+
+        ], {escapeHtml:false});
+    }
+
+    return detailInfo;
 }
 
 

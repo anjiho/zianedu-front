@@ -112,3 +112,21 @@ function getVideoProductDetail(gKey, device) {
         var selList = InfoList.result;
     }
 }
+
+//내강의실 > 동영상 > 강좌 상세정보
+function getLectureList(gKey, device) {
+    if (gKey == null || gKey == undefined) return;
+    var data = {
+        device : device
+    };
+    var infoList = getApi("/product/getLectureList/", gKey, data);
+    if (infoList.result.length > 0) {
+        var selList = infoList.result;
+        dwr.util.addRows(tagId, selList, [
+            /*
+                TODO : addoption 추가
+             */
+            //function(data) {return data.fullFileUrl;}
+        ], {escapeHtml:false});
+    }
+}
