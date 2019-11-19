@@ -2,8 +2,13 @@
 <%@include file="/common/jsp/common.jsp" %>
 <script>
     $( document ).ready(function() {
-        var userKey = 86942;
-        getVideoSignUp(userKey, 'PC');//수강중인강좌 - 동영상 -과목 불러오기
+        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        var userKey = sessionUserInfo.userKey;
+        if(userKey != null){
+            var userKey = 86942;
+            getVideoSignUp(userKey, 'PC');//수강중인강좌 - 동영상 -과목 불러오기
+        }return false;
+        }
         $("#playSubject li:eq(0)").addClass('active');
         $("#playSubject li").click(function () { // 과목메뉴 클릭시 class active 기능
             $(this).addClass('active').siblings().removeClass('active');
@@ -18,7 +23,7 @@
     //동영상 - 유형 - 강좌명 리스트
     function getPlaySubjectList(stepCtgKey) {
         $("#typeLectureList li").remove();
-        dwr.util.removeAllRows("dataList"); //테이블 리스트 초기화
+
         var subjectCtgKey = getInputTextValue("subjectCtgKey");
         var userKey = 86942;
         getVideoSignUpLectureNameList(userKey, 'PC', subjectCtgKey, stepCtgKey);
