@@ -2,21 +2,48 @@
 <%@include file="/common/jsp/common.jsp" %>
 <script>
     $( document ).ready(function() {
-       getVideoSignUp(86942, 'PC');//수강중인강좌 - 동영상 -과목,유형 불러오기
-       //$("#playSubject li").eq(0).addClass("active");
-        $("#playSubject li").eq(0).click();
+        var userKey = 86942;
+        getVideoSignUp(86942, 'PC');//수강중인강좌 - 동영상 -과목 불러오기
+        $("#playSubject li:eq(0)").addClass('active');
+        $("#playSubject li").click(function () { // 과목메뉴 클릭시 class active 기능
+            $(this).addClass('active').siblings().removeClass('active');
+        });
     });
-    function playDepthList(ctgKey) {
+
+    //동영상 - 유형 리스트
+    function playDepthList(subjectCtgKey) {
+        innerValue("subjectCtgKey", subjectCtgKey);
         $("#playType li").remove();
-        getVideoTypeList(86942, 'PC', ctgKey);
+        var userKey = 86942;
+        getVideoTypeList(userKey, 'PC');
     }
-    
-    function getPlaySubjectList(ctgKey) {
+
+    //동영상 - 유형 - 강좌명 리스트
+    function getPlaySubjectList(stepCtgKey) {
+        alert(1);
+        $("#typeLectureList li").remove();
+        var subjectCtgKey = getInputTextValue("subjectCtgKey");
+        var userKey = 86942;
+        getVideoSignUpLectureNameList(userKey, 'PC', subjectCtgKey, stepCtgKey);
+    }
+
+    //동영상 - 유형 - 강좌리스트 - 강좌상세보기
+    function getTypeLectureDetail(jlecKey) {
+        var infoList = getVideoSignUpDetailInfo(jlecKey);
+        var result = infoList.result;
+        console.log(result);
+        innerHTML("playLecName", result.name);
+        innerHTML("playLecStartDate", result.startDate);
+        innerHTML("playLecEndDate", result.endDate);
+        innerHTML("limitDay", result.limitDay);
+        innerHTML("PlayProgressRate", result.progressRateName);
+        //innerHTML("", result.);
         
     }
 </script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
+    <input type="hidden" id="subjectCtgKey">
     <div id="wrap">
         <%@include file="/common/jsp/leftMenu.jsp" %>
         <!--상단-->
@@ -60,7 +87,7 @@
                                         <div class="tabPage active">
                                             <!-- 동영상 하단 메뉴 tab_large_2dept-->
                                             <div class="tab_large_2depth tabContent">
-                                                <ul class="tabBar" id="playSubject"></ul> <!-- 과목리스트 -->
+                                                <ul class="tabBar playSubject" id="playSubject"></ul> <!-- 과목리스트 -->
                                                 <!-- 한국사 -->
                                                 <div class="tabPage active">
                                                     <div class="tabContent_2depth">
@@ -79,38 +106,17 @@
 <%--                                                                    <li class="tab" data-tab="1depth-6"><a href="">모의고사</a></li>--%>
                                                                 </ul>
                                                             </div>
-                                                            <div class="rfloat">
+                                                            <!--
+                                                            float: left;
+                                                            width: 828px;
+                                                            min-height: 346px;
+                                                            border: 1px solid #e5e5e5;
+                                                            overflow: hidden;
+                                                            -->
+                                                            <div style="float: left;width: 828px;min-height: 346px; border: 1px solid #e5e5e5;overflow: hidden;">
                                                                 <p class="tit">강좌명</p>
-                                                                <ul class="1depth-1">
-                                                                    <li><a href="">2020 시험대비 임찬호 한국사 단원별 홀수문항 기출문제풀이 강의</a></li>
-                                                                    <li><a href="">[무료특강] 국가직, 서울시, 지방직, 교육행정직 행정학 천정운 해설특강 모음</a></li>
-                                                                    <li><a href="">2020 행정직 9급  한국사 특강 [5%적립]</a></li>
-                                                                    <li><a href="">2020 행정직 대비 행정학 모의고사 문제풀이 강의</a></li>
-                                                                    <li><a href="">2020 행정직 2019 한국사 기출문제풀이 강의</a></li>
-                                                                    <li><a href="">2020 행정직 한국사 핵심요약 &amp; 기출문제 풀이</a></li>
-                                                                    <li><a href="">2020 행정직 한국사 핵심요약 &amp; 기출문제 풀이</a></li>
-                                                                </ul>
-                                                                <ul class="1depth-2">
-                                                                    <li><a href="">2020 시험대비 임찬호 한국사 단원별 홀수문항 기출문제풀이 강의</a></li>
-                                                                    <li><a href="">[무료특강] 국가직, 서울시, 지방직, 교육행정직 행정학 천정운 해설특강 모음</a></li>
+                                                                <ul class="1depth-1" id="typeLectureList">
 
-                                                                </ul>
-                                                                <ul class="1depth-3">
-                                                                    <li><a href="">2020 시험대비 임찬호 한국사 단원별 홀수문항 기출문제풀이 강의</a></li>
-                                                                    <li><a href="">[무료특강] 국가직, 서울시, 지방직, 교육행정직 행정학 천정운 해설특강 모음</a></li>
-                                                                    <li><a href="">[무료특강] 국가직, 서울시, 지방직, 교육행정직 행정학 천정운 해설특강 모음</a></li>
-                                                                </ul>
-                                                                <ul class="1depth-4">
-                                                                    <li><a href="">2020 시험대비 임찬호 한국사 단원별 홀수문항 기출문제풀이 강의</a></li>
-                                                                    <li><a href="">[무료특강] 국가직, 서울시, 지방직, 교육행정직 행정학 천정운 해설특강 모음</a></li>
-                                                                    <li><a href="">[무료특강] 국가직, 서울시, 지방직, 교육행정직 행정학 천정운 해설특강 모음</a></li>
-                                                                </ul>
-                                                                <ul class="1depth-5">
-                                                                    <li><a href="">2020 시험대비 임찬호 한국사 단원별 홀수문항 기출문제풀이 강의</a></li>
-                                                                </ul>
-                                                                <ul class="1depth-6">
-                                                                    <li><a href="">2020 시험대비 임찬호 한국사 단원별 홀수문항 기출문제풀이 강의</a></li>
-                                                                    <li><a href="">2020 시험대비 임찬호 한국사 단원별 홀수문항 기출문제풀이 강의</a></li>
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -120,7 +126,7 @@
                                                         <div class="Dropmenu_down">
                                                             <!--inner-->
                                                             <div class="inner">
-                                                                <a href="#a" class="btn_modalClose">모달팝업닫기</a>
+                                                                <a href="" class="btn_modalClose">모달팝업닫기</a>
                                                                 <div class="btn_crud">
                                                                     <span class="black small">단과특강</span>
                                                                     <a href="#modal3" class="btn_modalOpen">강좌설명</a>
@@ -129,8 +135,8 @@
                                                                 <div class="txt_area">
                                                                     <span class="bdbox">PC</span>
                                                                     <span class="bdbox">모바일</span>
-                                                                    <p class="thumb">2020 행정직 대비 행정학 모의고사 문제풀이 강의</p>
-                                                                    <span class="date"><b>수강기간</b>2020.05.15 ~ 2020.08.15 (90일)</span>
+                                                                    <p class="thumb" id="playLecName"></p>
+                                                                    <span class="date"><b>수강기간</b><span id="playLecStartDate"></span> ~ <span id="playLecEndDate"></span> (<span id="limitDay"></span>일)</span>
                                                                     <!--guide-->
                                                                     <div class="guide">
                                                                         <div class="play">
@@ -138,7 +144,7 @@
                                                                             <a href="" class="replay off">신청</a>
                                                                         </div>
                                                                         <div class="prograss_wrap">
-                                                                            <span class="text">진도율&nbsp;&nbsp; 60%</span>
+                                                                            <span class="text">진도율&nbsp;&nbsp; <span id="PlayProgressRate"></span></span>
                                                                             <span class="prograss">
 								                   		    				<img src="../images/ex/sample-img01.png" alt="">
 								                   		    			</span>
@@ -982,4 +988,3 @@
 </form>
 </body>
 </html>
-

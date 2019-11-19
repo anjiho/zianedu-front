@@ -141,15 +141,14 @@ function getVideoSignUp(userKey, deviceType) {
 
     if (infoList.result.subjectInfo != null) {
         var result = infoList.result.subjectInfo;
-        console.log(result);
         dwr.util.addOptions('playSubject', result, function (data) {
-           return "<a href='javascript:playDepthList("+ data.subjectCtgKey +");'>"+ data.subjectName +"</a>"
+           return "<a href='javascript:playDepthList("+ data.subjectCtgKey +");' id='"+ data.subjectCtgKey +"'>"+ data.subjectName +"</a>"
         }, {escapeHtml: false});
     }
 }
 
 //내 강의실 > 수강중인강좌(동영상) > 유형불러오기
-function getVideoTypeList(userKey, deviceType, ctgKey) {
+function getVideoTypeList(userKey, deviceType) {
     if (userKey == null || userKey == undefined) return;
 
     var data = {
@@ -160,13 +159,38 @@ function getVideoTypeList(userKey, deviceType, ctgKey) {
 
     if (infoList.result.subjectInfo != null) {
         var result = infoList.result.typeInfo;
-        console.log(result);
         dwr.util.addOptions('playType', result, function (data) {
             return "<a href='javascript:getPlaySubjectList("+ data.ctgKey +");'>"+ data.ctgName +"</a>"
         }, {escapeHtml: false});
     }
 }
 
+//내강의실 > 동영상 > 유형 > 강좌명 리스트 불러오기
+function getVideoSignUpLectureNameList(userKey, deviceType, subjectCtgKey, stepCtgKey) {
+    if (userKey == null || userKey == undefined) return;
+
+    var data = {
+        deviceType : deviceType,
+        subjectCtgKey : subjectCtgKey,
+        stepCtgKey : stepCtgKey
+    };
+
+    var infoList = getApi("/myPage/getVideoSignUpLectureNameList/", userKey, data);
+    if (infoList.result != null) {
+        var result = infoList.result;
+        dwr.util.addOptions('typeLectureList', result, function (data) {
+            return "<a href='javascript:getTypeLectureDetail("+ data.jlecKey +");'>"+ data.name +"</a>"
+        }, {escapeHtml: false});
+    }
+}
+
+function getVideoSignUpDetailInfo(jLecKey) {
+    if (jLecKey == null || jLecKey == undefined) return;
+
+    var infoList = getApi("/myPage/getVideoSignUpDetailInfo/", jLecKey);
+    return infoList;
+
+}
 
 
 //강좌 일시정지 요청, 일시정지 해제
