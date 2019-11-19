@@ -15,6 +15,11 @@
             $("#playType li").click(function () {
                 $(this).addClass('active').siblings().removeClass('active');
             });
+
+            var resultCount = getVideoSignUpCount(86942, 'PC');
+            //console.log(resultCount);
+            //innerHTML("playCount", resultCount);
+
         }else{
             alert("로그인이 필요합니다.");
             return false;
@@ -44,7 +49,6 @@
         var infoList = getVideoSignUpDetailInfo(gkey, "PC");
         $("#playLecListDiv").show();
         var result = infoList.result;
-        console.log(result);
         innerHTML("playLecName", result.name);
         innerHTML("playLecStartDate", result.startDate);
         innerHTML("playLecEndDate", result.endDate);
@@ -88,7 +92,7 @@
 
                         <div class="tab_topContent tabContent">
                             <ul class="tabBar">
-                                <li class="active"><a href="#">수강중 12건</a></li>
+                                <li class="active"><a href="#">수강중 <span id="playCount"></span>건</a></li>
                                 <li><a href="#">일시정지 3건</a></li>
                                 <li><a href="#">수강완료 5건</a></li>
                             </ul>
