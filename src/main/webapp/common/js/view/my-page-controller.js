@@ -208,7 +208,6 @@ function getVideoSignUpDetailInfo(gkey, device) {
     if (infoList.result != null) {
         var selList = infoList.result.lectureList;
         innerHTML("lecCount", infoList.result.totalCnt);
-        console.log(selList);
         dwr.util.addRows('dataList', selList, [
             function(data) {return data.numStr;},
             function(data) {return data.name;},
@@ -230,4 +229,21 @@ function requestVideoStartStop(jLecKey, pauseDay, requestType) {
         requestType : requestType
     };
     
+}
+
+
+function getVideoSignUpCount(userKey, deviceType) {
+    if (userKey == null || userKey == undefined) return;
+
+    var data = {
+        deviceType : deviceType
+    };
+    
+    $.get("http://52.79.40.214:9090" + "/myPage/getVideoSignUpCount/" + userKey, data, function (response) {
+        console.log(response);
+        innerHTML("playCount", response.keyValue);
+    }).fail(function() {
+        alert(comment.error);
+    });
+   // return resultData;
 }
