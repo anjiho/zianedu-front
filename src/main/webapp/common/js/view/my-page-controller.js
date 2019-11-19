@@ -208,8 +208,9 @@ function getVideoSignUpDetailInfo(gkey, device) {
     if (infoList.result != null) {
         var selList = infoList.result.lectureList;
         innerHTML("lecCount", infoList.result.totalCnt);
+        console.log(selList);
         dwr.util.addRows('dataList', selList, [
-            function(data) {return data.num;},
+            function(data) {return data.numStr;},
             function(data) {return data.name;},
             function(data) {return data.vodTime;},
             function(data) {return "<a href='' class='black small'>일반화질</a>&nbsp;&nbsp;<a href='' class='blue small'>고화질</a>";},
