@@ -23,7 +23,10 @@
 
             
             var zianJkey = getInputTextValue("zianPassjKey");
-            zianPassTypeList(zianJkey);
+            if (zianJkey != '') {
+                zianPassTypeList(zianJkey);
+            }
+
             var zianPassCtgKey = getInputTextValue("zianPassCtgKey");
             zianPassLecTitleList(zianPassCtgKey);
             var zainJlecKey  = getInputTextValue("zianPassjLecKey");
@@ -167,7 +170,7 @@
     <input type="hidden" name="page_gbn" id="page_gbn">
     <input type="hidden" id="subjectCtgKey">
     <input type="hidden" id="gKey">
-    <input type="hidden" id="zianPassjKey">
+    <input type="hidden" id="zianPassjKey" value="">
     <input type="hidden" id="zianPassCtgKey">
     <input type="hidden" id="zianPassjLecKey">
     <input type="hidden" id="acaCtgKey">
