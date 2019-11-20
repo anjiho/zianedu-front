@@ -86,8 +86,8 @@
         $("#zianPassLecList li").remove();
         innerValue("zianPassjKey", jkey);
         getSignUpZianPassTypeList(jkey, 'PC');
-        $("#zianPassType li").addClass('active').siblings().removeClass('active');
         $("#zianPassType li:eq(0)").addClass('active');
+        $("#zianPassType li").addClass('active').siblings().removeClass('active');
     }
 
     function zianPassLecTitleList(ctgKey) {
@@ -178,14 +178,7 @@
                                                         <div class="Dropmenu">
                                                             <div class="lfloat">
                                                                 <p class="tit">유형</p>
-                                                                <ul class="Droptab_wrap" id="playType">
-<%--                                                                    <li class="tab" data-tab="1depth-1"><a href="">이론</a></li>--%>
-<%--                                                                    <li class="tab" data-tab="1depth-2"><a href="">단과</a></li>--%>
-<%--                                                                    <li class="tab" data-tab="1depth-3"><a href="">문제풀이</a></li>--%>
-<%--                                                                    <li class="tab" data-tab="1depth-4"><a href="">단과특강</a></li>--%>
-<%--                                                                    <li class="tab" data-tab="1depth-5"><a href="">필기대비</a></li>--%>
-<%--                                                                    <li class="tab" data-tab="1depth-6"><a href="">모의고사</a></li>--%>
-                                                                </ul>
+                                                                <ul class="Droptab_wrap" id="playType"></ul>
                                                             </div>
                                                             <div style="float: left;width: 828px;min-height: 346px; border: 1px solid #e5e5e5;overflow: hidden;">
                                                                 <p class="tit">강좌명</p>
@@ -245,17 +238,7 @@
                                                                             <th>동영상</th>
                                                                         </tr>
                                                                         </thead>
-                                                                        <tbody id="dataList">
-<%--                                                                        <tr>--%>
-<%--                                                                            <td>01</td>--%>
-<%--                                                                            <td>01강 180509_어문규정표준 발음법</td>--%>
-<%--                                                                            <td>56</td>--%>
-<%--                                                                            <td>--%>
-<%--                                                                                <a href="" class="black small">일반화질</a>--%>
-<%--                                                                                <a href="" class="blue small">고화질</a>--%>
-<%--                                                                            </td>--%>
-<%--                                                                        </tr>--%>
-                                                                        </tbody>
+                                                                        <tbody id="dataList"></tbody>
                                                                     </table>
                                                                 </div>
                                                             </div>
@@ -288,25 +271,11 @@
                                                         <div class="Dropmenu">
                                                             <div class="lfloat">
                                                                 <p class="tit">유형</p>
-                                                                <ul class="Droptab_wrap" id="zianPassType">
-<%--                                                                    <li class="tab " data-tab="2depth-1"><a href="#aa">이론</a></li>--%>
-<%--                                                                    <li class="tab " data-tab="2depth-2"><a href="#aa">단과</a></li>--%>
-<%--                                                                    <li class="tab " data-tab="2depth-3"><a href="#aa">문제풀이</a></li>--%>
-<%--                                                                    <li class="tab " data-tab="2depth-4"><a href="#aa">단과특강</a></li>--%>
-<%--                                                                    <li class="tab " data-tab="2depth-5"><a href="#aa">필기대비</a></li>--%>
-<%--                                                                    <li class="tab " data-tab="2depth-6"><a href="#aa">모의고사</a></li>--%>
-                                                                </ul>
+                                                                <ul class="Droptab_wrap" id="zianPassType"></ul>
                                                             </div>
                                                             <div style="float: left;width: 828px;min-height: 346px; border: 1px solid #e5e5e5;overflow: hidden;">
                                                                 <p class="tit">강좌명</p>
-                                                                <ul class="2depth-1" id="zianPassLecList">
-<%--                                                                    <li><a href="">2020 시험대비 임찬호 한국사 단원별 홀수문항 기출문제풀이 강의</a></li>--%>
-<%--                                                                    <li><a href="">[무료특강] 국가직, 서울시, 지방직, 교육행정직 행정학 천정운 해설특강 모음</a></li>--%>
-<%--                                                                    <li><a href="">2020 행정직 9급  한국사 특강 [5%적립]</a></li>--%>
-<%--                                                                    <li><a href="">2020 행정직 대비 행정학 모의고사 문제풀이 강의</a></li>--%>
-<%--                                                                    <li><a href="">2020 행정직 2019 한국사 기출문제풀이 강의</a></li>--%>
-<%--                                                                    <li><a href="">2020 행정직 한국사 핵심요약 &amp; 기출문제 풀이</a></li>--%>
-                                                                </ul>
+                                                                <ul class="2depth-1" id="zianPassLecList"></ul>
                                                             </div>
                                                         </div>
                                                         <!--//Dropmenu -->
@@ -366,20 +335,6 @@
                                                                 </div>
                                                             </div>
                                                             <!--//inner-->
-
-                                                            <!-- paging -->
-                                                            <div class="paging">
-                                                                <div class="boardnavi">
-                                                                    <a class="prev" href="#">이전 목록이동</a>
-                                                                    <span>
-																<strong class="selected">1</strong>
-																<a href="#">2</a>
-																<a href="#">3</a>
-															</span>
-                                                                    <a class="next" href="#">다음 목록이동</a>
-                                                                </div>
-                                                            </div>
-                                                            <!-- //paging -->
                                                         </div>
                                                         <!--//Dropmenu_down -->
                                                     </div>
