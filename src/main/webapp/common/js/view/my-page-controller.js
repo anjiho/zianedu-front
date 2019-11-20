@@ -245,7 +245,6 @@ function getZianPassSignUpList(userKey) {
     if (infoList == null || Number(infoList.result.length) == 0) {
         return false;
     } else if (infoList != null || infoList.result.length > 0) { //과목 리스트
-        alert("2");
         innerValue("zianPassjKey", infoList.result[0].jkey);
         dwr.util.addOptions('zianPassList', infoList.result, function (data) {
             return "<a href='javascript:zianPassTypeList("+ data.jkey +");'>"+ data.gname +"</a>"
