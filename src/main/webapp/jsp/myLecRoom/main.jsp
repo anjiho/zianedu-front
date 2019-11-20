@@ -21,12 +21,14 @@
             /* 지안패스 */
             getZianPassSignUpList(userKey);
 
+            
             var zianJkey = getInputTextValue("zianPassjKey");
             zianPassTypeList(zianJkey);
             var zianPassCtgKey = getInputTextValue("zianPassCtgKey");
             zianPassLecTitleList(zianPassCtgKey);
             var zainJlecKey  = getInputTextValue("zianPassjLecKey");
             zianPassDetail(zainJlecKey);
+
             $("#zianPassList li:eq(0)").addClass('active');
             $("#zianPassList li").click(function () { // 과목메뉴 클릭시 class active 기능
                 $(this).addClass('active').siblings().removeClass('active');
