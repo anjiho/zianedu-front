@@ -5,8 +5,8 @@
     $( document ).ready(function() {
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         if(sessionUserInfo != null){
-            var userKey = 86942;
             /* 동영상 */
+            var userKey = sessionUserInfo.userKey;
             getVideoSignUp(userKey, pcMobile);//수강중인강좌 - 동영상 -과목 불러오기
             $("#playSubject li:eq(0)").addClass('active');
             $("#playSubject li").click(function () { // 과목메뉴 클릭시 class active 기능
@@ -19,8 +19,7 @@
             });
 
             /* 지안패스 */
-            var userKey1 = 41677;
-            getZianPassSignUpList(userKey1);
+            getZianPassSignUpList(userKey);
 
             var zianJkey = getInputTextValue("zianPassjKey");
             zianPassTypeList(zianJkey);
@@ -38,7 +37,7 @@
             });
 
             /* 학원실강 */
-            getSignUpAcademyTypeList(5);
+            getSignUpAcademyTypeList(userKey);
             var acaCtgKey = getInputTextValue("acaCtgKey");
             academyLecList(acaCtgKey);
             var acaGkey = getInputTextValue("acaGkey");
@@ -47,9 +46,11 @@
             $("#academyType li").click(function () {
                 $(this).addClass('active').siblings().removeClass('active');
             });
-
         }else{
             alert("로그인이 필요합니다.");
+            $("#playLecListDiv").hide();
+            $("#zianPassListDiv").hide();
+            $("#acaDiv").hide();
             return false;
         }
     });
@@ -58,7 +59,8 @@
     function getPlaySubjectList(stepCtgKey) {
         $("#typeLectureList li").remove();
         var subjectCtgKey = getInputTextValue("subjectCtgKey");
-        var userKey = 86942;
+        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        var userKey = sessionUserInfo.userKey;
         getVideoSignUpLectureNameList(userKey, pcMobile, subjectCtgKey, stepCtgKey);
     }
     
