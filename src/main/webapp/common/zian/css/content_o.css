@@ -191,7 +191,7 @@ legend {display:none;position:absolute;visibility:hidden;}
 /*지안패스 탭메뉴*/
 .Mclass .tab_topContent {margin:20px auto 0;}
 .Mclass .tab_large .tab_large_2depth .tabBar.zian_mbtn{width:100%;height:40px;margin:0 auto;text-align:center;font-size:16px;}
-.Mclass .tab_large .tab_large_2depth .tabBar.zian_mbtn li {width:30% !important;border:none;padding-bottom:10px;float:none;margin:0 auto;}
+.Mclass .tab_large .tab_large_2depth .tabBar.zian_mbtn li {width:53% !important;border:none;padding-bottom:10px;float:none;margin:0 auto;}
 .Mclass .tab_large .tab_large_2depth .tabBar.zian_mbtn li:last-child {padding-bottom: 0}
 .tab_large_2depth .tabBar.zian_mbtn > li:before{display:block;content:'';clear:both;}
 .tab_large_2depth .tabBar.zian_mbtn > li.active:before{}

@@ -186,8 +186,8 @@ function getVideoSignUpLectureNameList(userKey, deviceType, subjectCtgKey, stepC
         if(result.length > 0) {
             innerValue("gKey", result[0].gkey);
             var gKey = getInputTextValue("gKey");
-            getTypeLectureDetail(gKey,result[0].jlecKey);
-            getVideoSignUpDetailInfo(gKey, "PC", result[0].jlecKey);
+            getTypeLectureDetail(gKey, result[0].jlecKey); //강좌상세설명
+            getVideoSignUpDetailInfo(gKey, "PC", result[0].jlecKey, 'dataList'); //강좌 리스트
             dwr.util.addOptions('typeLectureList', result, function (data) {
                 return "<a href='javascript:getTypeLectureDetail(" + data.gkey + ","+ data.jlecKey +");'>" + data.name + "</a>"
             }, {escapeHtml: false});
@@ -195,7 +195,7 @@ function getVideoSignUpLectureNameList(userKey, deviceType, subjectCtgKey, stepC
     }
 }
 
-function getVideoSignUpDetailInfo(gkey, device, jlecKey) {
+function getVideoSignUpDetailInfo(gkey, device, jlecKey, tagId) {
     if (gkey == null || gkey == undefined) return;
 
     var detailInfo = getApi("/myPage/getVideoSignUpDetailInfo/", jlecKey);
@@ -203,12 +203,15 @@ function getVideoSignUpDetailInfo(gkey, device, jlecKey) {
     var data = {
         device : device
     };
-    var infoList = getApi("/product/getLectureList/", gkey, data);
-    dwr.util.removeAllRows("dataList"); //테이블 리스트 초기화
+    var infoList = getApi("/product/getLectureListByJLecKey/", jlecKey, data);
+    dwr.util.removeAllRows(tagId); //테이블 리스트 초기화
     if (infoList.result != null) {
         var selList = infoList.result.lectureList;
-        innerHTML("lecCount", infoList.result.totalCnt);
-        dwr.util.addRows('dataList', selList, [
+        var countId = '';
+        if(tagId == 'dataList') countId = 'playLecTotalCnt';
+        else countId = 'zianPassTotalCnt';
+        innerHTML(countId, infoList.result.totalCnt);
+        dwr.util.addRows(tagId, selList, [
             function(data) {return data.numStr;},
             function(data) {return data.name;},
             function(data) {return data.vodTime;},
@@ -231,20 +234,50 @@ function requestVideoStartStop(jLecKey, pauseDay, requestType) {
     
 }
 
-
-function getVideoSignUpCount(userKey, deviceType) {
+//지안패스 분류 리스트
+function getZianPassSignUpList(userKey) {
     if (userKey == null || userKey == undefined) return;
+
+    var infoList = getApi("/myPage/getZianPassSignUpList/", userKey, "");
+    if (infoList.result != null) { //과목 리스트
+        innerValue("zianPassjKey", infoList.result[0].jkey);
+        dwr.util.addOptions('zianPassList', infoList.result, function (data) {
+            return "<a href='javascript:zianPassTypeList("+ data.jkey +");'>"+ data.gname +"</a>"
+        }, {escapeHtml: false});
+    }
+}
+
+//지안패스 > 유형 불러오기
+function getSignUpZianPassTypeList(jKey, deviceType) {
+    if (jKey == null || jKey == undefined) return;
 
     var data = {
         deviceType : deviceType
     };
 
+    var infoList = getApi("/myPage/getSignUpZianPassTypeList/", jKey, data);
+    if (infoList.result != null) { //과목 리스트
+        innerValue("zianPassCtgKey", infoList.result[0].ctgKey);
+        getSignUpZianPassSubjectNameList(jKey, 'PC', infoList.result[0].ctgKey);
+        dwr.util.addOptions('zianPassType', infoList.result, function (data) {
+            return "<a href='javascript:zianPassLecTitleList("+ data.ctgKey +");'>"+ data.ctgName +"</a>"
+        }, {escapeHtml: false});
+    }
+}
 
-    $.get("http://52.79.40.214:9090" + "/myPage/getVideoSignUpCount/" + userKey, data, function (response) {
-        console.log(response);
-        innerHTML("playCount", response.keyValue);
-    }).fail(function() {
-        alert(comment.error);
-    });
-   // return resultData;
+function getSignUpZianPassSubjectNameList(jKey, deviceType, stepCtgKey) {
+    if (jKey == null || jKey == undefined) return;
+    var data = {
+        deviceType : deviceType,
+        stepCtgKey : stepCtgKey
+    };
+
+    var infoList = getApi("/myPage/getSignUpZianPassSubjectNameList/", jKey, data);
+    if (infoList.result != null) { //과목 리스트
+        innerValue("zianPassjLecKey", infoList.result[0].jlecKey);
+        zianPassDetail(infoList.result[0].jlecKey);
+        dwr.util.addOptions('zianPassLecList', infoList.result, function (data) {
+            return "<a href='javascript:zianPassDetail("+ data.jlecKey +");'>"+ data.name +"</a>"
+        }, {escapeHtml: false});
+    }
 }

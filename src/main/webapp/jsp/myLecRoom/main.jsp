@@ -5,6 +5,7 @@
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         if(sessionUserInfo != null){
             var userKey = 86942;
+            /* 동영상 */
             getVideoSignUp(userKey, 'PC');//수강중인강좌 - 동영상 -과목 불러오기
             $("#playSubject li:eq(0)").addClass('active');
             $("#playSubject li").click(function () { // 과목메뉴 클릭시 class active 기능
@@ -16,9 +17,24 @@
                 $(this).addClass('active').siblings().removeClass('active');
             });
 
-            var resultCount = getVideoSignUpCount(86942, 'PC');
-            //console.log(resultCount);
-            //innerHTML("playCount", resultCount);
+            /* 지안패스 */
+            var userKey1 = 41677;
+            getZianPassSignUpList(userKey1);
+
+            var zianJkey = getInputTextValue("zianPassjKey");
+            zianPassTypeList(zianJkey);
+            var zianPassCtgKey = getInputTextValue("zianPassCtgKey");
+            zianPassLecTitleList(zianPassCtgKey);
+            var zainJlecKey  = getInputTextValue("zianPassjLecKey");
+            zianPassDetail(zainJlecKey);
+            $("#zianPassList li:eq(0)").addClass('active');
+            $("#zianPassList li").click(function () { // 과목메뉴 클릭시 class active 기능
+                $(this).addClass('active').siblings().removeClass('active');
+            });
+            $("#zianPassType li:eq(0)").addClass('active');
+            $("#zianPassType li").click(function () {
+                $(this).addClass('active').siblings().removeClass('active');
+            });
 
         }else{
             alert("로그인이 필요합니다.");
@@ -29,7 +45,6 @@
     //동영상 - 유형 - 강좌명 리스트
     function getPlaySubjectList(stepCtgKey) {
         $("#typeLectureList li").remove();
-
         var subjectCtgKey = getInputTextValue("subjectCtgKey");
         var userKey = 86942;
         getVideoSignUpLectureNameList(userKey, 'PC', subjectCtgKey, stepCtgKey);
@@ -46,7 +61,7 @@
 
     //동영상 - 유형 - 강좌리스트 - 강좌상세보기
     function getTypeLectureDetail(gkey, jlecKey) {
-        var infoList = getVideoSignUpDetailInfo(gkey, "PC", jlecKey);
+        var infoList = getVideoSignUpDetailInfo(gkey, "PC", jlecKey, 'dataList');
         $("#playLecListDiv").show();
         var result = infoList.result;
         innerHTML("playLecName", result.name);
@@ -64,11 +79,52 @@
             $("#mobile").show();
         }
     }
+
+    //지안패스 > 유형 불러오기
+    function zianPassTypeList(jkey) {
+        $("#zianPassType li").remove();
+        $("#zianPassLecList li").remove();
+        innerValue("zianPassjKey", jkey);
+        getSignUpZianPassTypeList(jkey, 'PC');
+        $("#zianPassType li").addClass('active').siblings().removeClass('active');
+        $("#zianPassType li:eq(0)").addClass('active');
+    }
+
+    function zianPassLecTitleList(ctgKey) {
+        $("#zianPassLecList li").remove();
+        var jKey =  getInputTextValue("zianPassjKey");
+        getSignUpZianPassSubjectNameList(jKey, 'PC', ctgKey);
+    }
+    
+    function zianPassDetail(jlecKey) {
+        var infoList = getVideoSignUpDetailInfo("", "PC", jlecKey, 'zianPassDataList');
+        $("#zianPassListDiv").show();
+        var result = infoList.result;
+        innerHTML("zianPassName", result.name);
+        innerHTML("zianPassLecStartDate", result.startDate);
+        innerHTML("zianPassLecEndDate", result.endDate);
+        innerHTML("zianPassLimitDay", result.limitDay);
+        innerHTML("zianPassProgressRate", result.progressRateName);
+        innerHTML("zianPassCtgName", result.ctgName);
+
+        var pcMobile = divisionPcMobile();
+        if(pcMobile == 'pc'){
+            $("#zianPc").show();
+            $("#zianPcMobile").hide();
+        }else{
+            $("#zianPc").hide();
+            $("#zianPcMobile").show();
+        }
+    }
+
 </script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
     <input type="hidden" id="subjectCtgKey">
     <input type="hidden" id="gKey">
+    <input type="hidden" id="zianPassjKey">
+    <input type="hidden" id="zianPassCtgKey">
+    <input type="hidden" id="zianPassjLecKey">
     <div id="wrap">
         <%@include file="/common/jsp/leftMenu.jsp" %>
         <!--상단-->
@@ -92,9 +148,9 @@
 
                         <div class="tab_topContent tabContent">
                             <ul class="tabBar">
-                                <li class="active"><a href="#">수강중 <span id="playCount"></span>건</a></li>
-                                <li><a href="#">일시정지 3건</a></li>
-                                <li><a href="#">수강완료 5건</a></li>
+                                <li class="active"><a href="#">수강중</a></li>
+                                <li><a href="#">일시정지</a></li>
+                                <li><a href="#">수강완료</a></li>
                             </ul>
                             <!-- 수강중 -->
                             <div class="tabPage  active">
@@ -171,7 +227,7 @@
                                                                 <div class="tbd_02">
                                                                     <div class="crud_area">
                                                                         <span class="unit">강좌목차</span>
-                                                                        <strong>총<span id="lecCount"></span>강</strong>
+                                                                        <strong>총<span id="playLecTotalCnt"></span>강</strong>
                                                                     </div>
                                                                     <table>
                                                                         <caption>최근수강강좌</caption>
@@ -210,31 +266,6 @@
                                                     </div>
                                                 </div>
                                                 <!-- //한국사 -->
-
-                                                <!-- 행정학 -->
-                                                <div class="tabPage">
-                                                    <div class="tabContent_2depth">
-                                                        <p class="title">행정학</p>
-                                                    </div>
-                                                </div>
-                                                <!-- //행정학 -->
-
-                                                <!-- 면접특강 -->
-                                                <div class="tabPage">
-                                                    <div class="tabContent_2depth">
-                                                        <p class="title">면접특강</p>
-                                                    </div>
-                                                </div>
-                                                <!-- //면접특강 -->
-
-                                                <!-- 행정법 -->
-                                                <div class="tabPage">
-                                                    <div class="tabContent_2depth">
-                                                        <p class="title">행정법</p>
-                                                    </div>
-                                                </div>
-                                                <!-- //행정법 -->
-
                                             </div>
                                             <!-- //동영상 하단 메뉴tab_large_2dept -->
                                         </div>
@@ -245,9 +276,9 @@
 
                                             <!-- 지안패스 하단 메뉴 tab_large_2dept-->
                                             <div class="tab_large_2depth tabContent">
-                                                <ul class="tabBar zian_mbtn">
-                                                    <li class="active"><a href="#">행정직9급 연간회원제용</a></li>
-                                                    <li><a href="#">행정직9급 연간관리반용</a></li>
+                                                <ul class="tabBar zian_mbtn" id="zianPassList">
+<%--                                                    <li class="active"><a href="#">행정직9급 연간회원제용</a></li>--%>
+<%--                                                    <li><a href="#">행정직9급 연간관리반용</a></li>--%>
                                                 </ul>
                                                 <!-- 2019 지안패스 행정직9급 연간회원제용 -->
                                                 <div class="tabPage active">
@@ -257,58 +288,44 @@
                                                         <div class="Dropmenu">
                                                             <div class="lfloat">
                                                                 <p class="tit">유형</p>
-                                                                <ul class="Droptab_wrap">
-                                                                    <li class="tab " data-tab="2depth-1"><a href="#aa">이론</a></li>
-                                                                    <li class="tab " data-tab="2depth-2"><a href="#aa">단과</a></li>
-                                                                    <li class="tab " data-tab="2depth-3"><a href="#aa">문제풀이</a></li>
-                                                                    <li class="tab " data-tab="2depth-4"><a href="#aa">단과특강</a></li>
-                                                                    <li class="tab " data-tab="2depth-5"><a href="#aa">필기대비</a></li>
-                                                                    <li class="tab " data-tab="2depth-6"><a href="#aa">모의고사</a></li>
+                                                                <ul class="Droptab_wrap" id="zianPassType">
+<%--                                                                    <li class="tab " data-tab="2depth-1"><a href="#aa">이론</a></li>--%>
+<%--                                                                    <li class="tab " data-tab="2depth-2"><a href="#aa">단과</a></li>--%>
+<%--                                                                    <li class="tab " data-tab="2depth-3"><a href="#aa">문제풀이</a></li>--%>
+<%--                                                                    <li class="tab " data-tab="2depth-4"><a href="#aa">단과특강</a></li>--%>
+<%--                                                                    <li class="tab " data-tab="2depth-5"><a href="#aa">필기대비</a></li>--%>
+<%--                                                                    <li class="tab " data-tab="2depth-6"><a href="#aa">모의고사</a></li>--%>
                                                                 </ul>
                                                             </div>
-                                                            <div class="rfloat">
+                                                            <div style="float: left;width: 828px;min-height: 346px; border: 1px solid #e5e5e5;overflow: hidden;">
                                                                 <p class="tit">강좌명</p>
-                                                                <ul class="2depth-1">
-                                                                    <li><a href="">2020 시험대비 임찬호 한국사 단원별 홀수문항 기출문제풀이 강의</a></li>
-                                                                    <li><a href="">[무료특강] 국가직, 서울시, 지방직, 교육행정직 행정학 천정운 해설특강 모음</a></li>
-                                                                    <li><a href="">2020 행정직 9급  한국사 특강 [5%적립]</a></li>
-                                                                    <li><a href="">2020 행정직 대비 행정학 모의고사 문제풀이 강의</a></li>
-                                                                    <li><a href="">2020 행정직 2019 한국사 기출문제풀이 강의</a></li>
-                                                                    <li><a href="">2020 행정직 한국사 핵심요약 &amp; 기출문제 풀이</a></li>
-                                                                </ul>
-                                                                <ul class="2depth-2">
-                                                                    <li><a href="">2020 시험대비 임찬호 한국사 단원별 홀수문항 기출문제풀이 강의</a></li>
-                                                                </ul>
-                                                                <ul class="2depth-3">
-                                                                    <li><a href="">2020 시험대비 임찬호 한국사 단원별 홀수문항 기출문제풀이 강의</a></li>
-                                                                    <li><a href="">[무료특강] 국가직, 서울시, 지방직, 교육행정직 행정학 천정운 해설특강 모음</a></li>
-                                                                </ul>
-                                                                <ul class="2depth-4">
-                                                                    <li><a href="">2020 시험대비 임찬호 한국사 단원별 홀수문항 기출문제풀이 강의</a></li>
-                                                                    <li><a href="">[무료특강] 국가직, 서울시, 지방직, 교육행정직 행정학 천정운 해설특강 모음</a></li>
-                                                                </ul>
-                                                                <ul class="2depth-5">
-                                                                    <li><a href="">2020 시험대비 임찬호 한국사 단원별 홀수문항 기출문제풀이 강의</a></li>
-                                                                    <li><a href="">[무료특강] 국가직, 서울시, 지방직, 교육행정직 행정학 천정운 해설특강 모음</a></li>
+                                                                <ul class="2depth-1" id="zianPassLecList">
+<%--                                                                    <li><a href="">2020 시험대비 임찬호 한국사 단원별 홀수문항 기출문제풀이 강의</a></li>--%>
+<%--                                                                    <li><a href="">[무료특강] 국가직, 서울시, 지방직, 교육행정직 행정학 천정운 해설특강 모음</a></li>--%>
+<%--                                                                    <li><a href="">2020 행정직 9급  한국사 특강 [5%적립]</a></li>--%>
+<%--                                                                    <li><a href="">2020 행정직 대비 행정학 모의고사 문제풀이 강의</a></li>--%>
+<%--                                                                    <li><a href="">2020 행정직 2019 한국사 기출문제풀이 강의</a></li>--%>
+<%--                                                                    <li><a href="">2020 행정직 한국사 핵심요약 &amp; 기출문제 풀이</a></li>--%>
                                                                 </ul>
                                                             </div>
                                                         </div>
                                                         <!--//Dropmenu -->
 
                                                         <!--Dropmenu_down 상단 메뉴 클릭시 내용 드롭다운 -->
-                                                        <div class="Dropmenu_down">
+                                                        <div class="Dropmenu_down" id="zianPassListDiv">
                                                             <!--inner-->
                                                             <div class="inner">
-                                                                <a href="#" class="btn_modalClose">모달팝업닫기</a>
+<%--                                                                <a href="#" class="btn_modalClose">모달팝업닫기</a>--%>
                                                                 <div class="btn_crud">
-                                                                    <span class="black small">단과특강</span>
+                                                                    <span class="black small" id="zianPassCtgName"></span>
                                                                     <a href="#modal3" class="btn_modalOpen">강좌설명</a>
                                                                 </div>
 
                                                                 <div class="txt_area">
-                                                                    <span class="bdbox">모바일</span>
-                                                                    <p class="thumb">전공)  2020 행정직 시험대비 이성행 컴퓨터일반 기본이론강의 [5%적립]</p>
-                                                                    <span class="date"><b>수강기간</b>2020.05.15 ~ 2020.08.15 (90일)</span>
+                                                                    <span class="bdbox" id="zianPc">PC</span>
+                                                                    <span class="bdbox" id="zianMobile">모바일</span>
+                                                                    <p class="thumb" id="zianPassName"></p>
+                                                                    <span class="date"><b>수강기간</b><span id="zianPassLecStartDate"></span> ~ <span id="zianPassLecEndDate"></span> (<span id="zianPassLimitDay"></span>일)</span>
                                                                     <!--guide-->
                                                                     <div class="guide">
                                                                         <div class="play">
@@ -316,9 +333,7 @@
                                                                             <a href="" class="replay off">신청</a>
                                                                         </div>
                                                                         <div class="prograss_wrap">
-                                                                            <span class="text">진도율&nbsp;&nbsp; 60%</span>
-                                                                            <span class="prograss">
-							                   		    				<img src="../images/ex/sample-img01.png" alt="">
+                                                                            <span class="text">진도율&nbsp;<span id="zianPassProgressRate"></span></span>
 							                   		    			</span>
                                                                         </div>
                                                                     </div>
@@ -328,7 +343,7 @@
                                                                 <div class="tbd_02">
                                                                     <div class="crud_area">
                                                                         <span class="unit">강좌목차</span>
-                                                                        <strong>총123강</strong>
+                                                                        <strong>총 <span id="zianPassTotalCnt"></span>강</strong>
                                                                     </div>
                                                                     <table>
                                                                         <caption>최근수강강좌</caption>
@@ -346,118 +361,7 @@
                                                                             <th>동영상</th>
                                                                         </tr>
                                                                         </thead>
-                                                                        <tbody>
-                                                                        <tr>
-                                                                            <td>01</td>
-                                                                            <td>O.T 181030_1회
-                                                                                <a href="" class="bdbox view_down">다운로드</a>
-                                                                            </td>
-                                                                            <td>1/54</td>
-                                                                            <td>
-                                                                                <a href="" class="black small">일반화질</a>
-                                                                                <a href="" class="blue small">고화질</a>
-                                                                            </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>02</td>
-                                                                            <td>O.T 181030_1회</td>
-                                                                            <td>20/55</td>
-                                                                            <td>
-                                                                                <a href="" class="black small">일반화질</a>
-                                                                                <a href="" class="blue small">고화질</a>
-                                                                            </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>03</td>
-                                                                            <td>03강 180509_O.T 181030_1회</td>
-                                                                            <td>30/61</td>
-                                                                            <td>
-                                                                                <a href="" class="black small">일반화질</a>
-                                                                                <a href="" class="blue small">고화질</a>
-                                                                            </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>04</td>
-                                                                            <td>1강 PART01.컴퓨터구조 Chapter1.컴퓨터의발전 p.5~ </td>
-                                                                            <td>0/56</td>
-                                                                            <td>
-                                                                                <a href="" class="black small">일반화질</a>
-                                                                                <a href="" class="blue small">고화질</a>
-                                                                            </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>05</td>
-                                                                            <td>2강 PART01.컴퓨터구조 Chapter1.부울대수 p.10~ </td>
-                                                                            <td>0/56</td>
-                                                                            <td>
-                                                                                <a href="" class="black small">일반화질</a>
-                                                                                <a href="" class="blue small">고화질</a>
-                                                                            </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>06</td>
-                                                                            <td>3강 PART01.컴퓨터구조 Chapter1.논리식간소화 p.12~ </td>
-                                                                            <td>0/56</td>
-                                                                            <td>
-                                                                                <a href="" class="black small">일반화질</a>
-                                                                                <a href="" class="blue small">고화질</a>
-                                                                            </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>07</td>
-                                                                            <td>어문규정_표준 발음법_제10~16항 복습 </td>
-                                                                            <td>0/56</td>
-                                                                            <td>
-                                                                                <a href="" class="black small">일반화질</a>
-                                                                                <a href="" class="blue small">고화질</a>
-                                                                            </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>08</td>
-                                                                            <td>한자와 한자성어_京, 交, 其_문제풀이 </td>
-                                                                            <td>0/56</td>
-                                                                            <td>
-                                                                                <a href="" class="black small">일반화질</a>
-                                                                                <a href="" class="blue small">고화질</a>
-                                                                            </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>09</td>
-                                                                            <td>어휘_신체와 관련된 관용구_ 한자와 한자성어 雨, 同, 里 </td>
-                                                                            <td>0/56</td>
-                                                                            <td>
-                                                                                <a href="" class="black small">일반화질</a>
-                                                                                <a href="" class="blue small">고화질</a>
-                                                                            </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>10</td>
-                                                                            <td>속담_기출학습_한자와 한자성어 不, 莫, 亡 </td>
-                                                                            <td>0/56</td>
-                                                                            <td>
-                                                                                <a href="" class="black small">일반화질</a>
-                                                                                <a href="" class="blue small">고화질</a>
-                                                                            </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>11</td>
-                                                                            <td>어문규정_표준어 사정 원칙_제1항~제19항</td>
-                                                                            <td>0/56</td>
-                                                                            <td>
-                                                                                <a href="" class="black small">일반화질</a>
-                                                                                <a href="" class="blue small">고화질</a>
-                                                                            </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>12</td>
-                                                                            <td>어휘_주제별어휘_한자어와 한자성어_言, 方, 常, 目, 牛 </td>
-                                                                            <td>0/56</td>
-                                                                            <td>
-                                                                                <a href="" class="black small">일반화질</a>
-                                                                                <a href="" class="blue small">고화질</a>
-                                                                            </td>
-                                                                        </tr>
-                                                                        </tbody>
+                                                                        <tbody id="zianPassDataList"></tbody>
                                                                     </table>
                                                                 </div>
                                                             </div>
