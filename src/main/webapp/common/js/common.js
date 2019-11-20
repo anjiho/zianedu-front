@@ -2745,9 +2745,9 @@ function divisionPcMobile() {
     var result = "";
     if ( navigator.platform ) {
         if ( filter.indexOf( navigator.platform.toLowerCase() ) < 0 ) {
-            result = "mobile";
+            result = "MOBILE";
         } else {
-            result = "pc";
+            result = "PC";
         }
         return result;
     }

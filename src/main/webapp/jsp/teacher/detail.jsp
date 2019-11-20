@@ -52,8 +52,8 @@
         });
 
         var pcMobile = divisionPcMobile();
-        if(pcMobile == 'pc') pcMobile = 1;
-        else if(pcMobile == 'mobile') pcMobile = 3;
+        if(pcMobile == 'PC') pcMobile = 1;
+        else if(pcMobile == 'MOBILE') pcMobile = 3;
 
         getTeacherHomeInfo(teacherKey, pcMobile , menuCtgKey, 10);//홈정보
         getTeacherNameSubjectName(teacherKey, menuCtgKey);//과목, 선생님명 불러오기

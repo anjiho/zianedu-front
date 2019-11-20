@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/jsp/common.jsp" %>
 <script>
+    var pcMobile = divisionPcMobile();
     $( document ).ready(function() {
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         if(sessionUserInfo != null){
             var userKey = 86942;
             /* 동영상 */
-            getVideoSignUp(userKey, 'PC');//수강중인강좌 - 동영상 -과목 불러오기
+            getVideoSignUp(userKey, pcMobile);//수강중인강좌 - 동영상 -과목 불러오기
             $("#playSubject li:eq(0)").addClass('active');
             $("#playSubject li").click(function () { // 과목메뉴 클릭시 class active 기능
                 $(this).addClass('active').siblings().removeClass('active');
@@ -47,7 +48,7 @@
         $("#typeLectureList li").remove();
         var subjectCtgKey = getInputTextValue("subjectCtgKey");
         var userKey = 86942;
-        getVideoSignUpLectureNameList(userKey, 'PC', subjectCtgKey, stepCtgKey);
+        getVideoSignUpLectureNameList(userKey, pcMobile, subjectCtgKey, stepCtgKey);
     }
     
     function playDepthList(subjectCtgKey) {
@@ -56,12 +57,13 @@
         $("#playLecListDiv").hide();
         $("#playType li").addClass('active').siblings().removeClass('active');
         $("#playType li:eq(0)").addClass('active');
-        changePlayLectureList(86942, 'PC');
+        changePlayLectureList(86942, pcMobile);
     }
 
     //동영상 - 유형 - 강좌리스트 - 강좌상세보기
     function getTypeLectureDetail(gkey, jlecKey) {
-        var infoList = getVideoSignUpDetailInfo(gkey, "PC", jlecKey, 'dataList');
+        var pcMobile = divisionPcMobile();
+        var infoList = getVideoSignUpDetailInfo(gkey, pcMobile, jlecKey, 'dataList');
         $("#playLecListDiv").show();
         var result = infoList.result;
         innerHTML("playLecName", result.name);
@@ -71,7 +73,7 @@
         innerHTML("PlayProgressRate", result.progressRateName);
         innerHTML("ctgName", result.ctgName);
         var pcMobile = divisionPcMobile();
-        if(pcMobile == 'pc'){
+        if(pcMobile == 'PC'){
             $("#pc").show();
             $("#mobile").hide();
         }else{
@@ -85,7 +87,7 @@
         $("#zianPassType li").remove();
         $("#zianPassLecList li").remove();
         innerValue("zianPassjKey", jkey);
-        getSignUpZianPassTypeList(jkey, 'PC');
+        getSignUpZianPassTypeList(jkey, pcMobile);
         $("#zianPassType li:eq(0)").addClass('active');
         //$("#zianPassType li").addClass('active').siblings().removeClass('active');
     }
@@ -96,11 +98,12 @@
             $(this).addClass('active').siblings().removeClass('active');
         });
         var jKey =  getInputTextValue("zianPassjKey");
-        getSignUpZianPassSubjectNameList(jKey, 'PC', ctgKey);
+        getSignUpZianPassSubjectNameList(jKey, pcMobile, ctgKey);
     }
     
     function zianPassDetail(jlecKey) {
-        var infoList = getVideoSignUpDetailInfo("", "PC", jlecKey, 'zianPassDataList');
+        var pcMobile = divisionPcMobile();
+        var infoList = getVideoSignUpDetailInfo("", pcMobile, jlecKey, 'zianPassDataList');
         $("#zianPassListDiv").show();
         var result = infoList.result;
         innerHTML("zianPassName", result.name);
@@ -111,7 +114,7 @@
         innerHTML("zianPassCtgName", result.ctgName);
 
         var pcMobile = divisionPcMobile();
-        if(pcMobile == 'pc'){
+        if(pcMobile == 'PC'){
             $("#zianPc").show();
             $("#zianPcMobile").hide();
         }else{

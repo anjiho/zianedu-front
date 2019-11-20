@@ -26,7 +26,7 @@ function OpenSamplePlayer( a_strFilePath, a_strTitle, a_lLecKey, a_lCurriKey, a_
     a_lLecKey = "14591";
     a_lCurriKey = "126979";
     a_bHigh = "1";
-    if( pcMobile == 'pc' )
+    if( pcMobile == 'PC' )
     {
             window.open( "", "Player", "width=1000, height=680, scrollbars=0, menubar=0, resizable=0" );
             //gfn_winPop(980, 680, )

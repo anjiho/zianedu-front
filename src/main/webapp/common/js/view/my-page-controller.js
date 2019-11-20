@@ -187,7 +187,8 @@ function getVideoSignUpLectureNameList(userKey, deviceType, subjectCtgKey, stepC
             innerValue("gKey", result[0].gkey);
             var gKey = getInputTextValue("gKey");
             getTypeLectureDetail(gKey, result[0].jlecKey); //강좌상세설명
-            getVideoSignUpDetailInfo(gKey, "PC", result[0].jlecKey, 'dataList'); //강좌 리스트
+            var pcMobile = divisionPcMobile();
+            getVideoSignUpDetailInfo(gKey, pcMobile, result[0].jlecKey, 'dataList'); //강좌 리스트
             dwr.util.addOptions('typeLectureList', result, function (data) {
                 return "<a href='javascript:getTypeLectureDetail(" + data.gkey + ","+ data.jlecKey +");'>" + data.name + "</a>"
             }, {escapeHtml: false});
@@ -258,7 +259,8 @@ function getSignUpZianPassTypeList(jKey, deviceType) {
     var infoList = getApi("/myPage/getSignUpZianPassTypeList/", jKey, data);
     if (infoList.result != null) { //과목 리스트
         innerValue("zianPassCtgKey", infoList.result[0].ctgKey);
-        getSignUpZianPassSubjectNameList(jKey, 'PC', infoList.result[0].ctgKey);
+        var pcMobile = divisionPcMobile();
+        getSignUpZianPassSubjectNameList(jKey, pcMobile, infoList.result[0].ctgKey);
         dwr.util.addOptions('zianPassType', infoList.result, function (data) {
             return "<a href='javascript:zianPassLecTitleList("+ data.ctgKey +");'>"+ data.ctgName +"</a>"
         }, {escapeHtml: false});
