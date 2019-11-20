@@ -186,7 +186,8 @@ function getVideoSignUpLectureNameList(userKey, deviceType, subjectCtgKey, stepC
     };
 
     var infoList = getApi("/myPage/getVideoSignUpLectureNameList/", userKey, data);
-    if (infoList != null) {
+
+    if (infoList.result.length > 0 ) {
         var result = infoList.result;
         if(result.length > 0) {
             innerValue("gKey", result[0].gkey);
@@ -198,6 +199,8 @@ function getVideoSignUpLectureNameList(userKey, deviceType, subjectCtgKey, stepC
                 return "<a href='javascript:getTypeLectureDetail(" + data.gkey + ","+ data.jlecKey +");'>" + data.name + "</a>"
             }, {escapeHtml: false});
         }
+    }else{
+        $("#playLecListDiv").hide();
     }
 }
 
