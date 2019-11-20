@@ -28,9 +28,13 @@
             }
 
             var zianPassCtgKey = getInputTextValue("zianPassCtgKey");
-            zianPassLecTitleList(zianPassCtgKey);
+            if (zianPassCtgKey != '') {
+                zianPassLecTitleList(zianPassCtgKey);
+            }
             var zainJlecKey  = getInputTextValue("zianPassjLecKey");
-            zianPassDetail(zainJlecKey);
+            if (zainJlecKey != '') {
+                zianPassDetail(zainJlecKey);
+            }
 
             $("#zianPassList li:eq(0)").addClass('active');
             $("#zianPassList li").click(function () { // 과목메뉴 클릭시 class active 기능
