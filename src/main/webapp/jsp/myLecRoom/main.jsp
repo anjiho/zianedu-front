@@ -77,21 +77,25 @@
     function getTypeLectureDetail(gkey, jlecKey) {
         var pcMobile = divisionPcMobile();
         var infoList = getVideoSignUpDetailInfo(gkey, pcMobile, jlecKey, 'dataList');
-        $("#playLecListDiv").show();
-        var result = infoList.result;
-        innerHTML("playLecName", result.name);
-        innerHTML("playLecStartDate", result.startDate);
-        innerHTML("playLecEndDate", result.endDate);
-        innerHTML("limitDay", result.limitDay);
-        innerHTML("PlayProgressRate", result.progressRateName);
-        innerHTML("ctgName", result.ctgName);
-        var pcMobile = divisionPcMobile();
-        if(pcMobile == 'PC'){
-            $("#pc").show();
-            $("#mobile").hide();
+        if(infoList != null){
+            $("#playLecListDiv").show();
+            var result = infoList.result;
+            innerHTML("playLecName", result.name);
+            innerHTML("playLecStartDate", result.startDate);
+            innerHTML("playLecEndDate", result.endDate);
+            innerHTML("limitDay", result.limitDay);
+            innerHTML("PlayProgressRate", result.progressRateName);
+            innerHTML("ctgName", result.ctgName);
+            var pcMobile = divisionPcMobile();
+            if(pcMobile == 'PC'){
+                $("#pc").show();
+                $("#mobile").hide();
+            }else{
+                $("#pc").hide();
+                $("#mobile").show();
+            }
         }else{
-            $("#pc").hide();
-            $("#mobile").show();
+            $("#playLecListDiv").hide();
         }
     }
 
@@ -117,22 +121,26 @@
     function zianPassDetail(jlecKey) {
         var pcMobile = divisionPcMobile();
         var infoList = getVideoSignUpDetailInfo("", pcMobile, jlecKey, 'zianPassDataList');
-        $("#zianPassListDiv").show();
-        var result = infoList.result;
-        innerHTML("zianPassName", result.name);
-        innerHTML("zianPassLecStartDate", result.startDate);
-        innerHTML("zianPassLecEndDate", result.endDate);
-        innerHTML("zianPassLimitDay", result.limitDay);
-        innerHTML("zianPassProgressRate", result.progressRateName);
-        innerHTML("zianPassCtgName", result.ctgName);
-
-        var pcMobile = divisionPcMobile();
-        if(pcMobile == 'PC'){
-            $("#zianPc").show();
-            $("#zianPcMobile").hide();
-        }else{
-            $("#zianPc").hide();
-            $("#zianPcMobile").show();
+        if(infoList != null){
+            $("#zianPassListDiv").show();
+            var result = infoList.result;
+            innerHTML("zianPassName", result.name);
+            innerHTML("zianPassLecStartDate", result.startDate);
+            innerHTML("zianPassLecEndDate", result.endDate);
+            innerHTML("zianPassLimitDay", result.limitDay);
+            innerHTML("zianPassProgressRate", result.progressRateName);
+            innerHTML("zianPassCtgName", result.ctgName);
+            var pcMobile = divisionPcMobile();
+            if(pcMobile == 'PC'){
+                $("#zianPc").show();
+                $("#zianPcMobile").hide();
+            }else{
+                $("#zianPc").hide();
+                $("#zianPcMobile").show();
+            }
+        }
+        else{
+            $("#zianPassListDiv").hide();
         }
     }
 
@@ -144,10 +152,12 @@
     
     function academyLecDetail(gKey) {
         var result = getAcademyProductDetail(gKey);
-        innerHTML("acaCtgName", result.ctgName);
-        innerHTML("acaGoodsName", result.goodsName);
-        innerHTML("acaLectureDate", result.lectureDate);
-        innerHTML("acaLimitDay", result.limitDay);
+        if(result != null){
+            innerHTML("acaCtgName", result.ctgName);
+            innerHTML("acaGoodsName", result.goodsName);
+            innerHTML("acaLectureDate", result.lectureDate);
+            innerHTML("acaLimitDay", result.limitDay);
+        }
     }
 
 </script>
