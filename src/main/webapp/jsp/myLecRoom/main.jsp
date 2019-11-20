@@ -87,11 +87,14 @@
         innerValue("zianPassjKey", jkey);
         getSignUpZianPassTypeList(jkey, 'PC');
         $("#zianPassType li:eq(0)").addClass('active');
-        $("#zianPassType li").addClass('active').siblings().removeClass('active');
+        //$("#zianPassType li").addClass('active').siblings().removeClass('active');
     }
 
     function zianPassLecTitleList(ctgKey) {
         $("#zianPassLecList li").remove();
+        $("#zianPassType li").click(function () {
+            $(this).addClass('active').siblings().removeClass('active');
+        });
         var jKey =  getInputTextValue("zianPassjKey");
         getSignUpZianPassSubjectNameList(jKey, 'PC', ctgKey);
     }
