@@ -21,7 +21,6 @@
             /* 지안패스 */
             getZianPassSignUpList(userKey);
 
-            
             var zianJkey = getInputTextValue("zianPassjKey");
             if (zianJkey != '') {
                 zianPassTypeList(zianJkey);
@@ -48,9 +47,13 @@
             /* 학원실강 */
             getSignUpAcademyTypeList(userKey);
             var acaCtgKey = getInputTextValue("acaCtgKey");
-            academyLecList(acaCtgKey);
+            if(acaCtgKey != ''){
+                academyLecList(acaCtgKey);
+            }
             var acaGkey = getInputTextValue("acaGkey");
-            academyLecDetail(acaGkey);
+            if(acaGkey != ''){
+                academyLecDetail(acaGkey);
+            }
             $("#academyType li:eq(0)").addClass('active');
             $("#academyType li").click(function () {
                 $(this).addClass('active').siblings().removeClass('active');
@@ -86,7 +89,9 @@
     function getTypeLectureDetail(gkey, jlecKey) {
         var pcMobile = divisionPcMobile();
         var infoList = getVideoSignUpDetailInfo(gkey, pcMobile, jlecKey, 'dataList');
-        if(infoList != null){
+        if(infoList == null){
+            $("#playLecListDiv").hide();
+        }else{
             $("#playLecListDiv").show();
             var result = infoList.result;
             innerHTML("playLecName", result.name);
@@ -103,8 +108,6 @@
                 $("#pc").hide();
                 $("#mobile").show();
             }
-        }else{
-            $("#playLecListDiv").hide();
         }
     }
 
