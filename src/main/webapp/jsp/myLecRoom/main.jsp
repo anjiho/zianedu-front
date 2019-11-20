@@ -37,6 +37,17 @@
                 $(this).addClass('active').siblings().removeClass('active');
             });
 
+            /* 학원실강 */
+            getSignUpAcademyTypeList(5);
+            var acaCtgKey = getInputTextValue("acaCtgKey");
+            academyLecList(acaCtgKey);
+            var acaGkey = getInputTextValue("acaGkey");
+            academyLecDetail(acaGkey);
+            $("#academyType li:eq(0)").addClass('active');
+            $("#academyType li").click(function () {
+                $(this).addClass('active').siblings().removeClass('active');
+            });
+
         }else{
             alert("로그인이 필요합니다.");
             return false;
@@ -123,6 +134,20 @@
         }
     }
 
+    //학원실강 유형 > 강의리스트 불러오기
+    function academyLecList(ctgKey) {
+        $("#acaLecList li").remove();
+        getSignUpAcademySubjectNameList(5, ctgKey);
+    }
+    
+    function academyLecDetail(gKey) {
+        var result = getAcademyProductDetail(gKey);
+        innerHTML("acaCtgName", result.ctgName);
+        innerHTML("acaGoodsName", result.goodsName);
+        innerHTML("acaLectureDate", result.lectureDate);
+        innerHTML("acaLimitDay", result.limitDay);
+    }
+
 </script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
@@ -131,6 +156,8 @@
     <input type="hidden" id="zianPassjKey">
     <input type="hidden" id="zianPassCtgKey">
     <input type="hidden" id="zianPassjLecKey">
+    <input type="hidden" id="acaCtgKey">
+    <input type="hidden" id="acaGkey">
     <div id="wrap">
         <%@include file="/common/jsp/leftMenu.jsp" %>
         <!--상단-->
@@ -372,41 +399,29 @@
                                                     <div class="Dropmenu">
                                                         <div class="lfloat">
                                                             <p class="tit">유형</p>
-                                                            <ul class="Droptab_wrap">
-                                                                <li class="tab" data-tab="3depth-1"><a href="#aa">이론</a></li>
-                                                                <li class="tab " data-tab="3depth-2"><a href="#aa">단과</a></li>
-                                                                <li class="tab " data-tab="3depth-3"><a href="#aa">문제풀이</a></li>
-                                                                <li class="tab " data-tab="3depth-4"><a href="#aa">단과특강</a></li>
-                                                                <li class="tab " data-tab="3depth-5"><a href="#aa">필기대비</a></li>
-                                                                <li class="tab " data-tab="3depth-6"><a href="#aa">모의고사</a></li>
+                                                            <ul class="Droptab_wrap" id="academyType">
                                                             </ul>
                                                         </div>
-                                                        <div class="rfloat">
+                                                        <div style="float: left;width: 828px;min-height: 346px; border: 1px solid #e5e5e5;overflow: hidden;">
                                                             <p class="tit">강좌명</p>
-                                                            <ul class="3depth-1">
-                                                                <li><a href="">[1관학원실강] 2020 시험대비 임찬호 한국사 기본심화 이론반</a></li>
-                                                                <li><a href="">[2관학원실강] 2020 김준호 탄탄한국사 심화이론반</a></li>
-                                                            </ul>
-                                                            <ul class="3depth-2">
-                                                                <li><a href="">[1관학원실강] 2020 시험대비 임찬호 한국사 기본심화 이론반</a></li>
+                                                            <ul class="3depth-1" id="acaLecList">
                                                             </ul>
                                                         </div>
                                                     </div>
                                                     <!--//Dropmenu -->
 
                                                     <!--Dropmenu_down 상단 메뉴 클릭시 내용 드롭다운 -->
-                                                    <div class="Dropmenu_down">
+                                                    <div class="Dropmenu_down" id="acaDiv">
                                                         <!--inner-->
                                                         <div class="inner">
-                                                            <a href="#" class="btn_modalClose">모달팝업닫기</a>
                                                             <div class="btn_crud">
-                                                                <span class="black small">이론</span>
+                                                                <span class="black small" id="acaCtgName"></span>
                                                                 <a href="#modal3" class="btn_modalOpen">강좌설명</a>
                                                             </div>
 
                                                             <div class="txt_area">
-                                                                <p class="thumb">[2관학원실강] 2020 김준호 탄탄한국사 심화이론반</p>
-                                                                <span class="date"><b>수강기간</b>2020.05.15 ~ 2020.08.15 (90일)</span>
+                                                                <p class="thumb" id="acaGoodsName"></p>
+                                                                <span class="date"><b>수강기간</b><span id="acaLectureDate"></span> (<span id="acaLimitDay"></span>일)</span>
                                                             </div>
                                                         </div>
                                                         <!--//inner-->

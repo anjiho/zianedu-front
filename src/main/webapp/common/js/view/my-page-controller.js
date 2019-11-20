@@ -283,3 +283,44 @@ function getSignUpZianPassSubjectNameList(jKey, deviceType, stepCtgKey) {
         }, {escapeHtml: false});
     }
 }
+
+//학원 실강 > 유형 불러오기
+function getSignUpAcademyTypeList(userKey) {
+    if (userKey == null || userKey == undefined) return;
+
+    var infoList = getApi("/myPage/getSignUpAcademyTypeList/", userKey, "");
+    if (infoList.result != null) { //과목 리스트
+        innerValue("acaCtgKey", infoList.result[0].ctgKey);
+        dwr.util.addOptions('academyType', infoList.result, function (data) {
+            return "<a href='javascript:academyLecList("+ data.ctgKey +");'>"+ data.ctgName +"</a>"
+        }, {escapeHtml: false});
+    }
+}
+
+//학원 실강 > 강의리스트 불러오기
+function getSignUpAcademySubjectNameList(userKey, stepCtgKey) {
+    if (userKey == null || userKey == undefined) return;
+    if (stepCtgKey == null || stepCtgKey == undefined) return;
+    var data = {
+        stepCtgKey : stepCtgKey
+    };
+    var infoList = getApi("/myPage/getSignUpAcademySubjectNameList/", userKey, data);
+    if (infoList.result != null) { //과목 리스트
+        innerValue("acaGkey", infoList.result[0].gkey);
+        academyLecDetail(infoList.result[0].gkey);
+        dwr.util.addOptions('acaLecList', infoList.result, function (data) {
+            return "<a href='javascript:academyLecDetail("+ data.gkey +");'>"+ data.name +"</a>"
+        }, {escapeHtml: false});
+    }
+    
+}
+
+//학원 실강 > 강의상세 불러오기
+function getAcademyProductDetail(gKey) {
+    if (gKey == null || gKey == undefined) return;
+    var infoList = getApi("/product/getAcademyProductDetail/", gKey, "");
+    if(infoList.result != null){
+        return infoList.result.academyLectureDetailInfo;
+    }
+
+}
