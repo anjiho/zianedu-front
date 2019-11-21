@@ -274,18 +274,22 @@
 
     function goStop(val) {
         if(val == 'stop'){
-            var stopJlecKey = getInputTextValue("stopJlecKey");
-            var result = requestVideoStartStop(stopJlecKey, 10, 'STOP');
-            if(result.resultCode == 200){
-                alert("일시정지 신청 완료");
-                return false;
+            if(confirm("일시정지 신청 하시겠습니까?")){
+                var stopJlecKey = getInputTextValue("stopJlecKey");
+                var result = requestVideoStartStop(stopJlecKey, 10, 'STOP');
+                if(result.resultCode == 200){
+                    alert("일시정지 신청 완료");
+                    return false;
+                }
             }
         }else if(val == 'pass'){
-            var stopZianJlecKey = getInputTextValue("stopZianJlecKey");
-            var result =  requestVideoStartStop(stopZianJlecKey, 10, 'STOP');
-            if(result.resultCode == 200){
-                alert("일시정지 신청 완료");
-                return false;
+            if(confirm("일시정지 신청 하시겠습니까?")) {
+                var stopZianJlecKey = getInputTextValue("stopZianJlecKey");
+                var result = requestVideoStartStop(stopZianJlecKey, 10, 'STOP');
+                if (result.resultCode == 200) {
+                    alert("일시정지 신청 완료");
+                    return false;
+                }
             }
         }else if(val == 'stopEnd'){
             var stopEndjLecKey = getInputTextValue("stopEndjLecKey");
