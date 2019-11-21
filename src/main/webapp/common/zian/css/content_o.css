@@ -174,7 +174,7 @@ legend {display:none;position:absolute;visibility:hidden;}
 .tabContent_2depth .Dropmenu_down .txt_area .guide .prograss_wrap .txt {font-size: 16px}
 .tabContent_2depth .Dropmenu_down .txt_area .guide .prograss_wrap {}
 .tabContent_2depth .Dropmenu_down .txt_area .total_date {padding-top:30px;font-weight: normal;line-height: 1.5}
-.tabContent_2depth .Dropmenu_down .txt_area .total_date li span {display:inline-block;width:130px;}
+/*.tabContent_2depth .Dropmenu_down .txt_area .total_date li span {display:inline-block;width:130px;}*/
 .tabContent_2depth .Dropmenu_down .txt_area .total_count {position:absolute;right:0;bottom:131px;font-weight: normal;text-align: right;font-size: 14px;color:#144b95;line-height: 1.5}
 .tabContent_2depth .Dropmenu_down .txt_area .guide  .re_date {display: inline-block;}
 .tabContent_2depth .Dropmenu_down .txt_area .guide  .edusup_multi {margin-top:0px;margin-left:15px;position: absolute;top:14px;left:70px;}

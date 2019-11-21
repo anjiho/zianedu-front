@@ -330,12 +330,59 @@ function getSignUpAcademySubjectNameList(userKey, stepCtgKey) {
     
 }
 
-//학원 실강 > 강의상세 불러오기
+//수강중 > 학원 실강 > 강의상세 불러오기
 function getAcademyProductDetail(gKey) {
     if (gKey == null || gKey == undefined) return;
     var infoList = getApi("/product/getAcademyProductDetail/", gKey, "");
     if(infoList != null){
         return infoList.result.academyLectureDetailInfo;
+    }
+}
+
+//수강중 > 일시정지 유형 불러오기
+function getSignUpVideoLecturePauseTypeList (userKey) {
+    if (userKey == null || userKey == undefined) return;
+    var infoList = getApi("/myPage/getSignUpVideoLecturePauseTypeList/", 93928, "");
+
+    var selList = infoList.result;
+    if(selList.length > 0){
+        innerValue("pauseCtgKey", selList[0].ctgKey);
+        dwr.util.addOptions('pauseType', selList, function (data) {
+            return "<a href='javascript:pauseLecTitleList("+ data.ctgKey +");'>"+ data.ctgName +"</a>"
+        }, {escapeHtml: false});
+    }else{
+        $("#playLecListDiv").hide();
+        return false;
+    }
+}
+
+//수강중 > 일시정지 강좌명 리스트 불러오기
+function getSignUpVideoLecturePauseSubjectList (userKey, stepCtgKey) {
+    if (userKey == null || userKey == undefined) return;
+    var data = {
+        stepCtgKey : stepCtgKey
+    };
+    var infoList = getApi("/myPage/getSignUpVideoLecturePauseSubjectList/", userKey, data);
+
+    var selList = infoList.result;
+    if(selList.length > 0){
+        innerValue("pauseJlecKey", selList[0].jlecKey);
+        dwr.util.addOptions('pauseLecNameList', selList, function (data) {
+            return "<a href='javascript:pauseLecDetail("+ data.jlecKey +");'>"+ data.name +"</a>"
+        }, {escapeHtml: false});
+    }else{
+        $("#pauseLecDiv").hide();
+        return false;
+    }
+}
+
+
+//수강중 > 일시정지 강좌 상세
+function getOnlineVideoPauseListByJLecKey(jLecKey) {
+    if (jLecKey == null || jLecKey == undefined) return;
+    var infoList = getApi("/myPage/getOnlineVideoPauseListByJLecKey/", jLecKey, "");
+    if(infoList != null){
+       return infoList;
     }
 
 }

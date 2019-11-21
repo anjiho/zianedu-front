@@ -58,6 +58,22 @@
             $("#academyType li").click(function () {
                 $(this).addClass('active').siblings().removeClass('active');
             });
+
+            /* 일시정지 */
+            var userKey = 93928;
+            getSignUpVideoLecturePauseTypeList(userKey);
+            var pauseCtgKey = getInputTextValue("pauseCtgKey");
+            if(pauseCtgKey != ''){
+                pauseLecTitleList(pauseCtgKey);
+            }
+            var pauseJlecKey = getInputTextValue("pauseJlecKey");
+            if(pauseJlecKey != ''){
+                pauseLecDetail(pauseJlecKey);
+            }
+            $("#pauseType li:eq(0)").addClass('active');
+            $("#pauseType li").click(function () {
+                $(this).addClass('active').siblings().removeClass('active');
+            });
         }else{
             alert("로그인이 필요합니다.");
             $("#playLecListDiv").hide();
@@ -172,6 +188,44 @@
         }
     }
 
+    //일시정지 강좌리스트 불러오기
+    function pauseLecTitleList(ctgKey) {
+        var userKey = 93928;
+        $("#pauseLecNameList li").remove();
+        getSignUpVideoLecturePauseSubjectList(userKey, ctgKey);
+    }
+
+    //일시정지 강좌상세설명
+    function pauseLecDetail(jlecKey) {
+        var detailInfo = getOnlineVideoPauseListByJLecKey(jlecKey);
+        if(detailInfo != null) {
+            for (var i = 0; i < detailInfo.result.length; i++) {
+                var selList = detailInfo.result[i];
+                innerHTML("pauseCtgName", selList.ctgName);
+                innerHTML("pauseLecName", selList.name);
+                innerHTML("pauseLectureDate", selList.lectureDate);//수강기간
+                innerHTML("pauseLimitDay", selList.limitDay);//수강일수
+                innerHTML("pauseProgressRate", selList.progressRateName);//진도율
+                innerHTML("pauseLectureDate1", selList.lectureDate);//기존수강기간
+                innerHTML("pauseLimitDay1", selList.limitDay);//기존수강일수
+                innerHTML("pauseChangeLectureDate", selList.changeLectureDate);//변경된수강기간
+                innerHTML("pauseChangeLimitDay", selList.changeLimitDay);//변경된수강일수
+                innerHTML("pauseCnt", selList.pauseCnt);
+                innerHTML("pauseCnt1", selList.pauseCnt);
+                innerHTML("pauseDay", selList.pauseDay);
+                innerHTML("pauseDay1", selList.pauseDay);
+                var pcMobile = divisionPcMobile();
+                if (pcMobile == 'PC') {
+                    $("#pausePc").show();
+                    $("#pauseMobile").hide();
+                } else {
+                    $("#pausePc").hide();
+                    $("#pauseMobile").show();
+                }
+            }
+        }
+    }
+
 </script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
@@ -182,6 +236,8 @@
     <input type="hidden" id="zianPassjLecKey">
     <input type="hidden" id="acaCtgKey">
     <input type="hidden" id="acaGkey">
+    <input type="hidden" id="pauseCtgKey">
+    <input type="hidden" id="pauseJlecKey">
     <div id="wrap">
         <%@include file="/common/jsp/leftMenu.jsp" %>
         <!--상단-->
@@ -480,39 +536,35 @@
                                     <div class="Dropmenu">
                                         <div class="lfloat">
                                             <p class="tit">유형</p>
-                                            <ul class="Droptab_wrap">
-                                                <li class="tab" data-tab="4depth-1"><a href="#aa">이론</a></li>
-                                                <li class="tab" data-tab="4depth-2"><a href="#aa">모의고사</a></li>
+                                            <ul class="Droptab_wrap" id="pauseType">
+<%--                                                <li class="tab" data-tab="4depth-1"><a href="#aa">이론</a></li>--%>
+<%--                                                <li class="tab" data-tab="4depth-2"><a href="#aa">모의고사</a></li>--%>
                                             </ul>
                                         </div>
-                                        <div class="rfloat">
+                                        <div  style="float: left;width: 828px;min-height: 346px; border: 1px solid #e5e5e5;overflow: hidden;">
                                             <p class="tit">강좌명</p>
-                                            <ul class="4depth-1">
-                                                <li><a href="">2020 시험대비 임찬호 한국사 단원별 홀수문항 기출문제풀이 강의</a></li>
-                                                <li><a href="">2020 행정직대비 행정학 모의고사 문제풀이 강의</a></li>
-                                            </ul>
-                                            <ul class="4depth-2">
-                                                <li><a href="">2020 시험대비 임찬호 한국사 단원별 홀수문항 기출문제풀이 강의</a></li>
+                                            <ul class="4depth-1" id="pauseLecNameList">
+<%--                                                <li><a href="">2020 시험대비 임찬호 한국사 단원별 홀수문항 기출문제풀이 강의</a></li>--%>
+<%--                                                <li><a href="">2020 행정직대비 행정학 모의고사 문제풀이 강의</a></li>--%>
                                             </ul>
                                         </div>
                                     </div>
                                     <!--//Dropmenu -->
 
                                     <!--Dropmenu_down 상단 메뉴 클릭시 내용 드롭다운 -->
-                                    <div class="Dropmenu_down">
+                                    <div class="Dropmenu_down" id="pauseLecDiv">
                                         <!--inner-->
                                         <div class="inner">
-                                            <a href="#" class="btn_modalClose">모달팝업닫기</a>
                                             <div class="btn_crud">
-                                                <span class="black small">모의고사</span>
+                                                <span class="black small" id="pauseCtgName"></span>
                                                 <a href="#modal3" class="btn_modalOpen">강좌설명</a>
                                             </div>
 
                                             <div class="txt_area">
-                                                <span class="bdbox">PC</span>
-                                                <span class="bdbox">모바일</span>
-                                                <p class="thumb">2020 행정직 대비 행정학 모의고사 문제풀이 강의</p>
-                                                <span class="date"><b>수강기간</b>2020.05.15 ~ 2020.08.15 (90일)</span>
+                                                <span class="bdbox" id="pausePc">PC</span>
+                                                <span class="bdbox" id="pauseMobile">모바일</span>
+                                                <p class="thumb" id="pauseLecName"></p>
+                                                <span class="date"><b>수강기간</b><span id="pauseLectureDate"></span> (<span id="pauseLimitDay"></span>일)</span>
                                                 <!--guide-->
                                                 <div class="guide">
                                                     <div class="play">
@@ -521,18 +573,16 @@
                                                         <a href="" class="replay off hidden">신청</a>
                                                     </div>
                                                     <div class="prograss_wrap">
-                                                        <span class="text">진도율&nbsp;&nbsp; 60%</span>
-                                                        <span class="prograss">
-			                   		    				<img src="../images/ex/sample-img01.png" alt="">
+                                                        <span class="text">진도율&nbsp;&nbsp; <span id="pauseProgressRate"></span></span>
 			                   		    			</span>
                                                     </div>
                                                     <ul class="total_date">
-                                                        <li><span>기존 수강기간</span>2019.05.15 ~ 2019.08.25 (100일)</li>
-                                                        <li><span>변경된 수강기간</span>2019.05.15 ~ 2019.09.25 (130일)</li>
+                                                        <li><span>기존 수강기간</span><span id="pauseLectureDate1"></span> (<span id="pauseLimitDay1"></span>일)</li>
+                                                        <li><span>변경된 수강기간</span><span id="pauseChangeLectureDate"></span> (<span id="pauseChangeLimitDay"></span>일)</li>
                                                     </ul>
                                                     <div class="total_count">
-                                                        <p>중지신청수 : <span>3회사용 / 총 3회중</span></p>
-                                                        <p>중지신청일수 : <span>30일사용 / 총60일중</span></p>
+                                                        <p>중지신청수 : <span><span id="pauseCnt"></span>회사용 / 총 <span id="pauseCnt1"></span>회중</span></p>
+                                                        <p>중지신청일수 : <span><span id="pauseDay"></span>일사용 / 총<span id="pauseDay1"></span>일중</span></p>
                                                     </div>
                                                 </div>
                                                 <!--//guide-->
