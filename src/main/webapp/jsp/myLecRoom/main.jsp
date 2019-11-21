@@ -76,7 +76,7 @@
             });
 
             /* 수강완료 */
-            var userKey = 78906;
+            var userKey = 70001;
             getSignUpVideoLectureEndTypeList(userKey);
             var lecEndCtgKey = getInputTextValue("lecEndCtgKey");
             if(lecEndCtgKey != ''){
@@ -243,7 +243,7 @@
     }
     
     function lecEndTitleList(ctgKey) {
-        var userKey = 78906;
+        var userKey = 70001;
         $("#lecEndNameList li").remove();
         getSignUpVideoLectureEndSubjectList(userKey, ctgKey);
     }

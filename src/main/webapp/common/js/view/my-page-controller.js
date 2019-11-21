@@ -403,6 +403,7 @@ function getSignUpVideoLectureEndTypeList(userKey) {
     }
 }
 
+//수강중 > 수강완료 > 과목리스트
 function getSignUpVideoLectureEndSubjectList(userKey, stepCtgKey) {
     if (userKey == null || userKey == undefined) return;
     var data = {
