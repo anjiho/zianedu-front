@@ -290,6 +290,7 @@
         }else if(val == 'stopEnd'){
             var stopEndjLecKey = getInputTextValue("stopEndjLecKey");
             var result =  requestVideoStartStop(stopEndjLecKey, 10, 'START');
+            console.log(result);
             if(result.resultCode == 200){
                 alert("일시정지 해제 완료");
                 return false;
@@ -657,8 +658,8 @@
                                                         <li><span>변경된 수강기간</span><span id="pauseChangeLectureDate"></span> (<span id="pauseChangeLimitDay"></span>일)</li>
                                                     </ul>
                                                     <div class="total_count">
-                                                        <p>중지신청수 : <span><span id="pauseCnt"></span>회사용 / 총 <span id="pauseCnt1"></span>회중</span></p>
-                                                        <p>중지신청일수 : <span><span id="pauseDay"></span>일사용 / 총<span id="pauseDay1"></span>일중</span></p>
+                                                        <p>중지신청수 : <span><span id="pauseCnt"></span>회사용 / 총 3회중</span></p>
+                                                        <p>중지신청일수 : <span><span id="pauseDay"></span>일사용 / 총 60일중</span></p>
                                                     </div>
                                                 </div>
                                                 <!--//guide-->

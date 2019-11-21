@@ -269,7 +269,8 @@ function getSignUpZianPassTypeList(jKey, deviceType) {
     };
 
     var infoList = getApi("/myPage/getSignUpZianPassTypeList/", jKey, data);
-    if (infoList != null) { //과목 리스트
+    console.log(infoList);
+    if (infoList.result.length > 0) { //과목 리스트
         innerValue("zianPassCtgKey", infoList.result[0].ctgKey);
         var pcMobile = divisionPcMobile();
         getSignUpZianPassSubjectNameList(jKey, pcMobile, infoList.result[0].ctgKey);
