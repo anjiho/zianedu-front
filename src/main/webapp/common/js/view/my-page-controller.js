@@ -269,7 +269,6 @@ function getSignUpZianPassTypeList(jKey, deviceType) {
     };
 
     var infoList = getApi("/myPage/getSignUpZianPassTypeList/", jKey, data);
-    console.log(infoList);
     if (infoList.result.length > 0) { //과목 리스트
         innerValue("zianPassCtgKey", infoList.result[0].ctgKey);
         var pcMobile = divisionPcMobile();
@@ -277,6 +276,9 @@ function getSignUpZianPassTypeList(jKey, deviceType) {
         dwr.util.addOptions('zianPassType', infoList.result, function (data) {
             return "<a href='javascript:zianPassLecTitleList("+ data.ctgKey +");'>"+ data.ctgName +"</a>"
         }, {escapeHtml: false});
+    }else{
+        $("#zianPassListDiv").hide();
+        return false;
     }
 }
 
@@ -344,7 +346,6 @@ function getAcademyProductDetail(gKey) {
 function getSignUpVideoLecturePauseTypeList (userKey) {
     if (userKey == null || userKey == undefined) return;
     var infoList = getApi("/myPage/getSignUpVideoLecturePauseTypeList/", 93928, "");
-
     var selList = infoList.result;
     if(selList.length > 0){
         innerValue("pauseCtgKey", selList[0].ctgKey);
@@ -352,7 +353,7 @@ function getSignUpVideoLecturePauseTypeList (userKey) {
             return "<a href='javascript:pauseLecTitleList("+ data.ctgKey +");'>"+ data.ctgName +"</a>"
         }, {escapeHtml: false});
     }else{
-        $("#playLecListDiv").hide();
+        $("#pauseLecDiv").hide();
         return false;
     }
 }
@@ -364,16 +365,12 @@ function getSignUpVideoLecturePauseSubjectList (userKey, stepCtgKey) {
         stepCtgKey : stepCtgKey
     };
     var infoList = getApi("/myPage/getSignUpVideoLecturePauseSubjectList/", userKey, data);
-
     var selList = infoList.result;
     if(selList.length > 0){
         innerValue("pauseJlecKey", selList[0].jlecKey);
         dwr.util.addOptions('pauseLecNameList', selList, function (data) {
             return "<a href='javascript:pauseLecDetail("+ data.jlecKey +");'>"+ data.name +"</a>"
         }, {escapeHtml: false});
-    }else{
-        $("#pauseLecDiv").hide();
-        return false;
     }
 }
 
@@ -399,7 +396,7 @@ function getSignUpVideoLectureEndTypeList(userKey) {
             return "<a href='javascript:lecEndTitleList("+ data.ctgKey +");'>"+ data.ctgName +"</a>"
         }, {escapeHtml: false});
     }else{
-        $("#playLecListDiv").hide();
+        $("#lecEndDiv").hide();
         return false;
     }
 }
@@ -419,9 +416,6 @@ function getSignUpVideoLectureEndSubjectList(userKey, stepCtgKey) {
         dwr.util.addOptions('lecEndNameList', selList, function (data) {
             return "<a href='javascript:lecEndDetail("+ data.jlecKey +");'>"+ data.name +"</a>"
         }, {escapeHtml: false});
-    }else{
-        $("#pauseLecDiv").hide();
-        return false;
     }
 }
 

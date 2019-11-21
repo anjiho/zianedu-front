@@ -60,7 +60,6 @@
             });
 
             /* 일시정지 */
-            var userKey = 93928;
             getSignUpVideoLecturePauseTypeList(userKey);
             var pauseCtgKey = getInputTextValue("pauseCtgKey");
             if(pauseCtgKey != ''){
@@ -76,7 +75,6 @@
             });
 
             /* 수강완료 */
-            var userKey = 70001;
             getSignUpVideoLectureEndTypeList(userKey);
             var lecEndCtgKey = getInputTextValue("lecEndCtgKey");
             if(lecEndCtgKey != ''){
@@ -169,7 +167,6 @@
         if(infoList != null){
             $("#zianPassListDiv").show();
             var result = infoList.result;
-            console.log(result);
             innerValue("stopZianJlecKey", result.jlecKey);
             innerHTML("zianPassName", result.name);
             innerHTML("zianPassLecStartDate", result.startDate);
@@ -194,7 +191,9 @@
     //학원실강 유형 > 강의리스트 불러오기
     function academyLecList(ctgKey) {
         $("#acaLecList li").remove();
-        getSignUpAcademySubjectNameList(5, ctgKey);
+        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        var userKey = sessionUserInfo.userKey;
+        getSignUpAcademySubjectNameList(userKey, ctgKey);
     }
     
     function academyLecDetail(gKey) {
@@ -209,7 +208,8 @@
 
     //일시정지 강좌리스트 불러오기
     function pauseLecTitleList(ctgKey) {
-        var userKey = 93928;
+        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        var userKey = sessionUserInfo.userKey;
         $("#pauseLecNameList li").remove();
         getSignUpVideoLecturePauseSubjectList(userKey, ctgKey);
     }
@@ -243,11 +243,14 @@
                     $("#pauseMobile").show();
                 }
             }
+        }else{
+            $("#pauseLecDiv").hide();
         }
     }
     
     function lecEndTitleList(ctgKey) {
-        var userKey = 70001;
+        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        var userKey = sessionUserInfo.userKey;
         $("#lecEndNameList li").remove();
         getSignUpVideoLectureEndSubjectList(userKey, ctgKey);
     }
@@ -269,6 +272,8 @@
                 $("#lecEndPC").hide();
                 $("#lecEndMobile").show();
             }
+        }else{
+            $("#lecEndDiv").hide();
         }
     }
 
@@ -294,7 +299,6 @@
         }else if(val == 'stopEnd'){
             var stopEndjLecKey = getInputTextValue("stopEndjLecKey");
             var result =  requestVideoStartStop(stopEndjLecKey, 10, 'START');
-            console.log(result);
             if(result.resultCode == 200){
                 alert("일시정지 해제 완료");
                 return false;
@@ -707,7 +711,7 @@
                                     <!--//Dropmenu -->
 
                                     <!--Dropmenu_down 상단 메뉴 클릭시 내용 드롭다운 -->
-                                    <div class="Dropmenu_down">
+                                    <div class="Dropmenu_down" id="lecEndDiv">
                                         <!--inner-->
                                         <div class="inner">
                                             <div class="btn_crud">
