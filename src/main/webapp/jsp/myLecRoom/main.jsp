@@ -74,6 +74,22 @@
             $("#pauseType li").click(function () {
                 $(this).addClass('active').siblings().removeClass('active');
             });
+
+            /* 수강완료 */
+            var userKey = 78906;
+            getSignUpVideoLectureEndTypeList(userKey);
+            var lecEndCtgKey = getInputTextValue("lecEndCtgKey");
+            if(lecEndCtgKey != ''){
+                lecEndTitleList(lecEndCtgKey);
+            }
+            var lecEndJlecKey = getInputTextValue("lecEndJlecKey");
+            if(lecEndJlecKey != ''){
+                lecEndDetail(lecEndJlecKey);
+            }
+            $("#lecEndType li:eq(0)").addClass('active');
+            $("#lecEndType li").click(function () {
+                $(this).addClass('active').siblings().removeClass('active');
+            });
         }else{
             alert("로그인이 필요합니다.");
             $("#playLecListDiv").hide();
@@ -225,6 +241,32 @@
             }
         }
     }
+    
+    function lecEndTitleList(ctgKey) {
+        var userKey = 78906;
+        $("#lecEndNameList li").remove();
+        getSignUpVideoLectureEndSubjectList(userKey, ctgKey);
+    }
+    
+    function lecEndDetail(jlecKey) {
+        var detailInfo = getSignUpVideoLectureEndInfo(jlecKey);
+        if(detailInfo != null) {
+            var selList = detailInfo.result;
+            innerHTML("lecEndCtgName", selList.ctgName);
+            innerHTML("lecEndName", selList.name);
+            innerHTML("lecEndStartDate", selList.startDate);//수강기간
+            innerHTML("lecEndDate", selList.endDate);//수강일수
+            //reLecSel
+            var pcMobile = divisionPcMobile();
+            if (pcMobile == 'PC') {
+                $("#lecEndPC").show();
+                $("#lecEndMobile").hide();
+            } else {
+                $("#lecEndPC").hide();
+                $("#lecEndMobile").show();
+            }
+        }
+    }
 
 </script>
 <form name="frm" method="get">
@@ -238,6 +280,8 @@
     <input type="hidden" id="acaGkey">
     <input type="hidden" id="pauseCtgKey">
     <input type="hidden" id="pauseJlecKey">
+    <input type="hidden" id="lecEndCtgKey">
+    <input type="hidden" id="lecEndJlecKey">
     <div id="wrap">
         <%@include file="/common/jsp/leftMenu.jsp" %>
         <!--상단-->
@@ -541,7 +585,7 @@
 <%--                                                <li class="tab" data-tab="4depth-2"><a href="#aa">모의고사</a></li>--%>
                                             </ul>
                                         </div>
-                                        <div  style="float: left;width: 828px;min-height: 346px; border: 1px solid #e5e5e5;overflow: hidden;">
+                                        <div style="float: left;width: 828px;min-height: 346px; border: 1px solid #e5e5e5;overflow: hidden;">
                                             <p class="tit">강좌명</p>
                                             <ul class="4depth-1" id="pauseLecNameList">
 <%--                                                <li><a href="">2020 시험대비 임찬호 한국사 단원별 홀수문항 기출문제풀이 강의</a></li>--%>
@@ -613,21 +657,14 @@
                                     <div class="Dropmenu">
                                         <div class="lfloat">
                                             <p class="tit">유형</p>
-                                            <ul class="Droptab_wrap">
-                                                <li class="tab" data-tab="5depth-1" ><a href="#aa">이론</a></li>
-                                                <li class="tab" data-tab="5depth-1"><a href="#aa">모의고사</a></li>
+                                            <ul class="Droptab_wrap" id="lecEndType">
+<%--                                                <li class="tab" data-tab="5depth-1" ><a href="#aa">이론</a></li>--%>
+<%--                                                <li class="tab" data-tab="5depth-1"><a href="#aa">모의고사</a></li>--%>
                                             </ul>
                                         </div>
-                                        <div class="rfloat">
+                                        <div style="float: left;width: 828px;min-height: 346px; border: 1px solid #e5e5e5;overflow: hidden;">
                                             <p class="tit">강좌명</p>
-                                            <ul class="5depth-1">
-                                                <li><a href="">2020 시험대비 임찬호 한국사 단원별 홀수문항 기출문제풀이 강의</a></li>
-                                                <li><a href="">2020 시험대비 얼리버드 조재권 기초영어 특강</a></li>
-                                                <li><a href="">2020 행정직대비 행정학 문제풀이 강의</a></li>
-                                            </ul>
-                                            <ul class="5depth-2">
-                                                <li><a href="">2020 시험대비 임찬호 한국사 단원별 홀수문항 기출문제풀이 강의</a></li>
-                                            </ul>
+                                            <ul class="5depth-1" id="lecEndNameList"></ul>
                                         </div>
                                     </div>
                                     <!--//Dropmenu -->
@@ -636,43 +673,27 @@
                                     <div class="Dropmenu_down">
                                         <!--inner-->
                                         <div class="inner">
-                                            <a href="#" class="btn_modalClose">모달팝업닫기</a>
                                             <div class="btn_crud">
-                                                <span class="black small">모의고사</span>
+                                                <span class="black small" id="lecEndCtgName"></span>
                                                 <a href="#modal3" class="btn_modalOpen">강좌설명</a>
                                             </div>
 
                                             <div class="txt_area">
-                                                <span class="bdbox">PC</span>
-                                                <span class="bdbox">모바일</span>
-                                                <p class="thumb">2020 시험대비 얼리버드 조재권 기초영어 특강</p>
-                                                <span class="date"><b>수강기간</b>2020.05.15<b>종료기간</b>2020.08.15</span>
+                                                <span class="bdbox" id="lecEndPC">PC</span>
+                                                <span class="bdbox" id="lecEndMobile">모바일</span>
+                                                <p class="thumb" id="lecEndName"></p>
+                                                <span class="date"><b>수강기간</b><span id="lecEndStartDate"></span><b>종료기간</b><span id="lecEndDate"></span></span>
                                                 <!--guide-->
                                                 <div class="guide">
                                                     <span class="re_date">재수강신청</span>
                                                     <!-- edusup_multi -->
                                                     <div class="edusup_multi">
-                                                        <ul>
-                                                            <li class="sub_cont">
-                                                                <a href="#" class="normal">
-                                                                    <span>정지일수 선택</span>
-                                                                </a>
-                                                                <ul class="edusup_multi_layer">
-                                                                    <li>
-                                                                        <a href="#">전체</a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="#">10일</a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="#">20일</a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="#">30일</a>
-                                                                    </li>
-                                                                </ul>
-                                                            </li>
-                                                        </ul>
+                                                        <select style="width: 100px;" id="reLecSel">
+                                                            <option value="0">전체</option>
+                                                            <option value="10">10일</option>
+                                                            <option value="20">20일</option>
+                                                            <option value="300">30일</option>
+                                                        </select>
                                                     </div>
                                                     <!-- //edusup_multi -->
                                                 </div>
@@ -895,20 +916,26 @@
                                             <a href="#" class="normal">
                                                 <span>정지일수 선택</span>
                                             </a>
-                                            <ul class="edusup_multi_layer">
-                                                <li>
-                                                    <a href="#">전체</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">10일</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">20일</a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">30일</a>
-                                                </li>
-                                            </ul>
+                                            <select>
+                                                <option value="">전체</option>
+                                                <option value="">10일</option>
+                                                <option value="">20일</option>
+                                                <option value="">30일</option>
+                                            </select>
+<%--                                            <ul class="edusup_multi_layer">--%>
+<%--                                                <li>--%>
+<%--                                                    <a href="#">전체</a>--%>
+<%--                                                </li>--%>
+<%--                                                <li>--%>
+<%--                                                    <a href="#">10일</a>--%>
+<%--                                                </li>--%>
+<%--                                                <li>--%>
+<%--                                                    <a href="#">20일</a>--%>
+<%--                                                </li>--%>
+<%--                                                <li>--%>
+<%--                                                    <a href="#">30일</a>--%>
+<%--                                                </li>--%>
+<%--                                            </ul>--%>
                                         </li>
                                     </ul>
                                 </div>

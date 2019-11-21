@@ -384,5 +384,49 @@ function getOnlineVideoPauseListByJLecKey(jLecKey) {
     if(infoList != null){
        return infoList;
     }
+}
 
+//수강중 > 수강완료
+function getSignUpVideoLectureEndTypeList(userKey) {
+    if (userKey == null || userKey == undefined) return;
+    var infoList = getApi("/myPage/getSignUpVideoLectureEndTypeList/", userKey, "");
+
+    var selList = infoList.result;
+    if(selList.length > 0){
+        innerValue("lecEndCtgKey", selList[0].ctgKey);
+        dwr.util.addOptions('lecEndType', selList, function (data) {
+            return "<a href='javascript:lecEndTitleList("+ data.ctgKey +");'>"+ data.ctgName +"</a>"
+        }, {escapeHtml: false});
+    }else{
+        $("#playLecListDiv").hide();
+        return false;
+    }
+}
+
+function getSignUpVideoLectureEndSubjectList(userKey, stepCtgKey) {
+    if (userKey == null || userKey == undefined) return;
+    var data = {
+        stepCtgKey : stepCtgKey
+    };
+    var infoList = getApi("/myPage/getSignUpVideoLectureEndSubjectList/", userKey, data);
+
+    var selList = infoList.result;
+    if(selList.length > 0){
+        innerValue("lecEndJlecKey", selList[0].jlecKey);
+        lecEndDetail(selList[0].jlecKey);
+        dwr.util.addOptions('lecEndNameList', selList, function (data) {
+            return "<a href='javascript:lecEndDetail("+ data.jlecKey +");'>"+ data.name +"</a>"
+        }, {escapeHtml: false});
+    }else{
+        $("#pauseLecDiv").hide();
+        return false;
+    }
+}
+
+function getSignUpVideoLectureEndInfo(jlecKey) {
+    if (jlecKey == null || jlecKey == undefined) return;
+    var infoList = getApi("/myPage/getSignUpVideoLectureEndInfo/", jlecKey, "");
+    if(infoList != null){
+        return infoList;
+    }
 }
