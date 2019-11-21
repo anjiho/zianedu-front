@@ -217,6 +217,7 @@
     //일시정지 강좌상세설명
     function pauseLecDetail(jlecKey) {
         var detailInfo = getOnlineVideoPauseListByJLecKey(jlecKey);
+        console.log(detailInfo);
         if(detailInfo != null) {
             for (var i = 0; i < detailInfo.result.length; i++) {
                 var selList = detailInfo.result[i];
@@ -285,22 +286,34 @@
                 if(result.resultCode == 200){
                     alert("일시정지 신청 완료");
                     return false;
+                }else if(result.resultCode == 905){
+                    alert("일시정지 횟수가 초과 되었습니다\n운영자에게 문의하시기 바랍니다.");
+                    return false;
                 }
             }
         }else if(val == 'pass'){
             if(confirm("일시정지 신청 하시겠습니까?")) {
                 var stopZianJlecKey = getInputTextValue("stopZianJlecKey");
                 var result = requestVideoStartStop(stopZianJlecKey, 10, 'STOP');
+                console.log(result);
                 if (result.resultCode == 200) {
                     alert("일시정지 신청 완료");
+                    return false;
+                }else if(result.resultCode == 905){
+                    alert("일시정지 횟수가 초과 되었습니다\n운영자에게 문의하시기 바랍니다.");
                     return false;
                 }
             }
         }else if(val == 'stopEnd'){
             var stopEndjLecKey = getInputTextValue("stopEndjLecKey");
             var result =  requestVideoStartStop(stopEndjLecKey, 10, 'START');
+            console.log(result);
             if(result.resultCode == 200){
-                alert("일시정지 해제 완료");
+                alert(1);
+                //$('#modal4').hide();
+                //$('#overlay').css("","");
+            }else if(result.resultCode == 905){
+                alert("일시정지 해제 횟수가 초과 되었습니다\n운영자에게 문의하시기 바랍니다.");
                 return false;
             }
         }
