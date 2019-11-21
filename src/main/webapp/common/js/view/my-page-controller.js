@@ -345,7 +345,7 @@ function getAcademyProductDetail(gKey) {
 //수강중 > 일시정지 유형 불러오기
 function getSignUpVideoLecturePauseTypeList (userKey) {
     if (userKey == null || userKey == undefined) return;
-    var infoList = getApi("/myPage/getSignUpVideoLecturePauseTypeList/", 93928, "");
+    var infoList = getApi("/myPage/getSignUpVideoLecturePauseTypeList/", userKey, "");
     var selList = infoList.result;
     if(selList.length > 0){
         innerValue("pauseCtgKey", selList[0].ctgKey);
