@@ -431,3 +431,15 @@ function getSignUpVideoLectureEndInfo(jlecKey) {
         return infoList;
     }
 }
+
+//일시정지 신청
+function requestVideoStartStop(jLecKey, pauseDay, requestType) {
+    if(jLecKey == null || jLecKey == undefined) return;
+    var data = {
+        jLecKey: jLecKey,
+        pauseDay: pauseDay,
+        requestType: requestType
+    }
+    var result = postApi("/myPage/requestVideoStartStop", data);
+    return result;
+}

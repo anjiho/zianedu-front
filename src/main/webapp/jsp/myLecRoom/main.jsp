@@ -126,6 +126,7 @@
         }else{
             $("#playLecListDiv").show();
             var result = infoList.result;
+            innerValue("stopJlecKey", result.jlecKey);
             innerHTML("playLecName", result.name);
             innerHTML("playLecStartDate", result.startDate);
             innerHTML("playLecEndDate", result.endDate);
@@ -168,6 +169,8 @@
         if(infoList != null){
             $("#zianPassListDiv").show();
             var result = infoList.result;
+            console.log(result);
+            innerValue("stopZianJlecKey", result.jlecKey);
             innerHTML("zianPassName", result.name);
             innerHTML("zianPassLecStartDate", result.startDate);
             innerHTML("zianPassLecEndDate", result.endDate);
@@ -217,6 +220,7 @@
         if(detailInfo != null) {
             for (var i = 0; i < detailInfo.result.length; i++) {
                 var selList = detailInfo.result[i];
+                innerValue("stopEndjLecKey", selList.jlecKey);
                 innerHTML("pauseCtgName", selList.ctgName);
                 innerHTML("pauseLecName", selList.name);
                 innerHTML("pauseLectureDate", selList.lectureDate);//수강기간
@@ -268,6 +272,30 @@
         }
     }
 
+    function goStop(val) {
+        if(val == 'stop'){
+            var stopJlecKey = getInputTextValue("stopJlecKey");
+            var result = requestVideoStartStop(stopJlecKey, 10, 'STOP');
+            if(result.resultCode == 200){
+                alert("일시정지 신청 완료");
+                return false;
+            }
+        }else if(val == 'pass'){
+            var stopZianJlecKey = getInputTextValue("stopZianJlecKey");
+            var result =  requestVideoStartStop(stopZianJlecKey, 10, 'STOP');
+            if(result.resultCode == 200){
+                alert("일시정지 신청 완료");
+                return false;
+            }
+        }else if(val == 'stopEnd'){
+            var stopEndjLecKey = getInputTextValue("stopEndjLecKey");
+            var result =  requestVideoStartStop(stopEndjLecKey, 10, 'START');
+            if(result.resultCode == 200){
+                alert("일시정지 해제 완료");
+                return false;
+            }
+        }
+    }
 </script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
@@ -282,6 +310,10 @@
     <input type="hidden" id="pauseJlecKey">
     <input type="hidden" id="lecEndCtgKey">
     <input type="hidden" id="lecEndJlecKey">
+
+    <input type="hidden" id="stopJlecKey">
+    <input type="hidden" id="stopZianJlecKey">
+    <input type="hidden" id="stopEndjLecKey">
     <div id="wrap">
         <%@include file="/common/jsp/leftMenu.jsp" %>
         <!--상단-->
@@ -365,7 +397,7 @@
                                                                     <div class="guide">
                                                                         <div class="play">
                                                                             <span>일시정지</span>
-                                                                            <a href="" class="replay off">신청</a>
+                                                                            <a href="javascript:goStop('stop');" class="replay off">신청</a>
                                                                         </div>
                                                                         <div class="prograss_wrap">
                                                                             <span class="text">진도율&nbsp;&nbsp; <span id="PlayProgressRate"></span></span>
@@ -456,7 +488,7 @@
                                                                     <div class="guide">
                                                                         <div class="play">
                                                                             <span>일시정지</span>
-                                                                            <a href="" class="replay off">신청</a>
+                                                                            <a href="javascript:goStop('pass');" class="replay off">신청</a>
                                                                         </div>
                                                                         <div class="prograss_wrap">
                                                                             <span class="text">진도율&nbsp;<span id="zianPassProgressRate"></span></span>
@@ -847,7 +879,7 @@
                 <div class="pop_cont">
                     <p class="stitle">일시정지를 해제 하시겠습니까?</p>
                     <div class="btn_crud">
-                        <a href="" class="btn_confirm">확인</a>
+                        <a href="javascript:goStop('stopEnd')" class="btn_confirm">확인</a>
                         <a href="" class="btn_cancel">취소</a>
                     </div>
                 </div>
