@@ -153,7 +153,6 @@ function getTeacherLearningQna(teacherKey, sPage, listLimit, searchType, searchT
     };
     var infoList = getPageApi("/teacher/getTeacherLearningQna/", teacherKey, data);
     var cnt = infoList.cnt;
-    console.log(cnt);
     if (infoList.result.length > 0) {
         paging.count3(sPage, cnt, '5', '20', comment.blank_list);
         var listNum = ((cnt - 1) + 1) - ((sPage - 1) * 20); //리스트 넘버링
