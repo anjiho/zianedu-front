@@ -5,15 +5,9 @@
 <div id="wrap" class="accounting">
     <%@include file="/common/jsp/leftMenu.jsp" %>
     <!--상단-->
-    <div id="header">
-        <div class="inner">
-            <h1><a href="javascript:goPage('postOnline', 'main')"><img src="/common/zian/images/common/logo03.png" alt="지안에듀 계리직"> 온라인</a></h1>
-            <%@include file="/common/jsp/topHeader.jsp" %>
-        </div>
-        <!--주메뉴-->
-        <%@include file="/common/jsp/headerMenu.jsp" %>
-        <!--//주메뉴-->
-    </div>
+    <!--상단-->
+    <%@include file="/common/jsp/header.jsp" %>
+    <!--//상단-->
     <!--//상단-->
     <!--본문-->
     <div id="container">

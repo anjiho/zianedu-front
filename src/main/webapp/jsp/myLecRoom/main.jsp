@@ -217,7 +217,6 @@
     //일시정지 강좌상세설명
     function pauseLecDetail(jlecKey) {
         var detailInfo = getOnlineVideoPauseListByJLecKey(jlecKey);
-        console.log(detailInfo);
         if(detailInfo != null) {
             for (var i = 0; i < detailInfo.result.length; i++) {
                 var selList = detailInfo.result[i];
@@ -295,7 +294,6 @@
             if(confirm("일시정지 신청 하시겠습니까?")) {
                 var stopZianJlecKey = getInputTextValue("stopZianJlecKey");
                 var result = requestVideoStartStop(stopZianJlecKey, 10, 'STOP');
-                console.log(result);
                 if (result.resultCode == 200) {
                     alert("일시정지 신청 완료");
                     return false;
@@ -307,10 +305,9 @@
         }else if(val == 'stopEnd'){
             var stopEndjLecKey = getInputTextValue("stopEndjLecKey");
             var result =  requestVideoStartStop(stopEndjLecKey, 10, 'START');
-            console.log(result);
             if(result.resultCode == 200){
                 alert(1);
-                //$('#modal4').hide();
+                $('#modal4').hide();
                 //$('#overlay').css("","");
             }else if(result.resultCode == 905){
                 alert("일시정지 해제 횟수가 초과 되었습니다\n운영자에게 문의하시기 바랍니다.");
@@ -339,15 +336,7 @@
     <div id="wrap">
         <%@include file="/common/jsp/leftMenu.jsp" %>
         <!--상단-->
-        <div id="header">
-            <div class="inner">
-                <h1><a href="#"><img src="/common/zian/images/common/logo.png" alt="지안에듀"></a></h1>
-                <%@include file="/common/jsp/topHeader.jsp" %>
-            </div>
-            <!--주메뉴-->
-            <%@include file="/common/jsp/headerMenu.jsp" %>
-            <!--//주메뉴-->
-        </div>
+        <%@include file="/common/jsp/header.jsp" %>
         <!--//상단-->
         <!--본문-->
         <div id="container">

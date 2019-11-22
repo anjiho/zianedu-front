@@ -25,6 +25,7 @@
             <!--최상단메뉴-->
             <div id="topNav">
                 <ul>
+                    <li id="userName" style="display: none;"><a href="#"></a></li>
                     <li id="mypage" style="display: none;"><a href="#">마이페이지</a></li>
                     <li id="login"><a href="javascript:goLoginPage();">로그인</a></li>
                     <li id="logout" style="display: none;"><a href="javascript:goLogout();">로그아웃</a></li>
@@ -162,6 +163,21 @@
     $(document).ready(function () {
         getEventMiniBanner("", 6283, 1);//이벤트 배너
         getRandingBannerList(224, 3);//미니배너
+        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        if(sessionUserInfo != null){ //로그인했을경우,
+            var userName = sessionUserInfo.name;
+            innerHTML("userName", userName+" 님");
+            gfn_display("mypage", true);
+            gfn_display("userName", true);
+            gfn_display("logout", true);
+            gfn_display("login", false);
+            gfn_display("join", false);
+        }
+        //오른쪽메뉴 오늘 안보기 클릭 이벤트
+        $("#todayClose").click(function () {
+            setCookieMobile( "todayCookie", "done" , 1);
+            $("#quickBar").hide();
+        });
     });
     //직렬별 leftMenu 세션 셋팅
     function setLeftMenu(val) {
@@ -174,6 +190,19 @@
             }else if(val == 'postOnline'){
                 goPage('postOnline', 'main')
             }
+        }
+    }
+
+    function goLogout() {
+        if(confirm("로그아웃 하시겠습니까?")){
+            sessionStorage.clear();
+            innerHTML("userName", "");
+            gfn_display("mypage", false);
+            gfn_display("userName", false);
+            gfn_display("logout", false);
+            gfn_display("login", true);
+            gfn_display("join", true);
+            goMain();
         }
     }
 </script>

@@ -15,6 +15,7 @@
     <script src="/common/zian/js/main.js"></script>
     <script src="/common/zian/js/submain.js"></script>
     <script src="/common/zian/js/swiper.min.js"></script>
+    <script src="/common/zian/js/ul.js"></script>
     <!-- include libraries(jQuery, bootstrap) -->
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
@@ -74,34 +75,5 @@
 </head>
 <body>
 <script>
-    $(document).ready(function () {
-        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-        if(sessionUserInfo != null){ //로그인했을경우,
-            //var userName = sessionUserInfo.name;
-            // innerHTML("userName", userName+" 님");
-            gfn_display("mypage", true);
-            // gfn_display("userName", true);
-            gfn_display("logout", true);
-            gfn_display("login", false);
-            gfn_display("join", false);
-        }
-        //오른쪽메뉴 오늘 안보기 클릭 이벤트
-        $("#todayClose").click(function () {
-            setCookieMobile( "todayCookie", "done" , 1);
-            $("#quickBar").hide();
-        });
-    });
 
-    function goLogout() {
-        if(confirm("로그아웃 하시겠습니까?")){
-            sessionStorage.clear();
-            // innerHTML("userName", "");
-            gfn_display("mypage", false);
-            //gfn_display("userName", false);
-            gfn_display("logout", false);
-            gfn_display("login", true);
-            gfn_display("join", true);
-            goMain();
-        }
-    }
 </script>

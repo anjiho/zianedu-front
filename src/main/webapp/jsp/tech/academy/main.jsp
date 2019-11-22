@@ -5,15 +5,7 @@
 <div id="wrap" class="skill">
     <%@include file="/common/jsp/leftMenu.jsp" %>
     <!--상단-->
-    <div id="header">
-        <div class="inner">
-            <h1><a href="javascript:goPage('techAcademy', 'main')"><img src="/common/zian/images/common/logo02.png" alt="지안에듀 기술직"> 학원</a></h1>
-            <%@include file="/common/jsp/topHeader.jsp" %>
-        </div>
-        <!--주메뉴-->
-        <%@include file="/common/jsp/headerMenu.jsp" %>
-        <!--//주메뉴-->
-    </div>
+    <%@include file="/common/jsp/header.jsp" %>
     <!--//상단-->
     <!--본문-->
     <div id="container">

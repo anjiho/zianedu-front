@@ -1,38 +1,126 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
-<!--최상단배너-->
-<div id="topBanner" style="background-color:#520404;">
-    <div class="inner">
-        <a href="#"><img src="/common/zian/images/content/img_topBanner.jpg" alt=""></a>
-    </div>
-</div>
-<!--//최상단배너-->
+<script>
+    $( document ).ready(function() {
+        var leftMenuInfo = sessionStorage.getItem('leftMenu');//직렬 구분
+        if(leftMenuInfo == "publicOnline") {
+            $(".onlineTopMenu").show();
+            $(".acaTopMenu").hide();
+            $("#logo").attr("src", "/common/zian/images/common/logo01.png");
+            $("#mainUrl").attr("href", "javascript:goPage('publicOnline', 'main')");
+            innerHTML("mainName", "온라인");
+        }else if(leftMenuInfo == "publicAcademy") {
+            $(".onlineTopMenu").hide();
+            $(".acaTopMenu").show();
+            $("#logo").attr("src", "/common/zian/images/common/logo01.png");
+            $("#mainUrl").attr("href", "javascript:goPage('publicAcademy', 'main')");
+            innerHTML("mainName", "학원");
+        }else if(leftMenuInfo == "techOnline") {
+            $(".onlineTopMenu").show();
+            $(".acaTopMenu").hide();
+            $("#logo").attr("src", "/common/zian/images/common/logo02.png");
+            $("#mainUrl").attr("href", "javascript:goPage('techOnline', 'main')");
+            innerHTML("mainName", "온라인");
+        }else if(leftMenuInfo == "techAcademy") {
+            $(".onlineTopMenu").hide();
+            $(".acaTopMenu").show();
+            $("#logo").attr("src", "/common/zian/images/common/logo02.png");
+            $("#mainUrl").attr("href", "javascript:goPage('techAcademy', 'main')");
+            innerHTML("mainName", "학원");
+        }else if(leftMenuInfo == "postOnline") {
+            $(".onlineTopMenu").show();
+            $(".acaTopMenu").hide();
+            $("#logo").attr("src", "/common/zian/images/common/logo03.png");
+            $("#mainUrl").attr("href", "javascript:goPage('postOnline', 'main')");
+            innerHTML("mainName", "온라인");
+        }else if(leftMenuInfo == "postAcademy") {
+            $(".onlineTopMenu").hide();
+            $(".acaTopMenu").show();
+            $("#logo").attr("src", "/common/zian/images/common/logo03.png");
+            $("#mainUrl").attr("href", "javascript:goPage('postAcademy', 'main')");
+            innerHTML("mainName", "학원");
+        }
+    });
+</script>
 <!--상단-->
-<div id="header" class="landing">
-    <!--최상단메뉴-->
-    <div id="topBar">
+<div id="header">
+    <div class="inner">
+        <h1><a href="" id="mainUrl"><img src="" id="logo"> <span id="mainName"></span></a></h1>
+        <!--최상단메뉴-->
+        <div id="topNav">
+            <ul>
+                <li><a href="javascript:addFavorite();" class="btn_bookmark">즐겨찾기에 등록</a></li>
+                <li id="userName" style="display: none;"><a href="#"></a></li>
+                <li id="mypage" style="display: none;"><a href="#">마이페이지</a></li>
+                <li id="login"><a href="javascript:goLoginPage();">로그인</a></li>
+                <li id="logout" style="display: none;"><a href="javascript:goLogout();">로그아웃</a></li>
+                <li id="join"><a href="javascript:goPage('user', 'joinAgree');">회원가입</a></li>
+                <li><a href="#">합격수기</a></li>
+                <li><a href="#">이벤트</a></li>
+            </ul>
+        </div>
+        <!--//최상단메뉴-->
+
+    </div>
+    <!--주메뉴-->
+    <div id="gnb" class="acaTopMenu" style="display: none;">
         <div class="inner">
-            <div class="left">
-                <a href="javascript:addFavorite();">지안에듀를 즐겨찾기로 &gt;</a>
-            </div>
-            <div class="right">
-                <ul>
-                    <li id="mypage" style="display: none;"><a href="#">마이페이지</a></li>
-                    <li id="join"><a href="javascript:goPage('user', 'joinAgree');">회원가입</a></li>
-                    <li id="login"><a href="javascript:goLoginPage();">로그인</a></li>
-                    <li id="logout" style="display: none;"><a href="javascript:goLogout();">로그아웃</a></li>
-                    <li><a href="#">내강의실</a></li>
-                    <li><a href="#">장바구니<!--<em>30</em>--></a></li>
-                    <li><a href="#">공지사항</a></li>
-                    <li><a href="#">고객센터</a></li>
-                </ul>
-            </div>
+            <ul class="deaph1 cols7">
+                <li><a href="javascript:goPage('myLecRoom', 'main')">내강의실</a></li>
+                <li><a href="javascript:goPage('teacher', 'main')">교수소개</a></li>
+                <li><a href="javascript:goPage('lectureOrder', 'main')">학원수강신청</a></li>
+                <li><a href="#">연간관리반</a></li>
+                <li><a href="#">무료강좌</a></li>
+                <li><a href="#">빅모의고사</a></li>
+                <li><a href="#">합격수기</a></li>
+            </ul>
         </div>
     </div>
-    <!--//최상단메뉴-->
-    <div class="inner">
-        <h1><a href="javascript:goMain()"><img src="/common/zian/images/common/logo.png" alt="지안에듀"></a></h1>
-        <a href="#" class="titleBarLeft"><img src="/common/zian/images/content/img_titleBarLeft.jpg" alt=""></a>
-        <a href="#" class="titleBarRight"><img src="/common/zian/images/content/img_titleBarRight.jpg" alt=""></a>
+
+    <div id="gnb" class="onlineTopMenu" style="display: none;">
+        <div class="inner">
+            <ul class="deaph1 cols7">
+                <li><a href="javascript:goPage('myLecRoom', 'main')">내강의실</a></li>
+                <li><a href="javascript:goPage('teacher', 'main')">교수소개</a></li>
+                <li><a href="javascript:goPage('lectureOrder', 'main')">수강신청</a></li>
+                <li><a href="#">지안패스</a></li>
+                <li><a href="#">무료강좌</a></li>
+                <li><a href="#">빅모의고사</a></li>
+                <li><a href="#">합격수기</a></li>
+            </ul>
+        </div>
     </div>
+    <!--//주메뉴-->
 </div>
 <!--//상단-->
+<script>
+    $(document).ready(function () {
+        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        if(sessionUserInfo != null){ //로그인했을경우,
+            var userName = sessionUserInfo.name;
+            innerHTML("userName", userName+" 님");
+            gfn_display("mypage", true);
+            gfn_display("userName", true);
+            gfn_display("logout", true);
+            gfn_display("login", false);
+            gfn_display("join", false);
+        }
+        //오른쪽메뉴 오늘 안보기 클릭 이벤트
+        $("#todayClose").click(function () {
+            setCookieMobile( "todayCookie", "done" , 1);
+            $("#quickBar").hide();
+        });
+    });
+
+    function goLogout() {
+        if(confirm("로그아웃 하시겠습니까?")){
+            sessionStorage.clear();
+            innerHTML("userName", "");
+            gfn_display("mypage", false);
+            gfn_display("userName", false);
+            gfn_display("logout", false);
+            gfn_display("login", true);
+            gfn_display("join", true);
+            goMain();
+        }
+    }
+</script>

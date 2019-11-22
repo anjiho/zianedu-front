@@ -10,58 +10,8 @@
         <!--최상단배너-->
         <!--//최상단배너-->
         <!--상단-->
-        <div id="header">
-            <div class="inner">
-                <h1><a href="javascript:goMain();"><img src="/common/zian/images/common/logo.png" alt="지안에듀"></a></h1>
-                <!--최상단메뉴-->
-                <div id="topNav">
-                    <ul>
-                        <li><a href="javascript:addFavorite();" class="btn_bookmark">즐겨찾기에 등록</a></li>
-                        <li id="login"><a href="javascript:goLoginPage();">로그인</a></li>
-                        <li id="join"><a href="javascript:goPage('user', 'joinAgree');">회원가입</a></li>
-                        <li><a href="#">합격수기</a></li>
-                        <li><a href="#">이벤트</a></li>
-                    </ul>
-                </div>
-                <!--//최상단메뉴-->
-            </div>
-            <!--주메뉴-->
-<%--            <div id="gnb">--%>
-<%--                <div class="inner">--%>
-<%--                    <ul class="deaph1 cols7">--%>
-<%--                        <li><a href="#">내강의실</a>--%>
-<%--                            &lt;%&ndash;                        <ul class="deaph2">&ndash;%&gt;--%>
-<%--                            &lt;%&ndash;                            <li><a href="#">수강중</a></li>&ndash;%&gt;--%>
-<%--                            &lt;%&ndash;                            <li><a href="#">일시정지</a></li>&ndash;%&gt;--%>
-<%--                            &lt;%&ndash;                            <li><a href="#">수강완료</a></li>&ndash;%&gt;--%>
-<%--                            &lt;%&ndash;                        </ul>&ndash;%&gt;--%>
-<%--                        </li>--%>
-<%--                        <li><a href="#">교수소개</a>--%>
-<%--                        </li>--%>
-<%--                        <li><a href="#">수강신청</a></li>--%>
-<%--                        <li><a href="#">지안패스</a></li>--%>
-<%--                        <li><a href="#">무료강좌</a>--%>
-<%--                            <ul class="deaph2">--%>
-<%--                                &lt;%&ndash;                            <li><a href="#">이론</a></li>&ndash;%&gt;--%>
-<%--                                &lt;%&ndash;                            <li><a href="#">기출풀이</a></li>&ndash;%&gt;--%>
-<%--                            </ul>--%>
-<%--                        </li>--%>
-<%--                        <li><a href="#">빅모의고사</a></li>--%>
-<%--                        <li><a href="#">합격수기</a>--%>
-<%--                            <ul class="deaph2">--%>
-<%--                                &lt;%&ndash;                            <li><a href="#">합격영상</a></li>&ndash;%&gt;--%>
-<%--                                &lt;%&ndash;                            <li><a href="#">합겨수기</a></li>&ndash;%&gt;--%>
-<%--                                &lt;%&ndash;                            <li><a href="#">수강후기</a></li>&ndash;%&gt;--%>
-<%--                                &lt;%&ndash;                            <li><a href="#">도서후기</a></li>&ndash;%&gt;--%>
-<%--                            </ul>--%>
-<%--                        </li>--%>
-<%--                    </ul>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-            <!--//주메뉴-->
-        </div>
+        <%@include file="/common/jsp/header.jsp" %>
         <!--//상단-->
-
         <!--본문-->
         <div id="container">
             <div class="inner">
