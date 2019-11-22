@@ -2,11 +2,23 @@
 <%@include file="/common/jsp/common.jsp" %>
 <script>
     $( document ).ready(function() {
+        //팝업 이미지 업로드
+        var $fileBox = $('.filetype');
+
+        $fileBox.each(function() {
+            var $fileUpload = $(this).find('.input-file'),
+                $fileText = $(this).find('.file-text')
+            $fileUpload.on('change', function() {
+                var fileName = $(this).val();
+                $fileText.attr('disabled', 'disabled').val(fileName);
+            })
+        })
         var calendarInfo = null;
         //달력 주입 시작
         $('#calendar').fullCalendar({
             viewRender: function(view, element) {
             var dt_start = moment( $('#calendar').fullCalendar('getDate') ).format('YYYY-MM-DD');
+            innerValue("yyyymmdd", dt_start);
             var dayOfWeek = moment( $('#calendar').fullCalendar('getDate') ).format('dddd');
             getLectureRoom(dt_start, dayOfWeek);
         },
@@ -49,6 +61,9 @@
     //강의실 배정표 불러오기
     function getLectureRoom(yyyymmdd, day) {
         var getRoomList = getLectureRoomTableList(yyyymmdd);
+        console.log(getRoomList);
+        $("#img_box div").remove();
+        $("#img_box1 div").remove();
         if(getRoomList.result.length > 0){
             var selList = getRoomList.result;
             for (var i = 0; i<selList.length; i++){
@@ -60,9 +75,10 @@
                     $(".todayDate").html(selList[i].lectureDate+""+day);
                 }
             }
-        }
-        else{
+        } else{
             $(".todayDate").html(yyyymmdd+""+day);
+            $('#img_box').prepend('<div class="cNull"><p>아직 강의실배정표가 없습니다.</p></div>');
+            $('#img_box1').prepend('<div class="cNull"><p>아직 강의실배정표가 없습니다.</p></div>');
             $("#oneRoom").remove();
             $("#twoRoom").remove();
         }
@@ -115,13 +131,52 @@
                 if(data.resultCode == 200){
                     var lectureDate = getInputTextValue("yyyymmdd");
                     var fileName = data.keyValue;
+                    console.log(lectureDate+"/"+fileName+"/"+academyNumber);
                     var result = saveLectureRoomTabel(academyNumber, lectureDate, fileName);
                     if(result.resultCode == 200){
                         alert("성공적으로 등록 완료되었습니다");
+                        if(academyNumber == 1)  $("#uploadModal").hide();
+                        else $("#uploadModal1").hide();
                     }
                 }
             }
         });
+    }
+
+    function upLoadPop(){
+        var uModal = $('#uploadModal');
+        var mClose = $('.btn_modalClose');
+        /* modal */
+        uModal.css('display','block');
+        mClose.click(function(){
+            $('.file-text').val('');
+            uModal.css('display','none');
+        });
+    }
+
+    function upLoadPop1() {
+        var uModal = $('#uploadModal1');
+        var mClose = $('.btn_modalClose');
+        /* modal */
+        uModal.css('display','block');
+        mClose.click(function(){
+            $('.file-text').val('');
+            uModal.css('display','none');
+        });
+    }
+
+    function upLoadPop2(){
+        var uModal = $('#uploadModal2');
+        var mClose = $('.btn_modalClose');
+        /* modal */
+        uModal.css('display','block');
+        mClose.click(function(){
+            var $this = $('#uploadModal2 table tr td a');
+            $this.parent().parent().remove();
+            $('.file-text').val('');
+            uModal.css('display','none');
+        });
+
     }
 </script>
 <style>
@@ -140,39 +195,25 @@
         <!--본문-->
         <div id="container">
             <div class="inner">
-                <!--서브 컨텐츠-->
                 <%@include file="/common/jsp/noticeHeader.jsp" %>
                 <div class="calendarWrap">
                     <p>날짜를 선택하시면 강의실배정표를 확인하실 수 있습니다.</p>
-                    <div class="">
+                    <div class="calendarTable">
                         <div id="calendar"></div>
                     </div>
-                    <div id="tableBox">
-                        <table>
-                            <tr>
-                                <th scope="row">[1관] <span class="todayDate"></span> 강의실배정표 입니다.</th>
-                                <td class="">
-                                    <input type="file" id="attachFile" class="fileBtn noline nobg" onchange="fileInfo(this, 1)">
-                                    <input type="button" value="등록" onclick="saveLecRoom(1);">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><div id="img_box"></div><td>
-                            <tr>
-                            <tr>
-                                <th scope="row">[2관] <span class="todayDate"></span> 강의실배정표 입니다.</th>
-                                <td class="">
-                                    <input type="file" id="attachFile1" class="fileBtn noline nobg" onchange="fileInfo(this, 2)">
-                                    <input type="button" value="등록" onclick="saveLecRoom(2);">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><div id="img_box1"></div><td>
-                            <tr>
-                        </table>
+                </div>
+                <div class="calendarInfo">
+                    <div class="branch01 cCom">
+                        <p>[1관] <span><b><span class="todayDate"></span></b> 강의실배정표입니다.</span></p>
+                        <a href="javascript:upLoadPop()"><img src="/common/zian/images/common/t_upload.jpg" alt=""></a>
+                        <div id="img_box"></div>
+                    </div>
+                    <div class="branch02 cCom">
+                        <p>[2관] <span><b><span class="todayDate"></span></b> 강의실배정표입니다.</span></p>
+                        <a href="javascript:upLoadPop1()"><img src="/common/zian/images/common/t_upload.jpg" alt=""></a>
+                        <div id="img_box1"></div>
                     </div>
                 </div>
-                <!--//서브 컨텐츠-->
             </div>
         </div>
         <!--//본문-->
@@ -186,18 +227,59 @@
         <%@include file="/common/jsp/footerBanner.jsp" %>
         <!--//하단고정식배너-->
     </div>
+    <!-- 안내 모달창 -->
+    <div id="uploadModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="mTit">
+                <h2>시간표 업로드</h2>
+                <!-- <a href="javascript:" class="btn_modalClose">닫기</a>-->
+            </div>
+            <div class="mCont">
+                <div class="ta_center">
+                    <div class="box">
+                        <span class="filetype">
+                            <input type="text" class="file-text" disabled>
+                            <span class="file-btn">찾아보기</span>
+                            <span class="file-select"><input type="file" id="attachFile" class="input-file" size="3" onchange="fileInfo(this, 1)"></span>
+                        </span>
+                    </div>
+                </div>
+                <div class="btnArea">
+                    <a href="javascript:" class="btn_m gray radius w110 btn_modalClose">취소</a> &nbsp;&nbsp;&nbsp;
+                    <a href="javascript:" class="btn_m blue radius w110" onclick="saveLecRoom(1);">등록</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //안내 모달창 -->
+    <!-- 안내 모달창 -->
+    <div id="uploadModal1" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="mTit">
+                <h2>시간표 업로드</h2>
+                <!-- <a href="javascript:" class="btn_modalClose">닫기</a>-->
+            </div>
+            <div class="mCont">
+                <div class="ta_center">
+                    <div class="box">
+                        <span class="filetype">
+                            <input type="text" class="file-text" disabled>
+                            <span class="file-btn">찾아보기</span>
+                            <span class="file-select"><input type="file" id="attachFile1" class="input-file" size="3" onchange="fileInfo(this, 2)"></span>
+                        </span>
+                    </div>
+                </div>
+                <div class="btnArea">
+                    <a href="javascript:" class="btn_m gray radius w110 btn_modalClose">취소</a> &nbsp;&nbsp;&nbsp;
+                    <a href="javascript:" class="btn_m blue radius w110" onclick="saveLecRoom(2);">등록</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //안내 모달창 -->
     <div id="overlay"></div>
 </form>
 </body>
 </html>
-<script>
-    // $(document).ready(function() {
-    //     $('.fc-prev-button').click(function(){
-    //
-    //     });
-    //
-    //     $('.fc-next-button').click(function(){
-    //         alert('nextis clicked, do something');
-    //     });
-    // });
-</script>
