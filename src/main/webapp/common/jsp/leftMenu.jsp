@@ -122,7 +122,11 @@
         //getExamScheduleList("dDayBanner"); //d-day 슬라이드 배너
     });
 
-
+    function goLecRoom() {
+        sessionStorage.setItem("noticeHeader", "lectureRoom");
+        $("#noticeMenu li:eq(2)").addClass('active');
+        goPageNoSubmit('notice', 'lecRoom');
+    }
 
 </script>
 <div id="skipLink">
@@ -148,7 +152,7 @@
         <div id="quickNav">
             <b>바로가기메뉴</b>
             <ul>
-                <li class="noBg"><a href="#"><span class="icon item1"></span>강의실배정표</a></li>
+                <li class="noBg"><a href="javascript:goLecRoom();"><span class="icon item1"></span>강의실배정표</a></li>
                 <li class="noBg"><a href="#"><span class="icon item2"></span>학원시간표</a></li>
                 <li class="noBg"><a href="#"><span class="icon item3"></span>수험가이드</a></li>
                 <li><a href="#"><span class="icon item4"></span>내강의실</a></li>
