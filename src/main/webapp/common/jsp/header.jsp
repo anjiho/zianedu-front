@@ -8,36 +8,42 @@
             $("#logo").attr("src", "/common/zian/images/common/logo01.png");
             $("#mainUrl").attr("href", "javascript:goPage('publicOnline', 'main')");
             innerHTML("mainName", "온라인");
+            $("#mainName").css('color', '#134c97');
         }else if(leftMenuInfo == "publicAcademy") {
             $(".onlineTopMenu").hide();
             $(".acaTopMenu").show();
             $("#logo").attr("src", "/common/zian/images/common/logo01.png");
             $("#mainUrl").attr("href", "javascript:goPage('publicAcademy', 'main')");
             innerHTML("mainName", "학원");
+            $("#mainName").css('color', '#134c97');
         }else if(leftMenuInfo == "techOnline") {
             $(".onlineTopMenu").show();
             $(".acaTopMenu").hide();
             $("#logo").attr("src", "/common/zian/images/common/logo02.png");
             $("#mainUrl").attr("href", "javascript:goPage('techOnline', 'main')");
             innerHTML("mainName", "온라인");
+            $("#mainName").css('color', '#f69321');
         }else if(leftMenuInfo == "techAcademy") {
             $(".onlineTopMenu").hide();
             $(".acaTopMenu").show();
             $("#logo").attr("src", "/common/zian/images/common/logo02.png");
             $("#mainUrl").attr("href", "javascript:goPage('techAcademy', 'main')");
             innerHTML("mainName", "학원");
+            $("#mainName").css('color', '#f69321');
         }else if(leftMenuInfo == "postOnline") {
             $(".onlineTopMenu").show();
             $(".acaTopMenu").hide();
             $("#logo").attr("src", "/common/zian/images/common/logo03.png");
             $("#mainUrl").attr("href", "javascript:goPage('postOnline', 'main')");
             innerHTML("mainName", "온라인");
+            $("#mainName").css('color', '#ce1717');
         }else if(leftMenuInfo == "postAcademy") {
             $(".onlineTopMenu").hide();
             $(".acaTopMenu").show();
             $("#logo").attr("src", "/common/zian/images/common/logo03.png");
             $("#mainUrl").attr("href", "javascript:goPage('postAcademy', 'main')");
             innerHTML("mainName", "학원");
+            $("#mainName").css('color', '#ce1717');
         }
     });
 </script>
