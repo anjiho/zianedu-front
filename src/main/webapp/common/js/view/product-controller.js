@@ -171,11 +171,13 @@ function getLectureApplyTeacherTypeList(menuCtgKey, subjectMenuKeys, teacherKeys
                     var retrunHtml = "<div class=\"lectureWrap\">";
                     retrunHtml += "<ul class='lectureTotal'>";
                     retrunHtml += "<li class='left'>" + cmpList.subjectName + "</li>";
-                    retrunHtml += "<li class='right'>";
-                    retrunHtml += "선택한 항목<span class='colorRed'>0</span>개를&nbsp;";
-                    retrunHtml += "<a href=\"#\" class=\"btn_m\">장바구니 담기</a>&nbsp;";
-                    retrunHtml += "<a href=\"#\" class=\"btn_m on\">바로구매</a>";
-                    retrunHtml += "</li>";
+                    if(i == 0){
+                        retrunHtml += "<li class='right'>";
+                        retrunHtml += "선택한 항목<span class='colorRed'>0</span>개를&nbsp;";
+                        retrunHtml += "<a href=\"#\" class=\"btn_m\">장바구니 담기</a>&nbsp;";
+                        retrunHtml += "<a href=\"#\" class=\"btn_m on\">바로구매</a>";
+                        retrunHtml += "</li>";
+                    }
                     retrunHtml += "</ul>";
                     /*선생님 정보 뿌리기*/
                     if (cmpList.teacherTypeInfo != null) {
