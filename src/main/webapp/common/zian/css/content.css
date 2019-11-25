@@ -158,6 +158,7 @@
 .toggleWrap.active > .btn_toggle{background:url(/common/zian/images/common/icon_lecture_up.png) no-repeat center center;}
 .toggleWrap.active > .div_toggle{display:block;}
 
+
 .lectureWrap{margin-top:40px;border-top:1px #e5e5e5 solid;}
 .lectureTotal{padding:25px 30px;border-left:1px #e5e5e5 solid;border-right:1px #e5e5e5 solid;}
 .lectureTotal:after{display:block;content:'';clear:both;}
