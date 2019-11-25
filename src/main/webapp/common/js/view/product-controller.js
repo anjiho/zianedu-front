@@ -213,6 +213,20 @@ function getLectureApplyTeacherTypeList(menuCtgKey, stepCtgKey, goodsType) {
                                    var teacherLectureList = videoLectureInfo[k].teacherLectureList;
                                    for(var l = 0; l < teacherLectureList.length; l++){
                                        var teachLec = teacherLectureList[l];
+                                       console.log(teachLec);
+                                       /*
+                                       if (cmpList.stepCtgKey == 203) {
+                            returnHtml += '<span class="btn_learnType green">이론</span>';
+                        }else if(cmpList.stepCtgKey == 767){
+                            returnHtml += '<span class="btn_learnType purple">종합반</span>';
+                        }else if(cmpList.stepCtgKey == 205){
+                            returnHtml += '<span class="btn_learnType orange">문제풀이</span>';
+                        }else if(cmpList.stepCtgKey == 204){
+                            returnHtml += '<span class="btn_learnType blue">단과특강</span>';
+                        }else if(cmpList.stepCtgKey == 774){
+                            returnHtml += '<span class="btn_learnType navy">아침특강</span>';
+                        }
+                                        */
                                        retrunHtml += "<div class=\"lectureBody\">";
                                            retrunHtml += "<div class=\"lectureRow\">";
                                                retrunHtml += "<ul class=\"lectureList\">";
@@ -281,7 +295,6 @@ function getLectureApplyTeacherTypeList(menuCtgKey, stepCtgKey, goodsType) {
                                    }
                                }
                            }
-
                             retrunHtml += "</div>";
                            retrunHtml += "<div class=\"btn_toggle lock\"><a href=\"#\"></a></div>";
                            retrunHtml += "</div>";
@@ -291,9 +304,6 @@ function getLectureApplyTeacherTypeList(menuCtgKey, stepCtgKey, goodsType) {
                        }
                    }
                   /* //선생님 정보 뿌리기*/
-
-
-
                 retrunHtml += "</div>";
                    $("#resultList").append(retrunHtml);
             }
