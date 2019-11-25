@@ -307,14 +307,14 @@ function getLectureApplyTeacherTypeList(menuCtgKey, subjectMenuKeys, teacherKeys
                                         retrunHtml += "</tbody>";
                                         retrunHtml += "</table>";
                                         retrunHtml += "</div>";
-                                        retrunHtml += "<div class=\"btn_toggle lock\"><a href=\"#\"></a></div>";
                                         retrunHtml += "</div>";
+                                        retrunHtml += "<div class=\"btn_toggle lock\"><a href=\"#\"></a></div>";
                                         retrunHtml += "</div>";
                                     }
                                 }
                             }
                             retrunHtml += "</div>";
-                            retrunHtml += "<div class=' '><a href=\"#\"></a></div>";
+                            retrunHtml += "<div class='btn_toggle'><a href=\"#\"></a></div>";
                             retrunHtml += "</div>";
                             retrunHtml += "</div>";
                             retrunHtml += "</div>";
