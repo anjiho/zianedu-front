@@ -1,7 +1,20 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/jsp/common.jsp" %>
 <script>
+    $( document ).ready(function() {
+        $("#selDivision li a:eq(1)").addClass('active');
+        var menuCtgKey = getLecOrderCtgKey(); // 직렬별 ctgkey 가져오기
+        var menuTypeStr = getOnlineAcaType();
+        if(menuCtgKey != ''){
+            getLectureApplySubjectList(menuCtgKey); //과목 리스트 불러오기
+            getLectureApplyTeacherList(menuCtgKey, menuTypeStr);
+        }
+    });
 
+    //과목 클릭 했을때
+    function test(ctgKey) {
+
+    }
 </script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
@@ -19,51 +32,25 @@
                     <dl>
                         <dt>분류</dt>
                         <dd>
-                            <ul>
-                                <li><a href="#" class="chk">전체</a></li>
-                                <li><a href="#" class="chk">공통</a></li>
-                                <li><a href="#" class="chk">전공</a></li>
-                                <li><a href="#" class="chk">패키지</a></li>
+                            <ul id="selDivision">
+                                <li><a href="javascript:goPage('lectureOrder','single')" class="chk">단과</a></li>
+                                <li><a href="" class="chk">패키지</a></li>
                             </ul>
                         </dd>
                     </dl>
                     <dl>
                         <dt>과목</dt>
                         <dd>
-                            <ul>
+                            <ul id="subject">
                                 <li><a href="#" class="chk">전체</a></li>
-                                <li><a href="#" class="chk">국어</a></li>
-                                <li><a href="#" class="chk">영어</a></li>
-                                <li><a href="#" class="chk">한국사</a></li>
-                                <li><a href="#" class="chk">사회</a></li>
-                                <li><a href="#" class="chk">경영학</a></li>
-                                <li><a href="#" class="chk">행정법</a></li>
-                                <li><a href="#" class="chk">행정학</a></li>
-                                <li><a href="#" class="chk">면접</a></li>
                             </ul>
                         </dd>
                     </dl>
                     <dl>
                         <dt>교수</dt>
                         <dd>
-                            <ul>
+                            <ul id="teacher">
                                 <li><a href="#" class="chk">전체</a></li>
-                                <li><a href="#" class="chk">윤서영</a></li>
-                                <li><a href="#" class="chk">오선희</a></li>
-                                <li><a href="#" class="chk">안효선</a></li>
-                                <li><a href="#" class="chk">김성익</a></li>
-                                <li><a href="#" class="chk">윤광덕</a></li>
-                                <li><a href="#" class="chk">조재권</a></li>
-                                <li><a href="#" class="chk">임찬호</a></li>
-                                <li><a href="#" class="chk">김준호</a></li>
-                                <li><a href="#" class="chk">함보연</a></li>
-                                <li><a href="#" class="chk">이동훈</a></li>
-                                <li><a href="#" class="chk">박병호</a></li>
-                                <li><a href="#" class="chk">정다훈</a></li>
-                                <li><a href="#" class="chk">조대진</a></li>
-                                <li><a href="#" class="chk">천정운</a></li>
-                                <li><a href="#" class="chk">염오봉</a></li>
-                                <li><a href="#" class="chk">오재우</a></li>
                             </ul>
                         </dd>
                     </dl>

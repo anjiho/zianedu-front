@@ -94,14 +94,15 @@ for (j = 0; j < check_Box.length; j++) {
 /* 수강신청 > 선택 및 해제 그리고 전체해제 */
 
 $(document).ready(function(){
-
-  $(".chk").click(function(){
-  $(this).toggleClass("active");
-});
-
     $('#uncheck').off('click').on('click', function() {
-      $('.chk').each(function () {
-          $(this).removeClass('active');
+        $("#subject li a").each(function () {
+            $(this).removeClass('active');
+        });
+        $("#teacher li a").each(function () {
+            $(this).removeClass('active');
+        });
+        $("#type li a").each(function () {
+            $(this).removeClass('active');
         });
     });
 });

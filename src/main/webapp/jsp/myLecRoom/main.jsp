@@ -11,7 +11,6 @@
             $("#playSubject li:eq(0)").addClass('active');
             $("#playSubject li").click(function () { // 과목메뉴 클릭시 class active 기능
                 $(this).addClass('active').siblings().removeClass('active');
-
             });
             $("#playType li:eq(0)").addClass('active');
             $("#playType li").click(function () {
