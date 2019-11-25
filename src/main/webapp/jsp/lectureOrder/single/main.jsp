@@ -6,6 +6,7 @@
         $("#subject li a:eq(0)").addClass('active'); //전체로 default
         $("#teacher li a:eq(0)").addClass('active');
         $("#type li a:eq(0)").addClass('active');
+
         var menuCtgKey = getLecOrderCtgKey(); // 직렬별 ctgkey 가져오기
 
         var goodsType = getOnlineAcaType();
@@ -26,6 +27,11 @@
             $(this).toggleClass("active");
         });
 
+        innerHTML("selCount", 0);
+        $("input[name=lecChk]").click(function(index){//체크박스 카운트 처리
+            var count = $("input[name=lecChk]:checkbox:checked").length;
+            innerHTML("selCount", count);
+        });
 
     });
 
@@ -36,6 +42,21 @@
     
     function search() {
         
+    }
+
+    //체크박스 장바구니 담기
+    function goCheckedShopBasket() {
+        var arr = new Array();
+        $('input[name=lecChk]:checked').each(function() {
+            var priceKey = $(this).attr('id');
+            var gkey = $(this).val();
+            var data = {
+                gkey : gkey,
+                priceKey : priceKey
+            };
+            arr.push(data);
+        });
+        console.log(arr);
     }
 </script>
 <form name="frm" method="get">
