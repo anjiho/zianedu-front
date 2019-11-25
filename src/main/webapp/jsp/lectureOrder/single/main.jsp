@@ -22,9 +22,11 @@
         });
         $("#teacher li a").click(function () {
             $(this).toggleClass("active");
+            $("#teacher li a:eq(0)").removeClass('active');
         });
         $("#type li a").click(function () {
             $(this).toggleClass("active");
+            $("#type li a:eq(0)").removeClass('active');
         });
 
         innerHTML("selCount", 0);
