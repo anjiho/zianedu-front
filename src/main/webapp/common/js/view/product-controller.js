@@ -223,52 +223,52 @@ function getLectureApplyTeacherTypeList(menuCtgKey, subjectMenuKeys, teacherKeys
 
                                         retrunHtml += "<div class=\"lectureBody\">";
                                         retrunHtml += "<div class=\"lectureRow\">";
-                                        retrunHtml += "<ul class=\"lectureList\">";
-                                        retrunHtml += "<li class=\"w15p\">";
-                                        retrunHtml += "<span class=\"btn_learnType " + color + "\">" + teachLec.ctgName + "</span>";
-                                        retrunHtml += "</li>";
-                                        retrunHtml += "<li class=\"w40p\">";
-                                        retrunHtml += "<a href=\"#\" class=\"learnName\">" + teachLec.goodsName + "</a>";
-                                        retrunHtml += "<span class=\"learnNum\">강의수 <b class=\"colorBlue\">" + teachLec.lecCount + "강</b> | 수강일수 <b class=\"colorBlue\">" + teachLec.limitDay + "일</b></span>";
-                                        retrunHtml += "<span class=\"learnView\">샘플보기 <a href=\"#\" class=\"btn_s btn_quality\">일반화질</a> <a href=\"#\" class=\"btn_s btn_quality on\">고화질</a></span>";
-                                        retrunHtml += "</li>";
-                                        retrunHtml += "<li class=\"w40p ta_right\">";
-                                        retrunHtml += "<ul class=\"costList\">";
+                                            retrunHtml += "<ul class=\"lectureList\">";
+                                            retrunHtml += "<li class=\"w15p\">";
+                                            retrunHtml += "<span class=\"btn_learnType " + color + "\">" + teachLec.ctgName + "</span>";
+                                            retrunHtml += "</li>";
+                                            retrunHtml += "<li class=\"w40p\">";
+                                            retrunHtml += "<a href=\"#\" class=\"learnName\">" + teachLec.goodsName + "</a>";
+                                            retrunHtml += "<span class=\"learnNum\">강의수 <b class=\"colorBlue\">" + teachLec.lecCount + "강</b> | 수강일수 <b class=\"colorBlue\">" + teachLec.limitDay + "일</b></span>";
+                                            retrunHtml += "<span class=\"learnView\">샘플보기 <a href=\"#\" class=\"btn_s btn_quality\">일반화질</a> <a href=\"#\" class=\"btn_s btn_quality on\">고화질</a></span>";
+                                            retrunHtml += "</li>";
+                                            retrunHtml += "<li class=\"w40p ta_right\">";
+                                            retrunHtml += "<ul class=\"costList\">";
 
-                                                for(var p = 0; p < teachLec.videoLectureKindList.length; p++){
-                                                    var kindInfo = teachLec.videoLectureKindList[p];
-                                                    if(kindInfo.kind == 100){
+                                                    for(var p = 0; p < teachLec.videoLectureKindList.length; p++){
+                                                        var kindInfo = teachLec.videoLectureKindList[p];
+                                                        if(kindInfo.kind == 100){
+                                                                retrunHtml += "<li>";
+                                                                if(kindInfo.discountPercent != null){
+                                                                    retrunHtml += "<span class=\"colorRed\">" + kindInfo.discountPercent + "</span>";
+                                                                }
+                                                                retrunHtml += "<span class=\"btn_ss btn_divTag\">PC</span>";
+                                                                retrunHtml += "<b class=\"cost\">" + teachLec.pcSellPriceName + "</b> <input type=\"checkbox\" name=\"\" value=\"\">";
+                                                                retrunHtml += "<a href=\"#\" class=\"btn_s\">장바구니</a>&nbsp;";
+                                                                retrunHtml += "<a href=\"#\" class=\"btn_s on\">바로구매</a>";
+                                                                retrunHtml += "</li>";
+                                                        }else if(kindInfo.kind == 101){
+                                                                retrunHtml += "<li>";
+                                                                if(kindInfo.discountPercent != null) {
+                                                                    retrunHtml += "<span class=\"colorRed\">" + kindInfo.discountPercent + "</span>";
+                                                                }
+                                                                retrunHtml += "<span class=\"btn_ss btn_divTag\">모바일</span>";
+                                                                retrunHtml += "<b class=\"cost\">" + teachLec.mobileSellPriceName + "</b> <input type=\"checkbox\" name=\"\" value=\"\">";
+                                                                retrunHtml += "<a href=\"#\" class=\"btn_s\">장바구니</a>&nbsp;";
+                                                                retrunHtml += "<a href=\"#\" class=\"btn_s on\">바로구매</a>";
+                                                                retrunHtml += "</li>";
+                                                        }else{
                                                             retrunHtml += "<li>";
-                                                            if(kindInfo.discountPercent != null){
-                                                                retrunHtml += "<span class=\"colorRed\">" + kindInfo.discountPercent + "</span>";
-                                                            }
-                                                            retrunHtml += "<span class=\"btn_ss btn_divTag\">PC</span>";
-                                                            retrunHtml += "<b class=\"cost\">" + teachLec.pcSellPriceName + "</b> <input type=\"checkbox\" name=\"\" value=\"\">";
+                                                            retrunHtml += "<span class=\"btn_ss btn_divTag\">PC</span> <span class=\"btn_ss btn_divTag\">모바일</span>";
+                                                            retrunHtml += "<b class=\"cost\">" + teachLec.pcMobileSellPriceName + "</b> <input type=\"checkbox\" name=\"\" value=\"\">";
                                                             retrunHtml += "<a href=\"#\" class=\"btn_s\">장바구니</a>&nbsp;";
                                                             retrunHtml += "<a href=\"#\" class=\"btn_s on\">바로구매</a>";
                                                             retrunHtml += "</li>";
-                                                    }else if(kindInfo.kind == 101){
-                                                            retrunHtml += "<li>";
-                                                            if(kindInfo.discountPercent != null) {
-                                                                retrunHtml += "<span class=\"colorRed\">" + kindInfo.discountPercent + "</span>";
-                                                            }
-                                                            retrunHtml += "<span class=\"btn_ss btn_divTag\">모바일</span>";
-                                                            retrunHtml += "<b class=\"cost\">" + teachLec.mobileSellPriceName + "</b> <input type=\"checkbox\" name=\"\" value=\"\">";
-                                                            retrunHtml += "<a href=\"#\" class=\"btn_s\">장바구니</a>&nbsp;";
-                                                            retrunHtml += "<a href=\"#\" class=\"btn_s on\">바로구매</a>";
-                                                            retrunHtml += "</li>";
-                                                    }else{
-                                                        retrunHtml += "<li>";
-                                                        retrunHtml += "<span class=\"btn_ss btn_divTag\">PC</span> <span class=\"btn_ss btn_divTag\">모바일</span>";
-                                                        retrunHtml += "<b class=\"cost\">" + teachLec.pcMobileSellPriceName + "</b> <input type=\"checkbox\" name=\"\" value=\"\">";
-                                                        retrunHtml += "<a href=\"#\" class=\"btn_s\">장바구니</a>&nbsp;";
-                                                        retrunHtml += "<a href=\"#\" class=\"btn_s on\">바로구매</a>";
-                                                        retrunHtml += "</li>";
+                                                        }
                                                     }
-                                                }
-                                        retrunHtml += "</ul>";
-                                        retrunHtml += "</li>";
-                                        retrunHtml += "</ul>";
+                                                        retrunHtml += "</ul>";
+                                                    retrunHtml += "</li>";
+                                             retrunHtml += "</ul>";
                                         retrunHtml += "<div class=\"tableBox\">";
                                         retrunHtml += "<table class=\"lecture\">";
                                         retrunHtml += "<colgroup>";
