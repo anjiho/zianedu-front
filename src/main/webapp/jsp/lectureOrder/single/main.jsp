@@ -7,15 +7,17 @@
         $("#teacher li a:eq(0)").addClass('active');
         $("#type li a:eq(0)").addClass('active');
         var menuCtgKey = getLecOrderCtgKey(); // 직렬별 ctgkey 가져오기
+
         var goodsType = getOnlineAcaType();
         if(menuCtgKey != ''){
             getLectureApplySubjectList(menuCtgKey); //과목 리스트 불러오기
             getLectureApplyTeacherList(menuCtgKey, goodsType); //교수 리스트 불러오기
-            getLectureApplyTeacherTypeList(menuCtgKey, 0, goodsType);
+            getLectureApplyTeacherTypeList(menuCtgKey, "", "", "", goodsType); //강의정보 불러오기
         }
 
         $("#subject li a").click(function () {
             $(this).toggleClass("active");
+            $("#subject li a:eq(0)").removeClass('active');
         });
         $("#teacher li a").click(function () {
             $(this).toggleClass("active");
@@ -23,6 +25,8 @@
         $("#type li a").click(function () {
             $(this).toggleClass("active");
         });
+
+
     });
 
     //과목 클릭 했을때
