@@ -346,6 +346,91 @@ function getLectureApplyTeacherTypeList(menuCtgKey, subjectMenuKeys, teacherKeys
 }
 
 
+function getLectureAcademyTeacherList(menuCtgKey, subjectMenuKeys, teacherKeys, stepCtgKeys, goodsType) {
+    if (menuCtgKey == null || menuCtgKey == undefined) return;
+    var data = {
+        subjectMenuKeys : subjectMenuKeys,
+        teacherKeys : teacherKeys,
+        stepCtgKeys: stepCtgKeys,
+        goodsType : goodsType
+    };
+    var infoList = getApi("/product/getLectureApplyTeacherTypeList/", menuCtgKey, data);
+    if (infoList != null) {
+        if (infoList.result.length > 0) {
+            var selList = infoList.result;
+            for (var i = 0; i < selList.length; i++) {
+                var cmpList = selList[i];
+                console.log(cmpList);
+                var retrunHtml = "<div class=\"lectureWrap\">";
+                retrunHtml += "<ul class='lectureTotal'>";
+                retrunHtml += "<li class='left'>" + cmpList.subjectName + "</li>";
+                if(i == 0){
+                    retrunHtml += "<li class='right'>";
+                    retrunHtml += "선택한 항목<span class='colorRed' id='selCount'></span>개를&nbsp;";
+                    retrunHtml += "<a href='javascript:goCheckedShopBasket();' class=\"btn_m\">장바구니 담기</a>&nbsp;";
+                    retrunHtml += "<a href=\"#\" class=\"btn_m on\">바로구매</a>";
+                    retrunHtml += "</li>";
+                }
+                retrunHtml += "</ul>";
+
+                if(cmpList.academyLectureInfo != null){
+                    for(var j = 0; j < cmpList.academyLectureInfo.length; j++){
+                        retrunHtml += "<div class=\"teacherBody\">";
+                        retrunHtml += "<div class=\"teacherRow\">";
+                        retrunHtml += "<ul class=\"teacherList\">";
+                            retrunHtml += "<li><span class=\"thumb\" style='height: 0px'>"+ cmpList.academyLectureInfo[j].ctgName +"</span></li>";
+                            retrunHtml += "<li style='width: 70%'><b>" + cmpList.academyLectureInfo[j].goodsName + "</b></li>";
+                            retrunHtml += "<li>"+ cmpList.academyLectureInfo[j].month +"<input type=\"checkbox\" name='lecChk' id='"+ cmpList.academyLectureInfo[j].priceKey +"' value='"+ cmpList.academyLectureInfo[j].gkey +"'></li>";
+                        retrunHtml += "</ul>";//teacherList
+
+                            var teacherInfo  = cmpList.academyLectureInfo[j].teacherInfoList;
+
+                            retrunHtml += "<div class=\"toggleWrap\">";
+                            retrunHtml += "<div class=\"div_toggle\">";
+                                retrunHtml += "<ul class=\"lectureHead\">";
+                                for(var l = 0; l < teacherInfo.length; l++){
+                                    retrunHtml += "<li class=\"thumb\"><img src='"+ teacherInfo[l].teacherImageUrl +"' style='width: auto'>"+ teacherInfo[l].teacherName +"</li>";
+                                }
+                                retrunHtml += "</ul>";//lectureHead
+
+                            retrunHtml += "<div class=\"lectureBody\">";
+                            retrunHtml += "<div class=\"lectureRow\">";
+                            retrunHtml += "<div class=\"lectureList\">";
+                            //for(var k = 0; k < teacherInfo.length; k++){
+                                retrunHtml += "<img src='"+ cmpList.academyLectureInfo[j].imageView +"'  style='width: 100%'>";
+                            //}
+                            retrunHtml += "</div>";
+                            retrunHtml += "<div class=\"tableBox\">";
+                            retrunHtml += "</div>";
+                            retrunHtml += "</div>";
+                            retrunHtml += "</div>";
+
+                            retrunHtml += "</div>";//toggleWrap
+                            retrunHtml += "<div class='btn_toggle'><a href=\"#\"></a></div>";
+                            retrunHtml += "</div>";//div_toggle
+
+
+                        retrunHtml += "</div>";//teacherBody
+                        retrunHtml += "</div>";//teacherRow
+                    }
+                }
+
+                retrunHtml += "</div>";//lectureWrap
+                $("#resultList").append(retrunHtml);
+            }
+        }
+    }
+    $(".toggleWrap > .btn_toggle").click(function(){
+        if($(this).parent().hasClass("active")){
+            $(this).parent().removeClass("active");
+        }else{
+            $(this).parent().addClass("active");
+        }
+    });
+}
+
+
+
 function getLecOrderCtgKey() {
     var menuCtgKey = '';
     var leftMenuInfo = sessionStorage.getItem('leftMenu');//직렬 구분
