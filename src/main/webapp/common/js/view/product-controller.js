@@ -124,9 +124,12 @@ function getLectureList(gKey, device) {
 }
 
 //수강신청(온라인) > 단과 > 과목리스트
-function getLectureApplySubjectList(menuCtgKey) {
+function getLectureApplySubjectList(menuCtgKey, goodsType) {
     if (menuCtgKey == null || menuCtgKey == undefined) return;
-    var infoList = getApi("/product/getLectureApplySubjectList/", menuCtgKey, "");
+    var data = {
+        goodsType : goodsType
+    }
+    var infoList = getApi("/product/getLectureApplySubjectList/", menuCtgKey, data);
 
     var selList = infoList.result;
 
@@ -173,8 +176,8 @@ function getLectureApplyTeacherTypeList(menuCtgKey, subjectMenuKeys, teacherKeys
                     retrunHtml += "<li class='left'>" + cmpList.subjectName + "</li>";
                     if(i == 0){
                         retrunHtml += "<li class='right'>";
-                        retrunHtml += "선택한 항목<span class='colorRed'>0</span>개를&nbsp;";
-                        retrunHtml += "<a href=\"#\" class=\"btn_m\">장바구니 담기</a>&nbsp;";
+                        retrunHtml += "선택한 항목<span class='colorRed' id='selCount'></span>개를&nbsp;";
+                        retrunHtml += "<a href='javascript:goCheckedShopBasket();' class=\"btn_m\">장바구니 담기</a>&nbsp;";
                         retrunHtml += "<a href=\"#\" class=\"btn_m on\">바로구매</a>";
                         retrunHtml += "</li>";
                     }
@@ -240,29 +243,33 @@ function getLectureApplyTeacherTypeList(menuCtgKey, subjectMenuKeys, teacherKeys
                                                     for(var p = 0; p < teachLec.videoLectureKindList.length; p++){
                                                         var kindInfo = teachLec.videoLectureKindList[p];
                                                         if(kindInfo.kind == 100){
+                                                            console.log(kindInfo.priceKey);
                                                                 retrunHtml += "<li>";
-                                                                if(kindInfo.discountPercent != null){
-                                                                    retrunHtml += "<span class=\"colorRed\">" + kindInfo.discountPercent + "</span>";
+                                                                if(kindInfo.pcDiscountPercent != null){
+                                                                    retrunHtml += "<span class=\"colorRed\">" + kindInfo.pcDiscountPercent + "</span>";
                                                                 }
                                                                 retrunHtml += "<span class=\"btn_ss btn_divTag\">PC</span>";
-                                                                retrunHtml += "<b class=\"cost\">" + teachLec.pcSellPriceName + "</b> <input type=\"checkbox\" name=\"\" value=\"\">";
+                                                                retrunHtml += "<b class=\"cost\">" + teachLec.pcSellPriceName + "</b> <input type=\"checkbox\" name='lecChk' id='"+ kindInfo.priceKey +"' value='"+ kindInfo.gkey +"'>";
                                                                 //retrunHtml += "<a href=\"#\" class=\"btn_s\">장바구니</a>&nbsp;";
                                                                 //retrunHtml += "<a href=\"#\" class=\"btn_s on\">바로구매</a>";
                                                                 retrunHtml += "</li>";
                                                         }else if(kindInfo.kind == 101){
                                                                 retrunHtml += "<li>";
-                                                                if(kindInfo.discountPercent != null) {
-                                                                    retrunHtml += "<span class=\"colorRed\">" + kindInfo.discountPercent + "</span>";
+                                                                if(kindInfo.mobileDiscountPercent != null) {
+                                                                    retrunHtml += "<span class=\"colorRed\">" + kindInfo.mobileDiscountPercent + "</span>";
                                                                 }
                                                                 retrunHtml += "<span class=\"btn_ss btn_divTag\">모바일</span>";
-                                                                retrunHtml += "<b class=\"cost\">" + teachLec.mobileSellPriceName + "</b> <input type=\"checkbox\" name=\"\" value=\"\">";
+                                                                retrunHtml += "<b class=\"cost\">" + teachLec.mobileSellPriceName + "</b> <input type=\"checkbox\" name='lecChk' id='"+ kindInfo.priceKey +"' value='"+ kindInfo.gkey +"'>";
                                                                 //retrunHtml += "<a href=\"#\" class=\"btn_s\">장바구니</a>&nbsp;";
                                                                 //retrunHtml += "<a href=\"#\" class=\"btn_s on\">바로구매</a>";
                                                                 retrunHtml += "</li>";
                                                         }else{
                                                             retrunHtml += "<li>";
+                                                            if(kindInfo.pcMobileDiscountPercent != null) {
+                                                                retrunHtml += "<span class=\"colorRed\">" + kindInfo.pcMobileDiscountPercent + "</span>";
+                                                            }
                                                             retrunHtml += "<span class=\"btn_ss btn_divTag\">PC</span> <span class=\"btn_ss btn_divTag\">모바일</span>";
-                                                            retrunHtml += "<b class=\"cost\">" + teachLec.pcMobileSellPriceName + "</b> <input type=\"checkbox\" name=\"\" value=\"\">";
+                                                            retrunHtml += "<b class=\"cost\">" + teachLec.pcMobileSellPriceName + "</b> <input type=\"checkbox\" name='lecChk' id='"+ kindInfo.priceKey +"' value='"+ kindInfo.gkey +"'>";
                                                             //retrunHtml += "<a href=\"#\" class=\"btn_s\">장바구니</a>&nbsp;";
                                                             //retrunHtml += "<a href=\"#\" class=\"btn_s on\">바로구매</a>";
                                                             retrunHtml += "</li>";

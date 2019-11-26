@@ -6,11 +6,12 @@
         $("#subject li a:eq(0)").addClass('active'); //전체로 default
         $("#teacher li a:eq(0)").addClass('active');
         $("#type li a:eq(0)").addClass('active');
+
         var menuCtgKey = getLecOrderCtgKey(); // 직렬별 ctgkey 가져오기
 
         var goodsType = getOnlineAcaType();
-        if(menuCtgKey != ''){
-            getLectureApplySubjectList(menuCtgKey); //과목 리스트 불러오기
+        if(menuCtgKey != '') {
+            getLectureApplySubjectList(menuCtgKey, goodsType); //과목 리스트 불러오기
             getLectureApplyTeacherList(menuCtgKey, goodsType); //교수 리스트 불러오기
             getLectureApplyTeacherTypeList(menuCtgKey, "", "", "", goodsType); //강의정보 불러오기
         }
@@ -21,21 +22,42 @@
         });
         $("#teacher li a").click(function () {
             $(this).toggleClass("active");
+            $("#teacher li a:eq(0)").removeClass('active');
         });
         $("#type li a").click(function () {
             $(this).toggleClass("active");
+            $("#type li a:eq(0)").removeClass('active');
         });
 
-
+        innerHTML("selCount", 0);
+        $("input[name=lecChk]").click(function(index){//체크박스 카운트 처리
+            var count = $("input[name=lecChk]:checkbox:checked").length;
+            innerHTML("selCount", count);
+        });
     });
 
     //과목 클릭 했을때
     function test(ctgKey) {
 
     }
-    
+
     function search() {
-        
+
+    }
+
+    //체크박스 장바구니 담기
+    function goCheckedShopBasket() {
+        var arr = new Array();
+        $('input[name=lecChk]:checked').each(function() {
+            var priceKey = $(this).attr('id');
+            var gkey = $(this).val();
+            var data = {
+                gkey : gkey,
+                priceKey : priceKey
+            };
+            arr.push(data);
+        });
+        console.log(arr);
     }
 </script>
 <form name="frm" method="get">
@@ -64,7 +86,7 @@
                         <dt>과목</dt>
                         <dd>
                             <ul id="subject">
-                                    <li><a href="javascript:void(0);">전체</a></li>
+                                <li><a href="javascript:void(0);">전체</a></li>
                             </ul>
                         </dd>
                     </dl>
@@ -72,7 +94,7 @@
                         <dt>교수</dt>
                         <dd>
                             <ul id="teacher">
-                                     <li><a href="javascript:void(0);">전체</a></li>
+                                <li><a href="javascript:void(0);">전체</a></li>
                             </ul>
                         </dd>
                     </dl>
@@ -94,10 +116,10 @@
                         <a href="#" class="btn_m btn_release" id="uncheck">전체해제</a>
                     </div>
                 </div>
-               <!--검색결과 리스트-->
+                <!--검색결과 리스트-->
                 <div id="resultList">
                 </div>
-               <!--//검색결과 리스트-->
+                <!--//검색결과 리스트-->
             </div>
         </div>
         <!--//본문-->

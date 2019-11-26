@@ -73,7 +73,7 @@
             <ul class="deaph1 cols7">
                 <li><a href="javascript:goPage('myLecRoom', 'main')">내강의실</a></li>
                 <li><a href="javascript:goPage('teacher', 'main')">교수소개</a></li>
-                <li><a href="javascript:goPage('lectureOrder', 'single')">학원수강신청</a></li>
+                <li><a href="javascript:goPage('lectureOrder', 'academy')">학원수강신청</a></li>
                 <li><a href="#">연간관리반</a></li>
                 <li><a href="#">무료강좌</a></li>
                 <li><a href="#">빅모의고사</a></li>
