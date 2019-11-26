@@ -129,6 +129,7 @@ function getLectureApplySubjectList(menuCtgKey) {
     var infoList = getApi("/product/getLectureApplySubjectList/", menuCtgKey, "");
 
     var selList = infoList.result;
+
     if(selList.length > 0){
         dwr.util.addOptions('subject', selList, function (data) {
             return "<a href='javascript:test("+ data.ctgKey +");'>"+ data.name +"</a>"
@@ -143,7 +144,6 @@ function getLectureApplyTeacherList(menuCtgKey, goodsType) {
         goodsType : goodsType
     };
     var infoList = getApi("/product/getLectureApplyTeacherList/", menuCtgKey, data);
-
     var selList = infoList.result;
     if(selList.length > 0){
         dwr.util.addOptions('teacher', selList, function (data) {
