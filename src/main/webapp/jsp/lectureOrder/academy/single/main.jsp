@@ -12,7 +12,7 @@
         if(menuCtgKey != '') {
             getLectureApplySubjectList(menuCtgKey, goodsType); //과목 리스트 불러오기
             getLectureApplyTeacherList(menuCtgKey, goodsType); //교수 리스트 불러오기
-            getLectureApplyTeacherTypeList(menuCtgKey, "", "", "", goodsType); //강의정보 불러오기
+            getLectureAcademyTeacherList(menuCtgKey, "", "", "", goodsType); //강의정보 불러오기
         }
 
         $("#subject li a").click(function () {
