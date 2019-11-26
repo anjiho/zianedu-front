@@ -19,9 +19,12 @@ public class LecOrderController {
         page_gbn = Util.isNullValue(page_gbn, "");
 
         if ("package".equals(page_gbn)) {
-            mvc.setViewName("lectureOrder/package/main");
-        }else if("single".equals(page_gbn))
-            mvc.setViewName("lectureOrder/single/main");
+            mvc.setViewName("lectureOrder/online/package/main");
+        }else if("single".equals(page_gbn)) {
+            mvc.setViewName("lectureOrder/online/single/main");
+        }else if("academy".equals(page_gbn)){
+            mvc.setViewName("lectureOrder/academy/single/main");
+        }
         return mvc;
     }
 }

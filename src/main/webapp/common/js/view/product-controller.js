@@ -124,9 +124,12 @@ function getLectureList(gKey, device) {
 }
 
 //수강신청(온라인) > 단과 > 과목리스트
-function getLectureApplySubjectList(menuCtgKey) {
+function getLectureApplySubjectList(menuCtgKey, goodsType) {
     if (menuCtgKey == null || menuCtgKey == undefined) return;
-    var infoList = getApi("/product/getLectureApplySubjectList/", menuCtgKey, "");
+    var data = {
+        goodsType : goodsType
+    }
+    var infoList = getApi("/product/getLectureApplySubjectList/", menuCtgKey, data);
 
     var selList = infoList.result;
     if(selList.length > 0){
