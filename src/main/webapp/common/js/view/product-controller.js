@@ -170,6 +170,13 @@ function getLectureApplyTeacherTypeList(menuCtgKey, subjectMenuKeys, teacherKeys
         stepCtgKeys: stepCtgKeys,
         goodsType : goodsType
     };
+    console.log(data);
+    // var data = {
+    //     subjectMenuKeys : '["72"]',
+    //     teacherKeys : '["120"]',
+    //     stepCtgKeys: '["203"]',
+    //     goodsType : goodsType
+    // };
     var infoList = getApi("/product/getLectureApplyTeacherTypeList/", menuCtgKey, data);
 
     if (infoList != null) {
