@@ -1,6 +1,7 @@
 $.ajaxSetup({async: false});
 
-var apiHost = "http://52.79.40.214:9090";
+//var apiHost = "http://52.79.40.214:9090";
+var apiHost = "http://localhost:9090";
 
 /* post */
 function postApi(url, paramData) {

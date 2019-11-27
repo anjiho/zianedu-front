@@ -132,6 +132,7 @@ function getLectureApplySubjectList(menuCtgKey, goodsType) {
     var infoList = getApi("/product/getLectureApplySubjectList/", menuCtgKey, data);
 
     var selList = infoList.result;
+
     if(selList.length > 0){
         for(var i = 0; i< selList.length; i++){
             var returnHtml = "<li>";
@@ -149,7 +150,6 @@ function getLectureApplyTeacherList(menuCtgKey, goodsType) {
         goodsType : goodsType
     };
     var infoList = getApi("/product/getLectureApplyTeacherList/", menuCtgKey, data);
-
     var selList = infoList.result;
     if(selList.length > 0){
         for(var i = 0; i< selList.length;i++){
@@ -170,6 +170,13 @@ function getLectureApplyTeacherTypeList(menuCtgKey, subjectMenuKeys, teacherKeys
         stepCtgKeys: stepCtgKeys,
         goodsType : goodsType
     };
+    console.log(data);
+    // var data = {
+    //     subjectMenuKeys : '["72"]',
+    //     teacherKeys : '["120"]',
+    //     stepCtgKeys: '["203"]',
+    //     goodsType : goodsType
+    // };
     var infoList = getApi("/product/getLectureApplyTeacherTypeList/", menuCtgKey, data);
 
     if (infoList != null) {
