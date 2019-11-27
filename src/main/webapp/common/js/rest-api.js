@@ -16,10 +16,15 @@ function postApi(url, paramData) {
 
 /* get */
 function getApi(url, pathData, paramData) {
-    var resultData = null;
 
+    var resultData = null;
     $.get(apiHost + url + pathData, paramData, function (response) {
         if(response.resultCode == 200){
+            if(url == "/product/getLectureApplyTeacherTypeList/"){
+                console.log(pathData);
+                console.log(paramData);
+                console.log(response);
+            }
             resultData = {
                 result : response.result
             };

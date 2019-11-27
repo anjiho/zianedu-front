@@ -8,12 +8,11 @@
         $("#type li a:eq(0)").addClass('active');
 
         var menuCtgKey = getLecOrderCtgKey(); // 직렬별 ctgkey 가져오기
-
         var goodsType = getOnlineAcaType();
         if(menuCtgKey != '') {
             getLectureApplySubjectList(menuCtgKey, goodsType); //과목 리스트 불러오기
             getLectureApplyTeacherList(menuCtgKey, goodsType); //교수 리스트 불러오기
-            getLectureApplyTeacherTypeList(menuCtgKey, "", "", "", goodsType); //강의정보 불러오기
+            //getLectureApplyTeacherTypeList(menuCtgKey, "", "", "", goodsType); //강의정보 불러오기
         }
 
         $("#subject li a").click(function () {
@@ -37,12 +36,34 @@
     });
 
     //과목 클릭 했을때
-    function test(ctgKey) {
+    var arr1 = new Array();
+    function getSearch(ctgKey) {
+        arr1.push(ctgKey);
 
     }
 
     function search() {
-
+        $("#resultList").empty();
+        var subjectMenuKeys = new Array();
+        var teacherKeys = new Array();
+        var stepCtgKeys = new Array();
+        $("#subject").find(".active").each(function () {
+            subjectMenuKeys.push($(this).attr("id"));
+        });
+        $("#teacher").find(".active").each(function () {
+            teacherKeys.push($(this).attr("id"));
+        });
+        $("#type").find(".active").each(function () {
+            stepCtgKeys.push($(this).attr("id"));
+        });
+        var menuCtgKey = getLecOrderCtgKey();
+        var goodsType = getOnlineAcaType();
+        console.log(menuCtgKey);
+        console.log(goodsType);
+        console.log(subjectMenuKeys);
+        console.log(teacherKeys);
+        console.log(stepCtgKeys);
+        getLectureApplyTeacherTypeList(menuCtgKey, subjectMenuKeys, teacherKeys, stepCtgKeys, goodsType);
     }
 
     //체크박스 장바구니 담기
@@ -103,17 +124,26 @@
                         <dd>
                             <ul id="type">
                                 <li><a href="javascript:void(0);">전체</a></li>
-                                <li><a href="#" class="chk">이론</a></li>
-                                <li><a href="#" class="chk">문제풀이</a></li>
-                                <li><a href="#" class="chk">단과특강</a></li>
-                                <li><a href="#" class="chk">필기대비</a></li>
-                                <li><a href="#" class="chk">모의고사</a></li>
+                                <li><a href="javascript:getSearch(203);" id="203">이론</a></li>
+                                <li><a href="javascript:getSearch(205);" id="205">문제풀이</a></li>
+                                <li><a href="javascript:getSearch(207);" id="207">단과특강</a></li>
+                                <li><a href="javascript:getSearch(4172);" id="4172">필기대비</a></li>
+                                <li><a href="javascript:getSearch(4266);" id="4266">모의고사</a></li>
                             </ul>
                         </dd>
                     </dl>
                     <div class="btnArea">
-                        <a href="javascript:search();" class="btn_m on" id="">검색</a>
-                        <a href="#" class="btn_m btn_release" id="uncheck">전체해제</a>
+                        <div class="btnArea_inner">
+                            <a href="javascript:search();" class="btn_m left btnSerch">검색</a>
+                            <a href="#" class="btn_m btn_release right" id="uncheck">전체해제</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="lectureTotal leTotal">
+                    <div class="right">
+                        선택한 항목 <span class="colorRed"  id='selCount'></span>개를
+                        <a href="javascript:goCheckedShopBasket();" class="btn_m">장바구니 담기</a>
+                        <a href="#" class="btn_m on">바로구매</a>
                     </div>
                 </div>
                 <!--검색결과 리스트-->
