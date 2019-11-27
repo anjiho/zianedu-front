@@ -173,13 +173,6 @@ function getLectureApplyTeacherTypeList(menuCtgKey, subjectMenuKeys, teacherKeys
         stepCtgKeys: stepCtgKeys,
         goodsType : goodsType
     };
-    console.log(data);
-    // var data = {
-    //     subjectMenuKeys : '["72"]',
-    //     teacherKeys : '["120"]',
-    //     stepCtgKeys: '["203"]',
-    //     goodsType : goodsType
-    // };
     var infoList = getApi("/product/getLectureApplyTeacherTypeList/", menuCtgKey, data);
 
     if (infoList != null) {
@@ -187,12 +180,12 @@ function getLectureApplyTeacherTypeList(menuCtgKey, subjectMenuKeys, teacherKeys
             var selList = infoList.result;
             for (var i = 0; i < selList.length; i++) {
                 var cmpList  = selList[i];
-                if(cmpList.teacherTypeInfo != null){
+                console.log(cmpList);
+                //if(cmpList.teacherTypeInfo != null){
                     var returnHtml = "<div class=\"lectureWrap\">";
                             returnHtml += "<ul class=\"lectureTotal\">";
                                 returnHtml += "<li class=\"left\">"+ cmpList.subjectName +"</li>";
                             returnHtml += "</ul>";
-                        if (cmpList.teacherTypeInfo != null) {
                             returnHtml += "<div class=\"teacherBody\">";
                             var teacherInfoLIST = cmpList.teacherTypeInfo;
                             for (var j = 0; j < teacherInfoLIST.length; j++) {
@@ -330,9 +323,9 @@ function getLectureApplyTeacherTypeList(menuCtgKey, subjectMenuKeys, teacherKeys
                                 returnHtml += "</div>";//teacherRow
                             }//182 line for문 끝
                             returnHtml += "</div>";//teacherBody
-                        }
+
                        returnHtml += "</div>"//lectureWrap
-                }
+               // }
                 $("#resultList").append(returnHtml);
             }
         }
