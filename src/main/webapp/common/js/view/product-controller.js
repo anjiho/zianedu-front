@@ -178,7 +178,6 @@ function getLectureApplyTeacherTypeList(menuCtgKey, subjectMenuKeys, teacherKeys
             var selList = infoList.result;
             for (var i = 0; i < selList.length; i++) {
                 var cmpList  = selList[i];
-                console.log(cmpList);
                 //if(cmpList.teacherTypeInfo != null){
                     var returnHtml = "<div class=\"lectureWrap\">";
                         if(cmpList.teacherTypeInfo != null) {
@@ -356,37 +355,29 @@ function getLectureAcademyTeacherList(menuCtgKey, subjectMenuKeys, teacherKeys, 
             var selList = infoList.result;
             for (var i = 0; i < selList.length; i++) {
                 var cmpList = selList[i];
-                console.log(cmpList);
                 var retrunHtml = "<div class=\"lectureWrap\">";
                 if(cmpList.academyLectureInfo != null) {
                     retrunHtml += "<ul class='lectureTotal bdt'>";
-                    retrunHtml += "<li class='left'>" + cmpList.subjectName + "</li>";
+                        retrunHtml += "<li class='left'>" + cmpList.subjectName + "</li>";
                     retrunHtml += "</ul>";
-                }
-                if(cmpList.academyLectureInfo != null){
+                    console.log(cmpList);
                     for(var j = 0; j < cmpList.academyLectureInfo.length; j++){
-
                         retrunHtml += "<div class=\"lectureBody lectureBody2\">";
                         retrunHtml += "<div class=\"lectureRow\">";
                             retrunHtml += "<div class=\"lectureTop\">";
                                 var color = "";
-                                if (cmpList.academyLectureInfo[j].stepCtgKey == 207) { //단과특강
-                                    color = "blue";
-                                } else if (cmpList.academyLectureInfo[j].stepCtgKey == 203) {//이론
-                                    color = "green";
-                                } else if (cmpList.academyLectureInfo[j].stepCtgKey == 205) {//문제풀이
-                                    color = "orange";
-                                } else if (cmpList.academyLectureInfo[j].stepCtgKey == 4266) {//모의고사
-                                    color = "purple";
-                                } else { //필기대비
-                                    color = "navy";
-                                }
+                                if (cmpList.academyLectureInfo[j].stepCtgKey == 207) color = "blue";
+                                else if (cmpList.academyLectureInfo[j].stepCtgKey == 203)  color = "green";
+                                else if (cmpList.academyLectureInfo[j].stepCtgKey == 205)  color = "orange";
+                                else if (cmpList.academyLectureInfo[j].stepCtgKey == 4266) color = "purple";
+                                else color = "navy";
+
                                 retrunHtml += "<span class=\"btn_learnType " + color + "\">"+ cmpList.academyLectureInfo[j].ctgName +"</span>";
                                 retrunHtml += "<span class=\"sale\">"+ cmpList.academyLectureInfo[j].discountPercent +"</span>";
                                 retrunHtml += "<span class=\"new\">"+ cmpList.academyLectureInfo[j].emphasisStr +"</span>";
                             retrunHtml += "</div>";
                             retrunHtml += "<ul class=\"lectureList\">";
-                                retrunHtml += "<li class=\"\">";
+                                retrunHtml += "<li>";
                                     retrunHtml += "<a href=\"#\" class=\"learnName\">" + cmpList.academyLectureInfo[j].goodsName + "</a>";
                                     retrunHtml += "<span class=\"learnNum\">수강기간<b class=\"colorBlue\">"+ cmpList.academyLectureInfo[j].lectureDate +" ("+ cmpList.academyLectureInfo[j].month +")</b></span>";
                                 retrunHtml += "</li>";
@@ -394,26 +385,21 @@ function getLectureAcademyTeacherList(menuCtgKey, subjectMenuKeys, teacherKeys, 
                                     retrunHtml += "<b class=\"cost\">"+ cmpList.academyLectureInfo[j].sellPrice +"원</b> <input type=\"checkbox\" name='lecChk' id='"+ cmpList.academyLectureInfo[j].priceKey +"' value='"+ cmpList.academyLectureInfo[j].gkey +"'>";
                                 retrunHtml += "</li>";
                             retrunHtml += "</ul>";//teacherList
-                        retrunHtml += "<div>";
-                            var teacherInfo  = cmpList.academyLectureInfo;
-                        if(teacherInfo != null) {
-                            retrunHtml += "<div class=\"toggleWrap\">";
+                        retrunHtml += "<div>";//lectureRow
+                        retrunHtml += "<div class=\"toggleWrap\">";
                             retrunHtml += "<div class=\"div_toggle\">";
-                            retrunHtml += "<div class=\"lectureRow\">";
-                            //for(var k=0; k < teacherInfo.length; k++){
-                                retrunHtml += "<div class=\"alignCenter\"><img src='" + cmpList.academyLectureInfo[j].imageView + "' style='width: 100%'></div>";
-                           // }
-                            retrunHtml += "</div>";//lectureRow
-                        }
-                            retrunHtml += "</div>";
-
+                                retrunHtml += "<div class=\"lectureRow\">";
+                                    retrunHtml += "<div class=\"alignCenter\"><img src='" + cmpList.academyLectureInfo[j].imageView + "' style='width: 100%'></div><br>";
+                                retrunHtml += "</div>";//lectureRow
+                            retrunHtml += "</div>";//div_toggle
                             retrunHtml += "<div class=\"btn_toggle lock\"><a href=\"#\"></a></div>";
-                            retrunHtml += "</div>";
-                            retrunHtml += "</div>";//toggleWrap
+                        retrunHtml += "</div>";//toggleWrap
+                        retrunHtml += "</div>";//
+                        retrunHtml += "</div>";//lectureWrap
+                        retrunHtml += "</div>";//lectureWrap
                     }
+                    $("#resultList").append(retrunHtml);
                 }
-                retrunHtml += "</div>";//lectureWrap
-                $("#resultList").append(retrunHtml);
             }
         }
     }
@@ -425,6 +411,13 @@ function getLectureAcademyTeacherList(menuCtgKey, subjectMenuKeys, teacherKeys, 
         }
     });
 }
+
+
+
+getLecturePackageTeacherList(){
+
+}
+
 
 
 

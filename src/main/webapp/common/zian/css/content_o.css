@@ -8,6 +8,7 @@ legend {display:none;position:absolute;visibility:hidden;}
 /*padding*/
 .pl30 {padding-left:30px !important}
 .pt80 {padding-top: 80px !important}
+.pb40 {padding-bottom: 40px !important}
 
 /*margin*/
 .mgb20 {margin-bottom: 20px !important}
@@ -333,14 +334,14 @@ legend {display:none;position:absolute;visibility:hidden;}
 .tbd_03 {margin-top: 80px}
 .tbd_03 p.title {font-size:18px;font-weight:800}
 .tbd_03 table {width:100%;border-top:2px solid #1b1b1b;margin-top: 13px;text-align: center;color: #000}
-.tbd_03 table th {font-size: 14px;font-weight:800;padding: 20px 0;background: #f1f1f1}
+.tbd_03 table th {text-align: center;font-size: 14px;font-weight:800;padding: 20px 0;background: #f1f1f1}
 .tbd_03 table td {font-size: 14px;line-height: 16px;padding: 15px 0;border-bottom:1px solid #e5e5e5;}
 .tbd_03 table th:nth-child(2) {width:400px;}
 .tbd_03 table th:nth-child(3) {width:100px;}
 .tbd_03 table th:nth-child(4) {width:100px;}
 .tbd_03 table th:nth-child(5) {width:100px;}
 .tbd_03 .re_btn {background: #134c97;color: #fff;padding:3px 0px 5px 7px;border:1px solid #01275a;-webkit-border-radius:3px;-moz-border-radius:3px; border-radius: 3px }
-.tbd_03 .re_btn span {display:inline-block;width:5px;height:7px;background: url(/common/zian/images/content/r_arrow.png) center center no-repeat;padding-left:15px;padding-top: 0}
+.tbd_03 .re_btn span {display:inline-block;width:5px;height:7px;background: url(../images/content/r_arrow.png) center center no-repeat;padding-left:15px;padding-top: 0}
 .tbd_03 td span {display: block;line-height: 12px;padding-top:9px}
 .tbd_03 .reline_btn {border: 1px solid #134c97;color:#134c97;padding: 9px 28px;}
 .tbd_03 .btn_crud2 {width:100%;position:relative;}
@@ -355,19 +356,19 @@ legend {display:none;position:absolute;visibility:hidden;}
 .Mypage .statusBar{display:block;margin-bottom:45px;border-bottom:1px #e5e5e5 solid;border-top:2px #000 solid;}
 .Mypage .statusBar:after{display:block;content:'';clear:both;}
 .Mypage .statusBar li{display:block;position:relative;float:left;width:25%;height:70px;font-size:20px;font-weight:bold;color:#999;text-align:center;line-height:70px;}
-.Mypage .statusBar li:after{display:block;content:'';position:absolute;top:50%;right:-5px;margin-top:-10px;width:10px;height:20px;background:url(/common/zian/images/common/icon_statusBar.png) no-repeat center center;}
+.Mypage .statusBar li:after{display:block;content:'';position:absolute;top:50%;right:-5px;margin-top:-10px;width:10px;height:20px;background:url(../images/common/icon_statusBar.png) no-repeat center center;}
 .Mypage .statusBar li.last:after{display:none;}
 .Mypage .statusBar li label{font-size:24px;}
 .Mypage .statusBar li b{font-size:20px;}
 .Mypage .statusBar li.active{color:#000;}
 .Mypage .statusBar li.active label{color:#134c97;}
 .Mypage .statusBar li.active b{color:#000;}
-.Mypage .statusBar li.active:after{background:url(/common/zian/images/common/icon_statusBar_active.png) no-repeat center center;}
+.Mypage .statusBar li.active:after{background:url(../images/common/icon_statusBar_active.png) no-repeat center center;}
 .Mypage .cart p.title {font-size:18px;font-weight:800} /*제목*/
 .Mypage .cart .line {text-decoration:line-through}
 .Mypage .cart .original,
 .Mypage .cart .thm,
-.Mypage .cart .original .arrow {display: inline-block;padding:0 3px} 
+.Mypage .cart .original .arrow {display: inline-block;padding:0 3px}
 .Mypage .cart .tbd_03 {font-weight: bold}
 .Mypage .cart .tbd_03 td {padding: 31px 0 32px;line-height:25px}
 .Mypage .cart .tbd_03 td:nth-child(2) {text-align: left}
@@ -381,15 +382,15 @@ legend {display:none;position:absolute;visibility:hidden;}
 .Mypage .cart .pay_total li .txt1 {font-size: 16px;color:#303030}
 .Mypage .cart .pay_total li .txt2 {font-size: 16px;color:#303030}
 .Mypage .cart .pay_total li .txt2 b {font-size:28px;color:#303030}
-.Mypage .cart .pay_total li .plus {width:47px;height:47px;background:url(/common/zian/images/content/pay_plus.png) no-repeat;position:absolute;top:48px;right:-23px;}
-.Mypage .cart .pay_total li .icoequal {width:47px;height:47px;background:url(/common/zian/images/content/pay_icoequal.png) no-repeat;position:absolute;top:48px;right:-23px;z-index: 3}
+.Mypage .cart .pay_total li .plus {width:47px;height:47px;background:url(../images/content/pay_plus.png) no-repeat;position:absolute;top:48px;right:-23px;}
+.Mypage .cart .pay_total li .icoequal {width:47px;height:47px;background:url(../images/content/pay_icoequal.png) no-repeat;position:absolute;top:48px;right:-23px;z-index: 3}
 .Mypage .cart .pay_total .pay-sum {background: #ccdff9;}
 
 /*꼭 확인해주세요*/
 .Mypage .cart .infoarea {border:1px solid #e5e5e5;padding:30px 20px;margin-top: 25px;color: #666;line-height: 20px;font-size: 12px}
 .Mypage .cart .infoarea .tit {font-size: 16px;font-weight: bold;color: #000;padding-bottom: 15px}
 .Mypage .cart .btn_area {padding-top: 25px}
-.Mypage .cart .btn_area a {display: inline-block;width:85px;padding: 15px 30px;text-align: center;}
+.Mypage .cart .btn_area a {width:85px;padding: 15px 30px;text-align: center;}
 .Mypage .cart .btn_area a.blue {border:1px solid #022757;color: #fff}
 .Mypage .cart .btn_area a.gray {border:1px solid #222;color: #fff}
 .Mypage .cart .btn_area a.bggray {color: #fff;background: #999}
@@ -447,7 +448,7 @@ legend {display:none;position:absolute;visibility:hidden;}
 .Mypage .cart .pay .left .receipt .detail select {margin-left: 10px;}
 .Mypage .cart .pay .left .receipt .detail ul {padding: 0}
 .Mypage .cart .pay .left .receipt .detail .txt {display: block;font-size: 12px;color: #777;padding-top: 3px;font-weight:normal;}
-.Mypage .cart .pay .left .receipt .detail .date {padding-left:10px;padding-right:30px;background: url(/common/zian/images/content/btn_calendar2.gif) 120px center no-repeat;cursor: pointer;color: #444;font-weight:normal;}
+.Mypage .cart .pay .left .receipt .detail .date {padding-left:10px;padding-right:30px;background: url(../images/content/btn_calendar2.gif) 120px center no-repeat;cursor: pointer;color: #444;font-weight:normal;}
 .Mypage .cart .pay .left .receipt .detail .text_blue {font-size: 12px;font-weight:normal;}
 .Mypage .cart .pay .right {float:right;width:135px;padding: 50px 25px;margin-top: 13px;background:#dce9fa;text-align: center}
 .Mypage .cart .pay .right li {padding-right: 0;float: none}
@@ -516,7 +517,7 @@ legend {display:none;position:absolute;visibility:hidden;}
 .Mypage .review li{display:block;float:left;width:33.3333333%;position: relative;}
 .Mypage .review li a{display:block;height:50px;font-size:15px;color:#707070;line-height:50px;text-align:center;border:none;border-bottom:2px #e5e5e5 solid;font-weight: bold;font-size: 16px}
 .Mypage .review li.active a{color:#134c97;background:#fff;border-bottom:2px #073169 solid;}
-.Mypage .review li.active a span {display:inline-block;width:24px;height:8px;background: url(/common/zian/images/content/img_down.png) center center no-repeat;position: absolute;top:50px;left:80px;}
+.Mypage .review li.active a span {display:inline-block;width:24px;height:8px;background: url(../images/content/img_down.png) center center no-repeat;position: absolute;top:50px;left:80px;}
 .Mypage .reviewBoard {margin-top: 65px;}
 .Mypage .calendarWrap .lectureTotal {margin:0 auto;width:740px;border:none;}
 .Mypage .calendarWrap .lectureTotal .left > span {font-size: 13px}
@@ -537,7 +538,7 @@ legend {display:none;position:absolute;visibility:hidden;}
 .Mypage .grade .tableBox table td {padding: 30px 0;}
 .Mypage .grade .tableBox table td:first-child {padding-left: 25px}
 .Mypage .grade .tableBox table td:nth-child(3) {font-size: 14px;line-height:20px}
-.Mypage .grade .tableBox table .iconFile {display: inline-block;padding-right: 20px;background: url(/common/zian/images/common/icon_file.png) no-repeat right center;}
+.Mypage .grade .tableBox table .iconFile {display: inline-block;padding-right: 20px;background: url(../images/common/icon_file.png) no-repeat right center;}
 .Mypage .grade .tableBox.other th:nth-child(2) {text-align: left}
 .Mypage .grade .tableBox.other td:nth-child(2) {text-align: left}
 
