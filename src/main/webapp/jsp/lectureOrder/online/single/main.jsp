@@ -66,21 +66,21 @@
         var stepCtgKeys = new Array();
         $("#subject").find(".active").each(function () {
             if($(this).attr("id") == undefined){
-                subjectMenuKeys.push("");
+                subjectMenuKeys = "";
             }else{
                 subjectMenuKeys.push($(this).attr("id"));
             }
         });
         $("#teacher").find(".active").each(function () {
             if($(this).attr("id") == undefined){
-                teacherKeys.push("");
+                teacherKeys = "";
             }else{
                 teacherKeys.push($(this).attr("id"));
             }
         });
         $("#type").find(".active").each(function () {
             if($(this).attr("id") == undefined){
-                stepCtgKeys.push("");
+                stepCtgKeys = "";
             }else{
                 stepCtgKeys.push($(this).attr("id"));
             }
