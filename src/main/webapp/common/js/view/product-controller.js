@@ -362,8 +362,7 @@ function getLectureAcademyTeacherList(menuCtgKey, subjectMenuKeys, teacherKeys, 
                 retrunHtml += "<ul class='lectureTotal bdt'>";
                     retrunHtml += "<li class='left'>" + cmpList.subjectName + "</li>";
                 retrunHtml += "</ul>";
-
-                if(cmpList.academyLectureInfo != null){
+                //if(cmpList.academyLectureInfo != null){
                     for(var j = 0; j < cmpList.academyLectureInfo.length; j++){
                         retrunHtml += "<div class=\"lectureBody lectureBody2\">";
                         retrunHtml += "<div class=\"lectureRow\">";
@@ -411,7 +410,7 @@ function getLectureAcademyTeacherList(menuCtgKey, subjectMenuKeys, teacherKeys, 
                             retrunHtml += "</div>";
                             retrunHtml += "</div>";//toggleWrap
                     }
-                }
+                //}
 
                 retrunHtml += "</div>";//lectureWrap
                 $("#resultList").append(retrunHtml);
