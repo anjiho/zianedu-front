@@ -178,6 +178,7 @@ function getLectureApplyTeacherTypeList(menuCtgKey, subjectMenuKeys, teacherKeys
             var selList = infoList.result;
             for (var i = 0; i < selList.length; i++) {
                 var cmpList  = selList[i];
+                console.log(cmpList);
                 //if(cmpList.teacherTypeInfo != null){
                     var returnHtml = "<div class=\"lectureWrap\">";
                         if(cmpList.teacherTypeInfo != null) {
