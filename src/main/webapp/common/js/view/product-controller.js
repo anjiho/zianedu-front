@@ -356,6 +356,7 @@ function getLectureAcademyTeacherList(menuCtgKey, subjectMenuKeys, teacherKeys, 
             var selList = infoList.result;
             for (var i = 0; i < selList.length; i++) {
                 var cmpList = selList[i];
+                console.log(cmpList);
                 var retrunHtml = "<div class=\"lectureWrap\">";
                 if(cmpList.academyLectureInfo != null) {
                     retrunHtml += "<ul class='lectureTotal bdt'>";
@@ -364,6 +365,7 @@ function getLectureAcademyTeacherList(menuCtgKey, subjectMenuKeys, teacherKeys, 
                 }
                 if(cmpList.academyLectureInfo != null){
                     for(var j = 0; j < cmpList.academyLectureInfo.length; j++){
+
                         retrunHtml += "<div class=\"lectureBody lectureBody2\">";
                         retrunHtml += "<div class=\"lectureRow\">";
                             retrunHtml += "<div class=\"lectureTop\">";
@@ -393,13 +395,14 @@ function getLectureAcademyTeacherList(menuCtgKey, subjectMenuKeys, teacherKeys, 
                                 retrunHtml += "</li>";
                             retrunHtml += "</ul>";//teacherList
                         retrunHtml += "<div>";
-                            console.log(cmpList);
                             var teacherInfo  = cmpList.academyLectureInfo;
                         if(teacherInfo != null) {
                             retrunHtml += "<div class=\"toggleWrap\">";
                             retrunHtml += "<div class=\"div_toggle\">";
                             retrunHtml += "<div class=\"lectureRow\">";
-                                retrunHtml += "<div class=\"alignCenter\"><img src='" + cmpList.academyLectureInfo.imageView + "' style='width: auto'></div>";
+                            //for(var k=0; k < teacherInfo.length; k++){
+                                retrunHtml += "<div class=\"alignCenter\"><img src='" + cmpList.academyLectureInfo[j].imageView + "' style='width: 100%'></div>";
+                           // }
                             retrunHtml += "</div>";//lectureRow
                         }
                             retrunHtml += "</div>";
