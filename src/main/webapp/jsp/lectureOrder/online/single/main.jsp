@@ -35,13 +35,6 @@
         });
     });
 
-    //과목 클릭 했을때
-    var arr1 = new Array();
-    function getSearch(ctgKey) {
-        arr1.push(ctgKey);
-
-    }
-
     function search() {
         $("#resultList").empty();
         var subjectMenuKeys = new Array();
@@ -58,11 +51,6 @@
         });
         var menuCtgKey = getLecOrderCtgKey();
         var goodsType = getOnlineAcaType();
-        console.log(menuCtgKey);
-        console.log(goodsType);
-        console.log(subjectMenuKeys);
-        console.log(teacherKeys);
-        console.log(stepCtgKeys);
         getLectureApplyTeacherTypeList(menuCtgKey, subjectMenuKeys, teacherKeys, stepCtgKeys, goodsType);
     }
 
@@ -124,11 +112,11 @@
                         <dd>
                             <ul id="type">
                                 <li><a href="javascript:void(0);">전체</a></li>
-                                <li><a href="javascript:getSearch(203);" id="203">이론</a></li>
-                                <li><a href="javascript:getSearch(205);" id="205">문제풀이</a></li>
-                                <li><a href="javascript:getSearch(207);" id="207">단과특강</a></li>
-                                <li><a href="javascript:getSearch(4172);" id="4172">필기대비</a></li>
-                                <li><a href="javascript:getSearch(4266);" id="4266">모의고사</a></li>
+                                <li><a href="javascript:void(0);" id="203">이론</a></li>
+                                <li><a href="javascript:void(0);" id="205">문제풀이</a></li>
+                                <li><a href="javascript:void(0);" id="207">단과특강</a></li>
+                                <li><a href="javascript:void(0);" id="4172">필기대비</a></li>
+                                <li><a href="javascript:void(0);" id="4266">모의고사</a></li>
                             </ul>
                         </dd>
                     </dl>

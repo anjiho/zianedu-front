@@ -35,13 +35,23 @@
         });
     });
 
-    //과목 클릭 했을때
-    function test(ctgKey) {
-
-    }
-
     function search() {
-
+        $("#resultList").empty();
+        var subjectMenuKeys = new Array();
+        var teacherKeys = new Array();
+        var stepCtgKeys = new Array();
+        $("#subject").find(".active").each(function () {
+            subjectMenuKeys.push($(this).attr("id"));
+        });
+        $("#teacher").find(".active").each(function () {
+            teacherKeys.push($(this).attr("id"));
+        });
+        $("#type").find(".active").each(function () {
+            stepCtgKeys.push($(this).attr("id"));
+        });
+        var menuCtgKey = getLecOrderCtgKey();
+        var goodsType = getOnlineAcaType();
+        getLectureApplyTeacherTypeList(menuCtgKey, subjectMenuKeys, teacherKeys, stepCtgKeys, goodsType);
     }
 
     //체크박스 장바구니 담기
@@ -101,11 +111,11 @@
                         <dd>
                             <ul id="type">
                                 <li><a href="javascript:void(0);">전체</a></li>
-                                <li><a href="#" class="chk">이론</a></li>
-                                <li><a href="#" class="chk">문제풀이</a></li>
-                                <li><a href="#" class="chk">단과특강</a></li>
-                                <li><a href="#" class="chk">필기대비</a></li>
-                                <li><a href="#" class="chk">모의고사</a></li>
+                                <li><a href="javascript:void(0);" id="203">이론</a></li>
+                                <li><a href="javascript:void(0);" id="205">문제풀이</a></li>
+                                <li><a href="javascript:void(0);" id="207">단과특강</a></li>
+                                <li><a href="javascript:void(0);" id="4172">필기대비</a></li>
+                                <li><a href="javascript:void(0);" id="4266">모의고사</a></li>
                             </ul>
                         </dd>
                     </dl>

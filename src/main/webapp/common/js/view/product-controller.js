@@ -135,7 +135,7 @@ function getLectureApplySubjectList(menuCtgKey, goodsType) {
     if(selList.length > 0){
         for(var i = 0; i< selList.length; i++){
             var returnHtml = "<li>";
-            returnHtml += "<a href='javascript:getSearch("+ selList[i].ctgKey +");' id='"+ selList[i].ctgKey +"'>"+ selList[i].name +"</a>";
+            returnHtml += "<a href='javascript:void(0);' id='"+ selList[i].ctgKey +"'>"+ selList[i].name +"</a>";
             returnHtml += "</li>";
             $("#subject").append(returnHtml);
         }
@@ -154,7 +154,7 @@ function getLectureApplyTeacherList(menuCtgKey, goodsType) {
     if(selList.length > 0){
         for(var i = 0; i< selList.length;i++){
             var returnHtml = "<li>";
-            returnHtml += "<a href='javascript:getSearch("+ selList[i].teacherKey +");' id='"+ selList[i].teacherKey +"'>"+ selList[i].teacherName +"</a>";
+            returnHtml += "<a href='javascript:void(0);' id='"+ selList[i].teacherKey +"'>"+ selList[i].teacherName +"</a>";
             returnHtml += "</li>";
             $("#teacher").append(returnHtml);
         }
