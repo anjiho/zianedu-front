@@ -393,15 +393,13 @@ function getLectureAcademyTeacherList(menuCtgKey, subjectMenuKeys, teacherKeys, 
                                 retrunHtml += "</li>";
                             retrunHtml += "</ul>";//teacherList
                         retrunHtml += "<div>";
-
-                            var teacherInfo  = cmpList.academyLectureInfo[j].teacherInfoList;
+                            console.log(cmpList);
+                            var teacherInfo  = cmpList.academyLectureInfo;
                         if(teacherInfo != null) {
                             retrunHtml += "<div class=\"toggleWrap\">";
                             retrunHtml += "<div class=\"div_toggle\">";
                             retrunHtml += "<div class=\"lectureRow\">";
-                                for (var l = 0; l < teacherInfo.length; l++) {
-                                    retrunHtml += "<div class=\"alignCenter\"><img src='" + cmpList.academyLectureInfo[j].imageView + "' style='width: auto'></div>";
-                                }
+                                retrunHtml += "<div class=\"alignCenter\"><img src='" + cmpList.academyLectureInfo.imageView + "' style='width: auto'></div>";
                             retrunHtml += "</div>";//lectureRow
                         }
                             retrunHtml += "</div>";
