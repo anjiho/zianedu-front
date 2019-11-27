@@ -1,7 +1,7 @@
 $.ajaxSetup({async: false});
 
-//var apiHost = "http://52.79.40.214:9090";
-var apiHost = "http://localhost:9090";
+var apiHost = "http://52.79.40.214:9090";
+//var apiHost = "http://localhost:9090";
 
 /* post */
 function postApi(url, paramData) {
@@ -21,11 +21,6 @@ function getApi(url, pathData, paramData) {
     var resultData = null;
     $.get(apiHost + url + pathData, paramData, function (response) {
         if(response.resultCode == 200){
-            if(url == "/product/getLectureApplyTeacherTypeList/"){
-                console.log(pathData);
-                console.log(paramData);
-                console.log(response);
-            }
             resultData = {
                 result : response.result
             };
