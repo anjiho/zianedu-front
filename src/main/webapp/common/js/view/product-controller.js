@@ -132,7 +132,6 @@ function getLectureApplySubjectList(menuCtgKey, goodsType) {
     var infoList = getApi("/product/getLectureApplySubjectList/", menuCtgKey, data);
         if(infoList != null){
             var selList = infoList.result;
-
             if(selList.length > 0){
                 for(var i = 0; i< selList.length; i++){
                     var returnHtml = "<li>";
@@ -174,13 +173,11 @@ function getLectureApplyTeacherTypeList(menuCtgKey, subjectMenuKeys, teacherKeys
         goodsType : goodsType
     };
     var infoList = getApi("/product/getLectureApplyTeacherTypeList/", menuCtgKey, data);
-
     if (infoList != null) {
         if (infoList.result.length > 0) {
             var selList = infoList.result;
             for (var i = 0; i < selList.length; i++) {
                 var cmpList  = selList[i];
-                console.log(cmpList);
                 //if(cmpList.teacherTypeInfo != null){
                     var returnHtml = "<div class=\"lectureWrap\">";
                         if(cmpList.teacherTypeInfo != null) {
@@ -359,10 +356,12 @@ function getLectureAcademyTeacherList(menuCtgKey, subjectMenuKeys, teacherKeys, 
             for (var i = 0; i < selList.length; i++) {
                 var cmpList = selList[i];
                 var retrunHtml = "<div class=\"lectureWrap\">";
-                retrunHtml += "<ul class='lectureTotal bdt'>";
+                if(cmpList.academyLectureInfo != null) {
+                    retrunHtml += "<ul class='lectureTotal bdt'>";
                     retrunHtml += "<li class='left'>" + cmpList.subjectName + "</li>";
-                retrunHtml += "</ul>";
-                //if(cmpList.academyLectureInfo != null){
+                    retrunHtml += "</ul>";
+                }
+                if(cmpList.academyLectureInfo != null){
                     for(var j = 0; j < cmpList.academyLectureInfo.length; j++){
                         retrunHtml += "<div class=\"lectureBody lectureBody2\">";
                         retrunHtml += "<div class=\"lectureRow\">";
@@ -410,8 +409,7 @@ function getLectureAcademyTeacherList(menuCtgKey, subjectMenuKeys, teacherKeys, 
                             retrunHtml += "</div>";
                             retrunHtml += "</div>";//toggleWrap
                     }
-                //}
-
+                }
                 retrunHtml += "</div>";//lectureWrap
                 $("#resultList").append(retrunHtml);
             }
