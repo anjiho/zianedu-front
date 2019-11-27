@@ -16,17 +16,34 @@
             getLectureApplyTeacherTypeList(menuCtgKey, "", "", "", goodsType); //강의정보 불러오기
         }
 
-        $("#subject li a").click(function () {
-            $(this).toggleClass("active");
-            $("#subject li a:eq(0)").removeClass('active');
+        $("#subject li").click(function () {
+            if($(this).index() == 0){ //전체클릭햇을때
+                $("#subject li a").each(function () {$(this).removeClass('active');});
+                $("#subject li a:eq(0)").toggleClass("active");
+            }else{
+                $(this).find("a").toggleClass('active');
+                $("#subject li a:eq(0)").removeClass('active');
+            }
         });
-        $("#teacher li a").click(function () {
-            $(this).toggleClass("active");
-            $("#teacher li a:eq(0)").removeClass('active');
+
+        $("#teacher li").click(function () {
+            if($(this).index() == 0){ //전체클릭햇을때
+                $("#teacher li a").each(function () {$(this).removeClass('active');});
+                $("#teacher li a:eq(0)").toggleClass("active");
+            }else{
+                $(this).find("a").toggleClass('active');
+                $("#teacher li a:eq(0)").removeClass('active');
+            }
         });
-        $("#type li a").click(function () {
-            $(this).toggleClass("active");
-            $("#type li a:eq(0)").removeClass('active');
+
+        $("#type li").click(function () {
+            if($(this).index() == 0){ //전체클릭햇을때
+                $("#type li a").each(function () {$(this).removeClass('active');});
+                $("#type li a:eq(0)").toggleClass("active");
+            }else{
+                $(this).find("a").toggleClass('active');
+                $("#type li a:eq(0)").removeClass('active');
+            }
         });
 
         innerHTML("selCount", 0);
@@ -42,13 +59,25 @@
         var teacherKeys = new Array();
         var stepCtgKeys = new Array();
         $("#subject").find(".active").each(function () {
-            subjectMenuKeys.push($(this).attr("id"));
+            if($(this).attr("id") == undefined){
+                subjectMenuKeys.push("");
+            }else{
+                subjectMenuKeys.push($(this).attr("id"));
+            }
         });
         $("#teacher").find(".active").each(function () {
-            teacherKeys.push($(this).attr("id"));
+            if($(this).attr("id") == undefined){
+                teacherKeys.push("");
+            }else{
+                teacherKeys.push($(this).attr("id"));
+            }
         });
         $("#type").find(".active").each(function () {
-            stepCtgKeys.push($(this).attr("id"));
+            if($(this).attr("id") == undefined){
+                stepCtgKeys.push("");
+            }else{
+                stepCtgKeys.push($(this).attr("id"));
+            }
         });
         var menuCtgKey = getLecOrderCtgKey();
         var goodsType = getOnlineAcaType();
