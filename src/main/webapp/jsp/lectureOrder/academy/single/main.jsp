@@ -51,7 +51,12 @@
         });
         var menuCtgKey = getLecOrderCtgKey();
         var goodsType = getOnlineAcaType();
-        getLectureApplyTeacherTypeList(menuCtgKey, subjectMenuKeys, teacherKeys, stepCtgKeys, goodsType);
+
+        var subjectMenuKeysString = toStrFileName(subjectMenuKeys);
+        var teacherKeysString = toStrFileName(teacherKeys);
+        var stepCtgKeysString = toStrFileName(stepCtgKeys);
+
+        getLectureApplyTeacherTypeList(menuCtgKey, subjectMenuKeysString, teacherKeysString, stepCtgKeysString, goodsType);
     }
 
     //체크박스 장바구니 담기
