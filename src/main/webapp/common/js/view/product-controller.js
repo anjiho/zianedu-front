@@ -414,13 +414,6 @@ function getLectureAcademyTeacherList(menuCtgKey, subjectMenuKeys, teacherKeys, 
 
 
 
-getLecturePackageTeacherList(){
-
-}
-
-
-
-
 function getLecOrderCtgKey() {
     var menuCtgKey = '';
     var leftMenuInfo = sessionStorage.getItem('leftMenu');//직렬 구분
