@@ -1,3 +1,14 @@
+/* 수강후기 상단 탭메뉴 */
+$(function(){
+    $(".review > ul > li").click(function(){
+        $(this).parent().find("li").removeClass("active");
+        $(this).addClass("active");
+        $(".reviewBoard").removeClass("active");
+        $(".reviewBoard").eq($(this).index()).addClass("active");
+    });
+    $(" .review > ul > li").eq(0).click();
+});
+
 /*  닫힘버튼 */
 $(document).ready(function(){
   $(".btn_modalClose").click(function(){

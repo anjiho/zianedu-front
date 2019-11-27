@@ -110,11 +110,20 @@
                         </dd>
                     </dl>
                     <div class="btnArea">
-                        <a href="javascript:search();" class="btn_m on" id="">검색</a>
-                        <a href="#" class="btn_m btn_release" id="uncheck">전체해제</a>
+                        <div class="btnArea_inner">
+                            <a href="javascript:search();" class="btn_m left btnSerch">검색</a>
+                            <a href="#" class="btn_m btn_release right" id="uncheck">전체해제</a>
+                        </div>
                     </div>
                 </div>
                 <!--검색결과 리스트-->
+                <div class="lectureTotal leTotal">
+                    <div class="right">
+                        선택한 항목 <span class="colorRed"  id='selCount'></span>개를
+                        <a href="javascript:goCheckedShopBasket();" class="btn_m">장바구니 담기</a>
+                        <a href="#" class="btn_m on">바로구매</a>
+                    </div>
+                </div>
                 <div id="resultList">
                 </div>
                 <!--//검색결과 리스트-->
