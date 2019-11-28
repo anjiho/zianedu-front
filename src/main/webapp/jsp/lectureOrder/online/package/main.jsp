@@ -4,11 +4,8 @@
     $( document ).ready(function() {
         $("#selDivision li a:eq(1)").addClass('active');
 
-        var menuCtgKey = getLecOrderCtgKey(); // 직렬별 ctgkey 가져오기
-        var goodsType = getOnlineAcaType();
-        if(menuCtgKey != '') {
-            //getLecturePackageTeacherList(); //강의정보 불러오기
-        }
+        var pcMobile = divisionPcMobile();
+        getSpecialPackageList(833, "", "", "", pcMobile); //강의정보 불러오기
 
         innerHTML("selCount", 0);
         $("input[name=lecChk]").click(function(index){//체크박스 카운트 처리
@@ -44,7 +41,7 @@
         <div id="container">
             <div class="inner">
                 <!--서브 컨텐츠-->
-                <div class="selectArea">
+                <div class="selectArea pb40">
                     <dl>
                         <dt>분류</dt>
                         <dd>
@@ -55,13 +52,13 @@
                         </dd>
                     </dl>
                 </div>
-                <div class="lectureTotal leTotal">
-                    <div class="right">
-                        선택한 항목 <span class="colorRed"  id='selCount'></span>개를
-                        <a href="javascript:goCheckedShopBasket();" class="btn_m">장바구니 담기</a>
-                        <a href="#" class="btn_m on">바로구매</a>
-                    </div>
-                </div>
+<%--                <div class="lectureTotal leTotal">--%>
+<%--                    <div class="right">--%>
+<%--                        선택한 항목 <span class="colorRed"  id='selCount'></span>개를--%>
+<%--                        <a href="javascript:goCheckedShopBasket();" class="btn_m">장바구니 담기</a>--%>
+<%--                        <a href="#" class="btn_m on">바로구매</a>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
                 <!--검색결과 리스트-->
                 <div id="resultList"></div>
                 <!--//검색결과 리스트-->

@@ -412,6 +412,135 @@ function getLectureAcademyTeacherList(menuCtgKey, subjectMenuKeys, teacherKeys, 
     });
 }
 
+//패키지 수강신청
+function getSpecialPackageList(menuCtgKey, subjectMenuKeys, teacherKeys, stepCtgKeys, device) {
+    if (menuCtgKey == null || menuCtgKey == undefined) return;
+    var data = {
+        subjectMenuKeys : subjectMenuKeys,
+        teacherKeys : teacherKeys,
+        stepCtgKeys: stepCtgKeys,
+        device : device
+    };
+    var infoList = getApi("/product/getSpecialPackageList/", menuCtgKey, data);
+    if (infoList != null) {
+        if (infoList.result.length > 0) {
+            var selList = infoList.result;
+            console.log(selList);
+            var returnHtml = "<div class=\"lectureWrap\">";
+                    returnHtml += "<ul class=\"lectureTotal bdt\">";
+                        returnHtml += "<li class=\"right\">";
+                            returnHtml += "선택한 항목 <span class=\"colorRed\" id='selCount'></span>개를";
+                            returnHtml += "<a href='javascript:goCheckedShopBasket();' class=\"btn_m\">장바구니 담기</a>&nbsp;";
+                            returnHtml += "<a href=\"#\" class=\"btn_m on\">바로구매</a>";
+                        returnHtml += "</li>";
+                    returnHtml += "</ul>";
+            for(var i = 0; i < selList.length; i++){
+                returnHtml +=  "<div class=\"lectureBody lectureBody2\">";
+                        returnHtml += "<div class=\"lectureRow\">";
+                            returnHtml += "<div class=\"lectureTop\">";
+                                returnHtml += "<span class=\"sale\">"+ selList[i].discountPercent +"</span>";
+                            returnHtml += "</div>";
+                            returnHtml += "<ul class=\"lectureList\">";
+                                    returnHtml += "<li class=\"\">";
+                                        returnHtml += "<a href=\"#\" class=\"learnName\">"+ selList[i].goodsName +"</a>";
+                                        returnHtml += "<span class=\"learnNum\">시험대비 <b class=\"colorBlue\">"+ selList[i].examYear +"년도</b> | 학습기간 <b class=\"colorBlue\">"+ selList[i].limitDay +"일</b></span>";
+                                    returnHtml += "</li>";
+                                    returnHtml += "<li class=\"w40p ta_right\">";
+                                        returnHtml += "<ul class=\"costList\">"; //pc & mobile 가격 구분
+                                            if(selList[i].videoLectureKindList != null) {
+                                                returnHtml += "<li></li>";
+                                                for(var j = 0; j < selList[i].videoLectureKindList.length; j++) {
+                                                    var pcMobileKind = selList[i].videoLectureKindList[j];
+                                                    returnHtml += "<li>";
+                                                        var pcMobileName = "";
+                                                        if(pcMobileKind.kind == 100) pcMobileName = 'PC';
+                                                        else pcMobileName = '모바일';
+                                                        returnHtml += "<span class='btn_ss btn_divTag'>"+ pcMobileName +"</span>";
+                                                        returnHtml += "<b class='cost'>"+ pcMobileKind.priceName +"원</b> <input type=\"checkbox\" name='lecChk' id='"+ pcMobileKind.priceKey +"' value='"+ pcMobileKind.gkey +"'>";
+                                                    returnHtml += "<li>";
+                                                }
+                                            }
+                                        returnHtml += "</ul>";
+                                    returnHtml += "</li>";
+                            returnHtml += "</ul>";//lectureList
+                        returnHtml += "</div>";//lectureRow
+                        returnHtml += "<div class=\"toggleWrap\">";
+                            returnHtml += "<div class=\"div_toggle\">";
+                                returnHtml += "<p class=\"lectureTotal bdt bggray\">패키지 구성</p>";
+                                if(selList[i].includeProductList != null){
+                                    for(var k = 0; k < selList[i].includeProductList.length; k++){
+                                        var productInfo = selList[i].includeProductList[k];
+                                        console.log(productInfo);
+                                        returnHtml += "<div class=\"lectureRow\">";
+                                            returnHtml += "<ul class=\"lectureList lectureList2\">";
+                                                returnHtml += "<li><span class=\"thumb\"><img src='"+ productInfo.imageList +"' alt=\"\"></span></li>";
+                                                returnHtml += "<li class=\"\">";
+                                                    returnHtml += "<div class=\"lectureTop\">";
+                                                    returnHtml += "<span class=\"btn_learnType orange\">"+ productInfo.stepName +"</span><span class=\"sale\">"+ productInfo.discountPercent +"</span><span class=\"new\">"+ productInfo.emphasisName +"</span>";
+                                                    returnHtml += "</div>";//lectureTop
+                                                    returnHtml += "<a href=\"#\" class=\"learnName\">"+ productInfo.name +"</a>";
+                                                    returnHtml += "<span class=\"learnNum\">총 강의수 <b class=\"colorBlue\">"+ productInfo.lectureCount +"강</b> | 수강일수 <b class=\"colorBlue\">"+ productInfo.limitDay +"일</b></span>";
+                                                returnHtml += "</li>";
+                                            returnHtml += "</ul>";//lectureList lectureList2
+                                        returnHtml += "</div>";//lectureRow
+                                        if(productInfo.lectureList != null){
+                                            returnHtml += "<div class=\"toggleWrap\">";
+                                                returnHtml += "<div class=\"div_toggle\">";
+                                                    returnHtml += "<div class=\"lectureRow\">";
+                                                        returnHtml += "<div class=\"tableBox tableBox2\">";
+                                                            returnHtml += "<table class=\"lecture\">";
+                                                                returnHtml += "<colgroup>";
+                                                                    returnHtml += "<col class=\"w10p\">";
+                                                                    returnHtml += "<col class=\"w40p\">";
+                                                                    returnHtml += "<col class=\"w10p\">";
+                                                                    returnHtml += "<col class=\"w40p\">";
+                                                                returnHtml += "</colgroup>";
+                                                                returnHtml += "<thead>";
+                                                                    returnHtml += "<tr>";
+                                                                        returnHtml += "<th scope=\"row\">회차</th>";
+                                                                        returnHtml += "<th scope=\"row\">제목</th>";
+                                                                        returnHtml += "<th scope=\"row\">시간</th>";
+                                                                        returnHtml += "<th scope=\"row\">샘플보기</th>";
+                                                                    returnHtml += "</tr>";
+                                                                returnHtml += "</thead>";
+                                                                returnHtml += "<tbody>";
+                                                                for(var l = 0; l < productInfo.lectureList.length; l++){
+                                                                    var lecList = productInfo.lectureList[l];
+                                                                    returnHtml += "<tr>";
+                                                                        returnHtml += "<td class=\"ta_center\">"+ lecList.numStr +"</td>";
+                                                                        returnHtml += "<td>"+ lecList.name +"</td>";
+                                                                        returnHtml += "<td class=\"ta_center\">"+ lecList.vodTime +"</td>";
+                                                                        returnHtml += "<td class=\"ta_center\"><span class=\"learnView\"> <a href=\"#\" class=\"btn_s btn_quality\">일반화질</a> <a href=\"#\" class=\"btn_s btn_quality on\">고화질</a></span></td>";
+                                                                    returnHtml += "</tr>";
+                                                                } //테이블 for문
+                                                                 returnHtml += "</tbody>";
+                                                            returnHtml += "</table>";
+                                                        returnHtml += "</div>";//tableBox tableBox2
+                                                    returnHtml += "</div>";//lectureRow
+                                                returnHtml += "</div>";//div_toggle
+                                            returnHtml += "<div class=\"btn_toggle lock\"><a href=\"#\"></a></div>";
+                                            returnHtml += "</div>"; //toggleWrap 강의리스트 테이블
+                                        }
+                                    }
+                                }
+                            returnHtml += "</div>";//div_toggle
+                            returnHtml += "<div class=\"btn_toggle lock\"><a href=\"#\"></a></div>";
+                        returnHtml += "</div>";//toggleWrap
+                    returnHtml += "</div>";//lectureBody lectureBody2
+                }
+            returnHtml += "</div>";
+            $("#resultList").append(returnHtml);
+        }
+    }
+    $(".toggleWrap > .btn_toggle").click(function(){
+        if($(this).parent().hasClass("active")){
+            $(this).parent().removeClass("active");
+        }else{
+            $(this).parent().addClass("active");
+        }
+    });
+}
+
 
 
 function getLecOrderCtgKey() {
