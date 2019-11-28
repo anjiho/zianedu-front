@@ -9,7 +9,9 @@
 
         var menuCtgKey = getLecOrderCtgKey(); // 직렬별 ctgkey 가져오기
         var goodsType = getOnlineAcaType();
+
         if(menuCtgKey != '') {
+            if(menuCtgKey == 585 || menuCtgKey == 518) $("#package").hide();
             getLectureApplySubjectList(menuCtgKey, goodsType); //과목 리스트 불러오기
             getLectureApplyTeacherList(menuCtgKey, goodsType); //교수 리스트 불러오기
             getLectureApplyTeacherTypeList(menuCtgKey, "", "", "", goodsType); //강의정보 불러오기
@@ -128,7 +130,7 @@
                         <dd>
                             <ul id="selDivision">
                                 <li><a href="" class="chk">단과</a></li>
-                                <li><a href="javascript:goPage('lectureOrder','package')" class="chk">패키지</a></li>
+                                <li id="package"><a href="javascript:goPage('lectureOrder','package')" class="chk">패키지</a></li>
                             </ul>
                         </dd>
                     </dl>

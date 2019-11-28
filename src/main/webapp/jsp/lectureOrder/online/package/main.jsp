@@ -4,8 +4,9 @@
     $( document ).ready(function() {
         $("#selDivision li a:eq(1)").addClass('active');
 
+        var menuCtgKey = getPackageCtgKey();
         var pcMobile = divisionPcMobile();
-        getSpecialPackageList(833, "", "", "", pcMobile); //강의정보 불러오기
+        getSpecialPackageList(menuCtgKey, "", "", "", pcMobile); //강의정보 불러오기
 
         innerHTML("selCount", 0);
         $("input[name=lecChk]").click(function(index){//체크박스 카운트 처리

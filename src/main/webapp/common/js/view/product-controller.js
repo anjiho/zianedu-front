@@ -360,7 +360,6 @@ function getLectureAcademyTeacherList(menuCtgKey, subjectMenuKeys, teacherKeys, 
                     retrunHtml += "<ul class='lectureTotal bdt'>";
                         retrunHtml += "<li class='left'>" + cmpList.subjectName + "</li>";
                     retrunHtml += "</ul>";
-                    console.log(cmpList);
                     for(var j = 0; j < cmpList.academyLectureInfo.length; j++){
                         retrunHtml += "<div class=\"lectureBody lectureBody2\">";
                         retrunHtml += "<div class=\"lectureRow\">";
@@ -425,7 +424,6 @@ function getSpecialPackageList(menuCtgKey, subjectMenuKeys, teacherKeys, stepCtg
     if (infoList != null) {
         if (infoList.result.length > 0) {
             var selList = infoList.result;
-            console.log(selList);
             var returnHtml = "<div class=\"lectureWrap\">";
                     returnHtml += "<ul class=\"lectureTotal bdt\">";
                         returnHtml += "<li class=\"right\">";
@@ -470,7 +468,6 @@ function getSpecialPackageList(menuCtgKey, subjectMenuKeys, teacherKeys, stepCtg
                                 if(selList[i].includeProductList != null){
                                     for(var k = 0; k < selList[i].includeProductList.length; k++){
                                         var productInfo = selList[i].includeProductList[k];
-                                        console.log(productInfo);
                                         returnHtml += "<div class=\"lectureRow\">";
                                             returnHtml += "<ul class=\"lectureList lectureList2\">";
                                                 returnHtml += "<li><span class=\"thumb\"><img src='"+ productInfo.imageList +"' alt=\"\"></span></li>";
@@ -558,6 +555,17 @@ function getLecOrderCtgKey() {
         menuCtgKey = 585;
     }else if(leftMenuInfo == "postAcademy"){
         menuCtgKey = 518;
+    }
+    return menuCtgKey;
+}
+
+function getPackageCtgKey() {
+    var menuCtgKey = '';
+    var leftMenuInfo = sessionStorage.getItem('leftMenu');//직렬 구분
+    if(leftMenuInfo == "publicOnline"){
+        menuCtgKey = 764;
+    }else if(leftMenuInfo == "techOnline"){
+        menuCtgKey = 833;
     }
     return menuCtgKey;
 }
