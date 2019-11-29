@@ -357,7 +357,7 @@ function getTeacherVideoLecture(teacherKey, device, stepCtgKey) {
                                     retrunHtml += '<span class="btn_ss btn_divTag">PC</span> <span class="btn_ss btn_divTag">모바일</span> ';
                                 }
                                 retrunHtml += "<b class='cost'>" + lecList[j].videoLectureKindList[a].sellPriceName + "</b> <input type='checkbox' name='lecChk' id='" + lecList[j].videoLectureKindList[a].priceKey + "' value='" + lecList[j].videoLectureKindList[a].gkey + "'>";
-                                retrunHtml += "<a href='javascript:goShopBasket(" + lecList[j].videoLectureKindList[a].gkey + "," + lecList[j].videoLectureKindList[a].priceKey + ");' class='btn_s'>장바구니</a>";
+                                retrunHtml += "<a href='javascript:goShopBasket(" + lecList[j].videoLectureKindList[a].gkey + "," + lecList[j].videoLectureKindList[a].priceKey + ");' class='btn_s'>장바구니</a>&nbsp;";
                                 retrunHtml += "<a href='javascript:goBuy(" + lecList[j].videoLectureKindList[a].gkey + "," + lecList[j].videoLectureKindList[a].priceKey + ");' class='btn_s on'>바로구매</a>";
                                 retrunHtml += '</li>';
                             }

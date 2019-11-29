@@ -55,20 +55,21 @@ function getOrderSheetInfoFromImmediatelyAtBasicPackage(userKey, goodsInfo, pack
 function getUserCartInfo(userKey) {
     if (userKey == null || userKey == undefined) return;
     var infoList = getApi("/order/getUserCartInfo/", userKey, "");
-    var totalSellPrice = 0;
-    var totalPoint = 0;
+    console.log(infoList);
     if (infoList != null) {
         if(infoList.result.deliveryPrice == 0){
             innerHTML("deliveryPrice", "0");
         }else{
             innerHTML("deliveryPrice", infoList.result.deliveryPriceName);
         }
-       // innerHTML("deliveryPrice", infoList.deliveryPriceName);
+        innerHTML("price", infoList.result.totalPriceName);
+        innerHTML("totalPrice", infoList.result.orderPriceName);
         if (infoList.result.academyCartInfo.length > 0) {
             for (var i = 0; i < infoList.result.academyCartInfo.length; i++) {
                 var acaInfo = infoList.result.academyCartInfo[i];
-                totalSellPrice += acaInfo.sellPrice;
-                totalPoint += acaInfo.point;
+                console.log(acaInfo);
+               // totalSellPrice += acaInfo.sellPrice;
+                //totalPoint += acaInfo.point;
                 var returnHtml = "<tr>";
                 returnHtml += "<td><input type=\"checkbox\" name='acaChk' id='"+ acaInfo.cartKey +"' class=\"ck\"></td>";
                 returnHtml += "<td>";
@@ -92,8 +93,8 @@ function getUserCartInfo(userKey) {
         if (infoList.result.videoCartInfo.length > 0) {
             for (var j = 0; j < infoList.result.videoCartInfo.length; j++) {
                 var playInfo = infoList.result.videoCartInfo[j];
-                totalSellPrice += playInfo.sellPrice;
-                totalPoint += playInfo.point;
+                //totalSellPrice += playInfo.sellPrice;
+                //totalPoint += playInfo.point;
                 var returnHtml = "<tr>";
                 returnHtml += "<td>";
                 returnHtml += "<input type=\"checkbox\" name='playChk' id='"+ playInfo.cartKey +"' class=\"ck2\"></td>";
@@ -128,9 +129,9 @@ function getUserCartInfo(userKey) {
         if (infoList.result.promotionCartInfo.length > 0) {
             for (var k = 0; k < infoList.result.promotionCartInfo.length; k++) {
                 var promotionInfo = infoList.result.promotionCartInfo[k];
-                console.log(promotionInfo);
-                totalSellPrice += promotionInfo.sellPrice;
-                totalPoint += promotionInfo.point;
+                //console.log(promotionInfo);
+                //totalSellPrice += promotionInfo.sellPrice;
+                //totalPoint += promotionInfo.point;
                 var returnHtml = "<tr>";
                 returnHtml += "<td>";
                 returnHtml += "<input type=\"checkbox\" name='promotionChk' id='"+ promotionInfo.cartKey +"' class=\"ck3\">";
@@ -155,8 +156,8 @@ function getUserCartInfo(userKey) {
         if (infoList.result.bookCartInfo.length > 0) {
             for (var l = 0; l < infoList.result.bookCartInfo.length;l++) {
                 var bookInfo = infoList.result.bookCartInfo[l];
-                totalSellPrice += bookInfo.sellPrice;
-                totalPoint += bookInfo.point;
+                //totalSellPrice += bookInfo.sellPrice;
+                //totalPoint += bookInfo.point;
                 var returnHtml = "<tr>";
                 returnHtml += "<td>";
                 returnHtml += "<input type=\"checkbox\" name='bookChk' id='"+ bookInfo.cartKey +"' class=\"ck4\"></td>";
@@ -177,10 +178,6 @@ function getUserCartInfo(userKey) {
         }else{
             $("#bookDiv").hide();
         }
-
-        innerHTML("price", format(totalSellPrice));
-        innerHTML("totalPrice", format(totalSellPrice));
-        innerHTML("totalPoint", format(totalPoint));
     }
 }
 
