@@ -71,12 +71,12 @@
 
         innerHTML("selOnlineCount", 0);
         innerHTML("selAcaCount", 0);
-        $("input[name=selProduct]").click(function(index){//체크박스 카운트 처리(학습자료실)
-            var count = $("input[name=selProduct]:checkbox:checked").length;
+        $("input[name=lecChk]").click(function(index){//체크박스 카운트 처리(학습자료실)
+            var count = $("input[name=lecChk]:checkbox:checked").length;
             innerHTML("selOnlineCount", count);
         });
-        $("input[name=selAcaProduct]").click(function(index){//체크박스 카운트 처리(학습공지)
-            var count = $("input[name=selAcaProduct]:checkbox:checked").length;
+        $("input[name=lecChk]").click(function(index){//체크박스 카운트 처리(학습공지)
+            var count = $("input[name=lecChk]:checkbox:checked").length;
             innerHTML("selAcaCount", count);
         });
         $("#noticeBtn").click(function () {
@@ -384,22 +384,27 @@
     }
 
     //체크박스 장바구니 담기
-    function goCheckedShopBasket(val) {
-        var chkId = '';
-        if(val == 'online') chkId = 'selProduct';
-        else if(val == 'aca') chkId = 'selAcaProduct';
-
+    function goCheckedShopBasket() {
         var arr = new Array();
-        $('input[name="'+ chkId +'"]:checked').each(function() {
+        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        var userKey = sessionUserInfo.userKey;
+        $('input[name=lecChk]:checked').each(function() {
             var priceKey = $(this).attr('id');
             var gkey = $(this).val();
             var data = {
-                gkey : gkey,
-                priceKey : priceKey
+                userKey : userKey,
+                gKey : gkey,
+                priceKey : priceKey,
+                gCount : 1
             };
             arr.push(data);
         });
-        console.log(arr);
+        var saveCartInfo = JSON.stringify(arr);
+        var result = saveCart(saveCartInfo);
+        if(result.resultCode == 200){
+            alert("장바구니에 담겼습니다.");
+            return false;
+        }
     }
 
     function goCheckedBuy() {
@@ -642,7 +647,7 @@
                                                     <li class="left"></li>
                                                     <li class="right">
                                                         선택한 항목 <span class="colorRed" id="selOnlineCount"></span>개를
-                                                        <a href="javascript:goCheckedShopBasket('online');" class="btn_m">장바구니 담기</a>
+                                                        <a href="javascript:goCheckedShopBasket();" class="btn_m">장바구니 담기</a>
                                                         <a href="javascript:goCheckedBuy();" class="btn_m on w120">바로구매</a>
                                                     </li>
                                                 </ul>
@@ -664,7 +669,7 @@
                                                     <li class="left"></li>
                                                     <li class="right">
                                                         선택한 항목 <span class="colorRed" id="selAcaCount"></span>개를
-                                                        <a href="javascript:goCheckedShopBasket('aca');" class="btn_m">장바구니 담기</a>
+                                                        <a href="javascript:goCheckedShopBasket();" class="btn_m">장바구니 담기</a>
                                                         <a href="#" class="btn_m on w120">바로구매</a>
                                                     </li>
                                                 </ul>
