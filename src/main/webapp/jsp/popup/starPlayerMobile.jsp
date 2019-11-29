@@ -9,9 +9,11 @@
     data += "<action-type>streaming</action-type>";
     data += "<user-id><![CDATA[ANONYMOUS]]</user-id>";
     data += 	"<content>";
-    data += 		"<id></id>";
+    data += 		"<id><![CDATA[0001]]></id>";
     data += 		"<url><![CDATA[http://algisa.nptechnology.com:8000/file/sample.mp4]]></url>";
     data += 		"<title><![CDATA[맛보기]]></title>";
+    data += 		"<category><![CDATA[테스트/다운로드]]></category>";
+    data += 		"<limit-date><![CDATA[20131210120000]]></limit-date>";
     data +=       "<position>0</position>";
     data += 	"</content>";
     data += "</axis-app>";
