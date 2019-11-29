@@ -336,7 +336,8 @@ function getTeacherVideoLecture(teacherKey, device, stepCtgKey) {
                         retrunHtml += '<li class="w45p">';
                         retrunHtml += '<span class="learnName">' + lecList[j].goodsName + '</span>';
                         retrunHtml += '<span class="learnNum">강의수 <b class="colorBlue">' + lecList[j].lecCount + '강</b> | 수강일수 <b class="colorBlue">' + lecList[j].limitDay + '일</b></span>';
-                        retrunHtml += '<span class="learnView">샘플보기 <a href="javascript:void(0);" onclick="OpenSamplePlayer();" class="btn_s btn_quality" >일반화질</a> <a href="#" class="btn_s btn_quality on">고화질</a></span>';
+                        retrunHtml += '<span class="learnView">샘플보기 <a href="javascript:void(0);" onclick="app(\'http://15.164.7.237/popup?page_gbn=starPlayerMobile?license=FBD4FB45-D5F4-4493-AE56-BCD6F36F646A&content_id=100&test=1&test2=2\');" class="btn_s btn_quality" >일반화질</a> <a href="#" class="btn_s btn_quality on">고화질</a></span>';
+                        //retrunHtml += '<span class="learnView">샘플보기 <a href="javascript:void(0);" onclick="OpenSamplePlayer();" class="btn_s btn_quality" >일반화질</a> <a href="#" class="btn_s btn_quality on">고화질</a></span>';
                         //retrunHtml += '<span class="learnView">샘플보기  <div class="btn_s btn_quality" data-file="zian/data/soft/01_09/190905_107226_01_H.mp4" data-lec-key="14591" data-curri-key="126979" data-high="1">일반화질</div> <a href="#" class="btn_s btn_quality on">고화질</a></span>';
                         //retrunHtml += '<span class="learnView">샘플보기  <button class="btn_s btn_quality" data-file="zian/data/soft/01_09/190905_107226_01_H.mp4" data-lec-key="14591" data-curri-key="126979" data-high="1">일반화질</button> <a href="#" class="btn_s btn_quality on">고화질</a></span>';
                         retrunHtml += '</li>';
