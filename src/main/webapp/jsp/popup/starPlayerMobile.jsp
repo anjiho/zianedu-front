@@ -7,7 +7,7 @@
     data = "<?xml version='1.0' encoding='UTF-8' ?>";
     data += "<axis-app>";
     data += "<action-type>streaming</action-type>";
-    data += "<user-id><![CDATA[ANONYMOUS]]</user-id>";
+    data += "<user-id><![CDATA[ANONYMOUS]]></user-id>";
     data += 	"<content>";
     data += 		"<id><![CDATA[0001]]></id>";
     data += 		"<url><![CDATA[http://zianedu.star.skcdn.com/zian/korean/ahn/01_1911/191105_107422_01_H.mp4]]></url>";

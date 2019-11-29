@@ -42,16 +42,6 @@ function OpenSamplePlayer( a_strFilePath, a_strTitle, a_lLecKey, a_lCurriKey, a_
     else
     {
 
-        var sp = StarPlayerApp;
-        sp.license = "FBD4FB45-D5F4-4493-AE56-BCD6F36F646A";
-        sp.version = "1.0.0";
-        sp.android_version = "1.0.0";
-        sp.ios_version = "1.0.0";
-        sp.pmp = "true";
-        var app = function(info_url) {
-            sp.executeApp(info_url);
-        }
-
         // var sp				= StarPlayerApp;
         // sp.license			= "FBD4FB45-D5F4-4493-AE56-BCD6F36F646A";
         // sp.version			= "1.0.0";
@@ -67,17 +57,16 @@ function OpenSamplePlayer( a_strFilePath, a_strTitle, a_lLecKey, a_lCurriKey, a_
         //     //sp.executeApp( GetCurrentSiteAddress() + "Player/AxisSmartStreamingSample?a_lPlayer_LecKey=" + a_lLecKey + "&a_lPlayer_CurriKey=" + a_lCurriKey + "&a_bPlayer_High=" + a_bHigh );
         //     sp.executeApp("/popup?page_gbn=starPlayerMobile");
 
-        //<![CDATA[
+
         var sp = StarPlayerApp;
         sp.license = "FBD4FB45-D5F4-4493-AE56-BCD6F36F646A";
         sp.version = "1.0.0";
         sp.android_version = "1.0.0";
         sp.ios_version = "1.0.0";
         sp.pmp = "true";
-        var app = function(info_url) {
-            sp.executeApp(info_url);
-        }
-        //]]>
+        //var app = function(info_url) {
+            sp.executeApp("http://15.164.7.237/popup?page_gbn=starPlayerMobile&license=FBD4FB45-D5F4-4493-AE56-BCD6F36F646A");
+        //}
     }
 }
 
