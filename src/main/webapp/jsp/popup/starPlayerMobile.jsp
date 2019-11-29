@@ -7,13 +7,13 @@
     data = "<?xml version='1.0' encoding='UTF-8' ?>";
     data += "<axis-app>";
     data += "<action-type>streaming</action-type>";
-    data += "<user-id>ANONYMOUS</user-id>";
+    data += "<user-id><![CDATA[ANONYMOUS]]</user-id>";
     data += 	"<content>";
-    data += 		"<id>0001></id>";
-    data += 		"<url>http://zianedu.star.skcdn.com/zian/korean/ahn/01_1911/191105_107422_01_H.mp4</url>";
-    data += 		"<title>맛보기></title>";
+    data += 		"<id><![CDATA[0001]]></id>";
+    data += 		"<url><![CDATA[http://zianedu.star.skcdn.com/zian/korean/ahn/01_1911/191105_107422_01_H.mp4]]></url>";
+    data += 		"<title><![CDATA[맛보기]]></title>";
     data += 		"<category><![CDATA[테스트/다운로드]]></category>";
-    data += 		"<limit-date>20201210120000</limit-date>";
+    data += 		"<limit-date><![CDATA[20201210120000]]></limit-date>";
     data +=       "<position>0</position>";
     data += 	"</content>";
     data += "</axis-app>";
@@ -31,5 +31,4 @@
     response.setHeader("contentType", "text/html");
 
 %>
-<%= data %>
 <%= encrypted_url %>
