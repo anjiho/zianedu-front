@@ -10,7 +10,7 @@
     data += "<user-id><![CDATA[ANONYMOUS]]</user-id>";
     data += 	"<content>";
     data += 		"<id><![CDATA[0001]]></id>";
-    data += 		"<url><![CDATA[http://algisa.nptechnology.com:8000/file/sample.mp4]]></url>";
+    data += 		"<url><![CDATA[http://zianedu.star.skcdn.com/zian/korean/ahn/01_1911/191105_107422_01_H.mp4]]></url>";
     data += 		"<title><![CDATA[맛보기]]></title>";
     data += 		"<category><![CDATA[테스트/다운로드]]></category>";
     data += 		"<limit-date><![CDATA[20201210120000]]></limit-date>";
