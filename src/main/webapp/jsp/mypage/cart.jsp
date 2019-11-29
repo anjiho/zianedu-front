@@ -204,17 +204,17 @@
                                 <ul>
                                     <li>
                                         <span class="txt1">주문금액</span>
-                                        <span class="txt2"><b id="price"></b></span>
+                                        <span class="txt2"><b id="price"></b>원</span>
                                         <span class="plus"></span>
                                     </li>
                                     <li class="pay-item">
                                         <span class="txt1">배송비</span>
-                                        <span class="txt2"><b id="deliveryPrice"></b></span>
+                                        <span class="txt2"><b id="deliveryPrice"></b>원</span>
                                         <span class="icoequal "></span>
                                     </li>
                                     <li class="pay-sum">
                                         <span class="txt1">총 주문금액</span>
-                                        <span class="txt2"><b id="totalPrice">564,200</b></span>
+                                        <span class="txt2"><b id="totalPrice">564,200</b>원</span>
                                     </li>
                                 </ul>
                             </div>
