@@ -42,7 +42,7 @@ function OpenSamplePlayer( a_strFilePath, a_strTitle, a_lLecKey, a_lCurriKey, a_
     else
     {
         var sp				= StarPlayerApp;
-        sp.license			= "FD361CA3-5366-4F63-9971-F647AD34DAF4";
+        sp.license			= "FBD4FB45-D5F4-4493-AE56-BCD6F36F646A";
         sp.version			= "1.0.0";
         sp.android_version	= "1.0.0";
         sp.ios_version		= "1.0.0";

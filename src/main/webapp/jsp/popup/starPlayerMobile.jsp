@@ -19,7 +19,7 @@
 
     // FDDFA75E-B718-4DAF-BF57-A8D1FC0299B9는 발급받은 라이선스 코드
 
-    StringEncrypter encrypter = new StringEncrypter("FD361CA3-5366-4F63-9971-F647AD34DAF4", "starplayer");
+    StringEncrypter encrypter = new StringEncrypter("FBD4FB45-D5F4-4493-AE56-BCD6F36F646A", "starplayer");
     String encrypted_url = encrypter.encrypt(data);
 
     response.addHeader("Cache-Control", "no-cache");
