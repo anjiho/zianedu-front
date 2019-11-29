@@ -251,7 +251,7 @@ function getTeacherAcademyLecture(teacherKey, stepCtgKey) {
                         if(lecList[j].discountPercent != null){
                             returnHtml += '<span class="colorRed">'+ lecList[j].discountPercent +'</span>';
                         }
-                        returnHtml += '<b class="cost">'+ lecList[j].sellPriceName +'원</b> <input type="checkbox" name="selAcaProduct" id="'+ lecList[j].priceKey +'" value="'+ lecList[j].gkey +'">';
+                        returnHtml += '<b class="cost">'+ lecList[j].sellPriceName +'원</b> <input type="checkbox" name="lecChk" id="'+ lecList[j].priceKey +'" value="'+ lecList[j].gkey +'">';
                         returnHtml += "<a href='javascript:goShopBasket(" + lecList[j].gkey + "," + lecList[j].priceKey + ");' class='btn_s'>장바구니</a>";
                         returnHtml += '<a href="#" class="btn_s on">바로구매</a>';
                         returnHtml += '</li>';
