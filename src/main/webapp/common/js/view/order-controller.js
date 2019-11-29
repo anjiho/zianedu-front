@@ -56,15 +56,14 @@ function getUserCartInfo(userKey) {
     if (userKey == null || userKey == undefined) return;
     var infoList = getApi("/order/getUserCartInfo/", userKey, "");
     if (infoList != null) {
-        console.log(infoList);
         if(infoList.result.deliveryPrice == 0){
             innerHTML("deliveryPrice", "0");
         }else{
             innerHTML("deliveryPrice", infoList.result.deliveryPriceName);
         }
-        innerHTML("price", infoList.result.totalPriceName);
+        innerHTML("price", infoList.result.orderPriceName);
+        innerHTML("totalPrice", infoList.result.totalPriceName);
         innerHTML("totalPoint", infoList.result.totalPointName);
-        innerHTML("totalPrice", infoList.result.orderPriceName);
         if (infoList.result.academyCartInfo.length > 0) {
             for (var i = 0; i < infoList.result.academyCartInfo.length; i++) {
                 var acaInfo = infoList.result.academyCartInfo[i];
