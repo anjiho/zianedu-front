@@ -2886,8 +2886,10 @@ function toStrFileName(arr){
     var str = "";
     for (var i=0; i<arr.length; i++) {
         str += '"' + arr[i] + '",';
+        console.log(arr[i]);
     }
     var str2 = str.substr(0, str.length -1);
+
     result = "[" + str2 + "]";
     return result;
 }

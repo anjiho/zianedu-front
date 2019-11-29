@@ -201,7 +201,7 @@ function getLectureApplyTeacherTypeList(menuCtgKey, subjectMenuKeys, teacherKeys
                                     returnHtml += "</ul>";
                                     returnHtml += "<div class=\"toggleWrap\">";
                                     returnHtml += "<div class=\"div_toggle\">";
-                                    returnHtml += "<ul class=\"lectureHead\">";
+                                    returnHtml += "<ul class=\"lectureList\">";
                                     returnHtml += "<li class=\"w15p\">유형</li>";
                                     returnHtml += "<li class=\"w40p\">강좌명</li>";
                                     returnHtml += "<li class=\"w35p\">수강료</li>";
@@ -283,10 +283,10 @@ function getLectureApplyTeacherTypeList(menuCtgKey, subjectMenuKeys, teacherKeys
                                                 returnHtml += "<col class=\"w40p\">";
                                                 returnHtml += "</colgroup>";
                                                 returnHtml += "<thead>";
-                                                returnHtml += "<th scope=\"row\">회차</th>";
-                                                returnHtml += "<th scope=\"row\">제목</th>";
-                                                returnHtml += "<th scope=\"row\">시간</th>";
-                                                returnHtml += "<th scope=\"row\">샘플보기</th>";
+                                                returnHtml += "<th scope=\"row\" style='text-align: center'>회차</th>";
+                                                returnHtml += "<th scope=\"row\" style='text-align: center'>제목</th>";
+                                                returnHtml += "<th scope=\"row\" style='text-align: center'>시간</th>";
+                                                returnHtml += "<th scope=\"row\" style='text-align: center'>샘플보기</th>";
                                                 returnHtml += "</thead>";
                                                 returnHtml += "<tbody>";
                                                 var lecList = getLectureList(teachLec.gkey, 'PC');

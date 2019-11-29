@@ -6,7 +6,6 @@ var apiHost = "http://52.79.40.214:9090";
 /* post */
 function postApi(url, paramData) {
     var resultData = null;
-
     $.post(apiHost + url, paramData, function (response) {
         resultData = response;
     }).fail(function() {

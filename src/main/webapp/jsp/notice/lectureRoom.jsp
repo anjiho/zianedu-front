@@ -61,7 +61,6 @@
     //강의실 배정표 불러오기
     function getLectureRoom(yyyymmdd, day) {
         var getRoomList = getLectureRoomTableList(yyyymmdd);
-        console.log(getRoomList);
         $("#img_box div").remove();
         $("#img_box1 div").remove();
         if(getRoomList.result.length > 0){
@@ -131,7 +130,6 @@
                 if(data.resultCode == 200){
                     var lectureDate = getInputTextValue("yyyymmdd");
                     var fileName = data.keyValue;
-                    console.log(lectureDate+"/"+fileName+"/"+academyNumber);
                     var result = saveLectureRoomTabel(academyNumber, lectureDate, fileName);
                     if(result.resultCode == 200){
                         alert("성공적으로 등록 완료되었습니다");
