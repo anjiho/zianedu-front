@@ -58,11 +58,10 @@ function getUserCartInfo(userKey) {
     var totalSellPrice = 0;
     var totalPoint = 0;
     if (infoList != null) {
-        console.log(infoList);
         if(infoList.result.deliveryPrice == 0){
             innerHTML("deliveryPrice", "0");
         }else{
-            innerHTML("deliveryPrice", infoList.deliveryPriceName);
+            innerHTML("deliveryPrice", infoList.result.deliveryPriceName);
         }
        // innerHTML("deliveryPrice", infoList.deliveryPriceName);
         if (infoList.result.academyCartInfo.length > 0) {
