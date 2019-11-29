@@ -63,6 +63,7 @@ function getUserCartInfo(userKey) {
         }
         innerHTML("price", infoList.result.orderPriceName);
         innerHTML("totalPrice", infoList.result.totalPriceName);
+        innerHTML("totalPoint", infoList.result.totalPointName);
         if (infoList.result.academyCartInfo.length > 0) {
             for (var i = 0; i < infoList.result.academyCartInfo.length; i++) {
                 var acaInfo = infoList.result.academyCartInfo[i];
