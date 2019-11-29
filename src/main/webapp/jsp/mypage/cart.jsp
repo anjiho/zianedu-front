@@ -204,7 +204,7 @@
                                 <ul>
                                     <li>
                                         <span class="txt1">주문금액</span>
-                                        <span class="txt2"><b id="price"></b>원</span>
+                                        <span class="txt2"><b id="price"></b></span>
                                         <span class="plus"></span>
                                     </li>
                                     <li class="pay-item">
@@ -214,7 +214,7 @@
                                     </li>
                                     <li class="pay-sum">
                                         <span class="txt1">총 주문금액</span>
-                                        <span class="txt2"><b id="totalPrice">564,200</b>원</span>
+                                        <span class="txt2"><b id="totalPrice">564,200</b></span>
                                     </li>
                                 </ul>
                             </div>

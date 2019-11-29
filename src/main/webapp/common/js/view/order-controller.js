@@ -55,7 +55,6 @@ function getOrderSheetInfoFromImmediatelyAtBasicPackage(userKey, goodsInfo, pack
 function getUserCartInfo(userKey) {
     if (userKey == null || userKey == undefined) return;
     var infoList = getApi("/order/getUserCartInfo/", userKey, "");
-    console.log(infoList);
     if (infoList != null) {
         if(infoList.result.deliveryPrice == 0){
             innerHTML("deliveryPrice", "0");
@@ -67,9 +66,6 @@ function getUserCartInfo(userKey) {
         if (infoList.result.academyCartInfo.length > 0) {
             for (var i = 0; i < infoList.result.academyCartInfo.length; i++) {
                 var acaInfo = infoList.result.academyCartInfo[i];
-                console.log(acaInfo);
-               // totalSellPrice += acaInfo.sellPrice;
-                //totalPoint += acaInfo.point;
                 var returnHtml = "<tr>";
                 returnHtml += "<td><input type=\"checkbox\" name='acaChk' id='"+ acaInfo.cartKey +"' class=\"ck\"></td>";
                 returnHtml += "<td>";
@@ -93,8 +89,6 @@ function getUserCartInfo(userKey) {
         if (infoList.result.videoCartInfo.length > 0) {
             for (var j = 0; j < infoList.result.videoCartInfo.length; j++) {
                 var playInfo = infoList.result.videoCartInfo[j];
-                //totalSellPrice += playInfo.sellPrice;
-                //totalPoint += playInfo.point;
                 var returnHtml = "<tr>";
                 returnHtml += "<td>";
                 returnHtml += "<input type=\"checkbox\" name='playChk' id='"+ playInfo.cartKey +"' class=\"ck2\"></td>";
