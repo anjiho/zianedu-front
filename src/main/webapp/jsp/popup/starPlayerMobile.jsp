@@ -11,8 +11,7 @@
     data += 	"<content>";
     data += 		"<id><![CDATA[0001]]></id>";
     data += 		"<url><![CDATA[http://zianedu.star.skcdn.com/zian/korean/ahn/01_1911/191105_107422_01_H.mp4]]></url>";
-    data += 		"<title><![CDATA[맛보기]]></title>";
-    data += 		"<category><![CDATA[테스트/다운로드]]></category>";
+    data += 		"<title><![CDATA[테스트]]></title>";
     data += 		"<limit-date><![CDATA[20201210120000]]></limit-date>";
     data +=       "<position>0</position>";
     data += 	"</content>";
