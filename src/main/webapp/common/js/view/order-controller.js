@@ -58,10 +58,16 @@ function getUserCartInfo(userKey) {
     var totalSellPrice = 0;
     var totalPoint = 0;
     if (infoList != null) {
+        console.log(infoList);
+        if(infoList.result.deliveryPrice == 0){
+            innerHTML("deliveryPrice", "0");
+        }else{
+            innerHTML("deliveryPrice", infoList.deliveryPriceName);
+        }
+       // innerHTML("deliveryPrice", infoList.deliveryPriceName);
         if (infoList.result.academyCartInfo.length > 0) {
             for (var i = 0; i < infoList.result.academyCartInfo.length; i++) {
                 var acaInfo = infoList.result.academyCartInfo[i];
-                //console.log(acaInfo);
                 totalSellPrice += acaInfo.sellPrice;
                 totalPoint += acaInfo.point;
                 var returnHtml = "<tr>";
@@ -87,7 +93,6 @@ function getUserCartInfo(userKey) {
         if (infoList.result.videoCartInfo.length > 0) {
             for (var j = 0; j < infoList.result.videoCartInfo.length; j++) {
                 var playInfo = infoList.result.videoCartInfo[j];
-                console.log(playInfo);
                 totalSellPrice += playInfo.sellPrice;
                 totalPoint += playInfo.point;
                 var returnHtml = "<tr>";
@@ -124,6 +129,7 @@ function getUserCartInfo(userKey) {
         if (infoList.result.promotionCartInfo.length > 0) {
             for (var k = 0; k < infoList.result.promotionCartInfo.length; k++) {
                 var promotionInfo = infoList.result.promotionCartInfo[k];
+                console.log(promotionInfo);
                 totalSellPrice += promotionInfo.sellPrice;
                 totalPoint += promotionInfo.point;
                 var returnHtml = "<tr>";

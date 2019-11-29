@@ -209,7 +209,7 @@
                                     </li>
                                     <li class="pay-item">
                                         <span class="txt1">배송비</span>
-                                        <span class="txt2"><b>0</b>원</span>
+                                        <span class="txt2"><b id="deliveryPrice"></b>원</span>
                                         <span class="icoequal "></span>
                                     </li>
                                     <li class="pay-sum">
