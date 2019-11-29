@@ -61,7 +61,7 @@ function getUserCartInfo(userKey) {
         if (infoList.result.academyCartInfo != null) {
             for (var i = 0; i < infoList.result.academyCartInfo.length; i++) {
                 var acaInfo = infoList.result.academyCartInfo[i];
-                console.log(acaInfo);
+                //console.log(acaInfo);
                 totalSellPrice += acaInfo.sellPrice;
                 totalPoint += acaInfo.point;
                 var returnHtml = "<tr>";
@@ -84,7 +84,7 @@ function getUserCartInfo(userKey) {
 
         if (infoList.result.videoCartInfo != null) {
             for (var j = 0; j < infoList.result.videoCartInfo.length; j++) {
-                var playInfo = infoList.result.videoCartInfo[i];
+                var playInfo = infoList.result.videoCartInfo[j];
                 console.log(playInfo);
                 totalSellPrice += playInfo.sellPrice;
                 totalPoint += playInfo.point;
@@ -119,7 +119,7 @@ function getUserCartInfo(userKey) {
 
         if (infoList.result.promotionCartInfo != null) {
             for (var k = 0; k < infoList.result.promotionCartInfo.length; k++) {
-                var promotionInfo = infoList.result.promotionCartInfo[i];
+                var promotionInfo = infoList.result.promotionCartInfo[k];
                 totalSellPrice += promotionInfo.sellPrice;
                 totalPoint += promotionInfo.point;
                 var returnHtml = "<tr>";
@@ -141,8 +141,8 @@ function getUserCartInfo(userKey) {
             }
         }
         if (infoList.result.bookCartInfo != null) {
-            for (var k = 0; k < infoList.result.bookCartInfo.length; k++) {
-                var bookInfo = infoList.result.bookCartInfo[k];
+            for (var l = 0; l < infoList.result.bookCartInfo.length;l++) {
+                var bookInfo = infoList.result.bookCartInfo[l];
                 totalSellPrice += bookInfo.sellPrice;
                 totalPoint += bookInfo.point;
                 var returnHtml = "<tr>";
