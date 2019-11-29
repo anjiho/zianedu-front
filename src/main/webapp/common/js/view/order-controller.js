@@ -5,6 +5,7 @@ function deleteCartInfo(cartKeys) {
         cartKeys : cartKeys
     };
     var result = postApi("/order/deleteCartInfo", data);
+    return result;
 }
 
 //주문서 작성 > 주문서 작성 > 장바구니에 담은 상품에서 주문서 작성으로 갈때
@@ -53,7 +54,7 @@ function getOrderSheetInfoFromImmediatelyAtBasicPackage(userKey, goodsInfo, pack
 //장바구니 리스트
 function getUserCartInfo(userKey, tagId) {
     if (userKey == null || userKey == undefined) return;
-    var InfoList = getApi("/order/getUserCartInfo/", userKey);
+    var InfoList = getApi("/order/getUserCartInfo/", userKey, "");
     if (InfoList.result.length > 0) {
         var selList = InfoList.result;
         dwr.util.addRows(tagId, selList, [
@@ -112,19 +113,22 @@ function getUserPointInfo(userKey, tagId) {
 
 //장바구니 담기(자유패키지 외 상품)
 function saveCart(saveCartInfo) {
-    if (cartKeys == null || cartKeys == undefined) return;
+    if (saveCartInfo == null || saveCartInfo == undefined) return;
     var data = {
         saveCartInfo : saveCartInfo
     };
     var result = postApi("/order/saveCart", data);
+    return  result;
 }
 
 //장바구니 담기(자유패키지)
-function saveCartFreePackage(userKey, gKeys) {
-    if (userKey == null || userKey == undefined) return;
-    var data = {
-        userKey : userKey,
-        gKeys : gKeys
-    };
-    var result = postApi("/order/saveCartFreePackage", data);
-}
+//
+// function saveCartFreePackage(userKey, gKeys) {
+//     if (userKey == null || userKey == undefined) return;
+//     var data = {
+//         userKey : userKey,
+//         gKeys : gKeys
+//     };
+//     var result = postApi("/order/saveCartFreePackage", data);
+//     return  result;
+// }
