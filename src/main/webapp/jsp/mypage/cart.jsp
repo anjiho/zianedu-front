@@ -1,6 +1,28 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/jsp/common.jsp" %>
-
+<script>
+    $( document ).ready(function() {
+        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        var userKey = sessionUserInfo.userKey;
+        getUserCartInfo(userKey);
+        $("#acaAll").click(function(){
+            if($("#acaAll").prop("checked"))$("input[name=acaChk]").prop("checked",true);
+            else $("input[name=acaChk]").prop("checked",false);
+        });
+        $("#playAll").click(function(){
+            if($("#playAll").prop("checked"))$("input[name=playChk]").prop("checked",true);
+            else $("input[name=playChk]").prop("checked",false);
+        });
+        $("#promotionAll").click(function(){
+            if($("#promotionAll").prop("checked"))$("input[name=promotionChk]").prop("checked",true);
+            else $("input[name=promotionChk]").prop("checked",false);
+        });
+        $("#bookAll").click(function(){
+            if($("#bookAll").prop("checked"))$("input[name=bookChk]").prop("checked",true);
+            else $("input[name=bookChk]").prop("checked",false);
+        });
+    });
+</script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
     <div id="wrap">
@@ -24,7 +46,7 @@
                     </ul>
                     <!--cart -->
                     <div class="cart">
-                        <div class="tbd_03 mgb60">
+                        <div class="tbd_03 mgb60" id="acaDiv">
                             <p class="title"><span class="text_blue">학원실강</span> 장바구니 담긴상품</p>
                             <table>
                                 <colgroup>
@@ -35,29 +57,29 @@
                                 </colgroup>
                                 <thead>
                                 <tr>
-                                    <th><input type="checkbox" name="all" value=""  class="check-all"></th>
+                                    <th><input type="checkbox" id="acaAll" value=""  class="check-all"></th>
                                     <th>상품명</th>
                                     <th>판매가</th>
                                     <th>마일리지</th>
                                 </tr>
                                 </thead>
-                                <tbody>
-                                <tr>
-                                    <td><input type="checkbox" name="" value="" name="" class="ck"></td>
-                                    <td>
-                                        [1관학원실강] 2020 시험대비 윤광덕 영어 기본이론반 [7월 10일 개강 접수중] <br>
-                                        <span class="text_blue">판매가격 : </span>2개월<span class="thm text_blue pl30">100,000원</span>
-                                    </td>
-                                    <td>
-                                        <span class="thm line">58,000원</span><span class="arrow">＞</span>
-                                        <span class="thm text_blue">39,500원</span>
-                                    </td>
-                                    <td>5,000점</td>
-                                </tr>
+                                <tbody id="acaList">
+<%--                                <tr>--%>
+<%--                                    <td><input type="checkbox" name="" value="" name="" class="ck"></td>--%>
+<%--                                    <td>--%>
+<%--                                        [1관학원실강] 2020 시험대비 윤광덕 영어 기본이론반 [7월 10일 개강 접수중] <br>--%>
+<%--                                        <span class="text_blue">판매가격 : </span>2개월<span class="thm text_blue pl30">100,000원</span>--%>
+<%--                                    </td>--%>
+<%--                                    <td>--%>
+<%--                                        <span class="thm line">58,000원</span><span class="arrow">＞</span>--%>
+<%--                                        <span class="thm text_blue">39,500원</span>--%>
+<%--                                    </td>--%>
+<%--                                    <td>5,000점</td>--%>
+<%--                                </tr>--%>
                                 </tbody>
                             </table>
                         </div>
-                        <div class="tbd_03 mgb60">
+                        <div class="tbd_03 mgb60" id="playDiv">
                             <p class="title"><span class="text_blue">동영상</span> 장바구니 담긴상품</p>
                             <table>
                                 <colgroup>
@@ -69,31 +91,18 @@
                                 </colgroup>
                                 <thead>
                                 <tr>
-                                    <th><input type="checkbox" name="all" value=""  class="check-all2"></th>
+                                    <th><input type="checkbox" name="playAll" value=""  class="check-all2"></th>
                                     <th>상품명</th>
                                     <th>강의수</th>
                                     <th>판매가</th>
                                     <th>마일리지</th>
                                 </tr>
                                 </thead>
-                                <tbody>
-                                <tr>
-                                    <td><input type="checkbox" name="" value="" class="ck2"></td>
-                                    <td>
-                                        2019 시험대비 안효선 올인원 이론 강의 [5%적립]<br>
-                                        <span class="text_blue">판매가격 :</span><span class="bdbox">PC</span><span class="bdbox">모바일</span><span class="thm text_blue pl30">80,000원</span>
-                                    </td>
-                                    <td>65강</td>
-                                    <td>
-                                        <span class="thm line">160,000원</span><span class="arrow">＞</span>
-                                        <span class="thm text_blue">80,000원</span>
-                                    </td>
-                                    <td>5,000점</td>
-                                </tr>
+                                <tbody id="playList">
                                 </tbody>
                             </table>
                         </div>
-                        <div class="tbd_03 mgb60">
+                        <div class="tbd_03 mgb60" id="promotionDiv">
                             <p class="title"><span class="text_blue">프로모션</span> 장바구니 담긴상품</p>
                             <table>
                                 <colgroup>
@@ -104,26 +113,26 @@
                                 </colgroup>
                                 <thead>
                                 <tr>
-                                    <th><input type="checkbox" name="all" value=""  class="check-all3"></th>
+                                    <th><input type="checkbox" name="promotionAll" value=""  class="check-all3"></th>
                                     <th>상품명</th>
                                     <th>판매가</th>
                                     <th>마일리지</th>
                                 </tr>
                                 </thead>
-                                <tbody>
-                                <tr>
-                                    <td><input type="checkbox" name="" value="" class="ck3"></td>
-                                    <td>2020 공통과목 365지안패스</td>
-                                    <td>
-                                        <span class="thm line">1,100,000원</span><span class="arrow">＞</span>
-                                        <span class="thm text_blue">350,000원</span>
-                                    </td>
-                                    <td>0점</td>
-                                </tr>
+                                <tbody id="promotionList">
+<%--                                <tr>--%>
+<%--                                    <td><input type="checkbox" name="" value="" class="ck3"></td>--%>
+<%--                                    <td>2020 공통과목 365지안패스</td>--%>
+<%--                                    <td>--%>
+<%--                                        <span class="thm line">1,100,000원</span><span class="arrow">＞</span>--%>
+<%--                                        <span class="thm text_blue">350,000원</span>--%>
+<%--                                    </td>--%>
+<%--                                    <td>0점</td>--%>
+<%--                                </tr>--%>
                                 </tbody>
                             </table>
                         </div>
-                        <div class="tbd_03 mgb60">
+                        <div class="tbd_03 mgb60" id="bookDiv">
                             <p class="title"><span class="text_blue">도서</span> 장바구니 담긴상품</p>
                             <table>
                                 <colgroup>
@@ -134,32 +143,32 @@
                                 </colgroup>
                                 <thead>
                                 <tr>
-                                    <th><input type="checkbox" name="all" value=""  class="check-all4"></th>
+                                    <th><input type="checkbox" name="bookAll" value=""  class="check-all4"></th>
                                     <th>상품명</th>
                                     <th>판매가</th>
                                     <th>마일리지</th>
                                 </tr>
                                 </thead>
-                                <tbody>
-                                <tr>
-                                    <td><input type="checkbox" name="" value="" class="ck4"></td>
-                                    <td>2020 지안한국사 기본서 (2권) [10%할인+5%적립]</td>
-                                    <td>
-                                        <span class="thm line">1,100,000원</span><span class="arrow">＞</span>
-                                        <span class="thm text_blue">350,000원</span>
-                                    </td>
-                                    <td>0점</td>
-                                </tr>
+                                <tbody id="bookList">
+<%--                                <tr>--%>
+<%--                                    <td><input type="checkbox" name="" value="" class="ck4"></td>--%>
+<%--                                    <td>2020 지안한국사 기본서 (2권) [10%할인+5%적립]</td>--%>
+<%--                                    <td>--%>
+<%--                                        <span class="thm line">1,100,000원</span><span class="arrow">＞</span>--%>
+<%--                                        <span class="thm text_blue">350,000원</span>--%>
+<%--                                    </td>--%>
+<%--                                    <td>0점</td>--%>
+<%--                                </tr>--%>
                                 </tbody>
                             </table>
                         </div>
                         <div class="pay_total">
-                            <p>마일리지 :<span>10,710점</span></p>
+                            <p>마일리지 :<span id="totalPoint">점</span></p>
                             <div class="inner">
                                 <ul>
                                     <li>
                                         <span class="txt1">주문금액</span>
-                                        <span class="txt2"><b>564,200</b>원</span>
+                                        <span class="txt2"><b id="price"></b>원</span>
                                         <span class="plus"></span>
                                     </li>
                                     <li class="pay-item">
@@ -169,7 +178,7 @@
                                     </li>
                                     <li class="pay-sum">
                                         <span class="txt1">총 주문금액</span>
-                                        <span class="txt2"><b>564,200</b>원</span>
+                                        <span class="txt2"><b id="totalPrice">564,200</b>원</span>
                                     </li>
                                 </ul>
                             </div>

@@ -52,17 +52,121 @@ function getOrderSheetInfoFromImmediatelyAtBasicPackage(userKey, goodsInfo, pack
 }
 
 //장바구니 리스트
-function getUserCartInfo(userKey, tagId) {
+function getUserCartInfo(userKey) {
     if (userKey == null || userKey == undefined) return;
-    var InfoList = getApi("/order/getUserCartInfo/", userKey, "");
-    if (InfoList.result.length > 0) {
-        var selList = InfoList.result;
-        dwr.util.addRows(tagId, selList, [
-            /*
-                TODO : addoption 추가
-             */
-            //function(data) {return data.fullFileUrl;}
-        ], {escapeHtml:false});
+    var infoList = getApi("/order/getUserCartInfo/", userKey, "");
+    var totalSellPrice = 0;
+    var totalPoint = 0;
+    if (infoList != null) {
+        if (infoList.result.academyCartInfo != null) {
+            for (var i = 0; i < infoList.result.academyCartInfo.length; i++) {
+                var acaInfo = infoList.result.academyCartInfo[i];
+                console.log(acaInfo);
+                totalSellPrice += acaInfo.sellPrice;
+                totalPoint += acaInfo.point;
+                var returnHtml = "<tr>";
+                returnHtml += "<td><input type=\"checkbox\" name='acaChk' id='"+ acaInfo.cartKey +"' class=\"ck\"></td>";
+                returnHtml += "<td>";
+                returnHtml += "" + acaInfo.goodsName + " <br>";
+                returnHtml += "<span class=\"text_blue\">판매가격 : </span>" + acaInfo.kind + "개월<span class=\"thm text_blue pl30\">" + acaInfo.sellPriceName + "</span>";
+                returnHtml += "</td>";
+                returnHtml += "<td>";
+                returnHtml += "<span class=\"thm line\">" + acaInfo.priceName + "</span><span class=\"arrow\"></span>";
+                returnHtml += "<span class=\"thm text_blue\">" + acaInfo.sellPriceName + "</span>";
+                returnHtml += "</td>";
+                returnHtml += "<td>";
+                returnHtml += acaInfo.pointName;
+                returnHtml += "</td>";
+                returnHtml += "</tr>";
+                $("#acaList").append(returnHtml);
+            }
+        }
+
+        if (infoList.result.videoCartInfo != null) {
+            for (var j = 0; j < infoList.result.videoCartInfo.length; j++) {
+                var playInfo = infoList.result.videoCartInfo[i];
+                console.log(playInfo);
+                totalSellPrice += playInfo.sellPrice;
+                totalPoint += playInfo.point;
+                var returnHtml = "<tr>";
+                returnHtml += "<td>";
+                returnHtml += "<input type=\"checkbox\" name='playChk' id='"+ playInfo.cartKey +"' class=\"ck2\"></td>";
+                returnHtml += "</td>";
+                returnHtml += "<td>";
+                returnHtml += "" + playInfo.goodsName + "<br>";
+                if (playInfo.kind == 100) {
+                    returnHtml += "<span class=\"text_blue\">판매가격 :</span><span class=\"bdbox\">PC</span><span class=\"thm text_blue pl30\">" + playInfo.sellPriceName + "</span>";
+                } else if (playInfo.kind == 101) {
+                    returnHtml += "<span class=\"text_blue\">판매가격 :</span><span class=\"bdbox\">모바일</span><span class=\"thm text_blue pl30\">" + playInfo.sellPriceName + "</span>";
+                } else {
+                    returnHtml += "<span class=\"text_blue\">판매가격 :</span><span class=\"bdbox\">PC</span><span class=\"bdbox\">모바일</span><span class=\"thm text_blue pl30\">" + playInfo.sellPriceName + "</span>";
+                }
+                returnHtml += "</td>";
+                returnHtml += "<td>";
+                returnHtml += playInfo.subjectCount;
+                returnHtml += "</td>";
+                returnHtml += "<td>";
+                returnHtml += "<span class=\"thm line\">" + playInfo.priceName + "</span><span class=\"arrow\">＞</span>";
+                returnHtml += "<span class=\"thm text_blue\">" + playInfo.sellPriceName + "</span>";
+                returnHtml += "</td>";
+                returnHtml += "<td>";
+                returnHtml += playInfo.pointName;
+                returnHtml += "</td>";
+                returnHtml += "<tr>";
+                $("#playList").append(returnHtml);
+            }
+        }
+
+        if (infoList.result.promotionCartInfo != null) {
+            for (var k = 0; k < infoList.result.promotionCartInfo.length; k++) {
+                var promotionInfo = infoList.result.promotionCartInfo[i];
+                totalSellPrice += promotionInfo.sellPrice;
+                totalPoint += promotionInfo.point;
+                var returnHtml = "<tr>";
+                returnHtml += "<td>";
+                returnHtml += "<input type=\"checkbox\" name='promotionChk' id='"+ promotionInfo.cartKey +"' class=\"ck3\">";
+                returnHtml += "</td>";
+                returnHtml += "<td>";
+                returnHtml += promotionInfo.goodsName;
+                returnHtml += "</td>";
+                returnHtml += "<td>";
+                returnHtml += "<span class=\"thm line\">" + promotionInfo.priceName + "</span><span class=\"arrow\"></span>";
+                returnHtml += "<span class=\"thm text_blue\">" + promotionInfo.sellPriceName + "</span>";
+                returnHtml += "</td>";
+                returnHtml += "<td>";
+                returnHtml += promotionInfo.pointName;
+                returnHtml += "</td>";
+                returnHtml += "</tr>";
+                $("#promotionList").append(returnHtml);
+            }
+        }
+        if (infoList.result.bookCartInfo != null) {
+            for (var k = 0; k < infoList.result.bookCartInfo.length; k++) {
+                var bookInfo = infoList.result.bookCartInfo[k];
+                totalSellPrice += bookInfo.sellPrice;
+                totalPoint += bookInfo.point;
+                var returnHtml = "<tr>";
+                returnHtml += "<td>";
+                returnHtml += "<input type=\"checkbox\" name='bookChk' id='"+ bookInfo.cartKey +"' class=\"ck4\"></td>";
+                returnHtml += "</td>";
+                returnHtml += "<td>";
+                returnHtml += bookInfo.goodsName;
+                returnHtml += "</td>";
+                returnHtml += "<td>";
+                returnHtml += "<span class=\"thm line\">"+ bookInfo.priceName +"</span><span class=\"arrow\">＞</span>";
+                returnHtml += "<span class=\"thm text_blue\">"+ bookInfo.sellPriceName +"</span>";
+                returnHtml += "</td>";
+                returnHtml += "<td>";
+                returnHtml += bookInfo.pointName;
+                returnHtml += "</td>";
+                returnHtml += "</tr>";
+                $("#bookList").append(returnHtml);
+            }
+        }
+
+        innerHTML("price", format(totalSellPrice));
+        innerHTML("totalPrice", format(totalSellPrice));
+        innerHTML("totalPoint", format(totalPoint));
     }
 }
 
@@ -117,6 +221,7 @@ function saveCart(saveCartInfo) {
     var data = {
         saveCartInfo : saveCartInfo
     };
+    console.log(data);
     var result = postApi("/order/saveCart", data);
     return  result;
 }

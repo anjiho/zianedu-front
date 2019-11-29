@@ -68,20 +68,6 @@ function getAcademyProductDetail(gKey) {
     }
 }
 
-//특별 패키지 상품 리스트
-function getSpecialPackageList(tagId) {
-    var InfoList = getApi("/product/getSpecialPackageList/", "","");
-    if (InfoList.result.length > 0) {
-        var selList = InfoList.result;
-        dwr.util.addRows(tagId, selList, [
-            /*
-                TODO : addoption 추가
-             */
-            //function(data) {return data.fullFileUrl;}
-        ], {escapeHtml:false});
-    }
-}
-
 //학원별 동영상강의 상품 리스트
 function getVideoLectureListFromCategoryMenu(ctgKey, stepCtgKey, teacherKey) {
     if (ctgKey == null || ctgKey == undefined) return;
@@ -176,6 +162,7 @@ function getLectureApplyTeacherTypeList(menuCtgKey, subjectMenuKeys, teacherKeys
     if (infoList != null) {
         if (infoList.result.length > 0) {
             var selList = infoList.result;
+            console.log(selList);
             for (var i = 0; i < selList.length; i++) {
                 var cmpList  = selList[i];
                 //if(cmpList.teacherTypeInfo != null){
@@ -201,7 +188,7 @@ function getLectureApplyTeacherTypeList(menuCtgKey, subjectMenuKeys, teacherKeys
                                     returnHtml += "</ul>";
                                     returnHtml += "<div class=\"toggleWrap\">";
                                     returnHtml += "<div class=\"div_toggle\">";
-                                    returnHtml += "<ul class=\"lectureList\">";
+                                    returnHtml += "<ul class=\"lectureHead\">";
                                     returnHtml += "<li class=\"w15p\">유형</li>";
                                     returnHtml += "<li class=\"w40p\">강좌명</li>";
                                     returnHtml += "<li class=\"w35p\">수강료</li>";
@@ -314,6 +301,32 @@ function getLectureApplyTeacherTypeList(menuCtgKey, subjectMenuKeys, teacherKeys
                                                 returnHtml += "</div>";//toggleWrap
                                                 returnHtml += "</div>"//lectureRow
                                             }
+
+                                            if(teachLec.teacherLectureBook != null){
+                                                for(var p = 0; p < teachLec.teacherLectureBook.length; p++){
+                                                    var bookInfo = teachLec.teacherLectureBook[p];
+                                                    returnHtml += "<div class=\"lectureRow\">";
+                                                        returnHtml += "<ul class=\"lectureList\">";
+                                                            returnHtml += "<li class=\"w15p\">";
+                                                                returnHtml += "<span class=\"btn_learnType gray\">교재</span>";
+                                                            returnHtml += "</li>";
+                                                            returnHtml += "<li class=\"w40p\">";
+                                                                returnHtml += "<span class=\"btn_ss btn_divTag\">"+ bookInfo.isMain +"</span>";
+                                                                returnHtml += "<a href=\"#\" class=\"learnName\">"+ bookInfo.bookName +"</a>";
+                                                                returnHtml += "<span class=\"learnNum\">저자 <b class=\"colorBlue\">"+ bookInfo.writer +"</b> | 출판 <b class=\"colorBlue\">"+ bookInfo.publishDate +"</b></span>";
+                                                            returnHtml += "<li>";
+                                                            returnHtml += "<li class=\"w35p ta_right\">";
+                                                                returnHtml += "<ul class=\"costList\">";
+                                                                    returnHtml += "<li>";
+                                                                        returnHtml += "<b class=\"cost\">"+ bookInfo.sellPriceName +"원</b> <input type=\"checkbox\" name='lecChk' id='" + bookInfo.priceKey + "' value='" + bookInfo.gkey + "'>";
+                                                                    returnHtml += "</li>";
+                                                                returnHtml += "</ul>";
+                                                            returnHtml += "</li>";
+                                                            returnHtml += "<li class=\"w10p ta_center\">&nbsp;</li>";
+                                                        returnHtml += "</ul>";
+                                                    returnHtml += "</div>";
+                                                }
+                                            }
                                         }
                                         returnHtml += "</div>";//lectureBody
                                     }
@@ -421,6 +434,7 @@ function getSpecialPackageList(menuCtgKey, subjectMenuKeys, teacherKeys, stepCtg
         device : device
     };
     var infoList = getApi("/product/getSpecialPackageList/", menuCtgKey, data);
+    console.log(infoList);
     if (infoList != null) {
         if (infoList.result.length > 0) {
             var selList = infoList.result;

@@ -101,13 +101,14 @@
             var gkey = $(this).val();
             var data = {
                 userKey : userKey,
-                gkey : gkey,
+                gKey : gkey,
                 priceKey : priceKey,
                 gCount : 1
             };
             arr.push(data);
         });
         var saveCartInfo = JSON.stringify(arr);
+        console.log(saveCartInfo);
         var result = saveCart(saveCartInfo);
         if(result.resultCode == 200){
             alert("장바구니에 담겼습니다.");
