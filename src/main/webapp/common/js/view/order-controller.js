@@ -58,7 +58,7 @@ function getUserCartInfo(userKey) {
     var totalSellPrice = 0;
     var totalPoint = 0;
     if (infoList != null) {
-        if (infoList.result.academyCartInfo != null) {
+        if (infoList.result.academyCartInfo.length > 0) {
             for (var i = 0; i < infoList.result.academyCartInfo.length; i++) {
                 var acaInfo = infoList.result.academyCartInfo[i];
                 //console.log(acaInfo);
@@ -80,9 +80,11 @@ function getUserCartInfo(userKey) {
                 returnHtml += "</tr>";
                 $("#acaList").append(returnHtml);
             }
+        }else{
+            $("#acaDiv").hide();
         }
 
-        if (infoList.result.videoCartInfo != null) {
+        if (infoList.result.videoCartInfo.length > 0) {
             for (var j = 0; j < infoList.result.videoCartInfo.length; j++) {
                 var playInfo = infoList.result.videoCartInfo[j];
                 console.log(playInfo);
@@ -115,9 +117,11 @@ function getUserCartInfo(userKey) {
                 returnHtml += "<tr>";
                 $("#playList").append(returnHtml);
             }
+        }else{
+            $("#playDiv").hide();
         }
 
-        if (infoList.result.promotionCartInfo != null) {
+        if (infoList.result.promotionCartInfo.length > 0) {
             for (var k = 0; k < infoList.result.promotionCartInfo.length; k++) {
                 var promotionInfo = infoList.result.promotionCartInfo[k];
                 totalSellPrice += promotionInfo.sellPrice;
@@ -139,8 +143,11 @@ function getUserCartInfo(userKey) {
                 returnHtml += "</tr>";
                 $("#promotionList").append(returnHtml);
             }
+        }else{
+            $("#promotionDiv").hide();
         }
-        if (infoList.result.bookCartInfo != null) {
+
+        if (infoList.result.bookCartInfo.length > 0) {
             for (var l = 0; l < infoList.result.bookCartInfo.length;l++) {
                 var bookInfo = infoList.result.bookCartInfo[l];
                 totalSellPrice += bookInfo.sellPrice;
@@ -162,6 +169,8 @@ function getUserCartInfo(userKey) {
                 returnHtml += "</tr>";
                 $("#bookList").append(returnHtml);
             }
+        }else{
+            $("#bookDiv").hide();
         }
 
         innerHTML("price", format(totalSellPrice));

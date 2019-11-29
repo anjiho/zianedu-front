@@ -22,6 +22,42 @@
             else $("input[name=bookChk]").prop("checked",false);
         });
     });
+    
+    function deleteCart() {
+        if(confirm("삭제 하시겠습니까?")){
+            var acaArr = new Array();
+            $('input[name=acaChk]:checked').each(function() {
+                var cartKey = $(this).attr('id');
+                acaArr.push(cartKey);
+            });
+            var playArr = new Array();
+            $('input[name=playChk]:checked').each(function() {
+                var cartKey = $(this).attr('id');
+                playArr.push(cartKey);
+            });
+            var promotionArr = new Array();
+            $('input[name=promotionChk]:checked').each(function() {
+                var cartKey = $(this).attr('id');
+                promotionArr.push(cartKey);
+            });
+            var bookArr = new Array();
+            $('input[name=bookChk]:checked').each(function() {
+                var cartKey = $(this).attr('id');
+                bookArr.push(cartKey);
+            });
+            var arr1 = acaArr.concat(playArr);
+            var arr2 = arr1.concat(promotionArr);
+            var allArr = arr2.concat(bookArr);
+            var cartKeys = toStrFileName(allArr);
+            var result = deleteCartInfo(cartKeys);
+            console.log(result);
+            if(result.resultCode == 200){
+                alert("삭제가 완료 되었습니다.");
+                isReloadPage(true);
+            }
+
+        }
+    }
 </script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
@@ -194,7 +230,7 @@
                         </div>
                         <div class="btn_area">
                             <div class="left">
-                                <a href="" class="bdgray">선택상품 삭제</a>
+                                <a href="javascript:deleteCart();" class="bdgray">선택상품 삭제</a>
                                 <a href="" class="bggray">선택상품주문</a>
                             </div>
                             <div class="right">
