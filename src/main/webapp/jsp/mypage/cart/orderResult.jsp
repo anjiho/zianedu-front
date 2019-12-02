@@ -42,17 +42,7 @@
             <div class="inner">
                 <!--서브 컨텐츠-->
 
-                <div class="tabBox">
-                    <ul>
-                        <li><a href="#">주문내역조회</a></li>
-                        <li  class="active"><a href="#">장바구니</a></li>
-                        <li><a href="#">회원정보관리</a></li>
-                        <li><a href="#">쿠폰마일리진</a></li>
-                        <li><a href="#">게시물간리</a></li>
-                        <li><a href="#">관심강좌</a></li>
-                    </ul>
-                </div>
-                <br />
+                <%@include file="/common/jsp/myPageHeader.jsp" %>
                 <div class="Mypage">
                     <ul class="statusBar">
                         <li><label>01.<b>장바구니</b></label></li>
