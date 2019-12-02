@@ -189,7 +189,7 @@
             alert('<%=vodPath%>');
             alert('<%=vodTitle%>');
 
-            var url = "<%=targetUrl%>";
+            var url = "<%=vodPath%>";
             var media = {
                 url : url,
                 //url : "http://algisa.nptechnology.com:8000/file/sample.mp4",
