@@ -186,9 +186,6 @@
             //     startTime: 0
             // };
 
-            alert('<%=vodPath%>');
-            alert('<%=vodTitle%>');
-
             var url = "<%=vodPath%>";
             var media = {
                 url : url,

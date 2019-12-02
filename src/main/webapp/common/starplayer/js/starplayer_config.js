@@ -17,18 +17,19 @@ var STARPLAYER_AGENT_VERSION = "1,0,1,18";
 //CONFIG
 var STARPLAYER_CONFIG_URL = "http://mgt.zianedu.star.skcdn.com/config/starplayer.txt";
 
-function OpenSamplePlayer( vodPath, vodTitle )
+function OpenSamplePlayer( vodPath )
 {
     var pcMobile = divisionPcMobile();
 
-    a_strFilePath = "zian/data/soft/01_09/190905_107226_01_H.mp4";
-    a_strTitle = "1234",
-    a_lLecKey = "14591";
-    a_lCurriKey = "126979";
-    a_bHigh = "1";
+    // a_strFilePath = "zian/data/soft/01_09/190905_107226_01_H.mp4";
+    // a_strTitle = "1234",
+    // a_lLecKey = "14591";
+    // a_lCurriKey = "126979";
+    // a_bHigh = "1";
+    var vodTitle = "샘플";
     if( pcMobile == 'PC' )
     {
-            window.open( "", "Player", "width=1000, height=680, scrollbars=0, menubar=0, resizable=0" );
+            window.open( "", "Player", "width=1200, height=680, scrollbars=0, menubar=0, resizable=0" );
             //gfn_winPop(980, 680, )
 
             $("#vodPath").val( vodPath );
