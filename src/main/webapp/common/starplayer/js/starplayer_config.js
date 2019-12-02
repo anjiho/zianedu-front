@@ -60,13 +60,15 @@ function OpenSamplePlayer( vodPath )
 
 
         var sp = StarPlayerApp;
+        var infoUrl = "http://15.164.7.237/popup?page_gbn=starPlayerMobile&license=FBD4FB45-D5F4-4493-AE56-BCD6F36F646A&vodPath=" + vodPath + "&vodTitle=" + vodTitle;
         sp.license = "FBD4FB45-D5F4-4493-AE56-BCD6F36F646A";
         sp.version = "1.0.0";
         sp.android_version = "1.0.0";
         sp.ios_version = "1.0.0";
         sp.pmp = "true";
+
         //var app = function(info_url) {
-            sp.executeApp("http://15.164.7.237/popup?page_gbn=starPlayerMobile&license=FBD4FB45-D5F4-4493-AE56-BCD6F36F646A?vodPath=" + vodPath + "&vodTitle=" + vodTitle);
+            sp.executeApp(infoUrl);
         //}
     }
 }
