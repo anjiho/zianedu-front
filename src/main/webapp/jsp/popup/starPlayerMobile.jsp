@@ -2,7 +2,6 @@
 <%@ page import="com.zianedu.front.axis.security.*" %>
 <%
     String vodPath = request.getParameter("vodPath");
-    String vodTitle = request.getParameter("vodTitle");
 %>
 <%
 
@@ -15,7 +14,7 @@
     data += 	"<content>";
     data += 		"<id><![CDATA[0001]]></id>";
     data += 		"<url><![CDATA[" + vodPath + "]]></url>";
-    data += 		"<title><![CDATA[" + vodTitle + "]]></title>";
+    data += 		"<title><![CDATA[샘플]]></title>";
     data += 		"<limit-date><![CDATA[20201210120000]]></limit-date>";
     data +=       "<position>0</position>";
     data += 	"</content>";
