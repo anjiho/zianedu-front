@@ -2,10 +2,37 @@
 <%@include file="/common/jsp/common.jsp" %>
 <script>
     $( document ).ready(function() {
+        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        var userKey = sessionUserInfo.userKey;
+
+        var allProductPrice = "<%= request.getParameter("allProductPrice") %>";
+        var postName = "<%= request.getParameter("postName") %>";
+        var allTel = "<%= request.getParameter("allTel") %>";
+        var allPhone = "<%= request.getParameter("allPhone") %>";
+        var allEmail = "<%= request.getParameter("allEmail") %>";
+        var postCode = "<%= request.getParameter("postCode1") %>";
+        var add1 = "<%= request.getParameter("add1") %>";
+        var add2 = "<%= request.getParameter("add2") %>";
+
+        var cartKeys = toStrFileName(<%= request.getParameter("cartNum") %>);
+        getOrderSheetInfoFromPay(userKey, cartKeys);
+
+        innerValue("allProductPrice", allProductPrice);
+        innerHTML("allPrice", format(allProductPrice));
+        innerHTML("orderName1", postName);
+        innerHTML("telephone1", allTel);
+        innerHTML("telephoneMobile1", allPhone);
+        innerHTML("email1", allEmail);
+        innerHTML("zipcode1", postCode);
+        innerHTML("address1", add1);
+        innerHTML("address2", add2);
+
     });
 </script>
-<form name="frm" method="get">
+<form name="id_frm_orderPay" id="id_frm_orderPay" method="post">
     <input type="hidden" name="page_gbn" id="page_gbn">
+    <input type="hidden" id="cartNum" name="cartNum">
+    <input type="hidden" id="allProductPrice" name="allProductPrice">
     <div id="wrap">
         <%@include file="/common/jsp/leftMenu.jsp" %>
         <!--상단-->
@@ -42,34 +69,7 @@
                                     <th>판매가</th>
                                 </tr>
                                 </thead>
-                                <tbody>
-                                <tr>
-                                    <td>학원실강</td>
-                                    <td>
-                                        [1관학원실강] 2020 시험대비 윤광덕 영어 기본이론반 [7월 10일 개강 접수중] <br>
-                                        <span class="text_blue">판매가격 : </span>2개월<span class="thm text_blue pl30">100,000원</span>
-                                    </td>
-                                    <td>
-                                        <span class="thm line">58,000원</span><span class="arrow">＞</span>
-                                        <span class="thm text_blue">39,500원</span>
-                                    </td>
-                                    <td>5,000점</td>
-                                </tr>
-                                <tr>
-                                    <td>동영상</td>
-                                    <td>
-                                        2019 시험대비 안효선 올인원 이론 강의 [5%적립]<br>
-                                        <span class="text_blue">판매가격 :</span><span class="bdbox">PC</span><span class="bdbox">모바일</span><span class="thm text_blue pl30">80,000원</span>
-                                    </td>
-                                    <td>1</td>
-                                    <td>5,000점</td>
-                                </tr>
-                                <tr>
-                                    <td>학원실강</td>
-                                    <td>2020 공통과목 365지안패스</td>
-                                    <td>1</td>
-                                    <td>350,000점</td>
-                                </tr>
+                                <tbody id="dataList">
                                 </tbody>
                             </table>
                         </div>
@@ -83,23 +83,23 @@
                                 <tbody>
                                 <tr>
                                     <th>주문자</th>
-                                    <td>홍길동</td>
+                                    <td id="orderName"></td>
                                 </tr>
                                 <tr>
                                     <th>연락처</th>
-                                    <td>02-6068-1725</td>
+                                    <td id="telephone"></td>
                                 </tr>
                                 <tr>
                                     <th>휴대전화</th>
-                                    <td>010-0000-0000</td>
+                                    <td id="telephoneMobile"></td>
                                 </tr>
                                 <tr>
                                     <th>이메일</th>
-                                    <td>topspot77@naver.com</td>
+                                    <td id="email"></td>
                                 </tr>
                                 <tr>
                                     <th>주소</th>
-                                    <td><span class="taxt_blue">[156-050]</span> 서울특별시 동작구 노량진동 000-0 0빌딩</td>
+                                    <td><span class="taxt_blue">[<span id="zipcode"></span>]</span><span id="address"></span></td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -114,23 +114,23 @@
                                 <tbody>
                                 <tr>
                                     <th>주문자</th>
-                                    <td>홍길동</td>
+                                    <td id="orderName1"></td>
                                 </tr>
                                 <tr>
                                     <th>연락처</th>
-                                    <td>02-6068-1725</td>
+                                    <td id="telephone1"></td>
                                 </tr>
                                 <tr>
                                     <th>휴대전화</th>
-                                    <td>010-0000-0000</td>
+                                    <td id="telephoneMobile1"></td>
                                 </tr>
                                 <tr>
                                     <th>이메일</th>
-                                    <td>topspot77@naver.com</td>
+                                    <td id="email1"></td>
                                 </tr>
                                 <tr>
                                     <th>주소</th>
-                                    <td><span class="taxt_blue">[156-050]</span> 서울특별시 동작구 노량진동 000-0 0빌딩 <br>서울특별시 동작구 노량진동 000-0 0빌딩</td>
+                                    <td><span class="taxt_blue">[<span id="zipcode1"></span>]</span> <span id="address1"></span> <br><span id="address2"></span></td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -201,7 +201,7 @@
                             <div class="right">
                                 <li class="pay-sum">
                                     <span class="txt1">총 주문금액</span>
-                                    <span class="txt2"><b>564,200</b>원</span>
+                                    <span class="txt2"><b id="allPrice"></b>원</span>
                                 </li>
                                 <div class="btn_area">
                                     <a href="" class="blue">결제하기</a>
