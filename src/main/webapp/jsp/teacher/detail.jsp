@@ -585,9 +585,9 @@
 <form action="/Player/Axis" id="id_frm_player" method="post" name="name_frm_player">
     <input id="vodPath" name="vodPath" type="hidden" value="" />
     <input id="vodTitle" name="vodTitle" type="hidden" value="" />
-<%--    <input id="a_strPlayer_FilePath" name="a_strPlayer_FilePath" type="hidden" value="" />--%>
-<%--    <input id="a_strPlayer_Title" name="a_strPlayer_Title" type="hidden" value="" />--%>
-<%--    <input id="a_bPlayer_High" name="a_bPlayer_High" type="hidden" value="" />--%>
+    <%--    <input id="a_strPlayer_FilePath" name="a_strPlayer_FilePath" type="hidden" value="" />--%>
+    <%--    <input id="a_strPlayer_Title" name="a_strPlayer_Title" type="hidden" value="" />--%>
+    <%--    <input id="a_bPlayer_High" name="a_bPlayer_High" type="hidden" value="" />--%>
     <input id="starPlayerUrl" name="starPlayerUrl" type="hidden" value="" />
 </form>
 <form name="frm" method="get">
