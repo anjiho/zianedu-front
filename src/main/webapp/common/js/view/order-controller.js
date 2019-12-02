@@ -16,9 +16,96 @@ function getOrderSheetInfoFromCart(userKey, cartKeys) {
         cartKeys : cartKeys
     };
 
-    var InfoList = getApi("/order/getOrderSheetInfoFromCart/", userKey, data);
-    if (InfoList.result.length > 0) {
-        var selList = InfoList.result;
+    var infoList = getApi("/order/getOrderSheetInfoFromCart/", userKey, data);
+    if(infoList != null){
+        console.log(infoList);
+        var cmpList = infoList.result;
+        innerHTML("userPoint", format(cmpList.userPoint));
+        innerHTML("maxUserPoint", format(cmpList.userPoint));
+        if(cmpList.orderProductList.length > 0){
+            for(var i = 0; i < cmpList.orderProductList.length; i++){
+                var orderInfo = cmpList.orderProductList[i];
+                var returnHtml  = "<tr>";
+                        returnHtml += "<td>"+ orderInfo.productType +"</td>";
+                        returnHtml += "<td>";
+                            returnHtml += ""+ orderInfo.productName +"<br>";
+                            if(orderInfo.kind == 100){
+                                returnHtml += "<span class=\"text_blue\">판매가격 :</span><span class=\"bdbox\">PC</span><span class=\"thm text_blue pl30\">"+ orderInfo.sellPriceName +"</span>";
+                            }else if(orderInfo.kind == 101){
+                                returnHtml += "<span class=\"text_blue\">판매가격 :</span><span class=\"bdbox\">모바일</span><span class=\"thm text_blue pl30\">"+ orderInfo.sellPriceName +"</span>";
+                            }else if(orderInfo.kind == 102){
+                                returnHtml += "<span class=\"text_blue\">판매가격 :</span><span class=\"bdbox\">PC</span><span class=\"bdbox\">모바일</span><span class=\"thm text_blue pl30\">"+ orderInfo.sellPriceName +"</span>";
+                            }else if(orderInfo.kind == 0){
+                                returnHtml += "";
+                            } else{
+                                returnHtml += "<span class=\"text_blue\">판매가격 : </span>"+ orderInfo.kind +"개월";
+                            }
+                        returnHtml += "</td>";
+                        returnHtml += "<td>";
+                            returnHtml += "1";
+                        returnHtml += "</td>";
+                        returnHtml += "<td>";
+                            returnHtml += orderInfo.sellPriceName;
+                        returnHtml += "</td>";
+                    returnHtml += "</tr>";
+                    $("#dataList").append(returnHtml);
+            }
+        }
+
+        if(cmpList.productTotalPrice != null){
+            if(cmpList.productTotalPrice.productTotalPriceName != null){
+                innerValue("produceTotal", cmpList.productTotalPrice.productTotalPrice);
+                innerHTML("productTotalPriceName", cmpList.productTotalPrice.productTotalPriceName);
+                var str = cmpList.productTotalPrice.productTotalPriceName;
+                innerHTML("productTotalPriceName1", str.slice(0,-1));
+            }
+            if(cmpList.productTotalPrice.totalPointName != null){
+                innerHTML("totalPointName", cmpList.productTotalPrice.totalPointName);
+                innerHTML("totalPointName1", cmpList.productTotalPrice.totalPointName);
+            }
+            if(cmpList.productTotalPrice.deliveryPriceName != null){
+                innerValue("deliveryTotal", cmpList.productTotalPrice.deliveryPrice);
+                innerHTML("deliveryPriceName", cmpList.productTotalPrice.deliveryPriceName);
+                var str1 = cmpList.productTotalPrice.deliveryPriceName;
+                innerHTML("deliveryPriceName3", str1.slice(0,-1));
+            }
+            var total = cmpList.productTotalPrice.productTotalPrice+cmpList.productTotalPrice.deliveryPrice;
+            innerHTML("totalPrice", format(total));
+            innerValue("allProductPrice", total);
+        }
+
+        if(cmpList.productGroupPrice != null){
+            if(cmpList.productGroupPrice.academyTotalPriceName != null){ //결제시 지급 마일리지
+                innerHTML("academyTotalPriceName", cmpList.productGroupPrice.academyTotalPriceName);
+            }
+            if(cmpList.productGroupPrice.bookTotalPriceName != null){ // 동영상 상품 합계
+                innerHTML("bookTotalPriceName", cmpList.productGroupPrice.bookTotalPriceName);
+            }
+            if(cmpList.productGroupPrice.deliveryPriceName != null){
+                innerHTML("deliveryPriceName1", cmpList.productGroupPrice.deliveryPriceName);
+            }
+            // if(cmpList.productGroupPrice.examTotalPriceName != null){
+            //     innerHTML("examTotalPriceName", cmpList.productGroupPrice.examTotalPriceName);
+            // }
+            if(cmpList.productGroupPrice.promotionTotalPriceName != null){
+                innerHTML("promotionTotalPriceName", cmpList.productGroupPrice.promotionTotalPriceName);
+            }else{
+                innerHTML("promotionTotalPriceName", "0원");
+            }
+            if(cmpList.productGroupPrice.videoTotalPriceName != null){
+                innerHTML("videoTotalPriceName", cmpList.productGroupPrice.videoTotalPriceName);
+            }
+        }
+
+        if(cmpList.orderUserInfo != null){
+            var userInfo = cmpList.orderUserInfo;
+            innerHTML("orderName", userInfo.name);
+            innerHTML("telephone", userInfo.telephone);
+            innerHTML("telephoneMobile", userInfo.telephoneMobile);
+            innerHTML("email", userInfo.email);
+            innerHTML("zipcode", userInfo.zipcode);
+            innerHTML("address", userInfo.address);
+        }
     }
 }
 
@@ -56,6 +143,7 @@ function getUserCartInfo(userKey) {
     if (userKey == null || userKey == undefined) return;
     var infoList = getApi("/order/getUserCartInfo/", userKey, "");
     if (infoList != null) {
+        console.log(infoList);
         if(infoList.result.deliveryPrice == 0){
             innerHTML("deliveryPrice", "0");
         }else{

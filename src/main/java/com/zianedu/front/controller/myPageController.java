@@ -19,9 +19,15 @@ public class myPageController {
         page_gbn = Util.isNullValue(page_gbn, "");
 
         if ("cart".equals(page_gbn)) {
-            mvc.setViewName("/mypage/cart");
+            mvc.setViewName("mypage/cart/cart");
         }else if("orderList".equals(page_gbn)){
             mvc.setViewName("/mypage/orderList");
+        }else if("write".equals(page_gbn)){
+            mvc.setViewName("/mypage/cart/write");
+        }else if("pay".equals(page_gbn)){
+            mvc.setViewName("/mypage/cart/orderPay");
+        }else if("orderResult".equals(page_gbn)){
+            mvc.setViewName("/mypage/cart/orderResult");
         }
         return mvc;
     }

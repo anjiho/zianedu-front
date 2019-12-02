@@ -55,12 +55,73 @@
                 alert("삭제가 완료 되었습니다.");
                 isReloadPage(true);
             }
-
         }
     }
+
+    //선택상품 주문
+    function goOrder() {
+        var acaArr = new Array();
+        $('input[name=acaChk]:checked').each(function() {
+            var cartKey = $(this).attr('id');
+            acaArr.push(cartKey);
+        });
+        var playArr = new Array();
+        $('input[name=playChk]:checked').each(function() {
+            var cartKey = $(this).attr('id');
+            playArr.push(cartKey);
+        });
+        var promotionArr = new Array();
+        $('input[name=promotionChk]:checked').each(function() {
+            var cartKey = $(this).attr('id');
+            promotionArr.push(cartKey);
+        });
+        var bookArr = new Array();
+        $('input[name=bookChk]:checked').each(function() {
+            var cartKey = $(this).attr('id');
+            bookArr.push(cartKey);
+        });
+        var arr1 = acaArr.concat(playArr);
+        var arr2 = arr1.concat(promotionArr);
+        var allArr = arr2.concat(bookArr);
+        var cartKeys = toStrFileName(allArr);
+        innerValue("cartKeys", cartKeys);
+        goPage("myPage","write");
+    }
+
+    //전체주문
+    function goAllOrder() {
+        var acaArr = new Array();
+        $('input[name=acaChk]').each(function() {
+            var cartKey = $(this).attr('id');
+            acaArr.push(cartKey);
+        });
+        var playArr = new Array();
+        $('input[name=playChk]').each(function() {
+            var cartKey = $(this).attr('id');
+            playArr.push(cartKey);
+        });
+        var promotionArr = new Array();
+        $('input[name=promotionChk]').each(function() {
+            var cartKey = $(this).attr('id');
+            promotionArr.push(cartKey);
+        });
+        var bookArr = new Array();
+        $('input[name=bookChk]').each(function() {
+            var cartKey = $(this).attr('id');
+            bookArr.push(cartKey);
+        });
+        var arr1 = acaArr.concat(playArr);
+        var arr2 = arr1.concat(promotionArr);
+        var allArr = arr2.concat(bookArr);
+        var cartKeys = toStrFileName(allArr);
+        innerValue("cartKeys", cartKeys);
+        goPage("myPage","write");
+    }
+    
 </script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
+    <input type="hidden" id="cartKeys" name="cartKeys">
     <div id="wrap">
         <%@include file="/common/jsp/leftMenu.jsp" %>
         <!--상단-->
@@ -214,7 +275,7 @@
                                     </li>
                                     <li class="pay-sum">
                                         <span class="txt1">총 주문금액</span>
-                                        <span class="txt2"><b id="totalPrice">564,200</b>원</span>
+                                        <span class="txt2"><b id="totalPrice"></b>원</span>
                                     </li>
                                 </ul>
                             </div>
@@ -231,10 +292,10 @@
                         <div class="btn_area">
                             <div class="left">
                                 <a href="javascript:deleteCart();" class="bdgray">선택상품 삭제</a>
-                                <a href="" class="bggray">선택상품주문</a>
+                                <a href="javascript:goOrder();" class="bggray">선택상품주문</a>
                             </div>
                             <div class="right">
-                                <a href="" class="blue">전체주문</a>
+                                <a href="javascript:goAllOrder();" class="blue">전체주문</a>
                                 <a href="" class="gray">쇼핑계속하기</a>
                             </div>
                         </div>
