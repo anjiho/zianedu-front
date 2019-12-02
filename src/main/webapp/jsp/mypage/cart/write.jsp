@@ -308,7 +308,7 @@
                             </table>
                         </div>
                         <div class="pay_total">
-                            <p>마일리지 :<span id="totalPointName1"></span>점</p>
+                            <p>마일리지 :<span id="totalPointName1"></span></p>
                             <div class="inner">
                                 <ul>
                                     <li>

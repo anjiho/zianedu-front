@@ -450,7 +450,7 @@ legend {display:none;position:absolute;visibility:hidden;}
 .Mypage .cart .pay .left .receipt .detail .txt {display: block;font-size: 12px;color: #777;padding-top: 3px;font-weight:normal;}
 .Mypage .cart .pay .left .receipt .detail .date {padding-left:10px;padding-right:30px;background: url(../images/content/btn_calendar2.gif) 120px center no-repeat;cursor: pointer;color: #444;font-weight:normal;}
 .Mypage .cart .pay .left .receipt .detail .text_blue {font-size: 12px;font-weight:normal;}
-.Mypage .cart .pay .right {float:right;width:135px;padding: 50px 25px;margin-top: 13px;background:#dce9fa;text-align: center}
+.Mypage .cart .pay .right {float:right;padding: 50px 25px;margin-top: 13px;background:#dce9fa;text-align: center}
 .Mypage .cart .pay .right li {padding-right: 0;float: none}
 .Mypage .cart .pay .right .btn_area {padding-top: 112px}
 .Mypage .cart .pay .right .btn_area a {margin-bottom: 5px}
@@ -460,9 +460,9 @@ legend {display:none;position:absolute;visibility:hidden;}
 .Mypage .cart .pay_com {font-size: 12px;}
 .Mypage .cart .pay_com:after {content: "";display: block;clear:both;}
 .Mypage .cart .pay_com p.title {margin-bottom: 15px}
-.Mypage .cart .pay_com .left {float:left;width:650px;background: #fafafa;padding: 20px 25px;color: #666}
+.Mypage .cart .pay_com .left {float:left;width:750px;background: #fafafa;padding: 20px 25px;color: #666}
 .Mypage .cart .pay_com .left li {line-height: 20px;}
-.Mypage .cart .pay_com .left span.tit {display:inline-block;width:90px;padding-right: 75px;text-align: left}
+.Mypage .cart .pay_com .left span.tit {width:90px;padding-right: 75px;text-align: left}
 .Mypage .cart .pay_com .right {float:right;width:250px;background:#dce9fa;padding: 50px 25px 40px;min-height:60px}
 .pay-sum {text-align: center;font-weight: bold}
 .pay-sum span {display: block;letter-spacing: -2px;text-align:center}

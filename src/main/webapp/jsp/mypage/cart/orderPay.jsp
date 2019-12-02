@@ -15,6 +15,7 @@
         var add2 = "<%= request.getParameter("add2") %>";
 
         var cartKeys = toStrFileName(<%= request.getParameter("cartNum") %>);
+        innerValue("cartNum", cartKeys);
         getOrderSheetInfoFromPay(userKey, cartKeys);
 
         innerValue("allProductPrice", allProductPrice);
@@ -27,12 +28,34 @@
         innerHTML("address1", add1);
         innerHTML("address2", add2);
 
+        innerValue("postName", postName);
+        innerValue("allTel", allTel);
+        innerValue("allPhone", allPhone);
+        innerValue("allEmail", allEmail);
+        innerValue("postCode1", postCode);
+        innerValue("add1", add1);
+        innerValue("add2", add2);
+
     });
+    
+    function goOrderResult() {
+        $("#id_frm_orderPay").attr( "action", "/myPage?page_gbn=orderResult");
+        $("#id_frm_orderPay").submit();
+    }
 </script>
-<form name="id_frm_orderPay" id="id_frm_orderPay" method="post">
-    <input type="hidden" name="page_gbn" id="page_gbn">
+<form action="/mypage/cart/orderResult" id="id_frm_orderPay" method="post" name="name_frm_orderPay">
+    <input type="hidden" id="allProductPrice" name="allProductPrice"><!-- 결제해야할 총 금액 -->
     <input type="hidden" id="cartNum" name="cartNum">
-    <input type="hidden" id="allProductPrice" name="allProductPrice">
+    <input type="hidden" id="postName" name="postName">
+    <input type="hidden" id="allTel" name="allTel">
+    <input type="hidden" id="allPhone" name="allPhone">
+    <input type="hidden" id="allEmail" name="allEmail">
+    <input type="hidden" id="postCode1" name="postCode1">
+    <input type="hidden" id="add1" name="add1">
+    <input type="hidden" id="add2" name="add2">
+</form>
+<form name="frm" method="get">
+    <input type="hidden" name="page_gbn" id="page_gbn">
     <div id="wrap">
         <%@include file="/common/jsp/leftMenu.jsp" %>
         <!--상단-->
@@ -137,7 +160,7 @@
                         </div>
                         <div class="pay">
                             <p class="title"><span class="text_blue">결제</span>하기</p>
-                            <div class="left">
+                            <div class="left" style="width: 750px;">
                                 <ul>
                                     <li class="tit">결제수단</li>
                                     <li><input type="radio" name="ckbox" value="" id="ckbox1" onClick="checkBox()">신용카드</li>
@@ -204,8 +227,8 @@
                                     <span class="txt2"><b id="allPrice"></b>원</span>
                                 </li>
                                 <div class="btn_area">
-                                    <a href="" class="blue">결제하기</a>
-                                    <a href="" class="gray">이전으로</a>
+                                    <a href="javascript:goOrderResult();" class="blue">결제하기</a>
+                                    <a href="javascript:window.history.back();" class="gray">이전으로</a>
                                 </div>
                             </div>
                         </div>
