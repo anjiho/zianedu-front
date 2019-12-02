@@ -6,11 +6,10 @@
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
     var cartKeys = '<%=cartKeys%>';
-    innerValue("cartKeys", cartKeys);
     $( document ).ready(function() {
+        innerValue("cartNum", cartKeys);
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         var userKey = sessionUserInfo.userKey;
-        console.log(cartKeys);
         getOrderSheetInfoFromCart(userKey, cartKeys);
         //userInfoChk
         $("#userInfoChk").click(function(){
@@ -70,16 +69,50 @@
         var check = new isCheck();
         if (check.input("orderNameText", comment.delivery_info) == false) return;
         if (check.input("postcode", comment.delivery_info) == false) return;
-        goPayPage("myPage", "pay");
+
+        var orderName = getInputTextValue("orderNameText");
+        innerValue("postName", orderName);
+        var tel = getSelectboxValue("selTel");
+        var tel1 = getInputTextValue("tel1");
+        var tel2 = getInputTextValue("tel2");
+        var allTel = tel+"-"+tel1+"-"+tel2;
+        innerValue("allTel", allTel);
+        var phone = getSelectboxValue("selPhone");
+        var phone1 = getInputTextValue("phone1");
+        var phone2 = getInputTextValue("phone2");
+        var allPhone = phone+"-"+phone1+"-"+phone2;
+        innerValue("allPhone", allPhone);
+        var email = getInputTextValue("email1");
+        var email1 = getInputTextValue("email2");
+        var allEmail = email+"@"+email1;
+        innerValue("allEmail", allEmail);
+        var zipCode = getInputTextValue("postcode");
+        innerValue("postCode1", zipCode);
+        var address = getInputTextValue("roadAddress");
+        innerValue("add1", address);
+        var detailAddr = getInputTextValue("detailAdress");
+        innerValue("add2", detailAddr);
+
+        $("#id_frm_orderPay").attr( "action", "/myPage?page_gbn=pay");
+        $("#id_frm_orderPay").submit();
     }
 </script>
+<form action="/mypage/cart/orderPay" id="id_frm_orderPay" method="post" name="name_frm_orderPay">
+    <input type="hidden" id="allProductPrice" name="allProductPrice"><!-- 결제해야할 총 금액 -->
+    <input type="hidden" id="cartNum" name="cartNum">
+    <input type="hidden" id="postName" name="postName">
+    <input type="hidden" id="allTel" name="allTel">
+    <input type="hidden" id="allPhone" name="allPhone">
+    <input type="hidden" id="allEmail" name="allEmail">
+    <input type="hidden" id="postCode1" name="postCode1">
+    <input type="hidden" id="add1" name="add1">
+    <input type="hidden" id="add2" name="add2">
+</form>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
-    <input type="hidden" id="cartKeys">
     <input type="hidden" id="produceTotal">
     <input type="hidden" id="deliveryTotal">
     <input type="hidden" id="changeTotal">
-    <input type="hidden" id="allProductPrice" name="allProductPrice"><!-- 결제해야할 총 금액 -->
     <div id="wrap">
         <%@include file="/common/jsp/leftMenu.jsp" %>
         <!--상단-->

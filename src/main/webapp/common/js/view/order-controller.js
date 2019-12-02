@@ -18,7 +18,6 @@ function getOrderSheetInfoFromCart(userKey, cartKeys) {
 
     var infoList = getApi("/order/getOrderSheetInfoFromCart/", userKey, data);
     if(infoList != null){
-        console.log(infoList);
         var cmpList = infoList.result;
         innerHTML("userPoint", format(cmpList.userPoint));
         innerHTML("maxUserPoint", format(cmpList.userPoint));
@@ -110,6 +109,62 @@ function getOrderSheetInfoFromCart(userKey, cartKeys) {
     }
 }
 
+
+function getOrderSheetInfoFromPay(userKey, cartKeys) {
+    if (userKey == null || userKey == undefined) return;
+
+    var data = {
+        cartKeys : cartKeys
+    };
+
+    var infoList = getApi("/order/getOrderSheetInfoFromCart/", userKey, data);
+    if(infoList != null){
+        var cmpList = infoList.result;
+        innerHTML("userPoint", format(cmpList.userPoint));
+        innerHTML("maxUserPoint", format(cmpList.userPoint));
+        if(cmpList.orderProductList.length > 0){
+            for(var i = 0; i < cmpList.orderProductList.length; i++){
+                var orderInfo = cmpList.orderProductList[i];
+                var returnHtml  = "<tr>";
+                returnHtml += "<td>"+ orderInfo.productType +"</td>";
+                returnHtml += "<td>";
+                returnHtml += ""+ orderInfo.productName +"<br>";
+                if(orderInfo.kind == 100){
+                    returnHtml += "<span class=\"bdbox\">PC</span>";
+                }else if(orderInfo.kind == 101){
+                    returnHtml += "<span class=\"bdbox\">모바일</span>";
+                }else if(orderInfo.kind == 102){
+                    returnHtml += "<span class=\"bdbox\">PC</span><span class=\"bdbox\">모바일</span>";
+                }else if(orderInfo.kind == 0){
+                    returnHtml += "";
+                } else{
+                    //returnHtml += "<span class=\"text_blue\">판매가격 : </span>"+ orderInfo.kind +"개월";
+                }
+                returnHtml += "</td>";
+                returnHtml += "<td>";
+                returnHtml += "1";
+                returnHtml += "</td>";
+                returnHtml += "<td>";
+                returnHtml += orderInfo.sellPriceName;
+                returnHtml += "</td>";
+                returnHtml += "</tr>";
+                $("#dataList").append(returnHtml);
+            }
+        }
+
+        if(cmpList.orderUserInfo != null){
+            var userInfo = cmpList.orderUserInfo;
+            innerHTML("orderName", userInfo.name);
+            innerHTML("telephone", userInfo.telephone);
+            innerHTML("telephoneMobile", userInfo.telephoneMobile);
+            innerHTML("email", userInfo.email);
+            innerHTML("zipcode", userInfo.zipcode);
+            innerHTML("address", userInfo.address);
+        }
+    }
+}
+
+
 //주문서 작성 > 일반 상품 > '바로신청' 버튼으로 주문서 작성으로 갈때
 function getOrderSheetInfoFromImmediately(userKey, gKeys) {
     if (userKey == null || userKey == undefined) return;
@@ -144,7 +199,6 @@ function getUserCartInfo(userKey) {
     if (userKey == null || userKey == undefined) return;
     var infoList = getApi("/order/getUserCartInfo/", userKey, "");
     if (infoList != null) {
-        console.log(infoList);
         if(infoList.result.deliveryPrice == 0){
             innerHTML("deliveryPrice", "0");
         }else{
