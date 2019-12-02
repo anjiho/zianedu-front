@@ -77,6 +77,7 @@ var comment = {
     ready_function : "기능준비중입니다.",
 
     sel_ctgkey: "준비직렬을 선택해 주세요.",
+    delivery_info : "배송정보를 입력해 주세요."
 
 
 }

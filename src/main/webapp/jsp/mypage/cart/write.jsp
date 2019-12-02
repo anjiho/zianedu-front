@@ -64,14 +64,22 @@
             innerValue("allProductPrice", parseInt(result)+parseInt(result1));
         });
     });
+
+    //결제하기
+    function goPay() {
+        var check = new isCheck();
+        if (check.input("orderNameText", comment.delivery_info) == false) return;
+        if (check.input("postcode", comment.delivery_info) == false) return;
+        goPayPage("myPage", "pay");
+    }
 </script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
-    <input type="hidden" id="cartKeys" name="cartKeys">
+    <input type="hidden" id="cartKeys">
     <input type="hidden" id="produceTotal">
     <input type="hidden" id="deliveryTotal">
     <input type="hidden" id="changeTotal">
-    <input type="hidden" id="allProductPrice"><!-- 결제해야할 총 금액 -->
+    <input type="hidden" id="allProductPrice" name="allProductPrice"><!-- 결제해야할 총 금액 -->
     <div id="wrap">
         <%@include file="/common/jsp/leftMenu.jsp" %>
         <!--상단-->
@@ -111,33 +119,6 @@
                                 </tr>
                                 </thead>
                                 <tbody id="dataList">
-<%--                                <tr>--%>
-<%--                                    <td>학원실강</td>--%>
-<%--                                    <td>--%>
-<%--                                        [1관학원실강] 2020 시험대비 윤광덕 영어 기본이론반 [7월 10일 개강 접수중] <br>--%>
-<%--                                        <span class="text_blue">판매가격 : </span>2개월<span class="thm text_blue pl30">100,000원</span>--%>
-<%--                                    </td>--%>
-<%--                                    <td>--%>
-<%--                                        <span class="thm line">58,000원</span><span class="arrow">＞</span>--%>
-<%--                                        <span class="thm text_blue">39,500원</span>--%>
-<%--                                    </td>--%>
-<%--                                    <td>5,000점</td>--%>
-<%--                                </tr>--%>
-<%--                                <tr>--%>
-<%--                                    <td>동영상</td>--%>
-<%--                                    <td>--%>
-<%--                                        2019 시험대비 안효선 올인원 이론 강의 [5%적립]<br>--%>
-<%--                                        <span class="text_blue">판매가격 :</span><span class="bdbox">PC</span><span class="bdbox">모바일</span><span class="thm text_blue pl30">80,000원</span>--%>
-<%--                                    </td>--%>
-<%--                                    <td>1</td>--%>
-<%--                                    <td>5,000점</td>--%>
-<%--                                </tr>--%>
-<%--                                <tr>--%>
-<%--                                    <td>학원실강</td>--%>
-<%--                                    <td>2020 공통과목 365지안패스</td>--%>
-<%--                                    <td>1</td>--%>
-<%--                                    <td>350,000점</td>--%>
-<%--                                </tr>--%>
                                 </tbody>
                             </table>
                         </div>
@@ -154,7 +135,7 @@
                                     <th>전체 상품별 금액 합계 :</th>
                                     <td class="text_blue" id="productTotalPriceName"></td>
                                     <th class="bggray2">결제시 지급 마일리지 :</th>
-                                    <td class="bggray2">10,710원</td>
+                                    <td class="bggray2" id="totalPointName3"></td>
                                 </tr>
                                 <tr>
                                     <th>결제시 지급 마일리지 :</th>
@@ -352,7 +333,7 @@
                         <div class="btn_area">
                             <div class="center">
                                 <a href="" class="gray">이전으로</a>
-                                <a href="" class="blue">결제하기</a>
+                                <a href="javascript:goPay();" class="blue">결제하기</a>
                             </div>
                         </div>
                     </div>

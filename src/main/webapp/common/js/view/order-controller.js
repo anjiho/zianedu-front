@@ -30,15 +30,15 @@ function getOrderSheetInfoFromCart(userKey, cartKeys) {
                         returnHtml += "<td>";
                             returnHtml += ""+ orderInfo.productName +"<br>";
                             if(orderInfo.kind == 100){
-                                returnHtml += "<span class=\"text_blue\">판매가격 :</span><span class=\"bdbox\">PC</span><span class=\"thm text_blue pl30\">"+ orderInfo.sellPriceName +"</span>";
+                                returnHtml += "<span class=\"bdbox\">PC</span>";
                             }else if(orderInfo.kind == 101){
-                                returnHtml += "<span class=\"text_blue\">판매가격 :</span><span class=\"bdbox\">모바일</span><span class=\"thm text_blue pl30\">"+ orderInfo.sellPriceName +"</span>";
+                                returnHtml += "<span class=\"bdbox\">모바일</span>";
                             }else if(orderInfo.kind == 102){
-                                returnHtml += "<span class=\"text_blue\">판매가격 :</span><span class=\"bdbox\">PC</span><span class=\"bdbox\">모바일</span><span class=\"thm text_blue pl30\">"+ orderInfo.sellPriceName +"</span>";
+                                returnHtml += "<span class=\"bdbox\">PC</span><span class=\"bdbox\">모바일</span>";
                             }else if(orderInfo.kind == 0){
                                 returnHtml += "";
                             } else{
-                                returnHtml += "<span class=\"text_blue\">판매가격 : </span>"+ orderInfo.kind +"개월";
+                                //returnHtml += "<span class=\"text_blue\">판매가격 : </span>"+ orderInfo.kind +"개월";
                             }
                         returnHtml += "</td>";
                         returnHtml += "<td>";
@@ -62,6 +62,7 @@ function getOrderSheetInfoFromCart(userKey, cartKeys) {
             if(cmpList.productTotalPrice.totalPointName != null){
                 innerHTML("totalPointName", cmpList.productTotalPrice.totalPointName);
                 innerHTML("totalPointName1", cmpList.productTotalPrice.totalPointName);
+                innerHTML("totalPointName3", cmpList.productTotalPrice.totalPointName);
             }
             if(cmpList.productTotalPrice.deliveryPriceName != null){
                 innerValue("deliveryTotal", cmpList.productTotalPrice.deliveryPrice);

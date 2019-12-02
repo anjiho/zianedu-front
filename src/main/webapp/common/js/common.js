@@ -15,6 +15,26 @@ function goPage(mapping_value, page_value) {
     }
 }
 
+function goPayPage(mapping_value, page_value) {
+    with (document.frm1) {
+        if (mapping_value != "" && page_value != "") {
+            page_gbn.value = page_value;
+        }
+       // $("#frm1").submit(function (e) {
+        var data = $(this).serializeArray();
+        var formURL = $(this).attr("action");
+        $.ajax({
+            url : "/" + mapping_value +"?page_gbn="+page_value,
+            type : "POST",
+            data : data ,
+            success : function (data, textStatus, jqXHR) {
+                alert(1);
+            }
+        });
+
+    }
+}
+
 function goPageNoSubmit(mapping_value, page_value) {
     if (mapping_value != "" && page_value != "") {
         $("#page_gbn").val(page_value);
