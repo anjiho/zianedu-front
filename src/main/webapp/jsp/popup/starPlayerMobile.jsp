@@ -1,7 +1,10 @@
 <%@page contentType="text/html; charset=UTF-8" session="true"%>
 <%@ page import="com.zianedu.front.axis.security.*" %>
-
 <%
+    String vodPath = request.getParameter("vodPath");
+%>
+<%
+
 
     String data = "";
     data = "<?xml version='1.0' encoding='UTF-8' ?>";
@@ -10,8 +13,8 @@
     data += "<user-id><![CDATA[ANONYMOUS]]></user-id>";
     data += 	"<content>";
     data += 		"<id><![CDATA[0001]]></id>";
-    data += 		"<url><![CDATA[http://zianedu.star.skcdn.com/zian/korean/ahn/01_1911/191105_107422_01_H.mp4]]></url>";
-    data += 		"<title><![CDATA[테스트]]></title>";
+    data += 		"<url><![CDATA[" + vodPath + "]]></url>";
+    data += 		"<title><![CDATA[샘플]]></title>";
     data += 		"<limit-date><![CDATA[20201210120000]]></limit-date>";
     data +=       "<position>0</position>";
     data += 	"</content>";

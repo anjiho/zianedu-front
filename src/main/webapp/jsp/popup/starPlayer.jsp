@@ -1,26 +1,12 @@
-<%--<%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>--%>
-<%--<%@include file="/common/jsp/common.jsp" %>--%>
-<%--<%--%>
-<%--    String starPlayerFilePath = request.getParameter("a_strPlayer_FilePath");--%>
-<%--    String starPlayerTitle = request.getParameter("a_strPlayer_Title");--%>
-<%--    String starPlayerHigh = request.getParameter("a_bPlayer_High");--%>
-<%--%>--%>
-<%--<script>--%>
-
-<%--</script>--%>
-<%--<form name="frm" method="get">--%>
-<%--    <input type="hidden" name="page_gbn" id="page_gbn">--%>
-<%--    <%=starPlayerFilePath%><br>--%>
-<%--    <%=starPlayerTitle%><br>--%>
-<%--    <%=starPlayerHigh%><br>--%>
-<%--</form>--%>
-<%--</body>--%>
-<%--</html>--%>
 <%@ page import="com.zianedu.front.axis.security.*" %>
+<%@ page import="com.zianedu.front.utils.Util" %>
 <%
     response.addHeader("Cache-Control", "no-cache");
 %>
 <%
+    String vodPath = Util.isNullValue(request.getParameter("vodPath"), "");
+    String vodTitle = Util.isNullValue(request.getParameter("vodTitle"), "샘플");
+
     String targetUrl = "http://zianedu.star.skcdn.com/zian/korean/ahn/01_1911/191105_107422_01_H.mp4";
     String url = request.getParameter(targetUrl);
     StringEncrypter encrypter = new StringEncrypter("axissoft", "starplayer");
@@ -200,10 +186,9 @@
             //     startTime: 0
             // };
 
-            //var url = "http://zianedu.star.skcdn.com/zian/korean/ahn/01_1911/191105_107422_01_H.mp4"
+            var url = "<%=vodPath%>";
             var media = {
-                url : "http://zianedu.star.skcdn.com/zian/korean/ahn/01_1911/191105_107422_01_H.mp4",
-                //url: "<%=targetUrl%>",
+                url : url,
                 //url : "http://algisa.nptechnology.com:8000/file/sample.mp4",
                 autoPlay:true,
                 startTime: 0
