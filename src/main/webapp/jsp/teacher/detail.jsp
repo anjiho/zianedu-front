@@ -572,19 +572,19 @@
     }
 
 
-    var sp = StarPlayerApp;
-    sp.license = "FBD4FB45-D5F4-4493-AE56-BCD6F36F646A";
-    sp.version = "1.0.0";
-    sp.android_version = "1.0.0";
-    sp.ios_version = "1.0.0";
-    sp.pmp = "true";
-    var app = function(info_url) {
-        sp.executeApp(info_url);
-    }
+    // var sp = StarPlayerApp;
+    // sp.license = "FBD4FB45-D5F4-4493-AE56-BCD6F36F646A";
+    // sp.version = "1.0.0";
+    // sp.android_version = "1.0.0";
+    // sp.ios_version = "1.0.0";
+    // sp.pmp = "true";
+    // var app = function(info_url) {
+    //     sp.executeApp(info_url);
+    // }
 </script>
 <form action="/Player/Axis" id="id_frm_player" method="post" name="name_frm_player">
-<%--    <input id="a_lPlayer_JLecKey" name="a_lPlayer_JLecKey" type="hidden" value="" />--%>
-<%--    <input id="a_lPlayer_CurriKey" name="a_lPlayer_CurriKey" type="hidden" value="" />--%>
+    <input id="vodPath" name="vodPath" type="hidden" value="" />
+    <input id="vodTitle" name="vodTitle" type="hidden" value="" />
 <%--    <input id="a_strPlayer_FilePath" name="a_strPlayer_FilePath" type="hidden" value="" />--%>
 <%--    <input id="a_strPlayer_Title" name="a_strPlayer_Title" type="hidden" value="" />--%>
 <%--    <input id="a_bPlayer_High" name="a_bPlayer_High" type="hidden" value="" />--%>

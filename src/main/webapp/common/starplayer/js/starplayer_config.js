@@ -17,7 +17,7 @@ var STARPLAYER_AGENT_VERSION = "1,0,1,18";
 //CONFIG
 var STARPLAYER_CONFIG_URL = "http://mgt.zianedu.star.skcdn.com/config/starplayer.txt";
 
-function OpenSamplePlayer( a_strFilePath, a_strTitle, a_lLecKey, a_lCurriKey, a_bHigh )
+function OpenSamplePlayer( vodPath, vodTitle )
 {
     var pcMobile = divisionPcMobile();
 
@@ -31,9 +31,9 @@ function OpenSamplePlayer( a_strFilePath, a_strTitle, a_lLecKey, a_lCurriKey, a_
             window.open( "", "Player", "width=1000, height=680, scrollbars=0, menubar=0, resizable=0" );
             //gfn_winPop(980, 680, )
 
-            // $("#a_strPlayer_FilePath").val( a_strFilePath );
-            // $("#a_strPlayer_Title" ).val( a_strTitle );
-            // $("#a_bPlayer_High" ).val( a_bHigh );
+            $("#vodPath").val( vodPath );
+            $("#vodTitle" ).val( vodTitle );
+            //$("#a_bPlayer_High" ).val( a_bHigh );
 
             $("#id_frm_player").attr( "target", "Player" );
             $( "#id_frm_player").attr( "action", "/popup?page_gbn=starPlayer" );
@@ -65,7 +65,7 @@ function OpenSamplePlayer( a_strFilePath, a_strTitle, a_lLecKey, a_lCurriKey, a_
         sp.ios_version = "1.0.0";
         sp.pmp = "true";
         //var app = function(info_url) {
-            sp.executeApp("http://15.164.7.237/popup?page_gbn=starPlayerMobile&license=FBD4FB45-D5F4-4493-AE56-BCD6F36F646A");
+            sp.executeApp("http://15.164.7.237/popup?page_gbn=starPlayerMobile&license=FBD4FB45-D5F4-4493-AE56-BCD6F36F646A?vodPath=" + vodPath + "&vodTitle=" + vodTitle);
         //}
     }
 }
