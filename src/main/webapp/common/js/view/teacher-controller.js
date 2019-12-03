@@ -252,8 +252,8 @@ function getTeacherAcademyLecture(teacherKey, stepCtgKey) {
                             returnHtml += '<span class="colorRed">'+ lecList[j].discountPercent +'</span>';
                         }
                         returnHtml += '<b class="cost">'+ lecList[j].sellPriceName +'원</b> <input type="checkbox" name="lecChk" id="'+ lecList[j].priceKey +'" value="'+ lecList[j].gkey +'">';
-                        returnHtml += "<a href='javascript:goShopBasket(" + lecList[j].gkey + "," + lecList[j].priceKey + ");' class='btn_s'>장바구니</a>&nbsp;";
-                        returnHtml += '<a href="#" class="btn_s on">바로구매</a>';
+                        //returnHtml += "<a href='javascript:goShopBasket(" + lecList[j].gkey + "," + lecList[j].priceKey + ");' class='btn_s'>장바구니</a>&nbsp;";
+                        //returnHtml += '<a href="#" class="btn_s on">바로구매</a>';
                         returnHtml += '</li>';
                         returnHtml += '</ul>';
                         returnHtml += '</li>';
@@ -282,8 +282,8 @@ function getTeacherAcademyLecture(teacherKey, stepCtgKey) {
                                          returnBookHtml += '<li>';
                                              returnBookHtml += '<span class="colorRed">'+ lecBook.discountPercent +'</span>';
                                              returnBookHtml += '<b class="cost">'+ lecBook.sellPriceName +'원</b> <input type="checkbox"  name="lecChk" id="'+lecBook.priceKey +'" value="'+ lecBook.gkey +'">';
-                                             returnBookHtml += "<a href='javascript:goShopBasket(" + lecBook.gkey + "," +lecBook.priceKey + ");' class='btn_s'>장바구니</a>";
-                                             returnBookHtml += '<a href="#" class="btn_s on">바로구매</a>';
+                                             //returnBookHtml += "<a href='javascript:goShopBasket(" + lecBook.gkey + "," +lecBook.priceKey + ");' class='btn_s'>장바구니</a>";
+                                             //returnBookHtml += '<a href="#" class="btn_s on">바로구매</a>';
                                          returnBookHtml += '</li>';
                                      returnBookHtml += '</ul>';
                                 returnBookHtml += '</li>';
@@ -360,8 +360,8 @@ function getTeacherVideoLecture(teacherKey, device, stepCtgKey) {
                                     retrunHtml += '<span class="btn_ss btn_divTag">PC</span> <span class="btn_ss btn_divTag">모바일</span> ';
                                 }
                                 retrunHtml += "<b class='cost'>" + lecList[j].videoLectureKindList[a].sellPriceName + "</b> <input type='checkbox' name='lecChk' id='" + lecList[j].videoLectureKindList[a].priceKey + "' value='" + lecList[j].videoLectureKindList[a].gkey + "'>";
-                                retrunHtml += "<a href='javascript:goShopBasket(" + lecList[j].videoLectureKindList[a].gkey + "," + lecList[j].videoLectureKindList[a].priceKey + ");' class='btn_s'>장바구니</a>&nbsp;";
-                                retrunHtml += "<a href='javascript:goBuy(" + lecList[j].videoLectureKindList[a].gkey + "," + lecList[j].videoLectureKindList[a].priceKey + ");' class='btn_s on'>바로구매</a>";
+                                //retrunHtml += "<a href='javascript:goShopBasket(" + lecList[j].videoLectureKindList[a].gkey + "," + lecList[j].videoLectureKindList[a].priceKey + ");' class='btn_s'>장바구니</a>&nbsp;";
+                                //retrunHtml += "<a href='javascript:goBuy(" + lecList[j].videoLectureKindList[a].gkey + "," + lecList[j].videoLectureKindList[a].priceKey + ");' class='btn_s on'>바로구매</a>";
                                 retrunHtml += '</li>';
                             }
                         }
@@ -429,8 +429,8 @@ function getTeacherVideoLecture(teacherKey, device, stepCtgKey) {
                                 returnBookHtml += '<ul class="costList">';
                                 returnBookHtml += '<li>';
                                 returnBookHtml += '<b class="cost">' + lecBook.priceName + '원</b> <input type="checkbox" name="lecChk" id="' + lecBook.priceKey + '" value="' + lecBook.gkey + '">';
-                                returnBookHtml += '<a href="#" class="btn_s">장바구니</a>';
-                                returnBookHtml += '<a href="#" class="btn_s on">바로구매</a>';
+                                //returnBookHtml += '<a href="#" class="btn_s">장바구니</a>';
+                                //returnBookHtml += '<a href="#" class="btn_s on">바로구매</a>';
                                 returnBookHtml += '</li>';
                                 returnBookHtml += '</ul>';
                                 returnBookHtml += '</li>';

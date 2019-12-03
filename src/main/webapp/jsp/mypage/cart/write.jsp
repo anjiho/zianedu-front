@@ -1,16 +1,31 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/jsp/common.jsp" %>
 <%
-    String cartKeys = request.getParameter("cartKeys");
+    String cartKeys = request.getParameter("cartKeys");//장바구니
+    String gKeys = request.getParameter("gKeys");//바로구매
+    String goodsInfo = request.getParameter("goodsInfo");//패키지
 %>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
     var cartKeys = '<%=cartKeys%>';
+    var gKeys = '<%=gKeys%>';
+    var goodsInfo = '<%=goodsInfo%>';
     $( document ).ready(function() {
-        innerValue("cartNum", cartKeys);
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         var userKey = sessionUserInfo.userKey;
-        getOrderSheetInfoFromCart(userKey, cartKeys);
+        var cartkeys = <%= request.getParameter("cartKeys") %>;
+        var gKeys = <%= request.getParameter("gKeys") %>;
+        var goodsInfo = <%= request.getParameter("goodsInfo") %>;
+        if(cartkeys == null && goodsInfo == null){ //바로구매
+            innerValue("gKeys", gKeys);
+            getOrderSheetInfoFromImmediately(userKey, gKeys);//장바구니
+        }else if(gKeys == null && goodsInfo == null){
+            innerValue("cartNum", cartKeys);
+            getOrderSheetInfoFromCart(userKey, cartKeys);
+        }else{//패키지
+            innerValue("goodsInfo", JSON.stringify(goodsInfo));
+            getOrderSheetInfoFromImmediatelyAtBasicPackage(userKey, JSON.stringify(goodsInfo), 1);
+        }
         //userInfoChk
         $("#userInfoChk").click(function(){
             if($("#userInfoChk").prop("checked")){
@@ -100,6 +115,8 @@
 <form action="/mypage/cart/orderPay" id="id_frm_orderPay" method="post" name="name_frm_orderPay">
     <input type="hidden" id="allProductPrice" name="allProductPrice"><!-- 결제해야할 총 금액 -->
     <input type="hidden" id="cartNum" name="cartNum">
+    <input type="hidden" id="gKeys" name="gKeys">
+    <input type="hidden" id="goodsInfo" name="goodsInfo">
     <input type="hidden" id="postName" name="postName">
     <input type="hidden" id="allTel" name="allTel">
     <input type="hidden" id="allPhone" name="allPhone">

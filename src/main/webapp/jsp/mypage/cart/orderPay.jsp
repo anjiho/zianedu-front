@@ -1,7 +1,17 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/jsp/common.jsp" %>
+<%@ page import="com.zianedu.front.utils.Util" %>
+<%
+    String cartNum = Util.isNullValue(request.getParameter("cartNum"), "");
+    String gKeys = Util.isNullValue(request.getParameter("gKeys"), "");
+    String goodsInfo = Util.isNullValue(request.getParameter("goodsInfo"), "");
+%>
 <script>
+    var cartNum = <%=cartNum%>;
+    var gKeys = <%=gKeys%>;
+    var goodsInfo = <%=goodsInfo%>;
     $( document ).ready(function() {
+
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         var userKey = sessionUserInfo.userKey;
 
@@ -14,9 +24,21 @@
         var add1 = "<%= request.getParameter("add1") %>";
         var add2 = "<%= request.getParameter("add2") %>";
 
-        var cartKeys = toStrFileName(<%= request.getParameter("cartNum") %>);
-        innerValue("cartNum", cartKeys);
-        getOrderSheetInfoFromPay(userKey, cartKeys);
+        console.log(cartNum);
+        return false;
+        if(cartKeys == null){//바로구매
+            var gKeys = toStrFileName(<%= request.getParameter("gKeys") %>);
+            innerValue("gKeys", gKeys);
+            getOrderSheetInfoFromImmediately(userKey, gKeys);
+        }else if(cartKeys != null){
+            var cartKeys = toStrFileName(<%= request.getParameter("cartNum") %>);
+            innerValue("cartNum", cartKeys);
+            getOrderSheetInfoFromPay(userKey, cartKeys);
+        }else{//패키지
+            var goodsInfo = toStrFileName(<%= request.getParameter("goodsInfo") %>);
+            innerValue("goodsInfo", goodsInfo);
+            getOrderSheetInfoFromImmediatelyAtBasicPackage(userKey, JSON.stringify(goodsInfo), 1);
+        }
 
         innerValue("allProductPrice", allProductPrice);
         innerHTML("allPrice", format(allProductPrice));
@@ -46,6 +68,7 @@
 <form action="/mypage/cart/orderResult" id="id_frm_orderPay" method="post" name="name_frm_orderPay">
     <input type="hidden" id="allProductPrice" name="allProductPrice"><!-- 결제해야할 총 금액 -->
     <input type="hidden" id="cartNum" name="cartNum">
+    <input type="hidden" id="gKeys" name="gKeys">
     <input type="hidden" id="postName" name="postName">
     <input type="hidden" id="allTel" name="allTel">
     <input type="hidden" id="allPhone" name="allPhone">

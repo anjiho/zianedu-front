@@ -50,10 +50,10 @@
             var allArr = arr2.concat(bookArr);
             var cartKeys = toStrFileName(allArr);
             var result = deleteCartInfo(cartKeys);
-            console.log(result);
             if(result.resultCode == 200){
                 alert("삭제가 완료 되었습니다.");
                 isReloadPage(true);
+
             }
         }
     }
