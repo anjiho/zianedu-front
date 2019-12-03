@@ -84,9 +84,15 @@
         var arr2 = arr1.concat(promotionArr);
         var allArr = arr2.concat(bookArr);
         var cartKeys = toStrFileName(allArr);
-        innerValue("cartKeys", cartKeys);
-        $("#id_frm_cartMypage").attr( "action", "/myPage?page_gbn=write");
-        $("#id_frm_cartMypage").submit();
+        if(cartKeys != ''){
+            innerValue("cartKeys", cartKeys);
+            $("#id_frm_cartMypage").attr( "action", "/myPage?page_gbn=write");
+            $("#id_frm_cartMypage").submit();
+        }else{
+            alert(1);
+            alert("장바구니 담긴 상품이 없습니다.");
+            return false;
+        }
     }
 
     //전체주문
@@ -115,10 +121,16 @@
         var arr2 = arr1.concat(promotionArr);
         var allArr = arr2.concat(bookArr);
         var cartKeys = toStrFileName(allArr);
-        innerValue("cartKeys", cartKeys);
+
+        if(cartKeys.length > 0){
+            innerValue("cartKeys", cartKeys);
+            $("#id_frm_cartMypage").attr( "action", "/myPage?page_gbn=write");
+            $("#id_frm_cartMypage").submit();
+        }else{
+            alert("장바구니 담긴 상품이 없습니다.");
+            return false;
+        }
        //goPage("myPage","write");
-        $("#id_frm_cartMypage").attr( "action", "/myPage?page_gbn=write");
-        $("#id_frm_cartMypage").submit();
     }
     
 </script>
