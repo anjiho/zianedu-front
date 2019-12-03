@@ -2906,7 +2906,6 @@ function toStrFileName(arr){
     var str = "";
     for (var i=0; i<arr.length; i++) {
         str += '"' + arr[i] + '",';
-        console.log(arr[i]);
     }
     var str2 = str.substr(0, str.length -1);
 
@@ -2970,5 +2969,42 @@ function goCheckedShopBasket() {
     if(result.resultCode == 200){
         alert("장바구니에 담겼습니다.");
         return false;
+    }
+}
+
+
+//바로구매
+function goCheckedBuy() {
+    if(confirm("바로 구매 하시겠습니까?")){
+        var arr = new Array();
+        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        var userKey = sessionUserInfo.userKey;
+        $('input[name=lecChk]:checked').each(function() {
+            var gkey = $(this).val();
+            arr.push(gkey);
+        });
+
+        var data = toStrFileName(arr);
+        innerValue("gKeys", data);
+        goPage("myPage","write");
+    }
+}
+
+function goPackageCheckedBuy() {
+    if(confirm("바로 구매 하시겠습니까?")){
+        var arr = new Array();
+        $('input[name=lecChk]:checked').each(function() {
+            var priceKey = $(this).attr('id');
+            var gkey = $(this).val();
+            var data = {
+                gKey : gkey,
+                priceKey : priceKey
+            };
+            arr.push(data);
+        });
+        var data = JSON.stringify(arr);
+        console.log(data);
+        innerValue("goodsInfo", data);
+        goPage("myPage","write");
     }
 }
