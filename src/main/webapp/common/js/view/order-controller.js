@@ -173,6 +173,7 @@ function getOrderSheetInfoFromImmediately(userKey, gKeys) {
     };
 
     var infoList = getApi("/order/getOrderSheetInfoFromImmediately/", userKey, data);
+    console.log(infoList);
     if(infoList != null){
         var cmpList = infoList.result;
         innerHTML("userPoint", format(cmpList.userPoint));
@@ -379,6 +380,10 @@ function getUserCartInfo(userKey) {
         innerHTML("price", infoList.result.orderPriceName);
         innerHTML("totalPrice", infoList.result.totalPriceName);
         innerHTML("totalPoint", infoList.result.totalPointName);
+        if(infoList.result.orderPrice == 0){
+            innerHTML("deliveryPrice", "0");
+            innerHTML("totalPrice", "0");
+        }
         if (infoList.result.academyCartInfo.length > 0) {
             for (var i = 0; i < infoList.result.academyCartInfo.length; i++) {
                 var acaInfo = infoList.result.academyCartInfo[i];

@@ -92,6 +92,9 @@
     }
 
 </script>
+<form id="id_frm_singleMypage" method="post" name="id_frm_singleMypage">
+    <input type="hidden" id="gKeys" name="gKeys">
+</form>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
     <div id="wrap">

@@ -85,7 +85,8 @@
         var allArr = arr2.concat(bookArr);
         var cartKeys = toStrFileName(allArr);
         innerValue("cartKeys", cartKeys);
-        goPage("myPage","write");
+        $("#id_frm_cartMypage").attr( "action", "/myPage?page_gbn=write");
+        $("#id_frm_cartMypage").submit();
     }
 
     //전체주문
@@ -115,13 +116,17 @@
         var allArr = arr2.concat(bookArr);
         var cartKeys = toStrFileName(allArr);
         innerValue("cartKeys", cartKeys);
-        goPage("myPage","write");
+       //goPage("myPage","write");
+        $("#id_frm_cartMypage").attr( "action", "/myPage?page_gbn=write");
+        $("#id_frm_cartMypage").submit();
     }
     
 </script>
+<form id="id_frm_cartMypage" method="post" name="cartMypage">
+    <input type="hidden" id="cartKeys" name="cartKeys">
+</form>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
-    <input type="hidden" id="cartKeys" name="cartKeys">
     <div id="wrap">
         <%@include file="/common/jsp/leftMenu.jsp" %>
         <!--상단-->
