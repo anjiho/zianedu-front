@@ -1,30 +1,31 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/jsp/common.jsp" %>
+<%@ page import="com.zianedu.front.utils.Util" %>
 <%
-    String cartKeys = request.getParameter("cartKeys");//장바구니
-    String gKeys = request.getParameter("gKeys");//바로구매
-    String goodsInfo = request.getParameter("goodsInfo");//패키지
+    String cartKeys = Util.isNullValue(request.getParameter("cartKeys"), "");
+    String gKeys = Util.isNullValue(request.getParameter("gKeys"), "");
+    String goodsInfo = Util.isNullValue(request.getParameter("goodsInfo"), "");
 %>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
-    var cartKeys = '<%=cartKeys%>';
-    var gKeys = '<%=gKeys%>';
-    var goodsInfo = '<%=goodsInfo%>';
     $( document ).ready(function() {
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         var userKey = sessionUserInfo.userKey;
-        var cartkeys = <%= request.getParameter("cartKeys") %>;
-        var gKeys = <%= request.getParameter("gKeys") %>;
-        var goodsInfo = <%= request.getParameter("goodsInfo") %>;
-        if(cartkeys == null && goodsInfo == null){ //바로구매
+        <%--var cartkeys = <%= request.getParameter("cartKeys") %>;--%>
+        <%--var gKeys = <%= request.getParameter("gKeys") %>;--%>
+        <%--var goodsInfo = <%= request.getParameter("goodsInfo") %>;--%>
+        var gKeys = '<%=gKeys%>';
+        var cartKeys = '<%=cartKeys%>';
+        var goodsInfo = '<%=goodsInfo%>';
+        if('<%=cartKeys%>' == '' && '<%=goodsInfo%>' == ''){ //바로구매
             innerValue("gKeys", gKeys);
             getOrderSheetInfoFromImmediately(userKey, gKeys);//장바구니
-        }else if(gKeys == null && goodsInfo == null){
+        }else if('<%=gKeys%>' == '' && '<%=goodsInfo%>' == ''){
             innerValue("cartNum", cartKeys);
             getOrderSheetInfoFromCart(userKey, cartKeys);
         }else{//패키지
-            innerValue("goodsInfo", JSON.stringify(goodsInfo));
-            getOrderSheetInfoFromImmediatelyAtBasicPackage(userKey, JSON.stringify(goodsInfo), 1);
+            innerValue("goodsInfo", goodsInfo);
+            getOrderSheetInfoFromImmediatelyAtBasicPackage(userKey, goodsInfo, 1);
         }
         //userInfoChk
         $("#userInfoChk").click(function(){

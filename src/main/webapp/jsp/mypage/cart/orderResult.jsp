@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/jsp/common.jsp" %>
+<%@ page import="com.zianedu.front.utils.Util" %>
+<%
+    String cartNum = Util.isNullValue(request.getParameter("cartNum"), "");
+    String gKeys = Util.isNullValue(request.getParameter("gKeys"), "");
+    String goodsInfo = Util.isNullValue(request.getParameter("goodsInfo"), "");
+%>
 <script>
     $( document ).ready(function() {
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
@@ -13,9 +19,21 @@
         var add1 = "<%= request.getParameter("add1") %>";
         var add2 = "<%= request.getParameter("add2") %>";
 
-        var cartKeys = toStrFileName(<%= request.getParameter("cartNum") %>);
-        innerValue("cartNum", cartKeys);
-        getOrderSheetInfoFromPay(userKey, cartKeys);
+        if('<%=cartNum%>' == "" && '<%=goodsInfo%>' == ""){//바로구매
+            var gKeys = toStrFileName(<%= request.getParameter("gKeys") %>);
+           // innerValue("gKeys", gKeys);
+            getOrderSheetInfoFromImmediately(userKey, gKeys);
+        }else if('<%=gKeys%>' == "" && '<%=goodsInfo%>' == ""){
+            var cartKeys = toStrFileName(<%= request.getParameter("cartNum") %>);
+           // innerValue("cartNum", cartKeys);
+            getOrderSheetInfoFromPay(userKey, cartKeys);
+        }else{//패키지
+            var goodsInfo ='<%= request.getParameter("goodsInfo") %>';
+           // innerValue("goodsInfo", goodsInfo);
+            getOrderSheetInfoFromImmediatelyAtBasicPackage(userKey, goodsInfo, 1);
+        }
+
+
 
         innerValue("allProductPrice", allProductPrice);
         innerHTML("allPrice", format(allProductPrice));

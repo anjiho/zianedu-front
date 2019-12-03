@@ -595,6 +595,9 @@
     //     sp.executeApp(info_url);
     // }
 </script>
+<form id="id_frm_singleMypage" method="post" name="id_frm_singleMypage">
+    <input type="hidden" id="gKeys" name="gKeys">
+</form>
 <form action="/Player/Axis" id="id_frm_player" method="post" name="name_frm_player">
     <input id="vodPath" name="vodPath" type="hidden" value="" />
     <input id="vodTitle" name="vodTitle" type="hidden" value="" />
@@ -608,7 +611,6 @@
     <input type="hidden" id="divisionList">
     <input type="hidden" id="bbsKey">
     <input type="hidden" id="bbsKey1">
-    <input type="hidden" id="gKeys" name="gKeys">
     <div id="wrap">
         <%@include file="/common/jsp/leftMenu.jsp" %>
         <!--상단-->

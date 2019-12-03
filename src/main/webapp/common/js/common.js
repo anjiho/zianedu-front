@@ -2986,7 +2986,9 @@ function goCheckedBuy() {
 
         var data = toStrFileName(arr);
         innerValue("gKeys", data);
-        goPage("myPage","write");
+        //goPage("myPage","write");
+        $("#id_frm_singleMypage").attr( "action", "/myPage?page_gbn=write");
+        $("#id_frm_singleMypage").submit();
     }
 }
 
@@ -3003,8 +3005,9 @@ function goPackageCheckedBuy() {
             arr.push(data);
         });
         var data = JSON.stringify(arr);
-        console.log(data);
         innerValue("goodsInfo", data);
-        goPage("myPage","write");
+        $("#id_frm_pacakgeMypage").attr( "action", "/myPage?page_gbn=write");
+        $("#id_frm_pacakgeMypage").submit();
+        //goPage("myPage","write");
     }
 }

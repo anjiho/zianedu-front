@@ -7,9 +7,6 @@
     String goodsInfo = Util.isNullValue(request.getParameter("goodsInfo"), "");
 %>
 <script>
-    var cartNum = <%=cartNum%>;
-    var gKeys = <%=gKeys%>;
-    var goodsInfo = <%=goodsInfo%>;
     $( document ).ready(function() {
 
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
@@ -24,20 +21,18 @@
         var add1 = "<%= request.getParameter("add1") %>";
         var add2 = "<%= request.getParameter("add2") %>";
 
-        console.log(cartNum);
-        return false;
-        if(cartKeys == null){//바로구매
+        if('<%=cartNum%>' == "" && '<%=goodsInfo%>' == ""){//바로구매
             var gKeys = toStrFileName(<%= request.getParameter("gKeys") %>);
             innerValue("gKeys", gKeys);
             getOrderSheetInfoFromImmediately(userKey, gKeys);
-        }else if(cartKeys != null){
+        }else if('<%=gKeys%>' == "" && '<%=goodsInfo%>' == ""){
             var cartKeys = toStrFileName(<%= request.getParameter("cartNum") %>);
             innerValue("cartNum", cartKeys);
             getOrderSheetInfoFromPay(userKey, cartKeys);
         }else{//패키지
-            var goodsInfo = toStrFileName(<%= request.getParameter("goodsInfo") %>);
+            var goodsInfo ='<%= request.getParameter("goodsInfo") %>';
             innerValue("goodsInfo", goodsInfo);
-            getOrderSheetInfoFromImmediatelyAtBasicPackage(userKey, JSON.stringify(goodsInfo), 1);
+            getOrderSheetInfoFromImmediatelyAtBasicPackage(userKey, goodsInfo, 1);
         }
 
         innerValue("allProductPrice", allProductPrice);

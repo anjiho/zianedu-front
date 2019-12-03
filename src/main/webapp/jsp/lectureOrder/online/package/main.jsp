@@ -16,9 +16,11 @@
     });
 
 </script>
+<form id="id_frm_pacakgeMypage" method="post" name="id_frm_pacakgeMypage">
+    <input type="hidden" name="goodsInfo" id="goodsInfo">
+</form>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
-    <input type="hidden" name="goodsInfo" id="goodsInfo">
     <div id="wrap">
         <%@include file="/common/jsp/leftMenu.jsp" %>
         <!--상단-->
