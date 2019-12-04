@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class MyLecRoomController {
 
     @RequestMapping(value = "/myLecRoom")
-    public ModelAndView postAcademyManage(@RequestParam(value = "page_gbn", required = false) String page_gbn) {
+    public ModelAndView myLecRoomManage(@RequestParam(value = "page_gbn", required = false) String page_gbn) {
         ModelAndView mvc = new ModelAndView();
 
         page_gbn = Util.isNullValue(page_gbn, "");
