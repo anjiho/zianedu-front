@@ -20,7 +20,8 @@
     String signKey			    = "SU5JTElURV9UUklQTEVERVNfS0VZU1RS";	// 가맹점에 제공된 웹 표준 사인키(가맹점 수정후 고정)
     String timestamp			= SignatureUtil.getTimestamp();			// util에 의해서 자동생성
 
-    String oid					= mid+"_"+SignatureUtil.getTimestamp();	// 가맹점 주문번호(가맹점에서 직접 설정)
+    //String oid					= mid+"_"+SignatureUtil.getTimestamp();	// 가맹점 주문번호(가맹점에서 직접 설정)
+    String oid                  = Util.getJId();
     String price				= allProductPrice;													// 상품가격(특수기호 제외, 가맹점에서 직접 설정)
 
     String cardNoInterestQuota	= "11-2:3:,34-5:12,14-6:12:24,12-12:36,06-9:12,01-3:4";		// 카드 무이자 여부 설정(가맹점에서 직접 설정)

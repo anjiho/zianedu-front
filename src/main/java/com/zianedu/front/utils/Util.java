@@ -1086,6 +1086,31 @@ public class Util {
         return result;
     }
 
+    public static String getRandomNumber(int number) {
+        String[] no = {"1","2","3","4","5","6","7","8","9","0"};
+        StringBuffer sb = new StringBuffer();
+        Random rm = new Random();
+        for (int i = 0; i < number; i++) {
+            sb.append(no[rm.nextInt(number)]);
+        }
+        return sb.toString();
+    }
+
+    /**
+     * T_ORDER.j_id 값 만들기
+     * @return
+     */
+    public static String getJId() {
+        String jId = "";
+        String yyyyMM = Util.getYearMonth();
+        String[] splitHHmm = Util.split(Util.returnHourMinute(), ":");
+        String hhmm = splitHHmm[0] + splitHHmm[1];
+        String ranNumber = getRandomNumber(6);
+
+        jId = yyyyMM + "-" + hhmm + "-" + ranNumber;
+        return jId;
+    }
+
     public static void main(String[] args) throws Exception {
         String date = convertDateFormat3(plusDate(Util.returnNow(), -10));
         String date2 = convertDateFormat3("2019-05-27");
