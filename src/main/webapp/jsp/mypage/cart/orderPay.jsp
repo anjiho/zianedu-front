@@ -20,7 +20,7 @@
     String signKey			    = "SU5JTElURV9UUklQTEVERVNfS0VZU1RS";	// 가맹점에 제공된 웹 표준 사인키(가맹점 수정후 고정)
     String timestamp			= SignatureUtil.getTimestamp();			// util에 의해서 자동생성
 
-    String oid					= mid+"_"+SignatureUtil.getTimestamp();	// 가맹점 주문번호(가맹점에서 직접 설정)
+    //String oid					= mid+"_"+SignatureUtil.getTimestamp();	// 가맹점 주문번호(가맹점에서 직접 설정)
     String price				= allProductPrice;													// 상품가격(특수기호 제외, 가맹점에서 직접 설정)
 
     String cardNoInterestQuota	= "11-2:3:,34-5:12,14-6:12:24,12-12:36,06-9:12,01-3:4";		// 카드 무이자 여부 설정(가맹점에서 직접 설정)
@@ -36,7 +36,7 @@
     //###############################################
     Map<String, String> signParam = new HashMap<String, String>();
 
-    signParam.put("oid", oid); 					// 필수
+   // signParam.put("oid", oid); 					// 필수
     signParam.put("price", price);				// 필수
     signParam.put("timestamp", timestamp);		// 필수
 
@@ -53,7 +53,11 @@
 <script src="/common/zian/js/inicis.js"></script>
 <script>
     $( document ).ready(function() {
-
+        var result= getJId();
+        if(result.resultCode == 200){
+            innerValue("oid", result.keyValue);
+            innerValue("textfield2", result.keyValue);
+        }
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         var userKey = sessionUserInfo.userKey;
 
@@ -200,7 +204,7 @@
         <br/><input type="hidden"  style="width:100%;" name="version" value="1.0" >
         <br/><input type="hidden"  style="width:100%;" name="mid" value="<%=mid%>" >
         <br/><input type="hidden"  style="width:100%;" name="goodname" value="<%=userName%>" >
-        <br/><input type="hidden" style="width:100%;" name="oid" value="<%=oid%>" >
+        <br/><input type="hidden" style="width:100%;" name="oid" id="oid" value="" >
         <br/><input type="hidden" style="width:100%;" name="price" value="<%=price%>" >
         <br/><input type="hidden" style="width:100%;" name="currency" value="WON" >
         <br/><input type="hidden" style="width:100%;" name="buyername" value="<%=userName%>" >
