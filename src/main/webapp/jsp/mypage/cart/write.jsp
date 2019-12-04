@@ -47,7 +47,7 @@
         innerValue("productNames", resultProductName);
 
         var locationHost = location.host;
-        var returnUrl = locationHost + "/payment?page_gbn=inicisResult";
+        var returnUrl = "http://" + locationHost + "/payment?page_gbn=inicisResult";
         innerValue("returnUrl", returnUrl);
 
         //userInfoChk
