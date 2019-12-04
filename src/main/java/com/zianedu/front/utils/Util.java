@@ -1114,7 +1114,7 @@ public class Util {
     public static void main(String[] args) throws Exception {
         String date = convertDateFormat3(plusDate(Util.returnNow(), -10));
         String date2 = convertDateFormat3("2019-05-27");
-        System.out.println(getDiffDayCount(date, date2));
+        System.out.println(getJId());
 
 
     }

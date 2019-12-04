@@ -12,7 +12,9 @@
     String phoneNum = Util.isNullValue(request.getParameter("allPhone"), "");
     String email = Util.isNullValue(request.getParameter("allEmail"), "");
     String productNames = Util.isNullValue(request.getParameter("productNames"), "");
-    String returnUrl = Util.isNullValue(request.getParameter("returnUrl"), "");
+//    String returnUrl = Util.isNullValue(request.getParameter("returnUrl"), "");
+//    String payProductName = Util.isNullValue(request.getParameter("payProductName"), "");
+//    String pacakgeProductName = Util.isNullValue(request.getParameter("pacakgeProductName"), "");
 %>
 <%
     // 여기에 설정된 값은 Form 필드에 동일한 값으로 설정
@@ -47,7 +49,7 @@
     String signature = SignatureUtil.makeSignature(signParam);
 
     /* 기타 */
-    String siteDomain = "http://localhost:8000/INIpayStdSample"; //가맹점 도메인 입력
+    String siteDomain = "http://localhost:8000"; //가맹점 도메인 입력
     // 페이지 URL에서 고정된 부분을 적는다.
     // Ex) returnURL이 http://localhost:8080INIpayStdSample/INIStdPayReturn.jsp 라면
     // http://localhost:8080/INIpayStdSample 까지만 기입한다.
@@ -55,6 +57,10 @@
 <script src="/common/zian/js/inicis.js"></script>
 <script>
     $( document ).ready(function() {
+        var locationHost = location.host;
+        var returnUrl = "http://" + locationHost + "/payment?page_gbn=inicisResult";
+        innerValue("returnUrl", returnUrl);
+
         $("input:radio[name=ckbox]").click(function(){
             console.log($(this).val());
             innerValue("gopaymethod", $(this).val())
@@ -206,14 +212,14 @@
         <br/><input type="hidden"  style="width:100%;" name="mid" value="<%=mid%>" >
         <br/><input type="hidden"  style="width:100%;" name="goodname" id="goodname" value="<%=productNames%>" >
         <br/><input type="hidden" style="width:100%;" name="oid" value="<%=oid%>">
-        <br/><input type="hidden" style="width:100%;" name="price" value="<%=price%>">
+        <br/><input type="hidden" style="width:100%;" name="price" value="<%=price%>" >
         <br/><input type="hidden" style="width:100%;" name="currency" value="WON" >
         <br/><input type="hidden" style="width:100%;" name="buyername" value="<%=userName%>" >
         <br/><input type="hidden" style="width:100%;" name="buyertel" value="<%=phoneNum%>" >
         <br/><input type="hidden" style="width:100%;" name="buyeremail" value="<%=email%>" >
         <input type="hidden" style="width:100%;" name="timestamp" value="<%=timestamp %>" >
         <input type="hidden" style="width:100%;" name="signature" value="<%=signature%>" >
-        <br/><input type="hidden" style="width:100%;" name="returnUrl" id="returnUrl" value="<%=returnUrl%>">
+        <br/><input type="hidden" style="width:100%;" name="returnUrl" id="returnUrl" value="" >
         <input type="hidden"  name="mKey" value="<%=mKey%>" >
     </div>
 
