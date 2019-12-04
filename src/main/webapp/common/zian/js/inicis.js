@@ -1,4 +1,7 @@
 $(document).ready(function() {
+    // var locationHost = location.host;
+    // var returnUrl = locationHost + "/payment?page_gbn=inicisResult";
+    // innerValue("returnUrl", returnUrl);
     var pcMobile = divisionPcMobile();
 
     if (pcMobile == "PC") {
@@ -9,6 +12,9 @@ $(document).ready(function() {
        // gfn_display("mobilePay", true);
         gfn_display("mobileBtn", true);
     }
+
+
+
 });
 
 addEventListener("load", function()
@@ -46,7 +52,11 @@ var ypos = (screen.width - height) / 2;
 var position = "top=" + ypos + ",left=" + xpos;
 var features = position + ", width=320, height=440";
 var date = new Date();
-var date_str = "testoid_"+date.getFullYear()+""+date.getMinutes()+""+date.getSeconds();
+var result = getJId();
+if(result.resultCode == 200){
+    var date_str = result.keyValue;
+}
+//var date_str = "testoid_"+date.getFullYear()+""+date.getMinutes()+""+date.getSeconds();
 if( date_str.length != 16 )
 {
     for( i = date_str.length ; i < 16 ; i++ )

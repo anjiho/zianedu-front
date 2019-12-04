@@ -11,6 +11,10 @@
     String userName = Util.isNullValue(request.getParameter("postName"), "");
     String phoneNum = Util.isNullValue(request.getParameter("allPhone"), "");
     String email = Util.isNullValue(request.getParameter("allEmail"), "");
+    String productNames = Util.isNullValue(request.getParameter("productNames"), "");
+    String returnUrl = Util.isNullValue(request.getParameter("returnUrl"), "");
+//    String payProductName = Util.isNullValue(request.getParameter("payProductName"), "");
+//    String pacakgeProductName = Util.isNullValue(request.getParameter("pacakgeProductName"), "");
 %>
 <%
     // 여기에 설정된 값은 Form 필드에 동일한 값으로 설정
@@ -21,7 +25,7 @@
     String timestamp			= SignatureUtil.getTimestamp();			// util에 의해서 자동생성
 
     //String oid					= mid+"_"+SignatureUtil.getTimestamp();	// 가맹점 주문번호(가맹점에서 직접 설정)
-    String oid                  = Util.getJId();
+    String oid                  = "191204-1139-453462";
     String price				= allProductPrice;													// 상품가격(특수기호 제외, 가맹점에서 직접 설정)
 
     String cardNoInterestQuota	= "11-2:3:,34-5:12,14-6:12:24,12-12:36,06-9:12,01-3:4";		// 카드 무이자 여부 설정(가맹점에서 직접 설정)
@@ -44,7 +48,6 @@
     // signature 데이터 생성 (모듈에서 자동으로 signParam을 알파벳 순으로 정렬후 NVP 방식으로 나열해 hash)
     String signature = SignatureUtil.makeSignature(signParam);
 
-
     /* 기타 */
     String siteDomain = "http://localhost:8000/INIpayStdSample"; //가맹점 도메인 입력
     // 페이지 URL에서 고정된 부분을 적는다.
@@ -54,7 +57,10 @@
 <script src="/common/zian/js/inicis.js"></script>
 <script>
     $( document ).ready(function() {
-
+        $("input:radio[name=ckbox]").click(function(){
+            console.log($(this).val());
+            innerValue("gopaymethod", $(this).val())
+        });
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         var userKey = sessionUserInfo.userKey;
 
@@ -146,7 +152,7 @@
                             </tr>
                             <tr>
                                 <td height="25" align="left" style="background-image:url(images/bullet.png); background-repeat:no-repeat; background-position:0px 40%; padding-left:8px; font-size:12px; color:#607c90;">상품명</td>
-                                <td align="left"><input type="hidden" name="P_GOODS" value="테스트상품명" id="textfield3" style="border-color:#cdcdcd; border-width:1px; border-style:solid; color:#555555; height:15px;"/></td>
+                                <td align="left"><input type="hidden" name="P_GOODS" value="<%=productNames%>" id="textfield3" style="border-color:#cdcdcd; border-width:1px; border-style:solid; color:#555555; height:15px;"/></td>
                             </tr>
                             <tr>
                                 <td height="25" align="left" style="background-image:url(images/bullet.png); background-repeat:no-repeat; background-position:0px 40%; padding-left:8px; font-size:12px; color:#607c90;">가격 </td>
@@ -200,8 +206,8 @@
     <div style="border:2px #dddddd double;padding:10px;background-color:#f3f3f3;">
         <br/><input type="hidden"  style="width:100%;" name="version" value="1.0" >
         <br/><input type="hidden"  style="width:100%;" name="mid" value="<%=mid%>" >
-        <br/><input type="hidden"  style="width:100%;" name="goodname" value="<%=userName%>" >
-        <br/><input type="hidden" style="width:100%;" name="oid" value="<%=oid%>" >
+        <br/><input type="hidden"  style="width:100%;" name="goodname" id="goodname" value="<%=productNames%>" >
+        <br/><input type="hidden" style="width:100%;" name="oid" value="191204-1139-453462">
         <br/><input type="hidden" style="width:100%;" name="price" value="<%=price%>" >
         <br/><input type="hidden" style="width:100%;" name="currency" value="WON" >
         <br/><input type="hidden" style="width:100%;" name="buyername" value="<%=userName%>" >
@@ -209,7 +215,7 @@
         <br/><input type="hidden" style="width:100%;" name="buyeremail" value="<%=email%>" >
         <input type="hidden" style="width:100%;" name="timestamp" value="<%=timestamp %>" >
         <input type="hidden" style="width:100%;" name="signature" value="<%=signature%>" >
-        <br/><input type="hidden" style="width:100%;" name="returnUrl" value="<%=siteDomain%>/INIStdPayReturn.jsp" >
+        <br/><input type="hidden" style="width:100%;" name="returnUrl" id="returnUrl" value="<%=returnUrl%>" >
         <input type="hidden"  name="mKey" value="<%=mKey%>" >
     </div>
 
@@ -221,7 +227,7 @@
         <br/>사용 가능한 입력 값
         <br/>Card,DirectBank,HPP,Vbank,kpay,Swallet,Paypin,EasyPay,PhoneBill,GiftCard,EWallet
         <br/>onlypoint,onlyocb,onyocbplus,onlygspt,onlygsptplus,onlyupnt,onlyupntplus
-        <br/><input type="hidden" style="width:100%;" name="gopaymethod" value="" >
+        <br/><input type="hidden" style="width:100%;" name="gopaymethod" id="gopaymethod" value="" >
         <br/><br/>
 
         <br/>
@@ -410,9 +416,9 @@
                             <div class="left" style="width: 750px;">
                                 <ul>
                                     <li class="tit">결제수단</li>
-                                    <li><input type="radio" name="ckbox" value="" id="ckbox1" onClick="checkBox()">신용카드</li>
-                                    <li><input type="radio" name="ckbox" value="" id="ckbox2" onClick="checkBox()">실시간 계좌이체</li>
-                                    <li><input type="radio" name="ckbox" value="" id="ckbox3" onClick="checkBox()">무통장입금</li>
+                                    <li><input type="radio" name="ckbox" value="Card" id="ckbox1">신용카드</li>
+                                    <li><input type="radio" name="ckbox" value="DirectBank" id="ckbox2">실시간 계좌이체</li>
+                                    <li><input type="radio" name="ckbox" value="VBank" id="ckbox3">무통장입금</li>
                                 </ul>
                                 <div id="1" class="ckctn">
                                     <div class="ckinner credit"></div>
@@ -474,11 +480,8 @@
                                     <span class="txt2"><b id="allPrice"></b>원</span>
                                 </li>
                                 <div class="btn_area">
-                                    <%--                                    <a href="javascript:goOrderResult();" onclick="INIStdPay.pay('SendPayForm_id')"  class="blue">결제하기</a>--%>
                                     <a href="javascript:void(0);" onclick="INIStdPay.pay('SendPayForm_id')"  class="blue" id="pcBtn" style="display: none;">결제하기</a>
                                     <a href="javascript:void(0);" onclick="javascript:onSubmit();"  class="blue" id="mobileBtn" style="display: none;">결제하기</a>
-                                    <%--    <td height="39" align="center" valign="bottom"><input type="button" value="결제하기" onclick="javascript:onSubmit();"/></td>--%>
-
                                     <a href="javascript:window.history.back();" class="gray">이전으로</a>
                                 </div>
                             </div>
