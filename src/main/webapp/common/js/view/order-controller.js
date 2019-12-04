@@ -18,12 +18,15 @@ function getOrderSheetInfoFromCart(userKey, cartKeys) {
 
     var infoList = getApi("/order/getOrderSheetInfoFromCart/", userKey, data);
     if(infoList != null){
+        console.log(infoList);
         var cmpList = infoList.result;
         innerHTML("userPoint", format(cmpList.userPoint));
         innerHTML("maxUserPoint", format(cmpList.userPoint));
         if(cmpList.orderProductList.length > 0){
+             var  productNamAarr = new Array();
             for(var i = 0; i < cmpList.orderProductList.length; i++){
                 var orderInfo = cmpList.orderProductList[i];
+                productNamAarr.push(orderInfo.productName);//결제할때 이니시스 상품명 배열
                 var returnHtml  = "<tr>";
                         returnHtml += "<td>"+ orderInfo.productType +"</td>";
                         returnHtml += "<td>";
@@ -49,6 +52,7 @@ function getOrderSheetInfoFromCart(userKey, cartKeys) {
                     returnHtml += "</tr>";
                     $("#dataList").append(returnHtml);
             }
+            innerValue("cartProductName", productNamAarr);
         }
 
         if(cmpList.productTotalPrice != null){
@@ -167,20 +171,21 @@ function getOrderSheetInfoFromPay(userKey, cartKeys) {
 //주문서 작성 > 일반 상품 > '바로신청' 버튼으로 주문서 작성으로 갈때
 function getOrderSheetInfoFromImmediately(userKey, gKeys) {
     if (userKey == null || userKey == undefined) return;
-
     var data = {
         gKeys : gKeys
     };
-
     var infoList = getApi("/order/getOrderSheetInfoFromImmediately/", userKey, data);
-    console.log(infoList);
+
     if(infoList != null){
         var cmpList = infoList.result;
         innerHTML("userPoint", format(cmpList.userPoint));
         innerHTML("maxUserPoint", format(cmpList.userPoint));
+
         if(cmpList.orderProductList.length > 0){
+            var payProductNameArr = new Array();
             for(var i = 0; i < cmpList.orderProductList.length; i++){
                 var orderInfo = cmpList.orderProductList[i];
+                payProductNameArr.push(orderInfo.productName);
                 var returnHtml  = "<tr>";
                 returnHtml += "<td>"+ orderInfo.productType +"</td>";
                 returnHtml += "<td>";
@@ -206,6 +211,7 @@ function getOrderSheetInfoFromImmediately(userKey, gKeys) {
                 returnHtml += "</tr>";
                 $("#dataList").append(returnHtml);
             }
+            innerValue("payProductName",payProductNameArr);
         }
 
         if(cmpList.productTotalPrice != null){
@@ -280,8 +286,10 @@ function getOrderSheetInfoFromImmediatelyAtBasicPackage(userKey, goodsInfo, pack
         innerHTML("userPoint", format(cmpList.userPoint));
         innerHTML("maxUserPoint", format(cmpList.userPoint));
         if(cmpList.orderProductList.length > 0){
+            var pacakgeProductNameArr = new Array();
             for(var i = 0; i < cmpList.orderProductList.length; i++){
                 var orderInfo = cmpList.orderProductList[i];
+                pacakgeProductNameArr.push(orderInfo.productName);
                 var returnHtml  = "<tr>";
                 returnHtml += "<td>"+ orderInfo.productType +"</td>";
                 returnHtml += "<td>";
@@ -307,6 +315,7 @@ function getOrderSheetInfoFromImmediatelyAtBasicPackage(userKey, goodsInfo, pack
                 returnHtml += "</tr>";
                 $("#dataList").append(returnHtml);
             }
+            innerValue("pacakgeProductName", pacakgeProductNameArr);
         }
 
         if(cmpList.productTotalPrice != null){

@@ -11,9 +11,6 @@
     $( document ).ready(function() {
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         var userKey = sessionUserInfo.userKey;
-        <%--var cartkeys = <%= request.getParameter("cartKeys") %>;--%>
-        <%--var gKeys = <%= request.getParameter("gKeys") %>;--%>
-        <%--var goodsInfo = <%= request.getParameter("goodsInfo") %>;--%>
         var gKeys = '<%=gKeys%>';
         var cartKeys = '<%=cartKeys%>';
         var goodsInfo = '<%=goodsInfo%>';
@@ -27,6 +24,32 @@
             innerValue("goodsInfo", goodsInfo);
             getOrderSheetInfoFromImmediatelyAtBasicPackage(userKey, goodsInfo, 1);
         }
+
+        var cartProductName =  getInputTextValue("cartProductName");
+        var payProductName  = getInputTextValue("payProductName");
+        var pacakgeProductName = getInputTextValue("pacakgeProductName");
+
+        var cartProduct = gfn_csplit(cartProductName, ",");
+        var payProduct  = gfn_csplit(payProductName, ",");
+        var pacakgeProduct = gfn_csplit(pacakgeProductName, ",");
+
+        var productNamelength = cartProduct.length+payProduct.length+pacakgeProduct.length;
+        if(cartProduct.length > 0){
+            var name = cartProduct[0];
+        }
+        if(payProduct.length > 0){
+            var name = payProduct[0];
+        }
+        if(pacakgeProduct.length > 0){
+            var name = pacakgeProduct[0];
+        }
+        var resultProductName = name+" 외 "+productNamelength+"개";
+        innerValue("productNames", resultProductName);
+
+        var locationHost = location.host;
+        var returnUrl = locationHost + "/payment?page_gbn=inicisResult";
+        innerValue("returnUrl", returnUrl);
+
         //userInfoChk
         $("#userInfoChk").click(function(){
             if($("#userInfoChk").prop("checked")){
@@ -125,12 +148,17 @@
     <input type="hidden" id="postCode1" name="postCode1">
     <input type="hidden" id="add1" name="add1">
     <input type="hidden" id="add2" name="add2">
+    <input type="hidden" id="productNames" name="productNames">
+    <input type="hidden" id="returnUrl" name="returnUrl">
 </form>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
     <input type="hidden" id="produceTotal">
     <input type="hidden" id="deliveryTotal">
     <input type="hidden" id="changeTotal">
+    <input type="hidden" id="cartProductName">
+    <input type="hidden" id="payProductName">
+    <input type="hidden" id="pacakgeProductName">
     <div id="wrap">
         <%@include file="/common/jsp/leftMenu.jsp" %>
         <!--상단-->
