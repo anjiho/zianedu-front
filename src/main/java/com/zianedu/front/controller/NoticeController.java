@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class NoticeController {
 
     @RequestMapping(value = "/notice")
-    public ModelAndView postAcademyManage(@RequestParam(value = "page_gbn", required = false) String page_gbn) {
+    public ModelAndView noticeManage(@RequestParam(value = "page_gbn", required = false) String page_gbn) {
         ModelAndView mvc = new ModelAndView();
 
         page_gbn = Util.isNullValue(page_gbn, "");

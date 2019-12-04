@@ -10,7 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class PopupController {
 
     @RequestMapping(value = "/popup")
-    public ModelAndView postAcademyManage(@RequestParam(value = "page_gbn", required = false) String page_gbn) {
+    public ModelAndView popupManage(@RequestParam(value = "page_gbn", required = false) String page_gbn) {
         ModelAndView mvc = new ModelAndView();
 
         page_gbn = Util.isNullValue(page_gbn, "");
