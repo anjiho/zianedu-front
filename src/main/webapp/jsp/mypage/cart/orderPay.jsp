@@ -13,8 +13,6 @@
     String email = Util.isNullValue(request.getParameter("allEmail"), "");
     String productNames = Util.isNullValue(request.getParameter("productNames"), "");
     String returnUrl = Util.isNullValue(request.getParameter("returnUrl"), "");
-//    String payProductName = Util.isNullValue(request.getParameter("payProductName"), "");
-//    String pacakgeProductName = Util.isNullValue(request.getParameter("pacakgeProductName"), "");
 %>
 <%
     // 여기에 설정된 값은 Form 필드에 동일한 값으로 설정
@@ -24,8 +22,8 @@
     String signKey			    = "SU5JTElURV9UUklQTEVERVNfS0VZU1RS";	// 가맹점에 제공된 웹 표준 사인키(가맹점 수정후 고정)
     String timestamp			= SignatureUtil.getTimestamp();			// util에 의해서 자동생성
 
-    //String oid					= mid+"_"+SignatureUtil.getTimestamp();	// 가맹점 주문번호(가맹점에서 직접 설정)
-    String oid                  = "191204-1139-453462";
+    String oid					= mid+"_"+SignatureUtil.getTimestamp();	// 가맹점 주문번호(가맹점에서 직접 설정)
+    //String oid                  = Util.getJId();
     String price				= allProductPrice;													// 상품가격(특수기호 제외, 가맹점에서 직접 설정)
 
     String cardNoInterestQuota	= "11-2:3:,34-5:12,14-6:12:24,12-12:36,06-9:12,01-3:4";		// 카드 무이자 여부 설정(가맹점에서 직접 설정)
@@ -207,15 +205,15 @@
         <br/><input type="hidden"  style="width:100%;" name="version" value="1.0" >
         <br/><input type="hidden"  style="width:100%;" name="mid" value="<%=mid%>" >
         <br/><input type="hidden"  style="width:100%;" name="goodname" id="goodname" value="<%=productNames%>" >
-        <br/><input type="hidden" style="width:100%;" name="oid" value="191204-1139-453462">
-        <br/><input type="hidden" style="width:100%;" name="price" value="<%=price%>" >
+        <br/><input type="hidden" style="width:100%;" name="oid" value="<%=oid%>">
+        <br/><input type="hidden" style="width:100%;" name="price" value="<%=price%>">
         <br/><input type="hidden" style="width:100%;" name="currency" value="WON" >
         <br/><input type="hidden" style="width:100%;" name="buyername" value="<%=userName%>" >
         <br/><input type="hidden" style="width:100%;" name="buyertel" value="<%=phoneNum%>" >
         <br/><input type="hidden" style="width:100%;" name="buyeremail" value="<%=email%>" >
         <input type="hidden" style="width:100%;" name="timestamp" value="<%=timestamp %>" >
         <input type="hidden" style="width:100%;" name="signature" value="<%=signature%>" >
-        <br/><input type="hidden" style="width:100%;" name="returnUrl" id="returnUrl" value="<%=returnUrl%>" >
+        <br/><input type="hidden" style="width:100%;" name="returnUrl" id="returnUrl" value="<%=returnUrl%>">
         <input type="hidden"  name="mKey" value="<%=mKey%>" >
     </div>
 
