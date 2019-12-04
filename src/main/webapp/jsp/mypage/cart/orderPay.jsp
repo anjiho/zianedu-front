@@ -12,9 +12,6 @@
     String phoneNum = Util.isNullValue(request.getParameter("allPhone"), "");
     String email = Util.isNullValue(request.getParameter("allEmail"), "");
     String productNames = Util.isNullValue(request.getParameter("productNames"), "");
-//    String returnUrl = Util.isNullValue(request.getParameter("returnUrl"), "");
-//    String payProductName = Util.isNullValue(request.getParameter("payProductName"), "");
-//    String pacakgeProductName = Util.isNullValue(request.getParameter("pacakgeProductName"), "");
 %>
 <%
     // 여기에 설정된 값은 Form 필드에 동일한 값으로 설정
@@ -24,8 +21,8 @@
     String signKey			    = "SU5JTElURV9UUklQTEVERVNfS0VZU1RS";	// 가맹점에 제공된 웹 표준 사인키(가맹점 수정후 고정)
     String timestamp			= SignatureUtil.getTimestamp();			// util에 의해서 자동생성
 
-    String oid					= mid+"_"+SignatureUtil.getTimestamp();	// 가맹점 주문번호(가맹점에서 직접 설정)
-    //String oid                  = Util.getJId();
+    //String oid					= mid+"_"+SignatureUtil.getTimestamp();	// 가맹점 주문번호(가맹점에서 직접 설정)
+    String oid                  = Util.getJId();
     String price				= allProductPrice;													// 상품가격(특수기호 제외, 가맹점에서 직접 설정)
 
     String cardNoInterestQuota	= "11-2:3:,34-5:12,14-6:12:24,12-12:36,06-9:12,01-3:4";		// 카드 무이자 여부 설정(가맹점에서 직접 설정)
@@ -108,7 +105,6 @@
         innerValue("postCode1", postCode);
         innerValue("add1", add1);
         innerValue("add2", add2);
-
     });
 
     function goOrderResult() {
@@ -194,7 +190,6 @@
                         </table></td>
                     </tr>
                     <tr>
-                        <%--                    <td height="39" align="center" valign="bottom" onClick="javascript:onSubmit();"><img src="images/btn_confirm.png" width="55" height="29" /></td>--%>
                         <td height="39" align="center" valign="bottom"><input type="button" value="결제하기" onclick="javascript:onSubmit();"/></td>
                     </tr>
                 </table></td>
