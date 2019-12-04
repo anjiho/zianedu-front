@@ -99,7 +99,7 @@
         innerValue("add2", add2);
 
     });
-    
+
     function goOrderResult() {
         $("#id_frm_orderPay").attr( "action", "/myPage?page_gbn=orderResult");
         $("#id_frm_orderPay").submit();
@@ -122,20 +122,93 @@
     <input type="hidden" id="add1" name="add1">
     <input type="hidden" id="add2" name="add2">
 </form>
-<form id="SendPayForm_id" name="" method="POST" >
+<!--pc-->
+<body onload="setOid()" topmargin="0"  leftmargin="0" marginwidth="0" marginheight="0">
+<div id="mobilePay" style="display: none">
+    <table width="320" border="0" cellpadding="0" cellspacing="0">
+        <form id="form1" name="ini" method="post" action="" style="display: none;">
+            <tr>
+                <td height="347" align="center" valign="top" background="images/bg_01.png"><table border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td width="298" height="296" align="center" background="images/table_bg.png"><table border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td width="95" height="25" align="left" style="background-image:url(images/bullet.png); background-repeat:no-repeat; background-position:0px 40%; padding-left:8px; font-size:12px; color:#607c90;">방식</td>
+                                <td align="left">
+                                    <select name="inipaymobile_type" id="select">
+                                        <option value="web">INIpayMobile Web
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td height="25" align="left" style="background-image:url(images/bullet.png); background-repeat:no-repeat; background-position:0px 40%; padding-left:8px; font-size:12px; color:#607c90;">주문번호</td>
+                                <td align="left"><input type="hidden" name="P_OID" id="textfield2" style="border-color:#cdcdcd; border-width:1px; border-style:solid; color:#555555; height:15px;"/></td>
+                            </tr>
+                            <tr>
+                                <td height="25" align="left" style="background-image:url(images/bullet.png); background-repeat:no-repeat; background-position:0px 40%; padding-left:8px; font-size:12px; color:#607c90;">상품명</td>
+                                <td align="left"><input type="hidden" name="P_GOODS" value="테스트상품명" id="textfield3" style="border-color:#cdcdcd; border-width:1px; border-style:solid; color:#555555; height:15px;"/></td>
+                            </tr>
+                            <tr>
+                                <td height="25" align="left" style="background-image:url(images/bullet.png); background-repeat:no-repeat; background-position:0px 40%; padding-left:8px; font-size:12px; color:#607c90;">가격 </td>
+                                <td align="left"><input type="hidden" name="P_AMT" value="<%=allProductPrice%>" id="textfield4" style="border-color:#cdcdcd; border-width:1px; border-style:solid; color:#555555; height:15px;"/></td>
+                            </tr>
+                            <tr>
+                                <td height="25" align="left" style="background-image:url(images/bullet.png); background-repeat:no-repeat; background-position:0px 40%; padding-left:8px; font-size:12px; color:#607c90;">구매자이름</td>
+                                <td align="left"><input type="hidden" name="P_UNAME" value="<%=userName%>" id="textfield5" style="border-color:#cdcdcd; border-width:1px; border-style:solid; color:#555555; height:15px;"/></td>
+                            </tr>
+                            <tr>
+                                <td height="25" align="left" style="background-image:url(images/bullet.png); background-repeat:no-repeat; background-position:0px 40%; padding-left:8px; font-size:12px; color:#607c90;">상점이름 </td>
+                                <td align="left"><input type="hidden" name="P_MNAME" value="이니시스 쇼핑몰" id="textfield6" style="border-color:#cdcdcd; border-width:1px; border-style:solid; color:#555555; height:15px;"/></td>
+                            </tr>
+                            <tr>
+                                <td height="25" align="left" style="background-image:url(images/bullet.png); background-repeat:no-repeat; background-position:0px 40%; padding-left:8px; font-size:12px; color:#607c90;">휴대폰번호</td>
+                                <td align="left"><input type="hidden" name="P_MOBILE" id="textfield7" value="<%=phoneNum %>" style="border-color:#cdcdcd; border-width:1px; border-style:solid; color:#555555; height:15px;"/></td>
+                            </tr>
+                            <tr>
+                                <td height="25" align="left" style="background-image:url(images/bullet.png); background-repeat:no-repeat; background-position:0px 40%; padding-left:8px; font-size:12px; color:#607c90;">이메일</td>
+                                <td align="left"><input type="hidden" name="P_EMAIL" value="<%=email  %>" id="textfield8" style="border-color:#cdcdcd; border-width:1px; border-style:solid; color:#555555; height:15px;"/></td>
+                            </tr>
+                            <tr>
+                                <td height="25" align="left" style="background-image:url(images/bullet.png); background-repeat:no-repeat; background-position:0px 40%; padding-left:8px; font-size:12px; color:#607c90;">결제방법 </td>
+                                <td align="left"><label>
+                                    <select name="paymethod" id="select">
+                                        <option value="wcard">신용카드
+                                            <!--<option value="DBANK">계좌이체-->
+                                        <option value="vbank">가상계좌
+                                        <option value="mobile">휴대폰
+                                        <option value="culture">문화 상품권
+                                        <option value="hpmn">해피머니 상품권
+                                    </select>
+                                </label></td>
+                            </tr>
+                        </table></td>
+                    </tr>
+                    <tr>
+                        <%--                    <td height="39" align="center" valign="bottom" onClick="javascript:onSubmit();"><img src="images/btn_confirm.png" width="55" height="29" /></td>--%>
+                        <td height="39" align="center" valign="bottom"><input type="button" value="결제하기" onclick="javascript:onSubmit();"/></td>
+                    </tr>
+                </table></td>
+            </tr>
+            <input type="hidden" name="P_MID" value="INIpayTest">
+            <input type=hidden name="P_NEXT_URL" value="https://mobile.inicis.com/smart/testmall/next_url_test.php">
+            <input type=hidden name="P_NOTI_URL" value="https://mobile.inicis.com/rnoti/rnoti.php">
+            <input type=hidden name="P_HPP_METHOD" value="1">
+        </form>
+    </table>
+</div>
+<form id="SendPayForm_id" name="" method="POST" style="display: none;">
     <div style="border:2px #dddddd double;padding:10px;background-color:#f3f3f3;">
         <br/><input type="hidden"  style="width:100%;" name="version" value="1.0" >
-        <br/><input  style="width:100%;" name="mid" value="<%=mid%>" >
+        <br/><input type="hidden"  style="width:100%;" name="mid" value="<%=mid%>" >
         <br/><input type="hidden"  style="width:100%;" name="goodname" value="<%=userName%>" >
-        <br/><input  style="width:100%;" name="oid" value="<%=oid%>" >
-        <br/><input  style="width:100%;" name="price" value="<%=price%>" >
-        <br/><input  style="width:100%;" name="currency" value="WON" >
-        <br/><input  style="width:100%;" name="buyername" value="<%=userName%>" >
-        <br/><input  style="width:100%;" name="buyertel" value="<%=phoneNum%>" >
-        <br/><input  style="width:100%;" name="buyeremail" value="<%=email%>" >
+        <br/><input type="hidden" style="width:100%;" name="oid" value="<%=oid%>" >
+        <br/><input type="hidden" style="width:100%;" name="price" value="<%=price%>" >
+        <br/><input type="hidden" style="width:100%;" name="currency" value="WON" >
+        <br/><input type="hidden" style="width:100%;" name="buyername" value="<%=userName%>" >
+        <br/><input type="hidden" style="width:100%;" name="buyertel" value="<%=phoneNum%>" >
+        <br/><input type="hidden" style="width:100%;" name="buyeremail" value="<%=email%>" >
         <input type="hidden" style="width:100%;" name="timestamp" value="<%=timestamp %>" >
         <input type="hidden" style="width:100%;" name="signature" value="<%=signature%>" >
-        <br/><input  style="width:100%;" name="returnUrl" value="<%=siteDomain%>/INIStdPayReturn.jsp" >
+        <br/><input type="hidden" style="width:100%;" name="returnUrl" value="<%=siteDomain%>/INIStdPayReturn.jsp" >
         <input type="hidden"  name="mKey" value="<%=mKey%>" >
     </div>
 
@@ -147,19 +220,19 @@
         <br/>사용 가능한 입력 값
         <br/>Card,DirectBank,HPP,Vbank,kpay,Swallet,Paypin,EasyPay,PhoneBill,GiftCard,EWallet
         <br/>onlypoint,onlyocb,onyocbplus,onlygspt,onlygsptplus,onlyupnt,onlyupntplus
-        <br/><input  style="width:100%;" name="gopaymethod" value="onlypoint" >
+        <br/><input type="hidden" style="width:100%;" name="gopaymethod" value="" >
         <br/><br/>
 
         <br/>
         <b>offerPeriod</b> : 제공기간
         <br/>ex)20151001-20151231, [Y2:년단위결제, M2:월단위결제, yyyyMMdd-yyyyMMdd : 시작일-종료일]
-        <br/><input  style="width:100%;" name="offerPeriod" value="20151001-20151231" >
+        <br/><input type="hidden" style="width:100%;" name="offerPeriod" value="20151001-20151231" >
         <br/><br/>
 
         <br/><b>acceptmethod</b> : acceptmethod
         <br/>acceptmethod  ex) CARDPOINT:SLIMQUOTA(코드-개월:개월):no_receipt:va_receipt:vbanknoreg(0):vbank(20150425):va_ckprice:vbanknoreg:
         <br/>KWPY_TYPE(0):KWPY_VAT(10|0) 기타 옵션 정보 및 설명은 연동정의보 참조 구분자 ":"
-        <br/><input style="width:100%;" name="acceptmethod" value="CARDPOINT:HPP(1):no_receipt:va_receipt:vbanknoreg(0):below1000" >
+        <br/><input type="hidden" style="width:100%;" name="acceptmethod" value="CARDPOINT:HPP(1):no_receipt:va_receipt:vbanknoreg(0):below1000" >
     </div>
 
     <br/><br/>
@@ -400,8 +473,11 @@
                                     <span class="txt2"><b id="allPrice"></b>원</span>
                                 </li>
                                 <div class="btn_area">
-<%--                                    <a href="javascript:goOrderResult();" onclick="INIStdPay.pay('SendPayForm_id')"  class="blue">결제하기</a>--%>
-                                    <a href="javascript:void(0);" onclick="INIStdPay.pay('SendPayForm_id')"  class="blue">결제하기</a>
+                                    <%--                                    <a href="javascript:goOrderResult();" onclick="INIStdPay.pay('SendPayForm_id')"  class="blue">결제하기</a>--%>
+                                    <a href="javascript:void(0);" onclick="INIStdPay.pay('SendPayForm_id')"  class="blue" id="pcBtn" style="display: none;">결제하기</a>
+                                    <a href="javascript:void(0);" onclick="javascript:onSubmit();"  class="blue" id="mobileBtn" style="display: none;">결제하기</a>
+                                    <%--    <td height="39" align="center" valign="bottom"><input type="button" value="결제하기" onclick="javascript:onSubmit();"/></td>--%>
+
                                     <a href="javascript:window.history.back();" class="gray">이전으로</a>
                                 </div>
                             </div>

@@ -1,3 +1,16 @@
+$(document).ready(function() {
+    var pcMobile = divisionPcMobile();
+
+    if (pcMobile == "PC") {
+        //gfn_display("pcPay", true);
+        gfn_display("pcBtn", true);
+    }
+    else {
+       // gfn_display("mobilePay", true);
+        gfn_display("mobileBtn", true);
+    }
+});
+
 addEventListener("load", function()
 {
     setTimeout(updateLayout, 0);
