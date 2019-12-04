@@ -75,8 +75,11 @@
     </style>
     <script type="application/x-javascript">
 
+        var locationHost = location.host;
+        var returnUrl = locationHost + "/payment?page_gbn=inicisResult";
 
         $(document).ready(function() {
+            innerValue("returnUrl", returnUrl);
             var pcMobile = divisionPcMobile();
 
             if (pcMobile == "PC") {
@@ -334,7 +337,8 @@
                                                 <input type="hidden" style="width:100%;" name="signature" value="<%=signature%>" >
 
                                                 <br/><b>returnUrl</b> :
-                                                <br/><input  style="width:100%;" name="returnUrl" value="<%=siteDomain%>/INIStdPayReturn.jsp" >
+                                                <br/><input  style="width:100%;" name="returnUrl" id="returnUrl" value="" >
+<%--                                                <br/><input  style="width:100%;" name="returnUrl" value="<%=siteDomain%>/INIStdPayReturn.jsp" >--%>
                                                 <!--
 					                            payViewType이 popup일 경우 crossDomain이슈로 우회처리
 					                            <input  style="width:100%;" name="returnUrl" value="<%=siteDomain%>/INIStdPayRelay.jsp" >
