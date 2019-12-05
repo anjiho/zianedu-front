@@ -68,11 +68,9 @@
         <%--sessionStorage.setItem("goodsInfo", '<%=goodsInfo%>');--%>
 
         var locationHost = location.host;
-        //var returnUrl = "http://" + locationHost + "/payment?page_gbn=inicisResult";
         var returnUrl = "http://" + locationHost + "/myPage?page_gbn=orderResult";
         innerValue("returnUrl", returnUrl);
 
-        //var locationHost = location.host;
         var closeUrl = "http://" + locationHost + "/payment?page_gbn=inicisClose";
         innerValue("closeUrl", closeUrl);
 

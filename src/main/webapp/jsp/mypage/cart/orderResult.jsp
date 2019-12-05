@@ -12,6 +12,7 @@
 //    String goodsInfo = Util.isNullValue(request.getParameter("goodsInfo"), "");
 %>
 <%
+    String resultCode = "";
 
     try{
 
@@ -37,6 +38,8 @@
         //#####################
         // 인증이 성공일 경우만
         //#####################
+
+
         if("0000".equals(paramMap.get("resultCode"))){
 
             out.println("####인증성공/승인요청####");
@@ -139,7 +142,9 @@
                     out.println("<tr><th class='td01'><p>거래 성공 여부</p></th>");
                     out.println("<td class='td02'><p>성공</p></td></tr>");
 
-                    //결과정보
+                    resultCode = resultMap.get("resultCode");
+
+                            //결과정보
                     out.println("<tr><th class='line' colspan='2'><p></p></th></tr>");
                     out.println("<tr><th class='td01'><p>결과 코드</p></th>");
                     out.println("<td class='td02'><p>" +resultMap.get("resultCode")+"</p></td></tr>");
@@ -167,6 +172,7 @@
                         }
                     }
                 }
+
 
                 //공통 부분만
                 out.println("<tr><th class='line' colspan='2'><p></p></th></tr>");
@@ -587,6 +593,7 @@
 %>
 <script>
     $( document ).ready(function() {
+        var resultCode = '<%=resultCode%>'
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         var cartKeys = sessionStorage.getItem('cartNum');
         var gKeys = sessionStorage.getItem('gKeys');
