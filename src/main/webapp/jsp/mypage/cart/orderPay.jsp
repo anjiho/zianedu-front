@@ -62,6 +62,13 @@
         sessionStorage.setItem("gKeys", '<%=gKeys%>');
         sessionStorage.setItem("goodsInfo", '<%=goodsInfo%>');
 
+        var cartKeys = sessionStorage.getItem('cartNum');
+        var gKeys = sessionStorage.getItem('gKeys');
+        var goodsInfo = sessionStorage.getItem('goodsInfo');
+        var resultData = JSON.parse(sessionStorage.getItem('resultData'));
+
+        console.log(resultData);
+
         var locationHost = location.host;
         //var returnUrl = "http://" + locationHost + "/payment?page_gbn=inicisResult";
         var returnUrl = "http://" + locationHost + "/myPage?page_gbn=orderResult";
