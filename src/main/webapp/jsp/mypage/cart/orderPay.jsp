@@ -58,7 +58,6 @@
 <script src="/common/zian/js/inicis.js"></script>
 <script>
     $( document ).ready(function() {
-
         var cartKeys = sessionStorage.getItem('cartNum');
         var gKeys = sessionStorage.getItem('gKeys');
         var goodsInfo = sessionStorage.getItem('goodsInfo');
