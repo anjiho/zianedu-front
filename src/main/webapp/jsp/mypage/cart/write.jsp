@@ -11,6 +11,12 @@
     $( document ).ready(function() {
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         var userKey = sessionUserInfo.userKey;
+
+        var cartKeys = sessionStorage.getItem('cartNum');
+        var gKeys = sessionStorage.getItem('gKeys');
+        var goodsInfo = sessionStorage.getItem('goodsInfo');
+        var resultData = JSON.parse(sessionStorage.getItem('resultData'));
+
         var gKeys = '<%=gKeys%>';
         var cartKeys = '<%=cartKeys%>';
         var goodsInfo = '<%=goodsInfo%>';
@@ -20,10 +26,24 @@
         }else if('<%=gKeys%>' == '' && '<%=goodsInfo%>' == ''){
             innerValue("cartNum", cartKeys);
             getOrderSheetInfoFromCart(userKey, cartKeys);
-        }else{//패키지
+        }else {//패키지
             innerValue("goodsInfo", goodsInfo);
             getOrderSheetInfoFromImmediatelyAtBasicPackage(userKey, goodsInfo, 1);
         }
+        <%--}--%>
+        <%--if( '<%=cartKeys%>' == "" && '<%=goodsInfo%>' == ""){//바로구매--%>
+        <%--    &lt;%&ndash;//var gKeys = toStrFileName(<%= request.getParameter("gKeys") %>);&ndash;%&gt;--%>
+        <%--    innerValue("gKeys", gKeys);--%>
+        <%--    getOrderSheetInfoFromImmediately(userKey, gKeys);--%>
+        <%--}else if('<%=gKeys%>' == "" && '<%=goodsInfo%>' == ""){--%>
+        <%--    &lt;%&ndash;//var cartKeys = toStrFileName(<%= request.getParameter("cartNum") %>);&ndash;%&gt;--%>
+        <%--    innerValue("cartNum", cartKeys);--%>
+        <%--    getOrderSheetInfoFromCart(userKey, cartKeys);--%>
+        <%--}else {//패키지--%>
+        <%--    &lt;%&ndash;//var goodsInfo ='<%= request.getParameter("goodsInfo") %>';&ndash;%&gt;--%>
+        <%--    innerValue("goodsInfo", goodsInfo);--%>
+        <%--    getOrderSheetInfoFromImmediatelyAtBasicPackage(userKey, goodsInfo, 1);--%>
+        <%--}--%>
 
         var cartProductName =  getInputTextValue("cartProductName");
         var payProductName  = getInputTextValue("payProductName");
@@ -45,10 +65,6 @@
         }
         var resultProductName = name+" 외 "+productNamelength+"개";
         innerValue("productNames", resultProductName);
-
-        var locationHost = location.host;
-        var returnUrl = "http://" + locationHost + "/payment?page_gbn=inicisResult";
-        innerValue("returnUrl", returnUrl);
 
         //userInfoChk
         $("#userInfoChk").click(function(){
@@ -312,7 +328,7 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="tbd_03 tbd_05 mgb60">
+                        <div class="tbd_03 tbd_05 mgb60" id="deliveryInfo">
                             <p class="title"><span class="text_blue">배송지</span>정보입력</p>
                             <table>
                                 <colgroup>
@@ -429,7 +445,7 @@
                         <!--버튼 -->
                         <div class="btn_area">
                             <div class="center">
-                                <a href="" class="gray">이전으로</a>
+                                <a href="javascript:goPage('myPage','cart')" class="gray">이전으로</a>
                                 <a href="javascript:goPay();" class="blue">결제하기</a>
                             </div>
                         </div>

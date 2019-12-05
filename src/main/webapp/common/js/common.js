@@ -2976,6 +2976,10 @@ function goCheckedShopBasket() {
 //바로구매
 function goCheckedBuy() {
     if(confirm("바로 구매 하시겠습니까?")){
+        sessionStorage.removeItem('cartNum');
+        sessionStorage.removeItem('gKeys');
+        sessionStorage.removeItem('goodsInfo');
+        sessionStorage.removeItem('resultData');
         var arr = new Array();
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         var userKey = sessionUserInfo.userKey;
@@ -2994,6 +2998,10 @@ function goCheckedBuy() {
 
 function goPackageCheckedBuy() {
     if(confirm("바로 구매 하시겠습니까?")){
+        sessionStorage.removeItem('cartNum');
+        sessionStorage.removeItem('gKeys');
+        sessionStorage.removeItem('goodsInfo');
+        sessionStorage.removeItem('resultData');
         var arr = new Array();
         $('input[name=lecChk]:checked').each(function() {
             var priceKey = $(this).attr('id');

@@ -2,6 +2,10 @@
 <%@include file="/common/jsp/common.jsp" %>
 <script>
     $( document ).ready(function() {
+        sessionStorage.removeItem('cartNum');
+        sessionStorage.removeItem('gKeys');
+        sessionStorage.removeItem('goodsInfo');
+        sessionStorage.removeItem('resultData');
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         var userKey = sessionUserInfo.userKey;
         getUserCartInfo(userKey);
@@ -53,7 +57,6 @@
             if(result.resultCode == 200){
                 alert("삭제가 완료 되었습니다.");
                 isReloadPage(true);
-
             }
         }
     }
@@ -84,13 +87,13 @@
         var arr2 = arr1.concat(promotionArr);
         var allArr = arr2.concat(bookArr);
         var cartKeys = toStrFileName(allArr);
-        if(cartKeys != ''){
+        if(allArr != ''){
             innerValue("cartKeys", cartKeys);
+            sessionStorage.setItem("cartNum", cartKeys);
             $("#id_frm_cartMypage").attr( "action", "/myPage?page_gbn=write");
             $("#id_frm_cartMypage").submit();
         }else{
-            alert(1);
-            alert("장바구니 담긴 상품이 없습니다.");
+            alert("선택한 상품이 없습니다.");
             return false;
         }
     }
@@ -124,13 +127,13 @@
 
         if(cartKeys.length > 0){
             innerValue("cartKeys", cartKeys);
+            sessionStorage.setItem("cartNum", cartKeys);
             $("#id_frm_cartMypage").attr( "action", "/myPage?page_gbn=write");
             $("#id_frm_cartMypage").submit();
         }else{
             alert("장바구니 담긴 상품이 없습니다.");
             return false;
         }
-       //goPage("myPage","write");
     }
     
 </script>
@@ -177,20 +180,7 @@
                                     <th>마일리지</th>
                                 </tr>
                                 </thead>
-                                <tbody id="acaList">
-<%--                                <tr>--%>
-<%--                                    <td><input type="checkbox" name="" value="" name="" class="ck"></td>--%>
-<%--                                    <td>--%>
-<%--                                        [1관학원실강] 2020 시험대비 윤광덕 영어 기본이론반 [7월 10일 개강 접수중] <br>--%>
-<%--                                        <span class="text_blue">판매가격 : </span>2개월<span class="thm text_blue pl30">100,000원</span>--%>
-<%--                                    </td>--%>
-<%--                                    <td>--%>
-<%--                                        <span class="thm line">58,000원</span><span class="arrow">＞</span>--%>
-<%--                                        <span class="thm text_blue">39,500원</span>--%>
-<%--                                    </td>--%>
-<%--                                    <td>5,000점</td>--%>
-<%--                                </tr>--%>
-                                </tbody>
+                                <tbody id="acaList"></tbody>
                             </table>
                         </div>
                         <div class="tbd_03 mgb60" id="playDiv">
@@ -233,17 +223,7 @@
                                     <th>마일리지</th>
                                 </tr>
                                 </thead>
-                                <tbody id="promotionList">
-<%--                                <tr>--%>
-<%--                                    <td><input type="checkbox" name="" value="" class="ck3"></td>--%>
-<%--                                    <td>2020 공통과목 365지안패스</td>--%>
-<%--                                    <td>--%>
-<%--                                        <span class="thm line">1,100,000원</span><span class="arrow">＞</span>--%>
-<%--                                        <span class="thm text_blue">350,000원</span>--%>
-<%--                                    </td>--%>
-<%--                                    <td>0점</td>--%>
-<%--                                </tr>--%>
-                                </tbody>
+                                <tbody id="promotionList"></tbody>
                             </table>
                         </div>
                         <div class="tbd_03 mgb60" id="bookDiv">
@@ -263,17 +243,7 @@
                                     <th>마일리지</th>
                                 </tr>
                                 </thead>
-                                <tbody id="bookList">
-<%--                                <tr>--%>
-<%--                                    <td><input type="checkbox" name="" value="" class="ck4"></td>--%>
-<%--                                    <td>2020 지안한국사 기본서 (2권) [10%할인+5%적립]</td>--%>
-<%--                                    <td>--%>
-<%--                                        <span class="thm line">1,100,000원</span><span class="arrow">＞</span>--%>
-<%--                                        <span class="thm text_blue">350,000원</span>--%>
-<%--                                    </td>--%>
-<%--                                    <td>0점</td>--%>
-<%--                                </tr>--%>
-                                </tbody>
+                                <tbody id="bookList"></tbody>
                             </table>
                         </div>
                         <div class="pay_total">

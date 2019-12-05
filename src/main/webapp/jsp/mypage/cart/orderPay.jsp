@@ -113,10 +113,6 @@
         var goodsInfo = sessionStorage.getItem('goodsInfo');
         var resultData = JSON.parse(sessionStorage.getItem('resultData'));
 
-        console.log(cartKeys);
-        console.log(gKeys);
-        console.log(goodsInfo);
-
         if( cartKeys == "" && goodsInfo == ""){//바로구매
             <%--//var gKeys = toStrFileName(<%= request.getParameter("gKeys") %>);--%>
             innerValue("gKeys", gKeys);

@@ -11,11 +11,10 @@ function deleteCartInfo(cartKeys) {
 //주문서 작성 > 주문서 작성 > 장바구니에 담은 상품에서 주문서 작성으로 갈때
 function getOrderSheetInfoFromCart(userKey, cartKeys) {
     if (userKey == null || userKey == undefined) return;
-
     var data = {
         cartKeys : cartKeys
     };
-
+    console.log(data);
     var infoList = getApi("/order/getOrderSheetInfoFromCart/", userKey, data);
     if(infoList != null){
         console.log(infoList);
@@ -26,6 +25,12 @@ function getOrderSheetInfoFromCart(userKey, cartKeys) {
              var  productNamAarr = new Array();
             for(var i = 0; i < cmpList.orderProductList.length; i++){
                 var orderInfo = cmpList.orderProductList[i];
+                console.log(orderInfo.type);
+                if(orderInfo.type != 3){
+                    gfn_display("deliveryInfo", false);
+                }else{
+                    gfn_display("deliveryInfo", true);
+                }
                 productNamAarr.push(orderInfo.productName);//결제할때 이니시스 상품명 배열
                 var returnHtml  = "<tr>";
                         returnHtml += "<td>"+ orderInfo.productType +"</td>";
@@ -177,6 +182,8 @@ function getOrderSheetInfoFromImmediately(userKey, gKeys) {
     var infoList = getApi("/order/getOrderSheetInfoFromImmediately/", userKey, data);
 
     if(infoList != null){
+        console.log("11");
+        console.log(infoList);
         var cmpList = infoList.result;
         innerHTML("userPoint", format(cmpList.userPoint));
         innerHTML("maxUserPoint", format(cmpList.userPoint));
