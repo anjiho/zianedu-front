@@ -136,6 +136,7 @@
         sessionStorage.setItem("gKeys", '<%=gKeys%>');
         sessionStorage.setItem("goodsInfo", '<%=goodsInfo%>');
         var allProductPrice =  getInputTextValue("allProductPrice");
+        var productNames = getInputTextValue("productNames");
         var resultData = {
             allProductPrice : allProductPrice,
             postName : orderName,
@@ -144,7 +145,8 @@
             allEmail : allEmail,
             postCode : zipCode,
             add1 : address,
-            add2 : detailAddr
+            add2 : detailAddr,
+            productNames : productNames
         };
         sessionStorage.setItem("resultData", JSON.stringify(resultData));
 

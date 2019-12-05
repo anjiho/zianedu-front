@@ -14,6 +14,8 @@ public class PaymentController {
 
         if ("inicisResult".equals(page_gbn)) {
             mvc.setViewName("/payment/iniPayReturn");
+        } else if ("inicisClose".equals(page_gbn)) {
+            mvc.setViewName("/payment/close");
         }
         return mvc;
     }
