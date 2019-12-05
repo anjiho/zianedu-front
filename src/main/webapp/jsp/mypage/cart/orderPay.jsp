@@ -72,8 +72,8 @@
         var returnUrl = "http://" + locationHost + "/myPage?page_gbn=orderResult";
         innerValue("returnUrl", returnUrl);
 
-        var locationHost = location.host;
-        var closeUrl = "http://" + locationHost + "/myPage?page_gbn=pay";
+        //var locationHost = location.host;
+        var closeUrl = "http://" + locationHost + "/payment?page_gbn=inicisClose";
         innerValue("closeUrl", closeUrl);
 
         $("input:radio[name=ckbox]").click(function(){
