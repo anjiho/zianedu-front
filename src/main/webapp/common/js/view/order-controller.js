@@ -14,10 +14,8 @@ function getOrderSheetInfoFromCart(userKey, cartKeys) {
     var data = {
         cartKeys : cartKeys
     };
-    console.log(data);
     var infoList = getApi("/order/getOrderSheetInfoFromCart/", userKey, data);
     if(infoList != null){
-        console.log(infoList);
         var cmpList = infoList.result;
         innerHTML("userPoint", format(cmpList.userPoint));
         innerHTML("maxUserPoint", format(cmpList.userPoint));
@@ -25,7 +23,6 @@ function getOrderSheetInfoFromCart(userKey, cartKeys) {
              var  productNamAarr = new Array();
             for(var i = 0; i < cmpList.orderProductList.length; i++){
                 var orderInfo = cmpList.orderProductList[i];
-                console.log(orderInfo.type);
                 if(orderInfo.type != 3){
                     gfn_display("deliveryInfo", false);
                 }else{
@@ -182,8 +179,6 @@ function getOrderSheetInfoFromImmediately(userKey, gKeys) {
     var infoList = getApi("/order/getOrderSheetInfoFromImmediately/", userKey, data);
 
     if(infoList != null){
-        console.log("11");
-        console.log(infoList);
         var cmpList = infoList.result;
         innerHTML("userPoint", format(cmpList.userPoint));
         innerHTML("maxUserPoint", format(cmpList.userPoint));
@@ -460,9 +455,6 @@ function getUserCartInfo(userKey) {
         if (infoList.result.promotionCartInfo.length > 0) {
             for (var k = 0; k < infoList.result.promotionCartInfo.length; k++) {
                 var promotionInfo = infoList.result.promotionCartInfo[k];
-                //console.log(promotionInfo);
-                //totalSellPrice += promotionInfo.sellPrice;
-                //totalPoint += promotionInfo.point;
                 var returnHtml = "<tr>";
                 returnHtml += "<td>";
                 returnHtml += "<input type=\"checkbox\" name='promotionChk' id='"+ promotionInfo.cartKey +"' class=\"ck3\">";
@@ -563,7 +555,6 @@ function saveCart(saveCartInfo) {
     var data = {
         saveCartInfo : saveCartInfo
     };
-    console.log(data);
     var result = postApi("/order/saveCart", data);
     return  result;
 }

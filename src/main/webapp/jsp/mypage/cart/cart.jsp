@@ -125,7 +125,7 @@
         var allArr = arr2.concat(bookArr);
         var cartKeys = toStrFileName(allArr);
 
-        if(cartKeys.length > 0){
+        if(allArr.length > 0){
             innerValue("cartKeys", cartKeys);
             sessionStorage.setItem("cartNum", cartKeys);
             $("#id_frm_cartMypage").attr( "action", "/myPage?page_gbn=write");
