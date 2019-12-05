@@ -58,6 +58,10 @@
 <script src="/common/zian/js/inicis.js"></script>
 <script>
     $( document ).ready(function() {
+        sessionStorage.setItem("cartNum", '<%=cartNum%>');
+        sessionStorage.setItem("gKeys", '<%=gKeys%>');
+        sessionStorage.setItem("goodsInfo", '<%=goodsInfo%>');
+
         var locationHost = location.host;
         //var returnUrl = "http://" + locationHost + "/payment?page_gbn=inicisResult";
         var returnUrl = "http://" + locationHost + "/myPage?page_gbn=orderResult";
@@ -86,6 +90,18 @@
         var postCode = "<%= request.getParameter("postCode1") %>";
         var add1 = "<%= request.getParameter("add1") %>";
         var add2 = "<%= request.getParameter("add2") %>";
+
+        var resultData = {
+            allProductPrice : allProductPrice,
+            postName : postName,
+            allTel : allTel,
+            allPhone : allPhone,
+            allEmail : allEmail,
+            postCode : postCode,
+            add1 : add1,
+            add2 : add2
+        };
+        sessionStorage.setItem("resultData", JSON.stringify(resultData));
 
         if('<%=cartNum%>' == "" && '<%=goodsInfo%>' == ""){//바로구매
             var gKeys = toStrFileName(<%= request.getParameter("gKeys") %>);
