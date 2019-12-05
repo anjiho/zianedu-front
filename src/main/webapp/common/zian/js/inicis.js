@@ -1,20 +1,11 @@
 $(document).ready(function() {
-    // var locationHost = location.host;
-    // var returnUrl = locationHost + "/payment?page_gbn=inicisResult";
-    // innerValue("returnUrl", returnUrl);
     var pcMobile = divisionPcMobile();
-
     if (pcMobile == "PC") {
-        //gfn_display("pcPay", true);
         gfn_display("pcBtn", true);
     }
     else {
-       // gfn_display("mobilePay", true);
         gfn_display("mobileBtn", true);
     }
-
-
-
 });
 
 addEventListener("load", function()
@@ -41,8 +32,6 @@ function updateLayout()
 
 setInterval(updateLayout, 400);
 
-
-/*    ---------------------------     */
 window.name = "BTPG_CLIENT";
 
 var width = 1000;
@@ -56,7 +45,7 @@ var result = getJId();
 if(result.resultCode == 200){
     var date_str = result.keyValue;
 }
-//var date_str = "testoid_"+date.getFullYear()+""+date.getMinutes()+""+date.getSeconds();
+
 if( date_str.length != 16 )
 {
     for( i = date_str.length ; i < 16 ; i++ )

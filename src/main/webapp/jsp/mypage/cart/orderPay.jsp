@@ -12,9 +12,6 @@
     String phoneNum = Util.isNullValue(request.getParameter("allPhone"), "");
     String email = Util.isNullValue(request.getParameter("allEmail"), "");
     String productNames = Util.isNullValue(request.getParameter("productNames"), "");
-//    String returnUrl = Util.isNullValue(request.getParameter("returnUrl"), "");
-//    String payProductName = Util.isNullValue(request.getParameter("payProductName"), "");
-//    String pacakgeProductName = Util.isNullValue(request.getParameter("pacakgeProductName"), "");
 %>
 <%
     // 여기에 설정된 값은 Form 필드에 동일한 값으로 설정
@@ -27,7 +24,6 @@
     //String oid					= mid+"_"+SignatureUtil.getTimestamp();	// 가맹점 주문번호(가맹점에서 직접 설정)
     String oid                  = Util.getJId();
     String price				= allProductPrice;													// 상품가격(특수기호 제외, 가맹점에서 직접 설정)
-
     String cardNoInterestQuota	= "11-2:3:,34-5:12,14-6:12:24,12-12:36,06-9:12,01-3:4";		// 카드 무이자 여부 설정(가맹점에서 직접 설정)
     String cardQuotaBase		= "2:3:4:5:6:11:12:24:36";		// 가맹점에서 사용할 할부 개월수 설정
 
@@ -60,6 +56,11 @@
         var locationHost = location.host;
         var returnUrl = "http://" + locationHost + "/payment?page_gbn=inicisResult";
         innerValue("returnUrl", returnUrl);
+
+        var locationHost = location.host;
+        var closeUrl = "http://" + locationHost + "/myPage?page_gbn=write";
+        innerValue("closeUrl", closeUrl);
+
 
         $("input:radio[name=ckbox]").click(function(){
             console.log($(this).val());
@@ -108,7 +109,6 @@
         innerValue("postCode1", postCode);
         innerValue("add1", add1);
         innerValue("add2", add2);
-
     });
 
     function goOrderResult() {
@@ -194,7 +194,6 @@
                         </table></td>
                     </tr>
                     <tr>
-                        <%--                    <td height="39" align="center" valign="bottom" onClick="javascript:onSubmit();"><img src="images/btn_confirm.png" width="55" height="29" /></td>--%>
                         <td height="39" align="center" valign="bottom"><input type="button" value="결제하기" onclick="javascript:onSubmit();"/></td>
                     </tr>
                 </table></td>
@@ -208,19 +207,19 @@
 </div>
 <form id="SendPayForm_id" name="" method="POST" style="display: none;">
     <div style="border:2px #dddddd double;padding:10px;background-color:#f3f3f3;">
-        <br/><input type="hidden"  style="width:100%;" name="version" value="1.0" >
-        <br/><input type="hidden"  style="width:100%;" name="mid" value="<%=mid%>" >
-        <br/><input type="hidden"  style="width:100%;" name="goodname" id="goodname" value="<%=productNames%>" >
+        <br/><input type="hidden"  style="width:100%;" name="version" value="1.0">
+        <br/><input type="hidden"  style="width:100%;" name="mid" value="<%=mid%>">
+        <br/><input type="hidden"  style="width:100%;" name="goodname" id="goodname" value="<%=productNames%>">
         <br/><input type="hidden" style="width:100%;" name="oid" value="<%=oid%>">
-        <br/><input type="hidden" style="width:100%;" name="price" value="<%=price%>" >
-        <br/><input type="hidden" style="width:100%;" name="currency" value="WON" >
-        <br/><input type="hidden" style="width:100%;" name="buyername" value="<%=userName%>" >
-        <br/><input type="hidden" style="width:100%;" name="buyertel" value="<%=phoneNum%>" >
-        <br/><input type="hidden" style="width:100%;" name="buyeremail" value="<%=email%>" >
-        <input type="hidden" style="width:100%;" name="timestamp" value="<%=timestamp %>" >
-        <input type="hidden" style="width:100%;" name="signature" value="<%=signature%>" >
-        <br/><input type="hidden" style="width:100%;" name="returnUrl" id="returnUrl" value="" >
-        <input type="hidden"  name="mKey" value="<%=mKey%>" >
+        <br/><input type="hidden" style="width:100%;" name="price" value="<%=price%>">
+        <br/><input type="hidden" style="width:100%;" name="currency" value="WON">
+        <br/><input type="hidden" style="width:100%;" name="buyername" value="<%=userName%>">
+        <br/><input type="hidden" style="width:100%;" name="buyertel" value="<%=phoneNum%>">
+        <br/><input type="hidden" style="width:100%;" name="buyeremail" value="<%=email%>">
+        <input type="hidden" style="width:100%;" name="timestamp" value="<%=timestamp %>">
+        <input type="hidden" style="width:100%;" name="signature" value="<%=signature%>">
+        <br/><input type="hidden" style="width:100%;" name="returnUrl" id="returnUrl" value="">
+        <input type="hidden"  name="mKey" value="<%=mKey%>">
     </div>
 
     <br/><br/>
@@ -263,7 +262,7 @@
 
         <br/><b>closeUrl</b> : payViewType='overlay','popup'시 취소버튼 클릭시 창닥기 처리 URL(가맹점에 맞게 설정)
         <br/>close.jsp 샘플사용(생략가능, 미설정시 사용자에 의해 취소 버튼 클릭시 인증결과 페이지로 취소 결과를 보냅니다.)
-        <br/><input style="width:100%;" name="closeUrl" value="<%=siteDomain%>/close.jsp" >
+        <br/><input style="width:100%;" name="closeUrl" id="closeUrl" >
 
         <br/><b>popupUrl</b> : payViewType='popup'시 팝업을 띄울수 있도록 처리해주는 URL(가맹점에 맞게 설정)
         <br/>popup.jsp 샘플사용(생략가능,payViewType='popup'으로 사용시에는 반드시 설정)
