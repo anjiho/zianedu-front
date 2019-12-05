@@ -33,8 +33,6 @@
             getOrderSheetInfoFromImmediatelyAtBasicPackage(userKey, goodsInfo, 1);
         }
 
-
-
         innerValue("allProductPrice", allProductPrice);
         innerHTML("allPrice", format(allProductPrice));
         innerHTML("orderName1", postName);
@@ -44,7 +42,6 @@
         innerHTML("zipcode1", postCode);
         innerHTML("address1", add1);
         innerHTML("address2", add2);
-
     });
 </script>
 <form name="frm" method="get">

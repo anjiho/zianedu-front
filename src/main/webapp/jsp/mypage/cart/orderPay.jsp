@@ -58,13 +58,16 @@
         innerValue("returnUrl", returnUrl);
 
         var locationHost = location.host;
-        var closeUrl = "http://" + locationHost + "/myPage?page_gbn=write";
+        var closeUrl = "http://" + locationHost + "/myPage?page_gbn=pay";
         innerValue("closeUrl", closeUrl);
 
-
         $("input:radio[name=ckbox]").click(function(){
-            console.log($(this).val());
-            innerValue("gopaymethod", $(this).val())
+            var pcMobile =  divisionPcMobile();
+            if(pcMobile == "PC"){
+                innerValue("gopaymethod", $(this).val())
+            }else{
+                innerValue("paymethod", $(this).val())
+            }
         });
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         var userKey = sessionUserInfo.userKey;
@@ -179,17 +182,17 @@
                                 <td align="left"><input type="hidden" name="P_EMAIL" value="<%=email  %>" id="textfield8" style="border-color:#cdcdcd; border-width:1px; border-style:solid; color:#555555; height:15px;"/></td>
                             </tr>
                             <tr>
-                                <td height="25" align="left" style="background-image:url(images/bullet.png); background-repeat:no-repeat; background-position:0px 40%; padding-left:8px; font-size:12px; color:#607c90;">결제방법 </td>
-                                <td align="left"><label>
-                                    <select name="paymethod" id="select">
-                                        <option value="wcard">신용카드
-                                            <!--<option value="DBANK">계좌이체-->
-                                        <option value="vbank">가상계좌
-                                        <option value="mobile">휴대폰
-                                        <option value="culture">문화 상품권
-                                        <option value="hpmn">해피머니 상품권
-                                    </select>
-                                </label></td>
+                                <input type="hidden" name="paymethod"  id="paymethod" style="border-color:#cdcdcd; border-width:1px; border-style:solid; color:#555555; height:15px;"/>
+<%--                                <td height="25" align="left" style="background-image:url(images/bullet.png); background-repeat:no-repeat; background-position:0px 40%; padding-left:8px; font-size:12px; color:#607c90;">결제방법 </td>--%>
+<%--                                <td align="left"><label>--%>
+<%--                                    <select name="paymethod" id="select">--%>
+<%--                                        <option value="wcard">신용카드--%>
+<%--                                        <option value="vbank">가상계좌--%>
+<%--                                        <option value="mobile">휴대폰--%>
+<%--                                        <option value="culture">문화 상품권--%>
+<%--                                        <option value="hpmn">해피머니 상품권--%>
+<%--                                    </select>--%>
+<%--                                </label></td>--%>
                             </tr>
                         </table></td>
                     </tr>
