@@ -132,6 +132,22 @@
         var detailAddr = getInputTextValue("detailAdress");
         innerValue("add2", detailAddr);
 
+        sessionStorage.setItem("cartNum", '<%=cartKeys%>');
+        sessionStorage.setItem("gKeys", '<%=gKeys%>');
+        sessionStorage.setItem("goodsInfo", '<%=goodsInfo%>');
+        var allProductPrice =  getInputTextValue("allProductPrice");
+        var resultData = {
+            allProductPrice : allProductPrice,
+            postName : orderName,
+            allTel : allTel,
+            allPhone : allPhone,
+            allEmail : allEmail,
+            postCode : zipCode,
+            add1 : address,
+            add2 : detailAddr
+        };
+        sessionStorage.setItem("resultData", JSON.stringify(resultData));
+
         $("#id_frm_orderPay").attr( "action", "/myPage?page_gbn=pay");
         $("#id_frm_orderPay").submit();
     }
