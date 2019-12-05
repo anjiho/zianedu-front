@@ -58,16 +58,15 @@
 <script src="/common/zian/js/inicis.js"></script>
 <script>
     $( document ).ready(function() {
-        sessionStorage.setItem("cartNum", '<%=cartNum%>');
-        sessionStorage.setItem("gKeys", '<%=gKeys%>');
-        sessionStorage.setItem("goodsInfo", '<%=goodsInfo%>');
 
         var cartKeys = sessionStorage.getItem('cartNum');
         var gKeys = sessionStorage.getItem('gKeys');
         var goodsInfo = sessionStorage.getItem('goodsInfo');
-        var orderInfoData = JSON.parse(sessionStorage.getItem('resultData'));
+        var resultData = JSON.parse(sessionStorage.getItem('resultData'));
 
-        console.log(resultData);
+        <%--sessionStorage.setItem("cartNum", '<%=cartNum%>');--%>
+        <%--sessionStorage.setItem("gKeys", '<%=gKeys%>');--%>
+        <%--sessionStorage.setItem("goodsInfo", '<%=goodsInfo%>');--%>
 
         var locationHost = location.host;
         //var returnUrl = "http://" + locationHost + "/payment?page_gbn=inicisResult";
@@ -75,7 +74,7 @@
         innerValue("returnUrl", returnUrl);
 
         var locationHost = location.host;
-        var closeUrl = "http://" + locationHost + "/myPage?page_gbn=cart";
+        var closeUrl = "http://" + locationHost + "/myPage?page_gbn=pay";
         innerValue("closeUrl", closeUrl);
 
         $("input:radio[name=ckbox]").click(function(){
@@ -89,58 +88,69 @@
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         var userKey = sessionUserInfo.userKey;
 
-        var allProductPrice = "<%= request.getParameter("allProductPrice") %>";
-        var postName = "<%= request.getParameter("postName") %>";
-        var allTel = "<%= request.getParameter("allTel") %>";
-        var allPhone = "<%= request.getParameter("allPhone") %>";
-        var allEmail = "<%= request.getParameter("allEmail") %>";
-        var postCode = "<%= request.getParameter("postCode1") %>";
-        var add1 = "<%= request.getParameter("add1") %>";
-        var add2 = "<%= request.getParameter("add2") %>";
+        <%--var allProductPrice = "<%= request.getParameter("allProductPrice") %>";--%>
+        <%--var postName = "<%= request.getParameter("postName") %>";--%>
+        <%--var allTel = "<%= request.getParameter("allTel") %>";--%>
+        <%--var allPhone = "<%= request.getParameter("allPhone") %>";--%>
+        <%--var allEmail = "<%= request.getParameter("allEmail") %>";--%>
+        <%--var postCode = "<%= request.getParameter("postCode1") %>";--%>
+        <%--var add1 = "<%= request.getParameter("add1") %>";--%>
+        <%--var add2 = "<%= request.getParameter("add2") %>";--%>
 
-        var resultData = {
-            allProductPrice : allProductPrice,
-            postName : postName,
-            allTel : allTel,
-            allPhone : allPhone,
-            allEmail : allEmail,
-            postCode : postCode,
-            add1 : add1,
-            add2 : add2
-        };
-        sessionStorage.setItem("resultData", JSON.stringify(resultData));
+        // var resultData = {
+        //     allProductPrice : allProductPrice,
+        //     postName : postName,
+        //     allTel : allTel,
+        //     allPhone : allPhone,
+        //     allEmail : allEmail,
+        //     postCode : postCode,
+        //     add1 : add1,
+        //     add2 : add2
+        // };
+        // sessionStorage.setItem("resultData", JSON.stringify(resultData));
 
-        if('<%=cartNum%>' == "" && '<%=goodsInfo%>' == ""){//바로구매
-            var gKeys = toStrFileName(<%= request.getParameter("gKeys") %>);
+        var cartKeys = sessionStorage.getItem('cartNum');
+        var gKeys = sessionStorage.getItem('gKeys');
+        var goodsInfo = sessionStorage.getItem('goodsInfo');
+        var resultData = JSON.parse(sessionStorage.getItem('resultData'));
+
+        console.log(cartKeys);
+        console.log(gKeys);
+        console.log(goodsInfo);
+
+        if( cartKeys == "" && goodsInfo == ""){//바로구매
+            <%--//var gKeys = toStrFileName(<%= request.getParameter("gKeys") %>);--%>
             innerValue("gKeys", gKeys);
             getOrderSheetInfoFromImmediately(userKey, gKeys);
-        }else if('<%=gKeys%>' == "" && '<%=goodsInfo%>' == ""){
-            var cartKeys = toStrFileName(<%= request.getParameter("cartNum") %>);
+        }else if(gKeys == "" && goodsInfo == ""){
+            <%--//var cartKeys = toStrFileName(<%= request.getParameter("cartNum") %>);--%>
             innerValue("cartNum", cartKeys);
             getOrderSheetInfoFromPay(userKey, cartKeys);
         }else{//패키지
-            var goodsInfo ='<%= request.getParameter("goodsInfo") %>';
+            <%--//var goodsInfo ='<%= request.getParameter("goodsInfo") %>';--%>
             innerValue("goodsInfo", goodsInfo);
             getOrderSheetInfoFromImmediatelyAtBasicPackage(userKey, goodsInfo, 1);
         }
 
-        innerValue("allProductPrice", allProductPrice);
-        innerHTML("allPrice", format(allProductPrice));
-        innerHTML("orderName1", postName);
-        innerHTML("telephone1", allTel);
-        innerHTML("telephoneMobile1", allPhone);
-        innerHTML("email1", allEmail);
-        innerHTML("zipcode1", postCode);
-        innerHTML("address1", add1);
-        innerHTML("address2", add2);
+        innerValue("allProductPrice", resultData.allProductPrice);
+        innerHTML("allPrice", format(resultData.allProductPrice));
+        innerHTML("orderName1", resultData.postName);
+        innerHTML("telephone1", resultData.allTel);
+        innerHTML("telephoneMobile1", resultData.allPhone);
+        innerHTML("email1", resultData.allEmail);
+        innerHTML("zipcode1", resultData.postCode);
+        innerHTML("address1", resultData.add1);
+        innerHTML("address2", resultData.add2);
 
-        innerValue("postName", postName);
-        innerValue("allTel", allTel);
-        innerValue("allPhone", allPhone);
-        innerValue("allEmail", allEmail);
-        innerValue("postCode1", postCode);
-        innerValue("add1", add1);
-        innerValue("add2", add2);
+        //innerValue("goodname", resultData.productNames);
+        //innerValue("textfield3", resultData.productNames);
+        innerValue("postName", resultData.postName);
+        innerValue("allTel", resultData.allTel);
+        innerValue("allPhone", resultData.allPhone);
+        innerValue("allEmail", resultData.allEmail);
+        innerValue("postCode1", resultData.postCode);
+        innerValue("add1", resultData.add1);
+        innerValue("add2", resultData.add2);
     });
 
     function goOrderResult() {
