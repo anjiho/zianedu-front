@@ -2,46 +2,59 @@
 <%@include file="/common/jsp/common.jsp" %>
 <%@ page import="com.zianedu.front.utils.Util" %>
 <%
-    String cartNum = Util.isNullValue(request.getParameter("cartNum"), "");
-    String gKeys = Util.isNullValue(request.getParameter("gKeys"), "");
-    String goodsInfo = Util.isNullValue(request.getParameter("goodsInfo"), "");
+//    String cartNum = Util.isNullValue(request.getParameter("cartNum"), "");
+//    String gKeys = Util.isNullValue(request.getParameter("gKeys"), "");
+//    String goodsInfo = Util.isNullValue(request.getParameter("goodsInfo"), "");
 %>
 <script>
     $( document ).ready(function() {
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        var cartKeys = sessionStorage.getItem('cartNum');
+        var gKeys = sessionStorage.getItem('gKeys');
+        var goodsInfo = sessionStorage.getItem('goodsInfo');
+        var resultData = JSON.parse(sessionStorage.getItem('resultData'));
         var userKey = sessionUserInfo.userKey;
-        var allProductPrice = "<%= request.getParameter("allProductPrice") %>";
-        var postName = "<%= request.getParameter("postName") %>";
-        var allTel = "<%= request.getParameter("allTel") %>";
-        var allPhone = "<%= request.getParameter("allPhone") %>";
-        var allEmail = "<%= request.getParameter("allEmail") %>";
-        var postCode = "<%= request.getParameter("postCode1") %>";
-        var add1 = "<%= request.getParameter("add1") %>";
-        var add2 = "<%= request.getParameter("add2") %>";
-
-        if('<%=cartNum%>' == "" && '<%=goodsInfo%>' == ""){//바로구매
-            var gKeys = toStrFileName(<%= request.getParameter("gKeys") %>);
-           // innerValue("gKeys", gKeys);
+        <%--var allProductPrice = "<%= request.getParameter("allProductPrice") %>";--%>
+        <%--var postName = "<%= reque st.getParameter("postName") %>";--%>
+        <%--var allTel = "<%= request.getParameter("allTel") %>";--%>
+        <%--var allPhone = "<%= request.getParameter("allPhone") %>";--%>
+        <%--var allEmail = "<%= request.getParameter("allEmail") %>";--%>
+        <%--var postCode = "<%= request.getParameter("postCode1") %>";--%>
+        <%--var add1 = "<%= request.getParameter("add1") %>";--%>
+        <%--var add2 = "<%= request.getParameter("add2") %>";--%>
+        <%--if('<%=cartNum%>' == "" && '<%=goodsInfo%>' == ""){//바로구매--%>
+        <%--    var gKeys = toStrFileName(<%= request.getParameter("gKeys") %>);--%>
+        <%--   // innerValue("gKeys", gKeys);--%>
+        <%--    getOrderSheetInfoFromImmediately(userKey, gKeys);--%>
+        <%--}else if('<%=gKeys%>' == "" && '<%=goodsInfo%>' == ""){--%>
+        <%--    var cartKeys = toStrFileName(<%= request.getParameter("cartNum") %>);--%>
+        <%--   // innerValue("cartNum", cartKeys);--%>
+        <%--    getOrderSheetInfoFromPay(userKey, cartKeys);--%>
+        <%--}else{//패키지--%>
+        <%--    var goodsInfo ='<%= request.getParameter("goodsInfo") %>';--%>
+        <%--   // innerValue("goodsInfo", goodsInfo);--%>
+        <%--    getOrderSheetInfoFromImmediatelyAtBasicPackage(userKey, goodsInfo, 1);--%>
+        <%--}--%>
+        if(cartKeys == "" && goodsInfo == ""){//바로구매
+            //var gKeys = toStrFileName(gKeys);
             getOrderSheetInfoFromImmediately(userKey, gKeys);
-        }else if('<%=gKeys%>' == "" && '<%=goodsInfo%>' == ""){
-            var cartKeys = toStrFileName(<%= request.getParameter("cartNum") %>);
-           // innerValue("cartNum", cartKeys);
+        }else if(gKeys == "" && goodsInfo == ""){
+            //var cartKeys = toStrFileName(cartNum);
             getOrderSheetInfoFromPay(userKey, cartKeys);
         }else{//패키지
-            var goodsInfo ='<%= request.getParameter("goodsInfo") %>';
-           // innerValue("goodsInfo", goodsInfo);
+            //var goodsInfo = goodsInfo;
             getOrderSheetInfoFromImmediatelyAtBasicPackage(userKey, goodsInfo, 1);
         }
 
-        innerValue("allProductPrice", allProductPrice);
-        innerHTML("allPrice", format(allProductPrice));
-        innerHTML("orderName1", postName);
-        innerHTML("telephone1", allTel);
-        innerHTML("telephoneMobile1", allPhone);
-        innerHTML("email1", allEmail);
-        innerHTML("zipcode1", postCode);
-        innerHTML("address1", add1);
-        innerHTML("address2", add2);
+        innerValue("allProductPrice", resultData.allProductPrice);
+        innerHTML("allPrice", format(resultData.allProductPrice));
+        innerHTML("orderName1", resultData.postName);
+        innerHTML("telephone1", resultData.allTel);
+        innerHTML("telephoneMobile1", resultData.allPhone);
+        innerHTML("email1", resultData.allEmail);
+        innerHTML("zipcode1", resultData.postCode);
+        innerHTML("address1", resultData.add1);
+        innerHTML("address2", resultData.add2);
     });
 </script>
 <form name="frm" method="get">

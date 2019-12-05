@@ -25,7 +25,6 @@
     String signKey			    = "SU5JTElURV9UUklQTEVERVNfS0VZU1RS";	// 가맹점에 제공된 웹 표준 사인키(가맹점 수정후 고정)
     String timestamp			= SignatureUtil.getTimestamp();			// util에 의해서 자동생성
 
-    //String oid					= mid+"_"+SignatureUtil.getTimestamp();	// 가맹점 주문번호(가맹점에서 직접 설정)
     String oid                  = Util.getJId();
     String price				= allProductPrice;													// 상품가격(특수기호 제외, 가맹점에서 직접 설정)
     String cardNoInterestQuota	= "11-2:3:,34-5:12,14-6:12:24,12-12:36,06-9:12,01-3:4";		// 카드 무이자 여부 설정(가맹점에서 직접 설정)
@@ -55,9 +54,7 @@
     // http://localhost:8080/INIpayStdSample 까지만 기입한다.
 %>
 <%
-
     try{
-
         //#############################
         // 인증결과 파라미터 일괄 수신
         //#############################
@@ -631,13 +628,17 @@
 <script src="/common/zian/js/inicis.js"></script>
 <script>
     $( document ).ready(function() {
+        sessionStorage.setItem("cartNum", '<%=cartNum%>');
+        sessionStorage.setItem("gKeys", '<%=gKeys%>');
+        sessionStorage.setItem("goodsInfo", '<%=goodsInfo%>');
+
         var locationHost = location.host;
         //var returnUrl = "http://" + locationHost + "/payment?page_gbn=inicisResult";
         var returnUrl = "http://" + locationHost + "/myPage?page_gbn=pay";
         innerValue("returnUrl", returnUrl);
 
         var locationHost = location.host;
-        var closeUrl = "http://" + locationHost + "/myPage?page_gbn=pay";
+        var closeUrl = "http://" + locationHost + "/myPage?page_gbn=cart";
         innerValue("closeUrl", closeUrl);
 
         $("input:radio[name=ckbox]").click(function(){
@@ -651,14 +652,28 @@
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         var userKey = sessionUserInfo.userKey;
 
-        var allProductPrice = "<%= request.getParameter("allProductPrice") %>";
-        var postName = "<%= request.getParameter("postName") %>";
-        var allTel = "<%= request.getParameter("allTel") %>";
-        var allPhone = "<%= request.getParameter("allPhone") %>";
-        var allEmail = "<%= request.getParameter("allEmail") %>";
-        var postCode = "<%= request.getParameter("postCode1") %>";
-        var add1 = "<%= request.getParameter("add1") %>";
-        var add2 = "<%= request.getParameter("add2") %>";
+        var allProductPrice = '<%= request.getParameter("allProductPrice") %>';
+        var postName = '<%= request.getParameter("postName") %>';
+        var allTel = '<%= request.getParameter("allTel") %>';
+        var allPhone = '<%= request.getParameter("allPhone") %>';
+        var allEmail = '<%= request.getParameter("allEmail") %>';
+        var postCode = '<%= request.getParameter("postCode1") %>';
+        var add1 = '<%= request.getParameter("add1") %>';
+        var add2 = '<%= request.getParameter("add2") %>';
+
+        var resultData = {
+            allProductPrice : allProductPrice,
+            postName : postName,
+            allTel : allTel,
+            allPhone : allPhone,
+            allEmail : allEmail,
+            postCode : postCode,
+            add1 : add1,
+            add2 : add2
+        };
+        console.log(JSON.stringify(resultData));
+
+        sessionStorage.setItem("resultData", JSON.stringify(resultData));
 
         if('<%=cartNum%>' == "" && '<%=goodsInfo%>' == ""){//바로구매
             var gKeys = toStrFileName(<%= request.getParameter("gKeys") %>);
@@ -1065,6 +1080,7 @@
                                     <span class="txt2"><b id="allPrice"></b>원</span>
                                 </li>
                                 <div class="btn_area">
+<%--                                    <a href="javascript:void(0);" onclick="javascript:goPage('myPage','orderResult');"  class="blue" id="pcBtn" style="display: none;">결제하기</a>--%>
                                     <a href="javascript:void(0);" onclick="INIStdPay.pay('SendPayForm_id')"  class="blue" id="pcBtn" style="display: none;">결제하기</a>
                                     <a href="javascript:void(0);" onclick="javascript:onSubmit();"  class="blue" id="mobileBtn" style="display: none;">결제하기</a>
                                     <a href="javascript:window.history.back();" class="gray">이전으로</a>
