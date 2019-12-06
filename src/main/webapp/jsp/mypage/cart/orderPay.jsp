@@ -226,17 +226,17 @@
                                 <td align="left"><input type="hidden" name="P_EMAIL" value="<%=email  %>" id="textfield8" style="border-color:#cdcdcd; border-width:1px; border-style:solid; color:#555555; height:15px;"/></td>
                             </tr>
                             <tr>
-                                <input type="hidden" name="paymethod"  id="paymethod" style="border-color:#cdcdcd; border-width:1px; border-style:solid; color:#555555; height:15px;"/>
-<%--                                <td height="25" align="left" style="background-image:url(images/bullet.png); background-repeat:no-repeat; background-position:0px 40%; padding-left:8px; font-size:12px; color:#607c90;">결제방법 </td>--%>
-<%--                                <td align="left"><label>--%>
-<%--                                    <select name="paymethod" id="select">--%>
-<%--                                        <option value="wcard">신용카드--%>
-<%--                                        <option value="vbank">가상계좌--%>
-<%--                                        <option value="mobile">휴대폰--%>
-<%--                                        <option value="culture">문화 상품권--%>
-<%--                                        <option value="hpmn">해피머니 상품권--%>
-<%--                                    </select>--%>
-<%--                                </label></td>--%>
+<%--                                <input type="hidden" name="paymethod"  id="paymethod" style="border-color:#cdcdcd; border-width:1px; border-style:solid; color:#555555; height:15px;"/>--%>
+                                <td height="25" align="left" style="background-image:url(images/bullet.png); background-repeat:no-repeat; background-position:0px 40%; padding-left:8px; font-size:12px; color:#607c90;">결제방법 </td>
+                                <td align="left"><label>
+                                    <select name="paymethod" id="select">
+                                        <option value="wcard">신용카드
+                                        <option value="vbank">가상계좌
+                                        <option value="mobile">휴대폰
+                                        <option value="culture">문화 상품권
+                                        <option value="hpmn">해피머니 상품권
+                                    </select>
+                                </label></td>
                             </tr>
                         </table></td>
                     </tr>
@@ -252,7 +252,7 @@
         </form>
     </table>
 </div>
-<form id="SendPayForm_id" name="" method="POST" style="display: none;">
+<form id="SendPayForm_id" name="SendPayForm_id" method="POST" style="display: none;">
     <div style="border:2px #dddddd double;padding:10px;background-color:#f3f3f3;">
         <br/><input type="hidden"  style="width:100%;" name="version" value="1.0">
         <br/><input type="hidden"  style="width:100%;" name="mid" value="<%=mid%>">
@@ -464,11 +464,16 @@
                         <div class="pay">
                             <p class="title"><span class="text_blue">결제</span>하기</p>
                             <div class="left" style="width: 750px;">
-                                <ul>
+                                <ul id="pcPaymentMethodUl" style="display: none">
                                     <li class="tit">결제수단</li>
                                     <li><input type="radio" name="ckbox" value="Card" id="ckbox1">신용카드</li>
                                     <li><input type="radio" name="ckbox" value="DirectBank" id="ckbox2">실시간 계좌이체</li>
                                     <li><input type="radio" name="ckbox" value="VBank" id="ckbox3">무통장입금</li>
+                                </ul>
+                                <ul id="mobilePaymentMethodUl" style="display: none">
+                                    <li class="tit">결제수단</li>
+                                    <li><input type="radio" name="ckbox2" value="wcard" id="ckbox1">신용카드</li>
+                                    <li><input type="radio" name="ckbox2" value="vbank" id="ckbox2">실시간 계좌이체</li>
                                 </ul>
                                 <div id="1" class="ckctn">
                                     <div class="ckinner credit"></div>

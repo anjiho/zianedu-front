@@ -83,7 +83,8 @@
             var pcMobile = divisionPcMobile();
 
             if (pcMobile == "PC") {
-                gfn_display("pcPay", true);
+                //gfn_display("pcPay", true);
+                gfn_display("mobilePay", true);
             } else {
                 gfn_display("mobilePay", true);
             }
@@ -143,6 +144,9 @@
             var order_form = document.ini;
             var paymethod = order_form.paymethod.value;
             var wallet = window.open("", "BTPG_WALLET", features);
+
+            console.log(order_form);
+            console.log(paymethod);
 
             if (wallet == null)
             {
