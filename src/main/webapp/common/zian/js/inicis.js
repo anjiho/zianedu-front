@@ -2,8 +2,10 @@ $(document).ready(function() {
     var pcMobile = divisionPcMobile();
     if (pcMobile == "PC") {
         gfn_display("pcBtn", true);
+        gfn_display("pcPaymentMethodUl", true);
     }
     else {
+        gfn_display("mobilePaymentMethodUl", true);
         gfn_display("mobileBtn", true);
     }
 });
@@ -61,7 +63,7 @@ function setOid()
 function on_web()
 {
     var order_form = document.ini;
-    var paymethod = order_form.paymethod.value;
+    var paymethod = get_radio_value("ckbox2");
     var wallet = window.open("", "BTPG_WALLET", features);
 
     if (wallet == null)
