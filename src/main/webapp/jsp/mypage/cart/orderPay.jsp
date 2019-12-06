@@ -15,7 +15,10 @@
     String userName = Util.isNullValue(request.getParameter("postName"), "");
     String phoneNum = Util.isNullValue(request.getParameter("allPhone"), "");
     String email = Util.isNullValue(request.getParameter("allEmail"), "");
-    String productNames = Util.isNullValue(request.getParameter("productNames"), "");
+
+    String pcProductNames = Util.isNullValue(request.getParameter("productNames"), "");
+    String mobileNameUtf8 = Util.isNullValue(request.getParameter("productNames"), "");
+    String mobileProductNames = new String(mobileNameUtf8.getBytes("euc-kr"));
 
     String total = Util.isNullValue(request.getParameter("total"), "");
     String totalPoint = Util.isNullValue(request.getParameter("totalPoint"), "");
@@ -64,6 +67,7 @@
 <script src="/common/zian/js/inicis.js"></script>
 <script>
     $( document ).ready(function() {
+
         var locationHost = location.host;
         var returnUrl = "http://" + locationHost + "/myPage?page_gbn=orderResult";
         innerValue("returnUrl", returnUrl);
@@ -203,7 +207,7 @@
                             </tr>
                             <tr>
                                 <td height="25" align="left" style="background-image:url(images/bullet.png); background-repeat:no-repeat; background-position:0px 40%; padding-left:8px; font-size:12px; color:#607c90;">상품명</td>
-                                <td align="left"><input type="hidden" name="P_GOODS" value="<%=productNames%>" id="textfield3" style="border-color:#cdcdcd; border-width:1px; border-style:solid; color:#555555; height:15px;"/></td>
+                                <td align="left"><input type="hidden" name="P_GOODS" value="<%=mobileProductNames%>" id="textfield3" style="border-color:#cdcdcd; border-width:1px; border-style:solid; color:#555555; height:15px;"/></td>
                             </tr>
                             <tr>
                                 <td height="25" align="left" style="background-image:url(images/bullet.png); background-repeat:no-repeat; background-position:0px 40%; padding-left:8px; font-size:12px; color:#607c90;">가격 </td>
@@ -256,7 +260,7 @@
     <div style="border:2px #dddddd double;padding:10px;background-color:#f3f3f3;">
         <br/><input type="hidden"  style="width:100%;" name="version" value="1.0">
         <br/><input type="hidden"  style="width:100%;" name="mid" value="<%=mid%>">
-        <br/><input type="hidden"  style="width:100%;" name="goodname" id="goodname" value="<%=productNames%>">
+        <br/><input type="hidden"  style="width:100%;" name="goodname" id="goodname" value="<%=pcProductNames%>">
         <br/><input type="hidden" style="width:100%;" name="oid" value="<%=oid%>">
         <br/><input type="hidden" style="width:100%;" name="price" value="<%=price%>">
         <br/><input type="hidden" style="width:100%;" name="currency" value="WON">
