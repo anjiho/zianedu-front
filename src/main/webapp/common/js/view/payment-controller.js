@@ -7,8 +7,13 @@ function getJId() {
 
 //이니페이 결과 저장하기 - 보류
 function saveInipayInfo(data) {
+    if (data == null || data == undefined) return;
     var result = postApi("/payment/saveInipayInfo", data);
+    console.log(result);
 }
 
-//결제 결과 저장하기 - 보류
-// /payment/savePaymentInfo
+function savePaymentInfo(data){
+    if (data == null || data == undefined) return;
+    var result = postApi("/payment/savePaymentInfo", data);
+    console.log(result);
+}

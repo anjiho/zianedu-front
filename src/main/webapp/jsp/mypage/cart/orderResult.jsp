@@ -643,29 +643,69 @@
         var resultData = JSON.parse(sessionStorage.getItem('resultData'));
         var userKey = sessionUserInfo.userKey;
 
-        var 
+        var orderGoodsList = sessionStorage.getItem('orderGoodsList');
+        var savePayInfo = sessionStorage.getItem('savePayInfo');
 
-        /*
-        String tId = "";    //거래번호
-        String resultCode = ""; //결과코드
-        String resultMsg = "";  //결과 메세지
-        String payMethod = "";  //결제방법
-        String moId = "";   //상점주문번호
-        int totPrice = 0;  //
-        String applDate = "";    //승인일자
-        String applTime = "";   //승인시간
-        String applNum = "";    //승인번호
-        String cardQuota = "";   //카드 할부기간
-        String cardInterest = "";   //카드할부 여부
-        String cardNum = "";    //신용카드 번호
-        String cardCode = "";   //카드사 코드
-        String cardBankCode = "";   //카드 발급사
-        String eventCode = "";  //이벤트코드
-        String cardApplPrice = "";  //카드승인금액
-        String ocbPayPrice = ""; //OK캐시백 포인트 지불금액
-        String acctBankCode = "";   //은행코드
-        String resultErrorCode = "";    //에러결과코드
-         */
+        var pcMobile = divisionPcMobile();
+        var isMobile = 0;
+        if(pcMobile == "MOBILE") isMobile = 1;
+
+        var saveInipayInfoData = {
+            tid : '<%=tId%>',
+            resultcode : '<%=resultCode%>',
+            resultmsg : '<%=resultMsg%>',
+            paymethod : '<%=payMethod%>',
+            moid : '<%=moId %>',
+            totprice : savePayInfo.pricePay,
+            appldate : '<%=applDate %>',
+            appltime : '<%=applTime %>',
+            applnum : '<%=applNum %>',
+            cardQuota : '<%=cardQuota %>',
+            cardInterest : '<%=cardInterest %>',
+            cardNum : '<%=cardNum %>',
+            cardCode : '<%=cardCode %>',
+            cardBankcode : '<%=cardBankCode %>',
+            eventcode :  '<%=eventCode %>',
+            cardApplprice : '<%=cardApplPrice %>',
+            ocbPayprice : '<%=ocbPayPrice %>',
+            acctBankcode : '<%=acctBankCode %>',
+            resulterrorcode : '<%=resultErrorCode %>',
+            isMobile : isMobile
+        };
+        var InipayInfoResult = saveInipayInfo(saveInipayInfoData);
+        console.log(InipayInfoResult);
+
+        if(InipayInfoResult.resultCode == 200){
+            var savePaymentInfoData = {
+                jId : '<%=moId %>',
+                userKey : userKey,
+                price : savePayInfo.price,
+                pricePay : savePayInfo.pricePay,
+                point : savePayInfo.point,
+                discountPoint : savePayInfo.discountPoint,
+                deliveryPrice : savePayInfo.deliveryPrice,
+                payStatus :  2,/* 무통장일때 기능 추가 */
+                cardCode :  '<%=cardCode%>',
+                bank : '우리은행',/* 수정 필요 */
+                bankAccount :  '123-123-11111',/* 수정 필요 */
+                depositUser : resultData.postName,
+                deliveryName : resultData.postName,
+                deliveryTelephone : resultData.allTel,
+                deliveryTelephoneMobile : resultData.allPhone,
+                deliveryZipcode :  resultData.postCode,
+                deliveryAddress :  resultData.add1,
+                deliveryAddressRoad : resultData.add1 ,
+                deliveryAddressAdd : resultData.add2 ,
+                payKey :  InipayInfoResult.keyValue,
+                isMobile : isMobile,
+                orderGoodsList :  orderGoodsList,
+            };
+            var PaymentResult = savePaymentInfo(savePaymentInfoData);
+            console.log(PaymentResult);
+        }
+
+
+
         <%--var allProductPrice = "<%= request.getParameter("allProductPrice") %>";--%>
         <%--var postName = "<%= reque st.getParameter("postName") %>";--%>
         <%--var allTel = "<%= request.getParameter("allTel") %>";--%>
