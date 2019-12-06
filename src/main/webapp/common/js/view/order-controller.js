@@ -171,8 +171,10 @@ function getOrderSheetInfoFromPay(userKey, cartKeys) {
                 returnHtml += "</tr>";
                 $("#dataList").append(returnHtml);
             }
-            var orderGoods = toStrFileName(orderGoodArr);
-            sessionStorage.setItem("orderGoodsList", orderGoods);
+            //var orderGoods = JSON.stringify(orderGoodArr);
+            //console.log(orderGoods);
+            //console.log(orderGoodArr);
+            sessionStorage.setItem("orderGoodsList",  JSON.stringify(orderGoodArr));
         }
 
         if(cmpList.orderUserInfo != null){
@@ -242,8 +244,8 @@ function getOrderSheetInfoFromImmediately(userKey, gKeys) {
                 $("#dataList").append(returnHtml);
             }
             innerValue("payProductName",payProductNameArr);
-            var orderGoods = toStrFileName(orderGoodArr);
-            sessionStorage.setItem("orderGoodsList", orderGoods);
+           // var orderGoods = toStrFileName(orderGoodArr);
+            sessionStorage.setItem("orderGoodsList", JSON.stringify(orderGoodArr));
         }
 
         if(cmpList.productTotalPrice != null){
@@ -363,8 +365,8 @@ function getOrderSheetInfoFromImmediatelyAtBasicPackage(userKey, goodsInfo, pack
                 $("#dataList").append(returnHtml);
             }
             innerValue("pacakgeProductName", pacakgeProductNameArr);
-            var orderGoods = toStrFileName(orderGoodArr);
-            sessionStorage.setItem("orderGoodsList", orderGoods);
+           //var orderGoods = toStrFileName(orderGoodArr);
+            sessionStorage.setItem("orderGoodsList", JSON.stringify(orderGoodArr));
         }
 
         if(cmpList.productTotalPrice != null){

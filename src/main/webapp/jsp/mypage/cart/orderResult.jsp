@@ -644,68 +644,84 @@
         var userKey = sessionUserInfo.userKey;
 
         var orderGoodsList = sessionStorage.getItem('orderGoodsList');
-        var savePayInfo = sessionStorage.getItem('savePayInfo');
+        var savePayInfo = JSON.parse(sessionStorage.getItem('savePayInfo'));
+        //console.log(savePayInfo);
+
+        var discountPoint = 0;
+        var point = 0;
+        var deliveryPrice = 0;
+        if(savePayInfo.discountPoint == null) discountPoint = 0;
+        else discountPoint = savePayInfo.discountPoint;
+
+        if(savePayInfo.point == null)  point = 0;
+        else point = savePayInfo.point;
+
+        if(savePayInfo.deliveryPrice == undefined || savePayInfo.deliveryPrice == null) deliveryPrice = 0;
+        else deliveryPrice = savePayInfo.deliveryPrice;
 
         var pcMobile = divisionPcMobile();
         var isMobile = 0;
         if(pcMobile == "MOBILE") isMobile = 1;
 
-        var saveInipayInfoData = {
-            tid : '<%=tId%>',
-            resultcode : '<%=resultCode%>',
-            resultmsg : '<%=resultMsg%>',
-            paymethod : '<%=payMethod%>',
-            moid : '<%=moId %>',
-            totprice : savePayInfo.pricePay,
-            appldate : '<%=applDate %>',
-            appltime : '<%=applTime %>',
-            applnum : '<%=applNum %>',
-            cardQuota : '<%=cardQuota %>',
-            cardInterest : '<%=cardInterest %>',
-            cardNum : '<%=cardNum %>',
-            cardCode : '<%=cardCode %>',
-            cardBankcode : '<%=cardBankCode %>',
-            eventcode :  '<%=eventCode %>',
-            cardApplprice : '<%=cardApplPrice %>',
-            ocbPayprice : '<%=ocbPayPrice %>',
-            acctBankcode : '<%=acctBankCode %>',
-            resulterrorcode : '<%=resultErrorCode %>',
-            isMobile : isMobile
-        };
-        var InipayInfoResult = saveInipayInfo(saveInipayInfoData);
-        console.log(InipayInfoResult);
-
-        if(InipayInfoResult.resultCode == 200){
-            var savePaymentInfoData = {
-                jId : '<%=moId %>',
-                userKey : userKey,
-                price : savePayInfo.price,
-                pricePay : savePayInfo.pricePay,
-                point : savePayInfo.point,
-                discountPoint : savePayInfo.discountPoint,
-                deliveryPrice : savePayInfo.deliveryPrice,
-                payStatus :  2,/* 무통장일때 기능 추가 */
-                cardCode :  '<%=cardCode%>',
-                bank : '우리은행',/* 수정 필요 */
-                bankAccount :  '123-123-11111',/* 수정 필요 */
-                depositUser : resultData.postName,
-                deliveryName : resultData.postName,
-                deliveryTelephone : resultData.allTel,
-                deliveryTelephoneMobile : resultData.allPhone,
-                deliveryZipcode :  resultData.postCode,
-                deliveryAddress :  resultData.add1,
-                deliveryAddressRoad : resultData.add1 ,
-                deliveryAddressAdd : resultData.add2 ,
-                payKey :  InipayInfoResult.keyValue,
-                isMobile : isMobile,
-                orderGoodsList :  orderGoodsList,
+        if('<%=resultCode%>' == '0000'){
+            var saveInipayInfoData = {
+                tid : '<%=tId%>',
+                resultcode : '<%=resultCode%>',
+                resultmsg : '<%=resultMsg%>',
+                paymethod : '<%=payMethod%>',
+                moid : '<%=moId %>',
+                totprice : savePayInfo.pricePay,
+                appldate : '<%=applDate %>',
+                appltime : '<%=applTime %>',
+                applnum : '<%=applNum %>',
+                cardQuota : '<%=cardQuota %>',
+                cardInterest : '<%=cardInterest %>',
+                cardNum : '<%=cardNum %>',
+                cardCode : '<%=cardCode %>',
+                cardBankcode : '<%=cardBankCode %>',
+                eventcode :  '<%=eventCode %>',
+                cardApplprice : '<%=cardApplPrice %>',
+                ocbPayprice : '<%=ocbPayPrice %>',
+                acctBankcode : '<%=acctBankCode %>',
+                resulterrorcode : '<%=resultErrorCode %>',
+                isMobile : isMobile
             };
-            var PaymentResult = savePaymentInfo(savePaymentInfoData);
-            console.log(PaymentResult);
+            var InipayInfoResult = saveInipayInfo(saveInipayInfoData);
+
+            var payStatus = 2;
+            if('<%=payMethod%>' == 'VBank'){
+                 payStatus = 0;
+            }
+            if(InipayInfoResult.resultCode == 200){
+                var savePaymentInfoData = {
+                    jId : '<%=moId %>',
+                    userKey : userKey,
+                    price : savePayInfo.price,
+                    pricePay : savePayInfo.pricePay,
+                    point : point,
+                    discountPoint : discountPoint,
+                    deliveryPrice : deliveryPrice,
+                    payStatus :  payStatus,/* 무통장일때 기능 추가 */
+                    cardCode :  '<%=cardCode%>',
+                    bank : '우리은행',/* 수정 필요 */
+                    bankAccount :  '123-123-11111',/* 수정 필요 */
+                    depositUser : resultData.postName,
+                    deliveryName : resultData.postName,
+                    deliveryTelephone : resultData.allTel,
+                    deliveryTelephoneMobile : resultData.allPhone,
+                    deliveryZipcode :  resultData.postCode,
+                    deliveryAddress :  resultData.add1,
+                    deliveryAddressRoad : resultData.add1,
+                    deliveryAddressAdd : resultData.add2,
+                    payKey :  InipayInfoResult.keyValue,
+                    isMobile : isMobile,
+                    orderGoodsList :  orderGoodsList
+                };
+                var PaymentResult = savePaymentInfo(savePaymentInfoData);
+            }
         }
-
-
-
+        console.log(savePaymentInfoData);
+        console.log(PaymentResult);
         <%--var allProductPrice = "<%= request.getParameter("allProductPrice") %>";--%>
         <%--var postName = "<%= reque st.getParameter("postName") %>";--%>
         <%--var allTel = "<%= request.getParameter("allTel") %>";--%>
