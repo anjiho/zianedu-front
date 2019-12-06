@@ -12,7 +12,26 @@
 //    String goodsInfo = Util.isNullValue(request.getParameter("goodsInfo"), "");
 %>
 <%
-    String resultCode = "";
+    String tId = "";    //거래번호
+    String resultCode = ""; //결과코드
+    String resultMsg = "";  //결과 메세지
+    String payMethod = "";  //결제방법
+    String moId = "";   //상점주문번호
+    int totPrice = 0;  //
+    String applDate = "";    //승인일자
+    String applTime = "";   //승인시간
+    String applNum = "";    //승인번호
+    String cardQuota = "";   //카드 할부기간
+    String cardInterest = "";   //카드할부 여부
+    String cardNum = "";    //신용카드 번호
+    String cardCode = "";   //카드사 코드
+    String cardBankCode = "";   //카드 발급사
+    String eventCode = "";  //이벤트코드
+    String cardApplPrice = "";  //카드승인금액
+    String ocbPayPrice = ""; //OK캐시백 포인트 지불금액
+    String acctBankCode = "";   //은행코드
+    String resultErrorCode = "";    //에러결과코드
+
 
     try{
 
@@ -142,9 +161,7 @@
                     out.println("<tr><th class='td01'><p>거래 성공 여부</p></th>");
                     out.println("<td class='td02'><p>성공</p></td></tr>");
 
-                    resultCode = resultMap.get("resultCode");
-
-                            //결과정보
+                    //결과정보
                     out.println("<tr><th class='line' colspan='2'><p></p></th></tr>");
                     out.println("<tr><th class='td01'><p>결과 코드</p></th>");
                     out.println("<td class='td02'><p>" +resultMap.get("resultCode")+"</p></td></tr>");
@@ -172,6 +189,16 @@
                         }
                     }
                 }
+
+                tId = resultMap.get("tid");
+                resultCode = resultMap.get("resultCode");
+                resultMsg = resultMap.get("resultMsg");
+                payMethod = resultMap.get("payMethod");
+                moId = resultMap.get("MOID");
+                totPrice = Integer.parseInt(resultMap.get("TotPrice"));
+                applDate = resultMap.get("applDate");
+                applTime = resultMap.get("applTime");
+                applNum = resultMap.get("applTime");
 
 
                 //공통 부분만
@@ -218,6 +245,8 @@
                     out.println("<tr><th class='line' colspan='2'><p></p></th></tr>");
                     out.println("<tr><th class='td01'><p>송금 시간</p></th>");
                     out.println("<td class='td02'><p>" +resultMap.get("VACT_Time")+"</p></td></tr>");
+
+                    acctBankCode = resultMap.get("VACT_BankCode");
 
                     out.println("<tr><th class='line' colspan='2'><p></p></th></tr>");
 
@@ -465,6 +494,16 @@
                         out.println("<tr><th class='td01'><p>이벤트 코드</p></th>");
                         out.println("<td class='td02'><p>" +resultMap.get("EventCode")+"</p></td></tr>");
                     }
+                    applNum = resultMap.get("applNum");
+                    cardQuota = resultMap.get("CARD_Quota");
+                    cardInterest = resultMap.get("CARD_Interest");
+                    cardNum = resultMap.get("CARD_Num");
+                    cardCode = resultMap.get("CARD_Code");
+                    cardBankCode = resultMap.get("CARD_BankCode");
+                    eventCode = resultMap.get("EventCode");
+                    cardApplPrice = resultMap.get("TotPrice");
+
+
                     out.println("<tr><th class='line' colspan='2'><p></p></th></tr>");
                     out.println("<tr><th class='td01'><p>카드번호</p></th>");
                     out.println("<td class='td02'><p>" +resultMap.get("CARD_Num")+"</p></td></tr>");
@@ -509,6 +548,9 @@
                         out.println("<tr><th class='line' colspan='2'><p></p></th></tr>");
                         out.println("<tr><th class='td01'><p>OK CASHBAG 포인트지불금액</p></th>");
                         out.println("<td class='td02'><p>" +resultMap.get("OCB_PayPrice")+ "</p></td></tr>");
+
+                        ocbPayPrice = resultMap.get("OCB_PayPrice");
+
                     }
                     if(resultMap.get("GSPT_Num")!=null && resultMap.get("GSPT_Num") != ""){
                         out.println("<tr><th class='line' colspan='2'><p></p></th></tr>");
