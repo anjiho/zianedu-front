@@ -238,7 +238,7 @@
                             <td align="left"><label>
                                 <select name="paymethod" id="select">
                                     <option value="wcard">신용카드
-                                        <!--<option value="DBANK">계좌이체-->
+                                    <option value="bank">계좌이체
                                     <option value="vbank">가상계좌
                                     <option value="mobile">휴대폰
                                     <option value="culture">문화 상품권

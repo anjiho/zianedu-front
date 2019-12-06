@@ -6,6 +6,7 @@
 <%@ page import="com.inicis.std.util.SignatureUtil"%>
 <%@page import="java.util.*"%>
 <%@ page import="com.inicis.std.util.HttpUtil" %>
+<%@ page import="java.io.UnsupportedEncodingException" %>
 
 <%
     String cartNum = Util.isNullValue(request.getParameter("cartNum"), "");
@@ -21,6 +22,20 @@
     String totalPoint = Util.isNullValue(request.getParameter("totalPoint"), "");
     String deliveryPrice = Util.isNullValue(request.getParameter("deliveryPrice"), "");
     String discountPoint = Util.isNullValue(request.getParameter("discountPoint"), "");
+
+    String productNames2 = Util.isNullValue(new String(productNames.getBytes("utf-8"), "utf-8"), "");
+
+//    String [] charSet = {"utf-8","euc-kr","ksc5601","iso-8859-1","x-windows-949"};
+//
+//    for (int i=0; i<charSet.length; i++) {
+//        for (int j=0; j<charSet.length; j++) {
+//            try {
+//                System.out.println("[" + charSet[i] +"," + charSet[j] +"] = " + new String(productNames.getBytes(charSet[i]), charSet[j]));
+//            } catch (UnsupportedEncodingException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//    }
 
 %>
 <%
@@ -473,7 +488,9 @@
                                 <ul id="mobilePaymentMethodUl" style="display: none">
                                     <li class="tit">결제수단</li>
                                     <li><input type="radio" name="ckbox2" value="wcard" id="ckbox1">신용카드</li>
-                                    <li><input type="radio" name="ckbox2" value="vbank" id="ckbox2">실시간 계좌이체</li>
+                                    <li><input type="radio" name="ckbox2" value="bank" id="ckbox2">실시간 계좌이체</li>
+                                    <li><input type="radio" name="ckbox2" value="vbank" id="ckbox3">무통장입금</li>
+
                                 </ul>
                                 <div id="1" class="ckctn">
                                     <div class="ckinner credit"></div>

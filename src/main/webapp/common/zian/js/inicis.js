@@ -1,8 +1,10 @@
 $(document).ready(function() {
     var pcMobile = divisionPcMobile();
     if (pcMobile == "PC") {
-        gfn_display("pcBtn", true);
-        gfn_display("pcPaymentMethodUl", true);
+        // gfn_display("pcBtn", true);
+        // gfn_display("pcPaymentMethodUl", true);
+        gfn_display("mobilePaymentMethodUl", true);
+        gfn_display("mobileBtn", true);
     }
     else {
         gfn_display("mobilePaymentMethodUl", true);
