@@ -88,7 +88,6 @@
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         var userKey = sessionUserInfo.userKey;
 
-
         <%--var allProductPrice = "<%= request.getParameter("allProductPrice") %>";--%>
         <%--var postName = "<%= request.getParameter("postName") %>";--%>
         <%--var allTel = "<%= request.getParameter("allTel") %>";--%>
@@ -153,8 +152,6 @@
         innerHTML("address1", resultData.add1);
         innerHTML("address2", resultData.add2);
 
-        //innerValue("goodname", resultData.productNames);
-        //innerValue("textfield3", resultData.productNames);
         innerValue("postName", resultData.postName);
         innerValue("allTel", resultData.allTel);
         innerValue("allPhone", resultData.allPhone);
