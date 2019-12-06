@@ -593,7 +593,7 @@
 %>
 <script>
     $( document ).ready(function() {
-        var resultCode = '<%=resultCode%>'
+        var resultCode = '<%=resultCode%>';
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         var cartKeys = sessionStorage.getItem('cartNum');
         var gKeys = sessionStorage.getItem('gKeys');

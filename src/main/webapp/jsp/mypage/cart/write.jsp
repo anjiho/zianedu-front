@@ -116,6 +116,7 @@
             var result1 = getInputTextValue("deliveryTotal");
             innerHTML("totalPrice", format(parseInt(result)+parseInt(result1)));
             innerValue("allProductPrice", parseInt(result)+parseInt(result1));
+            innerValue("discountPoint", currentVal);
         });
     });
 
@@ -183,7 +184,11 @@
     <input type="hidden" id="add1" name="add1">
     <input type="hidden" id="add2" name="add2">
     <input type="hidden" id="productNames" name="productNames">
-    <input type="hidden" id="returnUrl" name="returnUrl">
+    <!--savePayInfo-->
+    <input type="hidden" id="total" name="total">
+    <input type="hidden" id="totalPoint" name="totalPoint">
+    <input type="hidden" id="deliveryPrice" name="deliveryPrice">
+    <input type="hidden" id="discountPoint" name="discountPoint">
 </form>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">

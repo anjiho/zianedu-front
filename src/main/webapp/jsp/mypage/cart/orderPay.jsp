@@ -16,6 +16,12 @@
     String phoneNum = Util.isNullValue(request.getParameter("allPhone"), "");
     String email = Util.isNullValue(request.getParameter("allEmail"), "");
     String productNames = Util.isNullValue(request.getParameter("productNames"), "");
+
+    String total = Util.isNullValue(request.getParameter("total"), "");
+    String totalPoint = Util.isNullValue(request.getParameter("totalPoint"), "");
+    String deliveryPrice = Util.isNullValue(request.getParameter("deliveryPrice"), "");
+    String discountPoint = Util.isNullValue(request.getParameter("discountPoint"), "");
+
 %>
 <%
     // 여기에 설정된 값은 Form 필드에 동일한 값으로 설정
@@ -58,15 +64,6 @@
 <script src="/common/zian/js/inicis.js"></script>
 <script>
     $( document ).ready(function() {
-        var cartKeys = sessionStorage.getItem('cartNum');
-        var gKeys = sessionStorage.getItem('gKeys');
-        var goodsInfo = sessionStorage.getItem('goodsInfo');
-        var resultData = JSON.parse(sessionStorage.getItem('resultData'));
-
-        <%--sessionStorage.setItem("cartNum", '<%=cartNum%>');--%>
-        <%--sessionStorage.setItem("gKeys", '<%=gKeys%>');--%>
-        <%--sessionStorage.setItem("goodsInfo", '<%=goodsInfo%>');--%>
-
         var locationHost = location.host;
         var returnUrl = "http://" + locationHost + "/myPage?page_gbn=orderResult";
         innerValue("returnUrl", returnUrl);
@@ -84,6 +81,7 @@
         });
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         var userKey = sessionUserInfo.userKey;
+
 
         <%--var allProductPrice = "<%= request.getParameter("allProductPrice") %>";--%>
         <%--var postName = "<%= request.getParameter("postName") %>";--%>
@@ -110,6 +108,20 @@
         var gKeys = sessionStorage.getItem('gKeys');
         var goodsInfo = sessionStorage.getItem('goodsInfo');
         var resultData = JSON.parse(sessionStorage.getItem('resultData'));
+
+        var total = '<%=total%>';
+        var totalPoint = '<%=totalPoint%>';
+        var deliveryPrice = '<%=deliveryPrice%>';
+        var discountPoint = '<%=discountPoint%>';
+
+        var data = {
+            price : total,
+            pricePay : parseInt(resultData.allProductPrice),
+            point : parseInt(totalPoint),
+            discountPoint : parseInt(discountPoint),
+            deliveryPrice : parseInt(deliveryPrice)
+        };
+        sessionStorage.setItem("savePayInfo", JSON.stringify(data));
 
         if( cartKeys == "" && goodsInfo == ""){//바로구매
             <%--//var gKeys = toStrFileName(<%= request.getParameter("gKeys") %>);--%>

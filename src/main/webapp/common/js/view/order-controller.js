@@ -78,6 +78,10 @@ function getOrderSheetInfoFromCart(userKey, cartKeys) {
             var total = cmpList.productTotalPrice.productTotalPrice+cmpList.productTotalPrice.deliveryPrice;
             innerHTML("totalPrice", format(total));
             innerValue("allProductPrice", total);
+
+            innerValue("total", total);//상품총 가격
+            innerValue("totalPoint", cmpList.productTotalPrice.point);//적립될 총 포인트
+            innerValue("deliveryPrice", cmpList.productTotalPrice.deliveryPrice);//배송비
         }
 
         if(cmpList.productGroupPrice != null){
@@ -237,6 +241,10 @@ function getOrderSheetInfoFromImmediately(userKey, gKeys) {
             var total = cmpList.productTotalPrice.productTotalPrice+cmpList.productTotalPrice.deliveryPrice;
             innerHTML("totalPrice", format(total));
             innerValue("allProductPrice", total);
+
+            innerValue("total", total);//상품총 가격
+            innerValue("totalPoint", cmpList.productTotalPrice.point);//적립될 총 포인트
+            innerValue("deliveryPrice", cmpList.productTotalPrice.deliveryPrice);//배송비
         }
 
         if(cmpList.productGroupPrice != null){
@@ -341,6 +349,10 @@ function getOrderSheetInfoFromImmediatelyAtBasicPackage(userKey, goodsInfo, pack
             var total = cmpList.productTotalPrice.productTotalPrice+cmpList.productTotalPrice.deliveryPrice;
             innerHTML("totalPrice", format(total));
             innerValue("allProductPrice", total);
+
+            innerValue("total", total);//상품총 가격
+            innerValue("totalPoint", cmpList.productTotalPrice.point);//적립될 총 포인트
+            innerValue("deliveryPrice", cmpList.productTotalPrice.deliveryPrice);//배송비
         }
 
         if(cmpList.productGroupPrice != null){
