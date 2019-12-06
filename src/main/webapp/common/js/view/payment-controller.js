@@ -9,11 +9,11 @@ function getJId() {
 function saveInipayInfo(data) {
     if (data == null || data == undefined) return;
     var result = postApi("/payment/saveInipayInfo", data);
-    console.log(result);
+    return result;
 }
 
 function savePaymentInfo(data){
     if (data == null || data == undefined) return;
     var result = postApi("/payment/savePaymentInfo", data);
-    console.log(result);
+    return result;
 }
