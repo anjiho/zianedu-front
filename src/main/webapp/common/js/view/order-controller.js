@@ -132,8 +132,20 @@ function getOrderSheetInfoFromPay(userKey, cartKeys) {
         innerHTML("userPoint", format(cmpList.userPoint));
         innerHTML("maxUserPoint", format(cmpList.userPoint));
         if(cmpList.orderProductList.length > 0){
+            var orderGoodArr = new Array();
             for(var i = 0; i < cmpList.orderProductList.length; i++){
                 var orderInfo = cmpList.orderProductList[i];
+
+                var orderGoodData = {
+                    priceKey : orderInfo.priceKey,
+                    cartKey : orderInfo.cartKey,
+                    kind : orderInfo.kind,
+                    gKey : orderInfo.gkey,
+                    extendDay : orderInfo.extendDay,
+                    pmType : orderInfo.pmType
+                };
+                orderGoodArr.push(orderGoodData);
+
                 var returnHtml  = "<tr>";
                 returnHtml += "<td>"+ orderInfo.productType +"</td>";
                 returnHtml += "<td>";
@@ -159,6 +171,8 @@ function getOrderSheetInfoFromPay(userKey, cartKeys) {
                 returnHtml += "</tr>";
                 $("#dataList").append(returnHtml);
             }
+            var orderGoods = toStrFileName(orderGoodArr);
+            sessionStorage.setItem("orderGoodsList", orderGoods);
         }
 
         if(cmpList.orderUserInfo != null){
@@ -189,9 +203,19 @@ function getOrderSheetInfoFromImmediately(userKey, gKeys) {
 
         if(cmpList.orderProductList.length > 0){
             var payProductNameArr = new Array();
+            var orderGoodArr = new Array();
             for(var i = 0; i < cmpList.orderProductList.length; i++){
                 var orderInfo = cmpList.orderProductList[i];
                 payProductNameArr.push(orderInfo.productName);
+                var orderGoodData = {
+                    priceKey : orderInfo.priceKey,
+                    cartKey : orderInfo.cartKey,
+                    kind : orderInfo.kind,
+                    gKey : orderInfo.gkey,
+                    extendDay : orderInfo.extendDay,
+                    pmType : orderInfo.pmType
+                };
+                orderGoodArr.push(orderGoodData);
                 var returnHtml  = "<tr>";
                 returnHtml += "<td>"+ orderInfo.productType +"</td>";
                 returnHtml += "<td>";
@@ -218,6 +242,8 @@ function getOrderSheetInfoFromImmediately(userKey, gKeys) {
                 $("#dataList").append(returnHtml);
             }
             innerValue("payProductName",payProductNameArr);
+            var orderGoods = toStrFileName(orderGoodArr);
+            sessionStorage.setItem("orderGoodsList", orderGoods);
         }
 
         if(cmpList.productTotalPrice != null){
@@ -297,9 +323,20 @@ function getOrderSheetInfoFromImmediatelyAtBasicPackage(userKey, goodsInfo, pack
         innerHTML("maxUserPoint", format(cmpList.userPoint));
         if(cmpList.orderProductList.length > 0){
             var pacakgeProductNameArr = new Array();
+            var orderGoodArr = new Array();
             for(var i = 0; i < cmpList.orderProductList.length; i++){
                 var orderInfo = cmpList.orderProductList[i];
                 pacakgeProductNameArr.push(orderInfo.productName);
+                var orderGoodData = {
+                    priceKey : orderInfo.priceKey,
+                    cartKey : orderInfo.cartKey,
+                    kind : orderInfo.kind,
+                    gKey : orderInfo.gkey,
+                    extendDay : orderInfo.extendDay,
+                    pmType : orderInfo.pmType
+                };
+                orderGoodArr.push(orderGoodData);
+
                 var returnHtml  = "<tr>";
                 returnHtml += "<td>"+ orderInfo.productType +"</td>";
                 returnHtml += "<td>";
@@ -326,6 +363,8 @@ function getOrderSheetInfoFromImmediatelyAtBasicPackage(userKey, goodsInfo, pack
                 $("#dataList").append(returnHtml);
             }
             innerValue("pacakgeProductName", pacakgeProductNameArr);
+            var orderGoods = toStrFileName(orderGoodArr);
+            sessionStorage.setItem("orderGoodsList", orderGoods);
         }
 
         if(cmpList.productTotalPrice != null){

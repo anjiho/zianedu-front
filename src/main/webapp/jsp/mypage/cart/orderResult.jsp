@@ -642,6 +642,30 @@
         var goodsInfo = sessionStorage.getItem('goodsInfo');
         var resultData = JSON.parse(sessionStorage.getItem('resultData'));
         var userKey = sessionUserInfo.userKey;
+
+        var 
+
+        /*
+        String tId = "";    //거래번호
+        String resultCode = ""; //결과코드
+        String resultMsg = "";  //결과 메세지
+        String payMethod = "";  //결제방법
+        String moId = "";   //상점주문번호
+        int totPrice = 0;  //
+        String applDate = "";    //승인일자
+        String applTime = "";   //승인시간
+        String applNum = "";    //승인번호
+        String cardQuota = "";   //카드 할부기간
+        String cardInterest = "";   //카드할부 여부
+        String cardNum = "";    //신용카드 번호
+        String cardCode = "";   //카드사 코드
+        String cardBankCode = "";   //카드 발급사
+        String eventCode = "";  //이벤트코드
+        String cardApplPrice = "";  //카드승인금액
+        String ocbPayPrice = ""; //OK캐시백 포인트 지불금액
+        String acctBankCode = "";   //은행코드
+        String resultErrorCode = "";    //에러결과코드
+         */
         <%--var allProductPrice = "<%= request.getParameter("allProductPrice") %>";--%>
         <%--var postName = "<%= reque st.getParameter("postName") %>";--%>
         <%--var allTel = "<%= request.getParameter("allTel") %>";--%>
