@@ -26,19 +26,6 @@
     String deliveryPrice = Util.isNullValue(request.getParameter("deliveryPrice"), "");
     String discountPoint = Util.isNullValue(request.getParameter("discountPoint"), "");
 
-    String productNames2 = Util.isNullValue(new String(productNames.getBytes("utf-8"), "utf-8"), "");
-
-//    String [] charSet = {"utf-8","euc-kr","ksc5601","iso-8859-1","x-windows-949"};
-//
-//    for (int i=0; i<charSet.length; i++) {
-//        for (int j=0; j<charSet.length; j++) {
-//            try {
-//                System.out.println("[" + charSet[i] +"," + charSet[j] +"] = " + new String(productNames.getBytes(charSet[i]), charSet[j]));
-//            } catch (UnsupportedEncodingException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//    }
 
 %>
 <%
@@ -203,7 +190,7 @@
 <body onload="setOid()" topmargin="0"  leftmargin="0" marginwidth="0" marginheight="0">
 <div id="mobilePay" style="display: none">
     <table width="320" border="0" cellpadding="0" cellspacing="0">
-        <form id="form1" name="ini" method="post" action="" style="display: none;">
+        <form id="form1" name="ini" method="post" action="" style="display: none;" accept-charset="euc-kr">
             <tr>
                 <td height="347" align="center" valign="top" background="images/bg_01.png"><table border="0" cellspacing="0" cellpadding="0">
                     <tr>
@@ -222,7 +209,7 @@
                             </tr>
                             <tr>
                                 <td height="25" align="left" style="background-image:url(images/bullet.png); background-repeat:no-repeat; background-position:0px 40%; padding-left:8px; font-size:12px; color:#607c90;">상품명</td>
-                                <td align="left"><input type="hidden" name="P_GOODS" value="<%=mobileProductNames%>" id="textfield3" style="border-color:#cdcdcd; border-width:1px; border-style:solid; color:#555555; height:15px;"/></td>
+                                <td align="left"><input type="hidden" name="P_GOODS" value="<%=pcProductNames%>" id="textfield3" style="border-color:#cdcdcd; border-width:1px; border-style:solid; color:#555555; height:15px;"/></td>
                             </tr>
                             <tr>
                                 <td height="25" align="left" style="background-image:url(images/bullet.png); background-repeat:no-repeat; background-position:0px 40%; padding-left:8px; font-size:12px; color:#607c90;">가격 </td>

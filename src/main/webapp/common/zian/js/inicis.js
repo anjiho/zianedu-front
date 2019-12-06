@@ -83,6 +83,7 @@ function on_web()
 
     order_form.target = "BTPG_WALLET";
     order_form.action = "https://mobile.inicis.com/smart/" + paymethod + "/";
+
     order_form.submit();
 }
 
