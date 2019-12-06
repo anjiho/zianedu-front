@@ -644,7 +644,20 @@
         var userKey = sessionUserInfo.userKey;
 
         var orderGoodsList = sessionStorage.getItem('orderGoodsList');
-        var savePayInfo = sessionStorage.getItem('savePayInfo');
+        var savePayInfo = JSON.parse(sessionStorage.getItem('savePayInfo'));
+        //console.log(savePayInfo);
+
+        var discountPoint = 0;
+        var point = 0;
+        var deliveryPrice = 0;
+        if(savePayInfo.discountPoint == null) discountPoint = 0;
+        else discountPoint = savePayInfo.discountPoint;
+
+        if(savePayInfo.point == null)  point = 0;
+        else point = savePayInfo.point;
+
+        if(savePayInfo.deliveryPrice == undefined || savePayInfo.deliveryPrice == null) deliveryPrice = 0;
+        else deliveryPrice = savePayInfo.deliveryPrice;
 
         var pcMobile = divisionPcMobile();
         var isMobile = 0;
@@ -681,9 +694,9 @@
                 userKey : userKey,
                 price : savePayInfo.price,
                 pricePay : savePayInfo.pricePay,
-                point : savePayInfo.point,
-                discountPoint : savePayInfo.discountPoint,
-                deliveryPrice : savePayInfo.deliveryPrice,
+                point : point,
+                discountPoint : discountPoint,
+                deliveryPrice : deliveryPrice,
                 payStatus :  2,/* 무통장일때 기능 추가 */
                 cardCode :  '<%=cardCode%>',
                 bank : '우리은행',/* 수정 필요 */
@@ -694,12 +707,13 @@
                 deliveryTelephoneMobile : resultData.allPhone,
                 deliveryZipcode :  resultData.postCode,
                 deliveryAddress :  resultData.add1,
-                deliveryAddressRoad : resultData.add1 ,
-                deliveryAddressAdd : resultData.add2 ,
+                deliveryAddressRoad : resultData.add1,
+                deliveryAddressAdd : resultData.add2,
                 payKey :  InipayInfoResult.keyValue,
                 isMobile : isMobile,
                 orderGoodsList :  orderGoodsList,
             };
+            console.log(savePaymentInfoData);
             var PaymentResult = savePaymentInfo(savePaymentInfoData);
             console.log(PaymentResult);
         }
