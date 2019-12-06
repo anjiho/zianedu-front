@@ -80,6 +80,7 @@
 
         $(document).ready(function() {
             innerValue("returnUrl", returnUrl);
+            innerValue("P_NEXT_URL", returnUrl);
             var pcMobile = divisionPcMobile();
 
             if (pcMobile == "PC") {
@@ -227,12 +228,12 @@
                             <td height="25" align="left" style="background-image:url(images/bullet.png); background-repeat:no-repeat; background-position:0px 40%; padding-left:8px; font-size:12px; color:#607c90;">이메일</td>
                             <td align="left"><input type="text" name="P_EMAIL" value="smart@inicis.com" id="textfield8" style="border-color:#cdcdcd; border-width:1px; border-style:solid; color:#555555; height:15px;"/></td>
                         </tr>
-                        <!--
+
                                   <tr>
                                     <td width="95" height="25" align="left" style="background-image:url(images/bullet.png); background-repeat:no-repeat; background-position:0px 40%; padding-left:8px; font-size:12px; color:#607c90;">결과페이지 링크</td>
-                                    <td align="left"><input type="text" name="P_NEXT_URL" value="https://mobile.inicis.com/smart/testmall/next_url_test.php" id="textfield9" style="border-color:#cdcdcd; border-width:1px; border-style:solid; color:#555555; height:15px;"/></td>
+                                    <td align="left"><input type="hidden" name="P_NEXT_URL" value="" id="P_NEXT_URL" style="border-color:#cdcdcd; border-width:1px; border-style:solid; color:#555555; height:15px;"/></td>
                                   </tr>
-                        -->
+
                         <tr>
                             <td height="25" align="left" style="background-image:url(images/bullet.png); background-repeat:no-repeat; background-position:0px 40%; padding-left:8px; font-size:12px; color:#607c90;">결제방법 </td>
                             <td align="left"><label>
@@ -255,8 +256,8 @@
             </table></td>
         </tr>
         <input type="hidden" name="P_MID" value="INIpayTest">
-        <input type=hidden name="P_NEXT_URL" value="https://mobile.inicis.com/smart/testmall/next_url_test.php">
-        <input type=hidden name="P_NOTI_URL" value="https://mobile.inicis.com/rnoti/rnoti.php">
+<%--        <input type=hidden name="P_NEXT_URL" value="https://mobile.inicis.com/smart/testmall/next_url_test.php">--%>
+<%--        <input type=hidden name="P_NOTI_URL" value="https://mobile.inicis.com/rnoti/rnoti.php">--%>
         <input type=hidden name="P_HPP_METHOD" value="1">
     </form>
 </table>

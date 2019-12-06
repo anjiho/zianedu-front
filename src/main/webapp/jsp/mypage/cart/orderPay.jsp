@@ -8,7 +8,8 @@
     String cartNum = Util.isNullValue(request.getParameter("cartNum"), "");
     String gKeys = Util.isNullValue(request.getParameter("gKeys"), "");
     String goodsInfo = Util.isNullValue(request.getParameter("goodsInfo"), "");
-    String allProductPrice = Util.isNullValue(request.getParameter("allProductPrice"), "");
+    //String allProductPrice = Util.isNullValue(request.getParameter("allProductPrice"), "");
+    String allProductPrice = "10";
     String userName = Util.isNullValue(request.getParameter("postName"), "");
     String phoneNum = Util.isNullValue(request.getParameter("allPhone"), "");
     String email = Util.isNullValue(request.getParameter("allEmail"), "");
@@ -69,6 +70,7 @@
         var locationHost = location.host;
         var returnUrl = "http://" + locationHost + "/myPage?page_gbn=orderResult";
         innerValue("returnUrl", returnUrl);
+        innerValue("P_NEXT_URL", returnUrl);
 
         var closeUrl = "http://" + locationHost + "/payment?page_gbn=inicisClose";
         innerValue("closeUrl", closeUrl);
@@ -248,8 +250,9 @@
                 </table></td>
             </tr>
             <input type="hidden" name="P_MID" value="INIpayTest">
-            <input type=hidden name="P_NEXT_URL" value="https://mobile.inicis.com/smart/testmall/next_url_test.php">
-            <input type=hidden name="P_NOTI_URL" value="https://mobile.inicis.com/rnoti/rnoti.php">
+            <input type=hidden name="P_NEXT_URL" id="P_NEXT_URL" value="http://210.103.44.32:8000/myPage?page_gbn=orderResult">
+            <input type=hidden name="P_RESERVED" id="P_RESERVED" value="twotrs_isp=Y&block_isp=Y&twotrs_isp_noti=N">
+<%--            <input type=hidden name="P_NOTI_URL" value="https://mobile.inicis.com/rnoti/rnoti.php">--%>
             <input type=hidden name="P_HPP_METHOD" value="1">
         </form>
     </table>
