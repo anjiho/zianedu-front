@@ -18,7 +18,7 @@
 <script src="/common/zian/js/kiplayer/jquery.min.js"></script>
 <script>
 	$(document).ready(function () {
-		
+
 	});
 </script>
 
