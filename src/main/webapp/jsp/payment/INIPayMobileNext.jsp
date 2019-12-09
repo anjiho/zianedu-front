@@ -105,11 +105,14 @@
 	$(document).ready(function () {
 		alert('<%=resultPStatus%>');//00
 		alert('<%=resultPCardApplprice%>');//
+
 		var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
 		var userKey = sessionUserInfo.userKey;
+
 		var pcMobile = divisionPcMobile();
 		var isMobile = 0;
 		if(pcMobile == "MOBILE") isMobile = 1;
+
 		var savePayInfo = JSON.parse(sessionStorage.getItem('savePayInfo'));
 		var discountPoint = 0;
 		var point = 0;
@@ -154,6 +157,7 @@
 		var orderGoodsList = sessionStorage.getItem('orderGoodsList');
 		if('<%=resultPStatus%>' == '00') {
 			if (InipayInfoResult.resultCode == 200) {
+				alert("123123");
 				var savePaymentInfoData = {
 					jId: '<%=resultPOid%>',
 					userKey: userKey,
