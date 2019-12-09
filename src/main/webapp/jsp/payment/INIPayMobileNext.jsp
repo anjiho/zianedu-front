@@ -105,9 +105,6 @@
 <%@include file="/common/jsp/common.jsp" %>
 <script>
 	$(document).ready(function () {
-		alert('<%=resultPStatus%>');//00
-		alert('<%=resultPCardApplprice%>');//
-
 		var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
 		var userKey = sessionUserInfo.userKey;
 
@@ -128,11 +125,6 @@
 		if(savePayInfo.deliveryPrice == undefined || savePayInfo.deliveryPrice == null) deliveryPrice = 0;
 		else deliveryPrice = savePayInfo.deliveryPrice;
 
-		alert("deliveryPrice :  " + deliveryPrice);
-		alert("deliveryPrice :  " + deliveryPrice);
-		alert("savePayInfo,price :  " + savePayInfo.price);
-		alert("resultData:postCode  " + resultData.postCode);
-		alert("resultData:allPhone  " + resultData.allPhone);
 		var saveInipayInfoData = {
 			tid : '<%=resultPTid%>',
 			resultcode : '<%=resultPStatus%>',
@@ -140,8 +132,8 @@
 			paymethod : '<%=resultPType%>',
 			moid : '<%=resultPOid%>',
 			totprice : savePayInfo.pricePay,
-			appldate : '<%=resultPAuthDt%>',
-			appltime : '',
+			appldate : '<%=applDate%>',
+			appltime : '<%=applTime%>',
 			applnum : '<%=resultPAuthNo %>',
 			cardQuota : '<%=resultPRmesg2%>',
 			cardInterest : '<%=resultPCardInterest%>',
@@ -155,16 +147,16 @@
 			resulterrorcode : '',
 			isMobile : isMobile
 		};
-		var InipayInfoResult = saveInipayInfo(saveInipayInfoData);
+		var inipayInfoResult = saveInipayInfo(saveInipayInfoData);
 
 		var payStatus = 2;
 		if('<%=resultPType%>' == 'VBank') payStatus = 0;
 
 		var resultData = JSON.parse(sessionStorage.getItem('resultData'));
 		var orderGoodsList = sessionStorage.getItem('orderGoodsList');
+
 		if('<%=resultPStatus%>' == '00') {
-			if (InipayInfoResult.resultCode == 200) {
-				alert("123123");
+			if (inipayInfoResult.resultCode == 200) {
 				var savePaymentInfoData = {
 					jId: '<%=resultPOid%>',
 					userKey: userKey,
@@ -185,7 +177,7 @@
 					deliveryAddress: resultData.add1,
 					deliveryAddressRoad: resultData.add1,
 					deliveryAddressAdd: resultData.add2,
-					payKey: InipayInfoResult.keyValue,
+					payKey: inipayInfoResult.keyValue,
 					isMobile: isMobile,
 					orderGoodsList: orderGoodsList
 				};
