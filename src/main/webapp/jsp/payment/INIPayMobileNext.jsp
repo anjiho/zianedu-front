@@ -100,7 +100,7 @@
 	}
 
 %>
-<script src="/common/zian/js/kiplayer/jquery.min.js"></script>
+<script src="/common/jsp/common.jsp"></script>
 <script>
 	$(document).ready(function () {
 		alert('<%=resultPStatus%>');//00
