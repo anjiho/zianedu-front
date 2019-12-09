@@ -100,7 +100,7 @@
 	}
 
 %>
-<script src="/common/jsp/common.jsp"></script>
+<%@include file="/common/jsp/common.jsp" %>
 <script>
 	$(document).ready(function () {
 		alert('<%=resultPStatus%>');//00
