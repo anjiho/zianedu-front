@@ -13,7 +13,15 @@
 	System.out.println("P_REQ_URL >> " + pReqUrl);
 	System.out.println("P_NOTI >> " + pNoti);
 	System.out.println("P_AMT >> " + pAMT);
+	//INIpayTest
 
 
 %>
+<script>
+	$( document ).ready(function() {
+		var P_TID = <%=pTID%>;
+		var P_MID = "INIpayTest";
+		var P_REQ_URL = P_TID+P_MID;
 
+	});
+</script>
