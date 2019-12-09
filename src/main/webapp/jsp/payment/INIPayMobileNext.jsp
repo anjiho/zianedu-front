@@ -126,6 +126,11 @@
 		if(savePayInfo.deliveryPrice == undefined || savePayInfo.deliveryPrice == null) deliveryPrice = 0;
 		else deliveryPrice = savePayInfo.deliveryPrice;
 
+		alert("deliveryPrice :  " + deliveryPrice);
+		alert("deliveryPrice :  " + deliveryPrice);
+		alert("savePayInfo,price :  " + savePayInfo.price);
+		alert("resultData:postCode  " + resultData.postCode);
+		alert("resultData:allPhone  " + resultData.allPhone);
 		var saveInipayInfoData = {
 			tid : '<%=resultPTid%>',
 			resultcode : '<%=resultPStatus%>',
