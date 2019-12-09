@@ -662,7 +662,6 @@
         var pcMobile = divisionPcMobile();
         var isMobile = 0;
         if(pcMobile == "MOBILE") isMobile = 1;
-
             var saveInipayInfoData = {
                 tid : '<%=tId%>',
                 resultcode : '<%=resultCode%>',

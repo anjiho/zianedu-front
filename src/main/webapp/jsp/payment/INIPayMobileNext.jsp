@@ -103,8 +103,85 @@
 <script src="/common/zian/js/kiplayer/jquery.min.js"></script>
 <script>
 	$(document).ready(function () {
-		alert('<%=resultPStatus%>')
-		alert('<%=resultPCardApplprice%>')
+		alert('<%=resultPStatus%>');//00
+		alert('<%=resultPCardApplprice%>');//
+
+		var pcMobile = divisionPcMobile();
+		var isMobile = 0;
+		if(pcMobile == "MOBILE") isMobile = 1;
+
+		var saveInipayInfoData = {
+			tid : '<%=resultPTid%>',
+			resultcode : '<%=resultCode%>',
+			resultmsg : '<%=resultPRmesg%>',
+			paymethod : '<%=resultPType%>',
+			moid : '<%=resultPOid%>',
+			totprice : savePayInfo.pricePay,
+			appldate : '<%=resultPAuthDt%>',
+			appltime : '<%=applTime%>',
+			applnum : '<%=resultPAuthNo %>',
+			cardQuota : '<%=resultPRmesg2%>',
+			cardInterest : '<%=resultPCardInterest%>',
+			cardNum : '<%=resultPCardNum%>',
+			cardCode : '<%=resultPFnCd1%>',
+			cardBankcode : '<%=resultPCardIssuerCode%>',
+			eventcode :  '<%=eventCode%>',
+			cardApplprice : '<%=resultPCardApplprice%>',
+			ocbPayprice : '<%=ocbPayPrice%>',
+			acctBankcode : '<%=resultPFnCd1 %>',
+			resulterrorcode : '<%=resultErrorCode%>',
+			isMobile : isMobile
+		};
+		var InipayInfoResult = saveInipayInfo(saveInipayInfoData);
+
+		var payStatus = 2;
+		if('<%=resultPType%>' == 'VBank') payStatus = 0;
+
+		var resultData = JSON.parse(sessionStorage.getItem('resultData'));
+		var orderGoodsList = sessionStorage.getItem('orderGoodsList');
+		var savePayInfo = JSON.parse(sessionStorage.getItem('savePayInfo'));
+		var discountPoint = 0;
+		var point = 0;
+		var deliveryPrice = 0;
+		if(savePayInfo.discountPoint == null) discountPoint = 0;
+		else discountPoint = savePayInfo.discountPoint;
+
+		if(savePayInfo.point == null)  point = 0;
+		else point = savePayInfo.point;
+
+		if(savePayInfo.deliveryPrice == undefined || savePayInfo.deliveryPrice == null) deliveryPrice = 0;
+		else deliveryPrice = savePayInfo.deliveryPrice;
+
+		if('<%=resultPStatus%>' == '00') {
+			if (InipayInfoResult.resultCode == 200) {
+				var savePaymentInfoData = {
+					jId: '<%=resultPOid%>',
+					userKey: userKey,
+					price: savePayInfo.price,
+					pricePay: savePayInfo.pricePay,
+					point: point,
+					discountPoint: discountPoint,
+					deliveryPrice: deliveryPrice,
+					payStatus: payStatus,/* 무통장일때 기능 추가 */
+					cardCode: '<%=resultPFnCd1%>',
+					bank: '우리은행',/* 수정 필요 */
+					bankAccount: '123-123-11111',/* 수정 필요 */
+					depositUser: resultData.postName,
+					deliveryName: resultData.postName,
+					deliveryTelephone: resultData.allTel,
+					deliveryTelephoneMobile: resultData.allPhone,
+					deliveryZipcode: resultData.postCode,
+					deliveryAddress: resultData.add1,
+					deliveryAddressRoad: resultData.add1,
+					deliveryAddressAdd: resultData.add2,
+					payKey: InipayInfoResult.keyValue,
+					isMobile: isMobile,
+					orderGoodsList: orderGoodsList
+				};
+				var PaymentResult = savePaymentInfo(savePaymentInfoData);
+			}
+		}
+
 	});
 </script>
 
