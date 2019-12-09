@@ -103,7 +103,6 @@
 			e.printStackTrace();
 		}
 	}
-
 %>
 <%@include file="/common/jsp/common.jsp" %>
 <script>
@@ -153,7 +152,7 @@
 		var inipayInfoResult = saveInipayInfo(saveInipayInfoData);
 
 		var payStatus = 2;
-		if('<%=resultPType%>' == 'VBank') payStatus = 0;
+		if('<%=resultPType%>' == 'VBANK') payStatus = 0;
 
 		var resultData = JSON.parse(sessionStorage.getItem('resultData'));
 		var orderGoodsList = sessionStorage.getItem('orderGoodsList');

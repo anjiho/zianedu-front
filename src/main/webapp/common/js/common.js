@@ -2862,6 +2862,7 @@ function validationUserId(userId) {
         innerValue("idValidation", 1); // 0 : 실패 , 1 : 성공
     }
 }
+
 //비밀번호 8자이상 특수문자+영문+숫자 조합여부 체크
 function validationPassword(pwd) {
     if (pwd.length > 0){
@@ -2876,7 +2877,6 @@ function validationPassword(pwd) {
         }
     }
 }
-
 
 //이메일 주소 셀렉트박스 선택 :  tagId (emailAddress)
 function selEmail(val) {
@@ -2971,7 +2971,6 @@ function goCheckedShopBasket() {
         return false;
     }
 }
-
 
 //바로구매
 function goCheckedBuy() {
