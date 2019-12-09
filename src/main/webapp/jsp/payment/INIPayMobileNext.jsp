@@ -49,8 +49,8 @@
 	String resultPFnNm = "";
 	String resultPIspCardCode = "";
 	String resultPCardApplprice = "";
-	String applDate = Util.subStrStartEnd(resultPAuthDt, 0, 8);
-	String applTime = Util.subStrStartEnd(resultPAuthDt, 8, 14);
+	String applDate = "";
+	String applTime = "";
 
 
 	if ("00".equals(pStatus)) {
@@ -95,6 +95,9 @@
 			resultPFnNm = resultMap.get("P_FN_NM");
 			resultPIspCardCode = resultMap.get("P_ISP_CARDCODE");
 			resultPCardApplprice = resultMap.get("P_CARD_APPLPRICE");
+
+			applDate =  Util.subStrStartEnd(resultPAuthDt, 0, 8);
+			applTime = Util.subStrStartEnd(resultPAuthDt, 8, 14);
 
 		} catch (Exception e) {
 			e.printStackTrace();
