@@ -18,7 +18,18 @@
 <script src="/common/zian/js/kiplayer/jquery.min.js"></script>
 <script>
 	$(document).ready(function () {
-
+		var P_TID = '<%=pTID%>';
+		var P_MID = "INIpayTest";
+		var P_REQ_URL = P_TID + P_MID;
+        $.ajax({
+            type: "POST",
+            url: 'https://ksmobile.inicis.com/smart/payReq.ini',
+            async: true,
+            data : P_REQ_URL,
+            success: function (msg) {
+                console.log(msg);
+            }
+        });
 	});
 </script>
 
