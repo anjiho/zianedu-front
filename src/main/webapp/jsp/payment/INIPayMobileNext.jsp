@@ -105,7 +105,7 @@
 	}
 
 %>
-<%@include file="/common/jsp/common.jsp" %>
+<%--<%@include file="/common/jsp/common.jsp" %>--%>
 <script>
 	$(document).ready(function () {
 		var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
