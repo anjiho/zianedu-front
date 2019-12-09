@@ -187,7 +187,8 @@
 				savePaymentInfo(savePaymentInfoData);
 			}
 			alert("결제가 성공하였습니다.");
-			goPage("myPage", "orderResultMobile");
+			//goPage("myPage", "orderResultMobile");
+			location.href = "/myPage?page_gbn=orderResultMobile";
 		}else{
 			alert("결제 오류가 발생하였습니다");
 			goBack();
