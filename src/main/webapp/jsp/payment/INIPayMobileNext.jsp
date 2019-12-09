@@ -105,7 +105,8 @@
 	$(document).ready(function () {
 		alert('<%=resultPStatus%>');//00
 		alert('<%=resultPCardApplprice%>');//
-
+		var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+		var userKey = sessionUserInfo.userKey;
 		var pcMobile = divisionPcMobile();
 		var isMobile = 0;
 		if(pcMobile == "MOBILE") isMobile = 1;
