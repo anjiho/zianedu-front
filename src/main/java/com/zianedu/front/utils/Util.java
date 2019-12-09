@@ -16,6 +16,8 @@ package com.zianedu.front.utils;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
+import java.net.URL;
+import java.net.URLDecoder;
 import java.security.SecureRandom;
 import java.sql.SQLException;
 import java.text.DateFormat;
@@ -1111,10 +1113,21 @@ public class Util {
         return jId;
     }
 
+    public static Map<String, String> splitQuery(URL url) throws UnsupportedEncodingException {
+        Map<String, String> query_pairs = new LinkedHashMap<String, String>();
+        String query = url.getQuery();
+        String[] pairs = query.split("&");
+        for (String pair : pairs) {
+            int idx = pair.indexOf("=");
+            query_pairs.put(URLDecoder.decode(pair.substring(0, idx), "UTF-8"), URLDecoder.decode(pair.substring(idx + 1), "UTF-8"));
+        }
+        return query_pairs;
+    }
+
     public static void main(String[] args) throws Exception {
-        String date = convertDateFormat3(plusDate(Util.returnNow(), -10));
-        String date2 = convertDateFormat3("2019-05-27");
-        System.out.println(getJId());
+        String url = "http://localhost/result?" + "P_STATUS=00&P_AUTH_DT=20191209105144&P_AUTH_NO=62356068&P_RMESG1=성공적으로 처리 하였습니다.&P_RMESG2=00&P_TID=INIMX_ISP_INIpayTest20191209105144915902&P_FN_CD1=11&P_AMT=1000&P_TYPE=CARD&P_UNAME=지안에듀&P_MID=INIpayTest&P_OID=191209-1050-441312&P_NOTI=&P_NEXT_URL=http://211.250.218.201:8000/jsp/payment/INIPayMobileNext.jsp&P_MNAME=이니시스 쇼핑몰&P_NOTEURL=&P_CARD_MEMBER_NUM=&P_CARD_NUM=910020*********9&P_CARD_ISSUER_CODE=00&P_CARD_PURCHASE_CODE=11&P_CARD_PRTC_CODE=1&P_CARD_INTEREST=0&P_CARD_CHECKFLAG=0&P_CARD_ISSUER_NAME=비씨카드&P_CARD_PURCHASE_NAME=BC카드&P_FN_NM=BC카드&P_ISP_CARDCODE=050100208346291&P_CARD_APPLPRICE=1000";
+        URL url1 = new URL(url);
+        System.out.println(splitQuery(url1));
 
 
     }

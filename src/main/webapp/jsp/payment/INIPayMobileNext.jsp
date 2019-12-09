@@ -5,6 +5,10 @@
 <%@ page import="java.net.URLEncoder" %>
 <%@ page import="org.apache.http.HttpResponse" %>
 <%@ page import="org.apache.http.util.EntityUtils" %>
+<%@ page import="java.net.URL" %>
+<%@ page import="java.util.Map" %>
+<%@ page import="java.util.HashMap" %>
+<%@ page import="com.zianedu.front.utils.Util" %>
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 	String pStatus = request.getParameter("P_STATUS");
@@ -21,6 +25,32 @@
 	System.out.println("P_NOTI >> " + pNoti);
 	System.out.println("P_AMT >> " + pAMT);
 
+	String resultPStatus = "";
+	String resultPAuthDt = "";
+	String resultPAuthNo = "";
+	String resultPRmesg = "";
+	String resultPRmesg2 = "";
+	String resultPTid = "";
+	String resultPFnCd1 = "";
+	String resultPAmt = "";
+	String resultPType = "";
+	String resultPUName = "";
+	String resultPMid = "";
+	String resultPOid = "";
+	String resultPMName = "";
+	String resultPCardNum = "";
+	String resultPCardIssuerCode = "";
+	String resultPCardPurchaseCode = "";
+	String resultPCardPrtcCode = "";
+	String resultPCardInterest = "";
+	String resultPCardCheckFlag = "";
+	String resultPCardIssuerName = "";
+	String resultPCardPurchaseName = "";
+	String resultPFnNm = "";
+	String resultPIspCardCode = "";
+	String resultPCardApplprice = "";
+
+
 	if ("00".equals(pStatus)) {
 		String resultJson = null;
 		HttpClient client = HttpClientBuilder.create().build();
@@ -34,6 +64,36 @@
 			HttpResponse httpResponse = client.execute(httpPost);
 			resultJson = EntityUtils.toString(httpResponse.getEntity(), "UTF-8");
 			System.out.println("result >>" + resultJson);
+
+			String makeUrl = "http://localhost/result?" + resultJson;
+			URL parseUrl = new URL(makeUrl);
+			Map<String, String> resultMap = Util.splitQuery(parseUrl);
+
+			resultPStatus = resultMap.get("P_STATUS");
+			resultPAuthDt = resultMap.get("P_AUTH_DT");
+			resultPAuthNo = resultMap.get("P_AUTH_NO");
+			resultPRmesg = resultMap.get("P_RMESG1");
+			resultPRmesg2 = resultMap.get("P_RMESG2");
+			resultPTid = resultMap.get("P_TID");
+			resultPFnCd1 = resultMap.get("P_FN_CD1");
+			resultPAmt = resultMap.get("P_AMT");
+			resultPType = resultMap.get("P_TYPE");
+			resultPUName = resultMap.get("P_UNAME");
+			resultPMid = resultMap.get("P_MID");
+			resultPOid = resultMap.get("P_OID");
+			resultPMName = resultMap.get("P_MNAME");
+			resultPCardNum = resultMap.get("P_CARD_NUM");
+			resultPCardIssuerCode = resultMap.get("P_CARD_ISSUER_CODE");
+			resultPCardPurchaseCode = resultMap.get("P_CARD_PURCHASE_CODE");
+			resultPCardPrtcCode = resultMap.get("P_CARD_PRTC_CODE");
+			resultPCardInterest = resultMap.get("P_CARD_INTEREST");
+			resultPCardCheckFlag = resultMap.get("P_CARD_CHECKFLAG");
+			resultPCardIssuerName = resultMap.get("P_CARD_ISSUER_NAME");
+			resultPCardPurchaseName = resultMap.get("P_CARD_PURCHASE_NAME");
+			resultPFnNm = resultMap.get("P_FN_NM");
+			resultPIspCardCode = resultMap.get("P_ISP_CARDCODE");
+			resultPCardApplprice = resultMap.get("P_CARD_APPLPRICE");
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -42,26 +102,9 @@
 %>
 <script src="/common/zian/js/kiplayer/jquery.min.js"></script>
 <script>
-	<%--$(document).ready(function () {--%>
-	<%--	var P_TID = '<%=pTID%>';--%>
-	<%--	var P_MID = "INIpayTest";--%>
-	<%--	//var P_REQ_URL = P_TID + P_MID;--%>
-	<%--	var data = {--%>
-    <%--        P_TID : P_TID,--%>
-    <%--        P_MID : P_MID--%>
-    <%--    };--%>
-    <%--    $.ajax({--%>
-    <%--        type: "POST",--%>
-    <%--        url: 'https://ksmobile.inicis.com/smart/payReq.ini',--%>
-    <%--        async: true,--%>
-    <%--        data : data,--%>
-    <%--        success: function (msg) {--%>
-    <%--            console.log(msg);--%>
-    <%--        },--%>
-	<%--		error : function (data) {--%>
-	<%--			console.log(data);--%>
-	<%--		}--%>
-    <%--    });--%>
-	<%--});--%>
+	$(document).ready(function () {
+		alert('<%=resultPStatus%>')
+		alert('<%=resultPCardApplprice%>')
+	});
 </script>
 
