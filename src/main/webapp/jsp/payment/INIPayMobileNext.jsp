@@ -109,36 +109,6 @@
 		var pcMobile = divisionPcMobile();
 		var isMobile = 0;
 		if(pcMobile == "MOBILE") isMobile = 1;
-
-		var saveInipayInfoData = {
-			tid : '<%=resultPTid%>',
-			resultcode : '<%=resultCode%>',
-			resultmsg : '<%=resultPRmesg%>',
-			paymethod : '<%=resultPType%>',
-			moid : '<%=resultPOid%>',
-			totprice : savePayInfo.pricePay,
-			appldate : '<%=resultPAuthDt%>',
-			appltime : '<%=applTime%>',
-			applnum : '<%=resultPAuthNo %>',
-			cardQuota : '<%=resultPRmesg2%>',
-			cardInterest : '<%=resultPCardInterest%>',
-			cardNum : '<%=resultPCardNum%>',
-			cardCode : '<%=resultPFnCd1%>',
-			cardBankcode : '<%=resultPCardIssuerCode%>',
-			eventcode :  '<%=eventCode%>',
-			cardApplprice : '<%=resultPCardApplprice%>',
-			ocbPayprice : '<%=ocbPayPrice%>',
-			acctBankcode : '<%=resultPFnCd1 %>',
-			resulterrorcode : '<%=resultErrorCode%>',
-			isMobile : isMobile
-		};
-		var InipayInfoResult = saveInipayInfo(saveInipayInfoData);
-
-		var payStatus = 2;
-		if('<%=resultPType%>' == 'VBank') payStatus = 0;
-
-		var resultData = JSON.parse(sessionStorage.getItem('resultData'));
-		var orderGoodsList = sessionStorage.getItem('orderGoodsList');
 		var savePayInfo = JSON.parse(sessionStorage.getItem('savePayInfo'));
 		var discountPoint = 0;
 		var point = 0;
@@ -152,6 +122,35 @@
 		if(savePayInfo.deliveryPrice == undefined || savePayInfo.deliveryPrice == null) deliveryPrice = 0;
 		else deliveryPrice = savePayInfo.deliveryPrice;
 
+		var saveInipayInfoData = {
+			tid : '<%=resultPTid%>',
+			resultcode : '<%=resultPStatus%>',
+			resultmsg : '<%=resultPRmesg%>',
+			paymethod : '<%=resultPType%>',
+			moid : '<%=resultPOid%>',
+			totprice : savePayInfo.pricePay,
+			appldate : '<%=resultPAuthDt%>',
+			appltime : '',
+			applnum : '<%=resultPAuthNo %>',
+			cardQuota : '<%=resultPRmesg2%>',
+			cardInterest : '<%=resultPCardInterest%>',
+			cardNum : '<%=resultPCardNum%>',
+			cardCode : '<%=resultPFnCd1%>',
+			cardBankcode : '<%=resultPCardIssuerCode%>',
+			eventcode :  '',
+			cardApplprice : '<%=resultPCardApplprice%>',
+			ocbPayprice : '',
+			acctBankcode : '<%=resultPFnCd1 %>',
+			resulterrorcode : '',
+			isMobile : isMobile
+		};
+		var InipayInfoResult = saveInipayInfo(saveInipayInfoData);
+
+		var payStatus = 2;
+		if('<%=resultPType%>' == 'VBank') payStatus = 0;
+
+		var resultData = JSON.parse(sessionStorage.getItem('resultData'));
+		var orderGoodsList = sessionStorage.getItem('orderGoodsList');
 		if('<%=resultPStatus%>' == '00') {
 			if (InipayInfoResult.resultCode == 200) {
 				var savePaymentInfoData = {
