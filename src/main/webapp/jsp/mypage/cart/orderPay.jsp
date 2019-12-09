@@ -211,7 +211,6 @@
                             email  %>" id="textfield8" style="border-color:#cdcdcd; border-width:1px; border-style:solid; color:#555555; height:15px;"/></td>
                             <tr>
                                 <td width="95" height="25" align="left" style="background-image:url(images/bullet.png); background-repeat:no-repeat; background-position:0px 40%; padding-left:8px; font-size:12px; color:#607c90;">결과페이지 링크</td>
-                                <td align="left"><input type="text" name="P_NEXT_URL" value="https://mobile.inicis.com/smart/testmall/next_url_test.php" id="textfield9" style="border-color:#cdcdcd; border-width:1px; border-style:solid; color:#555555; height:15px;"/></td>
                             </tr>
                             <tr>
 <%--                                <input type="hidden" name="paymethod"  id="paymethod" style="border-color:#cdcdcd; border-width:1px; border-style:solid; color:#555555; height:15px;"/>--%>
