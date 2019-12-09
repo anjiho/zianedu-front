@@ -242,10 +242,10 @@
 </div>
 <form id="SendPayForm_id" name="SendPayForm_id" method="POST" style="display: none;">
     <div style="border:2px #dddddd double;padding:10px;background-color:#f3f3f3;">
-        <br/><input type="hidden"  style="width:100%;" name="version" value="1.0">
-        <br/><input type="hidden"  style="width:100%;" name="mid" value="<%=mid%>">
-        <br/><input type="hidden"  style="width:100%;" name="goodname" id="goodname" value="<%=pcProductNames%>">
-        <br/><input type="hidden" style="width:100%;" name="oid" value="<%=oid%>">
+        <br/><input type="hidden"  name="version" value="1.0">
+        <br/><input type="hidden"  name="mid" value="<%=mid%>">
+        <br/><input type="hidden"  name="goodname" id="goodname" value="<%=pcProductNames%>">
+        <br/><input type="hidden" name="oid" value="<%=oid%>">
         <br/><input type="hidden" style="width:100%;" name="price" value="<%=price%>">
         <br/><input type="hidden" style="width:100%;" name="currency" value="WON">
         <br/><input type="hidden" style="width:100%;" name="buyername" value="<%=userName%>">
