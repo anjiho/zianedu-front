@@ -1,4 +1,5 @@
-﻿<%@ page import="org.apache.http.impl.client.HttpClientBuilder" %>
+﻿<%@include file="/common/jsp/common.jsp" %>
+<%@ page import="org.apache.http.impl.client.HttpClientBuilder" %>
 <%@ page import="org.apache.http.client.HttpClient" %>
 <%@ page import="org.apache.http.client.methods.HttpPost" %>
 <%@ page import="org.apache.http.entity.StringEntity" %>
@@ -9,7 +10,6 @@
 <%@ page import="java.util.Map" %>
 <%@ page import="java.util.HashMap" %>
 <%@ page import="com.zianedu.front.utils.Util" %>
-<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 	String pStatus = request.getParameter("P_STATUS");
 	String pRmesg1 = request.getParameter("P_RMESG1");
