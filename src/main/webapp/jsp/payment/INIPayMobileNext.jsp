@@ -32,8 +32,12 @@
             data : data,
             success: function (msg) {
                 console.log(msg);
+                innerHTML("")
             }
         });
 	});
 </script>
 
+<div id="test">
+
+</div>
