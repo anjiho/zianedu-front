@@ -49,6 +49,8 @@
 	String resultPFnNm = "";
 	String resultPIspCardCode = "";
 	String resultPCardApplprice = "";
+	String applDate = Util.subStrStartEnd(resultPAuthDt, 0, 8);
+	String applTime = Util.subStrStartEnd(resultPAuthDt, 8, 14);
 
 
 	if ("00".equals(pStatus)) {
