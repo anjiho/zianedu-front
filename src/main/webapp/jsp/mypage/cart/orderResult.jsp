@@ -715,7 +715,7 @@
                         isMobile: isMobile,
                         orderGoodsList: orderGoodsList
                     };
-                    var PaymentResult = savePaymentInfo(savePaymentInfoData);
+                    savePaymentInfo(savePaymentInfoData);
                 }
             }
 

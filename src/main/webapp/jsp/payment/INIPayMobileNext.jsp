@@ -181,10 +181,14 @@
 					isMobile: isMobile,
 					orderGoodsList: orderGoodsList
 				};
-				var PaymentResult = savePaymentInfo(savePaymentInfoData);
+				savePaymentInfo(savePaymentInfoData);
 			}
+			alert("결제가 성공하였습니다.");
+			goPage("myPage", "orderResultMobile");
+		}else{
+			alert("결제 오류가 발생하였습니다");
+			goBack();
 		}
-
 	});
 </script>
 

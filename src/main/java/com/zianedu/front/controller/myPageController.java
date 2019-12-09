@@ -28,6 +28,8 @@ public class myPageController {
             mvc.setViewName("/mypage/cart/orderPay");
         }else if("orderResult".equals(page_gbn)){
             mvc.setViewName("/mypage/cart/orderResult");
+        }else if("orderResultMobile".equals(page_gbn)){
+            mvc.setViewName("/mypage/cart/orderResultMobile");
         }
         return mvc;
     }
