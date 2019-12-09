@@ -20,12 +20,16 @@
 	$(document).ready(function () {
 		var P_TID = '<%=pTID%>';
 		var P_MID = "INIpayTest";
-		var P_REQ_URL = P_TID + P_MID;
+		//var P_REQ_URL = P_TID + P_MID;
+		var data = {
+            P_TID : P_TID,
+            P_MID : P_MID
+        };
         $.ajax({
             type: "POST",
             url: 'https://ksmobile.inicis.com/smart/payReq.ini',
             async: true,
-            data : P_REQ_URL,
+            data : data,
             success: function (msg) {
                 console.log(msg);
             }
