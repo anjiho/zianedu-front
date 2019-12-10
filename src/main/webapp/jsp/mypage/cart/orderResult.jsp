@@ -68,15 +68,9 @@
 
 
         if("0000".equals(paramMap.get("resultCode"))){
-
-            out.println("####인증성공/승인요청####");
-            out.println("<br/>");
-            System.out.println("####인증성공/승인요청####");
-
             //############################################
             // 1.전문 필드 값 설정(***가맹점 개발수정***)
             //############################################
-
             String mid 		= paramMap.get("mid");						// 가맹점 ID 수신 받은 데이터로 설정
             String signKey	= "SU5JTElURV9UUklQTEVERVNfS0VZU1RS";		// 가맹점에 제공된 키(이니라이트키) (가맹점 수정후 고정) !!!절대!! 전문 데이터로 설정금지
             String timestamp= SignatureUtil.getTimestamp();				// util에 의해서 자동생성
@@ -133,8 +127,6 @@
                 //############################################################
                 //5.API 통신결과 처리(***가맹점 개발수정***)
                 //############################################################
-                out.println("## 승인 API 결과 ##");
-
                 String test = authResultString.replace(",", "&").replace(":", "=").replace("\"", "").replace(" ","").replace("\n", "").replace("}", "").replace("{", "");
 
                 //out.println("<pre>"+authResultString.replaceAll("<", "&lt;").replaceAll(">", "&gt;")+"</pre>");
@@ -516,6 +508,21 @@
                 }
             }
 
+        var payMethod = '<%=payMethod%>';
+        if(payMethod == 'VBank'){
+            innerHTML("vactBankName", '<%=bankName%>');//
+            innerHTML("vactNum", '<%=vactNum%>');//
+            innerHTML("vactName", '<%=vactName%>');//
+            innerHTML("vactDate", '<%=vactDate%>');//
+            innerHTML("vactTime", '<%=vactTime%>');//
+            innerHTML("vactNum ", '<%=vactNum%>');//
+            innerHTML("paymethodName ", '무통장입금');//
+            innerHTML("payStatusName ", '입금예정');//
+        }else{
+            //카드결제 & 실시간 계좌이체
+        }
+
+
         <%--var allProductPrice = "<%= request.getParameter("allProductPrice") %>";--%>
         <%--var postName = "<%= reque st.getParameter("postName") %>";--%>
         <%--var allTel = "<%= request.getParameter("allTel") %>";--%>
@@ -671,12 +678,12 @@
                             <p class="title"><span class="text_blue">결제</span>정보</p>
                             <div class="left">
                                 <ul>
-                                    <li><span class="tit">결제방법</span>무통장입금</li>
-                                    <li><span class="tit">입금은행</span>국민은행</li>
-                                    <li><span class="tit">결제방법</span>013837-04-002130</li>
-                                    <li><span class="tit">입금자명</span>000</li>
-                                    <li><span class="tit">입금예정일</span>2019-07-01 오전 12:00:00</li>
-                                    <li><span class="tit">결제상태</span>입금예정</li>
+                                    <li><span class="tit">결제방법</span><span id="paymethodName"></span></li>
+                                    <li><span class="tit">입금은행</span><span id="vactBankName"></span></li>
+                                    <li><span class="tit">결제방법</span><span id="vactNum"></span></li>
+                                    <li><span class="tit">입금자명</span><span id="vactName"></span></li>
+                                    <li><span class="tit">입금예정일</span><span id="vactDate"></span>&nbsp;&nbsp;<span id="vactTime"></span></li>
+                                    <li><span class="tit">결제상태</span><span id="payStatusName"></span></li>
                                 </ul>
                             </div>
                             <div class="right">
