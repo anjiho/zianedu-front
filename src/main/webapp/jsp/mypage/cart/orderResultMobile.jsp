@@ -10,11 +10,6 @@
         var userKey = sessionUserInfo.userKey;
 
         var iniResult = JSON.parse(sessionStorage.getItem('saveInipayInfoData'));
-        if(iniResult == null){
-            alert("null임");
-        }else if(iniResult == undefined){
-            alert("unde임");
-        }
         alert(">>>>"+ iniResult.paymethod);
         alert(">>>>"+ iniResult.vactDate);
         var payMethod = iniResult.paymethod;
