@@ -88,7 +88,7 @@
 			resultPFnCd1 = resultMap.get("P_FN_CD1");
 			resultPAmt = resultMap.get("P_AMT");
 			resultPType = resultMap.get("P_TYPE");
-			resultPUName = resultMap.get("P_UNAME");
+			resultPUName = Util.encodeURIComponent(resultMap.get("P_UNAME"));
 			resultPMid = resultMap.get("P_MID");
 			resultPOid = resultMap.get("P_OID");
 			resultPMName = resultMap.get("P_MNAME");
