@@ -58,6 +58,8 @@
 	String resultPVactBankCode = "";	//입금할 은행
 	String resultPVactName = "";	//입금할 상호명
 
+	String bankName = "";
+
 
 	if ("00".equals(pStatus)) {
 		String resultJson = null;
@@ -111,6 +113,9 @@
 				resultPVactTime = Util.isNullValue(resultMap.get("P_VACT_TIME"), "");
 				resultPVactBankCode = Util.isNullValue(resultMap.get("P_VACT_BANK_CODE"), "");
 				resultPVactName = Util.isNullValue(resultMap.get("P_VACT_NAME"), "");
+
+				if ("04".equals(resultPVactBankCode)) bankName = "국민은행";
+				else if ("11".equals(resultPVactBankCode)) bankName = "농협";
 			}
 
 		} catch (Exception e) {
@@ -188,8 +193,8 @@
 					deliveryPrice: deliveryPrice,
 					payStatus: payStatus,/* 무통장일때 기능 추가 */
 					cardCode: '<%=resultPFnCd1%>',
-					bank: '우리은행',/* 수정 필요 */
-					bankAccount: '123-123-11111',/* 수정 필요 */
+					bank: '<%=bankName%>',
+					bankAccount: '<%=resultPVactNum%>',
 					depositUser: resultData.postName,
 					deliveryName: resultData.postName,
 					deliveryTelephone: resultData.allTel,
