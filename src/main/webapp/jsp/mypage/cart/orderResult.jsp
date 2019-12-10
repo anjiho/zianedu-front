@@ -37,7 +37,7 @@
     String vactTime = "";
     String vactBankCode = "";
     String vactName = "";
-
+    String vactBankName = "";
 
 
     try{
@@ -165,6 +165,7 @@
                      처리중 에러 발생시 망취소를 한다.
                      ******************************************************************************/
 
+
                     out.println("<tr><th class='td01'><p>거래 성공 여부</p></th>");
                     out.println("<td class='td02'><p>성공</p></td></tr>");
 
@@ -206,7 +207,7 @@
                 applDate = resultMap.get("applDate");
                 applTime = resultMap.get("applTime");
                 applNum = resultMap.get("applTime");
-
+                vactBankName = resultMap.get("vactBankName");//은행명
 
                 //공통 부분만
                 out.println("<tr><th class='line' colspan='2'><p></p></th></tr>");
@@ -736,6 +737,13 @@
                 }
             }
 
+            var payMethod = '<%=payMethod%>';
+            alert(payMethod);
+            if(payMethod == 'VBank'){
+                innerHTML("vactBankName", '<%=vactName%>');//은행명
+            }
+
+
         <%--var allProductPrice = "<%= request.getParameter("allProductPrice") %>";--%>
         <%--var postName = "<%= reque st.getParameter("postName") %>";--%>
         <%--var allTel = "<%= request.getParameter("allTel") %>";--%>
@@ -892,7 +900,7 @@
                             <div class="left">
                                 <ul>
                                     <li><span class="tit">결제방법</span>무통장입금</li>
-                                    <li><span class="tit">입금은행</span>국민은행</li>
+                                    <li><span class="tit">입금은행</span><span id="vactName"></span></li>
                                     <li><span class="tit">결제방법</span>013837-04-002130</li>
                                     <li><span class="tit">입금자명</span>000</li>
                                     <li><span class="tit">입금예정일</span>2019-07-01 오전 12:00:00</li>
