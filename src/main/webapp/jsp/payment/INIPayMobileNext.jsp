@@ -52,6 +52,12 @@
 	String applDate = "";
 	String applTime = "";
 
+	String resultPVactNum = "";	//입금할 가상계좌 번호
+	String resultPVactDate = ""; //입금할 날짜
+	String resultPVactTime = "";	//입금할 시간
+	String resultPVactBankCode = "";	//입금할 은행
+	String resultPVactName = "";	//입금할 상호명
+
 
 	if ("00".equals(pStatus)) {
 		String resultJson = null;
@@ -99,32 +105,13 @@
 			applDate =  Util.subStrStartEnd(resultPAuthDt, 0, 8);
 			applTime = Util.subStrStartEnd(resultPAuthDt, 8, 14);
 
-			System.out.println("tid >> " + resultPTid);
-			System.out.println("resultcode >> " + resultPStatus);
-			System.out.println("resultMsg>> " + resultPRmesg);
-
-			System.out.println("paymethod>> " + resultPType);
-
-			System.out.println("moid >> " + resultPOid);
-
-			System.out.println("applDate >> " + applDate);
-			System.out.println("applTime >> " + applTime);
-
-			System.out.println("resultPAuthNo >> " + resultPAuthNo);
-
-			System.out.println("resultPRmesg2 >> " + resultPRmesg2);
-
-			System.out.println("resultPCardInterest >> " + resultPCardInterest);
-
-			System.out.println("resultPCardNum >> " + resultPCardNum);
-
-			System.out.println("resultPFnCd1 >> " + resultPFnCd1);
-
-			System.out.println("resultPCardIssuerCode >> " + resultPCardIssuerCode);
-
-			System.out.println("resultPCardApplprice >> " + resultPCardApplprice);
-
-			System.out.println("resultPFnCd1 >> " + resultPFnCd1);
+			if ("VBANK".equals(resultPType)) {
+				resultPVactNum = Util.isNullValue(resultMap.get("P_VACT_NUM"), "");
+				resultPVactDate = Util.isNullValue(resultMap.get("P_VACT_DATE"), "");
+				resultPVactTime = Util.isNullValue(resultMap.get("P_VACT_TIME"), "");
+				resultPVactBankCode = Util.isNullValue(resultMap.get("P_VACT_BANK_CODE"), "");
+				resultPVactName = Util.isNullValue(resultMap.get("P_VACT_NAME"), "");
+			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -173,6 +160,11 @@
 			cardApplprice : '<%=resultPCardApplprice%>',
 			ocbPayprice : '',
 			acctBankcode : '<%=resultPFnCd1 %>',
+			vactNum : '<%=resultPVactNum%>',
+			vactDate : '<%=resultPVactDate%>',
+			vactTime : '<%=resultPVactTime%>',
+			vactBankCode : '<%=resultPVactBankCode%>',
+			vactName : '<%=resultPVactName%>',
 			resulterrorcode : '',
 			isMobile : isMobile
 		};
@@ -185,32 +177,34 @@
 		var orderGoodsList = sessionStorage.getItem('orderGoodsList');
 
 		if('<%=resultPStatus%>' == '00') {
-			if (inipayInfoResult.resultCode == 200) {
-				var savePaymentInfoData = {
-					jId: '<%=resultPOid%>',
-					userKey: userKey,
-					price: savePayInfo.price,
-					pricePay: savePayInfo.pricePay,
-					point: point,
-					discountPoint: discountPoint,
-					deliveryPrice: deliveryPrice,
-					payStatus: payStatus,/* 무통장일때 기능 추가 */
-					cardCode: '<%=resultPFnCd1%>',
-					bank: '우리은행',/* 수정 필요 */
-					bankAccount: '123-123-11111',/* 수정 필요 */
-					depositUser: resultData.postName,
-					deliveryName: resultData.postName,
-					deliveryTelephone: resultData.allTel,
-					deliveryTelephoneMobile: resultData.allPhone,
-					deliveryZipcode: resultData.postCode,
-					deliveryAddress: resultData.add1,
-					deliveryAddressRoad: resultData.add1,
-					deliveryAddressAdd: resultData.add2,
-					payKey: inipayInfoResult.keyValue,
-					isMobile: isMobile,
-					orderGoodsList: orderGoodsList
-				};
-				savePaymentInfo(savePaymentInfoData);
+			if ('<%=resultPType%>' != 'VBANK') {
+				if (inipayInfoResult.resultCode == 200) {
+					var savePaymentInfoData = {
+						jId: '<%=resultPOid%>',
+						userKey: userKey,
+						price: savePayInfo.price,
+						pricePay: savePayInfo.pricePay,
+						point: point,
+						discountPoint: discountPoint,
+						deliveryPrice: deliveryPrice,
+						payStatus: payStatus,/* 무통장일때 기능 추가 */
+						cardCode: '<%=resultPFnCd1%>',
+						bank: '우리은행',/* 수정 필요 */
+						bankAccount: '123-123-11111',/* 수정 필요 */
+						depositUser: resultData.postName,
+						deliveryName: resultData.postName,
+						deliveryTelephone: resultData.allTel,
+						deliveryTelephoneMobile: resultData.allPhone,
+						deliveryZipcode: resultData.postCode,
+						deliveryAddress: resultData.add1,
+						deliveryAddressRoad: resultData.add1,
+						deliveryAddressAdd: resultData.add2,
+						payKey: inipayInfoResult.keyValue,
+						isMobile: isMobile,
+						orderGoodsList: orderGoodsList
+					};
+					savePaymentInfo(savePaymentInfoData);
+				}
 			}
 			alert("결제가 성공하였습니다.");
 			//goPage("myPage", "orderResultMobile");

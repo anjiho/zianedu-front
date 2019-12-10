@@ -681,6 +681,11 @@
                 cardApplprice : '<%=cardApplPrice %>',
                 ocbPayprice : '<%=ocbPayPrice %>',
                 acctBankcode : '<%=acctBankCode %>',
+                vactNum : '',
+                vactDate : '',
+                vactTime : '',
+                vactBankCode : '',
+                vactName : '',
                 resulterrorcode : '<%=resultErrorCode %>',
                 isMobile : isMobile
             };
