@@ -32,6 +32,13 @@
     String acctBankCode = "";   //은행코드
     String resultErrorCode = "";    //에러결과코드
 
+    String vactNum = "";
+    String vactDate = "";
+    String vactTime = "";
+    String vactBankCode = "";
+    String vactName = "";
+
+
 
     try{
 
@@ -246,7 +253,12 @@
                     out.println("<tr><th class='td01'><p>송금 시간</p></th>");
                     out.println("<td class='td02'><p>" +resultMap.get("VACT_Time")+"</p></td></tr>");
 
+                    vactNum = resultMap.get("VACT_Num");
+                    vactDate = resultMap.get("VACT_Date");
+                    vactTime = resultMap.get("VACT_Time");
+                    vactName = resultMap.get("VACT_Name");
                     acctBankCode = resultMap.get("VACT_BankCode");
+
 
                     out.println("<tr><th class='line' colspan='2'><p></p></th></tr>");
 
@@ -681,11 +693,11 @@
                 cardApplprice : '<%=cardApplPrice %>',
                 ocbPayprice : '<%=ocbPayPrice %>',
                 acctBankcode : '<%=acctBankCode %>',
-                vactNum : '',
-                vactDate : '',
-                vactTime : '',
-                vactBankCode : '',
-                vactName : '',
+                vactNum : '<%=vactNum%>',
+                vactDate : '<%=vactDate%>',
+                vactTime : '<%=vactTime%>',
+                vactBankCode : '<%=acctBankCode%>',
+                vactName : '<%=vactName%>',
                 resulterrorcode : '<%=resultErrorCode %>',
                 isMobile : isMobile
             };

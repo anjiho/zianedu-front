@@ -177,34 +177,32 @@
 		var orderGoodsList = sessionStorage.getItem('orderGoodsList');
 
 		if('<%=resultPStatus%>' == '00') {
-			if ('<%=resultPType%>' != 'VBANK') {
-				if (inipayInfoResult.resultCode == 200) {
-					var savePaymentInfoData = {
-						jId: '<%=resultPOid%>',
-						userKey: userKey,
-						price: savePayInfo.price,
-						pricePay: savePayInfo.pricePay,
-						point: point,
-						discountPoint: discountPoint,
-						deliveryPrice: deliveryPrice,
-						payStatus: payStatus,/* 무통장일때 기능 추가 */
-						cardCode: '<%=resultPFnCd1%>',
-						bank: '우리은행',/* 수정 필요 */
-						bankAccount: '123-123-11111',/* 수정 필요 */
-						depositUser: resultData.postName,
-						deliveryName: resultData.postName,
-						deliveryTelephone: resultData.allTel,
-						deliveryTelephoneMobile: resultData.allPhone,
-						deliveryZipcode: resultData.postCode,
-						deliveryAddress: resultData.add1,
-						deliveryAddressRoad: resultData.add1,
-						deliveryAddressAdd: resultData.add2,
-						payKey: inipayInfoResult.keyValue,
-						isMobile: isMobile,
-						orderGoodsList: orderGoodsList
-					};
-					savePaymentInfo(savePaymentInfoData);
-				}
+			if (inipayInfoResult.resultCode == 200) {
+				var savePaymentInfoData = {
+					jId: '<%=resultPOid%>',
+					userKey: userKey,
+					price: savePayInfo.price,
+					pricePay: savePayInfo.pricePay,
+					point: point,
+					discountPoint: discountPoint,
+					deliveryPrice: deliveryPrice,
+					payStatus: payStatus,/* 무통장일때 기능 추가 */
+					cardCode: '<%=resultPFnCd1%>',
+					bank: '우리은행',/* 수정 필요 */
+					bankAccount: '123-123-11111',/* 수정 필요 */
+					depositUser: resultData.postName,
+					deliveryName: resultData.postName,
+					deliveryTelephone: resultData.allTel,
+					deliveryTelephoneMobile: resultData.allPhone,
+					deliveryZipcode: resultData.postCode,
+					deliveryAddress: resultData.add1,
+					deliveryAddressRoad: resultData.add1,
+					deliveryAddressAdd: resultData.add2,
+					payKey: inipayInfoResult.keyValue,
+					isMobile: isMobile,
+					orderGoodsList: orderGoodsList
+				};
+				savePaymentInfo(savePaymentInfoData);
 			}
 			alert("결제가 성공하였습니다.");
 			//goPage("myPage", "orderResultMobile");
