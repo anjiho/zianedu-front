@@ -175,6 +175,8 @@
 		};
 		var inipayInfoResult = saveInipayInfo(saveInipayInfoData);
 
+		sessionStorage.setItem("inipayInfoResult", inipayInfoResult);
+
 		var payStatus = 2;
 		if('<%=resultPType%>' == 'VBANK') payStatus = 0;
 

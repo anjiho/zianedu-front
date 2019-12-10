@@ -9,27 +9,45 @@
         var resultData = JSON.parse(sessionStorage.getItem('resultData'));
         var userKey = sessionUserInfo.userKey;
 
-        <%--var allProductPrice = "<%= request.getParameter("allProductPrice") %>";--%>
-        <%--var postName = "<%= reque st.getParameter("postName") %>";--%>
-        <%--var allTel = "<%= request.getParameter("allTel") %>";--%>
-        <%--var allPhone = "<%= request.getParameter("allPhone") %>";--%>
-        <%--var allEmail = "<%= request.getParameter("allEmail") %>";--%>
-        <%--var postCode = "<%= request.getParameter("postCode1") %>";--%>
-        <%--var add1 = "<%= request.getParameter("add1") %>";--%>
-        <%--var add2 = "<%= request.getParameter("add2") %>";--%>
-        <%--if('<%=cartNum%>' == "" && '<%=goodsInfo%>' == ""){//바로구매--%>
-        <%--    var gKeys = toStrFileName(<%= request.getParameter("gKeys") %>);--%>
-        <%--   // innerValue("gKeys", gKeys);--%>
-        <%--    getOrderSheetInfoFromImmediately(userKey, gKeys);--%>
-        <%--}else if('<%=gKeys%>' == "" && '<%=goodsInfo%>' == ""){--%>
-        <%--    var cartKeys = toStrFileName(<%= request.getParameter("cartNum") %>);--%>
-        <%--   // innerValue("cartNum", cartKeys);--%>
-        <%--    getOrderSheetInfoFromPay(userKey, cartKeys);--%>
-        <%--}else{//패키지--%>
-        <%--    var goodsInfo ='<%= request.getParameter("goodsInfo") %>';--%>
-        <%--   // innerValue("goodsInfo", goodsInfo);--%>
-        <%--    getOrderSheetInfoFromImmediatelyAtBasicPackage(userKey, goodsInfo, 1);--%>
-        <%--}--%>
+        var inipayInfoResult =  sessionStorage.getItem('inipayInfoResult');
+        console.log(inipayInfoResult);
+
+        var payMethod = inipayInfoResult.paymethod;
+        var vactDate = inipayInfoResult.vactDate;
+        var vateDateStr = gfn_dateFormat(vactDate, 14, 'F');
+        var vactBankCode =  inipayInfoResult.vactBankCode;
+        var bankCodeName = '';
+        if(vactBankCode == '04'){
+            bankCodeName = '국민은행';
+        }else{
+            bankCodeName = '농협';
+        }
+        if(payMethod == 'VBANK'){
+            innerHTML("bankName", bankCodeName);//
+            innerHTML("vactNum", inipayInfoResult.vactNum);//
+            innerHTML("payMethodName ", '무통장입금');
+            innerHTML("payStatusName ", '입금예정');//
+            innerHTML("vactDate ", vateDateStr);//
+            innerHTML("vackName ", inipayInfoResult.vactName);//
+            gfn_display("goReceipt", false);
+        }else if(payMethod == 'CARD'){
+            innerHTML("payMethodName ", '신용카드');
+            innerHTML("payStatusName ", '결제완료');//
+            gfn_display("line1", false);
+            gfn_display("line2", false);
+            gfn_display("line3", false);
+            gfn_display("line4", false);
+            gfn_display("goReceipt", true);
+        }else if(payMethod == 'BANK'){
+            innerHTML("payMethodName ", '실시간 계좌이체');
+            innerHTML("payStatusName ", '결제완료');//
+            gfn_display("line1", false);
+            gfn_display("line2", false);
+            gfn_display("line3", false);
+            gfn_display("line4", false);
+            gfn_display("goReceipt", true);
+        }
+
         if(cartKeys == "" && goodsInfo == ""){//바로구매
             //var gKeys = toStrFileName(gKeys);
             getOrderSheetInfoFromImmediately(userKey, gKeys);
@@ -51,6 +69,10 @@
         innerHTML("address1", resultData.add1);
         innerHTML("address2", resultData.add2);
     });
+
+    function goReceiptPopup() {
+        gfn_winPop(300, 300, 'https://iniweb.inicis.com/DefaultWebApp/mall/cr/cm/mCmReceipt_head.jsp?noTid=StdpayVBNKINIpayTest20191210123350935069&noMethod=1');
+    }
 </script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
@@ -164,12 +186,14 @@
                             <p class="title"><span class="text_blue">결제</span>정보</p>
                             <div class="left">
                                 <ul>
-                                    <li><span class="tit">결제방법</span>무통장입금</li>
-                                    <li><span class="tit">입금은행</span>국민은행</li>
-                                    <li><span class="tit">결제방법</span>013837-04-002130</li>
-                                    <li><span class="tit">입금자명</span>000</li>
-                                    <li><span class="tit">입금예정일</span>2019-07-01 오전 12:00:00</li>
-                                    <li><span class="tit">결제상태</span>입금예정</li>
+                                    <li><span class="tit">결제방법</span><span id="payMethodName"></span></li>
+                                    <li id="line1"><span class="tit">입금은행</span><span id="bankName"></span></li>
+                                    <li id="line2"><span class="tit">계좌번호</span><span id="vactNum"></span></li>
+                                    <li id="line3"><span class="tit">입금자명</span><span id="vackName"></span></li>
+                                    <li id="line4"><span class="tit">입금예정일</span><span id="vactDate"></span></li>
+                                    <li ><span class="tit">결제상태</span><span id="payStatusName"></span>
+                                        <input type="button" onclick="goReceiptPopup();" value="영수증출력" id="goReceipt">
+                                    </li>
                                 </ul>
                             </div>
                             <div class="right">

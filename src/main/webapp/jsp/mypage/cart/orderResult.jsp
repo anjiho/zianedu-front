@@ -518,30 +518,33 @@
                 }
             }
         var payMethod = '<%=payMethod%>';
+        var vactDate = '<%=vactDate%>';
+        var vateDateStr = gfn_dateFormat(vactDate, 14, 'F');
         if(payMethod == 'VBank'){
             innerHTML("bankName", '<%=bankName%>');//입금 은행명
             innerHTML("vactNum", '<%=vactNum%>');//입금 은행명
             innerHTML("payMethodName ", '무통장입금');
             innerHTML("payStatusName ", '입금예정');//
-            innerHTML("vactDate ", '<%=vactDate%>');//
+            innerHTML("vactDate ", vateDateStr);//
             innerHTML("vactTime ", '<%=vactTime%>');//
             innerHTML("vackName ", '<%=vactInputName%>');//
+            gfn_display("goReceipt", false);
         }else if(payMethod == 'VCard'){
             innerHTML("payMethodName ", '신용카드');
             innerHTML("payStatusName ", '결제완료');//
-            gfn_display("bankName", false);
-            gfn_display("vactNum", false);
-            gfn_display("vactDate", false);
-            gfn_display("vactTime", false);
-            gfn_display("vackName", false);
+            gfn_display("line1", false);
+            gfn_display("line2", false);
+            gfn_display("line3", false);
+            gfn_display("line4", false);
+            gfn_display("goReceipt", true);
         }else if(payMethod == 'DirectBank'){
             innerHTML("payMethodName ", '실시간 계좌이체');
             innerHTML("payStatusName ", '결제완료');//
-            gfn_display("bankName", false);
-            gfn_display("vactNum", false);
-            gfn_display("vactDate", false);
-            gfn_display("vactTime", false);
-            gfn_display("vackName", false);
+            gfn_display("line1", false);
+            gfn_display("line2", false);
+            gfn_display("line3", false);
+            gfn_display("line4", false);
+            gfn_display("goReceipt", true);
         }
         <%--var allProductPrice = "<%= request.getParameter("allProductPrice") %>";--%>
         <%--var postName = "<%= reque st.getParameter("postName") %>";--%>
@@ -585,6 +588,10 @@
         innerHTML("address1", resultData.add1);
         innerHTML("address2", resultData.add2);
     });
+    
+    function goReceiptPopup() {
+        gfn_winPop(300, 300, 'https://iniweb.inicis.com/DefaultWebApp/mall/cr/cm/mCmReceipt_head.jsp?noTid=StdpayVBNKINIpayTest20191210123350935069&noMethod=1');
+    }
 </script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
@@ -699,11 +706,13 @@
                             <div class="left">
                                 <ul>
                                     <li><span class="tit">결제방법</span><span id="payMethodName"></span></li>
-                                    <li><span class="tit">입금은행</span><span id="bankName"></span></li>
-                                    <li><span class="tit">계좌번호</span><span id="vactNum"></span></li>
-                                    <li><span class="tit">입금자명</span><span id="vackName"></span></li>
-                                    <li><span class="tit">입금예정일</span><span id="vactDate"></span>&nbsp;<span id="vactTime"></span></li>
-                                    <li><span class="tit">결제상태</span><span id="payStatusName"></span></li>
+                                    <li id="line1"><span class="tit">입금은행</span><span id="bankName"></span></li>
+                                    <li id="line2"><span class="tit">계좌번호</span><span id="vactNum"></span></li>
+                                    <li id="line3"><span class="tit">입금자명</span><span id="vackName"></span></li>
+                                    <li id="line4"><span class="tit">입금예정일</span><span id="vactDate"></span></li>
+                                    <li ><span class="tit">결제상태</span><span id="payStatusName"></span>
+                                    <input type="button" onclick="goReceiptPopup();" value="영수증출력" id="goReceipt">
+                                    </li>
                                 </ul>
                             </div>
                             <div class="right">
