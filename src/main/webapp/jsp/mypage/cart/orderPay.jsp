@@ -234,7 +234,8 @@
             </tr>
             <input type="hidden" name="P_MID" value="INIpayTest">
             <input type=hidden name="P_NEXT_URL" id="P_NEXT_URL" value="">
-            <input type=hidden name="P_RESERVED" id="P_RESERVED" value="twotrs_isp=Y&block_isp=Y&twotrs_isp_noti=N">
+<%--            <input type=hidden name="P_RESERVED" id="P_RESERVED" value="twotrs_isp=Y&block_isp=Y&twotrs_isp_noti=N">--%>
+            <input type=hidden name="P_RESERVED" id="P_RESERVED" value="twotrs_bank=Y&apprun_check=Y">
             <input type=hidden name="P_NOTI_URL" value="">
             <input type=hidden name="P_HPP_METHOD" value="1">
         </form>

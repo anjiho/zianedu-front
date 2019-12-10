@@ -85,10 +85,10 @@
 			resultPOid = resultMap.get("P_OID");
 			resultPMName = resultMap.get("P_MNAME");
 			resultPCardNum = resultMap.get("P_CARD_NUM");
-			resultPCardIssuerCode = resultMap.get("P_CARD_ISSUER_CODE");
+			resultPCardIssuerCode = Util.isNullValue(resultMap.get("P_CARD_ISSUER_CODE"), "");
 			resultPCardPurchaseCode = resultMap.get("P_CARD_PURCHASE_CODE");
 			resultPCardPrtcCode = resultMap.get("P_CARD_PRTC_CODE");
-			resultPCardInterest = resultMap.get("P_CARD_INTEREST");
+			resultPCardInterest = Util.isNullValue(resultMap.get("P_CARD_INTEREST"), "");
 			resultPCardCheckFlag = resultMap.get("P_CARD_CHECKFLAG");
 			resultPCardIssuerName = resultMap.get("P_CARD_ISSUER_NAME");
 			resultPCardPurchaseName = resultMap.get("P_CARD_PURCHASE_NAME");
