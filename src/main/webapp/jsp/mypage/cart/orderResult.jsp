@@ -69,8 +69,8 @@
 
         if("0000".equals(paramMap.get("resultCode"))){
 
-            out.println("####인증성공/승인요청####");
-            out.println("<br/>");
+//            out.println("####인증성공/승인요청####");
+//            out.println("<br/>");
             System.out.println("####인증성공/승인요청####");
 
             //############################################
@@ -133,7 +133,7 @@
                 //############################################################
                 //5.API 통신결과 처리(***가맹점 개발수정***)
                 //############################################################
-                out.println("## 승인 API 결과 ##");
+                //out.println("## 승인 API 결과 ##");
 
                 String test = authResultString.replace(",", "&").replace(":", "=").replace("\"", "").replace(" ","").replace("\n", "").replace("}", "").replace("{", "");
 
@@ -144,8 +144,8 @@
                 resultMap = ParseUtil.parseStringToMap(test); //문자열을 MAP형식으로 파싱
 
                 System.out.println("resultMap == " + resultMap);
-                out.println("<pre>");
-                out.println("<table width='565' border='0' cellspacing='0' cellpadding='0'>");
+                //out.println("<pre>");
+                //out.println("<table width='565' border='0' cellspacing='0' cellpadding='0'>");
 
                 /*************************  결제보안 강화 2016-05-18 START ****************************/
                 Map<String , String> secureMap = new HashMap<String, String>();
@@ -294,7 +294,7 @@
                     if(!"".equals(resultMap.get("GAMG_Num6"))){
 
                     }
-                    out.println("<tr><th class='line' colspan='2'><p></p></th></tr>");
+                    //out.println("<tr><th class='line' colspan='2'><p></p></th></tr>");
 
                 }else if("OCBPoint".equals(resultMap.get("payMethod"))){ //오케이 캐쉬백
 
