@@ -65,6 +65,7 @@ function on_web()
 {
     var order_form = document.ini;
     var paymethod = get_radio_value("ckbox2");
+    alert(paymethod);
     if(paymethod == 'wcard'){
         innerValue("P_RESERVED", "twotrs_isp=Y&block_isp=Y&twotrs_isp_noti=N");
     }else{

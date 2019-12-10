@@ -9,13 +9,18 @@
         var resultData = JSON.parse(sessionStorage.getItem('resultData'));
         var userKey = sessionUserInfo.userKey;
 
-        var inipayInfoResult =  sessionStorage.getItem('inipayInfoResult');
-        console.log(inipayInfoResult);
-
-        var payMethod = inipayInfoResult.paymethod;
-        var vactDate = inipayInfoResult.vactDate;
+        var iniResult = JSON.parse(sessionStorage.getItem('saveInipayInfoData'));
+        if(iniResult == null){
+            alert("null임");
+        }else if(iniResult == undefined){
+            alert("unde임");
+        }
+        alert(">>>>"+ iniResult.paymethod);
+        alert(">>>>"+ iniResult.vactDate);
+        var payMethod = iniResult.paymethod;
+        var vactDate = iniResult.vactDate;
         var vateDateStr = gfn_dateFormat(vactDate, 14, 'F');
-        var vactBankCode =  inipayInfoResult.vactBankCode;
+        var vactBankCode =  iniResult.vactBankCode;
         var bankCodeName = '';
         if(vactBankCode == '04'){
             bankCodeName = '국민은행';
@@ -24,11 +29,11 @@
         }
         if(payMethod == 'VBANK'){
             innerHTML("bankName", bankCodeName);//
-            innerHTML("vactNum", inipayInfoResult.vactNum);//
+            innerHTML("vactNum", iniResult.vactNum);//
             innerHTML("payMethodName ", '무통장입금');
             innerHTML("payStatusName ", '입금예정');//
             innerHTML("vactDate ", vateDateStr);//
-            innerHTML("vackName ", inipayInfoResult.vactName);//
+            innerHTML("vackName ", iniResult.vactName);//
             gfn_display("goReceipt", false);
         }else if(payMethod == 'CARD'){
             innerHTML("payMethodName ", '신용카드');
