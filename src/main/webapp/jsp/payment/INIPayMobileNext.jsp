@@ -175,7 +175,7 @@
 		};
 		var inipayInfoResult = saveInipayInfo(saveInipayInfoData);
 
-		sessionStorage.setItem("saveInipayInfoData", saveInipayInfoData);
+		sessionStorage.setItem("saveInipayInfoData", JSON.stringify(saveInipayInfoData));
 
 		var payStatus = 2;
 		if('<%=resultPType%>' == 'VBANK') payStatus = 0;
@@ -213,7 +213,7 @@
 			}
 			alert("결제가 성공하였습니다.");
 			//goPage("myPage", "orderResultMobile");
-			location.href = "/myPage?page_gbn=orderResultMobile";
+			location.href = "/myPage?page_gbn=orderResultMobile&name="+'<%=resultPUName%>';
 		}else{
 			alert("결제 오류가 발생하였습니다");
 			goBack();

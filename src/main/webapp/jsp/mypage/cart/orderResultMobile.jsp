@@ -1,5 +1,9 @@
+<%@ page import="com.zianedu.front.utils.Util" %>
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/jsp/common.jsp" %>
+<%
+    String name = Util.isNullValue(request.getParameter("name"), "");
+%>
 <script>
     $( document ).ready(function() {
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
@@ -10,8 +14,6 @@
         var userKey = sessionUserInfo.userKey;
 
         var iniResult = JSON.parse(sessionStorage.getItem('saveInipayInfoData'));
-        alert(">>>>"+ iniResult.paymethod);
-        alert(">>>>"+ iniResult.vactDate);
         var payMethod = iniResult.paymethod;
         var vactDate = iniResult.vactDate;
         var vateDateStr = gfn_dateFormat(vactDate, 14, 'F');
@@ -28,7 +30,7 @@
             innerHTML("payMethodName ", '무통장입금');
             innerHTML("payStatusName ", '입금예정');//
             innerHTML("vactDate ", vateDateStr);//
-            innerHTML("vackName ", iniResult.vactName);//
+            innerHTML("vackName ", '<%=name%>');
             gfn_display("goReceipt", false);
         }else if(payMethod == 'CARD'){
             innerHTML("payMethodName ", '신용카드');
