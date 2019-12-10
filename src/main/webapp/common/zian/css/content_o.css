@@ -433,7 +433,7 @@ legend {display:none;position:absolute;visibility:hidden;}
 .Mypage .cart .pay li {float:left;padding-right:40px}
 .Mypage .cart .pay .left {float: left;width:800px;height:100%;border-top:2px solid #e5e5e5;margin-top: 13px;margin-right:15px;}
  /*결제하기 부분 라디오버튼 내용부분*/
-.Mypage .cart .pay .left div.ckctn{background: #fafafa;width: 100%;display:none}
+.Mypage .cart .pay .left div.ckctn{background: #fafafa;width: 100%}
 .Mypage .cart .pay .left div.ckctn_n{display:block;min-height:340px;background: #fafafa;width: 100%;}
 .Mypage .cart .pay .left div.ckctn .ckinner {padding: 25px;min-height:291px}
 .Mypage .cart .pay .left .receipt > p.title {font-size:12px;color: #303030;font-weight: bold;padding-bottom: 5px}

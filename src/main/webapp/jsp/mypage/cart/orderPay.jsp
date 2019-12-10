@@ -75,7 +75,6 @@
         innerValue("P_NEXT_URL", nextUrl);
         innerValue("P_NOTI_URL", notiUrl);
 
-
         var closeUrl = "http://" + locationHost + "/payment?page_gbn=inicisClose";
         innerValue("closeUrl", closeUrl);
 
@@ -87,8 +86,10 @@
                 innerValue("paymethod", $(this).val())
             }
             //무통장입금 클릭했을때
-            if($(this).val() == 'vbank'){
-
+            if($(this).val() == 'VBank'){
+                gfn_display("bankInfoDiv", true);
+            }else{
+                gfn_display("bankInfoDiv", false);
             }
         });
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
@@ -383,7 +384,7 @@
                         </div>
                         <div class="pay">
                             <p class="title"><span class="text_blue">결제</span>하기</p>
-                            <div class="left" style="width: 750px;">
+                            <div class="left" style="width: 700px;">
                                 <ul id="pcPaymentMethodUl" style="display: none">
                                     <li class="tit">결제수단</li>
                                     <li><input type="radio" name="ckbox" value="Card" id="ckbox1">신용카드</li>
@@ -396,53 +397,59 @@
                                     <li><input type="radio" name="ckbox2" value="bank" id="ckbox2">실시간 계좌이체</li>
                                     <li><input type="radio" name="ckbox2" value="vbank" id="ckbox3">무통장입금</li>
                                 </ul>
-                                <div class="" id="bankInfoDiv">
-                                    <div class="receipt">
-                                        <p class="title">입금은행</p>
-                                        <table>
-                                            <thead>
-                                            <tr>
-                                                <th>은행명</th>
-                                                <th>계좌번호</th>
-                                                <th>예금주</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            <tr>
-                                                <td>국민은행</td>
-                                                <td>013837-04-002130</td>
-                                                <td>(주)지안에듀</td>
-                                            </tr>
-                                            <tr>
-                                                <td>농협</td>
-                                                <td>355-0019-9102-83</td>
-                                                <td>(주)지안에듀</td>
-                                            </tr>
-                                            <tr>
-                                                <td colspan="3">
-                                                    <div class="detail">
-                                                        <ul>
-                                                            <li>입금자 <input type="text" name="" value="" class="">
-                                                                <span class="txt">(단, 마일리지는 1,000점 이상 적립 되었을때, 현금과 동일하게 100원 단위로 사용이 가능합니다.) </span>
-                                                            </li>
-                                                            <li>입금예정일<span class="date">2019년 07월 26일</span></li>
-                                                            <li>현금영수증발급
-                                                                <select name="" class="w200">
-                                                                    <option value="">신청안함</option>
-                                                                    <option value="">소득공제용(개인-주민번호)</option>
-                                                                    <option value="">소득공제용(개인-휴대폰번호)</option>
-                                                                    <option value="">소득공제용(사업자-사업자번호)</option>
-                                                                </select>
-                                                            </li>
-                                                            <li class="text_blue">※ 당일 오후 3시(토요일은 오후 12시) 까지 입금확인 된 주문건에 한하여 당일 발송이 가능합니다</li>
-                                                        </ul>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
+<%--                                <div class="ckctn" id="bankInfoDiv" style="display:none;">--%>
+<%--                                    <div class=" ckinner receipt">--%>
+<%--                                        <p class="title">입금은행</p>--%>
+<%--                                        <table>--%>
+<%--                                            <thead>--%>
+<%--                                            <tr>--%>
+<%--                                                <th>은행명</th>--%>
+<%--                                                <th>계좌번호</th>--%>
+<%--                                                <th>예금주</th>--%>
+<%--                                            </tr>--%>
+<%--                                            </thead>--%>
+<%--                                            <tbody>--%>
+<%--                                            <tr>--%>
+<%--                                                <td>국민은행</td>--%>
+<%--                                                <td>013837-04-002130</td>--%>
+<%--                                                <td>(주)지안에듀</td>--%>
+<%--                                            </tr>--%>
+<%--                                            <tr>--%>
+<%--                                                <td>농협</td>--%>
+<%--                                                <td>355-0019-9102-83</td>--%>
+<%--                                                <td>(주)지안에듀</td>--%>
+<%--                                            </tr>--%>
+<%--                                            <tr>--%>
+<%--                                                <td colspan="3">--%>
+<%--                                                    <div class="detail">--%>
+<%--                                                        <ul>--%>
+<%--                                                            <li>--%>
+<%--                                                                <label>은행명</label>--%>
+<%--                                                                <select name="selBank" id="selBank" style="width:120px;margin-right:20px;background:white">--%>
+<%--                                                                    <option value="kb">국민</option>--%>
+<%--                                                                    <option value="nh">농협</option>--%>
+<%--                                                                </select>--%>
+<%--                                                                <label>입금자</label>--%>
+<%--                                                                <input type="text" name="" value="" class="">--%>
+<%--                                                                <span class="txt">(단, 마일리지는 1,000점 이상 적립 되었을때, 현금과 동일하게 100원 단위로 사용이 가능합니다.)</span>--%>
+<%--                                                            </li>--%>
+<%--                                                            <li>현금영수증발급--%>
+<%--                                                                <select name="" class="w200">--%>
+<%--                                                                    <option value="">신청안함</option>--%>
+<%--                                                                    <option value="">소득공제용(개인-주민번호)</option>--%>
+<%--                                                                    <option value="">소득공제용(개인-휴대폰번호)</option>--%>
+<%--                                                                    <option value="">소득공제용(사업자-사업자번호)</option>--%>
+<%--                                                                </select>--%>
+<%--                                                            </li>--%>
+<%--                                                            <li class="text_blue">※ 당일 오후 3시(토요일은 오후 12시) 까지 입금확인 된 주문건에 한하여 당일 발송이 가능합니다</li>--%>
+<%--                                                        </ul>--%>
+<%--                                                    </div>--%>
+<%--                                                </td>--%>
+<%--                                            </tr>--%>
+<%--                                            </tbody>--%>
+<%--                                        </table>--%>
+<%--                                    </div>--%>
+<%--                                </div>--%>
                             </div>
                             <div class="right">
                                 <li class="pay-sum">
