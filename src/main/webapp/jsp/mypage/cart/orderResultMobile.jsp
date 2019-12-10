@@ -78,7 +78,7 @@
     function goReceiptPopup() {
         var iniResult = JSON.parse(sessionStorage.getItem('saveInipayInfoData'));
         var url = "https://iniweb.inicis.com/DefaultWebApp/mall/cr/cm/mCmReceipt_head.jsp?noTid="+ iniResult.tid +"&noMethod=1";
-        gfn_winPop(350, 350, url);
+        gfn_winPop(600, 600, url);
     }
 </script>
 <form name="frm" method="get">

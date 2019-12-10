@@ -536,7 +536,9 @@
             gfn_display("line2", false);
             gfn_display("line3", false);
             gfn_display("line4", false);
-            gfn_display("goReceipt", true);
+            if(pcMobile == "PC"){
+                gfn_display("goReceipt", true);
+            }
         }else if(payMethod == 'DirectBank'){
             innerHTML("payMethodName ", '실시간 계좌이체');
             innerHTML("payStatusName ", '결제완료');//
@@ -544,7 +546,9 @@
             gfn_display("line2", false);
             gfn_display("line3", false);
             gfn_display("line4", false);
-            gfn_display("goReceipt", true);
+            if(pcMobile == "PC") {
+                gfn_display("goReceipt", true);
+            }
         }
         <%--var allProductPrice = "<%= request.getParameter("allProductPrice") %>";--%>
         <%--var postName = "<%= reque st.getParameter("postName") %>";--%>
@@ -591,7 +595,7 @@
     
     function goReceiptPopup() {
         var url = "https://iniweb.inicis.com/DefaultWebApp/mall/cr/cm/mCmReceipt_head.jsp?noTid="+ '<%=tId%>' +"&noMethod=1";
-        gfn_winPop(350, 350, url);
+        gfn_winPop(600, 600, url);
     }
 </script>
 <form name="frm" method="get">
