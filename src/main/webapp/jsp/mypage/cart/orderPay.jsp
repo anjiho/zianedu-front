@@ -387,7 +387,7 @@
                             <div class="left" style="width: 700px;">
                                 <ul id="pcPaymentMethodUl" style="display: none">
                                     <li class="tit">결제수단</li>
-                                    <li><input type="radio" name="ckbox" value="Card" id="ckbox1">신용카드</li>
+                                    <li><input type="radio" name="ckbox" value="Card" id="ckbox1" checked>신용카드</li>
                                     <li><input type="radio" name="ckbox" value="DirectBank" id="ckbox2">실시간 계좌이체</li>
                                     <li><input type="radio" name="ckbox" value="VBank" id="ckbox3">무통장입금</li>
                                 </ul>
