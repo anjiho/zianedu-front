@@ -65,6 +65,11 @@ function on_web()
 {
     var order_form = document.ini;
     var paymethod = get_radio_value("ckbox2");
+    if(paymethod == 'wcard'){
+        innerValue("P_RESERVED", "twotrs_isp=Y&block_isp=Y&twotrs_isp_noti=N");
+    }else{
+        innerValue("P_RESERVED", "twotrs_bank=Y&apprun_check=Y");
+    }
     var wallet = window.open("", "BTPG_WALLET", features);
 
     if (wallet == null)

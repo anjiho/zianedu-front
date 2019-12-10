@@ -154,23 +154,6 @@
 		if(savePayInfo.deliveryPrice == undefined || savePayInfo.deliveryPrice == null) deliveryPrice = 0;
 		else deliveryPrice = savePayInfo.deliveryPrice;
 
-
-		alert("tid : "+ '<%=resultPTid%>');
-		alert("resultcode : "+ '<%=resultPStatus%>');
-		alert("resultmsg : "+ '<%=resultPRmesg%>');
-		alert("paymethod : "+ '<%=resultPType%>');
-		alert("moid : "+ '<%=resultPOid%>');
-		alert("totprice : "+ savePayInfo.pricePay);
-		alert("appldate : "+ '<%=applDate%>');
-		alert("appltime : "+ '<%=applTime%>');
-		alert("applnum : "+ '<%=resultPAuthNo%>');
-		alert("cardQuota : "+ '<%=resultPRmesg2%>');
-		alert("cardInterest : "+ '<%=resultPCardInterest%>');
-		alert("cardNum : "+ '<%=resultPCardNum%>');
-		alert("cardCode : "+ '<%=resultPFnCd1%>');
-		alert("cardBankcode : "+ '<%=resultPCardIssuerCode%>');
-		alert("cardApplprice : "+ '<%=resultPCardApplprice%>');
-		alert("acctBankcode : "+ '<%=resultPFnCd1%>');
 		var saveInipayInfoData = {
 			tid : '<%=resultPTid%>',
 			resultcode : '<%=resultPStatus%>',
@@ -185,9 +168,9 @@
 			cardInterest : '<%=resultPCardInterest%>',//
 			cardNum : '<%=resultPCardNum%>',//
 			cardCode : '<%=resultPFnCd1%>',
-			cardBankcode : '<%=resultPCardIssuerCode%>',
+			cardBankcode : '<%=resultPCardIssuerCode%>',//
 			eventcode :  '',
-			cardApplprice : '<%=resultPCardApplprice%>',
+			cardApplprice : '<%=resultPCardApplprice%>',//
 			ocbPayprice : '',
 			acctBankcode : '<%=resultPFnCd1 %>',
 			resulterrorcode : '',

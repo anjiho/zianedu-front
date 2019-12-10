@@ -86,6 +86,10 @@
             }else{
                 innerValue("paymethod", $(this).val())
             }
+            //무통장입금 클릭했을때
+            if($(this).val() == 'vbank'){
+
+            }
         });
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         var userKey = sessionUserInfo.userKey;
@@ -235,7 +239,7 @@
             <input type="hidden" name="P_MID" value="INIpayTest">
             <input type=hidden name="P_NEXT_URL" id="P_NEXT_URL" value="">
 <%--            <input type=hidden name="P_RESERVED" id="P_RESERVED" value="twotrs_isp=Y&block_isp=Y&twotrs_isp_noti=N">--%>
-            <input type=hidden name="P_RESERVED" id="P_RESERVED" value="twotrs_bank=Y&apprun_check=Y">
+            <input type=hidden name="P_RESERVED" id="P_RESERVED" value="">
             <input type=hidden name="P_NOTI_URL" value="">
             <input type=hidden name="P_HPP_METHOD" value="1">
         </form>
@@ -391,16 +395,9 @@
                                     <li><input type="radio" name="ckbox2" value="wcard" id="ckbox1">신용카드</li>
                                     <li><input type="radio" name="ckbox2" value="bank" id="ckbox2">실시간 계좌이체</li>
                                     <li><input type="radio" name="ckbox2" value="vbank" id="ckbox3">무통장입금</li>
-
                                 </ul>
-                                <div id="1" class="ckctn">
-                                    <div class="ckinner credit"></div>
-                                </div>
-                                <div id="2" class="ckctn">
-                                    <div class="ckinner transfer"></div>
-                                </div>
-                                <div id="3" class="ckctn">
-                                    <div class="ckinner receipt">
+                                <div class="" id="bankInfoDiv">
+                                    <div class="receipt">
                                         <p class="title">입금은행</p>
                                         <table>
                                             <thead>
