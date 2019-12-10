@@ -71,7 +71,6 @@
         var nextUrl = "http://" + locationHost + "/jsp/payment/INIPayMobileNext.jsp";
 
         innerValue("returnUrl", returnUrl);
-
         innerValue("P_NEXT_URL", nextUrl);
         innerValue("P_NOTI_URL", notiUrl);
 
@@ -94,28 +93,6 @@
         });
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         var userKey = sessionUserInfo.userKey;
-
-        <%--var allProductPrice = "<%= request.getParameter("allProductPrice") %>";--%>
-        <%--var postName = "<%= request.getParameter("postName") %>";--%>
-        <%--var allTel = "<%= request.getParameter("allTel") %>";--%>
-        <%--var allPhone = "<%= request.getParameter("allPhone") %>";--%>
-        <%--var allEmail = "<%= request.getParameter("allEmail") %>";--%>
-        <%--var postCode = "<%= request.getParameter("postCode1") %>";--%>
-        <%--var add1 = "<%= request.getParameter("add1") %>";--%>
-        <%--var add2 = "<%= request.getParameter("add2") %>";--%>
-
-        // var resultData = {
-        //     allProductPrice : allProductPrice,
-        //     postName : postName,
-        //     allTel : allTel,
-        //     allPhone : allPhone,
-        //     allEmail : allEmail,
-        //     postCode : postCode,
-        //     add1 : add1,
-        //     add2 : add2
-        // };
-        // sessionStorage.setItem("resultData", JSON.stringify(resultData));
-
         var cartKeys = sessionStorage.getItem('cartNum');
         var gKeys = sessionStorage.getItem('gKeys');
         var goodsInfo = sessionStorage.getItem('goodsInfo');
@@ -136,15 +113,12 @@
         sessionStorage.setItem("savePayInfo", JSON.stringify(data));
 
         if( cartKeys == "" && goodsInfo == ""){//바로구매
-            <%--//var gKeys = toStrFileName(<%= request.getParameter("gKeys") %>);--%>
             innerValue("gKeys", gKeys);
             getOrderSheetInfoFromImmediately(userKey, gKeys);
         }else if(gKeys == "" && goodsInfo == ""){
-            <%--//var cartKeys = toStrFileName(<%= request.getParameter("cartNum") %>);--%>
             innerValue("cartNum", cartKeys);
             getOrderSheetInfoFromPay(userKey, cartKeys);
         }else{//패키지
-            <%--//var goodsInfo ='<%= request.getParameter("goodsInfo") %>';--%>
             innerValue("goodsInfo", goodsInfo);
             getOrderSheetInfoFromImmediatelyAtBasicPackage(userKey, goodsInfo, 1);
         }
@@ -194,7 +168,7 @@
 <body onload="setOid()" topmargin="0"  leftmargin="0" marginwidth="0" marginheight="0">
 <div id="mobilePay" style="display: none">
     <table width="320" border="0" cellpadding="0" cellspacing="0">
-        <form id="form1" name="ini" method="post" action="" style="display: none;" accept-charset="euc-kr">
+        <form id="form1" name="ini" method="post" style="display: none;" accept-charset="euc-kr">
             <tr>
                 <td height="347" align="center" valign="top" background="images/bg_01.png"><table border="0" cellspacing="0" cellpadding="0">
                     <tr>
@@ -207,19 +181,18 @@
                                 </td>
                             </tr>
                             <input type="hidden" name="P_OID" id="textfield2" style="border-color:#cdcdcd; border-width:1px; border-style:solid; color:#555555; height:15px;"/>
-                            <td align="left"><input type="hidden" name="P_GOODS" value="<%=pcProductNames%>" id="textfield3" style="border-color:#cdcdcd; border-width:1px; border-style:solid; color:#555555; height:15px;"/></td>
-                            <td align="left"><input type="hidden" name="P_AMT" value="<%=allProductPrice%>" id="textfield4" style="border-color:#cdcdcd; border-width:1px; border-style:solid; color:#555555; height:15px;"/></td>
-                            <td align="left"><input type="hidden" name="P_UNAME" value="<%=userName%>" id="textfield5" style="border-color:#cdcdcd; border-width:1px; border-style:solid; color:#555555; height:15px;"/></td>
-                            <td align="left"><input type="hidden" name="P_MNAME" value="이니시스 쇼핑몰" id="textfield6" style="border-color:#cdcdcd; border-width:1px; border-style:solid; color:#555555; height:15px;"/></td>
-                            <td align="left"><input type="hidden" name="P_MOBILE" id="textfield7" value="<%=phoneNum %>" style="border-color:#cdcdcd; border-width:1px; border-style:solid; color:#555555; height:15px;"/></td>
-                            <td align="left"><input type="hidden" name="P_EMAIL" value="<%=
-                            email  %>" id="textfield8" style="border-color:#cdcdcd; border-width:1px; border-style:solid; color:#555555; height:15px;"/></td>
+                            <td align="left"><input type="hidden" name="P_GOODS" value="<%=pcProductNames%>" id="textfield3"/></td>
+                            <td align="left"><input type="hidden" name="P_AMT" value="<%=allProductPrice%>" id="textfield4"></td>
+                            <td align="left"><input type="hidden" name="P_UNAME" value="<%=userName%>" id="textfield5"></td>
+                            <td align="left"><input type="hidden" name="P_MNAME" value="이니시스 쇼핑몰" id="textfield6"></td>
+                            <td align="left"><input type="hidden" name="P_MOBILE" id="textfield7" value="<%=phoneNum %>"></td>
+                            <td align="left"><input type="hidden" name="P_EMAIL" value="<%=email%>" id="textfield8"></td>
                             <tr>
-                                <td width="95" height="25" align="left" style="background-image:url(images/bullet.png); background-repeat:no-repeat; background-position:0px 40%; padding-left:8px; font-size:12px; color:#607c90;">결과페이지 링크</td>
+                                <td width="95" height="25" align="left">결과페이지 링크</td>
                             </tr>
                             <tr>
 <%--                                <input type="hidden" name="paymethod"  id="paymethod" style="border-color:#cdcdcd; border-width:1px; border-style:solid; color:#555555; height:15px;"/>--%>
-                                <td height="25" align="left" style="background-image:url(images/bullet.png); background-repeat:no-repeat; background-position:0px 40%; padding-left:8px; font-size:12px; color:#607c90;">결제방법 </td>
+                                <td height="25" align="left">결제방법 </td>
                                 <td align="left"><label>
                                     <select name="paymethod" id="select">
                                         <option value="wcard">신용카드
@@ -239,7 +212,6 @@
             </tr>
             <input type="hidden" name="P_MID" value="INIpayTest">
             <input type=hidden name="P_NEXT_URL" id="P_NEXT_URL" value="">
-<%--            <input type=hidden name="P_RESERVED" id="P_RESERVED" value="twotrs_isp=Y&block_isp=Y&twotrs_isp_noti=N">--%>
             <input type=hidden name="P_RESERVED" id="P_RESERVED" value="">
             <input type=hidden name="P_NOTI_URL" value="">
             <input type=hidden name="P_HPP_METHOD" value="1">
@@ -252,30 +224,30 @@
         <br/><input type="hidden"  name="mid" value="<%=mid%>">
         <br/><input type="hidden"  name="goodname" id="goodname" value="<%=pcProductNames%>">
         <br/><input type="hidden" name="oid" value="<%=oid%>">
-        <br/><input type="hidden" style="width:100%;" name="price" value="<%=price%>">
-        <br/><input type="hidden" style="width:100%;" name="currency" value="WON">
-        <br/><input type="hidden" style="width:100%;" name="buyername" value="<%=userName%>">
-        <br/><input type="hidden" style="width:100%;" name="buyertel" value="<%=phoneNum%>">
-        <br/><input type="hidden" style="width:100%;" name="buyeremail" value="<%=email%>">
-        <input type="hidden" style="width:100%;" name="timestamp" value="<%=timestamp %>">
-        <input type="hidden" style="width:100%;" name="signature" value="<%=signature%>">
-        <br/><input type="hidden" style="width:100%;" name="returnUrl" id="returnUrl" value="">
-        <input type="hidden"  name="mKey" value="<%=mKey%>">
+        <br/><input type="hidden" name="price" value="<%=price%>">
+        <br/><input type="hidden" name="currency" value="WON">
+        <br/><input type="hidden" name="buyername" value="<%=userName%>">
+        <br/><input type="hidden" name="buyertel" value="<%=phoneNum%>">
+        <br/><input type="hidden" name="buyeremail" value="<%=email%>">
+        <input type="hidden" name="timestamp" value="<%=timestamp %>">
+        <input type="hidden" name="signature" value="<%=signature%>">
+        <br/><input type="hidden" name="returnUrl" id="returnUrl" value="">
+        <input type="hidden" name="mKey" value="<%=mKey%>">
     </div>
-        <input type="hidden" style="width:100%;" name="gopaymethod" id="gopaymethod" value="" >
-        <input type="hidden" style="width:100%;" name="offerPeriod" value="20151001-20151231" >
-        <input type="hidden" style="width:100%;" name="acceptmethod" value="CARDPOINT:HPP(1):no_receipt:va_receipt:vbanknoreg(0):below1000" >
-        <input style="width:100%;" name="languageView" value="" >
-        <input style="width:100%;" name="charset" value="" >
-        <input style="width:100%;" name="payViewType" value="" >
-        <input style="width:100%;" name="closeUrl" id="closeUrl" >
-        <input style="width:100%;" name="popupUrl" value="<%=siteDomain%>/popup.jsp" >
-        <input  style="width:100%;" name="quotabase" value="<%=cardQuotaBase%>" >
-        <input  style="width:100%;" name="ini_onlycardcode" value="" >
-        <input  style="width:100%;" name="ini_cardcode" value="" >
-        <br/><input  style="width:100%;" name="ansim_quota" value="" >
-        <br/><input  style="width:100%;" name="INIregno" value="" >
-        <br/><input  style="width:100%;" name="merchantData" value="" >
+        <input type="hidden" name="gopaymethod" id="gopaymethod" value="" >
+        <input type="hidden" name="offerPeriod" value="20151001-20151231" >
+        <input type="hidden" name="acceptmethod" value="CARDPOINT:HPP(1):no_receipt:va_receipt:vbanknoreg(0):below1000" >
+        <input type="hidden" name="languageView" value="" >
+        <input type="hidden" name="charset" value="" >
+        <input type="hidden" name="payViewType" value="" >
+        <input type="hidden" name="closeUrl" id="closeUrl" >
+        <input type="hidden" name="popupUrl" value="<%=siteDomain%>/popup.jsp" >
+        <input type="hidden" name="quotabase" value="<%=cardQuotaBase%>" >
+        <input type="hidden" name="ini_onlycardcode" value="" >
+        <input type="hidden" name="ini_cardcode" value="" >
+        <br/><input type="hidden" name="ansim_quota" value="" >
+        <br/><input type="hidden" name="INIregno" value="" >
+        <br/><input type="hidden" name="merchantData" value="" >
 </form>
 
 <form name="frm" method="get">
@@ -397,59 +369,6 @@
                                     <li><input type="radio" name="ckbox2" value="bank" id="ckbox2">실시간 계좌이체</li>
                                     <li><input type="radio" name="ckbox2" value="vbank" id="ckbox3">무통장입금</li>
                                 </ul>
-<%--                                <div class="ckctn" id="bankInfoDiv" style="display:none;">--%>
-<%--                                    <div class=" ckinner receipt">--%>
-<%--                                        <p class="title">입금은행</p>--%>
-<%--                                        <table>--%>
-<%--                                            <thead>--%>
-<%--                                            <tr>--%>
-<%--                                                <th>은행명</th>--%>
-<%--                                                <th>계좌번호</th>--%>
-<%--                                                <th>예금주</th>--%>
-<%--                                            </tr>--%>
-<%--                                            </thead>--%>
-<%--                                            <tbody>--%>
-<%--                                            <tr>--%>
-<%--                                                <td>국민은행</td>--%>
-<%--                                                <td>013837-04-002130</td>--%>
-<%--                                                <td>(주)지안에듀</td>--%>
-<%--                                            </tr>--%>
-<%--                                            <tr>--%>
-<%--                                                <td>농협</td>--%>
-<%--                                                <td>355-0019-9102-83</td>--%>
-<%--                                                <td>(주)지안에듀</td>--%>
-<%--                                            </tr>--%>
-<%--                                            <tr>--%>
-<%--                                                <td colspan="3">--%>
-<%--                                                    <div class="detail">--%>
-<%--                                                        <ul>--%>
-<%--                                                            <li>--%>
-<%--                                                                <label>은행명</label>--%>
-<%--                                                                <select name="selBank" id="selBank" style="width:120px;margin-right:20px;background:white">--%>
-<%--                                                                    <option value="kb">국민</option>--%>
-<%--                                                                    <option value="nh">농협</option>--%>
-<%--                                                                </select>--%>
-<%--                                                                <label>입금자</label>--%>
-<%--                                                                <input type="text" name="" value="" class="">--%>
-<%--                                                                <span class="txt">(단, 마일리지는 1,000점 이상 적립 되었을때, 현금과 동일하게 100원 단위로 사용이 가능합니다.)</span>--%>
-<%--                                                            </li>--%>
-<%--                                                            <li>현금영수증발급--%>
-<%--                                                                <select name="" class="w200">--%>
-<%--                                                                    <option value="">신청안함</option>--%>
-<%--                                                                    <option value="">소득공제용(개인-주민번호)</option>--%>
-<%--                                                                    <option value="">소득공제용(개인-휴대폰번호)</option>--%>
-<%--                                                                    <option value="">소득공제용(사업자-사업자번호)</option>--%>
-<%--                                                                </select>--%>
-<%--                                                            </li>--%>
-<%--                                                            <li class="text_blue">※ 당일 오후 3시(토요일은 오후 12시) 까지 입금확인 된 주문건에 한하여 당일 발송이 가능합니다</li>--%>
-<%--                                                        </ul>--%>
-<%--                                                    </div>--%>
-<%--                                                </td>--%>
-<%--                                            </tr>--%>
-<%--                                            </tbody>--%>
-<%--                                        </table>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
                             </div>
                             <div class="right">
                                 <li class="pay-sum">
