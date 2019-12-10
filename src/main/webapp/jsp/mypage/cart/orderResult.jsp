@@ -518,7 +518,6 @@
                 }
             }
         var payMethod = '<%=payMethod%>';
-        alert(payMethod);
         if(payMethod == 'VBank'){
             innerHTML("bankName", '<%=bankName%>');//입금 은행명
             innerHTML("vactNum", '<%=vactNum%>');//입금 은행명
@@ -535,7 +534,7 @@
             gfn_display("vactDate", false);
             gfn_display("vactTime", false);
             gfn_display("vackName", false);
-        }else{
+        }else if(payMethod == 'DirectBank'){
             innerHTML("payMethodName ", '실시간 계좌이체');
             innerHTML("payStatusName ", '결제완료');//
             gfn_display("bankName", false);
@@ -701,7 +700,7 @@
                                 <ul>
                                     <li><span class="tit">결제방법</span><span id="payMethodName"></span></li>
                                     <li><span class="tit">입금은행</span><span id="bankName"></span></li>
-                                    <li><span class="tit">결제방법</span><span id="vactNum"></span></li>
+                                    <li><span class="tit">계좌번호</span><span id="vactNum"></span></li>
                                     <li><span class="tit">입금자명</span><span id="vackName"></span></li>
                                     <li><span class="tit">입금예정일</span><span id="vactDate"></span>&nbsp;<span id="vactTime"></span></li>
                                     <li><span class="tit">결제상태</span><span id="payStatusName"></span></li>
