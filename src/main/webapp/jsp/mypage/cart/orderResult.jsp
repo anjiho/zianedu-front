@@ -260,7 +260,7 @@
                     vactName = resultMap.get("VACT_Name");
                     acctBankCode = resultMap.get("VACT_BankCode");
 
-                    if ("20".equals(acctBankCode)) bankName = "우리은행";
+                    if ("04".equals(acctBankCode)) bankName = "국민은행";
                     else if ("11".equals(acctBankCode)) bankName = "농협";
 
 

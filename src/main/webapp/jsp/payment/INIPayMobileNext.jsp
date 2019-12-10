@@ -114,7 +114,7 @@
 				resultPVactBankCode = Util.isNullValue(resultMap.get("P_VACT_BANK_CODE"), "");
 				resultPVactName = Util.isNullValue(resultMap.get("P_VACT_NAME"), "");
 
-				if ("20".equals(resultPVactBankCode)) bankName = "우리은행";
+				if ("04".equals(resultPVactBankCode)) bankName = "국민은행";
 				else if ("11".equals(resultPVactBankCode)) bankName = "농협";
 			}
 
