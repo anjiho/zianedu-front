@@ -32,12 +32,13 @@
     String acctBankCode = "";   //은행코드
     String resultErrorCode = "";    //에러결과코드
 
-    String vactNum = "";
-    String vactDate = "";
+    String vactNum = "";//계좌번호
+    String vactDate = "";//입금예정일
     String vactTime = "";
     String vactBankCode = "";
-    String vactName = "";
-    String vactBankName = "";
+    String vactName = "";//
+    String vactBankName = "";//
+    String vactInputName = "";
 
 
     try{
@@ -208,6 +209,7 @@
                 applTime = resultMap.get("applTime");
                 applNum = resultMap.get("applTime");
                 vactBankName = resultMap.get("vactBankName");//은행명
+                vactInputName = resultMap.get("VACT_InputName");//입금자명
 
                 //공통 부분만
                 out.println("<tr><th class='line' colspan='2'><p></p></th></tr>");
@@ -738,11 +740,18 @@
             }
 
             var payMethod = '<%=payMethod%>';
-            alert(payMethod);
             if(payMethod == 'VBank'){
-                innerHTML("vactBankName", '<%=vactName%>');//은행명
+                innerHTML("vactBankName", '<%=vactBankName%>');//
+                innerHTML("vactNum", '<%=vactNum%>');//
+                innerHTML("vactName", '<%=vactInputName%>');//
+                innerHTML("vactDate", '<%=vactDate%>');//
+                innerHTML("vactTime", '<%=vactTime%>');//
+                innerHTML("vactNum ", '<%=vactNum%>');//
+                innerHTML("paymethodName ", '무통장입금');//
+                innerHTML("payStatusName ", '입금예정');//
+            }else{
+                //카드결제 & 실시간 계좌이체
             }
-
 
         <%--var allProductPrice = "<%= request.getParameter("allProductPrice") %>";--%>
         <%--var postName = "<%= reque st.getParameter("postName") %>";--%>
@@ -899,12 +908,12 @@
                             <p class="title"><span class="text_blue">결제</span>정보</p>
                             <div class="left">
                                 <ul>
-                                    <li><span class="tit">결제방법</span>무통장입금</li>
-                                    <li><span class="tit">입금은행</span><span id="vactName"></span></li>
-                                    <li><span class="tit">결제방법</span>013837-04-002130</li>
-                                    <li><span class="tit">입금자명</span>000</li>
-                                    <li><span class="tit">입금예정일</span>2019-07-01 오전 12:00:00</li>
-                                    <li><span class="tit">결제상태</span>입금예정</li>
+                                    <li><span class="tit">결제방법</span><span id="paymethodName"></span></li>
+                                    <li><span class="tit">입금은행</span><span id="vactBankName"></span></li>
+                                    <li><span class="tit">결제방법</span><span id="vactNum"></span></li>
+                                    <li><span class="tit">입금자명</span><span id="vactName"></span></li>
+                                    <li><span class="tit">입금예정일</span><span id="vactDate"></span>&nbsp;&nbsp;<span id="vactTime"></span></li>
+                                    <li><span class="tit">결제상태</span><span id="payStatusName"></span></li>
                                 </ul>
                             </div>
                             <div class="right">
