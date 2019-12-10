@@ -84,7 +84,7 @@
 			resultPMid = resultMap.get("P_MID");
 			resultPOid = resultMap.get("P_OID");
 			resultPMName = resultMap.get("P_MNAME");
-			resultPCardNum = resultMap.get("P_CARD_NUM");
+			resultPCardNum = Util.isNullValue(resultMap.get("P_CARD_NUM"), "");
 			resultPCardIssuerCode = Util.isNullValue(resultMap.get("P_CARD_ISSUER_CODE"), "");
 			resultPCardPurchaseCode = resultMap.get("P_CARD_PURCHASE_CODE");
 			resultPCardPrtcCode = resultMap.get("P_CARD_PRTC_CODE");
@@ -94,10 +94,37 @@
 			resultPCardPurchaseName = resultMap.get("P_CARD_PURCHASE_NAME");
 			resultPFnNm = resultMap.get("P_FN_NM");
 			resultPIspCardCode = resultMap.get("P_ISP_CARDCODE");
-			resultPCardApplprice = resultMap.get("P_CARD_APPLPRICE");
+			resultPCardApplprice = Util.isNullValue(resultMap.get("P_CARD_APPLPRICE"), "");
 
 			applDate =  Util.subStrStartEnd(resultPAuthDt, 0, 8);
 			applTime = Util.subStrStartEnd(resultPAuthDt, 8, 14);
+
+			System.out.println("tid >> " + resultPTid);
+			System.out.println("resultcode >> " + resultPStatus);
+			System.out.println("resultMsg>> " + resultPRmesg);
+
+			System.out.println("paymethod>> " + resultPType);
+
+			System.out.println("moid >> " + resultPOid);
+
+			System.out.println("applDate >> " + applDate);
+			System.out.println("applTime >> " + applTime);
+
+			System.out.println("resultPAuthNo >> " + resultPAuthNo);
+
+			System.out.println("resultPRmesg2 >> " + resultPRmesg2);
+
+			System.out.println("resultPCardInterest >> " + resultPCardInterest);
+
+			System.out.println("resultPCardNum >> " + resultPCardNum);
+
+			System.out.println("resultPFnCd1 >> " + resultPFnCd1);
+
+			System.out.println("resultPCardIssuerCode >> " + resultPCardIssuerCode);
+
+			System.out.println("resultPCardApplprice >> " + resultPCardApplprice);
+
+			System.out.println("resultPFnCd1 >> " + resultPFnCd1);
 
 		} catch (Exception e) {
 			e.printStackTrace();
