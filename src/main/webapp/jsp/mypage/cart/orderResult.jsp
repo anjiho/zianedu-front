@@ -590,7 +590,8 @@
     });
     
     function goReceiptPopup() {
-        gfn_winPop(300, 300, 'https://iniweb.inicis.com/DefaultWebApp/mall/cr/cm/mCmReceipt_head.jsp?noTid=StdpayVBNKINIpayTest20191210123350935069&noMethod=1');
+        var url = "https://iniweb.inicis.com/DefaultWebApp/mall/cr/cm/mCmReceipt_head.jsp?noTid="+ '<%=tId%>' +"&noMethod=1";
+        gfn_winPop(350, 350, url);
     }
 </script>
 <form name="frm" method="get">
