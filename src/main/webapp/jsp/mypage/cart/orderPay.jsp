@@ -180,7 +180,7 @@
                                     </select>
                                 </td>
                             </tr>
-                            <input type="hidden" name="P_OID" id="textfield2" style="border-color:#cdcdcd; border-width:1px; border-style:solid; color:#555555; height:15px;"/>
+                            <input type="hidden" name="P_OID" id="textfield2"/>
                             <td align="left"><input type="hidden" name="P_GOODS" value="<%=pcProductNames%>" id="textfield3"/></td>
                             <td align="left"><input type="hidden" name="P_AMT" value="<%=allProductPrice%>" id="textfield4"></td>
                             <td align="left"><input type="hidden" name="P_UNAME" value="<%=userName%>" id="textfield5"></td>
@@ -219,19 +219,19 @@
     </table>
 </div>
 <form id="SendPayForm_id" name="SendPayForm_id" method="POST" style="display: none;">
-    <div style="border:2px #dddddd double;padding:10px;background-color:#f3f3f3;">
-        <br/><input type="hidden"  name="version" value="1.0">
-        <br/><input type="hidden"  name="mid" value="<%=mid%>">
-        <br/><input type="hidden"  name="goodname" id="goodname" value="<%=pcProductNames%>">
-        <br/><input type="hidden" name="oid" value="<%=oid%>">
-        <br/><input type="hidden" name="price" value="<%=price%>">
-        <br/><input type="hidden" name="currency" value="WON">
-        <br/><input type="hidden" name="buyername" value="<%=userName%>">
-        <br/><input type="hidden" name="buyertel" value="<%=phoneNum%>">
-        <br/><input type="hidden" name="buyeremail" value="<%=email%>">
+    <div>
+        <input type="hidden"  name="version" value="1.0">
+        <input type="hidden"  name="mid" value="<%=mid%>">
+        <input type="hidden"  name="goodname" id="goodname" value="<%=pcProductNames%>">
+        <input type="hidden" name="oid" value="<%=oid%>">
+        <input type="hidden" name="price" value="<%=price%>">
+        <input type="hidden" name="currency" value="WON">
+        <input type="hidden" name="buyername" value="<%=userName%>">
+        <input type="hidden" name="buyertel" value="<%=phoneNum%>">
+        <input type="hidden" name="buyeremail" value="<%=email%>">
         <input type="hidden" name="timestamp" value="<%=timestamp %>">
         <input type="hidden" name="signature" value="<%=signature%>">
-        <br/><input type="hidden" name="returnUrl" id="returnUrl" value="">
+        <input type="hidden" name="returnUrl" id="returnUrl" value="">
         <input type="hidden" name="mKey" value="<%=mKey%>">
     </div>
         <input type="hidden" name="gopaymethod" id="gopaymethod" value="" >
@@ -245,9 +245,9 @@
         <input type="hidden" name="quotabase" value="<%=cardQuotaBase%>" >
         <input type="hidden" name="ini_onlycardcode" value="" >
         <input type="hidden" name="ini_cardcode" value="" >
-        <br/><input type="hidden" name="ansim_quota" value="" >
-        <br/><input type="hidden" name="INIregno" value="" >
-        <br/><input type="hidden" name="merchantData" value="" >
+        <input type="hidden" name="ansim_quota" value="" >
+        <input type="hidden" name="INIregno" value="" >
+        <input type="hidden" name="merchantData" value="" >
 </form>
 
 <form name="frm" method="get">
