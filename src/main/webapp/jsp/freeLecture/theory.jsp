@@ -38,7 +38,7 @@
 </script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
-    <input type="hidden" name="lecKey" id="lecKey">
+    <input type="hidden" id="lecKey">
     <input type="hidden" id="stepCtgKey">
     <input type="hidden" id="sPage">
     <input type="hidden" id="sPage2">
