@@ -75,7 +75,7 @@
                 <li><a href="javascript:goPage('teacher', 'main')">교수소개</a></li>
                 <li><a href="javascript:goPage('lectureOrder', 'academy')">학원수강신청</a></li>
                 <li><a href="#">연간관리반</a></li>
-                <li><a href="#">무료강좌</a></li>
+                <li><a href="javascript:goPage('freeLecture', 'theory')">무료강좌</a></li>
                 <li><a href="#">빅모의고사</a></li>
                 <li><a href="#">합격수기</a></li>
             </ul>
@@ -89,7 +89,7 @@
                 <li><a href="javascript:goPage('teacher', 'main')">교수소개</a></li>
                 <li><a href="javascript:goPage('lectureOrder', 'single')">수강신청</a></li>
                 <li><a href="#">지안패스</a></li>
-                <li><a href="#">무료강좌</a></li>
+                <li><a href="javascript:goPage('freeLecture', 'theory')">무료강좌</a></li>
                 <li><a href="#">빅모의고사</a></li>
                 <li><a href="#">합격수기</a></li>
             </ul>

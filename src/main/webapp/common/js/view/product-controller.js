@@ -26,24 +26,6 @@ function getAcademyProductDetail(gKey) {
     }
 }
 
-//학원별 무료 동영상강의 상품 리스트
-function getFreeVideoLectureListFromCategoryMenu(ctgKey, device, tagId) {
-    if (ctgKey == null || ctgKey == undefined) return;
-    var data = {
-        device: device
-    };
-    var InfoList = getApi("/product/getFreeVideoLectureListFromCategoryMenu/", ctgKey, data);
-    if (InfoList.result.length > 0) {
-        var selList = InfoList.result;
-        dwr.util.addRows(tagId, selList, [
-            /*
-                TODO : addoption 추가
-             */
-            //function(data) {return data.fullFileUrl;}
-        ], {escapeHtml:false});
-    }
-}
-
 //모의고사 상품 리스트
 function getMockExamListFromCategoryMenu(ctgKey, tagId) {
     if (ctgKey == null || ctgKey == undefined) return;
@@ -162,7 +144,6 @@ function getLectureApplyTeacherTypeList(menuCtgKey, subjectMenuKeys, teacherKeys
     if (infoList != null) {
         if (infoList.result.length > 0) {
             var selList = infoList.result;
-            console.log(selList);
             for (var i = 0; i < selList.length; i++) {
                 var cmpList  = selList[i];
                 //if(cmpList.teacherTypeInfo != null){
@@ -592,4 +573,73 @@ function getOnlineAcaType() {
         str = 'ACADEMY';
     }
     return str;
+}
+
+//학원별 무료 동영상강의 ctgkey
+function getFreeLectureCtgKey() {
+    var ctgKey = '';
+    var leftMenuInfo = sessionStorage.getItem('leftMenu');//직렬 구분
+    if(leftMenuInfo == "publicOnline"){
+        ctgKey = 4446;
+    }else if(leftMenuInfo == "techOnline"){
+        ctgKey = 4447;
+    }else if(leftMenuInfo == "postOnline"){
+        ctgKey = 4448;
+    }
+    return ctgKey;
+}
+
+//학원별 무료 동영상강의 유형 리스트
+function getFreeVideoLectureStepList(ctgKey) {
+    if (ctgKey == null || ctgKey == undefined) return;
+
+    var infoList = getApi("/product/getFreeVideoLectureStepList/", ctgKey, "");
+    if(infoList != null){
+        if(infoList.result.length > 0){
+            for(var i=0; i<infoList.result.length; i++){
+                var cmpList = infoList.result[i];
+                var returnHtml = "";
+                if(cmpList.ctgKey == 203){
+                    returnHtml += "<li class=\"active rgreen\"><a href='javascript:getFreeVideoListForm("+ cmpList.ctgKey +")'>이론</a></li>";
+                }else if(cmpList.ctgKey == 207){
+                    returnHtml += "<li class=\"rsky\"><a href='javascript:getFreeVideoListForm("+ cmpList.ctgKey +")'>단과특강</a></li>";
+                }else if(cmpList.ctgKey == 774){
+                    returnHtml += "<li class=\"rblue\"><a href='javascript:getFreeVideoListForm("+ cmpList.ctgKey +")'>아침특강</a></li>";
+                }
+                $("#typeList").append(returnHtml);
+            }
+        }
+       // return infoList.result;
+    }
+}
+
+function getFreeVideoLectureListFromCategoryMenu(ctgKey, sPage, listLimit, stepCtgKey) {
+    if (stepCtgKey == null || stepCtgKey == undefined) return;
+    var paging = new Paging();
+    dwr.util.removeAllRows(tagId); //테이블 리스트 초기화
+
+    var data = {
+        sPage : sPage,
+        listLimit : listLimit,
+        stepCtgKey : stepCtgKey
+    };
+
+    var infoList = getPageApi("/product/getFreeVideoLectureListFromCategoryMenu/", ctgKey, data);
+    var cnt = infoList.cnt;
+    if (infoList.result.length > 0) {
+        paging.count(sPage, cnt, '10', '10', comment.blank_list);
+        var selList = infoList.result;
+        for(var i=0; i < selList.length; i++){
+            var cmpList = selList[i];
+            if (cmpList != undefined) {
+                // var cellData = [
+                //     function(data) {return "<a href='javascript:void(0);' class='subject' onclick='goDetailReference("+ cmpList.bbsKey +");'>" + gfn_substr(cmpList.title, 0, 40) + "</a>";},
+                //     function(data) {return cmpList.writeUserName;},
+                //     function(data) {return cmpList.indate2;},
+                //     function(data) {return cmpList.readCount;}
+                // ];
+                dwr.util.addRows(tagId, [0], cellData, {escapeHtml: false});
+            }
+        }
+    }
 }
