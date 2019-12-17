@@ -9,7 +9,6 @@
     function fn_search2(val){
         gfn_display("allDiv", false);
         $("#typeVideoList").empty();
-
         var sPage = getInputTextValue("sPage2");
         var ctgKey = getFreeLectureCtgKey();
         if(val == "new") sPage = "1";
@@ -79,7 +78,7 @@
                                     <%@ include file="/common/inc/com_pageNavi.inc" %>
                                 </div>
                                 <div class="active">
-                                    <div class="myarea_list_wrap">
+                                    <div class="myarea_list_wrap" id="typeVideoWrap">
                                         <ul class="list" id="typeVideoList">
                                         </ul>
                                         <%@ include file="/common/inc/com_pageNavi2.inc" %>
