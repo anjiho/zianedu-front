@@ -11,6 +11,8 @@
     String url = request.getParameter(targetUrl);
     StringEncrypter encrypter = new StringEncrypter("axissoft", "starplayer");
     String encrypt_url= encrypter.encrypt(url);
+
+    System.out.println(">>" + vodPath);
 %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
