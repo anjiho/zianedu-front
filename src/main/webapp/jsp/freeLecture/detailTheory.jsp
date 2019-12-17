@@ -9,9 +9,17 @@
         var pcMobile = divisionPcMobile();
         getFreeVideoLectureDetailInfo(lecKey, pcMobile);
     });
+    
+    function goTeacherHome(reqKey, teacherKey) {
+        innerValue("teacherKey", teacherKey);
+        innerValue("reqKey", reqKey);
+        goPage("teacher", "detail");
+    }
 </script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
+    <input type="hidden" name="reqKey" id="reqKey">
+    <input type="hidden" name="teacherKey" id="teacherKey">
     <div id="wrap">
         <%@include file="/common/jsp/leftMenu.jsp" %>
         <!--상단-->
@@ -39,14 +47,14 @@
                                         </div>
                                         <div class="desc">
                                             <div>
-                                                <span class="rblack" id="subjectName">국어</span>
-                                                <span class="rgreen" id="ctgName">이론</span>
+                                                <span class="rblack" id="subjectName"></span>
+                                                <span class="" id="ctgName"></span>
                                             </div>
                                             <p class="tit" id="goodsName"></p>
                                             <span><span id="teacherName"></span> 교수님</span>
                                             <div class="utill">
-                                                <a href="" class="home">교수홈</a>
-                                                <a href="" class="class">수강신청</a>
+                                                <a href="" class="home" id="teacherHome">교수홈</a>
+                                                <a href="javascript:goPage('lectureOrder', 'single')" class="class">수강신청</a>
                                             </div>
                                         </div>
                                     </div>

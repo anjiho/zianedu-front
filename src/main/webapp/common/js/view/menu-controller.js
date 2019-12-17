@@ -32,6 +32,26 @@ function getTeacherIntroduceLeftMenu(ctgKey, tagId) {
     }
 }
 
+function getTeacherIntroduceLeftMenu2(ctgKey, teacherKey) {
+    if (ctgKey == null || ctgKey == undefined) return;
+    var InfoList = getApi("/menu/getTeacherIntroduceLeftMenu/", ctgKey,"");
+
+    if (InfoList.result.length > 0) {
+        var selList = InfoList.result;
+        var reqKey = "";
+        for(var i = 0 ; i <  selList.length; i++){
+            var teacherList = selList[i].teacherList;
+            for(var j = 0; j < teacherList.length; j++){
+                if(teacherList[j].teacherKey == teacherKey){
+                    reqKey = teacherList[j].reqKey;
+                }
+            }
+        }
+        return reqKey;
+    }
+}
+
+
 //기술직동영상 > 지안패스 > 좌측 가져오기
 function getTechVodZianPassLeftMenu(tagId) {
     if (ctgKey == null || ctgKey == undefined) return;

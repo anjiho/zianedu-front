@@ -31,7 +31,7 @@
                         <div class="tabPage">
                             <!--선택-->
                             <div class="direct_view">
-                                <a href="javascript:goPage('freeLecture', 'theory')" class="btn_inline w140">목록으로</a>
+                                <a href="javascript:goPage('freeLecture', 'examQuestion')" class="btn_inline w140">목록으로</a>
                                 <div class="item">
                                     <div class="inner">
                                         <div class="thumb">
@@ -39,14 +39,14 @@
                                         </div>
                                         <div class="desc">
                                             <div>
-                                                <span class="rblack" id="subjectName">국어</span>
-                                                <span class="rgreen" id="ctgName">이론</span>
+                                                <span class="rblack" id="subjectName"></span>
+                                                <span class="rgreen" id="ctgName"></span>
                                             </div>
                                             <p class="tit" id="goodsName"></p>
                                             <span><span id="teacherName"></span> 교수님</span>
                                             <div class="utill">
                                                 <a href="" class="home">교수홈</a>
-                                                <a href="" class="class">수강신청</a>
+                                                <a href="javascript:goPage('lectureOrder', 'single')" class="class">수강신청</a>
                                             </div>
                                         </div>
                                     </div>
