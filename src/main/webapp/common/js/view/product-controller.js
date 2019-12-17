@@ -679,7 +679,6 @@ function getFreeVideoLectureListFromCategoryMenu(ctgKey, sPage, listLimit, stepC
     var infoList = getPageApi("/product/getFreeVideoLectureListFromCategoryMenu/", ctgKey, data);
     var cnt = infoList.cnt;
     if (infoList.result.length > 0) {
-        console.log(infoList);
         var cntText = infoList.cnt+"개";
         innerHTML("lecCnt", cntText);
         paging.count(sPage, cnt, '10', listLimit, comment.blank_list);
@@ -739,10 +738,10 @@ function getFreeVideoLectureListFromCategoryMenu2(ctgKey, sPage, listLimit, step
 
     var infoList = getPageApi("/product/getFreeVideoLectureListFromCategoryMenu/", ctgKey, data);
     var cnt = infoList.cnt;
+    paging.count2(sPage, cnt, '10', listLimit, comment.blank_list);
     if (infoList.result.length > 0) {
         var cntText = infoList.cnt+"개";
         innerHTML("lecCnt", cntText);
-        paging.count2(sPage, cnt, '10', listLimit, comment.blank_list);
         var selList = infoList.result;
         for(var i=0; i < selList.length; i++){
             var cmpList = selList[i];
@@ -785,8 +784,6 @@ function getFreeVideoLectureListFromCategoryMenu2(ctgKey, sPage, listLimit, step
     }
 }
 
-
-
 //학원별 무료 동영상강의 상세보기
 function getFreeVideoLectureDetailInfo(lecKey, device) {
     if (lecKey == null || lecKey == undefined) return;
@@ -814,6 +811,7 @@ function getFreeVideoLectureDetailInfo(lecKey, device) {
             /*교수홈 테스트*/
             var teacherCtgKey = getTeacherListCtgKey();
             var reqKey = getTeacherIntroduceLeftMenu2(teacherCtgKey, freeInfo.teacherKey);
+            alert(reqKey);
             $("#teacherHome").prop("href", "javascript:goTeacherHome("+ reqKey +","+ freeInfo.teacherKey +");");
         }
 

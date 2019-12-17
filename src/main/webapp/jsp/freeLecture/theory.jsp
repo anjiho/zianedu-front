@@ -9,7 +9,6 @@
     function fn_search2(val){
         gfn_display("allDiv", false);
         $("#typeVideoList").empty();
-
         var sPage = getInputTextValue("sPage2");
         var ctgKey = getFreeLectureCtgKey();
         if(val == "new") sPage = "1";
@@ -38,7 +37,7 @@
 </script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
-    <input type="hidden" name="lecKey" id="lecKey">
+    <input type="hidden" id="lecKey">
     <input type="hidden" id="stepCtgKey">
     <input type="hidden" id="sPage">
     <input type="hidden" id="sPage2">
@@ -79,7 +78,7 @@
                                     <%@ include file="/common/inc/com_pageNavi.inc" %>
                                 </div>
                                 <div class="active">
-                                    <div class="myarea_list_wrap">
+                                    <div class="myarea_list_wrap" id="typeVideoWrap">
                                         <ul class="list" id="typeVideoList">
                                         </ul>
                                         <%@ include file="/common/inc/com_pageNavi2.inc" %>

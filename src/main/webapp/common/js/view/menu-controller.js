@@ -42,6 +42,7 @@ function getTeacherIntroduceLeftMenu2(ctgKey, teacherKey) {
         for(var i = 0 ; i <  selList.length; i++){
             var teacherList = selList[i].teacherList;
             for(var j = 0; j < teacherList.length; j++){
+                console.log(teacherList[j].teacherKey);
                 if(teacherList[j].teacherKey == teacherKey){
                     reqKey = teacherList[j].reqKey;
                 }
