@@ -807,11 +807,9 @@ function getFreeVideoLectureDetailInfo(lecKey, device) {
             innerHTML("goodsName", freeInfo.goodsName);
             innerHTML("teacherName", freeInfo.teacherName);
             innerHTML("lecCount", freeInfo.lecCount);
-            /**/
-            /*교수홈 테스트*/
+            
             var teacherCtgKey = getTeacherListCtgKey();
             var reqKey = getTeacherIntroduceLeftMenu2(teacherCtgKey, freeInfo.teacherKey);
-            alert(reqKey);
             $("#teacherHome").prop("href", "javascript:goTeacherHome("+ reqKey +","+ freeInfo.teacherKey +");");
         }
 
