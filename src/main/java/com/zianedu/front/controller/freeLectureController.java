@@ -24,6 +24,8 @@ public class freeLectureController {
             mvc.setViewName("/freeLecture/examQuestion");
         } else if ("detailTheory".equals(page_gbn)) {
             mvc.setViewName("/freeLecture/detailTheory");
+        } else if ("detailExamQuestion".equals(page_gbn)) {
+            mvc.setViewName("/freeLecture/detailExamQuestion");
         }
         return mvc;
     }

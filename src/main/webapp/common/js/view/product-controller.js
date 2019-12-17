@@ -596,49 +596,107 @@ function getFreeVideoLectureStepList(ctgKey) {
     var infoList = getApi("/product/getFreeVideoLectureStepList/", ctgKey, "");
     if(infoList != null){
         if(infoList.result.length > 0){
-            for(var i=0; i<infoList.result.length; i++){
-                var cmpList = infoList.result[i];
-                var returnHtml = "";
-                if(cmpList.ctgKey == 203){
-                    returnHtml += "<li class=\"active rgreen\"><a href='javascript:getFreeVideoListForm("+ cmpList.ctgKey +")'>이론</a></li>";
-                }else if(cmpList.ctgKey == 207){
-                    returnHtml += "<li class=\"rsky\"><a href='javascript:getFreeVideoListForm("+ cmpList.ctgKey +")'>단과특강</a></li>";
-                }else if(cmpList.ctgKey == 774){
-                    returnHtml += "<li class=\"rblue\"><a href='javascript:getFreeVideoListForm("+ cmpList.ctgKey +")'>아침특강</a></li>";
-                }
-                $("#typeList").append(returnHtml);
-            }
+
         }
-       // return infoList.result;
     }
 }
 
-function getFreeVideoLectureListFromCategoryMenu(ctgKey, sPage, listLimit, stepCtgKey) {
+function getFreeVideoLectureListFromCategoryMenu(ctgKey, sPage, listLimit, stepCtgKey, freeLectureType, tagId) {
     if (stepCtgKey == null || stepCtgKey == undefined) return;
     var paging = new Paging();
-    dwr.util.removeAllRows(tagId); //테이블 리스트 초기화
-
+    //dwr.util.removeAllRows(tagId); //테이블 리스트 초기화
     var data = {
         sPage : sPage,
         listLimit : listLimit,
-        stepCtgKey : stepCtgKey
+        stepCtgKey : stepCtgKey,
+        freeLectureType : freeLectureType
     };
 
     var infoList = getPageApi("/product/getFreeVideoLectureListFromCategoryMenu/", ctgKey, data);
     var cnt = infoList.cnt;
     if (infoList.result.length > 0) {
-        paging.count(sPage, cnt, '10', '10', comment.blank_list);
+        var cntText = infoList.cnt+"개";
+        innerHTML("lecCnt", cntText);
+        //paging.count(sPage, cnt, '10', '10', comment.blank_list);
         var selList = infoList.result;
         for(var i=0; i < selList.length; i++){
             var cmpList = selList[i];
-            if (cmpList != undefined) {
-                // var cellData = [
-                //     function(data) {return "<a href='javascript:void(0);' class='subject' onclick='goDetailReference("+ cmpList.bbsKey +");'>" + gfn_substr(cmpList.title, 0, 40) + "</a>";},
-                //     function(data) {return cmpList.writeUserName;},
-                //     function(data) {return cmpList.indate2;},
-                //     function(data) {return cmpList.readCount;}
-                // ];
-                dwr.util.addRows(tagId, [0], cellData, {escapeHtml: false});
+            var returnHtml = " <li class=\"item\">";
+            returnHtml += " <div class=\"inner\">";
+            returnHtml += "<div class=\"thumb\">";
+            returnHtml += "<a href=\"javascript:\"><img class=\"myarea_poster\" src='"+ cmpList.freeThumbnailImg +"' /></a>";
+            returnHtml += " </div>";
+            returnHtml += "<div class=\"desc\">";
+            returnHtml += " <div>";
+            returnHtml += "<span class=\"rblack\">"+ cmpList.subjectName +"</span>";
+            if(cmpList.ctgName == '이론'){
+                returnHtml += "<span class=\"rgreen\">"+ cmpList.ctgName +"</span>";
+            }else if(cmpList.ctgName == '단과특강'){
+                returnHtml += "<span class=\"rsky\">"+ cmpList.ctgName +"</span>";
+            }else if(cmpList.ctgName == '아침특강'){
+                returnHtml += "<span class=\"rblue\">"+ cmpList.ctgName +"</span>";
+            }else if(cmpList.ctgName == '기출문제'){
+                returnHtml += "<span class=\"rpurple\">"+ cmpList.ctgName +"</span>";
+            }else if(cmpList.ctgName == '문제풀이'){
+                returnHtml += "<span class=\"rorange\">"+ cmpList.ctgName +"</span>";
+            }else if(cmpList.ctgName == '모의고사'){
+                returnHtml += "<span class=\"rblue\">"+ cmpList.ctgName +"</span>";
+            }else { //필기대비 수정 필요
+                returnHtml += "<span class=\"rblue\">"+ cmpList.ctgName +"</span>";
+            }
+            returnHtml += "<span class=\"allnum\">총"+ cmpList.lecCount +"강</span>";
+            returnHtml += "</div>";
+            returnHtml += "<a href='javascript:goDetailVideo("+ cmpList.lecKey +")' class=\"tit\">"+ cmpList.goodsName +"</a>";
+            returnHtml += "<span>"+ cmpList.teacherName +" 교수님</span>";
+            returnHtml += "</div>";
+            returnHtml += "</div>";
+            returnHtml += "</li>";
+            $("#"+tagId).append(returnHtml);
+            // if (cmpList != undefined) {
+            //     // var cellData = [
+            //     //     function(data) {return "<a href='javascript:void(0);' class='subject' onclick='goDetailReference("+ cmpList.bbsKey +");'>" + gfn_substr(cmpList.title, 0, 40) + "</a>";},
+            //     //     function(data) {return cmpList.writeUserName;},
+            //     //     function(data) {return cmpList.indate2;},
+            //     //     function(data) {return cmpList.readCount;}
+            //     // ];
+            //     //dwr.util.addRows(tagId, [0], cellData, {escapeHtml: false});
+            // }
+        }
+    }
+}
+
+//학원별 무료 동영상강의 상세보기
+function getFreeVideoLectureDetailInfo(lecKey, device) {
+    if (lecKey == null || lecKey == undefined) return;
+    var data = {
+        device : device
+    };
+    var infoList = getApi("/product/getFreeVideoLectureDetailInfo/", lecKey, data);
+    if(infoList != null){
+        console.log(infoList);
+        if(infoList.result.freeLectureInfo != null){
+            var freeInfo = infoList.result.freeLectureInfo;
+            $("#lecImg").attr("src", freeInfo.freeThumbnailImg);
+            innerHTML("subjectName", freeInfo.subjectName);
+            innerHTML("ctgName", freeInfo.ctgName);
+            innerHTML("goodsName", freeInfo.goodsName);
+            innerHTML("teacherName", freeInfo.teacherName);
+            innerHTML("lecCount", freeInfo.lecCount);
+        }
+
+        if(infoList.result.freeLectureList != null){
+            var selList = infoList.result.freeLectureList;
+            for(var i=0; i < selList.length; i++){
+                var cmpList = selList[i];
+                if (cmpList != undefined) {
+                    var cellData = [
+                        function(data) {return cmpList.numStr;},
+                        function(data) {return cmpList.name},
+                        function(data) {return '55';},
+                        function(data) {return "<a href=\"\" class=\"black small\">일반화질</a>&nbsp;<a href=\"\" class=\"blue small\">고화질</a>";}
+                    ];
+                    dwr.util.addRows("dataList", [0], cellData, {escapeHtml: false});
+                }
             }
         }
     }
