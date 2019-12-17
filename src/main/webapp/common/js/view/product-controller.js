@@ -807,7 +807,7 @@ function getFreeVideoLectureDetailInfo(lecKey, device) {
             innerHTML("goodsName", freeInfo.goodsName);
             innerHTML("teacherName", freeInfo.teacherName);
             innerHTML("lecCount", freeInfo.lecCount);
-            
+
             var teacherCtgKey = getTeacherListCtgKey();
             var reqKey = getTeacherIntroduceLeftMenu2(teacherCtgKey, freeInfo.teacherKey);
             $("#teacherHome").prop("href", "javascript:goTeacherHome("+ reqKey +","+ freeInfo.teacherKey +");");
