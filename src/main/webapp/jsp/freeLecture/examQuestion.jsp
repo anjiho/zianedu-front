@@ -2,22 +2,8 @@
 <%@include file="/common/jsp/common.jsp" %>
 <script>
     $( document ).ready(function() {
-        // var ctgKey = getFreeLectureCtgKey();
-        // getFreeVideoLectureListFromCategoryMenu(ctgKey, 1, 10, 0, 'PREV', 'allList');
         fn_search('new');
     });
-    // //학원별 이론 상품 가져오기
-    // function getFreeVideoListForm(stepCtgKey) {
-    //     gfn_display("allDiv", false);
-    //     $("#examList").empty();
-    //     $("#questionList").empty();
-    //     $("#mokList").empty();
-    //     var ctgKey = getFreeLectureCtgKey();
-    //     var tagId = "";
-    //     if(stepCtgKey == 205) tagId = 'questionList';
-    //     else if(stepCtgKey == 4266) tagId = 'mokList';
-    //     getFreeVideoLectureListFromCategoryMenu(ctgKey, 1, 10, stepCtgKey, 'PREV', tagId);
-    // }
 
     function fn_search2(val){
         gfn_display("allDiv", false);
