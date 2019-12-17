@@ -43,7 +43,7 @@
                         <div class="tabPage">
                             <!--선택-->
                             <div class="direct_view">
-                                <a href="javascript:goPage('freeLecture', 'examQuestion')" class="btn_inline w140">목록으로</a>
+                                <a href="javascript:goPageNoSubmit('freeLecture', 'examQuestion')" class="btn_inline w140">목록으로</a>
                                 <div class="item">
                                     <div class="inner">
                                         <div class="thumb">

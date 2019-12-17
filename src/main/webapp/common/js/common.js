@@ -31,7 +31,6 @@ function goPayPage(mapping_value, page_value) {
                 alert(1);
             }
         });
-
     }
 }
 
