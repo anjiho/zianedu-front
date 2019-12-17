@@ -795,6 +795,7 @@ function getFreeVideoLectureDetailInfo(lecKey, device) {
     };
     var infoList = getApi("/product/getFreeVideoLectureDetailInfo/", lecKey, data);
     if(infoList != null){
+        console.log(infoList);
         if(infoList.result.freeLectureInfo != null){
             var freeInfo = infoList.result.freeLectureInfo;
             $("#lecImg").attr("src", freeInfo.freeThumbnailImg);
@@ -811,7 +812,6 @@ function getFreeVideoLectureDetailInfo(lecKey, device) {
             innerHTML("lecCount", freeInfo.lecCount);
             /**/
             /*교수홈 테스트*/
-            console.log(freeInfo);
             var teacherCtgKey = getTeacherListCtgKey();
             var reqKey = getTeacherIntroduceLeftMenu2(teacherCtgKey, freeInfo.teacherKey);
             $("#teacherHome").prop("href", "javascript:goTeacherHome("+ reqKey +","+ freeInfo.teacherKey +");");
@@ -826,7 +826,7 @@ function getFreeVideoLectureDetailInfo(lecKey, device) {
                         function(data) {return cmpList.numStr;},
                         function(data) {return cmpList.name},
                         function(data) {return cmpList.vodTime;},
-                        function(data) {return "<a href='javascript:void(0);' onclick=\"OpenSamplePlayer('"+ cmpList.lowVideo +"');\" class=\"black small\">일반화질</a>&nbsp;<a href='javascript:void(0);' onclick=\"OpenSamplePlayer('"+ cmpList.highVideo +"');\" class=\"blue small\">고화질</a>";}
+                        function(data) {return "<a href='javascript:void(0);' onclick=\"OpenSamplePlayer('"+ cmpList.vodFileLow +"');\" class=\"black small\">일반화질</a>&nbsp;<a href='javascript:void(0);' onclick=\"OpenSamplePlayer('"+ cmpList.vodFileHigh +"');\" class=\"blue small\">고화질</a>";}
                     ];
                     dwr.util.addRows("dataList", [0], cellData, {escapeHtml: false});
                 }
