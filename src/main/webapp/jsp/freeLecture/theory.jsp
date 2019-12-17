@@ -2,23 +2,33 @@
 <%@include file="/common/jsp/common.jsp" %>
 <script>
     $( document ).ready(function() {
-        var ctgKey = getFreeLectureCtgKey();
-        getFreeVideoLectureListFromCategoryMenu(ctgKey, 1, 10, 0, 'THEORY', 'allList');
+        fn_search('new');
     });
-    //학원별 이론 상품 가져오기
-    function getFreeVideoListForm(stepCtgKey) {
+
+    //유형별 가져오기
+    function fn_search2(val){
         gfn_display("allDiv", false);
         $("#typeVideoList").empty();
-        $("#oneLecList").empty();
-        $("#morning").empty();
-        $("#examList").empty();
+
+        var sPage = getInputTextValue("sPage2");
         var ctgKey = getFreeLectureCtgKey();
-        var tagId = "";
-        if(stepCtgKey == 203) tagId = 'typeVideoList';
-        else if(stepCtgKey == 207) tagId = 'oneLecList';
-        else if(stepCtgKey == 774) tagId = 'morning';
-        else if(stepCtgKey == 4172) tagId = 'examList'; //필기대비 수정 필요
-        getFreeVideoLectureListFromCategoryMenu(ctgKey, 1, 10, stepCtgKey, 'THEORY', tagId);
+        if(val == "new") sPage = "1";
+
+        var stepCtgKey = getInputTextValue("stepCtgKey");
+        getFreeVideoLectureListFromCategoryMenu2(ctgKey, sPage, 3, stepCtgKey, 'THEORY', 'typeVideoList');
+    }
+    
+    function setStepCtgKey(val) {
+        innerValue("stepCtgKey", val);
+        fn_search2('new');
+    }
+
+    //전체 가져오기
+    function fn_search(val) {
+        var sPage = getInputTextValue("sPage");
+        var ctgKey = getFreeLectureCtgKey();
+        if(val == "new") sPage = "1";
+        getFreeVideoLectureListFromCategoryMenu(ctgKey, sPage, 3, 0, 'THEORY', 'allList');
     }
     
     function goDetailVideo(lecKey) {
@@ -29,6 +39,9 @@
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
     <input type="hidden" name="lecKey" id="lecKey">
+    <input type="hidden" id="stepCtgKey">
+    <input type="hidden" id="sPage">
+    <input type="hidden" id="sPage2">
     <div id="wrap">
         <%@include file="/common/jsp/leftMenu.jsp" %>
         <!--상단-->
@@ -53,44 +66,23 @@
                                 </div>
 
                                 <ul class="tabBar freetab" id="typeList" style="width: 526px;">
-                                    <li class="rgreen" onclick="getFreeVideoListForm(203)"><a href='javascript:void(0);'>이론</a></li>
-                                    <li class="rsky" onclick="getFreeVideoListForm(207)"><a href="javascript:void(0);" >단과특강</a></li>
-                                    <li class="rblue" onclick="getFreeVideoListForm(774)"><a href="javascript:void(0);">아침특강</a></li>
-                                    <li class="rblue" onclick="getFreeVideoListForm(4172)"><a href="javascript:void(0);" >필기대비</a></li>
+                                    <li class="rgreen" id="test" onclick="setStepCtgKey(203)"><a href='javascript:void(0);'>이론</a></li>
+                                    <li class="rsky" id="207" onclick="setStepCtgKey(207)"><a href="javascript:void(0);" >단과특강</a></li>
+                                    <li class="rblue" onclick="setStepCtgKey(774)"><a href="javascript:void(0);">아침특강</a></li>
+                                    <li class="rblue" onclick="setStepCtgKey(4172)"><a href="javascript:void(0);" >필기대비</a></li>
                                 </ul>
                                 <br><br>
                                 <!-- 이론 -->
                                 <div class="myarea_list_wrap" id="allDiv">
                                     <ul class="list" id="allList">
                                     </ul>
-                                    <!-- paging -->
+                                    <%@ include file="/common/inc/com_pageNavi.inc" %>
                                 </div>
-                                <div class="tabPage active">
+                                <div class="active">
                                     <div class="myarea_list_wrap">
                                         <ul class="list" id="typeVideoList">
                                         </ul>
-                                        <!-- paging -->
-                                    </div>
-                                </div>
-                                <!-- 단과특강 -->
-                                <div class="tabPage">
-                                    <div class="myarea_list_wrap">
-                                        <ul class="list" id="oneLecList">
-                                        </ul>
-                                    </div>
-                                </div>
-                                <!-- 아침특강 -->
-                                <div class="tabPage">
-                                    <div class="myarea_list_wrap">
-                                        <ul class="list" id="morning">
-                                        </ul>
-                                    </div>
-                                </div>
-                                <!-- 필기대비 -->
-                                <div class="tabPage">
-                                    <div class="myarea_list_wrap">
-                                        <ul class="list" id="examList">
-                                        </ul>
+                                        <%@ include file="/common/inc/com_pageNavi2.inc" %>
                                     </div>
                                 </div>
                             </div>

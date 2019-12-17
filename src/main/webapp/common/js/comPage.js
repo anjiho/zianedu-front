@@ -60,7 +60,7 @@ function gfn_fnList2(page) {
     var sPage = document.getElementById("sPage2");
     sPage.value = page;
     try {
-        fn_search();
+        fn_search2();
     } catch (e){
 
     }

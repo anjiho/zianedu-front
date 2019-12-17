@@ -2,20 +2,46 @@
 <%@include file="/common/jsp/common.jsp" %>
 <script>
     $( document ).ready(function() {
-        var ctgKey = getFreeLectureCtgKey();
-        getFreeVideoLectureListFromCategoryMenu(ctgKey, 1, 10, 0, 'PREV', 'allList');
+        // var ctgKey = getFreeLectureCtgKey();
+        // getFreeVideoLectureListFromCategoryMenu(ctgKey, 1, 10, 0, 'PREV', 'allList');
+        fn_search('new');
     });
-    //학원별 이론 상품 가져오기
-    function getFreeVideoListForm(stepCtgKey) {
+    // //학원별 이론 상품 가져오기
+    // function getFreeVideoListForm(stepCtgKey) {
+    //     gfn_display("allDiv", false);
+    //     $("#examList").empty();
+    //     $("#questionList").empty();
+    //     $("#mokList").empty();
+    //     var ctgKey = getFreeLectureCtgKey();
+    //     var tagId = "";
+    //     if(stepCtgKey == 205) tagId = 'questionList';
+    //     else if(stepCtgKey == 4266) tagId = 'mokList';
+    //     getFreeVideoLectureListFromCategoryMenu(ctgKey, 1, 10, stepCtgKey, 'PREV', tagId);
+    // }
+
+    function fn_search2(val){
         gfn_display("allDiv", false);
-        $("#examList").empty();
         $("#questionList").empty();
-        $("#mokList").empty();
+
+        var sPage = getInputTextValue("sPage2");
         var ctgKey = getFreeLectureCtgKey();
-        var tagId = "";
-        if(stepCtgKey == 205) tagId = 'questionList';
-        else if(stepCtgKey == 4266) tagId = 'mokList';
-        getFreeVideoLectureListFromCategoryMenu(ctgKey, 1, 10, stepCtgKey, 'PREV', tagId);
+        if(val == "new") sPage = "1";
+
+        var stepCtgKey = getInputTextValue("stepCtgKey");
+        getFreeVideoLectureListFromCategoryMenu2(ctgKey, sPage, 1, stepCtgKey, 'PREV', 'questionList');
+    }
+
+    function setStepCtgKey(val) {
+        innerValue("stepCtgKey", val);
+        fn_search2('new');
+    }
+
+    //전체 가져오기
+    function fn_search(val) {
+        var sPage = getInputTextValue("sPage");
+        var ctgKey = getFreeLectureCtgKey();
+        if(val == "new") sPage = "1";
+        getFreeVideoLectureListFromCategoryMenu(ctgKey, sPage, 1, 0, 'PREV', 'allList');
     }
 
     function goDetailVideo(lecKey) {
@@ -26,6 +52,9 @@
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
     <input type="hidden" name="lecKey" id="lecKey">
+    <input type="hidden" id="stepCtgKey">
+    <input type="hidden" id="sPage">
+    <input type="hidden" id="sPage2">
     <div id="wrap">
         <%@include file="/common/jsp/leftMenu.jsp" %>
         <!--상단-->
@@ -49,32 +78,22 @@
                                     <p>총 <span id="lecCnt"></span>의 무료강좌가 있습니다</p>
                                 </div>
                                 <ul class="tabBar freetab" id="typeList" style="width: 267px;">
-                                    <li class="rorange" onclick="getFreeVideoListForm(205)"><a href='javascript:void(0);'>문제풀이</a></li>
-                                    <li class="rblue" onclick="getFreeVideoListForm(4266)"><a href='javascript:void(0);'>모의고사</a></li>
+                                    <li class="rorange" onclick="setStepCtgKey(205)"><a href='javascript:void(0);'>문제풀이</a></li>
+                                    <li class="rblue" onclick="setStepCtgKey(4266)"><a href='javascript:void(0);'>모의고사</a></li>
                                 </ul>
                                 <br><br>
                                 <!-- 이론 -->
                                 <div class="myarea_list_wrap" id="allDiv">
                                     <ul class="list" id="allList">
                                     </ul>
-                                    <!-- paging -->
+                                    <%@ include file="/common/inc/com_pageNavi.inc" %>
                                 </div>
-                                <!-- 단과특강 -->
-                                <div class="tabPage">
-                                    <div class="myarea_list_wrap">
-                                        <ul class="list" id="questionList">
-                                        </ul>
-                                    </div>
-                                </div>
-                                <!-- 아침특강 -->
-                                <div class="tabPage">
-                                    <div class="myarea_list_wrap">
-                                        <ul class="list" id="mokList">
-                                        </ul>
-                                    </div>
+                                <div class="myarea_list_wrap">
+                                    <ul class="list" id="questionList">
+                                    </ul>
+                                    <%@ include file="/common/inc/com_pageNavi2.inc" %>
                                 </div>
                             </div>
-                            <!-- //검색결과 나열 -->
                         </div>
                         <!--//이론 -->
                     </div>

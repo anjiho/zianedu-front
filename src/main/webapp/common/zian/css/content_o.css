@@ -113,6 +113,10 @@ legend {display:none;position:absolute;visibility:hidden;}
 .Mclass .replay.on {background:#000 url(/common/zian/images/content/icon-replay_on.png) 10px center no-repeat;} /*해제*/
 .Mclass .replay.off {background:#000 url(/common/zian/images/content/icon-replay_off.png) 10px center no-repeat;} /*신청*/
 
+/*내강의실 추가*****/
+.scroll {height:700px;overflow-x:hidden;}
+.tabPage .tbd_02 table.bd {border-top:1px solid #e5e5e5;border-bottom:1px solid #e5e5e5;}
+
 /*내강의실 - 동영상 탭메뉴*/
 .Mclass .tab_topContent {margin:20px auto 0;}
 .Mclass .tab_topContent .tabBar{height:49px;margin:0;font-size:16px;border-bottom: 1px solid #e5e5e5}
