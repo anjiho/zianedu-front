@@ -678,6 +678,7 @@ function getFreeVideoLectureListFromCategoryMenu(ctgKey, sPage, listLimit, stepC
 
     var infoList = getPageApi("/product/getFreeVideoLectureListFromCategoryMenu/", ctgKey, data);
     var cnt = infoList.cnt;
+
     if (infoList.result.length > 0) {
         var cntText = infoList.cnt+"개";
         innerHTML("lecCnt", cntText);
@@ -723,6 +724,8 @@ function getFreeVideoLectureListFromCategoryMenu(ctgKey, sPage, listLimit, stepC
         }
         dwr.util.addOptions(tagId, selList, formatter, {escapeHtml:false});
     }
+
+
 }
 
 function getFreeVideoLectureListFromCategoryMenu2(ctgKey, sPage, listLimit, stepCtgKey, freeLectureType, tagId) {
@@ -738,6 +741,10 @@ function getFreeVideoLectureListFromCategoryMenu2(ctgKey, sPage, listLimit, step
 
     var infoList = getPageApi("/product/getFreeVideoLectureListFromCategoryMenu/", ctgKey, data);
     var cnt = infoList.cnt;
+    if(cnt == 0){
+        var cntText = infoList.cnt+"개";
+        innerHTML("lecCnt", cntText);
+    }
     paging.count2(sPage, cnt, '10', listLimit, comment.blank_list);
     if (infoList.result.length > 0) {
         var cntText = infoList.cnt+"개";
