@@ -53,7 +53,7 @@
                 <div class="free">
                     <div class="tab_topContent tabContent">
                         <ul class="tabBox tBox2">
-                            <li><a href="javascript:goPage('freeLecture', 'theory')">이론</a></li>
+                            <li><a href="javascript:goPageNoSubmit('freeLecture', 'theory')">이론</a></li>
                             <li class="active"><a href="javascript:void(0);">기출풀이</a></li>
                         </ul>
                         <!-- 이론 -->
