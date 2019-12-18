@@ -869,7 +869,8 @@ function getZianPassProductList(parentKey) {
                         returnHtml += "<div class=\"lectureRow\">";
                         returnHtml += "<ul class=\"lectureList\">";
                         returnHtml += " <li class=\"w50p pl_30\">";
-                        returnHtml += "<a href='javascript:goDetailLec();' class=\"learnName\">"+ lecInfo.name +"</a>";
+                        var targetUrl = '"'+lecInfo.targetUrl+'"';
+                        returnHtml += "<a href='javascript:goDetailLec("+targetUrl+");' class=\"learnName\">"+ lecInfo.name +"</a>";
                         returnHtml += "<p>수강기간<span class=\"colorBlue\">"+ lecInfo.term +"</span></p>";
                         returnHtml += "<p>교재<span class=\"colorBlue\">별도구매</span></p>";
                         returnHtml += "</li>";

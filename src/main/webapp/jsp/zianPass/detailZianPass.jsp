@@ -19,7 +19,7 @@
         <!--본문-->
         <div id="container">
             <div class="inner">
-                <iframe src="<%=targetUrl%>" width="500" height="1000" style="border:none;" scrolling="no" frameborder="0" ></iframe>
+                <iframe src="<%=targetUrl%>" width="1000" height="1000" style="border:none;" frameborder="0" ></iframe>
             </div>
         </div>
         <!--//본문-->

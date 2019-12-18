@@ -100,8 +100,8 @@
         }
     }
 
-    function goDetailLec() {
-        //innerValue("targetUrl", targetUrl);
+    function goDetailLec(targetUrl) {
+        innerValue("targetUrl", targetUrl);
         goPage("zianPass", "detail");
     }
 </script>
@@ -110,7 +110,7 @@
 </form>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
-    <input type="hidden" id="targetUrl" name="targetUrl" value="http://52.79.40.214/views/zianPass/zianpass_106595.html">
+    <input type="hidden" id="targetUrl" name="targetUrl">
     <div id="wrap">
         <%@include file="/common/jsp/leftMenu.jsp" %>
         <!--상단-->
