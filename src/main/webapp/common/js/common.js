@@ -2951,22 +2951,27 @@ function daumMapApi(id, str) {
 function goCheckedShopBasket() {
     var arr = new Array();
     var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-    var userKey = sessionUserInfo.userKey;
-    $('input[name=lecChk]:checked').each(function() {
-        var priceKey = $(this).attr('id');
-        var gkey = $(this).val();
-        var data = {
-            userKey : userKey,
-            gKey : gkey,
-            priceKey : priceKey,
-            gCount : 1
-        };
-        arr.push(data);
-    });
-    var saveCartInfo = JSON.stringify(arr);
-    var result = saveCart(saveCartInfo);
-    if(result.resultCode == 200){
-        alert("장바구니에 담겼습니다.");
+    if(sessionUserInfo != undefined){
+        var userKey = sessionUserInfo.userKey;
+        $('input[name=lecChk]:checked').each(function() {
+            var priceKey = $(this).attr('id');
+            var gkey = $(this).val();
+            var data = {
+                userKey : userKey,
+                gKey : gkey,
+                priceKey : priceKey,
+                gCount : 1
+            };
+            arr.push(data);
+        });
+        var saveCartInfo = JSON.stringify(arr);
+        var result = saveCart(saveCartInfo);
+        if(result.resultCode == 200){
+            alert("장바구니에 담겼습니다.");
+            return false;
+        }
+    }else{
+        alert("로그인을 해주세요");
         return false;
     }
 }

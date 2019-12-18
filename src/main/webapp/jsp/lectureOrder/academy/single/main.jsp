@@ -155,7 +155,7 @@
                 <!--검색결과 리스트-->
                 <div class="lectureTotal leTotal">
                     <div class="right">
-                        선택한 항목 <span class="colorRed"  id='selCount'></span>개를
+                        선택한 항목 <span class="colorRed" id='selCount'></span>개를
                         <a href="javascript:goCheckedShopBasket();" class="btn_m">장바구니 담기</a>
                         <a href="javascript:goCheckedBuy();" class="btn_m on">바로구매</a>
                     </div>
