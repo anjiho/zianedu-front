@@ -54,54 +54,6 @@
         $('html, body').stop().animate({scrollTop : offset.top - 192}, 400);
         return false;
     }
-    
-    function goOneLecCheckedShopBasket(priceKey, gkey) {
-        var arr = new Array();
-        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-        if(sessionUserInfo != undefined){
-            var userKey = sessionUserInfo.userKey;
-                var data = {
-                    userKey : userKey,
-                    gKey : gkey,
-                    priceKey : priceKey,
-                    gCount : 1
-                };
-                arr.push(data);
-            var saveCartInfo = JSON.stringify(arr);
-            var result = saveCart(saveCartInfo);
-            if(result.resultCode == 200){
-                alert("장바구니에 담겼습니다.");
-                return false;
-            }
-        }else{
-            alert("로그인을 해주세요");
-            return false;
-        }
-    }
-    
-    function goOneLecCheckedBuy(gkey) {
-        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-        if(sessionUserInfo != undefined) {
-            if (confirm("바로 구매 하시겠습니까?")) {
-                sessionStorage.removeItem('cartNum');
-                sessionStorage.removeItem('gKeys');
-                sessionStorage.removeItem('goodsInfo');
-                sessionStorage.removeItem('resultData');
-                var arr = new Array();
-                var userKey = sessionUserInfo.userKey;
-                arr.push(gkey);
-
-                var data = toStrFileName(arr);
-                innerValue("gKeys", data);
-                //goPage("myPage","write");
-                $("#id_frm_singleMypage").attr("action", "/myPage?page_gbn=write");
-                $("#id_frm_singleMypage").submit();
-            }
-        }else{
-            alert("로그인을 해주세요");
-            return false;
-        }
-    }
 
     function goDetailLec(targetUrl) {
         innerValue("targetUrl", targetUrl);
