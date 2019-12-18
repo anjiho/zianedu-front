@@ -860,16 +860,16 @@ function getZianPassProductList(parentKey) {
     var infoList = getApi("/product/getZianPassProductList/", parentKey, '');
     if (infoList != null) {
         var selList = infoList.result;
+        console.log(selList);
         if(selList.length > 0){
             for(var i = 0; i < selList.length; i++){
                 var returnHtml = "<div class=\"lectureBody\" id='vl_"+ selList[i].affiliationCtgKey +"'>";
                 for(var j = 0; j < selList[i].zianPassProductList.length; j++){
                         var lecInfo = selList[i].zianPassProductList[j];
-                        console.log(lecInfo);
                         returnHtml += "<div class=\"lectureRow\">";
                         returnHtml += "<ul class=\"lectureList\">";
                         returnHtml += " <li class=\"w50p pl_30\">";
-                        returnHtml += "<a href=\"#\" class=\"learnName\">"+ lecInfo.name +"</a>";
+                        returnHtml += "<a href='javascript:goDetailLec();' class=\"learnName\">"+ lecInfo.name +"</a>";
                         returnHtml += "<p>수강기간<span class=\"colorBlue\">365일</span></p>";
                         returnHtml += "<p>교재<span class=\"colorBlue\">별도구매</span></p>";
                         returnHtml += "</li>";

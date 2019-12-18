@@ -20,7 +20,7 @@ public class zianPassController {
 
         if ("list".equals(page_gbn)) {
             mvc.setViewName("/zianPass/zianPassList");
-        }else if("orderList".equals(page_gbn)){
+        }else if("detail".equals(page_gbn)){
             mvc.setViewName("/zianPass/detailZianPass");
         }
         return mvc;

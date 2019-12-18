@@ -2993,7 +2993,7 @@ function goCheckedBuy() {
 
         var data = toStrFileName(arr);
         innerValue("gKeys", data);
-        //goPage("myPage","write");
+
         $("#id_frm_singleMypage").attr( "action", "/myPage?page_gbn=write");
         $("#id_frm_singleMypage").submit();
     }
