@@ -860,7 +860,6 @@ function getZianPassProductList(parentKey) {
     var infoList = getApi("/product/getZianPassProductList/", parentKey, '');
     if (infoList != null) {
         var selList = infoList.result;
-        console.log(selList);
         if(selList.length > 0){
             for(var i = 0; i < selList.length; i++){
                 var returnHtml = "<div class=\"lectureBody\" id='vl_"+ selList[i].affiliationCtgKey +"'>";

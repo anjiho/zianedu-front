@@ -91,3 +91,23 @@ function getTeacherListCtgKey() {
     else teacherCtgKey = 328;
     return teacherCtgKey;
 }
+
+function getZianPassCtgKey() {
+    var leftMenuInfo = sessionStorage.getItem('leftMenu');//직렬 구분
+    var ctgKey = "";
+    if(leftMenuInfo == "publicOnline") ctgKey = 239;
+    else if(leftMenuInfo == "techOnline") ctgKey = 454;
+    else if(leftMenuInfo == "postOnline") ctgKey = 587;
+    return ctgKey;
+}
+
+function getZianPassMenu(ctgKey) {
+    if (ctgKey == null || ctgKey == undefined) return;
+    var infoList = getApi("/menu/getZianPassMenu/", ctgKey,"");
+    var infoKey = 0;
+    for(var i =0; i < infoList.result.length; i++){
+        infoKey = infoList.result[i].ctgKey;
+    }
+    return infoKey;
+
+}

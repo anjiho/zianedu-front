@@ -2,9 +2,12 @@
 <%@include file="/common/jsp/common.jsp" %>
 <script>
     $( document ).ready(function() {
-       // $("#subject li a:eq(0)").addClass('active'); //전체로 default
-        getZianPassProductSubjectList(7026);
-        getZianPassProductList(7026);
+        var ctgKey = getZianPassCtgKey();
+        var parentKey = getZianPassMenu(ctgKey);
+        if(parentKey != ""){
+            getZianPassProductSubjectList(parentKey);
+            getZianPassProductList(parentKey);
+        }
         /* 지안패스 탭 선택시 스타일적용 */
         $('.selectArea dl dd ul li').each(function(){
             var $this = $(this);
