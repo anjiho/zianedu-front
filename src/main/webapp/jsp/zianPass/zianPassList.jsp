@@ -56,7 +56,10 @@
     }
 
     function goDetailLec(targetUrl) {
-        innerValue("targetUrl", targetUrl);
+        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        var userKey = sessionUserInfo.userKey;
+        var url = targetUrl+"?userKey="+userKey;
+        innerValue("targetUrl", url);
         goPage("zianPass", "detail");
     }
 </script>
