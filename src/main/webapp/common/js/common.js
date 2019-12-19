@@ -3070,3 +3070,9 @@ function goOneLecCheckedBuy(gkey) {
         return false;
     }
 }
+
+function goCheckBuy(gkey) {
+    var keyArr = new Array();
+    keyArr.push(gkey);
+    var data = toStrFileName(keyArr);
+}
