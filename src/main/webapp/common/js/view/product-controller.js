@@ -676,7 +676,6 @@ function getFreeVideoLectureListFromCategoryMenu(ctgKey, sPage, listLimit, stepC
         freeLectureType : freeLectureType
     };
     var infoList = getPageApi("/product/getFreeVideoLectureListFromCategoryMenu/", ctgKey, data);
-    console.log(infoList);
     var cnt = infoList.cnt;
     if(cnt == 0){
         innerHTML("lecCnt", '0');

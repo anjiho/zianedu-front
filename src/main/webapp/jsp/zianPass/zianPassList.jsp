@@ -66,15 +66,15 @@
         return false;
     }
 
-    function goDetailLec(targetUrl) {
+    function goDetailLec(zianPassUrl) {
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         if(sessionUserInfo == undefined){
             userKey = 0;
         }else{
             var userKey = sessionUserInfo.userKey;
         }
-        var url = targetUrl+"?userKey="+userKey;
-        innerValue("targetUrl", url);
+        var url = zianPassUrl+"?userKey="+userKey;
+        innerValue("zianPassUrl", url);
         goPage("zianPass", "detail");
     }
 </script>
@@ -83,7 +83,7 @@
 </form>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
-    <input type="hidden" id="targetUrl" name="targetUrl">
+    <input type="hidden" id="zianPassUrl" name="zianPassUrl">
     <div id="wrap">
         <%@include file="/common/jsp/leftMenu.jsp" %>
         <!--상단-->
