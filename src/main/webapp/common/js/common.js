@@ -2827,6 +2827,7 @@ function goLoginPage() {
     fnAppendHidden(document.frm, "target_url", "");
     with (document.frm) {
         var targetUrl = window.location.href;
+        console.log(targetUrl);
         page_gbn.value = "login";
         target_url.value = targetUrl;
         action = "/user";
