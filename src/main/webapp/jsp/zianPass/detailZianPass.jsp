@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/jsp/common.jsp" %>
 <%
-    String targetUrl = request.getParameter("targetUrl");
+    String targetUrl = request.getParameter("zianPassUrl");
 %>
 <script>
     $( document ).ready(function() {

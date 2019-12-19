@@ -156,7 +156,7 @@
                             <a href="javascript:goModify()" class="btn_inline gray w110">수정</a>
                         </div>
                         <div class="right">
-                            <a href="javascript:goPage('notice', 'list')" class="btn_inline blue w110">목록</a>
+                            <a href="javascript:goPage('notice', 'list')" class="btn_inline w110">목록</a>
                         </div>
                     </div>
                 </div>
