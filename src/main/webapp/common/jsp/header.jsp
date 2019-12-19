@@ -6,42 +6,42 @@
             $(".onlineTopMenu").show();
             $(".acaTopMenu").hide();
             $("#logo").attr("src", "/common/zian/images/common/logo01.png");
-            $("#mainUrl").attr("href", "javascript:goPage('publicOnline', 'main')");
+            $("#mainUrl").attr("href", "javascript:goPageNoSubmit('publicOnline', 'main')");
             innerHTML("mainName", "온라인");
             $("#mainName").css('color', '#134c97');
         }else if(leftMenuInfo == "publicAcademy") {
             $(".onlineTopMenu").hide();
             $(".acaTopMenu").show();
             $("#logo").attr("src", "/common/zian/images/common/logo01.png");
-            $("#mainUrl").attr("href", "javascript:goPage('publicAcademy', 'main')");
+            $("#mainUrl").attr("href", "javascript:goPageNoSubmit('publicAcademy', 'main')");
             innerHTML("mainName", "학원");
             $("#mainName").css('color', '#134c97');
         }else if(leftMenuInfo == "techOnline") {
             $(".onlineTopMenu").show();
             $(".acaTopMenu").hide();
             $("#logo").attr("src", "/common/zian/images/common/logo02.png");
-            $("#mainUrl").attr("href", "javascript:goPage('techOnline', 'main')");
+            $("#mainUrl").attr("href", "javascript:goPageNoSubmit('techOnline', 'main')");
             innerHTML("mainName", "온라인");
             $("#mainName").css('color', '#f69321');
         }else if(leftMenuInfo == "techAcademy") {
             $(".onlineTopMenu").hide();
             $(".acaTopMenu").show();
             $("#logo").attr("src", "/common/zian/images/common/logo02.png");
-            $("#mainUrl").attr("href", "javascript:goPage('techAcademy', 'main')");
+            $("#mainUrl").attr("href", "javascript:goPageNoSubmit('techAcademy', 'main')");
             innerHTML("mainName", "학원");
             $("#mainName").css('color', '#f69321');
         }else if(leftMenuInfo == "postOnline") {
             $(".onlineTopMenu").show();
             $(".acaTopMenu").hide();
             $("#logo").attr("src", "/common/zian/images/common/logo03.png");
-            $("#mainUrl").attr("href", "javascript:goPage('postOnline', 'main')");
+            $("#mainUrl").attr("href", "javascript:goPageNoSubmit('postOnline', 'main')");
             innerHTML("mainName", "온라인");
             $("#mainName").css('color', '#ce1717');
         }else if(leftMenuInfo == "postAcademy") {
             $(".onlineTopMenu").hide();
             $(".acaTopMenu").show();
             $("#logo").attr("src", "/common/zian/images/common/logo03.png");
-            $("#mainUrl").attr("href", "javascript:goPage('postAcademy', 'main')");
+            $("#mainUrl").attr("href", "javascript:goPageNoSubmit('postAcademy', 'main')");
             innerHTML("mainName", "학원");
             $("#mainName").css('color', '#ce1717');
         }
@@ -56,7 +56,7 @@
             <ul>
                 <li><a href="javascript:addFavorite();" class="btn_bookmark">즐겨찾기에 등록</a></li>
                 <li id="userName" style="display: none;"><a href="#"></a></li>
-                <li id="mypage" style="display: none;"><a href="javascript:goPage('myPage','orderList')">마이페이지</a></li>
+                <li id="mypage" style="display: none;"><a href="javascript:goPageNoSubmit('myPage','orderList')">마이페이지</a></li>
                 <li id="login"><a href="javascript:goLoginPage();">로그인</a></li>
                 <li id="logout" style="display: none;"><a href="javascript:goLogout();">로그아웃</a></li>
                 <li id="join"><a href="javascript:goPage('user', 'joinAgree');">회원가입</a></li>
@@ -71,11 +71,11 @@
     <div id="gnb" class="acaTopMenu" style="display: none;">
         <div class="inner">
             <ul class="deaph1 cols7">
-                <li><a href="javascript:goPage('myLecRoom', 'main')">내강의실</a></li>
-                <li><a href="javascript:goPage('teacher', 'main')">교수소개</a></li>
-                <li><a href="javascript:goPage('lectureOrder', 'academy')">학원수강신청</a></li>
-                <li><a href="javascript:goPage('zianPass', 'list')">연간관리반</a></li>
-                <li><a href="javascript:goPage('freeLecture', 'theory')">무료강좌</a></li>
+                <li><a href="javascript:goPageNoSubmit('myLecRoom', 'main')">내강의실</a></li>
+                <li><a href="javascript:goPageNoSubmit('teacher', 'main')">교수소개</a></li>
+                <li><a href="javascript:goPageNoSubmit('lectureOrder', 'academy')">학원수강신청</a></li>
+                <li><a href="javascript:goPageNoSubmit('zianPass', 'list')">연간관리반</a></li>
+                <li><a href="javascript:goPageNoSubmit('freeLecture', 'theory')">무료강좌</a></li>
                 <li><a href="#">빅모의고사</a></li>
                 <li><a href="#">합격수기</a></li>
             </ul>
@@ -85,11 +85,11 @@
     <div id="gnb" class="onlineTopMenu" style="display: none;">
         <div class="inner">
             <ul class="deaph1 cols7">
-                <li><a href="javascript:goPage('myLecRoom', 'main')">내강의실</a></li>
-                <li><a href="javascript:goPage('teacher', 'main')">교수소개</a></li>
-                <li><a href="javascript:goPage('lectureOrder', 'single')">수강신청</a></li>
-                <li><a href="javascript:goPage('zianPass', 'list')">지안패스</a></li>
-                <li><a href="javascript:goPage('freeLecture', 'theory')">무료강좌</a></li>
+                <li><a href="javascript:goPageNoSubmit('myLecRoom', 'main')">내강의실</a></li>
+                <li><a href="javascript:goPageNoSubmit('teacher', 'main')">교수소개</a></li>
+                <li><a href="javascript:goPageNoSubmit('lectureOrder', 'single')">수강신청</a></li>
+                <li><a href="javascript:goPageNoSubmit('zianPass', 'list')">지안패스</a></li>
+                <li><a href="javascript:goPageNoSubmit('freeLecture', 'theory')">무료강좌</a></li>
                 <li><a href="#">빅모의고사</a></li>
                 <li><a href="#">합격수기</a></li>
             </ul>

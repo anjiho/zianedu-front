@@ -2953,6 +2953,10 @@ function goCheckedShopBasket() {
     var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
     if(sessionUserInfo != undefined){
         var userKey = sessionUserInfo.userKey;
+        if($("input:checkbox[name=lecChk]:checked").length == 0 ){
+            alert("체크된 강의가 없습니다.");
+            return false;
+        }
         $('input[name=lecChk]:checked').each(function() {
             var priceKey = $(this).attr('id');
             var gkey = $(this).val();
@@ -2972,54 +2976,75 @@ function goCheckedShopBasket() {
         }
     }else{
         alert("로그인을 해주세요");
-        return false;
+        goLoginPage();
     }
 }
 
 //바로구매
 function goCheckedBuy() {
-    if(confirm("바로 구매 하시겠습니까?")){
-        sessionStorage.removeItem('cartNum');
-        sessionStorage.removeItem('gKeys');
-        sessionStorage.removeItem('goodsInfo');
-        sessionStorage.removeItem('resultData');
-        var arr = new Array();
-        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-        var userKey = sessionUserInfo.userKey;
-        $('input[name=lecChk]:checked').each(function() {
-            var gkey = $(this).val();
-            arr.push(gkey);
-        });
+    var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+    if(sessionUserInfo != undefined) {
+        if($("input:checkbox[name=lecChk]:checked").length == 0 ){
+            alert("체크된 강의가 없습니다.");
+            return false;
+        }
+        if (confirm("바로 구매 하시겠습니까?")) {
+            sessionStorage.removeItem('cartNum');
+            sessionStorage.removeItem('gKeys');
+            sessionStorage.removeItem('goodsInfo');
+            sessionStorage.removeItem('resultData');
+            var arr = new Array();
+            var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+            var userKey = sessionUserInfo.userKey;
+            $('input[name=lecChk]:checked').each(function () {
+                var gkey = $(this).val();
+                arr.push(gkey);
+            });
 
-        var data = toStrFileName(arr);
-        innerValue("gKeys", data);
+            var data = toStrFileName(arr);
+            innerValue("gKeys", data);
 
-        $("#id_frm_singleMypage").attr( "action", "/myPage?page_gbn=write");
-        $("#id_frm_singleMypage").submit();
+            $("#id_frm_singleMypage").attr("action", "/myPage?page_gbn=write");
+            $("#id_frm_singleMypage").submit();
+        }
+    }else{
+        alert("로그인을 해주세요");
+        goLoginPage();
     }
+
 }
 
 function goPackageCheckedBuy() {
-    if(confirm("바로 구매 하시겠습니까?")){
-        sessionStorage.removeItem('cartNum');
-        sessionStorage.removeItem('gKeys');
-        sessionStorage.removeItem('goodsInfo');
-        sessionStorage.removeItem('resultData');
-        var arr = new Array();
-        $('input[name=lecChk]:checked').each(function() {
-            var priceKey = $(this).attr('id');
-            var gkey = $(this).val();
-            var data = {
-                gKey : gkey,
-                priceKey : priceKey
-            };
-            arr.push(data);
-        });
-        var data = JSON.stringify(arr);
-        innerValue("goodsInfo", data);
-        $("#id_frm_pacakgeMypage").attr( "action", "/myPage?page_gbn=write");
-        $("#id_frm_pacakgeMypage").submit();
-        //goPage("myPage","write");
+    var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+    if(sessionUserInfo != undefined) {
+        if($("input:checkbox[name=lecChk]:checked").length == 0 ){
+            alert("체크된 강의가 없습니다.");
+            return false;
+        }
+        if (confirm("바로 구매 하시겠습니까?")) {
+            sessionStorage.removeItem('cartNum');
+            sessionStorage.removeItem('gKeys');
+            sessionStorage.removeItem('goodsInfo');
+            sessionStorage.removeItem('resultData');
+            var arr = new Array();
+            $('input[name=lecChk]:checked').each(function () {
+                var priceKey = $(this).attr('id');
+                var gkey = $(this).val();
+                var data = {
+                    gKey: gkey,
+                    priceKey: priceKey
+                };
+                arr.push(data);
+            });
+            var data = JSON.stringify(arr);
+            innerValue("goodsInfo", data);
+            $("#id_frm_pacakgeMypage").attr("action", "/myPage?page_gbn=write");
+            $("#id_frm_pacakgeMypage").submit();
+            //goPage("myPage","write");
+        }
+    }else{
+        alert("로그인을 해주세요");
+        goLoginPage();
     }
 }
 
@@ -3044,7 +3069,7 @@ function goOneLecCheckedShopBasket(priceKey, gkey) {
         }
     }else{
         alert("로그인을 해주세요");
-        return false;
+        goLoginPage();
     }
 }
 
@@ -3069,7 +3094,7 @@ function goOneLecCheckedBuy(gkey) {
         }
     }else{
         alert("로그인을 해주세요");
-        return false;
+        goLoginPage();
     }
 }
 

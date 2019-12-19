@@ -389,15 +389,17 @@ function getSignUpVideoLectureEndTypeList(userKey) {
     if (userKey == null || userKey == undefined) return;
     var infoList = getApi("/myPage/getSignUpVideoLectureEndTypeList/", userKey, "");
 
-    var selList = infoList.result;
-    if(selList.length > 0){
-        innerValue("lecEndCtgKey", selList[0].ctgKey);
-        dwr.util.addOptions('lecEndType', selList, function (data) {
-            return "<a href='javascript:lecEndTitleList("+ data.ctgKey +");'>"+ data.ctgName +"</a>"
-        }, {escapeHtml: false});
-    }else{
-        $("#lecEndDiv").hide();
-        return false;
+    if(infoList != null){
+        var selList = infoList.result;
+        if(selList.length > 0){
+            innerValue("lecEndCtgKey", selList[0].ctgKey);
+            dwr.util.addOptions('lecEndType', selList, function (data) {
+                return "<a href='javascript:lecEndTitleList("+ data.ctgKey +");'>"+ data.ctgName +"</a>"
+            }, {escapeHtml: false});
+        }else{
+            $("#lecEndDiv").hide();
+            return false;
+        }
     }
 }
 

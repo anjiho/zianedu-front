@@ -378,52 +378,6 @@
        console.log(list);
     }
 
-    //단일 바로구매
-    function goBuy(gkey, priceKey) {
-
-    }
-
-    //체크박스 장바구니 담기
-    // function goCheckedShopBasket() {
-    //     var arr = new Array();
-    //     var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-    //     var userKey = sessionUserInfo.userKey;
-    //     $('input[name=lecChk]:checked').each(function() {
-    //         var priceKey = $(this).attr('id');
-    //         var gkey = $(this).val();
-    //         var data = {
-    //             userKey : userKey,
-    //             gKey : gkey,
-    //             priceKey : priceKey,
-    //             gCount : 1
-    //         };
-    //         arr.push(data);
-    //     });
-    //     var saveCartInfo = JSON.stringify(arr);
-    //     var result = saveCart(saveCartInfo);
-    //     if(result.resultCode == 200){
-    //         alert("장바구니에 담겼습니다.");
-    //         return false;
-    //     }
-    // }
-
-    //바로구매
-    // function goCheckedBuy() {
-    //     if(confirm("바로 구매 하시겠습니까?")){
-    //         var arr = new Array();
-    //         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-    //         var userKey = sessionUserInfo.userKey;
-    //         $('input[name=lecChk]:checked').each(function() {
-    //             var gkey = $(this).val();
-    //             arr.push(gkey);
-    //         });
-    //
-    //         var data = toStrFileName(arr);
-    //         innerValue("gKeys", data);
-    //         goPage("myPage","write");
-    //     }
-    // }
-
     //학습안내 - 학습자료실 - 글쓰기
     function referenceWrite() {
         $("#fileList li").remove();
@@ -583,17 +537,6 @@
             });
         }
     }
-
-
-    // var sp = StarPlayerApp;
-    // sp.license = "FBD4FB45-D5F4-4493-AE56-BCD6F36F646A";
-    // sp.version = "1.0.0";
-    // sp.android_version = "1.0.0";
-    // sp.ios_version = "1.0.0";
-    // sp.pmp = "true";
-    // var app = function(info_url) {
-    //     sp.executeApp(info_url);
-    // }
 </script>
 <form id="id_frm_singleMypage" method="post" name="id_frm_singleMypage">
     <input type="hidden" id="gKeys" name="gKeys">

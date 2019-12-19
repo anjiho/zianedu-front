@@ -89,10 +89,11 @@
             });
         }else{
             alert("로그인이 필요합니다.");
-            $("#playLecListDiv").hide();
-            $("#zianPassListDiv").hide();
-            $("#acaDiv").hide();
-            return false;
+            goLoginPage();
+            // $("#playLecListDiv").hide();
+            // $("#zianPassListDiv").hide();
+            // $("#acaDiv").hide();
+            // return false;
         }
     });
 

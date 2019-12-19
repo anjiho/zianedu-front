@@ -675,13 +675,16 @@ function getFreeVideoLectureListFromCategoryMenu(ctgKey, sPage, listLimit, stepC
         stepCtgKey : stepCtgKey,
         freeLectureType : freeLectureType
     };
-
     var infoList = getPageApi("/product/getFreeVideoLectureListFromCategoryMenu/", ctgKey, data);
+    console.log(infoList);
     var cnt = infoList.cnt;
-
-    if (infoList.result.length > 0) {
+    if(cnt == 0){
+        innerHTML("lecCnt", '0');
+    }else{
         var cntText = infoList.cnt+"개";
         innerHTML("lecCnt", cntText);
+    }
+    if (infoList.result.length > 0) {
         paging.count(sPage, cnt, '10', listLimit, comment.blank_list);
         var selList = infoList.result;
         for(var i=0; i < selList.length; i++){

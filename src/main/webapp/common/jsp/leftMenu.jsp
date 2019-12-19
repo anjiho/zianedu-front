@@ -2,32 +2,32 @@
 <script>
     function setNoticeMenu() {
         //sessionStorage.setItem("leftMenu", "techAcademy");
-        goPage("notice", "list");
+        goPageNoSubmit("notice", "list");
     }
     function setLeftMenu() {
         var topSubHtml = $("#topSub").html();
 
         if(topSubHtml == '기술직 학원'){
             sessionStorage.setItem("leftMenu", "techAcademy");
-            goPage("techAcademy", "main");
+            goPageNoSubmit("techAcademy", "main");
         }else if(topSubHtml == '행정직 학원'){
             sessionStorage.setItem("leftMenu", "publicAcademy");
-            goPage("publicAcademy", "main");
+            goPageNoSubmit("publicAcademy", "main");
         }else if(topSubHtml == '계리직 학원'){
             sessionStorage.setItem("leftMenu", "postAcademy");
-            goPage("postAcademy", "main");
+            goPageNoSubmit("postAcademy", "main");
         }else if(topSubHtml == '계리직 학원'){
             sessionStorage.setItem("leftMenu", "postAcademy");
-            goPage("postAcademy", "main");
+            goPageNoSubmit("postAcademy", "main");
         }else if(topSubHtml == '기술직 온라인'){
             sessionStorage.setItem("leftMenu", "techOnline");
-            goPage("techOnline", "main");
+            goPageNoSubmit("techOnline", "main");
         }else if(topSubHtml == '행정직 온라인'){
             sessionStorage.setItem("leftMenu", "publicOnline");
-            goPage("publicOnline", "main");
+            goPageNoSubmit("publicOnline", "main");
         }else if(topSubHtml == '계리직 온라인'){
             sessionStorage.setItem("leftMenu", "postOnline");
-            goPage("postOnline", "main");
+            goPageNoSubmit("postOnline", "main");
         }else {
             sessionStorage.setItem("leftMenu", "publicOnline");
         }
@@ -37,13 +37,13 @@
         var subMenuHtml = $("#subMenu1").html();
         if(subMenuHtml == '기술직'){
             sessionStorage.setItem("leftMenu", "techOnline");
-            goPage("techOnline", "main");
+            goPageNoSubmit("techOnline", "main");
         }else if(subMenuHtml == '행정직'){
             sessionStorage.setItem("leftMenu", "publicOnline");
-            goPage("publicOnline", "main");
+            goPageNoSubmit("publicOnline", "main");
         }else if(subMenuHtml == '계리직'){
             sessionStorage.setItem("leftMenu", "postOnline");
-            goPage("postOnline", "main");
+            goPageNoSubmit("postOnline", "main");
         }else{
             sessionStorage.setItem("leftMenu", "publicOnline");
         }
@@ -53,13 +53,13 @@
         var subMenuHtml = $("#subMenu2").html();
         if(subMenuHtml == '기술직'){
             sessionStorage.setItem("leftMenu", "techOnline");
-            goPage("techOnline", "main");
+            goPageNoSubmit("techOnline", "main");
         }else if(subMenuHtml == '행정직'){
             sessionStorage.setItem("leftMenu", "publicOnline");
-            goPage("publicOnline", "main");
+            goPageNoSubmit("publicOnline", "main");
         }else if(subMenuHtml == '계리직'){
             sessionStorage.setItem("leftMenu", "postOnline");
-            goPage("postOnline", "main");
+            goPageNoSubmit("postOnline", "main");
         }else{
             sessionStorage.setItem("leftMenu", "publicOnline");
         }
