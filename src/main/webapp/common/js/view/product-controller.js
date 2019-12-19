@@ -892,3 +892,61 @@ function getZianPassProductList(parentKey) {
     }
 
 }
+
+
+//지안패스 과목 리스트
+function getYearMemberProductSubjectList(parentKey) {
+    if (parentKey == null || parentKey == undefined) return;
+    var infoList = getApi("/product/getYearMemberProductSubjectList/", parentKey, '');
+    if(infoList != null){
+        var selList = infoList.result;
+        if(selList.length > 0){
+            for(var i = 0; i< selList.length; i++){
+                var returnHtml = "<li>";
+                returnHtml += "<a href='javascript:selTab("+selList[i].ctgKey+");'>"+ selList[i].ctgName +"</a>";
+                returnHtml += "</li>";
+                $("#subjectList").append(returnHtml);
+            }
+        }
+    }
+}
+
+//지안패스 상품 리스트
+function getYearMemberProductList(parentKey) {
+    if (parentKey == null || parentKey == undefined) return;
+    var infoList = getApi("/product//getYearMemberProductList/", parentKey, '');
+    if (infoList != null) {
+        var selList = infoList.result;
+        if(selList.length > 0){
+            for(var i = 0; i < selList.length; i++){
+                var returnHtml = "<div class=\"lectureBody\" id='vl_"+ selList[i].affiliationCtgKey +"'>";
+                for(var j = 0; j < selList[i].zianPassProductList.length; j++){
+                    var lecInfo = selList[i].zianPassProductList[j];
+                    returnHtml += "<div class=\"lectureRow\">";
+                    returnHtml += "<ul class=\"lectureList\">";
+                    returnHtml += " <li class=\"w50p pl_30\">";
+                    var targetUrl = '"'+lecInfo.targetUrl+'"';
+                    returnHtml += "<a href='javascript:goDetailLec("+targetUrl+");' class=\"learnName\">"+ lecInfo.name +"</a>";
+                    returnHtml += "<p>수강기간<span class=\"colorBlue\">"+ lecInfo.term +"</span></p>";
+                    returnHtml += "<p>교재<span class=\"colorBlue\">별도구매</span></p>";
+                    returnHtml += "</li>";
+                    returnHtml += "<li class=\"w50p alignCenter\">";
+                    returnHtml += "<ul class=\"costList\">";
+                    returnHtml += "<li>";
+                    returnHtml += "<b class=\"cost\">"+ lecInfo.sellPrice +"원</b> <input type=\"checkbox\" id='"+ lecInfo.priceKey +"' name='lecChk' value='"+ lecInfo.gkey +"'>";
+                    returnHtml += "<a href='javascript:goOneLecCheckedShopBasket("+ lecInfo.priceKey +","+lecInfo.gkey+");' class=\"btn_s\">장바구니</a>&nbsp;";
+                    returnHtml += "<a href='javascript:goOneLecCheckedBuy("+ lecInfo.gkey +");' class=\"btn_s on\">바로구매</a>";
+                    returnHtml += " </li>";
+                    returnHtml += "</ul>";//costList
+                    returnHtml += "</li>";//w35p alignRight
+                    returnHtml += "</ul>";//lectureList
+                    returnHtml += "</div>";//lectureRow
+                }
+                returnHtml += "</div>";//lectureBody
+                $("#lecList").append(returnHtml);
+            }
+        }
+    }
+
+}
+

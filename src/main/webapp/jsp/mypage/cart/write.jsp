@@ -22,8 +22,8 @@
         var goodsInfo = '<%=goodsInfo%>';
         if('<%=cartKeys%>' == '' && '<%=goodsInfo%>' == ''){ //바로구매
             innerValue("gKeys", gKeys);
-            getOrderSheetInfoFromImmediately(userKey, gKeys);//장바구니
-        }else if('<%=gKeys%>' == '' && '<%=goodsInfo%>' == ''){
+            getOrderSheetInfoFromImmediately(userKey, gKeys);
+        }else if('<%=gKeys%>' == '' && '<%=goodsInfo%>' == ''){//장바구니
             innerValue("cartNum", cartKeys);
             getOrderSheetInfoFromCart(userKey, cartKeys);
         }else {//패키지

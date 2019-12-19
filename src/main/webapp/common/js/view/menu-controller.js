@@ -101,6 +101,15 @@ function getZianPassCtgKey() {
     return ctgKey;
 }
 
+function getYearMemberCtgKey() {
+    var leftMenuInfo = sessionStorage.getItem('leftMenu');//직렬 구분
+    var parentKey = "";
+    if(leftMenuInfo == "publicAcademy") parentKey = 761;
+    else if(leftMenuInfo == "techAcademy") parentKey = 762;
+    else if(leftMenuInfo == "postAcademy") parentKey = 763;
+    return parentKey;
+}
+
 function getZianPassMenu(ctgKey) {
     if (ctgKey == null || ctgKey == undefined) return;
     var infoList = getApi("/menu/getZianPassMenu/", ctgKey,"");

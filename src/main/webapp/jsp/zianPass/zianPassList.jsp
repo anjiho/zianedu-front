@@ -2,12 +2,23 @@
 <%@include file="/common/jsp/common.jsp" %>
 <script>
     $( document ).ready(function() {
-        var ctgKey = getZianPassCtgKey();
-        var parentKey = getZianPassMenu(ctgKey);
-        if(parentKey != ""){
-            getZianPassProductSubjectList(parentKey);
-            getZianPassProductList(parentKey);
+        var leftMenuInfo = sessionStorage.getItem('leftMenu');//직렬 구분
+        if(leftMenuInfo == "publicOnline" || leftMenuInfo == "techOnline" || leftMenuInfo == "postOnline") {//온라인 지안패스
+            var ctgKey = getZianPassCtgKey();
+            var parentKey = getZianPassMenu(ctgKey);
+            if(parentKey != ""){
+                getZianPassProductSubjectList(parentKey);//지안패스 과목리스트 가져오기
+                getZianPassProductList(parentKey);//지안패스 상품리스트 가져오기
+                gfn_display("yearMemberList", false);
+            }
+        }else{//학원 연간관리반
+            var parentKey = getYearMemberCtgKey();
+            getYearMemberProductSubjectList(parentKey); //연간관리반 과목리스트 가져오기
+            getYearMemberProductList(parentKey);//연간관리반 상품리스트 가져오기
+            gfn_display("passList", false);
         }
+
+
         /* 지안패스 탭 선택시 스타일적용 */
         $('.selectArea dl dd ul li').each(function(){
             var $this = $(this);
@@ -95,7 +106,8 @@
                 <!-- 국어 -->
                 <div class="lectureWrap">
                     <ul class="lectureTotal">
-                        <li class="left">지안패스 강좌목록</li>
+                        <li class="left" id="passList">지안패스 강좌목록</li>
+                        <li class="left" id="yearMemberList">연간관리반 강좌목록</li>
                         <li class="right">
                             선택한 항목 <span class="colorRed" id='selCount'></span>개를
                             <a href="javascript:goCheckedShopBasket();" class="btn_m">장바구니 담기</a>

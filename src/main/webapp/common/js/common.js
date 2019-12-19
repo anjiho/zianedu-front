@@ -3023,6 +3023,7 @@ function goPackageCheckedBuy() {
     }
 }
 
+//단일 장바구니
 function goOneLecCheckedShopBasket(priceKey, gkey) {
     var arr = new Array();
     var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
@@ -3047,6 +3048,7 @@ function goOneLecCheckedShopBasket(priceKey, gkey) {
     }
 }
 
+//단일 바로구매
 function goOneLecCheckedBuy(gkey) {
     var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
     if(sessionUserInfo != undefined) {
