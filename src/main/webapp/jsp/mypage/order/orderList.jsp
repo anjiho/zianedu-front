@@ -11,24 +11,11 @@
             sessionStorage.setItem("myPageHeader", "orderList");
         }
         $("#searchStartDate").datepicker({
-
-            changeMonth: true,
-            changeYear: true,
-            dateFormat:"yy-mm-dd",
-            prevText: '이전 달',
-            nextText: '다음 달',
-            monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-            monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-            dayNames: ['일', '월', '화', '수', '목', '금', '토'],
-            dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
-            dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
-            showMonthAfterYear: true,
-            yearSuffix: '년'
-            //, yearRange : 'c-5:c+1' //년도 범위
-
-
+            format: "yyyy-mm-dd"
         });
-
+        $("#searchEndDate").datepicker({
+            format: "yyyy-mm-dd"
+        });
         setSearchDate('3m', 'searchStartDate', 'searchEndDate');
         fn_search('new');
     });
@@ -83,10 +70,10 @@
                                     <fieldset>
                                         <legend>적립금 기간 검색 폼</legend>
                                         <span class="key-wrap">
-				                            <input name=""  id="searchStartDate" type="text" class="ui-datepicker">
-				                            <img align="abmiddle" class="" onclick="" src="/common/zian/images/content/btn_calendar.gif"> <span class="hyphen">~</span>
+				                            <input name=""  id="searchStartDate" type="text">
+				                            <img align="abmiddle" class="datepicker" onclick="" src="/common/zian/images/content/btn_calendar.gif"> <span class="hyphen">~</span>
 				                         	<input name="" class="" id="searchEndDate" type="text">
-				                        	<img align="" class="" onclick="" src="/common/zian/images/content/btn_calendar.gif">
+				                        	<img align="" class="datepicker" onclick="" src="/common/zian/images/content/btn_calendar.gif">
 			                            </span>
                                     </fieldset>
                                 </form>
