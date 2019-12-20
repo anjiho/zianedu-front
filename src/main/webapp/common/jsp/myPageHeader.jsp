@@ -25,7 +25,7 @@
             if($(this).index() == 0){
                 sessionStorage.setItem("myPageHeader", "orderList");
                 $("#myPageMenu li:eq(0)").addClass('active');
-                //goPageNoSubmit('notice', 'list');
+                goPageNoSubmit('myPage', 'orderList');
             }else if($(this).index() == 1){
                 sessionStorage.setItem("myPageHeader", "cart");
                 $("#myPageMenu li:eq(1)").addClass('active');

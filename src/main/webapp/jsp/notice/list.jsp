@@ -158,10 +158,6 @@
                     </div>
                     <%@ include file="/common/inc/com_pageNavi.inc" %>
                 </div>
-                <div id="calendar"></div>
-                <!--//서브 컨텐츠-->
-
-                <div id="calendar"></div>
             </div>
         </div>
         <!--//본문-->
