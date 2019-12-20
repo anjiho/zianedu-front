@@ -25,13 +25,12 @@
         if(val == "new") sPage = "1";
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         var userKey = sessionUserInfo.userKey;
-        //var startDate = getInputTextValue("searchStartDate");
-        //var endDate = getInputTextValue("searchEndDate");
-        var startDate = '2019-01-01';
-        var endDate = '2019-07-30';
+        var startDate = getInputTextValue("searchStartDate");
+        var endDate = getInputTextValue("searchEndDate");
         getUserOrderList(userKey, startDate, endDate, sPage, 5);
     }
-    
+
+    //주문상세내역
     function goDetailOrder(jkey) {
         innerValue("jkey", jkey);
         goPage("myPage", "detailOrder");
@@ -79,7 +78,7 @@
                                     </fieldset>
                                 </form>
                             </div>
-                            <a href="" class="search_btn">조회</a>
+                            <a href="javascript:fn_search('new');" class="search_btn">조회</a>
                         </div>
                         <ul>
                             <li>· 기본적으로 최근 3개월간의 자료가 조회되며, 기간 검색시 지난 주문내역을 조회하실 수 있습니다.</li>
