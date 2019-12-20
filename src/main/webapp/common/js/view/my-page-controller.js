@@ -440,3 +440,39 @@ function requestVideoStartStop(jLecKey, pauseDay, requestType) {
     var result = postApi("/myPage/requestVideoStartStop", data);
     return result;
 }
+
+function getUserOrderList(userKey, startDate, endDate, sPage, listLimit) {
+    if(userKey == null || userKey == undefined) return;
+    var paging = new Paging();
+    dwr.util.removeAllRows("dataList"); //테이블 리스트 초기화
+    var data = {
+        startDate: startDate,
+        endDate: endDate,
+        sPage: sPage,
+        listLimit:listLimit
+    };
+    var infoList = getPageApi("/myPage/getUserOrderList/", userKey, data);
+    var cnt = infoList.cnt;
+    console.log(infoList);
+    if(infoList != null){
+        if (infoList.result.length > 0) {
+            paging.count(sPage, cnt, '5', listLimit, comment.blank_list);
+            var listNum = ((cnt-1)+1)-((sPage-1)*10); //리스트 넘버링
+            var selList = infoList.result;
+            for(var i=0; i < selList.length; i++){
+                var cmpList = selList[i];
+                if (cmpList != undefined) {
+                    var cellData = [
+                        function(data) {return cmpList.indate +"<br><a href='javascript:goDetailOrder("+ cmpList.jkey +");'>"+cmpList.jid;+"<a>"},
+                        function(data) {return cmpList.orderGoodsName;},
+                        function(data) {return cmpList.sellPriceName;},
+                        function(data) {return '결제완료';},
+                        function(data) {return cmpList.deliveryStatusName;}
+                    ];
+                    dwr.util.addRows("dataList", [0], cellData, {escapeHtml: false});
+                }
+            }
+        }
+    }
+    
+}

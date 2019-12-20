@@ -21,7 +21,7 @@ public class myPageController {
         if ("cart".equals(page_gbn)) {
             mvc.setViewName("mypage/cart/cart");
         }else if("orderList".equals(page_gbn)){
-            mvc.setViewName("/mypage/orderList");
+            mvc.setViewName("mypage/order/orderList");
         }else if("write".equals(page_gbn)){
             mvc.setViewName("/mypage/cart/write");
         }else if("pay".equals(page_gbn)){
@@ -30,6 +30,8 @@ public class myPageController {
             mvc.setViewName("/mypage/cart/orderResult");
         }else if("orderResultMobile".equals(page_gbn)){
             mvc.setViewName("/mypage/cart/orderResultMobile");
+        }else if("detailOrder".equals(page_gbn)){
+            mvc.setViewName("/mypage/order/detailOrder");
         }
         return mvc;
     }

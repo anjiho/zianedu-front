@@ -1,16 +1,58 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/jsp/common.jsp" %>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.5/datepicker.js' type='text/javascript'></script>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.5/datepicker.css'>
 <script>
+
     $( document ).ready(function() {
         var leftMenuInfo = sessionStorage.getItem('myPageHeader');
         if(leftMenuInfo == null){
             $("#noticeMenu li:eq(0)").addClass('active');
             sessionStorage.setItem("myPageHeader", "orderList");
         }
+        $("#searchStartDate").datepicker({
+
+            changeMonth: true,
+            changeYear: true,
+            dateFormat:"yy-mm-dd",
+            prevText: '이전 달',
+            nextText: '다음 달',
+            monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+            monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+            dayNames: ['일', '월', '화', '수', '목', '금', '토'],
+            dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
+            dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+            showMonthAfterYear: true,
+            yearSuffix: '년'
+            //, yearRange : 'c-5:c+1' //년도 범위
+
+
+        });
+
+        setSearchDate('3m', 'searchStartDate', 'searchEndDate');
+        fn_search('new');
     });
+
+    function fn_search(val) {
+        var sPage = getInputTextValue("sPage");
+        if(val == "new") sPage = "1";
+        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        var userKey = sessionUserInfo.userKey;
+        //var startDate = getInputTextValue("searchStartDate");
+        //var endDate = getInputTextValue("searchEndDate");
+        var startDate = '2019-01-01';
+        var endDate = '2019-07-30';
+        getUserOrderList(userKey, startDate, endDate, sPage, 5);
+    }
+    
+    function goDetailOrder(jkey) {
+        innerValue("jkey", jkey);
+        goPage("myPage", "detailOrder");
+    }
 </script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
+    <input type="hidden" name="sPage" id="sPage">
     <div id="wrap">
         <%@include file="/common/jsp/leftMenu.jsp" %>
         <!--상단-->
@@ -21,20 +63,18 @@
         <div id="container">
             <div class="inner">
                 <!--서브 컨텐츠-->
-
                 <%@include file="/common/jsp/myPageHeader.jsp" %>
-
                 <div class="Mypage">
                     <!--날짜 검색 -->
                     <div class="date_sort">
                         <div class="inner">
                             <div class="date_5ea">
                                 <ul>
-                                    <li><a href="">오늘</a></li>
-                                    <li><a href="">1주일</a></li>
-                                    <li><a href="">1개월</a></li>
-                                    <li><a href="">3개월</a></li>
-                                    <li><a href="">6개월</a></li>
+                                    <li><a href="javascript:setSearchDate('0d', 'searchStartDate', 'searchEndDate');">오늘</a></li>
+                                    <li><a href="javascript:setSearchDate('1w', 'searchStartDate', 'searchEndDate');">1주일</a></li>
+                                    <li><a href="javascript:setSearchDate('1m', 'searchStartDate', 'searchEndDate');">1개월</a></li>
+                                    <li><a href="javascript:setSearchDate('3m', 'searchStartDate', 'searchEndDate');">3개월</a></li>
+                                    <li><a href="javascript:setSearchDate('6m', 'searchStartDate', 'searchEndDate');">6개월</a></li>
                                 </ul>
                             </div>
                             <div class="date_pick">
@@ -43,10 +83,10 @@
                                     <fieldset>
                                         <legend>적립금 기간 검색 폼</legend>
                                         <span class="key-wrap">
-				                            <input name="" class="" id="" onclick="" type="text"  readonly="" value="2019-09-21">
-				                            <img align="abmiddle" class="" onclick="" src="../images/content/btn_calendar.gif"> <span class="hyphen">~</span>
-				                         	<input name="" class="" id="" onclick="" type="text" readonly="" value="2019-10-21">
-				                        	<img align="" class="" onclick="" src="../images/content/btn_calendar.gif">
+				                            <input name=""  id="searchStartDate" type="text" class="ui-datepicker">
+				                            <img align="abmiddle" class="" onclick="" src="/common/zian/images/content/btn_calendar.gif"> <span class="hyphen">~</span>
+				                         	<input name="" class="" id="searchEndDate" type="text">
+				                        	<img align="" class="" onclick="" src="/common/zian/images/content/btn_calendar.gif">
 			                            </span>
                                     </fieldset>
                                 </form>
@@ -70,44 +110,12 @@
                                 <th>결재금액</th>
                                 <th>주문상태</th>
                                 <th>배송상태</th>
-                                <th></th>
                             </tr>
                             </thead>
-                            <tbody>
-                            <tr>
-                                <td>2019-06-18<br>[20190608-000332]</td>
-                                <td>2019 시험대비 이학민 응용역학 기본+심화이론강의 [5% 적립]</td>
-                                <td>340,000원</td>
-                                <td>결재완료</td>
-                                <td>배송준비</td>
-                                <td>
-                                    <a href="" class="re_btn">후기작성<span></span></a>
-                                    <span>후기작성시<br>마일리지 지급</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2019-06-18<br>[20190608-000332]</td>
-                                <td>2019 시험대비 이학민 응용역학 기본+심화이론강의 [5% 적립]</td>
-                                <td>340,000원</td>
-                                <td>결재완료</td>
-                                <td>배송준비</td>
-                                <td>
-                                    <a href="" class="re_btn">후기작성<span ></span></a>
-                                    <span>후기작성시<br>마일리지 지급</span>
-                                </td>
-                            </tr>
-                            </tbody>
+                            <tbody id="dataList"></tbody>
                         </table>
                         <!-- paging -->
-                        <div class="paging">
-                            <div class="boardnavi">
-                                <a class="prev" href="#">이전 목록이동</a>
-                                <span>
-									<strong class="selected">1</strong>
-								</span>
-                                <a class="next" href="#">다음 목록이동</a>
-                            </div>
-                        </div>
+                        <%@ include file="/common/inc/com_pageNavi.inc" %>
                         <!-- //paging -->
                     </div>
                 </div>
@@ -124,4 +132,3 @@
 </form>
 </body>
 </html>
-
