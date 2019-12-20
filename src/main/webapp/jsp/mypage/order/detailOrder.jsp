@@ -13,7 +13,8 @@
         var jKey = <%=jkey%>;
         getUserOrderDetail(jKey);
     });
-    
+
+    //후기작성
     function goReview(jlecKey) {
         
     }
@@ -40,8 +41,8 @@
                         <table>
                             <thead>
                             <tr>
-                                <th style="width: 60%;">상품명</th>
-                                <th style="width: 30%;">구분</th>
+                                <th style="width: 70%;">상품명</th>
+                                <th style="width: 20%;">구분</th>
                                 <th style="width: 10%;"></th>
                             </tr>
                             </thead>
