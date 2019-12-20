@@ -474,5 +474,53 @@ function getUserOrderList(userKey, startDate, endDate, sPage, listLimit) {
             }
         }
     }
+}
+
+function getUserOrderDetail(jKey) {
+    if(jKey == null || jKey == undefined) return;
+    var infoList = getApi("/myPage/getUserOrderDetail/", jKey, '');
+    console.log(infoList);
+    if(infoList != null){
+        if(infoList.result.orderList != null){
+            var orderInfo = infoList.result.orderList;
+            for(var i=0; i < orderInfo.length; i++){
+                if (orderInfo != undefined) {
+                    var cellData = [
+                        function(data) {return orderInfo[i].goodsName;},
+                        function(data) {return orderInfo[i].typeName;},
+                        function(data) {return orderInfo[i].reviewYn==true ?"<a href='javascript:goReview("+ orderInfo[i].jlecKey +");' class=\"re_btn\">후기작성<span ></span></a>": "-" ;}
+                    ];
+                    dwr.util.addRows("productList", [0], cellData, {escapeHtml: false});
+                }
+            }
+        }
+        if(infoList.result.paymentInfo != null){
+            var paymentInfo = infoList.result.paymentInfo;
+            innerHTML("priceName", paymentInfo.priceName);
+            innerHTML("pricePayName", paymentInfo.pricePayName);
+            innerHTML("payTypeName", paymentInfo.payTypeName);
+            innerHTML("payStatusName", paymentInfo.payStatusName);
+        }else{
+            innerHTML("address", "-");
+        }
+
+        if(infoList.result.orderUserInfo != null){
+            var orderUserInfo = infoList.result.orderUserInfo;
+            innerHTML("orderName", orderUserInfo.name);
+            innerHTML("telephoneMobile", orderUserInfo.telephoneMobile);
+            innerHTML("telephone", orderUserInfo.telephone);
+            innerHTML("email", orderUserInfo.email);
+        }else{
+            innerHTML("address", "-");
+        }
+
+        if(infoList.result.deliveryAddressInfo != null){
+            var deliveryAddressInfo = infoList.result.deliveryAddressInfo;
+            innerHTML("address", deliveryAddressInfo.deliveryAddress);
+        }else{
+            innerHTML("address", "-");
+        }
+
+    }
     
 }

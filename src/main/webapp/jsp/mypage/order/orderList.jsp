@@ -39,7 +39,8 @@
 </script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
-    <input type="hidden" name="sPage" id="sPage">
+    <input type="hidden" id="sPage">
+    <input type="hidden" id="jkey" name="jkey">
     <div id="wrap">
         <%@include file="/common/jsp/leftMenu.jsp" %>
         <!--상단-->
@@ -66,7 +67,7 @@
                             </div>
                             <div class="date_pick">
                                 <form name="form_reserve" id="form_reserve" action="/shop/mypage.html" method="GET">
-                                    <input name="mypage_type" type="hidden" value="myreserve">
+                                    <input type="hidden" value="myreserve">
                                     <fieldset>
                                         <legend>적립금 기간 검색 폼</legend>
                                         <span class="key-wrap">

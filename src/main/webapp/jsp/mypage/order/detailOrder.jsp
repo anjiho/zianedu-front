@@ -10,10 +10,17 @@
             $("#noticeMenu li:eq(0)").addClass('active');
             sessionStorage.setItem("myPageHeader", "orderList");
         }
+        var jKey = <%=jkey%>;
+        getUserOrderDetail(jKey);
     });
+    
+    function goReview(jlecKey) {
+        
+    }
 </script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
+    <input type="hidden" name="jlecKey" id="jlecKey">
     <div id="wrap">
         <%@include file="/common/jsp/leftMenu.jsp" %>
         <!--상단-->
@@ -29,33 +36,34 @@
                     <div class="tbd_03 tbd_04">
                         <div class="btn_crud2">
                             <a href="javascript:goPageNoSubmit('myPage','orderList');" class="reline_btn">목록</a>
-                            <a href="" class="re_btn">후기작성<span ></span></a>
                         </div>
+                        <table>
+                            <thead>
+                            <tr>
+                                <th style="width: 60%;">상품명</th>
+                                <th style="width: 30%;">구분</th>
+                                <th style="width: 10%;"></th>
+                            </tr>
+                            </thead>
+                            <tbody id="productList"></tbody>
+                        </table>
                         <table>
                             <tbody>
                             <tr>
-                                <th>상품명</th>
-                                <td>2019 시험대비 이학민 응용역학 기본+심화이론강의 [5% 적립]</td>
-                            </tr>
-                            <tr>
-                                <th>구분</th>
-                                <td>온라인 강좌</td>
-                            </tr>
-                            <tr>
                                 <th>판매가</th>
-                                <td>340,000원</td>
+                                <td id="priceName"></td>
                             </tr>
                             <tr>
                                 <th>총 결제금액</th>
-                                <td>300,000</td>
+                                <td id="pricePayName"></td>
                             </tr>
                             <tr>
                                 <th>결제방법</th>
-                                <td>신용카드</td>
+                                <td id="payTypeName"></td>
                             </tr>
                             <tr>
                                 <th>결제상탠</th>
-                                <td>결제완료</td>
+                                <td id="payStatusName"></td>
                             </tr>
                             </tbody>
                         </table>
@@ -64,23 +72,23 @@
                             <tbody>
                             <tr>
                                 <th>주문자</th>
-                                <td>홍길동</td>
+                                <td id="orderName"></td>
                             </tr>
                             <tr>
                                 <th>연락처</th>
-                                <td>010-0000-0000</td>
+                                <td id="telephone"></td>
                             </tr>
                             <tr>
                                 <th>휴대전화</th>
-                                <td>010-0000-0000</td>
+                                <td id="telephoneMobile"></td>
                             </tr>
                             <tr>
                                 <th>이메일</th>
-                                <td>abc@gmail.com</td>
+                                <td id="email"></td>
                             </tr>
                             <tr>
                                 <th>주소</th>
-                                <td>서울특별시 서초구</td>
+                                <td id="address"></td>
                             </tr>
                             </tbody>
                         </table>
