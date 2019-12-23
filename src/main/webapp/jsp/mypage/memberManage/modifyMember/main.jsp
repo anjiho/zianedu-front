@@ -225,7 +225,7 @@
             innerValue("postcode", result.zipcode);
             innerValue("roadAddress", result.addressRoad);
             innerValue("address", result.address);
-            getUserRegSerialList("interestCtgKey0"); //준비직렬);
+            getUserRegSerialList("interestCtgKey0");
             innerValue("interestCtgKey0", result.interestCtgKey0);
         }else{
             alert("로그인을 해주세요.");
@@ -242,22 +242,11 @@
             var addressNumber = getInputTextValue("addressNumber");//구주소
             var roadAddress =  getInputTextValue("roadAddress");
             var ctgKey =  getSelectboxValue("interestCtgKey0");
-            // var data = {
-            //     userKey: sessionUserInfo.userKey,
-            //     telephoneMobile : telephoneMobile,
-            //     zipcode : postcode,
-            //     addressRoad : roadAddress,
-            //     addressNumber : addressNumber,
-            //     address : address,
-            //     interestCtgKey0 : ctgKey
-            // };
-
             var memberResult  = memberModify(sessionUserInfo.userKey, telephoneMobile, postcode, roadAddress, addressNumber, address, ctgKey);
             if(memberResult.resultCode == 200){
                 alert("수정이 완료 되었습니다.");
                 isReloadPage();
             }
-
         }
     }
 </script>
