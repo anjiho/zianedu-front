@@ -46,6 +46,7 @@
             $("#mainName").css('color', '#ce1717');
         }
     });
+
 </script>
 <!--상단-->
 <div id="header">

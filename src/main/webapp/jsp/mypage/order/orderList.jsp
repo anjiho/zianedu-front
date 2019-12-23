@@ -5,11 +5,14 @@
 <script>
 
     $( document ).ready(function() {
-        var leftMenuInfo = sessionStorage.getItem('myPageHeader');
-        if(leftMenuInfo == null){
-            $("#noticeMenu li:eq(0)").addClass('active');
-            sessionStorage.setItem("myPageHeader", "orderList");
-        }
+        // var leftMenuInfo = sessionStorage.getItem('myPageHeader');
+        // if(leftMenuInfo == null){
+        //     $("#noticeMenu li:eq(0)").addClass('active');
+        //     sessionStorage.setItem("myPageHeader", "orderList");
+        // }
+        sessionStorage.removeItem('myPageHeader');
+        sessionStorage.setItem("myPageHeader", "orderList");
+        $("#noticeMenu li:eq(0)").addClass('active');
         $("#searchStartDate").datepicker({
             format: "yyyy-mm-dd"
         });

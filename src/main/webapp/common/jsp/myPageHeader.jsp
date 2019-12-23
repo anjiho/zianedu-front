@@ -33,19 +33,16 @@
             }else if($(this).index() == 2){
                 sessionStorage.setItem("myPageHeader", "memberInfo");
                 $("#myPageMenu li:eq(2)").addClass('active');
-                //goPageNoSubmit('notice', 'lecRoom');
+                goPageNoSubmit('myPage', 'memberMain');
             }else if($(this).index() == 3){
                 sessionStorage.setItem("myPageHeader", "cupon");
                 $("#myPageMenu li:eq(3)").addClass('active');
-                //goPageNoSubmit('notice', 'list');
             }else if($(this).index() == 4){
                 sessionStorage.setItem("myPageHeader", "board");
                 $("#myPageMenu li:eq(4)").addClass('active');
-                //goPageNoSubmit('notice', 'examGuide');
             }else if($(this).index() == 5){
                 sessionStorage.setItem("myPageHeader", "lecture");
                 $("#myPageMenu li:eq(5)").addClass('active');
-                //goPageNoSubmit('notice', 'list');
             }
         });
     });

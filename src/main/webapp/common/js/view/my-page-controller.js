@@ -479,7 +479,6 @@ function getUserOrderList(userKey, startDate, endDate, sPage, listLimit) {
 function getUserOrderDetail(jKey) {
     if(jKey == null || jKey == undefined) return;
     var infoList = getApi("/myPage/getUserOrderDetail/", jKey, '');
-    console.log(infoList);
     if(infoList != null){
         if(infoList.result.orderList != null){
             var orderInfo = infoList.result.orderList;
