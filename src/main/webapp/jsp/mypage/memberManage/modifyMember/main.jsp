@@ -137,6 +137,7 @@
                                 <tr>
                                     <th>기기변경인증하기</th>
                                     <td><a href="#modal305" class="btn_modalOpen btn_m bdgray2">인증하기</a>
+                                        <span>타이머</span><span id="timer"></span>
                                         <span class="text_red">※기기변경은 pc1회, 모바일 1회 가능합니다.</span></td>
                                 </tr>
                                 <tr>
@@ -249,4 +250,37 @@
             }
         }
     }
+
+    function $ComTimer(){
+        //prototype extend
+    }
+
+    $ComTimer.prototype = {
+        comSecond : ""
+        , fnCallback : function(){}
+        , timer : ""
+        , domId : ""
+        , fnTimer : function(){
+            //debugger;
+            var m = Math.floor(this.comSecond / 60) + "분 " + (this.comSecond % 60) + "초";	// 남은 시간 계산
+            this.comSecond--;					// 1초씩 감소
+            console.log(m);
+            this.domId.innerText = m;
+            if (this.comSecond < 0) {			// 시간이 종료 되었으면..
+                clearInterval(this.timer);		// 타이머 해제
+                alert("인증시간이 초과하였습니다. 다시 인증해주시기 바랍니다.")
+            }
+        }
+        ,fnStop : function(){
+            clearInterval(this.timer);
+        }
+    }
+
+    $(document).ready(function(){
+        var AuthTimer = new $ComTimer()
+        AuthTimer.comSecond = 180;
+        AuthTimer.fnCallback = function(){alert("다시인증을 시도해주세요.")}
+        AuthTimer.timer =  setInterval(function(){AuthTimer.fnTimer()},1000);
+        AuthTimer.domId = document.getElementById("timer");
+    })
 </script>
