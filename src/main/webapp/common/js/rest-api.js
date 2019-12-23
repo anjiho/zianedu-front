@@ -14,6 +14,17 @@ function postApi(url, paramData) {
     return resultData;
 }
 
+/* post */
+function postMailApi(url, pathData, paramData) {
+    var resultData = null;
+    $.post(apiHost + url + pathData, paramData, function (response) {
+        resultData = response;
+    }).fail(function() {
+        alert(comment.error);
+    });
+    return resultData;
+}
+
 /* get */
 function getApi(url, pathData, paramData) {
 

@@ -137,7 +137,6 @@
                                 <tr>
                                     <th>기기변경인증하기</th>
                                     <td><a href="#modal305" class="btn_modalOpen btn_m bdgray2">인증하기</a>
-                                        <span>타이머</span><span id="timer"></span>
                                         <span class="text_red">※기기변경은 pc1회, 모바일 1회 가능합니다.</span></td>
                                 </tr>
                                 <tr>
@@ -195,16 +194,17 @@
 					기기변경 후 지안패스 상품은 기기변경이 불가하오니<br>
 					이점 유의하시어 수강하시길 바랍니다.
 				</span>
-                <select>
-                    <option>모바일 기기 변경</option>
+                <select id="selPcMobile">
+                    <option value="MOBILE">모바일 기기 변경</option>
+                    <option value="PC">pc 기기 변경</option>
                 </select>
                 <span>
-					<input type="checkbox" name="all" value="" >위 내용을 읽었음을 동의합니다.
+					<input type="checkbox" name="popupChk" id="popupChk" >위 내용을 읽었음을 동의합니다.
 				</span>
             </div>
             <div class="modal_btn_box">
                 <a href="" class="bdgray">확인</a>
-                <a href="" class="bdblue">인증메일발송</a>
+                <a href="javascript:goRequestMail();" class="bdblue">인증메일발송</a>
             </div>
         </div>
     </div>
@@ -251,36 +251,27 @@
         }
     }
 
-    function $ComTimer(){
-        //prototype extend
-    }
-
-    $ComTimer.prototype = {
-        comSecond : ""
-        , fnCallback : function(){}
-        , timer : ""
-        , domId : ""
-        , fnTimer : function(){
-            //debugger;
-            var m = Math.floor(this.comSecond / 60) + "분 " + (this.comSecond % 60) + "초";	// 남은 시간 계산
-            this.comSecond--;					// 1초씩 감소
-            console.log(m);
-            this.domId.innerText = m;
-            if (this.comSecond < 0) {			// 시간이 종료 되었으면..
-                clearInterval(this.timer);		// 타이머 해제
-                alert("인증시간이 초과하였습니다. 다시 인증해주시기 바랍니다.")
-            }
+    function goRequestMail() {
+        var chk =  isCheckedCheckbox("popupChk", "ID");
+        if(chk == false) {
+            alert("기기변경 내용 동의를 체크해 주세요.");
+            return false;
         }
-        ,fnStop : function(){
-            clearInterval(this.timer);
+        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        var pcMobile = getSelectboxValue("selPcMobile");
+        var result = requestChangeDevice(sessionUserInfo.userKey, pcMobile);
+        if(result.resultCode == 200){
+            alert("기기변경을 신청하였습니다.등록된 이메일에서 인증번호 확인 부탁드립니다.");
+            goPage("myPage","changeDevice");
+        }else if(result.resultCode == 911){
+            alert("기기가 등록되어 있지 않습니다.");
+            return false;
+        }else if(result.resultCode == 907){//pc
+            alert("기기변경은 총 모바일 1번, PC 1번씩  변경 가능합니다.");
+            return false;
+        }else if(result.resultCode == 908){//mobile
+            alert("기기변경은 총 모바일 1번, PC 1번씩  변경 가능합니다.");
+            return false;
         }
     }
-
-    $(document).ready(function(){
-        var AuthTimer = new $ComTimer()
-        AuthTimer.comSecond = 180;
-        AuthTimer.fnCallback = function(){alert("다시인증을 시도해주세요.")}
-        AuthTimer.timer =  setInterval(function(){AuthTimer.fnTimer()},1000);
-        AuthTimer.domId = document.getElementById("timer");
-    })
 </script>

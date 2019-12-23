@@ -62,3 +62,21 @@ function getUserInfo(userKey) {
     return userInfo.result;
 }
 
+function requestChangeDevice(userKey, deviceType) {
+    if (userKey == null || userKey == undefined) return;
+    var data = {
+        deviceType: deviceType
+    };
+    var resultInfo = postMailApi("/user/requestChangeDevice/", userKey, data);
+    return resultInfo;
+}
+
+function confirmChangeDeviceCode(userKey, code) {
+    if (userKey == null || userKey == undefined) return;
+    var data = {
+        code: code
+    };
+    var resultInfo = postMailApi("/user/confirmChangeDeviceCode/", userKey, data);
+    return resultInfo;
+
+}

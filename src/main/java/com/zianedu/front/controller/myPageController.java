@@ -38,6 +38,8 @@ public class myPageController {
             mvc.setViewName("/mypage/memberManage/modifyPwd/main");
         }else if("modifyPwd".equals(page_gbn)){
             mvc.setViewName("/mypage/memberManage/modifyPwd/writePwd");
+        }else if("changeDevice".equals(page_gbn)){
+            mvc.setViewName("/mypage/memberManage/modifyMember/changeDevice");
         }
         return mvc;
     }
