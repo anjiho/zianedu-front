@@ -32,6 +32,12 @@ public class myPageController {
             mvc.setViewName("/mypage/cart/orderResultMobile");
         }else if("detailOrder".equals(page_gbn)){
             mvc.setViewName("/mypage/order/detailOrder");
+        }else if("memberMain".equals(page_gbn)){
+            mvc.setViewName("/mypage/memberManage/modifyMember/main");
+        }else if("pwdMain".equals(page_gbn)){
+            mvc.setViewName("/mypage/memberManage/modifyPwd/main");
+        }else if("modifyPwd".equals(page_gbn)){
+            mvc.setViewName("/mypage/memberManage/modifyPwd/writePwd");
         }
         return mvc;
     }

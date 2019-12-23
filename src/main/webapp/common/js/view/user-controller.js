@@ -1,7 +1,6 @@
 //회원 아이디 중복체크
 function checkDuplicate(userId) {
     if (userId == null || userId == undefined) return;
-
     var data = {
         userId : userId
     };
@@ -32,6 +31,19 @@ function login(userId, userPwd) {
 //회원탈퇴
 
 //회원정보 수정
+function memberModify(userKey, telephoneMobile, zipcode, addressRoad, addressNumber, address, interestCtgKey0) {
+    var data = {
+        userKey: userKey,
+        telephoneMobile : telephoneMobile,
+        zipcode : zipcode,
+        addressRoad : addressRoad,
+        addressNumber : addressNumber,
+        address : address,
+        interestCtgKey0 : interestCtgKey0
+    };
+    var result = postApi("/user/modify", data);
+    return result;
+}
 
 //회원 비밀번호 변경
 
@@ -42,3 +54,11 @@ function userReg(data) {
     var result = postApi("/user/reg", data);
     return result;
 }
+
+//회원정보가져오기
+function getUserInfo(userKey) {
+    if (userKey == null || userKey == undefined) return;
+    var userInfo = getApi("/user/getUserInfo/", userKey, '');
+    return userInfo.result;
+}
+

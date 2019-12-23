@@ -2629,7 +2629,7 @@ function execDaumPostcode() {
 
             document.getElementById('postcode').value = data.zonecode;
             document.getElementById("roadAddress").value = roadAddr;
-            //document.getElementById("jibunAddress").value = data.jibunAddress;
+            document.getElementById("addressNumber").value = data.jibunAddress;
 
             var guideTextBox = document.getElementById("guide");
             // 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
