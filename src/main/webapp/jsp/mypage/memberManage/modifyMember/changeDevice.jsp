@@ -3,11 +3,11 @@
 <script>
     $(document).ready(function(){
         var AuthTimer = new $ComTimer();
-        AuthTimer.comSecond = 180;
+        AuthTimer.comSecond = 300;
         AuthTimer.fnCallback = function(){alert("다시인증을 시도해주세요.")}
         AuthTimer.timer =  setInterval(function(){AuthTimer.fnTimer()},1000);
         AuthTimer.domId = document.getElementById("timer");
-    })
+    });
 
     function $ComTimer(){
         //prototype extend
@@ -43,10 +43,12 @@
         var result = confirmChangeDeviceCode(sessionUserInfo.userKey, code);
         if(result.resultCode == 200){
             alert("기기 변경이 완료되었습니다.");
+            goPageNoSubmit('myPage', 'memberMain');
         }else if(result.resultCode == 909){
             alert("기기변경 코드가 일치하지 않습니다.");
         }else if(result.resultCode == 910){
             alert("인증시간이 초과 되었습니다.");
+            goPageNoSubmit('myPage', 'memberMain');
         }
     }
 

@@ -195,8 +195,8 @@
 					이점 유의하시어 수강하시길 바랍니다.
 				</span>
                 <select id="selPcMobile">
+                    <option value="PC">PC 기기 변경</option>
                     <option value="MOBILE">모바일 기기 변경</option>
-                    <option value="PC">pc 기기 변경</option>
                 </select>
                 <span>
 					<input type="checkbox" name="popupChk" id="popupChk" >위 내용을 읽었음을 동의합니다.
