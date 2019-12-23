@@ -123,7 +123,7 @@
                                 <tbody>
                                 <tr>
                                     <th>이메일</th>
-                                    <td><input type="text" id="email1">@<input type="text" id="email2"><br>
+                                    <td><input type="text" id="email1" disabled>@<input type="text" id="email2" disabled><br>
                                         <span class="text_red">※이메일 변경은 학원에 문의해 주세요.</span>
                                     </td>
                                 </tr>
