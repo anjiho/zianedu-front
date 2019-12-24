@@ -107,19 +107,19 @@
                                 <tbody>
                                 <tr>
                                     <th>기존비밀번호</th>
-                                    <td><input type="text" id="currentUserPwd" class="w300"></td>
+                                    <td><input type="password" id="currentUserPwd" class="w300"></td>
                                 </tr>
                                 <tr>
                                     <th>변경비밀번호</th>
                                     <td>
-                                        <input type="text" id="changeUserPwd" class="w300">&nbsp;
+                                        <input type="password" id="changeUserPwd" class="w300">&nbsp;
                                         <span id="pwdCaption" style="color: red"></span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>변경비밀번호확인</th>
                                     <td>
-                                        <input type="text" id="chkChangeUserPwd" value="" class="w300">&nbsp;
+                                        <input type="password" id="chkChangeUserPwd" value="" class="w300">&nbsp;
                                         <span id="rePwdCaption" onkeypress="if(event.keyCode==13) {goChangePwd(); return false;}"  style="color: red"></span>
                                     </td>
                                 </tr>
