@@ -1,7 +1,21 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/jsp/common.jsp" %>
 <script>
-
+function chkUserPwd() {
+    var userPwd = getInputTextValue("userPwd");
+    var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+    if(userPwd == ""){
+        alert("비밀번호를 입력해 주세요.");
+        return false;
+    }
+    var result = confirmUserPassword(sessionUserInfo.userKey, userPwd);
+    if(result.keyValue == true){
+        goPage("myPage", "modifyPwd");
+    }else{
+        alert("비밀번호가 일치하지 않습니다.");
+        return false;
+    }
+}
 </script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
@@ -19,7 +33,7 @@
                     <div class="tabBox review coupon">
                         <ul>
                             <li><a href="javascript:goPageNoSubmit('myPage', 'memberMain');">회원정보수정<span></span></a></li>
-                            <li class="active"><a href="javascript:void(0);">비밀번호변경<span></span></a></li>
+                            <li><a href="javascript:void(0);">비밀번호변경<span></span></a></li>
                         </ul>
                     </div>
 
@@ -34,13 +48,13 @@
                                 <tbody>
                                 <tr>
                                     <th>현재비밀번호</th>
-                                    <td><input type="text" name="" value="" class="w400"></td>
+                                    <td><input type="text" id="userPwd" onkeypress="if(event.keyCode==13) {chkUserPwd(); return false;}" class="w400"></td>
                                 </tr>
                                 </tbody>
                             </table>
                         </div>
                         <div class="btnArea">
-                            <a href="#" class="btn_m radius bdblue w110 ">확인</a>
+                            <a href="javascript:chkUserPwd()" class="btn_m radius bdblue w110 ">확인</a>
                         </div>
                     </div>
                 </div>

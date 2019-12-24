@@ -78,5 +78,19 @@ function confirmChangeDeviceCode(userKey, code) {
     };
     var resultInfo = postMailApi("/user/confirmChangeDeviceCode/", userKey, data);
     return resultInfo;
+}
 
+//사용자 패스워드가 맞는지 확인
+function confirmUserPassword(userKey, userPwd) {
+    if (userKey == null || userKey == undefined) return;
+    var data = {
+        userPwd: userPwd
+    };
+    var userInfo = getPayApi("/user/confirmUserPassword/", userKey, data);
+    return userInfo;
+}
+
+function modifyPwd(data) {
+    var result = postApi("/user/modifyPwd", data);
+    return result;
 }

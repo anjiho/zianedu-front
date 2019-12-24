@@ -2877,6 +2877,25 @@ function validationPassword(pwd) {
     }
 }
 
+//비밀번호 8자이상 특수문자+영문+숫자 조합여부 체크
+function validationChkPassword(pwd) {
+    if (pwd.length > 0){
+        var check = /^(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9])(?=.*[0-9]).{8,30}/;
+        if (!check.test(pwd)) {
+            //gfn_display("pwdCaption", true);
+            innerValue("pwdValidation", 0); // 0 : 실패 , 1 : 성공
+            innerHTML("pwdCaption","");
+           // innerHTML("pwdCaption","비밀번호는 특수문자+영문+숫자 8자 이상으로 조합이여야 합니다.");
+        } else {
+            //gfn_display("pwdCaption", false);
+            innerValue("pwdValidation", 1); // 0 : 실패 , 1 : 성공
+            innerHTML("pwdCaption","가능");
+        }
+    }
+}
+
+
+
 //이메일 주소 셀렉트박스 선택 :  tagId (emailAddress)
 function selEmail(val) {
     if(val == ""){

@@ -521,7 +521,7 @@ legend {display:none;position:absolute;visibility:hidden;}
 .Mypage .review li{display:block;float:left;width:33.3333333%;position: relative;}
 .Mypage .review li a{display:block;height:50px;font-size:15px;color:#707070;line-height:50px;text-align:center;border:none;border-bottom:2px #e5e5e5 solid;font-weight: bold;font-size: 16px}
 .Mypage .review li.active a{color:#134c97;background:#fff;border-bottom:2px #073169 solid;}
-.Mypage .review li.active a span {display:inline-block;width:24px;height:8px;background: url(../images/content/img_down.png) center center no-repeat;position: absolute;top:50px;left:80px;}
+.Mypage .review li.active a span {display:inline-block;width:24px;height:8px;background: url(/common/zian/images/content/img_down.png) center center no-repeat;position: absolute;top:50px;left:80px;}
 .Mypage .reviewBoard {margin-top: 65px;}
 .Mypage .calendarWrap .lectureTotal {margin:0 auto;width:740px;border:none;}
 .Mypage .calendarWrap .lectureTotal .left > span {font-size: 13px}
