@@ -48,7 +48,7 @@ function chkUserPwd() {
                                 <tbody>
                                 <tr>
                                     <th>현재비밀번호</th>
-                                    <td><input type="text" id="userPwd" onkeypress="if(event.keyCode==13) {chkUserPwd(); return false;}" class="w400"></td>
+                                    <td><input type="password" id="userPwd" onkeypress="if(event.keyCode==13) {chkUserPwd(); return false;}" class="w400"></td>
                                 </tr>
                                 </tbody>
                             </table>
