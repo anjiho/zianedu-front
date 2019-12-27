@@ -40,6 +40,10 @@ public class myPageController {
             mvc.setViewName("/mypage/memberManage/modifyPwd/writePwd");
         }else if("changeDevice".equals(page_gbn)){
             mvc.setViewName("/mypage/memberManage/modifyMember/changeDevice");
+        }else if("coupon".equals(page_gbn)){
+            mvc.setViewName("/mypage/point/couponList");
+        }else if("mileage".equals(page_gbn)){
+            mvc.setViewName("/mypage/point/mileageList");
         }
         return mvc;
     }

@@ -57,7 +57,6 @@
                 changeUserPwd: changeUserPwd
             };
             var result = modifyPwd(data);
-            console.log(result);
             if (result.resultCode == 200) {
                 alert("비밀번호가 변경되었습니다.");
                 goPageNoSubmit('myPage', 'memberMain');

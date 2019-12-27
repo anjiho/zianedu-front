@@ -497,7 +497,7 @@ legend {display:none;position:absolute;visibility:hidden;}
 .Mypage .couponbox {display: block;text-align: center;}
 .Mypage .couponbox p {margin-bottom: 30px;font-size: 16px;}
 .Mypage .couponbox .input_txt{width:515px;display: inline-block; height:50px; margin-right:6px; border:2px solid #d5d5d5; }
-.Mypage .couponbox .input_txt input {width:505px;height:49px;padding:1px 0 1px 10px; text-align:left;border:0;font-size: 16px;color: #000}
+.Mypage .couponbox .input_txt input {width:505px;height:44px;padding:1px 0 1px 10px; text-align:left;border:0;font-size: 16px;color: #000}
 .Mypage .couponbox .btn_move {}
 .Mypage .couponbox .btn_move .cpbtn {width:150px;height:53px; border:2px solid #d5d5d5;background: none;font-weight: bold}
 .Mypage .tbd_05 {margin-top: 50px}
@@ -507,7 +507,7 @@ legend {display:none;position:absolute;visibility:hidden;}
 .Mypage .lectureTotal {padding: 0}
 .Mypage .lectureTotal .bdnone {border:none;padding-right: 20px;line-height: 50px}
 .Mypage .lectureTotal .bgray {background:#f4f4f4;border:1px solid #b0b0b0;color:#404040;}
-.Mypage .mileage {height:48px; border:1px solid #b0b0b0;padding: 25px 25px;}
+.Mypage .mileage {height:105px; border:1px solid #b0b0b0;padding: 25px 25px;}
 .Mypage .mileage .left {float:left;width: 50%}
 .Mypage .mileage .left ul {border-right: 1px solid #b0b0b0;padding-right: 25px}
 .Mypage .mileage .right ul {padding-left: 25px}

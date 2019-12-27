@@ -436,7 +436,7 @@ function requestVideoStartStop(jLecKey, pauseDay, requestType) {
         jLecKey: jLecKey,
         pauseDay: pauseDay,
         requestType: requestType
-    }
+    };
     var result = postApi("/myPage/requestVideoStartStop", data);
     return result;
 }
@@ -453,7 +453,6 @@ function getUserOrderList(userKey, startDate, endDate, sPage, listLimit) {
     };
     var infoList = getPageApi("/myPage/getUserOrderList/", userKey, data);
     var cnt = infoList.cnt;
-    console.log(infoList);
     if(infoList != null){
         if (infoList.result.length > 0) {
             paging.count(sPage, cnt, '5', listLimit, comment.blank_list);
@@ -519,7 +518,52 @@ function getUserOrderDetail(jKey) {
         }else{
             innerHTML("address", "-");
         }
-
     }
-    
+}
+
+//마일리지 리스트
+function getUserPointList(userKey, sPage, listLimit) {
+    if (userKey == null || userKey == undefined) return;
+    var paging = new Paging();
+    dwr.util.removeAllRows("dataList"); //테이블 리스트 초기화
+    var data = {
+        sPage : sPage,
+        listLimit : listLimit
+    };
+    var infoList = getPageApi("/myPage/getUserPointList/", userKey, data);
+    var cnt = infoList.cnt;
+    if(infoList != null){
+        if (infoList.result.length > 0) {
+            paging.count(sPage, cnt, '5', listLimit, comment.blank_list);
+            var listNum = ((cnt-1)+1)-((sPage-1)*10); //리스트 넘버링
+            var selList = infoList.result;
+            for(var i=0; i < selList.length; i++){
+                var cmpList = selList[i];
+                if (cmpList != undefined) {
+                    var cellData = [
+                        function(data) {return cmpList.createDate},
+                        function(data) {return cmpList.pointDesc;},
+                        function(data) {return cmpList.type == 1 ? cmpList.point : "-";},
+                        function(data) {return  cmpList.type == 0 ? cmpList.point : "-";},
+                        function(data) {return cmpList.seqPoint;}
+                    ];
+                    dwr.util.addRows("dataList", [0], cellData, {escapeHtml: false});
+                }
+            }
+        }
+    }
+}
+
+//마일리지 정보
+function getUserPointInfo(userKey) {
+    if (userKey == null || userKey == undefined) return;
+    var infoList = getPayApi("/myPage/getUserPointInfo/", userKey, '');
+    if(infoList != null){
+        if(infoList.result != null){
+            innerHTML("earnedPoint",infoList.result.earnedPoint+" 점");
+            innerHTML("usedPoint", infoList.result.usedPoint+" 점");
+            innerHTML("usefulPoint", infoList.result.usefulPoint+" 점");
+            innerHTML("expirePoint", infoList.result.expirePoint+" 점");
+        }
+    }
 }

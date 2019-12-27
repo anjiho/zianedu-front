@@ -587,21 +587,6 @@ function getUserOrderDeliveryInfo(userKey, jKey) {
     }
 }
 
-//내 강의실 > 나의 마일리지
-function getUserPointInfo(userKey, tagId) {
-    if (userKey == null || userKey == undefined) return;
-    var InfoList = getApi("/order/getUserPointInfo/", userKey);
-    if (InfoList.result.length > 0) {
-        var selList = InfoList.result;
-        dwr.util.addRows(tagId, selList, [
-            /*
-                TODO : addoption 추가
-             */
-            //function(data) {return data.fullFileUrl;}
-        ], {escapeHtml:false});
-    }
-}
-
 //장바구니 담기(자유패키지 외 상품)
 function saveCart(saveCartInfo) {
     if (saveCartInfo == null || saveCartInfo == undefined) return;
