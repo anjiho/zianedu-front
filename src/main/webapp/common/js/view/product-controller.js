@@ -16,16 +16,6 @@ function getAcademyLectureListFromCategoryMenu(ctgKey, stepCtgKey, teacherKey, t
         ], {escapeHtml:false});
     }
 }
-
-//학원수강 상품 상세정보
-function getAcademyProductDetail(gKey) {
-    if (gKey == null || gKey == undefined) return;
-    var InfoList = getApi("/product/getAcademyProductDetail/", gKey);
-    if (InfoList.result.length > 0) {
-        var selList = InfoList.result;
-    }
-}
-
 //모의고사 상품 리스트
 function getMockExamListFromCategoryMenu(ctgKey, tagId) {
     if (ctgKey == null || ctgKey == undefined) return;
@@ -38,17 +28,6 @@ function getMockExamListFromCategoryMenu(ctgKey, tagId) {
              */
             //function(data) {return data.fullFileUrl;}
         ], {escapeHtml:false});
-    }
-}
-
-//특별 패키지 상품 상세정보
-function getAcademyProductDetail(gKey) {
-    if (gKey == null || gKey == undefined) return;
-    var InfoList = getApi("/product/getAcademyProductDetail/", gKey);
-    console.log(">>>" + InfoList.result);
-    if (InfoList.result.length > 0) {
-        var selList = InfoList.result;
-        console.log(">>>>" + selList);
     }
 }
 
