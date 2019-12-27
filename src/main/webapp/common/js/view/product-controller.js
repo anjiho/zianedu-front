@@ -45,8 +45,10 @@ function getMockExamListFromCategoryMenu(ctgKey, tagId) {
 function getAcademyProductDetail(gKey) {
     if (gKey == null || gKey == undefined) return;
     var InfoList = getApi("/product/getAcademyProductDetail/", gKey);
+    console.log(">>>" + InfoList.result);
     if (InfoList.result.length > 0) {
         var selList = InfoList.result;
+        console.log(">>>>" + selList);
     }
 }
 
