@@ -76,7 +76,7 @@
                             </div>
                             <div class="right">
                                 <ul>
-                                    <li>사용가능 마일리지 <span id="usefulPoint"></span>></li>
+                                    <li>사용가능 마일리지 <span id="usefulPoint"></span></li>
                                     <li>미사용 마일리지 <span id="expirePoint"></span></li>
                                 </ul>
                             </div>

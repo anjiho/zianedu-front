@@ -535,7 +535,6 @@ function getUserPointList(userKey, sPage, listLimit) {
     if(infoList != null){
         if (infoList.result.length > 0) {
             paging.count(sPage, cnt, '5', listLimit, comment.blank_list);
-            var listNum = ((cnt-1)+1)-((sPage-1)*10); //리스트 넘버링
             var selList = infoList.result;
             for(var i=0; i < selList.length; i++){
                 var cmpList = selList[i];
