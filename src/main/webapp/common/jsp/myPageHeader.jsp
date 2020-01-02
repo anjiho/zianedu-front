@@ -42,6 +42,7 @@
             }else if($(this).index() == 4){
                 sessionStorage.setItem("myPageHeader", "board");
                 $("#myPageMenu li:eq(4)").addClass('active');
+                goPageNoSubmit('myPage', 'questionList');
             }else if($(this).index() == 5){
                 sessionStorage.setItem("myPageHeader", "lecture");
                 $("#myPageMenu li:eq(5)").addClass('active');

@@ -566,3 +566,57 @@ function getUserPointInfo(userKey) {
         }
     }
 }
+
+function getOneByOneQuestionList(userKey, sPage, listLimit) {
+    if (userKey == null || userKey == undefined) return;
+    var paging = new Paging();
+    dwr.util.removeAllRows("dataList"); //테이블 리스트 초기화
+    var data = {
+        sPage : sPage,
+        listLimit : listLimit
+    };
+    var infoList = getPageApi("/myPage/getOneByOneQuestionList/", userKey, data);
+    var cnt = infoList.cnt;
+    if(infoList != null){
+        if (infoList.result.length > 0) {
+            paging.count(sPage, cnt, '5', listLimit, comment.blank_list);
+            var selList = infoList.result;
+            var listNum = ((cnt - 1) + 1) - ((sPage - 1) * 20); //리스트 넘버링
+            for(var i=0; i < selList.length; i++){
+                var cmpList = selList[i];
+                console.log(cmpList);
+                if (cmpList.level == 1) {//본문
+                    var returnHtml = '<tr>';
+                    returnHtml += '<td>' + listNum-- + '</td>';
+                    var lock = '';
+                    if (cmpList.pwd == 1) lock = 'lock';
+                    else if (cmpList.pwd == null) lock = '';
+                    returnHtml += '<td><a href="javascript:void(0);" class="subject ' + lock + '" onclick="goDetailQuestion('+  cmpList.bbsKey +');">' + gfn_substr(cmpList.title, 0, 40) + '</a></td>';
+                    returnHtml += '<td>' + cmpList.writeUserName + '</td>';
+                    returnHtml += '<td>' + cmpList.indate2 + '</td>';
+                    returnHtml += '<td>' + cmpList.readCount + '</td>';
+                    returnHtml += '</tr>';
+                    $("#dataList").append(returnHtml);
+                } else {//답글
+                    var returnHtml = '<tr>';
+                    returnHtml += '<td>' + listNum-- + '</td>';
+                    var lock = '';
+                    if (cmpList.pwd == 1) lock = 'lock';
+                    else if (cmpList.pwd == null) lock = '';
+                    returnHtml += '<td><a href="javascript:void(0);" class="subject reply" onclick="goDetailQuestion(' + cmpList.bbsKey + ');">' + gfn_substr(cmpList.title, 0, 40) + '</a></td>';
+                    returnHtml += '<td>' + cmpList.writeUserName + '</td>';
+                    returnHtml += '<td>' + cmpList.indate2 + '</td>';
+                    returnHtml += '<td>' + cmpList.readCount + '</td>';
+                    returnHtml += '</tr>';
+                    $("#dataList").append(returnHtml);
+                }
+            }
+        }
+    }
+}
+
+function getOneByOneQuestionDetailInfo(bbsKey) {
+    if (bbsKey == null || bbsKey == undefined) return;
+    var detailInfo = getApi("/myPage/getOneByOneQuestionDetailInfo/", bbsKey, '');
+    return detailInfo;
+}

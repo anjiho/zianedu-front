@@ -35,7 +35,6 @@
         <div id="container">
             <div class="inner">
                 <!--서브 컨텐츠-->
-
                 <%@include file="/common/jsp/myPageHeader.jsp" %>
                 <div class="Mypage">
                     <div class="tab_topContent tabContent">

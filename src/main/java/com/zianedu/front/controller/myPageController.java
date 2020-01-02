@@ -44,6 +44,10 @@ public class myPageController {
             mvc.setViewName("/mypage/point/couponList");
         }else if("mileage".equals(page_gbn)){
             mvc.setViewName("/mypage/point/mileageList");
+        }else if("questionList".equals(page_gbn)){
+            mvc.setViewName("/mypage/boardManage/question/questionList");
+        }else if("questionDetail".equals(page_gbn)){
+            mvc.setViewName("/mypage/boardManage/question/detailQuestion");
         }
         return mvc;
     }
