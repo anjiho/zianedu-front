@@ -567,13 +567,15 @@ function getUserPointInfo(userKey) {
     }
 }
 
-function getOneByOneQuestionList(userKey, sPage, listLimit) {
+function getOneByOneQuestionList(userKey, sPage, listLimit, searchType, searchText) {
     if (userKey == null || userKey == undefined) return;
     var paging = new Paging();
     dwr.util.removeAllRows("dataList"); //테이블 리스트 초기화
     var data = {
         sPage : sPage,
-        listLimit : listLimit
+        listLimit : listLimit,
+        searchType : searchType,
+        searchText : searchText
     };
     var infoList = getPageApi("/myPage/getOneByOneQuestionList/", userKey, data);
     var cnt = infoList.cnt;

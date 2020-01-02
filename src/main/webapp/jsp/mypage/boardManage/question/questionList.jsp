@@ -11,7 +11,6 @@
         goPage("myPage", "questionDetail");
     }
 
-
     function fn_search(val) {
         var sPage = getInputTextValue("sPage");
         var searchType = getSelectboxValue("searchType");
@@ -21,7 +20,7 @@
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         var userKey = sessionUserInfo.userKey;
         if(val == "new") sPage = "1";
-        getOneByOneQuestionList(userKey, sPage, 10);
+        getOneByOneQuestionList(userKey, sPage, 10,  searchType, searchText);
     }
 
 </script>
@@ -54,13 +53,13 @@
                             <ul class="searchArea">
                                 <!--수정 -->
                                 <li class="left">
-                                    <select>
-                                        <option>제목</option>
+                                    <select id="searchType">
+                                        <option value="title">제목</option>
                                     </select>
-                                    <input type="text">
-                                    <input type="submit" value="검색" class="btn_m on">
+                                    <input type="text" id="searchText" onkeypress="if(event.keyCode==13) {fn_search('new'); return false;}">
+                                    <a href="javascript:fn_search('new');" class="btn_m on">검색</a>
                                 </li>
-                                <li class="right"><a href="./sub02010503.html" class="btn_m w140">1:1 문의하기</a>
+                                <li class="right"><a href="" class="btn_m w140">1:1 문의하기</a>
                                 </li>
                             </ul>
                         </form>
