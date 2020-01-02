@@ -106,7 +106,14 @@
             }
         });
         $("#point").change(function() {
+            var userMaxPoint = getInputTextValue("userMaxPoint");
             var currentVal = $(this).val();
+            if(currentVal > userMaxPoint){
+                alert("보유포인트를 초과 하였습니다.");
+                $("#point").val("");
+                currentVal = 0;
+                //return false;
+            }
             var produceTotal = getInputTextValue("produceTotal");
             var changeTotal = produceTotal-currentVal;
             innerHTML("productTotalPriceName", format(changeTotal));
@@ -201,6 +208,7 @@
     <input type="hidden" id="payProductName">
     <input type="hidden" id="pacakgeProductName">
     <input type="hidden" id="orderInfoType">
+    <input type="hidden" id="userMaxPoint">
     <div id="wrap">
         <%@include file="/common/jsp/leftMenu.jsp" %>
         <!--상단-->

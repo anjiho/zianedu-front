@@ -19,6 +19,7 @@ function getOrderSheetInfoFromCart(userKey, cartKeys) {
         var cmpList = infoList.result;
         innerHTML("userPoint", format(cmpList.userPoint));
         innerHTML("maxUserPoint", format(cmpList.userPoint));
+        innerValue("userMaxPoint", format(cmpList.userPoint));
         if(cmpList.orderProductList.length > 0){
              var  productNamAarr = new Array();
             for(var i = 0; i < cmpList.orderProductList.length; i++){

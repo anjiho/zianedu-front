@@ -584,7 +584,6 @@ function getOneByOneQuestionList(userKey, sPage, listLimit) {
             var listNum = ((cnt - 1) + 1) - ((sPage - 1) * 20); //리스트 넘버링
             for(var i=0; i < selList.length; i++){
                 var cmpList = selList[i];
-                console.log(cmpList);
                 if (cmpList.level == 1) {//본문
                     var returnHtml = '<tr>';
                     returnHtml += '<td>' + listNum-- + '</td>';
