@@ -15,7 +15,13 @@
         var sPage = getInputTextValue("sPage");
         var searchType = getSelectboxValue("searchType");
         var searchText = getInputTextValue("searchText");
-        if(searchType == undefined) searchType = "";
+        if(searchType == 'title') {
+            if(searchText == ''){
+                alert('검색값을 입력해 주세요.');
+                focusInputText("searchText");
+                return false;
+            }
+        }
         if(searchText == undefined) searchText = "";
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         var userKey = sessionUserInfo.userKey;
@@ -54,6 +60,7 @@
                                 <!--수정 -->
                                 <li class="left">
                                     <select id="searchType">
+                                        <option value="">선택</option>
                                         <option value="title">제목</option>
                                     </select>
                                     <input type="text" id="searchText" onkeypress="if(event.keyCode==13) {fn_search('new'); return false;}">
