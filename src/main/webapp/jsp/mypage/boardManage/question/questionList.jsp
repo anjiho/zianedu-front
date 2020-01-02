@@ -75,11 +75,11 @@
                                 </colgroup>
                                 <thead>
                                 <tr>
-                                    <th scope="row">유형</th>
-                                    <th scope="row">제목</th>
-                                    <th scope="row">작성자</th>
-                                    <th scope="row">등록일</th>
-                                    <th scope="row">조회</th>
+                                    <th scope="row" style="text-align: center;">유형</th>
+                                    <th scope="row" style="text-align: center;">제목</th>
+                                    <th scope="row" style="text-align: center;">작성자</th>
+                                    <th scope="row" style="text-align: center;">등록일</th>
+                                    <th scope="row" style="text-align: center;">조회</th>
                                 </tr>
                                 </thead>
                                 <tbody id="dataList">
