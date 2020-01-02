@@ -21,11 +21,17 @@
                 focusInputText("searchText");
                 return false;
             }
+        }else{
+            if(val == 'new1'){
+                alert("유형을 선택해 주세요.");
+                return false;
+            }
         }
         if(searchText == undefined) searchText = "";
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         var userKey = sessionUserInfo.userKey;
         if(val == "new") sPage = "1";
+        else if(val == "new1") sPage = '1';
         getOneByOneQuestionList(userKey, sPage, 10,  searchType, searchText);
     }
 
@@ -63,8 +69,8 @@
                                         <option value="">선택</option>
                                         <option value="title">제목</option>
                                     </select>
-                                    <input type="text" id="searchText" onkeypress="if(event.keyCode==13) {fn_search('new'); return false;}">
-                                    <a href="javascript:fn_search('new');" class="btn_m on">검색</a>
+                                    <input type="text" id="searchText" onkeypress="if(event.keyCode==13) {fn_search('new1'); return false;}">
+                                    <a href="javascript:fn_search('new1');" class="btn_m on">검색</a>
                                 </li>
                                 <li class="right"><a href="javascript:goPageNoSubmit('customerCenter', 'saveQuestion');" class="btn_m w140">1:1 문의하기</a>
                                 </li>

@@ -579,12 +579,12 @@ function getOneByOneQuestionList(userKey, sPage, listLimit, searchType, searchTe
     };
     var infoList = getPageApi("/myPage/getOneByOneQuestionList/", userKey, data);
     var cnt = infoList.cnt;
+    paging.count(sPage, cnt, '10', listLimit, comment.blank_list);
+    console.log(infoList);
     if(infoList != null){
         if (infoList.result.length > 0) {
-            paging.count(sPage, cnt, '5', listLimit, comment.blank_list);
             var selList = infoList.result;
-            console.log(selList);
-            var listNum = ((cnt - 1) + 1) - ((sPage - 1) * 20); //리스트 넘버링
+            var listNum = ((cnt-1)+1)-((sPage-1)*10); //리스트 넘버링
             for(var i=0; i < selList.length; i++){
                 var cmpList = selList[i];
                 if (cmpList.level == 1) {//본문
