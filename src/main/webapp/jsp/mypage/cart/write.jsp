@@ -123,9 +123,11 @@
     //결제하기
     function goPay() {
         var check = new isCheck();
-        if (check.input("orderNameText", comment.delivery_info) == false) return;
-        if (check.input("postcode", comment.delivery_info) == false) return;
-
+        var orderInfoType =  getInputTextValue("orderInfoType");
+        if(orderInfoType == 3){
+            if (check.input("orderNameText", comment.delivery_info) == false) return;
+            if (check.input("postcode", comment.delivery_info) == false) return;
+        }
         var orderName = getInputTextValue("orderNameText");
         innerValue("postName", orderName);
         var tel = getSelectboxValue("selTel");
@@ -198,6 +200,7 @@
     <input type="hidden" id="cartProductName">
     <input type="hidden" id="payProductName">
     <input type="hidden" id="pacakgeProductName">
+    <input type="hidden" id="orderInfoType">
     <div id="wrap">
         <%@include file="/common/jsp/leftMenu.jsp" %>
         <!--상단-->

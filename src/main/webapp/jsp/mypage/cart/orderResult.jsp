@@ -439,17 +439,14 @@
 
         var orderGoodsList = sessionStorage.getItem('orderGoodsList');
         var savePayInfo = JSON.parse(sessionStorage.getItem('savePayInfo'));
-        //console.log(savePayInfo);
 
         var discountPoint = 0;
         var point = 0;
         var deliveryPrice = 0;
         if(savePayInfo.discountPoint == null) discountPoint = 0;
         else discountPoint = savePayInfo.discountPoint;
-
         if(savePayInfo.point == null)  point = 0;
         else point = savePayInfo.point;
-
         if(savePayInfo.deliveryPrice == undefined || savePayInfo.deliveryPrice == null) deliveryPrice = 0;
         else deliveryPrice = savePayInfo.deliveryPrice;
 
@@ -675,7 +672,7 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="tbd_03 tbd_05 mgb60">
+                        <div class="tbd_03 tbd_05 mgb60" id="deliveryInfo">
                             <p class="title"><span class="text_blue">배송지</span>정보확인</p>
                             <table>
                                 <colgroup>

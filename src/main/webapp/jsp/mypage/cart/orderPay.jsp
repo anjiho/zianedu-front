@@ -323,7 +323,7 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="tbd_03 tbd_05 mgb60">
+                        <div class="tbd_03 tbd_05 mgb60" id="deliveryInfo">
                             <p class="title"><span class="text_blue">배송지</span>정보확인</p>
                             <table>
                                 <colgroup>

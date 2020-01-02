@@ -24,8 +24,10 @@ function getOrderSheetInfoFromCart(userKey, cartKeys) {
             for(var i = 0; i < cmpList.orderProductList.length; i++){
                 var orderInfo = cmpList.orderProductList[i];
                 if(orderInfo.type != 3){
+                    innerValue("orderInfoType", orderInfo.type);
                     gfn_display("deliveryInfo", false);
                 }else{
+                    innerValue("orderInfoType", orderInfo.type);
                     gfn_display("deliveryInfo", true);
                 }
                 productNamAarr.push(orderInfo.productName);//결제할때 이니시스 상품명 배열
@@ -78,9 +80,8 @@ function getOrderSheetInfoFromCart(userKey, cartKeys) {
             var total = cmpList.productTotalPrice.productTotalPrice+cmpList.productTotalPrice.deliveryPrice;
             innerHTML("totalPrice", format(total));
             innerValue("allProductPrice", total);
-
             innerValue("total", total);//상품총 가격
-            innerValue("totalPoint", cmpList.productTotalPrice.point);//적립될 총 포인트
+            innerValue("totalPoint", cmpList.productTotalPrice.totalPoint);//적립될 총 포인트
             innerValue("deliveryPrice", cmpList.productTotalPrice.deliveryPrice);//배송비
         }
 
@@ -135,7 +136,13 @@ function getOrderSheetInfoFromPay(userKey, cartKeys) {
             var orderGoodArr = new Array();
             for(var i = 0; i < cmpList.orderProductList.length; i++){
                 var orderInfo = cmpList.orderProductList[i];
-
+                if(orderInfo.type != 3){
+                  //  innerValue("orderInfoType", orderInfo.type);
+                    gfn_display("deliveryInfo", false);
+                }else{
+                 //   innerValue("orderInfoType", orderInfo.type);
+                    gfn_display("deliveryInfo", true);
+                }
                 var orderGoodData = {
                     priceKey : orderInfo.priceKey,
                     cartKey : orderInfo.cartKey,
@@ -202,12 +209,18 @@ function getOrderSheetInfoFromImmediately(userKey, gKeys) {
         var cmpList = infoList.result;
         innerHTML("userPoint", format(cmpList.userPoint));
         innerHTML("maxUserPoint", format(cmpList.userPoint));
-
         if(cmpList.orderProductList.length > 0){
             var payProductNameArr = new Array();
             var orderGoodArr = new Array();
             for(var i = 0; i < cmpList.orderProductList.length; i++){
                 var orderInfo = cmpList.orderProductList[i];
+                if(orderInfo.type != 3){
+                    innerValue("orderInfoType", orderInfo.type);
+                    gfn_display("deliveryInfo", false);
+                }else{
+                    innerValue("orderInfoType", orderInfo.type);
+                    gfn_display("deliveryInfo", true);
+                }
                 payProductNameArr.push(orderInfo.productName);
                 var orderGoodData = {
                     priceKey : orderInfo.priceKey,
@@ -271,7 +284,7 @@ function getOrderSheetInfoFromImmediately(userKey, gKeys) {
             innerValue("allProductPrice", total);
 
             innerValue("total", total);//상품총 가격
-            innerValue("totalPoint", cmpList.productTotalPrice.point);//적립될 총 포인트
+            innerValue("totalPoint", cmpList.productTotalPrice.totalPoint);//적립될 총 포인트
             innerValue("deliveryPrice", cmpList.productTotalPrice.deliveryPrice);//배송비
         }
 
@@ -392,7 +405,7 @@ function getOrderSheetInfoFromImmediatelyAtBasicPackage(userKey, goodsInfo, pack
             innerValue("allProductPrice", total);
 
             innerValue("total", total);//상품총 가격
-            innerValue("totalPoint", cmpList.productTotalPrice.point);//적립될 총 포인트
+            innerValue("totalPoint", cmpList.productTotalPrice.totalPoint);//적립될 총 포인트
             innerValue("deliveryPrice", cmpList.productTotalPrice.deliveryPrice);//배송비
         }
 
