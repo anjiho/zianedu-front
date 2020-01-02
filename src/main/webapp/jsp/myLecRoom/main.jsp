@@ -251,8 +251,9 @@
     function lecEndTitleList(ctgKey) {
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         var userKey = sessionUserInfo.userKey;
+        var deviceType = divisionPcMobile();
         $("#lecEndNameList li").remove();
-        getSignUpVideoLectureEndSubjectList(userKey, ctgKey);
+        getSignUpVideoLectureEndSubjectList(userKey, ctgKey, deviceType);
     }
     
     function lecEndDetail(jlecKey) {
@@ -266,14 +267,29 @@
             innerHTML("lecEndDate", selList.endDate);//수강일수
             innerValue("priceKey", selList.priceKey);
             innerValue("gkey1", selList.gkey);
-            var pcMobile = divisionPcMobile();
-            if (pcMobile == 'PC') {
+
+            var kind = selList.kind;
+            if (kind == 100) {
                 $("#lecEndPC").show();
                 $("#lecEndMobile").hide();
-            } else {
+                $("#lecEndPcMobile").hide();
+            } else if (kind == 101) {
                 $("#lecEndPC").hide();
                 $("#lecEndMobile").show();
+                $("#lecEndPcMobile").hide();
+            } else if (kind == 102) {
+                $("#lecEndPC").hide();
+                $("#lecEndMobile").hide();
+                $("#lecEndPcMobile").show();
             }
+            //
+            // if (pcMobile == 'PC') {
+            //     $("#lecEndPC").show();
+            //     $("#lecEndMobile").hide();
+            // } else {
+            //     $("#lecEndPC").hide();
+            //     $("#lecEndMobile").show();
+            // }
         }else{
             $("#lecEndDiv").hide();
         }
@@ -320,7 +336,6 @@
     //장바구니
     function goBasket() {
         var priceKey = getInputTextValue("priceKey");
-        alert(priceKey);
         var gKey = getInputTextValue("gkey1");
         var extendDay = getSelectboxValue("reLecSel");
         var arr = new Array();
@@ -763,6 +778,7 @@
                                             <div class="txt_area">
                                                 <span class="bdbox" id="lecEndPC">PC</span>
                                                 <span class="bdbox" id="lecEndMobile">모바일</span>
+                                                <span class="bdbox" id="lecEndPcMobile">PC 모바일</span>
                                                 <p class="thumb" id="lecEndName"></p>
                                                 <span class="date"><b>수강기간</b><span id="lecEndStartDate"></span><b>종료기간</b><span id="lecEndDate"></span></span>
                                                 <!--guide-->

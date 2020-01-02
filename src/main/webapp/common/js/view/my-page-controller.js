@@ -404,10 +404,11 @@ function getSignUpVideoLectureEndTypeList(userKey) {
 }
 
 //수강중 > 수강완료 > 과목리스트
-function getSignUpVideoLectureEndSubjectList(userKey, stepCtgKey) {
+function getSignUpVideoLectureEndSubjectList(userKey, stepCtgKey, deviceType) {
     if (userKey == null || userKey == undefined) return;
     var data = {
-        stepCtgKey : stepCtgKey
+        stepCtgKey : stepCtgKey,
+        deviceType : deviceType
     };
     var infoList = getApi("/myPage/getSignUpVideoLectureEndSubjectList/", userKey, data);
 
