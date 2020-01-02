@@ -126,6 +126,11 @@
             var cartKey = $(this).attr('id');
             playArr.push(cartKey);
         });
+        var rePlayArr = new Array();
+        $('input[name=rePlayChk]:checked').each(function() {
+            var cartKey = $(this).attr('id');
+            rePlayArr.push(cartKey);
+        });
         var promotionArr = new Array();
         $('input[name=promotionChk]').each(function() {
             var cartKey = $(this).attr('id');
@@ -138,9 +143,11 @@
         });
         var arr1 = acaArr.concat(playArr);
         var arr2 = arr1.concat(promotionArr);
-        var allArr = arr2.concat(bookArr);
+        var arr3 = arr2.concat(bookArr);
+        var allArr = arr3.concat(rePlayArr);
         var cartKeys = toStrFileName(allArr);
-
+        console.log(rePlayArr);
+        return false;
         if(allArr.length > 0){
             innerValue("cartKeys", cartKeys);
             sessionStorage.setItem("cartNum", cartKeys);

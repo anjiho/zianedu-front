@@ -48,6 +48,8 @@ public class myPageController {
             mvc.setViewName("/mypage/boardManage/question/questionList");
         }else if("questionDetail".equals(page_gbn)){
             mvc.setViewName("/mypage/boardManage/question/detailQuestion");
+        }else if("consult".equals(page_gbn)){
+            mvc.setViewName("/mypage/boardManage/consultReserveList");
         }
         return mvc;
     }

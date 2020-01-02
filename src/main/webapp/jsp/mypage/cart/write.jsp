@@ -21,7 +21,6 @@
         var cartKeys = '<%=cartKeys%>';
         var goodsInfo = '<%=goodsInfo%>';
 
-        console.log(cartKeys);
         if('<%=cartKeys%>' == '' && '<%=goodsInfo%>' == ''){ //바로구매
             innerValue("gKeys", gKeys);
             getOrderSheetInfoFromImmediately(userKey, gKeys);

@@ -53,8 +53,8 @@
                 <div class="Mypage">
                     <div class="tabBox review wid30p">
                         <ul>
-                            <li class="active"><a href="#">1:1 문의내역<span></span></a></li>
-                            <li><a href="#">상담예약내역<span></span></a></li>
+                            <li class="active"><a href="javascript:void(0);">1:1 문의내역<span></span></a></li>
+                            <li><a href="javascript:goPageNoSubmit('myPage', 'consult')">상담예약내역<span></span></a></li>
                             <li><a href="#">내게시글<span></span></a></li>
                         </ul>
                     </div>
