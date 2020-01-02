@@ -74,7 +74,7 @@
             });
 
             /* 수강완료 */
-            getSignUpVideoLectureEndTypeList(userKey);
+            getSignUpVideoLectureEndTypeList(userKey, divisionPcMobile());
             var lecEndCtgKey = getInputTextValue("lecEndCtgKey");
             if(lecEndCtgKey != ''){
                 lecEndTitleList(lecEndCtgKey);
