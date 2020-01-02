@@ -583,6 +583,7 @@ function getOneByOneQuestionList(userKey, sPage, listLimit, searchType, searchTe
         if (infoList.result.length > 0) {
             paging.count(sPage, cnt, '5', listLimit, comment.blank_list);
             var selList = infoList.result;
+            console.log(selList);
             var listNum = ((cnt - 1) + 1) - ((sPage - 1) * 20); //리스트 넘버링
             for(var i=0; i < selList.length; i++){
                 var cmpList = selList[i];

@@ -59,7 +59,7 @@
                                     <input type="text" id="searchText" onkeypress="if(event.keyCode==13) {fn_search('new'); return false;}">
                                     <a href="javascript:fn_search('new');" class="btn_m on">검색</a>
                                 </li>
-                                <li class="right"><a href="" class="btn_m w140">1:1 문의하기</a>
+                                <li class="right"><a href="javascript:goPageNoSubmit('customerCenter', 'saveQuestion');" class="btn_m w140">1:1 문의하기</a>
                                 </li>
                             </ul>
                         </form>
