@@ -285,7 +285,6 @@
         innerValue("bbsKey1", bbskey);
         //var bbsKey = getInputTextValue("bbsKey");
         var detailInfo = getTeacherLearningQnaDetail(teacherKey, bbskey);
-        console.log(detailInfo);
         if(detailInfo != null){
             var referenceInfo   = detailInfo.result.referenceRoomDetailInfo;
             var prevNextBbsList = detailInfo.result.prevNextBbsList;

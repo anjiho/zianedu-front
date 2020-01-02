@@ -11,6 +11,20 @@ function getLeftMenu(ctgKey, tagId) {
     }
 }
 
+//고객센터 셀렉박스
+function getLeftQuestionMenu(ctgKey) {
+    if (ctgKey == null || ctgKey == undefined) return;
+    var infoList = getApi("/menu/getLeftMenu/", ctgKey,"");
+    if (infoList.result.length > 0) {
+        var selList = infoList.result;
+        getOftenQuestionDetailList(selList[0].ctgKey);
+        for(var i =0; i < selList.length;i++){
+            var returnHtml = "<option value='"+ selList[i].ctgKey +"'>"+ selList[i].name +"</option>";
+            $("#questionSel").append(returnHtml);
+        }
+    }
+}
+
 //교수소개 좌측메뉴 가져오기
 function getTeacherIntroduceLeftMenu(ctgKey, tagId) {
     if (ctgKey == null || ctgKey == undefined) return;

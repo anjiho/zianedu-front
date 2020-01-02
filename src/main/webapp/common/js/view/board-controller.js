@@ -1,5 +1,5 @@
 //게시판 글 저장
-function saveBoard(bbsMasterKey, userKey, title, content, isSecret, fileName) {
+function saveBoard(bbsMasterKey, userKey, title, content, isSecret, ctgKey, fileName) {
     if(bbsMasterKey == null || bbsMasterKey == undefined) return;
     if(userKey == null || userKey == undefined) return;
 
@@ -9,6 +9,7 @@ function saveBoard(bbsMasterKey, userKey, title, content, isSecret, fileName) {
         title : title,
         content : content,
         isSecret : isSecret,
+        ctgKey :  ctgKey,
         fileName : fileName
     };
     var result = postApi("/board/saveBoard", data);

@@ -8,7 +8,7 @@
                 <li><a href="#">이용약관</a></li>
                 <li><a href="#">개인정보취급방침</a></li>
                 <li><a href="#">강사모집</a></li>
-                <li><a href="#">고객센터</a></li>
+                <li><a href="javascript:goPageNoSubmit('customerCenter', 'saveQuestion');">고객센터</a></li>
                 <li class="last"><a href="#">찾아오시는 길</a></li>
             </ul>
         </div>
