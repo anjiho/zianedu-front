@@ -54,45 +54,51 @@
         if (check.input("title", comment.input_title) == false) return;
 
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-        var userKey = sessionUserInfo.userKey;
-        var title = getInputTextValue("title");
-        var ctgKey = getSelectboxValue("ctgKeySel");
-        if(ctgKey == ""){
-            alert("분류를 선택해 주세요");
-            return false;
-        }
-        var content = $('textarea[name="writeContent"]').val();
-        if(filesTempArr.length == 0) { //파일 없을때
-            var result = saveBoard(10019, userKey, title, content, 0, ctgKey, '');
-            if(result.resultCode == 200){
-                alert("문의가 등록되었습니다");
+        if(sessionUserInfo != null) {
+            var userKey = sessionUserInfo.userKey;
+            var title = getInputTextValue("title");
+            var ctgKey = getSelectboxValue("ctgKeySel");
+            if (ctgKey == "") {
+                alert("분류를 선택해 주세요");
                 return false;
             }
-        }else{
-            var formData = new FormData();
-            for(var i=0, filesTempArrLen = filesTempArr.length; i<filesTempArrLen; i++) {
-                formData.append("files", filesTempArr[i]);
-            }
-            $.ajax({
-                url: "http://52.79.40.214:9090/fileUpload/boardFileList",
-                method: "post",
-                dataType: "JSON",
-                data: formData,
-                cache: false,
-                processData: false,
-                contentType: false,
-                success: function (data) {
-                    if(data.resultCode == 200){
-                        var fileName = data.keyValue;
-                        var result = saveBoard(10019, userKey, title, content, 0, ctgKey, fileName);
-                        var str = toStrFileName(fileName);
-                        saveBoardFileList(result.keyValue, str);
-                        if(result.resultCode == 200){
-                            alert("성공적으로 등록 완료되었습니다");
+            var content = $('textarea[name="writeContent"]').val();
+            if (filesTempArr.length == 0) { //파일 없을때
+                var result = saveBoard(10019, userKey, title, content, 0, ctgKey, '');
+                if (result.resultCode == 200) {
+                    alert("문의가 등록되었습니다");
+                    return false;
+                }
+            } else {
+                var formData = new FormData();
+                for (var i = 0, filesTempArrLen = filesTempArr.length; i < filesTempArrLen; i++) {
+                    formData.append("files", filesTempArr[i]);
+                }
+                $.ajax({
+                    url: "http://52.79.40.214:9090/fileUpload/boardFileList",
+                    method: "post",
+                    dataType: "JSON",
+                    data: formData,
+                    cache: false,
+                    processData: false,
+                    contentType: false,
+                    success: function (data) {
+                        if (data.resultCode == 200) {
+                            var fileName = data.keyValue;
+                            var result = saveBoard(10019, userKey, title, content, 0, ctgKey, fileName);
+                            var str = toStrFileName(fileName);
+                            saveBoardFileList(result.keyValue, str);
+                            if (result.resultCode == 200) {
+                                alert("성공적으로 등록 완료되었습니다");
+                                goLoginPage();
+                            }
                         }
                     }
-                }
-            });
+                });
+            }
+        }else{
+            alert("로그인을 해주세요.");
+            return false;
         }
     }
 
