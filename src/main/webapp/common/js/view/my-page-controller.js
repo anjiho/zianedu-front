@@ -385,9 +385,12 @@ function getOnlineVideoPauseListByJLecKey(jLecKey) {
 }
 
 //수강중 > 수강완료
-function getSignUpVideoLectureEndTypeList(userKey) {
+function getSignUpVideoLectureEndTypeList(userKey, deviceType) {
     if (userKey == null || userKey == undefined) return;
-    var infoList = getApi("/myPage/getSignUpVideoLectureEndTypeList/", userKey, "");
+    var data = {
+        deviceType : deviceType
+    };
+    var infoList = getApi("/myPage/getSignUpVideoLectureEndTypeList/", userKey, data);
 
     if(infoList != null){
         var selList = infoList.result;
@@ -404,10 +407,11 @@ function getSignUpVideoLectureEndTypeList(userKey) {
 }
 
 //수강중 > 수강완료 > 과목리스트
-function getSignUpVideoLectureEndSubjectList(userKey, stepCtgKey) {
+function getSignUpVideoLectureEndSubjectList(userKey, stepCtgKey, deviceType) {
     if (userKey == null || userKey == undefined) return;
     var data = {
-        stepCtgKey : stepCtgKey
+        stepCtgKey : stepCtgKey,
+        deviceType : deviceType
     };
     var infoList = getApi("/myPage/getSignUpVideoLectureEndSubjectList/", userKey, data);
 
