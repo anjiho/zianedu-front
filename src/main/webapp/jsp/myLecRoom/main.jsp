@@ -263,7 +263,9 @@
             innerHTML("lecEndName", selList.name);
             innerHTML("lecEndStartDate", selList.startDate);//수강기간
             innerHTML("lecEndDate", selList.endDate);//수강일수
-            //reLecSel
+            innerValue("priceKey", selList.priceKey);
+            innerValue("gkey1", selList.gkey);
+
             var pcMobile = divisionPcMobile();
             if (pcMobile == 'PC') {
                 $("#lecEndPC").show();
@@ -315,6 +317,17 @@
             }
         }
     }
+
+    //장바구니
+    function goBasket() {
+        var priceKey = getInputTextValue("priceKey");
+        var gKey = getInputTextValue("gkey1");
+    }
+
+    //바로구매
+    function goProductBuy() {
+        
+    }
 </script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
@@ -333,6 +346,8 @@
     <input type="hidden" id="stopJlecKey">
     <input type="hidden" id="stopZianJlecKey">
     <input type="hidden" id="stopEndjLecKey">
+    <input type="hidden" id="priceKey">
+    <input type="hidden" id="gkey1">
     <div id="wrap">
         <%@include file="/common/jsp/leftMenu.jsp" %>
         <!--상단-->
@@ -742,8 +757,8 @@
                                                 </div>
                                                 <!--//guide-->
                                                 <div class="btn_cart_wrap">
-                                                    <a href=""  class="cart">장바구니</a>
-                                                    <a href=""  class="buying">바로구매</a>
+                                                    <a href="javascript:goBasket();"  class="cart">장바구니</a>
+                                                    <a href="javascript:goProductBuy();"  class="buying">바로구매</a>
                                                 </div>
                                             </div>
                                         </div>

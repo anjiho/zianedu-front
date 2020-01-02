@@ -580,7 +580,6 @@ function getOneByOneQuestionList(userKey, sPage, listLimit, searchType, searchTe
     var infoList = getPageApi("/myPage/getOneByOneQuestionList/", userKey, data);
     var cnt = infoList.cnt;
     paging.count(sPage, cnt, '10', listLimit, comment.blank_list);
-    console.log(infoList);
     if(infoList != null){
         if (infoList.result.length > 0) {
             var selList = infoList.result;
