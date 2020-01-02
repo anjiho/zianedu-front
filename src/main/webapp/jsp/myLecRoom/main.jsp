@@ -259,13 +259,13 @@
         var detailInfo = getSignUpVideoLectureEndInfo(jlecKey);
         if(detailInfo != null) {
             var selList = detailInfo.result;
+
             innerHTML("lecEndCtgName", selList.ctgName);
             innerHTML("lecEndName", selList.name);
             innerHTML("lecEndStartDate", selList.startDate);//수강기간
             innerHTML("lecEndDate", selList.endDate);//수강일수
             innerValue("priceKey", selList.priceKey);
             innerValue("gkey1", selList.gkey);
-
             var pcMobile = divisionPcMobile();
             if (pcMobile == 'PC') {
                 $("#lecEndPC").show();
@@ -320,9 +320,9 @@
     //장바구니
     function goBasket() {
         var priceKey = getInputTextValue("priceKey");
+        alert(priceKey);
         var gKey = getInputTextValue("gkey1");
         var extendDay = getSelectboxValue("reLecSel");
-
         var arr = new Array();
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         if(sessionUserInfo != undefined){

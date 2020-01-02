@@ -12,14 +12,16 @@
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         var userKey = sessionUserInfo.userKey;
 
-        var cartKeys = sessionStorage.getItem('cartNum');
-        var gKeys = sessionStorage.getItem('gKeys');
-        var goodsInfo = sessionStorage.getItem('goodsInfo');
-        var resultData = JSON.parse(sessionStorage.getItem('resultData'));
+        // var cartKeys = sessionStorage.getItem('cartNum');
+        // var gKeys = sessionStorage.getItem('gKeys');
+        // var goodsInfo = sessionStorage.getItem('goodsInfo');
+        // var resultData = JSON.parse(sessionStorage.getItem('resultData'));
 
         var gKeys = '<%=gKeys%>';
         var cartKeys = '<%=cartKeys%>';
         var goodsInfo = '<%=goodsInfo%>';
+
+        console.log(cartKeys);
         if('<%=cartKeys%>' == '' && '<%=goodsInfo%>' == ''){ //바로구매
             innerValue("gKeys", gKeys);
             getOrderSheetInfoFromImmediately(userKey, gKeys);
@@ -30,20 +32,6 @@
             innerValue("goodsInfo", goodsInfo);
             getOrderSheetInfoFromImmediatelyAtBasicPackage(userKey, goodsInfo, 1);
         }
-        <%--}--%>
-        <%--if( '<%=cartKeys%>' == "" && '<%=goodsInfo%>' == ""){//바로구매--%>
-        <%--    &lt;%&ndash;//var gKeys = toStrFileName(<%= request.getParameter("gKeys") %>);&ndash;%&gt;--%>
-        <%--    innerValue("gKeys", gKeys);--%>
-        <%--    getOrderSheetInfoFromImmediately(userKey, gKeys);--%>
-        <%--}else if('<%=gKeys%>' == "" && '<%=goodsInfo%>' == ""){--%>
-        <%--    &lt;%&ndash;//var cartKeys = toStrFileName(<%= request.getParameter("cartNum") %>);&ndash;%&gt;--%>
-        <%--    innerValue("cartNum", cartKeys);--%>
-        <%--    getOrderSheetInfoFromCart(userKey, cartKeys);--%>
-        <%--}else {//패키지--%>
-        <%--    &lt;%&ndash;//var goodsInfo ='<%= request.getParameter("goodsInfo") %>';&ndash;%&gt;--%>
-        <%--    innerValue("goodsInfo", goodsInfo);--%>
-        <%--    getOrderSheetInfoFromImmediatelyAtBasicPackage(userKey, goodsInfo, 1);--%>
-        <%--}--%>
 
         var cartProductName =  getInputTextValue("cartProductName");
         var payProductName  = getInputTextValue("payProductName");

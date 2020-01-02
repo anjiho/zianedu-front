@@ -486,10 +486,41 @@ function getUserCartInfo(userKey) {
         }
 
         /* 재수강 리스트 */
-        //
-        //
-        //
-        /* 재수강 리스트 */
+        if (infoList.result.retakeCartInfo.length > 0) {
+            for (var m = 0; m < infoList.result.retakeCartInfo.length; m++) {
+                var retakeCartInfo = infoList.result.retakeCartInfo[m];
+                console.log(retakeCartInfo);
+                var returnHtml = "<tr>";
+                returnHtml += "<td>";
+                returnHtml += "<input type=\"checkbox\" name='rePlayChk' id='"+ retakeCartInfo.cartKey +"' class=\"ck2\"></td>";
+                returnHtml += "</td>";
+                returnHtml += "<td>";
+                returnHtml += "" + retakeCartInfo.goodsName + "<br>";
+                if (retakeCartInfo.kind == 100) {
+                    returnHtml += "<span class=\"text_blue\">판매가격 :</span><span class=\"bdbox\">PC</span>";
+                } else if (retakeCartInfo.kind == 101) {
+                    returnHtml += "<span class=\"text_blue\">판매가격 :</span><span class=\"bdbox\">모바일</span>";
+                } else {
+                    returnHtml += "<span class=\"text_blue\">판매가격 :</span><span class=\"bdbox\">PC</span><span class=\"bdbox\">모바일</span>";
+                }
+                returnHtml += "</td>";
+                returnHtml += "<td>";
+                returnHtml += retakeCartInfo.subjectCount;
+                returnHtml += "</td>";
+                returnHtml += "<td>";
+                returnHtml += "<span class=\"thm line\">" + retakeCartInfo.priceName + "</span><span class=\"arrow\">＞</span>";
+                returnHtml += "<span class=\"thm text_blue\">" + retakeCartInfo.sellPriceName + "</span>";
+                returnHtml += "</td>";
+                returnHtml += "<td>";
+                returnHtml += retakeCartInfo.pointName;
+                returnHtml += "</td>";
+                returnHtml += "<tr>";
+                $("#rePlayList").append(returnHtml);
+            }
+        }else{
+            $("#rePlayDiv").hide();
+        }
+
 
         if (infoList.result.videoCartInfo.length > 0) {
             for (var j = 0; j < infoList.result.videoCartInfo.length; j++) {

@@ -17,6 +17,10 @@
             if($("#playAll").prop("checked"))$("input[name=playChk]").prop("checked",true);
             else $("input[name=playChk]").prop("checked",false);
         });
+        $("#rePlayAll").click(function(){
+            if($("#rePlayAll").prop("checked"))$("input[name=rePlayChk]").prop("checked",true);
+            else $("input[name=rePlayChk]").prop("checked",false);
+        });
         $("#promotionAll").click(function(){
             if($("#promotionAll").prop("checked"))$("input[name=promotionChk]").prop("checked",true);
             else $("input[name=promotionChk]").prop("checked",false);
@@ -39,6 +43,11 @@
                 var cartKey = $(this).attr('id');
                 playArr.push(cartKey);
             });
+            var rePlayArr = new Array();
+            $('input[name=rePlayChk]:checked').each(function() {
+                var cartKey = $(this).attr('id');
+                rePlayArr.push(cartKey);
+            });
             var promotionArr = new Array();
             $('input[name=promotionChk]:checked').each(function() {
                 var cartKey = $(this).attr('id');
@@ -51,7 +60,8 @@
             });
             var arr1 = acaArr.concat(playArr);
             var arr2 = arr1.concat(promotionArr);
-            var allArr = arr2.concat(bookArr);
+            var arr3 = arr2.concat(bookArr);
+            var allArr = arr3.concat(rePlayArr);
             var cartKeys = toStrFileName(allArr);
             var result = deleteCartInfo(cartKeys);
             if(result.resultCode == 200){
@@ -73,6 +83,11 @@
             var cartKey = $(this).attr('id');
             playArr.push(cartKey);
         });
+        var rePlayArr = new Array();
+        $('input[name=rePlayChk]:checked').each(function() {
+            var cartKey = $(this).attr('id');
+            rePlayArr.push(cartKey);
+        });
         var promotionArr = new Array();
         $('input[name=promotionChk]:checked').each(function() {
             var cartKey = $(this).attr('id');
@@ -85,7 +100,8 @@
         });
         var arr1 = acaArr.concat(playArr);
         var arr2 = arr1.concat(promotionArr);
-        var allArr = arr2.concat(bookArr);
+        var arr3 = arr2.concat(bookArr);
+        var allArr = arr3.concat(rePlayArr);
         var cartKeys = toStrFileName(allArr);
         if(allArr != ''){
             innerValue("cartKeys", cartKeys);
@@ -195,7 +211,7 @@
                                 </colgroup>
                                 <thead>
                                 <tr>
-                                    <th><input type="checkbox" name="playAll" value=""  class="check-all2"></th>
+                                    <th><input type="checkbox" name="playAll" id="playAll" class=""></th>
                                     <th>상품명</th>
                                     <th>강의수</th>
                                     <th>판매가</th>
@@ -218,7 +234,7 @@
                                 </colgroup>
                                 <thead>
                                 <tr>
-                                    <th><input type="checkbox" name="playAll" value=""  class="check-all2"></th>
+                                    <th><input type="checkbox" name="rePlayAll" id="rePlayAll"  class=""></th>
                                     <th>상품명</th>
                                     <th>강의수</th>
                                     <th>판매가</th>
