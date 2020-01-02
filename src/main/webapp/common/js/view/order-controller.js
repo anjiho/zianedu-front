@@ -485,6 +485,12 @@ function getUserCartInfo(userKey) {
             $("#acaDiv").hide();
         }
 
+        /* 재수강 리스트 */
+        //
+        //
+        //
+        /* 재수강 리스트 */
+
         if (infoList.result.videoCartInfo.length > 0) {
             for (var j = 0; j < infoList.result.videoCartInfo.length; j++) {
                 var playInfo = infoList.result.videoCartInfo[j];
@@ -622,3 +628,12 @@ function saveCart(saveCartInfo) {
 //     var result = postApi("/order/saveCartFreePackage", data);
 //     return  result;
 // }
+
+function saveCartAtRetake(saveCartInfo) {
+    if (saveCartInfo == null || saveCartInfo == undefined) return;
+    var data = {
+        saveCartInfo : saveCartInfo
+    };
+    var result = postApi("/order/saveCartAtRetake", data);
+    return  result;
+}

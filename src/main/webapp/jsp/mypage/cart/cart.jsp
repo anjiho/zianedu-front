@@ -206,6 +206,29 @@
                                 </tbody>
                             </table>
                         </div>
+                        <div class="tbd_03 mgb60" id="rePlayDiv">
+                            <p class="title"><span class="text_blue">재수강</span> 장바구니 담긴상품</p>
+                            <table>
+                                <colgroup>
+                                    <col width="50px">
+                                    <col>
+                                    <col width="">
+                                    <col width="150px">
+                                    <col>
+                                </colgroup>
+                                <thead>
+                                <tr>
+                                    <th><input type="checkbox" name="playAll" value=""  class="check-all2"></th>
+                                    <th>상품명</th>
+                                    <th>강의수</th>
+                                    <th>판매가</th>
+                                    <th>마일리지</th>
+                                </tr>
+                                </thead>
+                                <tbody id="rePlayList">
+                                </tbody>
+                            </table>
+                        </div>
                         <div class="tbd_03 mgb60" id="promotionDiv">
                             <p class="title"><span class="text_blue">프로모션</span> 장바구니 담긴상품</p>
                             <table>

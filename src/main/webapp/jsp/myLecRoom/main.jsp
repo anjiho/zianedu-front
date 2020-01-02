@@ -308,7 +308,6 @@
             var stopEndjLecKey = getInputTextValue("stopEndjLecKey");
             var result =  requestVideoStartStop(stopEndjLecKey, 10, 'START');
             if(result.resultCode == 200){
-                alert(1);
                 $('#modal4').hide();
                 //$('#overlay').css("","");
             }else if(result.resultCode == 905){
@@ -322,6 +321,31 @@
     function goBasket() {
         var priceKey = getInputTextValue("priceKey");
         var gKey = getInputTextValue("gkey1");
+        var extendDay = getSelectboxValue("reLecSel");
+
+        var arr = new Array();
+        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        if(sessionUserInfo != undefined){
+            var userKey = sessionUserInfo.userKey;
+            var data = {
+                userKey : userKey,
+                gKey : gKey,
+                priceKey : priceKey,
+                gCount : 1,
+                extendDay : extendDay
+            };
+            arr.push(data);
+            var saveCartInfo = JSON.stringify(arr);
+            var result = saveCartAtRetake(saveCartInfo);
+            if(result.resultCode == 200){
+                alert("장바구니에 담겼습니다.");
+                return false;
+            }
+        }else{
+            alert("로그인을 해주세요");
+            goLoginPage();
+        }
+
     }
 
     //바로구매
@@ -750,7 +774,7 @@
                                                             <option value="0">전체</option>
                                                             <option value="10">10일</option>
                                                             <option value="20">20일</option>
-                                                            <option value="300">30일</option>
+                                                            <option value="30">30일</option>
                                                         </select>
                                                     </div>
                                                     <!-- //edusup_multi -->
