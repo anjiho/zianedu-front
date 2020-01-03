@@ -416,6 +416,7 @@ function getSignUpVideoLectureEndSubjectList(userKey, stepCtgKey, deviceType) {
     var infoList = getApi("/myPage/getSignUpVideoLectureEndSubjectList/", userKey, data);
 
     var selList = infoList.result;
+    console.log(selList);
     if(selList.length > 0){
         innerValue("lecEndJlecKey", selList[0].jlecKey);
         lecEndDetail(selList[0].jlecKey);
@@ -428,6 +429,7 @@ function getSignUpVideoLectureEndSubjectList(userKey, stepCtgKey, deviceType) {
 function getSignUpVideoLectureEndInfo(jlecKey) {
     if (jlecKey == null || jlecKey == undefined) return;
     var infoList = getApi("/myPage/getSignUpVideoLectureEndInfo/", jlecKey, "");
+    console.log(infoList);
     if(infoList != null){
         return infoList;
     }

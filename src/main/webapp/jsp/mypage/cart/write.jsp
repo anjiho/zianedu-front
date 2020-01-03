@@ -5,6 +5,7 @@
     String cartKeys = Util.isNullValue(request.getParameter("cartKeys"), "");
     String gKeys = Util.isNullValue(request.getParameter("gKeys"), "");
     String goodsInfo = Util.isNullValue(request.getParameter("goodsInfo"), "");
+    String retakeInfo = Util.isNullValue(request.getParameter("retakeInfo"), "");
 %>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
@@ -20,16 +21,20 @@
         var gKeys = '<%=gKeys%>';
         var cartKeys = '<%=cartKeys%>';
         var goodsInfo = '<%=goodsInfo%>';
+        var retakeInfo = '<%=retakeInfo%>';
 
-        if('<%=cartKeys%>' == '' && '<%=goodsInfo%>' == ''){ //바로구매
+        if('<%=cartKeys%>' == '' && '<%=goodsInfo%>' == '' && '<%=retakeInfo%>' == ''){ //바로구매
             innerValue("gKeys", gKeys);
             getOrderSheetInfoFromImmediately(userKey, gKeys);
-        }else if('<%=gKeys%>' == '' && '<%=goodsInfo%>' == ''){//장바구니
+        }else if('<%=gKeys%>' == '' && '<%=goodsInfo%>' == '' && '<%=retakeInfo%>' == ''){//장바구니
             innerValue("cartNum", cartKeys);
             getOrderSheetInfoFromCart(userKey, cartKeys);
-        }else {//패키지
+        }else if('<%=gKeys%>' == '' && '<%=cartKeys%>' == '' && '<%=retakeInfo%>' == ''){//패키지
             innerValue("goodsInfo", goodsInfo);
             getOrderSheetInfoFromImmediatelyAtBasicPackage(userKey, goodsInfo, 1);
+        }else{//재수강
+            innerValue("retakeInfo", retakeInfo);
+            getOrderSheetInfoFromImmediatelyAtRetake(userKey, retakeInfo);
         }
 
         var cartProductName =  getInputTextValue("cartProductName");
@@ -148,6 +153,7 @@
         sessionStorage.setItem("cartNum", '<%=cartKeys%>');
         sessionStorage.setItem("gKeys", '<%=gKeys%>');
         sessionStorage.setItem("goodsInfo", '<%=goodsInfo%>');
+        sessionStorage.setItem("retakeInfo", '<%=retakeInfo%>');
         var allProductPrice =  getInputTextValue("allProductPrice");
         var productNames = getInputTextValue("productNames");
         var resultData = {
@@ -162,7 +168,6 @@
             productNames : productNames
         };
         sessionStorage.setItem("resultData", JSON.stringify(resultData));
-
         $("#id_frm_orderPay").attr( "action", "/myPage?page_gbn=pay");
         $("#id_frm_orderPay").submit();
     }
@@ -172,6 +177,7 @@
     <input type="hidden" id="cartNum" name="cartNum">
     <input type="hidden" id="gKeys" name="gKeys">
     <input type="hidden" id="goodsInfo" name="goodsInfo">
+    <input type="hidden" id="retakeInfo" name="retakeInfo">
     <input type="hidden" id="postName" name="postName">
     <input type="hidden" id="allTel" name="allTel">
     <input type="hidden" id="allPhone" name="allPhone">

@@ -5,10 +5,11 @@
 <%@ page import="com.inicis.std.util.SignatureUtil"%>
 <%@page import="java.util.*"%>
 <%
-    String cartNum = Util.isNullValue(request.getParameter("cartNum"), "");
-    String gKeys = Util.isNullValue(request.getParameter("gKeys"), "");
-    String goodsInfo = Util.isNullValue(request.getParameter("goodsInfo"), "");
-    //String allProductPrice = Util.isNullValue(request.getParameter("allProductPrice"), "");
+//    String cartNum = Util.isNullValue(request.getParameter("cartNum"), "");
+//    String gKeys = Util.isNullValue(request.getParameter("gKeys"), "");
+//    String goodsInfo = Util.isNullValue(request.getParameter("goodsInfo"), "");
+//    String retakeInfo = Util.isNullValue(request.getParameter("retakeInfo"), "");
+//    //String allProductPrice = Util.isNullValue(request.getParameter("allProductPrice"), "");
     String allProductPrice = "1000";
     String userName = Util.isNullValue(request.getParameter("postName"), "");
     String phoneNum = Util.isNullValue(request.getParameter("allPhone"), "");
@@ -96,6 +97,7 @@
         var cartKeys = sessionStorage.getItem('cartNum');
         var gKeys = sessionStorage.getItem('gKeys');
         var goodsInfo = sessionStorage.getItem('goodsInfo');
+        var retakeInfo = sessionStorage.getItem('retakeInfo');
         var resultData = JSON.parse(sessionStorage.getItem('resultData'));
 
         var total = '<%=total%>';
@@ -112,15 +114,17 @@
         };
         sessionStorage.setItem("savePayInfo", JSON.stringify(data));
 
-        if( cartKeys == "" && goodsInfo == ""){//바로구매
+        if( cartKeys == "" && goodsInfo == "" && retakeInfo == ''){//바로구매
             innerValue("gKeys", gKeys);
             getOrderSheetInfoFromImmediately(userKey, gKeys);
-        }else if(gKeys == "" && goodsInfo == ""){
+        }else if(gKeys == "" && goodsInfo == "" && retakeInfo == ''){
             innerValue("cartNum", cartKeys);
             getOrderSheetInfoFromPay(userKey, cartKeys);
-        }else{//패키지
+        }else if(gKeys == "" && cartKeys == "" && retakeInfo == ''){//패키지
             innerValue("goodsInfo", goodsInfo);
             getOrderSheetInfoFromImmediatelyAtBasicPackage(userKey, goodsInfo, 1);
+        }else{//재수강
+            getOrderSheetInfoFromImmediatelyAtRetake(userKey, retakeInfo);
         }
 
         innerValue("allProductPrice", resultData.allProductPrice);

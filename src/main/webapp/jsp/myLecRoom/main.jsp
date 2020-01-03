@@ -260,13 +260,15 @@
         var detailInfo = getSignUpVideoLectureEndInfo(jlecKey);
         if(detailInfo != null) {
             var selList = detailInfo.result;
-
             innerHTML("lecEndCtgName", selList.ctgName);
             innerHTML("lecEndName", selList.name);
             innerHTML("lecEndStartDate", selList.startDate);//수강기간
             innerHTML("lecEndDate", selList.endDate);//수강일수
             innerValue("priceKey", selList.priceKey);
             innerValue("gkey1", selList.gkey);
+
+            //재수강 Y,N
+            if(selList.retakeYn == 'N') $("#retake").hide();
 
             var kind = selList.kind;
             if (kind == 100) {
@@ -282,14 +284,6 @@
                 $("#lecEndMobile").hide();
                 $("#lecEndPcMobile").show();
             }
-            //
-            // if (pcMobile == 'PC') {
-            //     $("#lecEndPC").show();
-            //     $("#lecEndMobile").hide();
-            // } else {
-            //     $("#lecEndPC").hide();
-            //     $("#lecEndMobile").show();
-            // }
         }else{
             $("#lecEndDiv").hide();
         }
@@ -360,14 +354,38 @@
             alert("로그인을 해주세요");
             goLoginPage();
         }
-
     }
 
     //바로구매
     function goProductBuy() {
-        
+        var priceKey = getInputTextValue("priceKey");
+        var gKey = getInputTextValue("gkey1");
+        var extendDay = getSelectboxValue("reLecSel");
+        var arr = new Array();
+        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        if(sessionUserInfo != undefined){
+            var userKey = sessionUserInfo.userKey;
+            var data = {
+                userKey : userKey,
+                gKey : gKey,
+                priceKey : priceKey,
+                gCount : 1,
+                extendDay : extendDay
+            };
+            arr.push(data);
+            var retakeInfo = JSON.stringify(arr);
+            innerValue("retakeInfo", retakeInfo);
+            $("#id_frm_singleMypage").attr("action", "/myPage?page_gbn=write");
+            $("#id_frm_singleMypage").submit();
+        }else{
+            alert("로그인을 해주세요");
+            goLoginPage();
+        }
     }
 </script>
+<form id="id_frm_singleMypage" method="post" name="id_frm_singleMypage">
+    <input type="hidden" id="retakeInfo" name="retakeInfo">
+</form>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
     <input type="hidden" id="subjectCtgKey">
@@ -781,24 +799,26 @@
                                                 <span class="bdbox" id="lecEndPcMobile">PC 모바일</span>
                                                 <p class="thumb" id="lecEndName"></p>
                                                 <span class="date"><b>수강기간</b><span id="lecEndStartDate"></span><b>종료기간</b><span id="lecEndDate"></span></span>
-                                                <!--guide-->
-                                                <div class="guide">
-                                                    <span class="re_date">재수강신청</span>
-                                                    <!-- edusup_multi -->
-                                                    <div class="edusup_multi">
-                                                        <select style="width: 100px;" id="reLecSel">
-                                                            <option value="0">전체</option>
-                                                            <option value="10">10일</option>
-                                                            <option value="20">20일</option>
-                                                            <option value="30">30일</option>
-                                                        </select>
+                                                <div id="retake">
+                                                    <!--guide-->
+                                                    <div class="guide">
+                                                        <span class="re_date">재수강신청</span>
+                                                        <!-- edusup_multi -->
+                                                        <div class="edusup_multi">
+                                                            <select style="width: 100px;" id="reLecSel">
+                                                                <option value="0">전체</option>
+                                                                <option value="10">10일</option>
+                                                                <option value="20">20일</option>
+                                                                <option value="30">30일</option>
+                                                            </select>
+                                                        </div>
+                                                        <!-- //edusup_multi -->
                                                     </div>
-                                                    <!-- //edusup_multi -->
-                                                </div>
-                                                <!--//guide-->
-                                                <div class="btn_cart_wrap">
-                                                    <a href="javascript:goBasket();"  class="cart">장바구니</a>
-                                                    <a href="javascript:goProductBuy();"  class="buying">바로구매</a>
+                                                    <!--//guide-->
+                                                    <div class="btn_cart_wrap">
+                                                        <a href="javascript:goBasket();"  class="cart">장바구니</a>
+                                                        <a href="javascript:goProductBuy();"  class="buying">바로구매</a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
