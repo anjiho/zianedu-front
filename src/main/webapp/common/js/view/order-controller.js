@@ -202,8 +202,9 @@ function getOrderSheetInfoFromPay(userKey, cartKeys) {
 function getOrderSheetInfoFromImmediately(userKey, gKeys) {
     if (userKey == null || userKey == undefined) return;
     var data = {
-        gKeys : gKeys
+        priceKeys : gKeys
     };
+
     var infoList = getApi("/order/getOrderSheetInfoFromImmediately/", userKey, data);
 
     if(infoList != null){

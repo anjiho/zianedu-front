@@ -90,10 +90,6 @@
         }else{
             alert("로그인이 필요합니다.");
             goLoginPage();
-            // $("#playLecListDiv").hide();
-            // $("#zianPassListDiv").hide();
-            // $("#acaDiv").hide();
-            // return false;
         }
     });
 
@@ -268,7 +264,7 @@
             innerValue("gkey1", selList.gkey);
 
             //재수강 Y,N
-            //if(selList.retakeYn == 'N') $("#retake").hide();
+            if(selList.retakeYn == 'N') $("#retake").hide();
 
             var kind = selList.kind;
             if (kind == 100) {

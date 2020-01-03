@@ -3016,8 +3016,9 @@ function goCheckedBuy() {
             var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
             var userKey = sessionUserInfo.userKey;
             $('input[name=lecChk]:checked').each(function () {
-                var gkey = $(this).val();
-                arr.push(gkey);
+                //var gkey = $(this).val();
+                 var priceKey = $(this).attr('id');
+                arr.push(priceKey);
             });
 
             var data = toStrFileName(arr);

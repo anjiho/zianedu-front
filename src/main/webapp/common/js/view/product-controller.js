@@ -861,7 +861,7 @@ function getZianPassProductList(parentKey) {
                         returnHtml += "<li>";
                         returnHtml += "<b class=\"cost\">"+ lecInfo.sellPrice +"원</b> <input type=\"checkbox\" id='"+ lecInfo.priceKey +"' name='lecChk' value='"+ lecInfo.gkey +"'>";
                         returnHtml += "<a href='javascript:goOneLecCheckedShopBasket("+ lecInfo.priceKey +","+lecInfo.gkey+");' class=\"btn_s\">장바구니</a>&nbsp;";
-                        returnHtml += "<a href='javascript:goOneLecCheckedBuy("+ lecInfo.gkey +");' class=\"btn_s on\">바로구매</a>";
+                        returnHtml += "<a href='javascript:goOneLecCheckedBuy("+ lecInfo.priceKey +");' class=\"btn_s on\">바로구매</a>";
                         returnHtml += " </li>";
                         returnHtml += "</ul>";//costList
                         returnHtml += "</li>";//w35p alignRight
@@ -917,7 +917,7 @@ function getYearMemberProductList(parentKey) {
                     returnHtml += "<li>";
                     returnHtml += "<b class=\"cost\">"+ lecInfo.sellPrice +"원</b> <input type=\"checkbox\" id='"+ lecInfo.priceKey +"' name='lecChk' value='"+ lecInfo.gkey +"'>";
                     returnHtml += "<a href='javascript:goOneLecCheckedShopBasket("+ lecInfo.priceKey +","+lecInfo.gkey+");' class=\"btn_s\">장바구니</a>&nbsp;";
-                    returnHtml += "<a href='javascript:goOneLecCheckedBuy("+ lecInfo.gkey +");' class=\"btn_s on\">바로구매</a>";
+                    returnHtml += "<a href='javascript:goOneLecCheckedBuy("+ lecInfo.priceKey +");' class=\"btn_s on\">바로구매</a>";
                     returnHtml += " </li>";
                     returnHtml += "</ul>";//costList
                     returnHtml += "</li>";//w35p alignRight
