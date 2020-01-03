@@ -806,6 +806,7 @@
                                                         <!-- edusup_multi -->
                                                         <div class="edusup_multi">
                                                             <select style="width: 100px;" id="reLecSel">
+                                                                <option value="">선택</option>
                                                                 <option value="0">전체</option>
                                                                 <option value="10">10일</option>
                                                                 <option value="20">20일</option>
