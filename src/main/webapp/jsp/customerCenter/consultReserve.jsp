@@ -12,6 +12,8 @@
         }
         
         $("#academyNumber").change(function () {
+            $("#morning").empty();
+            $("#afternoon").empty();
             var a_reservation = getSelectboxValue("a_reservation");
             var academyNumber = getSelectboxValue("academyNumber");
             if(a_reservation != ""){
@@ -22,7 +24,9 @@
                 innerValue("indate", today);
                 innerHTML("selDate", today2);
                 innerHTML("academy", $("#academyNumber option:checked").text());
-                getReserveTime(today, academyNumber);
+                if(academyNumber != ""){
+                    getReserveTime(today, academyNumber);
+                }
             }else{
                 alert("상담유형을 선택해 주세요.");
                 $("#academyNumber").val("");
@@ -359,7 +363,7 @@
 <div id="modal2" class="modalWrap">
     <div class="inner">
         <div class="modalTitle">
-            <h2>1관위치</h2>
+            <h2>2관위치</h2>
             <a href="#" class="btn_modalClose">모달팝업닫기</a>
         </div>
         <div id="map2" style="width:700px;height:300px;"></div>
