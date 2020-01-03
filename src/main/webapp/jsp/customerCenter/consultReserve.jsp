@@ -3,6 +3,11 @@
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2149f737a2468c19787b4ef4a9ea6a2b&libraries=services"></script>
 <script>
     $(document).ready(function () {
+        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        if(sessionUserInfo == null){
+            alert("로그인을 해주세요.");
+            goLoginPage();
+        }
         /*다음지도 API 호출*/
         daumMapApi('map1', '서울시 동작구 노량진동 117-2 영빌딩');
         daumMapApi('map2', '서울특별시 동작구 노량진로 196');

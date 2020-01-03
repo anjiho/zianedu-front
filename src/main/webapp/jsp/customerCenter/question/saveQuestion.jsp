@@ -98,7 +98,7 @@
             }
         }else{
             alert("로그인을 해주세요.");
-            return false;
+            goLoginPage();
         }
     }
 
