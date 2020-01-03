@@ -3165,3 +3165,13 @@ function getToday2(){
     }
     return today = year+"."+ month +"."+ date;
 }
+
+function locationPop(num){
+    var uModal = $('#lo_'+num);
+    var mClose = $('.btn_modalClose');
+    /* modal */
+    uModal.css('display','block');
+    mClose.click(function(){
+        uModal.css('display','none');
+    });
+}
