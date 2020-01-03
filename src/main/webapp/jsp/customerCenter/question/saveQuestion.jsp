@@ -14,12 +14,12 @@
 
         /* 질문등록 */
         $("#attachFile").on("change", addFiles);
-        // $('#writeContent').summernote({
-        //     height: 300,                 // set editor height
-        //     minHeight: null,             // set minimum height
-        //     maxHeight: null,             // set maximum height of editor
-        //     focus: true                  // set focus to editable area after initializing summernote
-        // });
+        $('#writeContent').summernote({
+            height: 300,                 // set editor height
+            minHeight: null,             // set minimum height
+            maxHeight: null,             // set maximum height of editor
+            focus: true                  // set focus to editable area after initializing summernote
+        });
     });
 
     //질문답변보기
