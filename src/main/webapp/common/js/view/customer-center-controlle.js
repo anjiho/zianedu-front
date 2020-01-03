@@ -33,14 +33,15 @@ function getReserveTime(reserveDate, reserveLocation) {
                     if(cmpList.reservedYn == true){
                         var returnHtml = "<li><a href='javascript:setTime(0,0);'>"+ time +"</a></li>";
                     }else{
-                        var returnHtml = "<li><a href='javascript:setTime("+ selList[i].reserveTimeKey +","+ '"'+ time +'"' +");' id='"+ selList[i].reserveTimeKey +"'>"+ time +"</a></li>";
+                        var returnHtml = "<li><a href='javascript:setTime("+ selList[i].reserveTimeKey +","+ '"'+ time +'"' +");' id='"+ selList[i].reserveTimeKey +"'>"+ cmpList.reserveTimeName +"</a></li>";
                     }
                     $("#morning").append(returnHtml);
                 }else{
                     if(cmpList.reservedYn == true){
                         var returnHtml = "<li><a href='javascript:setTime(0,0);'>"+ time +"</a></li>";
                     }else{
-                        var returnHtml = "<li><a href='javascript:setTime("+ selList[i].reserveTimeKey +","+ '"'+ time +'"' +");' id='"+ selList[i].reserveTimeKey +"'>"+ time +"</a></li>";
+                        var returnHtml = "<li><a href='javascript:setTime("+ selList[i].reserveTimeKey +","+ '"'+ time +'"' +");' id='"+ selList[i].reserveTimeKey +"'>"+ cmpList.reserveTimeName +"</a></li>";
+                        console.log(returnHtml);
                     }
                     $("#afternoon").append(returnHtml);
                 }

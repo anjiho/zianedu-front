@@ -15,6 +15,7 @@
                 calendar();
                 var today = getToday();
                 innerValue("indate", today);
+                innerHTML("academy", $("#academyNumber option:checked").text());
                 getReserveTime(today, academyNumber);
             }else{
                 alert("상담유형을 선택해 주세요.");
@@ -50,6 +51,8 @@
                 },
                 selectable:true,
                 defaultView: 'month',
+                contentHeight:"auto",
+                handleWindowResize:true,
                 dayPopoverFormat: 'yyyy-MM-dd',
                 select: function (startDate, endDate, jsEvent, view) {
                     var dt_start = moment(startDate).format('YYYY-MM-DD');
@@ -87,6 +90,7 @@
     
     function setTime(val, time) {
         if(val == 0 && time == 0){
+            alert("이미 상담예약이 완료되었습니다.");
             return false;
         }
         $("#morning li a").each(function () {$(this).removeClass('active');});
@@ -129,6 +133,10 @@
             reserveContents : reserveContents
         };
         var result = reserveConsult(data);
+        if(result.resultCode == 200){
+            alert("상담예약이 완료 되었습니다.");
+            return false;
+        }
     }
 
 </script>
@@ -239,7 +247,7 @@
                             </div>
                             <div class="table_wrap">
                                 <p><span id="selDate"></span> <span id="selDay"></span> / <span id="selTime"></span> </p>
-                                <p class="t_tit"><span>지안공무원1관</span>에서 <span>방문상담예약</span>을 선택하셨습니다.</p>
+                                <p class="t_tit"><span id="academy"></span>에서 <span>방문상담예약</span>을 선택하셨습니다.</p>
                                 <div class="form_atb">
                                     <h3>예약자정보</h3>
                                     <p><img src="/common/zian/images/common/icon_formChk.png">필수입력</p>
