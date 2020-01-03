@@ -14,7 +14,9 @@
                 $("#consultDiv").show();
                 calendar();
                 var today = getToday();
+                var today2 = getToday2();
                 innerValue("indate", today);
+                innerHTML("selDate", today2);
                 innerHTML("academy", $("#academyNumber option:checked").text());
                 getReserveTime(today, academyNumber);
             }else{
@@ -275,13 +277,13 @@
                                             <th class="vt_pt"><img src="/common/zian/images/common/icon_formChk.png">상담요청직업군</th>
                                             <td>
                                                 <select id="interestCtgKey0" name="interestCtgKey0" class="w180">
-                                                    <option value="">선택</option>
+                                                    <option value="0">선택</option>
                                                 </select>
                                                 <select id="interestCtgKey1" name="interestCtgKey0" class="w180">
-                                                    <option value="">선택</option>
+                                                    <option value="0">선택</option>
                                                 </select>
                                                 <select id="interestCtgKey2" name="interestCtgKey0" class="w180">
-                                                    <option value="">선택</option>
+                                                    <option value="0">선택</option>
                                                 </select>
                                             </td>
                                         </tr>
