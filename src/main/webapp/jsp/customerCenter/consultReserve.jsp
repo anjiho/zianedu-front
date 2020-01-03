@@ -1,7 +1,11 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/jsp/common.jsp" %>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2149f737a2468c19787b4ef4a9ea6a2b&libraries=services"></script>
 <script>
     $(document).ready(function () {
+        /*다음지도 API 호출*/
+        daumMapApi('map1', '서울시 동작구 노량진동 117-2 영빌딩');
+        daumMapApi('map2', '서울특별시 동작구 노량진로 196');
         var a_reservation = getSelectboxValue("a_reservation");
         if(a_reservation == ""){
             $("#consultDiv").hide();
@@ -104,6 +108,10 @@
     }
     
     function consultSave() {
+        if ($("input:checkbox[name='consentChk']").is(":checked") == false){
+            alert('수신동의를 체크해 주세요.');
+            return false;
+        }
         var check = new isCheck();
         if (check.input("reserveContents", comment.consultContent_info) == false) return;
         if (check.input("indate", comment.consultDate_info) == false) return;
@@ -194,8 +202,8 @@
                                 <option value="2">지안공무원2관</option>
                             </select>
                             <div class="l_btn">
-                                <a href="javascript:locationPop(1)" class="one">1관위치</a>
-                                <a href="javascript:locationPop(2)" class="two">2관위치</a>
+                                <a href="#modal1" class="btn_info btn_modalOpen">1관위치</a>
+                                <a href="#modal2" class="btn_info btn_modalOpen">2관위치</a>
                             </div>
                         </div>
                         <div class="advice_table" id="consultDiv">
@@ -217,25 +225,12 @@
                                             <div class="">
                                                 <h6>오전</h6>
                                                 <ul id="morning">
-<%--                                                    <li><a href="javascript:" class="active">09:00</a></li>--%>
-<%--                                                    <li><a href="javascript:">09:30</a></li>--%>
-<%--                                                    <li><a href="javascript:">10:00</a></li>--%>
-<%--                                                    <li><a href="javascript:">10:30</a></li>--%>
-<%--                                                    <li><a href="javascript:">11:00</a></li>--%>
-<%--                                                    <li><a href="javascript:">11:30</a></li>--%>
                                                 </ul>
                                             </div>
                                             <div class="c_afternoon">
                                                 <h6>오후</h6>
                                                 <ul id="afternoon">
-<%--                                                    <li><a href="javascript:">12:00</a></li>--%>
-<%--                                                    <li><a href="javascript:">14:00</a></li>--%>
-<%--                                                    <li><a href="javascript:">14:30</a></li>--%>
-<%--                                                    <li><a href="javascript:">15:00</a></li>--%>
-<%--                                                    <li><a href="javascript:">15:30</a></li>--%>
-<%--                                                    <li><a href="javascript:">16:00</a></li>--%>
-<%--                                                    <li><a href="javascript:">16:30</a></li>--%>
-<%--                                                    <li><a href="javascript:">17:00</a></li>--%>
+
                                                 </ul>
                                             </div>
                                         </div>
@@ -263,7 +258,7 @@
                                             <th class="vt_pt"><img src="/common/zian/images/common/icon_formChk.png">연락처</th>
                                             <td>
                                                 <input type="text" id="phoneNum" readonly>
-                                                <input type="checkbox" name="" id="consentChk" class="">
+                                                <input type="checkbox" name="consentChk" id="consentChk" class="">
                                                 <label style="display:inline-block;" for="consentChk">수신동의</label>
                                             </td>
                                         </tr>
@@ -315,101 +310,94 @@
 </form>
 </body>
 </html>
-<!-- 안내 모달창 -->
-<div id="lo_1" class="locationModal">
-    <!-- Modal content -->
-    <div class="modal-content">
-        <div class="mTit">
+<div id="modal1" class="modalWrap">
+    <div class="inner">
+        <div class="modalTitle">
             <h2>1관위치</h2>
-            <a href="javascript:" class="btn_modalClose">닫기</a>
+            <a href="#" class="btn_modalClose">모달팝업닫기</a>
         </div>
-        <div class="mCont">
-            <div class="ta_center">
-                <div class="location">
-                    <div class="mApi">api</div>
-                    <div class="locationP">
-                        <h3>1관 찾아오시는 길</h3>
-                        <table>
-                            <colgroup>
-                                <col width="10%">
-                                <col width="40%">
-                                <col width="10%">
-                                <col width="40%">
-                            </colgroup>
-                            <tbody>
-                            <tr>
-                                <th>주소</th>
-                                <td colspan="3">서울시 동작구 노량진동 117-2 영빌딩 2층 (올리브영 맞은편 다이소건물 2층)</td>
-                            </tr>
-                            <tr>
-                                <th>지하철</th>
-                                <td colspan="3">1호선 노량진역 1번출구, 9호선 노량진역 3번출구</td>
-                            </tr>
-                            <tr>
-                                <th>버스</th>
-                                <td colspan="3">파랑(간선버스) : 152, 500, 504, 654, 751, 752 / 초록(지선버스) : 5535,
-                                    5536, 5516, 5517</td>
-                            </tr>
-                            <tr>
-                                <th>TEL</th>
-                                <td>02-6080-1725</td>
-                                <th>FAX</th>
-                                <td>02-816-1720</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
+        <div id="map1" style="width:700px;height:300px;"></div>
+        <div class="modalContent">
+            <div class="pop_cont">
+                <div class="locationP">
+                    <h3>2관 찾아오시는 길</h3>
+                    <table>
+                        <colgroup>
+                            <col width="10%">
+                            <col width="40%">
+                            <col width="10%">
+                            <col width="40%">
+                        </colgroup>
+                        <tbody>
+                        <tr>
+                            <th>주소</th>
+                            <td colspan="3">서울시 동작구 노량진동 117-2 영빌딩 2층 (올리브영 맞은편 다이소건물 2층)</td>
+                        </tr>
+                        <tr>
+                            <th>지하철</th>
+                            <td colspan="3">1호선 노량진역 1번출구, 9호선 노량진역 3번출구</td>
+                        </tr>
+                        <tr>
+                            <th>버스</th>
+                            <td colspan="3">파랑(간선버스) : 152, 500, 504, 654, 751, 752 / 초록(지선버스) : 5535,
+                                5536, 5516, 5517</td>
+                        </tr>
+                        <tr>
+                            <th>TEL</th>
+                            <td>02-6080-1725</td>
+                            <th>FAX</th>
+                            <td>02-816-1720</td>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<div id="lo_2" class="locationModal">
-    <!-- Modal content -->
-    <div class="modal-content">
-        <div class="mTit">
-            <h2>2관위치</h2>
-            <a href="javascript:" class="btn_modalClose">닫기</a>
+
+<div id="modal2" class="modalWrap">
+    <div class="inner">
+        <div class="modalTitle">
+            <h2>1관위치</h2>
+            <a href="#" class="btn_modalClose">모달팝업닫기</a>
         </div>
-        <div class="mCont">
-            <div class="ta_center">
-                <div class="location">
-                    <div class="mApi">api</div>
-                    <div class="locationP">
-                        <h3>2관 찾아오시는 길</h3>
-                        <table>
-                            <colgroup>
-                                <col width="10%">
-                                <col width="40%">
-                                <col width="10%">
-                                <col width="40%">
-                            </colgroup>
-                            <tbody>
-                            <tr>
-                                <th>주소</th>
-                                <td colspan="3">서울시 동작구 노량진동 117-2 영빌딩 2층 (올리브영 맞은편 다이소건물 2층)</td>
-                            </tr>
-                            <tr>
-                                <th>지하철</th>
-                                <td colspan="3">1호선 노량진역 1번출구, 9호선 노량진역 3번출구</td>
-                            </tr>
-                            <tr>
-                                <th>버스</th>
-                                <td colspan="3">파랑(간선버스) : 152, 500, 504, 654, 751, 752 / 초록(지선버스) : 5535,
-                                    5536, 5516, 5517</td>
-                            </tr>
-                            <tr>
-                                <th>TEL</th>
-                                <td>02-6080-1725</td>
-                                <th>FAX</th>
-                                <td>02-816-1720</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
+        <div id="map2" style="width:700px;height:300px;"></div>
+        <div class="modalContent">
+            <div class="pop_cont">
+                <div class="locationP">
+                    <h3>2관 찾아오시는 길</h3>
+                    <table>
+                        <colgroup>
+                            <col width="10%">
+                            <col width="40%">
+                            <col width="10%">
+                            <col width="40%">
+                        </colgroup>
+                        <tbody>
+                        <tr>
+                            <th>주소</th>
+                            <td colspan="3">서울시 동작구 노량진동 117-2 영빌딩 2층 (올리브영 맞은편 다이소건물 2층)</td>
+                        </tr>
+                        <tr>
+                            <th>지하철</th>
+                            <td colspan="3">1호선 노량진역 1번출구, 9호선 노량진역 3번출구</td>
+                        </tr>
+                        <tr>
+                            <th>버스</th>
+                            <td colspan="3">파랑(간선버스) : 152, 500, 504, 654, 751, 752 / 초록(지선버스) : 5535,
+                                5536, 5516, 5517</td>
+                        </tr>
+                        <tr>
+                            <th>TEL</th>
+                            <td>02-6080-1725</td>
+                            <th>FAX</th>
+                            <td>02-816-1720</td>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<!-- //안내 모달창 -->
