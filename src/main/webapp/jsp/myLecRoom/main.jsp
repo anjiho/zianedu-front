@@ -268,7 +268,7 @@
             innerValue("gkey1", selList.gkey);
 
             //재수강 Y,N
-            if(selList.retakeYn == 'N') $("#retake").hide();
+            //if(selList.retakeYn == 'N') $("#retake").hide();
 
             var kind = selList.kind;
             if (kind == 100) {
@@ -826,11 +826,9 @@
                                         <!--//inner-->
                                     </div>
                                     <!--//Dropmenu_down -->
-
                                 </div>
                             </div>
                             <!-- //수강완료 -->
-
                         </div>
                     </div>
                     <!--//상단탭메뉴 -->
