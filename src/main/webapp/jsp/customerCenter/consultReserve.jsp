@@ -128,10 +128,7 @@
             ctgKey3 : parseInt(interestCtgKey2),
             reserveContents : reserveContents
         };
-        console.log(data);
-        return false;
         var result = reserveConsult(data);
-        console.log(result);
     }
 
 </script>

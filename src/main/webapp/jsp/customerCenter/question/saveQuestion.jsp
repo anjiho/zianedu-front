@@ -14,7 +14,12 @@
 
         /* 질문등록 */
         $("#attachFile").on("change", addFiles);
-
+        $('#writeContent').summernote({
+            height: 300,                 // set editor height
+            minHeight: null,             // set minimum height
+            maxHeight: null,             // set maximum height of editor
+            focus: true                  // set focus to editable area after initializing summernote
+        });
     });
 
     //질문답변보기
@@ -162,9 +167,7 @@
                                 </tr>
                                 <tr>
                                     <th scope="row">내용</th>
-                                    <td>
-                                        <textarea name="writeContent" id="writeContent"  class="w100p h240"></textarea>
-                                    </td>
+                                    <td><textarea name="writeContent" id="writeContent" value=""></textarea></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">첨부파일</th>
