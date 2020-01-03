@@ -14,12 +14,7 @@
 
         /* 질문등록 */
         $("#attachFile").on("change", addFiles);
-        $('#writeContent').summernote({
-            height: 300,                 // set editor height
-            minHeight: null,             // set minimum height
-            maxHeight: null,             // set maximum height of editor
-            focus: true                  // set focus to editable area after initializing summernote
-        });
+
     });
 
     //질문답변보기
@@ -117,8 +112,8 @@
                 <!--서브 컨텐츠-->
                 <div class="tabBox tBox4">
                     <ul>
-                        <li class="active"><a href="#">1:1문의</a></li>
-                        <li><a href="#">상담예약</a></li>
+                        <li class="active"><a href="javascript:goPageNoSubmit('customerCenter','saveQuestion');">1:1문의</a></li>
+                        <li><a href="javascript:goPageNoSubmit('customerCenter','consult');">상담예약</a></li>
                         <li><a href="#">모바일문의</a></li>
                         <li><a href="#">자주하는질문</a></li>
                     </ul>
@@ -167,7 +162,9 @@
                                 </tr>
                                 <tr>
                                     <th scope="row">내용</th>
-                                    <td><textarea name="writeContent" id="writeContent" value=""></textarea></td>
+                                    <td>
+                                        <textarea name="writeContent" id="writeContent"  class="w100p h240"></textarea>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th scope="row">첨부파일</th>

@@ -3123,3 +3123,45 @@ function goCheckBuy(gkey) {
     keyArr.push(gkey);
     var data = toStrFileName(keyArr);
 }
+
+function getToday(){
+    var now = new Date();
+    var year = now.getFullYear();
+    var month = now.getMonth() + 1;    //1월이 0으로 되기때문에 +1을 함.
+    var date = now.getDate();
+
+    if((month + "").length < 2){        //2자리가 아니면 0을 붙여줌.
+        month = "0" + month;
+    }else{
+        // ""을 빼면 year + month (숫자+숫자) 됨.. ex) 2018 + 12 = 2030이 리턴됨.
+        month = "0" + month;
+    }
+    if((date + "").length < 2){        //2자리가 아니면 0을 붙여줌.
+        date = "0" + date;
+    }else{
+        // ""을 빼면 year + month (숫자+숫자) 됨.. ex) 2018 + 12 = 2030이 리턴됨.
+        date = "0" + date;
+    }
+    return today = year+"-"+ month +"-"+ date;
+}
+
+function getToday2(){
+    var now = new Date();
+    var year = now.getFullYear();
+    var month = now.getMonth() + 1;    //1월이 0으로 되기때문에 +1을 함.
+    var date = now.getDate();
+
+    if((month + "").length < 2){        //2자리가 아니면 0을 붙여줌.
+        month = "0" + month;
+    }else{
+        // ""을 빼면 year + month (숫자+숫자) 됨.. ex) 2018 + 12 = 2030이 리턴됨.
+        month = "0" + month;
+    }
+    if((date + "").length < 2){        //2자리가 아니면 0을 붙여줌.
+        date = "0" + date;
+    }else{
+        // ""을 빼면 year + month (숫자+숫자) 됨.. ex) 2018 + 12 = 2030이 리턴됨.
+        date = "0" + date;
+    }
+    return today = year+"."+ month +"."+ date;
+}

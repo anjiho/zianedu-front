@@ -17,6 +17,8 @@ public class CustomerCenterController {
 
         if ("saveQuestion".equals(page_gbn)) {
             mvc.setViewName("/customerCenter/question/saveQuestion");
+        }else if("consult".equals(page_gbn)){
+            mvc.setViewName("/customerCenter/consultReserve");
         }
         return mvc;
     }

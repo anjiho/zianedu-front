@@ -77,7 +77,11 @@ var comment = {
     ready_function : "기능준비중입니다.",
 
     sel_ctgkey: "준비직렬을 선택해 주세요.",
-    delivery_info : "배송정보를 입력해 주세요."
+    delivery_info : "배송정보를 입력해 주세요.",
+
+    consultContent_info : "상담요청내용을 입력해 주세요.",
+    consultDate_info : "상담날짜를 선택해 주세요.",
+    consultTime_info : "상담시간을 선택해 주세요."
 
 
 }
