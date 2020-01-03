@@ -24,23 +24,24 @@ function getReserveTime(reserveDate, reserveLocation) {
             if(cmpList.reserveTimeName){
                 var str = gfn_split(cmpList.reserveTimeName, ':');
                 if(str[0] >= 9 && str[0] <= 11){
+                    var time = '';
                     if((str[0]+ "").length < 2) {
-                        var time =  "0" +  cmpList.reserveTimeName;
+                         time =  "0" +  cmpList.reserveTimeName;
                     }else {
-                        var time =  cmpList.reserveTimeName;
+                         time =  cmpList.reserveTimeName;
                     }
 
                     if(cmpList.reservedYn == true){
                         var returnHtml = "<li><a href='javascript:setTime(0,0);'>"+ time +"</a></li>";
                     }else{
-                        var returnHtml = "<li><a href='javascript:setTime("+ selList[i].reserveTimeKey +","+ '"'+ time +'"' +");' id='"+ selList[i].reserveTimeKey +"'>"+ cmpList.reserveTimeName +"</a></li>";
+                        var returnHtml = "<li><a href='javascript:setTime("+ selList[i].reserveTimeKey +","+ '"'+ time +'"' +");' id='"+ selList[i].reserveTimeKey +"'>"+ time +"</a></li>";
                     }
                     $("#morning").append(returnHtml);
                 }else{
                     if(cmpList.reservedYn == true){
-                        var returnHtml = "<li><a href='javascript:setTime(0,0);'>"+ time +"</a></li>";
+                        var returnHtml = "<li><a href='javascript:setTime(0,0);'>"+ cmpList.reserveTimeName +"</a></li>";
                     }else{
-                        var returnHtml = "<li><a href='javascript:setTime("+ selList[i].reserveTimeKey +","+ '"'+ time +'"' +");' id='"+ selList[i].reserveTimeKey +"'>"+ cmpList.reserveTimeName +"</a></li>";
+                        var returnHtml = "<li><a href='javascript:setTime("+ selList[i].reserveTimeKey +","+ '"'+ cmpList.reserveTimeName +'"' +");' id='"+ selList[i].reserveTimeKey +"'>"+ cmpList.reserveTimeName +"</a></li>";
                         console.log(returnHtml);
                     }
                     $("#afternoon").append(returnHtml);
