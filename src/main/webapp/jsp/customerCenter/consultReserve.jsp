@@ -26,6 +26,8 @@
                 innerHTML("academy", $("#academyNumber option:checked").text());
                 if(academyNumber != ""){
                     getReserveTime(today, academyNumber);
+                }else{
+                    $("#consultDiv").hide();
                 }
             }else{
                 alert("상담유형을 선택해 주세요.");
