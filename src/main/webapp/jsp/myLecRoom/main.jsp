@@ -329,6 +329,11 @@
 
     //장바구니
     function goBasket() {
+        var reLecSel = getSelectboxValue("reLecSel");
+        if(reLecSel == ''){
+            alert("재수강 일수를 선택해 주세요.");
+            return false;
+        }
         var priceKey = getInputTextValue("priceKey");
         var gKey = getInputTextValue("gkey1");
         var extendDay = getSelectboxValue("reLecSel");
@@ -358,6 +363,11 @@
 
     //바로구매
     function goProductBuy() {
+        var reLecSel = getSelectboxValue("reLecSel");
+        if(reLecSel == ''){
+            alert("재수강 일수를 선택해 주세요.");
+            return false;
+        }
         var priceKey = getInputTextValue("priceKey");
         var gKey = getInputTextValue("gkey1");
         var extendDay = getSelectboxValue("reLecSel");
