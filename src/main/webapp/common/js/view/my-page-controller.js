@@ -583,8 +583,8 @@ function getOneByOneQuestionList(userKey, sPage, listLimit, searchType, searchTe
     };
     var infoList = getPageApi("/myPage/getOneByOneQuestionList/", userKey, data);
     var cnt = infoList.cnt;
-    paging.count(sPage, cnt, '10', listLimit, comment.blank_list);
     if(infoList != null){
+        paging.count(sPage, cnt, '10', listLimit, comment.blank_list);
         if (infoList.result.length > 0) {
             var selList = infoList.result;
             var listNum = ((cnt-1)+1)-((sPage-1)*10); //리스트 넘버링
@@ -633,7 +633,6 @@ function getZianPassEndList(userKey) {
         var selList = detailInfo.result;
         for(var i=0; i < selList.length;i++){
             var cmpList = selList[i];
-            console.log(cmpList);
             var returnHtml = "<div class=\"Dropmenu_down\" id=\"\">";
                 returnHtml += "<div class=\"inner\">";
                     returnHtml += "<div class=\"btn_crud\">";
@@ -691,10 +690,9 @@ function getMyWriteBoard(userKey, boardType, sPage, listLimit, searchType, searc
         searchText : searchText
     };
     var infoList = getPageApi("/myPage/getMyWriteBoard/", userKey, data);
-    console.log(infoList);
     var cnt = infoList.cnt;
-    paging.count2(sPage, cnt, '5', listLimit, comment.blank_list);
     if(infoList != null){
+        paging.count2(sPage, cnt, '5', listLimit, comment.blank_list);
         if (infoList.result.length > 0) {
             var listNum = ((cnt-1)+1)-((sPage-1)*10); //리스트 넘버링
             var selList = infoList.result;
@@ -727,8 +725,8 @@ function getMyWriteLectureBoard(userKey, boardType, sPage, listLimit, searchType
     };
     var infoList = getPageApi("/myPage/getMyWriteBoard/", userKey, data);
     var cnt = infoList.cnt;
-    paging.count3(sPage, cnt, '5', listLimit, comment.blank_list);
     if(infoList != null){
+        paging.count3(sPage, cnt, '5', listLimit, comment.blank_list);
         if (infoList.result.length > 0) {
             var listNum = ((cnt-1)+1)-((sPage-1)*10); //리스트 넘버링
             var selList = infoList.result;
@@ -761,8 +759,8 @@ function getMyWriteBookBoard(userKey, boardType, sPage, listLimit, searchType, s
     };
     var infoList = getPageApi("/myPage/getMyWriteBoard/", userKey, data);
     var cnt = infoList.cnt;
-    paging.count4(sPage, cnt, '5', listLimit, comment.blank_list);
     if(infoList != null){
+        paging.count4(sPage, cnt, '5', listLimit, comment.blank_list);
         if (infoList.result.length > 0) {
             var listNum = ((cnt-1)+1)-((sPage-1)*10); //리스트 넘버링
             var selList = infoList.result;
@@ -796,8 +794,8 @@ function getMyWriteExamBoard(userKey, boardType, sPage, listLimit, searchType, s
     };
     var infoList = getPageApi("/myPage/getMyWriteBoard/", userKey, data);
     var cnt = infoList.cnt;
-    paging.count5(sPage, cnt, '5', listLimit, comment.blank_list);
     if(infoList != null){
+        paging.count5(sPage, cnt, '5', listLimit, comment.blank_list);
         if (infoList.result.length > 0) {
             var listNum = ((cnt-1)+1)-((sPage-1)*10); //리스트 넘버링
             var selList = infoList.result;

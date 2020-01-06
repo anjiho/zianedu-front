@@ -10,7 +10,6 @@
                 $("#tabHeader li ").each(function () {$(this).removeClass('active');});
                 $("#tabHeader li:eq(0)").addClass('active');
             }else if(tabMenuInfo == "tabMenuConsult"){
-                // $("#tabHeader li:eq(0)").removeClass('active');
                 $("#tabHeader li ").each(function () {$(this).removeClass('active');});
                 $("#tabHeader li:eq(1)").addClass('active');
             }else if(tabMenuInfo == "tabMenuMyBoard"){

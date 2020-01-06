@@ -42,7 +42,6 @@ function getReserveTime(reserveDate, reserveLocation) {
                         var returnHtml = "<li><a href='javascript:setTime(0,0);'>"+ cmpList.reserveTimeName +"</a></li>";
                     }else{
                         var returnHtml = "<li><a href='javascript:setTime("+ selList[i].reserveTimeKey +","+ '"'+ cmpList.reserveTimeName +'"' +");' id='"+ selList[i].reserveTimeKey +"'>"+ cmpList.reserveTimeName +"</a></li>";
-                        console.log(returnHtml);
                     }
                     $("#afternoon").append(returnHtml);
                 }
@@ -85,7 +84,6 @@ function getConsultReserveList(userKey,reserveStartDate, reserveEndDate, sPage, 
         var selList = infoList.result;
         for(var i=0; i < selList.length; i++){
             var cmpList = selList[i];
-            console.log(cmpList);
             if (cmpList != undefined) {
                 var cellData = [
                     function(data) {return "<input type=\"checkbox\" name='consultChk' id='"+ cmpList.idx +"' class=\"ck4\">";},
