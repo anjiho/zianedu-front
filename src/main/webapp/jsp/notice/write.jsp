@@ -30,7 +30,7 @@
             var content  =  $('textarea[name="content"]').val();
             var isSecret = 0;
 
-            var result = saveBoard(bbsmasterKey, userKey, title, content, isSecret, "");
+            var result = saveBoard(bbsmasterKey, userKey, title, content, isSecret, 0, "");
             if(result.resultCode == 200){
                 alert("성공적으로 등록 완료되었습니다");
             }
@@ -56,7 +56,7 @@
                         var isSecret = 0;
                         var fileName = data.keyValue;
 
-                        var result = saveBoard(bbsmasterKey, userKey, title, content, isSecret, fileName);
+                        var result = saveBoard(bbsmasterKey, userKey, title, content, isSecret, 0, fileName);
                         if(result.resultCode == 200){
                             alert("성공적으로 등록 완료되었습니다");
                         }
