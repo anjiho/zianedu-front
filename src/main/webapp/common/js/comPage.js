@@ -160,12 +160,12 @@ function gfn_printPageNum_new5(totalCount,printNum,rowNum,curPage){
     if (totalCount==0){     //( 총 100건 , 페이지 1/50 )
         //document.all['total'].innerHTML = " ( 총 0건 , 페이지 0/0 )";
         var sHtml = gfn_getPageNav_new5('1',printNum,curPage);
-        document.all['pages4'].innerHTML = "";
+        document.all['pages5'].innerHTML = "";
     } else {
         var totalPageCnt = Math.ceil(totalCount / rowNum);
         var sHtml = gfn_getPageNav_new5(totalPageCnt,printNum,curPage);
         //document.all['total'].innerHTML = " ( 총 "+totalCount+"건 , 페이지 "+curPage+"/"+totalPageCnt+" )";
-        document.all['pages4'].innerHTML = sHtml;
+        document.all['pages5'].innerHTML = sHtml;
     }
 }
 
