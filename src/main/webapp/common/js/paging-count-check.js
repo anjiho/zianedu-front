@@ -66,5 +66,20 @@ var Paging = function() {
 			gfn_printPageNum_new4(cnt, paging_count, list_count, sPage);
 		}
 	};
+
+	this.count5 = function(sPage, cnt, paging_count, list_count, empty_comment) {
+		if (cnt == "0") {
+			gfn_printPageNum_new5('0', paging_count, list_count, '1');
+			gfn_emptyView5("V", empty_comment);
+		}  else {
+			if (new Number(cnt) < (list_count * sPage)) {
+				if (new Number(cnt) < (list_count * (sPage - 1))) {
+					sPage = 1;
+					innerValue("sPage5", sPage);
+				}
+			}
+			gfn_printPageNum_new5(cnt, paging_count, list_count, sPage);
+		}
+	};
 	
 }
