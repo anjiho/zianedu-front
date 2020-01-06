@@ -137,6 +137,23 @@ function gfn_emptyView4(gubun, str) {
 }
 
 //--------------------------------------------------
+//빈 결과값 메인 리스트  처리
+//--------------------------------------------------
+function gfn_emptyView5(gubun, str) {
+    if (gubun == "H") {
+        emptys5.innerHTML = "<td colspan='30'></td>";
+        emptys5.style.height = "0";
+        emptys5.style.visibility = "hidden";
+        emptys5.style.display = "none";
+    } else {
+        emptys5.style.display = "";
+        emptys5.style.visibility = "visible";
+        emptys5.style.height = "125px";
+        emptys5.innerHTML = "<b>" + str + "</b>";
+    }
+}
+
+//--------------------------------------------------
 // 빈 결과값 메인 리스트  처리 (한페이지에 두개의 리스트가 같이 나올경우 )
 //--------------------------------------------------
 function gfn_emptyView_new(gubun, str) {

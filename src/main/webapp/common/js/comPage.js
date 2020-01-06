@@ -86,6 +86,16 @@ function gfn_fnList4(page) {
     }
 }
 
+function gfn_fnList5(page) {
+    var sPage = document.getElementById("sPage5");
+    sPage.value = page;
+    try {
+        fn_search5();
+    } catch (e){
+
+    }
+}
+
 //--------------------------------------------------
 //  전체건수/페이지를 출력
 //--------------------------------------------------
@@ -140,6 +150,20 @@ function gfn_printPageNum_new4(totalCount,printNum,rowNum,curPage){
     } else {
         var totalPageCnt = Math.ceil(totalCount / rowNum);
         var sHtml = gfn_getPageNav_new4(totalPageCnt,printNum,curPage);
+        //document.all['total'].innerHTML = " ( 총 "+totalCount+"건 , 페이지 "+curPage+"/"+totalPageCnt+" )";
+        document.all['pages4'].innerHTML = sHtml;
+    }
+}
+
+function gfn_printPageNum_new5(totalCount,printNum,rowNum,curPage){
+
+    if (totalCount==0){     //( 총 100건 , 페이지 1/50 )
+        //document.all['total'].innerHTML = " ( 총 0건 , 페이지 0/0 )";
+        var sHtml = gfn_getPageNav_new5('1',printNum,curPage);
+        document.all['pages4'].innerHTML = "";
+    } else {
+        var totalPageCnt = Math.ceil(totalCount / rowNum);
+        var sHtml = gfn_getPageNav_new5(totalPageCnt,printNum,curPage);
         //document.all['total'].innerHTML = " ( 총 "+totalCount+"건 , 페이지 "+curPage+"/"+totalPageCnt+" )";
         document.all['pages4'].innerHTML = sHtml;
     }
@@ -247,7 +271,6 @@ function gfn_getPageNav_new3(totalPageCnt,printNum,curPage) {
 }
 
 function gfn_getPageNav_new4(totalPageCnt,printNum,curPage) {
-
     var stdPage = parseInt(Math.ceil(parseInt(curPage)/parseInt(printNum)));
 
     var iStart = (stdPage - 1) * printNum + 1 ;
@@ -256,28 +279,58 @@ function gfn_getPageNav_new4(totalPageCnt,printNum,curPage) {
     if (iEnd  > totalPageCnt) {
         iEnd = totalPageCnt;
     }
-    var sHtml = "";
+    var sHtml = '';
     var ibefore = parseInt(curPage) - parseInt(printNum) ;
     if (ibefore < 1) ibefore = 1;
-    sHtml += "<a href='javascript:gfn_fnList4(1)' ><img src='"+webRoot+"/img/arrow1.png' border='0' align='absmiddle'></a>";
-    sHtml += "<a href='javascript:gfn_fnList4(" + ibefore + ")' ><img src='"+webRoot+"/img/arrow2.png' border='0' align='absmiddle'></a>";
+    sHtml += "<a class='btn_prev' href='javascript:gfn_fnList4(" + ibefore + ")' >이전</a>";
 
     for(var i=iStart; i<= iEnd; i++) {
         if(curPage== i) {
-            sHtml += "<strong> <a href='javascript:gfn_fnList4(" + i + ")' style='color:red'>" + i + "</a></strong>  ";
+            sHtml += "<a class='active' href='javascript:gfn_fnList4(" + i + ")'>" + i + "</a>";
             //sHtml += "<strong title=\"현재페이지\"> " + i + " </strong>  ";
         } else {
-            sHtml += "<a href='javascript:gfn_fnList4(" + i + ")'>" + i + "</a>  ";
+            sHtml += "<a class='' href='javascript:gfn_fnList3(" + i + ")'>" + i + "</a>";
         }
+
         if(i!=iEnd) {// 마지막 라인에는 구분자를 뺌
-            sHtml += "<a> | </a> ";
+            //sHtml += "<a> | </a> ";
         }
     }
     var inext = parseInt(curPage) + parseInt(printNum) ;
     if (inext > totalPageCnt) inext = totalPageCnt;
-    sHtml += "<a href='javascript:gfn_fnList4(" + inext + ")' ><img src='"+webRoot+"/img/arrow3.png' border='0' align='absmiddle'></a>";
-    sHtml += "<a href='javascript:gfn_fnList4(" + totalPageCnt + ")'><img src='"+webRoot+"/img/arrow4.png' border='0' align='absmiddle'></a>";
+    sHtml += "<a class='btn_next' href='javascript:gfn_fnList4(" + inext + ")'>다음</a>";
+    return sHtml;
+}
 
+function gfn_getPageNav_new5(totalPageCnt,printNum,curPage) {
+    var stdPage = parseInt(Math.ceil(parseInt(curPage)/parseInt(printNum)));
+
+    var iStart = (stdPage - 1) * printNum + 1 ;
+    var iEnd = stdPage * printNum;
+
+    if (iEnd  > totalPageCnt) {
+        iEnd = totalPageCnt;
+    }
+    var sHtml = '';
+    var ibefore = parseInt(curPage) - parseInt(printNum) ;
+    if (ibefore < 1) ibefore = 1;
+    sHtml += "<a class='btn_prev' href='javascript:gfn_fnList5(" + ibefore + ")' >이전</a>";
+
+    for(var i=iStart; i<= iEnd; i++) {
+        if(curPage== i) {
+            sHtml += "<a class='active' href='javascript:gfn_fnList5(" + i + ")'>" + i + "</a>";
+            //sHtml += "<strong title=\"현재페이지\"> " + i + " </strong>  ";
+        } else {
+            sHtml += "<a class='' href='javascript:gfn_fnList5(" + i + ")'>" + i + "</a>";
+        }
+
+        if(i!=iEnd) {// 마지막 라인에는 구분자를 뺌
+            //sHtml += "<a> | </a> ";
+        }
+    }
+    var inext = parseInt(curPage) + parseInt(printNum) ;
+    if (inext > totalPageCnt) inext = totalPageCnt;
+    sHtml += "<a class='btn_next' href='javascript:gfn_fnList5(" + inext + ")'>다음</a>";
     return sHtml;
 }
 /*--------------------------------------------------
