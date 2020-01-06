@@ -451,3 +451,90 @@ function getPasserVideoList(sPage, listLimit, searchType, searchText) {
         dwr.util.addOptions('dataList', selList, formatter, {escapeHtml:false});
     }
 }
+
+//합격수기 > 합격수기,도서후기,수강후기
+function getReviewBoardList(bbsMasterKey, sPage, listLimit, searchType, searchText) {
+    if(bbsMasterKey == null || bbsMasterKey == undefined) return;
+    if(userKey == null || userKey == undefined) return;
+    var paging = new Paging();
+    dwr.util.removeAllRows("dataList"); //테이블 리스트 초기화
+    var data = {
+        sPage : sPage,
+        listLimit : listLimit,
+        searchType : searchType,
+        searchText : searchText
+    };
+    var infoList = getPageApi("/myPage/getReviewBoardList/", bbsMasterKey, data);
+    var cnt = infoList.cnt;
+    if(infoList != null){
+        if (infoList.result.length > 0) {
+            var listNum = ((cnt-1)+1)-((sPage-1)*10); //리스트 넘버링
+            var selList = infoList.result;
+            paging.count(sPage, cnt, '5', listLimit, comment.blank_list);
+            for(var i=0; i < selList.length; i++){
+                var cmpList = selList[i];
+                if (cmpList != undefined) {
+                    var cellData = [
+                        // function(data) {return cmpList.title},
+                        // function(data) {return cmpList.userName;},
+                        // function(data) {return cmpList.indate;},
+                        // function(data) {return cmpList.readCount;}
+                    ];
+                    dwr.util.addRows("dataList", [0], cellData, {escapeHtml: false});
+                }
+            }
+        }
+    }
+}
+
+//합격수기 > 합격자영상 리스트
+function getPasserVideoListFromReview(bbsMasterKey, sPage, listLimit, searchType, searchText) {
+    var paging = new Paging();
+    dwr.util.removeAllOptions('dataList');
+    var data = {
+        sPage : sPage,
+        listLimit : listLimit,
+        searchType : searchType,
+        searchText : searchText
+    };
+
+    var infoList = getPageApi("/board/getPasserVideoListFromReview/", bbsMasterKey, data);
+    var cnt = infoList.cnt;
+    innerHTML('reviewCnt', cnt);
+    if (infoList.result.length > 0) {
+        var selList = infoList.result;
+        if(cnt > 0){
+            paging.count(sPage, cnt, '10', listLimit, comment.blank_list);
+        }
+        for(var i=0; i < selList.length; i++){
+            var cmpList = selList[i];
+            function formatter(cmpList) {
+                return ""+
+                    "<a href=\"javascript:\"><img src='"+ cmpList.fileUrl +"'  style='width: 250px;height: 122px'/></a>"+
+                    "<a href='javascript:detailReview("+ cmpList.bbsKey +");'><sapn class='thumb'>"+ gfn_substr(cmpList.title,0,17) +"</span></a>"+
+                    "";
+            }
+        }
+        dwr.util.addOptions('dataList', selList, formatter, {escapeHtml:false});
+    }
+}
+
+
+function getReviewMasterKey() {
+    var bbsMasterKey = '';
+    var leftMenuInfo = sessionStorage.getItem('leftMenu');//직렬 구분
+    if(leftMenuInfo == "publicOnline"){
+        bbsMasterKey = 11045;
+    }else if(leftMenuInfo == "publicAcademy"){
+        bbsMasterKey = 11045;
+    }else if(leftMenuInfo == "techOnline"){
+        bbsMasterKey = 10970;
+    }else if(leftMenuInfo == "techAcademy"){
+        bbsMasterKey = 10970;
+    }else if(leftMenuInfo == "postOnline"){
+        bbsMasterKey = 10970;
+    }else if(leftMenuInfo == "postAcademy"){
+        bbsMasterKey = 10970;
+    }
+    return bbsMasterKey;
+}

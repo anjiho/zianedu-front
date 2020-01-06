@@ -174,8 +174,6 @@
                                 <tr>
                                     <th scope="row">첨부파일</th>
                                     <td class="">
-<%--                                        <label for="ex_file">업로드</label>--%>
-<%--                                        <input type="file" id="ex_file">--%>
                                         <input type="file" name="files[]" id="attachFile" class="fileBtn noline"  multiple/>
                                         <ul id='fileList' class="fileList"></ul>
                                     </td>

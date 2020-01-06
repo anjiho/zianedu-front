@@ -81,8 +81,13 @@ var comment = {
 
     consultContent_info : "상담요청내용을 입력해 주세요.",
     consultDate_info : "상담날짜를 선택해 주세요.",
-    consultTime_info : "상담시간을 선택해 주세요."
+    consultTime_info : "상담시간을 선택해 주세요.",
 
+    codeUrl_info : "HTML코드를 입력해 주세요.",
+    passSubject_info : "합격과목을 입력해 주세요.",
+    lecSubject_info : "수강과목을 입력해 주세요.",
+    teacherName_info : "교수님이름을 입력해 주세요.",
+    bookName_info : "도서이름을 입력해 주세요.",
 
 }
 
