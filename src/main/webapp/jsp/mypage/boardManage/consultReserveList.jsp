@@ -57,7 +57,7 @@
     //예약취소
     function cancelConsult() {
         var arr = new Array();
-        $('input[name=consultChk]').each(function() {
+        $('input[name=consultChk]:checked').each(function() {
             var cartKey = $(this).attr('id');
             arr.push(cartKey);
         });
@@ -66,6 +66,7 @@
            var result  = changeConsultReserveStatus(idxs, 3);
            if(result.resultCode == 200){
                alert("예약취소가 완료되었습니다.");
+               isReloadPage();
                return  false;
            }
         }else{
@@ -77,7 +78,7 @@
     //상담완료
     function saveConsult() {
         var arr = new Array();
-        $('input[name=consultChk]').each(function() {
+        $('input[name=consultChk]:checked').each(function() {
             var cartKey = $(this).attr('id');
             arr.push(cartKey);
         });
@@ -86,6 +87,7 @@
            var result  = changeConsultReserveStatus(idxs, 2);
             if(result.resultCode == 200){
                 alert("상담완료가 완료되었습니다.");
+                isReloadPage();
                 return  false;
             }
         }else{
