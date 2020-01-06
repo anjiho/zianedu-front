@@ -87,7 +87,7 @@
         if(searchText == undefined) searchText = "";
 
         if(val == "new") sPage = "1";
-        getMyWriteBookBoard(sessionUserInfo.userKey, 'BOOK', sPage, 10, searchType, searchText);
+        getMyWriteBookBoard(sessionUserInfo.userKey, 'BOOK', sPage, 5, searchType, searchText);
     }
 
     //응시후기
@@ -100,7 +100,7 @@
         if(searchText == undefined) searchText = "";
 
         if(val == "new") sPage = "1";
-        getMyWriteExamBoard(sessionUserInfo.userKey, 'EXAM', sPage, 10, searchType, searchText);
+        getMyWriteExamBoard(sessionUserInfo.userKey, 'EXAM', sPage, 5, searchType, searchText);
     }
 </script>
 <form name="frm" method="get">

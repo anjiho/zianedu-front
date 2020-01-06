@@ -693,9 +693,9 @@ function getMyWriteBoard(userKey, boardType, sPage, listLimit, searchType, searc
     var infoList = getPageApi("/myPage/getMyWriteBoard/", userKey, data);
     console.log(infoList);
     var cnt = infoList.cnt;
+    paging.count2(sPage, cnt, '5', listLimit, comment.blank_list);
     if(infoList != null){
         if (infoList.result.length > 0) {
-            paging.count2(sPage, cnt, '5', listLimit, comment.blank_list);
             var listNum = ((cnt-1)+1)-((sPage-1)*10); //리스트 넘버링
             var selList = infoList.result;
             for(var i=0; i < selList.length; i++){
@@ -727,9 +727,9 @@ function getMyWriteLectureBoard(userKey, boardType, sPage, listLimit, searchType
     };
     var infoList = getPageApi("/myPage/getMyWriteBoard/", userKey, data);
     var cnt = infoList.cnt;
+    paging.count3(sPage, cnt, '5', listLimit, comment.blank_list);
     if(infoList != null){
         if (infoList.result.length > 0) {
-            paging.count3(sPage, cnt, '5', listLimit, comment.blank_list);
             var listNum = ((cnt-1)+1)-((sPage-1)*10); //리스트 넘버링
             var selList = infoList.result;
             for(var i=0; i < selList.length; i++){
@@ -761,9 +761,9 @@ function getMyWriteBookBoard(userKey, boardType, sPage, listLimit, searchType, s
     };
     var infoList = getPageApi("/myPage/getMyWriteBoard/", userKey, data);
     var cnt = infoList.cnt;
+    paging.count4(sPage, cnt, '5', listLimit, comment.blank_list);
     if(infoList != null){
         if (infoList.result.length > 0) {
-            paging.count4(sPage, cnt, '5', listLimit, comment.blank_list);
             var listNum = ((cnt-1)+1)-((sPage-1)*10); //리스트 넘버링
             var selList = infoList.result;
             for(var i=0; i < selList.length; i++){
@@ -796,9 +796,9 @@ function getMyWriteExamBoard(userKey, boardType, sPage, listLimit, searchType, s
     };
     var infoList = getPageApi("/myPage/getMyWriteBoard/", userKey, data);
     var cnt = infoList.cnt;
+    paging.count5(sPage, cnt, '5', listLimit, comment.blank_list);
     if(infoList != null){
         if (infoList.result.length > 0) {
-            paging.count5(sPage, cnt, '5', listLimit, comment.blank_list);
             var listNum = ((cnt-1)+1)-((sPage-1)*10); //리스트 넘버링
             var selList = infoList.result;
             for(var i=0; i < selList.length; i++){

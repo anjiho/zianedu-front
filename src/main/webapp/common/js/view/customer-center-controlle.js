@@ -55,3 +55,48 @@ function reserveConsult(data) {
     var result = postApi("/customerCenter/reserveConsult", data);
     return result;
 }
+
+function changeConsultReserveStatus(idxList, reserveStatusType) {
+    var data = {
+        idxList : idxList,
+        reserveStatusType : reserveStatusType
+    };
+    var result = postApi("/customerCenter/changeConsultReserveStatus", data);
+    return result;
+    
+}
+
+function getConsultReserveList(userKey,reserveStartDate, reserveEndDate, sPage, listLimit) {
+    if (userKey == null || userKey == undefined) return;
+    var paging = new Paging();
+    dwr.util.removeAllRows("dataList"); //테이블 리스트 초기화
+
+    var data = {
+        reserveStartDate : reserveStartDate,
+        reserveEndDate : reserveEndDate,
+        sPage : sPage,
+        listLimit : listLimit
+    };
+
+    var infoList = getPageApi("/customerCenter/getConsultReserveList/", userKey, data);
+    var cnt = infoList.cnt;
+    paging.count(sPage, cnt, '5', listLimit, comment.blank_list);
+    if (infoList.result.length > 0) {
+        var selList = infoList.result;
+        for(var i=0; i < selList.length; i++){
+            var cmpList = selList[i];
+            console.log(cmpList);
+            if (cmpList != undefined) {
+                var cellData = [
+                    function(data) {return "<input type=\"checkbox\" name='consultChk' id='"+ cmpList.idx +"' class=\"ck4\">";},
+                    function(data) {return cmpList.reserveLocationName;},
+                    function(data) {return cmpList.reserveDate+"<br>"+ cmpList.reserveTimeName},
+                    function(data) {return cmpList.userName;},
+                    function(data) {return "<input type=\"button\" value='상세내용' id='"+ cmpList.idx +"'>";},
+                    function(data) {return cmpList.consultStatusName;}
+                ];
+                dwr.util.addRows("dataList", [0], cellData, {escapeHtml: false});
+            }
+        }
+    }
+}
