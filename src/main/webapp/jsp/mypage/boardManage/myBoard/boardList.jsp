@@ -33,6 +33,7 @@
         fn_search2('new');
         fn_search3('new');
         fn_search4('new');
+        fn_search5('new');
     });
 
     //합격자 영상 불러오기
@@ -107,6 +108,7 @@
     <input type="hidden" id="sPage2">
     <input type="hidden" id="sPage3">
     <input type="hidden" id="sPage4">
+    <input type="hidden" id="sPage5">
     <div id="wrap">
         <%@include file="/common/jsp/leftMenu.jsp" %>
         <!--상단-->
@@ -144,7 +146,7 @@
                                                 <option value="title">제목</option>
                                                 <option value="content">내용</option>
                                             </select>
-                                            <input type="text" id="searchText" onkeypress="if(event.keyCode==13) {fn_search(); return false;}" >
+                                            <input type="text" id="searchText" onkeypress="if(event.keyCode==13) {fn_search('new'); return false;}" >
                                             <a href="javascript:fn_search('new');" class="btn_m on w140">검색</a>
                                         </li>
                                         <li class="right"></li>
@@ -172,7 +174,7 @@
                                                 <option value="title">제목</option>
                                                 <option value="content">내용</option>
                                             </select>
-                                            <input type="text" id="searchText1" onkeypress="if(event.keyCode==13) {fn_search2(); return false;}" >
+                                            <input type="text" id="searchText1" onkeypress="if(event.keyCode==13) {fn_search2('new'); return false;}" >
                                             <a href="javascript:fn_search2('new');" class="btn_m on w140">검색</a>
                                         </li>
                                         <li class="right"><a href="" class="btn_m w140">합격수기작성하기</a></li>
@@ -210,7 +212,7 @@
                                                 <option value="title">제목</option>
                                                 <option value="content">내용</option>
                                             </select>
-                                            <input type="text" id="searchText3" onkeypress="if(event.keyCode==13) {fn_search3(); return false;}">
+                                            <input type="text" id="searchText3" onkeypress="if(event.keyCode==13) {fn_search3('new'); return false;}">
                                             <a href="javascript:fn_search3('new');" class="btn_m on w140">검색</a>
                                         </li>
                                         <li class="right"><a href="./sub02010503.html" class="btn_m w140">수강수기작성하기</a></li>
@@ -249,7 +251,7 @@
                                                 <option value="title">제목</option>
                                                 <option value="content">내용</option>
                                             </select>
-                                            <input type="text" id="searchText4" onkeypress="if(event.keyCode==13) {fn_search4(); return false;}" >
+                                            <input type="text" id="searchText4" onkeypress="if(event.keyCode==13) {fn_search4('new'); return false;}" >
                                             <a href="javascript:fn_search4('new');" class="btn_m on w140">검색</a>
                                         </li>
                                         <li class="right"><a href="./sub02010503.html" class="btn_m w140">도서수기작성하기</a></li>
@@ -287,7 +289,7 @@
                                                 <option value="title">제목</option>
                                                 <option value="content">내용</option>
                                             </select>
-                                            <input type="text" id="searchText5" onkeypress="if(event.keyCode==13) {fn_search5(); return false;}" >
+                                            <input type="text" id="searchText5" onkeypress="if(event.keyCode==13) {fn_search5('new'); return false;}" >
                                             <a href="javascript:fn_search5('new');" class="btn_m on w140">검색</a>
                                         </li>
                                         <li class="right"><a href="" class="btn_m w140">응시후기작성하기</a></li>
@@ -310,12 +312,6 @@
                                         </tr>
                                         </thead>
                                         <tbody id="dataList5">
-<%--                                        <tr>--%>
-<%--                                            <td>2019 국가직 합격후기</td>--%>
-<%--                                            <td>홍길동</td>--%>
-<%--                                            <td>2019.07.16</td>--%>
-<%--                                            <td>20</td>--%>
-<%--                                        </tr>--%>
                                         </tbody>
                                     </table>
                                 </div>

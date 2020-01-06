@@ -444,7 +444,7 @@ function getPasserVideoList(sPage, listLimit, searchType, searchText) {
             var cmpList = selList[i];
             function formatter(cmpList) {
                 return ""+
-                    "<a href=\"javascript:\"><img src='"+ cmpList.fileUrl +"'  style='width: 220px;height: 122px'/></a>"+
+                    "<a href=\"javascript:\"><img src='"+ cmpList.fileUrl +"'  style='width: 250px;height: 122px'/></a>"+
                     "<a href=''><sapn class='thumb'>"+ cmpList.title +"</span></a>"+
                     "";
             }

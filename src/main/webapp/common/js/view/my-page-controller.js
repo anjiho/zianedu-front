@@ -691,6 +691,7 @@ function getMyWriteBoard(userKey, boardType, sPage, listLimit, searchType, searc
         searchText : searchText
     };
     var infoList = getPageApi("/myPage/getMyWriteBoard/", userKey, data);
+    console.log(infoList);
     var cnt = infoList.cnt;
     if(infoList != null){
         if (infoList.result.length > 0) {
