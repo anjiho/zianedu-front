@@ -79,9 +79,9 @@ function getConsultReserveList(userKey,reserveStartDate, reserveEndDate, sPage, 
 
     var infoList = getPageApi("/customerCenter/getConsultReserveList/", userKey, data);
     var cnt = infoList.cnt;
-    paging.count(sPage, cnt, '5', listLimit, comment.blank_list);
     if (infoList.result.length > 0) {
         var selList = infoList.result;
+        paging.count(sPage, cnt, '5', listLimit, comment.blank_list);
         for(var i=0; i < selList.length; i++){
             var cmpList = selList[i];
             if (cmpList != undefined) {

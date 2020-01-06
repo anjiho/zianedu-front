@@ -437,8 +437,8 @@ function getPasserVideoList(sPage, listLimit, searchType, searchText) {
     var infoList = getPageApi("/board/getPasserVideoList/", '', data);
     var cnt = infoList.cnt;
     if (infoList.result.length > 0) {
-        paging.count(sPage, cnt, '10', listLimit, comment.blank_list);
         var selList = infoList.result;
+        paging.count(sPage, cnt, '10', listLimit, comment.blank_list);
         for(var i=0; i < selList.length; i++){
             var cmpList = selList[i];
             function formatter(cmpList) {

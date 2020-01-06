@@ -584,9 +584,9 @@ function getOneByOneQuestionList(userKey, sPage, listLimit, searchType, searchTe
     var infoList = getPageApi("/myPage/getOneByOneQuestionList/", userKey, data);
     var cnt = infoList.cnt;
     if(infoList != null){
-        paging.count(sPage, cnt, '10', listLimit, comment.blank_list);
         if (infoList.result.length > 0) {
             var selList = infoList.result;
+            paging.count(sPage, cnt, '10', listLimit, comment.blank_list);
             var listNum = ((cnt-1)+1)-((sPage-1)*10); //리스트 넘버링
             for(var i=0; i < selList.length; i++){
                 var cmpList = selList[i];
@@ -692,10 +692,10 @@ function getMyWriteBoard(userKey, boardType, sPage, listLimit, searchType, searc
     var infoList = getPageApi("/myPage/getMyWriteBoard/", userKey, data);
     var cnt = infoList.cnt;
     if(infoList != null){
-        paging.count2(sPage, cnt, '5', listLimit, comment.blank_list);
         if (infoList.result.length > 0) {
             var listNum = ((cnt-1)+1)-((sPage-1)*10); //리스트 넘버링
             var selList = infoList.result;
+            paging.count2(sPage, cnt, '5', listLimit, comment.blank_list);
             for(var i=0; i < selList.length; i++){
                 var cmpList = selList[i];
                 if (cmpList != undefined) {
@@ -726,10 +726,10 @@ function getMyWriteLectureBoard(userKey, boardType, sPage, listLimit, searchType
     var infoList = getPageApi("/myPage/getMyWriteBoard/", userKey, data);
     var cnt = infoList.cnt;
     if(infoList != null){
-        paging.count3(sPage, cnt, '5', listLimit, comment.blank_list);
         if (infoList.result.length > 0) {
             var listNum = ((cnt-1)+1)-((sPage-1)*10); //리스트 넘버링
             var selList = infoList.result;
+            paging.count3(sPage, cnt, '5', listLimit, comment.blank_list);
             for(var i=0; i < selList.length; i++){
                 var cmpList = selList[i];
                 if (cmpList != undefined) {
@@ -760,10 +760,10 @@ function getMyWriteBookBoard(userKey, boardType, sPage, listLimit, searchType, s
     var infoList = getPageApi("/myPage/getMyWriteBoard/", userKey, data);
     var cnt = infoList.cnt;
     if(infoList != null){
-        paging.count4(sPage, cnt, '5', listLimit, comment.blank_list);
         if (infoList.result.length > 0) {
             var listNum = ((cnt-1)+1)-((sPage-1)*10); //리스트 넘버링
             var selList = infoList.result;
+            paging.count4(sPage, cnt, '5', listLimit, comment.blank_list);
             for(var i=0; i < selList.length; i++){
                 var cmpList = selList[i];
                 if (cmpList != undefined) {
@@ -795,10 +795,10 @@ function getMyWriteExamBoard(userKey, boardType, sPage, listLimit, searchType, s
     var infoList = getPageApi("/myPage/getMyWriteBoard/", userKey, data);
     var cnt = infoList.cnt;
     if(infoList != null){
-        paging.count5(sPage, cnt, '5', listLimit, comment.blank_list);
         if (infoList.result.length > 0) {
             var listNum = ((cnt-1)+1)-((sPage-1)*10); //리스트 넘버링
             var selList = infoList.result;
+            paging.count5(sPage, cnt, '5', listLimit, comment.blank_list);
             for(var i=0; i < selList.length; i++){
                 var cmpList = selList[i];
                 if (cmpList != undefined) {
