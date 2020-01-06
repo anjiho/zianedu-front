@@ -73,7 +73,7 @@
                 $(this).addClass('active').siblings().removeClass('active');
             });
 
-            /* 수강완료 */
+            /* 수강완료 단과*/
             getSignUpVideoLectureEndTypeList(userKey, divisionPcMobile());
             var lecEndCtgKey = getInputTextValue("lecEndCtgKey");
             if(lecEndCtgKey != ''){
@@ -87,6 +87,10 @@
             $("#lecEndType li").click(function () {
                 $(this).addClass('active').siblings().removeClass('active');
             });
+
+            /*수강완료 지안패스*/
+            getZianPassEndList(userKey);
+
         }else{
             alert("로그인이 필요합니다.");
             goLoginPage();
@@ -357,6 +361,70 @@
         }
     }
 
+    function zianPassGoBasket(gkey, priceKey) {
+        var reLecSel = getSelectboxValue("zianPassReSel_"+gkey);
+
+        if(reLecSel == ''){
+            alert("재수강 일수를 선택해 주세요.");
+            return false;
+        }else{
+            var extendDay = reLecSel * 30;
+        }
+        var arr = new Array();
+        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        if(sessionUserInfo != undefined){
+            var userKey = sessionUserInfo.userKey;
+            var data = {
+                userKey : userKey,
+                gKey : gkey,
+                priceKey : priceKey,
+                gCount : 1,
+                extendDay : extendDay
+            };
+            arr.push(data);
+            var saveCartInfo = JSON.stringify(arr);
+            console.log(saveCartInfo);
+            var result = saveCartAtRetake(saveCartInfo);
+            if(result.resultCode == 200){
+                alert("장바구니에 담겼습니다.");
+                return false;
+            }
+        }else{
+            alert("로그인을 해주세요");
+            goLoginPage();
+        }
+    }
+    
+    function zianPassGoProductBuy(gkey, priceKey) {
+        var reLecSel = getSelectboxValue("zianPassReSel_"+gkey);
+        if(reLecSel == ''){
+            alert("재수강 일수를 선택해 주세요.");
+            return false;
+        }else{
+            var extendDay = reLecSel * 30;
+        }
+        var arr = new Array();
+        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        if(sessionUserInfo != undefined){
+            var userKey = sessionUserInfo.userKey;
+            var data = {
+                userKey : userKey,
+                gKey : gkey,
+                priceKey : priceKey,
+                gCount : 1,
+                extendDay : extendDay
+            };
+            arr.push(data);
+            var retakeInfo = JSON.stringify(arr);
+            innerValue("retakeInfo", retakeInfo);
+            $("#id_frm_singleMypage").attr("action", "/myPage?page_gbn=write");
+            $("#id_frm_singleMypage").submit();
+        }else{
+            alert("로그인을 해주세요");
+            goLoginPage();
+        }
+    }
+
     //바로구매
     function goProductBuy() {
         var reLecSel = getSelectboxValue("reLecSel");
@@ -428,7 +496,8 @@
                             <ul class="tabBar">
                                 <li class="active"><a href="#">수강중</a></li>
                                 <li><a href="#">일시정지</a></li>
-                                <li><a href="#">수강완료</a></li>
+                                <li><a href="#">수강완료(단과)</a></li>
+                                <li><a href="#">수강완료(지안패스)</a></li>
                             </ul>
                             <!-- 수강중 -->
                             <div class="tabPage  active">
@@ -834,7 +903,13 @@
                                     <!--//Dropmenu_down -->
                                 </div>
                             </div>
-                            <!-- //수강완료 -->
+                            <!-- //수강완료 단과 -->
+                            <!--수강완료 지안패스-->
+                            <div class="tabPage">
+                                <a href="#modal5" class="btn_modalOpen btn_info">수강완료안내</a>
+                                <div class="tabContent_2depth mgt" id="zianPassEndDiv"></div>
+                            </div>
+                            <!--수강완료 지안패스-->
                         </div>
                     </div>
                     <!--//상단탭메뉴 -->

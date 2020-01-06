@@ -3,6 +3,34 @@
 <script>
     $(document).ready(function () {
         fn_search('new');
+
+        var tabMenuInfo = sessionStorage.getItem('tabHeader');
+        if(tabMenuInfo != null){
+            if(tabMenuInfo == "tabMenuQuestion"){
+                $("#tabHeader li ").each(function () {$(this).removeClass('active');});
+                $("#tabHeader li:eq(0)").addClass('active');
+            }else if(tabMenuInfo == "tabMenuConsult"){
+               // $("#tabHeader li:eq(0)").removeClass('active');
+                $("#tabHeader li ").each(function () {$(this).removeClass('active');});
+                $("#tabHeader li:eq(1)").addClass('active');
+            }else if(tabMenuInfo == "tabMenuMyBoard"){
+                $("#tabHeader li ").each(function () {$(this).removeClass('active');});
+                $("#tabHeader li:eq(2)").addClass('active');
+            }
+        }
+
+        $("#tabHeader li").click(function() {
+            if($(this).index() == 0){
+                sessionStorage.setItem("tabHeader", "tabMenuQuestion");
+                goPageNoSubmit('myPage', 'questionList');
+            }else if($(this).index() == 1){
+                sessionStorage.setItem("tabHeader", "tabMenuConsult");
+                goPageNoSubmit('myPage', 'consult');
+            }else if($(this).index() == 2){
+                sessionStorage.setItem("tabHeader", "tabMenuMyBoard");
+                goPageNoSubmit('myPage', 'boardList');
+            }
+        });
     });
 
     //상세보기
@@ -52,10 +80,10 @@
                 <%@include file="/common/jsp/myPageHeader.jsp" %>
                 <div class="Mypage">
                     <div class="tabBox review wid30p">
-                        <ul>
-                            <li class="active"><a href="javascript:void(0);">1:1 문의내역<span></span></a></li>
+                        <ul id="tabHeader">
+                            <li class="active"><a href="javascript:goPageNoSubmit('myPage', 'questionList')">1:1 문의내역<span></span></a></li>
                             <li><a href="javascript:goPageNoSubmit('myPage', 'consult')">상담예약내역<span></span></a></li>
-                            <li><a href="#">내게시글<span></span></a></li>
+                            <li><a href="javascript:goPageNoSubmit('myPage', 'boardList')">내게시글<span></span></a></li>
                         </ul>
                     </div>
 

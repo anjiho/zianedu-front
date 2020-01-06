@@ -675,9 +675,7 @@ function getOrderSheetInfoFromImmediatelyAtRetake(userKey, retakeInfo) {
     var data = {
         productInfo : retakeInfo
     };
-    console.log(data);
     var infoList = getApi("/order/getOrderSheetInfoFromImmediatelyAtRetake/", userKey, data);
-    console.log(infoList);
     if(infoList != null){
         var cmpList = infoList.result;
         innerHTML("userPoint", format(cmpList.userPoint));

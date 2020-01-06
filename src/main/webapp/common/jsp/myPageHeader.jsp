@@ -41,6 +41,7 @@
                 goPageNoSubmit('myPage', 'coupon');
             }else if($(this).index() == 4){
                 sessionStorage.setItem("myPageHeader", "board");
+                sessionStorage.setItem("tabHeader", "tabMenuQuestion");
                 $("#myPageMenu li:eq(4)").addClass('active');
                 goPageNoSubmit('myPage', 'questionList');
             }else if($(this).index() == 5){

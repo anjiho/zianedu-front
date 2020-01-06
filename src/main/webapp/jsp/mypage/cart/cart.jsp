@@ -146,8 +146,6 @@
         var arr3 = arr2.concat(bookArr);
         var allArr = arr3.concat(rePlayArr);
         var cartKeys = toStrFileName(allArr);
-        console.log(rePlayArr);
-        return false;
         if(allArr.length > 0){
             innerValue("cartKeys", cartKeys);
             sessionStorage.setItem("cartNum", cartKeys);

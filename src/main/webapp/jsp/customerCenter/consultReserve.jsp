@@ -3,6 +3,10 @@
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2149f737a2468c19787b4ef4a9ea6a2b&libraries=services"></script>
 <script>
     $(document).ready(function () {
+        $('#a_reservation').val(1).trigger('change');
+        $('#academyNumber').val(1).trigger('change');
+        calendar();
+
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         if(sessionUserInfo == null){
             alert("로그인을 해주세요.");
@@ -11,10 +15,10 @@
         /*다음지도 API 호출*/
         daumMapApi('map1', '서울시 동작구 노량진동 117-2 영빌딩');
         daumMapApi('map2', '서울특별시 동작구 노량진로 196');
-        var a_reservation = getSelectboxValue("a_reservation");
-        if(a_reservation == ""){
-            $("#consultDiv").hide();
-        }
+        // var a_reservation = getSelectboxValue("a_reservation");
+        // if(a_reservation == ""){
+        //     $("#consultDiv").hide();
+        // }
         
         $("#academyNumber").change(function () {
             $("#morning").empty();
@@ -22,7 +26,7 @@
             var a_reservation = getSelectboxValue("a_reservation");
             var academyNumber = getSelectboxValue("academyNumber");
             if(a_reservation != ""){
-                $("#consultDiv").show();
+                //$("#consultDiv").show();
                 calendar();
                 var today = getToday();
                 var today2 = getToday2();
@@ -55,11 +59,18 @@
             var calendarInfo = null;
             //달력 주입 시작
             $('#searchStartDate').fullCalendar({
-                // viewRender: function(view, element) {
-                //     var dt_start = moment( $('#calendar').fullCalendar('getDate') ).format('YYYY-MM-DD');
-                //     //innerValue("yyyymmdd", dt_start);
-                //     var dayOfWeek = moment( $('#calendar').fullCalendar('getDate') ).format('dddd');
-                // },
+                viewRender: function(startDate, view, element) {
+                    var dt_start = moment( $('#calendar').fullCalendar('getDate') ).format('YYYY-MM-DD');
+                    innerValue("indate", dt_start);
+                    var reserveLocation = getSelectboxValue("academyNumber");
+                    getReserveTime(dt_start, reserveLocation);
+                    var dt_start1 = moment(startDate).format('YYYY.MM.DD');
+                    innerHTML("selDate", dt_start1);
+                    var dayOfWeek = moment(startDate).format('dddd'); //요일
+                    innerHTML("selDay", dayOfWeek);
+                    innerValue("indate", dt_start);
+                    innerHTML("academy", $("#academyNumber option:checked").text());
+                },
                 lang:'ko',
                 header: {
                     left: 'prev,next,today',

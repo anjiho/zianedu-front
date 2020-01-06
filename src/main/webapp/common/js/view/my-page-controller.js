@@ -416,7 +416,6 @@ function getSignUpVideoLectureEndSubjectList(userKey, stepCtgKey, deviceType) {
     var infoList = getApi("/myPage/getSignUpVideoLectureEndSubjectList/", userKey, data);
 
     var selList = infoList.result;
-    console.log(selList);
     if(selList.length > 0){
         innerValue("lecEndJlecKey", selList[0].jlecKey);
         lecEndDetail(selList[0].jlecKey);
@@ -429,7 +428,6 @@ function getSignUpVideoLectureEndSubjectList(userKey, stepCtgKey, deviceType) {
 function getSignUpVideoLectureEndInfo(jlecKey) {
     if (jlecKey == null || jlecKey == undefined) return;
     var infoList = getApi("/myPage/getSignUpVideoLectureEndInfo/", jlecKey, "");
-    console.log(infoList);
     if(infoList != null){
         return infoList;
     }
@@ -627,3 +625,194 @@ function getOneByOneQuestionDetailInfo(bbsKey) {
     var detailInfo = getApi("/myPage/getOneByOneQuestionDetailInfo/", bbsKey, '');
     return detailInfo;
 }
+
+function getZianPassEndList(userKey) {
+    if (userKey == null || userKey == undefined) return;
+    var detailInfo = getApi("/myPage/getZianPassEndList/", userKey, '');
+    if(detailInfo.result.length > 0){
+        var selList = detailInfo.result;
+        for(var i=0; i < selList.length;i++){
+            var cmpList = selList[i];
+            console.log(cmpList);
+            var returnHtml = "<div class=\"Dropmenu_down\" id=\"\">";
+                returnHtml += "<div class=\"inner\">";
+                    returnHtml += "<div class=\"btn_crud\">";
+                        returnHtml += "<span class=\"black small\" id=\"zianPassEndCtgName\">지안패스</span>";
+                        returnHtml += "<a href=\"#modal3\" class=\"btn_modalOpen\">강좌설명</a>";
+                    returnHtml += "</div>";//btn_crud
+                returnHtml += "<div class=\"txt_area\">";
+                    returnHtml += "<span class=\"bdbox\" id=\"zianPassPC\">PC</span>";
+                    returnHtml += "<span class=\"bdbox\" id=\"zianPassMobile\">모바일</span>";
+                    returnHtml += " <p class=\"thumb\" id=\"zianPassEndName\">"+ cmpList.goodsName +"</p>";
+                    returnHtml += "<span class=\"date\"><b>수강기간</b>"+ cmpList.startDt +"<b> 종료기간</b>"+ cmpList.endDt +"</span>";
+                    returnHtml += "<div id=\"zianPassRetake\">";
+
+                if(cmpList.retakeYn == 'Y') {
+                    returnHtml += "<div class=\"guide\">";
+                            returnHtml += "<span class=\"re_date\">재수강신청</span>";
+                                returnHtml += "<div class=\"edusup_multi\">";
+                                    returnHtml += "<select style=\"width: 100px;\" id='zianPassReSel_"+ cmpList.gkey +"'>";
+                                        returnHtml += "<option value=\"\">선택</option>";
+                                        returnHtml += "<option value=\"1\">1개월</option>";
+                                        returnHtml += "<option value=\"2\">2개월</option>";
+                                        returnHtml += "<option value=\"3\">3개월</option>";
+                                        returnHtml += "<option value=\"4\">4개월</option>";
+                                        returnHtml += "<option value=\"5\">5개월</option>";
+                                        returnHtml += "<option value=\"6\">6개월</option>";
+                                    returnHtml += "</select>";
+                                   returnHtml += "</div>";//edusup_multi
+                            returnHtml += "</div>";
+
+                            returnHtml += "<div class=\"btn_cart_wrap\">";
+                                returnHtml += "<a href='javascript:zianPassGoBasket("+ cmpList.gkey +"," + cmpList.priceKey +");'  class='cart'>장바구니</a>";
+                                returnHtml += "<a href=\"javascript:zianPassGoProductBuy("+ cmpList.gkey +"," + cmpList.priceKey +");\"  class=\"buying\">바로구매</a>";
+                            returnHtml += "</div>";
+                }
+            returnHtml += "</div>";
+            returnHtml += "</div>";
+            returnHtml += "</div>";
+            returnHtml += "</div>";
+
+            $("#zianPassEndDiv").append(returnHtml);
+        }
+    }
+}
+
+//합격수기
+function getMyWriteBoard(userKey, boardType, sPage, listLimit, searchType, searchText) {
+    if(userKey == null || userKey == undefined) return;
+    var paging = new Paging();
+    dwr.util.removeAllRows("dataList1"); //테이블 리스트 초기화
+    var data = {
+        boardType : boardType,
+        sPage : sPage,
+        listLimit : listLimit,
+        searchType : searchType,
+        searchText : searchText
+    };
+    var infoList = getPageApi("/myPage/getMyWriteBoard/", userKey, data);
+    var cnt = infoList.cnt;
+    if(infoList != null){
+        if (infoList.result.length > 0) {
+            paging.count2(sPage, cnt, '5', listLimit, comment.blank_list);
+            var listNum = ((cnt-1)+1)-((sPage-1)*10); //리스트 넘버링
+            var selList = infoList.result;
+            for(var i=0; i < selList.length; i++){
+                var cmpList = selList[i];
+                if (cmpList != undefined) {
+                    var cellData = [
+                        function(data) {return cmpList.title},
+                        function(data) {return cmpList.userName;},
+                        function(data) {return cmpList.indate;},
+                        function(data) {return cmpList.readCount;}
+                    ];
+                    dwr.util.addRows("dataList1", [0], cellData, {escapeHtml: false});
+                }
+            }
+        }
+    }
+}
+
+function getMyWriteLectureBoard(userKey, boardType, sPage, listLimit, searchType, searchText) {
+    if(userKey == null || userKey == undefined) return;
+    var paging = new Paging();
+    dwr.util.removeAllRows("dataList3"); //테이블 리스트 초기화
+    var data = {
+        boardType : boardType,
+        sPage : sPage,
+        listLimit : listLimit,
+        searchType : searchType,
+        searchText : searchText
+    };
+    var infoList = getPageApi("/myPage/getMyWriteBoard/", userKey, data);
+    var cnt = infoList.cnt;
+    if(infoList != null){
+        if (infoList.result.length > 0) {
+            paging.count3(sPage, cnt, '5', listLimit, comment.blank_list);
+            var listNum = ((cnt-1)+1)-((sPage-1)*10); //리스트 넘버링
+            var selList = infoList.result;
+            for(var i=0; i < selList.length; i++){
+                var cmpList = selList[i];
+                if (cmpList != undefined) {
+                    var cellData = [
+                        function(data) {return cmpList.title},
+                        function(data) {return cmpList.userName;},
+                        function(data) {return cmpList.indate;},
+                        function(data) {return cmpList.readCount;}
+                    ];
+                    dwr.util.addRows("dataList3", [0], cellData, {escapeHtml: false});
+                }
+            }
+        }
+    }
+}
+
+function getMyWriteBookBoard(userKey, boardType, sPage, listLimit, searchType, searchText) {
+    if(userKey == null || userKey == undefined) return;
+    var paging = new Paging();
+    dwr.util.removeAllRows("dataList4"); //테이블 리스트 초기화
+    var data = {
+        boardType : boardType,
+        sPage : sPage,
+        listLimit : listLimit,
+        searchType : searchType,
+        searchText : searchText
+    };
+    var infoList = getPageApi("/myPage/getMyWriteBoard/", userKey, data);
+    var cnt = infoList.cnt;
+    if(infoList != null){
+        if (infoList.result.length > 0) {
+            paging.count4(sPage, cnt, '5', listLimit, comment.blank_list);
+            var listNum = ((cnt-1)+1)-((sPage-1)*10); //리스트 넘버링
+            var selList = infoList.result;
+            for(var i=0; i < selList.length; i++){
+                var cmpList = selList[i];
+                if (cmpList != undefined) {
+                    var cellData = [
+                        function(data) {return cmpList.title},
+                        function(data) {return cmpList.userName;},
+                        function(data) {return cmpList.indate;},
+                        function(data) {return cmpList.readCount;}
+                    ];
+                    dwr.util.addRows("dataList4", [0], cellData, {escapeHtml: false});
+                }
+            }
+        }
+    }
+}
+
+
+function getMyWriteEXAMBoard(userKey, boardType, sPage, listLimit, searchType, searchText) {
+    if(userKey == null || userKey == undefined) return;
+    var paging = new Paging();
+    dwr.util.removeAllRows("dataList5"); //테이블 리스트 초기화
+    var data = {
+        boardType : boardType,
+        sPage : sPage,
+        listLimit : listLimit,
+        searchType : searchType,
+        searchText : searchText
+    };
+    var infoList = getPageApi("/myPage/getMyWriteBoard/", userKey, data);
+    var cnt = infoList.cnt;
+    if(infoList != null){
+        if (infoList.result.length > 0) {
+            paging.count5(sPage, cnt, '5', listLimit, comment.blank_list);
+            var listNum = ((cnt-1)+1)-((sPage-1)*10); //리스트 넘버링
+            var selList = infoList.result;
+            for(var i=0; i < selList.length; i++){
+                var cmpList = selList[i];
+                if (cmpList != undefined) {
+                    var cellData = [
+                        function(data) {return cmpList.title},
+                        function(data) {return cmpList.userName;},
+                        function(data) {return cmpList.indate;},
+                        function(data) {return cmpList.readCount;}
+                    ];
+                    dwr.util.addRows("dataList5", [0], cellData, {escapeHtml: false});
+                }
+            }
+        }
+    }
+}
+
