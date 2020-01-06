@@ -783,7 +783,7 @@ function getMyWriteBookBoard(userKey, boardType, sPage, listLimit, searchType, s
 }
 
 
-function getMyWriteEXAMBoard(userKey, boardType, sPage, listLimit, searchType, searchText) {
+function getMyWriteExamBoard(userKey, boardType, sPage, listLimit, searchType, searchText) {
     if(userKey == null || userKey == undefined) return;
     var paging = new Paging();
     dwr.util.removeAllRows("dataList5"); //테이블 리스트 초기화

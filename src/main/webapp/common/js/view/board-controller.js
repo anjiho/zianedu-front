@@ -439,7 +439,6 @@ function getPasserVideoList(sPage, listLimit, searchType, searchText) {
     if (infoList.result.length > 0) {
         paging.count(sPage, cnt, '10', listLimit, comment.blank_list);
         var selList = infoList.result;
-        console.log(selList);
         for(var i=0; i < selList.length; i++){
             var cmpList = selList[i];
             function formatter(cmpList) {

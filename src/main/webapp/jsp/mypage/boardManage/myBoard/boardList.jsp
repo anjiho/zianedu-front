@@ -90,6 +90,7 @@
         getMyWriteBookBoard(sessionUserInfo.userKey, 'BOOK', sPage, 10, searchType, searchText);
     }
 
+    //응시후기
     function fn_search5(val) {
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         var sPage = getInputTextValue("sPage5");
@@ -99,7 +100,7 @@
         if(searchText == undefined) searchText = "";
 
         if(val == "new") sPage = "1";
-        getMyWriteEXAMBoard(sessionUserInfo.userKey, 'EXAM', sPage, 10, searchType, searchText);
+        getMyWriteExamBoard(sessionUserInfo.userKey, 'EXAM', sPage, 10, searchType, searchText);
     }
 </script>
 <form name="frm" method="get">
@@ -254,7 +255,7 @@
                                             <input type="text" id="searchText4" onkeypress="if(event.keyCode==13) {fn_search4('new'); return false;}" >
                                             <a href="javascript:fn_search4('new');" class="btn_m on w140">검색</a>
                                         </li>
-                                        <li class="right"><a href="./sub02010503.html" class="btn_m w140">도서수기작성하기</a></li>
+                                        <li class="right"><a href="" class="btn_m w140">도서수기작성하기</a></li>
                                     </ul>
                                 </form>
                                 <div class="tableBox">
