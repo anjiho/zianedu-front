@@ -23,7 +23,7 @@
     });
 
     //질문답변보기
-    function goQustionReplyDetail() {
+    function goQuestionReplyDetail() {
         alert($("#reQuestionSel").val());
     }
 
@@ -49,7 +49,7 @@
         $("#fileList").html(innerHtmlTemp);
     }
 
-    function saveQustion() {
+    function saveQuestion() {
         var check = new isCheck();
         if (check.input("title", comment.input_title) == false) return;
 
@@ -90,7 +90,6 @@
                             saveBoardFileList(result.keyValue, str);
                             if (result.resultCode == 200) {
                                 alert("성공적으로 등록 완료되었습니다");
-                                //goLoginPage();
                             }
                         }
                     }
@@ -134,7 +133,7 @@
 <%--                            <option value="ss">아침무료특강은 어떻게 들으면 되나요?</option>--%>
 <%--                            <option value="aa">기기변경은 어디서 하나요?</option>--%>
                         </select>
-                        <a href="javascript:goQustionReplyDetail();" class="coment_btn">질문답변보기</a>
+                        <a href="javascript:goQuestionReplyDetail();" class="coment_btn">질문답변보기</a>
                     </div>
                     <!-- //수강생 안내 -->
 
@@ -183,7 +182,7 @@
                         </div>
                         <div class="btnArea">
                             <a href="#" class="btn_m gray radius w110">취소</a> &nbsp;&nbsp;&nbsp;
-                            <a href="javascript:saveQustion();" class="btn_m onBlue radius w110">등록</a>
+                            <a href="javascript:saveQuestion();" class="btn_m onBlue radius w110">등록</a>
                         </div>
                     </div>
                 </div>

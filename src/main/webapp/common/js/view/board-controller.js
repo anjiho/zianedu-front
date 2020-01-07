@@ -44,7 +44,9 @@ function saveTeacherBoard(bbsMasterKey, teacherKey, userKey, title, content, isN
         isSecret : isSecret,
         fileName : fileName
     };
+    console.log(data);
     var result = postApi("/board/saveTeacherBoard", data);
+    console.log(result);
     return result;
 }
 
@@ -84,7 +86,6 @@ function getBoardDetailInfo(bbsMasterKey, bbsKey) {
         bbsKey : bbsKey
     };
     var InfoList = getApi("/board/getBoardDetailInfo/", bbsMasterKey, data);
-
     var result = InfoList.result;
     if(result != undefined){
        return result;
@@ -161,6 +162,7 @@ function getNoticeList(sPage, listLimit, bbsMaterKey, searchType, searchText) {
     var cnt = infoList.cnt;
     paging.count(sPage, cnt, '10', '10', comment.blank_list);
     if (infoList.result.length > 0) {
+
         var listNum = ((cnt-1)+1)-((sPage-1)*10); //리스트 넘버링
         var selList = infoList.result;
         for(var i=0; i < selList.length; i++){

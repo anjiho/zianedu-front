@@ -358,6 +358,12 @@
 .boardWrap .fileWrap .label{display:block;position:absolute;top:0;left:0;}
 .boardWrap .fileList{display:block;}
 .boardWrap .fileList li{display:block;margin:5px 0;}
+.boardWrap .fileWrap .label {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
 
 .calendarWrap{}
 .calendarWrap p{text-align:center;}

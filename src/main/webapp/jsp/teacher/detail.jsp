@@ -234,8 +234,9 @@
 
             if(referenceInfo.fileInfo != null){
                 for(var i = 0; i < referenceInfo.fileInfo.length; i++){
-                    $("#fileDetailList").append("<li><a href='"+ referenceInfo.fileInfo[i].fileUrl +"'>"+ referenceInfo.fileInfo[i].fileName +"</a>"+" "+"<img src=\"/common/zian/images/common/icon_file.png\" alt=\"\"></li>");
-                }
+                   // $("#fileDetailList").append("<li><a href='"+ referenceInfo.fileInfo[i].fileUrl +"'>"+ referenceInfo.fileInfo[i].fileName +"</a>"+" "+"<img src=\"/common/zian/images/common/icon_file.png\" alt=\"\"></li>");
+                    $("#fileDetailList").append("<li><a href='"+ referenceInfo.fileInfo[i].fileUrl +"'><img src='/common/zian/images/common/icon_file.png' alt=''> "+ referenceInfo.fileInfo[i].fileName +"</a></li>");
+                }                               //<li><a href="#"><img src="../images/common/icon_file.png" alt=""> 필기시험 합격선(제1회공채)-배포용(0).hwp</a></li>
             }
 
             var detailInfoStr = JSON.stringify(detailInfo);
@@ -374,7 +375,6 @@
             priceKey : priceKey
         };
        list.push(data);
-       console.log(list);
     }
 
     //학습안내 - 학습자료실 - 글쓰기
@@ -384,6 +384,10 @@
         $("#referenceList").hide();
         $("#noticeList").hide();
         $("#referenceWriteDiv").show();
+        $("#writeTitle").val("");
+        $("#writeContent").val("");
+        $("#fileList").empty();
+
     }
     
     function qnaWrite() {
@@ -503,7 +507,7 @@
                 alert("성공적으로 등록 완료되었습니다");
             }
         }else{
-            var data = new FormData();
+            //var data = new FormData();
             var formData = new FormData();
             for(var i=0, filesTempArrLen = filesTempArr1.length; i<filesTempArrLen; i++) {
                 formData.append("files", filesTempArr1[i]);
@@ -761,11 +765,22 @@
                                                 <tr>
                                                     <td colspan="2">작성자 : <span id="referenceWriter"></span> (<span id="referenceUserId"></span>) | 조회수 : <span id="referenceCount"></span></td>
                                                 </tr>
+<%--                                                <tr>--%>
+<%--                                                        <td>첨부파일 :</td>--%>
+<%--                                                        <td>--%>
+<%--                                                            <ul id='fileDetailList' class="fileDetailList"></ul>--%>
+<%--                                                        </td>--%>
+<%--                                                </tr>--%>
                                                 <tr>
-                                                        <td>첨부파일 :</td>
-                                                        <td>
-                                                            <ul id='fileDetailList' class="fileDetailList"></ul>
-                                                        </td>
+                                                    <td colspan="">
+                                                        <div class="fileWrap">
+                                                            <span>첨부파일 : </span>
+                                                            <ul class="fileList" id="fileDetailList">
+                                                                <%--                                            <li><a href="#"><img src="../images/common/icon_file.png" alt=""> 필기시험 합격선(제1회공채)-배포용(0).hwp</a></li>--%>
+                                                                <%--                                            <li><a href="#"><img src="../images/common/icon_file.png" alt=""> 필기시험 합격선(제1회공채).hwp</a></li>--%>
+                                                            </ul>
+                                                        </div>
+                                                    </td>
                                                 </tr>
                                                 <tr>
                                                     <td colspan="2" class="textContent" id="referenceContent"></td>
@@ -798,6 +813,7 @@
                                     <!--//학습자료실 상세 끝-->
                                     <!--학습자료실 글쓰기-->
                                     <div class="" id="referenceWriteDiv" style="display: none;">
+                                        <div class="tabPage active">
                                         <form>
                                             <ul class="searchArea">
                                                 <li class="left"><b>글 등록하기</b></li>
@@ -832,6 +848,7 @@
                                                 <a href="javascript:goWriteSave();" class="btn_l onBlue w200">등록</a>
                                             </div>
                                         </form>
+                                        </div>
                                     </div>
                                     <!--//학습자료실 글쓰기 끝-->
                                 </div>

@@ -53,7 +53,17 @@
             innerHTML("title", detailInfo.title);
             innerHTML("readCount", detailInfo.readCount);
             innerHTML("fileName", detailInfo.fileName);
-            $("#fileUrl").attr("href", detailInfo.fileUrl);
+            if(detailInfo.fileInfo != null) {
+                if (detailInfo.fileInfo.length > 0) {
+                    for (var i = 0; i < detailInfo.fileInfo.length; i++) {
+                        var fileList = detailInfo.fileInfo[i];
+                       // var retrunHtml = "<a href='" + fileList.fileUrl + "' download>" + fileList.fileName + "</a>";
+                        var retrunHtml = "<li><a href=\'"+ fileList.fileUrl +"'><img src=\"/common/zian/images/common/icon_file.png\" alt=\"\"> "+ fileList.fileName +"</a></li>";
+                        $("#fileList").append(retrunHtml);
+                    }
+                }
+            }
+
 
             var prevNextInfo = result.prevNextInfo;
 
@@ -130,14 +140,27 @@
                                 <td colspan="3">작성자 : <span id="userName"></span> <span id="userId"></span>  |   조회수 : <span id="readCount"></span></td>
                             </tr>
                             <tr>
+                                <td colspan="3">
+                                    <div class="fileWrap">
+                                        <span class="label">첨부파일 : </span>
+                                        <ul class="fileList" id="fileList">
+<%--                                            <li><a href="#"><img src="../images/common/icon_file.png" alt=""> 필기시험 합격선(제1회공채)-배포용(0).hwp</a></li>--%>
+<%--                                            <li><a href="#"><img src="../images/common/icon_file.png" alt=""> 필기시험 합격선(제1회공채).hwp</a></li>--%>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td colspan="3" class="tdEditorContent">
                                     <div class="alignCenter" id="content">
                                     </div>
                                 </td>
                             </tr>
-                            <tr>
-                                <td colspan="3">첨부파일  <a href="" id="fileUrl"> <span id="fileName"></span></a> </td>
-                            </tr>
+<%--                            <tr>--%>
+<%--                                <td colspan="3">첨부파일--%>
+<%--                                    <div id="fileList"></div>--%>
+<%--                                </td>--%>
+<%--                            </tr>--%>
                             <tr id="prev">
                                 <td class="center">이전글 ▲</td>
                                 <td class="left"><a href="javascript:goPrev();"><span id="prevTitle"></span></a></td>

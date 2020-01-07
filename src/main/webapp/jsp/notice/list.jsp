@@ -58,7 +58,7 @@
                         <input type="text" id="searchText" onkeypress="if(event.keyCode==13) {fn_search('new'); return false;}" class="w240">
                         <a href="javascript:fn_search('new');" class="btn_inline on w140">검색</a>
                         <div class="btnArea">
-                            <a href="javascript:goPage('notice','write')" class="btn_inline w140">글쓰기</a>
+                            <a href="javascript:goPageNoSubmit('notice','write')" class="btn_inline w140">글쓰기</a>
                         </div>
                     </div>
                     <div class="tableBox">
