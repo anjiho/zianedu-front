@@ -65,7 +65,10 @@
             if (filesTempArr.length == 0) { //파일 없을때
                 var result = saveBoardReview(bbsMasterKey, userKey, title, content, 0, 0, '', teacherName, gkey, '', lecSubject);
                 if (result.resultCode == 200) {
-                    addLectureLimitDay(jlecKey);
+                    if (jlecKey == "null") jlecKey = "";    //jLecKey가 없을때 예외처리
+                    if(jlecKey != "") {
+                        addLectureLimitDay(jlecKey);
+                    }
                     alert("성공적으로 등록 완료되었습니다.");
                     return false;
                 }
@@ -92,7 +95,10 @@
                             var str = toStrFileName(fileName);
                             saveBoardFileList(result.keyValue, str);
                             if (result.resultCode == 200) {
-                                addLectureLimitDay(jlecKey);
+                                if (jlecKey == "null") jlecKey = "";    //jLecKey가 없을때 예외처리
+                                if(jlecKey != "") {
+                                    addLectureLimitDay(jlecKey);
+                                }
                                 alert("성공적으로 등록 완료되었습니다");
                                 return false;
                             }
