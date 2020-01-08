@@ -10,7 +10,7 @@ var Paging = function() {
 	this.count = function(sPage, cnt, paging_count, list_count, empty_comment) {
 		if (cnt == "0") {
 			gfn_printPageNum_new('0', paging_count, list_count, '1');
-			gfn_emptyView("V", empty_comment);
+			//gfn_emptyView("V", empty_comment);
 		}  else {
 			if (new Number(cnt) < (list_count * sPage)) {
 				if (new Number(cnt) < (list_count * (sPage - 1))) {
