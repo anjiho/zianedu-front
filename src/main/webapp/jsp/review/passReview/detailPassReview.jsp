@@ -200,9 +200,9 @@
                                     </div>
                                 </td>
                             </tr>
-                            <tr id="commentList">
+                            <div id="commentList">
 
-                            </tr>
+                            </div>
                             <tr>
                                 <td colspan="4">
                                 </td>

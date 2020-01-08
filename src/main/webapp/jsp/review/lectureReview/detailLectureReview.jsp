@@ -193,8 +193,8 @@
                                     </div>
                                 </td>
                             </tr>
-                            <tr id="commentList">
-
+                            <tr>
+                                <div id="commentList"></div>
                             </tr>
                             <tr>
                                 <td colspan="3">
