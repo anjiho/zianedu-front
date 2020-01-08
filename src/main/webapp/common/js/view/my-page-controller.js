@@ -700,9 +700,10 @@ function getMyWriteBoard(userKey, boardType, sPage, listLimit, searchType, searc
             paging.count2(sPage, cnt, '5', listLimit, comment.blank_list);
             for(var i=0; i < selList.length; i++){
                 var cmpList = selList[i];
+                var gopageName = '"detailPass"';
                 if (cmpList != undefined) {
                     var cellData = [
-                        function(data) {return cmpList.title},
+                        function(data) {return "<a href='javascript:detailReview("+ cmpList.bbsKey +","+ gopageName +")'><sapn class='thumb'>"+ cmpList.title +"</span></a>"},
                         function(data) {return cmpList.userName;},
                         function(data) {return cmpList.indate;},
                         function(data) {return cmpList.readCount;}
@@ -734,9 +735,10 @@ function getMyWriteLectureBoard(userKey, boardType, sPage, listLimit, searchType
             paging.count3(sPage, cnt, '5', listLimit, comment.blank_list);
             for(var i=0; i < selList.length; i++){
                 var cmpList = selList[i];
+                var gopageName = '"detailLec"';
                 if (cmpList != undefined) {
                     var cellData = [
-                        function(data) {return cmpList.title},
+                        function(data) {return "<a href='javascript:detailReview("+ cmpList.bbsKey +","+ gopageName +")'><sapn class='thumb'>"+ cmpList.title +"</span></a>"},
                         function(data) {return cmpList.userName;},
                         function(data) {return cmpList.indate;},
                         function(data) {return cmpList.readCount;}
@@ -768,9 +770,10 @@ function getMyWriteBookBoard(userKey, boardType, sPage, listLimit, searchType, s
             paging.count4(sPage, cnt, '5', listLimit, comment.blank_list);
             for(var i=0; i < selList.length; i++){
                 var cmpList = selList[i];
+                var gopageName = '"detailBook"';
                 if (cmpList != undefined) {
                     var cellData = [
-                        function(data) {return cmpList.title},
+                        function(data) {return "<a href='javascript:detailReview("+ cmpList.bbsKey +","+ gopageName +")'><sapn class='thumb'>"+ cmpList.title +"</span></a>"},
                         function(data) {return cmpList.userName;},
                         function(data) {return cmpList.indate;},
                         function(data) {return cmpList.readCount;}

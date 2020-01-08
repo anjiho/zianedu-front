@@ -48,7 +48,6 @@
         if(val == "new") sPage = "1";
         getPasserVideoList(sPage, 10, searchType, searchText);
     }
-
     /*
     PASS:합격수기, LECTURE:수강후기, BOOK:도서후기, EXAM:응시후기
      */
@@ -102,9 +101,23 @@
         if(val == "new") sPage = "1";
         getMyWriteExamBoard(sessionUserInfo.userKey, 'EXAM', sPage, 5, searchType, searchText);
     }
+
+    function detailReview(bbsKey, val) {
+        innerValue('bbsKey', bbsKey);
+        if(val == 'detailLecture'){
+            goPage('review','detailVideo');
+        }else if(val == 'detailPass'){
+            goPage('review','detailPass');
+        }else if(val == 'detailLec'){
+            goPage('review','detailLecture');
+        }else if(val == 'detailBook'){
+            goPage('review','detailBook');
+        }
+    }
 </script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
+    <input type="hidden" id="bbsKey" name="bbsKey">
     <input type="hidden" id="sPage">
     <input type="hidden" id="sPage2">
     <input type="hidden" id="sPage3">
