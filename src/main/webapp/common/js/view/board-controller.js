@@ -504,9 +504,8 @@ function getPasserVideoListFromReview(bbsMasterKey, sPage, listLimit, searchType
     var cnt = infoList.cnt;
     if (infoList.result.length > 0) {
         var selList = infoList.result;
-        if(cnt > 0){
-            paging.count(sPage, cnt, '10', listLimit, comment.blank_list);
-        }
+        paging.count(sPage, cnt, '10', listLimit, comment.blank_list);
+
         for(var i=0; i < selList.length; i++){
             var cmpList = selList[i];
             function formatter(cmpList) {

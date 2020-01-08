@@ -128,28 +128,7 @@
                         </div>
 
                         <div class="list">
-                            <ul id="dataList">
-<%--                                <li>--%>
-<%--                                    <img src="../images/content/m01.png" alt="">--%>
-<%--                                    <span class="thumb">2020국가직 합격생 문재황님의 합격 영상</span>--%>
-<%--                                </li>--%>
-<%--                                <li>--%>
-<%--                                    <img src="../images/content/m02.png" alt="">--%>
-<%--                                    <span class="thumb">2020국가직 합격생 문재황님의 합격 영상</span>--%>
-<%--                                </li>--%>
-<%--                                <li>--%>
-<%--                                    <img src="../images/content/m03.png" alt="">--%>
-<%--                                    <span class="thumb">2020국가직 합격생 문재황님의 합격 영상</span>--%>
-<%--                                </li>--%>
-<%--                                <li>--%>
-<%--                                    <img src="../images/content/m04.png" alt="">--%>
-<%--                                    <span class="thumb">2020국가직 합격생 문재황님의 합격 영상</span>--%>
-<%--                                </li>--%>
-<%--                                <li>--%>
-<%--                                    <img src="../images/content/m03.png" alt="">--%>
-<%--                                    <span class="thumb">2020국가직 합격생 문재황님의 합격 영상</span>--%>
-<%--                                </li>--%>
-                            </ul>
+                            <ul id="dataList"></ul>
                         </div>
                         <!-- paging -->
                         <%@ include file="/common/inc/com_pageNavi.inc" %>
