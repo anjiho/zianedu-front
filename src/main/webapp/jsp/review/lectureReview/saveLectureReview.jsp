@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/jsp/common.jsp" %>
+<%
+    String jlecKey = request.getParameter("jlecKey");
+%>
 <script>
+    var jlecKey = '<%=jlecKey%>';
     $( document ).ready(function() {
         $('#writeContent').summernote({
             height: 300,
@@ -9,6 +13,15 @@
             focus: true
         });
         $("#attachFile").on("change", addFiles);
+        if(jlecKey != null || jlecKey != undefined || jlecKey != ""){
+           var goodsInfo =  getGoodsInfoByJLecKey(jlecKey);
+           innerValue("lecSubject", goodsInfo.result.goodsName);
+           innerValue("teacherName", goodsInfo.result.teacherName);
+           innerValue("gkey", goodsInfo.result.gkey);
+        }
+        var bbsMasterKey = getPassReviewMasterKey();
+        var reviewCnt =  getReviewBoardCount(bbsMasterKey);
+        innerHTML('reviewCnt', reviewCnt);
     });
 
     var filesTempArr = [];
@@ -46,10 +59,11 @@
             var lecSubject = getInputTextValue("lecSubject");
             var bbsMasterKey = getLecReviewMasterKey();
             var content = $('textarea[name="writeContent"]').val();
+            var gkey = getInputTextValue("gkey");
             if (filesTempArr.length == 0) { //파일 없을때
-                var result = saveBoardReview(bbsMasterKey, userKey, title, content, 0, 0, '', teacherName, '10029', '', lecSubject);
+                var result = saveBoardReview(bbsMasterKey, userKey, title, content, 0, 0, '', teacherName, gkey, '', lecSubject);
                 if (result.resultCode == 200) {
-                    //$("#modal9").show();
+                    addLectureLimitDay(jlecKey);
                     alert("성공적으로 등록 완료되었습니다.");
                     return false;
                 }
@@ -71,10 +85,12 @@
                             var fileName = data.keyValue;
                             var teacherName = getInputTextValue("teacherName");
                             var lecSubject = getInputTextValue("lecSubject");
-                            var result = saveBoardReview(bbsMasterKey, userKey, title, content, 0, 0, '', teacherName, '10029', '', lecSubject);
+                            var gkey = getInputTextValue("gkey");
+                            var result = saveBoardReview(bbsMasterKey, userKey, title, content, 0, 0, '', teacherName, gkey, '', lecSubject);
                             var str = toStrFileName(fileName);
                             saveBoardFileList(result.keyValue, str);
                             if (result.resultCode == 200) {
+                                addLectureLimitDay(jlecKey);
                                 alert("성공적으로 등록 완료되었습니다");
                                 return false;
                             }
@@ -90,6 +106,7 @@
 </script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
+    <input type="hidden" name="gkey" id="gkey">
     <div id="wrap">
         <%@include file="/common/jsp/leftMenu.jsp" %>
         <!--상단-->
@@ -114,7 +131,7 @@
                 <div class="boardWrap reviewBoard">
                     <div class="review_txt">
                         <p>수강색분들의 합격을 축하드립니다.</p>
-                        <span>총<b>5</b>개의 합격자 영상이 있습니다. <br> 지안에듀에서만 가능한 합격비법을 확인해 보세요</span>
+                        <span>총<b id="reviewCnt"></b>개의 합격자 영상이 있습니다. <br> 지안에듀에서만 가능한 합격비법을 확인해 보세요</span>
                     </div>
                     <!--review_point : 합격수기 포인트-->
                     <div class="review_point">

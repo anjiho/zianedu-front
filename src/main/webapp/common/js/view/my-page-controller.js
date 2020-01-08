@@ -458,6 +458,7 @@ function getUserOrderList(userKey, startDate, endDate, sPage, listLimit) {
     var infoList = getPageApi("/myPage/getUserOrderList/", userKey, data);
     var cnt = infoList.cnt;
     if(infoList != null){
+        console.log(infoList);
         if (infoList.result.length > 0) {
             paging.count(sPage, cnt, '5', listLimit, comment.blank_list);
             var listNum = ((cnt-1)+1)-((sPage-1)*10); //리스트 넘버링
@@ -483,6 +484,7 @@ function getUserOrderDetail(jKey) {
     if(jKey == null || jKey == undefined) return;
     var infoList = getApi("/myPage/getUserOrderDetail/", jKey, '');
     if(infoList != null){
+        console.log(infoList);
         if(infoList.result.orderList != null){
             var orderInfo = infoList.result.orderList;
             for(var i=0; i < orderInfo.length; i++){

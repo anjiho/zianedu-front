@@ -16,7 +16,15 @@
 
     //후기작성
     function goReview(jlecKey) {
-        
+        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        var availableReview = getAvailabilityLectureReview(sessionUserInfo.userKey, jlecKey);
+        if(availableReview == false){
+            alert("후기 작성을 할 수 없습니다.");
+            return false;
+        }else{
+            innerValue("jlecKey", jlecKey);
+            goPage('review','saveLecture');
+        }
     }
 </script>
 <form name="frm" method="get">

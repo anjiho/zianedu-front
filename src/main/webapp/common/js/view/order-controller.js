@@ -793,3 +793,24 @@ function getOrderSheetInfoFromImmediatelyAtRetake(userKey, retakeInfo) {
         }
     }
 }
+
+function getAvailabilityLectureReview(userKey, jLecKey) {
+    if (userKey == null || userKey == undefined) return;
+    if (jLecKey == null || jLecKey == undefined) return;
+    var data = {
+        jLecKey : jLecKey
+    };
+    var infoList = getResultApi("/order/getAvailabilityLectureReview/", userKey, data);
+    if(infoList != null){
+        return infoList.keyValue;
+    }
+}
+
+function addLectureLimitDay(jLecKey) {
+    if (jLecKey == null || jLecKey == undefined) return;
+    var data = {
+        jLecKey : jLecKey
+    };
+    var result = postApi("/order/addLectureLimitDay", data);
+    return  result;
+}
