@@ -13,7 +13,9 @@
             focus: true
         });
         $("#attachFile").on("change", addFiles);
-        if(jlecKey != null || jlecKey != undefined || jlecKey != ""){
+        if (jlecKey == "null") jlecKey = "";    //jLecKey가 없을때 예외처리
+
+        if(jlecKey != ""){
            var goodsInfo =  getGoodsInfoByJLecKey(jlecKey);
            innerValue("lecSubject", goodsInfo.result.goodsName);
            innerValue("teacherName", goodsInfo.result.teacherName);
