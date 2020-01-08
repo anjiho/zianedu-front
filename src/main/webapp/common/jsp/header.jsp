@@ -62,7 +62,7 @@
                 <li id="logout" style="display: none;"><a href="javascript:goLogout();">로그아웃</a></li>
                 <li id="join"><a href="javascript:goPage('user', 'joinAgree');">회원가입</a></li>
                 <li><a href="javascript:goPageNoSubmit('review', 'videoList');">합격수기</a></li>
-                <li><a href="#">이벤트</a></li>
+                <li><a href="javascript:goPageNoSubmit('event', 'proceedList');">이벤트</a></li>
             </ul>
         </div>
         <!--//최상단메뉴-->
