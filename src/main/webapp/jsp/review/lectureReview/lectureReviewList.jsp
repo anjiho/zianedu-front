@@ -124,11 +124,9 @@
 											<a href="#">365 지안패스</a>
 										</span>
                                     </div></div>
-
                                 </div>
                             </div>
                         </div>
-
                     </div>
 
                     <!--review_movie_search : 합격자후기 검색-->
@@ -137,6 +135,7 @@
                             <select id="searchType" class="w90">
                                 <option value="">선택</option>
                                 <option value="title">제목</option>
+                                <option value="content">내용</option>
                             </select>
                             <!--html 추가 및 수정-->
                             <input type="text" id="searchText" onkeypress="if(event.keyCode==13) {fn_search('new'); return false;}" class="w240">
@@ -165,15 +164,7 @@
                                     <th scope="col" style="text-align: center;">조회</th>
                                 </tr>
                                 </thead>
-                                <tbody id="dataList">
-<%--                                <tr>--%>
-<%--                                    <td>5</td>--%>
-<%--                                    <td class="left"><a href="#">2019 국가직 합격후기</a></td>--%>
-<%--                                    <td>지안에듀</td>--%>
-<%--                                    <td>2019.08.09</td>--%>
-<%--                                    <td>31</td>--%>
-<%--                                </tr>--%>
-                                </tbody>
+                                <tbody id="dataList"></tbody>
                             </table>
                         </div>
                         <!-- paging -->

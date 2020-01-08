@@ -130,6 +130,7 @@
                             <select id="searchType" class="w90">
                                 <option value="">선택</option>
                                 <option value="title">제목</option>
+                                <option value="content">내용</option>
                             </select>
                             <!--html 추가 및 수정-->
                             <input type="text" id="searchText" onkeypress="if(event.keyCode==13) {fn_search('new'); return false;}" class="w240">
