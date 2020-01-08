@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/jsp/common.jsp" %>
+<%
+    String bbsKey = request.getParameter("bbsKey");
+%>
 <script>
+    var bbsKey = '<%=bbsKey%>';
     $( document ).ready(function() {
         $('#writeContent').summernote({
             height: 300,
@@ -9,6 +13,25 @@
             focus: true
         });
         $("#attachFile").on("change", addFiles);
+        var bbsMasterKey = getReviewMasterKey();
+        var result = getBoardDetailInfo(bbsMasterKey, bbsKey);
+        console.log(result);
+        if(result != undefined){
+            var detailInfo = result.boardDetailInfo;
+            console.log(result);
+            $("#writeContent").summernote("code", detailInfo.contents);
+            innerValue("title", detailInfo.title);
+            innerValue("codeUrl", detailInfo.youtubeHtml);
+            if(detailInfo.fileInfo != null) {
+                if (detailInfo.fileInfo.length > 0) {
+                    for (var i = 0; i < detailInfo.fileInfo.length; i++) {
+                        var fileList = detailInfo.fileInfo[i];
+                        var retrunHtml = "<li><a href='javascript:void(0);'><img src=\"/common/zian/images/common/icon_file.png\" alt=\"\"> "+ fileList.fileName +"</a></li>";
+                        $("#fileList").append(retrunHtml);
+                    }
+                }
+            }
+        }
     });
 
     var filesTempArr = [];
@@ -17,6 +40,10 @@
         var filesArr = Array.prototype.slice.call(files);
         var filesArrLen = filesArr.length;
         var filesTempArrLen = filesTempArr.length;
+        if(filesTempArrLen > 0){
+            alert("첨부파일은 1개 이상 등록할 수 없습니다.");
+            return false;
+        }
         for( var i=0; i<filesArrLen; i++ ) {
             filesTempArr.push(filesArr[i]);
             $("#fileList").append("<div>" + filesArr[i].name + "<img src=\"/common/zian/images/common/icon_file.png\" onclick=\"deleteFile(event, " + (filesTempArrLen+i)+ ");\"></div>");
@@ -33,21 +60,17 @@
         $("#fileList").html(innerHtmlTemp);
     }
 
-    function saveReview() {
+    function modifyReview() {
         var check = new isCheck();
         if (check.input("title", comment.input_title) == false) return;
-        if (check.input("passSubject", comment.passSubject_info) == false) return;
-        if (check.input("lecSubject", comment.lecSubject_info) == false) return;
+        if (check.input("codeUrl", comment.codeUrl_info) == false) return;
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         if(sessionUserInfo != null) {
-            var userKey = sessionUserInfo.userKey;
             var title = getInputTextValue("title");
-            var bbsMasterKey = getPassReviewMasterKey();
-            var passSubject = getInputTextValue("passSubject");
-            var lecSubject = getInputTextValue("lecSubject");
+            var codeUrl = getInputTextValue("codeUrl");
             var content = $('textarea[name="writeContent"]').val();
             if (filesTempArr.length == 0) { //파일 없을때
-                var result = saveBoardReview(bbsMasterKey, userKey, title, content, 0, 0, '', '', '', passSubject, lecSubject);
+                var result = updateBoardReview(bbsKey, title, content, 0, '', codeUrl, '', '', '');
                 if (result.resultCode == 200) {
                     //$("#modal9").show();
                     alert("성공적으로 등록 완료되었습니다.");
@@ -69,13 +92,12 @@
                     success: function (data) {
                         if (data.resultCode == 200) {
                             var fileName = data.keyValue;
-                            var passSubject = getInputTextValue("passSubject");
-                            var lecSubject = getInputTextValue("lecSubject");
-                            var result = saveBoardReview(bbsMasterKey, userKey, title, content, 0, 0, '', '', '', passSubject, lecSubject);
+                            var codeUrl = getInputTextValue("codeUrl");
+                            var result = updateBoardReview(bbsKey, title, content, 0, fileName, codeUrl, '', '', '');
                             var str = toStrFileName(fileName);
                             saveBoardFileList(result.keyValue, str);
                             if (result.resultCode == 200) {
-                                alert("성공적으로 등록 완료되었습니다");
+                                alert("성공적으로 수정이 완료되었습니다");
                                 return false;
                             }
                         }
@@ -87,7 +109,6 @@
             goLoginPage();
         }
     }
-
 </script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
@@ -104,8 +125,8 @@
 
                 <div class="tabBox tBox4">
                     <ul>
-                        <li><a href="javascript:goPageNoSubmit('review','videoList');">합격자영상</a></li>
-                        <li class="active"><a href="javascript:goPageNoSubmit('review','passList');">합격수기</a></li>
+                        <li class="active"><a href="javascript:goPageNoSubmit('review','videoList');">합격자영상</a></li>
+                        <li><a href="javascript:goPageNoSubmit('review','passList');">합격수기</a></li>
                         <li><a href="javascript:goPageNoSubmit('review','lectureList');">수강후기</a></li>
                         <li><a href="javascript:goPageNoSubmit('review','bookList');">도서후기</a></li>
                     </ul>
@@ -129,7 +150,7 @@
                     <!--//review_point : 합격수기 포인트-->
 
                     <div class="boardWrap">
-                        <h5>글 등록하기</h5>
+                        <h5>영상 수정하기</h5>
                         <div class="tableBox">
                             <table class="form">
                                 <caption></caption>
@@ -143,39 +164,31 @@
                                     <td><input type="text" id="title" value="제목을 입력해주세요." class="w100p"></td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">합격과목</th>
-                                    <td><input type="text" id="passSubject" value="과목이름을 입력해주세요." class="w100p"></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">수강과목</th>
-                                    <td><input type="text" id="lecSubject" value="과목이름을 입력해주세요." class="w100p"></td>
-                                </tr>
-                                <tr>
                                     <th scope="row">내용</th>
                                     <td><textarea name="writeContent" id="writeContent" placeholder="내용을 입력해주세요." class="w100p h240"></textarea></td>
                                 </tr>
-<%--                                <tr>--%>
-<%--                                    <th scope="row">평점</th>--%>
-<%--                                    <td>--%>
-<%--                                        <select class="w120">--%>
-<%--                                            <option>평점선택</option>--%>
-<%--                                        </select>--%>
-<%--                                    </td>--%>
-<%--                                </tr>--%>
                                 <tr>
                                     <th scope="row">첨부파일</th>
                                     <td class="">
                                         <label for="attachFile">업로드</label>
                                         <input type="file" name="attachFile[]" id="attachFile" class=""  multiple/>
                                         <ul id='fileList' class="fileList"></ul>
+                                        <!--
+                                         <input type="file" name="files[]" id="attachFile" class="fileBtn noline"  multiple/>
+                                        <ul id='fileList' class="fileList"></ul>
+                                        -->
                                     </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Html코드</th>
+                                    <td><input type="text" id="codeUrl" value="영상주소를 입력해주세요." class="w100p"></td>
                                 </tr>
                                 </tbody>
                             </table>
                         </div>
                         <div class="btnArea">
-                            <a href="javascript:goPageNoSubmit('review','passList')" class="btn_m gray radius w110">취소</a> &nbsp;&nbsp;&nbsp;
-                            <a href="javascript:saveReview();" class="btn_m radius w110">등록</a>
+                            <a href="javascript:goPageNoSubmit('review','videoList')" class="btn_m gray radius w110">취소</a> &nbsp;&nbsp;&nbsp;
+                            <a href="javascript:modifyReview();" class="btn_m radius w110">수정</a>
                         </div>
                     </div>
                 </div>

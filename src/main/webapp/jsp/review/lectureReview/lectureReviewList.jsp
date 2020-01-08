@@ -2,17 +2,18 @@
 <%@include file="/common/jsp/common.jsp" %>
 <script>
     $( document ).ready(function() {
-        //fn_search('new');
+        fn_search('new');
     });
 
     function fn_search(val) {
         var sPage = getInputTextValue("sPage");
         var searchType = getSelectboxValue("searchType");
         var searchText = getInputTextValue("searchText");
+        if(searchType == undefined) searchType = "";
         if(searchText == undefined) searchText = "";
-        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-        var userKey = sessionUserInfo.userKey;
-        //getReviewBoardList(bbsMasterKey, sPage, listLimit, searchType, searchText);
+        if(val == "new") sPage = "1";
+        var bbsMasterKey = getLecReviewMasterKey();
+        getReviewBoardList(bbsMasterKey, sPage, 10, searchType, searchText);
     }
 
     function detailReview(bbsKey) {
@@ -49,7 +50,7 @@
                 <div class="boardWrap reviewBoard">
                     <div class="review_txt">
                         <p>수강색분들의 합격을 축하드립니다.</p>
-                        <span>총<b>10</b>개의 합격자 영상이 있습니다. <br> 지안에듀에서만 가능한 합격비법을 확인해 보세요</span>
+                        <span>총<b id="reviewCnt"></b>개의 합격자 영상이 있습니다. <br> 지안에듀에서만 가능한 합격비법을 확인해 보세요</span>
                     </div>
                     <!--review_point : 합격수기 포인트-->
                     <div class="review_point">
@@ -151,11 +152,11 @@
                                 </colgroup>
                                 <thead>
                                 <tr>
-                                    <th scope="col">번호</th>
-                                    <th scope="col">제목</th>
-                                    <th scope="col">작성자</th>
-                                    <th scope="col">등록일</th>
-                                    <th scope="col">조회</th>
+                                    <th scope="col" style="text-align: center;">번호</th>
+                                    <th scope="col" style="text-align: center;">제목</th>
+                                    <th scope="col" style="text-align: center;">작성자</th>
+                                    <th scope="col" style="text-align: center;">등록일</th>
+                                    <th scope="col" style="text-align: center;">조회</th>
                                 </tr>
                                 </thead>
                                 <tbody id="dataList">

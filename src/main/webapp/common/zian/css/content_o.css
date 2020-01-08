@@ -236,8 +236,8 @@ legend {display:none;position:absolute;visibility:hidden;}
 .comment .cm_write .inner .cm_title {float: left;width:100px;padding-top:30px;}
 /*.comment .cm_write .inner .write{float: left;width:749px;height:70px;padding:10px 0 10px 10px;border:1px solid #e3e3e3;}*/
 .comment .cm_write .inner .write{float: left;width:749px;height:auto;border:1px solid #e3e3e3;}
-.comment .cm_write .inner .write textarea{width:100%;min-height:120px;border:none;font-size:1em; display:block; color:#333;letter-spacing:-0.5px;padding:10px 10px}
-.comment .cm_write .inner .single {float:left;width:89px;height:60px;padding-top:30px;text-align: center; background: #000;color:#fff;margin-left:10px;}
+.comment .cm_write .inner .write textarea{width:100%;min-height:89px;border:none;font-size:1em; display:block; color:#333;letter-spacing:-0.5px;padding:10px 10px}
+.comment .cm_write .inner .single {float:left;width:89px;height:89px;padding-top:30px;text-align: center; background: #000;color:#fff;margin-left:10px;}
 .cm_list  {font-size:14px; margin:20px 0px;}
 .cm_list .names{display:block;}
 .cm_list span.ctn {display:block;margin-bottom:20px;}

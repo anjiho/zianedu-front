@@ -44,9 +44,7 @@ function saveTeacherBoard(bbsMasterKey, teacherKey, userKey, title, content, isN
         isSecret : isSecret,
         fileName : fileName
     };
-    console.log(data);
     var result = postApi("/board/saveTeacherBoard", data);
-    console.log(result);
     return result;
 }
 
@@ -424,7 +422,6 @@ function updateBoardByAlliance(bbsKey, title, content) {
     
 }
 
-
 function getPasserVideoList(sPage, listLimit, searchType, searchText) {
     var paging = new Paging();
     dwr.util.removeAllOptions('dataList');
@@ -457,7 +454,6 @@ function getPasserVideoList(sPage, listLimit, searchType, searchText) {
 //합격수기 > 합격수기,도서후기,수강후기
 function getReviewBoardList(bbsMasterKey, sPage, listLimit, searchType, searchText) {
     if(bbsMasterKey == null || bbsMasterKey == undefined) return;
-    if(userKey == null || userKey == undefined) return;
     var paging = new Paging();
     dwr.util.removeAllRows("dataList"); //테이블 리스트 초기화
     var data = {
@@ -466,8 +462,9 @@ function getReviewBoardList(bbsMasterKey, sPage, listLimit, searchType, searchTe
         searchType : searchType,
         searchText : searchText
     };
-    var infoList = getPageApi("/myPage/getReviewBoardList/", bbsMasterKey, data);
+    var infoList = getPageApi("/board/getReviewBoardList/", bbsMasterKey, data);
     var cnt = infoList.cnt;
+    innerHTML('reviewCnt', cnt);
     if(infoList != null){
         if (infoList.result.length > 0) {
             var listNum = ((cnt-1)+1)-((sPage-1)*10); //리스트 넘버링
@@ -477,12 +474,17 @@ function getReviewBoardList(bbsMasterKey, sPage, listLimit, searchType, searchTe
                 var cmpList = selList[i];
                 if (cmpList != undefined) {
                     var cellData = [
-                        // function(data) {return cmpList.title},
-                        // function(data) {return cmpList.userName;},
-                        // function(data) {return cmpList.indate;},
-                        // function(data) {return cmpList.readCount;}
+                        function(data) {return listNum--;},
+                        function(data) {return "<a href='javascript:detailReview("+ cmpList.bbsKey +");'>"+ cmpList.title +"</a>";},
+                        function(data) {return cmpList.userName;},
+                        function(data) {return cmpList.indate;},
+                        function(data) {return cmpList.readCount;}
                     ];
                     dwr.util.addRows("dataList", [0], cellData, {escapeHtml: false});
+                    $('#dataList tr').each(function(){
+                        var tr = $(this);
+                        tr.children().eq(1).attr("class", "left");
+                    });
                 }
             }
         }
@@ -499,7 +501,6 @@ function getPasserVideoListFromReview(bbsMasterKey, sPage, listLimit, searchType
         searchType : searchType,
         searchText : searchText
     };
-
     var infoList = getPageApi("/board/getPasserVideoListFromReview/", bbsMasterKey, data);
     var cnt = infoList.cnt;
     innerHTML('reviewCnt', cnt);
@@ -521,7 +522,7 @@ function getPasserVideoListFromReview(bbsMasterKey, sPage, listLimit, searchType
     }
 }
 
-
+//합격자영상 bbsmasterkey
 function getReviewMasterKey() {
     var bbsMasterKey = '';
     var leftMenuInfo = sessionStorage.getItem('leftMenu');//직렬 구분
@@ -539,4 +540,106 @@ function getReviewMasterKey() {
         bbsMasterKey = 10970;
     }
     return bbsMasterKey;
+}
+
+//합격수기 > bbsmasterKey
+function getPassReviewMasterKey() {
+    var bbsMasterKey = '';
+    var leftMenuInfo = sessionStorage.getItem('leftMenu');//직렬 구분
+    if(leftMenuInfo == "publicOnline"){
+        bbsMasterKey = 10013;
+    }else if(leftMenuInfo == "publicAcademy"){
+        bbsMasterKey = 10013;
+    }else if(leftMenuInfo == "techOnline"){
+        bbsMasterKey = 10032;
+    }else if(leftMenuInfo == "techAcademy"){
+        bbsMasterKey = 10032;
+    }else if(leftMenuInfo == "postOnline"){
+        bbsMasterKey = 10048;
+    }else if(leftMenuInfo == "postAcademy"){
+        bbsMasterKey = 10048;
+    }
+    return bbsMasterKey;
+}
+
+
+function getLecReviewMasterKey() {
+    var bbsMasterKey = '';
+    var leftMenuInfo = sessionStorage.getItem('leftMenu');//직렬 구분
+    if(leftMenuInfo == "publicOnline"){
+        bbsMasterKey = 10015;
+    }else if(leftMenuInfo == "publicAcademy"){
+        bbsMasterKey = 10014;
+    }else if(leftMenuInfo == "techOnline"){
+        bbsMasterKey = 10034;
+    }else if(leftMenuInfo == "techAcademy"){
+        bbsMasterKey = 10033;
+    }else if(leftMenuInfo == "postOnline"){
+        bbsMasterKey = 10049;
+    }else if(leftMenuInfo == "postAcademy"){
+        bbsMasterKey = 10056;
+    }
+    return bbsMasterKey;
+}
+
+function getBookReviewMasterKey() {
+    var bbsMasterKey = '';
+    var leftMenuInfo = sessionStorage.getItem('leftMenu');//직렬 구분
+    if(leftMenuInfo == "publicOnline"){
+        bbsMasterKey = 10016;
+    }else if(leftMenuInfo == "publicAcademy"){
+        bbsMasterKey = 10016;
+    }else if(leftMenuInfo == "techOnline"){
+        bbsMasterKey = 10035;
+    }else if(leftMenuInfo == "techAcademy"){
+        bbsMasterKey = 10035;
+    }else if(leftMenuInfo == "postOnline"){
+        bbsMasterKey = 10050;
+    }else if(leftMenuInfo == "postAcademy"){
+        bbsMasterKey = 10050;
+    }
+    return bbsMasterKey;
+}
+
+//게시판 글 저장
+function saveBoardReview(bbsMasterKey, userKey, title, content, isSecret, ctgKey, fileName, youtubeHtml, gKey, successSubject, lectureSubject) {
+    if(bbsMasterKey == null || bbsMasterKey == undefined) return;
+    if(userKey == null || userKey == undefined) return;
+
+    var data = {
+        bbsMasterKey : bbsMasterKey,
+        userKey : userKey,
+        title : title,
+        content : content,
+        isSecret : isSecret,
+        ctgKey :  ctgKey,
+        fileName : fileName,
+        youtubeHtml : youtubeHtml,
+        gKey : gKey,
+        successSubject : successSubject,
+        lectureSubject : lectureSubject
+    };
+    var result = postApi("/board/saveBoardReview", data);
+    console.log(result);
+    return result;
+}
+
+//수기글 수정
+function updateBoardReview(bbsKey, title, content, isSecret, fileName, youtubeHtml, gKey, successSubject, lectureSubject) {
+    var data = {
+        bbsKey : bbsKey,
+        title : title,
+        content : content,
+        isSecret : isSecret,
+        fileName : fileName,
+        youtubeHtml : youtubeHtml,
+        gKey : gKey,
+        successSubject : successSubject,
+        lectureSubject : lectureSubject
+    };
+    console.log(data);
+    var result = postApi("/board/updateBoardReview", data);
+    console.log(result);
+    return result;
+    
 }

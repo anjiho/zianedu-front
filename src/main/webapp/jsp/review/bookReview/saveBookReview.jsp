@@ -2,6 +2,12 @@
 <%@include file="/common/jsp/common.jsp" %>
 <script>
     $( document ).ready(function() {
+        $('#writeContent').summernote({
+            height: 300,
+            minHeight: null,
+            maxHeight: null,
+            focus: true
+        });
         $("#attachFile").on("change", addFiles);
     });
 
@@ -35,40 +41,44 @@
         if(sessionUserInfo != null) {
             var userKey = sessionUserInfo.userKey;
             var title = getInputTextValue("title");
-
+            var bookName = getInputTextValue("bookName");
+            var bbsMasterKey = getBookReviewMasterKey();
             var content = $('textarea[name="writeContent"]').val();
             if (filesTempArr.length == 0) { //파일 없을때
-                // var result = saveBoard(10019, userKey, title, content, 0, ctgKey, '');
-                // if (result.resultCode == 200) {
-                //     alert("문의가 등록되었습니다");
-                //     return false;
-                // }
+                var result = saveBoardReview(bbsMasterKey, userKey, title, content, 0, 0, '', '', '', '', bookName);
+                if (result.resultCode == 200) {
+                    //$("#modal9").show();
+                    alert("성공적으로 등록 완료되었습니다.");
+                    return false;
+                }
             } else {
                 var formData = new FormData();
                 for (var i = 0, filesTempArrLen = filesTempArr.length; i < filesTempArrLen; i++) {
                     formData.append("files", filesTempArr[i]);
                 }
-                // $.ajax({
-                //     url: "http://52.79.40.214:9090/fileUpload/boardFileList",
-                //     method: "post",
-                //     dataType: "JSON",
-                //     data: formData,
-                //     cache: false,
-                //     processData: false,
-                //     contentType: false,
-                //     success: function (data) {
-                //         if (data.resultCode == 200) {
-                //             var fileName = data.keyValue;
-                //             var result = saveBoard(10019, userKey, title, content, 0, ctgKey, fileName);
-                //             var str = toStrFileName(fileName);
-                //             saveBoardFileList(result.keyValue, str);
-                //             if (result.resultCode == 200) {
-                //                 alert("성공적으로 등록 완료되었습니다");
-                //                 goLoginPage();
-                //             }
-                //         }
-                //     }
-                // });
+                $.ajax({
+                    url: "http://52.79.40.214:9090/fileUpload/boardFileList",
+                    method: "post",
+                    dataType: "JSON",
+                    data: formData,
+                    cache: false,
+                    processData: false,
+                    contentType: false,
+                    success: function (data) {
+                        if (data.resultCode == 200) {
+                            var fileName = data.keyValue;
+                            var bookName = getInputTextValue("bookName");
+                            var bbsMasterKey = getBookReviewMasterKey();
+                            var result = saveBoardReview(bbsMasterKey, userKey, title, content, 0, 0, '', '', '', '', bookName);
+                            var str = toStrFileName(fileName);
+                            saveBoardFileList(result.keyValue, str);
+                            if (result.resultCode == 200) {
+                                alert("성공적으로 등록 완료되었습니다");
+                                return false;
+                            }
+                        }
+                    }
+                });
             }
         }else{
             alert("로그인을 해주세요.");
@@ -133,17 +143,17 @@
                                     <th scope="row">도서명</th>
                                     <td><input type="text" id="bookName" value="도서이름을 입력해주세요." class="w100p"></td>
                                 </tr>
-                                <tr>
-                                    <th scope="row">분류</th>
-                                    <td>
-                                        <select class="w120">
-                                            <option>과목선택</option>
-                                        </select>
-                                    </td>
-                                </tr>
+<%--                                <tr>--%>
+<%--                                    <th scope="row">분류</th>--%>
+<%--                                    <td>--%>
+<%--                                        <select class="w120">--%>
+<%--                                            <option>과목선택</option>--%>
+<%--                                        </select>--%>
+<%--                                    </td>--%>
+<%--                                </tr>--%>
                                 <tr>
                                     <th scope="row">내용</th>
-                                    <td><textarea name="" placeholder="내용을 입력해주세요." class="w100p h240"></textarea></td>
+                                    <td><textarea name="writeContent" id="writeContent" placeholder="내용을 입력해주세요." class="w100p h240"></textarea></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">첨부파일</th>

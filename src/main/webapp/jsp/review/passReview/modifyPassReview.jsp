@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/jsp/common.jsp" %>
+<%
+    String bbsKey = request.getParameter("bbsKey");
+%>
 <script>
+    var bbsKey = '<%=bbsKey%>';
     $( document ).ready(function() {
         $('#writeContent').summernote({
             height: 300,
@@ -9,6 +13,27 @@
             focus: true
         });
         $("#attachFile").on("change", addFiles);
+
+        var bbsMasterKey = getPassReviewMasterKey();
+        var result = getBoardDetailInfo(bbsMasterKey, bbsKey);
+        if(result != undefined){
+            var detailInfo = result.boardDetailInfo;
+            console.log(result);
+            $("#writeContent").summernote("code", detailInfo.contents);
+            innerValue("title", detailInfo.title);
+            innerValue("passSubject", detailInfo.successSubject);
+            innerValue("lecSubject", detailInfo.lectureSubject);
+            if(detailInfo.fileInfo != null) {
+                if (detailInfo.fileInfo.length > 0) {
+                    for (var i = 0; i < detailInfo.fileInfo.length; i++) {
+                        var fileList = detailInfo.fileInfo[i];
+                        var retrunHtml = "<li><a href='javascript:void(0);'><img src=\"/common/zian/images/common/icon_file.png\" alt=\"\"> "+ fileList.fileName +"</a></li>";
+                        $("#fileList").append(retrunHtml);
+                    }
+                }
+            }
+        }
+
     });
 
     var filesTempArr = [];
@@ -33,7 +58,7 @@
         $("#fileList").html(innerHtmlTemp);
     }
 
-    function saveReview() {
+    function modifyReview() {
         var check = new isCheck();
         if (check.input("title", comment.input_title) == false) return;
         if (check.input("passSubject", comment.passSubject_info) == false) return;
@@ -42,12 +67,11 @@
         if(sessionUserInfo != null) {
             var userKey = sessionUserInfo.userKey;
             var title = getInputTextValue("title");
-            var bbsMasterKey = getPassReviewMasterKey();
             var passSubject = getInputTextValue("passSubject");
             var lecSubject = getInputTextValue("lecSubject");
             var content = $('textarea[name="writeContent"]').val();
             if (filesTempArr.length == 0) { //파일 없을때
-                var result = saveBoardReview(bbsMasterKey, userKey, title, content, 0, 0, '', '', '', passSubject, lecSubject);
+                var result = updateBoardReview(bbsKey, title, content, 0, '', '', '', passSubject, lecSubject);
                 if (result.resultCode == 200) {
                     //$("#modal9").show();
                     alert("성공적으로 등록 완료되었습니다.");
@@ -71,11 +95,11 @@
                             var fileName = data.keyValue;
                             var passSubject = getInputTextValue("passSubject");
                             var lecSubject = getInputTextValue("lecSubject");
-                            var result = saveBoardReview(bbsMasterKey, userKey, title, content, 0, 0, '', '', '', passSubject, lecSubject);
+                            var result = updateBoardReview(bbsKey, title, content, 0, fileName, '', '', passSubject, lecSubject);
                             var str = toStrFileName(fileName);
                             saveBoardFileList(result.keyValue, str);
                             if (result.resultCode == 200) {
-                                alert("성공적으로 등록 완료되었습니다");
+                                alert("성공적으로 수정이 완료되었습니다");
                                 return false;
                             }
                         }
@@ -129,7 +153,7 @@
                     <!--//review_point : 합격수기 포인트-->
 
                     <div class="boardWrap">
-                        <h5>글 등록하기</h5>
+                        <h5>글 수정하기</h5>
                         <div class="tableBox">
                             <table class="form">
                                 <caption></caption>
@@ -154,14 +178,14 @@
                                     <th scope="row">내용</th>
                                     <td><textarea name="writeContent" id="writeContent" placeholder="내용을 입력해주세요." class="w100p h240"></textarea></td>
                                 </tr>
-<%--                                <tr>--%>
-<%--                                    <th scope="row">평점</th>--%>
-<%--                                    <td>--%>
-<%--                                        <select class="w120">--%>
-<%--                                            <option>평점선택</option>--%>
-<%--                                        </select>--%>
-<%--                                    </td>--%>
-<%--                                </tr>--%>
+                                <%--                                <tr>--%>
+                                <%--                                    <th scope="row">평점</th>--%>
+                                <%--                                    <td>--%>
+                                <%--                                        <select class="w120">--%>
+                                <%--                                            <option>평점선택</option>--%>
+                                <%--                                        </select>--%>
+                                <%--                                    </td>--%>
+                                <%--                                </tr>--%>
                                 <tr>
                                     <th scope="row">첨부파일</th>
                                     <td class="">
@@ -175,7 +199,7 @@
                         </div>
                         <div class="btnArea">
                             <a href="javascript:goPageNoSubmit('review','passList')" class="btn_m gray radius w110">취소</a> &nbsp;&nbsp;&nbsp;
-                            <a href="javascript:saveReview();" class="btn_m radius w110">등록</a>
+                            <a href="javascript:modifyReview();" class="btn_m radius w110">수정</a>
                         </div>
                     </div>
                 </div>

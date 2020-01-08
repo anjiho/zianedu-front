@@ -3,14 +3,98 @@
 <%
     String bbsKey = request.getParameter("bbsKey");
 %>
+<style>
+    .video-container {position: relative;padding-bottom: 56.25%;height: 0;overflow: hidden;}
+    .video-container iframe,.video-container object,.video-container embed{position: absolute; top:0; left:0; width:100%; height: 100%}
+</style>
 <script>
     var bbsKey = '<%=bbsKey%>';
     $( document ).ready(function() {
+        var bbsMasterKey = getReviewMasterKey();
+        var result = getBoardDetailInfo(bbsMasterKey, bbsKey);
+        console.log(result);
+        if(result != undefined){
+            var detailInfo = result.boardDetailInfo;
+            //  innerHTML("youtube", result.youtubeUrl);
 
+            //본문 내용 파싱작업 시작
+            var detailInfoStr = JSON.stringify(detailInfo);
+            var detailInfoStrObj = JSON.parse(detailInfoStr);
+            var contentsObj = detailInfoStrObj.contents;
+            var contentsStr = JSON.stringify(contentsObj);
+            var contentsStrRep = contentsStr.replace(/['"]+/g, '');
+            var contentsStrRep3 = contentsStrRep.replace(/\\n/g,'');   //역슬러쉬 제거하기
+            var contentsStrRep4 = contentsStrRep3.replace(/\\r/g,'');   //역슬러쉬 제거하기
+            var contentsStrRep5 = contentsStrRep4.replace(/\\/gi, "");   //역슬러쉬 제거하기
+
+            var contentsHTML = $.parseHTML(contentsStrRep5);
+            var contents = null;
+
+            var findString = "&lt";
+            //HTML 포함 여부 화인
+            if(detailInfoStr.indexOf(findString) != -1) {
+                contents = contentsHTML[0].data.replace("rn", "");
+            } else {
+                contents = contentsHTML;
+            }
+            //봄문 내용 파징작업 끝
+
+            innerHTML("content", contents);
+            innerHTML("indate", detailInfo.indate);
+            innerHTML("userName1", detailInfo.userName);
+            innerHTML("userId", detailInfo.userId);
+            innerHTML("title", detailInfo.title);
+            innerHTML("readCount", detailInfo.readCount);
+            innerHTML("fileName", detailInfo.fileName);
+            if(detailInfo.fileInfo != null) {
+                if (detailInfo.fileInfo.length > 0) {
+                    for (var i = 0; i < detailInfo.fileInfo.length; i++) {
+                        var fileList = detailInfo.fileInfo[i];
+                        // var retrunHtml = "<a href='" + fileList.fileUrl + "' download>" + fileList.fileName + "</a>";
+                        var retrunHtml = "<li><a href=\'"+ fileList.fileUrl +"'><img src=\"/common/zian/images/common/icon_file.png\" alt=\"\"> "+ fileList.fileName +"</a></li>";
+                        $("#fileList").append(retrunHtml);
+                    }
+                }
+            }
+
+
+            var prevNextInfo = result.prevNextInfo;
+
+            if(prevNextInfo.prevBbsKey == 0){
+                $("#prev").hide();
+                innerHTML("prevTitle", "");
+                innerHTML("prevCreateDate", "");
+                innerValue("prevNum", "");
+            }else{
+                $("#prev").show();
+                innerHTML("prevTitle", prevNextInfo.prevTitle);
+                innerHTML("prevCreateDate", prevNextInfo.prevCreateDate);
+                innerValue("prevNum", prevNextInfo.prevBbsKey);
+            }
+            innerHTML("nextTitle", prevNextInfo.nextTitle);
+            innerHTML("nextCreateDate", prevNextInfo.nextCreateDate);
+            innerValue("nextNum", prevNextInfo.nextBbsKey);
+        }
     });
+
+    function goPrev() {
+        var prevKey = getInputTextValue("prevNum");
+        innerValue("bbsKey", prevKey);
+        goPage('review','detailVideo');
+    }
+
+    function goNext() {
+        var nextKey = getInputTextValue("nextNum");
+        innerValue("bbsKey", nextKey);
+        goPage('review','detailVideo');
+    }
+
 </script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
+    <input type="hidden" id="bbsKey" name="bbsKey" value="<%=bbsKey%>">
+    <input type="hidden" id="prevNum">
+    <input type="hidden" id="nextNum">
     <div id="wrap">
         <%@include file="/common/jsp/leftMenu.jsp" %>
         <!--상단-->
@@ -43,70 +127,39 @@
                             </colgroup>
                             <thead>
                             <tr>
-                                <th colspan="2">2019 지안패스 수강후기</th>
-                                <th>2019.08.09</th>
+                                <th colspan="2" id='title'></th>
+                                <th id="indate"></th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr>
-                                <td colspan="3">작성자 : 지안에듀 (zian0103)  |   조회수 : 31</td>
+                                <td colspan="3">작성자 : <span id="userName1"></span> (<span id="userId"></span>)  |   조회수 : <span id="readCount"></span></td>
                             </tr>
                             <tr>
                                 <td colspan="3" class="tdEditorContent">
-                                    <div class="alignCenter">
-                                        <img src="../images/content/m05.png">
+                                    <div class="alignCenter" id="content">
+                                    </div>
+                                    <div class="tabPage active">
+                                        <div class="otMovie video-container" id="youtube"></div>
                                     </div>
                                 </td>
                             </tr>
-                            <tr>
-                                <td colspan="3">
-                                    <div class="comment">
-                                        <div class="cm_write">
-                                            <form id="" name="">
-                                                <fieldset>
-                                                    <legend>댓글작성</legend>
-                                                    <div class="inner">
-                                                        <p class="cm_title">댓글</p>
-                                                        <div class="write">
-                                                            <textarea id="" name="" placeholder=""></textarea>
-                                                        </div>
-                                                        <a href="" class="single">댓글</a>
-                                                    </div>
-                                                </fieldset>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="3">
-                                    <div class="cm_list">
-                                        <strong class="names">김철수(kim00)</strong>
-                                        <span class="ctn">너무 부럽네요. 축하드립니다!!</span>
-                                        <span class="date">2015.10.25  08:37:43</span>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="3">
-                                </td>
-                            </tr>
-                            <tr>
+                            <tr id="prev">
                                 <td class="center">이전글 ▲</td>
-                                <td class="left"><a href="#">[2관 학원실강] 2020 행정직9급 전과목(공통3+선택2) 기본이론 종합반 [ 9월개강 접수중]</a></td>
-                                <td class="right">2019.08.09</td>
+                                <td class="left"><a href="javascript:goPrev();"><span id="prevTitle"></span></a></td>
+                                <td class="right"><span id="prevCreateDate"></span></td>
                             </tr>
                             <tr>
                                 <td class="center">다음글 ▼</td>
-                                <td class="left"><a href="#">	[1관학원실강] 2020 공통과목(국어+영어+한국사) 드림팀 기본+심화 이론반 [9월개강 접수중]</a></td>
-                                <td class="right">2019.08.09</td>
+                                <td class="left"><a href="javascript:goNext();"><span id="nextTitle"></span></a></td>
+                                <td class="right"><span id="nextCreateDate"></span></td>
                             </tr>
                             </tbody>
                         </table>
                     </div>
                     <div class="btnArea divGroup noMargin">
                         <div class="left">
-                            <a href="#" class="btn_inline gray w110">수정</a>
+                            <a href="javascript:goPage('review','modifyVideo')" class="btn_inline gray w110">수정</a>
                         </div>
                         <div class="right">
                             <a href="javascript:goPageNoSubmit('review','videoList')" class="btn_inline bdblue w110">목록</a>

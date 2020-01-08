@@ -39,6 +39,14 @@ public class ReviewController {
             mvc.setViewName("/review/passReview/savePassReview");
         } else if ("detailPass".equals(page_gbn)) {
             mvc.setViewName("/review/passReview/detailPassReview");
+        } else if ("modifyPass".equals(page_gbn)) {
+            mvc.setViewName("/review/passReview/modifyPassReview");
+        } else if ("modifyVideo".equals(page_gbn)) {
+            mvc.setViewName("/review/passerVideo/modifyPasserVideo");
+        } else if ("modifyLec".equals(page_gbn)) {
+            mvc.setViewName("/review/lectureReview/modifyLectureReview");
+        } else if ("modifyBook".equals(page_gbn)) {
+            mvc.setViewName("/review/bookReview/modifyBookReview");
         }
         return mvc;
     }

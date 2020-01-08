@@ -2,17 +2,18 @@
 <%@include file="/common/jsp/common.jsp" %>
 <script>
     $( document ).ready(function() {
-        //fn_search('new');
+        fn_search('new');
     });
 
     function fn_search(val) {
         var sPage = getInputTextValue("sPage");
         var searchType = getSelectboxValue("searchType");
         var searchText = getInputTextValue("searchText");
+        if(searchType == undefined) searchType = "";
         if(searchText == undefined) searchText = "";
-        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-        var userKey = sessionUserInfo.userKey;
-        //getReviewBoardList(bbsMasterKey, sPage, listLimit, searchType, searchText);
+        if(val == "new") sPage = "1";
+        var bbsMasterKey = getBookReviewMasterKey();
+        getReviewBoardList(bbsMasterKey, sPage, 10, searchType, searchText);
     }
 
     function detailReview(bbsKey) {
@@ -49,7 +50,7 @@
                 <div class="boardWrap reviewBoard">
                     <div class="review_txt">
                         <p>수강생분들의 도서후기를 알려주세요</p>
-                        <span>총<b>10</b>개의 도서후기가 있습니다. <br> 지안에듀 온라인서점에서 제공하는 교재후기를 확인하세요</span>
+                        <span>총<b id="reviewCnt"></b>개의 도서후기가 있습니다. <br> 지안에듀 온라인서점에서 제공하는 교재후기를 확인하세요</span>
                     </div>
                     <!--review_point : 합격수기 포인트-->
                     <div class="review_point">
@@ -124,14 +125,14 @@
                     </div>
 
                     <div class="tabContent Bookreview">
-                        <ul class="tabBar">
-                            <li class="active"><a href="#">전체<span class="bt_line"></span></a></li>
-                            <li><a href="#">공통과목<span class="bt_line"></span></a></li>
-                            <li><a href="#">행정직군<span class="bt_line"></span></a></li>
-                            <li><a href="#">기술직군<span class="bt_line"></span></a></li>
-                            <li><a href="#">계리직군<span class="bt_line"></span></a></li>
-                            <li><a href="#">자격증<span class="bt_line"></span></a></li>
-                        </ul>
+<%--                        <ul class="tabBar">--%>
+<%--                            <li class="active"><a href="#">전체<span class="bt_line"></span></a></li>--%>
+<%--                            <li><a href="#">공통과목<span class="bt_line"></span></a></li>--%>
+<%--                            <li><a href="#">행정직군<span class="bt_line"></span></a></li>--%>
+<%--                            <li><a href="#">기술직군<span class="bt_line"></span></a></li>--%>
+<%--                            <li><a href="#">계리직군<span class="bt_line"></span></a></li>--%>
+<%--                            <li><a href="#">자격증<span class="bt_line"></span></a></li>--%>
+<%--                        </ul>--%>
                         <!-- 수강중 -->
                         <div class="tabPage  active">
                             <div class="boardSearch">
@@ -152,8 +153,7 @@
                                 <table class="list">
                                     <caption></caption>
                                     <colgroup>
-                                        <col width="80">
-                                        <col width="100">
+                                        <col class="w100">
                                         <col>
                                         <col class="w140">
                                         <col class="w140">
@@ -161,12 +161,11 @@
                                     </colgroup>
                                     <thead>
                                     <tr>
-                                        <th scope="col">번호</th>
-                                        <th scope="col">분류</th>
-                                        <th scope="col">제목</th>
-                                        <th scope="col">작성자</th>
-                                        <th scope="col">등록일</th>
-                                        <th scope="col">조회</th>
+                                        <th scope="col" style="text-align: center;">번호</th>
+                                        <th scope="col" style="text-align: center;">제목</th>
+                                        <th scope="col" style="text-align: center;">작성자</th>
+                                        <th scope="col" style="text-align: center;">등록일</th>
+                                        <th scope="col" style="text-align: center;">조회</th>
                                     </tr>
                                     </thead>
                                     <tbody id="dataList">
@@ -186,11 +185,11 @@
                             <!-- //paging -->
                         </div>
 
-                        <div class="tabPage">공통과목</div>
-                        <div class="tabPage">행정직군</div>
-                        <div class="tabPage">기술직군</div>
-                        <div class="tabPage">계리직군</div>
-                        <div class="tabPage">자격증</div>
+<%--                        <div class="tabPage">공통과목</div>--%>
+<%--                        <div class="tabPage">행정직군</div>--%>
+<%--                        <div class="tabPage">기술직군</div>--%>
+<%--                        <div class="tabPage">계리직군</div>--%>
+<%--                        <div class="tabPage">자격증</div>--%>
                     </div>
 
                 </div>

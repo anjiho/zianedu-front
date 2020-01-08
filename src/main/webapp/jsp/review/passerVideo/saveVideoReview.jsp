@@ -2,6 +2,12 @@
 <%@include file="/common/jsp/common.jsp" %>
 <script>
     $( document ).ready(function() {
+        $('#writeContent').summernote({
+            height: 300,
+            minHeight: null,
+            maxHeight: null,
+            focus: true
+        });
         $("#attachFile").on("change", addFiles);
     });
 
@@ -11,6 +17,10 @@
         var filesArr = Array.prototype.slice.call(files);
         var filesArrLen = filesArr.length;
         var filesTempArrLen = filesTempArr.length;
+        if(filesTempArrLen > 0){
+            alert("첨부파일은 1개 이상 등록할 수 없습니다.");
+            return false;
+        }
         for( var i=0; i<filesArrLen; i++ ) {
             filesTempArr.push(filesArr[i]);
             $("#fileList").append("<div>" + filesArr[i].name + "<img src=\"/common/zian/images/common/icon_file.png\" onclick=\"deleteFile(event, " + (filesTempArrLen+i)+ ");\"></div>");
@@ -35,40 +45,43 @@
         if(sessionUserInfo != null) {
             var userKey = sessionUserInfo.userKey;
             var title = getInputTextValue("title");
-
+            var codeUrl = getInputTextValue("codeUrl");
+            var bbsMasterKey = getReviewMasterKey();
             var content = $('textarea[name="writeContent"]').val();
             if (filesTempArr.length == 0) { //파일 없을때
-                // var result = saveBoard(10019, userKey, title, content, 0, ctgKey, '');
-                // if (result.resultCode == 200) {
-                //     alert("문의가 등록되었습니다");
-                //     return false;
-                // }
+                var result = saveBoardReview(bbsMasterKey, userKey, title, content, 0, 0, '', codeUrl, '', '', '');
+                if (result.resultCode == 200) {
+                    //$("#modal9").show();
+                    alert("성공적으로 등록 완료되었습니다.");
+                    return false;
+                }
             } else {
                 var formData = new FormData();
                 for (var i = 0, filesTempArrLen = filesTempArr.length; i < filesTempArrLen; i++) {
                     formData.append("files", filesTempArr[i]);
                 }
-                // $.ajax({
-                //     url: "http://52.79.40.214:9090/fileUpload/boardFileList",
-                //     method: "post",
-                //     dataType: "JSON",
-                //     data: formData,
-                //     cache: false,
-                //     processData: false,
-                //     contentType: false,
-                //     success: function (data) {
-                //         if (data.resultCode == 200) {
-                //             var fileName = data.keyValue;
-                //             var result = saveBoard(10019, userKey, title, content, 0, ctgKey, fileName);
-                //             var str = toStrFileName(fileName);
-                //             saveBoardFileList(result.keyValue, str);
-                //             if (result.resultCode == 200) {
-                //                 alert("성공적으로 등록 완료되었습니다");
-                //                 goLoginPage();
-                //             }
-                //         }
-                //     }
-                // });
+                $.ajax({
+                    url: "http://52.79.40.214:9090/fileUpload/boardFileList",
+                    method: "post",
+                    dataType: "JSON",
+                    data: formData,
+                    cache: false,
+                    processData: false,
+                    contentType: false,
+                    success: function (data) {
+                        if (data.resultCode == 200) {
+                            var fileName = data.keyValue;
+                            var codeUrl = getInputTextValue("codeUrl");
+                            var result = saveBoardReview(bbsMasterKey, userKey, title, content, 0, 0, '', codeUrl, '', '', '');
+                            var str = toStrFileName(fileName);
+                            saveBoardFileList(result.keyValue, str);
+                            if (result.resultCode == 200) {
+                                alert("성공적으로 등록 완료되었습니다");
+                                return false;
+                            }
+                        }
+                    }
+                });
             }
         }else{
             alert("로그인을 해주세요.");
@@ -131,7 +144,7 @@
                                 </tr>
                                 <tr>
                                     <th scope="row">내용</th>
-                                    <td><textarea name="" placeholder="내용을 입력해주세요." class="w100p h240"></textarea></td>
+                                    <td><textarea name="writeContent" id="writeContent" placeholder="내용을 입력해주세요." class="w100p h240"></textarea></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">첨부파일</th>
@@ -168,6 +181,22 @@
         <%@include file="/common/jsp/footerBanner.jsp" %>
     </div>
     <div id="overlay"></div>
+    <!--팝업 등록안내 modal9-->
+    <div id="modal9" class="modalWrap">
+        <div class="inner">
+            <div class="modalTitle">
+                <h2>알림</h2>
+                <a href="#" class="btn_modalClose">모달팝업닫기</a>
+            </div>
+            <div class="modalContent">
+                <div class="pop_cont">
+                    <p class="stitle"></p>
+                    <span class="txtBox">성공적으로 등록 완료되었습니다.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--//팝업-->
 </form>
 </body>
 </html>
