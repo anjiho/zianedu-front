@@ -163,6 +163,7 @@
                             <tr>
                                 <td colspan="2">작성자 : <span id="userName1"></span> (<span id="userId"></span>)  |   조회수 : <span id="readCount"></span></td>
                                 <td style="text-align:right; padding-right:0"><span id="successSubject"></span> | <span id="lectureSubject"></span></td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <td colspan="3">
