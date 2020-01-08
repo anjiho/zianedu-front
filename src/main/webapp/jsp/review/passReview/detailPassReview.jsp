@@ -8,6 +8,7 @@
     $( document ).ready(function() {
         var bbsMasterKey = getPassReviewMasterKey();
         var result = getBoardDetailInfo(bbsMasterKey, bbsKey);
+        console.log(result);
         if(result != undefined){
             var detailInfo = result.boardDetailInfo;
 
@@ -40,6 +41,9 @@
             innerHTML("title", detailInfo.title);
             innerHTML("readCount", detailInfo.readCount);
             innerHTML("fileName", detailInfo.fileName);
+            innerHTML("successSubject", detailInfo.successSubject);
+            innerHTML("lectureSubject", detailInfo.lectureSubject);
+
             if(detailInfo.fileInfo != null) {
                 if (detailInfo.fileInfo.length > 0) {
                     for (var i = 0; i < detailInfo.fileInfo.length; i++) {
@@ -158,8 +162,7 @@
                             <tbody id="dataList">
                             <tr>
                                 <td colspan="2">작성자 : <span id="userName1"></span> (<span id="userId"></span>)  |   조회수 : <span id="readCount"></span></td>
-                                <td style="text-align:right; padding-right:0">9급 국가직 | 365 지안패스</td>
-                                <td style="padding-left:16px"><span class="star count5">별점</span></td>
+                                <td style="text-align:right; padding-right:0"><span id="successSubject"></span> | <span id="lectureSubject"></span></td>
                             </tr>
                             <tr>
                                 <td colspan="3">
