@@ -12,11 +12,8 @@
     $( document ).ready(function() {
         var bbsMasterKey = getReviewMasterKey();
         var result = getBoardDetailInfo(bbsMasterKey, bbsKey);
-        console.log(result);
         if(result != undefined){
             var detailInfo = result.boardDetailInfo;
-            //  innerHTML("youtube", result.youtubeUrl);
-
             //본문 내용 파싱작업 시작
             var detailInfoStr = JSON.stringify(detailInfo);
             var detailInfoStrObj = JSON.parse(detailInfoStr);
@@ -57,9 +54,7 @@
                 }
             }
 
-
             var prevNextInfo = result.prevNextInfo;
-
             if(prevNextInfo.prevBbsKey == 0){
                 $("#prev").hide();
                 innerHTML("prevTitle", "");
@@ -138,9 +133,6 @@
                             <tr>
                                 <td colspan="3" class="tdEditorContent">
                                     <div class="alignCenter" id="content">
-                                    </div>
-                                    <div class="tabPage active">
-                                        <div class="otMovie video-container" id="youtube"></div>
                                     </div>
                                 </td>
                             </tr>

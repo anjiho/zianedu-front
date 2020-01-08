@@ -363,6 +363,8 @@
     position: absolute;
     top: 0;
     left: 0;
+    color: black;
+    font-weight: normal;
 }
 
 .calendarWrap{}
