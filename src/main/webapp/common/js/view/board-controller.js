@@ -464,7 +464,6 @@ function getReviewBoardList(bbsMasterKey, sPage, listLimit, searchType, searchTe
     };
     var infoList = getPageApi("/board/getReviewBoardList/", bbsMasterKey, data);
     var cnt = infoList.cnt;
-    innerHTML('reviewCnt', cnt);
     if(infoList != null){
         if (infoList.result.length > 0) {
             var listNum = ((cnt-1)+1)-((sPage-1)*10); //리스트 넘버링
@@ -503,7 +502,6 @@ function getPasserVideoListFromReview(bbsMasterKey, sPage, listLimit, searchType
     };
     var infoList = getPageApi("/board/getPasserVideoListFromReview/", bbsMasterKey, data);
     var cnt = infoList.cnt;
-    innerHTML('reviewCnt', cnt);
     if (infoList.result.length > 0) {
         var selList = infoList.result;
         if(cnt > 0){
@@ -620,7 +618,6 @@ function saveBoardReview(bbsMasterKey, userKey, title, content, isSecret, ctgKey
         lectureSubject : lectureSubject
     };
     var result = postApi("/board/saveBoardReview", data);
-    console.log(result);
     return result;
 }
 
@@ -637,9 +634,13 @@ function updateBoardReview(bbsKey, title, content, isSecret, fileName, youtubeHt
         successSubject : successSubject,
         lectureSubject : lectureSubject
     };
-    console.log(data);
     var result = postApi("/board/updateBoardReview", data);
-    console.log(result);
     return result;
-    
+}
+
+function getReviewBoardCount(bbsMasterKey) {
+    var infoList = getResultApi("/board/getReviewBoardCount/", bbsMasterKey, '');
+    if(infoList != null){
+        return infoList.keyValue;
+    }
 }

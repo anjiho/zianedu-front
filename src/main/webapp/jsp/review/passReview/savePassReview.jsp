@@ -9,6 +9,9 @@
             focus: true
         });
         $("#attachFile").on("change", addFiles);
+        var bbsMasterKey = getReviewMasterKey();
+        var reviewCnt =  getReviewBoardCount(bbsMasterKey);
+        innerHTML('reviewCnt', reviewCnt);
     });
 
     var filesTempArr = [];
@@ -115,7 +118,7 @@
                 <div class="boardWrap reviewBoard">
                     <div class="review_txt">
                         <p>수강색분들의 합격을 축하드립니다.</p>
-                        <span>총<b>5</b>개의 합격자 영상이 있습니다. <br> 지안에듀에서만 가능한 합격비법을 확인해 보세요</span>
+                        <span>총<b id="reviewCnt"></b>개의 합격자 영상이 있습니다. <br> 지안에듀에서만 가능한 합격비법을 확인해 보세요</span>
                     </div>
                     <!--review_point : 합격수기 포인트-->
                     <div class="review_point">

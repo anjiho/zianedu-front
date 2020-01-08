@@ -2,6 +2,10 @@
 <%@include file="/common/jsp/common.jsp" %>
 <script>
     $( document ).ready(function() {
+        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        if(sessionUserInfo.authority != 0){
+            $("#writeBtn").hide();
+        }
         fn_search('new');
     });
 
@@ -13,6 +17,8 @@
         if(searchText == undefined) searchText = "";
         if(val == "new") sPage = "1";
         var bbsMasterKey = getLecReviewMasterKey();
+        var reviewCnt =  getReviewBoardCount(bbsMasterKey);
+        innerHTML('reviewCnt', reviewCnt);
         getReviewBoardList(bbsMasterKey, sPage, 10, searchType, searchText);
     }
 
@@ -135,8 +141,8 @@
                             <!--html 추가 및 수정-->
                             <input type="text" id="searchText" onkeypress="if(event.keyCode==13) {fn_search('new'); return false;}" class="w240">
                             <a href="javascript:fn_search('new');" class="btn_inline on w140 disnoneM">검색</a>
-                            <div class="btnArea">
-                                <a href="javascript:goPage('review','saveLecture');" class="btn_inline w140 write_ico">글쓰기</a>
+                            <div class="btnArea" id="writeBtn">
+                                <a href="javascript:goPageNoSubmit('review','saveLecture');" class="btn_inline w140 write_ico">글쓰기</a>
                             </div>
                         </div>
 

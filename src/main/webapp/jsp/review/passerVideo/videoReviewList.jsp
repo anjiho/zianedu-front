@@ -16,6 +16,8 @@
         if(val == "new") sPage = "1";
 
         var bbsMasterKey = getReviewMasterKey();
+        var reviewCnt =  getReviewBoardCount(bbsMasterKey);
+        innerHTML('reviewCnt', reviewCnt);
         getPasserVideoListFromReview(bbsMasterKey, sPage, 8, searchType, searchText);
     }
     

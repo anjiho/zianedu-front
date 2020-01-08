@@ -513,8 +513,6 @@ function getSpecialPackageList(menuCtgKey, subjectMenuKeys, teacherKeys, stepCtg
     });
 }
 
-
-
 function getLecOrderCtgKey() {
     var menuCtgKey = '';
     var leftMenuInfo = sessionStorage.getItem('leftMenu');//직렬 구분
@@ -929,6 +927,13 @@ function getYearMemberProductList(parentKey) {
             }
         }
     }
+}
 
+function getGoodsInfoByJLecKey(jLecKey) {
+    if (jLecKey == null || jLecKey == undefined) return;
+    var infoList = getApi("/product/getGoodsInfoByJLecKey/", jLecKey, '');
+    if(infoList != null){
+        return infoList;
+    }
 }
 

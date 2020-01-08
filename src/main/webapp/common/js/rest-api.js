@@ -97,6 +97,16 @@ function getPayApi(url, pathData, paramData) {
     });
     return resultData;
 }
+
+function getResultApi(url, pathData, paramData) {
+    var resultData = null;
+    $.get(apiHost + url + pathData, paramData, function (response) {
+        resultData = response;
+    }).fail(function() {
+        alert(comment.error);
+    });
+    return resultData;
+}
 /*************************************************************/
 /*************************************************************/
 

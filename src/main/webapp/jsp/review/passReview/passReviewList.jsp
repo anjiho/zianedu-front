@@ -13,6 +13,8 @@
         if(searchText == undefined) searchText = "";
         if(val == "new") sPage = "1";
         var bbsMasterKey = getPassReviewMasterKey();
+        var reviewCnt =  getReviewBoardCount(bbsMasterKey);
+        innerHTML('reviewCnt', reviewCnt);
         getReviewBoardList(bbsMasterKey, sPage, 10, searchType, searchText);
     }
 

@@ -194,7 +194,6 @@
                                 </td>
                             </tr>
                             <tr id="commentList">
-
                             </tr>
                             <tr>
                                 <td colspan="3">
