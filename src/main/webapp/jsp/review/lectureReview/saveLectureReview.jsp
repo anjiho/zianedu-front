@@ -156,15 +156,15 @@
                                 <tbody>
                                 <tr>
                                     <th scope="row">제목</th>
-                                    <td><input type="text" id="title" value="제목을 입력해주세요." class="w100p"></td>
+                                    <td><input type="text" id="title" placeholder="제목을 입력해주세요." class="w100p"></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">수강과목</th>
-                                    <td><input type="text" id="lecSubject" value="과목이름을 입력해주세요." class="w100p"></td>
+                                    <td><input type="text" id="lecSubject" placeholder="과목이름을 입력해주세요." class="w100p"></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">교수님</th>
-                                    <td><input type="text" id="teacherName" value="교수님이름을 입력해주세요." class="w100p"></td>
+                                    <td><input type="text" id="teacherName" placeholder="교수님이름을 입력해주세요." class="w100p"></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">내용</th>

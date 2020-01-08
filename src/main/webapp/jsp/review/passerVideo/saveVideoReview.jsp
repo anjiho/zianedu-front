@@ -143,7 +143,7 @@
                                 <tbody>
                                 <tr>
                                     <th scope="row">제목</th>
-                                    <td><input type="text" id="title" value="제목을 입력해주세요." class="w100p"></td>
+                                    <td><input type="text" id="title" placeholder="제목을 입력해주세요." class="w100p"></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">내용</th>
@@ -163,7 +163,7 @@
                                 </tr>
                                 <tr>
                                     <th scope="row">Html코드</th>
-                                    <td><input type="text" id="codeUrl" value="영상주소를 입력해주세요." class="w100p"></td>
+                                    <td><input type="text" id="codeUrl" placeholder="영상주소를 입력해주세요." class="w100p"></td>
                                 </tr>
                                 </tbody>
                             </table>

@@ -140,11 +140,11 @@
                                 <tbody>
                                 <tr>
                                     <th scope="row">제목</th>
-                                    <td><input type="text" id="title" value="제목을 입력해주세요." class="w100p"></td>
+                                    <td><input type="text" id="title" placeholder="제목을 입력해주세요." class="w100p"></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">도서명</th>
-                                    <td><input type="text" id="bookName" value="도서이름을 입력해주세요." class="w100p"></td>
+                                    <td><input type="text" id="bookName" placeholder="도서이름을 입력해주세요." class="w100p"></td>
                                 </tr>
 <%--                                <tr>--%>
 <%--                                    <th scope="row">분류</th>--%>
