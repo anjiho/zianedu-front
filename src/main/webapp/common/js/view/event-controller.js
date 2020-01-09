@@ -62,6 +62,9 @@ function eventDetailInfo(idx) {
         innerHTML('eventDate', eventDate);
         innerHTML('eventTitle', selList.eventDesc);
         $("#eventImg").attr("src", selList.targetUrl);
+
+        window.location = selList.targetUrl + "&idx=" + idx;
+        //window.location = selList.targetUrl;
     }
     
 }
