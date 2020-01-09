@@ -2,6 +2,14 @@
 <%@include file="/common/jsp/common.jsp" %>
 <script>
     $(document).ready(function () {
+        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        if(sessionUserInfo != null){
+            if(sessionUserInfo.authority != 0){
+                $("#writeBtn").hide();
+            }
+        }else{
+            $("#writeBtn").hide();
+        }
         fn_search('new');
     });
     function fn_search(val) {
@@ -45,7 +53,7 @@
                 <!--reviewBoard 진행중이벤트-->
                 <div class="boardWrap eventBoard">
                     <div class="boardSearch">
-                        <span class="ingevent">총 <span class="text_red">2개</span> 의 이벤트가 마감되었습니다.</span>
+                        <span class="ingevent">총 <span class="text_red" id="evenCnt"></span> 의 이벤트가 마감되었습니다.</span>
                         <select name="" class="w90">
                             <option value="title">제목</option>
                             <option value="content">내용</option>
@@ -54,7 +62,7 @@
                         <a href="#" class="btn_inline on w140 disnoneM">검색</a>
                         <!--html 추가 및 수정-->
                         <div class="btnArea">
-                            <a href="#" class="btn_inline w140 write_ico">글쓰기</a>
+                            <a href="#" class="btn_inline w140 write_ico" id="writeBtn">글쓰기</a>
                         </div>
                         <!--//html 추가 -->
                     </div>

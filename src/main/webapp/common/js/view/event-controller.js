@@ -9,6 +9,8 @@ function eventList(eventType, sPage, listLimit, searchType, searchText) {
     };
     var infoList = getPageApi("/event/eventList/", eventType, data);
     var cnt = infoList.cnt;
+    innerHTML('evenCnt', cnt+'개');
+    console.log(infoList);
     //if (infoList.result.length > 0) {
     var selList = infoList.result;
     paging.count(sPage, cnt, '10', listLimit, comment.blank_list);
