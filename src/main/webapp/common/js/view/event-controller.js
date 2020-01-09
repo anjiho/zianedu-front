@@ -69,6 +69,23 @@ function eventDetailInfo(idx) {
     }
 }
 
+function eventUpdateDetailInfo(idx) {
+    if (idx == null || idx == undefined) return;
+
+    var infoList = getApi("/event/eventDetailInfo/", idx, '');
+    if (infoList != null) {
+        var selList = infoList.result;
+        var eventDate = selList.eventStartDate + " ~ " + selList.eventEndDate;
+        innerHTML('eventDate', eventDate);
+        innerHTML('eventTitle', selList.eventDesc);
+        $("#eventImg").attr("src", selList.targetUrl);
+
+        //window.location = selList.targetUrl + "&idx=" + idx;
+        //window.location = selList.targetUrl;
+        return infoList;
+    }
+}
+
 function updateEventInfo(idx, eventTitle, eventDesc, eventStartDate, eventEndDate, targetName, thumbnailFileName, targetUrl) {
     var data = {
         idx: idx,
