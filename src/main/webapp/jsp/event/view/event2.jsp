@@ -33,11 +33,6 @@
                         <br />
                         <!--reviewBoard 진행중이벤트-->
                         <div class="boardWrap eventBoard">
-                            <div class="btnArea divGroup bdtop20">
-                                <div class="right">
-                                    <a href="javascript:goPage('event','modifyProceed');" class="btn_inline w110">수정</a>
-                                </div>
-                            </div>
                             <div class="imgbox">
                                 <p class="title">리뷰쓰고 포인트 받자!
                                     <span>2019.06.10 ~ 2019.08.30</span>
@@ -47,7 +42,7 @@
 
                             <div class="btnArea divGroup bdtop20">
                                 <div class="left">
-                                    <a href="#" class="btn_inline w110">수정</a>
+                                    <a href="javascript:goPage('event','modifyProceed');" class="btn_inline w110">수정</a>
                                 </div>
                                 <div class="right">
                                     <a href="#" class="btn_inline bdblue w110">목록</a>

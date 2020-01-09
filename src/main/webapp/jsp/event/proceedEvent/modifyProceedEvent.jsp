@@ -15,7 +15,7 @@
             format: "yyyy-mm-dd"
         });
         var infoList = eventUpdateDetailInfo(idx);
-        
+
         if(infoList != null){
             innerValue('title', infoList.result.eventTitle);
             innerValue('writeContent', infoList.result.eventDesc);
