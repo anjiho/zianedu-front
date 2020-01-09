@@ -6,6 +6,7 @@
 <script>
     var bbsKey = <%=bbsKey%>;
     $(document).ready(function () {
+        $("#attachFile").on("change", addFiles);
         $('#writeContent').summernote({
             height: 300,
             minHeight: null,
@@ -13,7 +14,6 @@
             focus: true
         });
         var result = getBoardDetailInfo(11046, bbsKey);
-        console.log(result);
         if(result != null){
             var detailInfo = result.boardDetailInfo;
             $("#writeContent").summernote("code", detailInfo.contents);
@@ -22,19 +22,39 @@
                 if (detailInfo.fileInfo.length > 0) {
                     for (var i = 0; i < detailInfo.fileInfo.length; i++) {
                         var fileList = detailInfo.fileInfo[i];
-                        var retrunHtml = "<li><a href='javascript:void(0);'><img src=\"/common/zian/images/common/icon_file.png\" alt=\"\"> "+ fileList.fileName +"</a></li>";
-                        $("#fileList").append(retrunHtml);
+                        var returnHtml = "<li id='"+i+"'><a href='javascript:void(0);'>"+ fileList.fileName +"</a>"+" "+"<a href='javascript:deleteFileList("+ i +");' >X</a></li>";
+                        $("#fileList").append(returnHtml);
                     }
                 }
             }
         }
     });
+    
+    function deleteFileList(fileKey) {
+        $("#fileList li").eq(fileKey).remove();
+    }
 
-    //파일 선택시 파일명 보이게 하기
-    $(document).on('change', '.input-file', function() {
-        $(this).parent().find('.custom-file-control').html($(this).val().replace(/C:\\fakepath\\/i, ''));
-    });
-
+    var filesTempArr = [];
+    function addFiles(e) {
+        var files = e.target.files;
+        var filesArr = Array.prototype.slice.call(files);
+        var filesArrLen = filesArr.length;
+        var filesTempArrLen = filesTempArr.length;
+        for( var i=0; i<filesArrLen; i++ ) {
+            filesTempArr.push(filesArr[i]);
+            $("#fileList").append("<div>" + filesArr[i].name + "<a href='javascript:void(0);'  onclick=\"deleteFile(event, " + (filesTempArrLen+i)+ ");\">x</a></div>");
+        }
+        $(this).val('');
+    }
+    function deleteFile (eventParam, orderParam) {
+        filesTempArr.splice(orderParam, 1);
+        var innerHtmlTemp = "";
+        var filesTempArrLen = filesTempArr.length;
+        for(var i=0; i<filesTempArrLen; i++) {
+            innerHtmlTemp += "<div>" + filesTempArr[i].name + "<a href='javascript:void(0);' onclick=\"deleteFile(event, " + i + ");\">x</a></div>"
+        }
+        $("#fileList").html(innerHtmlTemp);
+    }
     function modifyEvnet() {
         var check = new isCheck();
         if (check.input("title", comment.input_title) == false) return;
@@ -43,9 +63,8 @@
             return false;
         }
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-        var filechk = $("#attachFile").val();
         if(sessionUserInfo != null) {
-            if (filechk == "") { //파일 없을때
+            if (filesTempArr.length == 0) { //파일 없을때
                 var title = getInputTextValue("title");
                 var content = $('textarea[name="writeContent"]').val();
                 var bbsKey = getInputTextValue('bbsKey');
@@ -55,15 +74,15 @@
                     return false;
                 }
             } else {
-                var data = new FormData();
-                $.each($('#attachFile')[0].files, function(i, file) {
-                    data.append('file', file);
-                });
+                var formData = new FormData();
+                for (var i = 0, filesTempArrLen = filesTempArr.length; i < filesTempArrLen; i++) {
+                    formData.append("files", filesTempArr[i]);
+                }
                 $.ajax({
-                    url: "http://52.79.40.214:9090/fileUpload/boardFile",
+                    url: "http://52.79.40.214:9090/fileUpload/boardFileList",
                     method: "post",
                     dataType: "JSON",
-                    data: data,
+                    data: formData,
                     cache: false,
                     processData: false,
                     contentType: false,
@@ -137,7 +156,7 @@
                                 <th scope="row">첨부파일</th>
                                 <td class="">
                                     <label for="attachFile">업로드</label>
-                                    <input type="file" name="attachFile" id="attachFile" class="input-file"  multiple/>
+                                    <input type="file" name="attachFile[]" id="attachFile" class=""  multiple/>
                                     <ul id='fileList' class="fileList"></ul>
                                 </td>
                             </tr>

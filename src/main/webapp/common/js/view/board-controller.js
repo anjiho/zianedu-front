@@ -59,6 +59,7 @@ function updateBoard(bbskey, title, content, isSecret, fileName) {
         isSecret : isSecret,
         fileName : fileName
     };
+    console.log(data);
     var result = postApi("/board/updateBoard", data);
     return result;
 }

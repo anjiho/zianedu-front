@@ -15,7 +15,7 @@
             format: "yyyy-mm-dd"
         });
         var infoList = eventUpdateDetailInfo(idx);
-
+        console.log(infoList);
         if(infoList != null){
             innerValue('title', infoList.result.eventTitle);
             innerValue('writeContent', infoList.result.eventDesc);
@@ -23,7 +23,9 @@
             innerValue('searchEndDate', infoList.result.eventEndDate);
             innerValue('objectStr', infoList.result.targetName);
             innerValue('detailUrl', infoList.result.targetUrl);
-       //     $("#attachFile").val(infoList.result.thumbnailPath);
+            if(infoList.result.thumbnailFileName != null){
+                innerHTML('fileList', infoList.result.thumbnailFileName);
+            }
         }
     });
     //파일 선택시 파일명 보이게 하기
@@ -162,7 +164,7 @@
                                     <td class="">
                                         <label for="attachFile">업로드</label>
                                         <input type="file" id="attachFile" class="input-file" required/>
-                                        <span class="custom-file-control custom-file-label"></span>
+                                        <span class="custom-file-control custom-file-label" id='fileList'></span>
                                     </td>
                                 </tr>
                                 </tbody>
