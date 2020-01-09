@@ -89,5 +89,8 @@ var comment = {
     teacherName_info : "교수님이름을 입력해 주세요.",
     bookName_info : "도서이름을 입력해 주세요.",
 
+    targetName_info : "대상을 입력해 주세요.",
+    url_info : "상세URL을 입력해 주세요.",
+    searchDate_info : "기간을 입력해 주세요."
 }
 

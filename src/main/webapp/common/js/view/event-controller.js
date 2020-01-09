@@ -15,14 +15,24 @@ function eventList(idx) {
     paging.count(sPage, cnt, '10', listLimit, comment.blank_list);
     for(var i=0; i < selList.length; i++){
         var cmpList = selList[i];
-        function formatter(cmpList) {
-            return ""+
-                "<a href=\"javascript:\"><img src='"+ cmpList.fileUrl +"'  style='width: 250px;height: 122px'/></a>"+
-                "<a href='javascript:detailReview("+ cmpList.bbsKey +");'><sapn class='thumb'>"+ gfn_substr(cmpList.title,0,17) +"</span></a>"+
-                "";
-        }
+
     }
     dwr.util.addOptions('dataList', selList, formatter, {escapeHtml:false});
     //}
+}
 
+function saveEventInfo(eventTitle, eventDesc, eventStartDate, eventEndDate, targetName, thumbnailFileName, targetUrl) {
+    var data = {
+        eventTitle : eventTitle,
+        eventDesc : eventDesc,
+        eventStartDate : eventStartDate,
+        eventEndDate : eventEndDate,
+        targetName : targetName,
+        thumbnailFileName : thumbnailFileName,
+        targetUrl : targetUrl
+    };
+    console.log(data);
+    var result = postApi("/event/saveEventInfo", data);
+    console.log(result);
+    return result;
 }

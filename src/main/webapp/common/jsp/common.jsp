@@ -61,6 +61,7 @@
     <script src="/common/js/view/user-controller.js"></script>
     <script src="/common/js/view/product-controller.js"></script>
     <script src="/common/js/view/customer-center-controlle.js"></script>
+    <script src="/common/js/view/event-controller.js"></script>
     <!--//api controller-->
     <!-- dwr -->
     <script type='text/javascript' src='/dwr/engine.js'></script>

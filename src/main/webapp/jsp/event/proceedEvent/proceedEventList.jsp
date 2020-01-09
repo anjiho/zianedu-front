@@ -2,7 +2,10 @@
 <%@include file="/common/jsp/common.jsp" %>
 <script>
     $(document).ready(function () {
-
+        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        if(sessionUserInfo.authority != 0){
+            $("#writeBtn").hide();
+        }
     });
 </script>
 <form name="frm" method="get">
@@ -36,7 +39,7 @@
                         <a href="#" class="btn_inline on w140 disnoneM">검색</a>
                         <!--html 추가 및 수정-->
                         <div class="btnArea">
-                            <a href="#" class="btn_inline w140 write_ico">글쓰기</a>
+                            <a href="javascript:goPageNoSubmit('event','saveProceed')" class="btn_inline w140 write_ico" id="writeBtn">글쓰기</a>
                         </div>
                         <!--//html 추가 -->
                     </div>
