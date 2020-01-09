@@ -23,7 +23,7 @@
             innerValue('searchEndDate', infoList.result.eventEndDate);
             innerValue('objectStr', infoList.result.targetName);
             innerValue('detailUrl', infoList.result.targetUrl);
-            $("#attachFile").val(infoList.result.thumbnailPath);
+       //     $("#attachFile").val(infoList.result.thumbnailPath);
         }
     });
     //파일 선택시 파일명 보이게 하기
@@ -106,7 +106,7 @@
                     <ul>
                         <li class="active"><a href="javascript:goPageNoSubmit('event','proceedList');">진행중이벤트</a></li>
                         <li><a href="javascript:goPageNoSubmit('event','deadList');">마감된이벤트</a></li>
-                        <li><a href="#">담청자발표</a></li>
+                        <li><a href="javascript:goPageNoSubmit('event','winList');">담청자발표</a></li>
                     </ul>
                 </div>
                 <br />

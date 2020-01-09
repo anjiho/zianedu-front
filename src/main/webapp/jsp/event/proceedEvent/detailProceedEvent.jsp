@@ -6,6 +6,14 @@
 <script>
     var idx = <%=idx%>;
     $(document).ready(function () {
+        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        if(sessionUserInfo != null){
+            if(sessionUserInfo.authority != 0){
+                $("#modifyBtn").hide();
+            }
+        }else{
+            $("#modifyBtn").hide();
+        }
         var infoList = eventDetailInfo(idx);
         console.log(infoList);
         var selList = infoList.result;
@@ -33,7 +41,7 @@
                     <ul>
                         <li class="active"><a href="javascript:goPageNoSubmit('event','proceedList');">진행중이벤트</a></li>
                         <li><a href="javascript:goPageNoSubmit('event','deadList');">마감된이벤트</a></li>
-                        <li><a href="#">담청자발표</a></li>
+                        <li><a href="javascript:goPageNoSubmit('event','winList');">담청자발표</a></li>
                     </ul>
                 </div>
                 <br />
@@ -48,7 +56,7 @@
 
                     <div class="btnArea divGroup bdtop20">
                         <div class="left">
-                            <a href="javascript:goPage('event','modifyProceed');" class="btn_inline w110">수정</a>
+                            <a href="javascript:goPage('event','modifyProceed');" class="btn_inline w110" id="modifyBtn">수정</a>
                         </div>
                         <div class="right">
                             <a href="javascript:goPageNoSubmit('event','proceedList')" class="btn_inline bdblue w110">목록</a>
