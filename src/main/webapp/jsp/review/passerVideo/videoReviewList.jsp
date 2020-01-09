@@ -2,7 +2,15 @@
 <%@include file="/common/jsp/common.jsp" %>
 <script>
     $( document ).ready(function() {
-            fn_search('new');
+        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        if(sessionUserInfo != null) {
+            if (sessionUserInfo.authority != 0) {
+                $("#writeBtn").hide();
+            }
+        }else{
+            $("#writeBtn").hide();
+        }
+        fn_search('new');
     });
 
     function fn_search(val) {
@@ -122,7 +130,7 @@
                             <input type="text" id="searchText" onkeypress="if(event.keyCode==13) {fn_search('new'); return false;}" class="w240">
                             <a href="javascript:fn_search('new');" class="btn_inline on w140 disnoneM">검색</a>
                             <div class="btnArea">
-                                <a href="javascript:goPageNoSubmit('review','saveVideo');" class="btn_inline w140 write_ico">글쓰기</a>
+                                <a href="javascript:goPageNoSubmit('review','saveVideo');" class="btn_inline w140 write_ico" id="writeBtn">글쓰기</a>
                             </div>
                             <!--//html 추가 -->
                         </div>
