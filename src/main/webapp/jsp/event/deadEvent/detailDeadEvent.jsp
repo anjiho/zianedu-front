@@ -4,6 +4,7 @@
     String idx = request.getParameter("idx");
 %>
 <script>
+    var idx = <%=idx%>;
     $(document).ready(function () {
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         if(sessionUserInfo != null){
@@ -25,6 +26,7 @@
 </script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
+    <input type="hidden" name="idx" id="idx">
     <input type="hidden" id="sPage">
     <div id="wrap">
         <%@include file="/common/jsp/leftMenu.jsp" %>

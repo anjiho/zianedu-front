@@ -40,6 +40,10 @@ public class EventController {
             mvc.setViewName("/event/winEvent/modifyWinEvent");
         } else if ("detailWin".equals(page_gbn)) {
             mvc.setViewName("/event/winEvent/detailWinEvent");
+        } else if ("modifyDead".equals(page_gbn)) {
+            mvc.setViewName("/event/deadEvent/modifyDeadEvent");
+        } else if ("event3".equals(page_gbn)) {
+            mvc.setViewName("/event/view/event3");
         }
         return mvc;
     }
