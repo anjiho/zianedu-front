@@ -54,7 +54,7 @@
                 <!--reviewBoard 진행중이벤트-->
                 <div class="boardWrap eventBoard">
                     <div class="boardSearch">
-                        <span class="ingevent">총 <span class="text_red">2개</span> 의 진행중인 이벤트가 있습니다.</span>
+                        <span class="ingevent">총 </sapn><span class="text_red" id="evenCnt"></span> 의 진행중인 이벤트가 있습니다.</span>
                         <select id='searchType' class="w90">
                             <option value="title">제목</option>
                             <option value="content">내용</option>
