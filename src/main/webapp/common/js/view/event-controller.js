@@ -55,6 +55,14 @@ function eventDetailInfo(idx) {
 
     var infoList = getApi("/event/eventDetailInfo/", idx, '');
     if (infoList != null) {
+        var selList = infoList.result;
+        var eventDate = selList.eventStartDate + " ~ " + selList.eventEndDate;
+        innerHTML('eventDate', eventDate);
+        innerHTML('eventTitle', selList.eventDesc);
+        $("#eventImg").attr("src", selList.targetUrl);
+
+        window.location = selList.targetUrl + "&idx=" + idx;
+        //window.location = selList.targetUrl;
             return infoList;
     }
 }
