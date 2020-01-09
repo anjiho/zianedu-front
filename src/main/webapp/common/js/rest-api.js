@@ -15,7 +15,7 @@ function postApi(url, paramData) {
 }
 
 /* post */
-function postMailApi(url, pathData, paramData) {
+function postPathApi(url, pathData, paramData) {
     var resultData = null;
     $.post(apiHost + url + pathData, paramData, function (response) {
         resultData = response;

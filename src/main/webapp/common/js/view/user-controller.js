@@ -67,7 +67,7 @@ function requestChangeDevice(userKey, deviceType) {
     var data = {
         deviceType: deviceType
     };
-    var resultInfo = postMailApi("/user/requestChangeDevice/", userKey, data);
+    var resultInfo = postPathApi("/user/requestChangeDevice/", userKey, data);
     return resultInfo;
 }
 
@@ -76,7 +76,7 @@ function confirmChangeDeviceCode(userKey, code) {
     var data = {
         code: code
     };
-    var resultInfo = postMailApi("/user/confirmChangeDeviceCode/", userKey, data);
+    var resultInfo = postPathApi("/user/confirmChangeDeviceCode/", userKey, data);
     return resultInfo;
 }
 

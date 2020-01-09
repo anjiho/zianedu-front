@@ -678,3 +678,11 @@ function getReviewBoardCount(bbsMasterKey) {
         return infoList.keyValue;
     }
 }
+
+function deleteBoardFile(bbsFileKey) {
+    // var data = {
+    //     bbsFileKey : bbsFileKey
+    // };
+    var result = postPathApi("/board/deleteBoardFile/", bbsFileKey, '');
+    return result;
+}

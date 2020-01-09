@@ -22,17 +22,13 @@
                 if (detailInfo.fileInfo.length > 0) {
                     for (var i = 0; i < detailInfo.fileInfo.length; i++) {
                         var fileList = detailInfo.fileInfo[i];
-                        var returnHtml = "<li id='"+i+"'><a href='javascript:void(0);'>"+ fileList.fileName +"</a>"+" "+"<a href='javascript:deleteFileList("+ i +");' >X</a></li>";
+                        var returnHtml = "<li id='"+fileList.bbsFileKey+"'><a href='javascript:void(0);'>"+ fileList.fileName +"</a>"+" "+"<a href='javascript:deleteFileList("+ fileList.bbsFileKey +");' >X</a></li>";
                         $("#fileList").append(returnHtml);
                     }
                 }
             }
         }
     });
-    
-    function deleteFileList(fileKey) {
-        $("#fileList li").eq(fileKey).remove();
-    }
 
     var filesTempArr = [];
     function addFiles(e) {

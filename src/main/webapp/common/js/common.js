@@ -3193,3 +3193,10 @@ function locationPop(num){
         uModal.css('display','none');
     });
 }
+
+function deleteFileList(bbsFileKey) {
+    if(confirm('파일을 삭제하시겠습니까?')){
+        var result = deleteBoardFile(bbsFileKey);
+        $("#"+bbsFileKey).remove();
+    }
+}
