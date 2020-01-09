@@ -15,6 +15,7 @@
             format: "yyyy-mm-dd"
         });
         var infoList = eventDetailInfo(idx);
+        console.log(infoList);
         if(infoList != null){
             innerValue('title', infoList.result.eventTitle);
             innerValue('writeContent', infoList.result.eventDesc);
@@ -22,6 +23,7 @@
             innerValue('searchEndDate', infoList.result.eventEndDate);
             innerValue('objectStr', infoList.result.targetName);
             innerValue('detailUrl', infoList.result.targetUrl);
+            $("#attachFile").val(infoList.result.thumbnailPath);
         }
     });
     //파일 선택시 파일명 보이게 하기
