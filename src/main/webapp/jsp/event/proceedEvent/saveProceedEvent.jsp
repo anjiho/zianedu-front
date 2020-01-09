@@ -35,7 +35,6 @@
                 return false;
             } else {
                 var filechk = $("#attachFile").val();
-                alert(filechk);
                 var data = new FormData();
                 $.each($('#attachFile')[0].files, function(i, file) {
                     data.append('file', file);
