@@ -66,13 +66,17 @@
                 // for (var i = 0, filesTempArrLen = filesTempArr.length; i < filesTempArrLen; i++) {
                 //     formData.append("files", filesTempArr[i]);
                 // }
+
                 var data = new FormData();
                 $.each($('#attachFile')[0].files, function(i, file) {
+                    alert("1")
+                    console.log(file);
                     data.append('file', file);
                 });
                 console.log(data);
                 $.ajax({
-                    url: "http://52.79.40.214:9090/fileUpload/boardFile",
+                    //url: "http://52.79.40.214:9090/fileUpload/boardFile",
+                    url: "http://localhost:9090/fileUpload/boardFile",
                     method: "post",
                     dataType: "JSON",
                     data: data,
