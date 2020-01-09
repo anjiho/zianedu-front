@@ -4,7 +4,6 @@
 <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.5/datepicker.css'>
 <script>
     $(document).ready(function () {
-        $("#attachFile").on("change", addFiles);
         $("#searchStartDate").datepicker({
             format: "yyyy-mm-dd"
         });
@@ -12,32 +11,10 @@
             format: "yyyy-mm-dd"
         });
     });
-
-    var filesTempArr = [];
-    function addFiles(e) {
-        var files = e.target.files;
-        var filesArr = Array.prototype.slice.call(files);
-        var filesArrLen = filesArr.length;
-        var filesTempArrLen = filesTempArr.length;
-        for( var i=0; i<filesArrLen; i++ ) {
-            filesTempArr.push(filesArr[i]);
-            if(filesTempArrLen > 0){
-                alert("썸네일은 한개만 등록 가능합니다.");
-                return false;
-            }
-            $("#fileList").append("<div>" + filesArr[i].name + "<img src=\"/common/zian/images/common/icon_file.png\" onclick=\"deleteFile(event, " + (filesTempArrLen+i)+ ");\"></div>");
-        }
-        $(this).val('');
-    }
-    function deleteFile (eventParam, orderParam) {
-        filesTempArr.splice(orderParam, 1);
-        var innerHtmlTemp = "";
-        var filesTempArrLen = filesTempArr.length;
-        for(var i=0; i<filesTempArrLen; i++) {
-            innerHtmlTemp += "<div>" + filesTempArr[i].name + "<img src=\"/images/deleteImage.png\" onclick=\"deleteFile(event, " + i + ");\"></div>"
-        }
-        $("#fileList").html(innerHtmlTemp);
-    }
+    //파일 선택시 파일명 보이게 하기
+    $(document).on('change', '.input-file', function() {
+        $(this).parent().find('.custom-file-control').html($(this).val().replace(/C:\\fakepath\\/i, ''));
+    });
 
     function saveEvent() {
         var check = new isCheck();
@@ -51,32 +28,19 @@
         if (check.input("objectStr", comment.targetName_info) == false) return;
         if (check.input("detailUrl", comment.url_info) == false) return;
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        var filechk = $("#attachFile").val();
         if(sessionUserInfo != null) {
-            if (filesTempArr.length == 0) { //파일 없을때
+            if (filechk == "") { //파일 없을때
                 alert("썸네일 이미지를 등록해 주세요.");
                 return false;
-                // var result = saveBoardReview(bbsMasterKey, userKey, title, content, 0, 0, '', '', '', '', bookName);
-                // if (result.resultCode == 200) {
-                //     //$("#modal9").show();
-                //     alert("성공적으로 등록 완료되었습니다.");
-                //     return false;
-                // }
             } else {
-                // var formData = new FormData();
-                // for (var i = 0, filesTempArrLen = filesTempArr.length; i < filesTempArrLen; i++) {
-                //     formData.append("files", filesTempArr[i]);
-                // }
-
+                var filechk = $("#attachFile").val();
                 var data = new FormData();
                 $.each($('#attachFile')[0].files, function(i, file) {
-                    alert("1")
-                    console.log(file);
                     data.append('file', file);
                 });
-                console.log(data);
                 $.ajax({
-                    //url: "http://52.79.40.214:9090/fileUpload/boardFile",
-                    url: "http://localhost:9090/fileUpload/boardFile",
+                    url: "http://52.79.40.214:9090/fileUpload/boardFile",
                     method: "post",
                     dataType: "JSON",
                     data: data,
@@ -180,8 +144,8 @@
                                     <th scope="row">썸네일</th>
                                     <td class="">
                                         <label for="attachFile">업로드</label>
-                                        <input type="file" id="attachFile" class="input-file"/>
-                                        <ul id='fileList' class="fileList"></ul>
+                                        <input type="file" id="attachFile" class="input-file" required/>
+                                        <span class="custom-file-control custom-file-label"></span>
                                     </td>
                                 </tr>
                                 </tbody>
