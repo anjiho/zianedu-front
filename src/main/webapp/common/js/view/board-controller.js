@@ -12,6 +12,7 @@ function saveBoard(bbsMasterKey, userKey, title, content, isSecret, ctgKey, file
         ctgKey :  ctgKey,
         fileName : fileName
     };
+    console.log(data);
     var result = postApi("/board/saveBoard", data);
     return result;
 }

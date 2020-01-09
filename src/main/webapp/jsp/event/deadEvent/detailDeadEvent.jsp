@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/jsp/common.jsp" %>
+<%
+    String idx = request.getParameter("idx");
+%>
 <script>
     $(document).ready(function () {
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
@@ -10,6 +13,14 @@
         }else{
             $("#modifyBtn").hide();
         }
+        var infoList = eventDetailInfo(idx);
+        console.log(infoList);
+        var selList = infoList.result;
+        var eventDate = selList.eventStartDate + " ~ " + selList.eventEndDate;
+        innerHTML('eventDate', eventDate);
+        innerHTML('eventTitle', selList.eventDesc);
+        innerValue('idx', selList.idx);
+        $("#eventImg").attr("src", selList.targetUrl);
     });
 </script>
 <form name="frm" method="get">
@@ -35,10 +46,10 @@
                 <!--reviewBoard 진행중이벤트-->
                 <div class="boardWrap eventBoard">
                     <div class="imgbox">
-                        <p class="title">리뷰쓰고 포인트 받자!
-                            <span>2019.06.10 ~ 2019.08.30</span>
+                        <p class="title"  id="eventTitle">
+                            <span id="eventDate"></span>
                         </p>
-                        <img src="../images/content/img01.jpg">
+                        <img src="" id="eventImg">
                     </div>
 
                     <div class="btnArea divGroup bdtop20">

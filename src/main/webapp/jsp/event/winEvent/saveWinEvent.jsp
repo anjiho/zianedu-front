@@ -33,7 +33,6 @@
                     return false;
                 }
             } else {
-                var filechk = $("#attachFile").val();
                 var data = new FormData();
                 $.each($('#attachFile')[0].files, function(i, file) {
                     data.append('file', file);
@@ -55,7 +54,6 @@
                             var arr = new Array();
                             arr.push(fileName);
                             var str = toStrFileName(arr);
-                            console.log(str);
                             saveBoardFileList(result.keyValue, str);
                             if (result.resultCode == 200) {
                                 alert("성공적으로 등록 완료되었습니다");
