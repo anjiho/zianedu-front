@@ -32,6 +32,14 @@ public class EventController {
             mvc.setViewName("/event/proceedEvent/modifyProceedEvent");
         } else if ("event2".equals(page_gbn)) {
             mvc.setViewName("/event/view/event2");
+        } else if ("winList".equals(page_gbn)) {
+            mvc.setViewName("/event/winEvent/winEventList");
+        } else if ("saveWin".equals(page_gbn)) {
+            mvc.setViewName("/event/winEvent/saveWinEvent");
+        } else if ("modifyWin".equals(page_gbn)) {
+            mvc.setViewName("/event/winEvent/modifyWinEvent");
+        } else if ("detailWin".equals(page_gbn)) {
+            mvc.setViewName("/event/winEvent/detailWinEvent");
         }
         return mvc;
     }

@@ -47,7 +47,7 @@
                     <ul>
                         <li class="active"><a href="javascript:goPageNoSubmit('event','proceedList');">진행중이벤트</a></li>
                         <li><a href="javascript:goPageNoSubmit('event','deadList');">마감된이벤트</a></li>
-                        <li><a href="#">담청자발표</a></li>
+                        <li><a href="javascript:goPageNoSubmit('event','winList');">담청자발표</a></li>
                     </ul>
                 </div>
                 <br />

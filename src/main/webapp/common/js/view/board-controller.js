@@ -140,6 +140,40 @@ function getCommunityList(bbsMaterKey, sPage, listLimit) {
     }
 }
 
+function getCommunityList2(bbsMaterKey, sPage, listLimit, searchType, searchText) {
+    if(bbsMaterKey == null || bbsMaterKey == undefined) return;
+    var paging = new Paging();
+    dwr.util.removeAllRows("dataList"); //테이블 리스트 초기화
+    var data = {
+        sPage : sPage,
+        listLimit : listLimit,
+        searchType : searchType,
+        searchText : searchText
+    };
+    var infoList = getPageApi("/board/getCommunityList/", bbsMaterKey, data);
+    console.log(infoList);
+    var cnt = infoList.cnt;
+    if(infoList != null){
+        if (infoList.result.length > 0) {
+            var listNum = ((cnt-1)+1)-((sPage-1)*10); //리스트 넘버링
+            var selList = infoList.result;
+            paging.count(sPage, cnt, '5', listLimit, comment.blank_list);
+            for(var i=0; i < selList.length; i++){
+                var cmpList = selList[i];
+                if (cmpList != undefined) {
+                    var cellData = [
+                        function(data) {return listNum--;},
+                        function(data) {return "<a href='javascript:void(0);' onclick='detailEvent("+ cmpList.bbsKey +");'>" + cmpList.title + "</a>";},
+                        function(data) {return cmpList.userName;},
+                        function(data) {return cmpList.indate;},
+                        function(data) {return cmpList.readCount;}
+                    ];
+                    dwr.util.addRows("dataList", [0], cellData, {escapeHtml: false});
+                }
+            }
+        }
+    }
+}
 
 //공지사항 리스트
 function getNoticeList(sPage, listLimit, bbsMaterKey, searchType, searchText) {

@@ -99,11 +99,6 @@
         innerValue("bbsKey", nextKey);
         goPage("notice", "detail");
     }
-
-
-
-
-
 </script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
