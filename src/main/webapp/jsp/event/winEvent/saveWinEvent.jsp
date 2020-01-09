@@ -19,7 +19,7 @@
         var filesTempArrLen = filesTempArr.length;
         for( var i=0; i<filesArrLen; i++ ) {
             filesTempArr.push(filesArr[i]);
-            $("#fileList").append("<div>" + filesArr[i].name + "<img src=\"/common/zian/images/common/icon_file.png\" onclick=\"deleteFile(event, " + (filesTempArrLen+i)+ ");\"></div>");
+            $("#fileList").append("<div>" + filesArr[i].name + "<a href='javascript:void(0);' onclick=\"deleteFile(event, " + (filesTempArrLen+i)+ ");\">X</a></div>");
         }
         $(this).val('');
     }
@@ -28,7 +28,7 @@
         var innerHtmlTemp = "";
         var filesTempArrLen = filesTempArr.length;
         for(var i=0; i<filesTempArrLen; i++) {
-            innerHtmlTemp += "<div>" + filesTempArr[i].name + "<img src=\"/images/deleteImage.png\" onclick=\"deleteFile(event, " + i + ");\"></div>"
+            innerHtmlTemp += "<div>" + filesTempArr[i].name + "<a  href='javascript:void(0);' onclick=\"deleteFile(event, " + i + ");\">X</a></div>"
         }
         $("#fileList").html(innerHtmlTemp);
     }
