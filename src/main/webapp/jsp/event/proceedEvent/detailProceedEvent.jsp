@@ -1,8 +1,12 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/jsp/common.jsp" %>
+<%
+    String idx = request.getParameter("idx");
+%>
 <script>
+    var idx = <%=idx%>;
     $(document).ready(function () {
-
+        eventDetailInfo(idx);
     });
 </script>
 <form name="frm" method="get">
@@ -17,7 +21,6 @@
         <div id="container">
             <div class="inner">
                 <!--서브 컨텐츠-->
-
                 <div class="tabBox">
                     <ul>
                         <li class="active"><a href="javascript:goPageNoSubmit('event','proceedList');">진행중이벤트</a></li>
@@ -29,10 +32,10 @@
                 <!--reviewBoard 진행중이벤트-->
                 <div class="boardWrap eventBoard">
                     <div class="imgbox">
-                        <p class="title">리뷰쓰고 포인트 받자!
-                            <span>2019.06.10 ~ 2019.08.30</span>
+                        <p class="title" id="eventTitle">
                         </p>
-                        <img src="../images/content/img01.jpg">
+                        <span id="eventDate"></span><br>
+                        <img src="" id="eventImg">
                     </div>
 
                     <div class="btnArea divGroup bdtop20">
@@ -40,7 +43,7 @@
                             <a href="#" class="btn_inline w110">수정</a>
                         </div>
                         <div class="right">
-                            <a href="#" class="btn_inline bdblue w110">목록</a>
+                            <a href="javascript:goPageNoSubmit('event','proceedList')" class="btn_inline bdblue w110">목록</a>
                         </div>
                     </div>
                 </div>
