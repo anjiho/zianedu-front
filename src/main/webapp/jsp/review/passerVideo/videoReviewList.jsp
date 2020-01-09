@@ -14,7 +14,6 @@
     });
 
     function fn_search(val) {
-        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         var sPage = getInputTextValue("sPage");
         var searchType = getSelectboxValue("searchType");
         var searchText = getInputTextValue("searchText");
@@ -78,7 +77,6 @@
                     <!--review_movie_list : 합격자영상-->
                     <div class="review_movie_list">
                         <p>BEST 합격자영상</p>
-
                         <!-- 컨텐츠 들어가는 자리 -->
                         <div class="myarea_main">
                             <div class="myarea_list_wrap">
@@ -87,7 +85,7 @@
                                         <li class="item">
                                             <div class="inner">
                                                 <div class="thumb">
-                                                    <img class="myarea_poster" src="/common/zian/images/ex/m02.png" />
+                                                    <img class="myarea_poster" src="http://52.79.40.214/Upload\100\bbs\2019_thumbnail_08.jpg" />
                                                 </div>
                                                 <span class="desc">2020 국가직국가직 합격생 문재황님의</span>
                                             </div>
@@ -95,7 +93,7 @@
                                         <li class="item">
                                             <div class="inner">
                                                 <div class="thumb">
-                                                    <img class="myarea_poster" src="/common/zian//images/ex/m01.png" />
+                                                    <img class="myarea_poster" src="http://52.79.40.214/Upload\100\bbs\2019_thumbnail_08.jpg" />
                                                 </div>
                                                 <span class="desc">2020 국가직국가직 합격생 문재황님의</span>
                                             </div>
@@ -103,7 +101,7 @@
                                         <li class="item">
                                             <div class="inner">
                                                 <div class="thumb">
-                                                    <img class="myarea_poster" src="../images/ex/m02.png" />
+                                                    <img class="myarea_poster" src="http://52.79.40.214/Upload\100\bbs\2019_thumbnail_08.jpg" />
                                                 </div>
                                                 <span class="desc">2020 국가직국가직 합격생 문재황님의</span>
                                             </div>
