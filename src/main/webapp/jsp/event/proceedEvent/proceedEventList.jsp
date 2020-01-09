@@ -6,10 +6,29 @@
         if(sessionUserInfo.authority != 0){
             $("#writeBtn").hide();
         }
+        fn_search('new');
     });
+
+    function fn_search(val) {
+        $("#eventDiv").empty();
+        var sPage = getInputTextValue("sPage");
+        var searchType = getSelectboxValue("searchType");
+        var searchText = getInputTextValue("searchText");
+        if(searchType == undefined) searchType = "";
+        if(searchText == undefined) searchText = "";
+
+        if(val == "new") sPage = "1";
+        eventList('PROCEED', sPage, 10, searchType, searchText);
+    }
+    
+    function detailEvent(idx) {
+        innerValue('idx', idx);
+        goPage('event','detailProceed');
+    }
 </script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
+    <input type="hidden" name="idx" id="idx">
     <input type="hidden" id="sPage">
     <div id="wrap">
         <%@include file="/common/jsp/leftMenu.jsp" %>
@@ -32,38 +51,21 @@
                 <div class="boardWrap eventBoard">
                     <div class="boardSearch">
                         <span class="ingevent">총 <span class="text_red">2개</span> 의 진행중인 이벤트가 있습니다.</span>
-                        <select name="" class="w90">
-                            <option value="">제목</option>
+                        <select id='searchType' class="w90">
+                            <option value="title">제목</option>
+                            <option value="content">내용</option>
                         </select>
-                        <input type="text" name="" value="" class="w240">
-                        <a href="#" class="btn_inline on w140 disnoneM">검색</a>
+                        <input type="text" id="searchText" class="w240" onkeypress="if(event.keyCode==13) {fn_search('new'); return false;}" >
+                        <a href="javascript:fn_search('new');" class="btn_inline on w140 disnoneM">검색</a>
                         <!--html 추가 및 수정-->
                         <div class="btnArea">
                             <a href="javascript:goPageNoSubmit('event','saveProceed')" class="btn_inline w140 write_ico" id="writeBtn">글쓰기</a>
                         </div>
                         <!--//html 추가 -->
                     </div>
-
-                    <div class="colbox">
-<%--                        <div class="col">--%>
-<%--                            <div class="imgbox2">--%>
-<%--                                <a href="javascript:"><img src="../images/content/img02.jpg"></a>--%>
-<%--                            </div>--%>
-<%--                            <div class="infobox">--%>
-<%--                                <a href="javascript:" class="title">리뷰쓰고 포인트 받자!</a>--%>
-<%--                                <span class="date">게시일 2019.06.10</span>--%>
-<%--                                <ul class="info">--%>
-<%--                                    <li><span class="btn_line">기간</span>2019.06.10 ~ 2019.08.30</li>--%>
-<%--                                    <li class="pl30"><span class="btn_line">대상</span>온라인학원 수강자</li>--%>
-<%--                                </ul>--%>
-<%--                                <ul class="list">--%>
-<%--                                    <li>리뷰쓰고 최대 1만 포인트까지 혜택을 받으세요</li>--%>
-<%--                                    <li>8월까지 마감! 온라인학원 수강생분들 서두르세요~~</li>--%>
-<%--                                </ul>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-                    </div>
+                    <div class="colbox" id="eventDiv"></div>
                     <!-- paging -->
+                    <%@ include file="/common/inc/com_pageNavi.inc" %>
                     <!-- //paging -->
                 </div>
                 <!--//서브 컨텐츠-->
