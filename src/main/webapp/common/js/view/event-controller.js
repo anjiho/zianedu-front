@@ -11,7 +11,6 @@ function eventList(eventType, sPage, listLimit, searchType, searchText) {
     var cnt = infoList.cnt;
     //if (infoList.result.length > 0) {
     var selList = infoList.result;
-    console.log(selList);
     paging.count(sPage, cnt, '10', listLimit, comment.blank_list);
     for(var i=0; i < selList.length; i++){
         var cmpList = selList[i];
@@ -55,13 +54,23 @@ function eventDetailInfo(idx) {
     if (idx == null || idx == undefined) return;
 
     var infoList = getApi("/event/eventDetailInfo/", idx, '');
-    console.log(infoList);
     if (infoList != null) {
-        var selList = infoList.result;
-        var eventDate = selList.eventStartDate + " ~ " + selList.eventEndDate;
-        innerHTML('eventDate', eventDate);
-        innerHTML('eventTitle', selList.eventDesc);
-        $("#eventImg").attr("src", selList.targetUrl);
+            return infoList;
     }
+}
+
+function updateEventInfo(idx, eventTitle, eventDesc, eventStartDate, eventEndDate, targetName, thumbnailFileName, targetUrl) {
+    var data = {
+        idx: idx,
+        eventTitle : eventTitle,
+        eventDesc : eventDesc,
+        eventStartDate : eventStartDate,
+        eventEndDate : eventEndDate,
+        targetName : targetName,
+        thumbnailFileName : thumbnailFileName,
+        targetUrl : targetUrl
+    };
+    var result = postApi("/event/updateEventInfo", data);
+    return result;
     
 }

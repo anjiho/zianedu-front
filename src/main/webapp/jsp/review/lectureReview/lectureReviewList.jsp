@@ -3,7 +3,11 @@
 <script>
     $( document ).ready(function() {
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-        if(sessionUserInfo.authority != 0){
+        if(sessionUserInfo != null) {
+            if (sessionUserInfo.authority != 0) {
+                $("#writeBtn").hide();
+            }
+        }else{
             $("#writeBtn").hide();
         }
         fn_search('new');

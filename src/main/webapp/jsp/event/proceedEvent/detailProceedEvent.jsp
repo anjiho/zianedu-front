@@ -6,11 +6,19 @@
 <script>
     var idx = <%=idx%>;
     $(document).ready(function () {
-        eventDetailInfo(idx);
+        var infoList = eventDetailInfo(idx);
+        console.log(infoList);
+        var selList = infoList.result;
+        var eventDate = selList.eventStartDate + " ~ " + selList.eventEndDate;
+        innerHTML('eventDate', eventDate);
+        innerHTML('eventTitle', selList.eventDesc);
+        innerValue('idx', selList.idx);
+        $("#eventImg").attr("src", selList.targetUrl);
     });
 </script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
+    <input type="hidden" name="idx" id="idx">
     <input type="hidden" id="sPage">
     <div id="wrap">
         <%@include file="/common/jsp/leftMenu.jsp" %>
@@ -40,7 +48,7 @@
 
                     <div class="btnArea divGroup bdtop20">
                         <div class="left">
-                            <a href="#" class="btn_inline w110">수정</a>
+                            <a href="javascript:goPage('event','modifyProceed');" class="btn_inline w110">수정</a>
                         </div>
                         <div class="right">
                             <a href="javascript:goPageNoSubmit('event','proceedList')" class="btn_inline bdblue w110">목록</a>
