@@ -5,12 +5,14 @@
         if(leftMenuInfo == "publicOnline") {
             $(".onlineTopMenu").show();
             $(".acaTopMenu").hide();
+            $(".bookStore").hide();
             $("#logo").attr("src", "/common/zian/images/common/logo01.png");
             $("#mainUrl").attr("href", "javascript:goPageNoSubmit('publicOnline', 'main')");
             innerHTML("mainName", "온라인");
             $("#mainName").css('color', '#134c97');
         }else if(leftMenuInfo == "publicAcademy") {
             $(".onlineTopMenu").hide();
+            $(".bookStore").hide();
             $(".acaTopMenu").show();
             $("#logo").attr("src", "/common/zian/images/common/logo01.png");
             $("#mainUrl").attr("href", "javascript:goPageNoSubmit('publicAcademy', 'main')");
@@ -19,6 +21,7 @@
         }else if(leftMenuInfo == "techOnline") {
             $(".onlineTopMenu").show();
             $(".acaTopMenu").hide();
+            $(".bookStore").hide();
             $("#logo").attr("src", "/common/zian/images/common/logo02.png");
             $("#mainUrl").attr("href", "javascript:goPageNoSubmit('techOnline', 'main')");
             innerHTML("mainName", "온라인");
@@ -26,6 +29,7 @@
         }else if(leftMenuInfo == "techAcademy") {
             $(".onlineTopMenu").hide();
             $(".acaTopMenu").show();
+            $(".bookStore").hide();
             $("#logo").attr("src", "/common/zian/images/common/logo02.png");
             $("#mainUrl").attr("href", "javascript:goPageNoSubmit('techAcademy', 'main')");
             innerHTML("mainName", "학원");
@@ -33,16 +37,26 @@
         }else if(leftMenuInfo == "postOnline") {
             $(".onlineTopMenu").show();
             $(".acaTopMenu").hide();
+            $(".bookStore").hide();
             $("#logo").attr("src", "/common/zian/images/common/logo03.png");
             $("#mainUrl").attr("href", "javascript:goPageNoSubmit('postOnline', 'main')");
             innerHTML("mainName", "온라인");
             $("#mainName").css('color', '#ce1717');
         }else if(leftMenuInfo == "postAcademy") {
             $(".onlineTopMenu").hide();
+            $(".bookStore").hide();
             $(".acaTopMenu").show();
             $("#logo").attr("src", "/common/zian/images/common/logo03.png");
             $("#mainUrl").attr("href", "javascript:goPageNoSubmit('postAcademy', 'main')");
             innerHTML("mainName", "학원");
+            $("#mainName").css('color', '#ce1717');
+        }else if(leftMenuInfo == "bookStore") {
+            $(".onlineTopMenu").hide();
+            $(".acaTopMenu").hide();
+            $(".bookStore").show();
+            $("#logo").attr("src", "/common/zian/images/common/logo04.png");
+            $("#mainUrl").attr("href", "javascript:goPageNoSubmit('postAcademy', 'main')");
+           // innerHTML("mainName", "학원");
             $("#mainName").css('color', '#ce1717');
         }
     });
@@ -95,6 +109,31 @@
                 <li><a href="javascript:goPageNoSubmit('review', 'videoList');">합격수기</a></li>
             </ul>
         </div>
+    </div>
+
+    <div id="gnb" class="bookStore" style="display: none;">
+        <div class="inner">
+            <ul class="deaph1 cols7">
+                <li><a href="#">공통과목</a></li>
+                <li><a href="#">해정직군</a></li>
+                <li><a href="#">기술직군</a></li>
+                <li><a href="#">계리직군</a></li>
+                <li><a href="#">자격증</a></li>
+                <li><a href="#">정오표</a></li>
+            </ul>
+        </div>
+        <!-- gnb_area -->
+<%--        <div class="gnb_area">--%>
+<%--            <ul class="Mdepth1">--%>
+<%--                <li><a href="#">모의고사신청</a></li>--%>
+<%--                <li><a href="#">학원모의고사</a></li>--%>
+<%--                <li><a href="#">주간모의고사</a></li>--%>
+<%--                <li><a href="#">기출문제</a></li>--%>
+<%--                <li><a href="#">응시후기</a></li>--%>
+<%--                <li><a href="#">자료실</a></li>--%>
+<%--            </ul>--%>
+<%--        </div>--%>
+        <!-- //gnb_area -->
     </div>
     <!--//주메뉴-->
 </div>
