@@ -62,6 +62,21 @@
         }
     });
 
+    function goMyPage() {
+        var leftMenuInfo = sessionStorage.getItem('leftMenu');
+        if(leftMenuInfo == 'bookStore'){
+            sessionStorage.setItem("leftMenu", "publicOnline");
+        }
+        goPageNoSubmit('myPage','orderList');
+    }
+    
+    function goPassReview() {
+        var leftMenuInfo = sessionStorage.getItem('leftMenu');
+        if(leftMenuInfo == 'bookStore') {
+            sessionStorage.setItem("leftMenu", "publicOnline");
+        }
+        goPageNoSubmit('review', 'videoList');
+    }
 </script>
 <!--상단-->
 <div id="header">
@@ -72,11 +87,13 @@
             <ul>
                 <li><a href="javascript:addFavorite();" class="btn_bookmark">즐겨찾기에 등록</a></li>
                 <li id="userName" style="display: none;"><a href="#"></a></li>
-                <li id="mypage" style="display: none;"><a href="javascript:goPageNoSubmit('myPage','orderList')">마이페이지</a></li>
+<%--                <li id="mypage" style="display: none;"><a href="javascript:goPageNoSubmit('myPage','orderList')">마이페이지</a></li>--%>
+                <li id="mypage" style="display: none;"><a href="javascript:goMyPage();">마이페이지</a></li>
                 <li id="login"><a href="javascript:goLoginPage();">로그인</a></li>
                 <li id="logout" style="display: none;"><a href="javascript:goLogout();">로그아웃</a></li>
                 <li id="join"><a href="javascript:goPage('user', 'joinAgree');">회원가입</a></li>
-                <li><a href="javascript:goPageNoSubmit('review', 'videoList');">합격수기</a></li>
+<%--                <li><a href="javascript:goPageNoSubmit('review', 'videoList');">합격수기</a></li>--%>
+                <li id="mypage" style="display: none;"><a href="javascript:goPassReview();">합격수기</a></li>
                 <li><a href="javascript:goPageNoSubmit('event', 'proceedList');">이벤트</a></li>
             </ul>
         </div>
@@ -93,7 +110,7 @@
                 <li><a href="javascript:goPageNoSubmit('zianPass', 'list')">연간관리반</a></li>
                 <li><a href="javascript:goPageNoSubmit('freeLecture', 'theory')">무료강좌</a></li>
                 <li><a href="#">빅모의고사</a></li>
-                <li><a href="javascript:goPageNoSubmit('review', 'videoList');">합격수기</a></li>
+                <li><a href="javascript:goPassReview();">합격수기</a></li>
             </ul>
         </div>
     </div>
@@ -107,7 +124,7 @@
                 <li><a href="javascript:goPageNoSubmit('zianPass', 'list')">지안패스</a></li>
                 <li><a href="javascript:goPageNoSubmit('freeLecture', 'theory')">무료강좌</a></li>
                 <li><a href="#">빅모의고사</a></li>
-                <li><a href="javascript:goPageNoSubmit('review', 'videoList');">합격수기</a></li>
+                <li><a href="javascript:goMyPage();">합격수기</a></li>
             </ul>
         </div>
     </div>
@@ -115,11 +132,11 @@
     <div id="gnb" class="bookStore" style="display: none;">
         <div class="inner">
             <ul class="deaph1 cols7">
-                <li><a href="#">공통과목</a></li>
-                <li><a href="#">해정직군</a></li>
-                <li><a href="#">기술직군</a></li>
-                <li><a href="#">계리직군</a></li>
-                <li><a href="#">자격증</a></li>
+                <li><a href="javascript:goDetailbookType('COMMON');">공통과목</a></li>
+                <li><a href="javascript:goDetailbookType('PUBLIC');">해정직군</a></li>
+                <li><a href="javascript:goDetailbookType('TECH');">기술직군</a></li>
+                <li><a href="javascript:goDetailbookType('POST');">계리직군</a></li>
+                <li><a href="javascript:goDetailbookType('CERT');">자격증</a></li>
                 <li><a href="#">정오표</a></li>
             </ul>
         </div>

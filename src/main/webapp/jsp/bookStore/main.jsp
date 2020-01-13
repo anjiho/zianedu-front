@@ -8,11 +8,11 @@
         bookStoreReviewBoard(5, 'BOOK', 1, 4, '', '');
         innerValue('orderType', 'date');
         innerHTML("selCount", 0);
+        fn_search('new');
         $("input[name=lecChk]").click(function(index){//체크박스 카운트 처리
             var count = $("input[name=lecChk]:checkbox:checked").length;
             innerHTML("selCount", count);
         });
-        fn_search('new');
     });
     
     function goList(orderType) {
@@ -29,7 +29,6 @@
         if(searchText == undefined) searchText = "";
         if(searchType == undefined) searchType = "";
 
-
         if(val == "new") sPage = "1";
         getSalesBookList(searchType, searchText, orderType, sPage, 5);
     }
@@ -38,13 +37,27 @@
         fn_search('new');
     }
 
+    function goDetailBook(gkey) {
+        innerValue('gkey', gkey);
+        goPage('bookStore', 'detail');
+    }
+
+    function goDetailbookType(type) {
+        innerValue('bookType', type);
+        $("#bookTypePage").attr("action", "/bookStore?page_gbn=bookTypeList");
+        $("#bookTypePage").submit();
+    }
 </script>
+<form id="bookTypePage" method="post" name="bookTypePage">
+    <input type="hidden" id="bookType" name="bookType">
+</form>
 <form id="id_frm_singleMypage" method="post" name="id_frm_singleMypage">
     <input type="hidden" id="gKeys" name="gKeys">
 </form>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
     <input type="hidden" id="orderType">
+    <input type="hidden" id="gkey" name="gkey">
     <input type="hidden" id="sPage">
     <input type="hidden" id="sPage2">
 <%--    <div id="wrap" class="shop">--%>
@@ -127,8 +140,8 @@
                                     </select>
                                 </div>
                                 <ul class="listtype" id="listtype">
-                                        <li><a href="javascript:goList('date');">출간일순</a></li>
-                                        <li class="last"><a href="javascript:goList('name');">저자순</a></li>
+                                    <li><a href="javascript:goList('date');">출간일순</a></li>
+                                    <li class="last"><a href="javascript:goList('name');">저자순</a></li>
                                 </ul>
 
                                 <ul class="lectureTotal">

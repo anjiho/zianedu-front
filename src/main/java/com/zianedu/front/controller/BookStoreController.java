@@ -14,6 +14,10 @@ public class BookStoreController {
 
         if ("main".equals(page_gbn)) {
             mvc.setViewName("/bookStore/main");
+        }else if("detail".equals(page_gbn)){
+            mvc.setViewName("/bookStore/detailBook");
+        }else if("bookTypeList".equals(page_gbn)){
+            mvc.setViewName("/bookStore/bookTypeList");
         }
         return mvc;
     }

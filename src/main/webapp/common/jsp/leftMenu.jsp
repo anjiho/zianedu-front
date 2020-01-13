@@ -152,13 +152,28 @@
     }
     
     function setLeftMenu4() {
-        sessionStorage.setItem("leftMenu", 'bookStore');
-        goPageNoSubmit('bookStore','main');
+        var subMenuHtml = $("#subMenu4").html();
+        if(subMenuHtml == '자격증/가산점'){
+            alert('오픈 준비중 입니다.');
+            return false;
+        }else if(subMenuHtml == '온라인서점'){
+            sessionStorage.setItem("leftMenu", 'bookStore');
+            goPageNoSubmit('bookStore','main');
+        }
     }
     
     function setLeftMenu3() {
-        alert("준비중 입니다.");
-        return false;
+        var subMenuHtml = $("#subMenu3").html();
+        if(subMenuHtml == '자격증/가산점'){
+            alert('오픈 준비중 입니다.');
+            return false;
+        }else if(subMenuHtml == '온라인서점'){
+            sessionStorage.setItem("leftMenu", 'bookStore');
+            goPageNoSubmit('bookStore','main');
+        }else if(subMenuHtml == '행정직'){
+            sessionStorage.setItem("leftMenu", "publicOnline");
+            goPageNoSubmit("publicOnline", "main");
+        }
     }
 
 </script>

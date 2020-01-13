@@ -736,7 +736,8 @@ legend {display:none;position:absolute;visibility:hidden;}
 .online .infoT_book .book_info table b {font-size: 18px;font-weight:800}
 .online .infoT_book .book_info .text_red {font-size: 12px;padding-left: 5px}
 .online .infoT_book .book_etc {float:left;width:21%;padding:2%;background:#ebebeb;text-align: center;margin-top:65px;min-height: 310px}
-.online .infoT_book .book_etc span {display: block;line-height:20px;}
+/*.online .infoT_book .book_etc span {display: block;line-height:20px;}*/
+.online .infoT_book .book_etc span {display: inline-block;line-height:28px;}
 .online .infoT_book .book_etc img {padding: 25px 0 5px}
 .online .infoT_book .book_etc b {font-size: 18px;font-weight:800}
 .online .infoT_book .book_etc .btn_inline {margin-top:20px;padding-right:30px;background: #ebebeb;font-size:14px;background: url(../images/common/icon_arrowLink.png) 85px center no-repeat; }
@@ -749,7 +750,7 @@ legend {display:none;position:absolute;visibility:hidden;}
 .shop .number_wrap a {float:left;display: inline-block;width:30px;height:30px;text-indent: -9999px}
 .shop .number_wrap a.inc {background:#000 url(../images/content/icon_inc.png) center center no-repeat;}
 .shop .number_wrap a.dec {background:#000 url(../images/content/icon_dec.png) center center no-repeat;}
-.shop .number_wrap .updown {float:left;display: inline-block;width:68px;height:20px;padding:4px 0;border:1px solid #e1e1e1;text-align: center;margin:0 7px;}
+.shop .number_wrap .updown {float:left;display: inline-block;width:68px;height:30px;padding:4px 0;border:1px solid #e1e1e1;text-align: center;margin:0 7px;}
 
 
 
