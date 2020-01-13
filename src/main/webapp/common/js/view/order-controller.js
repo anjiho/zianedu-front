@@ -49,7 +49,7 @@ function getOrderSheetInfoFromCart(userKey, cartKeys) {
                             }
                         returnHtml += "</td>";
                         returnHtml += "<td>";
-                            returnHtml += "1";
+                            returnHtml += orderInfo.count;
                         returnHtml += "</td>";
                         returnHtml += "<td>";
                             returnHtml += orderInfo.sellPriceName;
