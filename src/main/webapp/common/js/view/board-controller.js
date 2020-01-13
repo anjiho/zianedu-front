@@ -12,7 +12,6 @@ function saveBoard(bbsMasterKey, userKey, title, content, isSecret, ctgKey, file
         ctgKey :  ctgKey,
         fileName : fileName
     };
-    console.log(data);
     var result = postApi("/board/saveBoard", data);
     return result;
 }
@@ -542,7 +541,6 @@ function getPasserVideoListFromReview(bbsMasterKey, sPage, listLimit, searchType
         var selList = infoList.result;
         paging.count(sPage, cnt, '10', listLimit, comment.blank_list);
         for(var i=0; i < selList.length; i++){
-            var cmpList = selList[i];
             function formatter(cmpList) {
                 return ""+
                     "<a href=\"javascript:\"><img src='"+ cmpList.fileUrl +"'  style='width: 250px;height: 122px'/></a>"+

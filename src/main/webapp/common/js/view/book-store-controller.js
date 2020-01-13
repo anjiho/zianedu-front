@@ -1,19 +1,18 @@
 //온라인서점 도서 배너 목록
-function getBannerList(ctgKey, listLimit) {
-    if (ctgKey == null || ctgKey == undefined) return;
-    var data = {
-        listLimit : listLimit
-    };
-    var infoList = getApi("/bookStore/getBannerList/", ctgKey, data);
-    console.log(infoList);
+function getNewBookList() {
+    var infoList = getApi("/bookStore/getNewBookList/", '', '');
     if (infoList.result.length > 0) {
         var selList = infoList.result;
         for(var i=0; i<selList.length;i++){
             var returnHtml = "<div class=\"item\"><div>";
             returnHtml += "<img src='"+ selList[i].bookImageUrl +"' alt=\"\">";
             returnHtml += "<span class=\"name\">"+ selList[i].goodsName +"</span>";
-            returnHtml += "<span class=\"writer\">김설 | 탑스팟</span>";
-            returnHtml += "<span class=\"price\"><b>24,000</b>원 <span>(10% off)</span></span>";
+            if(selList[i].name != null){
+                returnHtml += "<span class=\"writer\">"+ selList[i].writer + " | "+ selList[i].name +"</span>";
+            }else{
+                returnHtml += "<span class=\"writer\">"+ selList[i].writer + "</span>";
+            }
+            returnHtml += "<span class=\"price\"><b>"+ selList[i].price +"</b>원 <span>("+ selList[i].accrualRate +"% off)</span></span>";
             returnHtml += "</div></div>";
             $("#newBookList").append(returnHtml);
         }
@@ -33,8 +32,12 @@ function getBestBookList() {
             var returnHtml = "<div class=\"item\"><div>";
             returnHtml += "<img src='"+ selList[i].bookImageUrl +"' alt=\"\">";
             returnHtml += "<span class=\"name\">"+ selList[i].goodsName +"</span>";
-            returnHtml += "<span class=\"writer\">김설 | 탑스팟</span>";
-            returnHtml += "<span class=\"price\"><b>24,000</b>원 <span>(10% off)</span></span>";
+            if(selList[i].name != null){
+                returnHtml += "<span class=\"writer\">"+ selList[i].writer + " | "+ selList[i].name +"</span>";
+            }else{
+                returnHtml += "<span class=\"writer\">"+ selList[i].writer + "</span>";
+            }
+            returnHtml += "<span class=\"price\"><b>"+ selList[i].price +"</b>원 <span>("+ selList[i].accrualRate +"% off)</span></span>";
             returnHtml += "</div></div>";
             $("#bestBookList").append(returnHtml);
         }
@@ -43,6 +46,7 @@ function getBestBookList() {
         $(".mainProductList3").each(function(){
             kiplayer.sliderSlickNew2($(this));
         });
+        $(".slick-dots").hide();
     });
 }
 
@@ -56,7 +60,6 @@ function getBookList(tagId , leftMenuCtgKey, sPage, listLimit) {
         listLimit : listLimit
     };
     var infoList = getApi("/bookStore/getBookList/", leftMenuCtgKey, data);
-
     if (infoList.result.length > 0) {
         var selList = infoList.result;
         dwr.util.addOptions(tagId, selList, function (data) {
@@ -74,4 +77,67 @@ function getBookList(tagId , leftMenuCtgKey, sPage, listLimit) {
     $(function(){
         kiplayer.sliderSlick($(".productList"));
     });
+    $(".slick-dots").hide();
+}
+
+function getSalesBookList(bookMenuType, searchText, orderType, sPage, listLimit) {
+    var paging = new Paging();
+    dwr.util.removeAllRows("dataList"); //테이블 리스트 초기화
+    var data = {
+        searchText : searchText,
+        orderType : orderType,
+        sPage : sPage,
+        listLimit : listLimit
+    };
+    var infoList = getPageApi("/bookStore/getSalesBookList/", bookMenuType, data);
+    var cnt = infoList.cnt;
+    if(infoList != null){
+        //if (infoList.result.length > 0) {
+            var selList = infoList.result;
+            paging.count(sPage, cnt, '5', listLimit, comment.blank_list);
+            for(var i=0; i < selList.length; i++){
+                var cmpList = selList[i];
+                if (cmpList != undefined) {
+                    var cellData = [
+                        function(data) {return '<img src="'+ cmpList.bookImageUrl +'" style="width: 120px;height: 170px">'},
+                        function(data) {return '<span class="black small">'+ cmpList.subjectName +'</span><a href="#" class="learnName">'+ cmpList.goodsName +'</a><span class="learnNum">'+ cmpList.writer +' | '+ cmpList.name +' |  <b class="">'+ cmpList.publishDate +'</b></span>';},
+                        function(data) {return '<li class="txt14"><span class="text_red">'+ cmpList.discountPercent +'</span>할인</li>';},
+                        function(data) {return "<ul class=\"costList\"><li><b class=\"cost\">"+ cmpList.price +"원</b> <input type=\"checkbox\" name=\"lecChk\" id='"+  cmpList.priceKey +"' value='"+ cmpList.gkey +"'><a href='javascript:goOneLecCheckedShopBasket("+ cmpList.priceKey +","+ cmpList.gkey +");' class=\"btn_s\">장바구니</a><a href='javascript:goOneLecCheckedBuy("+ cmpList.priceKey +");' class=\"btn_s on\">바로구매</a></li></ul>";}
+                    ];
+                    dwr.util.addRows("dataList", [0], cellData, {escapeHtml: false});
+                }
+            }
+      //  }
+    }
+}
+
+function getSalesBookList2(bookMenuType, searchText, orderType, sPage, listLimit) {
+    var paging = new Paging();
+    dwr.util.removeAllRows("dataList2"); //테이블 리스트 초기화
+    var data = {
+        searchText : searchText,
+        orderType : orderType,
+        sPage : sPage,
+        listLimit : listLimit
+    };
+    var infoList = getPageApi("/bookStore/getSalesBookList/", bookMenuType, data);
+    var cnt = infoList.cnt;
+    if(infoList != null){
+        if (infoList.result.length > 0) {
+            var selList = infoList.result;
+            paging.count2(sPage, cnt, '5', listLimit, comment.blank_list);
+            for(var i=0; i < selList.length; i++){
+                var cmpList = selList[i];
+                if (cmpList != undefined) {
+                    var cellData = [
+                        function(data) {return '<img src="'+ cmpList.bookImageUrl +'" style="width: 120px;height: 170px">'},
+                        function(data) {return '<span class="black small">영어</span><a href="#" class="learnName">'+ cmpList.goodsName +'</a><span class="learnNum">'+ cmpList.writer +' | '+ cmpList.name +' |  <b class="">'+ cmpList.publishDate +'</b></span>';},
+                        function(data) {return '<li class="txt14"><span class="text_red">'+ cmpList.discountPercent +'</span>할인</li>';},
+                        function(data) {return "<ul class=\"costList\"><li><b class=\"cost\">"+ cmpList.price +"원</b> <input type=\"checkbox\" name=\"lecChk\" id='"+  cmpList.priceKey +"' value='"+ cmpList.gkey +"'><a href='javascript:goOneLecCheckedShopBasket("+ cmpList.priceKey +","+ cmpList.gkey +");' class=\"btn_s\">장바구니</a><a href='javascript:goOneLecCheckedBuy("+ cmpList.priceKey +");' class=\"btn_s on\">바로구매</a></li></ul>";}
+                    ];
+                    dwr.util.addRows("dataList2", [0], cellData, {escapeHtml: false});
+                }
+            }
+        }
+    }
 }

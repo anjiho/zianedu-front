@@ -2991,7 +2991,7 @@ function goCheckedShopBasket() {
     if(sessionUserInfo != undefined){
         var userKey = sessionUserInfo.userKey;
         if($("input:checkbox[name=lecChk]:checked").length == 0 ){
-            alert("체크된 강의가 없습니다.");
+            alert("체크된 상품이 없습니다.");
             return false;
         }
         $('input[name=lecChk]:checked').each(function() {
@@ -3038,7 +3038,6 @@ function goCheckedBuy() {
                  var priceKey = $(this).attr('id');
                 arr.push(priceKey);
             });
-
             var data = toStrFileName(arr);
             innerValue("gKeys", data);
 

@@ -85,13 +85,6 @@
                             </tr>
                             </thead>
                             <tbody id="dataList">
-<%--                            <tr id="dataList">--%>
-<%--&lt;%&ndash;                                <td>5</td>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                <td class="left"><a href="#">2019 지안에듀 리뷰작성 이벤트 당첨자</a></td>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                <td>지안에듀</td>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                <td>2019.08.09</td>&ndash;%&gt;--%>
-<%--&lt;%&ndash;                                <td>31</td>&ndash;%&gt;--%>
-<%--                            </tr>--%>
                             </tbody>
                         </table>
                     </div>

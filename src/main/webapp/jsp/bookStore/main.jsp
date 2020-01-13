@@ -2,14 +2,65 @@
 <%@include file="/common/jsp/common.jsp" %>
 <script>
     $( document ).ready(function() {
-        //getBannerList(839,10);
+        getNewBookList();
         getBestBookList();
         getBannerNoticeList('bookInfo', 1, 4, 10057);//온라인서점안내
         bookStoreReviewBoard(5, 'BOOK', 1, 4, '', '');
+        innerValue('orderType', 'date');
+        innerHTML("selCount", 0);
+        $("input[name=lecChk]").click(function(index){//체크박스 카운트 처리
+            var count = $("input[name=lecChk]:checkbox:checked").length;
+            innerHTML("selCount", count);
+        });
+        fn_search('new');
     });
+    
+    function goList(orderType) {
+        innerValue('orderType', orderType);
+        fn_search('new');
+    }
+
+    function fn_search(val) {
+        innerHTML("selCount", 0);
+        var orderType = getInputTextValue('orderType');
+        var sPage = getInputTextValue("sPage");
+        var searchText = getInputTextValue("searchText");
+        var searchType = getSelectboxValue("searchType");
+        if(searchText == undefined) searchText = "";
+        if(searchType == undefined) searchType = "";
+
+
+        if(val == "new") sPage = "1";
+        getSalesBookList(searchType, searchText, orderType, sPage, 5);
+    }
+
+    // function fn_search2(val) {
+    //     innerHTML("selCount", 0);
+    //     innerValue("orderType", 'writer');
+    //     var sPage = getInputTextValue("sPage2");
+    //     var searchText = getInputTextValue("searchText");
+    //     var searchType = getSelectboxValue("searchType");
+    //     if(searchText == undefined) searchText = "";
+    //     if(searchType == undefined) searchType = "";
+    //
+    //
+    //     if(val == "new") sPage = "1";
+    //     getSalesBookList2(searchType, searchText, 'name', sPage, 5);
+    // }
+
+    function searchBookList(val) {
+        fn_search('new');
+    }
+
 </script>
+<form id="id_frm_singleMypage" method="post" name="id_frm_singleMypage">
+    <input type="hidden" id="gKeys" name="gKeys">
+</form>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
+    <input type="hidden" id="orderType">
+    <input type="hidden" id="sPage">
+    <input type="hidden" id="sPage2">
 <%--    <div id="wrap" class="shop">--%>
     <div id="wrap">
         <%@include file="/common/jsp/leftMenu.jsp" %>
@@ -26,44 +77,7 @@
                         <h5>새로나온 책</h5>
                         <span>지안에듀 신규 도서를 확인 해 보세요!</span>
                     </div>
-                    <div class="mainProductList2" id="newBookList">
-<%--                        <div class="item"><div>--%>
-<%--                            <img src="/common/zian/images/content/img_book1.jpg" alt="">--%>
-<%--                            <span class="name">건축사공학</span>--%>
-<%--                            <span class="writer">김설 | 탑스팟</span>--%>
-<%--                            <span class="price"><b>24,000</b>원 <span>(10% off)</span></span>--%>
-<%--                        </div></div>--%>
-<%--                        <div class="item"><div>--%>
-<%--                            <img src="/common/zian/images/content/img_book2.jpg" alt="">--%>
-<%--                            <span class="name">2019 정보보안기사&산업기사</span>--%>
-<%--                            <span class="writer">김설 | 탑스팟</span>--%>
-<%--                            <span class="price"><b>24,000</b>원 <span>(10% off)</span></span>--%>
-<%--                        </div></div>--%>
-<%--                        <div class="item"><div>--%>
-<%--                            <img src="/common/zian/images/content/img_book3.jpg" alt="">--%>
-<%--                            <span class="name">토목설계</span>--%>
-<%--                            <span class="writer">이학민 | 탑스팟</span>--%>
-<%--                            <span class="price"><b>24,000</b>원 <span>(10% off)</span></span>--%>
-<%--                        </div></div>--%>
-<%--                        <div class="item"><div>--%>
-<%--                            <img src="/common/zian/images/content/img_book4.jpg" alt="">--%>
-<%--                            <span class="name">지안영어기출문제집</span>--%>
-<%--                            <span class="writer">조경훈 | 탑스팟</span>--%>
-<%--                            <span class="price"><b>24,000</b>원 <span>(10% off)</span></span>--%>
-<%--                        </div></div>--%>
-<%--                        <div class="item"><div>--%>
-<%--                            <img src="/common/zian/images/content/img_book1.jpg" alt="">--%>
-<%--                            <span class="name">건축사공학</span>--%>
-<%--                            <span class="writer">김설 | 탑스팟</span>--%>
-<%--                            <span class="price"><b>24,000</b>원 <span>(10% off)</span></span>--%>
-<%--                        </div></div>--%>
-<%--                        <div class="item"><div>--%>
-<%--                            <img src="/common/zian/images/content/img_book1.jpg" alt="">--%>
-<%--                            <span class="name">건축사공학</span>--%>
-<%--                            <span class="writer">김설 | 탑스팟</span>--%>
-<%--                            <span class="price"><b>24,000</b>원 <span>(10% off)</span></span>--%>
-<%--                        </div></div>--%>
-                    </div>
+                    <div class="mainProductList2" id="newBookList"> </div>
                 </div>
 
                 <!-- 지안에듀 BEST도서 -->
@@ -71,80 +85,7 @@
                     <div class="titleBar">
                         <h5>지안에듀 BEST 도서</h5>
                     </div>
-                    <div class="mainProductList3 disnoneM" id="bestBookList">
-<%--                        <div class="item"><div>--%>
-<%--                            <img src="/common/zian/images/content/img_book1.jpg" alt="">--%>
-<%--                            <span class="name">건축사공학</span>--%>
-<%--                            <span class="writer">김설 | 탑스팟</span>--%>
-<%--                            <span class="price"><b>24,000</b>원 <span>(10% off)</span></span>--%>
-<%--                        </div></div>--%>
-<%--                        <div class="item"><div>--%>
-<%--                            <img src="/common/zian/images/content/img_book2.jpg" alt="">--%>
-<%--                            <span class="name">2019 정보보안기사&산업기사</span>--%>
-<%--                            <span class="writer">김설 | 탑스팟</span>--%>
-<%--                            <span class="price"><b>24,000</b>원 <span>(10% off)</span></span>--%>
-<%--                        </div></div>--%>
-<%--                        <div class="item"><div>--%>
-<%--                            <img src="/common/zian/images/content/img_book3.jpg" alt="">--%>
-<%--                            <span class="name">토목설계</span>--%>
-<%--                            <span class="writer">이학민 | 탑스팟</span>--%>
-<%--                            <span class="price"><b>24,000</b>원 <span>(10% off)</span></span>--%>
-<%--                        </div></div>--%>
-<%--                        <div class="item"><div>--%>
-<%--                            <img src="/common/zian/images/content/img_book4.jpg" alt="">--%>
-<%--                            <span class="name">지안영어기출문제집</span>--%>
-<%--                            <span class="writer">조경훈 | 탑스팟</span>--%>
-<%--                            <span class="price"><b>24,000</b>원 <span>(10% off)</span></span>--%>
-<%--                        </div></div>--%>
-<%--                        <div class="item"><div>--%>
-<%--                            <img src="/common/zian/images/content/img_book1.jpg" alt="">--%>
-<%--                            <span class="name">건축사공학</span>--%>
-<%--                            <span class="writer">김설 | 탑스팟</span>--%>
-<%--                            <span class="price"><b>24,000</b>원 <span>(10% off)</span></span>--%>
-<%--                        </div></div>--%>
-<%--                        <div class="item"><div>--%>
-<%--                            <img src="/common/zian/images/content/img_book1.jpg" alt="">--%>
-<%--                            <span class="name">건축사공학</span>--%>
-<%--                            <span class="writer">김설 | 탑스팟</span>--%>
-<%--                            <span class="price"><b>24,000</b>원 <span>(10% off)</span></span>--%>
-<%--                        </div></div>--%>
-<%--                        <div class="item"><div>--%>
-<%--                            <img src="/common/zian/images/content/img_book1.jpg" alt="">--%>
-<%--                            <span class="name">건축사공학</span>--%>
-<%--                            <span class="writer">김설 | 탑스팟</span>--%>
-<%--                            <span class="price"><b>24,000</b>원 <span>(10% off)</span></span>--%>
-<%--                        </div></div>--%>
-<%--                        <div class="item"><div>--%>
-<%--                            <img src="/common/zian/images/content/img_book2.jpg" alt="">--%>
-<%--                            <span class="name">2019 정보보안기사&산업기사</span>--%>
-<%--                            <span class="writer">김설 | 탑스팟</span>--%>
-<%--                            <span class="price"><b>24,000</b>원 <span>(10% off)</span></span>--%>
-<%--                        </div></div>--%>
-<%--                        <div class="item"><div>--%>
-<%--                            <img src="/common/zian/images/content/img_book3.jpg" alt="">--%>
-<%--                            <span class="name">토목설계</span>--%>
-<%--                            <span class="writer">이학민 | 탑스팟</span>--%>
-<%--                            <span class="price"><b>24,000</b>원 <span>(10% off)</span></span>--%>
-<%--                        </div></div>--%>
-<%--                        <div class="item"><div>--%>
-<%--                            <img src="/common/zian/images/content/img_book4.jpg" alt="">--%>
-<%--                            <span class="name">지안영어기출문제집</span>--%>
-<%--                            <span class="writer">조경훈 | 탑스팟</span>--%>
-<%--                            <span class="price"><b>24,000</b>원 <span>(10% off)</span></span>--%>
-<%--                        </div></div>--%>
-<%--                        <div class="item"><div>--%>
-<%--                            <img src="/common/zian/images/content/img_book1.jpg" alt="">--%>
-<%--                            <span class="name">건축사공학</span>--%>
-<%--                            <span class="writer">김설 | 탑스팟</span>--%>
-<%--                            <span class="price"><b>24,000</b>원 <span>(10% off)</span></span>--%>
-<%--                        </div></div>--%>
-<%--                        <div class="item"><div>--%>
-<%--                            <img src="/common/zian/images/content/img_book1.jpg" alt="">--%>
-<%--                            <span class="name">건축사공학</span>--%>
-<%--                            <span class="writer">김설 | 탑스팟</span>--%>
-<%--                            <span class="price"><b>24,000</b>원 <span>(10% off)</span></span>--%>
-<%--                        </div></div>--%>
-                    </div>
+                    <div class="mainProductList3 disnoneM" id="bestBookList"></div>
                 </div>
 
                 <!-- 온라인서점 안내 -->
@@ -153,12 +94,7 @@
                         <div class="mainBoard">
                             <p class="stitle">온라인 서점안내</p>
                             <div class="list">
-                                <ul id="bookInfo">
-<%--                                    <li><a href="#">2019 추석 교재배송지연 안내입니다.<span class="date">2019.07.06</span></a></li>--%>
-<%--                                    <li><a href="#">2019 8월 교재배송 지연 안내입니다.<span class="date">2019.07.06</span></a></li>--%>
-<%--                                    <li><a href="#">2019 5월 교재배송 지연 안내입니다.<span class="date">2019.07.06</span></a></li>--%>
-<%--                                    <li><a href="#">설연휴 교재배송지연 안내입니다.<span class="date">2019.07.06</span></a></li>--%>
-                                </ul>
+                                <ul id="bookInfo"> </ul>
                                 <a href="#" class="btn_more">전체보기</a>
                             </div>
                         </div>
@@ -167,12 +103,7 @@
                         <div class="mainBoard">
                             <p class="stitle">지안에듀 도서후기</p>
                             <div class="list">
-                                <ul id="bookReview">
-<%--                                    <li><a href="#">지안 공통과목 책 후기입니다.<span class="date">2019.07.06</span></a></li>--%>
-<%--                                    <li><a href="#">이학민 응용역학 책 구입후기 <span class="date">2019.07.06</span></a></li>--%>
-<%--                                    <li><a href="#">2019 토목설계 이론책 샀습니다.<span class="date">2019.07.06</span></a></li>--%>
-<%--                                    <li><a href="#">임찬호 한국사 예상문제집 구매 후기 입니다.<span class="date">2019.07.06</span></a></li>--%>
-                                </ul>
+                                <ul id="bookReview"></ul>
                                 <a href="#" class="btn_more">전체보기</a>
                             </div>
                         </div>
@@ -191,8 +122,8 @@
 
                 <form>
                     <div class="searchArea">
-                        <input type="text" class="w400">
-                        <input type="submit" value="검색" class="btn_m on">
+                        <input type="text" class="w400" id="searchText" onkeypress="if(event.keyCode==13) {fn_search('new'); return false;}">
+                        <a href="javascript:fn_search('new');" class="btn_m on w140">검색</a>
                     </div>
                 </form>
 
@@ -201,192 +132,77 @@
                         <div class="lectureWrap">
                             <div class="shoplist">
                                 <div class="type_wrap">
-                                    <div class="type_btn">전체</div>
-                                    <ul class="typedrop">
-                                        <li><a href="">전체</a></li>
-                                        <li><a href="">공통과목</a></li>
-                                        <li><a href="">행정직군</a></li>
-                                        <li><a href="">기술직군</a></li>
-                                        <li><a href="">계리직군</a></li>
-                                        <li><a href="">자격중</a></li>
-                                    </ul>
+                                    <select id="searchType" class="w140"  onchange="searchBookList();">
+                                        <option value="COMMON">공통과목</option>
+                                        <option value="PUBLIC">행정직군</option>
+                                        <option value="TECH">기술직군</option>
+                                        <option value="POST">계리직군</option>
+                                        <option value="CERT">자격중</option>
+                                    </select>
                                 </div>
-                                <ul class="listtype">
-                                    <li><a href="#">출간일순</a></li>
-                                    <li class="last"><a href="#">저자순</a></li>
+                                <ul class="listtype" id="listtype">
+<%--                                    <li><a href="javascript:fn_search('new');">출간일순</a></li>--%>
+<%--                                    <li class="last"><a href="javascript:fn_search2('new');">저자순</a></li>--%>
+                                        <li><a href="javascript:goList('date');">출간일순</a></li>
+                                        <li class="last"><a href="javascript:goList('name');">저자순</a></li>
                                 </ul>
 
                                 <ul class="lectureTotal">
                                     <li class="left"></li>
                                     <li class="right">
-                                        선택한 항목 <span class="colorRed">3</span>개를
-                                        <a href="#" class="btn_m">장바구니 담기</a>
-                                        <a href="#" class="btn_m on">바로구매</a>
+                                        선택한 항목 <span class="colorRed" id="selCount"></span>개를
+                                        <a href="javascript:goCheckedShopBasket();" class="btn_m">장바구니 담기</a>
+                                        <a href="javascript:goCheckedBuy();" class="btn_m on">바로구매</a>
                                     </li>
                                 </ul>
                             </div>
-                            <!--shopBoard-->
-                            <div class="shopBoard">
-                                <ul class="lectureHead">
-                                    <li class="">이미지</li>
-                                    <li class="w35p">도서명</li>
-                                    <li>할인적립</li>
-                                    <li class="w40p">교재비</li>
-                                </ul>
-                                <div class="lectureBody">
-                                    <div class="lectureRow">
-                                        <ul class="lectureList">
-                                            <li class="lectureList_img">
-                                                <img src="/common/zian/images/content/img_book4.jpg">
-                                            </li>
-                                            <li class="w35p">
-                                                <span class="black small">영어</span>
-                                                <a href="#" class="learnName">지안영어 기출문제집</a>
-                                                <span class="learnNum">조재권 | 탑스팟 |  <b class="">2019.06.28</b></span>
-                                            </li>
-                                            <li>
-                                                <ul>
-                                                    <li class="txt14"><span class="text_red">20%</span>할인</li>
-                                                    <li class="txt14"><span class="text_red">20%</span>할인</li>
-                                                </ul>
-                                            </li>
-                                            <li class="w40p ta_right">
-                                                <ul class="costList">
-                                                    <li>
-                                                        <b class="cost">20,000원</b> <input type="checkbox" name="" value="">
-                                                        <a href="#" class="btn_s">장바구니</a>
-                                                        <a href="#" class="btn_s on">바로구매</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="lectureRow">
-                                        <ul class="lectureList">
-                                            <li class="">
-                                                <img src="/common/zian/images/content/img_book6.jpg">
-                                            </li>
-                                            <li class="w35p">
-                                                <span class="black small">영어</span>
-                                                <a href="#" class="learnName">윤광덕 영어</a>
-                                                <span class="learnNum">조재권 | 탑스팟 |  <b class="">2019.06.28</b></span>
-                                            </li>
-                                            <li>
-                                                <ul>
-                                                    <li class="txt14"><span class="text_red">20%</span>할인</li>
-                                                    <li class="txt14"><span class="text_red">20%</span>할인</li>
-                                                </ul>
-                                            </li>
-                                            <li class="w40p ta_right">
-                                                <ul class="costList">
-                                                    <li>
-                                                        <b class="cost">20,000원</b> <input type="checkbox" name="" value="">
-                                                        <a href="#" class="btn_s">장바구니</a>
-                                                        <a href="#" class="btn_s on">바로구매</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="lectureRow">
-                                        <ul class="lectureList">
-                                            <li class="">
-                                                <img src="/common/zian/images/content/img_book7.jpg">
-                                            </li>
-                                            <li class="w35p">
-                                                <span class="black small">한국사</span>
-                                                <a href="#" class="learnName">윤광덕 영어</a>
-                                                <span class="learnNum">조재권 | 탑스팟 |  <b class="">2019.06.28</b></span>
-                                            </li>
-                                            <li>
-                                                <ul>
-                                                    <li class="txt14"><span class="text_red">20%</span>할인</li>
-                                                    <li class="txt14"><span class="text_red">20%</span>할인</li>
-                                                </ul>
-                                            </li>
-                                            <li class="w40p ta_right">
-                                                <ul class="costList">
-                                                    <li>
-                                                        <b class="cost">20,000원</b> <input type="checkbox" name="" value="">
-                                                        <a href="#" class="btn_s">장바구니</a>
-                                                        <a href="#" class="btn_s on">바로구매</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="lectureRow">
-                                        <ul class="lectureList">
-                                            <li class="">
-                                                <img src="/common/zian/images/content/img_book21.jpg">
-                                            </li>
-                                            <li class="w35p">
-                                                <span class="black small">국어</span>
-                                                <a href="#" class="learnName">윤광덕 영어</a>
-                                                <span class="learnNum">조재권 | 탑스팟 |  <b class="">2019.06.28</b></span>
-                                            </li>
-                                            <li>
-                                                <ul>
-                                                    <li class="txt14"><span class="text_red">20%</span>할인</li>
-                                                    <li class="txt14"><span class="text_red">20%</span>할인</li>
-                                                </ul>
-                                            </li>
-                                            <li class="w40p ta_right">
-                                                <ul class="costList">
-                                                    <li>
-                                                        <b class="cost">20,000원</b> <input type="checkbox" name="" value="">
-                                                        <a href="#" class="btn_s">장바구니</a>
-                                                        <a href="#" class="btn_s on">바로구매</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="lectureRow">
-                                        <ul class="lectureList">
-                                            <li class="">
-                                                <img src="/common/zian/images/content/img_book22.jpg">
-                                            </li>
-                                            <li class="w35p">
-                                                <span class="black small">국어</span>
-                                                <a href="#" class="learnName">윤광덕 영어</a>
-                                                <span class="learnNum">조재권 | 탑스팟 |  <b class="">2019.06.28</b></span>
-                                            </li>
-                                            <li>
-                                                <ul>
-                                                    <li class="txt14"><span class="text_red">20%</span>할인</li>
-                                                    <li class="txt14"><span class="text_red">20%</span>할인</li>
-                                                </ul>
-                                            </li>
-                                            <li class="w40p ta_right">
-                                                <ul class="costList">
-                                                    <li>
-                                                        <b class="cost">20,000원</b> <input type="checkbox" name="" value="">
-                                                        <a href="#" class="btn_s">장바구니</a>
-                                                        <a href="#" class="btn_s on">바로구매</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </div>
+<%--                            <div class="shopBoard">--%>
+                                <div class="tableBox">
+                                    <table class="list">
+                                        <caption></caption>
+                                        <colgroup>
+                                            <col class="w100">
+                                            <col class="w180">
+                                            <col class="w90">
+                                            <col class="w150">
+                                        </colgroup>
+                                        <thead>
+                                        <tr>
+                                            <th scope="col" style="text-align: center">이미지</th>
+                                            <th scope="col" style="text-align: center">도서명</th>
+                                            <th scope="col" style="text-align: center">할인적립</th>
+                                            <th scope="col" style="text-align: center">교재비</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody id="dataList"></tbody>
+                                    </table>
                                 </div>
-                                <!-- paging -->
-                                <div class="paging">
-                                    <div class="boardnavi">
-                                        <a class="prev" href="#">이전 목록이동</a>
-                                        <span>
-										<strong class="selected">1</strong>
-										<a href="#">2</a>
-										<a href="#">3</a>
-									</span>
-                                        <a class="next" href="#">다음 목록이동</a>
-                                    </div>
+                                <%@ include file="/common/inc/com_pageNavi.inc" %>
                                 </div>
-                                <!-- //paging -->
-                            </div>
-
-                            <div class="shopBoard">저자순</div>
-                        </div>
+<%--                            <div class="shopBoard">--%>
+<%--                                <div class="tableBox">--%>
+<%--                                    <table class="list">--%>
+<%--                                        <caption></caption>--%>
+<%--                                        <colgroup>--%>
+<%--                                            <col class="w100">--%>
+<%--                                            <col class="w180">--%>
+<%--                                            <col class="w90">--%>
+<%--                                            <col class="w150">--%>
+<%--                                        </colgroup>--%>
+<%--                                        <thead>--%>
+<%--                                        <tr>--%>
+<%--                                            <th scope="col" style="text-align: center">이미지</th>--%>
+<%--                                            <th scope="col" style="text-align: center">도서명</th>--%>
+<%--                                            <th scope="col" style="text-align: center">할인적립</th>--%>
+<%--                                            <th scope="col" style="text-align: center">교재비</th>--%>
+<%--                                        </tr>--%>
+<%--                                        </thead>--%>
+<%--                                        <tbody id="dataList2"></tbody>--%>
+<%--                                    </table>--%>
+<%--                                </div>--%>
+<%--                                <%@ include file="/common/inc/com_pageNavi2.inc" %>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
                     </form>
                 </div>
 
