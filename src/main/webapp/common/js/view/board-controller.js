@@ -58,7 +58,6 @@ function updateBoard(bbskey, title, content, isSecret, fileName) {
         isSecret : isSecret,
         fileName : fileName
     };
-    console.log(data);
     var result = postApi("/board/updateBoard", data);
     return result;
 }
@@ -152,7 +151,6 @@ function getCommunityList2(bbsMaterKey, sPage, listLimit, searchType, searchText
         searchText : searchText
     };
     var infoList = getPageApi("/board/getCommunityList/", bbsMaterKey, data);
-    console.log(infoList);
     var cnt = infoList.cnt;
     if(infoList != null){
         if (infoList.result.length > 0) {

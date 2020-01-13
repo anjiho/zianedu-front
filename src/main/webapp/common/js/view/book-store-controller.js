@@ -94,7 +94,6 @@ function getSalesBookList(bookMenuType, searchText, orderType, sPage, listLimit)
     if(infoList != null){
         //if (infoList.result.length > 0) {
             var selList = infoList.result;
-            console.log(selList);
             paging.count(sPage, cnt, '5', listLimit, comment.blank_list);
             for(var i=0; i < selList.length; i++){
                 var cmpList = selList[i];
