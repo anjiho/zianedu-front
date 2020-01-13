@@ -123,12 +123,10 @@
                                         <option value="PUBLIC">행정직군</option>
                                         <option value="TECH">기술직군</option>
                                         <option value="POST">계리직군</option>
-                                        <option value="CERT">자격중</option>
+                                        <option value="CERT">자격증</option>
                                     </select>
                                 </div>
                                 <ul class="listtype" id="listtype">
-<%--                                    <li><a href="javascript:fn_search('new');">출간일순</a></li>--%>
-<%--                                    <li class="last"><a href="javascript:fn_search2('new');">저자순</a></li>--%>
                                         <li><a href="javascript:goList('date');">출간일순</a></li>
                                         <li class="last"><a href="javascript:goList('name');">저자순</a></li>
                                 </ul>
@@ -142,53 +140,28 @@
                                     </li>
                                 </ul>
                             </div>
-<%--                            <div class="shopBoard">--%>
-                                <div class="tableBox">
-                                    <table class="list">
-                                        <caption></caption>
-                                        <colgroup>
-                                            <col class="w100">
-                                            <col class="w180">
-                                            <col class="w90">
-                                            <col class="w150">
-                                        </colgroup>
-                                        <thead>
-                                        <tr>
-                                            <th scope="col" style="text-align: center">이미지</th>
-                                            <th scope="col" style="text-align: center">도서명</th>
-                                            <th scope="col" style="text-align: center">할인적립</th>
-                                            <th scope="col" style="text-align: center">교재비</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody id="dataList"></tbody>
-                                    </table>
-                                </div>
-                                <%@ include file="/common/inc/com_pageNavi.inc" %>
-                                </div>
-<%--                            <div class="shopBoard">--%>
-<%--                                <div class="tableBox">--%>
-<%--                                    <table class="list">--%>
-<%--                                        <caption></caption>--%>
-<%--                                        <colgroup>--%>
-<%--                                            <col class="w100">--%>
-<%--                                            <col class="w180">--%>
-<%--                                            <col class="w90">--%>
-<%--                                            <col class="w150">--%>
-<%--                                        </colgroup>--%>
-<%--                                        <thead>--%>
-<%--                                        <tr>--%>
-<%--                                            <th scope="col" style="text-align: center">이미지</th>--%>
-<%--                                            <th scope="col" style="text-align: center">도서명</th>--%>
-<%--                                            <th scope="col" style="text-align: center">할인적립</th>--%>
-<%--                                            <th scope="col" style="text-align: center">교재비</th>--%>
-<%--                                        </tr>--%>
-<%--                                        </thead>--%>
-<%--                                        <tbody id="dataList2"></tbody>--%>
-<%--                                    </table>--%>
-<%--                                </div>--%>
-<%--                                <%@ include file="/common/inc/com_pageNavi2.inc" %>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
+                            <div class="tableBox">
+                                <table class="list">
+                                    <caption></caption>
+                                    <colgroup>
+                                        <col class="w100">
+                                        <col class="w180">
+                                        <col class="w90">
+                                        <col class="w150">
+                                    </colgroup>
+                                    <thead>
+                                    <tr>
+                                        <th scope="col" style="text-align: center">이미지</th>
+                                        <th scope="col" style="text-align: center">도서명</th>
+                                        <th scope="col" style="text-align: center">할인적립</th>
+                                        <th scope="col" style="text-align: center">교재비</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="dataList"></tbody>
+                                </table>
+                            </div>
+                            <%@ include file="/common/inc/com_pageNavi.inc" %>
+                            </div>
                     </form>
                 </div>
 
