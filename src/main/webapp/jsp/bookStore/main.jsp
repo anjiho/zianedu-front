@@ -16,17 +16,15 @@
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
 <%--    <div id="wrap" class="shop">--%>
-    <div id="wrap" class="shop">
+    <div id="wrap">
         <%@include file="/common/jsp/leftMenu.jsp" %>
         <!--상단-->
         <%@include file="/common/jsp/header.jsp" %>
         <!--//상단-->
-
         <!--본문-->
-        <div id="container">
+        <div id="container" class="shop">
             <div class="inner">
                 <!--컨텐츠-->
-
                 <!-- 새로나온책 -->
                 <div class="mainProduct2">
                     <div class="titleBar">
