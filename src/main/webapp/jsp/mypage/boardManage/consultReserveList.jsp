@@ -30,6 +30,7 @@
                 goPageNoSubmit('myPage', 'boardList');
             }
         });
+
         $("#searchStartDate").datepicker({
             format: "yyyy-mm-dd"
         });
@@ -174,7 +175,6 @@
                 <!--//서브 컨텐츠-->
             </div>
         </div>
-
         <!--//본문-->
         <%@include file="/common/jsp/footer.jsp" %>
         <%@include file="/common/jsp/rightMenu.jsp" %>

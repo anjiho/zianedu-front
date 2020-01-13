@@ -145,7 +145,7 @@
                 <li class="item2"><a href="javascript:void(0);" onclick="setLeftMenu1()"><span id="subMenu1"></span></a></li>
                 <li class="item3"><a href="javascript:void(0);" onclick="setLeftMenu2()"><span id="subMenu2"></span></a></li>
                 <li class="item5"><a href="#">자격증/가산점</a></li>
-                <li class="item4"><a href="#">온라인 서점</a></li>
+                <li class="item4"><a href="javascript:goPageNoSubmit('bookStore','main')">온라인 서점</a></li>
                 <li class="item4"><a href="#">빅모의고사</a></li>
             </ul>
         </div>

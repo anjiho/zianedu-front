@@ -567,9 +567,9 @@ function getReviewMasterKey() {
     }else if(leftMenuInfo == "techAcademy"){
         bbsMasterKey = 10970;
     }else if(leftMenuInfo == "postOnline"){
-        bbsMasterKey = 10970;
+        bbsMasterKey = 11047;
     }else if(leftMenuInfo == "postAcademy"){
-        bbsMasterKey = 10970;
+        bbsMasterKey = 11047;
     }
     return bbsMasterKey;
 }

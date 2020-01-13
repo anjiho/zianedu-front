@@ -14,6 +14,48 @@ var default_Slick = {
 			settings:{autoplay:true,slidesToShow:1,centerMode:true}
 		}]
 };
+
+
+var new_Slick = {
+	autoplay:true,dots:true,infinite:true,slidesToShow:5,slidesToScroll:1,
+	responsive:[{
+		breakpoint:800,
+		settings:{autoplay:true,slidesToShow:3,centerMode:true}
+	},
+		{
+			breakpoint:500,
+			settings:{autoplay:true,slidesToShow:2,centerMode:true}
+		},
+		{
+			breakpoint:400,
+			settings:{autoplay:true,slidesToShow:2,centerMode:true}
+		}]
+};
+
+var new_Slick2 = {
+	autoplay:true,dots:true,infinite:true,slidesToShow:5,slidesToScroll:1,rows: 2,
+	responsive:[{
+		breakpoint:800,
+		settings:{autoplay:true,slidesToShow:3,centerMode:true}
+	},
+		{
+			breakpoint:667,
+			settings:{autoplay:true,slidesToShow:3,centerMode:true}
+		},
+		{
+			breakpoint:568,
+			settings:{autoplay:true,slidesToShow:2,centerMode:true}
+		},
+		{
+			breakpoint:414,
+			settings:{autoplay:true,slidesToShow:2,centerMode:true}
+		},
+		{
+			breakpoint:320,
+			settings:{autoplay:true,slidesToShow:2,centerMode:true}
+		}]
+};
+
 var sliderItem = [];
 
 $(function(){
@@ -378,11 +420,11 @@ var kiplayer = {
 		$("a.btn_modalOpen[href='#"+modalId+"']").focus();
 	},
 	'slider':function(){
-		// if($(".slider.useBx").length > 0){
-		// 	$(".slider.useBx").each(function(){
-		// 		kiplayer.sliderBx($(this).children("ul"));
-		// 	});
-		// }
+		if($(".slider.useBx").length > 0){
+			$(".slider.useBx").each(function(){
+				kiplayer.sliderBx($(this).children("ul"));
+			});
+		}
 		if($(".slider.useSlick").length > 0){
 			$(".slider.useSlick").each(function(){
 				kiplayer.sliderSlick($(this).children("ul"));
@@ -409,6 +451,16 @@ var kiplayer = {
 	},
 	'sliderSlick':function(ul, option){
 		var sliderOption = default_Slick;
+		if(option) sliderOption = option;
+		ul.slick(sliderOption);
+	},
+	'sliderSlickNew':function(ul, option){
+		var sliderOption = new_Slick;
+		if(option) sliderOption = option;
+		ul.slick(sliderOption);
+	},
+	'sliderSlickNew2':function(ul, option){
+		var sliderOption = new_Slick2;
 		if(option) sliderOption = option;
 		ul.slick(sliderOption);
 	},

@@ -25,11 +25,13 @@
             innerValue("passSubject", detailInfo.successSubject);
             innerValue("lecSubject", detailInfo.lectureSubject);
             if(detailInfo.fileInfo != null) {
-                if (detailInfo.fileInfo.length > 0) {
-                    for (var i = 0; i < detailInfo.fileInfo.length; i++) {
-                        var fileList = detailInfo.fileInfo[i];
-                        var retrunHtml = "<li><a href='javascript:void(0);'><img src=\"/common/zian/images/common/icon_file.png\" alt=\"\"> "+ fileList.fileName +"</a></li>";
-                        $("#fileList").append(retrunHtml);
+                if(detailInfo.fileInfo != null) {
+                    if (detailInfo.fileInfo.length > 0) {
+                        for (var i = 0; i < detailInfo.fileInfo.length; i++) {
+                            var fileList = detailInfo.fileInfo[i];
+                            var returnHtml = "<li id='"+fileList.bbsFileKey+"'><a href='javascript:void(0);'>"+ fileList.fileName +"</a>"+" "+"<a href='javascript:deleteFileList("+ fileList.bbsFileKey +");' >X</a></li>";
+                            $("#fileList").append(returnHtml);
+                        }
                     }
                 }
             }

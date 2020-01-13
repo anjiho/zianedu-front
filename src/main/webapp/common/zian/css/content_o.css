@@ -256,7 +256,7 @@ legend {display:none;position:absolute;visibility:hidden;}
 
 /*합격수기review 공통search*/
 .review_movie_search {}
-.review_movie_search .list {width:100%;margin-bottom:30px;border-top:2px solid #000;display: }
+.review_movie_search .list {width:100%;margin-bottom:30px;border-top:2px solid #000;}
 .review_movie_search .list:after {content: "";display: block;clear:both}
 .review_movie_search .list ul {padding-top: 30px}
 .review_movie_search .list li {float:left;width:220px;padding-left:24px;margin-bottom: 45px}
@@ -599,7 +599,7 @@ legend {display:none;position:absolute;visibility:hidden;}
 .free .tbd_02 .crud_area .unit {position: absolute;left:40px;bottom: 15px}
 .free .tbd_02 .crud_area strong {position: absolute;right:40px;bottom: 15px}
 .free .direct_view .btn_inline {margin:50px 0 20px 40px}
-.free .direct_view .item{width:300px box-sizing: border-box;padding: 0 40px}
+.free .direct_view .item{width:300px; box-sizing: border-box;padding: 0 40px}
 .free .direct_view .item:after {content: "";display: block;clear: both}
 .free .direct_view .item .inner { position: relative;}
 .free .direct_view .item .thumb{float:left;width:290px; height:auto;cursor: pointer;}
@@ -649,6 +649,7 @@ legend {display:none;position:absolute;visibility:hidden;}
 
 
 
+
 /*온라인서점 ****************************************************************************************/
 .shop {}
 .shop #aside #siteTab {background: #003471}
@@ -695,7 +696,7 @@ legend {display:none;position:absolute;visibility:hidden;}
 .shop .submainBanner {position: relative;}
 .shop .submainBanner .Banner_txt {position: absolute;top:55px;left:50px;display: inline-block;width:450px;}
 .shop .submainBanner .Banner_txt .txt {color:#fff;font-size:14px;line-height: 24px}
-.shop .submainBanner .Banner_txt .link {position: absolute;top:30px;left:245px;font-size:14px;color:#fff; padding: 10px 60px 10px 35px;border:1px solid #fff;background: url(/common/zian/images/content/submain_arrow.png) 115px center no-repeat;}
+.shop .submainBanner .Banner_txt .link {position: absolute;top:30px;left:245px;font-size:14px;color:#fff; padding: 10px 60px 10px 35px;border:1px solid #fff;background: url(../images/content/submain_arrow.png) 115px center no-repeat;}
 .shop .searchArea {text-align: center;margin:40px 0;padding:0;}
 .shop .lectureWrap {border-top:none;}
 .shop .lectureTotal {border:none;    padding: 25px 30px 5px}
@@ -705,8 +706,8 @@ legend {display:none;position:absolute;visibility:hidden;}
 .shop .shoplist .stitle {font-size:18px;font-weight:bold}
 /*select부분*/
 .shop .shoplist .type_wrap {float:left;width:160px;font-size:14px;position: relative;margin:20px 0 10px;}
-.shop  .type_wrap .type_btn {display:inline-block;width:125px;height:24px;padding-left:10px;padding-top:4px;color:#4a4a4a;background: url(/common/zian/images/common/icon_lecture_down.png) 110px center no-repeat;cursor: pointer;border:1px solid #e5e5e5;}
-.shop  .type_wrap .type_btn.on {background: url(/common/zian/images/common/icon_lecture_up.png) 110px center no-repeat;}
+.shop  .type_wrap .type_btn {display:inline-block;width:125px;height:24px;padding-left:10px;padding-top:4px;color:#4a4a4a;background: url(../images/common/icon_lecture_down.png) 110px center no-repeat;cursor: pointer;border:1px solid #e5e5e5;}
+.shop  .type_wrap .type_btn.on {background: url(../images/common/icon_lecture_up.png) 110px center no-repeat;}
 .shop  .type_wrap .typedrop {display:none;width:125px;padding-left:10px;margin-left:30px;border:1px solid #e5e5e5;margin-top:10px;z-index: 200;position: absolute;top:19px;left:-30px;background:#fff }
 .shop  .type_wrap .typedrop li {padding:5px 0;}
 /*출간일순 저자순*/
@@ -738,7 +739,7 @@ legend {display:none;position:absolute;visibility:hidden;}
 .online .infoT_book .book_etc span {display: block;line-height:20px;}
 .online .infoT_book .book_etc img {padding: 25px 0 5px}
 .online .infoT_book .book_etc b {font-size: 18px;font-weight:800}
-.online .infoT_book .book_etc .btn_inline {margin-top:20px;padding-right:30px;background: #ebebeb;font-size:14px;background: url(/common/zian/images/common/icon_arrowLink.png) 85px center no-repeat; }
+.online .infoT_book .book_etc .btn_inline {margin-top:20px;padding-right:30px;background: #ebebeb;font-size:14px;background: url(../images/common/icon_arrowLink.png) 85px center no-repeat; }
 .online .btnArea.ta_center {text-align: center !important;}
 .online .btnArea.ta_center .btn_m {font-size: 12px;padding: 0 10px;}
 .online  .infoB_book .stitle {margin:60px 0 10px;}
@@ -746,9 +747,10 @@ legend {display:none;position:absolute;visibility:hidden;}
 /*온라인서점 > 주문수량 버튼*/
 .shop .number_wrap {}
 .shop .number_wrap a {float:left;display: inline-block;width:30px;height:30px;text-indent: -9999px}
-.shop .number_wrap a.inc {background:#000 url(/common/zian/images/content/icon_inc.png) center center no-repeat;}
-.shop .number_wrap a.dec {background:#000 url(/common/zian/images/content/icon_dec.png) center center no-repeat;}
+.shop .number_wrap a.inc {background:#000 url(../images/content/icon_inc.png) center center no-repeat;}
+.shop .number_wrap a.dec {background:#000 url(../images/content/icon_dec.png) center center no-repeat;}
 .shop .number_wrap .updown {float:left;display: inline-block;width:68px;height:20px;padding:4px 0;border:1px solid #e1e1e1;text-align: center;margin:0 7px;}
+
 
 
 /* paging */
@@ -875,3 +877,11 @@ background-size: 13px 6px;
 .modalWrap.modalWrap2 .inner .modalContent select {display: block;width:40%;text-align: center;margin:15px auto 30px;}
 .modalWrap.modalWrap2 .inner .modal_btn_box .bdblue {-webkit-border-radius:20px;-moz-border-radius :20px;border-radius:20px;padding:10px 30px;color:#134c97;font-weight: bold}
 .modalWrap.modalWrap2 .inner .modal_btn_box .bdgray {-webkit-border-radius:20px;-moz-border-radius :20px;border-radius:20px;padding:10px 30px;color:#999;font-weight: bold}
+
+
+/* 2020.01.06 추가 */
+.modalWrap .inner .modalContent p.pTxt{line-height:28px}
+
+/* 2020.01.09 추가 */
+.list .fthub{width:220px;height:123px}
+.list .fthub img{width:100%}

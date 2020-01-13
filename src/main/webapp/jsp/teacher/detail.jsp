@@ -259,19 +259,19 @@
             //봄문 내용 파징작업 끝
             innerHTML("referenceContent", contents);
 
-            for(var i = 0;  i < prevNextBbsList.length; i++){ /* 이전글 다음글 기능 */
-                if(prevNextBbsList[i].prevTitle == '이전글'){
+            for(var j = 0;  j < prevNextBbsList.length; j++){ /* 이전글 다음글 기능 */
+                if(prevNextBbsList[j].prevTitle == '이전글'){
                     innerHTML("referencePrevTitle", "");
                 } else {
-                    innerHTML("referencePrevTitle", prevNextBbsList[i].prevTitle);
-                    $("#referencePrevLink").attr("href", "javascript:goDetailReference("+ prevNextBbsList[i].prevBbsKey +");");
+                    innerHTML("referencePrevTitle", prevNextBbsList[j].prevTitle);
+                    $("#referencePrevLink").attr("href", "javascript:goDetailReference("+ prevNextBbsList[j].prevBbsKey +");");
                 }
 
-                if(prevNextBbsList[i].nextTitle == '다음글') {
+                if(prevNextBbsList[j].nextTitle == '다음글') {
                     innerHTML("referencePrevTitle", "");
                 } else {
-                    innerHTML("referenceNextTitle", prevNextBbsList[i].nextTitle);
-                    $("#referenceNextLink").attr("href", "javascript:goDetailReference("+ prevNextBbsList[i].nextBbsKey +");");
+                    innerHTML("referenceNextTitle", prevNextBbsList[j].nextTitle);
+                    $("#referenceNextLink").attr("href", "javascript:goDetailReference("+ prevNextBbsList[j].nextBbsKey +");");
                 }
             }
         }
@@ -407,7 +407,16 @@
             var detailInfo = result.boardDetailInfo;
             $("#writeContent").summernote("code", detailInfo.contents);
             innerValue("writeTitle", detailInfo.title);
-            innerHTML("fileList", detailInfo.fileName);
+            //innerHTML("fileList", detailInfo.fileName);
+            if(detailInfo.fileInfo != null) {
+                if (detailInfo.fileInfo.length > 0) {
+                    for (var i = 0; i < detailInfo.fileInfo.length; i++) {
+                        var fileList = detailInfo.fileInfo[i];
+                        var returnHtml = "<li id='"+fileList.bbsFileKey+"'><a href='javascript:void(0);'>"+ fileList.fileName +"</a>"+" "+"<a href='javascript:deleteFileList("+ fileList.bbsFileKey +");' >X</a></li>";
+                        $("#fileList").append(returnHtml);
+                    }
+                }
+            }
         }
     }
     
@@ -421,7 +430,16 @@
             var detailInfo = result.boardDetailInfo;
             $("#qnaWriteContent").summernote("code", detailInfo.contents);
             innerValue("qnaWriteTitle", detailInfo.title);
-            innerHTML("fileList1", detailInfo.fileName);
+           // innerHTML("fileList1", detailInfo.fileName);
+            if(detailInfo.fileInfo != null) {
+                if (detailInfo.fileInfo.length > 0) {
+                    for (var i = 0; i < detailInfo.fileInfo.length; i++) {
+                        var fileList = detailInfo.fileInfo[i];
+                        var returnHtml = "<li id='"+fileList.bbsFileKey+"'><a href='javascript:void(0);'>"+ fileList.fileName +"</a>"+" "+"<a href='javascript:deleteFileList("+ fileList.bbsFileKey +");' >X</a></li>";
+                        $("#fileList1").append(returnHtml);
+                    }
+                }
+            }
         }
     }
 
@@ -547,9 +565,6 @@
 <form action="/Player/Axis" id="id_frm_player" method="post" name="name_frm_player">
     <input id="vodPath" name="vodPath" type="hidden" value="" />
     <input id="vodTitle" name="vodTitle" type="hidden" value="" />
-    <%--    <input id="a_strPlayer_FilePath" name="a_strPlayer_FilePath" type="hidden" value="" />--%>
-    <%--    <input id="a_strPlayer_Title" name="a_strPlayer_Title" type="hidden" value="" />--%>
-    <%--    <input id="a_bPlayer_High" name="a_bPlayer_High" type="hidden" value="" />--%>
     <input id="starPlayerUrl" name="starPlayerUrl" type="hidden" value="" />
 </form>
 <form name="frm" method="get">
@@ -1056,14 +1071,12 @@
                                         </div>
                                     </form>
                                 </div>
-
                         </div>
                         <!--//학습qna 등록 끝-->
                     </div>
                 </div>
                 <!--//서브 컨텐츠-->
             </div>
-
         </div>
         <!--//본문-->
         <%@include file="/common/jsp/footer.jsp" %>

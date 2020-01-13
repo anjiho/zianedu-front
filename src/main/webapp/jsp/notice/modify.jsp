@@ -12,6 +12,15 @@
             var detailInfo = result.boardDetailInfo;
             $("#content").summernote("code", detailInfo.contents);
             innerValue("title", detailInfo.title);
+            if(detailInfo.fileInfo != null) {
+                if (detailInfo.fileInfo.length > 0) {
+                    for (var i = 0; i < detailInfo.fileInfo.length; i++) {
+                        var fileList = detailInfo.fileInfo[i];
+                        var returnHtml = "<li id='"+fileList.bbsFileKey+"'><a href='javascript:void(0);'>"+ fileList.fileName +"</a>"+" "+"<a href='javascript:deleteFileList("+ fileList.bbsFileKey +");' >X</a></li>";
+                        $("#fileList").append(returnHtml);
+                    }
+                }
+            }
         }
         $('#content').summernote({
             height: 400,
