@@ -56,6 +56,7 @@
             $(".bookStore").show();
             $("#logo").attr("src", "/common/zian/images/common/logo04.png");
             $("#mainUrl").attr("href", "javascript:goPageNoSubmit('postAcademy', 'main')");
+            sessionStorage.setItem("leftMenu", "publicOnline");
            // innerHTML("mainName", "학원");
             $("#mainName").css('color', '#ce1717');
         }
