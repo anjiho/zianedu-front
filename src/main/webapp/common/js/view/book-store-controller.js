@@ -1,20 +1,51 @@
 //온라인서점 도서 배너 목록
-function getBannerList(ctgKey, listLimit, tagId) {
+function getBannerList(ctgKey, listLimit) {
     if (ctgKey == null || ctgKey == undefined) return;
-
     var data = {
         listLimit : listLimit
     };
-
-    var InfoList = getApi("/bookStore/getBannerList/", ctgKey, data);
-
-    if (InfoList.result.length > 0) {
-        var selList = InfoList.result;
-        dwr.util.addRows(tagId, selList, [
-            //function(data) {return "<img src='"+ data.targetUrl +"'>";}
-        ], {escapeHtml:false});
+    var infoList = getApi("/bookStore/getBannerList/", ctgKey, data);
+    console.log(infoList);
+    if (infoList.result.length > 0) {
+        var selList = infoList.result;
+        for(var i=0; i<selList.length;i++){
+            var returnHtml = "<div class=\"item\"><div>";
+            returnHtml += "<img src='"+ selList[i].bookImageUrl +"' alt=\"\">";
+            returnHtml += "<span class=\"name\">"+ selList[i].goodsName +"</span>";
+            returnHtml += "<span class=\"writer\">김설 | 탑스팟</span>";
+            returnHtml += "<span class=\"price\"><b>24,000</b>원 <span>(10% off)</span></span>";
+            returnHtml += "</div></div>";
+            $("#newBookList").append(returnHtml);
+        }
     }
+    $(function(){
+        $(".mainProductList2").each(function(){
+            kiplayer.sliderSlickNew($(this));
+        });
+    });
 }
+
+function getBestBookList() {
+    var infoList = getApi("/bookStore/getBestBookList/", '', '');
+    if (infoList.result.length > 0) {
+        var selList = infoList.result;
+        for(var i=0; i<selList.length;i++){
+            var returnHtml = "<div class=\"item\"><div>";
+            returnHtml += "<img src='"+ selList[i].bookImageUrl +"' alt=\"\">";
+            returnHtml += "<span class=\"name\">"+ selList[i].goodsName +"</span>";
+            returnHtml += "<span class=\"writer\">김설 | 탑스팟</span>";
+            returnHtml += "<span class=\"price\"><b>24,000</b>원 <span>(10% off)</span></span>";
+            returnHtml += "</div></div>";
+            $("#bestBookList").append(returnHtml);
+        }
+    }
+    $(function(){
+        $(".mainProductList3").each(function(){
+            kiplayer.sliderSlickNew2($(this));
+        });
+    });
+}
+
 
 
 //온라인서점 도서 목록(페이징)

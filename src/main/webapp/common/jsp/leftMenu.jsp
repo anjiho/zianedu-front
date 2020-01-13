@@ -75,6 +75,7 @@
                 innerHTML("topSub", "행정직 학원");
                 innerHTML("subMenu1", "기술직");
                 innerHTML("subMenu2", "계리직");
+                innerHTML("subMenu3", "자격증/가산점");
                 innerHTML("subMenu4", "온라인서점");
             }else if(leftMenuInfo == "publicAcademy"){
                 $("#siteTab").css("background","#134c97");
@@ -83,6 +84,7 @@
                 innerHTML("topSub", "행정직 온라인");
                 innerHTML("subMenu1", "기술직");
                 innerHTML("subMenu2", "계리직");
+                innerHTML("subMenu3", "자격증/가산점");
                 innerHTML("subMenu4", "온라인서점");
             }else if(leftMenuInfo == "techOnline"){
                 $("#siteTab").css("background","#f69321");
@@ -91,6 +93,7 @@
                 innerHTML("topSub", "기술직 학원");
                 innerHTML("subMenu1", "행정직");
                 innerHTML("subMenu2", "계리직");
+                innerHTML("subMenu3", "자격증/가산점");
                 innerHTML("subMenu4", "온라인서점");
             }else if(leftMenuInfo == "techAcademy"){
                 $("#siteTab").css("background","#f69321");
@@ -99,6 +102,7 @@
                 innerHTML("topSub", "기술직 온라인");
                 innerHTML("subMenu1", "행정직");
                 innerHTML("subMenu2", "계리직");
+                innerHTML("subMenu3", "자격증/가산점");
                 innerHTML("subMenu4", "온라인서점");
             }else if(leftMenuInfo == "postOnline"){
                 $("#siteTab").css("background","#ce1717");
@@ -107,6 +111,7 @@
                 innerHTML("topSub", "계리직 학원");
                 innerHTML("subMenu1", "행정직");
                 innerHTML("subMenu2", "기술직");
+                innerHTML("subMenu3", "자격증/가산점");
                 innerHTML("subMenu4", "온라인서점");
             }else if(leftMenuInfo == "postAcademy"){
                 $("#siteTab").css("background-color","#ce1717");
@@ -115,6 +120,7 @@
                 innerHTML("topSub", "계리직 온라인");
                 innerHTML("subMenu1", "행정직");
                 innerHTML("subMenu2", "기술직");
+                innerHTML("subMenu3", "자격증/가산점");
                 innerHTML("subMenu4", "온라인서점");
             }else if(leftMenuInfo == "bookStore"){
                 // var html = "온라인"+"<br />"+"서점";
@@ -124,7 +130,8 @@
                 innerHTML("topSub", "온라인"+"<br>"+"서점");
                 innerHTML("subMenu1", "기술직");
                 innerHTML("subMenu2", "계리직");
-                innerHTML("subMenu4", "온라인서점");
+                innerHTML("subMenu3", "행정직");
+                innerHTML("subMenu4", "자격증/가산점");
             }
             // else{
             //     $("#siteTab").css("background","#134c97");
@@ -148,6 +155,11 @@
         sessionStorage.setItem("leftMenu", 'bookStore');
         goPageNoSubmit('bookStore','main');
     }
+    
+    function setLeftMenu3() {
+        alert("준비중 입니다.");
+        return false;
+    }
 
 </script>
 <div id="skipLink">
@@ -168,8 +180,7 @@
             <ul>
                 <li class="item2"><a href="javascript:void(0);" onclick="setLeftMenu1()"><span id="subMenu1"></span></a></li>
                 <li class="item3"><a href="javascript:void(0);" onclick="setLeftMenu2()"><span id="subMenu2"></span></a></li>
-                <li class="item5"><a href="#">자격증/가산점</a></li>
-<%--                <li class="item4"><a href="javascript:goPageNoSubmit('bookStore','main')">온라인 서점</a></li>--%>
+                <li class="item5"><a href="javascript:void(0);" onclick="setLeftMenu3()"><span id="subMenu3"></span></a></li>
                 <li class="item4"><a href="javascript:void(0);" onclick="setLeftMenu4()"><span id="subMenu4"></span></a></li>
                 <li class="item4"><a href="#">빅모의고사</a></li>
             </ul>

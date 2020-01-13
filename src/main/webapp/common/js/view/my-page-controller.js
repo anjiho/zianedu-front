@@ -819,4 +819,40 @@ function getMyWriteExamBoard(userKey, boardType, sPage, listLimit, searchType, s
         }
     }
 }
+/*
+ if (bbsMaterKey == null || bbsMaterKey == undefined) return;
+    var data = {
+        sPage : sPage,
+        listLimit : listLimit
+    };
+    var InfoList = getApi("/board/getBannerNoticeList/", bbsMaterKey, data);
+
+    if (InfoList.result.length > 0) {
+        var selList = InfoList.result;
+        dwr.util.addOptions(tagId, selList, function (data) {
+            return "<a href=''>"+ ellipsis(data.title,28) +"<span class='date'>" + data.createDate + "</span></a>"
+        }, {escapeHtml: false});
+    }
+ */
+function bookStoreReviewBoard(userKey, boardType, sPage, listLimit, searchType, searchText) {
+    if(userKey == null || userKey == undefined) return;
+
+    var data = {
+        boardType : boardType,
+        sPage : sPage,
+        listLimit : listLimit,
+        searchType : searchType,
+        searchText : searchText
+    };
+    var infoList = getPageApi("/myPage/getMyWriteBoard/", userKey, data);
+    if(infoList != null){
+        if (infoList.result.length > 0) {
+            var selList = infoList.result;
+            console.log(selList);
+            dwr.util.addOptions('bookReview', selList, function (data) {
+                return "<a href='javascript:void(0);'>"+ ellipsis(data.title,28) +"<span class='date'>" + data.indate + "</span></a>"
+            }, {escapeHtml: false});
+        }
+    }
+}
 
