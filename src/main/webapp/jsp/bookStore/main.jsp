@@ -34,21 +34,7 @@
         getSalesBookList(searchType, searchText, orderType, sPage, 5);
     }
 
-    // function fn_search2(val) {
-    //     innerHTML("selCount", 0);
-    //     innerValue("orderType", 'writer');
-    //     var sPage = getInputTextValue("sPage2");
-    //     var searchText = getInputTextValue("searchText");
-    //     var searchType = getSelectboxValue("searchType");
-    //     if(searchText == undefined) searchText = "";
-    //     if(searchType == undefined) searchType = "";
-    //
-    //
-    //     if(val == "new") sPage = "1";
-    //     getSalesBookList2(searchType, searchText, 'name', sPage, 5);
-    // }
-
-    function searchBookList(val) {
+    function searchBookList() {
         fn_search('new');
     }
 

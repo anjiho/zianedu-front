@@ -110,34 +110,3 @@ function getSalesBookList(bookMenuType, searchText, orderType, sPage, listLimit)
       //  }
     }
 }
-
-function getSalesBookList2(bookMenuType, searchText, orderType, sPage, listLimit) {
-    var paging = new Paging();
-    dwr.util.removeAllRows("dataList2"); //테이블 리스트 초기화
-    var data = {
-        searchText : searchText,
-        orderType : orderType,
-        sPage : sPage,
-        listLimit : listLimit
-    };
-    var infoList = getPageApi("/bookStore/getSalesBookList/", bookMenuType, data);
-    var cnt = infoList.cnt;
-    if(infoList != null){
-        if (infoList.result.length > 0) {
-            var selList = infoList.result;
-            paging.count2(sPage, cnt, '5', listLimit, comment.blank_list);
-            for(var i=0; i < selList.length; i++){
-                var cmpList = selList[i];
-                if (cmpList != undefined) {
-                    var cellData = [
-                        function(data) {return '<img src="'+ cmpList.bookImageUrl +'" style="width: 120px;height: 170px">'},
-                        function(data) {return '<span class="black small">영어</span><a href="#" class="learnName">'+ cmpList.goodsName +'</a><span class="learnNum">'+ cmpList.writer +' | '+ cmpList.name +' |  <b class="">'+ cmpList.publishDate +'</b></span>';},
-                        function(data) {return '<li class="txt14"><span class="text_red">'+ cmpList.discountPercent +'</span>할인</li>';},
-                        function(data) {return "<ul class=\"costList\"><li><b class=\"cost\">"+ cmpList.price +"원</b> <input type=\"checkbox\" name=\"lecChk\" id='"+  cmpList.priceKey +"' value='"+ cmpList.gkey +"'><a href='javascript:goOneLecCheckedShopBasket("+ cmpList.priceKey +","+ cmpList.gkey +");' class=\"btn_s\">장바구니</a><a href='javascript:goOneLecCheckedBuy("+ cmpList.priceKey +");' class=\"btn_s on\">바로구매</a></li></ul>";}
-                    ];
-                    dwr.util.addRows("dataList2", [0], cellData, {escapeHtml: false});
-                }
-            }
-        }
-    }
-}
