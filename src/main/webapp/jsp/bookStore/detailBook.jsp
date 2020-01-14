@@ -7,7 +7,6 @@
     var gkey = <%=gkey%>;
     $( document ).ready(function() {
         var detailInfo = getBookDetailInfo(gkey);
-        console.log(detailInfo);
         var bookDetailInfo = detailInfo.result.bookDetailInfo;
         innerHTML('goodsName', bookDetailInfo.goodsName);
         innerHTML('price', bookDetailInfo.price+"원");

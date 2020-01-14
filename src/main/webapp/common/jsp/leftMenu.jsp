@@ -6,7 +6,6 @@
     }
     function setLeftMenu() {
         var topSubHtml = $("#topSub").html();
-
         if(topSubHtml == '기술직 학원'){
             sessionStorage.setItem("leftMenu", "techAcademy");
             goPageNoSubmit("techAcademy", "main");
@@ -179,7 +178,7 @@
             <a href="javascript:void(0);" onclick="setLeftMenu()"><span id="topSub"></span></a>
         </div>
         <div id="bookStoreTab" style="background: #003471;display: none;    height: 160px; text-align: center;">
-            <h1 style="border-bottom: none;display: block; margin: 0 20px;"><a href="#" style="padding: 50px 0;display: block;margin: 0; padding: 46px 0;font-size: 26px;color: #fff; line-height: 30px">온라인<br>서점</a></h1>
+            <h1 style="border-bottom: none;display: block; margin: 0 20px;"><a href="javascript:goPageNoSubmit('bookStore','main')" style="padding: 50px 0;display: block;margin: 0; padding: 46px 0;font-size: 26px;color: #fff; line-height: 30px">온라인<br>서점</a></h1>
         </div>
         <div id="siteNav">
             <ul>

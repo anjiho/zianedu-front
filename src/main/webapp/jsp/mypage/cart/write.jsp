@@ -12,6 +12,10 @@
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
     $( document ).ready(function() {
+        var leftMenuInfo = sessionStorage.getItem('leftMenu');//직렬 구분
+        if(leftMenuInfo == 'bookStore'){
+            sessionStorage.setItem("myPageHeader", "cart");
+        }
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         var userKey = sessionUserInfo.userKey;
 
@@ -162,6 +166,8 @@
         sessionStorage.setItem("gKeys", '<%=gKeys%>');
         sessionStorage.setItem("goodsInfo", '<%=goodsInfo%>');
         sessionStorage.setItem("retakeInfo", '<%=retakeInfo%>');
+        sessionStorage.setItem("priceKey", '<%=priceKey%>');
+        sessionStorage.setItem("bookCount", '<%=bookCount%>');
         var allProductPrice =  getInputTextValue("allProductPrice");
         var productNames = getInputTextValue("productNames");
         var resultData = {
@@ -179,7 +185,16 @@
         $("#id_frm_orderPay").attr( "action", "/myPage?page_gbn=pay");
         $("#id_frm_orderPay").submit();
     }
+
+    function goDetailbookType(type) {
+        innerValue('bookType', type);
+        $("#bookTypePage").attr("action", "/bookStore?page_gbn=bookTypeList");
+        $("#bookTypePage").submit();
+    }
 </script>
+<form id="bookTypePage" method="post" name="bookTypePage">
+    <input type="hidden" id="bookType" name="bookType">
+</form>
 <form action="/mypage/cart/orderPay" id="id_frm_orderPay" method="post" name="name_frm_orderPay">
     <input type="hidden" id="allProductPrice" name="allProductPrice"><!-- 결제해야할 총 금액 -->
     <input type="hidden" id="cartNum" name="cartNum">

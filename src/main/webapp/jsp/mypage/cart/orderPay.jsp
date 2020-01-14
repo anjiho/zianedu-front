@@ -99,6 +99,8 @@
         var goodsInfo = sessionStorage.getItem('goodsInfo');
         var retakeInfo = sessionStorage.getItem('retakeInfo');
         var resultData = JSON.parse(sessionStorage.getItem('resultData'));
+        var priceKey = JSON.parse(sessionStorage.getItem('priceKey'));
+        var bookCount = JSON.parse(sessionStorage.getItem('bookCount'));
 
         var total = '<%=total%>';
         var totalPoint = '<%=totalPoint%>';
@@ -114,17 +116,22 @@
         };
         sessionStorage.setItem("savePayInfo", JSON.stringify(data));
 
-        if( cartKeys == "" && goodsInfo == "" && retakeInfo == ''){//바로구매
+        if( cartKeys == "" && goodsInfo == "" && retakeInfo == '' && priceKey == ''&& bookCount == ''){//바로구매
             innerValue("gKeys", gKeys);
             getOrderSheetInfoFromImmediately(userKey, gKeys);
-        }else if(gKeys == "" && goodsInfo == "" && retakeInfo == ''){
+        }else if(gKeys == "" && goodsInfo == "" && retakeInfo == '' && priceKey == ''&& bookCount == ''){
             innerValue("cartNum", cartKeys);
             getOrderSheetInfoFromPay(userKey, cartKeys);
-        }else if(gKeys == "" && cartKeys == "" && retakeInfo == ''){//패키지
+        }else if(gKeys == "" && cartKeys == "" && retakeInfo == '' && priceKey == ''&& bookCount == ''){//패키지
             innerValue("goodsInfo", goodsInfo);
             getOrderSheetInfoFromImmediatelyAtBasicPackage(userKey, goodsInfo, 1);
-        }else{//재수강
+        }else if(gKeys == "" && cartKeys == "" && goodsInfo == '' && priceKey == ''&& bookCount == ''){//재수강
             getOrderSheetInfoFromImmediatelyAtRetake(userKey, retakeInfo);
+        }else{
+            var arr = new Array();
+            arr.push(priceKey);
+            var priceList = toStrFileName(arr);
+            getOrderSheetInfoFromImmediatelyAtBookStore(userKey, priceList, bookCount);
         }
 
         innerValue("allProductPrice", resultData.allProductPrice);
