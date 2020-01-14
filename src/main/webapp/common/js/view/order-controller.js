@@ -449,6 +449,7 @@ function getUserCartInfo(userKey) {
     if (userKey == null || userKey == undefined) return;
     var infoList = getApi("/order/getUserCartInfo/", userKey, "");
     if (infoList != null) {
+        console.log(infoList);
         if(infoList.result.deliveryPrice == 0){
             innerHTML("deliveryPrice", "0");
         }else{
@@ -488,7 +489,6 @@ function getUserCartInfo(userKey) {
         if (infoList.result.retakeCartInfo.length > 0) {
             for (var m = 0; m < infoList.result.retakeCartInfo.length; m++) {
                 var retakeCartInfo = infoList.result.retakeCartInfo[m];
-                console.log(retakeCartInfo);
                 var returnHtml = "<tr>";
                 returnHtml += "<td>";
                 returnHtml += "<input type=\"checkbox\" name='rePlayChk' id='"+ retakeCartInfo.cartKey +"' class=\"ck2\"></td>";
@@ -584,12 +584,16 @@ function getUserCartInfo(userKey) {
                 var bookInfo = infoList.result.bookCartInfo[l];
                 //totalSellPrice += bookInfo.sellPrice;
                 //totalPoint += bookInfo.point;
+                //구분 상품명 수량 판매가
                 var returnHtml = "<tr>";
                 returnHtml += "<td>";
                 returnHtml += "<input type=\"checkbox\" name='bookChk' id='"+ bookInfo.cartKey +"' class=\"ck4\"></td>";
                 returnHtml += "</td>";
                 returnHtml += "<td>";
                 returnHtml += bookInfo.goodsName;
+                returnHtml += "</td>";
+                returnHtml += "<td>";
+                returnHtml += bookInfo.cnt;
                 returnHtml += "</td>";
                 returnHtml += "<td>";
                 returnHtml += "<span class=\"thm line\">"+ bookInfo.priceName +"</span><span class=\"arrow\">＞</span>";
@@ -813,4 +817,131 @@ function addLectureLimitDay(jLecKey) {
     };
     var result = postApi("/order/addLectureLimitDay", data);
     return  result;
+}
+
+function getOrderSheetInfoFromImmediatelyAtBookStore(userKey, priceKeys, bookCount) {
+    if (userKey == null || userKey == undefined) return;
+    var data = {
+        priceKeys : priceKeys,
+        bookCount : Number(bookCount)
+    };
+
+    var infoList = getApi("/order/getOrderSheetInfoFromImmediatelyAtBookStore/", userKey, data);
+    if(infoList != null){
+        var cmpList = infoList.result;
+        innerHTML("userPoint", format(cmpList.userPoint));
+        innerHTML("maxUserPoint", format(cmpList.userPoint));
+        if(cmpList.orderProductList.length > 0){
+            var payProductNameArr = new Array();
+            var orderGoodArr = new Array();
+            for(var i = 0; i < cmpList.orderProductList.length; i++){
+                var orderInfo = cmpList.orderProductList[i];
+                console.log(orderInfo);
+                if(orderInfo.type != 3){
+                    innerValue("orderInfoType", orderInfo.type);
+                    gfn_display("deliveryInfo", false);
+                }else{
+                    innerValue("orderInfoType", orderInfo.type);
+                    gfn_display("deliveryInfo", true);
+                }
+                payProductNameArr.push(orderInfo.productName);
+                var orderGoodData = {
+                    priceKey : orderInfo.priceKey,
+                    cartKey : orderInfo.cartKey,
+                    kind : orderInfo.kind,
+                    gKey : orderInfo.gkey,
+                    extendDay : orderInfo.extendDay,
+                    pmType : orderInfo.pmType
+                };
+                orderGoodArr.push(orderGoodData);
+                var returnHtml  = "<tr>";
+                returnHtml += "<td>"+ orderInfo.productType +"</td>";
+                returnHtml += "<td>";
+                returnHtml += ""+ orderInfo.productName +"<br>";
+                if(orderInfo.kind == 100){
+                    returnHtml += "<span class=\"bdbox\">PC</span>";
+                }else if(orderInfo.kind == 101){
+                    returnHtml += "<span class=\"bdbox\">모바일</span>";
+                }else if(orderInfo.kind == 102){
+                    returnHtml += "<span class=\"bdbox\">PC</span><span class=\"bdbox\">모바일</span>";
+                }else if(orderInfo.kind == 0){
+                    returnHtml += "";
+                } else{
+                    //returnHtml += "<span class=\"text_blue\">판매가격 : </span>"+ orderInfo.kind +"개월";
+                }
+                returnHtml += "</td>";
+                returnHtml += "<td>";
+                returnHtml += orderInfo.count;
+                returnHtml += "</td>";
+                returnHtml += "<td>";
+                returnHtml += orderInfo.sellPriceName;
+                returnHtml += "</td>";
+                returnHtml += "</tr>";
+                $("#dataList").append(returnHtml);
+            }
+            innerValue("payProductName",payProductNameArr);
+            // var orderGoods = toStrFileName(orderGoodArr);
+            sessionStorage.setItem("orderGoodsList", JSON.stringify(orderGoodArr));
+        }
+
+        if(cmpList.productTotalPrice != null){
+            if(cmpList.productTotalPrice.productTotalPriceName != null){
+                innerValue("produceTotal", cmpList.productTotalPrice.productTotalPrice);
+                innerHTML("productTotalPriceName", cmpList.productTotalPrice.productTotalPriceName);
+                var str = cmpList.productTotalPrice.productTotalPriceName;
+                innerHTML("productTotalPriceName1", str.slice(0,-1));
+            }
+            if(cmpList.productTotalPrice.totalPointName != null){
+                innerHTML("totalPointName", cmpList.productTotalPrice.totalPointName);
+                innerHTML("totalPointName1", cmpList.productTotalPrice.totalPointName);
+                innerHTML("totalPointName3", cmpList.productTotalPrice.totalPointName);
+            }
+            if(cmpList.productTotalPrice.deliveryPriceName != null){
+                innerValue("deliveryTotal", cmpList.productTotalPrice.deliveryPrice);
+                innerHTML("deliveryPriceName", cmpList.productTotalPrice.deliveryPriceName);
+                var str1 = cmpList.productTotalPrice.deliveryPriceName;
+                innerHTML("deliveryPriceName3", str1.slice(0,-1));
+            }
+            var total = cmpList.productTotalPrice.productTotalPrice+cmpList.productTotalPrice.deliveryPrice;
+            innerHTML("totalPrice", format(total));
+            innerValue("allProductPrice", total);
+
+            innerValue("total", total);//상품총 가격
+            innerValue("totalPoint", cmpList.productTotalPrice.totalPoint);//적립될 총 포인트
+            innerValue("deliveryPrice", cmpList.productTotalPrice.deliveryPrice);//배송비
+        }
+
+        if(cmpList.productGroupPrice != null){
+            if(cmpList.productGroupPrice.academyTotalPriceName != null){ //결제시 지급 마일리지
+                innerHTML("academyTotalPriceName", cmpList.productGroupPrice.academyTotalPriceName);
+            }
+            if(cmpList.productGroupPrice.bookTotalPriceName != null){ // 동영상 상품 합계
+                innerHTML("bookTotalPriceName", cmpList.productGroupPrice.bookTotalPriceName);
+            }
+            if(cmpList.productGroupPrice.deliveryPriceName != null){
+                innerHTML("deliveryPriceName1", cmpList.productGroupPrice.deliveryPriceName);
+            }
+            // if(cmpList.productGroupPrice.examTotalPriceName != null){
+            //     innerHTML("examTotalPriceName", cmpList.productGroupPrice.examTotalPriceName);
+            // }
+            if(cmpList.productGroupPrice.promotionTotalPriceName != null){
+                innerHTML("promotionTotalPriceName", cmpList.productGroupPrice.promotionTotalPriceName);
+            }else{
+                innerHTML("promotionTotalPriceName", "0원");
+            }
+            if(cmpList.productGroupPrice.videoTotalPriceName != null){
+                innerHTML("videoTotalPriceName", cmpList.productGroupPrice.videoTotalPriceName);
+            }
+        }
+
+        if(cmpList.orderUserInfo != null){
+            var userInfo = cmpList.orderUserInfo;
+            innerHTML("orderName", userInfo.name);
+            innerHTML("telephone", userInfo.telephone);
+            innerHTML("telephoneMobile", userInfo.telephoneMobile);
+            innerHTML("email", userInfo.email);
+            innerHTML("zipcode", userInfo.zipcode);
+            innerHTML("address", userInfo.address);
+        }
+    }
 }

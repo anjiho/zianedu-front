@@ -48,13 +48,23 @@
     function goBookBasket() {
         var priceKey = getInputTextValue('priceKey');
         var gkey = getInputTextValue('gkey');
-        goOneLecCheckedShopBasket(priceKey, gkey);
+        var gCount = getInputTextValue('count');
+        goOneLecCheckedBookStoreBasket(priceKey, gkey, gCount);
     }
 
     //바로구매
     function goBookBuy() {
         var priceKey = getInputTextValue('priceKey');
-        goOneLecCheckedBuy(priceKey);
+        var arr = new Array();
+        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        if(sessionUserInfo != undefined){
+            arr.push(priceKey);
+            var bookCount = getInputTextValue('count');
+            innerValue("bookPriceKey", priceKey);
+            innerValue("bookCount",  bookCount);
+            $("#id_frm_singleMypage").attr("action", "/myPage?page_gbn=write");
+            $("#id_frm_singleMypage").submit();
+        }
     }
 
     //구매수량 체크
@@ -84,7 +94,9 @@
     <input type="hidden" id="bookType" name="bookType">
 </form>
 <form id="id_frm_singleMypage" method="post" name="id_frm_singleMypage">
-    <input type="hidden" id="gKeys" name="gKeys">
+<%--    <input type="hidden" id="bookGoBuyInfo" name="bookGoBuyInfo">--%>
+    <input type="hidden" id="bookPriceKey" name="bookPriceKey">
+    <input type="hidden" id="bookCount" name="bookCount">
 </form>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">

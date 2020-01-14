@@ -3110,6 +3110,33 @@ function goOneLecCheckedShopBasket(priceKey, gkey) {
     }
 }
 
+//단일 장바구니
+function goOneLecCheckedBookStoreBasket(priceKey, gkey, gCount) {
+    var arr = new Array();
+    var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+    if(sessionUserInfo != undefined){
+        var userKey = sessionUserInfo.userKey;
+        var data = {
+            userKey : userKey,
+            gKey : gkey,
+            priceKey : priceKey,
+            gCount : gCount
+        };
+        arr.push(data);
+        var saveCartInfo = JSON.stringify(arr);
+        var result = saveCart(saveCartInfo);
+        if(result.resultCode == 200){
+            alert("장바구니에 담겼습니다.");
+            return false;
+        }
+    }else{
+        alert("로그인을 해주세요");
+        goLoginPage();
+    }
+}
+
+
+
 //단일 바로구매
 function goOneLecCheckedBuy(gkey) {
     var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));

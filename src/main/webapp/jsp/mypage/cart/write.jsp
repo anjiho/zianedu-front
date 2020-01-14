@@ -5,7 +5,9 @@
     String cartKeys = Util.isNullValue(request.getParameter("cartKeys"), "");
     String gKeys = Util.isNullValue(request.getParameter("gKeys"), "");
     String goodsInfo = Util.isNullValue(request.getParameter("goodsInfo"), "");
-    String retakeInfo = Util.isNullValue(request.getParameter("retakeInfo"), "");
+    String retakeInfo = Util.isNullValue(request.getParameter("retakeInfo"), "");//재수강
+    String priceKey = Util.isNullValue(request.getParameter("bookPriceKey"), "");//온라인서점 바로구매 key
+    String bookCount = Util.isNullValue(request.getParameter("bookCount"), "");//온라인서점 바로구매 수량
 %>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
@@ -22,19 +24,26 @@
         var cartKeys = '<%=cartKeys%>';
         var goodsInfo = '<%=goodsInfo%>';
         var retakeInfo = '<%=retakeInfo%>';
+        var priceKey =  '<%=priceKey%>';
+        var bookCount = '<%=bookCount%>';
 
-        if('<%=cartKeys%>' == '' && '<%=goodsInfo%>' == '' && '<%=retakeInfo%>' == ''){ //바로구매
+        if('<%=cartKeys%>' == '' && '<%=goodsInfo%>' == '' && '<%=retakeInfo%>' == '' && '<%=priceKey%>' == '' && '<%=bookCount%>' == ''){ //바로구매
             innerValue("gKeys", gKeys);
             getOrderSheetInfoFromImmediately(userKey, gKeys);
-        }else if('<%=gKeys%>' == '' && '<%=goodsInfo%>' == '' && '<%=retakeInfo%>' == ''){//장바구니
+        }else if('<%=gKeys%>' == '' && '<%=goodsInfo%>' == '' && '<%=retakeInfo%>' == '' && '<%=priceKey%>' == '' && '<%=bookCount%>' == ''){//장바구니
             innerValue("cartNum", cartKeys);
             getOrderSheetInfoFromCart(userKey, cartKeys);
-        }else if('<%=gKeys%>' == '' && '<%=cartKeys%>' == '' && '<%=retakeInfo%>' == ''){//패키지
+        }else if('<%=gKeys%>' == '' && '<%=cartKeys%>' == '' && '<%=retakeInfo%>' == '' && '<%=priceKey%>' == '' && '<%=bookCount%>' == ''){//패키지
             innerValue("goodsInfo", goodsInfo);
             getOrderSheetInfoFromImmediatelyAtBasicPackage(userKey, goodsInfo, 1);
-        }else{//재수강
+        }else if('<%=gKeys%>' == '' && '<%=cartKeys%>' == '' && '<%=goodsInfo%>' == '' && '<%=priceKey%>' == '' && '<%=bookCount%>' == ''){//재수강
             innerValue("retakeInfo", retakeInfo);
             getOrderSheetInfoFromImmediatelyAtRetake(userKey, retakeInfo);
+        }else{//온라인서점 바로구매
+            var arr = new Array();
+            arr.push(priceKey);
+            var priceList = toStrFileName(arr);
+            getOrderSheetInfoFromImmediatelyAtBookStore(userKey, priceList, bookCount);
         }
 
         var cartProductName =  getInputTextValue("cartProductName");

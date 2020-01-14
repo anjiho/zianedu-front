@@ -276,6 +276,7 @@
                                 <colgroup>
                                     <col width="50px">
                                     <col>
+                                    <col>
                                     <col width="150px">
                                     <col>
                                 </colgroup>
@@ -283,6 +284,7 @@
                                 <tr>
                                     <th><input type="checkbox" name="bookAll" value=""  class="check-all4"></th>
                                     <th>상품명</th>
+                                    <th>수량</th>
                                     <th>판매가</th>
                                     <th>마일리지</th>
                                 </tr>
