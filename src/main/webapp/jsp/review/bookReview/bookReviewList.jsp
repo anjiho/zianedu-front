@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/jsp/common.jsp" %>
+<%@ page import="com.zianedu.front.utils.Util" %>
+<%
+    String bookType = Util.isNullValue(request.getParameter("bookType"), "");
+%>
 <script>
     $( document ).ready(function() {
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
@@ -16,7 +20,22 @@
         if(searchType == undefined) searchType = "";
         if(searchText == undefined) searchText = "";
         if(val == "new") sPage = "1";
-        var bbsMasterKey = getBookReviewMasterKey();
+        var bookType = '<%=bookType%>';
+        if(bookType == '') {
+            var bbsMasterKey = getBookReviewMasterKey();
+        }else{
+            if(bookType == 'COMMON'){
+                var bbsMasterKey = 10035;
+            }else if(bookType == 'PUBLIC'){
+                var bbsMasterKey =  10016;
+            }else if(bookType == 'TECH'){
+                var bbsMasterKey = 10035;
+            }else if(bookType == 'POST'){
+                var bbsMasterKey = 10050;
+            }else if(bookType == 'CERT'){
+                var bbsMasterKey = 10035;
+            }
+        }
         var reviewCnt =  getReviewBoardCount(bbsMasterKey);
         innerHTML('reviewCnt', reviewCnt);
         getReviewBoardList(bbsMasterKey, sPage, 10, searchType, searchText);

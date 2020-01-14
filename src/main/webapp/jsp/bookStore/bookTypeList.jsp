@@ -8,6 +8,7 @@
     $( document ).ready(function() {
         sessionStorage.setItem("leftMenu", 'bookStore');
         var bookType = '<%=bookType%>';
+        innerValue('bookType',bookType);
         if(bookType == 'COMMON'){
             $("#typeBannerImg").attr("src", "/common/zian/images/content/submain_img01.png");
             innerHTML('subjectTitle', '공통과목');
@@ -60,6 +61,14 @@
         innerValue('orderType', orderType);
         fn_search('new');
     }
+    
+    function goBookReviewList() {
+        var bookType = getInputTextValue('bookType');
+        innerValue('bookType', bookType);
+        $("#bookTypePage").attr("action", "/review?page_gbn=bookList");
+        $("#bookTypePage").submit();
+
+    }
 </script>
 <form id="bookTypePage" method="post" name="bookTypePage">
     <input type="hidden" id="bookType" name="bookType">
@@ -89,7 +98,7 @@
                     <div class="Banner_txt">
                         <p class="title"><img src="" alt="" id="typeBannerImg"></p>
                         <span class="txt">부가설명을 써주세요써주세요써주세요</span>
-                        <a href="" class="link">도서후기</a>
+                        <a href="javascript:goBookReviewList();" class="link">도서후기</a>
                     </div>
                 </div>
 
