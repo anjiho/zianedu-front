@@ -144,7 +144,7 @@
     function setLeftMenu4() {
         var subMenuHtml = $("#subMenu4").html();
         if(subMenuHtml == '자격증/가산점'){
-            alert('오픈 준비중 입니다.');
+            window.open("http://www.algisa.com/public/main.html", "_blank");
             return false;
         }else if(subMenuHtml == '온라인서점'){
             sessionStorage.setItem("leftMenu", 'bookStore');
@@ -155,7 +155,7 @@
     function setLeftMenu3() {
         var subMenuHtml = $("#subMenu3").html();
         if(subMenuHtml == '자격증/가산점'){
-            alert('오픈 준비중 입니다.');
+            window.open("http://www.algisa.com/public/main.html", "_blank");
             return false;
         }else if(subMenuHtml == '온라인서점'){
             sessionStorage.setItem("leftMenu", 'bookStore');

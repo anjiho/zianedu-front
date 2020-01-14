@@ -44,15 +44,40 @@
         $("#bookTypePage").submit();
     }
 
+    //장바구니
     function goBookBasket() {
         var priceKey = getInputTextValue('priceKey');
         var gkey = getInputTextValue('gkey');
         goOneLecCheckedShopBasket(priceKey, gkey);
     }
-    
+
+    //바로구매
     function goBookBuy() {
         var priceKey = getInputTextValue('priceKey');
         goOneLecCheckedBuy(priceKey);
+    }
+
+    //구매수량 체크
+    function bookCntBuy(val) {
+        var cntStr =  getInputTextValue('count');
+        var ctnNum = Number(cntStr);
+        if(val == 'up'){
+            ctnNum += 1;
+            if(ctnNum > 10){
+                alert('최대 구매수량 10개 입니다.');
+                return false;
+            }
+            innerValue('count', ctnNum);
+            innerHTML('bookCnt', ctnNum);
+        }else{
+            ctnNum -= 1;
+            if(ctnNum < 1){
+                alert('최소 구매수량은 1개 입니다.');
+                return false;
+            }
+            innerValue('count', ctnNum);
+            innerHTML('bookCnt', ctnNum);
+        }
     }
 </script>
 <form id="bookTypePage" method="post" name="bookTypePage">
@@ -65,7 +90,7 @@
     <input type="hidden" name="page_gbn" id="page_gbn">
     <input type="hidden" id="priceKey">
     <input type="hidden" id="gkey" value="<%=gkey%>">
-
+    <input type="hidden" id="count" value="1">
     <%--    <div id="wrap" class="shop">--%>
     <div id="wrap">
         <%@include file="/common/jsp/leftMenu.jsp" %>
@@ -120,9 +145,9 @@
                                     <th>주문수량</th>
                                     <td>
                                         <div class="number_wrap">
-                                            <a href="" class="dec">수량내림</a>
-                                            <span class="updown">1</span>
-                                            <a href="" class="inc">수량올림</a>
+                                            <a href="javascript:bookCntBuy('down');" class="dec">수량내림</a>
+                                            <span class="updown" id="bookCnt">1</span>
+                                            <a href="javascript:bookCntBuy('up');" class="inc">수량올림</a>
                                         </div>
                                     </td>
                                 </tr>
