@@ -123,8 +123,6 @@
                 innerHTML("subMenu3", "자격증/가산점");
                 innerHTML("subMenu4", "온라인서점");
             }else if(leftMenuInfo == "bookStore"){
-                // var html = "온라인"+"<br />"+"서점";
-                // innerHTML("topName", html);
                 $("#siteTab").hide();
                 $("#bookStoreTab").show();
                 innerHTML("topSub", "온라인"+"<br>"+"서점");
@@ -133,14 +131,6 @@
                 innerHTML("subMenu3", "행정직");
                 innerHTML("subMenu4", "자격증/가산점");
             }
-            // else{
-            //     $("#siteTab").css("background","#134c97");
-            //     var html = "행정직"+"<br />"+"온라인";
-            //     innerHTML("topName", html);
-            //     innerHTML("topSub", "행정직 학원");
-            //     innerHTML("subMenu1", "기술직");
-            //     innerHTML("subMenu2", "계리직");
-            // }
         }
         //getExamScheduleList("dDayBanner"); //d-day 슬라이드 배너
     });

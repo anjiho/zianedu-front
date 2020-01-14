@@ -289,7 +289,7 @@ function gfn_getPageNav_new4(totalPageCnt,printNum,curPage) {
             sHtml += "<a class='active' href='javascript:gfn_fnList4(" + i + ")'>" + i + "</a>";
             //sHtml += "<strong title=\"현재페이지\"> " + i + " </strong>  ";
         } else {
-            sHtml += "<a class='' href='javascript:gfn_fnList3(" + i + ")'>" + i + "</a>";
+            sHtml += "<a class='' href='javascript:gfn_fnList4(" + i + ")'>" + i + "</a>";
         }
 
         if(i!=iEnd) {// 마지막 라인에는 구분자를 뺌

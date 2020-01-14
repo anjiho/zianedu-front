@@ -38,7 +38,7 @@
     }
 
     function goDetailBook(gkey) {
-        innerValue('gkey', gkey);
+        innerValue('bbsKey', gkey);
         goPage('bookStore', 'detail');
     }
 
@@ -46,6 +46,29 @@
         innerValue('bookType', type);
         $("#bookTypePage").attr("action", "/bookStore?page_gbn=bookTypeList");
         $("#bookTypePage").submit();
+    }
+
+    //온라인서점안내 상세보기
+    function goDetailNotice(bbsKey) {
+        innerValue("bbsKey", bbsKey);
+        goPage("notice", "detail");
+    }
+    
+    function goOnlineNoticeList() {
+        sessionStorage.setItem("noticeHeader", "onlineStore");
+        sessionStorage.setItem("leftMenu", "publicOnline");
+        goPageNoSubmit('notice', 'list');
+    }
+
+    function goBookReviewList() {
+        sessionStorage.setItem("leftMenu", "publicOnline");
+        goPageNoSubmit('myPage', 'boardList');
+    }
+    
+    function goBookReviewDetail(bbsKey) {
+        sessionStorage.setItem("leftMenu", "publicOnline");
+        innerValue("bbsKey", bbsKey);
+        goPage('review','detailBook');
     }
 </script>
 <form id="bookTypePage" method="post" name="bookTypePage">
@@ -57,7 +80,7 @@
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
     <input type="hidden" id="orderType">
-    <input type="hidden" id="gkey" name="gkey">
+    <input type="hidden" id="bbsKey" name="bbsKey">
     <input type="hidden" id="sPage">
     <input type="hidden" id="sPage2">
 <%--    <div id="wrap" class="shop">--%>
@@ -73,7 +96,7 @@
                 <!-- 새로나온책 -->
                 <div class="mainProduct2">
                     <div class="titleBar">
-                        <h5>새로나온 책</h5>
+                        <h5 style="font-weight: bold;">새로나온 책</h5>
                         <span>지안에듀 신규 도서를 확인 해 보세요!</span>
                     </div>
                     <div class="mainProductList2" id="newBookList"> </div>
@@ -82,7 +105,7 @@
                 <!-- 지안에듀 BEST도서 -->
                 <div class="mainProduct3">
                     <div class="titleBar">
-                        <h5>지안에듀 BEST 도서</h5>
+                        <h5 style="font-weight: bold;">지안에듀 BEST 도서</h5>
                     </div>
                     <div class="mainProductList3 disnoneM" id="bestBookList"></div>
                 </div>
@@ -94,7 +117,7 @@
                             <p class="stitle">온라인 서점안내</p>
                             <div class="list">
                                 <ul id="bookInfo"> </ul>
-                                <a href="#" class="btn_more">전체보기</a>
+                                <a href="javascript:goOnlineNoticeList();" class="btn_more">전체보기</a>
                             </div>
                         </div>
                     </div>
@@ -103,7 +126,7 @@
                             <p class="stitle">지안에듀 도서후기</p>
                             <div class="list">
                                 <ul id="bookReview"></ul>
-                                <a href="#" class="btn_more">전체보기</a>
+                                <a href="javascript:goBookReviewList();" class="btn_more">전체보기</a>
                             </div>
                         </div>
                     </div>

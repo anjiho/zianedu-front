@@ -311,7 +311,7 @@ function getBannerNoticeList(tagId, sPage, listLimit, bbsMaterKey) {
     if (InfoList.result.length > 0) {
         var selList = InfoList.result;
         dwr.util.addOptions(tagId, selList, function (data) {
-            return "<a href=''>"+ ellipsis(data.title,28) +"<span class='date'>" + data.createDate + "</span></a>"
+            return "<a href='javascript:goDetailNotice("+ data.bbsKey +");'>"+ ellipsis(data.title,28) +"<span class='date'>" + data.createDate + "</span></a>"
         }, {escapeHtml: false});
     }
 }
@@ -475,8 +475,8 @@ function getPasserVideoList(sPage, listLimit, searchType, searchText) {
             function formatter(cmpList) {
                 var gopageName = '"detailLecture"';
                 return ""+
-                    "<a href=\"javascript:\"><img src='"+ cmpList.fileUrl +"'  style='width: 250px;height: 122px'/></a>"+
-                    "<a href='javascript:detailReview("+ cmpList.bbsKey +","+ gopageName +")'><sapn class='thumb'>"+ cmpList.title +"</span></a>"+
+                    "<a href='javascript:detailReview("+ cmpList.bbsKey +","+ gopageName +")'><img src='"+ cmpList.fileUrl +"'></a>"+
+                    "<a href='javascript:void(0)'><sapn class='thumb'>"+ cmpList.title +"</span></a>"+
                     "";
             }
         }

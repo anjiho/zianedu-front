@@ -8,18 +8,28 @@
     $( document ).ready(function() {
         var bookType = '<%=bookType%>';
         if(bookType == 'COMMON'){
-
+            $("#typeBannerImg").attr("src", "/common/zian/images/content/submain_img01.png");
+            innerHTML('subjectTitle', '공통과목');
         }else if(bookType == 'PUBLIC'){
-
+            $("#typeBannerImg").attr("src", "/common/zian/images/content/submain_img02.png");
+            innerHTML('subjectTitle', '행정직군');
         }else if(bookType == 'TECH'){
-
+            $("#typeBannerImg").attr("src", "/common/zian/images/content/submain_img03.png");
+            innerHTML('subjectTitle', '기술직군');
         }else if(bookType == 'POST'){
-
+            $("#typeBannerImg").attr("src", "/common/zian/images/content/submain_img04.png");
+            innerHTML('subjectTitle', '계리직군');
         }else if(bookType == 'CERT'){
-
+            $("#typeBannerImg").attr("src", "/common/zian/images/content/submain_img05.png");
+            innerHTML('subjectTitle', '자격증');
         }
         innerValue('orderType', 'date');
+        innerHTML("selCount", 0);
         fn_search('new');
+        $("input[name=lecChk]").click(function(index){//체크박스 카운트 처리
+            var count = $("input[name=lecChk]:checkbox:checked").length;
+            innerHTML("selCount", count);
+        });
     });
 
     function fn_search(val) {
@@ -71,7 +81,7 @@
                 <div class="submainBanner">
                     <img src="/common/zian/images/content/subBanner_bg.jpg">
                     <div class="Banner_txt">
-                        <p class="title"><img src="/common/zian/images/content/submain_img01.png" alt="공통과목도서후기보러가기"></p>
+                        <p class="title"><img src="" alt="" id="typeBannerImg"></p>
                         <span class="txt">부가설명을 써주세요써주세요써주세요</span>
                         <a href="" class="link">도서후기</a>
                     </div>
@@ -88,7 +98,7 @@
                     <form>
                         <div class="lectureWrap">
                             <div class="shoplist">
-                                <p class="stitle">공통과목도서목록</p>
+                                <p class="stitle"><span id="subjectTitle"></span>도서목록</p>
                                 <div class="type_wrap">
                                     <div class="type_btn">전체</div>
                                     <ul class="typedrop">
@@ -106,9 +116,9 @@
                                 <ul class="lectureTotal">
                                     <li class="left"></li>
                                     <li class="right">
-                                        선택한 항목 <span class="colorRed">3</span>개를
-                                        <a href="#" class="btn_m">장바구니 담기</a>
-                                        <a href="#" class="btn_m on">바로구매</a>
+                                        선택한 항목 <span class="colorRed"  id="selCount"></span>개를
+                                        <a href="javascript:goCheckedShopBasket();" class="btn_m">장바구니 담기</a>
+                                        <a href="javascript:goCheckedBuy();" class="btn_m on">바로구매</a>
                                     </li>
                                 </ul>
                             </div>

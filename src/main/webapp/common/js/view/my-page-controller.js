@@ -803,7 +803,7 @@ function getMyWriteExamBoard(userKey, boardType, sPage, listLimit, searchType, s
         if (infoList.result.length > 0) {
             var listNum = ((cnt-1)+1)-((sPage-1)*10); //리스트 넘버링
             var selList = infoList.result;
-            paging.count5(sPage, cnt, '5', listLimit, comment.blank_list);
+            paging.count4(sPage, cnt, '5', listLimit, comment.blank_list);
             for(var i=0; i < selList.length; i++){
                 var cmpList = selList[i];
                 if (cmpList != undefined) {
@@ -850,7 +850,7 @@ function bookStoreReviewBoard(userKey, boardType, sPage, listLimit, searchType, 
             var selList = infoList.result;
             console.log(selList);
             dwr.util.addOptions('bookReview', selList, function (data) {
-                return "<a href='javascript:void(0);'>"+ ellipsis(data.title,28) +"<span class='date'>" + data.indate + "</span></a>"
+                return "<a href='javascript:goBookReviewDetail("+ data.bbsKey +");'>"+ ellipsis(data.title,28) +"<span class='date'>" + data.indate + "</span></a>"
             }, {escapeHtml: false});
         }
     }

@@ -229,7 +229,7 @@ legend {display:none;position:absolute;visibility:hidden;}
 .review_movie_list {position: relative;margin-bottom: 100px}
 .review_movie_list p {font-size: 18px;font-weight:bold;text-align: center;padding-bottom: 40px}
 
-.review_movie_search .tableBox table.list {border: 1px #e5e5e5 solid;border-bottom: none}
+.review_movie_search .tableBox table.list{border: 1px #e5e5e5 solid;border-bottom:none}
 /*합격수기review  table 댓글 */
 .comment .cm_write{position:relative; margin:20px 0px;}
 .comment .cm_write .inner{height:90px;}
@@ -256,7 +256,7 @@ legend {display:none;position:absolute;visibility:hidden;}
 
 /*합격수기review 공통search*/
 .review_movie_search {}
-.review_movie_search .list {width:100%;margin-bottom:30px;border-top:2px solid #000;}
+.review_movie_search .list {width:100%;margin-bottom:30px;border-top:2px solid #000;display: }
 .review_movie_search .list:after {content: "";display: block;clear:both}
 .review_movie_search .list ul {padding-top: 30px}
 .review_movie_search .list li {float:left;width:220px;padding-left:24px;margin-bottom: 45px}

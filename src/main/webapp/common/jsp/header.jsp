@@ -133,7 +133,7 @@
         <div class="inner">
             <ul class="deaph1 cols7">
                 <li><a href="javascript:goDetailbookType('COMMON');">공통과목</a></li>
-                <li><a href="javascript:goDetailbookType('PUBLIC');">해정직군</a></li>
+                <li><a href="javascript:goDetailbookType('PUBLIC');">행정직군</a></li>
                 <li><a href="javascript:goDetailbookType('TECH');">기술직군</a></li>
                 <li><a href="javascript:goDetailbookType('POST');">계리직군</a></li>
                 <li><a href="javascript:goDetailbookType('CERT');">자격증</a></li>
