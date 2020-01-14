@@ -6,6 +6,7 @@
 %>
 <script>
     $( document ).ready(function() {
+        sessionStorage.setItem("leftMenu", 'bookStore');
         var bookType = '<%=bookType%>';
         if(bookType == 'COMMON'){
             $("#typeBannerImg").attr("src", "/common/zian/images/content/submain_img01.png");
