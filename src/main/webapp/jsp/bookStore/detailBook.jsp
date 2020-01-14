@@ -7,7 +7,7 @@
     var gkey = <%=gkey%>;
     $( document ).ready(function() {
         var detailInfo = getBookDetailInfo(gkey);
-        console.log
+        console.log(detailInfo);
         var bookDetailInfo = detailInfo.result.bookDetailInfo;
         innerHTML('goodsName', bookDetailInfo.goodsName);
         innerHTML('price', bookDetailInfo.price+"원");
@@ -15,7 +15,13 @@
         innerHTML('discountPercent', bookDetailInfo.discountPercent);
         innerHTML('point', bookDetailInfo.point);
         innerHTML('writer', bookDetailInfo.writer);
-        innerHTML('publishName', bookDetailInfo.name);
+        
+        if(bookDetailInfo.name != null){
+             innerHTML('publishName', bookDetailInfo.name);
+        }else{
+             innerHTML('publishName', "탑스팟");
+        }
+      
         innerHTML('publishDate', bookDetailInfo.publishDate);
         innerHTML('pageCnt', bookDetailInfo.pageCnt);
         innerHTML('sellPrice1', bookDetailInfo.sellPrice+"원");
@@ -27,7 +33,7 @@
         $("#bookImg").attr("src", bookDetailInfo.bookImageUrl);
 
         var otherBookInfo = detailInfo.result.otherBookInfo;
-        if(otherBookInfo != null){
+        if(otherBookInfo.goodsName != null){
             innerHTML("writerName", otherBookInfo.writer);
             $("#bookImg2").attr("src", otherBookInfo.bookImageUrl);
             innerHTML('goodName2', otherBookInfo.goodsName);
