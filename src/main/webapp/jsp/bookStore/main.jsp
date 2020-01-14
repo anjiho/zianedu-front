@@ -138,7 +138,7 @@
                     <div class="Banner_txt">
                         <p class="title"><img src="/common/zian/images/ex/submain_img01.png" alt="공통과목도서후기보러가기"></p>
                         <span class="txt">부가설명을 써주세요써주세요써주세요</span>
-                        <a href="" class="link">도서후기</a>
+                        <a href="javascript:goBookReviewList();" class="link">도서후기</a>
                     </div>
                 </div>
 
