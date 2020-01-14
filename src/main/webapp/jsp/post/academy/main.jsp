@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/jsp/common.jsp" %>
+<script>
+    $( document ).ready(function() {
+        sessionStorage.setItem("leftMenu", "postAcademy");
+    });
+</script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
 <div id="wrap" class="accounting">
