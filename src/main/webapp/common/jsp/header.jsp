@@ -124,7 +124,7 @@
                 <li><a href="javascript:goPageNoSubmit('zianPass', 'list')">지안패스</a></li>
                 <li><a href="javascript:goPageNoSubmit('freeLecture', 'theory')">무료강좌</a></li>
                 <li><a href="#">빅모의고사</a></li>
-                <li><a href="javascript:goMyPage();">합격수기</a></li>
+                <li><a href="javascript:goPassReview();">합격수기</a></li>
             </ul>
         </div>
     </div>
