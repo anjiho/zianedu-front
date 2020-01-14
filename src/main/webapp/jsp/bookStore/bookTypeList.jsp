@@ -32,13 +32,17 @@
         });
     });
 
+    function goDetailBook(gkey) {
+        innerValue('bbsKey', gkey);
+        goPage('bookStore', 'detail');
+    }
+
     function fn_search(val) {
         var bookType = '<%=bookType%>';
         innerHTML("selCount", 0);
         var orderType = getInputTextValue('orderType');
         var sPage = getInputTextValue("sPage");
         var searchText = getInputTextValue("searchText");
-        var searchType = getSelectboxValue("searchType");
         if(searchText == undefined) searchText = "";
 
         if(val == "new") sPage = "1";
@@ -61,11 +65,12 @@
 </form>
 <form id="id_frm_singleMypage" method="post" name="id_frm_singleMypage">
     <input type="hidden" id="gKeys" name="gKeys">
-    <input type="hidden" id="sPage">
-    <input type="hidden" id="orderType">
 </form>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
+    <input type="hidden" id="bbsKey" name="bbsKey">
+    <input type="hidden" id="sPage">
+    <input type="hidden" id="orderType">
     <%--    <div id="wrap" class="shop">--%>
     <div id="wrap">
         <%@include file="/common/jsp/leftMenu.jsp" %>
@@ -128,8 +133,8 @@
                                     <caption></caption>
                                     <colgroup>
                                         <col class="w100">
-                                        <col class="w180">
-                                        <col class="w90">
+                                        <col class="w200">
+                                        <col class="w70">
                                         <col class="w150">
                                     </colgroup>
                                     <thead>

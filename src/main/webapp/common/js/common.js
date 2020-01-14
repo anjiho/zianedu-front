@@ -3022,7 +3022,7 @@ function goCheckedBuy() {
     var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
     if(sessionUserInfo != undefined) {
         if($("input:checkbox[name=lecChk]:checked").length == 0 ){
-            alert("체크된 강의가 없습니다.");
+            alert("체크된 상품이 없습니다.");
             return false;
         }
         if (confirm("바로 구매 하시겠습니까?")) {
@@ -3055,7 +3055,7 @@ function goPackageCheckedBuy() {
     var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
     if(sessionUserInfo != undefined) {
         if($("input:checkbox[name=lecChk]:checked").length == 0 ){
-            alert("체크된 강의가 없습니다.");
+            alert("체크된 상품이 없습니다.");
             return false;
         }
         if (confirm("바로 구매 하시겠습니까?")) {

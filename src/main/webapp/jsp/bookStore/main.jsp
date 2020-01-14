@@ -181,8 +181,8 @@
                                     <caption></caption>
                                     <colgroup>
                                         <col class="w100">
-                                        <col class="w180">
-                                        <col class="w90">
+                                        <col class="w200">
+                                        <col class="w70">
                                         <col class="w150">
                                     </colgroup>
                                     <thead>

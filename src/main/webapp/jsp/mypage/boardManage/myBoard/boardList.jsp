@@ -46,7 +46,7 @@
         if(searchText == undefined) searchText = "";
 
         if(val == "new") sPage = "1";
-        getPasserVideoList(sPage, 10, searchType, searchText);
+        getPasserVideoList(sPage, 8, searchType, searchText);
     }
     /*
     PASS:합격수기, LECTURE:수강후기, BOOK:도서후기, EXAM:응시후기

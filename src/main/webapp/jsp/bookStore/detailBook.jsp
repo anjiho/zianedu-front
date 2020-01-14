@@ -37,7 +37,13 @@
             $(".book_etc").hide();
         }
     });
-    
+
+    function goDetailbookType(type) {
+        innerValue('bookType', type);
+        $("#bookTypePage").attr("action", "/bookStore?page_gbn=bookTypeList");
+        $("#bookTypePage").submit();
+    }
+
     function goBookBasket() {
         var priceKey = getInputTextValue('priceKey');
         var gkey = getInputTextValue('gkey');
@@ -45,10 +51,13 @@
     }
     
     function goBookBuy() {
-        var gkey = getInputTextValue('gkey');
-        goOneLecCheckedBuy(gkey);
+        var priceKey = getInputTextValue('priceKey');
+        goOneLecCheckedBuy(priceKey);
     }
 </script>
+<form id="bookTypePage" method="post" name="bookTypePage">
+    <input type="hidden" id="bookType" name="bookType">
+</form>
 <form id="id_frm_singleMypage" method="post" name="id_frm_singleMypage">
     <input type="hidden" id="gKeys" name="gKeys">
 </form>
