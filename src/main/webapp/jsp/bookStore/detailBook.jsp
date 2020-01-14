@@ -24,7 +24,7 @@
       
         innerHTML('publishDate', bookDetailInfo.publishDate);
         innerHTML('pageCnt', bookDetailInfo.pageCnt);
-        innerHTML('sellPrice1', bookDetailInfo.sellPrice+"원");
+        innerHTML('sellPrice1', bookDetailInfo.sellPrice);
         innerHTML('discountPercent1', bookDetailInfo.discountPercent);
         innerHTML("content", bookDetailInfo.description);
         innerHTML("content1", bookDetailInfo.contentList);
