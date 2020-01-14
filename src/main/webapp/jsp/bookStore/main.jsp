@@ -56,17 +56,17 @@
     
     function goOnlineNoticeList() {
         sessionStorage.setItem("noticeHeader", "onlineStore");
-        sessionStorage.setItem("leftMenu", "publicOnline");
+        //sessionStorage.setItem("leftMenu", "publicOnline");
         goPageNoSubmit('notice', 'list');
     }
 
     function goBookReviewList() {
-        sessionStorage.setItem("leftMenu", "publicOnline");
+        //sessionStorage.setItem("leftMenu", "publicOnline");
         goPageNoSubmit('myPage', 'boardList');
     }
     
     function goBookReviewDetail(bbsKey) {
-        sessionStorage.setItem("leftMenu", "publicOnline");
+        //sessionStorage.setItem("leftMenu", "publicOnline");
         innerValue("bbsKey", bbsKey);
         goPage('review','detailBook');
     }
