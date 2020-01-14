@@ -12,7 +12,7 @@ function getNewBookList() {
             }else{
                 returnHtml += "<span class=\"writer\">"+ selList[i].writer +  " | 탑스팟</span>";
             }
-            returnHtml += "<span class=\"price\"><b>"+ selList[i].price +"</b>원 <span>("+ selList[i].accrualRate +" off)</span></span>";
+            returnHtml += "<span class=\"price\"><b>"+ selList[i].sellPrice +"</b>원 <span>("+ selList[i].accrualRate +" off)</span></span>";
             returnHtml += "</div></div>";
             $("#newBookList").append(returnHtml);
         }
