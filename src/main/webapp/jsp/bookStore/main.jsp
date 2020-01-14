@@ -62,8 +62,7 @@
     }
 
     function goBookReviewList() {
-        //sessionStorage.setItem("leftMenu", "publicOnline");
-        goPageNoSubmit('myPage', 'boardList');
+        goPageNoSubmit('review','bookList');
     }
     
     function goBookReviewDetail(bbsKey) {

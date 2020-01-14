@@ -606,6 +606,8 @@ function getLecReviewMasterKey() {
         bbsMasterKey = 10049;
     }else if(leftMenuInfo == "postAcademy"){
         bbsMasterKey = 10056;
+    }else{
+        bbsMasterKey = 10034;
     }
     return bbsMasterKey;
 }
@@ -625,6 +627,8 @@ function getBookReviewMasterKey() {
         bbsMasterKey = 10050;
     }else if(leftMenuInfo == "postAcademy"){
         bbsMasterKey = 10050;
+    }else{
+        bbsMasterKey = 10035;
     }
     return bbsMasterKey;
 }
