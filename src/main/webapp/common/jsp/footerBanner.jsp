@@ -22,6 +22,8 @@
             getMainBottomBanner(6289, 2);
         }else if(leftMenuInfo == "postAcademy"){
             getMainBottomBanner(6288, 2);
+        }else{
+            getMainBottomBanner(6287, 2);
         }
     });
 </script>

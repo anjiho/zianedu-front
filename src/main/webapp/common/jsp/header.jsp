@@ -63,10 +63,6 @@
     });
 
     function goMyPage() {
-        var leftMenuInfo = sessionStorage.getItem('leftMenu');
-        if(leftMenuInfo == 'bookStore'){
-            sessionStorage.setItem("leftMenu", "publicOnline");
-        }
         goPageNoSubmit('myPage','orderList');
     }
     

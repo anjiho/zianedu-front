@@ -392,11 +392,11 @@ function getBbsMasterKey() {
         else if(noticeHeaderInfo == "lectureRoom") bbsmasterKey = "10008";
         else bbsmasterKey = "10057";
     }else{
-        if(noticeHeaderInfo == "openMenu")         bbsmasterKey = "10001";//개강안내
-        else if(noticeHeaderInfo == "acaNotice")   bbsmasterKey = "10007";//학원소식
-        else if(noticeHeaderInfo == "examNotice")  bbsmasterKey = "10010";//시험공고
-        else if(noticeHeaderInfo == "lectureRoom") bbsmasterKey = "10008";//강의실배정표
-        else bbsmasterKey = "10057";//온라인서점
+        if(noticeHeaderInfo == "openMenu")         bbsmasterKey = "10026";
+        else if(noticeHeaderInfo == "acaNotice")   bbsmasterKey = "10027";
+        else if(noticeHeaderInfo == "examNotice")  bbsmasterKey = "10030";
+        else if(noticeHeaderInfo == "lectureRoom") bbsmasterKey = "10008";
+        else bbsmasterKey = "10057";
     }
     return bbsmasterKey;
 }

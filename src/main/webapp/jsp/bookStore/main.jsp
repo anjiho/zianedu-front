@@ -2,6 +2,7 @@
 <%@include file="/common/jsp/common.jsp" %>
 <script>
     $( document ).ready(function() {
+        sessionStorage.setItem("leftMenu", 'bookStore');
         getNewBookList();
         getBestBookList();
         getBannerNoticeList('bookInfo', 1, 4, 10057);//온라인서점안내
