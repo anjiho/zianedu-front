@@ -566,6 +566,8 @@ function getReviewMasterKey() {
         bbsMasterKey = 11047;
     }else if(leftMenuInfo == "postAcademy"){
         bbsMasterKey = 11047;
+    }else{
+        bbsMasterKey = 10970;
     }
     return bbsMasterKey;
 }
@@ -586,6 +588,8 @@ function getPassReviewMasterKey() {
         bbsMasterKey = 10048;
     }else if(leftMenuInfo == "postAcademy"){
         bbsMasterKey = 10048;
+    }else{
+        bbsMasterKey = 10032;
     }
     return bbsMasterKey;
 }
