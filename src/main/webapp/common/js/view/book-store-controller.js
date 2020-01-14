@@ -12,7 +12,7 @@ function getNewBookList() {
             }else{
                 returnHtml += "<span class=\"writer\">"+ selList[i].writer +  " | 탑스팟</span>";
             }
-            returnHtml += "<span class=\"price\"><b>"+ selList[i].sellPrice +"</b>원 <span>("+ selList[i].accrualRate +" off)</span></span>";
+            returnHtml += "<span class=\"price\"><b>"+ selList[i].sellPrice +"</b>원 <span>("+ selList[i].discountPercent +" off)</span></span>";
             returnHtml += "</div></div>";
             $("#newBookList").append(returnHtml);
         }
@@ -38,7 +38,7 @@ function getBestBookList() {
             }else{
                 returnHtml += "<span class=\"writer\">"+ selList[i].writer +  " | 탑스팟</span>";
             }
-            returnHtml += "<span class=\"price\"><b>"+ selList[i].sellPrice +"</b>원 <span>("+ selList[i].accrualRate +" off)</span></span>";
+            returnHtml += "<span class=\"price\"><b>"+ selList[i].sellPrice +"</b>원 <span>("+ selList[i].discountPercent +" off)</span></span>";
             returnHtml += "</div></div>";
             $("#bestBookList").append(returnHtml);
         }
@@ -70,7 +70,7 @@ function getBookList(tagId , leftMenuCtgKey, sPage, listLimit) {
                 "<img src='"+ data.bookImageUrl +"' alt=''>"+
                 "<a href='javascript:goDetailBook("+ data.gkey +");'><span class=\"name\">"+ data.goodsName +"</span></a>"+
                 "<span class=\"writer\">"+ data.writer + name +"</span>" +
-                "<span class=\"price\"><b>"+ data.sellPrice +"</b>원 <span style='color: red;'>"+"("+data.accrualRate+")"+"</span></span>";
+                "<span class=\"price\"><b>"+ data.sellPrice +"</b>원 <span style='color: red;'>"+"("+data.discountPercent+")"+"</span></span>";
         }, {escapeHtml: false});
     }
     $(function(){
@@ -96,7 +96,6 @@ function getSalesBookList(bookMenuType, searchText, orderType, sPage, listLimit)
             paging.count(sPage, cnt, '5', listLimit, comment.blank_list);
             for(var i=0; i < selList.length; i++){
                 var cmpList = selList[i];
-                console.log(cmpList);
                 if (cmpList != undefined) {
                     var cellData = [
                         function(data) {return '<img src="'+ cmpList.bookImageUrl +'" style="width: 120px;height: 170px">'},

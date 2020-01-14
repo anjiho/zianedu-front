@@ -133,6 +133,7 @@ function getOrderSheetInfoFromPay(userKey, cartKeys) {
         var cmpList = infoList.result;
         innerHTML("userPoint", format(cmpList.userPoint));
         innerHTML("maxUserPoint", format(cmpList.userPoint));
+        innerValue("userMaxPoint", format(cmpList.userPoint));
         if(cmpList.orderProductList.length > 0){
             var orderGoodArr = new Array();
             for(var i = 0; i < cmpList.orderProductList.length; i++){
@@ -209,6 +210,7 @@ function getOrderSheetInfoFromImmediately(userKey, gKeys) {
         var cmpList = infoList.result;
         innerHTML("userPoint", format(cmpList.userPoint));
         innerHTML("maxUserPoint", format(cmpList.userPoint));
+        innerValue("userMaxPoint", format(cmpList.userPoint));
         if(cmpList.orderProductList.length > 0){
             var payProductNameArr = new Array();
             var orderGoodArr = new Array();
@@ -336,6 +338,7 @@ function getOrderSheetInfoFromImmediatelyAtBasicPackage(userKey, goodsInfo, pack
         var cmpList = infoList.result;
         innerHTML("userPoint", format(cmpList.userPoint));
         innerHTML("maxUserPoint", format(cmpList.userPoint));
+        innerValue("userMaxPoint", format(cmpList.userPoint));
         if(cmpList.orderProductList.length > 0){
             var pacakgeProductNameArr = new Array();
             var orderGoodArr = new Array();
@@ -684,6 +687,7 @@ function getOrderSheetInfoFromImmediatelyAtRetake(userKey, retakeInfo) {
         var cmpList = infoList.result;
         innerHTML("userPoint", format(cmpList.userPoint));
         innerHTML("maxUserPoint", format(cmpList.userPoint));
+        innerValue("userMaxPoint", format(cmpList.userPoint));
         if(cmpList.orderProductList.length > 0){
             var payProductNameArr = new Array();
             var orderGoodArr = new Array();
@@ -819,6 +823,7 @@ function addLectureLimitDay(jLecKey) {
     return  result;
 }
 
+//온라인서점 상세보기 >  바로구매
 function getOrderSheetInfoFromImmediatelyAtBookStore(userKey, priceKeys, bookCount) {
     if (userKey == null || userKey == undefined) return;
     var data = {
@@ -831,12 +836,12 @@ function getOrderSheetInfoFromImmediatelyAtBookStore(userKey, priceKeys, bookCou
         var cmpList = infoList.result;
         innerHTML("userPoint", format(cmpList.userPoint));
         innerHTML("maxUserPoint", format(cmpList.userPoint));
+        innerValue("userMaxPoint", format(cmpList.userPoint));
         if(cmpList.orderProductList.length > 0){
             var payProductNameArr = new Array();
             var orderGoodArr = new Array();
             for(var i = 0; i < cmpList.orderProductList.length; i++){
                 var orderInfo = cmpList.orderProductList[i];
-                console.log(orderInfo);
                 if(orderInfo.type != 3){
                     innerValue("orderInfoType", orderInfo.type);
                     gfn_display("deliveryInfo", false);

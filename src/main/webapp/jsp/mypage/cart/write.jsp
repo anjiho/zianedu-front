@@ -109,11 +109,10 @@
         $("#point").change(function() {
             var userMaxPoint = getInputTextValue("userMaxPoint");
             var currentVal = $(this).val();
-            if(currentVal > userMaxPoint){
+            if(Number(currentVal) > Number(removeComma(userMaxPoint))){
                 alert("보유포인트를 초과 하였습니다.");
                 $("#point").val("");
                 currentVal = 0;
-                //return false;
             }
             var produceTotal = getInputTextValue("produceTotal");
             var changeTotal = produceTotal-currentVal;

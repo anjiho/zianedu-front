@@ -22,6 +22,7 @@
         innerHTML("content", bookDetailInfo.description);
         innerHTML("content1", bookDetailInfo.contentList);
         innerValue('priceKey', bookDetailInfo.priceKey);
+        innerValue('caculatePrice', bookDetailInfo.sellPrice);
         $("#bookImg").attr("src", bookDetailInfo.bookImageUrl);
 
         var otherBookInfo = detailInfo.result.otherBookInfo;
@@ -33,6 +34,7 @@
             innerHTML('publishName2', otherBookInfo.name);
             innerHTML('sellPrice2', otherBookInfo.sellPrice);
             innerHTML('discountPercent2', otherBookInfo.discountPercent);
+            innerValue('otherGkey', otherBookInfo.gkey);
         }else{
             $(".book_etc").hide();
         }
@@ -70,6 +72,8 @@
     //구매수량 체크
     function bookCntBuy(val) {
         var cntStr =  getInputTextValue('count');
+        var caculatePrice = getInputTextValue('caculatePrice');
+        var price = removeComma(caculatePrice);
         var ctnNum = Number(cntStr);
         if(val == 'up'){
             ctnNum += 1;
@@ -78,6 +82,8 @@
                 return false;
             }
             innerValue('count', ctnNum);
+            var caculateNum = Number(price)*ctnNum;
+            innerHTML('sellPrice1', addThousandSeparatorCommas(caculateNum));
             innerHTML('bookCnt', ctnNum);
         }else{
             ctnNum -= 1;
@@ -86,15 +92,22 @@
                 return false;
             }
             innerValue('count', ctnNum);
+            var caculateNum = Number(price)*ctnNum;
+            innerHTML('sellPrice1', addThousandSeparatorCommas(caculateNum));
             innerHTML('bookCnt', ctnNum);
         }
+    }
+    
+    function goDetailBook() {
+         var gkey = getInputTextValue('otherGkey');
+         innerValue('bbsKey', gkey);
+         goPage('bookStore', 'detail');
     }
 </script>
 <form id="bookTypePage" method="post" name="bookTypePage">
     <input type="hidden" id="bookType" name="bookType">
 </form>
 <form id="id_frm_singleMypage" method="post" name="id_frm_singleMypage">
-<%--    <input type="hidden" id="bookGoBuyInfo" name="bookGoBuyInfo">--%>
     <input type="hidden" id="bookPriceKey" name="bookPriceKey">
     <input type="hidden" id="bookCount" name="bookCount">
 </form>
@@ -102,7 +115,10 @@
     <input type="hidden" name="page_gbn" id="page_gbn">
     <input type="hidden" id="priceKey">
     <input type="hidden" id="gkey" value="<%=gkey%>">
+       <input type="hidden" id="bbsKey" name="bbsKey">
     <input type="hidden" id="count" value="1">
+    <input type="hidden" id="otherGkey">
+    <input type="hidden" id="caculatePrice">
     <%--    <div id="wrap" class="shop">--%>
     <div id="wrap">
         <%@include file="/common/jsp/leftMenu.jsp" %>
@@ -176,7 +192,7 @@
                             <span><span id="goodName2"></span><br>
                                 <span id="writer2"></span> I <span id="publishName2"></span> </span>
                             <span><b id="sellPrice2"></b>원<span class="text_red">(<span id="discountPercent2"></span>할인)</span></span>
-                            <a href="" class="btn_inline">자세히 보기</a>
+                            <a href="javascript:goDetailBook();" class="btn_inline">자세히 보기</a>
                         </div>
                     </div>
 
