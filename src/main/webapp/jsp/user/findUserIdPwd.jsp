@@ -77,12 +77,12 @@
     var phoneNum = blur(mobileNo);
     var userInputId = getInputTextValue('userId');
     if(mobileNo != ''){
-        if(userInputId != ''){//비밀번호 찾기
+        if(userInputId != undefined){//비밀번호 찾기
            // userInputId,phoneNum
             var userInfo  = getUserInfoFromFindPwd(userInputId, phoneNum);
             if(userInfo != null){
                 var userKey = userInfo.result.userKey;
-                //
+
             }else{
                 alert("가입하신 아이디가 아닙니다.");
             }
