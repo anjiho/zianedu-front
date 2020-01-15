@@ -51,7 +51,6 @@
         sMobileNo		= (String)mapresult.get("MOBILE_NO");
         sMobileCo		= (String)mapresult.get("MOBILE_CO");
 %>
-<%@include file="/common/jsp/common.jsp" %>
 <script language="javascript">
     var name = '<%=sName%>';
     var certCode = '<%=sDupInfo%>';
@@ -80,7 +79,13 @@
     if(mobileNo != ''){
         if(userInputId != ''){//비밀번호 찾기
            // userInputId,phoneNum
-            getUserInfoFromFindPwd(userInputId, phoneNum);
+            var userInfo  = getUserInfoFromFindPwd(userInputId, phoneNum);
+            if(userInfo != null){
+                var userKey = userInfo.result.userKey;
+                //
+            }else{
+                alert("가입하신 아이디가 아닙니다.");
+            }
         }else{//아이디찾기
             var userInfo  = getUserInfoByMobileNumber(phoneNum);
             if(userInfo != null){
@@ -101,8 +106,6 @@
         });
         $(" .serch > ul > li").eq(0).click();
     });
-
-
 </script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
