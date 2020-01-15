@@ -83,15 +83,15 @@
                     $("#id_frm_changePwd").submit();
 
                 }else{
-                    window.opener.document.getElementById("userIdPwd").textContent = '"가입하신 아이디가 아닙니다."';
+                    window.opener.document.getElementById("userIdPwd").innerHTML = '"가입하신 아이디가 아닙니다."';
                 }
             }else{//아이디찾기
                 var userInfo  = getUserInfoByMobileNumber(phoneNum);
                 if(userInfo != null){
                     var userId = userInfo.result.userId;
-                    window.opener.document.getElementById("userIdText").textContent = userId;
+                    window.opener.document.getElementById("userIdText").innerHTML = userId;
                 }else{
-                    window.opener.document.getElementById("userIdText").textContent = "가입하신 휴대폰번호가 아닙니다.";
+                    window.opener.document.getElementById("userIdText").innerHTML = "가입하신 휴대폰번호가 아닙니다.";
                 }
             }
         }
