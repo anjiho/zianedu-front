@@ -78,8 +78,7 @@
                 if(userInfo != null){
                     var userKey = userInfo.result.userKey;
                     window.opener.document.getElementById("userKey").value = userKey;
-                    $("#id_frm_changePwd").attr("action", "/user?page_gbn=changePwd");
-                    $("#id_frm_changePwd").submit();
+                    location.href = "/user?page_gbn=changePwd&userKey="+userKey;
                 }else{
                     window.opener.document.getElementById("userIdPwd").innerHTML = '"가입하신 아이디가 아닙니다."';
                 }
@@ -109,9 +108,6 @@
         $(" .serch > ul > li").eq(0).click();
     });
 </script>
-<form id="id_frm_changePwd" method="post" name="id_frm_changePwd">
-    <input type="hidden" id="userKey" name="userKey">
-</form>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
     <input type="hidden" name="EncodeData" value="<%=EncodeData%>">
