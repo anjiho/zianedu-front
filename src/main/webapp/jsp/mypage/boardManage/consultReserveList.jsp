@@ -95,6 +95,17 @@
             return false;
         }
     }
+
+    function detailConsult(idx) {
+        kiplayer.modalOpen('#modal1');
+        var consultInfo =  getCounselReserveDetailInfo(idx);
+        if(consultInfo != null){
+            innerHTML('conusltName', consultInfo.result.userName);
+            innerHTML('phoneNum', consultInfo.result.mobileNumber);
+            innerHTML('ctgNameStr', consultInfo.result.ctgNameStr);
+            innerHTML('consultContent', consultInfo.result.reserveContents);
+        }
+    }
 </script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
@@ -151,10 +162,20 @@
                     </div>
                     <!--//날짜 검색 -->
                     <div class="tbd_03">
-                        <p class="title">주문 상품정보</p>
-                        <input type="button" onclick="cancelConsult();" value="예약취소">
-                        <input type="button" onclick="saveConsult();" value="상담완료">
+                        <div class="reBtn">
+                            <span>선택시 항목</span>
+                            <a href="javascript:cancelConsult();">예약취소</a>
+                            <a href="javascript:saveConsult();">상담완료</a>
+                        </div>
                         <table>
+                            <colgroup>
+                                <col>
+                                <col width="200px">
+                                <col width="200px">
+                                <col width="150px">
+                                <col  width="150px">
+                                <col width="150px">
+                            </colgroup>
                             <thead>
                             <tr>
                                 <th><input type="checkbox" id="allChk"  value=""></th>
@@ -184,3 +205,21 @@
 </form>
 </body>
 </html>
+<!--팝업 수강안내사항 modal1-->
+<div id="modal1" class="modalWrap" style="">
+    <div class="inner">
+        <div class="modalTitle">
+            <h2>상세내용</h2>
+            <a href="#" class="btn_modalClose">모달팝업닫기</a>
+        </div>
+        <div class="modalContent">
+            <div class="pop_cont">
+                <p class="pTxt"><b>이름</b> : <span id="conusltName"></span></p>
+                <p class="pTxt"><b>연락처</b> : <span id="phoneNum"></span></p>
+                <p class="pTxt"><b>상담요청직군</b> : <span id="ctgNameStr"></span></p>
+                <p class="pTxt"><b>상담요청내용</b> : <span id="consultContent"></span></p>
+            </div>
+        </div>
+    </div>
+</div>
+<!--//팝업-->

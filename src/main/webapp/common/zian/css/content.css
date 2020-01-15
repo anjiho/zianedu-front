@@ -658,3 +658,17 @@ li.pl_30{padding-left:30px !important}
 .calendarInfo div.cCom div{width:100%;margin-bottom:56px;margin-top:16px}
 .calendarInfo div.cCom div.cNull{border:1px solid #ededed;}
 .calendarInfo div.cCom div.cNull p{text-align:center;line-height:300px}
+
+
+/* 2019.01.06 추가 */
+#container .conq{height: 160px;background:#fcfcfc url(../images/bigimg/bg_conq.png) center center no-repeat;text-align:center}
+#container .conq p{font-size:22px;font-weight:bold;padding-top:40px}
+#container .conq span{font-size:14px;font-weight:400;color:#444;padding:15px 0;display:block;}
+
+.tbd_03 table tbody tr td a.re_b_btn{color:#18658e}
+.tbd_03 table tbody tr td a.re_g_btn{color:#777}
+.tbd_03 table tbody tr td a.re_gr_btn{color:#108c11}
+.tbd_03 .reBtn{float:right;padding:20px 0}
+.tbd_03 .reBtn span{padding-right: 10px}
+.tbd_03 .reBtn a{border:1px solid #d4d4d4;border-radius:20px;padding:8px 12px;color:#666}
+.tbd_03 .reBtn a:nth-child(3){border-color:#134c97;color:#134c97}

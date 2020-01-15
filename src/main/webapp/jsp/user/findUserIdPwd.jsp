@@ -69,7 +69,6 @@
     if( (navigator.appName == 'Netscape' && browse.indexOf('trident') != -1) || (browse.indexOf("msie") != -1)) {
         window.open("about:blank","_self").close();
     } else {
-        alert(123);
         var mobileNo = '<%=sMobileNo%>';
         var phoneNum = blur(mobileNo);
         var userInputId = getInputTextValue('userId');
@@ -78,10 +77,9 @@
                 var userInfo  = getUserInfoFromFindPwd(userInputId, phoneNum);
                 if(userInfo != null){
                     var userKey = userInfo.result.userKey;
-                    innerValue('userKey', userKey);
+                    window.opener.document.getElementById("userKey").value = userKey;
                     $("#id_frm_changePwd").attr("action", "/user?page_gbn=changePwd");
                     $("#id_frm_changePwd").submit();
-
                 }else{
                     window.opener.document.getElementById("userIdPwd").innerHTML = '"가입하신 아이디가 아닙니다."';
                 }
@@ -131,7 +129,7 @@
                 <div class="serchBox">
                     <div class="serchBoard">
                         <p id="userIdText">가입 당시 입력한 휴대폰 번호를 통해<br>아이디를 찾을 수 있습니다.</p>
-                        <a href="javascript:fnNicePopup();">휴대폰인증</a>
+                        <a href="javascript:fnNicePopup();" id="phoneBtn">휴대폰인증</a>
                     </div>
                     <div class="serchBoard">
                         <p id="userIdPwd">아이디와 가입당시 입력한 휴대폰 번호를 통해<br>비밀번호를 찾을 수 있습니다.</p>

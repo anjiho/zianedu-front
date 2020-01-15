@@ -90,11 +90,19 @@ function getConsultReserveList(userKey,reserveStartDate, reserveEndDate, sPage, 
                     function(data) {return cmpList.reserveLocationName;},
                     function(data) {return cmpList.reserveDate+"<br>"+ cmpList.reserveTimeName},
                     function(data) {return cmpList.userName;},
-                    function(data) {return "<input type=\"button\" value='상세내용' id='"+ cmpList.idx +"'>";},
+                    //function(data) {return "<input type='' value='상세내용' class=\"btn_modalOpen re_btn\" id='"+ cmpList.idx +"'>";},
+                    function (data) {return "<a href='javascript:detailConsult("+ cmpList.idx +");' class=\"re_btn\">상세내용<span ></span></a>";},
                     function(data) {return cmpList.consultStatusName;}
                 ];
                 dwr.util.addRows("dataList", [0], cellData, {escapeHtml: false});
             }
         }
+    }
+}
+
+function getCounselReserveDetailInfo(idx) {
+    var infoList = getApi("/customerCenter/getCounselReserveDetailInfo/", idx , '');
+    if(infoList != null){
+        return infoList;
     }
 }
