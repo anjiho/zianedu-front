@@ -22,6 +22,8 @@ public class UserController {
             mvc.setViewName("user/joinResult");
         } else if ("login".equals(page_gbn)) {
             mvc.setViewName("/user/login");
+        } else if ("findUserId".equals(page_gbn)) {
+            mvc.setViewName("/user/findUserIdPwd");
         }
 
         return mvc;

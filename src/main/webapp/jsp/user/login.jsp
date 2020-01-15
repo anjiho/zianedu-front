@@ -11,16 +11,16 @@
                 <input type="button" value="로그인" class="btn_login" onclick="loginCheck();">
                 <div class="loginBtn">
                     <a href="javascript:goPage('user', 'joinAgree');" class="btn_join">회원가입</a> &nbsp;|&nbsp;
-                    <a href="#" class="btn_findMember">아이디&amp;비밀번호 찾기</a>
+                    <a href="javascript:goPageNoSubmit('user', 'findUserId')" class="btn_findMember">아이디&amp;비밀번호 찾기</a>
                 </div>
             </div>
-            <div class="loginSns">
-                <b>SNS 간편가입하기</b>
-                <div class="loginBtn">
-                    <a href="javascript:readyFunctionAlert();" class="btn_loginNaver">네이버로 간편가입하기</a>
-                    <a href="javascript:readyFunctionAlert();" class="btn_loginKakao">카카오로 간편가입하기</a>
-                </div>
-            </div>
+<%--            <div class="loginSns">--%>
+<%--                <b>SNS 간편가입하기</b>--%>
+<%--                <div class="loginBtn">--%>
+<%--                    <a href="javascript:readyFunctionAlert();" class="btn_loginNaver">네이버로 간편가입하기</a>--%>
+<%--                    <a href="javascript:readyFunctionAlert();" class="btn_loginKakao">카카오로 간편가입하기</a>--%>
+<%--                </div>--%>
+<%--            </div>--%>
             <div class="loginBanner">
                 <a href="#"><img src="/common/zian/images/content/img_loginBanner.jpg" alt=""></a>
             </div>
