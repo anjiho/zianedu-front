@@ -133,7 +133,7 @@
                 <li><a href="javascript:goDetailbookType('TECH');">기술직군</a></li>
                 <li><a href="javascript:goDetailbookType('POST');">계리직군</a></li>
                 <li><a href="javascript:goDetailbookType('CERT');">자격증</a></li>
-                <li><a href="#">정오표</a></li>
+                <li><a href="javascript:goPageNoSubmit('bookStore','errataList')">정오표</a></li>
             </ul>
         </div>
         <!-- gnb_area -->

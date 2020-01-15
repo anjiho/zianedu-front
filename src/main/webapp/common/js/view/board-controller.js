@@ -153,7 +153,7 @@ function getCommunityList2(bbsMaterKey, sPage, listLimit, searchType, searchText
     var infoList = getPageApi("/board/getCommunityList/", bbsMaterKey, data);
     var cnt = infoList.cnt;
     if(infoList != null){
-        if (infoList.result.length > 0) {
+       // if (infoList.result.length > 0) {
             var listNum = ((cnt-1)+1)-((sPage-1)*10); //리스트 넘버링
             var selList = infoList.result;
             paging.count(sPage, cnt, '5', listLimit, comment.blank_list);
@@ -168,9 +168,13 @@ function getCommunityList2(bbsMaterKey, sPage, listLimit, searchType, searchText
                         function(data) {return cmpList.readCount;}
                     ];
                     dwr.util.addRows("dataList", [0], cellData, {escapeHtml: false});
+                    $('#dataList tr').each(function(){
+                        var tr = $(this);
+                        tr.children().eq(1).attr("class", "left");
+                    });
                 }
             }
-        }
+     //   }
     }
 }
 

@@ -6,14 +6,14 @@
 <script>
     var bbsKey = <%=bbsKey%>;
     $(document).ready(function () {
-        $("#attachFile").on("change", addFiles);
         $('#writeContent').summernote({
             height: 300,
             minHeight: null,
             maxHeight: null,
             focus: true
         });
-        var result = getBoardDetailInfo(11046, bbsKey);
+        $("#attachFile").on("change", addFiles);
+        var result = getBoardDetailInfo(10059, bbsKey);
         if(result != null){
             var detailInfo = result.boardDetailInfo;
             $("#writeContent").summernote("code", detailInfo.contents);
@@ -38,7 +38,7 @@
         var filesTempArrLen = filesTempArr.length;
         for( var i=0; i<filesArrLen; i++ ) {
             filesTempArr.push(filesArr[i]);
-            $("#fileList").append("<div>" + filesArr[i].name + "<a href='javascript:void(0);'  onclick=\"deleteFile(event, " + (filesTempArrLen+i)+ ");\">x</a></div>");
+            $("#fileList").append("<div>" + filesArr[i].name + "<a href='javascript:void(0);' onclick=\"deleteFile(event, " + (filesTempArrLen+i)+ ");\">X</a></div>");
         }
         $(this).val('');
     }
@@ -47,12 +47,12 @@
         var innerHtmlTemp = "";
         var filesTempArrLen = filesTempArr.length;
         for(var i=0; i<filesTempArrLen; i++) {
-            innerHtmlTemp += "<div>" + filesTempArr[i].name + "<a href='javascript:void(0);' onclick=\"deleteFile(event, " + i + ");\">x</a></div>"
+            innerHtmlTemp += "<div>" + filesTempArr[i].name + "<a  href='javascript:void(0);' onclick=\"deleteFile(event, " + i + ");\">X</a></div>"
         }
         $("#fileList").html(innerHtmlTemp);
     }
 
-    function modifyEvnet() {
+    function modifyErrata() {
         var check = new isCheck();
         if (check.input("title", comment.input_title) == false) return;
         if($('textarea[name="writeContent"]').val() == ''){
@@ -67,7 +67,7 @@
                 var bbsKey = getInputTextValue('bbsKey');
                 var result = updateBoard(bbsKey, title, content, 0, '');
                 if (result.resultCode == 200) {
-                    alert("성공적으로 등록 완료되었습니다");
+                    alert("성공적으로 수정이 완료되었습니다");
                     return false;
                 }
             } else {
@@ -93,7 +93,7 @@
                             var str = toStrFileName(fileName);
                             saveBoardFileList(result.keyValue, str);
                             if (result.resultCode == 200) {
-                                alert("성공적으로 등록 완료되었습니다");
+                                alert("성공적으로 수정이 완료되었습니다");
                                 return false;
                             }
                         }
@@ -116,51 +116,58 @@
         <%@include file="/common/jsp/header.jsp" %>
         <!--//상단-->
         <!--본문-->
-        <div id="container">
+        <div id="container" class="shop">
             <div class="inner">
                 <!--서브 컨텐츠-->
-
-                <div class="tabBox">
-                    <ul>
-                        <li><a href="javascript:goPageNoSubmit('event','proceedList');">진행중이벤트</a></li>
-                        <li><a href="javascript:goPageNoSubmit('event','deadList');">마감된이벤트</a></li>
-                        <li class="active"><a href="javascript:goPageNoSubmit('event','winList');">담청자발표</a></li>
-                    </ul>
-                </div>
-                <br />
-                <!--담청자발표-->
-                <div class="boardWrap eventBoard">
-                    <h5>글 등록하기</h5>
-                    <div class="tableBox">
-                        <table class="form">
-                            <caption></caption>
-                            <colgroup>
-                                <col class="w130">
-                                <col>
-                            </colgroup>
-                            <tbody>
-                            <tr>
-                                <th scope="row">제목</th>
-                                <td><input type="text" id="title" value="제목을 입력해주세요." class="w100p"></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">내용</th>
-                                <td><textarea name="writeContent" id="writeContent" placeholder="내용을 입력해주세요." class="w100p h240"></textarea></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">첨부파일</th>
-                                <td class="">
-                                    <label for="attachFile">업로드</label>
-                                    <input type="file" name="attachFile[]" id="attachFile" class=""  multiple/>
-                                    <ul id='fileList' class="fileList"></ul>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
+                <!--서브상단공통배너-->
+                <div class="submainBanner">
+                    <img src="/common/zian/images/content/subBanner_bg.jpg">
+                    <div class="Banner_txt">
+                        <p class="title"><img src="/common/zian/images/content/submain_img06.png" alt="정오표 안내"></p>
+                        <span class="txt">불편을 드려 죄송합니다. <br> 더 좋은 교재를 만들기 위해 노력하겠습니다</span>
                     </div>
+                </div>
+                <div class="boardWrap">
+                    <div class="boardWrap_inner">
+                        <h5>정오표 수정하기</h5>
+                        <div class="tableBox">
+                            <table class="form">
+                                <caption></caption>
+                                <colgroup>
+                                    <col class="w130">
+                                    <col>
+                                </colgroup>
+                                <tbody>
+                                <tr>
+                                    <th scope="row">제목</th>
+                                    <td><input type="text" id="title" placeholder="제목을 입력해주세요." class="w100p"></td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">내용</th>
+                                    <td><textarea id="writeContent" name="writeContent" placeholder="내용을 입력해주세요." class="w100p h240"></textarea></td>
+                                </tr>
+                                <%--                                <tr>--%>
+                                <%--                                    <th scope="row">첨부파일</th>--%>
+                                <%--                                    <td class="">--%>
+                                <%--                                        <a href="#" class="btn_m black file">파일 업로드</a>--%>
+                                <%--                                    </td>--%>
+                                <%--                                </tr>--%>
+                                <tr>
+                                    <th scope="row">첨부파일</th>
+                                    <td class="">
+                                        <label for="attachFile">업로드</label>
+                                        <input type="file" name="attachFile[]" id="attachFile" class="btn_m black"  multiple/>
+                                        <ul id='fileList' class="fileList"></ul>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
                     <div class="btnArea">
-                        <a href="javascript:goPageNoSubmit('event','winList')" class="btn_m gray radius w110">취소</a> &nbsp;&nbsp;&nbsp;
-                        <a href="javascript:modifyEvnet();" class="btn_m radius w110 ">수정</a>
+                        <a href="javascript:goPageNoSubmit('bookStore','errataList')" class="btn_m  w110">취소</a> &nbsp;&nbsp;&nbsp;
+                        <a href="javascript:modifyErrata();" class="btn_m w110 black">수정</a>
                     </div>
                 </div>
 

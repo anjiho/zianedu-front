@@ -926,9 +926,6 @@ function getOrderSheetInfoFromImmediatelyAtBookStore(userKey, priceKeys, bookCou
             if(cmpList.productGroupPrice.deliveryPriceName != null){
                 innerHTML("deliveryPriceName1", cmpList.productGroupPrice.deliveryPriceName);
             }
-            // if(cmpList.productGroupPrice.examTotalPriceName != null){
-            //     innerHTML("examTotalPriceName", cmpList.productGroupPrice.examTotalPriceName);
-            // }
             if(cmpList.productGroupPrice.promotionTotalPriceName != null){
                 innerHTML("promotionTotalPriceName", cmpList.productGroupPrice.promotionTotalPriceName);
             }else{

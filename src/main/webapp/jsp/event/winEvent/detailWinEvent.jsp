@@ -15,7 +15,6 @@
             $("#modifyBtn").hide();
         }
         var result = getBoardDetailInfo(11046, bbsKey);
-        console.log(result);
         if(result != undefined){
             var detailInfo = result.boardDetailInfo;
 

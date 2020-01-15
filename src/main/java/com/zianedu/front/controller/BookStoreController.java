@@ -18,6 +18,14 @@ public class BookStoreController {
             mvc.setViewName("/bookStore/detailBook");
         }else if("bookTypeList".equals(page_gbn)){
             mvc.setViewName("/bookStore/bookTypeList");
+        }else if("errataList".equals(page_gbn)){
+            mvc.setViewName("/bookStore/errataList");
+        }else if("detailErrata".equals(page_gbn)){
+            mvc.setViewName("/bookStore/detailErrata");
+        }else if("modifyErrata".equals(page_gbn)){
+            mvc.setViewName("/bookStore/modifyErrata");
+        }else if("saveErrata".equals(page_gbn)){
+            mvc.setViewName("/bookStore/saveErrata");
         }
         return mvc;
     }
