@@ -89,7 +89,7 @@
                 var userInfo  = getUserInfoByMobileNumber(phoneNum);
                 if(userInfo != null){
                     var userId = userInfo.result.userId;
-                    window.opener.document.getElementById("userIdText").innerHTML = userId;
+                    window.opener.document.getElementById("userIdText").innerHTML = "가입하신 아이디는" + userId + "입니다";
                 }else{
                     window.opener.document.getElementById("userIdText").innerHTML = "가입하신 휴대폰번호가 아닙니다.";
                 }
