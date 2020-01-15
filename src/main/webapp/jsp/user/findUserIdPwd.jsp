@@ -56,10 +56,10 @@
     var certCode = '<%=sDupInfo%>';
     var mobileNo = '<%=sMobileNo%>';
 
-    window.opener.document.getElementById("name").value = name;
-    window.opener.document.getElementById("name").disabled = true;
-    window.opener.document.getElementById("certCode").value = certCode;
-    window.opener.document.getElementById("telephoneMobile").value = mobileNo;
+    // window.opener.document.getElementById("name").value = name;
+    // window.opener.document.getElementById("name").disabled = true;
+    // window.opener.document.getElementById("certCode").value = certCode;
+    // window.opener.document.getElementById("telephoneMobile").value = mobileNo;
 
     var browse = navigator.userAgent.toLowerCase();
     if( (navigator.appName == 'Netscape' && browse.indexOf('trident') != -1) || (browse.indexOf("msie") != -1)) {
