@@ -3226,3 +3226,14 @@ function deleteFileList(bbsFileKey) {
         $("#"+bbsFileKey).remove();
     }
 }
+
+function blur(num) {
+    num = num.replace(/[^0-9]/g, '');
+    var tmp = '';
+    tmp += num.substr(0, 3);
+    tmp += '-';
+    tmp += num.substr(3, 4);
+    tmp += '-';
+    tmp += num.substr(7);
+    return tmp;
+}

@@ -94,3 +94,18 @@ function modifyPwd(data) {
     var result = postApi("/user/modifyPwd", data);
     return result;
 }
+
+function getUserInfoByMobileNumber(mobileNumber) {
+    if (mobileNumber == null || mobileNumber == undefined) return;
+    var userInfo = getApi("/user/getUserInfoByMobileNumber/", mobileNumber, '');
+   return userInfo;
+}
+
+function getUserInfoFromFindPwd(userId, mobileNumber){
+    if (userId == null || userId == undefined) return;
+    var data = {
+        mobileNumber: mobileNumber
+    };
+    var userInfo = getApi("/user/getUserInfoFromFindPwd/", userId, data);
+    return userInfo;
+}
