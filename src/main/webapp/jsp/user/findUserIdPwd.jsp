@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%
     //라이브
-    String EncodeData = "AgAFRzQ1Mjg5jOPuzYHqw95bc/joI9FB3A6vx+d+ofTLeBlnRY9Hc75S49ZNORP1/FUJpGiUujufqGX6E2fn1EK5iOl4bITVl5iwgCBiPZpn2ghj2GwawguBqHnKYmT8yum1CnI0MecP4a/yWH7Oieg6LJBXnIelWd+Eter02AjNCnmOCdiu3GNNhTCZCdKrpyG2/YeJMUxkPGLUxOSFPHFdzyx0PVt2elPrwaFfcTmo8rFrupPL4VIYpFc14oK9R+tkeosAyq1zETfoeZwebb2ahL/UebbEV8xk2a+Tt2zrSgx3jFzJgoefOn18Xxd/9xCNl297o+v7gz7e32gnHGITjawlFb/T2e5FLwnOZKBqQ4mdFuXYNvSY5mvWHZ8SWl5TW+qEuQIAwP4Ri2uNmNF+QJer3OPxVOZ4IQEE8kv1rTSIS/82UAR6YgO2e6R72hIYi+w7GqxDc0/Sa/UoHPyRaYiyYlqwRBLljH44lhIlx21yHn3qIA==";
+    String EncodeData = "AgAFRzQ1MjiSyEDzN+LycTxTiNf2vC5mFqrP/zlqlGBtlUB763ezVb5S49ZNORP1/FUJpGiUujufqGX6E2fn1EK5iOl4bITVJdxrIfSVXxR9uhRS/xt6GNWW37ZtqCj17NXLjTcFMDPRxARk+VAeWoPw+rkNB4aqDrwJ+QdfcfybewFLQmDPUNr1prHfCEngjtUti0N63syETnCCGQmRqcB9AsOe5IOr4nDdVHCCRpBotf1d1LMvVS18SIEMDdFc34zUDl/FlxfrJ1DsadThc/Oafmg7s4HNpQWzI9KBBCsgVs0dcVTuOTeM4Xld/2h2CKjcL5DunjDf9k/3sD7p17xXY/wlX715ooT9Wq0AEPoqvkdWSd8DfBX+26Wom3P47MqgpAGIB1YS6EttO8gRS67xTVUXzItmfHPSlOqeMAaftfGllXdBCl2XkXX9dhU3bpzKKMZqMR8i+u1qJTdEd1sZE+rO/g8KpUwHgIo5atTdMH0J/Aq2LQ==";
     //개발
     //String EncodeData = "AgAFRzQ1MjggmBc4FV2hsPk60S+onp/sPGguP/iH2IcLPYHRsyy1o75S49ZNORP1/FUJpGiUujufqGX6E2fn1EK5iOl4bITVW5OwueNZi7WXOXlvTLPDad7mZmTui1jNlT8Hwtvjwj6dWWOFOBi1pyFMYhWlKY9YjcYFYIxit58BaCJiOktYyUjw981KqnSD8mTh5v5j0o7FbAQZGgHWomubJYsH4odO7fu1IZZ2ZAihdqQUw9tJGjXfwShalrvgRp/jWWioBEmuz/EoubTtVE338M1ALBn+7+l63fIRxSeVgoNxY6dHYBLv94Aqzrv8bPiqIe7c6p6m9so+k+V/9HD1QvK5UbV1m+g3qOAxnyuCRV9FaaDPbWdl81QuHBjWL9bae4Ygp/nn28h+4JfefW1R/U8mP4jJA7a4B2xPu0DEyIPU49647KIlSAaQopATlkp+0mZoVsoKAn9YEiIG3jfJQCLl5LsgpcX7Wmll11trgCTkcmjbzQ==";
 %>
@@ -56,10 +56,10 @@
     var certCode = '<%=sDupInfo%>';
     var mobileNo = '<%=sMobileNo%>';
 
-    window.opener.document.getElementById("name").value = name;
-    window.opener.document.getElementById("name").disabled = true;
-    window.opener.document.getElementById("certCode").value = certCode;
-    window.opener.document.getElementById("telephoneMobile").value = mobileNo;
+    // window.opener.document.getElementById("name").value = name;
+    // window.opener.document.getElementById("name").disabled = true;
+    // window.opener.document.getElementById("certCode").value = certCode;
+    // window.opener.document.getElementById("telephoneMobile").value = mobileNo;
 
     var browse = navigator.userAgent.toLowerCase();
     if( (navigator.appName == 'Netscape' && browse.indexOf('trident') != -1) || (browse.indexOf("msie") != -1)) {
