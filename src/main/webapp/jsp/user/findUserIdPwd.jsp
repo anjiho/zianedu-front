@@ -51,6 +51,10 @@
         sMobileNo		= (String)mapresult.get("MOBILE_NO");
         sMobileCo		= (String)mapresult.get("MOBILE_CO");
 %>
+<script src="/common/zian/js/kiplayer/jquery.min.js"></script>
+<script src="/common/js/common.js"></script>
+<script src="/common/js/rest-api.js"></script>
+<script src="/common/js/view/user-controller.js"></script>
 <script language="javascript">
     var name = '<%=sName%>';
     var certCode = '<%=sDupInfo%>';
@@ -63,43 +67,40 @@
 
     var browse = navigator.userAgent.toLowerCase();
     if( (navigator.appName == 'Netscape' && browse.indexOf('trident') != -1) || (browse.indexOf("msie") != -1)) {
-        alert(123);
         window.open("about:blank","_self").close();
     } else {
-        alert(234);
+        alert(123);
+        var mobileNo = '<%=sMobileNo%>';
+        var phoneNum = blur(mobileNo);
+        var userInputId = getInputTextValue('userId');
+        if(mobileNo != ''){
+            if(userInputId != undefined){//비밀번호 찾기
+                var userInfo  = getUserInfoFromFindPwd(userInputId, phoneNum);
+                if(userInfo != null){
+                    var userKey = userInfo.result.userKey;
+                    innerValue('userKey', userKey);
+                    $("#id_frm_changePwd").attr("action", "/user?page_gbn=changePwd");
+                    $("#id_frm_changePwd").submit();
+
+                }else{
+                    window.opener.document.getElementById("userIdPwd").textContent = '"가입하신 아이디가 아닙니다."';
+                }
+            }else{//아이디찾기
+                var userInfo  = getUserInfoByMobileNumber(phoneNum);
+                if(userInfo != null){
+                    var userId = userInfo.result.userId;
+                    window.opener.document.getElementById("userIdText").textContent = userId;
+                }else{
+                    window.opener.document.getElementById("userIdText").textContent = "가입하신 휴대폰번호가 아닙니다.";
+                }
+            }
+        }
         self.close();
     }
 </script>
 <% } %>
 <%@include file="/common/jsp/common.jsp" %>
 <script>
-    var mobileNo = '<%=sMobileNo%>';
-    var phoneNum = blur(mobileNo);
-    var userInputId = getInputTextValue('userId');
-    if(mobileNo != ''){
-        if(userInputId != undefined){//비밀번호 찾기
-           // userInputId,phoneNum
-            var userInfo  = getUserInfoFromFindPwd(userInputId, phoneNum);
-            if(userInfo != null){
-                var userKey = userInfo.result.userKey;
-                innerValue('userKey', userKey);
-                $("#id_frm_changePwd").attr("action", "/user?page_gbn=changePwd");
-                $("#id_frm_changePwd").submit();
-
-            }else{
-                alert("가입하신 아이디가 아닙니다.");
-            }
-        }else{//아이디찾기
-            var userInfo  = getUserInfoByMobileNumber(phoneNum);
-            if(userInfo != null){
-                var userId = userInfo.result.userId;
-                alert("회원님 아이디는 "+userId+" 입니다.");
-            }else{
-                alert("가입하신 휴대폰번호가 아닙니다.");
-            }
-        }
-    }
-
     $(function(){
         $(".serch > ul > li").click(function(){
             $(this).parent().find("li").removeClass("active");
@@ -129,11 +130,11 @@
                 </div>
                 <div class="serchBox">
                     <div class="serchBoard">
-                        <p>가입 당시 입력한 휴대폰 번호를 통해<br>아이디를 찾을 수 있습니다.</p>
+                        <p id="userIdText">가입 당시 입력한 휴대폰 번호를 통해<br>아이디를 찾을 수 있습니다.</p>
                         <a href="javascript:fnNicePopup();">휴대폰인증</a>
                     </div>
                     <div class="serchBoard">
-                        <p>아이디와 가입당시 입력한 휴대폰 번호를 통해<br>비밀번호를 찾을 수 있습니다.</p>
+                        <p id="userIdPwd">아이디와 가입당시 입력한 휴대폰 번호를 통해<br>비밀번호를 찾을 수 있습니다.</p>
                         <input type="text" id="userId" placeholder="아이디를 입력해주세요">
                         <a href="javascript:fnNicePopup();">휴대폰인증</a>
                     </div>
