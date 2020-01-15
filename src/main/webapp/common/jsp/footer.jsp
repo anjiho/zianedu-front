@@ -5,11 +5,11 @@
         <div class="inner">
             <ul>
                 <li><a href="javascript:goPage('company','main')">회사소개</a></li>
-                <li><a href="#">이용약관</a></li>
-                <li><a href="#">개인정보취급방침</a></li>
+                <li><a href="javascript:goPage('company','termsList')">이용약관</a></li>
+                <li><a href="javascript:goPage('company','policy')">개인정보취급방침</a></li>
                 <li><a href="#">강사모집</a></li>
                 <li><a href="javascript:goPageNoSubmit('customerCenter', 'saveQuestion');">고객센터</a></li>
-                <li class="last"><a href="#">찾아오시는 길</a></li>
+                <li class="last"><a href="javascript:goPage('company','main')">찾아오시는 길</a></li>
             </ul>
         </div>
     </div>

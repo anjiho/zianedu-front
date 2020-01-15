@@ -20,6 +20,10 @@ public class CompanyController {
 
         if ("main".equals(page_gbn)) {
             mvc.setViewName("/company/main");
+        }else if("policy".equals(page_gbn)){
+            mvc.setViewName("/company/policy");
+        }else if("termsList".equals(page_gbn)){
+            mvc.setViewName("/company/termsList");
         }
         return mvc;
     }

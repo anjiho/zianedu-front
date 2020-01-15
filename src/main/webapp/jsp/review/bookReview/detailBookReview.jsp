@@ -50,8 +50,6 @@
                     }
                 }
             }
-
-
             var prevNextInfo = result.prevNextInfo;
             if(prevNextInfo.prevBbsKey != null){
                 if(prevNextInfo.prevBbsKey == 0){
@@ -73,7 +71,6 @@
             var commentInfo = result.commentInfo;
             if(commentInfo.length > 0){
                 for(var j =0; j<commentInfo.length;j++){
-                    //commentHtml = " <tr>";
                     var commentHtml = "<td colspan=\"4\">";
                     commentHtml += " <div class='cm_list'>";
                     commentHtml += "<strong class='names'>"+ commentInfo[j].userName +"("+ commentInfo[j].userId +")</strong>";
@@ -81,11 +78,9 @@
                     commentHtml += "<span class='date'>"+ commentInfo[j].indate +"</span>";
                     commentHtml += "</div>";
                     commentHtml += "</td>";
-                    //commentHtml += "</tr>";
                     $("#commentList").append(commentHtml);
                 }
             }
-
         }
     });
 
