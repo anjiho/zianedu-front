@@ -184,8 +184,8 @@
             var resultInfo = modifyPwdByMobileNumber(userKey, changeUserPwd);
             if(resultInfo != null){
                 if(resultInfo.resultCode == 200){
-                    alert("비밀번호가 변경되었습니다.");
-                    goLoginPage();
+                   alert("비밀번호가 변경되었습니다.");
+                   goPageNoSubmit('user','login');
                 }
             }
         }
