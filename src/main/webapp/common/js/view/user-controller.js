@@ -107,6 +107,14 @@ function getUserInfoFromFindPwd(userId, mobileNumber){
         mobileNumber: mobileNumber
     };
     var userInfo = getApi("/user/getUserInfoFromFindPwd/", userId, data);
-    console.log(userInfo);
     return userInfo;
+}
+
+function modifyPwdByMobileNumber(userKey, changeUserPwd) {
+    var data = {
+        userKey : userKey,
+        changeUserPwd : changeUserPwd
+    };
+    var result = postApi("/user/modifyPwdByMobileNumber", data);
+    return result;
 }

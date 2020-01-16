@@ -76,9 +76,12 @@
             var userInfo  = getUserInfoFromFindPwd(userInputId, phoneNum);
             if(userInfo != null){
                 var userKey = userInfo.result.userKey;
-                location.href = "/user?page_gbn=changePwd&userKey="+userKey;
-                alert(userKey);
+                window.opener.document.getElementById("userKey").value = userKey;
+                window.opener.document.getElementById("searchDiv").style.display ='none';
+                window.opener.document.getElementById("changePwdDiv").style.display ='block';
             }else{
+                window.opener.document.getElementById("searchDiv").style.display ='block';
+                window.opener.document.getElementById("changePwdDiv").style.display ='none';
                 window.opener.document.getElementById("userIdPwd").innerHTML = '가입하신 아이디가 아닙니다.';
             }
         }
@@ -91,7 +94,9 @@
 </script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
+    <input type="hidden" name="userKey" id="userKey">
     <input type="hidden" name="EncodeData" value="<%=EncodeData%>">
+    <input type="hidden" id="pwdValidation" value="0">
     <input type="hidden" name="m" value="checkplusSerivce">
     <div id="wrap">
         <div class="loginWrap">
@@ -103,18 +108,25 @@
                         <li class="active"><a href="javascript:goPageNoSubmit('user','findUserPwd');">비밀번호 찾기</a></li>
                     </ul>
                 </div>
-                <div class="serchBox">
+                <div class="serchBox" id="searchDiv">
                     <div class="serchBoard">
                         <p id="userIdPwd">아이디와 가입당시 입력한 휴대폰 번호를 통해<br>비밀번호를 찾을 수 있습니다.</p>
                         <input type="text" id="userId" placeholder="아이디를 입력해주세요">
                         <a href="javascript:fnNicePopup();">휴대폰인증</a>
                     </div>
-<%--                    <div class="serchBoard">--%>
-<%--                        <p id="userIdPwd">아이디와 가입당시 입력한 휴대폰 번호를 통해<br>비밀번호를 찾을 수 있습니다.</p>--%>
-<%--                        <input type="text" id="userId" placeholder="아이디를 입력해주세요">--%>
-<%--                        <a href="javascript:fnNicePopup();">휴대폰인증</a>--%>
-<%--                    </div>--%>
                 </div>
+                <div class="serchBox" style="display: none;" id="changePwdDiv">
+                    <div class="serchBoard">
+                        <input type="password" id="changeUserPwd" placeholder="변경할 비밀번호를 입력해 주세요." style="margin-top: 100px;">
+                        <div class="requiredText" id="pwdCaption" style="display:none;"></div>
+                        <input type="password" id="reUserPwd" placeholder="변경비밀번호 재확인" >
+                        <div class="requiredText" id="rePwdCaption" style="display:none;"></div>
+                        <div class="loginBtn">
+                            <a href="javascript:goChangePwd();" class="btn_join">비밀번호 변경</a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
             <div class="loginBanner">
                 <a href="#"><img src="/common/zian/images/common/c_banner.jpg" alt=""></a>
@@ -127,4 +139,49 @@
 </html>
 <script>
     window.name ="Parent_window";
+    $(document).ready(function () {
+        //비밀번호 확인 체크
+        $("#changeUserPwd").keyup(function () {
+            var password = getInputTextValue("changeUserPwd");
+            innerHTML("rePwdCaption","");
+            validationPassword(password);
+        });
+        $("#reUserPwd").keyup(function () {
+            var password   = getInputTextValue("changeUserPwd");
+            var rePassword = getInputTextValue("reUserPwd");
+            if(rePassword != ""){
+                if(password != ""){
+                    gfn_display("rePwdCaption", true);
+                    if(password == rePassword){
+                        innerHTML("rePwdCaption","비밀번호 일치");
+                        innerValue('pwdValidation', 1);
+                    }else{
+                        innerHTML("rePwdCaption","비밀번호가 일치하지 않습니다. 다시 확번 확인해주세요.");
+                    }
+                }else{
+                    alert('비밀번호를 입력하세요');
+                    innerValue("rePassword", "");
+                    focusInputText("password");
+                    return false;
+                }
+            }
+        });
+    });
+    function goChangePwd() {
+        var pwdValidation = getInputTextValue('pwdValidation');
+        if(pwdValidation == 0){
+            alert("비밀번호를 다시 확인해 주세요.");
+        }else{
+            var userKey = getInputTextValue('userKey');
+            var changeUserPwd = getInputTextValue('changeUserPwd');
+            var resultInfo = modifyPwdByMobileNumber(userKey, changeUserPwd);
+            if(resultInfo != null){
+                alert(resultInfo.resultCode);
+                if(resultInfo.keyValue == 200){
+                    alert("비밀번호가 변경되었습니다.");
+                    goLoginPage();
+                }
+            }
+        }
+    }
 </script>
