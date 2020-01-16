@@ -23,9 +23,11 @@ public class UserController {
         } else if ("login".equals(page_gbn)) {
             mvc.setViewName("/user/login");
         } else if ("findUserId".equals(page_gbn)) {
-            mvc.setViewName("/user/findUserIdPwd");
-        }else if ("changePwd".equals(page_gbn)) {
+            mvc.setViewName("/user/findUserId");
+        } else if ("changePwd".equals(page_gbn)) {
             mvc.setViewName("/user/changeUserPwd");
+        } else if ("findUserPwd".equals(page_gbn)) {
+            mvc.setViewName("/user/findUserPwd");
         }
 
         return mvc;

@@ -56,7 +56,7 @@
                 <div class="inner">
                     <div class="titleBar">
                         <h5>지안에듀 합격자 STORY</h5>
-                        <a href="#" class="btn_more">전체보기</a>
+                        <a href="javascript:goPassReview();" class="btn_more">전체보기</a>
                     </div>
                     <div class="mainStoryList">
                         <div class="item"><div>
@@ -241,17 +241,17 @@
 								</span>
                             </li>
                         </ul>
-                        <a href="#" class="btn_apply">1:1문의</a>
+                        <a href="javascript:goPageNoSubmit('customerCenter','consult');" class="btn_apply">1:1문의</a>
                     </div>
                 </div>
                 <div class="mainInfo w55p">
                     <ul>
-                        <li><a href="#" class="item1">시험공공</a></li>
+                        <li><a href="javascript:goExamNotice();" class="item1">시험공공</a></li>
                         <li><a href="javascript:goOpenMenu();" class="item2">개강안내</a></li>
                         <li><a href="#" class="item3">교재배송</a></li>
-                        <li><a href="#" class="item4">모바일 문의</a></li>
-                        <li><a href="#" class="item5">자주하는 질문</a></li>
-                        <li><a href="#" class="item6">1:1 고객상담</a></li>
+                        <li><a href="javascript:goPageNoSubmit('customerCenter','mobile');" class="item4">모바일 문의</a></li>
+                        <li><a href="javascript:goPageNoSubmit('customerCenter','oftenList');" class="item5">자주하는 질문</a></li>
+                        <li><a href="javascript:goPageNoSubmit('customerCenter','consult');" class="item6">1:1 고객상담</a></li>
                     </ul>
                 </div>
             </div>
@@ -295,5 +295,25 @@ function detailReview(bbsKey, tagId) {
     }else if(tagId == 'passInfo'){
         goPage('review','detailPass');
     }
+}
+
+//교수 상세페이지 이동
+function goTeacherDetail(teacherKey, reqKey) {
+    innerValue("teacherKey", teacherKey);
+    innerValue("reqKey", reqKey);
+    location.href = "/teacher?page_gbn=detail&teacherKey="+teacherKey+"&reqKey="+reqKey;
+}
+
+function goDetailBook(gkey) {
+    goPage('bookStore', 'detail');
+    location.href = "/bookStore?page_gbn=detail&bbsKey="+gkey;
+}
+
+function goPassReview() {
+    var leftMenuInfo = sessionStorage.getItem('leftMenu');
+    if(leftMenuInfo == 'bookStore') {
+        sessionStorage.setItem("leftMenu", "publicOnline");
+    }
+    goPageNoSubmit('review', 'videoList');
 }
 </script>

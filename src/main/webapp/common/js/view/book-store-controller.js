@@ -67,16 +67,16 @@ function getBookList(tagId , leftMenuCtgKey, sPage, listLimit) {
             else name = "|" + data.name;
 
             return "<div class=\"item\">" +
-                "<img src='"+ data.bookImageUrl +"' alt=''>"+
-                "<a href='javascript:goDetailBook("+ data.gkey +");'><span class=\"name\">"+ data.goodsName +"</span></a>"+
+                "<a href='javascript:goDetailBook("+ data.gkey +");'><img src='"+ data.bookImageUrl +"' alt=\"\"></a>"+
+                "<span class=\"name\">"+ data.goodsName +"</span>"+
                 "<span class=\"writer\">"+ data.writer + name +"</span>" +
                 "<span class=\"price\"><b>"+ data.sellPrice +"</b>원 <span style='color: red;'>"+"("+data.discountPercent+")"+"</span></span>";
         }, {escapeHtml: false});
     }
     $(function(){
         kiplayer.sliderSlick($(".productList"));
+        $('.slick-dots').attr('style', "display:none;");
     });
-    $(".slick-dots").hide();
 }
 
 function getSalesBookList(bookMenuType, searchText, orderType, sPage, listLimit) {

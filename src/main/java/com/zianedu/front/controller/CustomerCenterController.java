@@ -19,6 +19,10 @@ public class CustomerCenterController {
             mvc.setViewName("/customerCenter/question/saveQuestion");
         }else if("consult".equals(page_gbn)){
             mvc.setViewName("/customerCenter/consultReserve");
+        }else if("mobile".equals(page_gbn)){
+            mvc.setViewName("/customerCenter/mobileConsult");
+        }else if("oftenList".equals(page_gbn)){
+            mvc.setViewName("/customerCenter/oftenQuestion/oftenQuestionList");
         }
         return mvc;
     }

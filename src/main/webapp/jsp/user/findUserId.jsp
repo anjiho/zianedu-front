@@ -73,23 +73,12 @@
         var phoneNum = blur(mobileNo);
         var userInputId = getInputTextValue('userId');
         if(mobileNo != ''){
-            if(userInputId != undefined){//비밀번호 찾기
-                var userInfo  = getUserInfoFromFindPwd(userInputId, phoneNum);
-                if(userInfo != null){
-                    var userKey = userInfo.result.userKey;
-                    window.opener.document.getElementById("userKey").value = userKey;
-                    location.href = "/user?page_gbn=changePwd&userKey="+userKey;
-                }else{
-                    window.opener.document.getElementById("userIdPwd").innerHTML = '"가입하신 아이디가 아닙니다."';
-                }
-            }else{//아이디찾기
-                var userInfo  = getUserInfoByMobileNumber(phoneNum);
-                if(userInfo != null){
-                    var userId = userInfo.result.userId;
-                    window.opener.document.getElementById("userIdText").innerHTML = "가입하신 아이디는" + userId + "입니다";
-                }else{
-                    window.opener.document.getElementById("userIdText").innerHTML = "가입하신 휴대폰번호가 아닙니다.";
-                }
+            var userInfo  = getUserInfoByMobileNumber(phoneNum);
+            if(userInfo != null){
+                var userId = userInfo.result.userId;
+                window.opener.document.getElementById("userIdText").innerHTML = "가입하신 아이디는 <span style='font-weight: bold'>" + userId + " </span>입니다";
+            }else{
+                window.opener.document.getElementById("userIdText").innerHTML = "가입하신 휴대폰번호가 아닙니다.";
             }
         }
         self.close();
@@ -98,15 +87,7 @@
 <% } %>
 <%@include file="/common/jsp/common.jsp" %>
 <script>
-    $(function(){
-        $(".serch > ul > li").click(function(){
-            $(this).parent().find("li").removeClass("active");
-            $(this).addClass("active");
-            $(".serchBoard").removeClass("active");
-            $(".serchBoard").eq($(this).index()).addClass("active");
-        });
-        $(" .serch > ul > li").eq(0).click();
-    });
+
 </script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
@@ -118,19 +99,14 @@
             <div class="serchForm">
                 <div class="serch">
                     <ul>
-                        <li><a href="#">아이디 찾기</a></li>
-                        <li><a href="#">비밀번호 찾기</a></li>
+                        <li class="active"><a href="javascript:goPageNoSubmit('user','findUserId');">아이디 찾기</a></li>
+                        <li><a href="javascript:goPageNoSubmit('user','findUserPwd');">비밀번호 찾기</a></li>
                     </ul>
                 </div>
                 <div class="serchBox">
                     <div class="serchBoard">
                         <p id="userIdText">가입 당시 입력한 휴대폰 번호를 통해<br>아이디를 찾을 수 있습니다.</p>
                         <a href="javascript:fnNicePopup();" id="phoneBtn">휴대폰인증</a>
-                    </div>
-                    <div class="serchBoard">
-                        <p id="userIdPwd">아이디와 가입당시 입력한 휴대폰 번호를 통해<br>비밀번호를 찾을 수 있습니다.</p>
-                        <input type="text" id="userId" placeholder="아이디를 입력해주세요">
-                        <a href="javascript:fnNicePopup();">휴대폰인증</a>
                     </div>
                 </div>
             </div>

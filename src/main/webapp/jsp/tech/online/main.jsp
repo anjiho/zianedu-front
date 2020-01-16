@@ -158,6 +158,7 @@
             </div>
 
             <div class="divGroup cols2">
+                <input type="hidden" id="bbsKey" name="bbsKey">
                 <div>
                     <div class="mainBoard tabContent">
                         <ul class="tabBar">
@@ -191,10 +192,6 @@
                     </div>
                 </div>
             </div>
-<%--            <div class="mainBanner divGroup cols2">--%>
-<%--                <div><a href="#"><img src="" id="eventBanner0" alt=""></a></div>--%>
-<%--                <div><a href="#"><img src="" id="eventBanner1" alt=""></a></div>--%>
-<%--            </div>--%>
             <!-- 지안에듀 배너 -->
             <div class="mainBanner">
                 <div class="inner">
@@ -236,17 +233,17 @@
 								</span>
                             </li>
                         </ul>
-                        <a href="#" class="btn_apply">1:1문의</a>
+                        <a href="javascript:goPageNoSubmit('customerCenter','consult');" class="btn_apply">1:1문의</a>
                     </div>
                 </div>
                 <div class="mainInfo w55p">
                     <ul>
-                        <li><a href="#" class="item1">시험공공</a></li>
-                        <li><a href="#" class="item2">개강안내</a></li>
+                        <li><a href="javascript:goExamNotice();" class="item1">시험공공</a></li>
+                        <li><a href="javascript:goOpenMenu();" class="item2">개강안내</a></li>
                         <li><a href="#" class="item3">교재배송</a></li>
-                        <li><a href="#" class="item4">모바일 문의</a></li>
-                        <li><a href="#" class="item5">자주하는 질문</a></li>
-                        <li><a href="#" class="item6">1:1 고객상담</a></li>
+                        <li><a href="javascript:goPageNoSubmit('customerCenter','mobile');" class="item4">모바일 문의</a></li>
+                        <li><a href="javascript:goPageNoSubmit('customerCenter','oftenList');" class="item5">자주하는 질문</a></li>
+                        <li><a href="javascript:goPageNoSubmit('customerCenter','consult');" class="item6">1:1 고객상담</a></li>
                     </ul>
                 </div>
             </div>
@@ -268,13 +265,14 @@ $( document ).ready(function() {
     activeLeftMenu(sessionStorage.getItem("leftMenu"));
     getMainBigBanner("mainVisualSlider1", 827, 5);//메인 대 배너
     getMainMiniBanner("mainVisualSlider2", 828, 5);//대배너 옆 미니 배너
-    getTeacherPageList("teacherPage1", 829, 0);//공통과목 교수진 페이지 리스트
-    getTeacherBannerList("teacherList1", 829, 0);//공통과목 교수진 리스트
-    getMajorTeacherPageList("teacherPage2", 829, 1);//전공과목 교수진 페이지 리스트
-    getMajorTeacherBannerList("teacherList2", 829, 1);//전공과목 교수진 리스트
+    var teacherMenuCtgKey = getTeacherListCtgKey();
+    getTeacherPageList("teacherPage1", 829, 0, teacherMenuCtgKey);//공통과목 교수진 페이지 리스트
+    getTeacherBannerList("teacherList1", 829, 0, teacherMenuCtgKey);//공통과목 교수진 리스트
+    getMajorTeacherPageList("teacherPage2", 829, 1, teacherMenuCtgKey);//전공과목 교수진 페이지 리스트
+    getMajorTeacherBannerList("teacherList2", 829, 1, teacherMenuCtgKey);//전공과목 교수진 리스트
     getEventMiniBanner("", 6287, 5);//이벤트 배너
-    getBannerNoticeList("examNotice", 1, 4, 10030);//시험공고 리스트
-    getBannerNoticeList("openInfo", 1, 4, 10026);//개강안내 리스트
+    getBannerNoticeList2("examNotice", 1, 4, 10030);//시험공고 리스트
+    getBannerNoticeList2("openInfo", 1, 4, 10026);//개강안내 리스트
     getBannerNoticeList("lecInfo", 1, 4, 10033);//수강후기 리스트
     getBannerNoticeList("passInfo", 1, 4, 10032);//합격후기 리스트
     getBookList("productList1", 844, 1, 10);//온라인 서점 배너
@@ -282,4 +280,34 @@ $( document ).ready(function() {
     getMainreviewBanner("reviewBanner", 830, 1);//중앙 소 배너
     getCommunityList(10970, 1, 2);//합격자 영상
 });
+
+//행정직 수강후기 > 상세보기
+function detailReview(bbsKey, tagId) {
+    innerValue('bbsKey', bbsKey);
+    if(tagId == 'lecInfo'){
+        goPage('review','detailLecture');
+    }else if(tagId == 'passInfo'){
+        goPage('review','detailPass');
+    }
+}
+
+//교수 상세페이지 이동
+function goTeacherDetail(teacherKey, reqKey) {
+    innerValue("teacherKey", teacherKey);
+    innerValue("reqKey", reqKey);
+    location.href = "/teacher?page_gbn=detail&teacherKey="+teacherKey+"&reqKey="+reqKey;
+}
+
+function goDetailBook(gkey) {
+    goPage('bookStore', 'detail');
+    location.href = "/bookStore?page_gbn=detail&bbsKey="+gkey;
+}
+
+function goPassReview() {
+    var leftMenuInfo = sessionStorage.getItem('leftMenu');
+    if(leftMenuInfo == 'bookStore') {
+        sessionStorage.setItem("leftMenu", "publicOnline");
+    }
+    goPageNoSubmit('review', 'videoList');
+}
 </script>

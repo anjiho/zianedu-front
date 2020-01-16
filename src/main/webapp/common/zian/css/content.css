@@ -633,7 +633,7 @@
 .serchForm .serch ul li.active a{color:#144b95;font-weight:bold;}
 .serchForm .serchBox{position:relative;height:320px;width:99.9%;}
 .serchForm .serchBox .serchBoard{width:100%;height:320px;position:absolute;left: 0;top: 0;border:1px solid #e5e5e5;border-top:none;box-sizing:border-box;}
-.serchBoard{display:none}
+
 .serchBoard.active{display:block}
 .serchForm .serchBox .serchBoard p{width:100%;text-align:center;margin:auto;font-size:16px;color:#333;margin-top:64px;line-height:22px}
 .serchForm .serchBox .serchBoard input{display:block;width:328px;padding-left:10px;height:50px;margin:auto;font-size:16px;color:#333;margin:auto;margin-top:12px}

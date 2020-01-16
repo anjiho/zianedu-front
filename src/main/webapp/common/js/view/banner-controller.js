@@ -285,7 +285,7 @@ function getTeacherPageList(tagId, ctgKey, subjectType, teacherMenuCtgKey) {
             retrunHtml += '<b>'+ cmpList.teacherName +'</b>';
             retrunHtml += '<span class="btnArea">';
             retrunHtml += '<a href="javascript:goTeacherDetail('+ cmpList.teacherKey +','+ cmpList.reqKey + ');"><img src="/common/zian/images/common/icon_home.png" alt=""> 교수홈</a>';
-            retrunHtml += '<a href="#"><img src="/common/zian/images/common/icon_review.png" alt=""> 수강후기</a>';
+            retrunHtml += '<a href="javascript:goPageNoSubmit(\'review\',\'lectureList\');"><img src="/common/zian/images/common/icon_review.png" alt=""> 수강후기</a>';
             retrunHtml += '</span>';
             retrunHtml += '<span class="desc">';
             retrunHtml += '<b>약력</b>';
@@ -358,7 +358,6 @@ function getMajorTeacherPageList(tagId, ctgKey, subjectType, teacherMenuCtgKey) 
     var infoList = getApi("/banner/getTeacherBannerList/", ctgKey, data);
     if (infoList.result.length > 0) {
         var selList = infoList.result;
-        console.log(selList);
         for(var i = 0; i < selList.length; i++) {
             var cmpList = selList[i];
 
@@ -369,8 +368,8 @@ function getMajorTeacherPageList(tagId, ctgKey, subjectType, teacherMenuCtgKey) 
             retrunHtml += '<span class="category">'+ cmpList.subjectName +'</span>';
             retrunHtml += '<b>'+ cmpList.teacherName +'</b>';
             retrunHtml += '<span class="btnArea">';
-            retrunHtml += '<a href="#"><img src="/common/zian/images/common/icon_home.png" alt=""> 교수홈</a>';
-            retrunHtml += '<a href="#"><img src="/common/zian/images/common/icon_review.png" alt=""> 수강후기</a>';
+            retrunHtml += '<a href="javascript:goTeacherDetail('+ cmpList.teacherKey +','+ cmpList.reqKey + ');"><img src="/common/zian/images/common/icon_home.png" alt=""> 교수홈</a>';
+            retrunHtml += '<a href="javascript:goPageNoSubmit(\'review\',\'lectureList\');"><img src="/common/zian/images/common/icon_review.png" alt=""> 수강후기</a>';
             retrunHtml += '</span>';
             retrunHtml += '<span class="desc">';
             retrunHtml += '<b>약력</b>';
