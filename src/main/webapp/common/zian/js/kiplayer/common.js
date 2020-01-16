@@ -420,27 +420,27 @@ var kiplayer = {
 		$("a.btn_modalOpen[href='#"+modalId+"']").focus();
 	},
 	'slider':function(){
-		if($(".slider.useBx").length > 0){
-			$(".slider.useBx").each(function(){
-				kiplayer.sliderBx($(this).children("ul"));
-			});
-		}
+		// if($(".slider.useBx").length > 0){
+		// 	$(".slider.useBx").each(function(){
+		// 		kiplayer.sliderBx($(this).children("ul"));
+		// 	});
+		// }
 		if($(".slider.useSlick").length > 0){
 			$(".slider.useSlick").each(function(){
 				kiplayer.sliderSlick($(this).children("ul"));
 			});
 		}
-		$(".bx-viewport ul").each(function(){
-			$(this).find("li a").focus(function(){
-				//$(this).parents(".bx-wrapper").eq(0).find(".bx-stop").trigger("click");
-				var slideNo = $(this).parent().index();
-				if(slideNo < $(this).parent().parent().children("li").length - 3){
-					var sliderNo = parseInt($(this).parent().parent().attr("data-sliderNo"));
-					sliderItem[sliderNo].goToSlide(slideNo);
-					console.log(sliderNo+"|"+slideNo);
-				}
-			});
-		});
+		// $(".bx-viewport ul").each(function(){
+		// 	$(this).find("li a").focus(function(){
+		// 		//$(this).parents(".bx-wrapper").eq(0).find(".bx-stop").trigger("click");
+		// 		var slideNo = $(this).parent().index();
+		// 		if(slideNo < $(this).parent().parent().children("li").length - 3){
+		// 			var sliderNo = parseInt($(this).parent().parent().attr("data-sliderNo"));
+		// 			sliderItem[sliderNo].goToSlide(slideNo);
+		// 			console.log(sliderNo+"|"+slideNo);
+		// 		}
+		// 	});
+		// });
 	},
 	'sliderBx':function(ul, option){
 		var sliderOption = default_Bxslider;
