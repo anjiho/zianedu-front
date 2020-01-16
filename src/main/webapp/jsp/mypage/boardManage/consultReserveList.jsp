@@ -98,12 +98,28 @@
 
     function detailConsult(idx) {
         kiplayer.modalOpen('#modal1');
-        var consultInfo =  getCounselReserveDetailInfo(idx);
+        var consultInfo = getCounselReserveDetailInfo(idx);
         if(consultInfo != null){
-            innerHTML('conusltName', consultInfo.result.userName);
-            innerHTML('phoneNum', consultInfo.result.mobileNumber);
-            innerHTML('ctgNameStr', consultInfo.result.ctgNameStr);
-            innerHTML('consultContent', consultInfo.result.reserveContents);
+            if(consultInfo.result.userName != null){
+                innerHTML('conusltName', consultInfo.result.userName);
+            }else{
+                innerHTML('conusltName', '-');
+            }
+            if(consultInfo.result.mobileNumber != null) {
+                innerHTML('phoneNum', consultInfo.result.mobileNumber);
+            }else{
+                innerHTML('phoneNum', '-');
+            }
+            if(consultInfo.result.ctgNameStr != null) {
+                innerHTML('ctgNameStr', consultInfo.result.ctgNameStr);
+            }else{
+                innerHTML('ctgNameStr', '-');
+            }
+            if(consultInfo.result.reserveContents != null) {
+                innerHTML('consultContent', consultInfo.result.reserveContents);
+            }else{
+                innerHTML('consultContent', '-');
+            }
         }
     }
 </script>
@@ -155,10 +171,6 @@
                             </div>
                             <a href="javascript:fn_search('new');" class="search_btn">조회</a>
                         </div>
-                        <ul>
-                            <li>· 기본적으로 최근 3개월간의 자료가 조회되며, 기간 검색시 지난 주문내역을 조회하실 수 있습니다.</li>
-                            <li>· 주문번호를 클릭하시면 해당 주문에 대한 상세내역을 확인하실 수 있습니다.</li>
-                        </ul>
                     </div>
                     <!--//날짜 검색 -->
                     <div class="tbd_03">

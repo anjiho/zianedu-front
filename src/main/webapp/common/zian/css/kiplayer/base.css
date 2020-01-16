@@ -295,8 +295,8 @@ input + .btn_inline{margin-left:5px;}
 = Modal 기본스타일 지정
 = 사이즈 : btn_ss < btn_s < btn_inline < btn_m < btn_l
 ============================================================================================================== */
-.modalWrap{position:absolute;top:150px;left:50%;margin-left:-350px;width:700px;background:#fff;opacity:0;transition-duration:0.5s;}
-.modalWrap.active{top:180px;opacity:1;z-index:99;}
+.modalWrap{position:absolute;top:150px;left:50%;margin-left:-350px;width:700px;background:#fff;display:none;transition-duration:0.5s;}
+.modalWrap.active{top:180px;display:block;z-index:99;}
 .modalWrap.small{margin-left:-250px;width:500px;}
 .modalWrap.wide{margin-left:-450px;width:900px;}
 .modalWrap .modalTitle{position:relative;padding:0 65px 0 20px;height:46px;background:#484c51;}

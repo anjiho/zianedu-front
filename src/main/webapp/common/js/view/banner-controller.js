@@ -395,21 +395,30 @@ function getExamScheduleList(tagId) {
     var infoList = getApi("/banner/getExamScheduleList","" ,"");
     if (infoList.result.length > 0) {
         var selList = infoList.result;
-        for (var i=0; i<selList.length; i++) {
-            function formatter(cmpList) {
-                return "<span>"+ cmpList.title +"</span>"+
-                    "<b>" + cmpList.dday + "</b>"+
-                    "<a href=\"#\">상세정보</a>";
-            }
-        }
-        dwr.util.addOptions(tagId, selList, formatter, {escapeHtml:false});
-        // dwr.util.addOptions(tagId, selList, function (data) {
-        //     return "<span>"+ data.title +"</span>"+
-        //         "<b>" + data.dday + "</b>"+
-        //         "<a href=\"#\">상세정보</a>";
-        // }, {escapeHtml: false});
+        console.log(selList);
+        dwr.util.addOptions(tagId, selList, function (data) {
+            return "<span>"+ data.title +"</span>"+
+                "<b>" + data.dday + "</b>"+
+                "<a href=\"#\">상세정보</a>";
+        }, {escapeHtml: false});
     }
-    initExamSlideBanner();
+    if($(".slider.useBx").length > 0){
+        $(".slider.useBx").each(function(){
+            kiplayer.sliderBx($(this).children("ul"));
+        });
+    }
+    $(".bx-viewport ul").each(function(){
+        $(this).find("li a").focus(function(){
+            alert(1);
+            //$(this).parents(".bx-wrapper").eq(0).find(".bx-stop").trigger("click");
+            var slideNo = $(this).parent().index();
+            if(slideNo < $(this).parent().parent().children("li").length - 3){
+                var sliderNo = parseInt($(this).parent().parent().attr("data-sliderNo"));
+                sliderItem[sliderNo].goToSlide(slideNo);
+                console.log(sliderNo+"|"+slideNo);
+            }
+        });
+    });
 }
 
 //커뮤니티 리스트
