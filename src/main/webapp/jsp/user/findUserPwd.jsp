@@ -55,6 +55,7 @@
 <script src="/common/js/common.js"></script>
 <script src="/common/js/rest-api.js"></script>
 <script src="/common/js/view/user-controller.js"></script>
+<script src="/common/js/comment.js"></script>
 <script language="javascript">
     var name = '<%=sName%>';
     var certCode = '<%=sDupInfo%>';
