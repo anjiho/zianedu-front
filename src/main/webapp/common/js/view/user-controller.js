@@ -107,5 +107,6 @@ function getUserInfoFromFindPwd(userId, mobileNumber){
         mobileNumber: mobileNumber
     };
     var userInfo = getApi("/user/getUserInfoFromFindPwd/", userId, data);
+    console.log(userInfo);
     return userInfo;
 }

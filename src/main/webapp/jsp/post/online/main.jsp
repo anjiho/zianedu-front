@@ -151,10 +151,10 @@
             <!-- 지안에듀 바로가기 -->
             <div class="mainQuickLink">
                 <ul>
-                    <li><a href="#"><img src="/common/zian/images/common/icon_quickLink1.png" alt=""> 1:1 학습컨설팅</a></li>
-                    <li><a href="#"><img src="/common/zian/images/common/icon_quickLink2.png" alt=""> 학원실강접수</a></li>
-                    <li ><a href="#"><img src="/common/zian/images/common/icon_quickLink3.png" alt=""> 학원개강안내</a></li>
-                    <li><a href="#"><img src="/common/zian/images/common/icon_quickLink4.png" alt=""> 강의실배정표</a></li>
+                    <li><a href="javascript:goPageNoSubmit('customerCenter','consult');"><img src="/common/zian/images/common/icon_quickLink1.png" alt=""> 1:1 학습컨설팅</a></li>
+                    <li><a href="javascript:goPageNoSubmit('lectureOrder', 'single')"><img src="/common/zian/images/common/icon_quickLink2.png" alt=""> 학원실강접수</a></li>
+                    <li ><a href="javascript:goOpenMenu();"><img src="/common/zian/images/common/icon_quickLink3.png" alt=""> 학원개강안내</a></li>
+                    <li><a href="javascript:goLecRoom();"><img src="/common/zian/images/common/icon_quickLink4.png" alt=""> 강의실배정표</a></li>
                     <li><a href="#"><img src="/common/zian/images/common/icon_quickLink5.png" alt=""> 모의고사신청</a></li>
                 </ul>
             </div>

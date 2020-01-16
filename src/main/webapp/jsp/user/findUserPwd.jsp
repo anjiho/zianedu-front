@@ -2,7 +2,7 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%
     //라이브
-    String EncodeData = "AgAFRzQ1MjiSyEDzN+LycTxTiNf2vC5mFqrP/zlqlGBtlUB763ezVb5S49ZNORP1/FUJpGiUujufqGX6E2fn1EK5iOl4bITVJdxrIfSVXxR9uhRS/xt6GNWW37ZtqCj17NXLjTcFMDPRxARk+VAeWoPw+rkNB4aqDrwJ+QdfcfybewFLQmDPUNr1prHfCEngjtUti0N63syETnCCGQmRqcB9AsOe5IOr4nDdVHCCRpBotf1d1LMvVS18SIEMDdFc34zUDl/FlxfrJ1DsadThc/Oafmg7s4HNpQWzI9KBBCsgVs0dcVTuOTeM4Xld/2h2CKjcL5DunjDf9k/3sD7p17xXY/wlX715ooT9Wq0AEPoqvkdWSd8DfBX+26Wom3P47MqgpAGIB1YS6EttO8gRS67xTVUXzItmfHPSlOqeMAaftfGllXdBCl2XkXX9dhU3bpzKKMZqMR8i+u1qJTdEd1sZE+rO/g8KpUwHgIo5atTdMH0J/Aq2LQ==";
+    String EncodeData = "AgAFRzQ1Mjhd3IIzWk2NPukWJik41vRks3td9S9SojuXKL3zikJYjL5S49ZNORP1/FUJpGiUujufqGX6E2fn1EK5iOl4bITV3TbJVMo8WijIkqWXjV36zgHwAIc2efmW3KE7/ZoxoRUSrXR6LgD7lQ3MOlQk+u8o5QbbXCBRouiZ5eoqiYCsql8t+o41MneD/5CDIAa7mZFBqm6hoH4jAz4dM6cuGKdLuzu+IWQnQwq+FcD7pZnK+/ILIq8RpKoPYHfsQnJYfu5ulU7yZYIXfJfE+w+LQxZNt6A31rYFZsQhy53sPN195FQKvvy7XUK0QzjckADh84Z67g4+N5aMNPigu1FEDWMakbKcMUhWjqHzTpxC1PZQd9e1M0BF8Y76yibt7PzrnKMbTiefX+OH5X2pB6Fj3ff7xTLv0aQEyp9x7SRDnFgqaZspnWqNDeKdrrJcvmM+79PfDv7sIvWBaBu7pAsRR8FM2s1XurUNo3VaNatKHdO3IQ==";
     //개발
     //String EncodeData = "AgAFRzQ1MjggmBc4FV2hsPk60S+onp/sPGguP/iH2IcLPYHRsyy1o75S49ZNORP1/FUJpGiUujufqGX6E2fn1EK5iOl4bITVW5OwueNZi7WXOXlvTLPDad7mZmTui1jNlT8Hwtvjwj6dWWOFOBi1pyFMYhWlKY9YjcYFYIxit58BaCJiOktYyUjw981KqnSD8mTh5v5j0o7FbAQZGgHWomubJYsH4odO7fu1IZZ2ZAihdqQUw9tJGjXfwShalrvgRp/jWWioBEmuz/EoubTtVE338M1ALBn+7+l63fIRxSeVgoNxY6dHYBLv94Aqzrv8bPiqIe7c6p6m9so+k+V/9HD1QvK5UbV1m+g3qOAxnyuCRV9FaaDPbWdl81QuHBjWL9bae4Ygp/nn28h+4JfefW1R/U8mP4jJA7a4B2xPu0DEyIPU49647KIlSAaQopATlkp+0mZoVsoKAn9YEiIG3jfJQCLl5LsgpcX7Wmll11trgCTkcmjbzQ==";
 %>
@@ -71,15 +71,15 @@
     } else {
         var mobileNo = '<%=sMobileNo%>';
         var phoneNum = blur(mobileNo);
-        var userInputId = getInputTextValue('userId');
+        var userInputId = window.opener.document.getElementById("userId").value;
         if(mobileNo != ''){
             var userInfo  = getUserInfoFromFindPwd(userInputId, phoneNum);
             if(userInfo != null){
                 var userKey = userInfo.result.userKey;
-                //window.opener.document.getElementById("userKey").value = userKey;
                 location.href = "/user?page_gbn=changePwd&userKey="+userKey;
+                alert(userKey);
             }else{
-                window.opener.document.getElementById("userIdPwd").innerHTML = '"가입하신 아이디가 아닙니다."';
+                window.opener.document.getElementById("userIdPwd").innerHTML = '가입하신 아이디가 아닙니다.';
             }
         }
         self.close();
