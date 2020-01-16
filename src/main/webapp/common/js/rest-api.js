@@ -36,7 +36,7 @@ function getApi(url, pathData, paramData) {
             };
         }
     }).fail(function() {
-        alert(comment.error);
+        alert("오류가 발생됬습니다.\n관리자에게 문의하세요.");
     });
     return resultData;
 }
