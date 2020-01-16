@@ -75,11 +75,17 @@
         var userInputId = window.opener.document.getElementById("userId").value;
         if(mobileNo != ''){
             var userInfo  = getUserInfoFromFindPwd(userInputId, phoneNum);
-            if(userInfo != null){
+            if(userInfo.result != null){
                 var userKey = userInfo.result.userKey;
-                window.opener.document.getElementById("userKey").value = userKey;
-                window.opener.document.getElementById("searchDiv").style.display ='none';
-                window.opener.document.getElementById("changePwdDiv").style.display ='block';
+                if(userKey != null){
+                    window.opener.document.getElementById("userKey").value = userKey;
+                    window.opener.document.getElementById("searchDiv").style.display ='none';
+                    window.opener.document.getElementById("changePwdDiv").style.display ='block';
+                }else{
+                    window.opener.document.getElementById("searchDiv").style.display ='block';
+                    window.opener.document.getElementById("changePwdDiv").style.display ='none';
+                    window.opener.document.getElementById("userIdPwd").innerHTML = '핸드폰번호와 아이디 정보가 일치하지 않습니다.';
+                }
             }else{
                 window.opener.document.getElementById("searchDiv").style.display ='block';
                 window.opener.document.getElementById("changePwdDiv").style.display ='none';

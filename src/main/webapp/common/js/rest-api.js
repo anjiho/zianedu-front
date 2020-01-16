@@ -27,7 +27,6 @@ function postPathApi(url, pathData, paramData) {
 
 /* get */
 function getApi(url, pathData, paramData) {
-
     var resultData = null;
     $.get(apiHost + url + pathData, paramData, function (response) {
         if(response.resultCode == 200){
