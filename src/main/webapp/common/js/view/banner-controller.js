@@ -395,11 +395,19 @@ function getExamScheduleList(tagId) {
     var infoList = getApi("/banner/getExamScheduleList","" ,"");
     if (infoList.result.length > 0) {
         var selList = infoList.result;
-        dwr.util.addOptions(tagId, selList, function (data) {
-            return "<span>"+ data.title +"</span>"+
-                "<b>" + data.dday + "</b>"+
-                "<a href=\"#\">상세정보</a>";
-        }, {escapeHtml: false});
+        for (var i=0; i<selList.length; i++) {
+            function formatter(cmpList) {
+                return "<span>"+ cmpList.title +"</span>"+
+                    "<b>" + cmpList.dday + "</b>"+
+                    "<a href=\"#\">상세정보</a>";
+            }
+        }
+        dwr.util.addOptions(tagId, selList, formatter, {escapeHtml:false});
+        // dwr.util.addOptions(tagId, selList, function (data) {
+        //     return "<span>"+ data.title +"</span>"+
+        //         "<b>" + data.dday + "</b>"+
+        //         "<a href=\"#\">상세정보</a>";
+        // }, {escapeHtml: false});
     }
     initExamSlideBanner();
 }
