@@ -2,7 +2,14 @@
 <script>
     $(document).ready(function () {
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-        innerHTML('cartCnt', sessionUserInfo.cartCount);
+        if(sessionUserInfo != null){
+            if(sessionUserInfo.cartCount > 0){
+                $("#cartCnt").show();
+                innerHTML('cartCnt', sessionUserInfo.cartCount);
+            }
+        }else{
+            $("#cartCnt").hide();
+        }
     });
     
     function goExamNotice() {
