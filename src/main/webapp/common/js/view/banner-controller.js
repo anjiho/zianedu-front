@@ -395,11 +395,10 @@ function getExamScheduleList(tagId) {
     var infoList = getApi("/banner/getExamScheduleList","" ,"");
     if (infoList.result.length > 0) {
         var selList = infoList.result;
-        console.log(selList);
         dwr.util.addOptions(tagId, selList, function (data) {
             return "<span>"+ data.title +"</span>"+
                 "<b>" + data.dday + "</b>"+
-                "<a href=\"#\">상세정보</a>";
+                "<a href='javascript:goExamNotice();'>상세정보</a>";
         }, {escapeHtml: false});
     }
     if($(".slider.useBx").length > 0){
@@ -409,7 +408,6 @@ function getExamScheduleList(tagId) {
     }
     $(".bx-viewport ul").each(function(){
         $(this).find("li a").focus(function(){
-            alert(1);
             //$(this).parents(".bx-wrapper").eq(0).find(".bx-stop").trigger("click");
             var slideNo = $(this).parent().index();
             if(slideNo < $(this).parent().parent().children("li").length - 3){

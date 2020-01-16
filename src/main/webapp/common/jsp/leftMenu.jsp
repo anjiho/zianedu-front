@@ -2,8 +2,21 @@
 <script>
     $(document).ready(function () {
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-        innerHTML('cartCnt', sessionUserInfo.cartCount);
+        if(sessionUserInfo != null){
+            if(sessionUserInfo.cartCount > 0){
+                $("#cartCnt").show();
+                innerHTML('cartCnt', sessionUserInfo.cartCount);
+            }
+        }else{
+            $("#cartCnt").hide();
+        }
     });
+    
+    function goExamNotice() {
+        sessionStorage.setItem("noticeHeader", "examNotice");
+        $("#noticeMenu li:eq(3)").addClass('active');
+        goPageNoSubmit('notice', 'list');
+    }
 
     function setNoticeMenu() {
         sessionStorage.setItem("noticeHeader", "openMenu");
@@ -213,30 +226,14 @@
                 <li class="noBg"><a href="#"><span class="icon item2"></span>학원시간표</a></li>
                 <li class="noBg"><a href="javascript:goExamGuide();"><span class="icon item3"></span>수험가이드</a></li>
                 <li><a href="javascript:goPageNoSubmit('myLecRoom', 'main')"><span class="icon item4"></span>내강의실</a></li>
-                <li><a href="#"><span class="icon item5"></span>학원수강내역</a></li>
+                <li><a href="javascript:goLecRoom();"><span class="icon item5"></span>학원수강내역</a></li>
                 <li><a href="javascript:goMyCart();"><span class="icon item6"><em id="cartCnt"></em></span>장바구니</a></li>
-                <li><a href="javascript:void(0);" onclick="setNoticeMenu()"><span class="icon item7"></span>공지사항</a></li>
+                <li><a href="javascript:setNoticeMenu();"><span class="icon item7"></span>공지사항</a></li>
                 <li><a href="javascript:goPageNoSubmit('customerCenter','consult');"><span class="icon item8"></span>1:1문의</a></li>
             </ul>
         </div>
         <div id="examBanner" class="slider useBx">
-            <ul id="dDayBanner">
-<%--                <li>--%>
-<%--                    <span>2019 국가직 7급 필기시험</span>--%>
-<%--                    <b>D-116</b>--%>
-<%--                    <a href="#">상세정보</a>--%>
-<%--                </li>--%>
-<%--                <li>--%>
-<%--                    <span>2019 국가직 7급 필기시험</span>--%>
-<%--                    <b>D-116</b>--%>
-<%--                    <a href="#">상세정보</a>--%>
-<%--                </li>--%>
-<%--                <li>--%>
-<%--                    <span>2019 국가직 7급 필기시험</span>--%>
-<%--                    <b>D-116</b>--%>
-<%--                    <a href="#">상세정보</a>--%>
-<%--                </li>--%>
-            </ul>
+            <ul id="dDayBanner"></ul>
         </div>
         <div id="snsLink">
             <b>지안에듀 SNS</b>
