@@ -219,9 +219,10 @@ function getSearchKeywordList(className) {
 }
 
 //강사(지안교수진) 배너 리스트 [ 공통과목 교수진 ]
-function getTeacherBannerList(tagId, ctgKey, subjectType) {
+function getTeacherBannerList(tagId, ctgKey, subjectType, teacherMenuCtgKey) {
     var data = {
-        subjectType : subjectType
+        subjectType : subjectType,
+        teacherMenuCtgKey : teacherMenuCtgKey
     };
     var infoList = getApi("/banner/getTeacherBannerList/", ctgKey, data);
     if (infoList.result.length > 0) {
@@ -306,9 +307,10 @@ function getTeacherPageList(tagId, ctgKey, subjectType, teacherMenuCtgKey) {
 }
 
 //강사(지안교수진) 배너 리스트 [ 전공과목 교수진 ]
-function getMajorTeacherBannerList(tagId, ctgKey, subjectType) {
+function getMajorTeacherBannerList(tagId, ctgKey, subjectType, teacherMenuCtgKey) {
     var data = {
-        subjectType : subjectType
+        subjectType : subjectType,
+        teacherMenuCtgKey : teacherMenuCtgKey
     };
     var infoList = getApi("/banner/getTeacherBannerList/", ctgKey, data);
 

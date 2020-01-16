@@ -275,9 +275,9 @@ $( document ).ready(function() {
     getMainreviewBanner("reviewBanner", 795, 1);//중앙 소 배너
     var teacherMenuCtgKey = getTeacherListCtgKey();
     getTeacherPageList("teacherPage1", 794, 0, teacherMenuCtgKey);//공통과목 교수진 페이지 리스트
-    getTeacherBannerList("teacherList1", 794, 0);//공통과목 교수진 리스트
+    getTeacherBannerList("teacherList1", 794, 0, teacherMenuCtgKey);//공통과목 교수진 리스트
     getMajorTeacherPageList("teacherPage2", 794, 1, teacherMenuCtgKey);//전공과목 교수진 페이지 리스트
-    getMajorTeacherBannerList("teacherList2", 794, 1);//전공과목 교수진 리스트
+    getMajorTeacherBannerList("teacherList2", 794, 1, teacherMenuCtgKey);//전공과목 교수진 리스트
     getBannerNoticeList2("examNotice", 1, 4, 10010);//행정직 시험공고 리스트
     getBannerNoticeList2("openInfo", 1, 4, 10001);//행정직 개강안내 리스트
     getBannerNoticeList("lecInfo", 1, 4, 10014);//행정직 수강후기 리스트
