@@ -6,6 +6,8 @@
             if(sessionUserInfo.cartCount > 0){
                 $("#cartCnt").show();
                 innerHTML('cartCnt', sessionUserInfo.cartCount);
+            }else{
+                $("#cartCnt").hide();
             }
         }else{
             $("#cartCnt").hide();
