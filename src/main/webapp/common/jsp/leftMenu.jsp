@@ -4,6 +4,12 @@
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         innerHTML('cartCnt', sessionUserInfo.cartCount);
     });
+    
+    function goExamNotice() {
+        sessionStorage.setItem("noticeHeader", "examNotice");
+        $("#noticeMenu li:eq(3)").addClass('active');
+        goPageNoSubmit('notice', 'list');
+    }
 
     function setNoticeMenu() {
         sessionStorage.setItem("noticeHeader", "openMenu");
