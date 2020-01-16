@@ -21,7 +21,11 @@ function login(userId, userPwd) {
         //gfn_display("login", false);
         //goMain();
         var targetUrl = getParameterByName("target_url");
-        location.href = targetUrl;
+        if (targetUrl == "") {
+            goMain();
+        } else {
+            location.href = targetUrl;
+        }
     }else if(loginChk.resultCode == 900){
         alert(comment.blank_login_check);
         return;
