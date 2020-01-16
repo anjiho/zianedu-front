@@ -159,6 +159,7 @@
             </div>
 
             <div class="divGroup cols2">
+                <input type="hidden" id="bbsKey" name="bbsKey">
                 <div>
                     <div class="mainBoard tabContent">
                         <ul class="tabBar">
@@ -167,21 +168,13 @@
                         </ul>
                         <div class="tabPage active">
                             <ul id="examNotice">
-<%--                                <li><a href="#">2018 지방직 9급 통신직 합격수기 <span class="date">2019.07.06</span></a></li>--%>
-<%--                                <li><a href="#">2018 지방직 9급 통신직 합격수기 <span class="date">2019.07.06</span></a></li>--%>
-<%--                                <li><a href="#">2018 지방직 9급 통신직 합격수기 <span class="date">2019.07.06</span></a></li>--%>
-<%--                                <li><a href="#">2018 지방직 9급 통신직 합격수기 <span class="date">2019.07.06</span></a></li>--%>
                             </ul>
-                            <a href="#" class="btn_more">전체보기</a>
+                            <a href="javascript:goExamNotice();" class="btn_more">전체보기</a>
                         </div>
                         <div class="tabPage">
                             <ul id="openInfo">
-<%--                                <li><a href="#">2018 지방직 9급 통신직 합격수기 <span class="date">2019.07.06</span></a></li>--%>
-<%--                                <li><a href="#">2018 지방직 9급 통신직 합격수기 <span class="date">2019.07.06</span></a></li>--%>
-<%--                                <li><a href="#">2018 지방직 9급 통신직 합격수기 <span class="date">2019.07.06</span></a></li>--%>
-<%--                                <li><a href="#">2018 지방직 9급 통신직 합격수기 <span class="date">2019.07.06</span></a></li>--%>
                             </ul>
-                            <a href="#" class="btn_more">전체보기</a>
+                            <a href="javascript:goOpenMenu();" class="btn_more">전체보기</a>
                         </div>
                     </div>
                 </div>
@@ -193,29 +186,17 @@
                         </ul>
                         <div class="tabPage active">
                             <ul id="lecInfo">
-<%--                                <li><a href="#">2018 지방직 9급 통신직 합격수기 <span class="date">2019.07.06</span></a></li>--%>
-<%--                                <li><a href="#">2018 지방직 9급 통신직 합격수기 <span class="date">2019.07.06</span></a></li>--%>
-<%--                                <li><a href="#">2018 지방직 9급 통신직 합격수기 <span class="date">2019.07.06</span></a></li>--%>
-<%--                                <li><a href="#">2018 지방직 9급 통신직 합격수기 <span class="date">2019.07.06</span></a></li>--%>
                             </ul>
-                            <a href="#" class="btn_more">전체보기</a>
+                            <a href="javascript:goPageNoSubmit('review','lectureList');" class="btn_more">전체보기</a>
                         </div>
                         <div class="tabPage">
                             <ul id="passInfo">
-<%--                                <li><a href="#">2018 지방직 9급 통신직 합격수기 <span class="date">2019.07.06</span></a></li>--%>
-<%--                                <li><a href="#">2018 지방직 9급 통신직 합격수기 <span class="date">2019.07.06</span></a></li>--%>
-<%--                                <li><a href="#">2018 지방직 9급 통신직 합격수기 <span class="date">2019.07.06</span></a></li>--%>
-<%--                                <li><a href="#">2018 지방직 9급 통신직 합격수기 <span class="date">2019.07.06</span></a></li>--%>
                             </ul>
-                            <a href="#" class="btn_more">전체보기</a>
+                            <a href="javascript:goPageNoSubmit('review','passList');" class="btn_more">전체보기</a>
                         </div>
                     </div>
                 </div>
             </div>
-<%--            <div class="mainBanner divGroup cols2">--%>
-<%--                <div><a href="#"><img src="" id="eventBanner0" alt=""></a></div>--%>
-<%--                <div><a href="#"><img src="" id="eventBanner1" alt=""></a></div>--%>
-<%--            </div>--%>
             <!-- 지안에듀 배너 -->
             <div class="mainBanner">
                 <div class="inner">
@@ -292,12 +273,22 @@ $( document ).ready(function() {
     getMajorTeacherPageList("teacherPage2", 823, 1);//전공과목 교수진 페이지 리스트
     getMajorTeacherBannerList("teacherList2", 823, 1);//전공과목 교수진 리스트
     getEventMiniBanner("", 6286, 5);//이벤트 배너
-    getBannerNoticeList("examNotice", 1, 4, 10030);//행정직 시험공고 리스트
-    getBannerNoticeList("openInfo", 1, 4, 10026);//행정직 개강안내 리스트
+    getBannerNoticeList2("examNotice", 1, 4, 10030);//행정직 시험공고 리스트
+    getBannerNoticeList2("openInfo", 1, 4, 10026);//행정직 개강안내 리스트
     getBannerNoticeList("lecInfo", 1, 4, 10033);//행정직 수강후기 리스트
     getBannerNoticeList("passInfo", 1, 4, 10032);//행정직 합격후기 리스트
     getBookList("productList1", 844, 1, 10);//행정직 온라인 서점
     getCommunityList(10970, 1, 2);//합격자 영상
     getMainreviewBanner("reviewBanner", 824, 1);//합격자영상
 });
+
+//행정직 수강후기 > 상세보기
+function detailReview(bbsKey, tagId) {
+    innerValue('bbsKey', bbsKey);
+    if(tagId == 'lecInfo'){
+        goPage('review','detailLecture');
+    }else if(tagId == 'passInfo'){
+        goPage('review','detailPass');
+    }
+}
 </script>

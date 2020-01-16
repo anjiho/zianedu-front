@@ -158,6 +158,7 @@
                 </div>
 
                 <div class="divGroup cols2">
+                    <input type="hidden" id="bbsKey" name="bbsKey">
                     <div>
                         <div class="mainBoard tabContent">
                             <ul class="tabBar">
@@ -166,11 +167,11 @@
                             </ul>
                             <div class="tabPage active">
                                 <ul id="examNotice"></ul>
-                                <a href="#" class="btn_more">전체보기</a>
+                                <a href="javascript:goExamNotice();" class="btn_more">전체보기</a>
                             </div>
                             <div class="tabPage">
                                 <ul id="openInfo"></ul>
-                                <a href="#" class="btn_more">전체보기</a>
+                                <a href="javascript:goOpenMenu();" class="btn_more">전체보기</a>
                             </div>
                         </div>
                     </div>
@@ -182,19 +183,15 @@
                             </ul>
                             <div class="tabPage active">
                                 <ul id="lecInfo"></ul>
-                                <a href="#" class="btn_more">전체보기</a>
+                                <a href="javascript:goPageNoSubmit('review','lectureList');" class="btn_more">전체보기</a>
                             </div>
                             <div class="tabPage">
                                 <ul id="passInfo"></ul>
-                                <a href="#" class="btn_more">전체보기</a>
+                                <a href="javascript:goPageNoSubmit('review','passList');" class="btn_more">전체보기</a>
                             </div>
                         </div>
                     </div>
                 </div>
-<%--                <div class="mainBanner divGroup cols2">--%>
-<%--                    <div><a href="#"><img src="" id="eventBanner0" alt=""></a></div>--%>
-<%--                    <div><a href="#"><img src="" id="eventBanner1" alt=""></a></div>--%>
-<%--                </div>--%>
                 <!-- 지안에듀 배너 -->
                 <div class="mainBanner">
                     <div class="inner">
@@ -280,8 +277,8 @@ $( document ).ready(function() {
     getTeacherBannerList("teacherList1", 788, 0);//공통과목 교수진 리스트
     getMajorTeacherPageList("teacherPage2", 788, 1);//전공과목 교수진 페이지 리스트
     getMajorTeacherBannerList("teacherList2", 788, 1);//전공과목 교수진 리스트
-    getBannerNoticeList("examNotice", 1, 4, 10010);//행정직 시험공고 리스트
-    getBannerNoticeList("openInfo", 1, 4, 10001);//행정직 개강안내 리스트
+    getBannerNoticeList2("examNotice", 1, 4, 10010);//행정직 시험공고 리스트
+    getBannerNoticeList2("openInfo", 1, 4, 10001);//행정직 개강안내 리스트
     getBannerNoticeList("lecInfo", 1, 4, 10014);//행정직 수강후기 리스트
     getBannerNoticeList("passInfo", 1, 4, 10013);//행정직 합격후기 리스트
     getEventMiniBanner("", 6285, 5);//이벤트 배너
@@ -289,4 +286,15 @@ $( document ).ready(function() {
     getCommunityList(10970, 1, 2);//합격자 영상
     getMainreviewBanner("reviewBanner", 789, 1);//중앙 소 배너
 });
+
+
+//행정직 수강후기 > 상세보기
+function detailReview(bbsKey, tagId) {
+    innerValue('bbsKey', bbsKey);
+    if(tagId == 'lecInfo'){
+        goPage('review','detailLecture');
+    }else if(tagId == 'passInfo'){
+        goPage('review','detailPass');
+    }
+}
 </script>

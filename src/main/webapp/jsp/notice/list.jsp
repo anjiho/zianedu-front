@@ -11,11 +11,11 @@
         fn_search('new');
     });
 
-    //상세보기
-    function goDetailNotice(bbsKey) {
-        innerValue("bbsKey", bbsKey);
-        goPage("notice", "detail");
-    }
+    // //상세보기
+    // function goDetailNotice(bbsKey) {
+    //     innerValue("bbsKey", bbsKey);
+    //     goPage("notice", "detail");
+    // }
 
     //검색
     function fn_search(val) {

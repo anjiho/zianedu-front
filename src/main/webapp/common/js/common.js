@@ -3237,3 +3237,47 @@ function blur(num) {
     tmp += num.substr(7);
     return tmp;
 }
+//강의실 배정표
+function goLecRoom() {
+    sessionStorage.setItem("noticeHeader", "lectureRoom");
+    $("#noticeMenu li:eq(2)").addClass('active');
+    goPageNoSubmit('notice', 'lecRoom');
+}
+
+//공지사항 > 개강안내
+function goOpenMenu() {
+    sessionStorage.setItem("noticeHeader", "openMenu");
+    $("#noticeMenu li:eq(0)").addClass('active');
+    goPageNoSubmit('notice', 'list');
+    /*
+     sessionStorage.setItem("noticeHeader", "lectureRoom");
+                $("#noticeMenu li:eq(2)").addClass('active');
+                goPageNoSubmit('notice', 'lecRoom');
+     */
+}
+
+//공지사항 > 시험공고
+function goExamNotice() {
+    sessionStorage.setItem("noticeHeader", "examNotice");
+    $("#noticeMenu li:eq(3)").addClass('active');
+    goPageNoSubmit('notice', 'list');
+}
+
+//공지사항 > 시험공고 > 상세보기
+function goDetailNotice(bbsKey) {
+    innerValue("bbsKey", bbsKey);
+    goPage("notice", "detail");
+}
+
+function goDetailNotice2(bbsKey, tagId) {
+    if(tagId == 'examNotice'){
+        sessionStorage.setItem("noticeHeader", "examNotice");
+        $("#noticeMenu li:eq(3)").addClass('active');
+    }else if(tagId == 'openInfo'){
+        sessionStorage.setItem("noticeHeader", "openMenu");
+        $("#noticeMenu li:eq(0)").addClass('active');
+    }
+    innerValue("bbsKey", bbsKey);
+    goPage("notice", "detail");
+}
+

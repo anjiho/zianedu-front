@@ -4,6 +4,7 @@
     $( document ).ready(function() {
         sessionStorage.setItem("leftMenu", "publicOnline");
     });
+
 </script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
@@ -109,24 +110,6 @@
                     </div>
                 </div>
             </div>
-            <!-- 지안에듀 교수진
-            <div class="mainTaecher">
-                <div class="titleBar">
-                    <h5>지안에듀 행정직 교수진</h5>
-                    <a href="#" class="btn_more">전체보기</a>
-                </div>
-                <div class="divGroup cols2">
-                    <div>
-                        <h6>공통과목</h6>
-                        <ul class="teacherList" id="teacherList1"></ul>
-                    </div>
-                    <div>
-                        <h6>전공과목</h6>
-                        <ul class="teacherList" id="teacherList2"></ul>
-                    </div>
-                </div>
-            </div> -->
-
             <!-- 지안에듀 교수진 -->
             <div class="mainTeacher">
                 <div class="inner tabContent">
@@ -168,10 +151,10 @@
             <!-- 지안에듀 바로가기 -->
             <div class="mainQuickLink">
                 <ul>
-                    <li><a href="#"><img src="/common/zian/images/common/icon_quickLink1.png" alt=""> 1:1 학습컨설팅</a></li>
-                    <li><a href="#"><img src="/common/zian/images/common/icon_quickLink2.png" alt=""> 학원실강접수</a></li>
-                    <li ><a href="#"><img src="/common/zian/images/common/icon_quickLink3.png" alt=""> 학원개강안내</a></li>
-                    <li><a href="#"><img src="/common/zian/images/common/icon_quickLink4.png" alt=""> 강의실배정표</a></li>
+                    <li><a href="javascript:goPageNoSubmit('customerCenter','consult');"><img src="/common/zian/images/common/icon_quickLink1.png" alt=""> 1:1 학습컨설팅</a></li>
+                    <li><a href="javascript:goPageNoSubmit('lectureOrder', 'single');"><img src="/common/zian/images/common/icon_quickLink2.png" alt=""> 학원실강접수</a></li>
+                    <li ><a href="javascript:goOpenMenu();"><img src="/common/zian/images/common/icon_quickLink3.png" alt=""> 학원개강안내</a></li>
+                    <li><a href="javascript:goLecRoom();"><img src="/common/zian/images/common/icon_quickLink4.png" alt=""> 강의실배정표</a></li>
                     <li><a href="#"><img src="/common/zian/images/common/icon_quickLink5.png" alt=""> 모의고사신청</a></li>
                 </ul>
             </div>
@@ -179,17 +162,18 @@
             <div class="divGroup cols2">
                 <div>
                     <div class="mainBoard tabContent">
+                        <input type="hidden" id="bbsKey" name="bbsKey">
                         <ul class="tabBar">
                             <li class="active"><a href="#">행정직 시험공고</a></li>
                             <li><a href="#">개강안내</a></li>
                         </ul>
                         <div class="tabPage active">
                             <ul id="examNotice"></ul>
-                            <a href="#" class="btn_more">전체보기</a>
+                            <a href="javascript:goExamNotice();" class="btn_more">전체보기</a>
                         </div>
                         <div class="tabPage">
                             <ul id="openInfo"></ul>
-                            <a href="#" class="btn_more">전체보기</a>
+                            <a href="javascript:goOpenMenu();" class="btn_more">전체보기</a>
                         </div>
                     </div>
                 </div>
@@ -201,11 +185,11 @@
                         </ul>
                         <div class="tabPage active">
                             <ul id="lecInfo"></ul>
-                            <a href="#" class="btn_more">전체보기</a>
+                            <a href="javascript:goPageNoSubmit('review','lectureList');" class="btn_more">전체보기</a>
                         </div>
                         <div class="tabPage">
                             <ul id="passInfo"></ul>
-                            <a href="#" class="btn_more">전체보기</a>
+                            <a href="javascript:goPageNoSubmit('review','passList');" class="btn_more">전체보기</a>
                         </div>
                     </div>
                 </div>
@@ -263,7 +247,7 @@
                 <div class="mainInfo w55p">
                     <ul>
                         <li><a href="#" class="item1">시험공공</a></li>
-                        <li><a href="#" class="item2">개강안내</a></li>
+                        <li><a href="javascript:goOpenMenu();" class="item2">개강안내</a></li>
                         <li><a href="#" class="item3">교재배송</a></li>
                         <li><a href="#" class="item4">모바일 문의</a></li>
                         <li><a href="#" class="item5">자주하는 질문</a></li>
@@ -289,16 +273,27 @@ $( document ).ready(function() {
     getMainBigBanner("mainVisualSlider1", 792, 5);//메인 대 배너
     getMainMiniBanner("mainVisualSlider2", 793, 5);//대배너 옆 미니 배너
     getMainreviewBanner("reviewBanner", 795, 1);//중앙 소 배너
-    getTeacherPageList("teacherPage1", 794, 0);//공통과목 교수진 페이지 리스트
+    var teacherMenuCtgKey = getTeacherListCtgKey();
+    getTeacherPageList("teacherPage1", 794, 0, teacherMenuCtgKey);//공통과목 교수진 페이지 리스트
     getTeacherBannerList("teacherList1", 794, 0);//공통과목 교수진 리스트
-    getMajorTeacherPageList("teacherPage2", 794, 1);//전공과목 교수진 페이지 리스트
+    getMajorTeacherPageList("teacherPage2", 794, 1, teacherMenuCtgKey);//전공과목 교수진 페이지 리스트
     getMajorTeacherBannerList("teacherList2", 794, 1);//전공과목 교수진 리스트
-    getBannerNoticeList("examNotice", 1, 4, 10010);//행정직 시험공고 리스트
-    getBannerNoticeList("openInfo", 1, 4, 10001);//행정직 개강안내 리스트
+    getBannerNoticeList2("examNotice", 1, 4, 10010);//행정직 시험공고 리스트
+    getBannerNoticeList2("openInfo", 1, 4, 10001);//행정직 개강안내 리스트
     getBannerNoticeList("lecInfo", 1, 4, 10014);//행정직 수강후기 리스트
     getBannerNoticeList("passInfo", 1, 4, 10013);//행정직 합격후기 리스트
     getEventMiniBanner("", 6284, 5);//이벤트 배너
     getBookList("productList1", 843, 1, 10);//행정직 온라인 서점
     getCommunityList(10970, 1, 2);//합격자 영상
 });
+
+//행정직 수강후기 > 상세보기
+function detailReview(bbsKey, tagId) {
+    innerValue('bbsKey', bbsKey);
+    if(tagId == 'lecInfo'){
+        goPage('review','detailLecture');
+    }else if(tagId == 'passInfo'){
+        goPage('review','detailPass');
+    }
+}
 </script>

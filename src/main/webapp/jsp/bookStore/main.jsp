@@ -49,24 +49,20 @@
         $("#bookTypePage").submit();
     }
 
-    //온라인서점안내 상세보기
+    function goOnlineNoticeList() {
+        sessionStorage.setItem("noticeHeader", "onlineStore");
+        goPageNoSubmit('notice', 'list');
+    }
+    //공지사항 > 시험공고 > 상세보기
     function goDetailNotice(bbsKey) {
         innerValue("bbsKey", bbsKey);
         goPage("notice", "detail");
     }
-    
-    function goOnlineNoticeList() {
-        sessionStorage.setItem("noticeHeader", "onlineStore");
-        //sessionStorage.setItem("leftMenu", "publicOnline");
-        goPageNoSubmit('notice', 'list');
-    }
-
     function goBookReviewList() {
         goPageNoSubmit('review','bookList');
     }
     
     function goBookReviewDetail(bbsKey) {
-        //sessionStorage.setItem("leftMenu", "publicOnline");
         innerValue("bbsKey", bbsKey);
         goPage('review','detailBook');
     }

@@ -265,17 +265,17 @@ function getTeacherBannerList(tagId, ctgKey, subjectType) {
 }
 
 //공통과목 교수진 페이지
-function getTeacherPageList(tagId, ctgKey, subjectType) {
+function getTeacherPageList(tagId, ctgKey, subjectType, teacherMenuCtgKey) {
     var data = {
-        subjectType : subjectType
+        subjectType : subjectType,
+        teacherMenuCtgKey : teacherMenuCtgKey
     };
     var infoList = getApi("/banner/getTeacherBannerList/", ctgKey, data);
     if (infoList.result.length > 0) {
-
         var selList = infoList.result;
+        console.log(selList);
         for(var i = 0; i < selList.length; i++) {
             var cmpList = selList[i];
-
             var retrunHtml = "<div class=\"swiper-slide\">";
             retrunHtml += '<div>';
             retrunHtml += '<div class="thumb"><span><img src="'+ cmpList.teacherImageUrl +'" alt=""></span></div>';
@@ -283,7 +283,7 @@ function getTeacherPageList(tagId, ctgKey, subjectType) {
             retrunHtml += '<span class="category">'+ cmpList.subjectName +'</span>';
             retrunHtml += '<b>'+ cmpList.teacherName +'</b>';
             retrunHtml += '<span class="btnArea">';
-            retrunHtml += '<a href="#"><img src="/common/zian/images/common/icon_home.png" alt=""> 교수홈</a>';
+            retrunHtml += '<a href="javascript:goTeacherDetail('+ cmpList.teacherKey +','+ cmpList.reqKey + ');"><img src="/common/zian/images/common/icon_home.png" alt=""> 교수홈</a>';
             retrunHtml += '<a href="#"><img src="/common/zian/images/common/icon_review.png" alt=""> 수강후기</a>';
             retrunHtml += '</span>';
             retrunHtml += '<span class="desc">';
@@ -348,14 +348,15 @@ function getMajorTeacherBannerList(tagId, ctgKey, subjectType) {
     });
 }
 
-function getMajorTeacherPageList(tagId, ctgKey, subjectType) {
+function getMajorTeacherPageList(tagId, ctgKey, subjectType, teacherMenuCtgKey) {
     var data = {
-        subjectType : subjectType
+        subjectType : subjectType,
+        teacherMenuCtgKey: teacherMenuCtgKey
     };
     var infoList = getApi("/banner/getTeacherBannerList/", ctgKey, data);
     if (infoList.result.length > 0) {
-
         var selList = infoList.result;
+        console.log(selList);
         for(var i = 0; i < selList.length; i++) {
             var cmpList = selList[i];
 

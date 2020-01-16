@@ -13,17 +13,8 @@
             $("#cartCnt").hide();
         }
     });
-    
-    function goExamNotice() {
-        sessionStorage.setItem("noticeHeader", "examNotice");
-        $("#noticeMenu li:eq(3)").addClass('active');
-        goPageNoSubmit('notice', 'list');
-    }
 
-    function setNoticeMenu() {
-        sessionStorage.setItem("noticeHeader", "openMenu");
-        goPageNoSubmit("notice", "list");
-    }
+
     function setLeftMenu() {
         var topSubHtml = $("#topSub").html();
         if(topSubHtml == '기술직 학원'){
@@ -153,12 +144,6 @@
         }
         getExamScheduleList("dDayBanner"); //d-day 슬라이드 배너
     });
-
-    function goLecRoom() {
-        sessionStorage.setItem("noticeHeader", "lectureRoom");
-        $("#noticeMenu li:eq(2)").addClass('active');
-        goPageNoSubmit('notice', 'lecRoom');
-    }
     
     function goExamGuide() {
         sessionStorage.setItem("noticeHeader", "examGuide");
@@ -230,7 +215,7 @@
                 <li><a href="javascript:goPageNoSubmit('myLecRoom', 'main')"><span class="icon item4"></span>내강의실</a></li>
                 <li><a href="javascript:goLecRoom();"><span class="icon item5"></span>학원수강내역</a></li>
                 <li><a href="javascript:goMyCart();"><span class="icon item6"><em id="cartCnt"></em></span>장바구니</a></li>
-                <li><a href="javascript:setNoticeMenu();"><span class="icon item7"></span>공지사항</a></li>
+                <li><a href="javascript:goOpenMenu();"><span class="icon item7"></span>공지사항</a></li>
                 <li><a href="javascript:goPageNoSubmit('customerCenter','consult');"><span class="icon item8"></span>1:1문의</a></li>
             </ul>
         </div>

@@ -314,8 +314,28 @@ function getBannerNoticeList(tagId, sPage, listLimit, bbsMaterKey) {
 
     if (InfoList.result.length > 0) {
         var selList = InfoList.result;
+        var tagStr = '"'+ tagId +'"';
         dwr.util.addOptions(tagId, selList, function (data) {
-            return "<a href='javascript:goDetailNotice("+ data.bbsKey +");'>"+ ellipsis(data.title,28) +"<span class='date'>" + data.createDate + "</span></a>"
+            return "<a href='javascript:detailReview("+ data.bbsKey +","+ tagStr +");'>"+ ellipsis(data.title,28) +"<span class='date'>" + data.createDate + "</span></a>"
+        }, {escapeHtml: false});
+    }
+}
+
+//배너 공지사항 리스트
+function getBannerNoticeList2(tagId, sPage, listLimit, bbsMaterKey) {
+    if (bbsMaterKey == null || bbsMaterKey == undefined) return;
+    var data = {
+        sPage : sPage,
+        listLimit : listLimit
+    };
+
+    var InfoList = getApi("/board/getBannerNoticeList/", bbsMaterKey, data);
+
+    if (InfoList.result.length > 0) {
+        var selList = InfoList.result;
+        var tagStr = '"'+ tagId +'"';
+        dwr.util.addOptions(tagId, selList, function (data) {
+            return "<a href='javascript:goDetailNotice2("+ data.bbsKey +","+ tagStr +");'>"+ ellipsis(data.title,28) +"<span class='date'>" + data.createDate + "</span></a>"
         }, {escapeHtml: false});
     }
 }
