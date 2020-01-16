@@ -77,6 +77,7 @@
             if(userInfo != null){
                 var userId = userInfo.result.userId;
                 window.opener.document.getElementById("userIdText").innerHTML = "가입하신 아이디는 <span style='font-weight: bold'>" + userId + " </span>입니다";
+                window.opener.document.getElementById("phoneBtn").style.display ='none';
             }else{
                 window.opener.document.getElementById("userIdText").innerHTML = "가입하신 휴대폰번호가 아닙니다.";
             }
