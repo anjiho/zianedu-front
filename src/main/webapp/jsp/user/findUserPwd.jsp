@@ -108,14 +108,14 @@
                         <li class="active"><a href="javascript:goPageNoSubmit('user','findUserPwd');">비밀번호 찾기</a></li>
                     </ul>
                 </div>
-                <div class="serchBox"  style="display:none;" id="searchDiv">
+                <div class="serchBox"  id="searchDiv">
                     <div class="serchBoard">
                         <p id="userIdPwd">아이디와 가입당시 입력한 휴대폰 번호를 통해<br>비밀번호를 찾을 수 있습니다.</p>
                         <input type="text" id="userId" placeholder="아이디를 입력해주세요">
                         <a href="javascript:fnNicePopup();">휴대폰인증</a>
                     </div>
                 </div>
-                <div class="serchBox" id="changePwdDiv">
+                <div class="serchBox" style="display:none;" id="changePwdDiv">
                     <div class="serchBoard">
                         <input type="password" id="changeUserPwd" placeholder="변경할 비밀번호를 입력해 주세요." style="margin-top: 100px;">
                         <div class="requiredText" id="pwdCaption" style="display:none;color:red;text-align: center;"></div>
