@@ -26,12 +26,12 @@
             <div id="topNav">
                 <ul>
                     <li id="userName" style="display: none;"><a href="#"></a></li>
-                    <li id="mypage" style="display: none;"><a href="#">마이페이지</a></li>
+                    <li id="mypage" style="display: none;"><a href="javascript:goMyPage();">마이페이지</a></li>
                     <li id="login"><a href="javascript:goLoginPage();">로그인</a></li>
                     <li id="logout" style="display: none;"><a href="javascript:goLogout();">로그아웃</a></li>
                     <li id="join"><a href="javascript:goPageNoSubmit('user', 'joinAgree');">회원가입</a></li>
                     <li><a href="javascript:goPageNoSubmit('review', 'videoList');">합격수기</a></li>
-                    <li><a href="#">이벤트</a></li>
+                    <li><a href="javascript:goPageNoSubmit('event', 'proceedList');">이벤트</a></li>
                 </ul>
             </div>
             <!--//최상단메뉴-->
@@ -127,17 +127,17 @@
 								</span>
                             </li>
                         </ul>
-                        <a href="#" class="btn_apply">1:1문의</a>
+                        <a href="javascript:goPageNoSubmit('customerCenter','consult');" class="btn_apply">1:1문의</a>
                     </div>
                 </div>
                 <div class="mainInfo w55p">
                     <ul>
-                        <li><a href="#" class="item1">시험공공</a></li>
-                        <li><a href="#" class="item2">개강안내</a></li>
-                        <li><a href="#" class="item3">교재배송</a></li>
-                        <li><a href="#" class="item4">모바일 문의</a></li>
-                        <li><a href="#" class="item5">자주하는 질문</a></li>
-                        <li><a href="#" class="item6">1:1 고객상담</a></li>
+                        <li><a href="javascript:goExamNotice();" class="item1">시험공공</a></li>
+                        <li><a href="javascript:goOpenMenu();" class="item2">개강안내</a></li>
+                        <li><a href="javascript:goMyPage();" class="item3">교재배송</a></li>
+                        <li><a href="javascript:goPageNoSubmit('customerCenter','mobile');" class="item4">모바일 문의</a></li>
+                        <li><a href="javascript:goPageNoSubmit('customerCenter','oftenList');" class="item5">자주하는 질문</a></li>
+                        <li><a href="javascript:goPageNoSubmit('customerCenter','consult');" class="item6">1:1 고객상담</a></li>
                     </ul>
                 </div>
             </div>
@@ -204,5 +204,9 @@
             gfn_display("join", true);
             goMain();
         }
+    }
+
+    function goMyPage() {
+        goPageNoSubmit('myPage','orderList');
     }
 </script>

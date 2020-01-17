@@ -210,10 +210,10 @@
             <b>바로가기메뉴</b>
             <ul>
                 <li class="noBg"><a href="javascript:goLecRoom();"><span class="icon item1"></span>강의실배정표</a></li>
-                <li class="noBg"><a href="#"><span class="icon item2"></span>학원시간표</a></li>
+                <li class="noBg"><a href="javascript:goOpenMenu();"><span class="icon item2"></span>학원시간표</a></li>
                 <li class="noBg"><a href="javascript:goExamGuide();"><span class="icon item3"></span>수험가이드</a></li>
                 <li><a href="javascript:goPageNoSubmit('myLecRoom', 'main')"><span class="icon item4"></span>내강의실</a></li>
-                <li><a href="javascript:goLecRoom();"><span class="icon item5"></span>학원수강내역</a></li>
+                <li><a href="javascript:goPageNoSubmit('myLecRoom', 'main');"><span class="icon item5"></span>학원수강내역</a></li>
                 <li><a href="javascript:goMyCart();"><span class="icon item6"><em id="cartCnt"></em></span>장바구니</a></li>
                 <li><a href="javascript:goOpenMenu();"><span class="icon item7"></span>공지사항</a></li>
                 <li><a href="javascript:goPageNoSubmit('customerCenter','consult');"><span class="icon item8"></span>1:1문의</a></li>
