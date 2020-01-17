@@ -79,17 +79,23 @@
     <div class="inner">
         <h1><a href="" id="mainUrl"><img src="" id="logo"> <span id="mainName"></span></a></h1>
         <!--최상단메뉴-->
-        <div id="topNav">
+        <!-- 로그인 -->
+        <div id="topNav" class="login" style="display: none;">
             <ul>
                 <li><a href="javascript:addFavorite();" class="btn_bookmark">즐겨찾기에 등록</a></li>
-                <li id="userName" style="display: none;"><a href="#"></a></li>
-<%--                <li id="mypage" style="display: none;"><a href="javascript:goPageNoSubmit('myPage','orderList')">마이페이지</a></li>--%>
-                <li id="mypage" style="display: none;"><a href="javascript:goMyPage();">마이페이지</a></li>
+                <li id="userName"><a href="#"></a></li>
+                <li><a href="javascript:goMyPage();">마이페이지</a></li>
+                <li><a href="javascript:goLogout();">로그아웃</a></li>
+                <li id="mypage"><a href="javascript:goPassReview();">합격수기</a></li>
+                <li><a href="javascript:goPageNoSubmit('event', 'proceedList');">이벤트</a></li>
+            </ul>
+        </div>
+        <!-- 로그아웃 -->
+        <div id="topNav" class="logout" style="display: none;">
+            <ul>
+                <li><a href="javascript:addFavorite();" class="btn_bookmark">즐겨찾기에 등록</a></li>
                 <li id="login"><a href="javascript:goLoginPage();">로그인</a></li>
-                <li id="logout" style="display: none;"><a href="javascript:goLogout();">로그아웃</a></li>
                 <li id="join"><a href="javascript:goPage('user', 'joinAgree');">회원가입</a></li>
-<%--                <li><a href="javascript:goPageNoSubmit('review', 'videoList');">합격수기</a></li>--%>
-                <li id="mypage" style="display: none;"><a href="javascript:goPassReview();">합격수기</a></li>
                 <li><a href="javascript:goPageNoSubmit('event', 'proceedList');">이벤트</a></li>
             </ul>
         </div>
@@ -136,18 +142,6 @@
                 <li><a href="javascript:goPageNoSubmit('bookStore','errataList')">정오표</a></li>
             </ul>
         </div>
-        <!-- gnb_area -->
-<%--        <div class="gnb_area">--%>
-<%--            <ul class="Mdepth1">--%>
-<%--                <li><a href="#">모의고사신청</a></li>--%>
-<%--                <li><a href="#">학원모의고사</a></li>--%>
-<%--                <li><a href="#">주간모의고사</a></li>--%>
-<%--                <li><a href="#">기출문제</a></li>--%>
-<%--                <li><a href="#">응시후기</a></li>--%>
-<%--                <li><a href="#">자료실</a></li>--%>
-<%--            </ul>--%>
-<%--        </div>--%>
-        <!-- //gnb_area -->
     </div>
     <!--//주메뉴-->
 </div>
@@ -156,13 +150,16 @@
     $(document).ready(function () {
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         if(sessionUserInfo != null){ //로그인했을경우,
+            $(".login").show();
             var userName = sessionUserInfo.name;
             innerHTML("userName", userName+" 님");
-            gfn_display("mypage", true);
-            gfn_display("userName", true);
-            gfn_display("logout", true);
-            gfn_display("login", false);
-            gfn_display("join", false);
+            // gfn_display("mypage", true);
+            // gfn_display("userName", true);
+            // gfn_display("logout", true);
+            // gfn_display("login", false);
+            // gfn_display("join", false);
+        }else{
+            $(".logout").show();
         }
         //오른쪽메뉴 오늘 안보기 클릭 이벤트
         $("#todayClose").click(function () {
@@ -174,12 +171,13 @@
     function goLogout() {
         if(confirm("로그아웃 하시겠습니까?")){
             sessionStorage.clear();
-            innerHTML("userName", "");
-            gfn_display("mypage", false);
-            gfn_display("userName", false);
-            gfn_display("logout", false);
-            gfn_display("login", true);
-            gfn_display("join", true);
+            $(".logout").show();
+            // innerHTML("userName", "");
+            // gfn_display("mypage", false);
+            // gfn_display("userName", false);
+            // gfn_display("logout", false);
+            // gfn_display("login", true);
+            // gfn_display("join", true);
             goMain();
         }
     }
