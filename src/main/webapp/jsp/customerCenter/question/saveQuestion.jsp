@@ -24,7 +24,8 @@
 
     //질문답변보기
     function goQuestionReplyDetail() {
-        alert($("#reQuestionSel").val());
+        innerValue('bbsKey', $("#reQuestionSel").val());
+        goPage('customerCenter','detailOften');
     }
 
     var filesTempArr = [];
@@ -104,7 +105,7 @@
 </script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
-
+    <input type="hidden" name="bbsKey" id="bbsKey">
     <div id="wrap">
         <%@include file="/common/jsp/leftMenu.jsp" %>
         <!--상단-->
