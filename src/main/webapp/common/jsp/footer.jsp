@@ -4,7 +4,7 @@
     <div id="footerNav">
         <div class="inner">
             <ul>
-                <li><a href="javascript:goPage('company','main')">회사소개</a></li>
+                <li><a href="javascript:goCompany1()">회사소개</a></li>
                 <li><a href="javascript:goPage('company','termsList')">이용약관</a></li>
                 <li><a href="javascript:goPage('company','policy')">개인정보취급방침</a></li>
 <%--                <li><a href="javascript:goPage('company','main')">강사모집</a></li>--%>
@@ -37,5 +37,10 @@
 <script>
     function goCompany() {
         location.href = location.href = "/company?page_gbn=main&type="+'teacher';
+    }
+
+    function goCompany1() {
+        sessionStorage.setItem("leftMenu", 'techOnline');
+        goPage('company','main');
     }
 </script>
