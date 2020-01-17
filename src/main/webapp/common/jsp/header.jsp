@@ -56,9 +56,6 @@
             $(".bookStore").show();
             $("#logo").attr("src", "/common/zian/images/common/logo04.png");
             $("#mainUrl").attr("href", "javascript:goPageNoSubmit('bookStore', 'main')");
-            //sessionStorage.setItem("leftMenu", "publicOnline");
-           // innerHTML("mainName", "학원");
-            //$("#mainName").css('color', '#ce1717');
         }
     });
 
@@ -153,11 +150,6 @@
             $(".login").show();
             var userName = sessionUserInfo.name;
             innerHTML("userName", userName+" 님");
-            // gfn_display("mypage", true);
-            // gfn_display("userName", true);
-            // gfn_display("logout", true);
-            // gfn_display("login", false);
-            // gfn_display("join", false);
         }else{
             $(".logout").show();
         }
@@ -172,12 +164,6 @@
         if(confirm("로그아웃 하시겠습니까?")){
             sessionStorage.clear();
             $(".logout").show();
-            // innerHTML("userName", "");
-            // gfn_display("mypage", false);
-            // gfn_display("userName", false);
-            // gfn_display("logout", false);
-            // gfn_display("login", true);
-            // gfn_display("join", true);
             goMain();
         }
     }
