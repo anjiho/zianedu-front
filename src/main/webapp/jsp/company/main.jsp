@@ -19,8 +19,10 @@
         var type = '<%=type%>';
         if(type == 'teacher'){
             $("#companyHeader li").eq(1).addClass('active');
+            $("#tab-2").addClass('active');
         }else{
             $("#companyHeader li").eq(0).addClass('active');
+            $("#tab-1").addClass('active');
         }
         /*다음지도 API 호출*/
         daumMapApi('map1', '서울시 동작구 노량진동 117-2 영빌딩');
@@ -418,7 +420,7 @@
                 </div>
                 <br />
                 <!--회사소개-->
-                <div id="tab-1" class="tab-content active">
+                <div id="tab-1" class="tab-content">
                         <div class="companyInfo">
                             <!-- 인사말 -->
                             <div class="greetingInner">
