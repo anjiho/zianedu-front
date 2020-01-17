@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/jsp/common.jsp" %>
+<%
+    String type = request.getParameter("type");
+%>
 <style>
     .tab-content{
         display: none;
@@ -13,6 +16,12 @@
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2149f737a2468c19787b4ef4a9ea6a2b&libraries=services"></script>
 <script>
     $(document).ready(function(){
+        var type = '<%=type%>';
+        if(type == 'teacher'){
+            $("#companyHeader li").eq(1).addClass('active');
+        }else{
+            $("#companyHeader li").eq(0).addClass('active');
+        }
         /*다음지도 API 호출*/
         daumMapApi('map1', '서울시 동작구 노량진동 117-2 영빌딩');
         daumMapApi('map2', '서울특별시 동작구 노량진로 196');
@@ -401,7 +410,7 @@
                 <!--서브 컨텐츠-->
                 <div class="tabBox tBox4">
                     <ul class="tabs" id="companyHeader">
-                        <li class="tab-link active" data-tab="tab-1"><a href="javascript:void(0);">회사소개</a></li>
+                        <li class="tab-link" data-tab="tab-1"><a href="javascript:void(0);">회사소개</a></li>
                         <li class="tab-link" data-tab="tab-2"><a href="javascript:void(0);">강사모집</a></li>
                         <li class="tab-link" data-tab="tab-3"><a href="javascript:void(0);">제휴문의</a></li>
                         <li class="tab-link" data-tab="tab-4"><a href="javascript:void(0);">학원둘러보기</a></li>

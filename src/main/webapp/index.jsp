@@ -45,8 +45,8 @@
                     지안에듀 하나면 끝
                     <b>공무원 합격의 첫 걸음<br />여러분의 꿈이 이루어지는 곳</b>
                     <div class="btnArea">
-                        <a href="#">수강후기</a>
-                        <a href="#">합격수기</a>
+                        <a href="javascript:goLecReview();">수강후기</a>
+                        <a href="javascript:goPassReview();">합격수기</a>
                     </div>
                 </div>
                 <ul>
@@ -60,7 +60,7 @@
             <!-- 랜딩페이지 배너 -->
             <div class="divGroup cols3 noMargin">
                 <div class="w30p">
-                    <a href="#" class="btn_lendingLink1"><b>온라인 서점</b></a>
+                    <a href="javascript:goBookStore();" class="btn_lendingLink1"><b>온라인 서점</b></a>
                 </div>
                 <div class="w30p">
                     <a href="#" class="btn_lendingLink2"><b>빅모의고사</b></a>
@@ -208,5 +208,21 @@
 
     function goMyPage() {
         goPageNoSubmit('myPage','orderList');
+    }
+    
+    function goBookStore() {
+        sessionStorage.setItem("leftMenu", 'bookStore');
+        goPageNoSubmit('bookStore','main');
+    }
+    
+    function goLecReview() {
+        sessionStorage.setItem("leftMenu", 'techOnline');
+        goPageNoSubmit('review','lectureList');
+    }
+    
+    function goPassReview() {
+        sessionStorage.setItem("leftMenu", 'techOnline');
+        goPageNoSubmit('review','passList');
+
     }
 </script>
