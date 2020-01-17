@@ -246,7 +246,7 @@
                     <ul>
                         <li><a href="javascript:goExamNotice();" class="item1">시험공공</a></li>
                         <li><a href="javascript:goOpenMenu();" class="item2">개강안내</a></li>
-                        <li><a href="#" class="item3">교재배송</a></li>
+                        <li><a href="javascript:goMyPage();" class="item3">교재배송</a></li>
                         <li><a href="javascript:goPageNoSubmit('customerCenter','mobile');" class="item4">모바일 문의</a></li>
                         <li><a href="javascript:goPageNoSubmit('customerCenter','oftenList');" class="item5">자주하는 질문</a></li>
                         <li><a href="javascript:goPageNoSubmit('customerCenter','consult');" class="item6">1:1 고객상담</a></li>
