@@ -69,18 +69,18 @@
                     <div class="mainGuide">
                         <b>지안에듀<br />수험가이드</b>
                         <ul>
-                            <li><a href="#">행정직</a></li>
-                            <li><a href="#">계리직</a></li>
-                            <li><a href="#">전산직</a></li>
-                            <li><a href="#">토목직</a></li>
-                            <li><a href="#">임업직</a></li>
-                            <li><a href="#">농업직</a></li>
-                            <li><a href="#">건축직</a></li>
-                            <li><a href="#">환경직</a></li>
-                            <li><a href="#">운전직</a></li>
-                            <li><a href="#">통신직</a></li>
-                            <li><a href="#">전기직</a></li>
-                            <li><a href="#">군수직</a></li>
+                            <li><a href="javascript:goExamGuide(0);">행정직</a></li>
+                            <li><a href="javascript:goExamGuide(1);">계리직</a></li>
+                            <li><a href="javascript:goExamGuide(2);">전산직</a></li>
+                            <li><a href="javascript:goExamGuide(3);">토목직</a></li>
+                            <li><a href="javascript:goExamGuide(4);">임업직</a></li>
+                            <li><a href="javascript:goExamGuide(5);">농업직</a></li>
+                            <li><a href="javascript:goExamGuide(6);">건축직</a></li>
+                            <li><a href="javascript:goExamGuide(7);">환경직</a></li>
+                            <li><a href="javascript:goExamGuide(8);">운전직</a></li>
+                            <li><a href="javascript:goExamGuide(9);">통신직</a></li>
+                            <li><a href="javascript:goExamGuide(10);">전기직</a></li>
+                            <li><a href="javascript:goExamGuide(11);">군수직</a></li>
                         </ul>
                     </div>
                 </div>
@@ -223,6 +223,12 @@
     function goPassReview() {
         sessionStorage.setItem("leftMenu", 'techOnline');
         goPageNoSubmit('review','passList');
-
+    }
+    
+    function goExamGuide(idx) {
+        sessionStorage.setItem("leftMenu", 'techOnline');
+        sessionStorage.setItem("noticeHeader", "examGuide");
+        $("#noticeMenu li:eq(4)").addClass('active');
+        location.href = location.href = "/notice?page_gbn=examGuide&idx="+idx;
     }
 </script>

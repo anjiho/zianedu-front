@@ -1,8 +1,14 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/jsp/common.jsp" %>
+<%
+    String idx = request.getParameter("idx");
+%>
 <script>
-    $( document ).ready(function() {
-
+    var idx = <%=idx%>;
+    $( document ).ready(function(){
+        $("#guideList").find('li').removeClass('active');
+        $("#guideList li").eq(idx).addClass('active');
+        $("#guideList li a").eq(idx).click();
     });
 </script>
 <form name="frm" method="get">
@@ -18,8 +24,8 @@
                 <!--서브 컨텐츠-->
                 <%@include file="/common/jsp/noticeHeader.jsp" %>
                 <div class="noticeGuideWrap tabContent">
-                    <ul class="tabBar">
-                        <li class="active"><a href="#">행정직</a></li>
+                    <ul class="tabBar" id="guideList">
+                        <li><a href="#">행정직</a></li>
                         <li><a href="#">계리직</a></li>
                         <li><a href="#">전산직</a></li>
                         <li><a href="#">토목직</a></li>
@@ -32,10 +38,10 @@
                         <li><a href="#">전기직</a></li>
                         <li><a href="#">군수직</a></li>
                     </ul>
-                    <div class="tabPage active"><!-- 행정직 탭컨텐츠 -->
+                    <div class="tabPage" id="tabPage0"><!-- 행정직 탭컨텐츠 -->
                         <img src="http://52.79.40.214/Upload/exam_guide/zian_guide_hang.jpg" alt="">
                     </div>
-                    <div class="tabPage">
+                    <div class="tabPage" id="tabPage1">
                         <img src="http://52.79.40.214/Upload/exam_guide/zian_guide_geri.jpg" alt="">
                     </div>
                     <div class="tabPage">
