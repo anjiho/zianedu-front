@@ -23,6 +23,12 @@ public class CustomerCenterController {
             mvc.setViewName("/customerCenter/mobileConsult");
         }else if("oftenList".equals(page_gbn)){
             mvc.setViewName("/customerCenter/oftenQuestion/oftenQuestionList");
+        }else if("saveOften".equals(page_gbn)){
+            mvc.setViewName("/customerCenter/oftenQuestion/saveOftenQuestion");
+        }else if("detailOften".equals(page_gbn)){
+            mvc.setViewName("/customerCenter/oftenQuestion/detailOftenQuestion");
+        }else if("modifyOften".equals(page_gbn)){
+            mvc.setViewName("/customerCenter/oftenQuestion/modifyOftenQuestion");
         }
         return mvc;
     }

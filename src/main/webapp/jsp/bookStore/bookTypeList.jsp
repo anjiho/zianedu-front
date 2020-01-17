@@ -8,23 +8,28 @@
     $( document ).ready(function() {
         sessionStorage.setItem("leftMenu", 'bookStore');
         var bookType = '<%=bookType%>';
-        innerValue('bookType',bookType);
-        if(bookType == 'COMMON'){
-            $("#typeBannerImg").attr("src", "/common/zian/images/content/submain_img01.png");
-            innerHTML('subjectTitle', '공통과목');
-        }else if(bookType == 'PUBLIC'){
-            $("#typeBannerImg").attr("src", "/common/zian/images/content/submain_img02.png");
-            innerHTML('subjectTitle', '행정직군');
-        }else if(bookType == 'TECH'){
-            $("#typeBannerImg").attr("src", "/common/zian/images/content/submain_img03.png");
-            innerHTML('subjectTitle', '기술직군');
-        }else if(bookType == 'POST'){
-            $("#typeBannerImg").attr("src", "/common/zian/images/content/submain_img04.png");
-            innerHTML('subjectTitle', '계리직군');
-        }else if(bookType == 'CERT'){
-            $("#typeBannerImg").attr("src", "/common/zian/images/content/submain_img05.png");
-            innerHTML('subjectTitle', '자격증');
-        }
+            innerValue('bookType',bookType);
+            if(bookType == 'COMMON'){
+                $("#typeBannerImg").attr("src", "/common/zian/images/content/submain_img01.png");
+                innerHTML('subjectTitle', '공통과목');
+                getBookStoreSelectBoxList('COMMON');
+            }else if(bookType == 'PUBLIC'){
+                $("#typeBannerImg").attr("src", "/common/zian/images/content/submain_img02.png");
+                innerHTML('subjectTitle', '행정직군');
+                getBookStoreSelectBoxList('PUBLIC');
+            }else if(bookType == 'TECH'){
+                $("#typeBannerImg").attr("src", "/common/zian/images/content/submain_img03.png");
+                innerHTML('subjectTitle', '기술직군');
+                getBookStoreSelectBoxList('TECH');
+            }else if(bookType == 'POST'){
+                $("#typeBannerImg").attr("src", "/common/zian/images/content/submain_img04.png");
+                innerHTML('subjectTitle', '계리직군');
+                getBookStoreSelectBoxList('POST');
+            }else if(bookType == 'CERT'){
+                $("#typeBannerImg").attr("src", "/common/zian/images/content/submain_img05.png");
+                innerHTML('subjectTitle', '자격증');
+                getBookStoreSelectBoxList('CERT');
+            }
         innerValue('orderType', 'date');
         innerHTML("selCount", 0);
         fn_search('new');
@@ -45,10 +50,16 @@
         var orderType = getInputTextValue('orderType');
         var sPage = getInputTextValue("sPage");
         var searchText = getInputTextValue("searchText");
+        var searchType = getSelectboxValue("searchType");
         if(searchText == undefined) searchText = "";
+        if(searchType == undefined) searchType = "";
 
         if(val == "new") sPage = "1";
-        getSalesBookList(bookType, searchText, orderType, sPage, 5);
+        getSalesBookList(bookType, searchText, orderType, sPage, 5, searchType);
+    }
+
+    function searchBookList() {
+        fn_search('new');
     }
 
     function goDetailbookType(type) {
@@ -115,13 +126,9 @@
                             <div class="shoplist">
                                 <p class="stitle"><span id="subjectTitle"></span>도서목록</p>
                                 <div class="type_wrap">
-                                    <div class="type_btn">전체</div>
-                                    <ul class="typedrop">
-                                        <li><a href="">전체</a></li>
-                                        <li><a href="">국어</a></li>
-                                        <li><a href="">영어</a></li>
-                                        <li><a href="">한국사</a></li>
-                                    </ul>
+                                    <select id="searchType" class="w100p" onchange="searchBookList();">
+                                        <option value="">전체</option>
+                                    </select>
                                 </div>
                                 <ul class="listtype">
                                     <li><a href="javascript:goList('date');">출간일순</a></li>

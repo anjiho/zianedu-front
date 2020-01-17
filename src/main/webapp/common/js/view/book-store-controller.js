@@ -79,14 +79,15 @@ function getBookList(tagId , leftMenuCtgKey, sPage, listLimit) {
     });
 }
 
-function getSalesBookList(bookMenuType, searchText, orderType, sPage, listLimit) {
+function getSalesBookList(bookMenuType, searchText, orderType, sPage, listLimit, subjectKey) {
     var paging = new Paging();
     dwr.util.removeAllRows("dataList"); //테이블 리스트 초기화
     var data = {
         searchText : searchText,
         orderType : orderType,
         sPage : sPage,
-        listLimit : listLimit
+        listLimit : listLimit,
+        subjectKey : subjectKey
     };
     var infoList = getPageApi("/bookStore/getSalesBookList/", bookMenuType, data);
     var cnt = infoList.cnt;
@@ -121,4 +122,20 @@ function getBookDetailInfo(gKey) {
 
     var infoList = getApi("/bookStore/getBookDetailInfo/", gKey, '');
     return infoList;
+}
+
+
+function getBookStoreSelectBoxList(bookStoreType) {
+    if (bookStoreType == null || bookStoreType == undefined) return;
+
+    var infoList = getApi("/bookStore/getBookStoreSelectBoxList/", bookStoreType, '');
+    if(infoList != null){
+        var selList = infoList.result;
+        for(var  i=0; i<selList.length;i++){
+            var cmpList = selList[i];
+            var returnHtml = "<option value='"+ cmpList.key +"'>"+ cmpList.value +"</option>";
+            $("#searchType").append(returnHtml);
+        }
+    }
+
 }

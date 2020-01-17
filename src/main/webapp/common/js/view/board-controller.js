@@ -44,6 +44,7 @@ function saveTeacherBoard(bbsMasterKey, teacherKey, userKey, title, content, isN
         isSecret : isSecret,
         fileName : fileName
     };
+    console.log(data);
     var result = postApi("/board/saveTeacherBoard", data);
     return result;
 }
@@ -712,5 +713,51 @@ function deleteBoardFile(bbsFileKey) {
     //     bbsFileKey : bbsFileKey
     // };
     var result = postPathApi("/board/deleteBoardFile/", bbsFileKey, '');
+    return result;
+}
+
+function getFaQList(faqTypeKey, sPage, listLimit, searchType, searchText) {
+    if (faqTypeKey == null || faqTypeKey == undefined) return;
+    var paging = new Paging();
+    dwr.util.removeAllRows("dataList"); //테이블 리스트 초기화
+    var data = {
+        sPage : sPage,
+        listLimit : listLimit,
+        searchType : searchType,
+        searchText : searchText
+    };
+    var infoList = getPageApi("/board/getFaQList/", faqTypeKey, data);
+    var cnt = infoList.cnt;
+    if(infoList != null){
+        // if (infoList.result.length > 0) {
+        var listNum = ((cnt-1)+1)-((sPage-1)*10); //리스트 넘버링
+        var selList = infoList.result;
+        paging.count(sPage, cnt, '5', listLimit, comment.blank_list);
+        for(var i=0; i < selList.length; i++){
+            var cmpList = selList[i];
+            if (cmpList != undefined) {
+                var cellData = [
+                    function(data) {return listNum--;},
+                    function(data) {return "<a href='javascript:void(0);' onclick='detailOften("+ cmpList.bbsKey +");'>" + cmpList.ctgName + cmpList.title + "</a>";},
+                ];
+                dwr.util.addRows("dataList", [0], cellData, {escapeHtml: false});
+                $('#dataList tr').each(function(){
+                    var tr = $(this);
+                    tr.children().eq(1).attr("class", "left");
+                });
+            }
+        }
+    }
+}
+
+function updateFaqBoard(bbsKey, faqTypeKey, title, content) {
+    if(bbsKey == null || bbsKey == undefined) return;
+    var data = {
+        bbsKey : bbsKey,
+        faqTypeKey : faqTypeKey,
+        title : title,
+        content : content
+    };
+    var result = postApi("/board/updateFaqBoard", data);
     return result;
 }

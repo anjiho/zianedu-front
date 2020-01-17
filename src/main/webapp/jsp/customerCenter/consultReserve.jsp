@@ -194,10 +194,10 @@
                 <!--서브 컨텐츠-->
                 <div class="tabBox tBox4">
                     <ul>
-                        <li><a href="javascript:goPageNoSubmit('customerCenter','saveQuestion')">1:1문의</a></li>
-                        <li class="active"><a href="javascript:goPageNoSubmit('customerCenter','consult')">상담예약</a></li>
-                        <li><a href="#">모바일문의</a></li>
-                        <li><a href="#">자주하는질문</a></li>
+                        <li><a href="javascript:goPageNoSubmit('customerCenter','saveQuestion');">1:1문의</a></li>
+                        <li class="active"><a href="javascript:goPageNoSubmit('customerCenter','consult');">상담예약</a></li>
+                        <li><a href="javascript:goPageNoSubmit('customerCenter','mobile');">모바일문의</a></li>
+                        <li><a href="javascript:goPageNoSubmit('customerCenter','oftenList');">자주하는질문</a></li>
                     </ul>
                 </div>
                 <br/>
