@@ -952,7 +952,6 @@ function getMockExamList(onOffKey, sPage, listLimit, ctgKey, searchType, searchT
         }
         for(var i=0; i < selList.length; i++){
             var cmpList = selList[i];
-            console.log(cmpList);
             if (cmpList != undefined) {
                 var cellData = [
                     function(data) {return cmpList.goodsName;},

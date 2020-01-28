@@ -141,8 +141,8 @@
                         <div class="tableBox">
                             <table class="disnoneM">
                                 <colgroup>
-                                    <col width="350px">
-                                    <col width="50px">
+                                    <col width="340px">
+                                    <col width="60px">
                                     <col width="200px">
                                     <col width="150px">
                                     <col width="150px">
