@@ -94,10 +94,10 @@
                         <div class="tableBox">
                             <table class="disnoneM">
                                 <colgroup>
-                                    <col width="400px">
+                                    <col width="350px">
                                     <col width="200px">
-                                    <col width="150px">
-                                    <col width="150px">
+                                    <col width="175px">
+                                    <col width="175px">
                                     <col width="100px">
                                 </colgroup>
                                 <thead>
@@ -107,7 +107,7 @@
                                     <th style="text-align: center;">신청기간</th>
                                     <th style="text-align: center;">응시기간</th>
 <%--                                    <th>결과확인</th>--%>
-                                    <th>신청</th>
+                                    <th style="text-align: center;">신청</th>
                                 </tr>
                                 </thead>
                                 <tbody id="dataList"></tbody>

@@ -952,14 +952,12 @@ function getMockExamList(onOffKey, sPage, listLimit, ctgKey, searchType, searchT
         }
         for(var i=0; i < selList.length; i++){
             var cmpList = selList[i];
-            console.log('-----------');
-            console.log(cmpList);
             if (cmpList != undefined) {
                 var cellData = [
                     function(data) {return cmpList.goodsName;},
                     function(data) {return "<span class=\"text_blue\">"+ cmpList.className +"</span><span>"+ cmpList.subjectName +"</span>";},
-                    function(data) {return cmpList.acceptDate;},
-                    function(data) {return cmpList.stareDate;},
+                    function(data) {return cmpList.acceptStartDate+"<br>"+cmpList.acceptEndDate;},
+                    function(data) {return cmpList.stareDate+"<br>"+cmpList.endDate;},
                     function(data) {return "<a href='javascript:void(0);' class='small bdblue'>구매하기</a>";}
                 ];
                 dwr.util.addRows(tagId, [0], cellData, {escapeHtml: false});
