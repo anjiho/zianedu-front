@@ -52,6 +52,20 @@ function getMainMiniBanner(tagId, ctgKey, listNum) {
     kiplayer.sliderBx($("#" + tagId));
 }
 
+function getMainMiniBanner2(tagId, ctgKey, listNum) {
+    var data = {
+        listNumber : listNum
+    };
+    var bannerInfoList = getApi("/banner/getMainMiniBanner/", ctgKey , data);
+    if (bannerInfoList.result.length > 0) {
+        var selList = bannerInfoList.result;
+        dwr.util.addOptions(tagId, selList, function (data) {
+            return "<a href='"+ data.targetUrl +"'><img src='"+ data.fullFileUrl +"' alt=''></a>"
+        }, {escapeHtml: false});
+    }
+    kiplayer.sliderBx($("#" + tagId));
+}
+
 function getMainreviewBanner(tagId, ctgKey, listNum) {
     var data = {
         listNumber : listNum

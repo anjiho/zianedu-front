@@ -16,20 +16,6 @@ function getAcademyLectureListFromCategoryMenu(ctgKey, stepCtgKey, teacherKey, t
         ], {escapeHtml:false});
     }
 }
-//모의고사 상품 리스트
-function getMockExamListFromCategoryMenu(ctgKey, tagId) {
-    if (ctgKey == null || ctgKey == undefined) return;
-    var InfoList = getApi("/product/getMockExamListFromCategoryMenu/", ctgKey);
-    if (InfoList.result.length > 0) {
-        var selList = InfoList.result;
-        dwr.util.addRows(tagId, selList, [
-            /*
-                TODO : addoption 추가
-             */
-            //function(data) {return data.fullFileUrl;}
-        ], {escapeHtml:false});
-    }
-}
 
 //학원별 동영상강의 상품 리스트
 function getVideoLectureListFromCategoryMenu(ctgKey, stepCtgKey, teacherKey) {
@@ -937,3 +923,52 @@ function getGoodsInfoByJLecKey(jLecKey) {
     }
 }
 
+//모의고사 상품 리스트
+function getMockExamList(onOffKey, sPage, listLimit, ctgKey, searchType, searchText, tagId) {
+    if(onOffKey == null || onOffKey == undefined) return;
+    var paging = new Paging();
+    if(tagId == 'dataList'){
+        dwr.util.removeAllRows("dataList"); //테이블 리스트 초기화
+    }else{
+        dwr.util.removeAllRows("dataList2"); //테이블 리스트 초기화
+    }
+    var data = {
+        sPage : sPage,
+        listLimit : listLimit,
+        searchType : searchType,
+        searchText : searchText,
+        ctgKey : ctgKey
+    };
+    var infoList = getPageApi("/product/getMockExamList/", onOffKey, data);
+    var cnt = infoList.cnt;
+    if(infoList != null){
+        // if (infoList.result.length > 0) {
+        var listNum = ((cnt-1)+1)-((sPage-1)*10); //리스트 넘버링
+        var selList = infoList.result;
+        if(tagId == 'dataList'){
+            paging.count(sPage, cnt, '5', listLimit, comment.blank_list);
+        }else{
+            paging.count2(sPage, cnt, '5', listLimit, comment.blank_list);
+        }
+        for(var i=0; i < selList.length; i++){
+            var cmpList = selList[i];
+            console.log('-----------');
+            console.log(cmpList);
+            if (cmpList != undefined) {
+                var cellData = [
+                    function(data) {return cmpList.goodsName;},
+                    function(data) {return "<span class=\"text_blue\">"+ cmpList.className +"</span><span>"+ cmpList.subjectName +"</span>";},
+                    function(data) {return cmpList.acceptDate;},
+                    function(data) {return cmpList.stareDate;},
+                    function(data) {return "<a href='javascript:void(0);' class='small bdblue'>구매하기</a>";}
+                ];
+                dwr.util.addRows(tagId, [0], cellData, {escapeHtml: false});
+                // $('#dataList tr').each(function(){
+                //     var tr = $(this);
+                //     tr.children().eq(1).attr("class", "left");
+                // });
+            }
+        }
+        //   }
+    }
+}

@@ -2,35 +2,30 @@
 <%@include file="/common/jsp/common.jsp" %>
 <script>
     $(document).ready(function () {
-        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-        if(sessionUserInfo != null){
-            if(sessionUserInfo.authority != 0){
-                $("#writeBtn").hide();
-            }
-        }else{
-            $("#writeBtn").hide();
-        }
-        //fn_search('new');
+        getMockExamClassCtgSelectBoxList(2, 'onSel');
+        getMockExamClassCtgSelectBoxList(3, 'offSel');
+        fn_search('new');
+        fn_search2('new');
     });
+
     function fn_search(val) {
-        // $("#eventDiv").empty();
-        // var sPage = getInputTextValue("sPage");
-        // var searchType = getSelectboxValue("searchType");
-        // var searchText = getInputTextValue("searchText");
-        // if(searchType == undefined) searchType = "";
-        // if(searchText == undefined) searchText = "";
-        //
-        // if(val == "new") sPage = "1";
-        // eventList('DEAD', sPage, 10, searchType, searchText);
+        var sPage = getInputTextValue("sPage");
+        var searchType = getSelectboxValue("searchType");
+        var searchText = getInputTextValue("searchText");
+        var ctgKey = getSelectboxValue("onSel");
+        if(searchType == undefined) searchType = "";
+        if(searchText == undefined) searchText = "";
+        if(val == "new") sPage = "1";
+        getMockExamList(2, sPage, 10, ctgKey, searchType, searchText, 'dataList');
     }
 
     function fn_search2(val){
-        // gfn_display("allDiv", false);
-        // $("#questionList").empty();
-
+        var searchType = getSelectboxValue("searchType2");
+        var searchText = getInputTextValue("searchText2");
+        var ctgKey = getSelectboxValue("offSel");
         var sPage = getInputTextValue("sPage2");
         if(val == "new") sPage = "1";
-
+        getMockExamList(3, sPage, 10, ctgKey, searchType, searchText, 'dataList2');
     }
 
     // function detailEvent(idx) {
@@ -56,7 +51,7 @@
                     <h5>학원모의고사 (온·오프) 신청하기</h5>
                     <span>지안에듀의 모의고사를 온라인/오프라인으로 만나보세요. 합격의 길로 안내합니다.</span>
                 </div>
-
+                <br>
                 <div class="imgbox">
                     <img src="/common/zian/images/bigimg/img01.png">
                 </div>
@@ -86,96 +81,41 @@
                             <ul class="searchArea">
                                 <li class="left">
                                     <select id="searchType">
-                                        <option value="title">제목</option>
-                                        <option value="content">내용</option>
+                                        <option value="name">제목</option>
                                     </select>
                                     <input type="text" id="searchText" onkeypress="if(event.keyCode==13) {fn_search('new'); return false;}">
                                     <a href="javascript:fn_search('new');" class="btn_m on w140">검색</a>
                                 </li>
-                                <li class="right pdt0"><select name="" class="w190">
-                                    <option value="">직렬선택</option>
-                                </select>
+                                <li class="right pdt0">
+                                    <select id="onSel" class="w190"></select>
                                 </li>
                             </ul>
                         </form>
                         <div class="tableBox">
                             <table class="disnoneM">
                                 <colgroup>
-                                    <col>
-                                    <col>
-                                    <col>
-                                    <col>
-                                    <col>
-                                    <col>
+                                    <col width="400px">
+                                    <col width="200px">
+                                    <col width="150px">
+                                    <col width="150px">
+                                    <col width="100px">
                                 </colgroup>
                                 <thead>
                                 <tr>
-                                    <th>구분</th>
-                                    <th>응시직렬/응시과목</th>
-                                    <th>신청기간</th>
-                                    <th>응시기간</th>
-                                    <th>결과확인</th>
+                                    <th style="text-align: center;">제목</th>
+                                    <th style="text-align: center;">응시직렬/응시과목</th>
+                                    <th style="text-align: center;">신청기간</th>
+                                    <th style="text-align: center;">응시기간</th>
+<%--                                    <th>결과확인</th>--%>
                                     <th>신청</th>
                                 </tr>
                                 </thead>
-                                <tbody>
-                                <tr>
-                                    <td>제3회</td>
-                                    <td class="left">
-                                        <span class="text_blue">일반행정직</span>
-                                        <span>국어, 영어, 한국사, 행정법총론, 행정학개론</span>
-                                    </td>
-                                    <td>2019-06-22 10:00<br>
-                                        ~ 2019-06-30 23:59
-                                    </td>
-                                    <td>2019-06-22 10:00<br>
-                                        ~ 2019-06-30 23:59
-                                    </td>
-                                    <td>2019-07-16<br>10:00</td>
-                                    <td>
-                                        <a href="" class="small bdblue">신청하기</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>제3회</td>
-                                    <td class="left">
-                                        <span class="text_blue">일반행정직</span>
-                                        <span>국어, 영어, 한국사, 행정법총론, 행정학개론</span>
-                                    </td>
-                                    <td>2019-06-22 10:00<br>
-                                        ~ 2019-06-30 23:59
-                                    </td>
-                                    <td>2019-06-22 10:00<br>
-                                        ~ 2019-06-30 23:59
-                                    </td>
-                                    <td>2019-07-16<br>10:00</td>
-                                    <td>
-                                        <a href="" class="small bdgray">신청완료</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>제3회</td>
-                                    <td class="left">
-                                        <span class="text_blue">일반행정직</span>
-                                        <span>국어, 영어, 한국사, 행정법총론, 행정학개론</span>
-                                    </td>
-                                    <td>2019-06-22 10:00<br>
-                                        ~ 2019-06-30 23:59
-                                    </td>
-                                    <td>2019-06-22 10:00<br>
-                                        ~ 2019-06-30 23:59
-                                    </td>
-                                    <td>2019-07-16<br>10:00</td>
-                                    <td>
-                                        <a href="" class="">신청마감</a>
-                                    </td>
-                                </tr>
-                                </tbody>
+                                <tbody id="dataList"></tbody>
                             </table>
 
                         </div>
                         <!-- paging -->
-<%--                        <%@ include file="/common/inc/com_pageNavi.inc" %>--%>
+                        <%@ include file="/common/inc/com_pageNavi.inc" %>
                         <!-- //paging -->
                     </div>
 
@@ -185,14 +125,13 @@
                             <!--추가 및 수정 -->
                             <ul class="searchArea">
                                 <li class="left">
-                                    <select id="searchType1">
-                                        <option value="title">제목</option>
-                                        <option value="content">내용</option>
+                                    <select id="searchType2">
+                                        <option value="name">제목</option>
                                     </select>
-                                    <input type="text" id="searchText1" onkeypress="if(event.keyCode==13) {fn_search2('new'); return false;}">
+                                    <input type="text" id="searchText2" onkeypress="if(event.keyCode==13) {fn_search2('new'); return false;}">
                                     <a href="javascript:fn_search2('new');" class="btn_m on w140">검색</a>
                                 </li>
-                                <li class="right pdt0"><select name="" class="w190">
+                                <li class="right pdt0"><select id="offSel" class="w190">
                                     <option value="">직렬선택</option>
                                 </select>
                                 </li>
@@ -201,81 +140,28 @@
                         <div class="tableBox">
                             <table class="disnoneM">
                                 <colgroup>
-                                    <col>
-                                    <col>
-                                    <col>
-                                    <col>
-                                    <col>
-                                    <col>
+                                    <col width="400px">
+                                    <col width="200px">
+                                    <col width="150px">
+                                    <col width="150px">
+                                    <col width="100px">
                                 </colgroup>
                                 <thead>
                                 <tr>
-                                    <th>구분</th>
-                                    <th>응시직렬/응시과목</th>
-                                    <th>신청기간</th>
-                                    <th>응시기간</th>
-                                    <th>결과확인</th>
+                                    <th style="text-align: center;">제목</th>
+                                    <th style="text-align: center;">응시직렬/응시과목</th>
+                                    <th style="text-align: center;">신청기간</th>
+                                    <th style="text-align: center;">응시기간</th>
+                                    <%--                                    <th>결과확인</th>--%>
                                     <th>신청</th>
                                 </tr>
                                 </thead>
-                                <tbody>
-                                <tr>
-                                    <td>제3회</td>
-                                    <td class="left">
-                                        <span class="text_blue">일반행정직</span>
-                                        <span>국어, 영어, 한국사, 행정법총론, 행정학개론</span>
-                                    </td>
-                                    <td>2019-06-22 10:00<br>
-                                        ~ 2019-06-30 23:59
-                                    </td>
-                                    <td>2019-06-22 10:00<br>
-                                        ~ 2019-06-30 23:59
-                                    </td>
-                                    <td>2019-07-16<br>10:00</td>
-                                    <td>
-                                        <a href="" class="small bdblue">신청하기</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>제3회</td>
-                                    <td class="left">
-                                        <span class="text_blue">일반행정직</span>
-                                        <span>국어, 영어, 한국사, 행정법총론, 행정학개론</span>
-                                    </td>
-                                    <td>2019-06-22 10:00<br>
-                                        ~ 2019-06-30 23:59
-                                    </td>
-                                    <td>2019-06-22 10:00<br>
-                                        ~ 2019-06-30 23:59
-                                    </td>
-                                    <td>2019-07-16<br>10:00</td>
-                                    <td>
-                                        <a href="" class="small bdgray">신청완료</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>제3회</td>
-                                    <td class="left">
-                                        <span class="text_blue">일반행정직</span>
-                                        <span>국어, 영어, 한국사, 행정법총론, 행정학개론</span>
-                                    </td>
-                                    <td>2019-06-22 10:00<br>
-                                        ~ 2019-06-30 23:59
-                                    </td>
-                                    <td>2019-06-22 10:00<br>
-                                        ~ 2019-06-30 23:59
-                                    </td>
-                                    <td>2019-07-16<br>10:00</td>
-                                    <td>
-                                        <a href="" class="">신청마감</a>
-                                    </td>
-                                </tr>
-                                </tbody>
+                                <tbody id="dataList2"></tbody>
                             </table>
 
                         </div>
                         <!-- paging -->
-                        <%--                        <%@ include file="/common/inc/com_pageNavi2.inc" %>--%>
+                        <%@ include file="/common/inc/com_pageNavi2.inc" %>
                         <!-- //paging -->
                     </div>
                 </div>
@@ -292,3 +178,18 @@
 </form>
 </body>
 </html>
+<!--팝업 알림 modalb01-->
+<div id="modalb01" class="modalWrap">
+    <div class="inner">
+        <div class="modalTitle">
+            <h2>오프라인 모의고사 유의사항</h2>
+            <a href="#" class="btn_modalClose">모달팝업닫기</a>
+        </div>
+        <div class="modalContent">
+            <div class="pop_cont">
+                오프라인 모의고사 유의사항오프라인 모의고사 유의사항
+            </div>
+        </div>
+    </div>
+</div>
+<!--//팝업-->

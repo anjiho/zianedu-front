@@ -3,14 +3,17 @@
 <script>
     $(document).ready(function () {
         sessionStorage.setItem("leftMenu", "bigExam");
+        getMainMiniBanner("mainVisualSlider1", 6760, 5);//대배너 옆 미니 배너
+        getMainMiniBanner2("mainVisualSlider2", 6761, 5);//대배너 옆 미니 배너
+
     });
     $(function(){
-        if($("#mainVisualSlider1").length > 0){
-            kiplayer.sliderBx($("#mainVisualSlider1"));
-        }
-        if($("#mainVisualSlider2").length > 0){
-            kiplayer.sliderBx($("#mainVisualSlider2"));
-        }
+        // if($("#mainVisualSlider1").length > 0){
+        //     kiplayer.sliderBx($("#mainVisualSlider1"));
+        // }
+        // if($("#mainVisualSlider2").length > 0){
+        //     kiplayer.sliderBx($("#mainVisualSlider2"));
+        // }
 
         $(".mainStoryList").each(function(){
             kiplayer.sliderSlick($(this));
@@ -45,13 +48,7 @@
                 <!--서브 컨텐츠-->
 
                 <div id="mainVisual">
-                    <ul id="mainVisualSlider1">
-                        <li><a href="#"><img src="/common/zian/images/bigimg/slider01.jpg" alt=""></a></li>
-                        <li><a href="#"><img src="/common/zian/images/bigimg/slider01.jpg" alt=""></a></li>
-                        <li><a href="#"><img src="/common/zian/images/bigimg/slider01.jpg" alt=""></a></li>
-                        <li><a href="#"><img src="/common/zian/images/bigimg/slider01.jpg" alt=""></a></li>
-                        <li><a href="#"><img src="/common/zian/images/bigimg/slider01.jpg" alt=""></a></li>
-                    </ul>
+                    <ul id="mainVisualSlider1"></ul>
                 </div>
 
                 <!-- 빅모의고사 응시후기 STORY -->
@@ -108,7 +105,7 @@
                         <span>주간 모의고사는 지안공무원학원에서 자체적으로 매주 실시하는 공통과목 모의고사 서비스로, <br>
 					실제 시험 못지 않은 문제 퀄리티와 해설 영상, 개인별 성적 분석자료까지 모두 무료로 제공됩니다. </span>
                     </div>
-                    <img src="/common/zian//images/bigimg/slider02.jpg" alt="">
+                    <img src="http://52.79.40.214/Upload//100/bbs/slider02.jpg" alt="">
                 </div>
 
                 <!--지안에듀 모의고사 200% 활용법  -->
@@ -117,11 +114,7 @@
                         <h5>지안에듀 모의고사 200% 활용법</h5>
                     </div>
                     <div id="mainVisual">
-                        <ul id="mainVisualSlider2">
-                            <li><a href="#"><img src="/common/zian/images/bigimg/slider03.jpg" alt=""></a></li>
-                            <li><a href="#"><img src="/common/zian/images/bigimg/slider03.jpg" alt=""></a></li>
-                            <li><a href="#"><img src="/common/zian/images/bigimg/slider03.jpg" alt=""></a></li>
-                        </ul>
+                        <ul id="mainVisualSlider2"></ul>
                     </div>
                 </div>
 
@@ -134,10 +127,10 @@
                         <table>
                             <thead>
                             <tr>
-                                <th>회차</th>
-                                <th>과목</th>
-                                <th>응시 가능 기간</th>
-                                <th>출제범위</th>
+                                <th style="text-align: center;">회차</th>
+                                <th style="text-align: center;">과목</th>
+                                <th style="text-align: center;">응시 가능 기간</th>
+                                <th style="text-align: center;">출제범위</th>
                             </tr>
                             </thead>
                             <tbody>

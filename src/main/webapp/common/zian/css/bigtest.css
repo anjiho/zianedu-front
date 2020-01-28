@@ -77,7 +77,7 @@
 .bigSub .infolist a {border:1px solid #aaaaaa;padding:10px 20px;margin-top: 10px;display: inline-block;}
 
 .bigSub .tabContent {margin-top: 115px}
-.bigSub .tabContent .tabBar {width:430px;border-top:2px solid #000;border-bottom:none;text-align: center;margin:0 auto} 
+.bigSub .tabContent .tabBar {width:425px;border-top:2px solid #000;border-bottom:none;text-align: center;margin:0 auto}
 .bigSub .tabContent .tabBar li {width:213px;text-align: center;border:1px solid #e5e5e5;border-top:none;}
 .bigSub .tabBar > li > a { display: block;height:50px;line-height:50px;padding: 0 25px;color: #777;border:none;}
 .bigSub .tabContent  .tabBar > li.active > a {color: #fff;font-weight: bold;border:1px solid #134c97;background: #134c97}
