@@ -955,16 +955,18 @@ function getMockExamList(onOffKey, sPage, listLimit, ctgKey, searchType, searchT
             if (cmpList != undefined) {
                 var cellData = [
                     function(data) {return cmpList.goodsName;},
-                    function(data) {return "<span class=\"text_blue\">"+ cmpList.className +"</span><span>"+ cmpList.subjectName +"</span>";},
-                    function(data) {return cmpList.acceptStartDate+"<br>"+cmpList.acceptEndDate;},
-                    function(data) {return cmpList.stareDate+"<br>"+cmpList.endDate;},
+                    function(data) {return cmpList.className;},
+                    function(data) {return cmpList.subjectName;},
+                    // function(data) {return "<span class=\"text_blue\">"+ cmpList.className +"</span><p>"+ cmpList.subjectName +"</p>";},
+                    function(data) {return cmpList.acceptStartDate+"<br>~"+cmpList.acceptEndDate;},
+                    function(data) {return cmpList.stareDate+"<br>~"+cmpList.endDate;},
                     function(data) {return "<a href='javascript:void(0);' class='small bdblue'>구매하기</a>";}
                 ];
                 dwr.util.addRows(tagId, [0], cellData, {escapeHtml: false});
-                // $('#dataList tr').each(function(){
-                //     var tr = $(this);
-                //     tr.children().eq(1).attr("class", "left");
-                // });
+                $('#dataList tr').each(function(){
+                    var tr = $(this);
+                    tr.children().eq(0).attr("class", "left");
+                });
             }
         }
         //   }

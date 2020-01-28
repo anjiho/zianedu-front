@@ -81,33 +81,35 @@
                             <ul class="searchArea">
                                 <li class="left">
                                     <select id="searchType">
-                                        <option value="name">제목</option>
+                                        <option value="name">시험명</option>
                                     </select>
                                     <input type="text" id="searchText" onkeypress="if(event.keyCode==13) {fn_search('new'); return false;}">
                                     <a href="javascript:fn_search('new');" class="btn_m on w140">검색</a>
                                 </li>
                                 <li class="right pdt0">
-                                    <select id="onSel" class="w190"></select>
+                                    <select id="onSel" class="w190" onchange="fn_search('new');"></select>
                                 </li>
                             </ul>
                         </form>
                         <div class="tableBox">
                             <table class="disnoneM">
                                 <colgroup>
-                                    <col width="350px">
+                                    <col width="340px">
+                                    <col width="60px">
                                     <col width="200px">
-                                    <col width="175px">
-                                    <col width="175px">
+                                    <col width="150px">
+                                    <col width="150px">
                                     <col width="100px">
                                 </colgroup>
                                 <thead>
                                 <tr>
-                                    <th style="text-align: center;">제목</th>
-                                    <th style="text-align: center;">응시직렬/응시과목</th>
+                                    <th style="text-align: center;">시험명</th>
+                                    <th style="text-align: center;">응시직렬</th>
+                                    <th style="text-align: center;">응시과목</th>
                                     <th style="text-align: center;">신청기간</th>
                                     <th style="text-align: center;">응시기간</th>
-<%--                                    <th>결과확인</th>--%>
-                                    <th style="text-align: center;">신청</th>
+                                    <%--                                    <th>결과확인</th>--%>
+                                    <th>신청</th>
                                 </tr>
                                 </thead>
                                 <tbody id="dataList"></tbody>
@@ -126,21 +128,21 @@
                             <ul class="searchArea">
                                 <li class="left">
                                     <select id="searchType2">
-                                        <option value="name">제목</option>
+                                        <option value="name">시험명</option>
                                     </select>
                                     <input type="text" id="searchText2" onkeypress="if(event.keyCode==13) {fn_search2('new'); return false;}">
                                     <a href="javascript:fn_search2('new');" class="btn_m on w140">검색</a>
                                 </li>
-                                <li class="right pdt0"><select id="offSel" class="w190">
-                                    <option value="">직렬선택</option>
-                                </select>
+                                <li class="right pdt0">
+                                    <select id="offSel" class="w190" onchange="fn_search2('new');"></select>
                                 </li>
                             </ul>
                         </form>
                         <div class="tableBox">
                             <table class="disnoneM">
                                 <colgroup>
-                                    <col width="400px">
+                                    <col width="350px">
+                                    <col width="50px">
                                     <col width="200px">
                                     <col width="150px">
                                     <col width="150px">
@@ -148,8 +150,9 @@
                                 </colgroup>
                                 <thead>
                                 <tr>
-                                    <th style="text-align: center;">제목</th>
-                                    <th style="text-align: center;">응시직렬/응시과목</th>
+                                    <th style="text-align: center;">시험명</th>
+                                    <th style="text-align: center;">응시직렬</th>
+                                    <th style="text-align: center;">응시과목</th>
                                     <th style="text-align: center;">신청기간</th>
                                     <th style="text-align: center;">응시기간</th>
                                     <%--                                    <th>결과확인</th>--%>
