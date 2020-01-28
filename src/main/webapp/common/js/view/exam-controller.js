@@ -3,7 +3,7 @@ function getMockExamClassCtgSelectBoxList(onOffKey, tagId) {
     if (onOffKey == null || onOffKey == undefined) return;
 
     var infoList = getApi("/exam/getMockExamClassCtgSelectBoxList/", onOffKey, '');
-    console.log(infoList);
+
     if(infoList != null){
         var selList = infoList.result;
         for(var  i=0; i<selList.length;i++){
