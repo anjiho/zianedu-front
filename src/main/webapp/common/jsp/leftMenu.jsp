@@ -87,6 +87,7 @@
                 innerHTML("subMenu2", "계리직");
                 innerHTML("subMenu3", "자격증/가산점");
                 innerHTML("subMenu4", "온라인서점");
+                innerHTML("subMenu5", "빅모의고사");
             }else if(leftMenuInfo == "publicAcademy"){
                 $("#siteTab").css("background","#134c97");
                 var html = "행정직"+"<br />"+"학원";
@@ -96,6 +97,7 @@
                 innerHTML("subMenu2", "계리직");
                 innerHTML("subMenu3", "자격증/가산점");
                 innerHTML("subMenu4", "온라인서점");
+                innerHTML("subMenu5", "빅모의고사");
             }else if(leftMenuInfo == "techOnline"){
                 $("#siteTab").css("background","#f69321");
                 var html = "기술직"+"<br />"+"온라인";
@@ -105,6 +107,7 @@
                 innerHTML("subMenu2", "계리직");
                 innerHTML("subMenu3", "자격증/가산점");
                 innerHTML("subMenu4", "온라인서점");
+                innerHTML("subMenu5", "빅모의고사");
             }else if(leftMenuInfo == "techAcademy"){
                 $("#siteTab").css("background","#f69321");
                 var html = "기술직"+"<br />"+"학원";
@@ -114,6 +117,7 @@
                 innerHTML("subMenu2", "계리직");
                 innerHTML("subMenu3", "자격증/가산점");
                 innerHTML("subMenu4", "온라인서점");
+                innerHTML("subMenu5", "빅모의고사");
             }else if(leftMenuInfo == "postOnline"){
                 $("#siteTab").css("background","#ce1717");
                 var html = "계리직"+"<br />"+"온라인";
@@ -123,6 +127,7 @@
                 innerHTML("subMenu2", "기술직");
                 innerHTML("subMenu3", "자격증/가산점");
                 innerHTML("subMenu4", "온라인서점");
+                innerHTML("subMenu5", "빅모의고사");
             }else if(leftMenuInfo == "postAcademy"){
                 $("#siteTab").css("background-color","#ce1717");
                 var html = "계리직"+"<br />"+"학원";
@@ -132,6 +137,7 @@
                 innerHTML("subMenu2", "기술직");
                 innerHTML("subMenu3", "자격증/가산점");
                 innerHTML("subMenu4", "온라인서점");
+                innerHTML("subMenu5", "빅모의고사");
             }else if(leftMenuInfo == "bookStore"){
                 $("#siteTab").hide();
                 $("#bookStoreTab").show();
@@ -140,6 +146,16 @@
                 innerHTML("subMenu2", "계리직");
                 innerHTML("subMenu3", "행정직");
                 innerHTML("subMenu4", "자격증/가산점");
+                innerHTML("subMenu5", "빅모의고사");
+            }else if(leftMenuInfo == "bigExam"){
+                $("#siteTab").hide();
+                $("#bigExamTab").show();
+                innerHTML("topSub", "BIG"+"<br>"+"모의고사");
+                innerHTML("subMenu1", "기술직");
+                innerHTML("subMenu2", "계리직");
+                innerHTML("subMenu3", "행정직");
+                innerHTML("subMenu4", "자격증/가산점");
+                innerHTML("subMenu5", "온라인서점");
             }
         }
         getExamScheduleList("dDayBanner"); //d-day 슬라이드 배너
@@ -159,6 +175,17 @@
         }else if(subMenuHtml == '온라인서점'){
             sessionStorage.setItem("leftMenu", 'bookStore');
             goPageNoSubmit('bookStore','main');
+        }
+    }
+    
+    function setLeftMenu5() {
+        var subMenuHtml = $("#subMenu5").html();
+        if(subMenuHtml == '온라인서점'){
+            sessionStorage.setItem("leftMenu", 'bookStore');
+            goPageNoSubmit('bookStore','main');
+        }else if(subMenuHtml == '빅모의고사'){
+            sessionStorage.setItem("leftMenu", 'bigExam');
+            goPageNoSubmit('bigExam','main');
         }
     }
 
@@ -197,13 +224,16 @@
         <div id="bookStoreTab" style="background: #003471;display: none;    height: 160px; text-align: center;">
             <h1 style="border-bottom: none;display: block; margin: 0 20px;"><a href="javascript:goPageNoSubmit('bookStore','main')" style="padding: 50px 0;display: block;margin: 0; padding: 46px 0;font-size: 26px;color: #fff; line-height: 30px">온라인<br>서점</a></h1>
         </div>
+        <div id="bigExamTab" style="background: #2e4261;display: none;height: 160px; text-align: center;">
+            <h1 style="border-bottom: none;display: block; margin: 0 20px;"><a href="javascript:goPageNoSubmit('bigExam','main')" style="padding: 50px 0;display: block;margin: 0; padding: 46px 0;font-size: 26px;color: #fff; line-height: 30px">BIG<br>모의고사</a></h1>
+        </div>
         <div id="siteNav">
             <ul>
                 <li class="item2"><a href="javascript:void(0);" onclick="setLeftMenu1()"><span id="subMenu1"></span></a></li>
                 <li class="item3"><a href="javascript:void(0);" onclick="setLeftMenu2()"><span id="subMenu2"></span></a></li>
                 <li class="item5"><a href="javascript:void(0);" onclick="setLeftMenu3()"><span id="subMenu3"></span></a></li>
                 <li class="item4"><a href="javascript:void(0);" onclick="setLeftMenu4()"><span id="subMenu4"></span></a></li>
-                <li class="item4"><a href="#">빅모의고사</a></li>
+                <li class="item4"><a href="javascript:void(0);" onclick="setLeftMenu5()"><span id="subMenu5"></span></a></li>
             </ul>
         </div>
         <div id="quickNav">

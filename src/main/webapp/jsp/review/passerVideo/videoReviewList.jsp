@@ -106,13 +106,11 @@
                                                 <span class="desc">2020 국가직국가직 합격생 문재황님의</span>
                                             </div>
                                         </li>
-
                                     </ul>
                                 </div>
                             </div>
                         </div>
                         <!-- 컨텐츠 들어가는 자리 -->
-
                     </div>
                     <!--//review_movie_list : 합격자영상-->
 
@@ -132,7 +130,6 @@
                             </div>
                             <!--//html 추가 -->
                         </div>
-
                         <div class="list">
                             <ul id="dataList"></ul>
                         </div>
@@ -143,7 +140,6 @@
                     <!--//review_movie_search : 합격자영상 검색-->
                 </div>
                 <!--//reviewBoard -->
-
                 <!--//서브 컨텐츠-->
             </div>
         </div>

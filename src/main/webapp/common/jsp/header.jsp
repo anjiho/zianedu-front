@@ -6,6 +6,7 @@
             $(".onlineTopMenu").show();
             $(".acaTopMenu").hide();
             $(".bookStore").hide();
+            $(".bigExam").hide();
             $("#logo").attr("src", "/common/zian/images/common/logo01.png");
             $("#mainUrl").attr("href", "javascript:goPageNoSubmit('publicOnline', 'main')");
             innerHTML("mainName", "온라인");
@@ -14,6 +15,7 @@
             $(".onlineTopMenu").hide();
             $(".bookStore").hide();
             $(".acaTopMenu").show();
+            $(".bigExam").hide();
             $("#logo").attr("src", "/common/zian/images/common/logo01.png");
             $("#mainUrl").attr("href", "javascript:goPageNoSubmit('publicAcademy', 'main')");
             innerHTML("mainName", "학원");
@@ -22,6 +24,7 @@
             $(".onlineTopMenu").show();
             $(".acaTopMenu").hide();
             $(".bookStore").hide();
+            $(".bigExam").hide();
             $("#logo").attr("src", "/common/zian/images/common/logo02.png");
             $("#mainUrl").attr("href", "javascript:goPageNoSubmit('techOnline', 'main')");
             innerHTML("mainName", "온라인");
@@ -30,6 +33,7 @@
             $(".onlineTopMenu").hide();
             $(".acaTopMenu").show();
             $(".bookStore").hide();
+            $(".bigExam").hide();
             $("#logo").attr("src", "/common/zian/images/common/logo02.png");
             $("#mainUrl").attr("href", "javascript:goPageNoSubmit('techAcademy', 'main')");
             innerHTML("mainName", "학원");
@@ -38,6 +42,7 @@
             $(".onlineTopMenu").show();
             $(".acaTopMenu").hide();
             $(".bookStore").hide();
+            $(".bigExam").hide();
             $("#logo").attr("src", "/common/zian/images/common/logo03.png");
             $("#mainUrl").attr("href", "javascript:goPageNoSubmit('postOnline', 'main')");
             innerHTML("mainName", "온라인");
@@ -46,6 +51,7 @@
             $(".onlineTopMenu").hide();
             $(".bookStore").hide();
             $(".acaTopMenu").show();
+            $(".bigExam").hide();
             $("#logo").attr("src", "/common/zian/images/common/logo03.png");
             $("#mainUrl").attr("href", "javascript:goPageNoSubmit('postAcademy', 'main')");
             innerHTML("mainName", "학원");
@@ -54,8 +60,16 @@
             $(".onlineTopMenu").hide();
             $(".acaTopMenu").hide();
             $(".bookStore").show();
+            $(".bigExam").hide();
             $("#logo").attr("src", "/common/zian/images/common/logo04.png");
             $("#mainUrl").attr("href", "javascript:goPageNoSubmit('bookStore', 'main')");
+        }else if(leftMenuInfo == "bigExam"){
+            $(".onlineTopMenu").hide();
+            $(".acaTopMenu").hide();
+            $(".bookStore").hide();
+            $(".bigExam").show();
+            $("#logo").attr("src", "/common/zian/images/bigimg/logo.gif");
+            $("#mainUrl").attr("href", "javascript:goPageNoSubmit('bigExam', 'main')");
         }
     });
 
@@ -69,6 +83,11 @@
             sessionStorage.setItem("leftMenu", "publicOnline");
         }
         goPageNoSubmit('review', 'videoList');
+    }
+
+    function goBigExam() {
+        sessionStorage.setItem("leftMenu", "bigExam");
+        goPageNoSubmit('bigExam','main');
     }
 </script>
 <!--상단-->
@@ -108,7 +127,8 @@
                 <li><a href="javascript:goPageNoSubmit('lectureOrder', 'academy')">학원수강신청</a></li>
                 <li><a href="javascript:goPageNoSubmit('zianPass', 'list')">연간관리반</a></li>
                 <li><a href="javascript:goPageNoSubmit('freeLecture', 'theory')">무료강좌</a></li>
-                <li><a href="#">빅모의고사</a></li>
+<%--                <li><a href="javascript:goPageNoSubmit('bigExam', 'main')">빅모의고사</a></li>--%>
+                <li><a href="javascript:goBigExam()">빅모의고사</a></li>
                 <li><a href="javascript:goPassReview();">합격수기</a></li>
             </ul>
         </div>
@@ -122,7 +142,7 @@
                 <li><a href="javascript:goPageNoSubmit('lectureOrder', 'single')">수강신청</a></li>
                 <li><a href="javascript:goPageNoSubmit('zianPass', 'list')">지안패스</a></li>
                 <li><a href="javascript:goPageNoSubmit('freeLecture', 'theory')">무료강좌</a></li>
-                <li><a href="#">빅모의고사</a></li>
+                <li><a href="javascript:goBigExam()">빅모의고사</a></li>
                 <li><a href="javascript:goPassReview();">합격수기</a></li>
             </ul>
         </div>
@@ -137,6 +157,19 @@
                 <li><a href="javascript:goDetailbookType('POST');">계리직군</a></li>
                 <li><a href="javascript:goDetailbookType('CERT');">자격증</a></li>
                 <li><a href="javascript:goPageNoSubmit('bookStore','errataList')">정오표</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="gnb" class="bigExam" style="display: none;">
+        <div class="inner">
+            <ul class="deaph1 cols7">
+                <li><a href="javascript:goPageNoSubmit('bigExam','examApply')">모의고사신청</a></li>
+                <li><a href="#">학원모의고사</a></li>
+                <li><a href="#">주간모의고사</a></li>
+                <li><a href="#">기출문제</a></li>
+                <li><a href="#">응시후기</a></li>
+                <li><a href="#">자료실</a></li>
             </ul>
         </div>
     </div>
