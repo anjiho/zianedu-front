@@ -68,11 +68,11 @@ function getMockExamListAtBuy(userKey, onOffKey, sPage, listLimit, ctgKey, searc
                     returnHtml += "<td>"+ cmpList.goodsName +"</td>";
                     returnHtml += "<td>"+ cmpList.acceptStartDate +"<br>~"+ cmpList.acceptEndDate +"</td>";
                     if(cmpList.acceptType == 0){//응시마감
-                        returnHtml += "<td><a href='' class=''>응시마감</a></td>";
+                        returnHtml += "<td><span class=''>응시마감</span></td>";
                     }else if(cmpList.acceptType == 1){//응시가능
                         returnHtml += "<td><a href='' class='small blue'>응시가능</a></td>";
                     }else{//응시완료
-                        returnHtml += "<td><a href='' class='small bdgray'>응시완료</a></td>";
+                        returnHtml += "<td><span class='small bdgray'>응시완료</span></td>";
                     }
                     if(tagId == "dataList"){
                             returnHtml += "<td>";
