@@ -33,7 +33,7 @@ function getMockExamListAtBuy(userKey, onOffKey, sPage, listLimit, ctgKey, searc
         searchText : searchText
     };
 
-    var infoList = getApi("/exam/getMockExamListAtBuy/", userKey, data);
+    var infoList = getPageApi("/exam/getMockExamListAtBuy/", userKey, data);
     var cnt = infoList.cnt;
     if(infoList != null){
         var selList = infoList.result;
@@ -56,12 +56,14 @@ function getMockExamListAtBuy(userKey, onOffKey, sPage, listLimit, ctgKey, searc
                         returnHtml += "<td><a href='' class='small bdgray'>응시완료</a></td>";
                     }
                     if(tagId == "dataList"){
-                        returnHtml += "<td>";
-                        returnHtml += "<ul class=\"fileList\">";
-                            returnHtml += "<li><a href='"+ cmpList.printQuestionFileUrl +"' target='_blank'><img src=\"/common/zian/images/common/icon_file.png\" alt=\"\"> 문제지</a></li>";
-                            returnHtml += "<li><a href='"+ cmpList.printCommentaryFileUrl +"'  target='_blank'><img src=\"/common/zian/images/common/icon_file.png\" alt=\"\"> 해설지</a></li>";
-                        returnHtml += "</ul>";
-                        returnHtml += "</td>";
+                            returnHtml += "<td>";
+                        if(cmpList.acceptType != 1){
+                            returnHtml += "<ul class=\"fileList\">";
+                                returnHtml += "<li><a href='"+ cmpList.printQuestionFileUrl +"' target='_blank'><img src=\"/common/zian/images/common/icon_file.png\" alt=\"\"> 문제지</a></li>";
+                                returnHtml += "<li><a href='"+ cmpList.printCommentaryFileUrl +"'  target='_blank'><img src=\"/common/zian/images/common/icon_file.png\" alt=\"\"> 해설지</a></li>";
+                            returnHtml += "</ul>";
+                        }
+                            returnHtml += "</td>";
                     }
             returnHtml += "</tr>";
             $("#"+tagId).append(returnHtml);
