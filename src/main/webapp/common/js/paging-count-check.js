@@ -40,7 +40,7 @@ var Paging = function() {
 	this.count3 = function(sPage, cnt, paging_count, list_count, empty_comment) {
 		if (cnt == "0") {
 			gfn_printPageNum_new3('0', paging_count, list_count, '1');
-			gfn_emptyView3("V", empty_comment);
+			//gfn_emptyView3("V", empty_comment);
 		}  else {
 			if (new Number(cnt) < (list_count * sPage)) {
 				if (new Number(cnt) < (list_count * (sPage - 1))) {
@@ -55,7 +55,7 @@ var Paging = function() {
 	this.count4 = function(sPage, cnt, paging_count, list_count, empty_comment) {
 		if (cnt == "0") {
 			gfn_printPageNum_new4('0', paging_count, list_count, '1');
-			gfn_emptyView4("V", empty_comment);
+			//gfn_emptyView4("V", empty_comment);
 		}  else {
 			if (new Number(cnt) < (list_count * sPage)) {
 				if (new Number(cnt) < (list_count * (sPage - 1))) {
@@ -70,7 +70,7 @@ var Paging = function() {
 	this.count5 = function(sPage, cnt, paging_count, list_count, empty_comment) {
 		if (cnt == "0") {
 			gfn_printPageNum_new5('0', paging_count, list_count, '1');
-			gfn_emptyView5("V", empty_comment);
+			//gfn_emptyView5("V", empty_comment);
 		}  else {
 			if (new Number(cnt) < (list_count * sPage)) {
 				if (new Number(cnt) < (list_count * (sPage - 1))) {
