@@ -433,8 +433,6 @@
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         var cartKeys = sessionStorage.getItem('cartNum');
         var gKeys = sessionStorage.getItem('gKeys');
-        var onOffGbn = JSON.parse(sessionStorage.getItem('onOffGbn'));//빅모의고사 온라인,오프라인 구분값
-        alert(onOffGbn);
         var goodsInfo = sessionStorage.getItem('goodsInfo');
         var resultData = JSON.parse(sessionStorage.getItem('resultData'));
         var userKey = sessionUserInfo.userKey;

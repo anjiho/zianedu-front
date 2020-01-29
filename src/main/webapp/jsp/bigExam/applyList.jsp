@@ -4,17 +4,8 @@
     $(document).ready(function () {
         getMockExamClassCtgSelectBoxList(2, 'onSel');
         getMockExamClassCtgSelectBoxList(3, 'offSel');
-        innerValue("onOffGbn", "on");
         fn_search('new');
         fn_search2('new');
-
-        $("#onOffTab li").click(function () {
-            if($(this).index() == 0){
-               innerValue("onOffGbn", "on");
-            }else if($(this).index() == 1){
-               innerValue("onOffGbn", "off");
-            }
-        });
     });
 
     function fn_search(val) {
@@ -39,7 +30,6 @@
 </script>
 <form id="id_frm_singleMypage" method="post" name="id_frm_singleMypage">
     <input type="hidden" id="gKeys" name="gKeys">
-    <input type="hidden" id="onOffGbn" name="onOffGbn">
 </form>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
@@ -77,7 +67,7 @@
                 </div>
 
                 <div class="tabContent">
-                    <ul class="tabBar" id="onOffTab">
+                    <ul class="tabBar">
                         <li class="active"><a href="#">온라인</a></li>
                         <li><a href="#">오프라인</a></li>
                     </ul>

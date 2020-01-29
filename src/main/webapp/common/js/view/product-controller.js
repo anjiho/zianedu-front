@@ -960,7 +960,7 @@ function getMockExamList(onOffKey, sPage, listLimit, ctgKey, searchType, searchT
                     // function(data) {return "<span class=\"text_blue\">"+ cmpList.className +"</span><p>"+ cmpList.subjectName +"</p>";},
                     function(data) {return cmpList.acceptStartDate+"<br>~"+cmpList.acceptEndDate;},
                     function(data) {return cmpList.stareDate+"<br>~"+cmpList.endDate;},
-                    function(data) {return "<a href='javascript:goBigExamOneLecCheckedBuy("+ cmpList.priceKey +");' class='small bdblue'>구매하기</a>";}
+                    function(data) {return "<a href='javascript:goOneLecCheckedBuy("+ cmpList.priceKey +");' class='small bdblue'>구매하기</a>";}
                 ];
                 dwr.util.addRows(tagId, [0], cellData, {escapeHtml: false});
             }

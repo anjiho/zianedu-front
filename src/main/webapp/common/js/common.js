@@ -3161,37 +3161,6 @@ function goOneLecCheckedBuy(gkey) {
     }
 }
 
-
-//빅모의고사 >> 단일 바로구매
-function goBigExamOneLecCheckedBuy(gkey) {
-    var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-    if(sessionUserInfo != undefined) {
-        if (confirm("바로 구매 하시겠습니까?")) {
-            sessionStorage.removeItem('cartNum');
-            sessionStorage.removeItem('gKeys');
-            sessionStorage.removeItem('goodsInfo');
-            sessionStorage.removeItem('resultData');
-            var arr = new Array();
-            var arr2 = new Array();
-            arr.push(gkey);
-            var data = toStrFileName(arr);
-            innerValue("gKeys", data);
-
-            var onOffGbn = getInputTextValue("onOffGbn");
-            arr2.push(onOffGbn);
-            var onOffGbnData = toStrFileName(onOffGbn);
-            
-            innerValue("onOffGbn", onOffGbnData);
-            $("#id_frm_singleMypage").attr("action", "/myPage?page_gbn=write");
-            $("#id_frm_singleMypage").submit();
-        }
-    }else{
-        alert("로그인을 해주세요");
-        goLoginPage();
-    }
-}
-
-
 function goCheckBuy(gkey) {
     var keyArr = new Array();
     keyArr.push(gkey);
