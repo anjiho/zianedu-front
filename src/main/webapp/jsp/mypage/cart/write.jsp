@@ -4,6 +4,7 @@
 <%
     String cartKeys = Util.isNullValue(request.getParameter("cartKeys"), "");
     String gKeys = Util.isNullValue(request.getParameter("gKeys"), "");
+    String onOffGbn = Util.isNullValue(request.getParameter("onOffGbn"), "");
     String goodsInfo = Util.isNullValue(request.getParameter("goodsInfo"), "");
     String retakeInfo = Util.isNullValue(request.getParameter("retakeInfo"), "");//재수강
     String priceKey = Util.isNullValue(request.getParameter("bookPriceKey"), "");//온라인서점 바로구매 key
@@ -25,6 +26,7 @@
         // var resultData = JSON.parse(sessionStorage.getItem('resultData'));
 
         var gKeys = '<%=gKeys%>';
+        var onOffGbn = '<%=onOffGbn%>';
         var cartKeys = '<%=cartKeys%>';
         var goodsInfo = '<%=goodsInfo%>';
         var retakeInfo = '<%=retakeInfo%>';
@@ -33,6 +35,7 @@
 
         if('<%=cartKeys%>' == '' && '<%=goodsInfo%>' == '' && '<%=retakeInfo%>' == '' && '<%=priceKey%>' == '' && '<%=bookCount%>' == ''){ //바로구매
             innerValue("gKeys", gKeys);
+            innerValue("onOffGbn", onOffGbn);
             getOrderSheetInfoFromImmediately(userKey, gKeys);
         }else if('<%=gKeys%>' == '' && '<%=goodsInfo%>' == '' && '<%=retakeInfo%>' == '' && '<%=priceKey%>' == '' && '<%=bookCount%>' == ''){//장바구니
             innerValue("cartNum", cartKeys);
@@ -164,6 +167,7 @@
 
         sessionStorage.setItem("cartNum", '<%=cartKeys%>');
         sessionStorage.setItem("gKeys", '<%=gKeys%>');
+        sessionStorage.setItem("onOffGbn", '<%=onOffGbn%>');
         sessionStorage.setItem("goodsInfo", '<%=goodsInfo%>');
         sessionStorage.setItem("retakeInfo", '<%=retakeInfo%>');
         sessionStorage.setItem("priceKey", '<%=priceKey%>');

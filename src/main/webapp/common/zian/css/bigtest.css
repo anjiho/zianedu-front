@@ -48,7 +48,7 @@
 #container .bannerSlider .bx-wrapper .bx-pager {top:-30px;}
 .big .bannerSlider .bx-wrapper .bx-pager-item a {display: inline-block;margin: 0 40px;width: 18px;height: 18px; background: #fff;border: 1px #111 solid;text-indent:1px !important;border-radius: 50%;}
 #container .bannerSlider .bx-wrapper .bx-pager-item a {background: #fff;border: 1px solid #000;border-radius:20px;}
-.big #container .bannerSlider .bx-wrapper .bx-pager-item a.active {width: 18px;height: 18px;background: #fff;color:#ef244f;border: 1px solid #ef244f; font-weight:800}
+#container .bannerSlider .bx-wrapper .bx-pager-item a.active {width: 18px;height: 18px;background: #fff;color:#ef244f;border: 1px solid #ef244f; font-weight:800}
 /*고객센터*/
 .big .cs {border:2px solid #ededed;margin-top: 40px}
 .big .divGroup > div {height:130px;} 

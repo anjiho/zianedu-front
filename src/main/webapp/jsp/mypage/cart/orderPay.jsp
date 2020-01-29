@@ -99,14 +99,16 @@
         var goodsInfo = sessionStorage.getItem('goodsInfo');
         var retakeInfo = sessionStorage.getItem('retakeInfo');
         var resultData = JSON.parse(sessionStorage.getItem('resultData'));
-        var priceKey = JSON.parse(sessionStorage.getItem('priceKey'));
-        var bookCount = JSON.parse(sessionStorage.getItem('bookCount'));
-
+        var onOffGbn = JSON.parse(sessionStorage.getItem('onOffGbn'));//빅모의고사 온라인,오프라인 구분값
+        //온라인서점 priceKey, bookCount
+       // var priceKey = JSON.parse(sessionStorage.getItem('priceKey'));
+        var priceKey = "";
+        //var bookCount = JSON.parse(sessionStorage.getItem('bookCount'));
+        var bookCount = "";
         var total = '<%=total%>';
         var totalPoint = '<%=totalPoint%>';
         var deliveryPrice = '<%=deliveryPrice%>';
         var discountPoint = '<%=discountPoint%>';
-
         var data = {
             price : total,
             pricePay : parseInt(resultData.allProductPrice),
@@ -115,17 +117,17 @@
             deliveryPrice : parseInt(deliveryPrice)
         };
         sessionStorage.setItem("savePayInfo", JSON.stringify(data));
-
-        if( cartKeys == "" && goodsInfo == "" && retakeInfo == '' && priceKey == ''&& bookCount == ''){//바로구매
+        if(gKeys != ""){//바로구매
             innerValue("gKeys", gKeys);
+            innerValue("onOffGbn", onOffGbn);
             getOrderSheetInfoFromImmediately(userKey, gKeys);
-        }else if(gKeys == "" && goodsInfo == "" && retakeInfo == '' && priceKey == ''&& bookCount == ''){
+        }else if(gKeys == "" && goodsInfo == "" && retakeInfo == '' && priceKey == "" && bookCount == ''){
             innerValue("cartNum", cartKeys);
             getOrderSheetInfoFromPay(userKey, cartKeys);
-        }else if(gKeys == "" && cartKeys == "" && retakeInfo == '' && priceKey == ''&& bookCount == ''){//패키지
+        }else if(gKeys == "" && cartKeys == "" && retakeInfo == '' && priceKey == "" && bookCount == ''){//패키지
             innerValue("goodsInfo", goodsInfo);
             getOrderSheetInfoFromImmediatelyAtBasicPackage(userKey, goodsInfo, 1);
-        }else if(gKeys == "" && cartKeys == "" && goodsInfo == '' && priceKey == ''&& bookCount == ''){//재수강
+        }else if(gKeys == "" && cartKeys == "" && goodsInfo == '' && priceKey == "" && bookCount == ''){//재수강
             getOrderSheetInfoFromImmediatelyAtRetake(userKey, retakeInfo);
         }else{
             var arr = new Array();
@@ -167,6 +169,7 @@
     <input type="hidden" id="allProductPrice" name="allProductPrice"><!-- 결제해야할 총 금액 -->
     <input type="hidden" id="cartNum" name="cartNum">
     <input type="hidden" id="gKeys" name="gKeys">
+    <input type="hidden" id="onOffGbn" name="onOffGbn"><!--빅모의고사 온라인,오프라인 구분값 -->
     <input type="hidden" id="postName" name="postName">
     <input type="hidden" id="allTel" name="allTel">
     <input type="hidden" id="allPhone" name="allPhone">

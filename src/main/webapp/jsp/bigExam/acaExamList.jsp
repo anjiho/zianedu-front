@@ -4,8 +4,8 @@
     $(document).ready(function () {
         getMockExamClassCtgSelectBoxList(2, 'onSel');
         getMockExamClassCtgSelectBoxList(3, 'offSel');
-        fn_search('new');
-        fn_search2('new');
+        //fn_search('new');
+        //fn_search2('new');
     });
 
     function fn_search(val) {
@@ -16,7 +16,7 @@
         if(searchType == undefined) searchType = "";
         if(searchText == undefined) searchText = "";
         if(val == "new") sPage = "1";
-        getMockExamList(2, sPage, 10, ctgKey, searchType, searchText, 'dataList');
+       // getMockExamList(2, sPage, 10, ctgKey, searchType, searchText, 'dataList');
     }
 
     function fn_search2(val){
@@ -25,13 +25,8 @@
         var ctgKey = getSelectboxValue("offSel");
         var sPage = getInputTextValue("sPage2");
         if(val == "new") sPage = "1";
-        getMockExamList(3, sPage, 10, ctgKey, searchType, searchText, 'dataList2');
+        //getMockExamList(3, sPage, 10, ctgKey, searchType, searchText, 'dataList2');
     }
-
-    // function detailEvent(idx) {
-    //     innerValue('idx', idx);
-    //     goPage('event','detailDead');
-    // }
 </script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
@@ -49,24 +44,21 @@
                 <!--서브 컨텐츠-->
                 <div class="titleBar">
                     <h5>학원모의고사 (온·오프) 신청하기</h5>
-                    <span>지안에듀의 모의고사를 온라인/오프라인으로 만나보세요. 합격의 길로 안내합니다.</span>
+                    <span>지안에듀는 1년 안에 합격을 목표로 합니다. 철저한 모의고사 준비로 성적을 올려드립니다!</span>
                 </div>
                 <br>
                 <div class="imgbox">
-                    <img src="/common/zian/images/bigimg/img01.png">
+                    <img src="/common/zian/images/bigimg/img02.png">
                 </div>
 
                 <div class="infolist">
                     <ul>
                         <li><span class="tit">※안내사항</span></li>
-                        <li>· 모의고사는 각 과목별로 1회만 응시 가능합니다.</li>
-                        <li>· 종합시험 신청을 하시면 전체 과목을 한 번에 응시하여야 합니다.</li>
-                        <li>· 과목당 응시 시간은 20분이며, 종합시험으로 신청시 “전체 시간으로 개선되어 과목별 시간제한이 없습니다.</li>
-                        <li>· 모의고사 응시 및 성적 확인은 (내 강의실 - 나의 모의고사)에서 확인하실 수 있습니다.</li>
-                        <li>· 모의고사는 응시 후 취소 및 환불이 불가합니다.</li>
+                        <li>· 모의고사는 시험기간 내에 응시하셔야 하며 기간이 지난 후에는 응시할 수 없습니다.</li>
+                        <li>· 선택과목 변경 시에는 응시하기 전 관리버튼을 클릭 후 선택과목을 변경할 수 있습니다.</li>
+                        <li>· 오프라인 모의고사 신청 수강생은 시험날짜를 꼭 확인해주세요.</li>
+                        <li>· 오프라인 모의고사 신청 수강생은 수험표를 꼭 발급받은 후 시험장으로 이동해주세요.</li>
                     </ul>
-                    <span class="text_blue">지안에듀 연간회원은 무료로 신청 가능한 서비스입니다.</span>
-                    <a href="#modalb01" class="btn_modalOpen">오프라인 모의고사 유의사항 ></a>
                 </div>
 
                 <div class="tabContent">
@@ -94,25 +86,38 @@
                         <div class="tableBox">
                             <table class="disnoneM">
                                 <colgroup>
-                                    <col width="340px">
-                                    <col width="60px">
-                                    <col width="200px">
-                                    <col width="150px">
-                                    <col width="150px">
-                                    <col width="100px">
+                                    <col>
+                                    <col>
+                                    <col>
+                                    <col>
+                                    <col>
                                 </colgroup>
                                 <thead>
                                 <tr>
-                                    <th style="text-align: center;">시험명</th>
-                                    <th style="text-align: center;">응시직렬</th>
-                                    <th style="text-align: center;">응시과목</th>
-                                    <th style="text-align: center;">신청기간</th>
-                                    <th style="text-align: center;">응시기간</th>
-                                    <%--                                    <th>결과확인</th>--%>
-                                    <th>신청</th>
+                                    <th>직렬</th>
+                                    <th>모의고사명</th>
+                                    <th>응시기간</th>
+                                    <th>응시</th>
+                                    <th>시험지</th>
                                 </tr>
                                 </thead>
                                 <tbody id="dataList"></tbody>
+<%--                                <tr>--%>
+<%--                                    <td>일반행정직</td>--%>
+<%--                                    <td class="left">2019 제3회 일반행정직 전과목 모의고사</td>--%>
+<%--                                    <td>2019-06-22 10:00<br>--%>
+<%--                                        ~ 2019-06-30 23:59--%>
+<%--                                    </td>--%>
+<%--                                    <td>--%>
+<%--                                        <a href="" class="small blue">응시하기</a>--%>
+<%--                                    </td>--%>
+<%--                                    <td>--%>
+<%--                                        <ul class="fileList">--%>
+<%--                                            <li><a href="#"><img src="../images/common/icon_file.png" alt=""> 문제지</a></li>--%>
+<%--                                            <li><a href="#"><img src="../images/common/icon_file.png" alt=""> 해설지</a></li>--%>
+<%--                                        </ul>--%>
+<%--                                    </td>--%>
+<%--                                </tr>--%>
                             </table>
 
                         </div>
@@ -141,25 +146,32 @@
                         <div class="tableBox">
                             <table class="disnoneM">
                                 <colgroup>
-                                    <col width="340px">
-                                    <col width="60px">
-                                    <col width="200px">
-                                    <col width="150px">
-                                    <col width="150px">
-                                    <col width="100px">
+                                    <col>
+                                    <col>
+                                    <col>
+                                    <col>
+                                    <col>
                                 </colgroup>
                                 <thead>
                                 <tr>
-                                    <th style="text-align: center;">시험명</th>
-                                    <th style="text-align: center;">응시직렬</th>
-                                    <th style="text-align: center;">응시과목</th>
-                                    <th style="text-align: center;">신청기간</th>
-                                    <th style="text-align: center;">응시기간</th>
-                                    <%--                                    <th>결과확인</th>--%>
-                                    <th>신청</th>
+                                    <th>직렬</th>
+                                    <th>모의고사명</th>
+                                    <th>응시기간</th>
+                                    <th>응시</th>
+                                    <th>시험지</th>
                                 </tr>
                                 </thead>
                                 <tbody id="dataList2"></tbody>
+<%--                                <tr>--%>
+<%--                                    <td>전산직</td>--%>
+<%--                                    <td class="left">2019 제2회 전산직 전과목 모의고사</td>--%>
+<%--                                    <td>2019-06-22 10:00<br>--%>
+<%--                                        ~ 2019-06-30 23:59--%>
+<%--                                    </td>--%>
+<%--                                    <td>--%>
+<%--                                        <a href="" class="txt_gray2">응시완료</a>--%>
+<%--                                    </td>--%>
+<%--                                </tr>--%>
                             </table>
 
                         </div>
