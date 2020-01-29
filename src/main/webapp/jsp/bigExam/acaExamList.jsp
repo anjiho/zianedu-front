@@ -2,8 +2,9 @@
 <%@include file="/common/jsp/common.jsp" %>
 <script>
     $(document).ready(function () {
-        getMockExamClassCtgSelectBoxList(2, 'onSel');
-        getMockExamClassCtgSelectBoxList(3, 'offSel');
+        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        getMockExamBuyClassCtgSelectBoxList(sessionUserInfo.userKey, 2, 'onSel');
+        getMockExamBuyClassCtgSelectBoxList(sessionUserInfo.userKey, 3, 'offSel');
         fn_search('new');
         fn_search2('new');
     });

@@ -14,6 +14,25 @@ function getMockExamClassCtgSelectBoxList(onOffKey, tagId) {
     }
 }
 
+//모의고사 학원 상품 리스트 > 직렬선택
+function getMockExamBuyClassCtgSelectBoxList(userKey, onOffKey, tagId) {
+    if (onOffKey == null || onOffKey == undefined) return;
+    var data = {
+        onOffKey : onOffKey
+    };
+
+    var infoList = getApi("/exam/getMockExamBuyClassCtgSelectBoxList/", userKey, data);
+
+    if(infoList != null){
+        var selList = infoList.result;
+        for(var  i=0; i<selList.length;i++){
+            var cmpList = selList[i];
+            var returnHtml = "<option value='"+ cmpList.key +"'>"+ cmpList.value +"</option>";
+            $("#"+tagId).append(returnHtml);
+        }
+    }
+}
+
 
 //모의고사 상품 리스트 > 직렬선택
 function getMockExamListAtBuy(userKey, onOffKey, sPage, listLimit, ctgKey, searchType, searchText, tagId) {
