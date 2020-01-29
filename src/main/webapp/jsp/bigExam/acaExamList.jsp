@@ -4,8 +4,8 @@
     $(document).ready(function () {
         getMockExamClassCtgSelectBoxList(2, 'onSel');
         getMockExamClassCtgSelectBoxList(3, 'offSel');
-        //fn_search('new');
-        //fn_search2('new');
+        fn_search('new');
+        fn_search2('new');
     });
 
     function fn_search(val) {
@@ -16,7 +16,8 @@
         if(searchType == undefined) searchType = "";
         if(searchText == undefined) searchText = "";
         if(val == "new") sPage = "1";
-       // getMockExamList(2, sPage, 10, ctgKey, searchType, searchText, 'dataList');
+        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        getMockExamListAtBuy(sessionUserInfo.userKey, 2, sPage, 5, ctgKey, searchType, searchText, 'dataList')
     }
 
     function fn_search2(val){
@@ -25,7 +26,8 @@
         var ctgKey = getSelectboxValue("offSel");
         var sPage = getInputTextValue("sPage2");
         if(val == "new") sPage = "1";
-        //getMockExamList(3, sPage, 10, ctgKey, searchType, searchText, 'dataList2');
+        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        getMockExamListAtBuy(sessionUserInfo.userKey, 3, sPage, 5, ctgKey, searchType, searchText, 'dataList2')
     }
 </script>
 <form name="frm" method="get">
@@ -86,38 +88,22 @@
                         <div class="tableBox">
                             <table class="disnoneM">
                                 <colgroup>
-                                    <col>
-                                    <col>
-                                    <col>
-                                    <col>
-                                    <col>
+                                    <col class="w40p">
+                                    <col class="w500p">
+                                    <col class="w300p">
+                                    <col class="w40p">
+                                    <col class="w40p">
                                 </colgroup>
                                 <thead>
                                 <tr>
-                                    <th>직렬</th>
-                                    <th>모의고사명</th>
-                                    <th>응시기간</th>
-                                    <th>응시</th>
-                                    <th>시험지</th>
+                                    <th style="text-align: center;">직렬</th>
+                                    <th style="text-align: center;">모의고사명</th>
+                                    <th style="text-align: center;">응시기간</th>
+                                    <th style="text-align: center;">응시</th>
+                                    <th style="text-align: center;">시험지</th>
                                 </tr>
                                 </thead>
                                 <tbody id="dataList"></tbody>
-<%--                                <tr>--%>
-<%--                                    <td>일반행정직</td>--%>
-<%--                                    <td class="left">2019 제3회 일반행정직 전과목 모의고사</td>--%>
-<%--                                    <td>2019-06-22 10:00<br>--%>
-<%--                                        ~ 2019-06-30 23:59--%>
-<%--                                    </td>--%>
-<%--                                    <td>--%>
-<%--                                        <a href="" class="small blue">응시하기</a>--%>
-<%--                                    </td>--%>
-<%--                                    <td>--%>
-<%--                                        <ul class="fileList">--%>
-<%--                                            <li><a href="#"><img src="../images/common/icon_file.png" alt=""> 문제지</a></li>--%>
-<%--                                            <li><a href="#"><img src="../images/common/icon_file.png" alt=""> 해설지</a></li>--%>
-<%--                                        </ul>--%>
-<%--                                    </td>--%>
-<%--                                </tr>--%>
                             </table>
 
                         </div>
@@ -143,10 +129,9 @@
                                 </li>
                             </ul>
                         </form>
-                        <div class="tableBox">
+                        <div class="tableBox2">
                             <table class="disnoneM">
                                 <colgroup>
-                                    <col>
                                     <col>
                                     <col>
                                     <col>
@@ -154,11 +139,10 @@
                                 </colgroup>
                                 <thead>
                                 <tr>
-                                    <th>직렬</th>
-                                    <th>모의고사명</th>
-                                    <th>응시기간</th>
-                                    <th>응시</th>
-                                    <th>시험지</th>
+                                    <th style="text-align: center;">직렬</th>
+                                    <th style="text-align: center;">모의고사명</th>
+                                    <th style="text-align: center;">응시기간</th>
+                                    <th style="text-align: center;">응시</th>
                                 </tr>
                                 </thead>
                                 <tbody id="dataList2"></tbody>

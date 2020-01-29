@@ -547,27 +547,6 @@
                 gfn_display("goReceipt", true);
             }
         }
-        <%--var allProductPrice = "<%= request.getParameter("allProductPrice") %>";--%>
-        <%--var postName = "<%= reque st.getParameter("postName") %>";--%>
-        <%--var allTel = "<%= request.getParameter("allTel") %>";--%>
-        <%--var allPhone = "<%= request.getParameter("allPhone") %>";--%>
-        <%--var allEmail = "<%= request.getParameter("allEmail") %>";--%>
-        <%--var postCode = "<%= request.getParameter("postCode1") %>";--%>
-        <%--var add1 = "<%= request.getParameter("add1") %>";--%>
-        <%--var add2 = "<%= request.getParameter("add2") %>";--%>
-        <%--if('<%=cartNum%>' == "" && '<%=goodsInfo%>' == ""){//바로구매--%>
-        <%--    var gKeys = toStrFileName(<%= request.getParameter("gKeys") %>);--%>
-        <%--   // innerValue("gKeys", gKeys);--%>
-        <%--    getOrderSheetInfoFromImmediately(userKey, gKeys);--%>
-        <%--}else if('<%=gKeys%>' == "" && '<%=goodsInfo%>' == ""){--%>
-        <%--    var cartKeys = toStrFileName(<%= request.getParameter("cartNum") %>);--%>
-        <%--   // innerValue("cartNum", cartKeys);--%>
-        <%--    getOrderSheetInfoFromPay(userKey, cartKeys);--%>
-        <%--}else{//패키지--%>
-        <%--    var goodsInfo ='<%= request.getParameter("goodsInfo") %>';--%>
-        <%--   // innerValue("goodsInfo", goodsInfo);--%>
-        <%--    getOrderSheetInfoFromImmediatelyAtBasicPackage(userKey, goodsInfo, 1);--%>
-        <%--}--%>
         if(cartKeys == "" && goodsInfo == ""){//바로구매
             //var gKeys = toStrFileName(gKeys);
             getOrderSheetInfoFromImmediately(userKey, gKeys);

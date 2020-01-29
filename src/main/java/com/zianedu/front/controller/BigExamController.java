@@ -17,7 +17,7 @@ public class BigExamController {
         }else if("examApply".equals(page_gbn)){
             mvc.setViewName("/bigExam/applyList");
         }else if("acaExam".equals(page_gbn)){
-            mvc.setViewName("/bigExam/acaExamList");
+            mvc.setViewName("/bigExam/acaEx amList");
         }else if("weekExam".equals(page_gbn)){
             mvc.setViewName("/bigExam/weekExamList");
         }
