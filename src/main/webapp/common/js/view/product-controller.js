@@ -921,7 +921,6 @@ function getMockExamList(onOffKey, sPage, listLimit, ctgKey, searchType, searchT
                     function(data) {return cmpList.goodsName;},
                     function(data) {return cmpList.className;},
                     function(data) {return cmpList.subjectName;},
-                    // function(data) {return "<span class=\"text_blue\">"+ cmpList.className +"</span><p>"+ cmpList.subjectName +"</p>";},
                     function(data) {return cmpList.acceptStartDate+"<br>~"+cmpList.acceptEndDate;},
                     function(data) {return cmpList.stareDate+"<br>~"+cmpList.endDate;},
                     function(data) {return "<a href='javascript:goOneLecCheckedBuy("+ cmpList.priceKey +");' class='small bdblue'>구매하기</a>";}

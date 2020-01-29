@@ -25,7 +25,7 @@ var Paging = function() {
 	this.count2 = function(sPage, cnt, paging_count, list_count, empty_comment) {
 		if (cnt == "0") {
 			gfn_printPageNum_new2('0', paging_count, list_count, '1');
-			gfn_emptyView2("V", empty_comment);
+			//gfn_emptyView2("V", empty_comment);
 		}  else {
 			if (new Number(cnt) < (list_count * sPage)) {
 				if (new Number(cnt) < (list_count * (sPage - 1))) {
