@@ -18,7 +18,7 @@
         if(searchText == undefined) searchText = "";
         if(val == "new") sPage = "1";
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-        getMockExamListAtBuy(sessionUserInfo.userKey, 2, sPage, 5, ctgKey, searchType, searchText, 'dataList')
+        getMockExamListAtBuy(sessionUserInfo.userKey, 2, sPage, 5, ctgKey, searchType, searchText, 'dataList');
     }
 
     function fn_search2(val){
@@ -26,9 +26,11 @@
         var searchText = getInputTextValue("searchText2");
         var ctgKey = getSelectboxValue("offSel");
         var sPage = getInputTextValue("sPage2");
+        if(searchType == undefined) searchType = "";
+        if(searchText == undefined) searchText = "";
         if(val == "new") sPage = "1";
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-        getMockExamListAtBuy(sessionUserInfo.userKey, 3, sPage, 5, ctgKey, searchType, searchText, 'dataList2')
+        getMockExamListAtBuy(sessionUserInfo.userKey, 3, sPage, 5, ctgKey, searchType, searchText, 'dataList2');
     }
 </script>
 <form name="frm" method="get">

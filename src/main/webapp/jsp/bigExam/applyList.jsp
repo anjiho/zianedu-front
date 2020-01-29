@@ -23,6 +23,8 @@
         var searchType = getSelectboxValue("searchType2");
         var searchText = getInputTextValue("searchText2");
         var ctgKey = getSelectboxValue("offSel");
+        if(searchType == undefined) searchType = "";
+        if(searchText == undefined) searchText = "";
         var sPage = getInputTextValue("sPage2");
         if(val == "new") sPage = "1";
         getMockExamList(3, sPage, 10, ctgKey, searchType, searchText, 'dataList2');
