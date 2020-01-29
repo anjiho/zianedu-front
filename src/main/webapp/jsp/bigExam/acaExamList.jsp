@@ -85,14 +85,14 @@
                                 </li>
                             </ul>
                         </form>
-                        <div class="tableBox">
+                        <div class="tableBox2">
                             <table class="disnoneM">
                                 <colgroup>
-                                    <col class="w40p">
-                                    <col class="w500p">
-                                    <col class="w300p">
-                                    <col class="w40p">
-                                    <col class="w40p">
+                                    <col>
+                                    <col>
+                                    <col>
+                                    <col>
+                                    <col>
                                 </colgroup>
                                 <thead>
                                 <tr>
