@@ -1,40 +1,4 @@
-//학원별 학원수강신청 상품 리스트
-function getAcademyLectureListFromCategoryMenu(ctgKey, stepCtgKey, teacherKey, tagId) {
-    if (ctgKey == null || ctgKey == undefined) return;
-    var data = {
-        stepCtgKey: stepCtgKey,
-        teacherKey : teacherKey
-    };
-    var InfoList = getApi("/product/getAcademyLectureListFromCategoryMenu/", ctgKey, data);
-    if (InfoList.result.length > 0) {
-        var selList = InfoList.result;
-        dwr.util.addRows(tagId, selList, [
-            /*
-                TODO : addoption 추가
-             */
-            //function(data) {return data.fullFileUrl;}
-        ], {escapeHtml:false});
-    }
-}
 
-//학원별 동영상강의 상품 리스트
-function getVideoLectureListFromCategoryMenu(ctgKey, stepCtgKey, teacherKey) {
-    if (ctgKey == null || ctgKey == undefined) return;
-    var data = {
-        stepCtgKey : stepCtgKey,
-        teacherKey : teacherKey,
-    };
-    var InfoList = getApi("/product/getVideoLectureListFromCategoryMenu/", ctgKey, data);
-    if (InfoList.result.length > 0) {
-        var selList = InfoList.result;
-        dwr.util.addRows(tagId, selList, [
-            /*
-                TODO : addoption 추가
-             */
-            //function(data) {return data.fullFileUrl;}
-        ], {escapeHtml:false});
-    }
-}
 
 //동영상 강좌 상품 상세정보
 function getVideoProductDetail(gKey, device) {

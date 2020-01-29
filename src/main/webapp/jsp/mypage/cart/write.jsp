@@ -19,11 +19,6 @@
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         var userKey = sessionUserInfo.userKey;
 
-        // var cartKeys = sessionStorage.getItem('cartNum');
-        // var gKeys = sessionStorage.getItem('gKeys');
-        // var goodsInfo = sessionStorage.getItem('goodsInfo');
-        // var resultData = JSON.parse(sessionStorage.getItem('resultData'));
-
         var gKeys = '<%=gKeys%>';
         var cartKeys = '<%=cartKeys%>';
         var goodsInfo = '<%=goodsInfo%>';
