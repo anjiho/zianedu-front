@@ -28,6 +28,20 @@ function getWeekMockExamClassCtgSelectBoxList() {
     }
 }
 
+//빅모의고사 > 기출문제 직렬선택 셀렉트박스
+// function getWeekMockExamClassCtgSelectBoxList() {
+//     var infoList = getApi("/exam/getWeekMockExamClassCtgSelectBoxList/", '', '');
+//
+//     if(infoList != null){
+//         var selList = infoList.result;
+//         for(var  i=0; i<selList.length;i++){
+//             var cmpList = selList[i];
+//             var returnHtml = "<option value='"+ cmpList.key +"'>"+ cmpList.value +"</option>";
+//             $("#onSel").append(returnHtml);
+//         }
+//     }
+// }
+
 //모의고사 학원 상품 리스트 > 직렬선택
 function getMockExamBuyClassCtgSelectBoxList(userKey, onOffKey, tagId) {
     if (onOffKey == null || onOffKey == undefined) return;
@@ -138,7 +152,7 @@ function getWeekBigExamList(userKey, sPage, listLimit, ctgKey, searchType, searc
                 returnHtml += "<td><a href='' class='small bdgray'>응시완료</a></td>";
             }
                 returnHtml += "<td>";
-                if(cmpList.iscomplete == 1){
+                //if(cmpList.iscomplete == 1){
                     returnHtml += "<ul class=\"fileList\">";
                     if(cmpList.printQuestionFile != null){
                         returnHtml += "<li><a href='"+ cmpList.printQuestionFileUrl +"' target='_blank'><img src=\"/common/zian/images/common/icon_file.png\" alt=\"\"> 문제지</a></li>";
@@ -147,7 +161,7 @@ function getWeekBigExamList(userKey, sPage, listLimit, ctgKey, searchType, searc
                         returnHtml += "<li><a href='"+ cmpList.printCommentaryFileUrl +"'  target='_blank'><img src=\"/common/zian/images/common/icon_file.png\" alt=\"\"> 해설지</a></li>";
                     }
                     returnHtml += "</ul>";
-                }
+                //}
                 returnHtml += "</td>";
             returnHtml += "</tr>";
             $("#dataList").append(returnHtml);
@@ -179,7 +193,6 @@ function getGichulProblemList(userKey, sPage, listLimit, searchType, searchText,
     if(infoList != null){
         var selList = infoList.result;
         paging.count(sPage, cnt, '5', listLimit, comment.blank_list);
-        console.log(selList);
         for(var  i=0; i < selList.length;i++){
             var cmpList = selList[i];
             var returnHtml = "<tr>";

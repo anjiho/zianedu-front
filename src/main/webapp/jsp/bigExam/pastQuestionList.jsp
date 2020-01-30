@@ -26,7 +26,7 @@
         var subjectCtgKey = getSelectboxValue("subjectCtgKey");
         if(val == "new") sPage = "1";
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-        getGichulProblemList(sessionUserInfo.userKey, sPage, 10, searchType, searchText, groupCtgKey, classCtgKey, subjectCtgKey)
+        getGichulProblemList(sessionUserInfo.userKey, sPage, 5, searchType, searchText, groupCtgKey, classCtgKey, subjectCtgKey)
     }
 
 </script>

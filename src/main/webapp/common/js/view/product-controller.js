@@ -840,6 +840,7 @@ function getMockExamList(onOffKey, sPage, listLimit, ctgKey, searchType, searchT
         ctgKey : ctgKey
     };
     var infoList = getPageApi("/product/getMockExamList/", onOffKey, data);
+    console.log(infoList);
     var cnt = infoList.cnt;
     if(infoList != null){
         // if (infoList.result.length > 0) {

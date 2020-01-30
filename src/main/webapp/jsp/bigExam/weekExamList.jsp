@@ -15,7 +15,7 @@
         if(searchText == undefined) searchText = "";
         if(val == "new") sPage = "1";
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-        getWeekBigExamList(sessionUserInfo.userKey, sPage, 10, ctgKey, searchType, searchText);
+        getWeekBigExamList(sessionUserInfo.userKey, sPage, 5, ctgKey, searchType, searchText);
     }
 </script>
 <form name="frm" method="get">
