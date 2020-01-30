@@ -2,8 +2,8 @@
 <%@include file="/common/jsp/common.jsp" %>
 <script>
     $(document).ready(function () {
-        getGichulSelectBoxList('SERIAL', 'groupCtgKey');//직렬
-        getGichulSelectBoxList('RATING', 'classCtgKey');//급수
+        getGichulSelectBoxList('SERIAL', 'classCtgKey');//직렬
+        getGichulSelectBoxList('RATING', 'groupCtgKey');//급수
         getGichulSelectBoxList('SUBJECT', 'subjectCtgKey');//과목
         fn_search('new');
 
@@ -22,12 +22,12 @@
         var searchText = getInputTextValue("searchText");
         if(searchType == undefined) searchType = "";
         if(searchText == undefined) searchText = "";
-        var groupCtgKey = getSelectboxValue("groupCtgKey");
-        var classCtgKey = getSelectboxValue("classCtgKey");
-        var subjectCtgKey = getSelectboxValue("subjectCtgKey");
+        var groupCtgKey = getSelectboxValue("groupCtgKey");//급수
+        var classCtgKey = getSelectboxValue("classCtgKey");//직렬
+        var subjectCtgKey = getSelectboxValue("subjectCtgKey");//과목
         if(val == "new") sPage = "1";
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-        getGichulProblemList(sessionUserInfo.userKey, sPage, 5, searchType, searchText, groupCtgKey, classCtgKey, subjectCtgKey)
+        getGichulProblemList(sessionUserInfo.userKey, sPage, 5, searchType, searchText, groupCtgKey, classCtgKey, subjectCtgKey);
     }
 
 </script>
@@ -71,11 +71,11 @@
                                 <a href="javascript:fn_search('new');" class="btn_m on w140">검색</a>
                             </li>
                             <li class="right pdt10">
-                                <select id="groupCtgKey" class="w120" onchange="fn_search('new');">
-<%--                                    <option value="">직렬선택</option>--%>
-                                </select>
                                 <select id="classCtgKey" class="w120" onchange="fn_search('new');">
 <%--                                    <option value="">급수선택</option>--%>
+                                </select>
+                                <select id="groupCtgKey" class="w120" onchange="fn_search('new');">
+                                    <%--                                    <option value="">직렬선택</option>--%>
                                 </select>
                                 <select id="subjectCtgKey" class="w120" onchange="fn_search('new');">
 <%--                                    <option value="">과목선택</option>--%>

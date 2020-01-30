@@ -187,8 +187,10 @@ function getGichulProblemList(userKey, sPage, listLimit, searchType, searchText,
         classCtgKey : classCtgKey,
         subjectCtgKey : subjectCtgKey
     };
+    console.log(data);
 
     var infoList = getPageApi("/exam/getGichulProblemList/", userKey, data);
+    console.log(infoList);
     var cnt = infoList.cnt;
     if(infoList != null){
         var selList = infoList.result;
