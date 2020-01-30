@@ -4,7 +4,7 @@
     $(document).ready(function () {
         //getMockExamClassCtgSelectBoxList(2, 'onSel');
         //getMockExamClassCtgSelectBoxList(3, 'offSel');
-        //fn_search('new');
+        fn_search('new');
 
     });
 
@@ -19,28 +19,27 @@
         var sPage = getInputTextValue("sPage");
         var searchType = getSelectboxValue("searchType");
         var searchText = getInputTextValue("searchText");
-        var ctgKey = getSelectboxValue("onSel");
         if(searchType == undefined) searchType = "";
         if(searchText == undefined) searchText = "";
+        var groupCtgKey = getSelectboxValue("groupCtgKey");
+        var classCtgKey = getSelectboxValue("classCtgKey");
+        var subjectCtgKey = getSelectboxValue("subjectCtgKey");
         if(val == "new") sPage = "1";
-        getMockExamList(2, sPage, 10, ctgKey, searchType, searchText, 'dataList');
+        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        getGichulProblemList(sessionUserInfo.userKey, sPage, 10, searchType, searchText, groupCtgKey, classCtgKey, subjectCtgKey)
     }
 
 </script>
-<form id="id_frm_singleMypage" method="post" name="id_frm_singleMypage">
-    <input type="hidden" id="gKeys" name="gKeys">
-</form>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
     <input type="hidden" id="sPage">
-    <input type="hidden" id="sPage2">
     <div id="wrap">
         <%@include file="/common/jsp/leftMenu.jsp" %>
         <!--상단-->
         <%@include file="/common/jsp/header.jsp" %>
         <!--//상단-->
         <!--본문-->
-        <div id="container" class="bigSub">
+        <div id="container" class="big bigSub">
             <div class="inner">
                 <!--서브 컨텐츠-->
                 <div class="titleBar">
@@ -64,21 +63,21 @@
                         <!--추가 -->
                         <ul class="searchArea">
                             <li class="left">
-                                <select>
-                                    <option>제목</option>
+                                <select id="searchType">
+                                    <option value="name">시험명</option>
                                 </select>
-                                <input type="text">
-                                <input type="submit" value="검색" class="btn_m on">
+                                <input type="text" id="searchText" onkeypress="if(event.keyCode==13) {fn_search('new'); return false;}">
+                                <a href="javascript:fn_search('new');" class="btn_m on w140">검색</a>
                             </li>
                             <li class="right pdt10">
-                                <select name="" class="w120">
-                                    <option value="">직렬선택</option>
+                                <select id="groupCtgKey" class="w120">
+<%--                                    <option value="">직렬선택</option>--%>
                                 </select>
-                                <select name="" class="w120">
-                                    <option value="">급수선택</option>
+                                <select id="classCtgKey" class="w120">
+<%--                                    <option value="">급수선택</option>--%>
                                 </select>
-                                <select name="" class="w120">
-                                    <option value="">과목선택</option>
+                                <select id="subjectCtgKey" class="w120">
+<%--                                    <option value="">과목선택</option>--%>
                                 </select>
                             </li>
                         </ul>
