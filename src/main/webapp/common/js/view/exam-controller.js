@@ -29,18 +29,18 @@ function getWeekMockExamClassCtgSelectBoxList() {
 }
 
 //빅모의고사 > 기출문제 직렬선택 셀렉트박스
-// function getWeekMockExamClassCtgSelectBoxList() {
-//     var infoList = getApi("/exam/getWeekMockExamClassCtgSelectBoxList/", '', '');
-//
-//     if(infoList != null){
-//         var selList = infoList.result;
-//         for(var  i=0; i<selList.length;i++){
-//             var cmpList = selList[i];
-//             var returnHtml = "<option value='"+ cmpList.key +"'>"+ cmpList.value +"</option>";
-//             $("#onSel").append(returnHtml);
-//         }
-//     }
-// }
+function getGichulSelectBoxList(selectBoxType, tagId) {
+    var infoList = getApi("/exam/getGichulSelectBoxList/", selectBoxType, '');
+
+    if(infoList != null){
+        var selList = infoList.result;
+        for(var  i=0; i<selList.length;i++){
+            var cmpList = selList[i];
+            var returnHtml = "<option value='"+ cmpList.key +"'>"+ cmpList.value +"</option>";
+            $("#"+tagId).append(returnHtml);
+        }
+    }
+}
 
 //모의고사 학원 상품 리스트 > 직렬선택
 function getMockExamBuyClassCtgSelectBoxList(userKey, onOffKey, tagId) {
@@ -201,7 +201,7 @@ function getGichulProblemList(userKey, sPage, listLimit, searchType, searchText,
             returnHtml += "<td>"+ cmpList.subjectCtgName +"</td>";
             returnHtml += "<td>"+ cmpList.goodsName +"</td>";
             if(cmpList.iscomplete == 0){//응시가능
-                returnHtml += "<td><span class='small blue'>응시가능</span></td>";
+                returnHtml += "<td><span class='small blue' onclick='testPop();'>응시가능</span></td>";
             }else if(cmpList.iscomplete == 1){//응시완료
                 returnHtml += "<td><a href='' class='small bdgray'>응시완료</a></td>";
             }

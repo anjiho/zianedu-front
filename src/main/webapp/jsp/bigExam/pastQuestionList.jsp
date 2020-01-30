@@ -2,8 +2,9 @@
 <%@include file="/common/jsp/common.jsp" %>
 <script>
     $(document).ready(function () {
-        //getMockExamClassCtgSelectBoxList(2, 'onSel');
-        //getMockExamClassCtgSelectBoxList(3, 'offSel');
+        getGichulSelectBoxList('SERIAL', 'groupCtgKey');//직렬
+        getGichulSelectBoxList('RATING', 'classCtgKey');//급수
+        getGichulSelectBoxList('SUBJECT', 'subjectCtgKey');//과목
         fn_search('new');
 
     });
@@ -70,13 +71,13 @@
                                 <a href="javascript:fn_search('new');" class="btn_m on w140">검색</a>
                             </li>
                             <li class="right pdt10">
-                                <select id="groupCtgKey" class="w120">
+                                <select id="groupCtgKey" class="w120" onchange="fn_search('new');">
 <%--                                    <option value="">직렬선택</option>--%>
                                 </select>
-                                <select id="classCtgKey" class="w120">
+                                <select id="classCtgKey" class="w120" onchange="fn_search('new');">
 <%--                                    <option value="">급수선택</option>--%>
                                 </select>
-                                <select id="subjectCtgKey" class="w120">
+                                <select id="subjectCtgKey" class="w120" onchange="fn_search('new');">
 <%--                                    <option value="">과목선택</option>--%>
                                 </select>
                             </li>
