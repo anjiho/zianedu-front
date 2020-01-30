@@ -167,7 +167,7 @@
                 <li><a href="javascript:goPageNoSubmit('bigExam','examApply')">모의고사신청</a></li>
                 <li><a href="javascript:goPageNoSubmit('bigExam','acaExam')">학원모의고사</a></li>
                 <li><a href="javascript:goPageNoSubmit('bigExam','weekExam')">주간모의고사</a></li>
-                <li><a href="#">기출문제</a></li>
+                <li><a href="javascript:goPageNoSubmit('bigExam','pastQuestion')">기출문제</a></li>
                 <li><a href="#">응시후기</a></li>
                 <li><a href="#">자료실</a></li>
             </ul>

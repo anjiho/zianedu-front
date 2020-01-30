@@ -14,6 +14,20 @@ function getMockExamClassCtgSelectBoxList(onOffKey, tagId) {
     }
 }
 
+//빅모의고사 > 주간모의고사 직렬선택 셀렉트박스
+function getWeekMockExamClassCtgSelectBoxList() {
+    var infoList = getApi("/exam/getWeekMockExamClassCtgSelectBoxList/", '', '');
+
+    if(infoList != null){
+        var selList = infoList.result;
+        for(var  i=0; i<selList.length;i++){
+            var cmpList = selList[i];
+            var returnHtml = "<option value='"+ cmpList.key +"'>"+ cmpList.value +"</option>";
+            $("#onSel").append(returnHtml);
+        }
+    }
+}
+
 //모의고사 학원 상품 리스트 > 직렬선택
 function getMockExamBuyClassCtgSelectBoxList(userKey, onOffKey, tagId) {
     if (onOffKey == null || onOffKey == undefined) return;
@@ -89,3 +103,50 @@ function getMockExamListAtBuy(userKey, onOffKey, sPage, listLimit, ctgKey, searc
         }
     }
 }
+
+function getWeekBigExamList(userKey, sPage, listLimit, ctgKey, searchType, searchText) {
+    if (userKey == null || userKey == undefined) return;
+    var paging = new Paging();
+    dwr.util.removeAllRows("dataList"); //테이블 리스트 초기화
+
+    var data = {
+        sPage : sPage,
+        listLimit : listLimit,
+        ctgKey : ctgKey,
+        searchType : searchType,
+        searchText : searchText
+    };
+
+    var infoList = getPageApi("/exam/getWeekBigExamList/", userKey, data);
+    var cnt = infoList.cnt;
+    if(infoList != null){
+        var selList = infoList.result;
+        paging.count(sPage, cnt, '5', listLimit, comment.blank_list);
+        console.log(selList);
+        for(var  i=0; i < selList.length;i++){
+            var cmpList = selList[i];
+            var returnHtml = "<tr>";
+            returnHtml += "<td>"+ cmpList.classCtgName +"</td>";
+            returnHtml += "<td>"+ cmpList.goodsName +"</td>";
+            returnHtml += "<td>"+ cmpList.acceptStartDate +"<br>~"+ cmpList.acceptEndDate +"</td>";
+            if(cmpList.acceptType == 0){//응시마감
+                returnHtml += "<td><span class=''>응시마감</span></td>";
+            }else if(cmpList.acceptType == 1){//응시가능
+                returnHtml += "<td><a href='' class='small blue'>응시가능</a></td>";
+            }else{//응시완료
+                returnHtml += "<td><span class='small bdgray'>응시완료</span></td>";
+            }
+                returnHtml += "<td>";
+                if(cmpList.acceptType != 1){
+                    returnHtml += "<ul class=\"fileList\">";
+                    returnHtml += "<li><a href='"+ cmpList.printQuestionFileUrl +"' target='_blank'><img src=\"/common/zian/images/common/icon_file.png\" alt=\"\"> 문제지</a></li>";
+                    returnHtml += "<li><a href='"+ cmpList.printCommentaryFileUrl +"'  target='_blank'><img src=\"/common/zian/images/common/icon_file.png\" alt=\"\"> 해설지</a></li>";
+                    returnHtml += "</ul>";
+                }
+                returnHtml += "</td>";
+            returnHtml += "</tr>";
+            $("#dataList").append(returnHtml);
+        }
+    }
+}
+
