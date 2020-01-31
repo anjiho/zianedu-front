@@ -483,7 +483,6 @@ function getUserOrderDetail(jKey) {
     if(jKey == null || jKey == undefined) return;
     var infoList = getApi("/myPage/getUserOrderDetail/", jKey, '');
     if(infoList != null){
-        console.log(infoList);
         if(infoList.result.orderList != null){
             var orderInfo = infoList.result.orderList;
             for(var i=0; i < orderInfo.length; i++){
@@ -818,21 +817,48 @@ function getMyWriteExamBoard(userKey, boardType, sPage, listLimit, searchType, s
         }
     }
 }
-/*
- if (bbsMaterKey == null || bbsMaterKey == undefined) return;
-    var data = {
-        sPage : sPage,
-        listLimit : listLimit
-    };
-    var InfoList = getApi("/board/getBannerNoticeList/", bbsMaterKey, data);
 
-    if (InfoList.result.length > 0) {
-        var selList = InfoList.result;
-        dwr.util.addOptions(tagId, selList, function (data) {
-            return "<a href=''>"+ ellipsis(data.title,28) +"<span class='date'>" + data.createDate + "</span></a>"
-        }, {escapeHtml: false});
+function getMyWriteExamBoard2(userKey, boardType, sPage, listLimit, searchType, searchText) {
+    if(userKey == null || userKey == undefined) return;
+    var paging = new Paging();
+    dwr.util.removeAllRows("dataList"); //테이블 리스트 초기화
+    var data = {
+        boardType : boardType,
+        sPage : sPage,
+        listLimit : listLimit,
+        searchType : searchType,
+        searchText : searchText
+    };
+    var infoList = getPageApi("/myPage/getMyWriteBoard/", userKey, data);
+    var cnt = infoList.cnt;
+    if(infoList != null){
+        //if (infoList.result.length > 0) {
+            var listNum = ((cnt-1)+1)-((sPage-1)*10); //리스트 넘버링
+            var selList = infoList.result;
+            paging.count(sPage, cnt, '5', listLimit, comment.blank_list);
+            for(var i=0; i < selList.length; i++){
+                var cmpList = selList[i];
+            
+                if (cmpList != undefined) {
+                    var cellData = [
+                        function(data) {return listNum--;},
+                        function(data) {return "<a href='javascript:goDetailReview("+ cmpList.bbsKey +");'>"+ cmpList.title +"</a>";},
+                        function(data) {return cmpList.userName;},
+                        function(data) {return cmpList.indate;},
+                        function(data) {return cmpList.readCount;}
+                    ];
+                    dwr.util.addRows("dataList", [0], cellData, {escapeHtml: false});
+                    $('#dataList tr').each(function(){
+                        var tr = $(this);
+                        tr.children().eq(1).attr("class", "left");
+                    });
+                }
+            }
+        //}
     }
- */
+}
+
+
 function bookStoreReviewBoard(userKey, boardType, sPage, listLimit, searchType, searchText) {
     if(userKey == null || userKey == undefined) return;
 
