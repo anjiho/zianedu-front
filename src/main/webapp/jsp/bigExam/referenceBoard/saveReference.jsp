@@ -1,10 +1,6 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/jsp/common.jsp" %>
-<%
-    String bbsKey = request.getParameter("bbsKey");
-%>
 <script>
-    var bbsKey = <%=bbsKey%>;
     $(document).ready(function () {
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         if(sessionUserInfo != null) {
@@ -19,21 +15,6 @@
                 focus: true
             });
             $("#attachFile").on("change", addFiles);
-            var result = getBoardDetailInfo(11030, bbsKey);
-            if(result != null){
-                var detailInfo = result.boardDetailInfo;
-                $("#writeContent").summernote("code", detailInfo.contents);
-                innerValue("title", detailInfo.title);
-                if(detailInfo.fileInfo != null) {
-                    if (detailInfo.fileInfo.length > 0) {
-                        for (var i = 0; i < detailInfo.fileInfo.length; i++) {
-                            var fileList = detailInfo.fileInfo[i];
-                            var returnHtml = "<li id='"+fileList.bbsFileKey+"'><a href='javascript:void(0);'>"+ fileList.fileName +"</a>"+" "+"<a href='javascript:deleteFileList("+ fileList.bbsFileKey +");' >X</a></li>";
-                            $("#fileList").append(returnHtml);
-                        }
-                    }
-                }
-            }
         }else{
             alert("로그인이 필요합니다.");
             goLoginPage();
@@ -62,64 +43,57 @@
         $("#fileList").html(innerHtmlTemp);
     }
 
-    function modifyReview() {
+    function saveReview() {
         var check = new isCheck();
         if (check.input("title", comment.input_title) == false) return;
         if($('textarea[name="writeContent"]').val() == ''){
-            alert('내용을 입력해 주세요.');
+            alert('서브제목을 입력해 주세요.');
             return false;
         }
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-        if(sessionUserInfo != null) {
-            if (filesTempArr.length == 0) { //파일 없을때
-                var title = getInputTextValue("title");
-                var content = $('textarea[name="writeContent"]').val();
-                var bbsKey = getInputTextValue('bbsKey');
-                var result = updateBoard(bbsKey, title, content, 0, '');
-                if (result.resultCode == 200) {
-                    alert("수정이 완료되었습니다.");
-                    return false;
-                }
-            } else {
-                var formData = new FormData();
-                for (var i = 0, filesTempArrLen = filesTempArr.length; i < filesTempArrLen; i++) {
-                    formData.append("files", filesTempArr[i]);
-                }
-                $.ajax({
-                    url: "http://52.79.40.214:9090/fileUpload/boardFileList",
-                    method: "post",
-                    dataType: "JSON",
-                    data: formData,
-                    cache: false,
-                    processData: false,
-                    contentType: false,
-                    success: function (data) {
-                        if (data.resultCode == 200) {
-                            var fileName = data.keyValue;
-                            var title = getInputTextValue("title");
-                            var content = $('textarea[name="writeContent"]').val();
-                            var bbsKey = getInputTextValue('bbsKey');
-                            var result = updateBoard(bbsKey, title, content, 0, fileName);
-                            var str = toStrFileName(fileName);
-                            saveBoardFileList(result.keyValue, str);
-                            if (result.resultCode == 200) {
-                                alert("수정이 완료되었습니다.");
-                                return false;
-                            }
+        if (filesTempArr.length == 0) { //파일 없을때
+            var title = getInputTextValue("title");
+            var content = $('textarea[name="writeContent"]').val();
+            var result = saveBoard(11030, sessionUserInfo.userKey, title, content, 0, 0, '');
+            if (result.resultCode == 200) {
+                alert("성공적으로 등록 완료되었습니다");
+                return false;
+            }
+        } else {
+            var formData = new FormData();
+            for (var i = 0, filesTempArrLen = filesTempArr.length; i < filesTempArrLen; i++) {
+                formData.append("files", filesTempArr[i]);
+            }
+            $.ajax({
+                url: "http://52.79.40.214:9090/fileUpload/boardFileList",
+                method: "post",
+                dataType: "JSON",
+                data: formData,
+                cache: false,
+                processData: false,
+                contentType: false,
+                success: function (data) {
+                    if (data.resultCode == 200) {
+                        var fileName = data.keyValue;
+                        var title = getInputTextValue("title");
+                        var content = $('textarea[name="writeContent"]').val();
+                        var result = saveBoard(11030, sessionUserInfo.userKey, title, content, 0, 0, fileName);
+                        var str = toStrFileName(fileName);
+                        saveBoardFileList(result.keyValue, str);
+                        if (result.resultCode == 200) {
+                            alert("성공적으로 등록 완료되었습니다");
+                            return false;
                         }
                     }
-                });
-            }
-        }else{
-            alert("로그인을 해주세요.");
-            goLoginPage();
+                }
+            });
         }
     }
+
 </script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
     <input type="hidden" id="sPage">
-    <input type="hidden" id="bbsKey" value="<%=bbsKey%>">
     <div id="wrap">
         <%@include file="/common/jsp/leftMenu.jsp" %>
         <!--상단-->
@@ -128,16 +102,21 @@
         <!--본문-->
         <div id="container" class="big bigSub">
             <div class="inner">
-                <!--서브 컨텐츠-->
-
-
-                <!-- 지안에듀 모의고사 BEST 응시후기 -->
-                <div class="mainStory mainStorysub">
-
+                <div class="titleBar">
+                    <h5>자료실</h5>
+                    <span>지안에듀 회원이라면 자유롭게 이용할 수 있는 모의고사 자료실 입니다.</span>
                 </div>
-
+                <br>
+                <div class="infolist">
+                    <ul>
+                        <li><span class="tit">※안내사항</span></li>
+                        <li>· 시험 해설, 계정 법률, 스터디 및 암기 자료를 업로드 할 수 있습니다.</li>
+                        <li>· 관리자의 판단 하에 부적절한 게시물은 삭제 조치됩니다.</li>
+                        <li>· 불법 자료 공유 및 무단 도용을 금지합니다.</li>
+                    </ul>
+                </div>
                 <div class="boardWrap">
-                    <h5>후기 수정하기</h5>
+                    <h5>자료실 등록하기</h5>
                     <div class="tableBox">
                         <table class="form">
                             <caption></caption>
@@ -174,7 +153,7 @@
                     </div>
                     <div class="btnArea">
                         <a href="javascript:goPageNoSubmit('bigExam','bigReviewList')" class="btn_m gray radius w110">취소</a> &nbsp;&nbsp;&nbsp;
-                        <a href="javascript:modifyReview();" class="btn_m radius w110">수정</a>
+                        <a href="javascript:saveReview();" class="btn_m radius w110">등록</a>
                     </div>
                 </div>
 

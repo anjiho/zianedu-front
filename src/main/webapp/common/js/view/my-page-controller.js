@@ -804,9 +804,10 @@ function getMyWriteExamBoard(userKey, boardType, sPage, listLimit, searchType, s
             paging.count4(sPage, cnt, '5', listLimit, comment.blank_list);
             for(var i=0; i < selList.length; i++){
                 var cmpList = selList[i];
+                var gopageName = '"detailExam"';
                 if (cmpList != undefined) {
                     var cellData = [
-                        function(data) {return cmpList.title},
+                        function(data) {return "<a href='javascript:detailReview("+ cmpList.bbsKey +","+ gopageName +")'><sapn class='thumb'>"+ cmpList.title +"</span></a>"},
                         function(data) {return cmpList.userName;},
                         function(data) {return cmpList.indate;},
                         function(data) {return cmpList.readCount;}
@@ -838,7 +839,7 @@ function getMyWriteExamBoard2(userKey, boardType, sPage, listLimit, searchType, 
             paging.count(sPage, cnt, '5', listLimit, comment.blank_list);
             for(var i=0; i < selList.length; i++){
                 var cmpList = selList[i];
-            
+
                 if (cmpList != undefined) {
                     var cellData = [
                         function(data) {return listNum--;},
@@ -873,7 +874,6 @@ function bookStoreReviewBoard(userKey, boardType, sPage, listLimit, searchType, 
     if(infoList != null){
         if (infoList.result.length > 0) {
             var selList = infoList.result;
-            console.log(selList);
             dwr.util.addOptions('bookReview', selList, function (data) {
                 return "<a href='javascript:goBookReviewDetail("+ data.bbsKey +");'>"+ ellipsis(data.title,28) +"<span class='date'>" + data.indate + "</span></a>"
             }, {escapeHtml: false});

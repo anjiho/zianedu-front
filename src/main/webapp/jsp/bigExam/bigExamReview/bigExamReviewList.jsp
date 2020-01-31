@@ -113,6 +113,7 @@
                     <div class="boardSearch">
                         <select id="searchType" class="w100">
                             <option value="title">제목</option>
+                            <option value="content">제목</option>
                         </select>
                         <!--html 추가 및 수정-->
                         <input type="text" id="searchText" onkeypress="if(event.keyCode==13) {fn_search('new'); return false;}">

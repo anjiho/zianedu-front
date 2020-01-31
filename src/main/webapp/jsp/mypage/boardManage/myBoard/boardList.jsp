@@ -112,6 +112,8 @@
             goPage('review','detailLecture');
         }else if(val == 'detailBook'){
             goPage('review','detailBook');
+        }else if(val == 'detailExam'){
+            goPage('bigExam','detailBigReview');
         }
     }
 </script>
@@ -306,7 +308,7 @@
                                             <input type="text" id="searchText5" onkeypress="if(event.keyCode==13) {fn_search5('new'); return false;}" >
                                             <a href="javascript:fn_search5('new');" class="btn_m on w140">검색</a>
                                         </li>
-                                        <li class="right"><a href="" class="btn_m w140">응시후기작성하기</a></li>
+                                        <li class="right"><a href="javascript:goPageNoSubmit('bigExam','saveBigReview');" class="btn_m w140">응시후기작성하기</a></li>
                                     </ul>
                                 </form>
                                 <div class="tableBox">

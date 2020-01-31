@@ -62,7 +62,7 @@
         $("#fileList").html(innerHtmlTemp);
     }
 
-    function modifyReview() {
+    function modifyReference() {
         var check = new isCheck();
         if (check.input("title", comment.input_title) == false) return;
         if($('textarea[name="writeContent"]').val() == ''){
@@ -173,8 +173,8 @@
                         </table>
                     </div>
                     <div class="btnArea">
-                        <a href="javascript:goPageNoSubmit('bigExam','bigReviewList')" class="btn_m gray radius w110">취소</a> &nbsp;&nbsp;&nbsp;
-                        <a href="javascript:modifyReview();" class="btn_m radius w110">수정</a>
+                        <a href="javascript:goPageNoSubmit('bigExam','referenceList')" class="btn_m gray radius w110">취소</a> &nbsp;&nbsp;&nbsp;
+                        <a href="javascript:modifyReference();" class="btn_m radius w110">등록</a>
                     </div>
                 </div>
 

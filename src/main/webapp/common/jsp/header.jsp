@@ -169,7 +169,7 @@
                 <li><a href="javascript:goPageNoSubmit('bigExam','weekExam')">주간모의고사</a></li>
                 <li><a href="javascript:goPageNoSubmit('bigExam','pastQuestion')">기출문제</a></li>
                 <li><a href="javascript:goPageNoSubmit('bigExam','bigReviewList')">응시후기</a></li>
-                <li><a href="#">자료실</a></li>
+                <li><a href="javascript:goPageNoSubmit('bigExam','referenceList')">자료실</a></li>
             </ul>
         </div>
     </div>

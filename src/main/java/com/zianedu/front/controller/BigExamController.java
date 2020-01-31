@@ -30,6 +30,14 @@ public class BigExamController {
             mvc.setViewName("/bigExam/bigExamReview/saveBigExamReview");
         }else if("modifyBigReview".equals(page_gbn)){
             mvc.setViewName("/bigExam/bigExamReview/modifyBigExamReview");
+        }else if("referenceList".equals(page_gbn)){
+            mvc.setViewName("/bigExam/referenceBoard/referenceList");
+        }else if("modifyReference".equals(page_gbn)){
+            mvc.setViewName("/bigExam/referenceBoard/modifyReference");
+        }else if("detailReference".equals(page_gbn)){
+            mvc.setViewName("/bigExam/referenceBoard/detailReference");
+        }else if("saveReference".equals(page_gbn)){
+            mvc.setViewName("/bigExam/referenceBoard/saveReference");
         }
 
         return mvc;
