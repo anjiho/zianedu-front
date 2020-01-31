@@ -313,7 +313,6 @@ function getTeacherVideoLecture(teacherKey, device, stepCtgKey) {
             var selList = infoList.result;
             for (var i = 0; i < selList.length; i++) {
                 var cmpList = selList[i];
-                console.log(cmpList);
                 if (cmpList.teacherLectureList.length > 0) {
                     var lecList = cmpList.teacherLectureList;
                     for (var j = 0; j < lecList.length; j++) { //강의목록리스트

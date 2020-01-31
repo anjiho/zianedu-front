@@ -9,6 +9,7 @@
     <!-- zian js-->
     <script src="/common/zian/js/kiplayer/jquery.min.js"></script>
     <script src="/common/zian/js/kiplayer/jquery.plugin.js"></script>
+    <script src="/common/zian/js/jquery.fileDownload.js"></script>
     <script src="/common/js/common.js"></script>
     <script src="/common/zian/js/common.js"></script>
     <script src="/common/zian/js/kiplayer/common.js"></script>
