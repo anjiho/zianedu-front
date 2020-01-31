@@ -3,10 +3,15 @@
 <script>
     $(document).ready(function () {
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-        getMockExamBuyClassCtgSelectBoxList(sessionUserInfo.userKey, 2, 'onSel');
-        getMockExamBuyClassCtgSelectBoxList(sessionUserInfo.userKey, 3, 'offSel');
-        fn_search('new');
-        fn_search2('new');
+        if(sessionUserInfo != null) {
+            getMockExamBuyClassCtgSelectBoxList(sessionUserInfo.userKey, 2, 'onSel');
+            getMockExamBuyClassCtgSelectBoxList(sessionUserInfo.userKey, 3, 'offSel');
+            fn_search('new');
+            fn_search2('new');
+        }else{
+            alert("로그인이 필요합니다.");
+            goLoginPage();
+        }
     });
 
     function fn_search(val) {

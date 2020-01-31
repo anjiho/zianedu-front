@@ -2,8 +2,14 @@
 <%@include file="/common/jsp/common.jsp" %>
 <script>
     $(document).ready(function () {
-        getWeekMockExamClassCtgSelectBoxList();
-        fn_search('new');
+        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        if(sessionUserInfo != null) {
+            getWeekMockExamClassCtgSelectBoxList();
+            fn_search('new');
+        }else{
+            alert("로그인이 필요합니다.");
+            goLoginPage();
+        }
     });
 
     function fn_search(val) {

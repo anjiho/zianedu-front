@@ -2,10 +2,17 @@
 <%@include file="/common/jsp/common.jsp" %>
 <script>
     $(document).ready(function () {
-        getMockExamClassCtgSelectBoxList(2, 'onSel');
-        getMockExamClassCtgSelectBoxList(3, 'offSel');
-        fn_search('new');
-        fn_search2('new');
+        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        if(sessionUserInfo != null) {
+            getMockExamClassCtgSelectBoxList(2, 'onSel');
+            getMockExamClassCtgSelectBoxList(3, 'offSel');
+            fn_search('new');
+            fn_search2('new');
+        }else{
+            alert("로그인이 필요합니다.");
+            goLoginPage();
+        }
+
     });
 
     function fn_search(val) {

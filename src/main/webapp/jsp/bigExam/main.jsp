@@ -2,9 +2,15 @@
 <%@include file="/common/jsp/common.jsp" %>
 <script>
     $(document).ready(function () {
-        sessionStorage.setItem("leftMenu", "bigExam");
-        getMainMiniBanner("mainVisualSlider1", 6760, 5);//대배너 옆 미니 배너
-        getMainMiniBanner2("mainVisualSlider2", 6761, 5);//대배너 옆 미니 배너
+        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        if(sessionUserInfo != null) {
+            sessionStorage.setItem("leftMenu", "bigExam");
+            getMainMiniBanner("mainVisualSlider1", 6760, 5);//대배너 옆 미니 배너
+            getMainMiniBanner2("mainVisualSlider2", 6761, 5);//대배너 옆 미니 배너
+        }else{
+            alert("로그인이 필요합니다.");
+            goLoginPage();
+        }
 
     });
     $(function(){

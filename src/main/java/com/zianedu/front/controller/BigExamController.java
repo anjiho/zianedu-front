@@ -22,7 +22,16 @@ public class BigExamController {
             mvc.setViewName("/bigExam/weekExamList");
         }else if("pastQuestion".equals(page_gbn)){
             mvc.setViewName("/bigExam/pastQuestionList");
+        }else if("bigReviewList".equals(page_gbn)){
+            mvc.setViewName("/bigExam/bigExamReview/bigExamReviewList");
+        }else if("detailBigReview".equals(page_gbn)){
+            mvc.setViewName("/bigExam/bigExamReview/detailBigExamReview");
+        }else if("saveBigReview".equals(page_gbn)){
+            mvc.setViewName("/bigExam/bigExamReview/saveBigExamReview");
+        }else if("modifyBigReview".equals(page_gbn)){
+            mvc.setViewName("/bigExam/bigExamReview/modifyBigExamReview");
         }
+
         return mvc;
     }
 }
