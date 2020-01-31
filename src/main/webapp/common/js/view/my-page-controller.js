@@ -799,7 +799,7 @@ function getMyWriteExamBoard(userKey, boardType, sPage, listLimit, searchType, s
     var cnt = infoList.cnt;
     if(infoList != null){
         if (infoList.result.length > 0) {
-            var listNum = ((cnt-1)+1)-((sPage-1)*10); //리스트 넘버링
+            var listNum = ((cnt-1)+1)-((sPage-1)*listLimit); //리스트 넘버링
             var selList = infoList.result;
             paging.count4(sPage, cnt, '5', listLimit, comment.blank_list);
             for(var i=0; i < selList.length; i++){
@@ -834,7 +834,7 @@ function getMyWriteExamBoard2(userKey, boardType, sPage, listLimit, searchType, 
     var cnt = infoList.cnt;
     if(infoList != null){
         //if (infoList.result.length > 0) {
-            var listNum = ((cnt-1)+1)-((sPage-1)*10); //리스트 넘버링
+            var listNum = ((cnt-1)+1)-((sPage-1)*listLimit); //리스트 넘버링
             var selList = infoList.result;
             paging.count(sPage, cnt, '5', listLimit, comment.blank_list);
             for(var i=0; i < selList.length; i++){
