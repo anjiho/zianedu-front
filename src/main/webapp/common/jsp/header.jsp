@@ -89,6 +89,12 @@
         sessionStorage.setItem("leftMenu", "bigExam");
         goPageNoSubmit('bigExam','main');
     }
+
+    //파일다운로드
+    function download(fileName) {
+        var downloadUrl = apiHost + "/download/fileDownload?filePath=" + fileName;
+        $.fileDownload(downloadUrl);
+    }
 </script>
 <!--상단-->
 <div id="header">
