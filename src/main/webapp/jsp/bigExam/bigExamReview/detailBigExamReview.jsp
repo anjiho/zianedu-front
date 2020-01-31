@@ -78,17 +78,6 @@
         innerValue("bbsKey", nextKey);
         goPage("bigExam", "detailBigReview");
     }
-
-    $(document).on("click", "a.fileDownloadPromise", function () {
-        $.fileDownload($(this).getAttribute("href"))//$(this).getAttribute("href")
-            .done(function () {
-                console.log($(this).getAttribute("href"));
-                alert('File download a success!'); })
-            .fail(function () {
-                console.log($(this).getAttribute("href"));
-                alert('File download failed!'); });
-        return false;
-    });
 </script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
