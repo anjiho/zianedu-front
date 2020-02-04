@@ -34,8 +34,6 @@
             })
         });
         if(i == 20){
-            console.log($("#subjectTab li").length);
-            console.log(Number(tabNum));
             if(($("#subjectTab li").length+1) > Number(tabNum)) {
                 tabNum1 = Number(tabNum) + 1;
                 innerValue("tabId", tabNum1);
@@ -56,7 +54,6 @@
     }
 </script>
 <!DOCTYPE html>
-<!-- saved from url=(0013)about:internet -->
 <html lang="ko">
 <head>
     <meta http-equiv="content-Type" content="text/html;charset=utf-8">
@@ -79,8 +76,6 @@
                 $('#'+$this).addClass('current');
                 $('#'+$th).addClass('current2');
             })
-
-
             /* OMR 객관식 번호 클릭 이벤트 */
             /* 과목 1 */
             $('#t-1 ul').each(function(){
@@ -171,7 +166,7 @@
         <div class="st_test_main">
             <div class="st_top_line"></div>
             <div class="st_content">
-                <div class="st_title">2013_국가직_7급_영어기출문제</div>
+                <div class="st_title" id="examName"></div>
                 <div class="st_info">
                     <ul>
                         <li><div></div><b>응시과목: </b><span id="subjectNameList"></span></li>
