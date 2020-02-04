@@ -185,7 +185,7 @@
         }
     }
 
-    countdown('st_time', 10);	 // second base
+    countdown('st_time', 5000);	 // second base
 </script>
 </body>
 </html>
