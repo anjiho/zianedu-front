@@ -38,6 +38,10 @@ public class BigExamController {
             mvc.setViewName("/bigExam/referenceBoard/detailReference");
         }else if("saveReference".equals(page_gbn)){
             mvc.setViewName("/bigExam/referenceBoard/saveReference");
+        }else if("popupExamList".equals(page_gbn)){
+            mvc.setViewName("/bigExam/popupExam/bigExamList");
+        }else if("popupStart".equals(page_gbn)){
+            mvc.setViewName("/bigExam/popupExam/examStart");
         }
 
         return mvc;

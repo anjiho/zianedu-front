@@ -43,7 +43,6 @@
                 if (detailInfo.fileInfo.length > 0) {
                     for (var i = 0; i < detailInfo.fileInfo.length; i++) {
                         var fileList = detailInfo.fileInfo[i];
-                        // var retrunHtml = "<a href='" + fileList.fileUrl + "' download>" + fileList.fileName + "</a>";
                         var retrunHtml = "<li><a href=\'"+ fileList.fileUrl +"'><img src=\"/common/zian/images/common/icon_file.png\" alt=\"\"> "+ fileList.fileName +"</a></li>";
                         $("#fileList").append(retrunHtml);
                     }
@@ -98,9 +97,7 @@
         <div id="container" class="big bigSub">
             <div class="inner">
                 <!--서브 컨텐츠-->
-                <div class="mainStory mainStorysub">
-
-                </div>
+                <div class="mainStory mainStorysub"></div>
 
                 <!--담청자발표-->
                 <div class="boardWrap eventBoard">

@@ -147,7 +147,7 @@ function getWeekBigExamList(userKey, sPage, listLimit, ctgKey, searchType, searc
             returnHtml += "<td>"+ cmpList.goodsName +"</td>";
             returnHtml += "<td>"+ cmpList.acceptStartDate +"<br>~"+ cmpList.acceptEndDate +"</td>";
             if(cmpList.iscomplete == 0){//응시가능
-                returnHtml += "<td><span class='small blue'>응시가능</span></td>";
+                returnHtml += "<td><span class='small blue' onclick='testPop();'>응시가능</span></td>";
             }else if(cmpList.iscomplete == 1){//응시완료
                 returnHtml += "<td><a href='' class='small bdgray'>응시완료</a></td>";
             }
@@ -187,10 +187,8 @@ function getGichulProblemList(userKey, sPage, listLimit, searchType, searchText,
         classCtgKey : classCtgKey,
         subjectCtgKey : subjectCtgKey
     };
-    console.log(data);
 
     var infoList = getPageApi("/exam/getGichulProblemList/", userKey, data);
-    console.log(infoList);
     var cnt = infoList.cnt;
     if(infoList != null){
         var selList = infoList.result;
