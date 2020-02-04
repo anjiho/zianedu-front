@@ -1,118 +1,22 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/jsp/common.jsp" %>
 <%
-    String examKey = request.getParameter("examKey");
+    String examUserKey = request.getParameter("examUserKey");
 %>
 <script type="text/javascript">
-    var examKey = <%=examKey%>;
+    var examKey = <%=examUserKey%>;
     $(document).ready(function(){
-        //시험 리스트 불러오기
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         if(examKey != ""){
             getUserExamList(examKey, sessionUserInfo.userKey);
             $("#subjectTab li").eq(0).addClass('active'); //과목 탭 active
             $("#t-1").addClass('current2');//omr currnet
+            $("#tab-1").addClass('current');
         }
-        /* tab메뉴 */
-        $('.st_tab li').click(function(){
-            var $this = $(this).attr('data-tab');
-            var $th = $(this).attr('data-name');
-
-            $('.st_tab li').find('div').css('display','none');
-            $('.st_question_board').removeClass('current');
-            $('.st_omr_board').removeClass('current2');
-
-            $(this).find('div').css('display','block');
-            $('#'+$this).addClass('current');
-            $('#'+$th).addClass('current2');
-        });
-
-
-        /* OMR 객관식 번호 클릭 이벤트 */
-        /* 과목 1 */
-        $('#t-1 ul').each(function(){
-            var $this = $(this);
-            $this.find('li.st_answer').each(function(){
-                var $th = $(this);
-                var $sel = $th.parent().index()+2; //클릭시 다음 문제지로 넘어가기 위한 세팅값
-                $th.on('click',function(){
-                    $th.parent().find('li').removeClass('st_selected');
-                    $th.addClass('st_selected');
-                    $('div#tab-1').stop().animate({
-                        scrollTop : $('#id_question_' + $sel).position().top
-                    }, 400);
-                })
-            })
-        });
-        /* 과목 2 */
-        $('#t-2 ul').each(function(){
-            var $this = $(this);
-            $this.find('li.st_answer').each(function(){
-                var $th = $(this);
-                var $sel = $th.parent().index()+2;
-                $th.on('click',function(){
-                    $th.parent().find('li').removeClass('st_selected');
-                    $th.addClass('st_selected');
-                    $('#tab-2').stop().animate({
-                        scrollTop : $('#tab-2 #id_question_' + $sel).position().top
-                    }, 400);
-                })
-            })
-        })
-        /* 과목 3 - 과목 추가당 코드 추가 & id값에 +1씩 */
-        $('#t-3 ul').each(function(){
-            var $this = $(this);
-            $this.find('li.st_answer').each(function(){
-                var $th = $(this);
-                var $sel = $th.parent().index()+2;
-                $th.on('click',function(){
-                    $th.parent().find('li').removeClass('st_selected');
-                    $th.addClass('st_selected');
-                    $('#tab-3').stop().animate({
-                        scrollTop : $('#tab-3 #id_question_' + $sel).position().top
-                    }, 400);
-                })
-            })
-        });
-
-
-
-        /* OMR 메인번호 클릭 이벤트 */
-        /* 과목 1 */
-        $('#t-1 ul').each(function(){
-            var $this = $(this);
-            var $sel = $this.index()+1; //클릭시 해당 번호에 맞는 문제지로 넘어가기 위한 세팅값 ID가 1부터 시작해서 +1 수식어 추가
-            $this.find('li.st_number').on('click',function(){
-                $('div#tab-1').stop().animate({
-                    scrollTop : $('#id_question_' + $sel).position().top
-                }, 400);
-            })
-        })
-        /* 과목 2 */
-        $('#t-2 ul').each(function(){
-            var $this = $(this);
-            var $sel = $this.index()+1;
-            var $num = $('#tab-2');
-            $this.find('li.st_number').on('click',function(){
-                $('div#tab-2').stop().animate({
-                    scrollTop : $('#tab-2 #id_question_' + $sel).position().top
-                }, 400);
-            })
-        });
-        /* 과목 3 - 과목 추가당 코드 추가 & id값에 +1씩 */
-        $('#t-3 ul').each(function(){
-            var $this = $(this);
-            var $sel = $this.index()+1;
-            var $num = $('#tab-2');
-            $this.find('li.st_number').on('click',function(){
-                $('div#tab-3').stop().animate({
-                    scrollTop : $('#tab-3 #id_question_' + $sel).position().top
-                }, 400);
-            })
-        });
-    })
+    });
 </script>
 <!DOCTYPE html>
+<!-- saved from url=(0013)about:internet -->
 <html lang="ko">
 <head>
     <meta http-equiv="content-Type" content="text/html;charset=utf-8">
@@ -120,6 +24,105 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
     <title>기출문제</title>
     <title>빅모의고사 팝업시험</title>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            /* tab메뉴 */
+            $('.st_tab li').click(function(){
+                var $this = $(this).attr('data-tab');
+                var $th = $(this).attr('data-name');
+
+                $('.st_tab li').find('div').css('display','none');
+                $('.st_question_board').removeClass('current');
+                $('.st_omr_board').removeClass('current2');
+
+                $(this).find('div').css('display','block');
+                $('#'+$this).addClass('current');
+                $('#'+$th).addClass('current2');
+            })
+
+
+            /* OMR 객관식 번호 클릭 이벤트 */
+            /* 과목 1 */
+            $('#t-1 ul').each(function(){
+                var $this = $(this);
+                $this.find('li.st_answer').each(function(){
+                    var $th = $(this);
+                    var $sel = $th.parent().index()+2; //클릭시 다음 문제지로 넘어가기 위한 세팅값
+                    $th.on('click',function(){
+                        $th.parent().find('li').removeClass('st_selected');
+                        $th.addClass('st_selected');
+                        $('div#tab-1').stop().animate({
+                            scrollTop : $('#id_question_' + $sel).position().top
+                        }, 400);
+                    })
+                })
+            })
+            /* 과목 2 */
+            $('#t-2 ul').each(function(){
+                var $this = $(this);
+                $this.find('li.st_answer').each(function(){
+                    var $th = $(this);
+                    var $sel = $th.parent().index()+2;
+                    $th.on('click',function(){
+                        $th.parent().find('li').removeClass('st_selected');
+                        $th.addClass('st_selected');
+                        $('#tab-2').stop().animate({
+                            scrollTop : $('#tab-2 #id_question_' + $sel).position().top
+                        }, 400);
+                    })
+                })
+            })
+            /* 과목 3 - 과목 추가당 코드 추가 & id값에 +1씩 */
+            $('#t-3 ul').each(function(){
+                var $this = $(this);
+                $this.find('li.st_answer').each(function(){
+                    var $th = $(this);
+                    var $sel = $th.parent().index()+2;
+                    $th.on('click',function(){
+                        $th.parent().find('li').removeClass('st_selected');
+                        $th.addClass('st_selected');
+                        $('#tab-3').stop().animate({
+                            scrollTop : $('#tab-3 #id_question_' + $sel).position().top
+                        }, 400);
+                    })
+                })
+            });
+
+            /* OMR 메인번호 클릭 이벤트 */
+            /* 과목 1 */
+            $('#t-1 ul').each(function(){
+                var $this = $(this);
+                var $sel = $this.index()+1; //클릭시 해당 번호에 맞는 문제지로 넘어가기 위한 세팅값 ID가 1부터 시작해서 +1 수식어 추가
+                $this.find('li.st_number').on('click',function(){
+                    $('div#tab-1').stop().animate({
+                        scrollTop : $('#id_question_' + $sel).position().top
+                    }, 400);
+                })
+            })
+            /* 과목 2 */
+            $('#t-2 ul').each(function(){
+                var $this = $(this);
+                var $sel = $this.index()+1;
+                var $num = $('#tab-2');
+                $this.find('li.st_number').on('click',function(){
+                    $('div#tab-2').stop().animate({
+                        scrollTop : $('#tab-2 #id_question_' + $sel).position().top
+                    }, 400);
+                })
+            })
+            /* 과목 3 - 과목 추가당 코드 추가 & id값에 +1씩 */
+            $('#t-3 ul').each(function(){
+                var $this = $(this);
+                var $sel = $this.index()+1;
+                var $num = $('#tab-2');
+                $this.find('li.st_number').on('click',function(){
+                    $('div#tab-3').stop().animate({
+                        scrollTop : $('#tab-3 #id_question_' + $sel).position().top
+                    }, 400);
+                })
+            })
+        })
+    </script>
 </head>
 <body>
 <div class="st_exam">
@@ -137,607 +140,16 @@
                     </ul>
                 </div>
                 <div class="st_tab">
-                    <ul id="subjectTab">
-<%--                        <li class="st_subject_tab active" data-name="t-1" data-tab="tab-1" data-index="1">영어--%>
-<%--                            <div>영어</div>--%>
-<%--                        </li>--%>
-<%--                        <li class="st_subject_tab" data-name="t-2" data-tab="tab-2" data-index="2">한국사--%>
-<%--                            <div>한국사</div>--%>
-<%--                        </li>--%>
-                    </ul>
+                    <ul id="subjectTab"></ul>
                 </div>
-                <div class="st_position">
-                    <div id="tab-1" class="current">
-                        <ul>
-                            <li id="id_question_1">
-                                <div class="st_number">1</div>
-                                <br>
-                                <img src="/common/zian/images/bigimg/test1_img.jpg" alt="">
-                            </li>
-                            <li id="id_question_2">
-                                <div class="st_number">2</div>
-                                <br>
-                                <img src="/common/zian/images/bigimg/test1_img.jpg" alt="">
-                                <img src="/common/zian/images/bigimg/test1_img.jpg" alt="">
-                            </li>
-                            <li id="id_question_3">
-                                <div class="st_number">3</div>
-                                <br>
-                                <img src="/common/zian/images/bigimg/test1_img.jpg" alt="">
-                            </li>
-                            <li id="id_question_4">
-                                <div class="st_number">4</div>
-                                <br>
-                                <img src="/common/zian/images/bigimg/test1_img.jpg" alt="">
-                            </li>
-                            <li id="id_question_5">
-                                <div class="st_number">5</div>
-                                <br>
-                                <img src="/common/zian/images/bigimg/test1_img.jpg" alt="">
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+                <div class="st_position"></div>
             </div>
             <div class="st_answer_board">
                 <div class="st_time_board">
                     시험시간
                     <div id="st_time" class="st_time"></div>
                 </div>
-                <div class="st_position2">
-<%--                    <div id="t-1" class="st_omr_board current2">--%>
-<%--                        <ul>--%>
-<%--                            <li class="st_number">--%>
-<%--                                1--%>
-<%--                            </li>--%>
-<%--                            <li class="st_answer">①</li>--%>
-<%--                            <li class="st_answer">②</li>--%>
-<%--                            <li class="st_answer">③</li>--%>
-<%--                            <li class="st_answer">④</li>--%>
-<%--                        </ul>--%>
-<%--                        <ul>--%>
-<%--                            <li class="st_number">--%>
-<%--                                2--%>
-<%--                            </li>--%>
-<%--                            <li class="st_answer">①</li>--%>
-<%--                            <li class="st_answer">②</li>--%>
-<%--                            <li class="st_answer">③</li>--%>
-<%--                            <li class="st_answer">④</li>--%>
-<%--                        </ul>--%>
-<%--                        <ul>--%>
-<%--                            <li class="st_number">--%>
-<%--                                3--%>
-<%--                            </li>--%>
-<%--                            <li class="st_answer">①</li>--%>
-<%--                            <li class="st_answer">②</li>--%>
-<%--                            <li class="st_answer">③</li>--%>
-<%--                            <li class="st_answer">④</li>--%>
-<%--                        </ul>--%>
-<%--                        <ul>--%>
-<%--                            <li class="st_number">--%>
-<%--                                4--%>
-<%--                            </li>--%>
-<%--                            <li class="st_answer">①</li>--%>
-<%--                            <li class="st_answer">②</li>--%>
-<%--                            <li class="st_answer">③</li>--%>
-<%--                            <li class="st_answer">④</li>--%>
-<%--                        </ul>--%>
-<%--                        <ul>--%>
-<%--                            <li class="st_number">--%>
-<%--                                5--%>
-<%--                            </li>--%>
-<%--                            <li class="st_answer">①</li>--%>
-<%--                            <li class="st_answer">②</li>--%>
-<%--                            <li class="st_answer">③</li>--%>
-<%--                            <li class="st_answer">④</li>--%>
-<%--                        </ul>--%>
-<%--                        <ul>--%>
-<%--                            <li class="st_number">--%>
-<%--                                6--%>
-<%--                            </li>--%>
-<%--                            <li class="st_answer">①</li>--%>
-<%--                            <li class="st_answer">②</li>--%>
-<%--                            <li class="st_answer">③</li>--%>
-<%--                            <li class="st_answer">④</li>--%>
-<%--                        </ul>--%>
-<%--                        <ul>--%>
-<%--                            <li class="st_number">--%>
-<%--                                7--%>
-<%--                            </li>--%>
-<%--                            <li class="st_answer">①</li>--%>
-<%--                            <li class="st_answer">②</li>--%>
-<%--                            <li class="st_answer">③</li>--%>
-<%--                            <li class="st_answer">④</li>--%>
-<%--                        </ul>--%>
-
-<%--                        <ul>--%>
-<%--                            <li class="st_number">--%>
-<%--                                8--%>
-<%--                            </li>--%>
-<%--                            <li class="st_answer">①</li>--%>
-<%--                            <li class="st_answer">②</li>--%>
-<%--                            <li class="st_answer">③</li>--%>
-<%--                            <li class="st_answer">④</li>--%>
-<%--                        </ul>--%>
-<%--                        <ul>--%>
-<%--                            <li class="st_number">--%>
-<%--                                9--%>
-<%--                            </li>--%>
-<%--                            <li class="st_answer">①</li>--%>
-<%--                            <li class="st_answer">②</li>--%>
-<%--                            <li class="st_answer">③</li>--%>
-<%--                            <li class="st_answer">④</li>--%>
-<%--                        </ul>--%>
-<%--                        <ul>--%>
-<%--                            <li class="st_number">--%>
-<%--                                10--%>
-<%--                            </li>--%>
-<%--                            <li class="st_answer">①</li>--%>
-<%--                            <li class="st_answer">②</li>--%>
-<%--                            <li class="st_answer">③</li>--%>
-<%--                            <li class="st_answer">④</li>--%>
-<%--                        </ul>--%>
-<%--                        <ul>--%>
-<%--                            <li class="st_number">--%>
-<%--                                11--%>
-<%--                            </li>--%>
-<%--                            <li class="st_answer">①</li>--%>
-<%--                            <li class="st_answer">②</li>--%>
-<%--                            <li class="st_answer">③</li>--%>
-<%--                            <li class="st_answer">④</li>--%>
-<%--                        </ul>--%>
-<%--                        <ul>--%>
-<%--                            <li class="st_number">--%>
-<%--                                12--%>
-<%--                            </li>--%>
-<%--                            <li class="st_answer">①</li>--%>
-<%--                            <li class="st_answer">②</li>--%>
-<%--                            <li class="st_answer">③</li>--%>
-<%--                            <li class="st_answer">④</li>--%>
-<%--                        </ul>--%>
-<%--                        <ul>--%>
-<%--                            <li class="st_number">--%>
-<%--                                13--%>
-<%--                            </li>--%>
-<%--                            <li class="st_answer">①</li>--%>
-<%--                            <li class="st_answer">②</li>--%>
-<%--                            <li class="st_answer">③</li>--%>
-<%--                            <li class="st_answer">④</li>--%>
-<%--                        </ul>--%>
-<%--                        <ul>--%>
-<%--                            <li class="st_number">--%>
-<%--                                <div></div>--%>
-<%--                                14--%>
-<%--                            </li>--%>
-<%--                            <li class="st_answer">①</li>--%>
-<%--                            <li class="st_answer">②</li>--%>
-<%--                            <li class="st_answer">③</li>--%>
-<%--                            <li class="st_answer">④</li>--%>
-<%--                        </ul>--%>
-<%--                        <ul>--%>
-<%--                            <li class="st_number">--%>
-<%--                                15--%>
-<%--                            </li>--%>
-<%--                            <li class="st_answer">①</li>--%>
-<%--                            <li class="st_answer">②</li>--%>
-<%--                            <li class="st_answer">③</li>--%>
-<%--                            <li class="st_answer">④</li>--%>
-<%--                        </ul>--%>
-<%--                        <ul>--%>
-<%--                            <li class="st_number">--%>
-<%--                                16--%>
-<%--                            </li>--%>
-<%--                            <li class="st_answer">①</li>--%>
-<%--                            <li class="st_answer">②</li>--%>
-<%--                            <li class="st_answer">③</li>--%>
-<%--                            <li class="st_answer">④</li>--%>
-<%--                        </ul>--%>
-<%--                        <ul>--%>
-<%--                            <li class="st_number">--%>
-<%--                                17--%>
-<%--                            </li>--%>
-<%--                            <li class="st_answer">①</li>--%>
-<%--                            <li class="st_answer">②</li>--%>
-<%--                            <li class="st_answer">③</li>--%>
-<%--                            <li class="st_answer">④</li>--%>
-<%--                        </ul>--%>
-<%--                        <ul>--%>
-<%--                            <li class="st_number">--%>
-<%--                                18--%>
-<%--                            </li>--%>
-<%--                            <li class="st_answer">①</li>--%>
-<%--                            <li class="st_answer">②</li>--%>
-<%--                            <li class="st_answer">③</li>--%>
-<%--                            <li class="st_answer">④</li>--%>
-<%--                        </ul>--%>
-<%--                        <ul>--%>
-<%--                            <li class="st_number">--%>
-<%--                                19--%>
-<%--                            </li>--%>
-<%--                            <li class="st_answer">①</li>--%>
-<%--                            <li class="st_answer">②</li>--%>
-<%--                            <li class="st_answer">③</li>--%>
-<%--                            <li class="st_answer">④</li>--%>
-<%--                        </ul>--%>
-<%--                        <ul>--%>
-<%--                            <li class="st_number">--%>
-<%--                                20--%>
-<%--                            </li>--%>
-<%--                            <li class="st_answer">①</li>--%>
-<%--                            <li class="st_answer">②</li>--%>
-<%--                            <li class="st_answer">③</li>--%>
-<%--                            <li class="st_answer">④</li>--%>
-<%--                        </ul>--%>
-<%--                    </div>--%>
-<%--                    <div id="t-3" class="st_omr_board">--%>
-<%--                        <ul>--%>
-<%--                            <li class="st_number">--%>
-<%--                                1--%>
-<%--                            </li>--%>
-<%--                            <li class="st_answer">①</li>--%>
-<%--                            <li class="st_answer">②</li>--%>
-<%--                            <li class="st_answer">③</li>--%>
-<%--                            <li class="st_answer">④</li>--%>
-<%--                        </ul>--%>
-<%--                        <ul>--%>
-<%--                            <li class="st_number">--%>
-<%--                                2--%>
-<%--                            </li>--%>
-<%--                            <li class="st_answer">①</li>--%>
-<%--                            <li class="st_answer">②</li>--%>
-<%--                            <li class="st_answer">③</li>--%>
-<%--                            <li class="st_answer">④</li>--%>
-<%--                        </ul>--%>
-<%--                        <ul>--%>
-<%--                            <li class="st_number">--%>
-<%--                                3--%>
-<%--                            </li>--%>
-<%--                            <li class="st_answer">①</li>--%>
-<%--                            <li class="st_answer">②</li>--%>
-<%--                            <li class="st_answer">③</li>--%>
-<%--                            <li class="st_answer">④</li>--%>
-<%--                        </ul>--%>
-<%--                        <ul>--%>
-<%--                            <li class="st_number">--%>
-<%--                                4--%>
-<%--                            </li>--%>
-<%--                            <li class="st_answer">①</li>--%>
-<%--                            <li class="st_answer">②</li>--%>
-<%--                            <li class="st_answer">③</li>--%>
-<%--                            <li class="st_answer">④</li>--%>
-<%--                        </ul>--%>
-<%--                        <ul>--%>
-<%--                            <li class="st_number">--%>
-<%--                                5--%>
-<%--                            </li>--%>
-<%--                            <li class="st_answer">①</li>--%>
-<%--                            <li class="st_answer">②</li>--%>
-<%--                            <li class="st_answer">③</li>--%>
-<%--                            <li class="st_answer">④</li>--%>
-<%--                        </ul>--%>
-<%--                        <ul>--%>
-<%--                            <li class="st_number">--%>
-<%--                                6--%>
-<%--                            </li>--%>
-<%--                            <li class="st_answer">①</li>--%>
-<%--                            <li class="st_answer">②</li>--%>
-<%--                            <li class="st_answer">③</li>--%>
-<%--                            <li class="st_answer">④</li>--%>
-<%--                        </ul>--%>
-<%--                        <ul>--%>
-<%--                            <li class="st_number">--%>
-<%--                                7--%>
-<%--                            </li>--%>
-<%--                            <li class="st_answer">①</li>--%>
-<%--                            <li class="st_answer">②</li>--%>
-<%--                            <li class="st_answer">③</li>--%>
-<%--                            <li class="st_answer">④</li>--%>
-<%--                        </ul>--%>
-
-<%--                        <ul>--%>
-<%--                            <li class="st_number">--%>
-<%--                                8--%>
-<%--                            </li>--%>
-<%--                            <li class="st_answer">①</li>--%>
-<%--                            <li class="st_answer">②</li>--%>
-<%--                            <li class="st_answer">③</li>--%>
-<%--                            <li class="st_answer">④</li>--%>
-<%--                        </ul>--%>
-<%--                        <ul>--%>
-<%--                            <li class="st_number">--%>
-<%--                                9--%>
-<%--                            </li>--%>
-<%--                            <li class="st_answer">①</li>--%>
-<%--                            <li class="st_answer">②</li>--%>
-<%--                            <li class="st_answer">③</li>--%>
-<%--                            <li class="st_answer">④</li>--%>
-<%--                        </ul>--%>
-<%--                        <ul>--%>
-<%--                            <li class="st_number">--%>
-<%--                                10--%>
-<%--                            </li>--%>
-<%--                            <li class="st_answer">①</li>--%>
-<%--                            <li class="st_answer">②</li>--%>
-<%--                            <li class="st_answer">③</li>--%>
-<%--                            <li class="st_answer">④</li>--%>
-<%--                        </ul>--%>
-<%--                        <ul>--%>
-<%--                            <li class="st_number">--%>
-<%--                                11--%>
-<%--                            </li>--%>
-<%--                            <li class="st_answer">①</li>--%>
-<%--                            <li class="st_answer">②</li>--%>
-<%--                            <li class="st_answer">③</li>--%>
-<%--                            <li class="st_answer">④</li>--%>
-<%--                        </ul>--%>
-<%--                        <ul>--%>
-<%--                            <li class="st_number">--%>
-<%--                                12--%>
-<%--                            </li>--%>
-<%--                            <li class="st_answer">①</li>--%>
-<%--                            <li class="st_answer">②</li>--%>
-<%--                            <li class="st_answer">③</li>--%>
-<%--                            <li class="st_answer">④</li>--%>
-<%--                        </ul>--%>
-<%--                        <ul>--%>
-<%--                            <li class="st_number">--%>
-<%--                                13--%>
-<%--                            </li>--%>
-<%--                            <li class="st_answer">①</li>--%>
-<%--                            <li class="st_answer">②</li>--%>
-<%--                            <li class="st_answer">③</li>--%>
-<%--                            <li class="st_answer">④</li>--%>
-<%--                        </ul>--%>
-<%--                        <ul>--%>
-<%--                            <li class="st_number">--%>
-<%--                                14--%>
-<%--                            </li>--%>
-<%--                            <li class="st_answer">①</li>--%>
-<%--                            <li class="st_answer">②</li>--%>
-<%--                            <li class="st_answer">③</li>--%>
-<%--                            <li class="st_answer">④</li>--%>
-<%--                        </ul>--%>
-<%--                        <ul>--%>
-<%--                            <li class="st_number">--%>
-<%--                                <div></div>--%>
-<%--                                15--%>
-<%--                            </li>--%>
-<%--                            <li class="st_answer">①</li>--%>
-<%--                            <li class="st_answer">②</li>--%>
-<%--                            <li class="st_answer">③</li>--%>
-<%--                            <li class="st_answer">④</li>--%>
-<%--                        </ul>--%>
-<%--                        <ul>--%>
-<%--                            <li class="st_number">--%>
-<%--                                16--%>
-<%--                            </li>--%>
-<%--                            <li class="st_answer">①</li>--%>
-<%--                            <li class="st_answer">②</li>--%>
-<%--                            <li class="st_answer">③</li>--%>
-<%--                            <li class="st_answer">④</li>--%>
-<%--                        </ul>--%>
-<%--                        <ul>--%>
-<%--                            <li class="st_number">--%>
-<%--                                17--%>
-<%--                            </li>--%>
-<%--                            <li class="st_answer">①</li>--%>
-<%--                            <li class="st_answer">②</li>--%>
-<%--                            <li class="st_answer">③</li>--%>
-<%--                            <li class="st_answer">④</li>--%>
-<%--                        </ul>--%>
-<%--                        <ul>--%>
-<%--                            <li class="st_number">--%>
-<%--                                18--%>
-<%--                            </li>--%>
-<%--                            <li class="st_answer">①</li>--%>
-<%--                            <li class="st_answer">②</li>--%>
-<%--                            <li class="st_answer">③</li>--%>
-<%--                            <li class="st_answer">④</li>--%>
-<%--                        </ul>--%>
-<%--                        <ul>--%>
-<%--                            <li class="st_number">--%>
-<%--                                19--%>
-<%--                            </li>--%>
-<%--                            <li class="st_answer">①</li>--%>
-<%--                            <li class="st_answer">②</li>--%>
-<%--                            <li class="st_answer">③</li>--%>
-<%--                            <li class="st_answer">④</li>--%>
-<%--                        </ul>--%>
-<%--                        <ul>--%>
-<%--                            <li class="st_number">--%>
-<%--                                20--%>
-<%--                            </li>--%>
-<%--                            <li class="st_answer">①</li>--%>
-<%--                            <li class="st_answer">②</li>--%>
-<%--                            <li class="st_answer">③</li>--%>
-<%--                            <li class="st_answer">④</li>--%>
-<%--                        </ul>--%>
-<%--                    </div>--%>
-<%--                    <div id="t-2" class="st_omr_board">--%>
-<%--                        <ul>--%>
-<%--                            <li class="st_number">--%>
-<%--                                1--%>
-<%--                            </li>--%>
-<%--                            <li class="st_answer">①</li>--%>
-<%--                            <li class="st_answer">②</li>--%>
-<%--                            <li class="st_answer">③</li>--%>
-<%--                            <li class="st_answer">④</li>--%>
-<%--                        </ul>--%>
-<%--                        <ul>--%>
-<%--                            <li class="st_number">--%>
-<%--                                2--%>
-<%--                            </li>--%>
-<%--                            <li class="st_answer">①</li>--%>
-<%--                            <li class="st_answer">②</li>--%>
-<%--                            <li class="st_answer">③</li>--%>
-<%--                            <li class="st_answer">④</li>--%>
-<%--                        </ul>--%>
-<%--                        <ul>--%>
-<%--                            <li class="st_number">--%>
-<%--                                3--%>
-<%--                            </li>--%>
-<%--                            <li class="st_answer">①</li>--%>
-<%--                            <li class="st_answer">②</li>--%>
-<%--                            <li class="st_answer">③</li>--%>
-<%--                            <li class="st_answer">④</li>--%>
-<%--                        </ul>--%>
-<%--                        <ul>--%>
-<%--                            <li class="st_number">--%>
-<%--                                4--%>
-<%--                            </li>--%>
-<%--                            <li class="st_answer">①</li>--%>
-<%--                            <li class="st_answer">②</li>--%>
-<%--                            <li class="st_answer">③</li>--%>
-<%--                            <li class="st_answer">④</li>--%>
-<%--                        </ul>--%>
-<%--                        <ul>--%>
-<%--                            <li class="st_number">--%>
-<%--                                5--%>
-<%--                            </li>--%>
-<%--                            <li class="st_answer">①</li>--%>
-<%--                            <li class="st_answer">②</li>--%>
-<%--                            <li class="st_answer">③</li>--%>
-<%--                            <li class="st_answer">④</li>--%>
-<%--                        </ul>--%>
-<%--                        <ul>--%>
-<%--                            <li class="st_number">--%>
-<%--                                6--%>
-<%--                            </li>--%>
-<%--                            <li class="st_answer">①</li>--%>
-<%--                            <li class="st_answer">②</li>--%>
-<%--                            <li class="st_answer">③</li>--%>
-<%--                            <li class="st_answer">④</li>--%>
-<%--                        </ul>--%>
-<%--                        <ul>--%>
-<%--                            <li class="st_number">--%>
-<%--                                7--%>
-<%--                            </li>--%>
-<%--                            <li class="st_answer">①</li>--%>
-<%--                            <li class="st_answer">②</li>--%>
-<%--                            <li class="st_answer">③</li>--%>
-<%--                            <li class="st_answer">④</li>--%>
-<%--                        </ul>--%>
-
-<%--                        <ul>--%>
-<%--                            <li class="st_number">--%>
-<%--                                8--%>
-<%--                            </li>--%>
-<%--                            <li class="st_answer">①</li>--%>
-<%--                            <li class="st_answer">②</li>--%>
-<%--                            <li class="st_answer">③</li>--%>
-<%--                            <li class="st_answer">④</li>--%>
-<%--                        </ul>--%>
-<%--                        <ul>--%>
-<%--                            <li class="st_number">--%>
-<%--                                9--%>
-<%--                            </li>--%>
-<%--                            <li class="st_answer">①</li>--%>
-<%--                            <li class="st_answer">②</li>--%>
-<%--                            <li class="st_answer">③</li>--%>
-<%--                            <li class="st_answer">④</li>--%>
-<%--                        </ul>--%>
-<%--                        <ul>--%>
-<%--                            <li class="st_number">--%>
-<%--                                10--%>
-<%--                            </li>--%>
-<%--                            <li class="st_answer">①</li>--%>
-<%--                            <li class="st_answer">②</li>--%>
-<%--                            <li class="st_answer">③</li>--%>
-<%--                            <li class="st_answer">④</li>--%>
-<%--                        </ul>--%>
-<%--                        <ul>--%>
-<%--                            <li class="st_number">--%>
-<%--                                11--%>
-<%--                            </li>--%>
-<%--                            <li class="st_answer">①</li>--%>
-<%--                            <li class="st_answer">②</li>--%>
-<%--                            <li class="st_answer">③</li>--%>
-<%--                            <li class="st_answer">④</li>--%>
-<%--                        </ul>--%>
-<%--                        <ul>--%>
-<%--                            <li class="st_number">--%>
-<%--                                12--%>
-<%--                            </li>--%>
-<%--                            <li class="st_answer">①</li>--%>
-<%--                            <li class="st_answer">②</li>--%>
-<%--                            <li class="st_answer">③</li>--%>
-<%--                            <li class="st_answer">④</li>--%>
-<%--                        </ul>--%>
-<%--                        <ul>--%>
-<%--                            <li class="st_number">--%>
-<%--                                13--%>
-<%--                            </li>--%>
-<%--                            <li class="st_answer">①</li>--%>
-<%--                            <li class="st_answer">②</li>--%>
-<%--                            <li class="st_answer">③</li>--%>
-<%--                            <li class="st_answer">④</li>--%>
-<%--                        </ul>--%>
-<%--                        <ul>--%>
-<%--                            <li class="st_number">--%>
-<%--                                14--%>
-<%--                            </li>--%>
-<%--                            <li class="st_answer">①</li>--%>
-<%--                            <li class="st_answer">②</li>--%>
-<%--                            <li class="st_answer">③</li>--%>
-<%--                            <li class="st_answer">④</li>--%>
-<%--                        </ul>--%>
-<%--                        <ul>--%>
-<%--                            <li class="st_number">--%>
-<%--                                <div></div>--%>
-<%--                                15--%>
-<%--                            </li>--%>
-<%--                            <li class="st_answer">①</li>--%>
-<%--                            <li class="st_answer">②</li>--%>
-<%--                            <li class="st_answer">③</li>--%>
-<%--                            <li class="st_answer">④</li>--%>
-<%--                        </ul>--%>
-<%--                        <ul>--%>
-<%--                            <li class="st_number">--%>
-<%--                                16--%>
-<%--                            </li>--%>
-<%--                            <li class="st_answer">①</li>--%>
-<%--                            <li class="st_answer">②</li>--%>
-<%--                            <li class="st_answer">③</li>--%>
-<%--                            <li class="st_answer">④</li>--%>
-<%--                        </ul>--%>
-<%--                        <ul>--%>
-<%--                            <li class="st_number">--%>
-<%--                                17--%>
-<%--                            </li>--%>
-<%--                            <li class="st_answer">①</li>--%>
-<%--                            <li class="st_answer">②</li>--%>
-<%--                            <li class="st_answer">③</li>--%>
-<%--                            <li class="st_answer">④</li>--%>
-<%--                        </ul>--%>
-<%--                        <ul>--%>
-<%--                            <li class="st_number">--%>
-<%--                                18--%>
-<%--                            </li>--%>
-<%--                            <li class="st_answer">①</li>--%>
-<%--                            <li class="st_answer">②</li>--%>
-<%--                            <li class="st_answer">③</li>--%>
-<%--                            <li class="st_answer">④</li>--%>
-<%--                        </ul>--%>
-<%--                        <ul>--%>
-<%--                            <li class="st_number">--%>
-<%--                                19--%>
-<%--                            </li>--%>
-<%--                            <li class="st_answer">①</li>--%>
-<%--                            <li class="st_answer">②</li>--%>
-<%--                            <li class="st_answer">③</li>--%>
-<%--                            <li class="st_answer">④</li>--%>
-<%--                        </ul>--%>
-<%--                        <ul>--%>
-<%--                            <li class="st_number">--%>
-<%--                                20--%>
-<%--                            </li>--%>
-<%--                            <li class="st_answer">①</li>--%>
-<%--                            <li class="st_answer">②</li>--%>
-<%--                            <li class="st_answer">③</li>--%>
-<%--                            <li class="st_answer">④</li>--%>
-<%--                        </ul>--%>
-<%--                    </div>--%>
-                </div>
+                <div class="st_position2"></div> <!--omr카드-->
                 <div>
                     <img src="/common/zian/images/bigimg/button_test_submit.png" alt="" style="cursor:pointer" onClick="">
                 </div>
