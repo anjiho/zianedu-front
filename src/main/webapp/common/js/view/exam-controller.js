@@ -242,9 +242,14 @@ function getUserExamList(examKey, userKey) {
     var infoList = getPageApi("/exam/getUserExamList/", examKey, data);
     if(infoList != null) {
         var selList = infoList.result;
+        console.log(selList);
         for(var i = 0; i < selList.length; i++){
+            innerHTML('subjectNameList', selList[0].examHeaderInfo.subjectNameList);
+            innerHTML('examDate', selList[0].examHeaderInfo.examDate);
+            innerHTML('serial', selList[0].examHeaderInfo.serial);
+            innerHTML('userName', selList[0].examHeaderInfo.userName);
             /*과목 탭 불러오기*/
-            var returnHtml = "<li class=\"st_subject_tab\" data-name='t-"+ (i+1) +"' data-tab='tab-"+ (i+1) +"' data-index='"+ (i+1) +"'>"+selList[i].subjectName;
+            var returnHtml = "<li class=\"st_subject_tab\" data-name='t-"+ (i+1) +"' data-tab='tab-"+ (i+1) +"' data-index='"+ (i+1) +"' onclick='setTabNum("+ i +");'>"+selList[i].subjectName;
             returnHtml += "<div>"+ selList[i].subjectName +"</div>";
             returnHtml += "</li>";
             $("#subjectTab").append(returnHtml);
@@ -257,10 +262,10 @@ function getUserExamList(examKey, userKey) {
                     omrChkHtml += "<li class=\"st_number\" id='"+ examInfo.examQuestionBankKey +"'>";
                     omrChkHtml += j+1;
                     omrChkHtml += "</li>";
-                    omrChkHtml += "<li class=\"st_answer\">①</li>";
-                    omrChkHtml += "<li class=\"st_answer\">②</li>";
-                    omrChkHtml += "<li class=\"st_answer\">③</li>";
-                    omrChkHtml += "<li class=\"st_answer\">④</li>";
+                    omrChkHtml += "<li class=\"st_answer\" value='1'>①</li>";
+                    omrChkHtml += "<li class=\"st_answer\" value='2'>②</li>";
+                    omrChkHtml += "<li class=\"st_answer\" value='3'>③</li>";
+                    omrChkHtml += "<li class=\"st_answer\" value='4'>④</li>";
                     omrChkHtml += "</ul>";
                 }
                 omrChkHtml += "</div>";
