@@ -241,8 +241,7 @@ function getUserExamList(examKey, userKey) {
     };
     var infoList = getPageApi("/exam/getUserExamList/", examKey, data);
     if(infoList != null) {
-        var selList = infoList.result;
-        console.log(selList);
+        var selList = infoList.result;;
         for(var i = 0; i < selList.length; i++){
            //"examName":
             innerHTML('examName', selList[0].examHeaderInfo.examName);
