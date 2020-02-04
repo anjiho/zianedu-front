@@ -43,7 +43,8 @@
                 if (detailInfo.fileInfo.length > 0) {
                     for (var i = 0; i < detailInfo.fileInfo.length; i++) {
                         var fileList = detailInfo.fileInfo[i];
-                        var retrunHtml = "<li><a href='"+ fileList.fileUrl +"' class=\"fileDownloadPromise\"><img src=\"/common/zian/images/common/icon_file.png\" alt=''> "+ fileList.fileName +"</a></li>";
+                        var downloadFile = fileList.fileName;
+                        var retrunHtml = "<li><a href='javascript:download(" + '"'+ downloadFile + '"' + ")'><img src=\"/common/zian/images/common/icon_file.png\" alt=''> "+ fileList.fileName +"</a></li>";
                         $("#fileList").append(retrunHtml);
                     }
                 }
