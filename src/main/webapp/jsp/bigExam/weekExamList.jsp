@@ -25,7 +25,7 @@
     }
 
     function testPop(examKey){
-        var popUrl = '/bigExam?page_gbn=popupStart&examKey='+2173;
+        var popUrl = '/bigExam?page_gbn=popupStart&examKey='+examKey;
         var tarGet = "_blank";
         var popOption = "width=1000, height=775, resizable=no, scrollbars=no, status=no;";
         window.open(popUrl,tarGet,popOption);

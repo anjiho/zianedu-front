@@ -25,9 +25,9 @@
         }
     });
 
-    function onStart(examKey){
+    function onStart(){
         var examUserKey = getInputTextValue('examUserKey');
-        location.href = "/bigExam?page_gbn=popupExamList&examUserKey=" + 41234;
+        location.href = "/bigExam?page_gbn=popupExamList&examUserKey="+examUserKey;
     }
 </script>
 <!DOCTYPE html>
@@ -63,7 +63,7 @@
                     </div>
                 </div>
                 <div style="margin: 20px auto">
-                    <img src="/common/zian/images/bigimg/button_start.png" alt="시험시작하기" title="시험시작하기" onclick="onStart(<%=examKey%>);" style="cursor: pointer;" />
+                    <img src="/common/zian/images/bigimg/button_start.png" alt="시험시작하기" title="시험시작하기" onclick="onStart();" style="cursor: pointer;" />
                 </div>
                 <div class="st_clip"></div>
             </div>
