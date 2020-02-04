@@ -140,77 +140,9 @@
                     </ul>
                 </div>
                 <div class="st_tab">
-                    <ul id="subjectTab">
-<%--                        <li class="st_subject_tab active" data-name="t-1" data-tab="tab-1" data-index="1">영어--%>
-<%--                            <div>영어</div>--%>
-<%--                        </li>--%>
-<%--                        <li class="st_subject_tab" data-name="t-2" data-tab="tab-2" data-index="2">한국사--%>
-<%--                            <div>한국사</div>--%>
-<%--                        </li>--%>
-                    </ul>
+                    <ul id="subjectTab"></ul>
                 </div>
-                <div class="st_position">
-<%--                    <div id="tab-1" class="st_question_board current">--%>
-<%--                        <ul>--%>
-<%--                            <li id="id_question_1">--%>
-<%--                                <div class="st_number">1</div>--%>
-<%--                                <br>--%>
-<%--                                <img src="/common/zian/images/bigimg/test1_img.jpg" alt="">--%>
-<%--                            </li>--%>
-<%--                            <li id="id_question_2">--%>
-<%--                                <div class="st_number">2</div>--%>
-<%--                                <br>--%>
-<%--                                <img src="/common/zian/images/bigimg/test1_img.jpg" alt="">--%>
-<%--                                <img src="/common/zian/images/bigimg/test1_img.jpg" alt="">--%>
-<%--                            </li>--%>
-<%--                            <li id="id_question_3">--%>
-<%--                                <div class="st_number">3</div>--%>
-<%--                                <br>--%>
-<%--                                <img src="/common/zian/images/bigimg/test1_img.jpg" alt="">--%>
-<%--                            </li>--%>
-<%--                            <li id="id_question_4">--%>
-<%--                                <div class="st_number">4</div>--%>
-<%--                                <br>--%>
-<%--                                <img src="/common/zian/images/bigimg/test1_img.jpg" alt="">--%>
-<%--                            </li>--%>
-<%--                            <li id="id_question_5">--%>
-<%--                                <div class="st_number">5</div>--%>
-<%--                                <br>--%>
-<%--                                <img src="/common/zian/images/bigimg/test1_img.jpg" alt="">--%>
-<%--                            </li>--%>
-<%--                        </ul>--%>
-<%--                    </div>--%>
-<%--                    <div id="tab-2" class="st_question_board">--%>
-<%--                        <ul>--%>
-<%--                            <li id="id_question_1">--%>
-<%--                                <div class="st_number">1</div>--%>
-<%--                                <br>--%>
-<%--                                <img src="/common/zian/images/bigimg/test1_img.jpg" alt="">한국사영역입니다.--%>
-<%--                            </li>--%>
-<%--                            <li id="id_question_2">--%>
-<%--                                <div class="st_number">2</div>--%>
-<%--                                <br>--%>
-<%--                                <img src="/common/zian/images/bigimg/test1_img.jpg" alt="">--%>
-<%--                                <img src="/common/zian/images/bigimg/test1_img.jpg" alt="">--%>
-<%--                            </li>--%>
-<%--                            <li id="id_question_3">--%>
-<%--                                <div class="st_number">3</div>--%>
-<%--                                <br>--%>
-<%--                                <img src="/common/zian/images/bigimg/test1_img.jpg" alt="">--%>
-<%--                            </li>--%>
-<%--                            <li id="id_question_4">--%>
-<%--                                <div class="st_number">4</div>--%>
-<%--                                <br>--%>
-<%--                                <img src="/common/zian/images/bigimg/test1_img.jpg" alt="">--%>
-<%--                            </li>--%>
-<%--                            <li id="id_question_5">--%>
-<%--                                <div class="st_number">5</div>--%>
-<%--                                <br>--%>
-<%--                                <img src="/common/zian/images/bigimg/test1_img.jpg" alt="">--%>
-<%--                            </li>--%>
-<%--                        </ul>--%>
-<%--                    </div>--%>
-                </div>
+                <div class="st_position"></div>
             </div>
             <div class="st_answer_board">
                 <div class="st_time_board">

@@ -240,7 +240,6 @@ function getUserExamList(examKey, userKey) {
         userKey : userKey
     };
     var infoList = getPageApi("/exam/getUserExamList/", examKey, data);
-    console.log(infoList);
     if(infoList != null) {
         var selList = infoList.result;
         for(var i = 0; i < selList.length; i++){
