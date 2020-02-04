@@ -171,7 +171,7 @@
         <div class="st_test_main">
             <div class="st_top_line"></div>
             <div class="st_content">
-                <div class="st_title">2013_국가직_7급_영어기출문제</div>
+                <div class="st_title" id="examName"></div>
                 <div class="st_info">
                     <ul>
                         <li><div></div><b>응시과목: </b><span id="subjectNameList"></span></li>
