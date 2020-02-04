@@ -17,6 +17,43 @@
             $("#tab-1").addClass('current');
         }
     });
+
+    function setTabNum(tabId) {
+        innerValue('tabId', tabId);
+    }
+
+    function goChangeTabChk() {
+        var i = 0;
+        var tabNum = getInputTextValue('tabId');
+        var tabId = "t-"+(Number(tabNum)+1)+" ul";
+        $('#'+tabId).each(function(){
+            var $this = $(this);
+            $this.find('li.st_answer').each(function(){
+                var test = $(this).hasClass('st_selected');
+                if(test == true)  i = i+1;
+            })
+        });
+        if(i == 20){
+            console.log($("#subjectTab li").length);
+            console.log(Number(tabNum));
+            if(($("#subjectTab li").length+1) > Number(tabNum)) {
+                tabNum1 = Number(tabNum) + 1;
+                innerValue("tabId", tabNum1);
+                $('.st_tab li').find('div').css('display', 'none');
+                $('.st_question_board').removeClass('current');
+                $('.st_omr_board').removeClass('current2');
+
+                $('.st_tab li').eq(Number(tabNum) + 1).find('div').css('display', 'block');
+                $('#tab-'+ (Number(tabNum1) + 1)).addClass('current');
+                $('#t-'+ (Number(tabNum1) + 1)).addClass('current2');
+            }else{
+                alert("정말 제출 하시겠습니까?");
+            }
+        }else{
+            alert('OMR 문제 체크를 해주세요');
+            return false;
+        }
+    }
 </script>
 <!DOCTYPE html>
 <!-- saved from url=(0013)about:internet -->
@@ -129,6 +166,7 @@
 </head>
 <body>
 <div class="st_exam">
+    <input type="hidden" id="tabId">
     <div class="st_exam_test">
         <div class="st_test_main">
             <div class="st_top_line"></div>
@@ -136,10 +174,10 @@
                 <div class="st_title">2013_국가직_7급_영어기출문제</div>
                 <div class="st_info">
                     <ul>
-                        <li><div></div><b>응시과목: </b>영어</li>
-                        <li><div></div><b>시험일: </b>2019년 12월 03일</li>
-                        <li><div></div><b>응시번호: </b>020046068</li>
-                        <li><div></div><b>이름: </b>지안에듀</li>
+                        <li><div></div><b>응시과목: </b><span id="subjectNameList"></span></li>
+                        <li><div></div><b>시험일: </b><span id="examDate"></span></li>
+                        <li><div></div><b>응시번호: </b>0<span id="serial"></span></li>
+                        <li><div></div><b>이름: </b><span id="userName"></span></li>
                     </ul>
                 </div>
                 <div class="st_tab">
@@ -153,8 +191,8 @@
                     <div id="st_time" class="st_time"></div>
                 </div>
                 <div class="st_position2"></div> <!--omr카드-->
-                <div>
-                    <img src="/common/zian/images/bigimg/button_test_submit.png" alt="" style="cursor:pointer" onClick="">
+                <div id="chkBtn">
+                    <img src="/common/zian/images/bigimg/button_test_submit.png" alt="" style="cursor:pointer" onClick="goChangeTabChk();">
                 </div>
             </div>
         </div>
