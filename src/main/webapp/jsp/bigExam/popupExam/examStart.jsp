@@ -14,6 +14,7 @@
         if(examKey != ""){
             var examInfo = getExamMasterGateInfo(examKey, sessionUserInfo.userKey);
             if(examInfo.result != null){
+                innerValue('examUserKey', examInfo.result.examUserKey);
                 var basicInfo = examInfo.result.examBasicInfo;
                 innerHTML('title', basicInfo.name);
                 innerHTML('onlineTime', basicInfo.onlineTime);
@@ -25,7 +26,8 @@
     });
 
     function onStart(examKey){
-        location.href = "/bigExam?page_gbn=test&examKey="+2173;
+        var examUserKey = getInputTextValue('examUserKey');
+        location.href = "/bigExam?page_gbn=test&examUserKey="+41234;
     }
 </script>
 <!DOCTYPE html>
@@ -41,6 +43,7 @@
 <body>
 <div class="st_exam">
     <form action="/" id="id_frm" method="post" name="name_frm">	<input type="hidden" name="j_curri_key" value="0" />
+        <input type='hidden' id="examUserKey" name="examUserKey">
         <div class="st_exam_test">
             <div class="st_start">
                 <div class="st_title_box">

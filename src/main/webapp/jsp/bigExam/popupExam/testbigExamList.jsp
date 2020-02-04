@@ -1,16 +1,17 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/jsp/common.jsp" %>
 <%
-    String examKey = request.getParameter("examKey");
+    String examUserKey = request.getParameter("examUserKey");
 %>
 <script type="text/javascript">
-    var examKey = <%=examKey%>;
+    var examKey = <%=examUserKey%>;
     $(document).ready(function(){
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         if(examKey != ""){
             getUserExamList(examKey, sessionUserInfo.userKey);
             $("#subjectTab li").eq(0).addClass('active'); //과목 탭 active
             $("#t-1").addClass('current2');//omr currnet
+            $("#tab-1").addClass('current');
         }
     });
 </script>
@@ -85,9 +86,7 @@
                         }, 400);
                     })
                 })
-            })
-
-
+            });
 
             /* OMR 메인번호 클릭 이벤트 */
             /* 과목 1 */
