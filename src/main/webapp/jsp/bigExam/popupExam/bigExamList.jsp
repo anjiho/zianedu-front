@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
-<script src="/common/zian/js/kiplayer/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="/common/zian/css/big_layout.css">
+<script src="/common/zian/js/kiplayer/jquery.min.js"></script>
 <!DOCTYPE html>
 <!-- saved from url=(0013)about:internet -->
 <html lang="ko">
