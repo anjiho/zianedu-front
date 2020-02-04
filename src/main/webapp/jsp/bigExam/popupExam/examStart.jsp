@@ -27,7 +27,7 @@
 
     function onStart(examKey){
         var examUserKey = getInputTextValue('examUserKey');
-        location.href = "/bigExam?page_gbn=popupExamList&examUserKey="+41234;
+        location.href = "/bigExam?page_gbn=popupExamList&examUserKey="+examUserKey;
     }
 </script>
 <!DOCTYPE html>
