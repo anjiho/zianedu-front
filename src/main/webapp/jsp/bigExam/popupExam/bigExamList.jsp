@@ -2,10 +2,13 @@
 <%@include file="/common/jsp/common.jsp" %>
 <%
     String examUserKey = request.getParameter("examUserKey");
+    String onlineTime = request.getParameter("onlineTime");
 %>
 <script type="text/javascript">
     var examKey = <%=examUserKey%>;
+    var onlineTime = <%=onlineTime%>;
     $(document).ready(function(){
+        countdown('st_time', Number(onlineTime)*60);	 // second base
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         if(examKey != ""){
             getUserExamList(examKey, sessionUserInfo.userKey);
@@ -184,8 +187,6 @@
             alert("끝");
         }
     }
-
-    countdown('st_time', 60);	 // second base
 </script>
 </body>
 </html>

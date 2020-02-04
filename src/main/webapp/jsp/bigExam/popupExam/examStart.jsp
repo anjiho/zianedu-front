@@ -13,12 +13,14 @@
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         if(examKey != ""){
             var examInfo = getExamMasterGateInfo(examKey, sessionUserInfo.userKey);
+            console.log(examInfo);
             if(examInfo.result != null){
                 innerValue('examUserKey', examInfo.result.examUserKey);
                 var basicInfo = examInfo.result.examBasicInfo;
                 innerHTML('title', basicInfo.name);
-                innerHTML('onlineTime', basicInfo.onlineTime);
-                innerHTML('questionCount', basicInfo.questionCount);
+                innerHTML('onlineTime1', basicInfo.questionCount);
+                innerHTML('questionCount', basicInfo.onlineTime);
+                innerValue('onlineTime', basicInfo.onlineTime);
                 var subjectName = examInfo.result.examSubjectName;
                 innerHTML('subjectTitle', subjectName);
             }
@@ -27,7 +29,8 @@
 
     function onStart(){
         var examUserKey = getInputTextValue('examUserKey');
-        location.href = "/bigExam?page_gbn=popupExamList&examUserKey="+examUserKey;
+        var onlineTime = getInputTextValue('onlineTime');
+        location.href = "/bigExam?page_gbn=popupExamList&examUserKey="+examUserKey+"&onlineTime="+onlineTime;
     }
 </script>
 <!DOCTYPE html>
@@ -44,6 +47,7 @@
 <div class="st_exam">
     <form action="/" id="id_frm" method="post" name="name_frm">	<input type="hidden" name="j_curri_key" value="0" />
         <input type='hidden' id="examUserKey" name="examUserKey">
+        <input type='hidden' id="onlineTime" name="onlineTime">
         <div class="st_exam_test">
             <div class="st_start">
                 <div class="st_title_box">
@@ -58,7 +62,7 @@
                 <div class="st_subjects">
                     <div class="st_tit_box">
                         <p class="st_subTit" id="subjectTitle"></p>
-                        <p class="st_idx">각 <span id="onlineTime"></span>문항</p>
+                        <p class="st_idx">각 <span id="onlineTime1"></span>문항</p>
                         <p class="st_time">총 <span id="questionCount"></span>분</p>
                     </div>
                 </div>
