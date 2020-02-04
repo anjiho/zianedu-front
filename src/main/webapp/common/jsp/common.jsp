@@ -34,6 +34,7 @@
     <link rel="stylesheet" type="text/css" href="/common/zian/css/content_o.css">
     <link rel="stylesheet" type="text/css" href="/common/zian/css/owl.carousel.min.css">
     <link rel="stylesheet" type="text/css" href="/common/zian/css/bigtest.css">
+    <link rel="stylesheet" type="text/css" href="/common/zian/css/big_layout.css">
 
     <!--<script src="/common/assets/jquery/dist/jquery.min.js"></script>-->
     <script src="/common/js/blank-check.js"></script>
