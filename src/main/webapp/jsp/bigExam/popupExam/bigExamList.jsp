@@ -272,7 +272,7 @@
                 </div>
                 <div class="st_position2"></div> <!--omr카드-->
                 <div id="chkBtn">
-                    <img src="/common/zian/images/bigimg/button_test_submit.png" alt="" style="cursor:pointer" onClick="goChangeTabChk();">
+                    <img src="/common/zian/images/bigimg/button_test_submit.png" alt="" style="cursor:pointer" onClick="goChangeTabChk();" id="examBtn">
                 </div>
             </div>
         </div>
@@ -282,11 +282,11 @@
     /* Timer */
     function countdown( elementId, seconds ){
         var element, endTime, hours, mins, msLeft, time;
-
         function updateTimer(){
             msLeft = endTime - (+new Date);
             if ( msLeft < 0 ) {
-                console.log('done');
+                alert("시험시간이 종료되었습니다.");
+                $("#examBtn").hide();
             } else {
                 time = new Date( msLeft );
                 hours = time.getUTCHours();
