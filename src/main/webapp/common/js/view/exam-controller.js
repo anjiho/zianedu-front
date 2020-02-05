@@ -241,7 +241,8 @@ function getUserExamList(examKey, userKey) {
     };
     var infoList = getPageApi("/exam/getUserExamList/", examKey, data);
     if(infoList != null) {
-        var selList = infoList.result;;
+        var selList = infoList.result;
+        console.log(selList);
         for(var i = 0; i < selList.length; i++){
            //"examName":
             innerHTML('examName', selList[0].examHeaderInfo.examName);
@@ -257,9 +258,11 @@ function getUserExamList(examKey, userKey) {
 
             /*시험 OMR 불러오기*/
             var omrChkHtml = "<div id='t-"+ (i+1) +"' class=\"st_omr_board\">";
+            omrChkHtml += "<input type='hidden' id='SubjectKey-"+ (i+1) +"' value='"+ selList[i].examInfo[0].examSbjUserKey +"'>";
                 for(var j = 0; j < selList[i].examInfo.length; j++) {
                     var examInfo = selList[i].examInfo[j];
                     omrChkHtml += "<ul>";
+                    omrChkHtml += "<li value='"+ selList[i].examInfo[j].answer +"'></li>";
                     omrChkHtml += "<li class=\"st_number\" id='"+ examInfo.examQuestionBankKey +"'>";
                     omrChkHtml += j+1;
                     omrChkHtml += "</li>";
@@ -273,7 +276,6 @@ function getUserExamList(examKey, userKey) {
                 $(".st_position2").append(omrChkHtml);
 
             var examHtml = "<div id='tab-"+ (i+1) +"' class=\"st_question_board\">";
-            examHtml += "<input type='hidden' id='SubjectKey-"+ (i+1) +"' value='"+ selList[i].examInfo[0].examSbjUserKey +"'>";
             examHtml += "<ul>";
                 for(var k = 0; k < selList[i].examInfo.length; k++){
                     var examInfo = selList[i].examInfo[k];
@@ -287,6 +289,14 @@ function getUserExamList(examKey, userKey) {
             examHtml += "</div>";
             $(".st_position").append(examHtml);
         }
-
     }
+}
+
+function saveExamResult(examResultInfo, playTime) {
+    var data = {
+        examResultInfo : examResultInfo,
+        playTime : playTime
+    };
+    var result = postApi("/exam/saveExamResult", data);
+    return result;
 }

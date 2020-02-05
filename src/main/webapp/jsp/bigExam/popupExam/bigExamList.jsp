@@ -16,6 +16,7 @@
             $("#t-1").addClass('current2');//omr currnet
             $("#tab-1").addClass('current');
         }
+
     });
 
     function setTabNum(tabId) {
@@ -23,18 +24,49 @@
     }
 
     function goChangeTabChk() {
-        var i = 0;
+        var examChkCnt = 0;
         var tabNum = getInputTextValue('tabId');
         var tabId = "t-"+(Number(tabNum)+1)+" ul";
         $('#'+tabId).each(function(){
             var $this = $(this);
             $this.find('li.st_answer').each(function(){
-                var test = $(this).hasClass('st_selected');
-                if(test == true)  i = i+1;
+                var seleted = $(this).hasClass('st_selected');
+                if(seleted == true)  examChkCnt = examChkCnt+1;
             })
         });
-        if(i == 20){
-            if(($("#subjectTab li").length+1) > Number(tabNum)) {
+        if(examChkCnt == 20){
+            if($("#subjectTab li").length == Number(tabNum)+1) {
+                alert("정말 제출 하시겠습니까?");
+                var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+                var arr = new Array();
+                for(var i = 0; i < $("#subjectTab li").length; i++){
+                    var omrId = "t-"+(i+1)+" ul";
+                    $('#'+omrId).each(function(){
+                        var score = 0;
+                        if($(this).find('li.st_selected').val() == $(this).find('li').eq(0).val()){
+                            score = 1;
+                        }/*else{
+                            score = 0;
+                        }*/
+                        var data = {
+                            examUserKey : <%=examUserKey%>,
+                            userKey :sessionUserInfo.userKey,
+                            examSbjUserKey : $("#SubjectKey-"+(i+1)).val(),
+                            examQuestionBankKey : $(this).find('li').eq(1).attr('id'),
+                            userAnswer : $(this).find('li.st_selected').val(),
+                            score : score
+                        };
+                        arr.push(data);
+                    });
+                }
+                var omrList = JSON.stringify(arr);
+                var result = saveExamResult(omrList, 50);
+                console.log(result);
+                if(result.resultCode == 200){
+                    alert("제출이 완료 되었습니다.");
+                }
+                return false;
+            }else{
                 tabNum1 = Number(tabNum) + 1;
                 innerValue("tabId", tabNum1);
                 $('.st_tab li').find('div').css('display', 'none');
@@ -44,8 +76,6 @@
                 $('.st_tab li').eq(Number(tabNum) + 1).find('div').css('display', 'block');
                 $('#tab-'+ (Number(tabNum1) + 1)).addClass('current');
                 $('#t-'+ (Number(tabNum1) + 1)).addClass('current2');
-            }else{
-                alert("정말 제출 하시겠습니까?");
             }
         }else{
             alert('OMR 문제 체크를 해주세요');
@@ -162,6 +192,8 @@
 <body>
 <div class="st_exam">
     <input type="hidden" id="tabId">
+    <input type="hidden" id="playStartTime">
+    <input type="hidden" id="playEndTime">
     <div class="st_exam_test">
         <div class="st_test_main">
             <div class="st_top_line"></div>
@@ -220,6 +252,7 @@
             alert("끝");
         }
     }
+
 </script>
 </body>
 </html>
