@@ -190,7 +190,7 @@
             /* 과목 1 */
             $('#t-1 ul').each(function(){
                 var $this = $(this);
-                var $sel = $this.index()+1; //클릭시 해당 번호에 맞는 문제지로 넘어가기 위한 세팅값 ID가 1부터 시작해서 +1 수식어 추가
+                var $sel = $this.index(); //클릭시 해당 번호에 맞는 문제지로 넘어가기 위한 세팅값 ID가 1부터 시작해서 +1 수식어 추가
                 $this.find('li.st_number').on('click',function(){
                     $('div#tab-1').stop().animate({
                         scrollTop : $('#id_question_' + $sel).position().top
@@ -200,7 +200,7 @@
             /* 과목 2 */
             $('#t-2 ul').each(function(){
                 var $this = $(this);
-                var $sel = $this.index()+1;
+                var $sel = $this.index();
                 var $num = $('#tab-2');
                 $this.find('li.st_number').on('click',function(){
                     $('div#tab-2').stop().animate({
@@ -211,7 +211,7 @@
             /* 과목 3 - 과목 추가당 코드 추가 & id값에 +1씩 */
             $('#t-3 ul').each(function(){
                 var $this = $(this);
-                var $sel = $this.index()+1;
+                var $sel = $this.index();
                 var $num = $('#tab-2');
                 $this.find('li.st_number').on('click',function(){
                     $('div#tab-3').stop().animate({
@@ -221,7 +221,7 @@
             })
             $('#t-4 ul').each(function(){
                 var $this = $(this);
-                var $sel = $this.index()+1;
+                var $sel = $this.index();
                 var $num = $('#tab-2');
                 $this.find('li.st_number').on('click',function(){
                     $('div#tab-3').stop().animate({
@@ -231,7 +231,7 @@
             })
             $('#t-5 ul').each(function(){
                 var $this = $(this);
-                var $sel = $this.index()+1;
+                var $sel = $this.index();
                 var $num = $('#tab-2');
                 $this.find('li.st_number').on('click',function(){
                     $('div#tab-3').stop().animate({
@@ -296,16 +296,10 @@
                 // if you want this to work when you unfocus the tab and refocus or after you sleep your computer and come back, you need to bind updateTimer to a $(window).focus event^^
             }
         }
-
         element = document.getElementById( elementId );
         endTime = (+new Date) + 1000 * seconds;
         updateTimer();
-
-        if(seconds = 0){
-            alert("끝");
-        }
     }
-
 </script>
 </body>
 </html>
