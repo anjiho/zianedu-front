@@ -17,6 +17,9 @@
             $("#tab-1").addClass('current');
         }
 
+        var sDate = new Date().getTime();    // 시작 시간
+        innerValue("playStartTime", sDate);
+
     });
 
     function setTabNum(tabId) {
@@ -45,9 +48,7 @@
                         var score = 0;
                         if($(this).find('li.st_selected').val() == $(this).find('li').eq(0).val()){
                             score = 1;
-                        }/*else{
-                            score = 0;
-                        }*/
+                        }
                         var data = {
                             examUserKey : <%=examUserKey%>,
                             userKey :sessionUserInfo.userKey,
@@ -60,8 +61,11 @@
                     });
                 }
                 var omrList = JSON.stringify(arr);
-                var result = saveExamResult(omrList, 50);
-                console.log(result);
+
+                var eDate = new Date().getTime();    // 끝나는 시간
+                var sDate = getInputTextValue("playStartTime");
+                var playTime = (eDate - sDate) / 1000;
+                var result = saveExamResult(omrList, roundMarks(playTime));
                 if(result.resultCode == 200){
                     alert("제출이 완료 되었습니다.");
                 }
@@ -151,6 +155,35 @@
                         }, 400);
                     })
                 })
+            });  /* 과목 3 - 과목 추가당 코드 추가 & id값에 +1씩 */
+            $('#t-4 ul').each(function(){
+                var $this = $(this);
+                $this.find('li.st_answer').each(function(){
+                    var $th = $(this);
+                    var $sel = $th.parent().index()+2;
+                    $th.on('click',function(){
+                        $th.parent().find('li').removeClass('st_selected');
+                        $th.addClass('st_selected');
+                        $('#tab-3').stop().animate({
+                            scrollTop : $('#tab-4 #id_question_' + $sel).position().top
+                        }, 400);
+                    })
+                })
+            });
+            /* 과목 3 - 과목 추가당 코드 추가 & id값에 +1씩 */
+            $('#t-5 ul').each(function(){
+                var $this = $(this);
+                $this.find('li.st_answer').each(function(){
+                    var $th = $(this);
+                    var $sel = $th.parent().index()+2;
+                    $th.on('click',function(){
+                        $th.parent().find('li').removeClass('st_selected');
+                        $th.addClass('st_selected');
+                        $('#tab-3').stop().animate({
+                            scrollTop : $('#tab-5 #id_question_' + $sel).position().top
+                        }, 400);
+                    })
+                })
             });
 
             /* OMR 메인번호 클릭 이벤트 */
@@ -183,6 +216,26 @@
                 $this.find('li.st_number').on('click',function(){
                     $('div#tab-3').stop().animate({
                         scrollTop : $('#tab-3 #id_question_' + $sel).position().top
+                    }, 400);
+                })
+            })
+            $('#t-4 ul').each(function(){
+                var $this = $(this);
+                var $sel = $this.index()+1;
+                var $num = $('#tab-2');
+                $this.find('li.st_number').on('click',function(){
+                    $('div#tab-3').stop().animate({
+                        scrollTop : $('#tab-4 #id_question_' + $sel).position().top
+                    }, 400);
+                })
+            })
+            $('#t-5 ul').each(function(){
+                var $this = $(this);
+                var $sel = $this.index()+1;
+                var $num = $('#tab-2');
+                $this.find('li.st_number').on('click',function(){
+                    $('div#tab-3').stop().animate({
+                        scrollTop : $('#tab-5 #id_question_' + $sel).position().top
                     }, 400);
                 })
             })
