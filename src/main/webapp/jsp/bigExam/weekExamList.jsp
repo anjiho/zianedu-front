@@ -24,7 +24,7 @@
         getWeekBigExamList(sessionUserInfo.userKey, sPage, 5, ctgKey, searchType, searchText);
     }
 
-    function testPop(examKey){
+    function goBigExamPopup(examKey){
         var popUrl = '/bigExam?page_gbn=popupStart&examKey='+examKey;
         var tarGet = "_blank";
         var popOption = "width=1000, height=775, resizable=no, scrollbars=no, status=no;";

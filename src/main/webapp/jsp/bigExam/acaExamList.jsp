@@ -38,7 +38,7 @@
         getMockExamListAtBuy(sessionUserInfo.userKey, 3, sPage, 5, ctgKey, searchType, searchText, 'dataList2');
     }
 
-    function testPop(examUserKey){
+    function goBigExamPopup(examUserKey){
         var popUrl = '/bigExam?page_gbn=popupStart&examUserKey='+examUserKey;
         var tarGet = "_blank";
         var popOption = "width=1000, height=775, resizable=no, scrollbars=no, status=no;";
