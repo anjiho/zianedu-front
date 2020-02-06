@@ -229,11 +229,11 @@
         </div>
         <div id="siteNav">
             <ul>
-                <li class="item2"><a href="javascript:void(0);" onclick="setLeftMenu1()"><span id="subMenu1"></span></a></li>
-                <li class="item3"><a href="javascript:void(0);" onclick="setLeftMenu2()"><span id="subMenu2"></span></a></li>
-                <li class="item5"><a href="javascript:void(0);" onclick="setLeftMenu3()"><span id="subMenu3"></span></a></li>
-                <li class="item4"><a href="javascript:void(0);" onclick="setLeftMenu4()"><span id="subMenu4"></span></a></li>
-                <li class="item4"><a href="javascript:void(0);" onclick="setLeftMenu5()"><span id="subMenu5"></span></a></li>
+                <li class="item2"><a href="javascript:void(0);" ><span id="subMenu1"></span></a></li>
+                <li class="item3"><a href="javascript:void(0);" ><span id="subMenu2"></span></a></li>
+                <li class="item5"><a href="javascript:void(0);" ><span id="subMenu3"></span></a></li>
+                <li class="item4"><a href="javascript:void(0);" ><span id="subMenu4"></span></a></li>
+                <li class="item4"><a href="javascript:void(0);" ><span id="subMenu5"></span></a></li>
             </ul>
         </div>
         <div id="quickNav">
