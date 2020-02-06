@@ -865,6 +865,10 @@ function getMockExamList(onOffKey, sPage, listLimit, ctgKey, searchType, searchT
                     var tr = $(this);
                     tr.children().eq(1).attr("class", "left");
                 });
+                $('#dataList2 tr').each(function(){
+                    var tr = $(this);
+                    tr.children().eq(1).attr("class", "left");
+                });
             }
         }
         //   }

@@ -157,7 +157,6 @@
                                     <th style="text-align: center;">응시직렬/응시과목</th>
                                     <th style="text-align: center;">신청기간</th>
                                     <th style="text-align: center;">응시기간</th>
-                                    <%--                                    <th>결과확인</th>--%>
                                     <th>신청</th>
                                 </tr>
                                 </thead>
