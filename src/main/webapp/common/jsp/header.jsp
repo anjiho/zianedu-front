@@ -292,21 +292,6 @@
         <!-- sitemap_layer -->
     </div>
     <!--주메뉴-->
-    <div id="gnb" class="acaTopMenu" style="display: none;">
-        <div class="inner">
-            <ul class="deaph1 cols7">
-                <li><a href="javascript:goPageNoSubmit('myLecRoom', 'main')">내강의실</a></li>
-                <li><a href="javascript:goPageNoSubmit('teacher', 'main')">교수소개</a></li>
-                <li><a href="javascript:goPageNoSubmit('lectureOrder', 'academy')">학원수강신청</a></li>
-                <li><a href="javascript:goPageNoSubmit('zianPass', 'list')">연간관리반</a></li>
-                <li><a href="javascript:goPageNoSubmit('freeLecture', 'theory')">무료강좌</a></li>
-<%--                <li><a href="javascript:goPageNoSubmit('bigExam', 'main')">빅모의고사</a></li>--%>
-                <li><a href="javascript:goBigExam()">빅모의고사</a></li>
-                <li><a href="javascript:goPassReview();">합격수기</a></li>
-            </ul>
-        </div>
-    </div>
-
     <div id="gnb" class="onlineTopMenu" style="display: none;">
         <div class="inner">
             <ul class="deaph1 cols7">
@@ -319,47 +304,21 @@
                 <li><a href="javascript:goPassReview();">합격수기</a></li>
             </ul>
         </div>
-    </div>
-
-    <div id="gnb" class="bookStore" style="display: none;">
-        <div class="inner">
-            <ul class="deaph1 cols7">
-                <li><a href="javascript:goDetailbookType('COMMON');">공통과목</a></li>
-                <li><a href="javascript:goDetailbookType('PUBLIC');">행정직군</a></li>
-                <li><a href="javascript:goDetailbookType('TECH');">기술직군</a></li>
-                <li><a href="javascript:goDetailbookType('POST');">계리직군</a></li>
-                <li><a href="javascript:goDetailbookType('CERT');">자격증</a></li>
-                <li><a href="javascript:goPageNoSubmit('bookStore','errataList')">정오표</a></li>
+        <!-- gnb_area -->
+        <div class="gnb_area" id="">
+            <ul class="Mdepth1">
+                <li><a href="#">내강의실</a></li>
+                <li><a href="#">교수소개</a></li>
+                <li><a href="#">수강신청</a></li>
+                <li><a href="#">지안패스</a></li>
+                <li><a href="#">무료강좌</a></li>
+                <li><a href="#">빅모의고사</a></li>
+                <li><a href="#">합격수기</a></li>
             </ul>
         </div>
-    </div>
-
-    <div id="gnb" class="bigExam" style="display: none;">
-        <div class="inner">
-            <ul class="deaph1 cols7">
-                <li><a href="javascript:goPageNoSubmit('bigExam','examApply')">모의고사신청</a></li>
-                <li><a href="javascript:goPageNoSubmit('bigExam','acaExam')">학원모의고사</a></li>
-                <li><a href="javascript:goPageNoSubmit('bigExam','weekExam')">주간모의고사</a></li>
-                <li><a href="javascript:goPageNoSubmit('bigExam','pastQuestion')">기출문제</a></li>
-                <li><a href="javascript:goPageNoSubmit('bigExam','bigReviewList')">응시후기</a></li>
-                <li><a href="javascript:goPageNoSubmit('bigExam','referenceList')">자료실</a></li>
-            </ul>
-        </div>
+        <!-- //gnb_area -->
     </div>
     <!--//주메뉴-->
-    <!-- gnb_area -->
-    <div class="gnb_area" id="">
-        <ul class="Mdepth1">
-            <li><a href="#">내강의실</a></li>
-            <li><a href="#">교수소개</a></li>
-            <li><a href="#">수강신청</a></li>
-            <li><a href="#">지안패스</a></li>
-            <li><a href="#">무료강좌</a></li>
-            <li><a href="#">빅모의고사</a></li>
-            <li><a href="#">합격수기</a></li>
-        </ul>
-    </div>
-    <!-- //gnb_area -->
 </div>
 <!--//상단-->
 <script>
