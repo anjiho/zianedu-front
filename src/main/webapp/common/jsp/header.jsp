@@ -102,16 +102,16 @@
         <h1><a href="" id="mainUrl"><img src="" id="logo"> <span id="mainName"></span></a></h1>
         <!--최상단메뉴-->
         <!-- 로그인 -->
-        <div id="topNav" class="login" style="display: none;">
-            <ul>
-                <li><a href="javascript:addFavorite();" class="btn_bookmark">즐겨찾기에 등록</a></li>
-                <li id="userName"><a href="#"></a></li>
-                <li><a href="javascript:void(0);">마이페이지</a></li>
-                <li><a href="javascript:void(0);">로그아웃</a></li>
-                <li id="mypage"><a href="javascript:void(0);">합격수기</a></li>
-                <li><a href="javascript:void(0);">이벤트</a></li>
-            </ul>
-        </div>
+<%--        <div id="topNav" class="login" style="display: none;">--%>
+<%--            <ul>--%>
+<%--                <li><a href="javascript:addFavorite();" class="btn_bookmark">즐겨찾기에 등록</a></li>--%>
+<%--                <li id="userName"><a href="#"></a></li>--%>
+<%--                <li><a href="javascript:void(0);">마이페이지</a></li>--%>
+<%--                <li><a href="javascript:void(0);">로그아웃</a></li>--%>
+<%--                <li id="mypage"><a href="javascript:void(0);">합격수기</a></li>--%>
+<%--                <li><a href="javascript:void(0);">이벤트</a></li>--%>
+<%--            </ul>--%>
+<%--        </div>--%>
         <!-- 로그아웃 -->
         <div id="topNav" class="logout" style="display: none;">
             <ul>
