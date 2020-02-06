@@ -6,24 +6,32 @@
 <script src="/common/js/view/exam-controller.js"></script>
 <%
     String examKey = request.getParameter("examKey");
+    String examUserKey = request.getParameter("examUserKey");
 %>
 <script>
-    var examKey = <%=examKey%>;
+    var examKey = '<%=examKey%>';
+    var examUserKey = '<%=examUserKey%>';
     $(document).ready(function(){
-        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-        if(examKey != ""){
-            var examInfo = getExamMasterGateInfo(examKey, sessionUserInfo.userKey);
-            console.log(examInfo);
-            if(examInfo.result != null){
-                innerValue('examUserKey', examInfo.result.examUserKey);
-                var basicInfo = examInfo.result.examBasicInfo;
-                innerHTML('title', basicInfo.name);
-                innerHTML('onlineTime1', basicInfo.questionCount);
-                innerHTML('questionCount', basicInfo.onlineTime);
-                innerValue('onlineTime', basicInfo.onlineTime);
-                var subjectName = examInfo.result.examSubjectName;
-                innerHTML('subjectTitle', subjectName);
-            }
+        if(examKey == null){
+            alert(1);
+            // var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+            // var examInfo = getExamMasterGateInfo(examKey, sessionUserInfo.userKey);
+            // if(examInfo.result != null){
+            //     innerValue('examUserKey', examInfo.result.examUserKey);
+            //     var basicInfo = examInfo.result.examBasicInfo;
+            //     innerHTML('title', basicInfo.name);
+            //     innerHTML('onlineTime1', basicInfo.questionCount);
+            //     innerHTML('questionCount', basicInfo.onlineTime);
+            //     innerValue('onlineTime', basicInfo.onlineTime);
+            //     var subjectName = examInfo.result.examSubjectName;
+            //     innerHTML('subjectTitle', subjectName);
+            // }
+        }else if(examUserKey == null){
+            alert(2);
+            // var examInfo = getExamMasterGateInfoFromBuy(examUserKey);
+            // if(examInfo.result != null){
+            //         console.log(examInfo);
+            // }
         }
     });
 
@@ -45,7 +53,7 @@
 </head>
 <body>
 <div class="st_exam">
-    <form action="/" id="id_frm" method="post" name="name_frm">	<input type="hidden" name="j_curri_key" value="0" />
+    <form action="/" id="id_frm" method="post" name="name_frm">	<input type="hidden" name="j_curri_key" value="0"/>
         <input type='hidden' id="examUserKey" name="examUserKey">
         <input type='hidden' id="onlineTime" name="onlineTime">
         <div class="st_exam_test">
@@ -58,7 +66,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="st_subjects">
                     <div class="st_tit_box">
                         <p class="st_subTit" id="subjectTitle"></p>

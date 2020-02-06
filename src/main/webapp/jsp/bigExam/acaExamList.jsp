@@ -37,6 +37,13 @@
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         getMockExamListAtBuy(sessionUserInfo.userKey, 3, sPage, 5, ctgKey, searchType, searchText, 'dataList2');
     }
+
+    function testPop(examUserKey){
+        var popUrl = '/bigExam?page_gbn=popupStart&examUserKey='+examUserKey;
+        var tarGet = "_blank";
+        var popOption = "width=1000, height=775, resizable=no, scrollbars=no, status=no;";
+        window.open(popUrl,tarGet,popOption);
+    }
 </script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">

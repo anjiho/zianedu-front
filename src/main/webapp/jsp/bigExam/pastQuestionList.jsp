@@ -36,6 +36,12 @@
         getGichulProblemList(sessionUserInfo.userKey, sPage, 5, searchType, searchText, groupCtgKey, classCtgKey, subjectCtgKey);
     }
 
+    function testPop(examKey){
+        var popUrl = '/bigExam?page_gbn=popupStart&examKey='+examKey;
+        var tarGet = "_blank";
+        var popOption = "width=1000, height=775, resizable=no, scrollbars=no, status=no;";
+        window.open(popUrl,tarGet,popOption);
+    }
 </script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
@@ -109,24 +115,7 @@
                                 <th style="text-align: center">시험지</th>
                             </tr>
                             </thead>
-                            <tbody id="dataList">
-<%--                            <tr>--%>
-<%--                                <td>일반행정직</td>--%>
-<%--                                <td>9급</td>--%>
-<%--                                <td>영어</td>--%>
-<%--                                <td class="left">2019 제3회 일반행정직 전과목 모의고사</td>--%>
-<%--                                <td>--%>
-<%--                                    <a href="" class="small blue" onclick="testPop()">응시하기</a>--%>
-<%--                                    <!--<a href="" class="small bdgray">응시완료</a>     <a href="" class="">응시마감</a>-->--%>
-<%--                                </td>--%>
-<%--                                <td>--%>
-<%--                                    <ul class="fileList">--%>
-<%--                                        <li><a href="#"><img src="/common/zian/images/common/icon_file.png" alt=""> 문제지</a></li>--%>
-<%--                                        <li><a href="#"><img src="/common/zian/images/common/icon_file.png" alt=""> 해설지</a></li>--%>
-<%--                                    </ul>--%>
-<%--                                </td>--%>
-<%--                            </tr>--%>
-                            </tbody>
+                            <tbody id="dataList"></tbody>
                         </table>
                     </div>
                     <!-- paging -->

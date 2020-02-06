@@ -98,7 +98,8 @@ function getMockExamListAtBuy(userKey, onOffKey, sPage, listLimit, ctgKey, searc
                     if(cmpList.acceptType == 0){//응시마감
                         returnHtml += "<td><span class=''>응시마감</span></td>";
                     }else if(cmpList.acceptType == 1){//응시가능
-                        returnHtml += "<td><a href='' class='small blue'>응시가능</a></td>";
+                        //returnHtml += "<td><a href='' class='small blue'>응시가능</a></td>";
+                        returnHtml += "<td><span class='small blue' onclick='testPop("+ cmpList.examUserKey +");'>응시가능</span></td>";
                     }else{//응시완료
                         returnHtml += "<td><span class='small bdgray'>응시완료</span></td>";
                     }
@@ -106,10 +107,10 @@ function getMockExamListAtBuy(userKey, onOffKey, sPage, listLimit, ctgKey, searc
                             returnHtml += "<td>";
                         if(cmpList.acceptType != 1){
                             returnHtml += "<ul class=\"fileList\">";
-                            if(cmpList.printQuestionFile != null){
+                            if(cmpList.printQuestionFile != null) {
                                 returnHtml += "<li><a href='"+ cmpList.printQuestionFileUrl +"' target='_blank'><img src=\"/common/zian/images/common/icon_file.png\" alt=\"\"> 문제지</a></li>";
                             }
-                            if(cmpList.printCommentaryFile != null){
+                            if(cmpList.printCommentaryFile != null) {
                                 returnHtml += "<li><a href='"+ cmpList.printCommentaryFileUrl +"'  target='_blank'><img src=\"/common/zian/images/common/icon_file.png\" alt=\"\"> 해설지</a></li>";
                             }
                             returnHtml += "</ul>";
@@ -201,7 +202,7 @@ function getGichulProblemList(userKey, sPage, listLimit, searchType, searchText,
             returnHtml += "<td>"+ cmpList.subjectCtgName +"</td>";
             returnHtml += "<td>"+ cmpList.goodsName +"</td>";
             if(cmpList.iscomplete == 0){//응시가능
-                returnHtml += "<td><span class='small blue' onclick='testPop();'>응시가능</span></td>";
+                returnHtml += "<td><span class='small blue' onclick='testPop("+ cmpList.examKey +");'>응시가능</span></td>";
             }else if(cmpList.iscomplete == 1){//응시완료
                 returnHtml += "<td><a href='' class='small bdgray'>응시완료</a></td>";
             }
@@ -242,7 +243,6 @@ function getUserExamList(examKey, userKey) {
     var infoList = getPageApi("/exam/getUserExamList/", examKey, data);
     if(infoList != null) {
         var selList = infoList.result;
-        console.log(selList);
         for(var i = 0; i < selList.length; i++){
            //"examName":
             innerHTML('examName', selList[0].examHeaderInfo.examName);
@@ -299,4 +299,12 @@ function saveExamResult(examResultInfo, playTime) {
     };
     var result = postApi("/exam/saveExamResult", data);
     return result;
+}
+
+function getExamMasterGateInfoFromBuy(examUserKey) {
+    if (examUserKey == null || examUserKey == undefined) return;
+    var infoList = getApi("/exam/getExamMasterGateInfoFromBuy/", examUserKey, '');
+    if(infoList != null) {
+        console.log(infoList);
+    }
 }
