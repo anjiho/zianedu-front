@@ -101,7 +101,7 @@ function getMockExamListAtBuy(userKey, onOffKey, sPage, listLimit, ctgKey, searc
                         //returnHtml += "<td><a href='' class='small blue'>응시가능</a></td>";
                         returnHtml += "<td><span class='small blue' onclick='goBigExamPopup("+ cmpList.examUserKey +");'>응시가능</span></td>";
                     }else{//응시완료
-                        returnHtml += "<td><span class='small bdgray'>응시완료</span></td>";
+                        returnHtml += "<td><span class=''>응시완료</span></td>";
                     }
                     if(tagId == "dataList"){
                             returnHtml += "<td>";
@@ -150,7 +150,7 @@ function getWeekBigExamList(userKey, sPage, listLimit, ctgKey, searchType, searc
             if(cmpList.iscomplete == 0){//응시가능
                 returnHtml += "<td><span class='small blue' onclick='goBigExamPopup("+ cmpList.examKey +");'>응시가능</span></td>";
             }else if(cmpList.iscomplete == 1){//응시완료
-                returnHtml += "<td><a href='' class='small bdgray'>응시완료</a></td>";
+                returnHtml += "<td><span class=''>응시완료</span></td>";
             }
                 returnHtml += "<td>";
                 //if(cmpList.iscomplete == 1){
@@ -204,7 +204,7 @@ function getGichulProblemList(userKey, sPage, listLimit, searchType, searchText,
             if(cmpList.iscomplete == 0){//응시가능
                 returnHtml += "<td><span class='small blue' onclick='goBigExamPopup("+ cmpList.examKey +");'>응시가능</span></td>";
             }else if(cmpList.iscomplete == 1){//응시완료
-                returnHtml += "<td><span class='small bdgray'>응시완료</span></td>";
+                returnHtml += "<td><span class=''>응시완료</span></td>";
             }
             returnHtml += "<td>";
                 returnHtml += "<ul class=\"fileList\">";
