@@ -10,41 +10,34 @@
 %>
 <script>
     var examKey = '<%=examKey%>';
-
+    var examUserKey = '<%=examUserKey%>';
     $(document).ready(function(){
-        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-        var examInfo = getExamMasterGateInfo(examKey, sessionUserInfo.userKey);
-        if(examInfo.result != null) {
-            innerValue('examUserKey', examInfo.result.examUserKey);
-            var basicInfo = examInfo.result.examBasicInfo;
-            innerHTML('title', basicInfo.name);
-            innerHTML('onlineTime1', basicInfo.questionCount);
-            innerHTML('questionCount', basicInfo.onlineTime);
-            innerValue('onlineTime', basicInfo.onlineTime);
-            var subjectName = examInfo.result.examSubjectName;
-            innerHTML('subjectTitle', subjectName);
+        if(examKey != "null"){
+            var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+            var examInfo = getExamMasterGateInfo(examKey, sessionUserInfo.userKey);
+            if(examInfo.result != null){
+                innerValue('examUserKey', examInfo.result.examUserKey);
+                var basicInfo = examInfo.result.examBasicInfo;
+                innerHTML('title', basicInfo.name);
+                innerHTML('onlineTime1', basicInfo.questionCount);
+                innerHTML('questionCount', basicInfo.onlineTime);
+                innerValue('onlineTime', basicInfo.onlineTime);
+                var subjectName = examInfo.result.examSubjectName;
+                innerHTML('subjectTitle', subjectName);
+            }
+        }else if(examUserKey != "null"){
+            var examInfo = getExamMasterGateInfoFromBuy(examUserKey);
+            if(examInfo.result != null){
+                innerValue('examUserKey', examInfo.result.examUserKey);
+                var basicInfo = examInfo.result.examBasicInfo;
+                innerHTML('title', basicInfo.name);
+                innerHTML('onlineTime1', basicInfo.questionCount);
+                innerHTML('questionCount', basicInfo.onlineTime);
+                innerValue('onlineTime', basicInfo.onlineTime);
+                var subjectName = examInfo.result.examSubjectName;
+                innerHTML('subjectTitle', subjectName);
+            }
         }
-        // if(examKey == null){
-        //     alert(1);
-        //     // var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-        //     // var examInfo = getExamMasterGateInfo(examKey, sessionUserInfo.userKey);
-        //     // if(examInfo.result != null){
-        //     //     innerValue('examUserKey', examInfo.result.examUserKey);
-        //     //     var basicInfo = examInfo.result.examBasicInfo;
-        //     //     innerHTML('title', basicInfo.name);
-        //     //     innerHTML('onlineTime1', basicInfo.questionCount);
-        //     //     innerHTML('questionCount', basicInfo.onlineTime);
-        //     //     innerValue('onlineTime', basicInfo.onlineTime);
-        //     //     var subjectName = examInfo.result.examSubjectName;
-        //     //     innerHTML('subjectTitle', subjectName);
-        //     // }
-        // }else if(examUserKey == null){
-        //     alert(2);
-        //     // var examInfo = getExamMasterGateInfoFromBuy(examUserKey);
-        //     // if(examInfo.result != null){
-        //     //         console.log(examInfo);
-        //     // }
-        // }
     });
 
     function onStart(){
@@ -73,9 +66,7 @@
                 <div class="st_title_box">
                     <div class="st_title_line"></div>
                     <div class="st_title">
-                        <div class="st_text" id="title">
-
-                        </div>
+                        <div class="st_text" id="title"></div>
                     </div>
                 </div>
                 <div class="st_subjects">

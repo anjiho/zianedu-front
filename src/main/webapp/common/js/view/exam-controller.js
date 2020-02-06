@@ -204,7 +204,7 @@ function getGichulProblemList(userKey, sPage, listLimit, searchType, searchText,
             if(cmpList.iscomplete == 0){//응시가능
                 returnHtml += "<td><span class='small blue' onclick='testPop("+ cmpList.examKey +");'>응시가능</span></td>";
             }else if(cmpList.iscomplete == 1){//응시완료
-                returnHtml += "<td><a href='' class='small bdgray'>응시완료</a></td>";
+                returnHtml += "<td><span class='small bdgray'>응시완료</span></td>";
             }
             returnHtml += "<td>";
                 returnHtml += "<ul class=\"fileList\">";
@@ -305,6 +305,6 @@ function getExamMasterGateInfoFromBuy(examUserKey) {
     if (examUserKey == null || examUserKey == undefined) return;
     var infoList = getApi("/exam/getExamMasterGateInfoFromBuy/", examUserKey, '');
     if(infoList != null) {
-        console.log(infoList);
+        return infoList;
     }
 }
