@@ -107,12 +107,12 @@
                                                 </colgroup>
                                                 <thead>
                                                 <tr>
-                                                    <th>직렬</th>
-                                                    <th>모의고사명</th>
-                                                    <th>응시기간</th>
-                                                    <th>성적보기</th>
-                                                    <th>오답노트</th>
-                                                    <th>시험지</th>
+                                                    <th style="text-align: center;">직렬</th>
+                                                    <th style="text-align: center;">모의고사명</th>
+                                                    <th style="text-align: center;">응시기간</th>
+                                                    <th style="text-align: center;">성적보기</th>
+                                                    <th style="text-align: center;">오답노트</th>
+                                                    <th style="text-align: center;">시험지</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>

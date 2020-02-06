@@ -44,7 +44,6 @@ function saveTeacherBoard(bbsMasterKey, teacherKey, userKey, title, content, isN
         isSecret : isSecret,
         fileName : fileName
     };
-    console.log(data);
     var result = postApi("/board/saveTeacherBoard", data);
     return result;
 }
