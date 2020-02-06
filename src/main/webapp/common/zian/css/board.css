@@ -1,0 +1,85 @@
+/************ 공통 CSS ****************/
+.tBoard{width:100%;border-spacing:0;border-collapse:collapse;table-layout:fixed;margin-bottom: 20px;font-size:16px}
+
+/* 테이블 박스 */
+.tableWrap2{padding:20px 0}
+
+
+/************ 수정 CSS ***************/
+/* 공지사항 리스트 */
+.noticeList{width:100%;border-spacing:0;border-collapse:collapse;table-layout:fixed;border-top:1px solid #ddd}
+.noticeList th{padding:0 10px;font-weight:bold;height:50px;background:none;border-right:0px none}
+.noticeList tr{border-bottom:1px solid #ddd}
+.noticeList tr.notice{border-bottom:1px solid #ddd;background:#f4f4f4}
+.noticeList tbody td{padding:0 10px;height:50px;border-right:0px none;text-align:center}
+.noticeList tbody td:nth-child(2){text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* 공지사항 뷰페이지 */
+.noticeView{}
+.noticeView thead{background:#ebebeb;}
+.noticeView thead th{padding:0px 20px;height:50px;font-weight:normal;text-align:left;background:none;border-bottom:1px solid #e1e1e1;}
+.noticeView td{padding:0px 20px;height:50px;font-weight:normal;text-align:left;background:none;border-bottom:1px solid #e1e1e1;}
+.noticeView tr:nth-child(2) td{height:auto;padding: 10px 20px}
+.noticeView td.tdEditorContent{padding:20px 20px !important;height:180px !important;vertical-align:top}
+
+
+/* 선생님 리스트 */
+.teClassList{width:100%;border-spacing:0;border-collapse:collapse;table-layout:fixed;border-top:2px solid #000}
+.teClassList th{padding: 10px;font-weight:bold;height:50px;background:none;border-right:0px none;font-size:16px;}
+
+
+/* 수강신청 리스트 */
+.classList{border:1px solid #e5e5e5;border-bottom:0;width:96%;margin:0px 2%}
+.classList thead th{padding:10px;border-bottom:1px solid #e5e5e5}
+.classList tbody td{padding:12px;height:60px;font-size:14px;border-bottom:1px solid #e5e5e5;box-sizing:border-box}
+
+
+
+/* 반응형 */
+@media screen and (max-width:800px){
+    /*****   공통   *****/
+    .tBoard{font-size:14px}
+    
+    /* 테이블 박스 */
+    .tableWrap{padding:0 2%;box-sizing:border-box}
+    .tableWrap2{padding:10px 0}
+    
+    
+    /*****   수정   *****/
+    /* 공지사항 리스트 */
+    .noticeList{display:block;width:100% !important;}
+    .noticeList thead{display:none}
+    .noticeList tbody{display:block;width:100%}
+    .noticeList tr{display:block;width:100%;padding:20px 15px;position:relative;box-sizing:border-box}
+    .noticeList tr td{border-bottom:none;display:inline-block;height:inherit !important;}
+    .noticeList tr td:nth-child(1){display:none}
+    .noticeList tr td:nth-child(2){display:block;padding:0px 0px !important}
+    .noticeList tr td:nth-child(2) a{display:inline;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;line-height:20px;font-size:16px;font-weight:200;}
+    .noticeList tr td:nth-child(3){text-align:left;color:#666;padding:0 4px 0px 0px}
+    .noticeList tr td:nth-child(4){color:#666;padding:0 4px 0}
+    .noticeList tr td:nth-child(5){color:#666;padding:0 4px 0}    
+    
+    /* 공지사항 뷰페이지 */
+    .tbView{display:block !important;width:100%;padding:none}
+    .noticeView colgroup{display:none}
+    .noticeView thead th{display:inline-block;padding:14px 2%!important;box-sizing: border-box;border-bottom:none;font-size:14px;}
+    .noticeView thead th:nth-child(1){display:inline-block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;width:74%;box-sizing:border-box}
+    .noticeView thead th:nth-child(2){width:26%;box-sizing:border-box;text-align:right}
+    .noticeView tbody tr{display:block;box-sizing:border-box;width:100%;position:relative}
+    .noticeView tbody tr:nth-child(1) td{display:block;width:100%;padding:14px 2%;box-sizing:border-box}
+    .noticeView tbody tr:nth-child(2) td{display:block;width:100%;padding:14px 2%;box-sizing:border-box;height:auto}
+    .noticeView tbody td.tdEditorContent{display:block;width:100%;padding:4% 2% !important;box-sizing:border-box;height:auto !important;}
+    .noticeView tbody td.center{display:inline-block;width:30%;box-sizing:border-box;padding:14px 2%;}
+    .noticeView tbody td.left{display:inline-block;width:68%;box-sizing:border-box;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;padding:14px 1%;}
+    .noticeView tbody td.right{display:none}
+    
+    /* 수강신청 리스트 */
+    .classList{display:block;width:100%;margin:0;}
+    .classList thead{display:none}
+    .classList tbody tr{display:block;border-bottom:1px solid #e5e5e5;width:100%;padding:10px 2%;box-sizing:border-box;}
+    .classList tbody tr td{border-bottom:0 !important;height:auto;padding: inherit;}
+    .classList tbody tr td:nth-child(1){display:none}
+    .classList tbody tr td:nth-child(2){display:block;font-size:16px;font-weight:bold;padding:0;padding-bottom:4px}
+    .classList tbody tr td:nth-child(3){display:inline-block;padding-left:0}
+    .classList tbody tr td:nth-child(4){display:inline-block}
+}

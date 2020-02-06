@@ -25,7 +25,7 @@
                     <ul id="mainVisualSlider2"></ul>
                 </div>
             </div>
-            <div class="mainBannerReview">
+            <div class="mainBannerReview disnonepc">
                 <div class="inner">
                     <ul id="reviewBanner"></ul>
 <%--                    <a href="#"><img src="/common/zian/images/content/img_banner0101.jpg" alt=""></a>--%>

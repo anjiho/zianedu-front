@@ -11,12 +11,6 @@
         fn_search('new');
     });
 
-    // //상세보기
-    // function goDetailNotice(bbsKey) {
-    //     innerValue("bbsKey", bbsKey);
-    //     goPage("notice", "detail");
-    // }
-
     //검색
     function fn_search(val) {
         var sPage = getInputTextValue("sPage");
@@ -102,16 +96,3 @@
 </form>
 </body>
 </html>
-<script>
-    // $(document).ready(function() {
-    //     $('.fc-prev-button').click(function(){
-    //         var date = moment($("#calendar").fullCalendar("getDate")).format('YYYY-MM');
-    //         test(date);
-    //     });
-    //
-    //     $('.fc-next-button').click(function(){
-    //         var date = moment($("#calendar").fullCalendar("getDate")).format('YYYY-MM');
-    //         test(date);
-    //     });
-    // });
-</script>
