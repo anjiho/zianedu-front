@@ -13,10 +13,13 @@
     <script src="/common/js/common.js"></script>
     <script src="/common/zian/js/common.js"></script>
     <script src="/common/zian/js/kiplayer/common.js"></script>
+    <script src="/common/zian/js/kiplayer/jquery.easing.1.3.min.js"></script>
+    <script src="/common/zian/js/kiplayer/jquery.simpler-sidebar.min.js"></script>
     <script src="/common/zian/js/main.js"></script>
     <script src="/common/zian/js/submain.js"></script>
     <script src="/common/zian/js/swiper.min.js"></script>
     <script src="/common/zian/js/ui.js"></script>
+
     <!-- include libraries(jQuery, bootstrap) -->
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
@@ -73,7 +76,7 @@
     <script type='text/javascript' src='/dwr/util.js'></script>
     <!--paging-->
     <script type='text/javascript' src='/common/js/comPage.js'></script>
-
+    <script type='text/javascript' src='/common/js/mobile.js'></script>
     <script src="/common/starplayer/js/starplayer_popup.js"></script>
     <script src="/common/starplayer/js/starplayer_config.js"></script>
     <script src="/common/starplayer/js/starplayer_app.js"></script>
