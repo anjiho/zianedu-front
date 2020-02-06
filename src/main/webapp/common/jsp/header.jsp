@@ -348,7 +348,7 @@
     </div>
     <!--//주메뉴-->
     <!-- gnb_area -->
-    <div class="gnb_area">
+    <div class="gnb_area" id="">
         <ul class="Mdepth1">
             <li><a href="#">내강의실</a></li>
             <li><a href="#">교수소개</a></li>
