@@ -14,7 +14,7 @@
                 $("#myPageMenu li:eq(3)").addClass('active');
             }else if(leftMenuInfo == "board"){
                 $("#myPageMenu li:eq(4)").addClass('active');
-            }else if(leftMenuInfo == "lecture"){
+            }else if(leftMenuInfo == "gradeManage"){
                 $("#myPageMenu li:eq(5)").addClass('active');
             }
         }
@@ -45,8 +45,10 @@
                 $("#myPageMenu li:eq(4)").addClass('active');
                 goPageNoSubmit('myPage', 'questionList');
             }else if($(this).index() == 5){
-                sessionStorage.setItem("myPageHeader", "lecture");
+                sessionStorage.setItem("myPageHeader", "gradeManage");
+                sessionStorage.setItem("tabHeader", "tabMenu1");
                 $("#myPageMenu li:eq(5)").addClass('active');
+                goPageNoSubmit('myPage', 'gradeList');
             }
         });
     });
@@ -58,7 +60,7 @@
         <li><a href="javascript:void(0);">회원정보관리</a></li>
         <li><a href="javascript:void(0);">쿠폰마일리지</a></li>
         <li><a href="javascript:void(0);">게시물관리</a></li>
-        <li><a href="javascript:void(0);">관심강좌</a></li>
+        <li><a href="javascript:void(0);">성적관리</a></li>
     </ul>
 </div>
 <br />

@@ -54,6 +54,10 @@ public class myPageController {
             mvc.setViewName("/mypage/boardManage/myBoard/boardList");
         }else if("detailBoard".equals(page_gbn)){
             mvc.setViewName("/mypage/boardManage/myBoard/detailBoard");
+        }else if("gradeList".equals(page_gbn)){
+            mvc.setViewName("/mypage/gradeManage/gradeList");
+        }else if("examUseList".equals(page_gbn)){
+            mvc.setViewName("/mypage/gradeManage/examUseList");
         }
         return mvc;
     }
