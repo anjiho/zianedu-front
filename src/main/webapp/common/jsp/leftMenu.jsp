@@ -222,10 +222,10 @@
             <a href="javascript:void(0);" onclick="setLeftMenu()"><span id="topSub"></span></a>
         </div>
         <div id="bookStoreTab" style="background: #003471;display: none;    height: 160px; text-align: center;">
-            <h1 style="border-bottom: none;display: block; margin: 0 20px;"><a href="javascript:goPageNoSubmit('bookStore','main')" style="padding: 50px 0;display: block;margin: 0; padding: 46px 0;font-size: 26px;color: #fff; line-height: 30px">온라인<br>서점</a></h1>
+            <h1 style="border-bottom: none;display: block; margin: 0 20px;"><a href="javascript:void(0);" style="padding: 50px 0;display: block;margin: 0; padding: 46px 0;font-size: 26px;color: #fff; line-height: 30px">온라인<br>서점</a></h1>
         </div>
         <div id="bigExamTab" style="background: #2e4261;display: none;height: 160px; text-align: center;">
-            <h1 style="border-bottom: none;display: block; margin: 0 20px;"><a href="javascript:goPageNoSubmit('bigExam','main')" style="padding: 50px 0;display: block;margin: 0; padding: 46px 0;font-size: 26px;color: #fff; line-height: 30px">BIG<br>모의고사</a></h1>
+            <h1 style="border-bottom: none;display: block; margin: 0 20px;"><a href="javascript:void(0);" style="padding: 50px 0;display: block;margin: 0; padding: 46px 0;font-size: 26px;color: #fff; line-height: 30px">BIG<br>모의고사</a></h1>
         </div>
         <div id="siteNav">
             <ul>
@@ -239,14 +239,14 @@
         <div id="quickNav">
             <b>바로가기메뉴</b>
             <ul>
-                <li class="noBg"><a href="javascript:goLecRoom();"><span class="icon item1"></span>강의실배정표</a></li>
-                <li class="noBg"><a href="javascript:goOpenMenu();"><span class="icon item2"></span>학원시간표</a></li>
-                <li class="noBg"><a href="javascript:goExamGuide();"><span class="icon item3"></span>수험가이드</a></li>
-                <li><a href="javascript:goPageNoSubmit('myLecRoom', 'main')"><span class="icon item4"></span>내강의실</a></li>
-                <li><a href="javascript:goPageNoSubmit('myLecRoom', 'main');"><span class="icon item5"></span>학원수강내역</a></li>
-                <li><a href="javascript:goMyCart();"><span class="icon item6"><em id="cartCnt"></em></span>장바구니</a></li>
-                <li><a href="javascript:goOpenMenu();"><span class="icon item7"></span>공지사항</a></li>
-                <li><a href="javascript:goPageNoSubmit('customerCenter','consult');"><span class="icon item8"></span>1:1문의</a></li>
+                <li class="noBg"><a href="javascript:void(0);"><span class="icon item1"></span>강의실배정표</a></li>
+                <li class="noBg"><a href="javascript:void(0);"><span class="icon item2"></span>학원시간표</a></li>
+                <li class="noBg"><a href="javascript:void(0);"><span class="icon item3"></span>수험가이드</a></li>
+                <li><a href="javascript:void(0);"><span class="icon item4"></span>내강의실</a></li>
+                <li><a href="javascript:void(0);"><span class="icon item5"></span>학원수강내역</a></li>
+                <li><a href="javascript:void(0);"><span class="icon item6"><em id="cartCnt"></em></span>장바구니</a></li>
+                <li><a href="javascript:void(0);"><span class="icon item7"></span>공지사항</a></li>
+                <li><a href="javascript:void(0);"><span class="icon item8"></span>1:1문의</a></li>
             </ul>
         </div>
         <div id="examBanner" class="slider useBx">

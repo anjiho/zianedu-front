@@ -102,23 +102,23 @@
         <h1><a href="" id="mainUrl"><img src="" id="logo"> <span id="mainName"></span></a></h1>
         <!--최상단메뉴-->
         <!-- 로그인 -->
-<%--        <div id="topNav" class="login" style="display: none;">--%>
-<%--            <ul>--%>
-<%--                <li><a href="javascript:addFavorite();" class="btn_bookmark">즐겨찾기에 등록</a></li>--%>
-<%--                <li id="userName"><a href="#"></a></li>--%>
-<%--                <li><a href="javascript:goMyPage();">마이페이지</a></li>--%>
-<%--                <li><a href="javascript:goLogout();">로그아웃</a></li>--%>
-<%--                <li id="mypage"><a href="javascript:goPassReview();">합격수기</a></li>--%>
-<%--                <li><a href="javascript:goPageNoSubmit('event', 'proceedList');">이벤트</a></li>--%>
-<%--            </ul>--%>
-<%--        </div>--%>
+        <div id="topNav" class="login" style="display: none;">
+            <ul>
+                <li><a href="javascript:addFavorite();" class="btn_bookmark">즐겨찾기에 등록</a></li>
+                <li id="userName"><a href="#"></a></li>
+                <li><a href="javascript:void(0);">마이페이지</a></li>
+                <li><a href="javascript:void(0);">로그아웃</a></li>
+                <li id="mypage"><a href="javascript:void(0);">합격수기</a></li>
+                <li><a href="javascript:void(0);">이벤트</a></li>
+            </ul>
+        </div>
         <!-- 로그아웃 -->
         <div id="topNav" class="logout" style="display: none;">
             <ul>
                 <li><a href="javascript:addFavorite();" class="btn_bookmark">즐겨찾기에 등록</a></li>
-                <li id="login"><a href="javascript:goLoginPage();">로그인</a></li>
-                <li id="join"><a href="javascript:goPage('user', 'joinAgree');">회원가입</a></li>
-                <li><a href="javascript:goPageNoSubmit('event', 'proceedList');">이벤트</a></li>
+                <li id="login"><a href="javascript:void(0);">로그인</a></li>
+                <li id="join"><a href="javascript:void(0);">회원가입</a></li>
+                <li><a href="javascript:void(0);">이벤트</a></li>
             </ul>
         </div>
         <!--//최상단메뉴-->
@@ -295,30 +295,30 @@
     <div id="gnb" class="onlineTopMenu" style="display: none;">
         <div class="inner">
             <ul class="deaph1 cols7">
-                <li><a href="javascript:goPageNoSubmit('myLecRoom', 'main')">내강의실</a></li>
-                <li><a href="javascript:goPageNoSubmit('teacher', 'main')">교수소개</a></li>
-                <li><a href="javascript:goPageNoSubmit('lectureOrder', 'single')">수강신청</a></li>
-                <li><a href="javascript:goPageNoSubmit('zianPass', 'list')">지안패스</a></li>
-                <li><a href="javascript:goPageNoSubmit('freeLecture', 'theory')">무료강좌</a></li>
-                <li><a href="javascript:goBigExam()">빅모의고사</a></li>
-                <li><a href="javascript:goPassReview();">합격수기</a></li>
+                <li><a href="javascript:void(0);">내강의실</a></li>
+                <li><a href="javascript:void(0);">교수소개</a></li>
+                <li><a href="javascript:void(0);">수강신청</a></li>
+                <li><a href="javascript:void(0);">지안패스</a></li>
+                <li><a href="javascript:void(0);">무료강좌</a></li>
+                <li><a href="javascript:void(0);">빅모의고사</a></li>
+                <li><a href="javascript:void(0);">합격수기</a></li>
             </ul>
         </div>
-        <!-- gnb_area -->
-        <div class="gnb_area" id="">
-            <ul class="Mdepth1">
-                <li><a href="#">내강의실</a></li>
-                <li><a href="#">교수소개</a></li>
-                <li><a href="#">수강신청</a></li>
-                <li><a href="#">지안패스</a></li>
-                <li><a href="#">무료강좌</a></li>
-                <li><a href="#">빅모의고사</a></li>
-                <li><a href="#">합격수기</a></li>
-            </ul>
-        </div>
-        <!-- //gnb_area -->
     </div>
     <!--//주메뉴-->
+    <!-- gnb_area -->
+    <div class="gnb_area">
+        <ul class="Mdepth1">
+            <li><a href="#">내강의실</a></li>
+            <li><a href="#">교수소개</a></li>
+            <li><a href="#">수강신청</a></li>
+            <li><a href="#">지안패스</a></li>
+            <li><a href="#">무료강좌</a></li>
+            <li><a href="#">빅모의고사</a></li>
+            <li><a href="#">합격수기</a></li>
+        </ul>
+    </div>
+    <!-- //gnb_area -->
 </div>
 <!--//상단-->
 <script>
