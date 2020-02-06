@@ -10,29 +10,41 @@
 %>
 <script>
     var examKey = '<%=examKey%>';
-    var examUserKey = '<%=examUserKey%>';
+
     $(document).ready(function(){
-        if(examKey == null){
-            alert(1);
-            // var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-            // var examInfo = getExamMasterGateInfo(examKey, sessionUserInfo.userKey);
-            // if(examInfo.result != null){
-            //     innerValue('examUserKey', examInfo.result.examUserKey);
-            //     var basicInfo = examInfo.result.examBasicInfo;
-            //     innerHTML('title', basicInfo.name);
-            //     innerHTML('onlineTime1', basicInfo.questionCount);
-            //     innerHTML('questionCount', basicInfo.onlineTime);
-            //     innerValue('onlineTime', basicInfo.onlineTime);
-            //     var subjectName = examInfo.result.examSubjectName;
-            //     innerHTML('subjectTitle', subjectName);
-            // }
-        }else if(examUserKey == null){
-            alert(2);
-            // var examInfo = getExamMasterGateInfoFromBuy(examUserKey);
-            // if(examInfo.result != null){
-            //         console.log(examInfo);
-            // }
+        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        var examInfo = getExamMasterGateInfo(examKey, sessionUserInfo.userKey);
+        if(examInfo.result != null) {
+            innerValue('examUserKey', examInfo.result.examUserKey);
+            var basicInfo = examInfo.result.examBasicInfo;
+            innerHTML('title', basicInfo.name);
+            innerHTML('onlineTime1', basicInfo.questionCount);
+            innerHTML('questionCount', basicInfo.onlineTime);
+            innerValue('onlineTime', basicInfo.onlineTime);
+            var subjectName = examInfo.result.examSubjectName;
+            innerHTML('subjectTitle', subjectName);
         }
+        // if(examKey == null){
+        //     alert(1);
+        //     // var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        //     // var examInfo = getExamMasterGateInfo(examKey, sessionUserInfo.userKey);
+        //     // if(examInfo.result != null){
+        //     //     innerValue('examUserKey', examInfo.result.examUserKey);
+        //     //     var basicInfo = examInfo.result.examBasicInfo;
+        //     //     innerHTML('title', basicInfo.name);
+        //     //     innerHTML('onlineTime1', basicInfo.questionCount);
+        //     //     innerHTML('questionCount', basicInfo.onlineTime);
+        //     //     innerValue('onlineTime', basicInfo.onlineTime);
+        //     //     var subjectName = examInfo.result.examSubjectName;
+        //     //     innerHTML('subjectTitle', subjectName);
+        //     // }
+        // }else if(examUserKey == null){
+        //     alert(2);
+        //     // var examInfo = getExamMasterGateInfoFromBuy(examUserKey);
+        //     // if(examInfo.result != null){
+        //     //         console.log(examInfo);
+        //     // }
+        // }
     });
 
     function onStart(){
