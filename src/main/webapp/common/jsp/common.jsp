@@ -39,7 +39,6 @@
     <link rel="stylesheet" type="text/css" href="/common/zian/css/bigtest.css">
     <link rel="stylesheet" type="text/css" href="/common/zian/css/big_layout.css">
     <link rel="stylesheet" type="text/css" href="/common/zian/css/reponsive.css">
-    <link rel="stylesheet" type="text/css" href="/common/zian/css/reponsive_add.css">
     <link rel="stylesheet" type="text/css" href="/common/zian/css/board.css">
 
     <!--<script src="/common/assets/jquery/dist/jquery.min.js"></script>-->
