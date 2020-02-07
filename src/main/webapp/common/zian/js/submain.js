@@ -81,8 +81,6 @@ $(function(){
                 // when window width is >= 640px
                 1024: { slidesPerView: 6, spaceBetween: 0 }
             }
-
-
     });
 
     var galleryTop1 = new Swiper('#mainTeacherTab1 .mainTeacherPage', {

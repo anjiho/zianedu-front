@@ -292,7 +292,6 @@ function getTeacherPageList(tagId, ctgKey, subjectType, teacherMenuCtgKey) {
     var infoList = getApi("/banner/getTeacherBannerList/", ctgKey, data);
     if (infoList.result.length > 0) {
         var selList = infoList.result;
-        console.log(selList);
         for(var i = 0; i < selList.length; i++) {
             var cmpList = selList[i];
             var retrunHtml = "<div class=\"swiper-slide\">";
@@ -321,6 +320,25 @@ function getTeacherPageList(tagId, ctgKey, subjectType, teacherMenuCtgKey) {
             retrunHtml += '</div>';
             $("#teacherPage1").append(retrunHtml);
         }
+        var galleryThumbs1 = new Swiper('#mainTeacherTab1 .mainTeacherTitle', {
+            spaceBetween:0,
+            slidesPerView:6,
+            loop:true,
+            freeMode:true,
+            loopedSlides:7, //looped slides should be the same
+            watchSlidesVisibility:true,
+            watchSlidesProgress:true,
+            breakpointsInverse: true, breakpoints:
+                { // when window width is >= 320px
+                    320: { slidesPerView: 2, spaceBetween: 0 },
+                    // when window width is >= 480px
+                    600: { slidesPerView: 3, spaceBetween: 0 },
+                    // when window width is >= 640px
+                    800: { slidesPerView: 4, spaceBetween: 0 } ,
+                    // when window width is >= 640px
+                    1024: { slidesPerView: 6, spaceBetween: 0 }
+                }
+        });
     }
 }
 
@@ -405,6 +423,25 @@ function getMajorTeacherPageList(tagId, ctgKey, subjectType, teacherMenuCtgKey) 
             retrunHtml += '</div>';
             $("#teacherPage2").append(retrunHtml);
         }
+        var galleryThumbs2 = new Swiper('#mainTeacherTab2 .mainTeacherTitle', {
+            spaceBetween:0,
+            slidesPerView:6,
+            loop:true,
+            freeMode:true,
+            loopedSlides:7, //looped slides should be the same
+            watchSlidesVisibility:true,
+            watchSlidesProgress:true,
+            breakpointsInverse: true, breakpoints:
+                { // when window width is >= 320px
+                    320: { slidesPerView: 2, spaceBetween: 0 },
+                    // when window width is >= 480px
+                    600: { slidesPerView: 3, spaceBetween: 0 },
+                    // when window width is >= 640px
+                    800: { slidesPerView: 4, spaceBetween: 0 } ,
+                    // when window width is >= 640px
+                    1024: { slidesPerView: 6, spaceBetween: 0 }
+                }
+        });
     }
 
 
