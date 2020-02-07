@@ -141,7 +141,7 @@
                             <li><img src="/common/zian/images/bigimg/img_tabbg_left.png" alt="left" /></li>
                             <li class="sts_button" data-index="0">
                                 <div>
-                                    <a href="javascript:goPageNoSubmit('myPage','gradeAllList');"><img src="/common/zian/images/bigimg/img_tabmenu_01_on.png" alt="성적 전체분석" title="성적 전체분석" /></a>
+                                    <a href="javascript:goPageNoSubmit('myPage','gradeAllList');"><img src="/common/zian/images/bigimg/img_tabmenu_01_off.png" alt="성적 전체분석" title="성적 전체분석" /></a>
                                 </div>
                             </li>
                             <li class="sts_button" data-index="1">
@@ -151,7 +151,7 @@
                             </li>
                             <li class="sts_button" data-index="2">
                                 <div>
-                                    <a href="javascript:goPageNoSubmit('myPage','answerNote');"><img src="/common/zian/images/bigimg/img_tabmenu_03_off.png" alt="오답노트" title="오답노트" /></a>
+                                    <a href="javascript:goPageNoSubmit('myPage','answerNote');"><img src="/common/zian/images/bigimg/img_tabmenu_03_on.png" alt="오답노트" title="오답노트" /></a>
                                 </div>
                             </li>
                             <li><img src="/common/zian/images/bigimg/img_tabbg_right.png" alt="right" /></li>

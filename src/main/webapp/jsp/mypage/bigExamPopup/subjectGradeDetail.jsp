@@ -74,12 +74,12 @@
                             <li><img src="/common/zian/images/bigimg/img_tabbg_left.png" alt="left" /></li>
                             <li class="sts_button" data-index="0">
                                 <div>
-                                    <a href="javascript:goPageNoSubmit('myPage','gradeAllList');"><img src="/common/zian/images/bigimg/img_tabmenu_01_on.png" alt="성적 전체분석" title="성적 전체분석" /></a>
+                                    <a href="javascript:goPageNoSubmit('myPage','gradeAllList');"><img src="/common/zian/images/bigimg/img_tabmenu_01_off.png" alt="성적 전체분석" title="성적 전체분석" /></a>
                                 </div>
                             </li>
                             <li class="sts_button" data-index="1">
                                 <div>
-                                    <a href="javascript:goPageNoSubmit('myPage','subjectGradeDetail');"><img src="/common/zian/images/bigimg/img_tabmenu_02_off.png" alt="과목별 성적 상세분석" title="과목별 성적 상세분석" /></a>
+                                    <a href="javascript:goPageNoSubmit('myPage','subjectGradeDetail');"><img src="/common/zian/images/bigimg/img_tabmenu_02_on.png" alt="과목별 성적 상세분석" title="과목별 성적 상세분석" /></a>
                                 </div>
                             </li>
                             <li class="sts_button" data-index="2">
