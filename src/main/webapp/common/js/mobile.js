@@ -37,8 +37,8 @@ $( document ).ready( function() {
 						$(".Mdepth1").slick({
 						  dots: false,
 						  infinite: false,
-						  slidesToShow: 6,
-						  slidesToScroll: 6,
+						  slidesToShow: 10,
+						  slidesToScroll: 10,
 						  variableWidth: false,
 						  speed: 300,
 						  arrows: true,

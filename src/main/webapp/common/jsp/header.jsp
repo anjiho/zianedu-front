@@ -102,8 +102,8 @@
         <h1><a href="" id="mainUrl"><img src="" id="logo"> <span id="mainName"></span></a></h1>
         <!--최상단메뉴-->
         <!-- 로그인 -->
-        <div id="topNav" class="login" style="display: none;">
-            <ul>
+        <div id="topNav">
+            <ul class="login" style="display: none;">
                 <li><a href="javascript:addFavorite();" class="btn_bookmark">즐겨찾기에 등록</a></li>
                 <li id="userName"><a href="#"></a></li>
                 <li><a href="javascript:goMyPage();">마이페이지</a></li>
@@ -111,37 +111,207 @@
                 <li id="mypage"><a href="javascript:goPassReview();">합격수기</a></li>
                 <li><a href="javascript:goPageNoSubmit('event', 'proceedList');">이벤트</a></li>
             </ul>
-        </div>
-        <!-- 로그아웃 -->
-        <div id="topNav" class="logout" style="display: none;">
-            <ul>
+            <ul class="logout" style="display: none;">
                 <li><a href="javascript:addFavorite();" class="btn_bookmark">즐겨찾기에 등록</a></li>
                 <li id="login"><a href="javascript:goLoginPage();">로그인</a></li>
                 <li id="join"><a href="javascript:goPage('user', 'joinAgree');">회원가입</a></li>
                 <li><a href="javascript:goPageNoSubmit('event', 'proceedList');">이벤트</a></li>
             </ul>
         </div>
+        <!-- 로그아웃 -->
+<%--        <div id="topNav" class="logout" style="display: none;">--%>
+<%--            <ul>--%>
+<%--                <li><a href="javascript:addFavorite();" class="btn_bookmark">즐겨찾기에 등록</a></li>--%>
+<%--                <li id="login"><a href="javascript:goLoginPage();">로그인</a></li>--%>
+<%--                <li id="join"><a href="javascript:goPage('user', 'joinAgree');">회원가입</a></li>--%>
+<%--                <li><a href="javascript:goPageNoSubmit('event', 'proceedList');">이벤트</a></li>--%>
+<%--            </ul>--%>
+<%--        </div>--%>
         <!--//최상단메뉴-->
+        <!--추가-->
+        <div id="topNavM">
+            <ul>
+                <li><a href="#" class="login_btn">로그인</a>
+                    <ul class="logindrop">
+                        <li><a href="">장바구니</a></li>
+                        <li><a href="">내강의실</a></li>
+                        <li><a href="">마이페이지</a></li>
+                        <li><a href="">로그아웃</a></li>
+                    </ul>
+                </li>
+                <li><a href="#" class="header_menu" id="header_menu">메뉴</a></li>
+            </ul>
+        </div>
 
+        <!-- sitemap_layer -->
+        <div class="sitemap_layer" id="sitemap_layer">
+            <div class="sitemap_layer_wrapper">
+                <div class="side_menu_header">
+                    <p class="btn_home">지안에듀<span>님</span></p>
+                    <span class="bar"></span>
+                    <a href="" class="btn_logout">로그아웃</a>
+                    <button class="btn_close_menu">닫기</button>
+                </div>
+                <!-- sitemap_wrap -->
+                <div class="sitemap_wrap">
+                    <!-- sitemap_box -->
+                    <div class="sitemap_box">
+                        <ul>
+                            <li class="deth1_tit">
+                                <a href="#" class="normal">
+                                    <span>행정직학원</span>
+                                </a>
+                                <ul class="deth2_list">
+                                    <li><a href="#">메인으로</a></li>
+                                    <li><a href="#">내강의실</a></li>
+                                    <li><a href="#">교수소개</a></li>
+                                    <li><a href="#">수강신청</a></li>
+                                    <li><a href="#">1:1관리반</a></li>
+                                    <li><a href="#">무료강좌</a></li>
+                                    <li><a href="#">합격수기</a></li>
+                                    <li><a href="#">고객센터</a></li>
+                                    <li><a href="#">공지사항</a></li>
+                                </ul>
+                            </li>
+                            <li class="deth1_tit">
+                                <a href="#" class="normal">
+                                    <span>행정직온라인</span>
+                                </a>
+                                <ul class="deth2_list">
+                                    <li><a href="#">메인으로</a></li>
+                                    <li><a href="#">내강의실</a></li>
+                                    <li><a href="#">교수소개</a></li>
+                                    <li><a href="#">수강신청</a></li>
+                                    <li><a href="#">지안패스</a></li>
+                                    <li><a href="#">무료강좌</a></li>
+                                    <li><a href="#">합격수기</a></li>
+                                    <li><a href="#">고객센터</a></li>
+                                    <li><a href="#">공지사항</a></li>
+                                </ul>
+                            </li>
+                            <li class="deth1_tit">
+                                <a href="#" class="normal">
+                                    <span>기술직학원</span>
+                                </a>
+                                <ul class="deth2_list">
+                                    <li><a href="#">메인으로</a></li>
+                                    <li><a href="#">내강의실</a></li>
+                                    <li><a href="#">교수소개</a></li>
+                                    <li><a href="#">수강신청</a></li>
+                                    <li><a href="#">연간관리반</a></li>
+                                    <li><a href="#">무료강좌</a></li>
+                                    <li><a href="#">합격수기</a></li>
+                                    <li><a href="#">고객센터</a></li>
+                                    <li><a href="#">공지사항</a></li>
+                                </ul>
+                            </li>
+                            <li class="deth1_tit">
+                                <a href="#" class="normal">
+                                    <span>기술직온라인</span>
+                                </a>
+                                <ul class="deth2_list">
+                                    <li><a href="#">메인으로</a></li>
+                                    <li><a href="#">내강의실</a></li>
+                                    <li><a href="#">교수소개</a></li>
+                                    <li><a href="#">수강신청</a></li>
+                                    <li><a href="#">지안패스</a></li>
+                                    <li><a href="#">무료강좌</a></li>
+                                    <li><a href="#">합격수기</a></li>
+                                    <li><a href="#">고객센터</a></li>
+                                    <li><a href="#">공지사항</a></li>
+                                </ul>
+                            </li>
+                            <li class="deth1_tit">
+                                <a href="#" class="normal">
+                                    <span>계리직학원</span>
+                                </a>
+                                <ul class="deth2_list">
+                                    <li><a href="#">메인으로</a></li>
+                                    <li><a href="#">내강의실</a></li>
+                                    <li><a href="#">교수소개</a></li>
+                                    <li><a href="#">수강신청</a></li>
+                                    <li><a href="#">1:1관리반</a></li>
+                                    <li><a href="#">무료강좌</a></li>
+                                    <li><a href="#">합격수기</a></li>
+                                    <li><a href="#">고객센터</a></li>
+                                    <li><a href="#">공지사항</a></li>
+                                </ul>
+                            </li>
+                            <li class="deth1_tit">
+                                <a href="#" class="normal">
+                                    <span>계리직온라인</span>
+                                </a>
+                                <ul class="deth2_list">
+                                    <li><a href="#">메인으로</a></li>
+                                    <li><a href="#">내강의실</a></li>
+                                    <li><a href="#">교수소개</a></li>
+                                    <li><a href="#">수강신청</a></li>
+                                    <li><a href="#">지안패스</a></li>
+                                    <li><a href="#">무료강좌</a></li>
+                                    <li><a href="#">합격수기</a></li>
+                                    <li><a href="#">고객센터</a></li>
+                                    <li><a href="#">공지사항</a></li>
+                                </ul>
+                            </li>
+                            <li class="deth1_tit">
+                                <a href="#" class="normal">
+                                    <span>온라인서점</span>
+                                </a>
+                                <ul class="deth2_list">
+                                    <li><a href="#">온라인서점</a></li>
+                                    <li><a href="#">공통과목</a></li>
+                                    <li><a href="#">행정직</a></li>
+                                    <li><a href="#">기술직</a></li>
+                                    <li><a href="#">계리직</a></li>
+                                    <li><a href="#">자격증</a></li>
+                                    <li><a href="#">정오표</a></li>
+                                </ul>
+                            </li>
+                            <li class="deth1_tit">
+                                <a href="#" class="normal">
+                                    <span>빅모의고사</span>
+                                </a>
+                                <ul class="deth2_list">
+                                    <li><a href="#">빅모의고사</a></li>
+                                    <li><a href="#">모의고사신청</a></li>
+                                    <li><a href="#">학원모의고사</a></li>
+                                    <li><a href="#">주간모의고사</a></li>
+                                    <li><a href="#">기출문제</a></li>
+                                    <li><a href="#">응시후기</a></li>
+                                    <li><a href="#">자료실</a></li>
+                                </ul>
+                            </li>
+                            <li class="deth1_tit">
+                                <a href="#" class="normal">
+                                    <span>자격증</span>
+                                </a>
+                                <ul class="deth2_list">
+                                    <li><a href="#">알기사 사이트이동</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- //sitemap_box -->
+                </div>
+                <!-- //sitemap_wrap -->
+            </div>
+        </div>
+        <!-- sitemap_layer -->
     </div>
     <!--주메뉴-->
-    <div id="gnb" class="acaTopMenu" style="display: none;">
-        <div class="inner">
+    <div id="gnb">
+        <div class="inner acaTopMenu"  style="display: none;">
             <ul class="deaph1 cols7">
                 <li><a href="javascript:goPageNoSubmit('myLecRoom', 'main')">내강의실</a></li>
                 <li><a href="javascript:goPageNoSubmit('teacher', 'main')">교수소개</a></li>
                 <li><a href="javascript:goPageNoSubmit('lectureOrder', 'academy')">학원수강신청</a></li>
                 <li><a href="javascript:goPageNoSubmit('zianPass', 'list')">연간관리반</a></li>
                 <li><a href="javascript:goPageNoSubmit('freeLecture', 'theory')">무료강좌</a></li>
-<%--                <li><a href="javascript:goPageNoSubmit('bigExam', 'main')">빅모의고사</a></li>--%>
                 <li><a href="javascript:goBigExam()">빅모의고사</a></li>
                 <li><a href="javascript:goPassReview();">합격수기</a></li>
             </ul>
         </div>
-    </div>
-
-    <div id="gnb" class="onlineTopMenu" style="display: none;">
-        <div class="inner">
+        <div class="inner onlineTopMenu" style="display: none;">
             <ul class="deaph1 cols7">
                 <li><a href="javascript:goPageNoSubmit('myLecRoom', 'main')">내강의실</a></li>
                 <li><a href="javascript:goPageNoSubmit('teacher', 'main')">교수소개</a></li>
@@ -152,10 +322,7 @@
                 <li><a href="javascript:goPassReview();">합격수기</a></li>
             </ul>
         </div>
-    </div>
-
-    <div id="gnb" class="bookStore" style="display: none;">
-        <div class="inner">
+        <div class="inner bookStore" style="display: none;">
             <ul class="deaph1 cols7">
                 <li><a href="javascript:goDetailbookType('COMMON');">공통과목</a></li>
                 <li><a href="javascript:goDetailbookType('PUBLIC');">행정직군</a></li>
@@ -165,10 +332,7 @@
                 <li><a href="javascript:goPageNoSubmit('bookStore','errataList')">정오표</a></li>
             </ul>
         </div>
-    </div>
-
-    <div id="gnb" class="bigExam" style="display: none;">
-        <div class="inner">
+        <div class="inner bigExam" style="display: none;">
             <ul class="deaph1 cols7">
                 <li><a href="javascript:goPageNoSubmit('bigExam','examApply')">모의고사신청</a></li>
                 <li><a href="javascript:goPageNoSubmit('bigExam','acaExam')">학원모의고사</a></li>
@@ -178,6 +342,44 @@
                 <li><a href="javascript:goPageNoSubmit('bigExam','referenceList')">자료실</a></li>
             </ul>
         </div>
+        <!-- gnb_area -->
+        <div class="gnb_area">
+            <ul class="Mdepth1 acaTopMenu"  style="display: none;">
+                <li><a href="javascript:goPageNoSubmit('myLecRoom', 'main')">내강의실</a></li>
+                <li><a href="javascript:goPageNoSubmit('teacher', 'main')">교수소개</a></li>
+                <li><a href="javascript:goPageNoSubmit('lectureOrder', 'academy')">학원수강신청</a></li>
+                <li><a href="javascript:goPageNoSubmit('zianPass', 'list')">연간관리반</a></li>
+                <li><a href="javascript:goPageNoSubmit('freeLecture', 'theory')">무료강좌</a></li>
+                <li><a href="javascript:goBigExam()">빅모의고사</a></li>
+                <li><a href="javascript:goPassReview();">합격수기</a></li>
+            </ul>
+            <ul class="Mdepth1 onlineTopMenu" style="display: none;">
+                <li><a href="javascript:goPageNoSubmit('myLecRoom', 'main')">내강의실</a></li>
+                <li><a href="javascript:goPageNoSubmit('teacher', 'main')">교수소개</a></li>
+                <li><a href="javascript:goPageNoSubmit('lectureOrder', 'single')">수강신청</a></li>
+                <li><a href="javascript:goPageNoSubmit('zianPass', 'list')">지안패스</a></li>
+                <li><a href="javascript:goPageNoSubmit('freeLecture', 'theory')">무료강좌</a></li>
+                <li><a href="javascript:goBigExam()">빅모의고사</a></li>
+                <li><a href="javascript:goPassReview();">합격수기</a></li>
+            </ul>
+            <ul class="Mdepth1 bookStore" style="display: none;">
+                <li><a href="javascript:goDetailbookType('COMMON');">공통과목</a></li>
+                <li><a href="javascript:goDetailbookType('PUBLIC');">행정직군</a></li>
+                <li><a href="javascript:goDetailbookType('TECH');">기술직군</a></li>
+                <li><a href="javascript:goDetailbookType('POST');">계리직군</a></li>
+                <li><a href="javascript:goDetailbookType('CERT');">자격증</a></li>
+                <li><a href="javascript:goPageNoSubmit('bookStore','errataList')">정오표</a></li>
+            </ul>
+            <ul class="Mdepth1 bigExam" style="display: none;">
+                <li><a href="javascript:goPageNoSubmit('bigExam','examApply')">모의고사신청</a></li>
+                <li><a href="javascript:goPageNoSubmit('bigExam','acaExam')">학원모의고사</a></li>
+                <li><a href="javascript:goPageNoSubmit('bigExam','weekExam')">주간모의고사</a></li>
+                <li><a href="javascript:goPageNoSubmit('bigExam','pastQuestion')">기출문제</a></li>
+                <li><a href="javascript:goPageNoSubmit('bigExam','bigReviewList')">응시후기</a></li>
+                <li><a href="javascript:goPageNoSubmit('bigExam','referenceList')">자료실</a></li>
+            </ul>
+        </div>
+        <!-- //gnb_area -->
     </div>
     <!--//주메뉴-->
 </div>

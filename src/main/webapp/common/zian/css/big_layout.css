@@ -556,7 +556,7 @@ table tbody tr td {
 }
 
 .st_exam .st_exam_test .st_test_main .st_content.st_analysis .st_analysis_tab ul li {
-    height: 100%;
+    /*height: 100%;*/
     padding-top: 0px;
     padding-bottom: 0px;
     position: relative;

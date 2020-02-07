@@ -28,6 +28,19 @@ function getWeekMockExamClassCtgSelectBoxList() {
     }
 }
 
+function getWeekMockExamClassCtgSelectBoxList2() {
+    var infoList = getApi("/exam/getWeekMockExamClassCtgSelectBoxList/", '', '');
+
+    if(infoList != null){
+        var selList = infoList.result;
+        for(var  i=0; i<selList.length;i++){
+            var cmpList = selList[i];
+            var returnHtml = "<option value='"+ cmpList.key +"'>"+ cmpList.value +"</option>";
+            $("#weekSel").append(returnHtml);
+        }
+    }
+}
+
 //빅모의고사 > 기출문제 직렬선택 셀렉트박스
 function getGichulSelectBoxList(selectBoxType, tagId) {
     var infoList = getApi("/exam/getGichulSelectBoxList/", selectBoxType, '');

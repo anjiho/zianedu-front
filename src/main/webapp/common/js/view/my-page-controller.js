@@ -859,7 +859,6 @@ function getMyWriteExamBoard2(userKey, boardType, sPage, listLimit, searchType, 
     }
 }
 
-
 function bookStoreReviewBoard(userKey, boardType, sPage, listLimit, searchType, searchText) {
     if(userKey == null || userKey == undefined) return;
 
@@ -881,3 +880,187 @@ function bookStoreReviewBoard(userKey, boardType, sPage, listLimit, searchType, 
     }
 }
 
+//마이페이지 > 성적관리 > 학원온오프라인
+function getUserMockExamResultListAtBuy(userKey, onOffKey, sPage, listLimit, ctgKey, searchType, searchText) {
+    if(userKey == null || userKey == undefined) return;
+    var paging = new Paging();
+    dwr.util.removeAllRows("dataList"); //테이블 리스트 초기화
+
+    var data = {
+        onOffKey : onOffKey,
+        sPage : sPage,
+        listLimit : listLimit,
+        ctgKey : ctgKey,
+        searchType : searchType,
+        searchText : searchText
+    };
+    var infoList = getPageApi("/myPage/getUserMockExamResultListAtBuy/", userKey, data);
+    var cnt = infoList.cnt;
+    if(infoList != null){
+        var selList = infoList.result;
+        paging.count(sPage, cnt, '5', listLimit, comment.blank_list);
+            for(var i=0; i < selList.length; i++){
+                var cmpList = selList[i];
+                if (cmpList != undefined) {
+                    var cellData = [
+                        function(data) {return cmpList.classCtgName;},
+                        function(data) {return cmpList.goodsName;},
+                        function(data) {return "~"+cmpList.acceptStartDate+"<br>~"+cmpList.acceptEndDate;},
+                        function(data) {return "<a href='javascript:goBigExamPopup("+ cmpList.examUserKey +");' class='blue small'>성적보기</a>";},
+                        function(data) {return "<a href='javascript:goBigExamPopup("+ cmpList.examUserKey +");' class='black small'>오답노트</a>";},
+                        function(data) {return '<a href="'+ cmpList.printQuestionFileUrl +'" class="iconFile" target="_blank" title="새창열림">문제지</a><a href="'+ cmpList.printCommentaryFileUrl +'" class="iconFile" target="_blank" title="새창열림">해설지</a>';}
+                    ];
+                    dwr.util.addRows('dataList', [0], cellData, {escapeHtml: false});
+                    $('#dataList tr').each(function(){
+                        var tr = $(this);
+                        tr.children().eq(1).attr("class", "left");
+                    });
+                }
+            }
+    }
+}
+
+function getUserMockExamResultListAtBuy2(userKey, onOffKey, sPage, listLimit, ctgKey, searchType, searchText) {
+    if(userKey == null || userKey == undefined) return;
+    var paging = new Paging();
+    dwr.util.removeAllRows("dataList2"); //테이블 리스트 초기화
+
+    var data = {
+        onOffKey : onOffKey,
+        sPage : sPage,
+        listLimit : listLimit,
+        ctgKey : ctgKey,
+        searchType : searchType,
+        searchText : searchText
+    };
+    var infoList = getPageApi("/myPage/getUserMockExamResultListAtBuy/", userKey, data);
+    var cnt = infoList.cnt;
+    if(infoList != null){
+        var selList = infoList.result;
+        paging.count2(sPage, cnt, '5', listLimit, comment.blank_list);
+        for(var i=0; i < selList.length; i++){
+            var cmpList = selList[i];
+            if (cmpList != undefined) {
+                var cellData = [
+                    function(data) {return cmpList.classCtgName;},
+                    function(data) {return cmpList.goodsName;},
+                    function(data) {return "~"+cmpList.acceptStartDate+"<br>~"+cmpList.acceptEndDate;},
+                    function(data) {return "<a href='javascript:goBigExamPopup("+ cmpList.examUserKey +");' class='blue small'>성적보기</a>";},
+                    function(data) {return "<a href='javascript:goBigExamPopup("+ cmpList.examUserKey +");' class='black small'>오답노트</a>";},
+                    function(data) {return '<a href="'+ cmpList.printQuestionFileUrl +'" class="iconFile" target="_blank" title="새창열림">문제지</a><a href="'+ cmpList.printCommentaryFileUrl +'" class="iconFile" target="_blank" title="새창열림">해설지</a>';}
+                ];
+                dwr.util.addRows('dataList2', [0], cellData, {escapeHtml: false});
+                $('#dataList2 tr').each(function(){
+                    var tr = $(this);
+                    tr.children().eq(1).attr("class", "left");
+                });
+            }
+        }
+    }
+}
+//마이페이지 > 성적관리 > 주간모의고사,기출문제
+function getUserFreeExamResultList(userKey, examType, sPage, listLimit, groupCtgKey, classCtgKey, subjectCtgKey, searchType, searchText) {
+    if(userKey == null || userKey == undefined) return;
+    var paging = new Paging();
+    dwr.util.removeAllRows("dataList3"); //테이블 리스트 초기화
+    var data = {
+        examType : examType,
+        sPage : sPage,
+        listLimit : listLimit,
+        groupCtgKey : groupCtgKey,
+        classCtgKey : classCtgKey,
+        subjectCtgKey : subjectCtgKey,
+        searchType : searchType,
+        searchText : searchText
+    };
+    var infoList = getPageApi("/myPage/getUserFreeExamResultList/", userKey, data);
+    var cnt = infoList.cnt;
+    if(infoList != null){
+        var selList = infoList.result;
+        paging.count3(sPage, cnt, '5', listLimit, comment.blank_list);
+        for(var i=0; i < selList.length; i++){
+            var cmpList = selList[i];
+            if (cmpList != undefined) {
+                var cellData = [
+                    function(data) {return cmpList.classCtgName;},
+                    function(data) {return cmpList.goodsName;},
+                    function(data) {return "~"+cmpList.acceptStartDate+"<br>~"+cmpList.acceptEndDate;},
+                    function(data) {return "<a href='javascript:goBigExamPopup("+ cmpList.examUserKey +");' class='blue small'>성적보기</a>";},
+                    function(data) {return "<a href='javascript:goBigExamPopup("+ cmpList.examUserKey +");' class='black small'>오답노트</a>";},
+                    function(data) {return '<a href="'+ cmpList.printQuestionFileUrl +'" class="iconFile" target="_blank" title="새창열림">문제지</a><a href="'+ cmpList.printCommentaryFileUrl +'" class="iconFile" target="_blank" title="새창열림">해설지</a>';}
+                ];
+                dwr.util.addRows('dataList3', [0], cellData, {escapeHtml: false});
+            }
+        }
+    }
+}
+
+//마이페이지 > 성적관리 > 주간모의고사,기출문제
+function getUserFreeExamResultList2(userKey, examType, sPage, listLimit, groupCtgKey, classCtgKey, subjectCtgKey, searchType, searchText) {
+    if(userKey == null || userKey == undefined) return;
+    var paging = new Paging();
+    dwr.util.removeAllRows("dataList4"); //테이블 리스트 초기화
+    var data = {
+        examType : examType,
+        sPage : sPage,
+        listLimit : listLimit,
+        groupCtgKey : groupCtgKey,
+        classCtgKey : classCtgKey,
+        subjectCtgKey : subjectCtgKey,
+        searchType : searchType,
+        searchText : searchText
+    };
+    var infoList = getPageApi("/myPage/getUserFreeExamResultList/", userKey, data);
+    var cnt = infoList.cnt;
+    if(infoList != null){
+        var selList = infoList.result;
+        paging.count4(sPage, cnt, '5', listLimit, comment.blank_list);
+        for(var i=0; i < selList.length; i++){
+            var cmpList = selList[i];
+            if (cmpList != undefined) {
+                var cellData = [
+                    function(data) {return cmpList.classCtgName;},
+                    function(data) {return cmpList.goodsName;},
+                    function(data) {return "~"+cmpList.acceptStartDate+"<br>~"+cmpList.acceptEndDate;},
+                    function(data) {return "<a href='javascript:goBigExamPopup("+ cmpList.examUserKey +");' class='blue small'>성적보기</a>";},
+                    function(data) {return "<a href='javascript:goBigExamPopup("+ cmpList.examUserKey +");' class='black small'>오답노트</a>";},
+                    function(data) {return '<a href="'+ cmpList.printQuestionFileUrl +'" class="iconFile" target="_blank" title="새창열림">문제지</a><a href="'+ cmpList.printCommentaryFileUrl +'" class="iconFile" target="_blank" title="새창열림">해설지</a>';}
+                ];
+                dwr.util.addRows('dataList4', [0], cellData, {escapeHtml: false});
+            }
+        }
+    }
+}
+
+//마이페이지 > 성적관리 > 최근사용내역
+function getUserExamLogList(userKey, sPage, listLimit) {
+    if(userKey == null || userKey == undefined) return;
+    var paging = new Paging();
+    dwr.util.removeAllRows("dataList"); //테이블 리스트 초기화
+    var data = {
+        sPage : sPage,
+        listLimit : listLimit
+    };
+    var infoList = getPageApi("/myPage/getUserExamLogList/", userKey, data);
+    var cnt = infoList.cnt;
+    if(infoList != null) {
+        console.log(infoList);
+        var selList = infoList.result;
+        paging.count(sPage, cnt, '5', listLimit, comment.blank_list);
+        for(var i=0; i < selList.length; i++){
+            var cmpList = selList[i];
+            if (cmpList != undefined) {
+                var cellData = [
+                    function(data) {return cmpList.examType;},
+                    function(data) {return cmpList.goodsName;},
+                    function(data) {return cmpList.examDate;}
+                ];
+                dwr.util.addRows('dataList', [0], cellData, {escapeHtml: false});
+                $('#dataList tr').each(function(){
+                    var tr = $(this);
+                    tr.children().eq(0).attr("class", "left");
+                });
+            }
+        }
+    }
+}

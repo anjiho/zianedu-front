@@ -58,6 +58,12 @@ public class myPageController {
             mvc.setViewName("/mypage/gradeManage/gradeList");
         }else if("examUseList".equals(page_gbn)){
             mvc.setViewName("/mypage/gradeManage/examUseList");
+        }else if("answerNote".equals(page_gbn)){
+            mvc.setViewName("/mypage/bigExamPopup/answersNote");
+        }else if("gradeAllList".equals(page_gbn)){
+            mvc.setViewName("/mypage/bigExamPopup/gradeAllList");
+        }else if("subjectGradeDetail".equals(page_gbn)){
+            mvc.setViewName("/mypage/bigExamPopup/subjectGradeDetail");
         }
         return mvc;
     }

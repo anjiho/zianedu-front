@@ -24,8 +24,15 @@
                 goPageNoSubmit('myPage', 'examUseList');
             }
         });
+        fn_search('new');
     });
 
+    function fn_search(val) {
+        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        var sPage = getInputTextValue("sPage");
+        if(val == "new") sPage = "1";
+        getUserExamLogList(sessionUserInfo.userKey, sPage, 10);
+    }
 </script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
@@ -69,55 +76,12 @@
                                     <th style="text-align: center;">응시일</th>
                                 </tr>
                                 </thead>
-                                <tbody>
-                                <tr>
-                                    <td>기출문제</td>
-                                    <td>2014 국가직 9급 영어기출문제</td>
-                                    <td>2019- 06- 22 10:00</td>
-                                </tr>
-                                <tr>
-                                    <td>기출문제</td>
-                                    <td>2019 제 3회 계리직 전과목 모의고사</td>
-                                    <td>2019- 06- 22 10:00</td>
-                                </tr>
-                                <tr>
-                                    <td>기출문제</td>
-                                    <td>2014 국가직 9급 영어기출문제</td>
-                                    <td>2019- 06- 22 10:00</td>
-                                </tr>
-                                <tr>
-                                    <td>주간모의고사</td>
-                                    <td>빅주간(전범위) 모의고사 – 공통과목 16회</td>
-                                    <td>2019- 06- 22 10:00</td>
-                                </tr>
-                                <tr>
-                                    <td>학원모의고사(온)</td>
-                                    <td>2018 제 2회 전산직 전과목 모의고사</td>
-                                    <td>2019- 06- 22 10:00</td>
-                                </tr>
-                                </tbody>
+                                <tbody id="dataList"></tbody>
                             </table>
-                            <table class="disnonepc ltxt">
-                                <tbody>
-                                <tr>
-                                    <td>
-                                        <p>기출문제</p>
-                                        <span>2014 국가직 9급 영어기출문제</span>
-                                        <span><b>응시일 :</b>&nbsp;	2019- 06- 22 &nbsp;	&nbsp;	10:00</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <p>기출문제</p>
-                                        <span>2014 국가직 9급 영어기출문제</span>
-                                        <span><b>응시일 :</b>&nbsp;	2019- 06- 22&nbsp;	&nbsp;	 10:00</span>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
+
                         </div>
                         <!-- paging -->
-
+                        <%@ include file="/common/inc/com_pageNavi.inc" %>
                         <!-- //paging -->
                     </div>
                 </div>
@@ -134,21 +98,3 @@
 </form>
 </body>
 </html>
-<!--팝업 수강안내사항 modal1-->
-<div id="modal1" class="modalWrap" style="">
-    <div class="inner">
-        <div class="modalTitle">
-            <h2>상세내용</h2>
-            <a href="#" class="btn_modalClose">모달팝업닫기</a>
-        </div>
-        <div class="modalContent">
-            <div class="pop_cont">
-                <p class="pTxt"><b>이름</b> : <span id="conusltName"></span></p>
-                <p class="pTxt"><b>연락처</b> : <span id="phoneNum"></span></p>
-                <p class="pTxt"><b>상담요청직군</b> : <span id="ctgNameStr"></span></p>
-                <p class="pTxt"><b>상담요청내용</b> : <span id="consultContent"></span></p>
-            </div>
-        </div>
-    </div>
-</div>
-<!--//팝업-->

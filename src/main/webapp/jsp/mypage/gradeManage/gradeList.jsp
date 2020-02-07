@@ -24,20 +24,81 @@
                 goPageNoSubmit('myPage', 'examUseList');
             }
         });
+
+        getMockExamClassCtgSelectBoxList(2, 'onSel');
+        getMockExamClassCtgSelectBoxList(3, 'offSel');
+        getWeekMockExamClassCtgSelectBoxList2();
+        getGichulSelectBoxList('SERIAL', 'classCtgKey');//직렬
+        getGichulSelectBoxList('RATING', 'groupCtgKey');//급수
+        getGichulSelectBoxList('SUBJECT', 'subjectCtgKey');//과목
+
+        fn_search('new');
+        fn_search2('new');
+        fn_search3('new');
+        fn_search4('new');
     });
 
     function fn_search(val) {
-        // var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-        // var sPage = getInputTextValue("sPage");
-        // var reserveStartDate =  getInputTextValue('searchStartDate');
-        // var reserveEndDate =  getInputTextValue('searchEndDate');
-        // if(val == "new") sPage = "1";
-        // getConsultReserveList(sessionUserInfo.userKey, reserveStartDate, reserveEndDate, sPage, 10);
+        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        var sPage = getInputTextValue("sPage");
+        var ctgKey = getSelectboxValue("onSel");
+        var searchType = getSelectboxValue("searchType");
+        var searchText = getInputTextValue("searchText");
+        if(searchType == undefined) searchType = "";
+        if(searchText == undefined) searchText = "";
+        if(val == "new") sPage = "1";
+        getUserMockExamResultListAtBuy(sessionUserInfo.userKey, 2, sPage, 10, ctgKey, searchType, searchText);
+    }
+
+    function fn_search2(val) {
+        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        var sPage = getInputTextValue("sPage2");
+        var ctgKey = getSelectboxValue("onSel");
+        var searchType = getSelectboxValue("searchType2");
+        var searchText = getInputTextValue("searchText2");
+        if(searchType == undefined) searchType = "";
+        if(searchText == undefined) searchText = "";
+        if(val == "new") sPage = "1";
+        getUserMockExamResultListAtBuy2(sessionUserInfo.userKey, 3, sPage, 10, ctgKey, searchType, searchText);
+    }
+
+    function fn_search3(val) {
+        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        var sPage = getInputTextValue("sPage3");
+        var classCtgKey = getSelectboxValue("weekSel");
+        var searchType = getSelectboxValue("searchType3");
+        var searchText = getInputTextValue("searchText3");
+        if(searchType == undefined) searchType = "";
+        if(searchText == undefined) searchText = "";
+        if(val == "new") sPage = "1";
+        getUserFreeExamResultList(sessionUserInfo.userKey, 'WEEK', sPage, 10, '', classCtgKey, '', searchType, searchText);
+    }
+
+    function fn_search4(val) {
+        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        var sPage = getInputTextValue("sPage4");
+        var classCtgKey = getSelectboxValue("classCtgKey");//직렬
+        var groupCtgKey = getSelectboxValue("groupCtgKey");//급수
+        var subjectCtgKey = getSelectboxValue("subjectCtgKey");//과목
+        var searchType = getSelectboxValue("searchType4");
+        var searchText = getInputTextValue("searchText4");
+        if(searchType == undefined) searchType = "";
+        if(searchText == undefined) searchText = "";
+        if(val == "new") sPage = "1";
+        getUserFreeExamResultList2(sessionUserInfo.userKey, 'GICHUL', sPage, 10, groupCtgKey, classCtgKey, subjectCtgKey, searchType, searchText);
+    }
+
+    function goBigExamPopup(examUserKey){
+        var popUrl = '/myPage?page_gbn=gradeAllList&examUserKey='+examUserKey;
+        var tarGet = "_blank";
+        var popOption = "width=1000, height=775, resizable=no, scrollbars=no, status=no;";
+        window.open(popUrl,tarGet,popOption);
     }
 </script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
     <input type="hidden" id="sPage">
+    <input type="hidden" id="sPage2">
     <div id="wrap">
         <%@include file="/common/jsp/leftMenu.jsp" %>
         <!--상단-->
@@ -65,343 +126,182 @@
                                     <li><a href="#">주간모의고사</a></li>
                                     <li><a href="#">기출문제</a></li>
                                 </ul>
-                                <div class="tabPage ">학원모의고사(온)</div>
-                                <div class="tabPage ">학원모의고사(오프)</div>
-                                <div class="tabPage">주간모의고사</div>
-                                <div class="tabPage active">
-                                    <!-- 수강중 -->
-                                    <div class="tabPage  active">
-                                        <form>
-                                            <!--수정 및 추가 -->
-                                            <ul class="searchArea floatnone">
-                                                <li class="left">
-                                                    <select>
-                                                        <option>제목</option>
-                                                    </select>
-                                                    <input type="text">
-                                                    <input type="submit" value="검색" class="btn_m on">
-                                                    <a href="" class="search_ico">검색</a>
-                                                </li>
-                                                <li class="right ">
-                                                    <select name="" class="w120">
-                                                        <option value="">직렬선택</option>
-                                                    </select>
-                                                    <select name="" class="w120">
-                                                        <option value="">급수선택</option>
-                                                    </select>
-                                                    <select name="" class="w120">
-                                                        <option value="">과목선택</option>
-                                                    </select>
-                                                </li>
-                                            </ul>
-                                        </form>
-                                        <div class="tableBox">
-                                            <table class="disnoneM">
-                                                <colgroup>
-                                                    <col>
-                                                    <col width="380px">
-                                                    <col width="180px">
-                                                    <col>
-                                                    <col>
-                                                    <col width="100px">
-                                                </colgroup>
-                                                <thead>
-                                                <tr>
-                                                    <th style="text-align: center;">직렬</th>
-                                                    <th style="text-align: center;">모의고사명</th>
-                                                    <th style="text-align: center;">응시기간</th>
-                                                    <th style="text-align: center;">성적보기</th>
-                                                    <th style="text-align: center;">오답노트</th>
-                                                    <th style="text-align: center;">시험지</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                <tr>
-                                                    <td>일반행정직</td>
-                                                    <td>2019 제3회 일반행정직 전과목 모의고사</td>
-                                                    <td>~ 2019.06.30 23:59<br>
-                                                        ~ 2019.06.30 23:59
-                                                    </td>
-                                                    <td>
-                                                        <a href="javascript:testPop1()" class="blue small">성적보기</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="" class="black small">오답노트</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#" class="iconFile" target="_blank" title="새창열림">문제지</a>
-                                                        <a href="#" class="iconFile" target="_blank" title="새창열림">해설지</a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>전산직</td>
-                                                    <td>2019 제2회 전산직 전과목 모의고사</td>
-                                                    <td>~ 2019.06.30 23:59<br>
-                                                        ~ 2019.06.30 23:59
-                                                    </td>
-                                                    <td>
-                                                        <a href="" class="blue small">성적보기</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="" class="black small">오답노트</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#" class="iconFile" target="_blank" title="새창열림">문제지</a>
-                                                        <a href="#" class="iconFile" target="_blank" title="새창열림">해설지</a>
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                            <table class="disnonepc ltxt">
-                                                <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <span>일반행정직</span>
-                                                        <p>2019 제3회 일반행정직 전과목 모의고사</p>
-                                                        <span><b>응시기간 :</b> 2019.06.30 23:59~ 2019.06.30 23:59</span>
-                                                    </td>
-                                                    <td>
-                                                        <a href="" class="blue small">성적보기</a>
-                                                        <a href="" class="black small">오답노트</a>
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <!-- paging -->
-
-                                        <!-- //paging -->
-                                    </div>
-                                    <div class="tabPage">
-                                        <form>
-                                            <ul class="searchArea">
-                                                <li class="left">
-                                                    <select>
-                                                        <option>제목</option>
-                                                    </select>
-                                                    <input type="text">
-                                                    <input type="submit" value="검색" class="btn_m on">
-                                                </li>
-                                                <li class="right"><select name="" class="w190">
-                                                    <option value="">직렬선택</option>
+                                <!-- 수강중 -->
+                                <div class="tabPage  active">
+                                    <form>
+                                        <!--수정 및 추가 -->
+                                        <ul class="searchArea floatnone">
+                                            <li class="left">
+                                                <select id="searchType">
+                                                    <option value="name">시험명</option>
                                                 </select>
-                                                </li>
-                                            </ul>
-                                        </form>
-                                        <div class="tableBox">
-                                            <table>
-                                                <colgroup>
-                                                    <col>
-                                                    <col width="380px">
-                                                    <col width="180px">
-                                                    <col>
-                                                    <col>
-                                                </colgroup>
-                                                <thead>
-                                                <tr>
-                                                    <th>직렬</th>
-                                                    <th>모의고사명</th>
-                                                    <th>응시기간</th>
-                                                    <th>성적보기</th>
-                                                    <th>오답노트</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                <tr>
-                                                    <td>일반행정직</td>
-                                                    <td>2019 제3회 일반행정직 전과목 모의고사</td>
-                                                    <td>~ 2019.06.30 23:59<br>
-                                                        ~ 2019.06.30 23:59
-                                                    </td>
-                                                    <td>
-                                                        <a href="" class="blue small">성적보기</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="" class="black small">오답노트</a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>전산직</td>
-                                                    <td>2019 제2회 전산직 전과목 모의고사</td>
-                                                    <td>~ 2019.06.30 23:59<br>
-                                                        ~ 2019.06.30 23:59
-                                                    </td>
-                                                    <td>
-                                                        <a href="" class="blue small">성적보기</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="" class="black small">오답노트</a>
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <!-- paging -->
-                                        <div class="paging">
-                                            <div class="boardnavi">
-                                                <a class="prev" href="#">이전 목록이동</a>
-                                                <span>
-											<strong class="selected">1</strong>
-										</span>
-                                                <a class="next" href="#">다음 목록이동</a>
-                                            </div>
-                                        </div>
-                                        <!-- //paging -->
+                                                <input type="text" id="searchText" onkeypress="if(event.keyCode==13) {fn_search('new'); return false;}">
+                                                <a href="javascript:fn_search('new');" class="btn_m on w140">검색</a>
+                                            </li>
+                                            <li class="right ">
+                                                <select id="onSel" onchange="fn_search('new');" class="w120">
+<%--                                                        <option class="w190">직렬선택</option>--%>
+                                                </select>
+                                            </li>
+                                        </ul>
+                                    </form>
+                                    <div class="tableBox">
+                                        <table class="disnoneM">
+                                            <colgroup>
+                                                <col>
+                                                <col width="380px">
+                                                <col width="180px">
+                                                <col>
+                                                <col>
+                                                <col width="100px">
+                                            </colgroup>
+                                            <thead>
+                                            <tr>
+                                                <th style="text-align: center;">직렬</th>
+                                                <th style="text-align: center;">모의고사명</th>
+                                                <th style="text-align: center;">응시기간</th>
+                                                <th style="text-align: center;">성적보기</th>
+                                                <th style="text-align: center;">오답노트</th>
+                                                <th style="text-align: center;">시험지</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody id="dataList"></tbody>
+                                        </table>
                                     </div>
-                                    <div class="tabPage">
-                                        <form>
-                                            <ul class="searchArea">
-                                                <li class="left">
-                                                    <select>
-                                                        <option>제목</option>
-                                                    </select>
-                                                    <input type="text">
-                                                    <input type="submit" value="검색" class="btn_m on">
-                                                </li>
-                                                <li class="right"></li>
-                                            </ul>
-                                        </form>
-                                        <div class="tableBox">
-                                            <table>
-                                                <colgroup>
-                                                    <col>
-                                                    <col width="380px">
-                                                    <col width="180px">
-                                                    <col>
-                                                    <col>
-                                                </colgroup>
-                                                <thead>
-                                                <tr>
-                                                    <th>직렬</th>
-                                                    <th>모의고사명</th>
-                                                    <th>응시기간</th>
-                                                    <th>성적보기</th>
-                                                    <th>오답노트</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                <tr>
-                                                    <td>일반행정직</td>
-                                                    <td>2019 제3회 일반행정직 전과목 모의고사</td>
-                                                    <td>~ 2019.06.30 23:59<br>
-                                                        ~ 2019.06.30 23:59
-                                                    </td>
-                                                    <td>
-                                                        <a href="" class="blue small">성적보기</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="" class="black small">오답노트</a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>전산직</td>
-                                                    <td>2019 제2회 전산직 전과목 모의고사</td>
-                                                    <td>~ 2019.06.30 23:59<br>
-                                                        ~ 2019.06.30 23:59
-                                                    </td>
-                                                    <td>
-                                                        <a href="" class="blue small">성적보기</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="" class="black small">오답노트</a>
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <!-- paging -->
-
-                                        <!-- //paging -->
+                                    <!-- paging -->
+                                    <%@ include file="/common/inc/com_pageNavi.inc" %>
+                                    <!-- //paging -->
+                                </div>
+                                <div class="tabPage">
+                                    <form>
+                                        <ul class="searchArea">
+                                            <li class="left">
+                                                <select id="searchType2">
+                                                    <option value="name">시험명</option>
+                                                </select>
+                                                <input type="text" id="searchText2" onkeypress="if(event.keyCode==13) {fn_search2('new'); return false;}">
+                                                <a href="javascript:fn_search2('new');" class="btn_m on w140">검색</a>
+                                            </li>
+                                            <li class="right ">
+                                                <select id="offSel" onchange="fn_search2('new');" class="w120">
+                                                    <option class="w190">직렬선택</option>
+                                                </select>
+                                            </li>
+                                        </ul>
+                                    </form>
+                                    <div class="tableBox">
+                                        <table>
+                                            <colgroup>
+                                                <col>
+                                                <col width="380px">
+                                                <col width="180px">
+                                                <col>
+                                                <col>
+                                            </colgroup>
+                                            <thead>
+                                            <tr>
+                                                <th style="text-align: center;">직렬</th>
+                                                <th style="text-align: center;">모의고사명</th>
+                                                <th style="text-align: center;">응시기간</th>
+                                                <th style="text-align: center;">성적보기</th>
+                                                <th style="text-align: center;">오답노트</th>
+                                                <th style="text-align: center;">시험지</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody id="dataList2"></tbody>
+                                        </table>
                                     </div>
-                                    <div class="tabPage">
-                                        <form>
-                                            <ul class="searchArea">
-                                                <li class="left">
-                                                    <select>
-                                                        <option>제목</option>
-                                                    </select>
-                                                    <input type="text">
-                                                    <input type="submit" value="검색" class="btn_m on">
-                                                </li>
-                                                <li class="right">
-                                                    <select name="" class="w120">
-                                                        <option value="">직렬선택</option>
-                                                    </select>
-                                                    <select name="" class="w120">
-                                                        <option value="">급수선택</option>
-                                                    </select>
-                                                    <select name="" class="w120">
-                                                        <option value="">과목선택</option>
-                                                    </select>
-                                                </li>
-                                            </ul>
-                                        </form>
-                                        <div class="tableBox">
-                                            <table>
-                                                <colgroup>
-                                                    <col>
-                                                    <col>
-                                                    <col>
-                                                    <col width="350px">
-                                                    <col>
-                                                    <col>
-                                                    <col width="100px">
-                                                </colgroup>
-                                                <thead>
-                                                <tr>
-                                                    <th>직렬</th>
-                                                    <th>급수</th>
-                                                    <th>과목</th>
-                                                    <th>모의고사명</th>
-                                                    <th>성적보기</th>
-                                                    <th>오답노트</th>
-                                                    <th>시험지</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                <tr>
-                                                    <td>일반행정직</td>
-                                                    <td>9급</td>
-                                                    <td>영어</td>
-                                                    <td>2019 제3회 일반행정직 전과목 모의고사</td>
-                                                    <td>
-                                                        <a href="" class="blue small">성적보기</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="" class="black small">오답노트</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#" class="iconFile" target="_blank" title="새창열림">문제지</a>
-                                                        <a href="#" class="iconFile" target="_blank" title="새창열림">해설지</a>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>일반행정직</td>
-                                                    <td>9급</td>
-                                                    <td>영어</td>
-                                                    <td>2019 제3회 일반행정직 전과목 모의고사</td>
-                                                    <td>
-                                                        <a href="" class="blue small">성적보기</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="" class="black small">오답노트</a>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#" class="iconFile" target="_blank" title="새창열림">문제지</a>
-                                                        <a href="#" class="iconFile" target="_blank" title="새창열림">해설지</a>
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <!-- paging -->
-
-                                        <!-- //paging -->
+                                    <!-- paging -->
+                                    <%@ include file="/common/inc/com_pageNavi2.inc" %>
+                                    <!-- //paging -->
+                                </div>
+                                <!--주간모의고사-->
+                                <div class="tabPage">
+                                <form>
+                                    <ul class="searchArea">
+                                        <li class="left">
+                                            <select id="searchType3">
+                                                <option value="name">시험명</option>
+                                            </select>
+                                            <input type="text" id="searchText3" onkeypress="if(event.keyCode==13) {fn_search3('new'); return false;}">
+                                            <a href="javascript:fn_search3('new');" class="btn_m on w140">검색</a>
+                                        </li>
+                                        <li class="right ">
+                                            <select id="weekSel" onchange="fn_search3('new');" class="w120"></select>
+                                        </li>
+                                    </ul>
+                                </form>
+                                <div class="tableBox">
+                                    <table>
+                                        <colgroup>
+                                            <col>
+                                            <col width="380px">
+                                            <col width="180px">
+                                            <col>
+                                            <col>
+                                        </colgroup>
+                                        <thead>
+                                        <tr>
+                                            <th style="text-align: center;">직렬</th>
+                                            <th style="text-align: center;">모의고사명</th>
+                                            <th style="text-align: center;">응시기간</th>
+                                            <th style="text-align: center;">성적보기</th>
+                                            <th style="text-align: center;">오답노트</th>
+                                            <th style="text-align: center;">시험지</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody id="dataList3"></tbody>
+                                    </table>
+                                </div>
+                                <!-- paging -->
+                                <%@ include file="/common/inc/com_pageNavi3.inc" %>
+                                <!-- //paging -->
+                            </div>
+                                <div class="tabPage">
+                                    <form>
+                                        <ul class="searchArea">
+                                            <li class="left">
+                                                <select id="searchType4">
+                                                    <option value="name">시험명</option>
+                                                </select>
+                                                <input type="text" id="searchText4" onkeypress="if(event.keyCode==13) {fn_search4('new'); return false;}">
+                                                <a href="javascript:fn_search4('new');" class="btn_m on w140">검색</a>
+                                            </li>
+                                            <li class="right">
+                                                <select id="classCtgKey" onchange="fn_search4('new');" class="w120"></select> <!--직렬-->
+                                                <select id="groupCtgKey" onchange="fn_search4('new');" class="w120"></select><!--급수-->
+                                                <select id="subjectCtgKey" onchange="fn_search4('new');" class="w120"></select><!--과목-->
+                                            </li>
+                                        </ul>
+                                    </form>
+                                    <div class="tableBox">
+                                        <table>
+                                            <colgroup>
+                                                <col>
+                                                <col width="380px">
+                                                <col width="180px">
+                                                <col>
+                                                <col>
+                                            </colgroup>
+                                            <thead>
+                                            <tr>
+                                                <th style="text-align: center;">직렬</th>
+                                                <th style="text-align: center;">모의고사명</th>
+                                                <th style="text-align: center;">응시기간</th>
+                                                <th style="text-align: center;">성적보기</th>
+                                                <th style="text-align: center;">오답노트</th>
+                                                <th style="text-align: center;">시험지</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody id="dataList4"></tbody>
+                                        </table>
                                     </div>
+                                    <!-- paging -->
+                                    <%@ include file="/common/inc/com_pageNavi4.inc" %>
+                                    <!-- //paging -->
                                 </div>
                             </div>
                         </div>
-
                         <!--//서브 컨텐츠-->
                     </div>
                 </div>
@@ -414,21 +314,4 @@
 </form>
 </body>
 </html>
-<!--팝업 수강안내사항 modal1-->
-<div id="modal1" class="modalWrap" style="">
-    <div class="inner">
-        <div class="modalTitle">
-            <h2>상세내용</h2>
-            <a href="#" class="btn_modalClose">모달팝업닫기</a>
-        </div>
-        <div class="modalContent">
-            <div class="pop_cont">
-                <p class="pTxt"><b>이름</b> : <span id="conusltName"></span></p>
-                <p class="pTxt"><b>연락처</b> : <span id="phoneNum"></span></p>
-                <p class="pTxt"><b>상담요청직군</b> : <span id="ctgNameStr"></span></p>
-                <p class="pTxt"><b>상담요청내용</b> : <span id="consultContent"></span></p>
-            </div>
-        </div>
-    </div>
-</div>
-<!--//팝업-->
+
