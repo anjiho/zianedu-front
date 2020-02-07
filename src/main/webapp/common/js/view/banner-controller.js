@@ -73,9 +73,13 @@ function getMainreviewBanner(tagId, ctgKey, listNum) {
     var bannerInfoList = getApi("/banner/getMainMiniBanner/", ctgKey , data);
     if (bannerInfoList.result.length > 0) {
         var selList = bannerInfoList.result;
-        dwr.util.addOptions(tagId, selList, function (data) {
-            return "<a href='"+ data.targetUrl +"'><img src='"+ data.fullFileUrl +"' alt=''></a>"
-        }, {escapeHtml: false});
+        for(var i = 0; i < selList.length; i++){
+            var returnHtml = "<a href='"+ selList[i].targetUrl +"'><img src='"+ selList[i].fullFileUrl +"' alt=''></a>";
+            $("#reviewBanner").append(returnHtml);
+        }
+        // dwr.util.addOptions(tagId, selList, function (data) {
+        //     return "<a href='"+ data.targetUrl +"'><img src='"+ data.fullFileUrl +"' alt=''></a>"
+        // }, {escapeHtml: false});
     }
 }
 

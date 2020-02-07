@@ -24,13 +24,17 @@
                 <div class="right">
                     <ul id="mainVisualSlider2"></ul>
                 </div>
-            </div>
-            <div class="mainBannerReview disnonepc">
-                <div class="inner">
-                    <ul id="reviewBanner"></ul>
-<%--                    <a href="#"><img src="/common/zian/images/content/img_banner0101.jpg" alt=""></a>--%>
+                <div class="mainBannerReview disnonepc">
+                    <div class="inner" id="reviewBanner">
+                    </div>
                 </div>
             </div>
+            <div class="mainBannerReview disnone">
+                <div class="inner">
+                    <a href="#"><img src="/common/zian/images/content/img_banner0101.jpg" alt=""></a>
+                </div>
+            </div>
+
             <!-- 지안에듀 합격자 영상 -->
             <div class="mainBanner">
                 <div class="inner">

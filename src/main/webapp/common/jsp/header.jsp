@@ -99,7 +99,8 @@
 <!--상단-->
 <div id="header">
     <div class="inner">
-        <h1><a href="" id="mainUrl"><img src="" id="logo"> <span id="mainName"></span></a></h1>
+        <h1 class="logo_pc"><a href="" id="mainUrl"><img src="" id="logo"> <span id="mainName"></span></a></h1>
+        <h1 class="logo_mb"><a href="#"><img src="/common/zian/images/ex/logo01.png" alt="지안에듀 행정직"></a></h1>
         <!--최상단메뉴-->
         <!-- 로그인 -->
         <div id="topNav">
@@ -327,7 +328,7 @@
                 <li><a href="javascript:goDetailbookType('CERT');">자격증</a></li>
                 <li><a href="javascript:goPageNoSubmit('bookStore','errataList')">정오표</a></li>
             </ul>
-            <ul class="deaph1 cols7 bigExam" style="display: none;"style="display: none;">
+            <ul class="deaph1 cols7 bigExam" style="display: none;">
                 <li><a href="javascript:goPageNoSubmit('bigExam','examApply')">모의고사신청</a></li>
                 <li><a href="javascript:goPageNoSubmit('bigExam','acaExam')">학원모의고사</a></li>
                 <li><a href="javascript:goPageNoSubmit('bigExam','weekExam')">주간모의고사</a></li>
