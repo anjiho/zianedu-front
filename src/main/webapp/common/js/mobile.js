@@ -30,17 +30,14 @@ $( document ).ready( function() {
 	} );
 } );
 
-
-
-
  $(document).on('ready', function() {
 						$(".Mdepth1").slick({
 						  dots: false,
-						  infinite: false,
-						  slidesToShow: 10,
-						  slidesToScroll: 10,
-						  variableWidth: false,
-						  speed: 300,
+							infinite: false,
+							slidesToShow: 6,
+							slidesToScroll: 6,
+							variableWidth: false,
+							speed: 300,
 						  arrows: true,
 						  responsive: [
 						    {

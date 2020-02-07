@@ -3,99 +3,71 @@
     $( document ).ready(function() {
         var leftMenuInfo = sessionStorage.getItem('leftMenu');//직렬 구분
         if(leftMenuInfo == "publicOnline") {
-            $("#gnb_onlineTopMenu").show();
-            $("#gnb_acaTopMenu").hide();
-            $("#gnb_bookStore").hide();
-            $("#gnb_bigExam").hide();
-            $("#gnb_area_onlineTopMenu").show();
-            $("#gnb_area_acaTopMenu").hide();
-            $("#gnb_area_bookStore").hide();
-            $("#gnb_area_bigExam").hide();
+            $(".onlineTopMenu").show();
+            $(".acaTopMenu").hide();
+            $(".bookStore").hide();
+            $(".bigExam").hide();
             $("#logo").attr("src", "/common/zian/images/common/logo01.png");
             $("#mainUrl").attr("href", "javascript:goPageNoSubmit('publicOnline', 'main')");
             innerHTML("mainName", "온라인");
             $("#mainName").css('color', '#134c97');
         }else if(leftMenuInfo == "publicAcademy") {
-            $("#gnb_onlineTopMenu").hide();
-            $("#gnb_bookStore").hide();
-            $("#gnb_acaTopMenu").show();
-            $("#gnb_bigExam").hide();
-            $("#gnb_area_onlineTopMenu").hide();
-            $("#gnb_area_bookStore").hide();
-            $("#gnb_area_acaTopMenu").show();
-            $("#gnb_area_bigExam").hide();
+            $(".onlineTopMenu").hide();
+            $(".bookStore").hide();
+            $(".acaTopMenu").show();
+            $(".bigExam").hide();
             $("#logo").attr("src", "/common/zian/images/common/logo01.png");
             $("#mainUrl").attr("href", "javascript:goPageNoSubmit('publicAcademy', 'main')");
             innerHTML("mainName", "학원");
             $("#mainName").css('color', '#134c97');
         }else if(leftMenuInfo == "techOnline") {
-            $("#gnb_onlineTopMenu").show();
-            $("#gnb_acaTopMenu").hide();
-            $("#gnb_bookStore").hide();
-            $("#gnb_bigExam").hide();
-            $("#gnb_area_onlineTopMenu").show();
-            $("#gnb_area_acaTopMenu").hide();
-            $("#gnb_area_bookStore").hide();
-            $("#gnb_area_bigExam").hide();
+            $(".onlineTopMenu").show();
+            $(".acaTopMenu").hide();
+            $(".bookStore").hide();
+            $(".bigExam").hide();
             $("#logo").attr("src", "/common/zian/images/common/logo02.png");
             $("#mainUrl").attr("href", "javascript:goPageNoSubmit('techOnline', 'main')");
             innerHTML("mainName", "온라인");
             $("#mainName").css('color', '#f69321');
         }else if(leftMenuInfo == "techAcademy") {
-            $("#gnb_onlineTopMenu").hide();
-            $("#gnb_acaTopMenu").show();
-            $("#gnb_bookStore").hide();
-            $("#gnb_bigExam").hide();
-            $("#gnb_area_onlineTopMenu").hide();
-            $("#gnb_area_acaTopMenu").show();
-            $("#gnb_area_bookStore").hide();
-            $("#gnb_area_bigExam").hide();
+            $(".onlineTopMenu").hide();
+            $(".acaTopMenu").show();
+            $(".bookStore").hide();
+            $(".bigExam").hide();
             $("#logo").attr("src", "/common/zian/images/common/logo02.png");
             $("#mainUrl").attr("href", "javascript:goPageNoSubmit('techAcademy', 'main')");
             innerHTML("mainName", "학원");
             $("#mainName").css('color', '#f69321');
         }else if(leftMenuInfo == "postOnline") {
-            $("#gnb_onlineTopMenu").show();
-            $("#gnb_acaTopMenu").hide();
-            $("#gnb_bookStore").hide();
-            $("#gnb_bigExam").hide();
+            $(".onlineTopMenu").show();
+            $(".acaTopMenu").hide();
+            $(".bookStore").hide();
+            $(".bigExam").hide();
             $("#logo").attr("src", "/common/zian/images/common/logo03.png");
             $("#mainUrl").attr("href", "javascript:goPageNoSubmit('postOnline', 'main')");
             innerHTML("mainName", "온라인");
             $("#mainName").css('color', '#ce1717');
         }else if(leftMenuInfo == "postAcademy") {
-            $("#gnb_onlineTopMenu").hide();
-            $("#gnb_bookStore").hide();
-            $("#gnb_acaTopMenu").show();
-            $("#gnb_bigExam").hide();
-            $("#gnb_area_onlineTopMenu").hide();
-            $("#gnb_area_bookStore").hide();
-            $("#gnb_area_acaTopMenu").show();
-            $("#gnb_area_bigExam").hide();
+            $(".onlineTopMenu").hide();
+            $(".bookStore").hide();
+            $(".acaTopMenu").show();
+            $(".bigExam").hide();
             $("#logo").attr("src", "/common/zian/images/common/logo03.png");
             $("#mainUrl").attr("href", "javascript:goPageNoSubmit('postAcademy', 'main')");
             innerHTML("mainName", "학원");
             $("#mainName").css('color', '#ce1717');
         }else if(leftMenuInfo == "bookStore") {
-            $("#gnb_onlineTopMenu").hide();
-            $("#gnb_acaTopMenu").hide();
-            $("#gnb_bookStore").show();
-            $("#gnb_bigExam").hide();
-            $("#gnb_area_onlineTopMenu").hide();
-            $("#gnb_area_acaTopMenu").hide();
-            $("#gnb_area_bookStore").show();
-            $("#gnb_area_bigExam").hide();
+            $(".onlineTopMenu").hide();
+            $(".acaTopMenu").hide();
+            $(".bookStore").show();
+            $(".bigExam").hide();
             $("#logo").attr("src", "/common/zian/images/common/logo04.png");
             $("#mainUrl").attr("href", "javascript:goPageNoSubmit('bookStore', 'main')");
         }else if(leftMenuInfo == "bigExam"){
-            $("#gnb_onlineTopMenu").hide();
-            $("#gnb_acaTopMenu").hide();
-            $("#gnb_bookStore").hide();
-            $("#gnb_bigExam").show();
-            $("#gnb_area_onlineTopMenu").hide();
-            $("#gnb_area_acaTopMenu").hide();
-            $("#gnb_area_bookStore").hide();
-            $("#gnb_area_bigExam").show();
+            $(".onlineTopMenu").hide();
+            $(".acaTopMenu").hide();
+            $(".bookStore").hide();
+            $(".bigExam").show();
             $("#logo").attr("src", "/common/zian/images/bigimg/logo.gif");
             $("#mainUrl").attr("href", "javascript:goPageNoSubmit('bigExam', 'main')");
         }
@@ -328,8 +300,8 @@
     </div>
     <!--주메뉴-->
     <div id="gnb">
-        <div class="inner" id="gnb_acaTopMenu"  style="display: none;">
-            <ul class="deaph1 cols7">
+        <div class="inner">
+            <ul class="deaph1 cols7 acaTopMenu" style="display: none;">
                 <li><a href="javascript:goPageNoSubmit('myLecRoom', 'main')">내강의실</a></li>
                 <li><a href="javascript:goPageNoSubmit('teacher', 'main')">교수소개</a></li>
                 <li><a href="javascript:goPageNoSubmit('lectureOrder', 'academy')">학원수강신청</a></li>
@@ -338,9 +310,7 @@
                 <li><a href="javascript:goBigExam()">빅모의고사</a></li>
                 <li><a href="javascript:goPassReview();">합격수기</a></li>
             </ul>
-        </div>
-        <div class="inner" id="gnb_onlineTopMenu" style="display: none;">
-            <ul class="deaph1 cols7">
+            <ul class="deaph1 cols7 onlineTopMenu" style="display: none;">
                 <li><a href="javascript:goPageNoSubmit('myLecRoom', 'main')">내강의실</a></li>
                 <li><a href="javascript:goPageNoSubmit('teacher', 'main')">교수소개</a></li>
                 <li><a href="javascript:goPageNoSubmit('lectureOrder', 'single')">수강신청</a></li>
@@ -349,9 +319,7 @@
                 <li><a href="javascript:goBigExam()">빅모의고사</a></li>
                 <li><a href="javascript:goPassReview();">합격수기</a></li>
             </ul>
-        </div>
-        <div class="inner" id="gnb_bookStore" style="display: none;">
-            <ul class="deaph1 cols7">
+            <ul class="deaph1 cols7 bookStore" style="display: none;">
                 <li><a href="javascript:goDetailbookType('COMMON');">공통과목</a></li>
                 <li><a href="javascript:goDetailbookType('PUBLIC');">행정직군</a></li>
                 <li><a href="javascript:goDetailbookType('TECH');">기술직군</a></li>
@@ -359,9 +327,7 @@
                 <li><a href="javascript:goDetailbookType('CERT');">자격증</a></li>
                 <li><a href="javascript:goPageNoSubmit('bookStore','errataList')">정오표</a></li>
             </ul>
-        </div>
-        <div class="inner" id="gnb_bigExam" style="display: none;">
-            <ul class="deaph1 cols7">
+            <ul class="deaph1 cols7 bigExam" style="display: none;"style="display: none;">
                 <li><a href="javascript:goPageNoSubmit('bigExam','examApply')">모의고사신청</a></li>
                 <li><a href="javascript:goPageNoSubmit('bigExam','acaExam')">학원모의고사</a></li>
                 <li><a href="javascript:goPageNoSubmit('bigExam','weekExam')">주간모의고사</a></li>
@@ -373,7 +339,7 @@
 
         <!-- gnb_area -->
         <div class="gnb_area">
-            <ul class="Mdepth1" id="gnb_area_acaTopMenu"  style="display: none;">
+            <ul class="Mdepth1 acaTopMenu" style="display: none;">
                 <li><a href="javascript:goPageNoSubmit('myLecRoom', 'main')">내강의실</a></li>
                 <li><a href="javascript:goPageNoSubmit('teacher', 'main')">교수소개</a></li>
                 <li><a href="javascript:goPageNoSubmit('lectureOrder', 'academy')">학원수강신청</a></li>
@@ -382,7 +348,7 @@
                 <li><a href="javascript:goBigExam()">빅모의고사</a></li>
                 <li><a href="javascript:goPassReview();">합격수기</a></li>
             </ul>
-            <ul class="Mdepth1" id="gnb_area_onlineTopMenu" style="display: none;">
+            <ul class="Mdepth1 onlineTopMenu" style="display: none;">
                 <li><a href="javascript:goPageNoSubmit('myLecRoom', 'main')">내강의실</a></li>
                 <li><a href="javascript:goPageNoSubmit('teacher', 'main')">교수소개</a></li>
                 <li><a href="javascript:goPageNoSubmit('lectureOrder', 'single')">수강신청</a></li>
@@ -391,7 +357,7 @@
                 <li><a href="javascript:goBigExam()">빅모의고사</a></li>
                 <li><a href="javascript:goPassReview();">합격수기</a></li>
             </ul>
-            <ul class="Mdepth1" id="gnb_area_bookStore" style="display: none;">
+            <ul class="Mdepth1 bookStore" style="display: none;">
                 <li><a href="javascript:goDetailbookType('COMMON');">공통과목</a></li>
                 <li><a href="javascript:goDetailbookType('PUBLIC');">행정직군</a></li>
                 <li><a href="javascript:goDetailbookType('TECH');">기술직군</a></li>
@@ -399,7 +365,7 @@
                 <li><a href="javascript:goDetailbookType('CERT');">자격증</a></li>
                 <li><a href="javascript:goPageNoSubmit('bookStore','errataList')">정오표</a></li>
             </ul>
-            <ul class="Mdepth1" id="gnb_area_bigExam" style="display: none;">
+            <ul class="Mdepth1 bigExam"style="display: none;">
                 <li><a href="javascript:goPageNoSubmit('bigExam','examApply')">모의고사신청</a></li>
                 <li><a href="javascript:goPageNoSubmit('bigExam','acaExam')">학원모의고사</a></li>
                 <li><a href="javascript:goPageNoSubmit('bigExam','weekExam')">주간모의고사</a></li>
