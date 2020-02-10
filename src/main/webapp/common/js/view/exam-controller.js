@@ -412,3 +412,153 @@ function getAchievementManagementDetailInfoBySubject(examUserKey) {
         }
     }
 }
+
+function getWrongNote(examUserKey, isScore, isInterest) {
+    if (examUserKey == null || examUserKey == undefined) return;
+    var data = {
+        isScore : isScore,
+        isInterest : isInterest
+    };
+    var infoList = getApi("/exam/getWrongNote/", examUserKey, data);
+    if (infoList != null) {
+        var selList = infoList.result;
+        innerHTML("examName", selList[0].examHeaderInfo.examName);
+        innerHTML("examDate", selList[0].examHeaderInfo.examDate);
+        innerHTML("serial", selList[0].examHeaderInfo.serial);
+        innerHTML("userName", selList[0].examHeaderInfo.userName);
+        innerHTML("subjectName", selList[0].subjectNameList);
+        var returnHtml = "<div class='st_questionnote_search_pannel'>";
+        for (var i = 0; i < selList.length; i++){
+            if(i == 0) var classStr = "class='st_on'";
+            else var classStr = "";
+            returnHtml += "<div "+ classStr +" data-name='t-"+ (i+1) +"' data-tab='tab-"+ (i+1) +"'>"+  selList[i].subjectName +"</div>"
+        }
+        returnHtml += "<span class='st_controll_pannel'>";
+        returnHtml += "틀린문제보기";
+        returnHtml += "<div class='st_switch_group' id='id_bShowX'>";
+        returnHtml += "<div class='st_switch' for='bShowX'>";
+        returnHtml += "<div class='st_switch_text_on'>";
+        returnHtml += "<span>O</span>";
+        returnHtml += "</div>";
+        returnHtml += "<div class='st_switch_text_off'>";
+        returnHtml += "<span>X</span>";
+        returnHtml += "</div>";
+        returnHtml += "<div class='st_switch_controll'></div>";
+        returnHtml += "</div>";
+        returnHtml += "<input class='st_show_x' id='bShowX' name='bShowX' type='hidden' value='False' />";
+        returnHtml += "</div>";
+        returnHtml += "관심문제보기";
+        returnHtml += "<div class='st_switch_group' id='id_bShowInterest'>";
+        returnHtml += "<div class='st_switch' for='bShowInterest'>";
+        returnHtml += "<div class='st_switch_text_on'>";
+        returnHtml += "<span>O</span>";
+        returnHtml += "</div>";
+        returnHtml += "<div class='st_switch_text_off'>";
+        returnHtml += "<span>X</span>";
+        returnHtml += "</div>";
+        returnHtml += "<div class='st_switch_controll'></div>";
+        returnHtml += "</div>";
+        returnHtml += "<input class='st_show_interest' id='bShowInterest' name='bShowInterest' type='hidden' value='False'/>";
+        returnHtml += "</div>";
+        returnHtml += "</span>";
+        returnHtml += "</div>";
+        $("#st_questionnote_search_pannel_Div").append(returnHtml);
+
+        for (var j = 0; j < selList.length; j++){
+            var returnHtml2 = "<div id='tab-"+ (j+1) +"' class=\"st_question_board current\" style=\"width: 800px; height: 530px;\">";
+                returnHtml2 += "<ul>";
+                for(var k = 0; k < selList[j].resultList.length; k++){
+                    var resultList = selList[j].resultList[k];
+                    if(resultList.score == 0){
+                        var score = 0;
+                    }else{
+                        var score = 1;
+                    }
+                    returnHtml2 +=  "<li data-index='"+ k +"' id='id_question_"+ k +"' class='st_question' data-question-user-key='973282' data-score='" + score + "' data-interest='0'>";
+                    returnHtml2 +=     "<div class='st_number'>";
+                    returnHtml2 +=     resultList.num;
+                    returnHtml2 +=     "<span>";
+                    returnHtml2 +=    "<div class='st_off st_switch_group' id='id_cUserQuestion_is_interest'>";
+                    returnHtml2 +=     "<div class='st_switch' for='cUserQuestion_is_interest'>";
+                    returnHtml2 +=     "<div class='st_switch_text_on'><span>O</span></div>";
+                    returnHtml2 += "<div class='st_switch_text_off'><span>X</span></div>";
+                    returnHtml2 +=  "<div class='st_switch_controll'></div>";
+                    returnHtml2 +=    "</div>";
+                    returnHtml2 +=     "<input class='st_interest' data_exam_question_bank_key='11114' data_exam_question_user_key='984909' data_exam_sbj_user_key='102800' data_exam_user_key='42902' data_user_key='5' id='cUserQuestion_is_interest' name='cUserQuestion.is_interest' type='hidden' value='True' />";
+                    returnHtml2 +=     "</div>";
+                    returnHtml2 +=     "<span><b>[관심문제]</b>선택</span>";
+                    returnHtml2 += "</span>";
+                    if(resultList.score == 0){
+                        returnHtml2 += "<img class='st_user_answer_x' src='/common/zian/images/bigimg/icon_x_big.png'/>";
+                    }
+                    returnHtml2 +=     "</div>";
+                    returnHtml2 +=     "<div class='st_button_pannel'>";
+                    returnHtml2 +=    "<a class='st_btn_0000 st_do_study' href='"+ resultList.theoryLearningUrl +"' target='_blank'>이론 학습 하기</a>&nbsp;&nbsp;";
+
+                    returnHtml2 +=  "<span class='st_btn_0000 st_do_lec'>해설 강의</span>";
+                    returnHtml2 +=  "</div>";
+                    returnHtml2 += "<br />";
+                    returnHtml2 += "<img src='/Upload/100/exam_question_bank//오경미국어_기출예상603번_문제.jpg' alt='' title='' />";
+                    returnHtml2 +=     "<br />";
+                    returnHtml2 +=    "<img src='/Upload/100/exam_question_bank//오경미국어_기출예상603번_해설.jpg' alt='' title='' />";
+                    returnHtml2 +=    "<div class='st_review'>";
+                    returnHtml2 +=    resultList.review;
+                        returnHtml2 += "</div>";
+                    returnHtml2 += "<div class='st_total_review_icon'>평가</div>";
+                    returnHtml2 +=     "<div class='st_total_review'>";
+                    returnHtml2 +=     "* 난도 <span>: "+ resultList.examLevelName +"</span>";
+
+                    returnHtml2 += "* 정답률 <span>: "+ resultList.scorePercent +" %</span><br />";
+                    returnHtml2 += "* 문제유형 <span>: "+ resultList.stepName +"</span><br />";
+                    returnHtml2 += "* 문제단원 <span>: "+  resultList.unitName +"</span><br />";
+                    returnHtml2 += " * 제출답안 <span>: "+ resultList.userAnswer +"</span><br />";
+                    returnHtml2 += "* 답안선택이유 <span>: "+ resultList.answerComment +"</span>";
+                    returnHtml2 +=  "</div>";
+                    returnHtml2 +=  "</li>";
+                }
+                returnHtml2 += "</ul>";
+            returnHtml2 += "</div>";
+            $("#st_position_div").append(returnHtml2);
+        }
+
+        for (var l = 0; l < selList.length; l++){
+            var returnHtml3 = " <div id='t-"+ (l+1) +"' class=\"st_answer_board st_tAn current2\" style=\"float: right; width: 280px; margin-left: 20px;\">";
+            returnHtml3 += "<table>";
+            returnHtml3 +="<colgroup>";
+            returnHtml3 +="<col style=\"width: 50px;\" />";
+            returnHtml3 +="<col style=\"width: 80px;\" />";
+            returnHtml3 +="<col style=\"width: 80px;\" />";
+            returnHtml3 +="</colgroup>";
+            returnHtml3 += "<thead>";
+            returnHtml3 += "<tr>";
+                returnHtml3 += "<td>번호</td>";
+                returnHtml3 += "<td>제출 답안</td>";
+                returnHtml3 += "<td>정답</td>";
+                returnHtml3 += "<td>난이도</td>";
+            returnHtml3 += "</tr>";
+            returnHtml3 += "</thead>";
+            returnHtml3 += "<tbody>";
+            for(var m = 0; m < selList[l].resultList.length; m++){
+                var resultList = selList[l].resultList[m];
+                returnHtml3 += "<tr data-index="+ m +">";
+                returnHtml3 += "<td>";
+                returnHtml3 += resultList.num;
+                if(resultList.score == 0){
+                    returnHtml3 += "<img class='st_user_answer_x' src='/common/zian/images/bigimg/icon_x_small.png'>";
+                }
+                returnHtml3 += "</td>";
+                returnHtml3 += "<td>";
+                returnHtml3 += "<span class='st_wrong'>"+ resultList.userAnswer +"</span>";
+                returnHtml3 += "</td>";
+                returnHtml3 += "<td>"+ resultList.answer +"</td>";
+                returnHtml3 +=  "<td>"+ resultList.examLevelName +"</td>";
+                returnHtml3 +=  "</tr>";
+            }
+            returnHtml3 += "</tbody>";
+            returnHtml3 += "</table>";
+            returnHtml3 += "</div>";
+            $("#answerDiv").append(returnHtml3);
+        }
+
+    }
+}
