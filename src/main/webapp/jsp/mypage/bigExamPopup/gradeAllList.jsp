@@ -10,6 +10,7 @@
             function getAchievementManagementDetailInfo(examUserKey) {
                 var achievementResult = getApi("/exam/getAchievementManagementDetailInfo/", examUserKey);
                 if (achievementResult == null) return;
+                console.log(achievementResult);
                 //상단 정보
                 var achievementTopInfo = achievementResult.result.achievementTopInfo;
                 if (achievementTopInfo != null) {
@@ -72,7 +73,6 @@
                 innerHTML("l_totalStatics", totalStaticsScore);
                 //과목별 평균 리스트
                 var subjectStaticsInfo = achievementResult.result.subjectStaticsInfo;
-                console.log(subjectStaticsInfo);
                 if (subjectStaticsInfo.length > 0) {
                     var subjectStaticsInfoLength = subjectStaticsInfo.length;
                     for (var i=0; i<subjectStaticsInfoLength; i++) {
@@ -93,6 +93,7 @@
                     }
                 }
 
+                
             }
 
             $(document).ready(function(){
