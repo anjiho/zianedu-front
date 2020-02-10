@@ -44,9 +44,11 @@
                     if(!$si.hasClass('st_on')){
                         $si.addClass("st_on");
                         $th.attr('data-interest',1);
+                        addFavoriteExamProblem($si.attr('id'), 1);
                     }else{
                         $si.removeClass("st_on");
                         $th.attr('data-interest',0);
+                        addFavoriteExamProblem($si.attr('id'), 0);
                     }
                 });
             });
