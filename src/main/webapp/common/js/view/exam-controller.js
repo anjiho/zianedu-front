@@ -465,6 +465,7 @@ function getWrongNote(examUserKey, isScore, isInterest) {
         $("#st_questionnote_search_pannel_Div").append(returnHtml);
 
         for (var j = 0; j < selList.length; j++){
+            console.log(selList);
             var returnHtml2 = "<div id='tab-"+ (j+1) +"' class=\"st_question_board current\" style=\"width: 800px; height: 530px;\">";
                 returnHtml2 += "<ul>";
                 for(var k = 0; k < selList[j].resultList.length; k++){
@@ -498,9 +499,9 @@ function getWrongNote(examUserKey, isScore, isInterest) {
                     returnHtml2 +=  "<span class='st_btn_0000 st_do_lec'>해설 강의</span>";
                     returnHtml2 +=  "</div>";
                     returnHtml2 += "<br />";
-                    returnHtml2 += "<img src='/Upload/100/exam_question_bank//오경미국어_기출예상603번_문제.jpg' alt='' title='' />";
+                    returnHtml2 += "<img src='"+ resultList.questionImage +"' alt='' title='' />";
                     returnHtml2 +=     "<br />";
-                    returnHtml2 +=    "<img src='/Upload/100/exam_question_bank//오경미국어_기출예상603번_해설.jpg' alt='' title='' />";
+                    returnHtml2 +=    "<img src='"+ resultList.commentaryImage +"' alt='' title='' />";
                     returnHtml2 +=    "<div class='st_review'>";
                     returnHtml2 +=    resultList.review;
                         returnHtml2 += "</div>";

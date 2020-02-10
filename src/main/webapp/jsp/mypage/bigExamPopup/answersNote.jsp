@@ -131,7 +131,6 @@
                         </div>
                         <div class="st_answer_position" id="answerDiv"></div>
                     </div>
-
                 </div>
             </div>
         </div>
