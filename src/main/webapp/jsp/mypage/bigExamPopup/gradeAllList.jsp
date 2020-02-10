@@ -95,17 +95,16 @@
                         var selList = subjectStaticsInfo[i];
                         if (selList.subjectName == "총점") {
                             innerHTML("l_subject5", selList.subjectName);
-                            //innerHTML("l_topTenScore5", selList.totalScore);
-                            //innerHTML("l_topThirtyScore5", selList.totalScore);
                             innerHTML("l_topTenScore5", selList.tenPercentScore);
                             innerHTML("l_topThirtyScore5", selList.thirtyPercentScore);
                             innerHTML("l_myScore5", selList.myScore);
+                            innerHTML("l_subjectStaticsTotal5", selList.totalScore);
                         } else {
                             innerHTML("l_subject" + i, selList.subjectName);
                             innerHTML("l_topTenScore" + i, selList.tenPercentScore);
                             innerHTML("l_topThirtyScore" + i, selList.thirtyPercentScore);
                             innerHTML("l_myScore" + i, selList.myScore);
-
+                            innerHTML("l_subjectStaticsTotal" + i, selList.totalScore);
                         }
                     }
                 }
@@ -293,14 +292,14 @@
                                     <td id="l_myScore4"></td>
                                     <td id="l_myScore5"></td>
                                 </tr>
-                                <tr class="st_result">
+                                <tr class="st_result" id="l_subjectStaticsTotal">
                                     <td>전체</td>
-                                    <td>56.9</td>
-                                    <td>38.6</td>
-                                    <td>62.1</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>157.7</td>
+                                    <td id="l_subjectStaticsTotal0"></td>
+                                    <td id="l_subjectStaticsTotal1"></td>
+                                    <td id="l_subjectStaticsTotal2"></td>
+                                    <td id="l_subjectStaticsTotal3"></td>
+                                    <td id="l_subjectStaticsTotal4"></td>
+                                    <td id="l_subjectStaticsTotal5"></td>
                                 </tr>
                                 </tbody>
                             </table>
