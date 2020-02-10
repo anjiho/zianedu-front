@@ -91,7 +91,7 @@
     function goBigExamPopup(examUserKey){
         var popUrl = '/myPage?page_gbn=gradeAllList&examUserKey='+examUserKey;
         var tarGet = "_blank";
-        var popOption = "width=1050, height=775, resizable=no, scrollbars=no, status=no;";
+        var popOption = "width=1200, height=775, resizable=no, scrollbars=no, status=no;";
         window.open(popUrl,tarGet,popOption);
     }
 </script>

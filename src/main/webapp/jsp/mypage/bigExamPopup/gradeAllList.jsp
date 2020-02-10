@@ -1,71 +1,64 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
-<script src="/common/zian/js/kiplayer/jquery.min.js"></script>
-<link rel="stylesheet" type="text/css" href="/common/zian/css/big_layout.css">
-<script src="/common/js/common.js"></script>
-<script src="/common/zian/js/common.js"></script>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta http-equiv="content-Type" content="text/html;charset=utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-    <title>기출문제</title>
-    <title>빅모의고사 팝업시험</title>
-<%--    <link type="text/css" rel="stylesheet" href="../css/big_layout.css">--%>
-<%--    <script type="text/javascript" src="../js/kiplayer/jquery.min.js"></script>--%>
-    <title></title>
-<%--    <link href="/lib/UI/Nwagon/Nwagon.css" rel="stylesheet" type="text/css"/>--%>
-<%--    <script type="text/javascript" src="/lib/UI/Nwagon/Nwagon.js"></script>--%>
-    <style type="text/css">
-        g.labels{min-height:200px !important;}
-        svg{top: 100px;}
-        .st_exam_test{overflow-x:hidden !important;overflow-y:initial !important;width:100% !important;}
-    </style>
-    <script type="text/javascript">
-        /*$(
-            //마우스 우클릭 & 드래그 방지
-            function(){
-                document.onselectstart = eventControl;
-                document.oncontextmenu = eventControl;
+<%@include file="/common/jsp/exam_common.jsp" %>
+<!-- 차트 관련 스크립트 -->
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/series-label.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script>
+            /*$(
+                //마우스 우클릭 & 드래그 방지
+                function(){
+                    document.onselectstart = eventControl;
+                    document.oncontextmenu = eventControl;
+                }
+            );
+            function eventControl(){
+                return false;
             }
-        );
-        function eventControl(){
-            return false;
-        }
 
-        function onStart(){
-            location.href = "bigTest_pop.html"
-        }*/
+            function onStart(){
+                location.href = "bigTest_pop.html"
+            }*/
 
-        $(document).ready(function(){
-            /*
-                비효율
-                var c01 = $('class01 .st_type_01 span').text();
-                var c01_2 = $('class01 .st_type_02 span').text();
-                var c02 = $('class02 .st_type_02 span').text();
-                var c02_2 = $('class02 .st_type_02 span').text();
-                var c03 = $('class02 .st_type_02 span').text();
-                var c03_2 = $('class02 .st_type_02 span').text();
+            //성적전체분석
+            function getAchievementManagementDetailInfo(examUserKey) {
+                var achievementResult = getApi("/exam/getAchievementManagementDetailInfo/", examUserKey);
+                if (achievementResult == null) return;
+                console.log(achievementResult);
+                //상단 정보
+                var achievementTopInfo = achievementResult.result.achievementTopInfo;
+                if (achievementTopInfo != null) {
+                    innerHTML("l_examName", achievementTopInfo.examName);
+                    innerHTML("l_subjectName", achievementTopInfo.subjectName);
+                    innerHTML("l_examDate", achievementTopInfo.examDate);
+                    innerHTML("l_serial", achievementTopInfo.serial);
+                    innerHTML("l_examUserName", achievementTopInfo.examUserName);
+                }
 
-                $('.st_type_01').width(n+'%');
-                $('.st_type_02').width(n2+'%');
-            */
+                var examSubjectStaticsInfoList = achievementResult.result.examSubjectStaticsInfo;
+                if (examSubjectStaticsInfoList.length > 0) {
+                    dwr.util.addRows("l_examSubjectStaticsInfoList", examSubjectStaticsInfoList, [
+                        function (data) { return "<b>" + data.subjectName + "</b>" },
+                        function (data) { return data.answerCnt + "/" + data.questionCnt },
+                        function (data) { return data.answerScore + "/" + data.totalAnswerScore },
+                        function (data) { return data.topAccumulatePercent },
+                        function (data) { return data.userGrade + "/"+ data.totalAnswerCnt },
+                        function (data) { return data.isPass }
+                    ], {escapeHtml: false});
+                }
+                var examSubjectTotalInfo = achievementResult.result.examSubjectTotalInfo;
+                console.log(examSubjectTotalInfo);
+                if (examSubjectTotalInfo != null) {
 
-            //성적 값에 따라 그래프 길이조절
-            $('.st_graph_item').each(function(){
-                var $this = $(this);
+                }
+            }
 
-                $this.find('.st_graph_bar').each(function(){
-                    $th = $(this);
-                    var txt = $th.find('span').text();
-                    $th.width(0); //왼쪽으로부터 애니메이션 주기 위해 길이값 초기화
-                    $th.stop().animate({width:txt+'%'},{duration:2000}, 400);
-                })
+            $(document).ready(function(){
+                getAchievementManagementDetailInfo(36769);
+
             })
-        })
-    </script>
-</head>
-<body>
+</script>
 <div class="st_exam">
     <form action="/" id="id_frm" method="post" name="name_frm">
         <input id="exam_user_key" name="exam_user_key" type="hidden" value="42902" />
@@ -73,24 +66,24 @@
             <div class="st_test_main" style="background-image: none;">
                 <div class="st_top_line"></div>
                 <div class="st_content st_analysis" style="">
-                    <div class="st_title">빅주간(전범위)모의고사_공통과목_16회</div>
+                    <div class="st_title" id="l_examName"></div>
                     <div class="st_info">
                         <ul>
                             <li>
                                 <div></div>
-                                <b>응시과목: </b>국어, 영어, 한국사
+                                <b>응시과목: </b><span id="l_subjectName"></span>
                             </li>
                             <li>
                                 <div></div>
-                                <b>시험일: </b>2020년 01월 02일
+                                <b>시험일: </b><span id="l_examDate"></span>
                             </li>
                             <li>
                                 <div></div>
-                                <b>응시번호: </b>02042827
+                                <b>응시번호: </b><span id="l_serial"></span>
                             </li>
                             <li>
                                 <div></div>
-                                <b>이름: </b>지안에듀
+                                <b>이름: </b><span id="l_examUserName"></span>
                             </li>
                         </ul>
                     </div>
@@ -144,46 +137,54 @@
                                     <td>전체</td>
                                 </tr>
                                 </thead>
-                                <tbody>
-                                <tr>
-                                    <td><b>국어</b></td>
-                                    <td>0/20</td>
-                                    <td>0/100</td>
-                                    <td></td>
-                                    <td>30/53</td>
-                                    <td>
-                                        <span class="">과락</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><b>영어</b></td>
-                                    <td>3/20</td>
-                                    <td>15/100</td>
-                                    <td>78.3</td>
-                                    <td>29/53</td>
-                                    <td>
-                                        <span class="">과락</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><b>한국사</b></td>
-                                    <td>0/20</td>
-                                    <td>0/100</td>
-                                    <td>85.7%</td>
-                                    <td>46/53</td>
-                                    <td>
-                                        <span class="">과락</span>
-                                    </td>
-                                </tr>
-                                <tr class="st_result">
+                                <tbody id="l_examSubjectStaticsInfoList">
+<%--                                <tr>--%>
+<%--                                    <td><b>국어</b></td>--%>
+<%--                                    <td>0/20</td>--%>
+<%--                                    <td>0/100</td>--%>
+<%--                                    <td></td>--%>
+<%--                                    <td>30/53</td>--%>
+<%--                                    <td>--%>
+<%--                                        <span class="">과락</span>--%>
+<%--                                    </td>--%>
+<%--                                </tr>--%>
+<%--                                <tr>--%>
+<%--                                    <td><b>영어</b></td>--%>
+<%--                                    <td>3/20</td>--%>
+<%--                                    <td>15/100</td>--%>
+<%--                                    <td>78.3</td>--%>
+<%--                                    <td>29/53</td>--%>
+<%--                                    <td>--%>
+<%--                                        <span class="">과락</span>--%>
+<%--                                    </td>--%>
+<%--                                </tr>--%>
+<%--                                <tr>--%>
+<%--                                    <td><b>한국사</b></td>--%>
+<%--                                    <td>0/20</td>--%>
+<%--                                    <td>0/100</td>--%>
+<%--                                    <td>85.7%</td>--%>
+<%--                                    <td>46/53</td>--%>
+<%--                                    <td>--%>
+<%--                                        <span class="">과락</span>--%>
+<%--                                    </td>--%>
+<%--                                </tr>--%>
+<%--                                <tr class="st_result">--%>
+<%--                                    <td><b>평균</b></td>--%>
+<%--                                    <td>1.2</td>--%>
+<%--                                    <td>6</td>--%>
+<%--                                    <td></td>--%>
+<%--                                    <td>45/53</td>--%>
+<%--                                    <td></td>--%>
+<%--                                </tr>--%>
+                                </tbody>
+                                <tr class="st_result" style="display: none">--%>
                                     <td><b>평균</b></td>
-                                    <td>1.2</td>
+                                    <td id="l_staticAnswerCnt">1.2</td>
                                     <td>6</td>
                                     <td></td>
                                     <td>45/53</td>
                                     <td></td>
                                 </tr>
-                                </tbody>
                             </table>
 
                         </div>
@@ -466,3 +467,31 @@
 </div>
 </body>
 </html>
+<script>
+    $(document).ready(function(){
+        /*
+            비효율
+            var c01 = $('class01 .st_type_01 span').text();
+            var c01_2 = $('class01 .st_type_02 span').text();
+            var c02 = $('class02 .st_type_02 span').text();
+            var c02_2 = $('class02 .st_type_02 span').text();
+            var c03 = $('class02 .st_type_02 span').text();
+            var c03_2 = $('class02 .st_type_02 span').text();
+
+            $('.st_type_01').width(n+'%');
+            $('.st_type_02').width(n2+'%');
+        */
+
+        //성적 값에 따라 그래프 길이조절
+        $('.st_graph_item').each(function(){
+            var $this = $(this);
+
+            $this.find('.st_graph_bar').each(function(){
+                $th = $(this);
+                var txt = $th.find('span').text();
+                $th.width(0); //왼쪽으로부터 애니메이션 주기 위해 길이값 초기화
+                $th.stop().animate({width:txt+'%'},{duration:2000}, 400);
+            })
+        })
+    })
+</script>
