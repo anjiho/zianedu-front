@@ -6,26 +6,10 @@
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
 <script>
-            /*$(
-                //마우스 우클릭 & 드래그 방지
-                function(){
-                    document.onselectstart = eventControl;
-                    document.oncontextmenu = eventControl;
-                }
-            );
-            function eventControl(){
-                return false;
-            }
-
-            function onStart(){
-                location.href = "bigTest_pop.html"
-            }*/
-
             //성적전체분석
             function getAchievementManagementDetailInfo(examUserKey) {
                 var achievementResult = getApi("/exam/getAchievementManagementDetailInfo/", examUserKey);
                 if (achievementResult == null) return;
-                console.log(achievementResult);
                 //상단 정보
                 var achievementTopInfo = achievementResult.result.achievementTopInfo;
                 if (achievementTopInfo != null) {
