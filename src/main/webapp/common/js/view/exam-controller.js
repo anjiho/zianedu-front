@@ -321,3 +321,94 @@ function getExamMasterGateInfoFromBuy(examUserKey) {
         return infoList;
     }
 }
+
+function getAchievementManagementDetailInfoBySubject(examUserKey) {
+    if (examUserKey == null || examUserKey == undefined) return;
+    var infoList = getApi("/exam/getAchievementManagementDetailInfoBySubject/", examUserKey, '');
+    if (infoList != null) {
+        var selList = infoList.result;
+        innerHTML("examName", selList[0].examHeaderInfo.examName);
+        innerHTML("examDate", selList[0].examHeaderInfo.examDate);
+        innerHTML("serial", selList[0].examHeaderInfo.serial);
+        innerHTML("userName", selList[0].examHeaderInfo.userName);
+        innerHTML("subjectName", selList[0].subjectNameList);
+        for (var i = 0; i < selList.length; i++){
+            var returnHtml  = "<div class='st_analysis_main'>";
+                returnHtml += "<div class=\"st_analysis_section\">";
+                returnHtml +=  "<div class='st_sction_title'>";
+                    returnHtml += "<img src='/Content/image/icon/icon_point_check_0001.png' alt='' />"+ selList[i].subjectName +" 상세체점표";
+                 returnHtml += "</div>";
+                returnHtml += "<table>";
+                 returnHtml += "<colgroup>";
+                    returnHtml +=  "<col style='width: 50px'/>";
+                    returnHtml +=  "<col style='width: 60px;'/>";
+                    returnHtml +=  "<col style='width: 50px;'/>";
+                    returnHtml +=  "<col style='width: 100px;'/>";
+                    returnHtml +=  "<col style='width: 250px;'/>";
+                    returnHtml +=  "<col style='width: 50px;'/>";
+                    returnHtml +=  "<col style='width: 200px;'/>";
+                    returnHtml +=  "<col />";
+                 returnHtml +=  "</colgroup>";
+                 returnHtml +=  "<thead>";
+                    returnHtml +=  "<tr>";
+                    returnHtml +=  "<td>문항</td>";
+                    returnHtml +=  "<td>정답</td>";
+                    returnHtml +=  "<td>본인답</td>";
+                    returnHtml +=  "<td>정답률</td>";
+                    returnHtml +=  "<td>보기별 정답률</td>";
+                    returnHtml +=  "<td>난도</td>";
+                    returnHtml +=  "<td>문제유형</td>";
+                    returnHtml +=  "<td>문제단원</td>";
+                    returnHtml +=  "</tr>";
+                 returnHtml +=  " </thead>";
+                 returnHtml +=  "<tbody>";
+
+                    for(var j=0; j < selList[i].resultList.length; j++){
+                        var resultList = selList[i].resultList[j];
+                        returnHtml +=  "<tr style='position: relative;'>";
+                        returnHtml +=     "<td rowspan='2'>"+ gfn_isnull(resultList.num) +"</td>";
+                        returnHtml +=     "<td rowspan='2'>"+ gfn_isnull(resultList.answer) +"</td>";
+                        returnHtml +=     "<td rowspan='2'>"+ gfn_isnull(resultList.userAnswer)  +"</td>";
+                        returnHtml +=     "<td>"+ gfn_isnull(resultList.scorePercent) +"</td>";
+                        returnHtml +=     "<td>";
+                            for(var k=0; k < resultList.problemScoreList.length; k++){
+                                if(k == 0) var scoreNum = "①";
+                                else if(k == 1) var scoreNum = "②";
+                                else if(k == 2) var scoreNum = "③";
+                                else var scoreNum = "④";
+
+                                returnHtml += "<div style='float: left; text-align: left; width: 25%;'>";
+                                   returnHtml += scoreNum+" "+resultList.problemScoreList[k].scorePercent;
+                                returnHtml += "</div>";
+                            }
+                        returnHtml +=     "</td>";
+                        returnHtml +=     "<td>"+ gfn_isnull(resultList.examLevelName) +"</td>";
+                        returnHtml +=     "<td>"+ gfn_isnull(resultList.stepName) +"</td>";
+                        returnHtml +=     "<td style='text-align: left;'>";
+                                            var unitNameArray = new Array();
+                                            if(resultList.unitName != null){
+                                                var str = resultList.unitName;
+                                                unitNameArray = str.split(">");
+                                                for(var m =0; m < unitNameArray.length; m++){
+                                                    if(m+1 == unitNameArray.length){
+                                                        returnHtml += "<b>"+unitNameArray[m]+"</b>";
+                                                    }else{
+                                                        returnHtml += unitNameArray[m] + " > ";
+                                                    }
+                                                }
+                                            }
+                        returnHtml +=      "</td>";
+                        returnHtml += "</tr>";
+                        returnHtml += "<tr>";
+                        returnHtml +=  "<td>답안선택이유</td>";
+                        returnHtml +=  "<td colspan='4' style='text-align: left; padding-left: 10px; padding-right: 10px;'>"+ gfn_isnull(resultList.answerComment) +"</td>";
+                        returnHtml += "</tr>";
+                    }
+                 returnHtml += "</tbody>";
+        returnHtml += "</table>";
+        returnHtml += "</div>";
+        returnHtml += "</div>";
+        $("#dataList").append(returnHtml);
+        }
+    }
+}
