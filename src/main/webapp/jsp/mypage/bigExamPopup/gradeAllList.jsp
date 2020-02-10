@@ -146,7 +146,8 @@
                 min: 0,
                 title: {
                     text: '점수'
-                }
+                },
+                max: 100
             },
 
             plotOptions: {
@@ -168,6 +169,7 @@
 
             }]
         });
+        //점수비교 평균 그래프
         var compareScoreGraphInfo = achievementResult.result.compareScoreGraphInfo;
         Highcharts.chart('container2', {
             chart: {
@@ -192,15 +194,227 @@
                     text: '점수'
                 }
             },
-
-            plotOptions: {
-            },
+            plotOptions: {},
             credits: {
                 enabled : false
             },
             series: compareScoreGraphInfo.series
         });
+
+        var subjectAnalysisGraphInfo = achievementResult.result.subjectAnalysisGraphInfo;
+        if (subjectAnalysisGraphInfo.length > 0) {
+            var result = "";
+            for (var i = 0; i < subjectAnalysisGraphInfo.length; i++) {
+                var cmpList = subjectAnalysisGraphInfo[i]
+                result += "<div class=\"st_subject_name\">\n" +
+                    "                            <span><b>" + cmpList.subjectName + "</span> 분석 그래프</b>\n" +
+                    "                        </div>\n" +
+                    "                        <div class=\"st_analysis_section\">\n" +
+                    "                            <div class=\"st_sction_title\">\n" +
+                    "                                <img src=\"/common/zian/images/bigimg/icon_point_check_0001.png\" alt=\"\" />" + cmpList.subjectName + " 유형별 정답률 분석 그래프\n" +
+                    "                            </div>\n" +
+                    "                            <div class='st_diagram st_half' id='type_score_graph" + i + "'  style='float: left;'>\n" +
+                    "                                <p>유형별 정답률(해당 회차별)</p>\n" +
+                    "                            </div>\n" +
+                    "                            <div class='st_diagram st_half' id='type_score_total_graph" + i + "' style='float: right;'>\n" +
+                    "                                <p>유형별 정답률(누적)</p>\n" +
+                    "                            </div>\n" +
+                    "                        </div>\n" +
+                    "                        <div class=\"st_analysis_section\">\n" +
+                    "                            <div class=\"st_sction_title\">\n" +
+                    "                                <img src=\"/common/zian/images/bigimg/icon_point_check_0001.png\" alt=\"\" />" + cmpList.subjectName + " 패턴별 정답률 분석 그래프\n" +
+                    "                            </div>\n" +
+                    "                            <div class='st_diagram st_half' id='pattern_score_graph" + i + "' style='float: left;'>\n" +
+                    "                                <p>패턴별 정답률(해당 회차별)</p>\n" +
+                    "                            </div>\n" +
+                    "                            <div class='st_diagram st_half' id='pattern_score_total_graph" + i + "' style='float: right'>\n" +
+                    "                                <p>패턴별 정답률(누적)</p>\n" +
+                    "                            </div>\n" +
+                    "                        </div>\n" +
+                    "                        <div class=\"st_analysis_section\">\n" +
+                    "                            <div class=\"st_sction_title\">\n" +
+                    "                                <img src=\"/common/zian/images/bigimg/icon_point_check_0001.png\" alt=\"\" />" + cmpList.subjectName + " 패턴별 정답률 분석 그래프\n" +
+                    "                            </div>\n" +
+                    "                            <div class='st_diagram' id='unit_score_graph" + i + "'>\n" +
+                    "                                <p>대단원별 정답률(해당 회차별)</p>\n" +
+                    "                            </div>\n" +
+                    "                            <div class='st_diagram' id='unit_score_total_graph" + i + "'>\n" +
+                    "                                <p>대단원별 정답률(누적)</p>\n" +
+                    "                            </div>\n" +
+                    "                        </div>\n";
+
+            }
+            innerHTML("l_graphInfo", result);
+
+            for (var i = 0; i < subjectAnalysisGraphInfo.length; i++) {
+                var cmpList = subjectAnalysisGraphInfo[i];
+                //유형별 정답률(해당 회차별)
+                Highcharts.chart('type_score_graph'+i, {
+                    chart: {
+                        type: 'column'
+                    },
+                    title: {
+                        text: ''
+                    },
+                    subtitle: {
+                        text: '<b>유형별 정답률(해당 회차별)</b>'
+                    },
+                    xAxis: {
+                        categories: cmpList.scoreRateByTypeInfo.ctgNames,
+                        crosshair: true
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: '개수'
+                        }
+                    },
+                    plotOptions: {},
+                    credits: {
+                        enabled: false
+                    },
+                    series: [{
+                        name: '맞은 개수',
+                        data: cmpList.scoreRateByTypeInfo.scoreCnts
+
+                    }, {
+                        name: '출제된 개수',
+                        data: cmpList.scoreRateByTypeInfo.problemCnts
+
+                    }]
+                });
+                //유형별 정답률(누적)
+                Highcharts.chart('type_score_total_graph'+i, {
+                    chart: { type: 'column'},
+                    title: { text: '' },
+                    subtitle: { text: '<b>유형별 정답률(누적)</b>' },
+                    xAxis: {
+                        categories: cmpList.scoreRateByTypeInfo2.ctgNames,
+                        crosshair: true
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: { text: '개수' }
+                    },
+                    plotOptions: {},
+                    credits: { enabled: false },
+                    series: [{
+                        name: '맞은 개수',
+                        data: cmpList.scoreRateByTypeInfo2.scoreCnts
+
+                    }, {
+                        name: '출제된 개수',
+                        data: cmpList.scoreRateByTypeInfo2.problemCnts
+
+                    }]
+                });
+                //패턴별 정답률(해당 회차별)
+                Highcharts.chart('pattern_score_graph'+i, {
+                    chart: { type: 'column'},
+                    title: { text: '' },
+                    subtitle: { text: '<b>유형별 정답률(누적)</b>' },
+                    xAxis: {
+                        categories: cmpList.scoreRateByPatternInfo.ctgNames,
+                        crosshair: true
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: { text: '개수' }
+                    },
+                    plotOptions: {},
+                    credits: { enabled: false },
+                    series: [{
+                        name: '맞은 개수',
+                        data: cmpList.scoreRateByPatternInfo.scoreCnts
+
+                    }, {
+                        name: '출제된 개수',
+                        data: cmpList.scoreRateByPatternInfo.problemCnts
+
+                    }]
+                });
+                //패턴별 정답률(누적)
+                Highcharts.chart('pattern_score_total_graph'+i, {
+                    chart: { type: 'column'},
+                    title: { text: '' },
+                    subtitle: { text: '<b>유형별 정답률(누적)</b>' },
+                    xAxis: {
+                        categories: cmpList.scoreRateByPatternInfo2.ctgNames,
+                        crosshair: true
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: { text: '개수' }
+                    },
+                    plotOptions: {},
+                    credits: { enabled: false },
+                    series: [{
+                        name: '맞은 개수',
+                        data: cmpList.scoreRateByPatternInfo2.scoreCnts
+
+                    }, {
+                        name: '출제된 개수',
+                        data: cmpList.scoreRateByPatternInfo2.problemCnts
+
+                    }]
+                });
+
+                //패턴별 정답률(해당 회차별)
+                Highcharts.chart('unit_score_graph'+i, {
+                    chart: { type: 'column'},
+                    title: { text: '' },
+                    subtitle: { text: '<b>대단원별 정답률(누적)</b>' },
+                    xAxis: {
+                        categories: cmpList.scoreRateByUnitInfo.ctgNames,
+                        crosshair: true
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: { text: '개수' }
+                    },
+                    plotOptions: {},
+                    credits: { enabled: false },
+                    series: [{
+                        name: '맞은 개수',
+                        data: cmpList.scoreRateByUnitInfo.scoreCnts
+
+                    }, {
+                        name: '출제된 개수',
+                        data: cmpList.scoreRateByUnitInfo.problemCnts
+
+                    }]
+                });
+                //패턴별 정답률(누적)
+                Highcharts.chart('unit_score_total_graph'+i, {
+                    chart: { type: 'column'},
+                    title: { text: '' },
+                    subtitle: { text: '<b>대단원별 정답률(누적)</b>' },
+                    xAxis: {
+                        categories: cmpList.scoreRateByUnitInfo2.ctgNames,
+                        crosshair: true
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: { text: '개수' }
+                    },
+                    plotOptions: {},
+                    credits: { enabled: false },
+                    series: [{
+                        name: '맞은 개수',
+                        data: cmpList.scoreRateByUnitInfo2.scoreCnts
+
+                    }, {
+                        name: '출제된 개수',
+                        data: cmpList.scoreRateByUnitInfo2.problemCnts
+
+                    }]
+                });
+            }
+        }
+
     }
+
+
 
     $(document).ready(function(){
         var examUserKey = '<%=examUserKey%>';
@@ -238,6 +452,27 @@
                             </li>
                         </ul>
                     </div>
+<%--                    <div class="st_analysis_tab">--%>
+<%--                        <ul>--%>
+<%--                            <li><img src="/common/zian/images/bigimg/img_tabbg_left.png" alt="left" /></li>--%>
+<%--                            <li class="sts_button" data-index="0">--%>
+<%--                                <div>--%>
+<%--                                    <a href="javascript:goPage('myPage','gradeAllList');"><img src="/common/zian/images/bigimg/img_tabmenu_01_on.png" alt="성적 전체분석" title="성적 전체분석" /></a>--%>
+<%--                                </div>--%>
+<%--                            </li>--%>
+<%--                            <li class="sts_button" data-index="1">--%>
+<%--                                <div>--%>
+<%--                                    <a href="javascript:goPage('myPage','subjectGradeDetail');"><img src="/common/zian/images/bigimg/img_tabmenu_02_off.png" alt="과목별 성적 상세분석" title="과목별 성적 상세분석" /></a>--%>
+<%--                                </div>--%>
+<%--                            </li>--%>
+<%--                            <li class="sts_button" data-index="2">--%>
+<%--                                <div>--%>
+<%--                                    <a href="javascript:goPage('myPage','answerNote');"><img src="/common/zian/images/bigimg/img_tabmenu_03_off.png" alt="오답노트" title="오답노트" /></a>--%>
+<%--                                </div>--%>
+<%--                            </li>--%>
+<%--                            <li><img src="/common/zian/images/bigimg/img_tabbg_right.png" alt="right" /></li>--%>
+<%--                        </ul>--%>
+<%--                    </div>--%>
                     <div class="st_analysis_tab">
                         <ul>
                             <li><img src="/common/zian/images/bigimg/img_tabbg_left.png" alt="left" /></li>
@@ -251,11 +486,11 @@
                                     <a href="javascript:goPage('myPage','subjectGradeDetail');"><img src="/common/zian/images/bigimg/img_tabmenu_02_off.png" alt="과목별 성적 상세분석" title="과목별 성적 상세분석" /></a>
                                 </div>
                             </li>
-                            <li class="sts_button" data-index="2">
+                            <!--<li class="sts_button" data-index="2">
                                 <div>
-                                    <a href="javascript:goPage('myPage','answerNote');"><img src="/common/zian/images/bigimg/img_tabmenu_03_off.png" alt="오답노트" title="오답노트" /></a>
+                                    <a href="userQuestion.html"><img src="../images/bigimg/img_tabmenu_03_off.png" alt="오답노트" title="오답노트" /></a>
                                 </div>
-                            </li>
+                            </li>-->
                             <li><img src="/common/zian/images/bigimg/img_tabbg_right.png" alt="right" /></li>
                         </ul>
                     </div>
@@ -404,121 +639,120 @@
                         <div class="st_analysis_section">
 
                             <div class="st_diagram st_half" id="container" style="float: left;">
-                                <p>네이밍변경</p>
                             </div>
                             <div class="st_diagram st_half" id="container2" style="float: right;">
-                                <p>네이밍변경</p>
                             </div>
                         </div>
-                        <div class="st_subject_name">
-                            <span>국어</span> 분석 그래프
-                        </div>
-                        <div class="st_analysis_section">
-                            <div class="st_sction_title">
-                                <img src="/common/zian/images/bigimg/icon_point_check_0001.png" alt="" /> 국어 유형별 정답률 분석 그래프
-                            </div>
-                            <div class="st_diagram st_half" id="id_graph_step_one_102800" style="float: left;">
-                                <p>유형별 정답률(해당 회차별)</p>
-                            </div>
-                            <div class="st_diagram st_half" id="id_graph_step_total_102800" style="float: right;">
-                                <p>유형별 정답률(누적)</p>
-                            </div>
-                        </div>
-                        <div class="st_analysis_section">
-                            <div class="st_sction_title">
-                                <img src="/common/zian/images/bigimg/icon_point_check_0001.png" alt="" /> 국어 패턴별 정답률 분석 그래프
-                            </div>
-                            <div class="st_diagram st_half" id="id_graph_pattern_one_102800" style="float: left;">
-                                <p>패턴별 정답률(해당 회차별)</p>
-                            </div>
-                            <div class="st_diagram st_half" id="id_graph_pattern_total_102800" style="float: right;">
-                                <p>패턴별 정답률(누적)</p>
-                            </div>
-                        </div>
-                        <div class="st_analysis_section">
-                            <div class="st_sction_title">
-                                <img src="/common/zian/images/bigimg/icon_point_check_0001.png" alt="" /> 국어 패턴별 정답률 분석 그래프
-                            </div>
-                            <div class="st_diagram" id="id_graph_unit_one_102800">
-                                <p>대단원별 정답률(해당 회차별)</p>
-                            </div>
-                            <div class="st_diagram" id="id_graph_unit_total_102800">
-                                <p>대단원별 정답률(누적)</p>
-                            </div>
-                        </div>
-                        <div class="st_subject_name">
-                            <span>영어</span> 분석 그래프
-                        </div>
-                        <div class="st_analysis_section">
-                            <div class="st_sction_title">
-                                <img src="/common/zian/images/bigimg/icon_point_check_0001.png" alt="" /> 영어 유형별 정답률 분석 그래프
-                            </div>
-                            <div class="st_diagram st_half" id="id_graph_step_one_102801" style="float: left;">
-                                <p>유형별 정답률(해당 회차별)</p>
-                            </div>
-                            <div class="st_diagram st_half" id="id_graph_step_total_102801" style="float: right;">
-                                <p>유형별 정답률(누적)</p>
-                            </div>
-                        </div>
-                        <div class="st_analysis_section">
-                            <div class="st_sction_title">
-                                <img src="/common/zian/images/bigimg/icon_point_check_0001.png" alt="" /> 영어 패턴별 정답률 분석 그래프
-                            </div>
-                            <div class="st_diagram st_half" id="id_graph_pattern_one_102801" style="float: left;">
-                                <p>패턴별 정답률(해당 회차별)</p>
-                            </div>
-                            <div class="st_diagram st_half" id="id_graph_pattern_total_102801" style="float: right;">
-                                <p>패턴별 정답률(누적)</p>
-                            </div>
-                        </div>
-                        <div class="st_analysis_section">
-                            <div class="st_sction_title">
-                                <img src="/common/zian/images/bigimg/icon_point_check_0001.png" alt="" /> 영어 패턴별 정답률 분석 그래프
-                            </div>
-                            <div class="st_diagram" id="id_graph_unit_one_102801">
-                                <p>대단원별 정답률(해당 회차별)</p>
-                            </div>
-                            <div class="st_diagram" id="id_graph_unit_total_102801">
-                                <p>대단원별 정답률(누적)</p>
-                            </div>
-                        </div>
-                        <div class="st_subject_name">
-                            <span>한국사</span> 분석 그래프
+                        <span id="l_graphInfo"></span>
+<%--                        <div class="st_subject_name">--%>
+<%--                            <span>국어</span> 분석 그래프--%>
+<%--                        </div>--%>
+<%--                        <div class="st_analysis_section">--%>
+<%--                            <div class="st_sction_title">--%>
+<%--                                <img src="/common/zian/images/bigimg/icon_point_check_0001.png" alt="" /> 국어 유형별 정답률 분석 그래프--%>
+<%--                            </div>--%>
+<%--                            <div class="st_diagram st_half" id="id_graph_step_one_102800" style="float: left;">--%>
+<%--                                <p>유형별 정답률(해당 회차별)</p>--%>
+<%--                            </div>--%>
+<%--                            <div class="st_diagram st_half" id="id_graph_step_total_102800" style="float: right;">--%>
+<%--                                <p>유형별 정답률(누적)</p>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                        <div class="st_analysis_section">--%>
+<%--                            <div class="st_sction_title">--%>
+<%--                                <img src="/common/zian/images/bigimg/icon_point_check_0001.png" alt="" /> 국어 패턴별 정답률 분석 그래프--%>
+<%--                            </div>--%>
+<%--                            <div class="st_diagram st_half" id="id_graph_pattern_one_102800" style="float: left;">--%>
+<%--                                <p>패턴별 정답률(해당 회차별)</p>--%>
+<%--                            </div>--%>
+<%--                            <div class="st_diagram st_half" id="id_graph_pattern_total_102800" style="float: right;">--%>
+<%--                                <p>패턴별 정답률(누적)</p>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                        <div class="st_analysis_section">--%>
+<%--                            <div class="st_sction_title">--%>
+<%--                                <img src="/common/zian/images/bigimg/icon_point_check_0001.png" alt="" /> 국어 패턴별 정답률 분석 그래프--%>
+<%--                            </div>--%>
+<%--                            <div class="st_diagram" id="id_graph_unit_one_102800">--%>
+<%--                                <p>대단원별 정답률(해당 회차별)</p>--%>
+<%--                            </div>--%>
+<%--                            <div class="st_diagram" id="id_graph_unit_total_102800">--%>
+<%--                                <p>대단원별 정답률(누적)</p>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                        <div class="st_subject_name">--%>
+<%--                            <span>영어</span> 분석 그래프--%>
+<%--                        </div>--%>
+<%--                        <div class="st_analysis_section">--%>
+<%--                            <div class="st_sction_title">--%>
+<%--                                <img src="/common/zian/images/bigimg/icon_point_check_0001.png" alt="" /> 영어 유형별 정답률 분석 그래프--%>
+<%--                            </div>--%>
+<%--                            <div class="st_diagram st_half" id="id_graph_step_one_102801" style="float: left;">--%>
+<%--                                <p>유형별 정답률(해당 회차별)</p>--%>
+<%--                            </div>--%>
+<%--                            <div class="st_diagram st_half" id="id_graph_step_total_102801" style="float: right;">--%>
+<%--                                <p>유형별 정답률(누적)</p>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                        <div class="st_analysis_section">--%>
+<%--                            <div class="st_sction_title">--%>
+<%--                                <img src="/common/zian/images/bigimg/icon_point_check_0001.png" alt="" /> 영어 패턴별 정답률 분석 그래프--%>
+<%--                            </div>--%>
+<%--                            <div class="st_diagram st_half" id="id_graph_pattern_one_102801" style="float: left;">--%>
+<%--                                <p>패턴별 정답률(해당 회차별)</p>--%>
+<%--                            </div>--%>
+<%--                            <div class="st_diagram st_half" id="id_graph_pattern_total_102801" style="float: right;">--%>
+<%--                                <p>패턴별 정답률(누적)</p>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                        <div class="st_analysis_section">--%>
+<%--                            <div class="st_sction_title">--%>
+<%--                                <img src="/common/zian/images/bigimg/icon_point_check_0001.png" alt="" /> 영어 패턴별 정답률 분석 그래프--%>
+<%--                            </div>--%>
+<%--                            <div class="st_diagram" id="id_graph_unit_one_102801">--%>
+<%--                                <p>대단원별 정답률(해당 회차별)</p>--%>
+<%--                            </div>--%>
+<%--                            <div class="st_diagram" id="id_graph_unit_total_102801">--%>
+<%--                                <p>대단원별 정답률(누적)</p>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                        <div class="st_subject_name">--%>
+<%--                            <span>한국사</span> 분석 그래프--%>
 
-                        </div>
-                        <div class="st_analysis_section">
-                            <div class="st_sction_title">
-                                <img src="/common/zian/images/bigimg/icon_point_check_0001.png" alt="" /> 한국사 유형별 정답률 분석 그래프
-                            </div>
-                            <div class="st_diagram st_half" id="id_graph_step_one_102802" style="float: left;">
-                                <p>유형별 정답률(해당 회차별)</p>
-                            </div>
-                            <div class="st_diagram st_half" id="id_graph_step_total_102802" style="float: right;">
-                                <p>유형별 정답률(누적)</p>
-                            </div>
-                        </div>
-                        <div class="st_analysis_section">
-                            <div class="st_sction_title">
-                                <img src="/common/zian/images/bigimg/icon_point_check_0001.png" alt="" /> 한국사 패턴별 정답률 분석 그래프
-                            </div>
-                            <div class="st_diagram st_half" id="id_graph_pattern_one_102802" style="float: left;">
-                                <p>패턴별 정답률(해당 회차별)</p>
-                            </div>
-                            <div class="st_diagram st_half" id="id_graph_pattern_total_102802" style="float: right;">
-                                <p>패턴별 정답률(누적)</p>
-                            </div>
-                        </div>
-                        <div class="st_analysis_section">
-                            <div class="st_sction_title">
-                                <img src="/common/zian/images/bigimg/icon_point_check_0001.png" alt="" /> 한국사 패턴별 정답률 분석 그래프
-                            </div>
-                            <div class="st_diagram" id="id_graph_unit_one_102802">
-                                <p>대단원별 정답률(해당 회차별)</p>
-                            </div>
-                            <div class="st_diagram" id="id_graph_unit_total_102802">
-                                <p>대단원별 정답률(누적)</p>
-                            </div>
-                        </div>
+<%--                        </div>--%>
+<%--                        <div class="st_analysis_section">--%>
+<%--                            <div class="st_sction_title">--%>
+<%--                                <img src="/common/zian/images/bigimg/icon_point_check_0001.png" alt="" /> 한국사 유형별 정답률 분석 그래프--%>
+<%--                            </div>--%>
+<%--                            <div class="st_diagram st_half" id="id_graph_step_one_102802" style="float: left;">--%>
+<%--                                <p>유형별 정답률(해당 회차별)</p>--%>
+<%--                            </div>--%>
+<%--                            <div class="st_diagram st_half" id="id_graph_step_total_102802" style="float: right;">--%>
+<%--                                <p>유형별 정답률(누적)</p>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                        <div class="st_analysis_section">--%>
+<%--                            <div class="st_sction_title">--%>
+<%--                                <img src="/common/zian/images/bigimg/icon_point_check_0001.png" alt="" /> 한국사 패턴별 정답률 분석 그래프--%>
+<%--                            </div>--%>
+<%--                            <div class="st_diagram st_half" id="id_graph_pattern_one_102802" style="float: left;">--%>
+<%--                                <p>패턴별 정답률(해당 회차별)</p>--%>
+<%--                            </div>--%>
+<%--                            <div class="st_diagram st_half" id="id_graph_pattern_total_102802" style="float: right;">--%>
+<%--                                <p>패턴별 정답률(누적)</p>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                        <div class="st_analysis_section">--%>
+<%--                            <div class="st_sction_title">--%>
+<%--                                <img src="/common/zian/images/bigimg/icon_point_check_0001.png" alt="" /> 한국사 패턴별 정답률 분석 그래프--%>
+<%--                            </div>--%>
+<%--                            <div class="st_diagram" id="id_graph_unit_one_102802">--%>
+<%--                                <p>대단원별 정답률(해당 회차별)</p>--%>
+<%--                            </div>--%>
+<%--                            <div class="st_diagram" id="id_graph_unit_total_102802">--%>
+<%--                                <p>대단원별 정답률(누적)</p>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
                     </div>
                 </div>
             </div>
