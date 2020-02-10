@@ -469,22 +469,24 @@ function getWrongNote(examUserKey, isScore, isInterest) {
                 returnHtml2 += "<ul>";
                 for(var k = 0; k < selList[j].resultList.length; k++){
                     var resultList = selList[j].resultList[k];
-                    if(resultList.score == 0){
-                        var score = 0;
-                    }else{
-                        var score = 1;
-                    }
-                    returnHtml2 +=  "<li data-index='"+ k +"' id='id_question_"+ k +"' class='st_question' data-question-user-key='973282' data-score='" + score + "' data-interest='0'>";
+                    if(resultList.score == 0) var score = 0;
+                    else var score = 1;
+
+                    if(resultList.isInterest == 1) var interest = "1";
+                    else var interest = "0";
+                    returnHtml2 +=  "<li data-index='"+ k +"' id='id_question_"+ k +"' class='st_question' data-question-user-key='973282' data-score='" + score + "' data-interest='"+ interest +"'>";
                     returnHtml2 +=     "<div class='st_number'>";
                     returnHtml2 +=     resultList.num;
                     returnHtml2 +=     "<span>";
-                    returnHtml2 +=    "<div class='st_off st_switch_group' id='id_cUserQuestion_is_interest'>";
+                    if(resultList.isInterest == 1) var addClass = "st_on";
+                    else var addClass = "";
+                    returnHtml2 +=    "<div class='st_off st_switch_group "+ addClass +"' id='"+ resultList.examQuestionUserKey +"'>";
                     returnHtml2 +=     "<div class='st_switch' for='cUserQuestion_is_interest'>";
                     returnHtml2 +=     "<div class='st_switch_text_on'><span>O</span></div>";
                     returnHtml2 += "<div class='st_switch_text_off'><span>X</span></div>";
                     returnHtml2 +=  "<div class='st_switch_controll'></div>";
                     returnHtml2 +=    "</div>";
-                    returnHtml2 +=     "<input class='st_interest' data_exam_question_bank_key='11114' data_exam_question_user_key='984909' data_exam_sbj_user_key='102800' data_exam_user_key='42902' data_user_key='5' id='cUserQuestion_is_interest' name='cUserQuestion.is_interest' type='hidden' value='True' />";
+                    returnHtml2 +=     "<input class='st_interest' name='cUserQuestion.is_interest' type='hidden' value='True' />";
                     returnHtml2 +=     "</div>";
                     returnHtml2 +=     "<span><b>[관심문제]</b>선택</span>";
                     returnHtml2 += "</span>";
@@ -559,6 +561,14 @@ function getWrongNote(examUserKey, isScore, isInterest) {
             returnHtml3 += "</div>";
             $("#answerDiv").append(returnHtml3);
         }
-
     }
+}
+
+//문제 즐겨찾기 추가/취소
+function addFavoriteExamProblem(examQuestionUserKey, isInterest) {
+    var data = {
+        examQuestionUserKey : examQuestionUserKey,
+        isInterest : isInterest
+    };
+    postApi("/exam/addFavoriteExamProblem", data);
 }
