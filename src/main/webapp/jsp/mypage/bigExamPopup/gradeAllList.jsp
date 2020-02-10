@@ -5,6 +5,7 @@
 <script src="https://code.highcharts.com/modules/series-label.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
 <script>
             //성적전체분석
             function getAchievementManagementDetailInfo(examUserKey) {
@@ -92,8 +93,77 @@
                         }
                     }
                 }
+                //점수비교 그래프
+                var subjectStaticsGraphInfo = achievementResult.result.subjectStaticsGraphInfo;
+                Highcharts.chart('container', {
+                    chart: {
+                        type: 'column'
+                    },
+                    title: {
+                        text: ''
+                    },
+                    subtitle: {
+                        text: '점수비교'
+                    },
+                    xAxis: {
+                        categories: subjectStaticsGraphInfo.categoryName,
+                        crosshair: true
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: '점수'
+                        }
+                    },
 
-                
+                    plotOptions: {
+                    },
+                    credits: {
+                        enabled : false
+                    },
+                    series: [{
+                        name: '상위10%',
+                        data: subjectStaticsGraphInfo.categoryTopTenData
+
+                    }, {
+                        name: '상위30%',
+                        data: subjectStaticsGraphInfo.categoryTopThirtyData
+
+                    }, {
+                        name: '내 점수',
+                        data: subjectStaticsGraphInfo.categoryMyData
+
+                    }]
+                });
+                var compareScoreGraphInfo = achievementResult.result.compareScoreGraphInfo;
+                Highcharts.chart('container2', {
+                    chart: {
+                        type: 'column'
+                    },
+                    title: {
+                        text: ''
+                    },
+                    subtitle: {
+                        text: '<b>점수비교 평균</b>'
+                    },
+                    xAxis: {
+                        categories: [],
+                        crosshair: true
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: '점수'
+                        }
+                    },
+
+                    plotOptions: {
+                    },
+                    credits: {
+                        enabled : false
+                    },
+                    series: compareScoreGraphInfo.series
+                });
             }
 
             $(document).ready(function(){
@@ -292,9 +362,11 @@
                         </div>
                         <div class="st_analysis_section">
                             <div class="st_diagram st_half" id="id_graph_score_one" style="float: left;">
+                                <div id="container"></div>
                                 <p>점수비교</p>
                             </div>
                             <div class="st_diagram st_half" id="id_graph_score_total" style="float: right;">
+                                <div id="container2"></div>
                                 <p>회차별 점수 비교</p>
                             </div>
                         </div>
