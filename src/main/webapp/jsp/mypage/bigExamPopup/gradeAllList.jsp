@@ -616,7 +616,6 @@
                             <div id="id_graph_subject_score" style="width: 362px; float: right;"></div>
                         </div>
                         <div class="st_analysis_section">
-
                             <div class="st_diagram st_half" id="container" style="float: left;">
                             </div>
                             <div class="st_diagram st_half" id="container2" style="float: right;">
