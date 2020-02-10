@@ -1,11 +1,5 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
-<script src="/common/zian/js/kiplayer/jquery.min.js"></script>
-<link rel="stylesheet" type="text/css" href="/common/zian/css/big_layout.css">
-<script src="/common/js/common.js"></script>
-<script src="/common/zian/js/common.js"></script>
-<script src="/common/js/rest-api.js"></script>
-<script src="/common/js/view/exam-controller.js"></script>
-<script type='text/javascript' src='/common/js/comPage.js'></script>
+<%@include file="/common/jsp/exam_common.jsp" %>
 <script>
     $( document ).ready(function() {
         getAchievementManagementDetailInfoBySubject(36769);
