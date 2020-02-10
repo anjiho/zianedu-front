@@ -465,30 +465,21 @@ function getWrongNote(examUserKey, isScore, isInterest) {
         $("#st_questionnote_search_pannel_Div").append(returnHtml);
 
         for (var j = 0; j < selList.length; j++){
-            console.log(selList);
             var returnHtml2 = "<div id='tab-"+ (j+1) +"' class=\"st_question_board current\" style=\"width: 800px; height: 530px;\">";
                 returnHtml2 += "<ul>";
                 for(var k = 0; k < selList[j].resultList.length; k++){
                     var resultList = selList[j].resultList[k];
-                    if(resultList.score == 0){
-                        var score = 0;
-                    }else{
-                        var score = 1;
-                    }
-                    if(resultList.isInterest == 1){
-                        var interest = "1";
-                    }else{
-                        var interest = "0";
-                    }
+                    if(resultList.score == 0) var score = 0;
+                    else var score = 1;
+
+                    if(resultList.isInterest == 1) var interest = "1";
+                    else var interest = "0";
                     returnHtml2 +=  "<li data-index='"+ k +"' id='id_question_"+ k +"' class='st_question' data-question-user-key='973282' data-score='" + score + "' data-interest='"+ interest +"'>";
                     returnHtml2 +=     "<div class='st_number'>";
                     returnHtml2 +=     resultList.num;
                     returnHtml2 +=     "<span>";
-                    if(resultList.isInterest == 1){
-                        var addClass = "st_on";
-                    }else{
-                        var addClass = "";
-                    }
+                    if(resultList.isInterest == 1) var addClass = "st_on";
+                    else var addClass = "";
                     returnHtml2 +=    "<div class='st_off st_switch_group "+ addClass +"' id='"+ resultList.examQuestionUserKey +"'>";
                     returnHtml2 +=     "<div class='st_switch' for='cUserQuestion_is_interest'>";
                     returnHtml2 +=     "<div class='st_switch_text_on'><span>O</span></div>";
