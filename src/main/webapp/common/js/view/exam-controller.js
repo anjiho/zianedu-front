@@ -465,6 +465,7 @@ function getWrongNote(examUserKey, isScore, isInterest) {
         $("#st_questionnote_search_pannel_Div").append(returnHtml);
 
         for (var j = 0; j < selList.length; j++){
+            console.log(selList);
             var returnHtml2 = "<div id='tab-"+ (j+1) +"' class=\"st_question_board current\" style=\"width: 800px; height: 530px;\">";
                 returnHtml2 += "<ul>";
                 for(var k = 0; k < selList[j].resultList.length; k++){
@@ -524,7 +525,7 @@ function getWrongNote(examUserKey, isScore, isInterest) {
         }
 
         for (var l = 0; l < selList.length; l++){
-            var returnHtml3 = " <div id='t-"+ (l+1) +"' class=\"st_answer_board st_tAn current2\" style=\"float: right; width: 280px; margin-left: 20px;\">";
+            var returnHtml3 = " <div id='t-"+ (l+1) +"' class=\"st_answer_board st_tAn\" style=\"float: right; width: 280px; margin-left: 20px;\">";
             returnHtml3 += "<table>";
             returnHtml3 +="<colgroup>";
             returnHtml3 +="<col style=\"width: 50px;\" />";
