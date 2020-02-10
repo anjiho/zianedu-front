@@ -11,10 +11,10 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
     <title>기출문제</title>
     <title>빅모의고사 팝업시험</title>
-<%--    <link type="text/css" rel="stylesheet" href="../css/big_layout.css">--%>
-<%--    <script type="text/javascript" src="../js/kiplayer/jquery.min.js"></script>--%>
+    <%--    <link type="text/css" rel="stylesheet" href="../css/big_layout.css">--%>
+    <%--    <script type="text/javascript" src="../js/kiplayer/jquery.min.js"></script>--%>
     <title></title>
-<%--    <link href="/lib/UI/Nwagon/Nwagon.css" rel="stylesheet" type="text/css"/>--%>
+    <%--    <link href="/lib/UI/Nwagon/Nwagon.css" rel="stylesheet" type="text/css"/>--%>
 <%--    <script type="text/javascript" src="/lib/UI/Nwagon/Nwagon.js"></script>--%>
     <style type="text/css">
         g.labels{min-height:200px !important;}
