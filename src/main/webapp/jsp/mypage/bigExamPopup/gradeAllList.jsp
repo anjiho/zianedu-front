@@ -34,8 +34,9 @@
                     innerHTML("l_examDate", achievementTopInfo.examDate);
                     innerHTML("l_serial", achievementTopInfo.serial);
                     innerHTML("l_examUserName", achievementTopInfo.examUserName);
+                    innerHTML("l_compareResultUserName", achievementTopInfo.examUserName);
                 }
-
+                //개인성적 종합분석 리스트
                 var examSubjectStaticsInfoList = achievementResult.result.examSubjectStaticsInfo;
                 if (examSubjectStaticsInfoList.length > 0) {
                     dwr.util.addRows("l_examSubjectStaticsInfoList", examSubjectStaticsInfoList, [
@@ -47,11 +48,68 @@
                         function (data) { return data.isPass }
                     ], {escapeHtml: false});
                 }
+                //개인성적 종합분석 평균
                 var examSubjectTotalInfo = achievementResult.result.examSubjectTotalInfo;
-                console.log(examSubjectTotalInfo);
                 if (examSubjectTotalInfo != null) {
-
+                    gfn_display("st_result", true);
+                    innerHTML("l_staticsAnswerCnt", examSubjectTotalInfo.staticsAnswerCnt);
+                    innerHTML("l_staticsTotalAnswerScore", examSubjectTotalInfo.staticsAnswerScore);
+                    innerHTML("l_staticsUserGrade", examSubjectTotalInfo.staticsUserGrade + "/" + examSubjectTotalInfo.staticsTotalAnswerCnt);
                 }
+                //전체평균과 본인 성적 비교 그래프
+                var examCompareTotalStaticsInfo = achievementResult.result.examCompareTotalStaticsInfo;
+                if (examCompareTotalStaticsInfo.length > 0) {
+                    var selList =  examCompareTotalStaticsInfo;
+                    dwr.util.addOptions("st_graph", selList, function (data) {
+                        return "<div class=\"st_graph_item\"> " +
+                                    "<table> " +
+                                        "<tbody> " +
+                                            "<tr> " +
+                                                "<td class=\"st_name\">" + data.subjectName  + "</td> " +
+                                            "<td> " +
+                                            "<div class=\"st_graph_view\"> " +
+                                                "<div class=\"st_graph_bar st_type_01\"> " +
+                                                    "<span>" + data.mySubjectScore + "</span> " +
+                                                "</div> " +
+                                                "<div class=\"st_graph_bar st_type_02\"> " +
+                                                    "<span>" + data.totalSubjectScore + "</span> " +
+                                                "</div> " +
+                                            "</div> " +
+                                            "</td> " +
+                                            "</tr> " +
+                                        "</tbody> " +
+                                    "</table> " +
+                                "</div>";
+                    }, {escapeHtml: false});
+                }
+                var userStaticsScore = achievementResult.result.userStaticsScore;
+                var totalStaticsScore = achievementResult.result.totalStaticsScore;
+                innerHTML("l_myStatics", userStaticsScore);
+                innerHTML("l_totalStatics", totalStaticsScore);
+                //과목별 평균 리스트
+                var subjectStaticsInfo = achievementResult.result.subjectStaticsInfo;
+                console.log(subjectStaticsInfo);
+                if (subjectStaticsInfo.length > 0) {
+                    var subjectStaticsInfoLength = subjectStaticsInfo.length;
+                    for (var i=0; i<subjectStaticsInfoLength; i++) {
+                        var selList = subjectStaticsInfo[i];
+                        if (selList.subjectName == "총점") {
+                            innerHTML("l_subject5", selList.subjectName);
+                            //innerHTML("l_topTenScore5", selList.totalScore);
+                            //innerHTML("l_topThirtyScore5", selList.totalScore);
+                            innerHTML("l_topTenScore5", selList.tenPercentScore);
+                            innerHTML("l_topThirtyScore5", selList.thirtyPercentScore);
+                            innerHTML("l_myScore5", selList.myScore);
+                        } else {
+                            innerHTML("l_subject" + i, selList.subjectName);
+                            innerHTML("l_topTenScore" + i, selList.tenPercentScore);
+                            innerHTML("l_topThirtyScore" + i, selList.thirtyPercentScore);
+                            innerHTML("l_myScore" + i, selList.myScore);
+
+                        }
+                    }
+                }
+
             }
 
             $(document).ready(function(){
@@ -137,52 +195,13 @@
                                     <td>전체</td>
                                 </tr>
                                 </thead>
-                                <tbody id="l_examSubjectStaticsInfoList">
-<%--                                <tr>--%>
-<%--                                    <td><b>국어</b></td>--%>
-<%--                                    <td>0/20</td>--%>
-<%--                                    <td>0/100</td>--%>
-<%--                                    <td></td>--%>
-<%--                                    <td>30/53</td>--%>
-<%--                                    <td>--%>
-<%--                                        <span class="">과락</span>--%>
-<%--                                    </td>--%>
-<%--                                </tr>--%>
-<%--                                <tr>--%>
-<%--                                    <td><b>영어</b></td>--%>
-<%--                                    <td>3/20</td>--%>
-<%--                                    <td>15/100</td>--%>
-<%--                                    <td>78.3</td>--%>
-<%--                                    <td>29/53</td>--%>
-<%--                                    <td>--%>
-<%--                                        <span class="">과락</span>--%>
-<%--                                    </td>--%>
-<%--                                </tr>--%>
-<%--                                <tr>--%>
-<%--                                    <td><b>한국사</b></td>--%>
-<%--                                    <td>0/20</td>--%>
-<%--                                    <td>0/100</td>--%>
-<%--                                    <td>85.7%</td>--%>
-<%--                                    <td>46/53</td>--%>
-<%--                                    <td>--%>
-<%--                                        <span class="">과락</span>--%>
-<%--                                    </td>--%>
-<%--                                </tr>--%>
-<%--                                <tr class="st_result">--%>
-<%--                                    <td><b>평균</b></td>--%>
-<%--                                    <td>1.2</td>--%>
-<%--                                    <td>6</td>--%>
-<%--                                    <td></td>--%>
-<%--                                    <td>45/53</td>--%>
-<%--                                    <td></td>--%>
-<%--                                </tr>--%>
-                                </tbody>
-                                <tr class="st_result" style="display: none">--%>
+                                <tbody id="l_examSubjectStaticsInfoList"></tbody>
+                                <tr class="st_result" id="st_result" style="display: none">
                                     <td><b>평균</b></td>
-                                    <td id="l_staticAnswerCnt">1.2</td>
-                                    <td>6</td>
+                                    <td id="l_staticsAnswerCnt"></td>
+                                    <td id="l_staticsTotalAnswerScore"></td>
                                     <td></td>
-                                    <td>45/53</td>
+                                    <td id="l_staticsUserGrade"></td>
                                     <td></td>
                                 </tr>
                             </table>
@@ -194,63 +213,8 @@
                             </div>
                             <div class="st_graph">
                                 <div class="st_graph_02">
-                                    <div class="st_graph_item">
-                                        <table>
-                                            <tbody>
-                                            <tr>
-                                                <td class="st_name">국어</td>
-                                                <td>
-                                                    <div class="st_graph_view">
-                                                        <div class="st_graph_bar st_type_01">
-                                                            <span>100</span>
-                                                        </div>
-                                                        <div class="st_graph_bar st_type_02">
-                                                            <span>56.93</span>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <div class="st_graph_item">
-                                        <table>
-                                            <tbody>
-                                            <tr>
-                                                <td class="st_name">영어</td>
-                                                <td>
-                                                    <div class="st_graph_view">
-                                                        <div class="st_graph_bar st_type_01">
-                                                            <span>5</span>
-                                                        </div>
-                                                        <div class="st_graph_bar st_type_02">
-                                                            <span>38.6</span>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <div class="st_graph_item">
-                                        <table>
-                                            <tbody>
-                                            <tr>
-                                                <td class="st_name">한국사</td>
-                                                <td>
-                                                    <div class="st_graph_view" >
-                                                        <div class="st_graph_bar st_type_01">
-                                                            <span>0</span>
-                                                        </div>
-                                                        <div class="st_graph_bar st_type_02">
-                                                            <span>62.13</span>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                    <ul id="st_graph">
+                                    </ul>
                                     <div class="st_bar_explain">
                                         <img src="/common/zian/images/bigimg/analysis_graph_text.png" alt="" />
                                     </div>
@@ -259,19 +223,19 @@
                             <div class="st_total_result">
                                 <div class="st_arrow">
                                     <div>
-                                        <span>지안에듀</span> 님의<br />
+                                        <span id="l_compareResultUserName"></span> 님의<br />
                                         평균 성적과 전체 평균의<br />
                                         비교 분석 결과입니다.
                                     </div>
                                 </div>
                                 <div class="st_score_board">
                                     <div class="st_title">본인 평균</div>
-                                    <div class="st_score">11.67</div>
+                                    <div class="st_score" id="l_myStatics"></div>
                                 </div>
                                 <div class="st_score_vs"></div>
                                 <div class="st_score_board">
                                     <div class="st_title">전체 평균</div>
-                                    <div class="st_score">52.56</div>
+                                    <div class="st_score" id="l_totalStatics"></div>
                                 </div>
                             </div>
                         </div>
@@ -293,41 +257,41 @@
                                 <thead>
                                 <tr>
                                     <td>과목</td>
-                                    <td>국어</td>
-                                    <td>영어</td>
-                                    <td>한국사</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>총점</td>
+                                    <td id="l_subject0"></td>
+                                    <td id="l_subject1"></td>
+                                    <td id="l_subject2"></td>
+                                    <td id="l_subject3"></td>
+                                    <td id="l_subject4"></td>
+                                    <td id="l_subject5"></td>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <tr>
                                     <td>상위10%</td>
-                                    <td>90</td>
-                                    <td>79.3</td>
-                                    <td>95</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>264.3</td>
+                                    <td id="l_topTenScore0"></td>
+                                    <td id="l_topTenScore1"></td>
+                                    <td id="l_topTenScore2"></td>
+                                    <td id="l_topTenScore3"></td>
+                                    <td id="l_topTenScore4"></td>
+                                    <td id="l_topTenScore5"></td>
                                 </tr>
                                 <tr>
                                     <td>상위30%</td>
-                                    <td>84.5</td>
-                                    <td>69.5</td>
-                                    <td>88.9</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>242.9</td>
+                                    <td id="l_topThirtyScore0"></td>
+                                    <td id="l_topThirtyScore1"></td>
+                                    <td id="l_topThirtyScore2"></td>
+                                    <td id="l_topThirtyScore3"></td>
+                                    <td id="l_topThirtyScore4"></td>
+                                    <td id="l_topThirtyScore5"></td>
                                 </tr>
                                 <tr>
                                     <td>내 점수</td>
-                                    <td>30</td>
-                                    <td>5</td>
-                                    <td>0</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>35</td>
+                                    <td id="l_myScore0"></td>
+                                    <td id="l_myScore1"></td>
+                                    <td id="l_myScore2"></td>
+                                    <td id="l_myScore3"></td>
+                                    <td id="l_myScore4"></td>
+                                    <td id="l_myScore5"></td>
                                 </tr>
                                 <tr class="st_result">
                                     <td>전체</td>
