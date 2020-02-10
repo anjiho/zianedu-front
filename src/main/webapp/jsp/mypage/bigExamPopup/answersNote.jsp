@@ -78,7 +78,7 @@
                     $('[data-interest=0]').stop().slideDown(500);
                 }
             });
-
+            $("#t-1").addClass('current2');
         });
     </script>
 </head>
