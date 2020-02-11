@@ -112,7 +112,7 @@
                     player.setVolume(1);
                     player.setRate(rate);
                     //console.log(getPlayTime());
-                    setTimeout("saveHistory()", 1000 * 5);
+                    setTimeout("saveHistory()", 1000 * 60);
                     break;
             }
         }
@@ -122,7 +122,6 @@
             switch (state) {
                 case PlayState.PLAYING:
                     player.setVisible(true);
-                    console.log(getPlayTime());
                     complete = false;
                     break;
                 case PlayState.PAUSED:
@@ -236,9 +235,8 @@
         }*/
 
         function saveHistory() {
-            var time = player.getPlayedTime();
-            console.log(time);
-            setTimeout("saveHistory()", 1000 * 5);
+            var time = player.getPlayTime();
+            setTimeout("saveHistory()", 1000 * 60);
         }
     </script>
 
