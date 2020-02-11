@@ -73,6 +73,62 @@ function OpenSamplePlayer( vodPath )
     }
 }
 
+function OpenLecPlayer( vodPath )
+{
+    var pcMobile = divisionPcMobile();
+
+    // a_strFilePath = "zian/data/soft/01_09/190905_107226_01_H.mp4";
+    // a_strTitle = "1234",
+    // a_lLecKey = "14591";
+    // a_lCurriKey = "126979";
+    // a_bHigh = "1";
+    var vodTitle = "샘플";
+    if( pcMobile == 'PC' )
+    {
+        window.open( "", "Player", "width=1200, height=680, scrollbars=0, menubar=0, resizable=0" );
+        //gfn_winPop(980, 680, )
+
+        $("#vodPath").val( vodPath );
+        $("#vodTitle" ).val( vodTitle );
+        //$("#a_bPlayer_High" ).val( a_bHigh );
+
+        $("#id_frm_player").attr( "target", "Player" );
+        $( "#id_frm_player").attr( "action", "/popup?page_gbn=starPlayer" );
+        $( "#id_frm_player" ).submit();
+    }
+    else
+    {
+
+        // var sp				= StarPlayerApp;
+        // sp.license			= "FBD4FB45-D5F4-4493-AE56-BCD6F36F646A";
+        // sp.version			= "1.0.0";
+        // sp.android_version	= "1.0.0";
+        // sp.ios_version		= "1.0.0";
+        // sp.pmp				= "true";
+        //
+        // sp.executeApp("popup?page_gbn=starPlayerMobile");
+        // if( a_lLecKey.toString() == "0" && a_strFilePath.length > 0 )
+        //     //sp.executeApp( GetCurrentSiteAddress() + "Player/AxisSmartStreamingSampleFile?a_strPlayer_FilePath=" + a_strFilePath + "&a_strPlayer_Title=" + a_strTitle );
+        //     sp.executeApp("/popup?page_gbn=starPlayerMobile");
+        // else
+        //     //sp.executeApp( GetCurrentSiteAddress() + "Player/AxisSmartStreamingSample?a_lPlayer_LecKey=" + a_lLecKey + "&a_lPlayer_CurriKey=" + a_lCurriKey + "&a_bPlayer_High=" + a_bHigh );
+        //     sp.executeApp("/popup?page_gbn=starPlayerMobile");
+
+
+        var sp = StarPlayerApp;
+        var infoUrl = "http://15.164.7.237/popup?page_gbn=starPlayerMobile&license=FBD4FB45-D5F4-4493-AE56-BCD6F36F646A&vodPath=" + vodPath + "&vodTitle=" + vodTitle;
+        sp.license = "FBD4FB45-D5F4-4493-AE56-BCD6F36F646A";
+        sp.version = "1.0.0";
+        sp.android_version = "1.0.0";
+        sp.ios_version = "1.0.0";
+        sp.pmp = "true";
+
+        //var app = function(info_url) {
+        sp.executeApp(infoUrl);
+        //}
+    }
+}
+
 function goSampleM(movieUrl) {
     var sp = StarPlayerApp;
     sp.license			= "FD361CA3-5366-4F63-9971-F647AD34DAF4";

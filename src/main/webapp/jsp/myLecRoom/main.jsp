@@ -457,6 +457,11 @@
         }
     }
 </script>
+<form action="/Player/Axis" id="id_frm_player" method="post" name="name_frm_player">
+    <input id="vodPath" name="vodPath" type="hidden" value="" />
+    <input id="vodTitle" name="vodTitle" type="hidden" value="" />
+    <input id="starPlayerUrl" name="starPlayerUrl" type="hidden" value="" />
+</form>
 <form id="id_frm_singleMypage" method="post" name="id_frm_singleMypage">
     <input type="hidden" id="retakeInfo" name="retakeInfo">
 </form>
