@@ -27,7 +27,7 @@
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
     <meta http-equiv="X-UA-Compatible" content="requiresActiveX=true"/>
-    <title>StarPlayer@Axissoft2</title>
+    <title><%=vodTitle%></title>
     <link type="text/css" href="/common/starplayer/css/starplayer.css" rel="stylesheet" />
     <script type="text/javascript" src="/common/starplayer/js/jquery-1.6.2.min.js"></script>
     <script type="text/javascript" src="/common/starplayer/js/starplayer_config.js"></script>
@@ -265,7 +265,6 @@
 </head>
 
 <body style="margin: 0 0 0 0;overflow-x:hidden;overflow-y:hidden;" scroll=no onload="onLoad()" onkeydown="onKeyDown(event.keyCode)" oncontextmenu='return false' ondragstart='return false' onselectstart='return false'>
-<div class="sts_title" id="id_title" style="height:568px;background:black url('') no-repeat center center; color: white;"><%=vodTitle%></div>
 <div id="player-container" style="width:1024px;">
     <div id="video-container" style="height:568px;background:black url('') no-repeat center center;">
     </div>
