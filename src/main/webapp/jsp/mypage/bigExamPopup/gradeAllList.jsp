@@ -250,15 +250,9 @@
                 var cmpList = subjectAnalysisGraphInfo[i];
                 //유형별 정답률(해당 회차별)
                 Highcharts.chart('type_score_graph'+i, {
-                    chart: {
-                        type: 'column'
-                    },
-                    title: {
-                        text: ''
-                    },
-                    subtitle: {
-                        text: '<b>유형별 정답률(해당 회차별)</b>'
-                    },
+                    chart: { type: 'column' },
+                    title: { text: '' },
+                    subtitle: { text: '<b>유형별 정답률(해당 회차별)</b>' },
                     xAxis: {
                         categories: cmpList.scoreRateByTypeInfo.ctgNames,
                         crosshair: true
@@ -312,7 +306,7 @@
                 Highcharts.chart('pattern_score_graph'+i, {
                     chart: { type: 'column'},
                     title: { text: '' },
-                    subtitle: { text: '<b>유형별 정답률(누적)</b>' },
+                    subtitle: { text: '<b>패턴별 정답률(해당 회차별)</b>' },
                     xAxis: {
                         categories: cmpList.scoreRateByPatternInfo.ctgNames,
                         crosshair: true
@@ -337,7 +331,7 @@
                 Highcharts.chart('pattern_score_total_graph'+i, {
                     chart: { type: 'column'},
                     title: { text: '' },
-                    subtitle: { text: '<b>유형별 정답률(누적)</b>' },
+                    subtitle: { text: '<b>패턴별 정답률(누적)</b>' },
                     xAxis: {
                         categories: cmpList.scoreRateByPatternInfo2.ctgNames,
                         crosshair: true
@@ -363,7 +357,7 @@
                 Highcharts.chart('unit_score_graph'+i, {
                     chart: { type: 'column'},
                     title: { text: '' },
-                    subtitle: { text: '<b>대단원별 정답률(누적)</b>' },
+                    subtitle: { text: '<b>대단원별 정답률(해당 회차별)</b>' },
                     xAxis: {
                         categories: cmpList.scoreRateByUnitInfo.ctgNames,
                         crosshair: true
