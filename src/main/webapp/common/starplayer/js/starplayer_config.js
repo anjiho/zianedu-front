@@ -75,6 +75,7 @@ function OpenSamplePlayer( vodPath )
 
 function OpenLecPlayer( vodPath )
 {
+    console.log(vodPath);
     var pcMobile = divisionPcMobile();
 
     // a_strFilePath = "zian/data/soft/01_09/190905_107226_01_H.mp4";
