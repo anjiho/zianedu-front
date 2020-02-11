@@ -5,13 +5,12 @@
 %>
 <%
     String vodPath = Util.isNullValue(request.getParameter("vodPath"), "");
-    String vodTitle = Util.isNullValue(request.getParameter("vodTitle"), "");
+    String vodTitle = Util.isNullValue(request.getParameter("vodTitle"), "샘플");
     String curriKey = Util.isNullValue(request.getParameter("curriKey"), "");
 
-    String targetUrl = "http://zianedu.star.skcdn.com/zian/korean/ahn/01_1911/191105_107422_01_H.mp4";
-    String url = request.getParameter(targetUrl);
     StringEncrypter encrypter = new StringEncrypter("axissoft", "starplayer");
-    String encrypt_url= encrypter.encrypt(url);
+
+    System.out.println(">>" + vodPath);
 %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
@@ -101,11 +100,6 @@
             return player.getBlockMessenger();
         }
 
-        function getPlayTime() {
-            var time = player.getPlayTime();
-            return time;
-        }
-
         function onOpenStateChange(state) {
             switch (state) {
                 case OpenState.CLOSING:
@@ -118,7 +112,7 @@
                     player.setVolume(1);
                     player.setRate(rate);
                     //console.log(getPlayTime());
-                    setTimeout("getPlayTime()", 1000 * 5);
+                    setTimeout("saveHistory()", 1000 * 5);
                     break;
             }
         }
@@ -179,17 +173,9 @@
                 captionSize:5
             };
 
-            // var media = {
-            //     url: "http://zianedu.star.skcdn.com//topspot3/201602산업안전기사필기실기/필기/과년도 문제풀이 - 산업기사/1회/산업안전산업기사_2015_1회/sanup_pilgi_sanupgisa_2015_1_1.mp4",
-            //     //url: "http://algisa.nptechnology.com:8000/file/sample.mp4", // 실서버 포팅 시 삭제
-            //     autoPlay:true,
-            //     startTime: 0
-            // };
-
             var url = "<%=vodPath%>";
             var media = {
                 url : url,
-                //url : "http://algisa.nptechnology.com:8000/file/sample.mp4",
                 autoPlay:true,
                 startTime: 0
             };
@@ -213,25 +199,25 @@
             window.open(url, 'Vod','left=0, top=0, width=1035, height=650, menubar=no, directories=no, resizable=yes, status=no, scrollbars=no');
         }
 
-        function goSample(movieUrl) {
-            if(movieUrl.match(/youtube/)){
-                window.open(movieUrl, 'Vod','left=0, top=0, width=1035, height=650, menubar=no, directories=no, resizable=yes, status=no, scrollbars=no');
-            }else{
-                //window.open('http://localhost:8080/edu/resources/starPlayer_2017/starPlayerSample_2017.jsp?url=' + encodeURIComponent("http://algisa.nptechnology.com:8000/file/sample.mp4"), 'Vod','left=0, top=0, width=1035, height=650, menubar=no, directories=no, resizable=yes, status=no, scrollbars=no');
-                var pop_title = "starPlayer" ;
-                var frmData = document.frmPlayerData;
-                //var url  = "http://www.algisa.com/resources/starPlayer_2017/starPlayers.jsp";
-                var url = "<%=targetUrl%>";
-                $('#url').val(movieUrl); //encodeURIComponent(movieUrl)
+        <%--function goSample(movieUrl) {--%>
+        <%--    if(movieUrl.match(/youtube/)){--%>
+        <%--        window.open(movieUrl, 'Vod','left=0, top=0, width=1035, height=650, menubar=no, directories=no, resizable=yes, status=no, scrollbars=no');--%>
+        <%--    }else{--%>
+        <%--        //window.open('http://localhost:8080/edu/resources/starPlayer_2017/starPlayerSample_2017.jsp?url=' + encodeURIComponent("http://algisa.nptechnology.com:8000/file/sample.mp4"), 'Vod','left=0, top=0, width=1035, height=650, menubar=no, directories=no, resizable=yes, status=no, scrollbars=no');--%>
+        <%--        var pop_title = "starPlayer" ;--%>
+        <%--        var frmData = document.frmPlayerData;--%>
+        <%--        //var url  = "http://www.algisa.com/resources/starPlayer_2017/starPlayers.jsp";--%>
+        <%--        var url = "<%=targetUrl%>";--%>
+        <%--        $('#url').val(movieUrl); //encodeURIComponent(movieUrl)--%>
 
-                frmData.target = pop_title;
-                frmData.action = url;
+        <%--        frmData.target = pop_title;--%>
+        <%--        frmData.action = url;--%>
 
 
-                window.open("", pop_title,'left=0, top=0, width=1035, height=650, menubar=no, directories=no, resizable=yes, status=no, scrollbars=no');
-                frmData.submit();
-            }
-        }
+        <%--        window.open("", pop_title,'left=0, top=0, width=1035, height=650, menubar=no, directories=no, resizable=yes, status=no, scrollbars=no');--%>
+        <%--        frmData.submit();--%>
+        <%--    }--%>
+        <%--}--%>
 
         //TODO : 모바일 맛보기 공통화 처리 필요.. 왜 안될까..
         /*function goSampleApp(movieUrl, refererInfo) {
@@ -249,6 +235,11 @@
             app(url);
         }*/
 
+        function saveHistory() {
+            var time = player.getPlayedTime();
+            console.log(time);
+            setTimeout("saveHistory()", 1000 * 5);
+        }
     </script>
 
     <style type="text/css">
