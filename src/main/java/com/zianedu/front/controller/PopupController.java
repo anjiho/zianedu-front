@@ -19,6 +19,8 @@ public class PopupController {
             mvc.setViewName("/popup/starPlayer");
         } else if ("starPlayerMobile".equals(page_gbn)) {
             mvc.setViewName("/popup/starPlayerMobile");
+        }else if ("realStarPlayer".equals(page_gbn)) {
+            mvc.setViewName("/popup/realStarPlayer");
         }
         return mvc;
     }

@@ -6,6 +6,7 @@
 <%
     String vodPath = Util.isNullValue(request.getParameter("vodPath"), "");
     String vodTitle = Util.isNullValue(request.getParameter("vodTitle"), "샘플");
+    String curriKey = Util.isNullValue(request.getParameter("curriKey"), "");
 
     String targetUrl = "http://zianedu.star.skcdn.com/zian/korean/ahn/01_1911/191105_107422_01_H.mp4";
     String url = request.getParameter(targetUrl);
@@ -102,6 +103,11 @@
             return player.getBlockMessenger();
         }
 
+        function getPlayTime() {
+            var time = player.getPlayTime();
+            return time;
+        }
+
         function onOpenStateChange(state) {
             switch (state) {
                 case OpenState.CLOSING:
@@ -124,6 +130,7 @@
             switch (state) {
                 case PlayState.PLAYING:
                     player.setVisible(true);
+                    console.log(getPlayTime());
                     complete = false;
                     break;
                 case PlayState.PAUSED:

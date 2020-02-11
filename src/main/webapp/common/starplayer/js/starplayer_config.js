@@ -73,9 +73,8 @@ function OpenSamplePlayer( vodPath )
     }
 }
 
-function OpenLecPlayer( vodPath, vodTitle )
+function OpenLecPlayer( vodPath, vodTitle, curriKey )
 {
-    console.log(vodPath);
     var pcMobile = divisionPcMobile();
 
     // a_strFilePath = "zian/data/soft/01_09/190905_107226_01_H.mp4";
@@ -92,7 +91,7 @@ function OpenLecPlayer( vodPath, vodTitle )
         //$("#a_bPlayer_High" ).val( a_bHigh );
 
         $("#id_frm_player").attr( "target", "Player" );
-        $( "#id_frm_player").attr( "action", "/popup?page_gbn=starPlayer" );
+        $( "#id_frm_player").attr( "action", "/popup?page_gbn=realStarPlayer&curriKey="+curriKey );
         $( "#id_frm_player" ).submit();
     }
     else

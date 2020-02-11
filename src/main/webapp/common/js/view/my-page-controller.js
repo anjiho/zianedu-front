@@ -95,7 +95,7 @@ function getVideoSignUpDetailInfo(gkey, device, jlecKey, tagId) {
             function(data) {return data.numStr;},
             function(data) {return data.name;},
             function(data) {return data.vodTime;},
-            function(data) {return '<a href="javascript:void(0);" onclick="OpenLecPlayer(' + "'"  + data.vodFileLow + "'" + ',' + "'"  + data.name + "'" + ');" class="black small">일반화질</a>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="OpenLecPlayer(' + "'"  + data.vodFileHigh + "'" + ',' + "'"  + data.name + "'" + ');" class="blue small">고화질</a>';}
+            function(data) {return '<a href="javascript:void(0);" onclick="OpenLecPlayer(' + "'"  + data.vodFileLow + "'" + ',' + "'"  + data.name + "'" + ','+ data.curriKey +');" class="black small">일반화질</a>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="OpenLecPlayer(' + "'"  + data.vodFileHigh + "'" + ',' + "'"  + data.name + "'" + ','+ data.curriKey +');" class="blue small">고화질</a>';}
         ], {escapeHtml:false});
     }
     return detailInfo;
