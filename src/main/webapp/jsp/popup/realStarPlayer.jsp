@@ -236,6 +236,7 @@
 
         function saveHistory() {
             var time = player.getPlayTime();
+            console.log(time);
             setTimeout("saveHistory()", 1000 * 60);
         }
     </script>
