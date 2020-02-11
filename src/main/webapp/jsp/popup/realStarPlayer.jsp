@@ -5,15 +5,13 @@
 %>
 <%
     String vodPath = Util.isNullValue(request.getParameter("vodPath"), "");
-    String vodTitle = Util.isNullValue(request.getParameter("vodTitle"), "샘플");
+    String vodTitle = Util.isNullValue(request.getParameter("vodTitle"), "");
     String curriKey = Util.isNullValue(request.getParameter("curriKey"), "");
 
     String targetUrl = "http://zianedu.star.skcdn.com/zian/korean/ahn/01_1911/191105_107422_01_H.mp4";
     String url = request.getParameter(targetUrl);
     StringEncrypter encrypter = new StringEncrypter("axissoft", "starplayer");
     String encrypt_url= encrypter.encrypt(url);
-
-    System.out.println(">>" + vodPath);
 %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
