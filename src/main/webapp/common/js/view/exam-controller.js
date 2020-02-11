@@ -497,8 +497,9 @@ function getWrongNote(examUserKey, isScore, isInterest) {
                     returnHtml2 +=     "</div>";
                     returnHtml2 +=     "<div class='st_button_pannel'>";
                     returnHtml2 +=    "<a class='st_btn_0000 st_do_study' href='"+ resultList.theoryLearningUrl +"' target='_blank'>이론 학습 하기</a>&nbsp;&nbsp;";
-
-                    returnHtml2 +=  "<span class='st_btn_0000 st_do_lec'>해설 강의</span>";
+                    //<a href="javascript:void(0);" onclick="OpenSamplePlayer(' + "'"  + lecList[j].lowVideo + "'" + ');" class="btn_s btn_quality" >일반화질</a>
+                    returnHtml2 +=  '<a href="javascript:void(0);" class="st_btn_0000 st_do_lec" onclick="OpenSamplePlayer(' + "'"  + resultList.commentaryUrl + "'" + ');" >해설 강의</a>';
+                    // retrunHtml += '<span class="learnView">샘플보기 <a href="javascript:void(0);" onclick="OpenSamplePlayer(' + "'"  + lecList[j].lowVideo + "'" + ');" class="btn_s btn_quality" >일반화질</a> <a href="javascript:void(0);" onclick="OpenSamplePlayer(' + "'"  + lecList[j].highVideo + "'" + ');" class="btn_s btn_quality on">고화질</a></span>';
                     returnHtml2 +=  "</div>";
                     returnHtml2 += "<br />";
                     returnHtml2 += "<img src='"+ resultList.questionImage +"'/>";
