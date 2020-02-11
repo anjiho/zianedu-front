@@ -118,7 +118,6 @@
                 case OpenState.OPENED:
                     player.setVolume(1);
                     player.setRate(rate);
-                    //console.log(getPlayTime());
                     setTimeout("getPlayTime()", 1000 * 5);
                     break;
             }
