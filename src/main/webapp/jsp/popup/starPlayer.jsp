@@ -266,7 +266,9 @@
 
 <body style="margin: 0 0 0 0;overflow-x:hidden;overflow-y:hidden;" scroll=no onload="onLoad()" onkeydown="onKeyDown(event.keyCode)" oncontextmenu='return false' ondragstart='return false' onselectstart='return false'>
 <div id="player-container" style="width:1024px;">
-    <div id="video-container" style="height:568px;background:black url('') no-repeat center center;"></div>
+    <div id="video-container" style="height:568px;background:black url('') no-repeat center center;">
+        <div class="sts_title" id="id_title">01강 200108_단원예상문제풀이-1_현대 시_1920년대 p.1 (첨부자료 참조)</div>
+    </div>
     <div id="controller-container" style="margin: 0 0 0 0;height:81px;"></div>
     <!-- Start UI -->
     <div id="controller-container2" class="starplayer_script_ui" style="margin: 0 0 0 0;width:1024px;height:81px;background-color:black;">
