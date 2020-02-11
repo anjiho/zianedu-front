@@ -73,7 +73,7 @@ function OpenSamplePlayer( vodPath )
     }
 }
 
-function OpenLecPlayer( vodPath )
+function OpenLecPlayer( vodPath, vodTitle )
 {
     console.log(vodPath);
     var pcMobile = divisionPcMobile();
@@ -83,7 +83,6 @@ function OpenLecPlayer( vodPath )
     // a_lLecKey = "14591";
     // a_lCurriKey = "126979";
     // a_bHigh = "1";
-    var vodTitle = "샘플";
     if( pcMobile == 'PC' )
     {
         window.open( "", "Player", "width=1200, height=680, scrollbars=0, menubar=0, resizable=0" );
