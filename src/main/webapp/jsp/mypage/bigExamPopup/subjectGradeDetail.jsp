@@ -1,8 +1,12 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+<%
+    String examUserKey = request.getParameter("examUserKey");
+%>
 <%@include file="/common/jsp/exam_common.jsp" %>
 <script>
     $( document ).ready(function() {
-        getAchievementManagementDetailInfoBySubject(36769);
+        var examUserKey = '<%=examUserKey%>';
+        getAchievementManagementDetailInfoBySubject(examUserKey);
     });
 </script>
 <!DOCTYPE html>
@@ -39,8 +43,9 @@
 </head>
 <body>
 <div class="st_exam">
-    <form action="/" id="id_frm" method="post" name="name_frm">
-        <input id="exam_user_key" name="exam_user_key" type="hidden" value="42902" />
+    <form action="" id="frm" method="get" name="frm">
+        <input type="hidden" name="page_gbn" id="page_gbn">
+        <input id="examUserKey" name="examUserKey" type="hidden" value="<%=examUserKey%>" />
         <div class="st_exam_test">
             <div class="st_test_main" style="background-image: none;">
                 <div class="st_top_line"></div>
@@ -61,17 +66,17 @@
                             <li><img src="/common/zian/images/bigimg/img_tabbg_left.png" alt="left" /></li>
                             <li class="sts_button" data-index="0">
                                 <div>
-                                    <a href="javascript:goPageNoSubmit('myPage','gradeAllList');"><img src="/common/zian/images/bigimg/img_tabmenu_01_off.png" alt="성적 전체분석" title="성적 전체분석" /></a>
+                                    <a href="javascript:goPage('myPage','gradeAllList');"><img src="/common/zian/images/bigimg/img_tabmenu_01_off.png" alt="성적 전체분석" title="성적 전체분석" /></a>
                                 </div>
                             </li>
                             <li class="sts_button" data-index="1">
                                 <div>
-                                    <a href="javascript:goPageNoSubmit('myPage','subjectGradeDetail');"><img src="/common/zian/images/bigimg/img_tabmenu_02_on.png" alt="과목별 성적 상세분석" title="과목별 성적 상세분석" /></a>
+                                    <a href="javascript:goPage('myPage','subjectGradeDetail');"><img src="/common/zian/images/bigimg/img_tabmenu_02_on.png" alt="과목별 성적 상세분석" title="과목별 성적 상세분석" /></a>
                                 </div>
                             </li>
                             <li class="sts_button" data-index="2">
                                 <div>
-                                    <a href="javascript:goPageNoSubmit('myPage','answerNote');"><img src="/common/zian/images/bigimg/img_tabmenu_03_off.png" alt="오답노트" title="오답노트" /></a>
+                                    <a href="javascript:goPage('myPage','answerNote');"><img src="/common/zian/images/bigimg/img_tabmenu_03_off.png" alt="오답노트" title="오답노트" /></a>
                                 </div>
                             </li>
                             <li><img src="/common/zian/images/bigimg/img_tabbg_right.png" alt="right" /></li>

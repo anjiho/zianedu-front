@@ -1,109 +1,432 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/jsp/exam_common.jsp" %>
+<%
+    String examUserKey = request.getParameter("examUserKey");
+%>
 <!-- 차트 관련 스크립트 -->
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/series-label.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+<style type="text/css">
+    g.labels{min-height:200px !important;}
+    svg{top: 100px;}
+    .st_exam_test{overflow-x:hidden !important;overflow-y:initial !important;width:100% !important;}
+</style>
 <script>
-            //성적전체분석
-            function getAchievementManagementDetailInfo(examUserKey) {
-                var achievementResult = getApi("/exam/getAchievementManagementDetailInfo/", examUserKey);
-                if (achievementResult == null) return;
-                //상단 정보
-                var achievementTopInfo = achievementResult.result.achievementTopInfo;
-                if (achievementTopInfo != null) {
-                    innerHTML("l_examName", achievementTopInfo.examName);
-                    innerHTML("l_subjectName", achievementTopInfo.subjectName);
-                    innerHTML("l_examDate", achievementTopInfo.examDate);
-                    innerHTML("l_serial", achievementTopInfo.serial);
-                    innerHTML("l_examUserName", achievementTopInfo.examUserName);
-                    innerHTML("l_compareResultUserName", achievementTopInfo.examUserName);
-                }
-                //개인성적 종합분석 리스트
-                var examSubjectStaticsInfoList = achievementResult.result.examSubjectStaticsInfo;
-                if (examSubjectStaticsInfoList.length > 0) {
-                    dwr.util.addRows("l_examSubjectStaticsInfoList", examSubjectStaticsInfoList, [
-                        function (data) { return "<b>" + data.subjectName + "</b>" },
-                        function (data) { return data.answerCnt + "/" + data.questionCnt },
-                        function (data) { return data.answerScore + "/" + data.totalAnswerScore },
-                        function (data) { return data.topAccumulatePercent },
-                        function (data) { return data.userGrade + "/"+ data.totalAnswerCnt },
-                        function (data) { return data.isPass }
-                    ], {escapeHtml: false});
-                }
-                //개인성적 종합분석 평균
-                var examSubjectTotalInfo = achievementResult.result.examSubjectTotalInfo;
-                if (examSubjectTotalInfo != null) {
-                    gfn_display("st_result", true);
-                    innerHTML("l_staticsAnswerCnt", examSubjectTotalInfo.staticsAnswerCnt);
-                    innerHTML("l_staticsTotalAnswerScore", examSubjectTotalInfo.staticsAnswerScore);
-                    innerHTML("l_staticsUserGrade", examSubjectTotalInfo.staticsUserGrade + "/" + examSubjectTotalInfo.staticsTotalAnswerCnt);
-                }
-                //전체평균과 본인 성적 비교 그래프
-                var examCompareTotalStaticsInfo = achievementResult.result.examCompareTotalStaticsInfo;
-                if (examCompareTotalStaticsInfo.length > 0) {
-                    var selList =  examCompareTotalStaticsInfo;
-                    dwr.util.addOptions("st_graph", selList, function (data) {
-                        return "<div class=\"st_graph_item\"> " +
-                                    "<table> " +
-                                        "<tbody> " +
-                                            "<tr> " +
-                                                "<td class=\"st_name\">" + data.subjectName  + "</td> " +
-                                            "<td> " +
-                                            "<div class=\"st_graph_view\"> " +
-                                                "<div class=\"st_graph_bar st_type_01\"> " +
-                                                    "<span>" + data.mySubjectScore + "</span> " +
-                                                "</div> " +
-                                                "<div class=\"st_graph_bar st_type_02\"> " +
-                                                    "<span>" + data.totalSubjectScore + "</span> " +
-                                                "</div> " +
-                                            "</div> " +
-                                            "</td> " +
-                                            "</tr> " +
-                                        "</tbody> " +
-                                    "</table> " +
-                                "</div>";
-                    }, {escapeHtml: false});
-                }
-                var userStaticsScore = achievementResult.result.userStaticsScore;
-                var totalStaticsScore = achievementResult.result.totalStaticsScore;
-                innerHTML("l_myStatics", userStaticsScore);
-                innerHTML("l_totalStatics", totalStaticsScore);
-                //과목별 평균 리스트
-                var subjectStaticsInfo = achievementResult.result.subjectStaticsInfo;
-                console.log(subjectStaticsInfo);
-                if (subjectStaticsInfo.length > 0) {
-                    var subjectStaticsInfoLength = subjectStaticsInfo.length;
-                    for (var i=0; i<subjectStaticsInfoLength; i++) {
-                        var selList = subjectStaticsInfo[i];
-                        if (selList.subjectName == "총점") {
-                            innerHTML("l_subject5", selList.subjectName);
-                            //innerHTML("l_topTenScore5", selList.totalScore);
-                            //innerHTML("l_topThirtyScore5", selList.totalScore);
-                            innerHTML("l_topTenScore5", selList.tenPercentScore);
-                            innerHTML("l_topThirtyScore5", selList.thirtyPercentScore);
-                            innerHTML("l_myScore5", selList.myScore);
-                        } else {
-                            innerHTML("l_subject" + i, selList.subjectName);
-                            innerHTML("l_topTenScore" + i, selList.tenPercentScore);
-                            innerHTML("l_topThirtyScore" + i, selList.thirtyPercentScore);
-                            innerHTML("l_myScore" + i, selList.myScore);
+    //성적전체분석
+    function getAchievementManagementDetailInfo(examUserKey) {
+        var achievementResult = getApi("/exam/getAchievementManagementDetailInfo/", examUserKey);
+        if (achievementResult == null) return;
+        console.log(achievementResult);
+        //상단 정보
+        var achievementTopInfo = achievementResult.result.achievementTopInfo;
+        if (achievementTopInfo != null) {
+            innerHTML("l_examName", achievementTopInfo.examName);
+            innerHTML("l_subjectName", achievementTopInfo.subjectName);
+            innerHTML("l_examDate", achievementTopInfo.examDate);
+            innerHTML("l_serial", achievementTopInfo.serial);
+            innerHTML("l_examUserName", achievementTopInfo.examUserName);
+            innerHTML("l_compareResultUserName", achievementTopInfo.examUserName);
+        }
+        //개인성적 종합분석 리스트
+        var examSubjectStaticsInfoList = achievementResult.result.examSubjectStaticsInfo;
+        if (examSubjectStaticsInfoList.length > 0) {
+            dwr.util.addRows("l_examSubjectStaticsInfoList", examSubjectStaticsInfoList, [
+                function (data) { return "<b>" + data.subjectName + "</b>" },
+                function (data) { return data.answerCnt + "/" + data.questionCnt },
+                function (data) { return data.answerScore + "/" + data.totalAnswerScore },
+                function (data) { return data.topAccumulatePercent },
+                function (data) { return data.userGrade + "/"+ data.totalAnswerCnt },
+                function (data) { return data.isPass }
+            ], {escapeHtml: false});
+        }
+        //개인성적 종합분석 평균
+        var examSubjectTotalInfo = achievementResult.result.examSubjectTotalInfo;
+        if (examSubjectTotalInfo != null) {
+            gfn_display("st_result", true);
+            innerHTML("l_staticsAnswerCnt", examSubjectTotalInfo.staticsAnswerCnt);
+            innerHTML("l_staticsTotalAnswerScore", examSubjectTotalInfo.staticsAnswerScore);
+            innerHTML("l_staticsUserGrade", examSubjectTotalInfo.staticsUserGrade + "/" + examSubjectTotalInfo.staticsTotalAnswerCnt);
+        }
+        //전체평균과 본인 성적 비교 그래프
+        var examCompareTotalStaticsInfo = achievementResult.result.examCompareTotalStaticsInfo;
+        var result = "";
+        if (examCompareTotalStaticsInfo.length > 0) {
+            var selList =  examCompareTotalStaticsInfo;
+            for (var i=0; i<examCompareTotalStaticsInfo.length; i++) {
+                result += "<div class=\"st_graph_item\"> " +
+                    "<table> " +
+                    "<tbody> " +
+                    "<tr> " +
+                    "<td class=\"st_name\">" + selList[i].subjectName  + "</td> " +
+                    "<td> " +
+                    "<div class=\"st_graph_view\"> " +
+                    "<div class=\"st_graph_bar st_type_01\"> " +
+                    "<span>" + selList[i].mySubjectScore + "</span> " +
+                    "</div> " +
+                    "<div class=\"st_graph_bar st_type_02\"> " +
+                    "<span>" + selList[i].totalSubjectScore + "</span> " +
+                    "</div> " +
+                    "</div> " +
+                    "</td> " +
+                    "</tr> " +
+                    "</tbody> " +
+                    "</table> " +
+                    "</div>";
+            }
+            innerHTML("st_graph", result);
 
-                        }
-                    }
+            // dwr.util.addOptions("st_graph", selList, function (data) {
+            //     return "<div class=\"st_graph_item\"> " +
+            //                 "<table> " +
+            //                     "<tbody> " +
+            //                         "<tr> " +
+            //                             "<td class=\"st_name\">" + data.subjectName  + "</td> " +
+            //                         "<td> " +
+            //                         "<div class=\"st_graph_view\"> " +
+            //                             "<div class=\"st_graph_bar st_type_01\"> " +
+            //                                 "<span>" + data.mySubjectScore + "</span> " +
+            //                             "</div> " +
+            //                             "<div class=\"st_graph_bar st_type_02\"> " +
+            //                                 "<span>" + data.totalSubjectScore + "</span> " +
+            //                             "</div> " +
+            //                         "</div> " +
+            //                         "</td> " +
+            //                         "</tr> " +
+            //                     "</tbody> " +
+            //                 "</table> " +
+            //             "</div>";
+            // }, {escapeHtml: false});
+        }
+
+        var userStaticsScore = achievementResult.result.userStaticsScore;
+        var totalStaticsScore = achievementResult.result.totalStaticsScore;
+        innerHTML("l_myStatics", userStaticsScore);
+        innerHTML("l_totalStatics", totalStaticsScore);
+        //과목별 평균 리스트
+        var subjectStaticsInfo = achievementResult.result.subjectStaticsInfo;
+        if (subjectStaticsInfo.length > 0) {
+            var subjectStaticsInfoLength = subjectStaticsInfo.length;
+            for (var i=0; i<subjectStaticsInfoLength; i++) {
+                var selList = subjectStaticsInfo[i];
+                if (selList.subjectName == "총점") {
+                    innerHTML("l_subject5", selList.subjectName);
+                    innerHTML("l_topTenScore5", selList.tenPercentScore);
+                    innerHTML("l_topThirtyScore5", selList.thirtyPercentScore);
+                    innerHTML("l_myScore5", selList.myScore);
+                    innerHTML("l_subjectStaticsTotal5", selList.totalScore);
+                } else {
+                    innerHTML("l_subject" + i, selList.subjectName);
+                    innerHTML("l_topTenScore" + i, selList.tenPercentScore);
+                    innerHTML("l_topThirtyScore" + i, selList.thirtyPercentScore);
+                    innerHTML("l_myScore" + i, selList.myScore);
+                    innerHTML("l_subjectStaticsTotal" + i, selList.totalScore);
                 }
+            }
+        }
+        //점수비교 그래프
+        var subjectStaticsGraphInfo = achievementResult.result.subjectStaticsGraphInfo;
+        Highcharts.chart('container', {
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: ''
+            },
+            subtitle: {
+                text: '<b>점수비교</b>'
+            },
+            xAxis: {
+                categories: subjectStaticsGraphInfo.categoryName,
+                crosshair: true
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: '점수'
+                },
+                max: 100
+            },
+
+            plotOptions: {
+            },
+            credits: {
+                enabled : false
+            },
+            series: [{
+                name: '상위10%',
+                data: subjectStaticsGraphInfo.categoryTopTenData
+
+            }, {
+                name: '상위30%',
+                data: subjectStaticsGraphInfo.categoryTopThirtyData
+
+            }, {
+                name: '내 점수',
+                data: subjectStaticsGraphInfo.categoryMyData
+
+            }]
+        });
+        //점수비교 평균 그래프
+        var compareScoreGraphInfo = achievementResult.result.compareScoreGraphInfo;
+        Highcharts.chart('container2', {
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: ''
+            },
+            subtitle: {
+                text: '<b>점수비교 평균</b>'
+            },
+            xAxis: {
+                categories: ['평균'],
+                crosshair: true,
+                labels: {
+                    enabled:false,//default is true
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: '점수'
+                }
+            },
+            plotOptions: {},
+            credits: {
+                enabled : false
+            },
+            series: compareScoreGraphInfo.series
+        });
+
+        var subjectAnalysisGraphInfo = achievementResult.result.subjectAnalysisGraphInfo;
+        if (subjectAnalysisGraphInfo.length > 0) {
+            var result = "";
+            for (var i = 0; i < subjectAnalysisGraphInfo.length; i++) {
+                var cmpList = subjectAnalysisGraphInfo[i]
+                result += "<div class=\"st_subject_name\">\n" +
+                    "                            <span><b>" + cmpList.subjectName + "</span> 분석 그래프</b>\n" +
+                    "                        </div>\n" +
+                    "                        <div class=\"st_analysis_section\">\n" +
+                    "                            <div class=\"st_sction_title\">\n" +
+                    "                                <img src=\"/common/zian/images/bigimg/icon_point_check_0001.png\" alt=\"\" />" + cmpList.subjectName + " 유형별 정답률 분석 그래프\n" +
+                    "                            </div>\n" +
+                    "                            <div class='st_diagram st_half' id='type_score_graph" + i + "'  style='float: left;'>\n" +
+                    "                                <p>유형별 정답률(해당 회차별)</p>\n" +
+                    "                            </div>\n" +
+                    "                            <div class='st_diagram st_half' id='type_score_total_graph" + i + "' style='float: right;'>\n" +
+                    "                                <p>유형별 정답률(누적)</p>\n" +
+                    "                            </div>\n" +
+                    "                        </div>\n" +
+                    "                        <div class=\"st_analysis_section\">\n" +
+                    "                            <div class=\"st_sction_title\">\n" +
+                    "                                <img src=\"/common/zian/images/bigimg/icon_point_check_0001.png\" alt=\"\" />" + cmpList.subjectName + " 패턴별 정답률 분석 그래프\n" +
+                    "                            </div>\n" +
+                    "                            <div class='st_diagram st_half' id='pattern_score_graph" + i + "' style='float: left;'>\n" +
+                    "                                <p>패턴별 정답률(해당 회차별)</p>\n" +
+                    "                            </div>\n" +
+                    "                            <div class='st_diagram st_half' id='pattern_score_total_graph" + i + "' style='float: right'>\n" +
+                    "                                <p>패턴별 정답률(누적)</p>\n" +
+                    "                            </div>\n" +
+                    "                        </div>\n" +
+                    "                        <div class=\"st_analysis_section\">\n" +
+                    "                            <div class=\"st_sction_title\">\n" +
+                    "                                <img src=\"/common/zian/images/bigimg/icon_point_check_0001.png\" alt=\"\" />" + cmpList.subjectName + " 패턴별 정답률 분석 그래프\n" +
+                    "                            </div>\n" +
+                    "                            <div class='st_diagram' id='unit_score_graph" + i + "'>\n" +
+                    "                                <p>대단원별 정답률(해당 회차별)</p>\n" +
+                    "                            </div>\n" +
+                    "                            <div class='st_diagram' id='unit_score_total_graph" + i + "'>\n" +
+                    "                                <p>대단원별 정답률(누적)</p>\n" +
+                    "                            </div>\n" +
+                    "                        </div>\n";
 
             }
+            innerHTML("l_graphInfo", result);
 
-            $(document).ready(function(){
-                getAchievementManagementDetailInfo(36769);
+            for (var i = 0; i < subjectAnalysisGraphInfo.length; i++) {
+                var cmpList = subjectAnalysisGraphInfo[i];
+                //유형별 정답률(해당 회차별)
+                Highcharts.chart('type_score_graph'+i, {
+                    chart: {
+                        type: 'column'
+                    },
+                    title: {
+                        text: ''
+                    },
+                    subtitle: {
+                        text: '<b>유형별 정답률(해당 회차별)</b>'
+                    },
+                    xAxis: {
+                        categories: cmpList.scoreRateByTypeInfo.ctgNames,
+                        crosshair: true
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: {
+                            text: '개수'
+                        }
+                    },
+                    plotOptions: {},
+                    credits: {
+                        enabled: false
+                    },
+                    series: [{
+                        name: '맞은 개수',
+                        data: cmpList.scoreRateByTypeInfo.scoreCnts
 
-            })
+                    }, {
+                        name: '출제된 개수',
+                        data: cmpList.scoreRateByTypeInfo.problemCnts
+
+                    }]
+                });
+                //유형별 정답률(누적)
+                Highcharts.chart('type_score_total_graph'+i, {
+                    chart: { type: 'column'},
+                    title: { text: '' },
+                    subtitle: { text: '<b>유형별 정답률(누적)</b>' },
+                    xAxis: {
+                        categories: cmpList.scoreRateByTypeInfo2.ctgNames,
+                        crosshair: true
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: { text: '개수' }
+                    },
+                    plotOptions: {},
+                    credits: { enabled: false },
+                    series: [{
+                        name: '맞은 개수',
+                        data: cmpList.scoreRateByTypeInfo2.scoreCnts
+
+                    }, {
+                        name: '출제된 개수',
+                        data: cmpList.scoreRateByTypeInfo2.problemCnts
+
+                    }]
+                });
+                //패턴별 정답률(해당 회차별)
+                Highcharts.chart('pattern_score_graph'+i, {
+                    chart: { type: 'column'},
+                    title: { text: '' },
+                    subtitle: { text: '<b>유형별 정답률(누적)</b>' },
+                    xAxis: {
+                        categories: cmpList.scoreRateByPatternInfo.ctgNames,
+                        crosshair: true
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: { text: '개수' }
+                    },
+                    plotOptions: {},
+                    credits: { enabled: false },
+                    series: [{
+                        name: '맞은 개수',
+                        data: cmpList.scoreRateByPatternInfo.scoreCnts
+
+                    }, {
+                        name: '출제된 개수',
+                        data: cmpList.scoreRateByPatternInfo.problemCnts
+
+                    }]
+                });
+                //패턴별 정답률(누적)
+                Highcharts.chart('pattern_score_total_graph'+i, {
+                    chart: { type: 'column'},
+                    title: { text: '' },
+                    subtitle: { text: '<b>유형별 정답률(누적)</b>' },
+                    xAxis: {
+                        categories: cmpList.scoreRateByPatternInfo2.ctgNames,
+                        crosshair: true
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: { text: '개수' }
+                    },
+                    plotOptions: {},
+                    credits: { enabled: false },
+                    series: [{
+                        name: '맞은 개수',
+                        data: cmpList.scoreRateByPatternInfo2.scoreCnts
+
+                    }, {
+                        name: '출제된 개수',
+                        data: cmpList.scoreRateByPatternInfo2.problemCnts
+
+                    }]
+                });
+
+                //대단원별 정답률(해당 회차별)
+                Highcharts.chart('unit_score_graph'+i, {
+                    chart: { type: 'column'},
+                    title: { text: '' },
+                    subtitle: { text: '<b>대단원별 정답률(누적)</b>' },
+                    xAxis: {
+                        categories: cmpList.scoreRateByUnitInfo.ctgNames,
+                        crosshair: true
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: { text: '개수' }
+                    },
+                    plotOptions: {},
+                    credits: { enabled: false },
+                    series: [{
+                        name: '맞은 개수',
+                        data: cmpList.scoreRateByUnitInfo.scoreCnts
+
+                    }, {
+                        name: '출제된 개수',
+                        data: cmpList.scoreRateByUnitInfo.problemCnts
+
+                    }]
+                });
+                //대단원별 정답률(누적)
+                Highcharts.chart('unit_score_total_graph'+i, {
+                    chart: { type: 'column'},
+                    title: { text: '' },
+                    subtitle: { text: '<b>대단원별 정답률(누적)</b>' },
+                    xAxis: {
+                        categories: cmpList.scoreRateByUnitInfo2.ctgNames,
+                        crosshair: true
+                    },
+                    yAxis: {
+                        min: 0,
+                        title: { text: '개수' }
+                    },
+                    plotOptions: {},
+                    credits: { enabled: false },
+                    series: [{
+                        name: '맞은 개수',
+                        data: cmpList.scoreRateByUnitInfo2.scoreCnts
+
+                    }, {
+                        name: '출제된 개수',
+                        data: cmpList.scoreRateByUnitInfo2.problemCnts
+
+                    }]
+                });
+            }
+        }
+
+    }
+
+
+
+    $(document).ready(function(){
+        var examUserKey = '<%=examUserKey%>';
+        getAchievementManagementDetailInfo(examUserKey);
+
+    })
 </script>
+
 <div class="st_exam">
-    <form action="/" id="id_frm" method="post" name="name_frm">
-        <input id="exam_user_key" name="exam_user_key" type="hidden" value="42902" />
+    <form action="" id="frm" method="get" name="frm">
+        <input type="hidden" name="page_gbn" id="page_gbn">
+        <input id="examUserKey" name="examUserKey" type="hidden" value="<%=examUserKey%>" />
         <div class="st_exam_test" style="overflow-y:auto;width:1152px;">
             <div class="st_test_main" style="background-image: none;">
                 <div class="st_top_line"></div>
@@ -134,35 +457,56 @@
                             <li><img src="/common/zian/images/bigimg/img_tabbg_left.png" alt="left" /></li>
                             <li class="sts_button" data-index="0">
                                 <div>
-                                    <a href="javascript:goPageNoSubmit('myPage','gradeAllList');"><img src="/common/zian/images/bigimg/img_tabmenu_01_on.png" alt="성적 전체분석" title="성적 전체분석" /></a>
+                                    <a href="javascript:goPage('myPage','gradeAllList');"><img src="/common/zian/images/bigimg/img_tabmenu_01_on.png" alt="성적 전체분석" title="성적 전체분석" /></a>
                                 </div>
                             </li>
                             <li class="sts_button" data-index="1">
                                 <div>
-                                    <a href="javascript:goPageNoSubmit('myPage','subjectGradeDetail');"><img src="/common/zian/images/bigimg/img_tabmenu_02_off.png" alt="과목별 성적 상세분석" title="과목별 성적 상세분석" /></a>
+                                    <a href="javascript:goPage('myPage','subjectGradeDetail');"><img src="/common/zian/images/bigimg/img_tabmenu_02_off.png" alt="과목별 성적 상세분석" title="과목별 성적 상세분석" /></a>
                                 </div>
                             </li>
-                            <li class="sts_button" data-index="2">
+                            <!--<li class="sts_button" data-index="2">
                                 <div>
-                                    <a href="javascript:goPageNoSubmit('myPage','answerNote');"><img src="/common/zian/images/bigimg/img_tabmenu_03_off.png" alt="오답노트" title="오답노트" /></a>
+                                    <a href="userQuestion.html"><img src="../images/bigimg/img_tabmenu_03_off.png" alt="오답노트" title="오답노트" /></a>
                                 </div>
-                            </li>
+                            </li>-->
                             <li><img src="/common/zian/images/bigimg/img_tabbg_right.png" alt="right" /></li>
                         </ul>
                     </div>
 
                     <div class="st_analysis_main">
                         <div class="st_analysis_section">
+                            <div class="st_total_result">
+                                <div class="st_arrow">
+                                    <div>
+                                        <span id="l_compareResultUserName"></span> 님의<br />
+                                        평균 성적과 전체 평균의<br />
+                                        비교 분석 결과입니다.
+                                    </div>
+                                </div>
+                                <div class="st_score_board">
+                                    <div class="st_title">본인 평균</div>
+                                    <div class="st_score" id="l_myStatics"></div>
+                                </div>
+                                <div class="st_score_vs"></div>
+                                <div class="st_score_board">
+                                    <div class="st_title">전체 평균</div>
+                                    <div class="st_score" id="l_totalStatics"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="st_analysis_section">
                             <div class="st_sction_title">
                                 <img src="/common/zian/images/bigimg/icon_point_check_0001.png" alt="" /> 개인성적 종합분석
                             </div>
-                            <table id="id_record" style="margin-top: 0px; width: 750px; float: left;">
+                            <table id="id_record" style="margin-top: 0px; width: 1000px; float: left;">
                                 <colgroup>
                                     <col style="width: 150px" />
-                                    <col style="width: 120px;" />
-                                    <col style="width: 120px;" />
-                                    <col style="width: 120px;" />
-                                    <col style="width: 120px;" />
+                                    <col style="width: 150px;" />
+                                    <col style="width: 150px;" />
+                                    <col style="width: 150px;" />
+                                    <col style="width: 150px;" />
                                     <col style="width: *" />
                                 </colgroup>
                                 <thead>
@@ -197,29 +541,10 @@
                             </div>
                             <div class="st_graph">
                                 <div class="st_graph_02">
-                                    <ul id="st_graph">
-                                    </ul>
+                                    <span id="st_graph"></span>
                                     <div class="st_bar_explain">
                                         <img src="/common/zian/images/bigimg/analysis_graph_text.png" alt="" />
                                     </div>
-                                </div>
-                            </div>
-                            <div class="st_total_result">
-                                <div class="st_arrow">
-                                    <div>
-                                        <span id="l_compareResultUserName"></span> 님의<br />
-                                        평균 성적과 전체 평균의<br />
-                                        비교 분석 결과입니다.
-                                    </div>
-                                </div>
-                                <div class="st_score_board">
-                                    <div class="st_title">본인 평균</div>
-                                    <div class="st_score" id="l_myStatics"></div>
-                                </div>
-                                <div class="st_score_vs"></div>
-                                <div class="st_score_board">
-                                    <div class="st_title">전체 평균</div>
-                                    <div class="st_score" id="l_totalStatics"></div>
                                 </div>
                             </div>
                         </div>
@@ -228,14 +553,14 @@
                                 <img src="/common/zian/images/bigimg/icon_point_check_0001.png" alt="" /> 과목별 평균
                             </div>
 
-                            <table id="id_record_subject" style="margin-top: 0px; width: 695px; float: left;">
+                            <table id="id_record_subject" style="margin-top: 0px; width: 1000px; float: left;">
                                 <colgroup>
-                                    <col style="width: 120px" />
-                                    <col style="width: 100px;" />
-                                    <col style="width: 100px;" />
-                                    <col style="width: 100px;" />
-                                    <col style="width: 100px;" />
-                                    <col style="width: 100px;" />
+                                    <col style="width: 160px" />
+                                    <col style="width: 140px;" />
+                                    <col style="width: 140px;" />
+                                    <col style="width: 140px;" />
+                                    <col style="width: 140px;" />
+                                    <col style="width: 140px;" />
                                     <col style="width: *" />
                                 </colgroup>
                                 <thead>
@@ -277,136 +602,26 @@
                                     <td id="l_myScore4"></td>
                                     <td id="l_myScore5"></td>
                                 </tr>
-                                <tr class="st_result">
+                                <tr class="st_result" id="l_subjectStaticsTotal">
                                     <td>전체</td>
-                                    <td>56.9</td>
-                                    <td>38.6</td>
-                                    <td>62.1</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>157.7</td>
+                                    <td id="l_subjectStaticsTotal0"></td>
+                                    <td id="l_subjectStaticsTotal1"></td>
+                                    <td id="l_subjectStaticsTotal2"></td>
+                                    <td id="l_subjectStaticsTotal3"></td>
+                                    <td id="l_subjectStaticsTotal4"></td>
+                                    <td id="l_subjectStaticsTotal5"></td>
                                 </tr>
                                 </tbody>
                             </table>
                             <div id="id_graph_subject_score" style="width: 362px; float: right;"></div>
                         </div>
                         <div class="st_analysis_section">
-                            <div class="st_diagram st_half" id="id_graph_score_one" style="float: left;">
-                                <p>점수비교</p>
+                            <div class="st_diagram st_half" id="container" style="float: left;">
                             </div>
-                            <div class="st_diagram st_half" id="id_graph_score_total" style="float: right;">
-                                <p>회차별 점수 비교</p>
+                            <div class="st_diagram st_half" id="container2" style="float: right;">
                             </div>
                         </div>
-                        <div class="st_subject_name">
-                            <span>국어</span> 분석 그래프
-                        </div>
-                        <div class="st_analysis_section">
-                            <div class="st_sction_title">
-                                <img src="/common/zian/images/bigimg/icon_point_check_0001.png" alt="" /> 국어 유형별 정답률 분석 그래프
-                            </div>
-                            <div class="st_diagram st_half" id="id_graph_step_one_102800" style="float: left;">
-                                <p>유형별 정답률(해당 회차별)</p>
-                            </div>
-                            <div class="st_diagram st_half" id="id_graph_step_total_102800" style="float: right;">
-                                <p>유형별 정답률(누적)</p>
-                            </div>
-                        </div>
-                        <div class="st_analysis_section">
-                            <div class="st_sction_title">
-                                <img src="/common/zian/images/bigimg/icon_point_check_0001.png" alt="" /> 국어 패턴별 정답률 분석 그래프
-                            </div>
-                            <div class="st_diagram st_half" id="id_graph_pattern_one_102800" style="float: left;">
-                                <p>패턴별 정답률(해당 회차별)</p>
-                            </div>
-                            <div class="st_diagram st_half" id="id_graph_pattern_total_102800" style="float: right;">
-                                <p>패턴별 정답률(누적)</p>
-                            </div>
-                        </div>
-                        <div class="st_analysis_section">
-                            <div class="st_sction_title">
-                                <img src="/common/zian/images/bigimg/icon_point_check_0001.png" alt="" /> 국어 패턴별 정답률 분석 그래프
-                            </div>
-                            <div class="st_diagram" id="id_graph_unit_one_102800">
-                                <p>대단원별 정답률(해당 회차별)</p>
-                            </div>
-                            <div class="st_diagram" id="id_graph_unit_total_102800">
-                                <p>대단원별 정답률(누적)</p>
-                            </div>
-                        </div>
-                        <div class="st_subject_name">
-                            <span>영어</span> 분석 그래프
-                        </div>
-                        <div class="st_analysis_section">
-                            <div class="st_sction_title">
-                                <img src="/common/zian/images/bigimg/icon_point_check_0001.png" alt="" /> 영어 유형별 정답률 분석 그래프
-                            </div>
-                            <div class="st_diagram st_half" id="id_graph_step_one_102801" style="float: left;">
-                                <p>유형별 정답률(해당 회차별)</p>
-                            </div>
-                            <div class="st_diagram st_half" id="id_graph_step_total_102801" style="float: right;">
-                                <p>유형별 정답률(누적)</p>
-                            </div>
-                        </div>
-                        <div class="st_analysis_section">
-                            <div class="st_sction_title">
-                                <img src="/common/zian/images/bigimg/icon_point_check_0001.png" alt="" /> 영어 패턴별 정답률 분석 그래프
-                            </div>
-                            <div class="st_diagram st_half" id="id_graph_pattern_one_102801" style="float: left;">
-                                <p>패턴별 정답률(해당 회차별)</p>
-                            </div>
-                            <div class="st_diagram st_half" id="id_graph_pattern_total_102801" style="float: right;">
-                                <p>패턴별 정답률(누적)</p>
-                            </div>
-                        </div>
-                        <div class="st_analysis_section">
-                            <div class="st_sction_title">
-                                <img src="/common/zian/images/bigimg/icon_point_check_0001.png" alt="" /> 영어 패턴별 정답률 분석 그래프
-                            </div>
-                            <div class="st_diagram" id="id_graph_unit_one_102801">
-                                <p>대단원별 정답률(해당 회차별)</p>
-                            </div>
-                            <div class="st_diagram" id="id_graph_unit_total_102801">
-                                <p>대단원별 정답률(누적)</p>
-                            </div>
-                        </div>
-                        <div class="st_subject_name">
-                            <span>한국사</span> 분석 그래프
-
-                        </div>
-                        <div class="st_analysis_section">
-                            <div class="st_sction_title">
-                                <img src="/common/zian/images/bigimg/icon_point_check_0001.png" alt="" /> 한국사 유형별 정답률 분석 그래프
-                            </div>
-                            <div class="st_diagram st_half" id="id_graph_step_one_102802" style="float: left;">
-                                <p>유형별 정답률(해당 회차별)</p>
-                            </div>
-                            <div class="st_diagram st_half" id="id_graph_step_total_102802" style="float: right;">
-                                <p>유형별 정답률(누적)</p>
-                            </div>
-                        </div>
-                        <div class="st_analysis_section">
-                            <div class="st_sction_title">
-                                <img src="/common/zian/images/bigimg/icon_point_check_0001.png" alt="" /> 한국사 패턴별 정답률 분석 그래프
-                            </div>
-                            <div class="st_diagram st_half" id="id_graph_pattern_one_102802" style="float: left;">
-                                <p>패턴별 정답률(해당 회차별)</p>
-                            </div>
-                            <div class="st_diagram st_half" id="id_graph_pattern_total_102802" style="float: right;">
-                                <p>패턴별 정답률(누적)</p>
-                            </div>
-                        </div>
-                        <div class="st_analysis_section">
-                            <div class="st_sction_title">
-                                <img src="/common/zian/images/bigimg/icon_point_check_0001.png" alt="" /> 한국사 패턴별 정답률 분석 그래프
-                            </div>
-                            <div class="st_diagram" id="id_graph_unit_one_102802">
-                                <p>대단원별 정답률(해당 회차별)</p>
-                            </div>
-                            <div class="st_diagram" id="id_graph_unit_total_102802">
-                                <p>대단원별 정답률(누적)</p>
-                            </div>
-                        </div>
+                        <span id="l_graphInfo"></span>
                     </div>
                 </div>
             </div>
