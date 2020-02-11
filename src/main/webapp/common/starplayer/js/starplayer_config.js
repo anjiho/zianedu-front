@@ -87,7 +87,6 @@ function OpenLecPlayer( vodPath, vodTitle )
     {
         window.open( "", "Player", "width=1200, height=680, scrollbars=0, menubar=0, resizable=0" );
         //gfn_winPop(980, 680, )
-
         $("#vodPath").val( vodPath );
         $("#vodTitle" ).val( vodTitle );
         //$("#a_bPlayer_High" ).val( a_bHigh );

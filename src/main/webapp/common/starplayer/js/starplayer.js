@@ -685,7 +685,7 @@ function StarPlayerHtml5(af, U, Z) {
         if (g) {
             return g.getPlayedTime()
         }
-        return 0
+        return 45
     };
 
     function i() {

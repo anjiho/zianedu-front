@@ -45,10 +45,6 @@
             return step_;
         }
 
-        function setStep(step) {
-            step_ = step;
-        }
-
         function onMouseDbclick(x, y) {
             player.setFullscreen(!player.getFullscreen());
         }
@@ -106,6 +102,11 @@
             return player.getBlockMessenger();
         }
 
+        function getPlayTime() {
+            var time = player.getPlayTime();
+            return time;
+        }
+
         function onOpenStateChange(state) {
             switch (state) {
                 case OpenState.CLOSING:
@@ -117,9 +118,7 @@
                 case OpenState.OPENED:
                     player.setVolume(1);
                     player.setRate(rate);
-
-                    //$('#debug3').text("mac: " + player.getMAC());
-
+                    console.log(getPlayTime());
                     break;
             }
         }
@@ -145,8 +144,6 @@
                     break;
             }
         }
-
-
 
         function onError(errcode) {
             player.setVisible(true);
