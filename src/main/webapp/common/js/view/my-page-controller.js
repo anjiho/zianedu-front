@@ -216,6 +216,7 @@ function getVideoSignUpDetailInfo(gkey, device, jlecKey, tagId) {
     dwr.util.removeAllRows(tagId); //테이블 리스트 초기화
     if (infoList != null) {
         var selList = infoList.result.lectureList;
+        console.log(selList);
         var countId = '';
         if(tagId == 'dataList') countId = 'playLecTotalCnt';
         else countId = 'zianPassTotalCnt';
@@ -224,8 +225,7 @@ function getVideoSignUpDetailInfo(gkey, device, jlecKey, tagId) {
             function(data) {return data.numStr;},
             function(data) {return data.name;},
             function(data) {return data.vodTime;},
-            function(data) {return "<a href='' class='black small'>일반화질</a>&nbsp;&nbsp;<a href='' class='blue small'>고화질</a>";},
-
+            function(data) {return '<a href="javascript:void(0);" onclick="OpenLecPlayer(' + "'"  + data.vodFileLow + "'" + ');" class="black small">일반화질</a>&nbsp;&nbsp;<a href="" class="blue small">고화질</a>';}
         ], {escapeHtml:false});
     }
 
