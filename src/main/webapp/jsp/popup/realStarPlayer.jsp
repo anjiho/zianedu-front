@@ -108,9 +108,6 @@
                     break;
                 case OpenState.OPENING:
                     //기기 중복확인 api 호출
-                    alert(player.getPID());
-                    alert(<%=jlecKey%>);
-                    return false;
                     var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
                     var pcMobile = divisionPcMobile();
                     var deviceType = 0;

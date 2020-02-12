@@ -86,7 +86,6 @@ function getVideoSignUpDetailInfo(gkey, device, jlecKey, tagId) {
     dwr.util.removeAllRows(tagId); //테이블 리스트 초기화
     if (infoList != null) {
         var selList = infoList.result.lectureList;
-        console.log(selList);
         var countId = '';
         if(tagId == 'dataList') countId = 'playLecTotalCnt';
         else countId = 'zianPassTotalCnt';
