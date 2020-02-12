@@ -158,7 +158,7 @@
 
         function onLoad(){
             var config = {
-                userId: "ANONYMOUS",
+                userId: "ANONYMOUS",//ssession userId
                 id: "starplayer",
                 videoContainer: "video-container",
                 controllerContainer: "controller-container",
