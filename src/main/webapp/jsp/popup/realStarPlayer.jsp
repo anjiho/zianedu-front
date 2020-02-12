@@ -7,7 +7,7 @@
     String vodPath = Util.isNullValue(request.getParameter("vodPath"), "");
     String vodTitle = Util.isNullValue(request.getParameter("vodTitle"), "샘플");
     String curriKey = Util.isNullValue(request.getParameter("curriKey"), "");
-
+    String jlecKey = Util.isNullValue(request.getParameter("jlecKey"), "");
     StringEncrypter encrypter = new StringEncrypter("axissoft", "starplayer");
 
     System.out.println(">>" + vodPath);
@@ -107,6 +107,20 @@
                 case OpenState.CLOSED:
                     break;
                 case OpenState.OPENING:
+                    //기기 중복확인 api 호출
+                    alert(player.getPID());
+                    alert(<%=jlecKey%>);
+                    return false;
+                    var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+                    var pcMobile = divisionPcMobile();
+                    var deviceType = 0;
+                    if(pcMobile == 'MOBILE') deviceType = 1;//기기종류
+                    var deviceId = player.getPID();//기기값
+                    var result = confirmDuplicateDevice(sessionUserInfo.userKey, deviceType, deviceId, <%=jlecKey%>);
+                    if(result.keyValue == false){
+                        alert("이미 인증된 기기가 있어 학습이 불가능합니다.\n자세한 사항은 관리자에게 문의 바랍니다.");
+                        self.close();
+                    }
                     break;
                 case OpenState.OPENED:
                     player.setVolume(1);
@@ -236,8 +250,9 @@
         }*/
 
         function saveHistory() {
+            $("#position").val(player.getCurrentPosition());
             var time = player.getPlayTime();
-            console.log(time);
+            injectVideoPlayTime(<%=jlecKey%>, <%=curriKey%>);  //동영상 플레이시간 주입
             setTimeout("saveHistory()", 1000 * 60);
         }
     </script>
@@ -252,7 +267,9 @@
     </style>
 
 </head>
-
+<form action="" id="frm" name="frm" >
+    <input type="hidden" id="position" name="position" />
+</form>
 <body style="margin: 0 0 0 0;overflow-x:hidden;overflow-y:hidden;" scroll=no onload="onLoad()" onkeydown="onKeyDown(event.keyCode)" oncontextmenu='return false' ondragstart='return false' onselectstart='return false'>
 <div id="player-container" style="width:1024px;">
     <div id="video-container" style="height:568px;background:black url('') no-repeat center center;">
