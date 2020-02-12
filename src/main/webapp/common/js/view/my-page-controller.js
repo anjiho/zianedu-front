@@ -86,7 +86,6 @@ function getVideoSignUpDetailInfo(gkey, device, jlecKey, tagId) {
     dwr.util.removeAllRows(tagId); //테이블 리스트 초기화
     if (infoList != null) {
         var selList = infoList.result.lectureList;
-        console.log(selList);
         var countId = '';
         if(tagId == 'dataList') countId = 'playLecTotalCnt';
         else countId = 'zianPassTotalCnt';
@@ -943,4 +942,28 @@ function confirmVideoPlay(jLecKey, curriKey) {
     };
     var result = getPayApi("/myPage/confirmVideoPlay", '', data);
     return result.keyValue;
+}
+
+function confirmDuplicateDevice(userKey, deviceType, deviceId, jLecKey) {
+    if (jLecKey == null || jLecKey == undefined) return;
+
+    var data = {
+        deviceType : deviceType,
+        deviceId : deviceId,
+        jLecKey : jLecKey
+    };
+    var result = getPayApi("/myPage/confirmDuplicateDevice/", userKey, data);
+    return result;
+}
+
+function injectVideoPlayTime(jLecKey, curriKey) {
+    if (jLecKey == null || jLecKey == undefined) return;
+
+    var data = {
+        jLecKey : jLecKey,
+        curriKey : curriKey
+    };
+
+    var result = postApi("/myPage/injectVideoPlayTime", data);
+    console.log(result);
 }

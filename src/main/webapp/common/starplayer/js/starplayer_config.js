@@ -101,7 +101,7 @@ function OpenLecPlayer( vodPath, vodTitle, curriKey, jlecKey, videoType )
             //$("#a_bPlayer_High" ).val( a_bHigh );
 
             $("#id_frm_player").attr( "target", "Player" );
-            $( "#id_frm_player").attr( "action", "/popup?page_gbn=realStarPlayer&curriKey="+curriKey );
+            $( "#id_frm_player").attr( "action", "/popup?page_gbn=realStarPlayer&curriKey="+curriKey+"&jlecKey="+jlecKey);
             $( "#id_frm_player" ).submit();
         }
         else
