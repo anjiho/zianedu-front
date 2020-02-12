@@ -33,7 +33,6 @@
     <script type="text/javascript" src="/common/starplayer/js/starplayer_ui.js"></script>
     <script type="text/javascript" src="/common/starplayer/js/htmlparser.js"></script>
     <script type="text/javascript" src="/common/starplayer/js/sami.js"></script>
-    <script src="/common/js/common.js"></script>
     <script type="text/javascript">
         var player;
 
@@ -110,9 +109,12 @@
                 case OpenState.OPENING:
                     //기기 중복확인 api 호출
                     var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+                    var pcMobile = divisionPcMobile();
+                    var deviceType = 0;
+                    if(pcMobile == 'MOBILE') deviceType = 1;//기기종류
                     var deviceId = player.getPID();//기기값
-                    var result = confirmDuplicateDevice(sessionUserInfo.userKey, 0, deviceId, <%=jlecKey%>);
-                    if(result.keyValue == false){
+                    var result = confirmDuplicateDevice(sessionUserInfo.userKey, deviceType, deviceId, <%=jlecKey%>);
+                    if(result.keyValue){
                         alert("이미 인증된 기기가 있어 학습이 불가능합니다.\n자세한 사항은 관리자에게 문의 바랍니다.");
                         self.close();
                     }
@@ -245,10 +247,8 @@
         }*/
 
         function saveHistory() {
-            $("#position").val(player.getCurrentPosition());
             var time = player.getPlayTime();
-            console.log("time"+":"+time);
-            injectVideoPlayTime(<%=jlecKey%>, <%=curriKey%>);  //동영상 플레이시간 주입
+            
             setTimeout("saveHistory()", 1000 * 60);
         }
     </script>
@@ -263,9 +263,7 @@
     </style>
 
 </head>
-<form action="" id="frm" name="frm" >
-    <input type="hidden" id="position" name="position" />
-</form>
+
 <body style="margin: 0 0 0 0;overflow-x:hidden;overflow-y:hidden;" scroll=no onload="onLoad()" onkeydown="onKeyDown(event.keyCode)" oncontextmenu='return false' ondragstart='return false' onselectstart='return false'>
 <div id="player-container" style="width:1024px;">
     <div id="video-container" style="height:568px;background:black url('') no-repeat center center;">
