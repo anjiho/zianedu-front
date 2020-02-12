@@ -158,7 +158,7 @@
 
         function onLoad(){
             var config = {
-                userId: "ANONYMOUS",
+                userId: "ANONYMOUS",    //사용자 아이디 세팅
                 id: "starplayer",
                 videoContainer: "video-container",
                 controllerContainer: "controller-container",
