@@ -7,13 +7,12 @@
     String vodPath = Util.isNullValue(request.getParameter("vodPath"), "");
     String vodTitle = Util.isNullValue(request.getParameter("vodTitle"), "샘플");
     String curriKey = Util.isNullValue(request.getParameter("curriKey"), "");
-//    String jlecKey = Util.isNullValue(request.getParameter("jlecKey"), "");
+    String jlecKey = Util.isNullValue(request.getParameter("jlecKey"), "");
     StringEncrypter encrypter = new StringEncrypter("axissoft", "starplayer");
 
     System.out.println(">>" + vodPath);
 %>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 
@@ -33,6 +32,11 @@
     <script type="text/javascript" src="/common/starplayer/js/starplayer_ui.js"></script>
     <script type="text/javascript" src="/common/starplayer/js/htmlparser.js"></script>
     <script type="text/javascript" src="/common/starplayer/js/sami.js"></script>
+    <script src="/common/zian/js/kiplayer/jquery.min.js"></script>
+    <script src="/common/js/common.js"></script>
+    <script src="/common/js/rest-api.js"></script>
+    <script src="/common/js/view/my-page-controller.js"></script>
+    <script src="/common/js/comment.js"></script>
     <script type="text/javascript">
         var player;
 
@@ -108,16 +112,16 @@
                     break;
                 case OpenState.OPENING:
                     //기기 중복확인 api 호출
-                    <%--var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));--%>
-                    <%--var pcMobile = divisionPcMobile();--%>
-                    <%--var deviceType = 0;--%>
-                    <%--if(pcMobile == 'MOBILE') deviceType = 1;//기기종류--%>
-                    <%--var deviceId = player.getPID();//기기값--%>
-                    <%--var result = confirmDuplicateDevice(sessionUserInfo.userKey, deviceType, deviceId, <%=jlecKey%>);--%>
-                    <%--if(result.keyValue){--%>
-                    <%--    alert("이미 인증된 기기가 있어 학습이 불가능합니다.\n자세한 사항은 관리자에게 문의 바랍니다.");--%>
-                    <%--    self.close();--%>
-                    <%--}--%>
+                    var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+                    var pcMobile = divisionPcMobile();
+                    var deviceType = 0;
+                    if(pcMobile == 'MOBILE') deviceType = 1;//기기종류
+                    var deviceId = player.getPID();//기기값
+                    var result = confirmDuplicateDevice(sessionUserInfo.userKey, deviceType, deviceId, <%=jlecKey%>);
+                    if(result.keyValue == false){
+                        alert("이미 인증된 기기가 있어 학습이 불가능합니다.\n자세한 사항은 관리자에게 문의 바랍니다.");
+                        self.close();
+                    }
                     break;
                 case OpenState.OPENED:
                     player.setVolume(1);
@@ -247,8 +251,11 @@
         }*/
 
         function saveHistory() {
+            //$("#position").val(player.getCurrentPosition());
             var time = player.getPlayTime();
+            //console.log("time"+":"+time);
             setTimeout("saveHistory()", 1000 * 60);
+            injectVideoPlayTime(<%=jlecKey%>, <%=curriKey%>);  //동영상 플레이시간 주입
         }
     </script>
 
@@ -262,7 +269,9 @@
     </style>
 
 </head>
-
+<form action="" id="frm" name="frm" >
+    <input type="hidden" id="position" name="position" />
+</form>
 <body style="margin: 0 0 0 0;overflow-x:hidden;overflow-y:hidden;" scroll=no onload="onLoad()" onkeydown="onKeyDown(event.keyCode)" oncontextmenu='return false' ondragstart='return false' onselectstart='return false'>
 <div id="player-container" style="width:1024px;">
     <div id="video-container" style="height:568px;background:black url('') no-repeat center center;">
