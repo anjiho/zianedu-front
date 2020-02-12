@@ -59,6 +59,7 @@ function getVideoSignUpLectureNameList(userKey, deviceType, subjectCtgKey, stepC
 
     if (infoList.result.length > 0 ) {
         var result = infoList.result;
+
         if(result.length > 0) {
             innerValue("gKey", result[0].gkey);
             var gKey = getInputTextValue("gKey");
@@ -83,9 +84,9 @@ function getVideoSignUpDetailInfo(gkey, device, jlecKey, tagId) {
         device : device
     };
     var infoList = getApi("/product/getLectureListByJLecKey/", jlecKey, data);
+
     dwr.util.removeAllRows(tagId); //테이블 리스트 초기화
     if (infoList != null) {
-        console.log(infoList);
         var selList = infoList.result.lectureList;
         var countId = '';
         if(tagId == 'dataList') countId = 'playLecTotalCnt';
@@ -95,7 +96,7 @@ function getVideoSignUpDetailInfo(gkey, device, jlecKey, tagId) {
             function(data) {return data.numStr;},
             function(data) {return data.name;},
             function(data) {return data.vodTime;},
-            function(data) {return '<a href="javascript:void(0);" onclick="OpenLecPlayer(' + "'"  + data.vodFileLow + "'" + ',' + "'"  + data.name + "'" + ','+ data.curriKey +','+ jlecKey +');" class="black small">일반화질</a>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="OpenLecPlayer(' + "'"  + data.vodFileHigh + "'" + ',' + "'"  + data.name + "'" + ','+ data.curriKey +','+ jlecKey +');" class="blue small">고화질</a>';}
+            function(data) {return '<a href="javascript:void(0);" onclick="OpenLecPlayer(' + "'"  + data.vodFileLow + "'" + ',' + "'"  + data.name + "'" + ','+ data.curriKey +','+ jlecKey +','+ detailInfo.result.kind +');" class="black small">일반화질</a>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="OpenLecPlayer(' + "'"  + data.vodFileHigh + "'" + ',' + "'"  + data.name + "'" + ','+ data.curriKey +','+ jlecKey +','+ detailInfo.result.kind +');" class="blue small">고화질</a>';}
         ], {escapeHtml:false});
     }
     return detailInfo;
