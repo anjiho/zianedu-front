@@ -85,6 +85,7 @@ function getVideoSignUpDetailInfo(gkey, device, jlecKey, tagId) {
     var infoList = getApi("/product/getLectureListByJLecKey/", jlecKey, data);
     dwr.util.removeAllRows(tagId); //테이블 리스트 초기화
     if (infoList != null) {
+        console.log(infoList);
         var selList = infoList.result.lectureList;
         var countId = '';
         if(tagId == 'dataList') countId = 'playLecTotalCnt';
