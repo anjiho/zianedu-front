@@ -954,6 +954,7 @@ function confirmDuplicateDevice(userKey, deviceType, deviceId, jLecKey) {
     };
 
     var result = getApi("/myPage/confirmDuplicateDevice", userKey, data);
+    console.log(result);
     return result;
 }
 
