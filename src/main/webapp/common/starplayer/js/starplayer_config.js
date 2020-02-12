@@ -73,7 +73,7 @@ function OpenSamplePlayer( vodPath )
     }
 }
 
-function OpenLecPlayer( vodPath, vodTitle, curriKey, jlecKey )
+function OpenLecPlayer( vodPath, vodTitle, curriKey, jlecKey, videoType )
 {
     var result  = confirmVideoPlay(jlecKey, curriKey);
     if(result == true){
@@ -84,6 +84,14 @@ function OpenLecPlayer( vodPath, vodTitle, curriKey, jlecKey )
         // a_lLecKey = "14591";
         // a_lCurriKey = "126979";
         // a_bHigh = "1";
+        if (videoType == 100) { //PC
+
+        } else if (videoType == 101) {  //MOBILE
+
+        } else if (videoType == 102) {  //PC&MOBILE
+
+        }
+        
         if( pcMobile == 'PC' )
         {
             window.open( "", "Player", "width=1200, height=680, scrollbars=0, menubar=0, resizable=0" );
