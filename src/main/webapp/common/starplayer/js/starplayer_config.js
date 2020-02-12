@@ -124,7 +124,8 @@ function OpenLecPlayer( vodPath, vodTitle, curriKey, jlecKey, videoType )
 
 
             var sp = StarPlayerApp;
-            var infoUrl = "http://15.164.7.237/popup?page_gbn=starPlayerMobile&license=FBD4FB45-D5F4-4493-AE56-BCD6F36F646A&vodPath=" + vodPath + "&vodTitle=" + vodTitle;
+            var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+            var infoUrl = "http://15.164.7.237/popup?page_gbn=starPlayerMobile&license=FBD4FB45-D5F4-4493-AE56-BCD6F36F646A&vodPath=" + vodPath + "&vodTitle=" + vodTitle + "&userKey=" +  sessionUserInfo.userKey;
             sp.license = "FBD4FB45-D5F4-4493-AE56-BCD6F36F646A";
             sp.version = "1.0.0";
             sp.android_version = "1.0.0";
