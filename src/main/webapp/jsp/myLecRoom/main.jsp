@@ -119,7 +119,6 @@
     function getTypeLectureDetail(gkey, jlecKey) {
         var pcMobile = divisionPcMobile();
         var infoList = getVideoSignUpDetailInfo(gkey, pcMobile, jlecKey, 'dataList');
-        console.log(infoList);
         if(infoList == null){
             $("#playLecListDiv").hide();
         }else{

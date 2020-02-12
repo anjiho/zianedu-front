@@ -160,13 +160,13 @@
         }
         getExamScheduleList("dDayBanner"); //d-day 슬라이드 배너
     });
-    
+
     function goExamGuide() {
         sessionStorage.setItem("noticeHeader", "examGuide");
         $("#noticeMenu li:eq(4)").addClass('active');
-        //goPageNoSubmit('notice', 'examGuide');
+        goPageNoSubmit('notice', 'examGuide');
     }
-    
+
     function setLeftMenu4() {
         var subMenuHtml = $("#subMenu4").html();
         if(subMenuHtml == '자격증/가산점'){
@@ -174,27 +174,27 @@
             return false;
         }else if(subMenuHtml == '온라인서점'){
             sessionStorage.setItem("leftMenu", 'bookStore');
-            //goPageNoSubmit('bookStore','main');
+            goPageNoSubmit('bookStore','main');
         }
     }
-    
+
     function setLeftMenu5() {
         var subMenuHtml = $("#subMenu5").html();
         if(subMenuHtml == '온라인서점'){
             sessionStorage.setItem("leftMenu", 'bookStore');
-            //goPageNoSubmit('bookStore','main');
+            goPageNoSubmit('bookStore','main');
         }else if(subMenuHtml == '빅모의고사'){
             sessionStorage.setItem("leftMenu", 'bigExam');
-            //goPageNoSubmit('bigExam','main');
+            goPageNoSubmit('bigExam','main');
         }
     }
 
     function goMyCart() {
         sessionStorage.setItem("myPageHeader", "cart");
         $("#myPageMenu li:eq(1)").addClass('active');
-       // goPageNoSubmit('myPage', 'cart');
+        goPageNoSubmit('myPage', 'cart');
     }
-    
+
     function setLeftMenu3() {
         var subMenuHtml = $("#subMenu3").html();
         if(subMenuHtml == '자격증/가산점'){
@@ -202,7 +202,7 @@
             return false;
         }else if(subMenuHtml == '온라인서점'){
             sessionStorage.setItem("leftMenu", 'bookStore');
-           // goPageNoSubmit('bookStore','main');
+            goPageNoSubmit('bookStore','main');
         }else if(subMenuHtml == '행정직'){
             sessionStorage.setItem("leftMenu", "publicOnline");
             goPageNoSubmit("publicOnline", "main");
@@ -239,14 +239,14 @@
         <div id="quickNav">
             <b>바로가기메뉴</b>
             <ul>
-                <li class="noBg"><a href="javascript:void(0);"><span class="icon item1"></span>강의실배정표</a></li>
-                <li class="noBg"><a href="javascript:void(0);"><span class="icon item2"></span>학원시간표</a></li>
-                <li class="noBg"><a href="javascript:void(0);"><span class="icon item3"></span>수험가이드</a></li>
-                <li><a href="javascript:void(0);"><span class="icon item4"></span>내강의실</a></li>
-                <li><a href="javascript:void(0);"><span class="icon item5"></span>학원수강내역</a></li>
-                <li><a href="javascript:void(0);"><span class="icon item6"><em id="cartCnt"></em></span>장바구니</a></li>
-                <li><a href="javascript:void(0);"><span class="icon item7"></span>공지사항</a></li>
-                <li><a href="javascript:void(0);"><span class="icon item8"></span>1:1문의</a></li>
+                <li class="noBg"><a href="javascript:goLecRoom();"><span class="icon item1"></span>강의실배정표</a></li>
+                <li class="noBg"><a href="javascript:goOpenMenu();"><span class="icon item2"></span>학원시간표</a></li>
+                <li class="noBg"><a href="javascript:goExamGuide();"><span class="icon item3"></span>수험가이드</a></li>
+                <li><a href="javascript:goPageNoSubmit('myLecRoom', 'main')"><span class="icon item4"></span>내강의실</a></li>
+                <li><a href="javascript:goPageNoSubmit('myLecRoom', 'main');"><span class="icon item5"></span>학원수강내역</a></li>
+                <li><a href="javascript:goMyCart();"><span class="icon item6"><em id="cartCnt"></em></span>장바구니</a></li>
+                <li><a href="javascript:goOpenMenu();"><span class="icon item7"></span>공지사항</a></li>
+                <li><a href="javascript:goPageNoSubmit('customerCenter','consult');"><span class="icon item8"></span>1:1문의</a></li>
             </ul>
         </div>
         <div id="examBanner" class="slider useBx">

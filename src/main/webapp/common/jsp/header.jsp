@@ -76,7 +76,7 @@
     function goMyPage() {
         goPageNoSubmit('myPage','orderList');
     }
-    
+
     function goPassReview() {
         var leftMenuInfo = sessionStorage.getItem('leftMenu');
         if(leftMenuInfo == 'bookStore') {
@@ -109,25 +109,25 @@
                 <li id="userName"><a href="#"></a></li>
                 <li><a href="javascript:goMyPage();">마이페이지</a></li>
                 <li><a href="javascript:goLogout();">로그아웃</a></li>
-                <li id="mypage"><a href="javascript:void(0);">합격수기</a></li>
-                <li><a href="javascript:void(0);">이벤트</a></li>
+                <li id="mypage"><a href="javascript:goPassReview();">합격수기</a></li>
+                <li><a href="javascript:goPageNoSubmit('event', 'proceedList');">이벤트</a></li>
             </ul>
             <ul id="topNav_logout" style="display: none;">
                 <li><a href="javascript:addFavorite();" class="btn_bookmark">즐겨찾기에 등록</a></li>
                 <li id="login"><a href="javascript:goLoginPage();">로그인</a></li>
                 <li id="join"><a href="javascript:goPage('user', 'joinAgree');">회원가입</a></li>
-                <li><a href="javascript:void(0);">이벤트</a></li>
+                <li><a href="javascript:goPageNoSubmit('event', 'proceedList');">이벤트</a></li>
             </ul>
         </div>
         <!-- 로그아웃 -->
-<%--        <div id="topNav" class="logout" style="display: none;">--%>
-<%--            <ul>--%>
-<%--                <li><a href="javascript:addFavorite();" class="btn_bookmark">즐겨찾기에 등록</a></li>--%>
-<%--                <li id="login"><a href="javascript:goLoginPage();">로그인</a></li>--%>
-<%--                <li id="join"><a href="javascript:goPage('user', 'joinAgree');">회원가입</a></li>--%>
-<%--                <li><a href="javascript:goPageNoSubmit('event', 'proceedList');">이벤트</a></li>--%>
-<%--            </ul>--%>
-<%--        </div>--%>
+        <%--        <div id="topNav" class="logout" style="display: none;">--%>
+        <%--            <ul>--%>
+        <%--                <li><a href="javascript:addFavorite();" class="btn_bookmark">즐겨찾기에 등록</a></li>--%>
+        <%--                <li id="login"><a href="javascript:goLoginPage();">로그인</a></li>--%>
+        <%--                <li id="join"><a href="javascript:goPage('user', 'joinAgree');">회원가입</a></li>--%>
+        <%--                <li><a href="javascript:goPageNoSubmit('event', 'proceedList');">이벤트</a></li>--%>
+        <%--            </ul>--%>
+        <%--        </div>--%>
         <!--//최상단메뉴-->
         <!--추가-->
         <div id="topNavM">
@@ -304,21 +304,21 @@
         <div class="inner">
             <ul class="deaph1 cols7 acaTopMenu" style="display: none;">
                 <li><a href="javascript:goPageNoSubmit('myLecRoom', 'main')">내강의실</a></li>
-                <li><a href="javascript:void(0);">교수소개</a></li>
-                <li><a href="javascript:void(0);">학원수강신청</a></li>
-                <li><a href="javascript:void(0);">연간관리반</a></li>
-                <li><a href="javascript:void(0);">무료강좌</a></li>
-                <li><a href="javascript:void(0);">빅모의고사</a></li>
-                <li><a href="javascript:void(0);">합격수기</a></li>
+                <li><a href="javascript:goPageNoSubmit('teacher', 'main')">교수소개</a></li>
+                <li><a href="javascript:goPageNoSubmit('lectureOrder', 'academy')">학원수강신청</a></li>
+                <li><a href="javascript:goPageNoSubmit('zianPass', 'list')">연간관리반</a></li>
+                <li><a href="javascript:goPageNoSubmit('freeLecture', 'theory')">무료강좌</a></li>
+                <li><a href="javascript:goBigExam()">빅모의고사</a></li>
+                <li><a href="javascript:goPassReview();">합격수기</a></li>
             </ul>
             <ul class="deaph1 cols7 onlineTopMenu" style="display: none;">
-                <li><a href="javascript:goPageNoSubmit('myLecRoom', 'main');">내강의실</a></li>
-                <li><a href="javascript:void(0);">교수소개</a></li>
-                <li><a href="javascript:void(0);">수강신청</a></li>
-                <li><a href="javascript:void(0);">지안패스</a></li>
-                <li><a href="javascript:void(0);">무료강좌</a></li>
-                <li><a href="javascript:void(0);">빅모의고사</a></li>
-                <li><a href="javascript:void(0);">합격수기</a></li>
+                <li><a href="javascript:goPageNoSubmit('myLecRoom', 'main')">내강의실</a></li>
+                <li><a href="javascript:goPageNoSubmit('teacher', 'main')">교수소개</a></li>
+                <li><a href="javascript:goPageNoSubmit('lectureOrder', 'single')">수강신청</a></li>
+                <li><a href="javascript:goPageNoSubmit('zianPass', 'list')">지안패스</a></li>
+                <li><a href="javascript:goPageNoSubmit('freeLecture', 'theory')">무료강좌</a></li>
+                <li><a href="javascript:goBigExam()">빅모의고사</a></li>
+                <li><a href="javascript:goPassReview();">합격수기</a></li>
             </ul>
             <ul class="deaph1 cols7 bookStore" style="display: none;">
                 <li><a href="javascript:goDetailbookType('COMMON');">공통과목</a></li>
