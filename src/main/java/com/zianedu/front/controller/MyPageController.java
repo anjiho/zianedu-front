@@ -10,7 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
  * 계리직 학원 컨트롤러
  */
 @Controller
-public class myPageController {
+public class MyPageController {
 
     @RequestMapping(value = "/myPage")
     public ModelAndView myPageManage(@RequestParam(value = "page_gbn", required = false) String page_gbn) {

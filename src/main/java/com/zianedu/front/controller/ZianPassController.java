@@ -10,7 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
  * 계리직 학원 컨트롤러
  */
 @Controller
-public class zianPassController {
+public class ZianPassController {
 
     @RequestMapping(value = "/zianPass")
     public ModelAndView zianPassManage(@RequestParam(value = "page_gbn", required = false) String page_gbn) {

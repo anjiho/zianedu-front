@@ -15,7 +15,7 @@ public class StarPlayerController {
 //        if ("requestMobileEvent".equals(page_gbn)) {
 //            mvc.setViewName("/starPlayer/requestStartPlayerMobileEvent");
 //        }
-        if ("eventLog".equals(page_gbn)) {
+        if ("eventLog".equals(page_gbn) || "requestMobileEvent".equals(page_gbn)) {
             mvc.setViewName("/starPlayer/requestStartPlayerMobileEvent");
         }
         return mvc;
