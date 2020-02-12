@@ -87,4 +87,8 @@
         sb.append("</axis-app>");
     }
     out.print(sb.toString());
+
 %>
+<script>
+    alert("1");
+</script>
