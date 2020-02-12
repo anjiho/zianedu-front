@@ -1,7 +1,10 @@
 <%@page contentType="text/html; charset=UTF-8" session="true"%>
 <%@ page import="com.zianedu.front.axis.security.*" %>
+<%@ page import="com.zianedu.front.utils.Util" %>
 <%
     String vodPath = request.getParameter("vodPath");
+    String vodTitle = Util.isNullValue(request.getParameter("vodTitle"), "");
+    String userKey = Util.isNullValue(request.getParameter("userKey"), "0");
 %>
 <%
 
@@ -10,11 +13,11 @@
     data = "<?xml version='1.0' encoding='UTF-8' ?>";
     data += "<axis-app>";
     data += "<action-type>streaming</action-type>";
-    data += "<user-id><![CDATA[ANONYMOUS]]></user-id>";
+    data += "<user-id><![CDATA[" + userKey + "]]></user-id>";
     data += 	"<content>";
     data += 		"<id><![CDATA[0001]]></id>";
     data += 		"<url><![CDATA[" + vodPath + "]]></url>";
-    data += 		"<title><![CDATA[샘플]]></title>";
+    data += 		"<title><![CDATA[" + vodTitle + "]]></title>";
     data += 		"<limit-date><![CDATA[20201210120000]]></limit-date>";
     data +=       "<position>0</position>";
     data += 	"</content>";
