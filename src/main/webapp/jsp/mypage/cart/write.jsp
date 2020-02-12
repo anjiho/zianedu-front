@@ -18,14 +18,12 @@
         }
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         var userKey = sessionUserInfo.userKey;
-
         var gKeys = '<%=gKeys%>';
         var cartKeys = '<%=cartKeys%>';
         var goodsInfo = '<%=goodsInfo%>';
         var retakeInfo = '<%=retakeInfo%>';
         var priceKey =  '<%=priceKey%>';
         var bookCount = '<%=bookCount%>';
-
         if('<%=cartKeys%>' == '' && '<%=goodsInfo%>' == '' && '<%=retakeInfo%>' == '' && '<%=priceKey%>' == '' && '<%=bookCount%>' == ''){ //바로구매
             innerValue("gKeys", gKeys);
             getOrderSheetInfoFromImmediately(userKey, gKeys);

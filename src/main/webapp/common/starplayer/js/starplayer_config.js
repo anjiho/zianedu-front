@@ -84,63 +84,21 @@ function OpenLecPlayer( vodPath, vodTitle, curriKey, jlecKey, videoType )
         // a_lLecKey = "14591";
         // a_lCurriKey = "126979";
         // a_bHigh = "1";
-        if (videoType == 100) { //PC
-            if (pcMobile == 'MOBILE') {
-                alert("PC만 사용가능합니다.");
-                return;
-            } else {
-                window.open("", "Player", "width=1200, height=680, scrollbars=0, menubar=0, resizable=0");
-                //gfn_winPop(980, 680, )
-                $("#vodPath").val(vodPath);
-                $("#vodTitle").val(vodTitle);
-                //$("#a_bPlayer_High" ).val( a_bHigh );
+        if( pcMobile == 'PC' )
+        {
+            window.open( "", "Player", "width=1200, height=680, scrollbars=0, menubar=0, resizable=0" );
+            //gfn_winPop(980, 680, )
+            $("#vodPath").val( vodPath );
+            $("#vodTitle" ).val( vodTitle );
+            //$("#a_bPlayer_High" ).val( a_bHigh );
 
-                $("#id_frm_player").attr("target", "Player");
-                $("#id_frm_player").attr("action", "/popup?page_gbn=realStarPlayer&curriKey=" + curriKey + "&jlecKey=" + jlecKey);
-                $("#id_frm_player").submit();
-            }
-        } else if(videoType == 102){
-            if(pcMobile == 'PC'){
-                window.open("", "Player", "width=1200, height=680, scrollbars=0, menubar=0, resizable=0");
-                //gfn_winPop(980, 680, )
-                $("#vodPath").val(vodPath);
-                $("#vodTitle").val(vodTitle);
-                //$("#a_bPlayer_High" ).val( a_bHigh );
+            $("#id_frm_player").attr( "target", "Player" );
+            $( "#id_frm_player").attr( "action", "/popup?page_gbn=realStarPlayer&curriKey="+curriKey+"&jlecKey="+jlecKey);
+            $( "#id_frm_player" ).submit();
+        }
+        else
+        {
 
-                $("#id_frm_player").attr("target", "Player");
-                $("#id_frm_player").attr("action", "/popup?page_gbn=realStarPlayer&curriKey=" + curriKey + "&jlecKey=" + jlecKey);
-                $("#id_frm_player").submit();
-            }else{
-                // var sp				= StarPlayerApp;
-                // sp.license			= "FBD4FB45-D5F4-4493-AE56-BCD6F36F646A";
-                // sp.version			= "1.0.0";
-                // sp.android_version	= "1.0.0";
-                // sp.ios_version		= "1.0.0";
-                // sp.pmp				= "true";
-                //
-                // sp.executeApp("popup?page_gbn=starPlayerMobile");
-                // if( a_lLecKey.toString() == "0" && a_strFilePath.length > 0 )
-                //     //sp.executeApp( GetCurrentSiteAddress() + "Player/AxisSmartStreamingSampleFile?a_strPlayer_FilePath=" + a_strFilePath + "&a_strPlayer_Title=" + a_strTitle );
-                //     sp.executeApp("/popup?page_gbn=starPlayerMobile");
-                // else
-                //     //sp.executeApp( GetCurrentSiteAddress() + "Player/AxisSmartStreamingSample?a_lPlayer_LecKey=" + a_lLecKey + "&a_lPlayer_CurriKey=" + a_lCurriKey + "&a_bPlayer_High=" + a_bHigh );
-                //     sp.executeApp("/popup?page_gbn=starPlayerMobile");
-
-
-                var sp = StarPlayerApp;
-                var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-                var infoUrl = "http://15.164.7.237/popup?page_gbn=starPlayerMobile&license=FBD4FB45-D5F4-4493-AE56-BCD6F36F646A&vodPath=" + vodPath + "&vodTitle=" + vodTitle + "&userKey=" +  sessionUserInfo.userKey;
-                sp.license = "FBD4FB45-D5F4-4493-AE56-BCD6F36F646A";
-                sp.version = "1.0.0";
-                sp.android_version = "1.0.0";
-                sp.ios_version = "1.0.0";
-                sp.pmp = "true";
-
-                //var app = function(info_url) {
-                sp.executeApp(infoUrl);
-                //}
-            }
-        }else{
             // var sp				= StarPlayerApp;
             // sp.license			= "FBD4FB45-D5F4-4493-AE56-BCD6F36F646A";
             // sp.version			= "1.0.0";
@@ -155,23 +113,19 @@ function OpenLecPlayer( vodPath, vodTitle, curriKey, jlecKey, videoType )
             // else
             //     //sp.executeApp( GetCurrentSiteAddress() + "Player/AxisSmartStreamingSample?a_lPlayer_LecKey=" + a_lLecKey + "&a_lPlayer_CurriKey=" + a_lCurriKey + "&a_bPlayer_High=" + a_bHigh );
             //     sp.executeApp("/popup?page_gbn=starPlayerMobile");
-            if (pcMobile == 'PC') {
-                alert("PC만 사용가능합니다.");
-                return;
-            } else {
-                var sp = StarPlayerApp;
-                var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-                var infoUrl = "http://15.164.7.237/popup?page_gbn=starPlayerMobile&license=FBD4FB45-D5F4-4493-AE56-BCD6F36F646A&vodPath=" + vodPath + "&vodTitle=" + vodTitle + "&userKey=" +  sessionUserInfo.userKey;
-                sp.license = "FBD4FB45-D5F4-4493-AE56-BCD6F36F646A";
-                sp.version = "1.0.0";
-                sp.android_version = "1.0.0";
-                sp.ios_version = "1.0.0";
-                sp.pmp = "true";
 
-                //var app = function(info_url) {
-                sp.executeApp(infoUrl);
-                //}
-            }
+
+            var sp = StarPlayerApp;
+            var infoUrl = "http://15.164.7.237/popup?page_gbn=starPlayerMobile&license=FBD4FB45-D5F4-4493-AE56-BCD6F36F646A&vodPath=" + vodPath + "&vodTitle=" + vodTitle;
+            sp.license = "FBD4FB45-D5F4-4493-AE56-BCD6F36F646A";
+            sp.version = "1.0.0";
+            sp.android_version = "1.0.0";
+            sp.ios_version = "1.0.0";
+            sp.pmp = "true";
+
+            //var app = function(info_url) {
+            sp.executeApp(infoUrl);
+            //}
         }
     }else{
         alert("재생 가능한 시간이 초과되었습니다.");
