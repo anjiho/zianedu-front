@@ -157,8 +157,9 @@
         }
 
         function onLoad(){
+            var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
             var config = {
-                userId: "ANONYMOUS",//ssession userId
+                userId: sessionUserInfo.userKey,
                 id: "starplayer",
                 videoContainer: "video-container",
                 controllerContainer: "controller-container",
