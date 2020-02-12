@@ -7,7 +7,7 @@
     String vodPath = Util.isNullValue(request.getParameter("vodPath"), "");
     String vodTitle = Util.isNullValue(request.getParameter("vodTitle"), "샘플");
     String curriKey = Util.isNullValue(request.getParameter("curriKey"), "");
-    String jlecKey = Util.isNullValue(request.getParameter("jlecKey"), "");
+//    String jlecKey = Util.isNullValue(request.getParameter("jlecKey"), "");
     StringEncrypter encrypter = new StringEncrypter("axissoft", "starplayer");
 
     System.out.println(">>" + vodPath);
@@ -108,16 +108,16 @@
                     break;
                 case OpenState.OPENING:
                     //기기 중복확인 api 호출
-                    var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-                    var pcMobile = divisionPcMobile();
-                    var deviceType = 0;
-                    if(pcMobile == 'MOBILE') deviceType = 1;//기기종류
-                    var deviceId = player.getPID();//기기값
-                    var result = confirmDuplicateDevice(sessionUserInfo.userKey, deviceType, deviceId, <%=jlecKey%>);
-                    if(result.keyValue){
-                        alert("이미 인증된 기기가 있어 학습이 불가능합니다.\n자세한 사항은 관리자에게 문의 바랍니다.");
-                        self.close();
-                    }
+                    <%--var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));--%>
+                    <%--var pcMobile = divisionPcMobile();--%>
+                    <%--var deviceType = 0;--%>
+                    <%--if(pcMobile == 'MOBILE') deviceType = 1;//기기종류--%>
+                    <%--var deviceId = player.getPID();//기기값--%>
+                    <%--var result = confirmDuplicateDevice(sessionUserInfo.userKey, deviceType, deviceId, <%=jlecKey%>);--%>
+                    <%--if(result.keyValue){--%>
+                    <%--    alert("이미 인증된 기기가 있어 학습이 불가능합니다.\n자세한 사항은 관리자에게 문의 바랍니다.");--%>
+                    <%--    self.close();--%>
+                    <%--}--%>
                     break;
                 case OpenState.OPENED:
                     player.setVolume(1);
@@ -248,7 +248,6 @@
 
         function saveHistory() {
             var time = player.getPlayTime();
-            
             setTimeout("saveHistory()", 1000 * 60);
         }
     </script>
