@@ -119,6 +119,7 @@
     function getTypeLectureDetail(gkey, jlecKey) {
         var pcMobile = divisionPcMobile();
         var infoList = getVideoSignUpDetailInfo(gkey, pcMobile, jlecKey, 'dataList');
+        console.log(infoList);
         if(infoList == null){
             $("#playLecListDiv").hide();
         }else{
@@ -131,14 +132,24 @@
             innerHTML("limitDay", result.limitDay);
             innerHTML("PlayProgressRate", result.progressRateName);
             innerHTML("ctgName", result.ctgName);
-            var pcMobile = divisionPcMobile();
-            if(pcMobile == 'PC'){
+            if(result.kind == 100){
                 $("#pc").show();
                 $("#mobile").hide();
-            }else{
+            }else if(result.kind == 101){
                 $("#pc").hide();
                 $("#mobile").show();
+            }else{
+                $("#pc").show();
+                $("#mobile").show();
             }
+            // var pcMobile = divisionPcMobile();
+            // if(pcMobile == 'PC'){
+            //     $("#pc").show();
+            //     $("#mobile").hide();
+            // }else{
+            //     $("#pc").hide();
+            //     $("#mobile").show();
+            // }
         }
     }
 
@@ -198,6 +209,7 @@
     
     function academyLecDetail(gKey) {
         var result = getAcademyProductDetail(gKey);
+        console.log(result);
         if(result != null){
             innerHTML("acaCtgName", result.ctgName);
             innerHTML("acaGoodsName", result.goodsName);
