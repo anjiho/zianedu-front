@@ -17,6 +17,7 @@
     <script src="/common/zian/js/kiplayer/jquery.simpler-sidebar.min.js"></script>
     <script src="/common/zian/js/main.js"></script>
     <script src="/common/zian/js/submain.js"></script>
+    <script src="/common/zian/js/owl.carousel.min.js"></script>
     <script src="/common/zian/js/swiper.min.js"></script>
     <script src="/common/zian/js/ui.js"></script>
 

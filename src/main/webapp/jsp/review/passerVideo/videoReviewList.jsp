@@ -152,6 +152,7 @@
     <script>
         $(function(){
             var owl1 = $('.myarea_main .owl-carousel');
+
             owl1.owlCarousel({
                 nav : true,
                 items:4,
