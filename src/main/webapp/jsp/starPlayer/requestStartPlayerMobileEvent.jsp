@@ -12,7 +12,7 @@
     String state = Util.isNullValue(request.getParameter("state"), "");
     String date = Util.isNullValue(request.getParameter("date"), "");
     String content_id = Util.isNullValue(request.getParameter("content_id"), "");
-    String content_url = encrypter.decrypt(Util.isNullValue(request.getParameter("content_url"), ""));
+    //String content_url = encrypter.decrypt(Util.isNullValue(request.getParameter("content_url"), ""));
     String play_type = Util.isNullValue(request.getParameter("play_type"), "");
     String user_id = Util.isNullValue(request.getParameter("user_id"), "");
     String play_time = Util.isNullValue(request.getParameter("play_time"), "");
