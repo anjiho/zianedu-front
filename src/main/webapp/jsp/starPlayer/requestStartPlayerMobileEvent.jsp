@@ -121,7 +121,15 @@
         sb.append("<message></message>");
         sb.append("</axis-app>");
     } else if(evt.equals("playing_content")) {
+        String splitStr[] = content_id.split("_");
+        String jLecKey = splitStr[0];
+        String curriKey = splitStr[1];
         //TODO 동영상 플레이중일때 시간 업데이트 기능 개발하기
+        System.out.println("play_time >> " + play_time);
+        System.out.println("play_type >> " + play_type);
+        System.out.println("jLecKey >> " + jLecKey);
+        System.out.println("curriKey >> " + curriKey);
+        System.out.println("currentPosition >> " + current_position);
     }else{
         sb.append("<axis-app>");
         sb.append("<error>-1</error>");
