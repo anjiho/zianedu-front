@@ -97,9 +97,6 @@
     }
 </script>
 <!--상단-->
-<form id="bookTypePage" method="post" name="bookTypePage">
-    <input type="hidden" id="bookType" name="bookType">
-</form>
 <div id="header">
     <div class="inner">
         <h1 class="logo_pc"><a href="" id="mainUrl"><img src="" id="logo"> <span id="mainName"></span></a></h1>
@@ -148,6 +145,9 @@
         </div>
 
         <!-- sitemap_layer -->
+        <form id="bookTypePage" method="post" name="bookTypePage">
+            <input type="hidden" id="bookType" name="bookType">
+        </form>
         <div class="sitemap_layer" id="sitemap_layer">
             <div class="sitemap_layer_wrapper">
                 <div class="side_menu_header">
@@ -516,7 +516,5 @@
         }else if(gbnMenu == 'referenceList'){
             goPageNoSubmit('bigExam','referenceList')
         }
-
     }
-
 </script>
