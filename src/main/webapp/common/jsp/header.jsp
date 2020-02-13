@@ -312,21 +312,21 @@
         <div class="inner">
             <ul class="deaph1 cols7 acaTopMenu" style="display: none;">
                 <li><a href="javascript:goPageNoSubmit('myLecRoom', 'main')">내강의실</a></li>
-                <li><a href="javascript:goPageNoSubmit('', 'main')">교수소개</a></li>
-                <li><a href="javascript:goPageNoSubmit('', 'academy')">학원수강신청</a></li>
-                <li><a href="javascript:goPageNoSubmit('', 'list')">연간관리반</a></li>
-                <li><a href="javascript:goPageNoSubmit('', 'theory')">무료강좌</a></li>
-                <li><a href="javascript:()">빅모의고사</a></li>
-                <li><a href="javascript:();">합격수기</a></li>
+                <li><a href="javascript:goPageNoSubmit('teacher', 'main')">교수소개</a></li>
+                <li><a href="javascript:goPageNoSubmit('lectureOrder', 'academy')">학원수강신청</a></li>
+                <li><a href="javascript:goPageNoSubmit('zianPass', 'list')">연간관리반</a></li>
+                <li><a href="javascript:goPageNoSubmit('freeLecture', 'theory')">무료강좌</a></li>
+                <li><a href="javascript:goBigExam()">빅모의고사</a></li>
+                <li><a href="javascript:goPassReview();">합격수기</a></li>
             </ul>
             <ul class="deaph1 cols7 onlineTopMenu" style="display: none;">
                 <li><a href="javascript:goPageNoSubmit('myLecRoom', 'main')">내강의실</a></li>
-                <li><a href="javascript:goPageNoSubmit('', 'main')">교수소개</a></li>
-                <li><a href="javascript:goPageNoSubmit('', 'single')">수강신청</a></li>
-                <li><a href="javascript:goPageNoSubmit('', 'list')">지안패스</a></li>
-                <li><a href="javascript:goPageNoSubmit('', 'theory')">무료강좌</a></li>
-                <li><a href="javascript:()">빅모의고사</a></li>
-                <li><a href="javascript:();">합격수기</a></li>
+                <li><a href="javascript:goPageNoSubmit('teacher', 'main')">교수소개</a></li>
+                <li><a href="javascript:goPageNoSubmit('lectureOrder', 'single')">수강신청</a></li>
+                <li><a href="javascript:goPageNoSubmit('zianPass', 'list')">지안패스</a></li>
+                <li><a href="javascript:goPageNoSubmit('freeLecture', 'theory')">무료강좌</a></li>
+                <li><a href="javascript:goBigExam()">빅모의고사</a></li>
+                <li><a href="javascript:goPassReview();">합격수기</a></li>
             </ul>
             <ul class="deaph1 cols7 bookStore" style="display: none;">
                 <li><a href="javascript:goDetailbookType('COMMON');">공통과목</a></li>
@@ -337,12 +337,12 @@
                 <li><a href="javascript:goPageNoSubmit('bookStore','errataList')">정오표</a></li>
             </ul>
             <ul class="deaph1 cols7 bigExam" style="display: none;">
-                <li><a href="javascript:goPageNoSubmit('','examApply')">모의고사신청</a></li>
-                <li><a href="javascript:goPageNoSubmit('','acaExam')">학원모의고사</a></li>
-                <li><a href="javascript:goPageNoSubmit('','weekExam')">주간모의고사</a></li>
-                <li><a href="javascript:goPageNoSubmit('','pastQuestion')">기출문제</a></li>
-                <li><a href="javascript:goPageNoSubmit('','bigReviewList')">응시후기</a></li>
-                <li><a href="javascript:goPageNoSubmit('','referenceList')">자료실</a></li>
+                <li><a href="javascript:goPageNoSubmit('bigExam','examApply')">모의고사신청</a></li>
+                <li><a href="javascript:goPageNoSubmit('bigExam','acaExam')">학원모의고사</a></li>
+                <li><a href="javascript:goPageNoSubmit('bigExam','weekExam')">주간모의고사</a></li>
+                <li><a href="javascript:goPageNoSubmit('bigExam','pastQuestion')">기출문제</a></li>
+                <li><a href="javascript:goPageNoSubmit('bigExam','bigReviewList')">응시후기</a></li>
+                <li><a href="javascript:goPageNoSubmit('bigExam','referenceList')">자료실</a></li>
             </ul>
         </div>
 

@@ -7,6 +7,7 @@
     String userKey = Util.isNullValue(request.getParameter("userKey"), "0");
     String jLecKey = Util.isNullValue(request.getParameter("jLecKey"), "0");
     String curriKey = Util.isNullValue(request.getParameter("curriKey"), "0");
+    String newVodTitle = new String(vodTitle.getBytes("ISO-8859-1"), "UTF-8");
 %>
 <%
 
@@ -19,7 +20,7 @@
     data += 	"<content>";
     data += 		"<id><![CDATA[" + jLecKey +"_" + curriKey + "]]></id>";
     data += 		"<url><![CDATA[" + vodPath + "]]></url>";
-    data += 		"<title><![CDATA[" + vodTitle + "]]></title>";
+    data += 		"<title><![CDATA[" + newVodTitle + "]]></title>";
     data += 		"<limit-date><![CDATA[20201210120000]]></limit-date>";
     data +=       "<position>0</position>";
     data += 	"</content>";
