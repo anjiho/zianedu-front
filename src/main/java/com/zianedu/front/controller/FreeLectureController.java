@@ -10,7 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
  * 계리직 학원 컨트롤러
  */
 @Controller
-public class freeLectureController {
+public class FreeLectureController {
 
     @RequestMapping(value = "/freeLecture")
     public ModelAndView freeLectureManage(@RequestParam(value = "page_gbn", required = false) String page_gbn) {
