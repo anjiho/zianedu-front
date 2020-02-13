@@ -32,6 +32,7 @@
                 goPageNoSubmit('myPage', 'cart');
             }else if($(this).index() == 2){
                 sessionStorage.setItem("myPageHeader", "memberInfo");
+                sessionStorage.setItem("tabHeader", "tabMenu1");
                 $("#myPageMenu li:eq(2)").addClass('active');
                 goPageNoSubmit('myPage', 'memberMain');
             }else if($(this).index() == 3){

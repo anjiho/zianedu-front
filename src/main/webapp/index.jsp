@@ -161,6 +161,10 @@
 </html>
 <script>
     $(document).ready(function () {
+        var leftMenuInfo = sessionStorage.getItem('leftMenu');//직렬 구분
+        if(leftMenuInfo == null){
+            sessionStorage.setItem("leftMenu", "techOnline");
+        }
         getEventMiniBanner("", 6283, 1);//이벤트 배너
         getRandingBannerList(224, 3);//미니배너
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
