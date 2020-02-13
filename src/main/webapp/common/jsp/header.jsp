@@ -173,13 +173,13 @@
                                 <ul class="deth2_list">
                                     <li><a href="javascript:goAcademyMenu('main', 'public');">메인으로</a></li>
                                     <li><a href="javascript:goAcademyMenu('myLecRoom', 'public');">내강의실</a></li>
-                                    <li><a href="javascript:goAcademyMenu('teacher', 'public');">교수소개</a></li>
-                                    <li><a href="javascript:goAcademyMenu('lecApply', 'public');">수강신청</a></li>
-                                    <li><a href="javascript:goAcademyMenu('year', 'public');">1:1관리반</a></li>
-                                    <li><a href="javascript:goAcademyMenu('free', 'public');">무료강좌</a></li>
-                                    <li><a href="javascript:goAcademyMenu('passReview', 'public');">합격수기</a></li>
-                                    <li><a href="javascript:goAcademyMenu('customerCenter', 'public');">고객센터</a></li>
-                                    <li><a href="javascript:goAcademyMenu('notice', 'public');">공지사항</a></li>
+                                    <li><a href="javascript:goAcademyMenu('', 'public');">교수소개</a></li>
+                                    <li><a href="javascript:goAcademyMenu('', 'public');">수강신청</a></li>
+                                    <li><a href="javascript:goAcademyMenu('', 'public');">1:1관리반</a></li>
+                                    <li><a href="javascript:goAcademyMenu('', 'public');">무료강좌</a></li>
+                                    <li><a href="javascript:goAcademyMenu('', 'public');">합격수기</a></li>
+                                    <li><a href="javascript:goAcademyMenu('', 'public');">고객센터</a></li>
+                                    <li><a href="javascript:goAcademyMenu('', 'public');">공지사항</a></li>
                                 </ul>
                             </li>
                             <li class="deth1_tit">
@@ -189,13 +189,13 @@
                                 <ul class="deth2_list">
                                     <li><a href="javascript:goOnlineMenu('main', 'public');">메인으로</a></li>
                                     <li><a href="javascript:goOnlineMenu('myLecRoom', 'public');">내강의실</a></li>
-                                    <li><a href="javascript:goOnlineMenu('teacher', 'public');">교수소개</a></li>
-                                    <li><a href="javascript:goOnlineMenu('lecApply', 'public');">수강신청</a></li>
-                                    <li><a href="javascript:goOnlineMenu('zianPass', 'public');">지안패스</a></li>
-                                    <li><a href="javascript:goOnlineMenu('free', 'public');">무료강좌</a></li>
-                                    <li><a href="javascript:goOnlineMenu('passReview', 'public');">합격수기</a></li>
-                                    <li><a href="javascript:goOnlineMenu('customerCenter', 'public');">고객센터</a></li>
-                                    <li><a href="javascript:goOnlineMenu('notice', 'public');">공지사항</a></li>
+                                    <li><a href="javascript:goOnlineMenu('', 'public');">교수소개</a></li>
+                                    <li><a href="javascript:goOnlineMenu('', 'public');">수강신청</a></li>
+                                    <li><a href="javascript:goOnlineMenu('', 'public');">지안패스</a></li>
+                                    <li><a href="javascript:goOnlineMenu('', 'public');">무료강좌</a></li>
+                                    <li><a href="javascript:goOnlineMenu('', 'public');">합격수기</a></li>
+                                    <li><a href="javascript:goOnlineMenu('', 'public');">고객센터</a></li>
+                                    <li><a href="javascript:goOnlineMenu('', 'public');">공지사항</a></li>
                                 </ul>
                             </li>
                             <li class="deth1_tit">
@@ -205,13 +205,13 @@
                                 <ul class="deth2_list">
                                     <li><a href="javascript:goAcademyMenu('main', 'tech');">메인으로</a></li>
                                     <li><a href="javascript:goAcademyMenu('myLecRoom', 'tech');">내강의실</a></li>
-                                    <li><a href="javascript:goAcademyMenu('teacher', 'tech');">교수소개</a></li>
-                                    <li><a href="javascript:goAcademyMenu('lecApply', 'tech');">수강신청</a></li>
-                                    <li><a href="javascript:goAcademyMenu('main', 'tech');">연간관리반</a></li>
-                                    <li><a href="javascript:goAcademyMenu('free', 'tech');">무료강좌</a></li>
-                                    <li><a href="javascript:goAcademyMenu('main', 'tech');">합격수기</a></li>
-                                    <li><a href="javascript:goAcademyMenu('customerCenter', 'tech');">고객센터</a></li>
-                                    <li><a href="javascript:goAcademyMenu('notice', 'tech');">공지사항</a></li>
+                                    <li><a href="javascript:goAcademyMenu('', 'tech');">교수소개</a></li>
+                                    <li><a href="javascript:goAcademyMenu('', 'tech');">수강신청</a></li>
+                                    <li><a href="javascript:goAcademyMenu('', 'tech');">연간관리반</a></li>
+                                    <li><a href="javascript:goAcademyMenu('', 'tech');">무료강좌</a></li>
+                                    <li><a href="javascript:goAcademyMenu('', 'tech');">합격수기</a></li>
+                                    <li><a href="javascript:goAcademyMenu('', 'tech');">고객센터</a></li>
+                                    <li><a href="javascript:goAcademyMenu('', 'tech');">공지사항</a></li>
                                 </ul>
                             </li>
                             <li class="deth1_tit">
@@ -221,13 +221,13 @@
                                 <ul class="deth2_list">
                                     <li><a href="javascript:goOnlineMenu('main', 'tech');">메인으로</a></li>
                                     <li><a href="javascript:goOnlineMenu('myLecRoom', 'tech');">내강의실</a></li>
-                                    <li><a href="javascript:goOnlineMenu('teacher', 'tech');">교수소개</a></li>
-                                    <li><a href="javascript:goOnlineMenu('lecApply', 'tech');">수강신청</a></li>
-                                    <li><a href="javascript:goOnlineMenu('zianPass', 'tech');">지안패스</a></li>
-                                    <li><a href="javascript:goOnlineMenu('free', 'tech');">무료강좌</a></li>
-                                    <li><a href="javascript:goOnlineMenu('passReview', 'tech');">합격수기</a></li>
-                                    <li><a href="javascript:goOnlineMenu('customerCenter', 'tech');">고객센터</a></li>
-                                    <li><a href="javascript:goOnlineMenu('notice', 'tech');">공지사항</a></li>
+                                    <li><a href="javascript:goOnlineMenu('', 'tech');">교수소개</a></li>
+                                    <li><a href="javascript:goOnlineMenu('', 'tech');">수강신청</a></li>
+                                    <li><a href="javascript:goOnlineMenu('', 'tech');">지안패스</a></li>
+                                    <li><a href="javascript:goOnlineMenu('', 'tech');">무료강좌</a></li>
+                                    <li><a href="javascript:goOnlineMenu('', 'tech');">합격수기</a></li>
+                                    <li><a href="javascript:goOnlineMenu('', 'tech');">고객센터</a></li>
+                                    <li><a href="javascript:goOnlineMenu('', 'tech');">공지사항</a></li>
                                 </ul>
                             </li>
                             <li class="deth1_tit">
@@ -237,13 +237,13 @@
                                 <ul class="deth2_list">
                                     <li><a href="javascript:goAcademyMenu('main', 'post');">메인으로</a></li>
                                     <li><a href="javascript:goAcademyMenu('myLecRoom', 'post');">내강의실</a></li>
-                                    <li><a href="javascript:goAcademyMenu('teacher', 'post');">교수소개</a></li>
-                                    <li><a href="javascript:goAcademyMenu('lecApply', 'post');">수강신청</a></li>
-                                    <li><a href="javascript:goAcademyMenu('year', 'post');">1:1관리반</a></li>
-                                    <li><a href="javascript:goAcademyMenu('free', 'post');">무료강좌</a></li>
-                                    <li><a href="javascript:goAcademyMenu('passReview', 'post');">합격수기</a></li>
-                                    <li><a href="javascript:goAcademyMenu('customerCenter', 'post');">고객센터</a></li>
-                                    <li><a href="javascript:goAcademyMenu('notice', 'post');">공지사항</a></li>
+                                    <li><a href="javascript:goAcademyMenu('', 'post');">교수소개</a></li>
+                                    <li><a href="javascript:goAcademyMenu('', 'post');">수강신청</a></li>
+                                    <li><a href="javascript:goAcademyMenu('', 'post');">1:1관리반</a></li>
+                                    <li><a href="javascript:goAcademyMenu('', 'post');">무료강좌</a></li>
+                                    <li><a href="javascript:goAcademyMenu('', 'post');">합격수기</a></li>
+                                    <li><a href="javascript:goAcademyMenu('', 'post');">고객센터</a></li>
+                                    <li><a href="javascript:goAcademyMenu('', 'post');">공지사항</a></li>
                                 </ul>
                             </li>
                             <li class="deth1_tit">
@@ -253,13 +253,13 @@
                                 <ul class="deth2_list">
                                     <li><a href="javascript:goOnlineMenu('main', 'post');">메인으로</a></li>
                                     <li><a href="javascript:goOnlineMenu('myLecRoom', 'post');">내강의실</a></li>
-                                    <li><a href="javascript:goOnlineMenu('teacher', 'post');">교수소개</a></li>
-                                    <li><a href="javascript:goOnlineMenu('lecApply', 'post');">수강신청</a></li>
-                                    <li><a href="javascript:goOnlineMenu('zianPass', 'post');">지안패스</a></li>
-                                    <li><a href="javascript:goOnlineMenu('free', 'post');">무료강좌</a></li>
-                                    <li><a href="javascript:goOnlineMenu('passReview', 'post');">합격수기</a></li>
-                                    <li><a href="javascript:goOnlineMenu('customerCenter', 'post');">고객센터</a></li>
-                                    <li><a href="javascript:goOnlineMenu('notice', 'post');">공지사항</a></li>
+                                    <li><a href="javascript:goOnlineMenu('', 'post');">교수소개</a></li>
+                                    <li><a href="javascript:goOnlineMenu('', 'post');">수강신청</a></li>
+                                    <li><a href="javascript:goOnlineMenu('', 'post');">지안패스</a></li>
+                                    <li><a href="javascript:goOnlineMenu('', 'post');">무료강좌</a></li>
+                                    <li><a href="javascript:goOnlineMenu('', 'post');">합격수기</a></li>
+                                    <li><a href="javascript:goOnlineMenu('', 'post');">고객센터</a></li>
+                                    <li><a href="javascript:goOnlineMenu('', 'post');">공지사항</a></li>
                                 </ul>
                             </li>
                             <li class="deth1_tit">
@@ -268,12 +268,12 @@
                                 </a>
                                 <ul class="deth2_list">
                                     <li><a href="javascript:goBookStoreMobile('main');">온라인서점</a></li>
-                                    <li><a href="javascript:goBookStoreMobile('COMMON');">공통과목</a></li>
-                                    <li><a href="javascript:goBookStoreMobile('PUBLIC');">행정직</a></li>
-                                    <li><a href="javascript:goBookStoreMobile('TECH');">기술직</a></li>
-                                    <li><a href="javascript:goBookStoreMobile('POST');">계리직</a></li>
-                                    <li><a href="javascript:goBookStoreMobile('CERT');">자격증</a></li>
-                                    <li><a href="javascript:goBookStoreMobile('errata');">정오표</a></li>
+                                    <li><a href="javascript:goBookStoreMobile('');">공통과목</a></li>
+                                    <li><a href="javascript:goBookStoreMobile('');">행정직</a></li>
+                                    <li><a href="javascript:goBookStoreMobile('');">기술직</a></li>
+                                    <li><a href="javascript:goBookStoreMobile('');">계리직</a></li>
+                                    <li><a href="javascript:goBookStoreMobile('');">자격증</a></li>
+                                    <li><a href="javascript:goBookStoreMobile('');">정오표</a></li>
                                 </ul>
                             </li>
                             <li class="deth1_tit">
@@ -282,12 +282,12 @@
                                 </a>
                                 <ul class="deth2_list">
                                     <li><a href="javascript:goBigExam();">빅모의고사</a></li>
-                                    <li><a href="javascript:goBigExamMenu('apply');">모의고사신청</a></li>
-                                    <li><a href="javascript:goBigExamMenu('acaExam');">학원모의고사</a></li>
-                                    <li><a href="javascript:goBigExamMenu('weekExam');">주간모의고사</a></li>
-                                    <li><a href="javascript:goBigExamMenu('pastQuestion');">기출문제</a></li>
-                                    <li><a href="javascript:goBigExamMenu('bigReviewList');">응시후기</a></li>
-                                    <li><a href="javascript:goBigExamMenu('referenceList');">자료실</a></li>
+                                    <li><a href="javascript:goBigExamMenu('');">모의고사신청</a></li>
+                                    <li><a href="javascript:goBigExamMenu('');">학원모의고사</a></li>
+                                    <li><a href="javascript:goBigExamMenu('');">주간모의고사</a></li>
+                                    <li><a href="javascript:goBigExamMenu('');">기출문제</a></li>
+                                    <li><a href="javascript:goBigExamMenu('');">응시후기</a></li>
+                                    <li><a href="javascript:goBigExamMenu('');">자료실</a></li>
                                 </ul>
                             </li>
                             <li class="deth1_tit">
@@ -445,7 +445,7 @@
             goPageNoSubmit('freeLecture', 'theory');
         }
     }
-    
+
     function goOnlineMenu(gbnMenu, lefMenu) {
         if(lefMenu == 'public'){
             sessionStorage.setItem("leftMenu", "publicOnline");
@@ -471,7 +471,7 @@
             goPageNoSubmit('notice', 'list');
         }
     }
-    
+
     function goBookStoreMobile(gbnMenu) {
         if(gbnMenu == 'main'){
             sessionStorage.setItem("leftMenu", 'bookStore');
