@@ -13,9 +13,14 @@ package com.zianedu.front.utils;
 //import org.json.simple.JSONObject;
 //import org.json.simple.parser.JSONParser;
 
+import com.google.gson.*;
+
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
@@ -1147,6 +1152,17 @@ public class Util {
         }
 
         return result;
+    }
+
+    public static JsonObject getJsonObjectAtHttpGet(String surl) throws IOException {
+        URL url = new URL(surl);
+        HttpURLConnection request = (HttpURLConnection) url.openConnection();
+        request.connect();
+
+        JsonParser parser = new JsonParser();
+        JsonElement root = parser.parse(new InputStreamReader((InputStream) request.getContent()));
+        JsonObject rootObj = root.getAsJsonObject();
+        return rootObj;
     }
 
     public static void main(String[] args) throws Exception {

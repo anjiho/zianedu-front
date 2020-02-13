@@ -1,7 +1,7 @@
 <%@page contentType="text/html; charset=UTF-8" %>
-<%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page import="com.zianedu.front.axis.security.StringEncrypter" %>
 <%@ page import="com.zianedu.front.utils.Util" %>
+<%@ page import="com.google.gson.JsonObject" %>
 <%
     StringEncrypter encrypter = new StringEncrypter("FDDFA75E-B718-4DAF-BF57-A8D1FC0299B9", "starplayer");
 
@@ -18,6 +18,13 @@
     String play_time = Util.isNullValue(request.getParameter("play_time"), "");
     String current_position = Util.isNullValue(request.getParameter("current_position"), "");
 
+    System.out.println("evt >> " + evt);
+    System.out.println("device_id >> " + device_id);
+    System.out.println("os_version >>" + os_version);
+    System.out.println("app_version >>" + app_version);
+    System.out.println("content_id >>" + content_id);
+    System.out.println("user_id >>" + user_id);
+    //System.out.println("play_time >>" + play_time);
 %>
 <%
     response.addHeader("Cache-Control", "no-cache");
@@ -26,7 +33,7 @@
     StringBuffer data = new StringBuffer();
     StringBuffer sb = new StringBuffer();
 
-    
+
     //CurriContentsAction curriContentsAction = new CurriContentsAction(); // DB에 저장하는 함수 (고객사마다 DB, LMS 구성이 다르므로 각 고객사에서 구성해야 합니다.)
 
     sb.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
@@ -47,6 +54,13 @@
         sb.append("<error>0</error>");
         sb.append("<message></message>");
         sb.append("</axis-app>");
+
+        String splitStr[] = content_id.split("_");
+        String jLecKey = splitStr[0];
+        System.out.println("jlecKey >>" + jLecKey);
+        String url = "http://52.79.40.214:9090/myPage/confirmDuplicateDevice/" + user_id + "&deviceType=1&deviceId=" + device_id + "&jLecKey=" + jLecKey;
+        JsonObject resultObj = Util.getJsonObjectAtHttpGet(url);
+        System.out.println("JsonObject >> " + resultObj);
     }else if(evt.equals("end_content")){
         //System.out.println("end_content");
         //System.out.println("user_id=="+user_id);
@@ -91,6 +105,3 @@
     out.print(sb.toString());
 
 %>
-<script>
-    alert("1");
-</script>
