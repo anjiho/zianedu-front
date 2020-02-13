@@ -17,6 +17,7 @@
     String user_id = Util.isNullValue(request.getParameter("user_id"), "");
     String play_time = Util.isNullValue(request.getParameter("play_time"), "");
     String current_position = Util.isNullValue(request.getParameter("current_position"), "");
+
 %>
 <%
     response.addHeader("Cache-Control", "no-cache");
@@ -25,6 +26,7 @@
     StringBuffer data = new StringBuffer();
     StringBuffer sb = new StringBuffer();
 
+    
     //CurriContentsAction curriContentsAction = new CurriContentsAction(); // DB에 저장하는 함수 (고객사마다 DB, LMS 구성이 다르므로 각 고객사에서 구성해야 합니다.)
 
     sb.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
