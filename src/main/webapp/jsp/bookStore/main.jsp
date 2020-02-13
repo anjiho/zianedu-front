@@ -14,6 +14,7 @@
             var count = $("input[name=lecChk]:checkbox:checked").length;
             innerHTML("selCount", count);
         });
+        $(".slick-dots").hide();
     });
     
     function goList(orderType) {
