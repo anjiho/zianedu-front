@@ -476,28 +476,12 @@
         if(gbnMenu == 'main'){
             sessionStorage.setItem("leftMenu", 'bookStore');
             goPageNoSubmit('bookStore','main');
-        }else if(gbnMenu == 'COMMON'){
-            innerValue('bookType', 'COMMON');
+        }else if (gbnMenu != 'main' && gbnMenu != 'errata') {
+            //innerValue('bookType', 'COMMON');
             // $("#bookTypePage").attr("action", "/bookStore?page_gbn=bookTypeList");
             // $("#bookTypePage").submit();
-            location.href = "/bookStore?page_gbn=bookTypeList&bookType=COMMON";
-        }else if(gbnMenu == 'PUBLIC'){
-            innerValue('bookType', 'PUBLIC');
-            $("#bookTypePage").attr("action", "/bookStore?page_gbn=bookTypeList");
-            $("#bookTypePage").submit();
-        }else if(gbnMenu == 'TECH'){
-            innerValue('bookType', 'TECH');
-            $("#bookTypePage").attr("action", "/bookStore?page_gbn=bookTypeList");
-            $("#bookTypePage").submit();
-        }else if(gbnMenu == 'POST'){
-            innerValue('bookType', 'POST');
-            $("#bookTypePage").attr("action", "/bookStore?page_gbn=bookTypeList");
-            $("#bookTypePage").submit();
-        }else if(gbnMenu == 'CERT'){
-            innerValue('bookType', 'CERT');
-            $("#bookTypePage").attr("action", "/bookStore?page_gbn=bookTypeList");
-            $("#bookTypePage").submit();
-        }else if(gbnMenu == 'errata'){
+            location.href = "/bookStore?page_gbn=bookTypeList&bookType=" + gbnMenu;
+        } else if(gbnMenu == 'errata'){
             goPageNoSubmit('bookStore','errataList');
         }
     }
