@@ -1168,9 +1168,7 @@ public class Util {
 
         conn.setRequestProperty("Content-Type", "application/json");
         conn.setDoOutput(true);
-
         conn.setRequestMethod("GET");
-
 
         BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream(),"UTF-8"));
 
@@ -1181,7 +1179,6 @@ public class Util {
             response.append(inputLine);
         }
         in.close();
-
         //System.out.println(response.toString()); //결과, json결과를 parser하여 처리
         return response.toString();
     }

@@ -58,36 +58,20 @@
 
         String splitStr[] = content_id.split("_");
         String jLecKey = splitStr[0];
-        System.out.println("jlecKey >>" + jLecKey);
-
+        System.out.println("jLecKey >>" + jLecKey);
 
         String url = "http://52.79.40.214:9090/myPage/confirmDuplicateDevice/" + user_id + "?deviceType=1&deviceId=" + device_id + "&jLecKey=" + jLecKey
-                + "&osVersion=" + os_version.replaceAll("\\p{Z}","") + "&appVersion=" + app_version;
-        URL obj = new URL(url);
+                        + "&osVersion=" + os_version.replaceAll("\\p{Z}","") + "&appVersion=" + app_version;
+
         System.out.println("url >>" + url);
-        HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
 
-        conn.setRequestProperty("Content-Type", "application/json");
-        conn.setDoOutput(true);
-
-        conn.setRequestMethod("GET");
-
-
-        BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream(),"UTF-8"));
-
-        String inputLine;
-        StringBuffer response2 = new StringBuffer();
-
-        while ((inputLine = in.readLine()) != null) {
-            response2.append(inputLine);
-        }
-        in.close();
+        String result = Util.httpGet(url);
 
         JsonParser parser = new JsonParser();
-        JsonElement element = parser.parse(response2.toString());
+        JsonElement element = parser.parse(result);
         JsonObject jObj = element.getAsJsonObject();
-        boolean bl = (Boolean)jObj.get("keyValue").getAsBoolean();
-        System.out.println("bl >>" + bl);
+        boolean bl = jObj.get("keyValue").getAsBoolean();
+
         if (bl == true) {
             sb.append("<axis-app>");
             sb.append("<error>0</error>");
@@ -97,7 +81,7 @@
             sb.append("<axis-app>");
             sb.append("<error>1</error>");
             sb.append("<push_id>1</push_id>");
-            sb.append("<message>해당 아이디로 중복된 기기가 있습니다. 관리자에 문의하세요</message>");
+            sb.append("<message>중복된 기기가 있습니다. 관리자에 문의하세요</message>");
             sb.append("<type>notice</type>");
             sb.append("</axis-app>");
         }
