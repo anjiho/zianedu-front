@@ -267,13 +267,13 @@
                                     <span>온라인서점</span>
                                 </a>
                                 <ul class="deth2_list">
-                                    <li><a href="javascript:goBookStore('main');">온라인서점</a></li>
-                                    <li><a href="javascript:goBookStore('COMMON');">공통과목</a></li>
-                                    <li><a href="javascript:goBookStore('PUBLIC');">행정직</a></li>
-                                    <li><a href="javascript:goBookStore('TECH');">기술직</a></li>
-                                    <li><a href="javascript:goBookStore('POST');">계리직</a></li>
-                                    <li><a href="javascript:goBookStore('CERT');">자격증</a></li>
-                                    <li><a href="javascript:goBookStore('errata');">정오표</a></li>
+                                    <li><a href="javascript:goBookStoreMobile('main');">온라인서점</a></li>
+                                    <li><a href="javascript:goBookStoreMobile('COMMON');">공통과목</a></li>
+                                    <li><a href="javascript:goBookStoreMobile('PUBLIC');">행정직</a></li>
+                                    <li><a href="javascript:goBookStoreMobile('TECH');">기술직</a></li>
+                                    <li><a href="javascript:goBookStoreMobile('POST');">계리직</a></li>
+                                    <li><a href="javascript:goBookStoreMobile('CERT');">자격증</a></li>
+                                    <li><a href="javascript:goBookStoreMobile('errata');">정오표</a></li>
                                 </ul>
                             </li>
                             <li class="deth1_tit">
@@ -472,14 +472,15 @@
         }
     }
     
-    function goBookStore(gbnMenu) {
+    function goBookStoreMobile(gbnMenu) {
         if(gbnMenu == 'main'){
             sessionStorage.setItem("leftMenu", 'bookStore');
             goPageNoSubmit('bookStore','main');
         }else if(gbnMenu == 'COMMON'){
             innerValue('bookType', 'COMMON');
-            $("#bookTypePage").attr("action", "/bookStore?page_gbn=bookTypeList");
-            $("#bookTypePage").submit();
+            // $("#bookTypePage").attr("action", "/bookStore?page_gbn=bookTypeList");
+            // $("#bookTypePage").submit();
+            location.href = "/bookStore?page_gbn=bookTypeList&bookType=COMMON";
         }else if(gbnMenu == 'PUBLIC'){
             innerValue('bookType', 'PUBLIC');
             $("#bookTypePage").attr("action", "/bookStore?page_gbn=bookTypeList");
