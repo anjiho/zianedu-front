@@ -518,6 +518,8 @@ function getFreeLectureCtgKey() {
         ctgKey = 4447;
     }else if(leftMenuInfo == "postOnline"){
         ctgKey = 4448;
+    }else{
+        ctgKey = 4448;
     }
     return ctgKey;
 }

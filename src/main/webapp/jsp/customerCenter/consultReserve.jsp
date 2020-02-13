@@ -5,6 +5,7 @@
     $(document).ready(function () {
         $('#a_reservation').val(1).trigger('change');
         $('#academyNumber').val(1).trigger('change');
+        innerHTML('reserveTitle', '전화상담예약');
         calendar();
 
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
@@ -19,7 +20,15 @@
         // if(a_reservation == ""){
         //     $("#consultDiv").hide();
         // }
-        
+
+        $("#a_reservation").change(function(){
+            if($(this).val() == 1){
+                innerHTML('reserveTitle', '전화상담예약');
+            }else{
+                innerHTML('reserveTitle', '방문상담예약');
+            }
+        });
+
         $("#academyNumber").change(function () {
             $("#morning").empty();
             $("#afternoon").empty();
@@ -114,6 +123,8 @@
             });
             //달력 주입 끝
         }
+
+        setTime(1,"09:00");
     });
     
     function setTime(val, time) {
@@ -217,7 +228,7 @@
                     <!-- 상담선택 -->
                     <div class="advice_select">
                         <div class="advice_input">
-                            <select name="a_reservation" class="a_reservation" id="a_reservation">
+                            <select name="a_reservation" class="a_reservation" id="a_reservation" >
                                 <option value="" selected>-- 선택 --</option>
                                 <option value="1">전화상담예약</option>
                                 <option value="2">방문상담예약</option>
@@ -271,7 +282,7 @@
                             </div>
                             <div class="table_wrap">
                                 <p><span id="selDate"></span> <span id="selDay"></span> / <span id="selTime"></span> </p>
-                                <p class="t_tit"><span id="academy"></span>에서 <span>방문상담예약</span>을 선택하셨습니다.</p>
+                                <p class="t_tit"><span id="academy"></span>에서 <span id="reserveTitle"></span>을 선택하셨습니다.</p>
                                 <div class="form_atb">
                                     <h3>예약자정보</h3>
                                     <p><img src="/common/zian/images/common/icon_formChk.png">필수입력</p>
