@@ -41,6 +41,6 @@
 
     function goCompany1() {
         sessionStorage.setItem("leftMenu", 'techOnline');
-        goPage('company','main');
+        goPageNoSubmit('company','main');
     }
 </script>
