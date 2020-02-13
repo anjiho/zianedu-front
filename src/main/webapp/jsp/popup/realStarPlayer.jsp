@@ -269,8 +269,8 @@
     </style>
 
 </head>
-<form action="" id="frm" name="frm" >
-    <input type="hidden" id="position" name="position" />
+<form action="" id="frm" name="frm">
+    <input type="hidden" id="position" name="position"/>
 </form>
 <body style="margin: 0 0 0 0;overflow-x:hidden;overflow-y:hidden;" scroll=no onload="onLoad()" onkeydown="onKeyDown(event.keyCode)" oncontextmenu='return false' ondragstart='return false' onselectstart='return false'>
 <div id="player-container" style="width:1024px;">

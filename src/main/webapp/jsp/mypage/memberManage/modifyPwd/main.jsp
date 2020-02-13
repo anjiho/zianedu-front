@@ -1,6 +1,28 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/jsp/common.jsp" %>
 <script>
+    $(document).ready(function () {
+        var tabMenuInfo = sessionStorage.getItem('tabHeader');
+        if(tabMenuInfo != null){
+            if(tabMenuInfo == "tabMenu1"){
+                $("#tabHeader li:eq(0)").addClass('active');
+            }else{
+                $("#tabHeader li:eq(0)").removeClass('active');
+                $("#tabHeader li:eq(1)").addClass('active');
+            }
+        }
+
+        $("#tabHeader li").click(function() {
+            if($(this).index() == 0){
+                sessionStorage.setItem("tabHeader", "tabMenu1");
+                goPageNoSubmit('myPage', 'coupon');
+            }else{
+                sessionStorage.setItem("tabHeader", "tabMenu2");
+                goPageNoSubmit('myPage', 'mileage');
+            }
+        });
+    });
+
 function chkUserPwd() {
     var userPwd = getInputTextValue("userPwd");
     var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
@@ -31,7 +53,7 @@ function chkUserPwd() {
                 <%@include file="/common/jsp/myPageHeader.jsp" %>
                 <div class="Mypage userinfo">
                     <div class="tabBox review coupon">
-                        <ul>
+                        <ul id="tabHeader">
                             <li><a href="javascript:goPageNoSubmit('myPage', 'memberMain');">회원정보수정<span></span></a></li>
                             <li><a href="javascript:void(0);">비밀번호변경<span></span></a></li>
                         </ul>

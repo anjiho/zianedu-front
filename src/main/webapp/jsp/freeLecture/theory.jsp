@@ -14,7 +14,7 @@
         if(val == "new") sPage = "1";
 
         var stepCtgKey = getInputTextValue("stepCtgKey");
-        getFreeVideoLectureListFromCategoryMenu2(ctgKey, sPage, 3, stepCtgKey, 'THEORY', 'typeVideoList');
+        getFreeVideoLectureListFromCategoryMenu2(ctgKey, sPage, 9, stepCtgKey, 'THEORY', 'typeVideoList');
     }
     
     function setStepCtgKey(val) {
@@ -27,7 +27,7 @@
         var sPage = getInputTextValue("sPage");
         var ctgKey = getFreeLectureCtgKey();
         if(val == "new") sPage = "1";
-        getFreeVideoLectureListFromCategoryMenu(ctgKey, sPage, 3, 0, 'THEORY', 'allList');
+        getFreeVideoLectureListFromCategoryMenu(ctgKey, sPage, 9, 0, 'THEORY', 'allList');
     }
     
     function goDetailVideo(lecKey) {
