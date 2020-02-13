@@ -97,6 +97,9 @@
     }
 </script>
 <!--상단-->
+<form id="bookTypePage" method="post" name="bookTypePage">
+    <input type="hidden" id="bookType" name="bookType">
+</form>
 <div id="header">
     <div class="inner">
         <h1 class="logo_pc"><a href="" id="mainUrl"><img src="" id="logo"> <span id="mainName"></span></a></h1>
@@ -265,12 +268,12 @@
                                 </a>
                                 <ul class="deth2_list">
                                     <li><a href="javascript:goBookStore('main');">온라인서점</a></li>
-                                    <li><a href="javascript:goBookStore('common');">공통과목</a></li>
-                                    <li><a href="#">행정직</a></li>
-                                    <li><a href="#">기술직</a></li>
-                                    <li><a href="#">계리직</a></li>
-                                    <li><a href="#">자격증</a></li>
-                                    <li><a href="#">정오표</a></li>
+                                    <li><a href="javascript:goBookStore('COMMON');">공통과목</a></li>
+                                    <li><a href="javascript:goBookStore('PUBLIC');">행정직</a></li>
+                                    <li><a href="javascript:goBookStore('TECH');">기술직</a></li>
+                                    <li><a href="javascript:goBookStore('POST');">계리직</a></li>
+                                    <li><a href="javascript:goBookStore('CERT');">자격증</a></li>
+                                    <li><a href="javascript:goBookStore('errata');">정오표</a></li>
                                 </ul>
                             </li>
                             <li class="deth1_tit">
@@ -278,13 +281,13 @@
                                     <span>빅모의고사</span>
                                 </a>
                                 <ul class="deth2_list">
-                                    <li><a href="#">빅모의고사</a></li>
-                                    <li><a href="#">모의고사신청</a></li>
-                                    <li><a href="#">학원모의고사</a></li>
-                                    <li><a href="#">주간모의고사</a></li>
-                                    <li><a href="#">기출문제</a></li>
-                                    <li><a href="#">응시후기</a></li>
-                                    <li><a href="#">자료실</a></li>
+                                    <li><a href="javascript:goBigExam();">빅모의고사</a></li>
+                                    <li><a href="javascript:goBigExamMenu('apply');">모의고사신청</a></li>
+                                    <li><a href="javascript:goBigExamMenu('acaExam');">학원모의고사</a></li>
+                                    <li><a href="javascript:goBigExamMenu('weekExam');">주간모의고사</a></li>
+                                    <li><a href="javascript:goBigExamMenu('pastQuestion');">기출문제</a></li>
+                                    <li><a href="javascript:goBigExamMenu('bigReviewList');">응시후기</a></li>
+                                    <li><a href="javascript:goBigExamMenu('referenceList');">자료실</a></li>
                                 </ul>
                             </li>
                             <li class="deth1_tit">
@@ -473,6 +476,47 @@
         if(gbnMenu == 'main'){
             sessionStorage.setItem("leftMenu", 'bookStore');
             goPageNoSubmit('bookStore','main');
+        }else if(gbnMenu == 'COMMON'){
+            innerValue('bookType', 'COMMON');
+            $("#bookTypePage").attr("action", "/bookStore?page_gbn=bookTypeList");
+            $("#bookTypePage").submit();
+        }else if(gbnMenu == 'PUBLIC'){
+            innerValue('bookType', 'PUBLIC');
+            $("#bookTypePage").attr("action", "/bookStore?page_gbn=bookTypeList");
+            $("#bookTypePage").submit();
+        }else if(gbnMenu == 'TECH'){
+            innerValue('bookType', 'TECH');
+            $("#bookTypePage").attr("action", "/bookStore?page_gbn=bookTypeList");
+            $("#bookTypePage").submit();
+        }else if(gbnMenu == 'POST'){
+            innerValue('bookType', 'POST');
+            $("#bookTypePage").attr("action", "/bookStore?page_gbn=bookTypeList");
+            $("#bookTypePage").submit();
+        }else if(gbnMenu == 'CERT'){
+            innerValue('bookType', 'CERT');
+            $("#bookTypePage").attr("action", "/bookStore?page_gbn=bookTypeList");
+            $("#bookTypePage").submit();
+        }else if(gbnMenu == 'errata'){
+            goPageNoSubmit('bookStore','errataList');
         }
     }
+
+    function goBigExamMenu(gbnMenu) {
+        sessionStorage.setItem("leftMenu", "bigExam");
+        if(gbnMenu == 'apply'){
+            goPageNoSubmit('bigExam','examApply');
+        }else if(gbnMenu == 'acaExam'){
+            goPageNoSubmit('bigExam','acaExam');
+        }else if(gbnMenu == 'weekExam'){
+            goPageNoSubmit('bigExam','weekExam');
+        }else if(gbnMenu == 'pastQuestion'){
+            goPageNoSubmit('bigExam','pastQuestion');
+        }else if(gbnMenu == 'bigReviewList'){
+            goPageNoSubmit('bigExam','bigReviewList');
+        }else if(gbnMenu == 'referenceList'){
+            goPageNoSubmit('bigExam','referenceList')
+        }
+
+    }
+
 </script>
