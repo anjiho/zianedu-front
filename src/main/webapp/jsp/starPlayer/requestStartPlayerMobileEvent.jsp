@@ -35,9 +35,6 @@
     StringBuffer data = new StringBuffer();
     StringBuffer sb = new StringBuffer();
 
-
-    //CurriContentsAction curriContentsAction = new CurriContentsAction(); // DB에 저장하는 함수 (고객사마다 DB, LMS 구성이 다르므로 각 고객사에서 구성해야 합니다.)
-
     sb.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
 
     if(evt.equals("begin_app")){
@@ -51,15 +48,12 @@
         //System.out.println("user_id=="+user_id); // user_id 로그가 정상적으로 넘어오는지 로그를 찍어봄
         //System.out.println("content_id=="+content_id); // content_id 로그가 정상적으로 넘어오는지 로그를 찍어봄
         //curriContentsAction.mobileStarPlayerBookMarkStart(user_id,content_id,play_time); // 전달받은 로그를 DB에 저장함
-
+        //기기등록확인
         String splitStr[] = content_id.split("_");
         String jLecKey = splitStr[0];
         System.out.println("jLecKey >>" + jLecKey);
-
         String url = "http://52.79.40.214:9090/myPage/confirmDuplicateDevice/" + user_id + "?deviceType=1&deviceId=" + device_id + "&jLecKey=" + jLecKey
                         + "&osVersion=" + os_version.replaceAll("\\p{Z}","") + "&appVersion=" + app_version;
-
-        System.out.println("url >>" + url);
 
         String result = Util.httpGet(url);
 
@@ -77,7 +71,7 @@
             sb.append("<axis-app>");
             sb.append("<error>1</error>");
             sb.append("<push_id>1</push_id>");
-            sb.append("<message>중복된 기기가 있습니다. 관리자에 문의하세요</message>");
+            sb.append("<message>등록된 기기가 아닙니다.</message>");
             sb.append("<type>notice</type>");
             sb.append("</axis-app>");
         }
@@ -120,16 +114,17 @@
         String splitStr[] = content_id.split("_");
         String jLecKey = splitStr[0];
         String curriKey = splitStr[1];
-        //TODO 동영상 플레이중일때 시간 업데이트 기능 개발하기
+
         System.out.println("play_time >> " + play_time);
         System.out.println("play_type >> " + play_type);
         System.out.println("jLecKey >> " + jLecKey);
         System.out.println("curriKey >> " + curriKey);
         System.out.println("currentPosition >> " + current_position);
-        System.out.println("state >> " + state);
+        //동영상 플레이중 && 동영상 일시정지 일때 시간 업데이트 기능
         String url = "http://52.79.40.214:9090/myPage/injectVideoPlayTime";
-        String paramStr = "jLecKey=" + jLecKey + "&curriKey=" + curriKey + "&deviceType=1&mobileTime=" + play_time ;
+        String paramStr = "jLecKey=" + jLecKey + "&curriKey=" + curriKey + "&deviceType=1";
         Util.httpPost(url, paramStr);
+
         sb.append("<axis-app>");
         sb.append("<error>0</error>");
         sb.append("<message></message>");
