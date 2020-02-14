@@ -14,7 +14,19 @@ package com.zianedu.front.utils;
 //import org.json.simple.parser.JSONParser;
 
 import com.google.gson.*;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.util.EntityUtils;
 
+import javax.net.ssl.HttpsURLConnection;
 import java.io.*;
 import java.math.BigInteger;
 import java.net.HttpURLConnection;
@@ -1183,15 +1195,48 @@ public class Util {
         return response.toString();
     }
 
-    public static void main(String[] args) throws Exception {
-        String os_version = "iOS 13.3";
-        String url = "http://52.79.40.214:9090/myPage/confirmDuplicateDevice/5?deviceType=1&deviceId=03cbbe378c00fdfb6c83be87ba1fc84e&jLecKey=584390&osVersion=" + os_version.replaceAll("\\p{Z}","") + "&appVersion=1.9.76";
+    public static String httpPost(String targetUrl, String parameters) throws Exception {
+        URL url = new URL(targetUrl);
+        HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
-        String result = httpGet(url);
-        JsonParser parser = new JsonParser();
-        JsonElement element = parser.parse(result);
-        JsonObject jObj = element.getAsJsonObject();
-        System.out.println((Boolean)jObj.get("keyValue").getAsBoolean());
+        con.setRequestMethod("POST");// HTTP POST 메소드 설정
+        //con.setRequestProperty("User-Agent", USER_AGENT);
+        con.setDoOutput(true); // POST 파라미터 전달을 위한 설정
+        // Send post request
+        DataOutputStream wr = new DataOutputStream(con.getOutputStream());
+        wr.writeBytes(parameters);
+        wr.flush();
+        wr.close();
+
+        int responseCode = con.getResponseCode();
+        BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+        String inputLine;
+        StringBuffer response = new StringBuffer();
+        while ((inputLine = in.readLine()) != null) {
+            response.append(inputLine);
+        } in.close();
+        // print result
+        System.out.println("HTTP 응답 코드 : " + responseCode);
+        System.out.println("HTTP body : " + response.toString());
+
+        return response.toString();
+    }
+
+    public static void main(String[] args) throws Exception {
+        //String os_version = "iOS 13.3";
+        //String url = "http://52.79.40.214:9090/myPage/confirmDuplicateDevice/5?deviceType=1&deviceId=03cbbe378c00fdfb6c83be87ba1fc84e&jLecKey=584390&osVersion=" + os_version.replaceAll("\\p{Z}","") + "&appVersion=1.9.76";
+        String url = "http://52.79.40.214:9090/myPage/injectVideoPlayTime";
+        //String url = "http://175.214.49.207:9090/myPage/injectVideoPlayTime";
+        List<NameValuePair>params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("jLecKey", "584390"));
+        params.add(new BasicNameValuePair("curriKey", "120526"));
+        params.add(new BasicNameValuePair("deviceType", "1"));
+        String paramStr = "jLecKey=584390&curriKey=120526&deviceType=1";
+        httpPost(url, paramStr);
+        //JsonParser parser = new JsonParser();
+        //JsonElement element = parser.parse(result);
+        //JsonObject jObj = element.getAsJsonObject();
+        //System.out.println(jObj);
 
 
     }

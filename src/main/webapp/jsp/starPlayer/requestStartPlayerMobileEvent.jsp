@@ -130,6 +130,13 @@
         System.out.println("jLecKey >> " + jLecKey);
         System.out.println("curriKey >> " + curriKey);
         System.out.println("currentPosition >> " + current_position);
+        String url = "http://52.79.40.214:9090/myPage/injectVideoPlayTime";
+        String paramStr = "jLecKey=" + jLecKey + "&curriKey=" + curriKey + "&deviceType=1";
+        Util.httpPost(url, paramStr);
+        sb.append("<axis-app>");
+        sb.append("<error>0</error>");
+        sb.append("<message></message>");
+        sb.append("</axis-app>");
     }else{
         sb.append("<axis-app>");
         sb.append("<error>-1</error>");
