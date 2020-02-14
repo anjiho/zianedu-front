@@ -2,10 +2,6 @@
 <%@ page import="com.zianedu.front.axis.security.StringEncrypter" %>
 <%@ page import="com.zianedu.front.utils.Util" %>
 <%@ page import="com.google.gson.JsonObject" %>
-<%@ page import="java.net.URL" %>
-<%@ page import="java.net.HttpURLConnection" %>
-<%@ page import="java.io.BufferedReader" %>
-<%@ page import="java.io.InputStreamReader" %>
 <%@ page import="com.google.gson.JsonParser" %>
 <%@ page import="com.google.gson.JsonElement" %>
 <%
