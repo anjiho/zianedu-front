@@ -5,14 +5,14 @@
 <script>
     $(document).ready(function () {
         $("#searchStartDate").datepicker({
-            dateFormat:'yyyy-mm-dd',
+            dateFormat:'yy-mm-dd',
             monthNamesShort:['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
             dayNamesMin:['일','월','화','수','목','금','토'],
             changeMonth:true, // 월변경가능
             changeYear:true,  // 년변경가능
         });
         $("#searchEndDate").datepicker({
-            dateFormat:'yyyy-mm-dd',
+            dateFormat:'yy-mm-dd',
             monthNamesShort:['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
             dayNamesMin:['일','월','화','수','목','금','토'],
             changeMonth:true, // 월변경가능
@@ -130,9 +130,9 @@
                                                 <fieldset>
                                                     <legend>적립금 기간 검색 폼</legend>
                                                     <span class="key-wrap">
-								                             <input  id="searchStartDate" type="text" >
+								                             <input  id="searchStartDate" type="text" class="">
 								                            <img src="/common/zian/images/content/btn_calendar.gif"> <span class="hyphen">~</span>
-								                         		<input  id="searchEndDate" type="text" >
+								                         		<input id="searchEndDate" type="text" class="">
 								                        	<img src="/common/zian/images/content/btn_calendar.gif">
 							                            </span>
                                                 </fieldset>
