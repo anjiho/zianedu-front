@@ -10,7 +10,7 @@
             dayNamesMin:['일','월','화','수','목','금','토'],
             changeMonth:true, // 월변경가능
             changeYear:true,  // 년변경가능
-            showMonthAfterYear: true , // 월, 년순의 셀렉트 박스를 년,월 순으로 바꿔준다.
+            showMonthAfterYear: true// 월, 년순의 셀렉트 박스를 년,월 순으로 바꿔준다.
         });
         $("#searchEndDate").datepicker({
             dateFormat:'yy-mm-dd',
@@ -18,7 +18,7 @@
             dayNamesMin:['일','월','화','수','목','금','토'],
             changeMonth:true, // 월변경가능
             changeYear:true,  // 년변경가능
-            showMonthAfterYear: true , // 월, 년순의 셀렉트 박스를 년,월 순으로 바꿔준다.
+            showMonthAfterYear: true// 월, 년순의 셀렉트 박스를 년,월 순으로 바꿔준다.
         });
     });
     //파일 선택시 파일명 보이게 하기
