@@ -223,98 +223,98 @@ var kiplayer = {
 			{'mmdd':'12-25','title':'크리스마스'}
 		];
 
-		$(".useDatepicker").each(function(){
-			if(!$(this).hasClass(".hasDatepicker")){
-				var minDate = $(this).attr("data-minDate");
-				var maxDate = $(this).attr("data-maxDate");
-				var dateFormat = "yy-mm-dd";
-				if($(this).attr("data-format")){
-					dateFormat = $(this).attr("data-format");
-				}
-				$(this).datepicker({
-					prevText: '이전 달',
-					nextText: '다음 달',
-					monthNames: ['01','02','03','04','05','06','07','08','09','10','11','12'],
-					monthNamesShort: ['01','02','03','04','05','06','07','08','09','10','11','12'],
-					dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'],
-					dayNamesShort: ['일','월','화','수','목','금','토'],
-					dayNamesMin: ['일','월','화','수','목','금','토'],
-					dateFormat: dateFormat,
-					showMonthAfterYear: true,
-					yearSuffix: '&nbsp;/',
-					minDate: minDate,
-					maxDate: maxDate,
-					beforeShowDay: function(date){
-						var holidayCheck = false;
-						var mmdd = (date.getMonth() + 1)+"-"+date.getDate();
-						for(var i=0; i<holidayData.length; i++){
-							if(holidayData[i].mmdd == mmdd){
-								holidayCheck = true;
-								return [true, "date-holiday", holidayData[i].title];
-								break;
-							}
-						}
-						if(holidayCheck == false){
-							return [true, ""];
-						}
-					},
-					onSelect: function(selectedDate){
-					},
-					onClose: function(selectedDate){
-						if($(this).hasClass("dateFrom")) {
-							if(selectedDate != "" && $(this).parent().children(".dateTo").val() != ""){
-								if(selectedDate >= $(this).parent().children(".dateTo").val()){
-									alert("시작날짜는 종료날짜보다 작아야 합니다.");
-									$(this).val("");
-									return;
-								}
-							}
-						}else if($(this).hasClass("dateTo")) {
-							if(selectedDate != "" && $(this).parent().children(".dataFrom").val() != ""){
-								if($(this).parent().children(".dateFrom").val() >= selectedDate){
-									alert("종료날짜는 시작날짜보다 커야 합니다.");
-									$(this).val("");
-									return;
-								}
-							}
-						}
-					}
-				});
-			}
-		});
-		$(".useMonthpicker").each(function(){
-			$(this).monthpicker({
-				showOn: "focus",
-				monthNames: ['1월','2월','3월','4월','5월','6월', '7월','8월','9월','10월','11월','12월'],
-				monthNamesShort: ['1월','2월','3월','4월','5월','6월', '7월','8월','9월','10월','11월','12월'],
-				changeYear: false,
-				yearRange: 'c-2:c+2',
-				dateFormat: 'yy-mm',
-				onSelect: function(){
-				},
-				onClose: function(selectedMonth){
-					if($(this).hasClass("dateFrom")) {
-						if(selectedMonth != "" && $(this).parent().children(".dateTo").val() != ""){
-							if(selectedMonth > $(this).parent().children(".dateTo").val()){
-								//inputCaptionOpen($("#monthTo"), "시작월은 종료월보다 작아야 합니다.");
-								alert("시작월은 종료월보다 작아야 합니다.");
-								$("#monthFrom").val("");
-								return;
-							}
-						}
-					}else if($(this).hasClass("dateTo")) {
-						if(selectedMonth != "" && $(this).parent().children(".dataFrom").val() != ""){
-							if($(this).parent().children(".dateFrom").val() > selectedMonth){
-								//inputCaptionOpen($("#monthTo"), "종료월은 시작월보다 커야 합니다.");
-								alert("종료월은 시작월보다 커야 합니다.");
-								$("#monthTo").val("");
-								return;
-							}
-						}
-					}
-				}
-			});
-		});
+		// $(".useDatepicker").each(function(){
+		// 	if(!$(this).hasClass(".hasDatepicker")){
+		// 		var minDate = $(this).attr("data-minDate");
+		// 		var maxDate = $(this).attr("data-maxDate");
+		// 		var dateFormat = "yy-mm-dd";
+		// 		if($(this).attr("data-format")){
+		// 			dateFormat = $(this).attr("data-format");
+		// 		}
+		// 		$(this).datepicker({
+		// 			prevText: '이전 달',
+		// 			nextText: '다음 달',
+		// 			monthNames: ['01','02','03','04','05','06','07','08','09','10','11','12'],
+		// 			monthNamesShort: ['01','02','03','04','05','06','07','08','09','10','11','12'],
+		// 			dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'],
+		// 			dayNamesShort: ['일','월','화','수','목','금','토'],
+		// 			dayNamesMin: ['일','월','화','수','목','금','토'],
+		// 			dateFormat: dateFormat,
+		// 			showMonthAfterYear: true,
+		// 			//yearSuffix: '&nbsp;/',
+		// 			minDate: minDate,
+		// 			maxDate: maxDate,
+		// 			beforeShowDay: function(date){
+		// 				var holidayCheck = false;
+		// 				var mmdd = (date.getMonth() + 1)+"-"+date.getDate();
+		// 				for(var i=0; i<holidayData.length; i++){
+		// 					if(holidayData[i].mmdd == mmdd){
+		// 						holidayCheck = true;
+		// 						return [true, "date-holiday", holidayData[i].title];
+		// 						break;
+		// 					}
+		// 				}
+		// 				if(holidayCheck == false){
+		// 					return [true, ""];
+		// 				}
+		// 			},
+		// 			onSelect: function(selectedDate){
+		// 			},
+		// 			onClose: function(selectedDate){
+		// 				if($(this).hasClass("dateFrom")) {
+		// 					if(selectedDate != "" && $(this).parent().children(".dateTo").val() != ""){
+		// 						if(selectedDate >= $(this).parent().children(".dateTo").val()){
+		// 							alert("시작날짜는 종료날짜보다 작아야 합니다.");
+		// 							$(this).val("");
+		// 							return;
+		// 						}
+		// 					}
+		// 				}else if($(this).hasClass("dateTo")) {
+		// 					if(selectedDate != "" && $(this).parent().children(".dataFrom").val() != ""){
+		// 						if($(this).parent().children(".dateFrom").val() >= selectedDate){
+		// 							alert("종료날짜는 시작날짜보다 커야 합니다.");
+		// 							$(this).val("");
+		// 							return;
+		// 						}
+		// 					}
+		// 				}
+		// 			}
+		// 		});
+		// 	}
+		// });
+		// $(".useMonthpicker").each(function(){
+		// 	$(this).monthpicker({
+		// 		showOn: "focus",
+		// 		monthNames: ['1월','2월','3월','4월','5월','6월', '7월','8월','9월','10월','11월','12월'],
+		// 		monthNamesShort: ['1월','2월','3월','4월','5월','6월', '7월','8월','9월','10월','11월','12월'],
+		// 		changeYear: false,
+		// 		yearRange: 'c-2:c+2',
+		// 		dateFormat: 'yy-mm',
+		// 		onSelect: function(){
+		// 		},
+		// 		onClose: function(selectedMonth){
+		// 			if($(this).hasClass("dateFrom")) {
+		// 				if(selectedMonth != "" && $(this).parent().children(".dateTo").val() != ""){
+		// 					if(selectedMonth > $(this).parent().children(".dateTo").val()){
+		// 						//inputCaptionOpen($("#monthTo"), "시작월은 종료월보다 작아야 합니다.");
+		// 						alert("시작월은 종료월보다 작아야 합니다.");
+		// 						$("#monthFrom").val("");
+		// 						return;
+		// 					}
+		// 				}
+		// 			}else if($(this).hasClass("dateTo")) {
+		// 				if(selectedMonth != "" && $(this).parent().children(".dataFrom").val() != ""){
+		// 					if($(this).parent().children(".dateFrom").val() > selectedMonth){
+		// 						//inputCaptionOpen($("#monthTo"), "종료월은 시작월보다 커야 합니다.");
+		// 						alert("종료월은 시작월보다 커야 합니다.");
+		// 						$("#monthTo").val("");
+		// 						return;
+		// 					}
+		// 				}
+		// 			}
+		// 		}
+		// 	});
+		// });
 	},
 	'fileBtn':function(){
 		$("input.fileBtn").each(function(){
