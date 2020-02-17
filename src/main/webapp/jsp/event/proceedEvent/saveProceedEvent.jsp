@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/jsp/common.jsp" %>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
+<script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
 <script>
     $(document).ready(function () {
         $("#searchStartDate").datepicker({
@@ -128,9 +130,9 @@
                                                 <fieldset>
                                                     <legend>적립금 기간 검색 폼</legend>
                                                     <span class="key-wrap">
-								                             <input  id="searchStartDate" type="text" class="useDatepicker">
+								                             <input  id="searchStartDate" type="text" >
 								                            <img src="/common/zian/images/content/btn_calendar.gif"> <span class="hyphen">~</span>
-								                         		<input  class="useDatepicker" id="searchEndDate" type="text">
+								                         		<input  id="searchEndDate" type="text" >
 								                        	<img src="/common/zian/images/content/btn_calendar.gif">
 							                            </span>
                                                 </fieldset>
