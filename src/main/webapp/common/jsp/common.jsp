@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
     <title>지안에듀</title>
     <!-- zian js-->
-    <script src="/common/zian/js/kiplayer/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<%--    <script src="/common/zian/js/kiplayer/jquery.min.js"></script>--%>
     <script src="/common/zian/js/kiplayer/jquery.plugin.js"></script>
     <script src="/common/zian/js/jquery.fileDownload.js"></script>
     <script src="/common/js/common.js"></script>
