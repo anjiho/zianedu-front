@@ -44,7 +44,7 @@
             else $("input[name=consultChk]").prop("checked",false);
         });
     });
-    
+
     function fn_search(val) {
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         var sPage = getInputTextValue("sPage");

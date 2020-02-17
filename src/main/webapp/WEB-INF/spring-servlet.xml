@@ -16,6 +16,8 @@
   		">
 	<mvc:annotation-driven />
 
+	<bean id="ConfigHolder" class="com.zianedu.front.config.ConfigHolder"/>
+
 
      <!--@Controller 선언 클래스를 빈으로 등록-->
     <context:component-scan base-package="com.zianedu.front.controller" use-default-filters="false">

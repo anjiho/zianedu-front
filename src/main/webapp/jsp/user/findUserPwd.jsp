@@ -1,10 +1,8 @@
 <%@ page import="com.zianedu.front.utils.Util" %>
+<%@ page import="com.zianedu.front.config.ConfigHolder" %>
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%
-    //라이브
-    //String EncodeData = "AgAFRzQ1Mjhd3IIzWk2NPukWJik41vRks3td9S9SojuXKL3zikJYjL5S49ZNORP1/FUJpGiUujufqGX6E2fn1EK5iOl4bITV3TbJVMo8WijIkqWXjV36zgHwAIc2efmW3KE7/ZoxoRUSrXR6LgD7lQ3MOlQk+u8o5QbbXCBRouiZ5eoqiYCsql8t+o41MneD/5CDIAa7mZFBqm6hoH4jAz4dM6cuGKdLuzu+IWQnQwq+FcD7pZnK+/ILIq8RpKoPYHfsQnJYfu5ulU7yZYIXfJfE+w+LQxZNt6A31rYFZsQhy53sPN195FQKvvy7XUK0QzjckADh84Z67g4+N5aMNPigu1FEDWMakbKcMUhWjqHzTpxC1PZQd9e1M0BF8Y76yibt7PzrnKMbTiefX+OH5X2pB6Fj3ff7xTLv0aQEyp9x7SRDnFgqaZspnWqNDeKdrrJcvmM+79PfDv7sIvWBaBu7pAsRR8FM2s1XurUNo3VaNatKHdO3IQ==";
-    //개발
-    String EncodeData = "AgAFRzQ1Mjhd3IIzWk2NPukWJik41vRks3td9S9SojuXKL3zikJYjL5S49ZNORP1/FUJpGiUujufqGX6E2fn1EK5iOl4bITV3TbJVMo8WijIkqWXjV36zgHwAIc2efmW3KE7/ZoxoRUSrXR6LgD7lQ3MOlQk+u8o5QbbXCBRouiZ5eoqiYCsql8t+o41MneD/5CDIAa7mZFBqm6hoH4jAz4dM6cuGKdLuzu+IWQnQwq+FcD7pZnK+/ILIq8RpKoPYHfsQnJYfu5ulU7yZYIXfJfE+w+LQxZNt6A31rYFZsQhy53sPN195FQKvvy7XUK0QzjckADh84Z67g4+N5aMNPigu1FEDWMakbKcMUhWjqHzTpxC1PZQd9e1M0BF8Y76yibt7PzrnKMbTiefX+OH5X2pB6Fj3ff7xTLv0aQEyp9x7SRDnFgqaZspnWqNDeKdrrJcvmM+79PfDv7sIvWBaBu7pAsRR8FM2s1XurUNo3VaNatKHdO3IQ==";
+    String EncodeData = ConfigHolder.getFindPassSmsEncodeData();
 %>
 <%
     NiceID.Check.CPClient niceCheck = new  NiceID.Check.CPClient();

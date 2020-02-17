@@ -1,10 +1,9 @@
 <%@ page import="com.zianedu.front.utils.Util" %>
+<%@ page import="sun.security.krb5.Config" %>
+<%@ page import="com.zianedu.front.config.ConfigHolder" %>
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%
-    //라이브
-    String EncodeData = "AgAFRzQ1Mjg6q1gKtIomHHQfqhgggExsYJ0wCVLILRqMAFwGtHvGwb5S49ZNORP1/FUJpGiUujufqGX6E2fn1EK5iOl4bITV5n7E/js77nTKceZ73OuimMsCPTkVRdCMEU/jeEa+JSg042/6P3reRDZHRO6zpvINhdQGNQChUdFhYLvqyTJGDi3vHnsZtYUw7KikpmMJddPdeP4NKaPSuNScP1UT+68bLJZCyWWLumXSRVuRF5wlLibQuhycI+nSnOoJs23EWbKnuxTrJjwld36yFOphecfC7GBzS7NMrCSWFao9tnRwBlFIo92zRmY98WL/3ZXBGLgfaMwllP7xOPtz3h3s2nVxh8/3y9w5V1htuA7YxmniGBs7unNrN4zo+/VoFKbMG0MEqMXKtw8mhA+N7AQ8spRDK4KsUX9UjxFT3d1COHtKaNyW+vkrmMzUtHwfR5+UBDvw/HG5P/YNj1PJF+ZkiJPRFccYDhoy/0pvNtgPczUGmg==";
-    //개발
-    //String EncodeData = "AgAFRzQ1MjggmBc4FV2hsPk60S+onp/sPGguP/iH2IcLPYHRsyy1o75S49ZNORP1/FUJpGiUujufqGX6E2fn1EK5iOl4bITVW5OwueNZi7WXOXlvTLPDad7mZmTui1jNlT8Hwtvjwj6dWWOFOBi1pyFMYhWlKY9YjcYFYIxit58BaCJiOktYyUjw981KqnSD8mTh5v5j0o7FbAQZGgHWomubJYsH4odO7fu1IZZ2ZAihdqQUw9tJGjXfwShalrvgRp/jWWioBEmuz/EoubTtVE338M1ALBn+7+l63fIRxSeVgoNxY6dHYBLv94Aqzrv8bPiqIe7c6p6m9so+k+V/9HD1QvK5UbV1m+g3qOAxnyuCRV9FaaDPbWdl81QuHBjWL9bae4Ygp/nn28h+4JfefW1R/U8mP4jJA7a4B2xPu0DEyIPU49647KIlSAaQopATlkp+0mZoVsoKAn9YEiIG3jfJQCLl5LsgpcX7Wmll11trgCTkcmjbzQ==";
+    String EncodeData = ConfigHolder.getUserRegSmsEncodeData();
 %>
 <%
     NiceID.Check.CPClient niceCheck = new  NiceID.Check.CPClient();
@@ -86,22 +85,7 @@
 
     <!--최상단배너-->
         <!--상단-->
-        <div id="header">
-            <div class="inner">
-                <h1><a href="#"><img src="/common/zian/images/common/logo.png" alt="지안에듀"></a></h1>
-                <!--최상단메뉴-->
-                <div id="topNav">
-                    <ul>
-                        <li><a href="#" class="btn_bookmark">즐겨찾기에 등록</a></li>
-                        <li><a href="#">로그인</a></li>
-                        <li><a href="#">회원가입</a></li>
-                        <li><a href="#">합격수기</a></li>
-                        <li><a href="#">이벤트</a></li>
-                    </ul>
-                </div>
-                <!--//최상단메뉴-->
-            </div>
-        </div>
+        <%@include file="/common/jsp/header.jsp" %>
         <!--//상단-->
     <!--//상단-->
 

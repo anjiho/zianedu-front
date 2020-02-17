@@ -13,9 +13,23 @@ package com.zianedu.front.utils;
 //import org.json.simple.JSONObject;
 //import org.json.simple.parser.JSONParser;
 
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
+import com.google.gson.*;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.util.EntityUtils;
+
+import javax.net.ssl.HttpsURLConnection;
+import java.io.*;
 import java.math.BigInteger;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
@@ -1149,10 +1163,80 @@ public class Util {
         return result;
     }
 
+    public static JsonObject getJsonObjectAtHttpGet(String surl) throws IOException {
+        URL url = new URL(surl);
+        HttpURLConnection request = (HttpURLConnection) url.openConnection();
+        request.connect();
+
+        JsonParser parser = new JsonParser();
+        JsonElement root = parser.parse(new InputStreamReader((InputStream) request.getContent()));
+        JsonObject rootObj = root.getAsJsonObject();
+        return rootObj;
+    }
+
+    public static String httpGet(String url) throws Exception {
+        URL obj = new URL(url);
+        HttpURLConnection conn = (HttpURLConnection) obj.openConnection();
+
+        conn.setRequestProperty("Content-Type", "application/json");
+        conn.setDoOutput(true);
+        conn.setRequestMethod("GET");
+
+        BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream(),"UTF-8"));
+
+        String inputLine;
+        StringBuffer response = new StringBuffer();
+
+        while ((inputLine = in.readLine()) != null) {
+            response.append(inputLine);
+        }
+        in.close();
+        //System.out.println(response.toString()); //결과, json결과를 parser하여 처리
+        return response.toString();
+    }
+
+    public static String httpPost(String targetUrl, String parameters) throws Exception {
+        URL url = new URL(targetUrl);
+        HttpURLConnection con = (HttpURLConnection) url.openConnection();
+
+        con.setRequestMethod("POST");// HTTP POST 메소드 설정
+        //con.setRequestProperty("User-Agent", USER_AGENT);
+        con.setDoOutput(true); // POST 파라미터 전달을 위한 설정
+        // Send post request
+        DataOutputStream wr = new DataOutputStream(con.getOutputStream());
+        wr.writeBytes(parameters);
+        wr.flush();
+        wr.close();
+
+        int responseCode = con.getResponseCode();
+        BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+        String inputLine;
+        StringBuffer response = new StringBuffer();
+        while ((inputLine = in.readLine()) != null) {
+            response.append(inputLine);
+        } in.close();
+        // print result
+        System.out.println("HTTP 응답 코드 : " + responseCode);
+        System.out.println("HTTP body : " + response.toString());
+
+        return response.toString();
+    }
+
     public static void main(String[] args) throws Exception {
-        String url = "http://localhost/result?" + "P_STATUS=00&P_AUTH_DT=20191209105144&P_AUTH_NO=62356068&P_RMESG1=성공적으로 처리 하였습니다.&P_RMESG2=00&P_TID=INIMX_ISP_INIpayTest20191209105144915902&P_FN_CD1=11&P_AMT=1000&P_TYPE=CARD&P_UNAME=지안에듀&P_MID=INIpayTest&P_OID=191209-1050-441312&P_NOTI=&P_NEXT_URL=http://211.250.218.201:8000/jsp/payment/INIPayMobileNext.jsp&P_MNAME=이니시스 쇼핑몰&P_NOTEURL=&P_CARD_MEMBER_NUM=&P_CARD_NUM=910020*********9&P_CARD_ISSUER_CODE=00&P_CARD_PURCHASE_CODE=11&P_CARD_PRTC_CODE=1&P_CARD_INTEREST=0&P_CARD_CHECKFLAG=0&P_CARD_ISSUER_NAME=비씨카드&P_CARD_PURCHASE_NAME=BC카드&P_FN_NM=BC카드&P_ISP_CARDCODE=050100208346291&P_CARD_APPLPRICE=1000";
-        URL url1 = new URL(url);
-        System.out.println(subStrStartEnd("20191206154913", 8, 14));
+        //String os_version = "iOS 13.3";
+        //String url = "http://52.79.40.214:9090/myPage/confirmDuplicateDevice/5?deviceType=1&deviceId=03cbbe378c00fdfb6c83be87ba1fc84e&jLecKey=584390&osVersion=" + os_version.replaceAll("\\p{Z}","") + "&appVersion=1.9.76";
+        //String url = "http://52.79.40.214:9090/myPage/injectVideoPlayTime";
+        String url = "http://175.214.49.207:9090/myPage/injectVideoPlayTime";
+        List<NameValuePair>params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("jLecKey", "584390"));
+        params.add(new BasicNameValuePair("curriKey", "120526"));
+        params.add(new BasicNameValuePair("deviceType", "1"));
+        String paramStr = "jLecKey=584390&curriKey=120527&deviceType=1&mobileTime=340";
+        httpPost(url, paramStr);
+        //JsonParser parser = new JsonParser();
+        //JsonElement element = parser.parse(result);
+        //JsonObject jObj = element.getAsJsonObject();
+        //System.out.println(jObj);
 
 
     }

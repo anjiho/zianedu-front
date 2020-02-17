@@ -445,7 +445,7 @@
             goPageNoSubmit('freeLecture', 'theory');
         }
     }
-    
+
     function goOnlineMenu(gbnMenu, lefMenu) {
         if(lefMenu == 'public'){
             sessionStorage.setItem("leftMenu", "publicOnline");
@@ -471,7 +471,7 @@
             goPageNoSubmit('notice', 'list');
         }
     }
-    
+
     function goBookStoreMobile(gbnMenu) {
         if(gbnMenu == 'main'){
             sessionStorage.setItem("leftMenu", 'bookStore');

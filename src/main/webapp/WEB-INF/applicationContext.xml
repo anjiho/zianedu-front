@@ -17,6 +17,9 @@
         http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.1.xsd
     ">
 <!--    <tx:annotation-driven proxy-target-class="true"/>-->
+    <util:properties id="config" location="classpath:properties.xml" />
+
+    <bean id="ConfigHolder" class="com.zianedu.front.config.ConfigHolder"/>
 
     <!-- @ResponseBoby 한글 깨짐 처리 -->
     <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
