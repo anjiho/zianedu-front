@@ -43,7 +43,7 @@
 .joinWrap .joinAgree p{display:none;margin:20px 0 0 15px;padding:15px;height:100px;font-size:13px;color:#666;border:1px #e5e5e5 solid;white-space:pre-line;overflow-y:auto;}
 .joinWrap .joinAgree.active b:after{background:url(/common/zian/images/common/icon_up_blue.png) no-repeat center center;}
 .joinWrap .joinAgree.active p{display:block;}
-.joinWrap .tableBox table.form input[type='text'], 
+.joinWrap .tableBox table.form input[type='text'],
 .joinWrap .tableBox table.form select{min-width:150px;}
 .joinWrap .btnArea{margin:25px 0;}
 .joinWrap .btnArea .btn_l{margin:0 5px;}
@@ -65,6 +65,7 @@
 .teacherThumb > li{float:left;width:33.3333%;padding:10px 17px;box-sizing:border-box;}
 .teacherThumb > li > div{height:240px;position:relative;border:1px #e5e5e5 solid;}
 .teacherThumb > li .thumb{display:block;width:50%;height:200px;position:absolute;top:0;right:0;overflow:hidden;}
+.teacherThumb > li .thumb img{position:absolute;bottom:0px;width:100%}
 .teacherThumb > li .category{display:block;width:50%;position:absolute;top:30px;left:30px;font-size:16px;color:#111;font-weight:bold;}
 .teacherThumb > li .name{display:block;width:50%;position:absolute;top:60px;left:30px;font-size:24px;color:#000;}
 .teacherThumb > li .link_home,
@@ -78,12 +79,14 @@
 /* 교수소개 > 상세 */
 .teacherView{overflow:hidden;}
 .teacherView .lectureWrap{margin-top:0;}
+.btn_quality{width:80px;border:1px solid #313131;color:#fff;background-color:#313131;}
+.btn_quality.on{border:1px solid #134c97;background-color:#134c97;}
 
 .teacherInfo{border:1px #e5e5e5 solid;border-bottom:0;}
 .teacherInfo:after{display:block;content:'';clear:both;}
 .teacherInfo .thumb,
 .teacherInfo .info{float:left;width:50%;height:520px;position:relative;}
-.teacherInfo .thumb img{display:block;position:absolute;left:0;bottom:0;}
+.teacherInfo .thumb img{display:block;position:absolute;left:50%;bottom:0;margin-left:-40%;}
 .teacherInfo .thumb .btn_teacherThumb{display:inline-block;height:30px;line-height:28px;padding:0 30px 0 50px;position:absolute;bottom:20px;left:20px;color:#fff;background:#134c97 url(/common/zian/images/common/icon_arrow_prev.png) no-repeat 14px center;border-radius:15px;}
 .teacherInfo .info .category{display:block;margin-top:30px;font-size:30px;}
 .teacherInfo .info .name{display:block;margin-top:10px;font-size:30px;}
@@ -102,8 +105,8 @@
 .teacherInfo .info .teacherInfoTab .tabPage{height:190px;background-color:#f7f7f7;overflow:hidden;}
 .teacherInfo .info .teacherInfoTab .lectureList{height:190px;padding:20px 25px;line-height:180%;font-size:12px;box-sizing:border-box;overflow-y:auto;}
 
-.teacherContentsTab > .tabBar{height:50px;margin-bottom:0;border:1px #e5e5e5 solid;}
-.teacherContentsTab > .tabBar > li{width:25%;margin:0;}
+.teacherContentsTab > .tabBar{height:48px;margin-bottom:0;border:1px #e5e5e5 solid;}
+.teacherContentsTab > .tabBar > li{width:20%;margin:0;}
 .teacherContentsTab > .tabBar > li > a{height:48px;line-height:48px;border:0;font-size:16px;font-weight:bold;color:#000;text-align:center;}
 .teacherContentsTab > .tabBar > li.active > a{background-color:#144b95;color:#fff;}
 /*.teacherContentsTab > .tabPage{overflow:hidden;}*/
@@ -183,9 +186,9 @@
 .lectureWrap .teacherList > li{display:table-cell;vertical-align:middle;width:14.285%;height:160px;position:relative;font-size:18px;text-align:center;box-sizing:border-box;}
 .lectureWrap .teacherList > li.on{color:#fff;}
 .lectureWrap .teacherList > li.on:before{display:block;content:'';clear:both;width:100px;height:100px;position:absolute;top:50%;left:50%;margin-top:-50px;margin-left:-50px;border-radius:50px;background-color:#144b95;z-index:-1;}
-.lectureWrap .teacherList > li > .thumb{display:block;height:160px;text-align:center;} 
+.lectureWrap .teacherList > li > .thumb{display:block;height:160px;text-align:center;}
 .lectureWrap .teacherList > li > .thumb > img{max-height:160px;}
-.lectureWrap .teacherList > li > b{display:block;padding-bottom:10px;font-size:20px;} 
+.lectureWrap .teacherList > li > b{display:block;padding-bottom:10px;font-size:20px;}
 
 .tableBox table.lecture{border:1px solid #e5e5e5;border-bottom:0px;}
 .tableBox table.lecture th,
