@@ -1225,13 +1225,13 @@ public class Util {
     public static void main(String[] args) throws Exception {
         //String os_version = "iOS 13.3";
         //String url = "http://52.79.40.214:9090/myPage/confirmDuplicateDevice/5?deviceType=1&deviceId=03cbbe378c00fdfb6c83be87ba1fc84e&jLecKey=584390&osVersion=" + os_version.replaceAll("\\p{Z}","") + "&appVersion=1.9.76";
-        String url = "http://52.79.40.214:9090/myPage/injectVideoPlayTime";
-        //String url = "http://175.214.49.207:9090/myPage/injectVideoPlayTime";
+        //String url = "http://52.79.40.214:9090/myPage/injectVideoPlayTime";
+        String url = "http://175.214.49.207:9090/myPage/injectVideoPlayTime";
         List<NameValuePair>params = new ArrayList<NameValuePair>();
         params.add(new BasicNameValuePair("jLecKey", "584390"));
         params.add(new BasicNameValuePair("curriKey", "120526"));
         params.add(new BasicNameValuePair("deviceType", "1"));
-        String paramStr = "jLecKey=584390&curriKey=120526&deviceType=1";
+        String paramStr = "jLecKey=584390&curriKey=120527&deviceType=1&mobileTime=340";
         httpPost(url, paramStr);
         //JsonParser parser = new JsonParser();
         //JsonElement element = parser.parse(result);

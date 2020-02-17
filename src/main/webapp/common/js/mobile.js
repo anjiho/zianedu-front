@@ -165,7 +165,7 @@ $(document).on('ready', function() {
 
 /*index_inline main 부분 슬라이드 slick 교체 부분*/
 $(document).on('ready', function() {
-				$(".mainProductList").slick({
+				$(".productList").slick({
 				  dots: true,
 				  infinite: true,
 				  slidesToShow: 4,

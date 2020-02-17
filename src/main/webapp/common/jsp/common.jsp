@@ -54,6 +54,8 @@
     <script type='text/javascript' src="/common/calendar/lib/moment.min.js"></script>
     <script type='text/javascript' src="/common/calendar/js/fullcalendar.js"></script>
     <script src='//cdn.rawgit.com/fgelinas/timepicker/master/jquery.ui.timepicker.js'></script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
+    <script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
 
     <!--api controller-->
     <script src="/common/js/view/banner-controller.js"></script>

@@ -159,7 +159,7 @@
                     <div id="side_login" style="display: none;">
                         <a href="javascript:goLoginPage();" class="btn_logout">로그인</a>
                     </div>
-                    <button class="btn_close_menu">닫기</button>
+                    <input type="button" class="btn_close_menu">닫기</input>
                 </div>
                 <!-- sitemap_wrap -->
                 <div class="sitemap_wrap">
@@ -477,9 +477,6 @@
             sessionStorage.setItem("leftMenu", 'bookStore');
             goPageNoSubmit('bookStore','main');
         }else if (gbnMenu != 'main' && gbnMenu != 'errata') {
-            //innerValue('bookType', 'COMMON');
-            // $("#bookTypePage").attr("action", "/bookStore?page_gbn=bookTypeList");
-            // $("#bookTypePage").submit();
             location.href = "/bookStore?page_gbn=bookTypeList&bookType=" + gbnMenu;
         } else if(gbnMenu == 'errata'){
             goPageNoSubmit('bookStore','errataList');

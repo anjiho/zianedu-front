@@ -85,22 +85,7 @@
 
     <!--최상단배너-->
         <!--상단-->
-        <div id="header">
-            <div class="inner">
-                <h1><a href="#"><img src="/common/zian/images/common/logo.png" alt="지안에듀"></a></h1>
-                <!--최상단메뉴-->
-                <div id="topNav">
-                    <ul>
-                        <li><a href="#" class="btn_bookmark">즐겨찾기에 등록</a></li>
-                        <li><a href="#">로그인</a></li>
-                        <li><a href="#">회원가입</a></li>
-                        <li><a href="#">합격수기</a></li>
-                        <li><a href="#">이벤트</a></li>
-                    </ul>
-                </div>
-                <!--//최상단메뉴-->
-            </div>
-        </div>
+        <%@include file="/common/jsp/header.jsp" %>
         <!--//상단-->
     <!--//상단-->
 
