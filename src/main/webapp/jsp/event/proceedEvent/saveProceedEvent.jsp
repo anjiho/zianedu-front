@@ -1,14 +1,20 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/jsp/common.jsp" %>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.5/datepicker.js' type='text/javascript'></script>
-<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.5/datepicker.css'>
 <script>
     $(document).ready(function () {
         $("#searchStartDate").datepicker({
-            format: "yyyy-mm-dd"
+            dateFormat:'yyyy-mm-dd',
+            monthNamesShort:['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+            dayNamesMin:['일','월','화','수','목','금','토'],
+            changeMonth:true, // 월변경가능
+            changeYear:true,  // 년변경가능
         });
         $("#searchEndDate").datepicker({
-            format: "yyyy-mm-dd"
+            dateFormat:'yyyy-mm-dd',
+            monthNamesShort:['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+            dayNamesMin:['일','월','화','수','목','금','토'],
+            changeMonth:true, // 월변경가능
+            changeYear:true,  // 년변경가능
         });
     });
     //파일 선택시 파일명 보이게 하기
@@ -122,9 +128,9 @@
                                                 <fieldset>
                                                     <legend>적립금 기간 검색 폼</legend>
                                                     <span class="key-wrap">
-								                             <input  id="searchStartDate" type="text">
+								                             <input  id="searchStartDate" type="text" class="useDatepicker">
 								                            <img src="/common/zian/images/content/btn_calendar.gif"> <span class="hyphen">~</span>
-								                         		<input  class="" id="searchEndDate" type="text">
+								                         		<input  class="useDatepicker" id="searchEndDate" type="text">
 								                        	<img src="/common/zian/images/content/btn_calendar.gif">
 							                            </span>
                                                 </fieldset>
