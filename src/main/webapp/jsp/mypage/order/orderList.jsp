@@ -1,14 +1,7 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/jsp/common.jsp" %>
-<%--<script src='https://cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.5/datepicker.js' type='text/javascript'></script>--%>
-<%--<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.5/datepicker.css'>--%>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
-<%--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>--%>
-<script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
-<style>
-    .ui-datepicker .ui-datepicker-prev{left: 90px}
-    .ui-datepicker td a.ui-state-active{color: #FFFFFF; background-color: #4b4b4b}
-</style>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
+<script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
 <script>
 
     $( document ).ready(function() {
@@ -17,29 +10,25 @@
         //     $("#noticeMenu li:eq(0)").addClass('active');
         //     sessionStorage.setItem("myPageHeader", "orderList");
         // }
-        $.datepicker.setDefaults({
-            dateFormat: 'yy-mm-dd',
-            prevText: '이전 달',
-            nextText: '다음 달',
-            monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-            monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-            dayNames: ['일', '월', '화', '수', '목', '금', '토'],
-            dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
-            dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
-            showMonthAfterYear: true,
-            yearSuffix: '년'
-        });
-
         sessionStorage.removeItem('myPageHeader');
         sessionStorage.setItem("myPageHeader", "orderList");
         $("#noticeMenu li:eq(0)").addClass('active');
+
         $("#searchStartDate").datepicker({
-            //format: "yyyy-mm-dd",
             dateFormat:'yy-mm-dd',
-            //showButtonPanel: true
+            monthNamesShort:['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+            dayNamesMin:['일','월','화','수','목','금','토'],
+            changeMonth:true, // 월변경가능
+            changeYear:true,  // 년변경가능
+            showMonthAfterYear: true// 월, 년순의 셀렉트 박스를 년,월 순으로 바꿔준다.
         });
         $("#searchEndDate").datepicker({
-            format: "yyyy-mm-dd"
+            dateFormat:'yy-mm-dd',
+            monthNamesShort:['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+            dayNamesMin:['일','월','화','수','목','금','토'],
+            changeMonth:true, // 월변경가능
+            changeYear:true,  // 년변경가능
+            showMonthAfterYear: true// 월, 년순의 셀렉트 박스를 년,월 순으로 바꿔준다.
         });
         setSearchDate('3m', 'searchStartDate', 'searchEndDate');
         fn_search('new');
