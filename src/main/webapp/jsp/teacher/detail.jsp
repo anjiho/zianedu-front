@@ -41,6 +41,8 @@
                 $("#noticeList").hide();
             }else if($(this).index() == 2){
                 innerValue("divisionList", 0);
+                $("#tab2 li:eq(0)").addClass('active');
+                $("#tab2 li:eq(1)").removeClass('active');
                 $("#qnaDiv").hide();
                 $("#qnaDetail").hide();
                 $("#qnaWriteDiv").hide();
@@ -678,7 +680,7 @@
                         <div class="tabPage"><!--학습안내-->
                             <div class="tab_learning">
                                 <div class="tabContent">
-                                    <ul class="tabBar tabLecture">
+                                    <ul class="tabBar tabLecture" id="tab2">
                                         <li class="active"><a href="#" id="referBtn">학습자료실</a></li>
                                         <li><a href="#" id="noticeBtn">학습공지</a></li>
                                     </ul>

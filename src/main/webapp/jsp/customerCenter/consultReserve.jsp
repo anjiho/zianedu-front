@@ -126,7 +126,7 @@
             //달력 주입 끝
         }
 
-        setTime(1,"09:00");
+       // setTime(1,"09:00");
     });
 
 
@@ -140,7 +140,8 @@
         $("#"+val).addClass('active');
         innerValue("timer", time);
         innerValue("reserveTimeKey", val);
-        innerHTML("selTime", time);
+        var timeStr = "/ " +time;
+        innerHTML("selTime", timeStr);
     }
     
     function consultSave() {
@@ -284,7 +285,7 @@
                                 </div>
                             </div>
                             <div class="table_wrap">
-                                <p><span id="selDate"></span> <span id="selDay"></span> / <span id="selTime"></span> </p>
+                                <p><span id="selDate"></span> <span id="selDay"></span> <span id="selTime"></span> </p>
                                 <p class="t_tit"><span id="academy"></span>에서 <span id="reserveTitle"></span>을 선택하셨습니다.</p>
                                 <div class="form_atb">
                                     <h3>예약자정보</h3>

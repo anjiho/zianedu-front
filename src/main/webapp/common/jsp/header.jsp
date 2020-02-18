@@ -97,9 +97,6 @@
     }
 </script>
 <!--상단-->
-<form id="bookTypePage" method="post" name="bookTypePage">
-    <input type="hidden" id="bookType" name="bookType">
-</form>
 <div id="header">
     <div class="inner">
         <h1 class="logo_pc"><a href="" id="mainUrl"><img src="" id="logo"> <span id="mainName"></span></a></h1>
@@ -328,11 +325,11 @@
                 <li><a href="javascript:goPassReview();">합격수기</a></li>
             </ul>
             <ul class="deaph1 cols7 bookStore" style="display: none;">
-                <li><a href="javascript:goDetailbookType('COMMON');">공통과목</a></li>
-                <li><a href="javascript:goDetailbookType('PUBLIC');">행정직군</a></li>
-                <li><a href="javascript:goDetailbookType('TECH');">기술직군</a></li>
-                <li><a href="javascript:goDetailbookType('POST');">계리직군</a></li>
-                <li><a href="javascript:goDetailbookType('CERT');">자격증</a></li>
+                <li><a href="javascript:goBookStoreMobile('COMMON');">공통과목</a></li>
+                <li><a href="javascript:goBookStoreMobile('PUBLIC');">행정직군</a></li>
+                <li><a href="javascript:goBookStoreMobile('TECH');">기술직군</a></li>
+                <li><a href="javascript:goBookStoreMobile('POST');">계리직군</a></li>
+                <li><a href="javascript:goBookStoreMobile('CERT');">자격증</a></li>
                 <li><a href="javascript:goPageNoSubmit('bookStore','errataList')">정오표</a></li>
             </ul>
             <ul class="deaph1 cols7 bigExam" style="display: none;">
@@ -366,11 +363,11 @@
                 <li><a href="javascript:goPassReview();">합격수기</a></li>
             </ul>
             <ul class="Mdepth1 bookStore" style="display: none;">
-                <li><a href="javascript:goDetailbookType('COMMON');">공통과목</a></li>
-                <li><a href="javascript:goDetailbookType('PUBLIC');">행정직군</a></li>
-                <li><a href="javascript:goDetailbookType('TECH');">기술직군</a></li>
-                <li><a href="javascript:goDetailbookType('POST');">계리직군</a></li>
-                <li><a href="javascript:goDetailbookType('CERT');">자격증</a></li>
+                <li><a href="javascript:goBookStoreMobile('COMMON');">공통과목</a></li>
+                <li><a href="javascript:goBookStoreMobile('PUBLIC');">행정직군</a></li>
+                <li><a href="javascript:goBookStoreMobile('TECH');">기술직군</a></li>
+                <li><a href="javascript:goBookStoreMobile('POST');">계리직군</a></li>
+                <li><a href="javascript:goBookStoreMobile('CERT');">자격증</a></li>
                 <li><a href="javascript:goPageNoSubmit('bookStore','errataList')">정오표</a></li>
             </ul>
             <ul class="Mdepth1 bigExam"style="display: none;">
