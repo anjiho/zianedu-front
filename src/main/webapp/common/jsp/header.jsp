@@ -97,6 +97,9 @@
     }
 </script>
 <!--상단-->
+<form id="bookTypePage" method="post" name="bookTypePage">
+    <input type="hidden" id="bookType" name="bookType">
+</form>
 <div id="header">
     <div class="inner">
         <h1 class="logo_pc"><a href="" id="mainUrl"><img src="" id="logo"> <span id="mainName"></span></a></h1>
@@ -144,10 +147,6 @@
             </ul>
         </div>
 
-        <!-- sitemap_layer -->
-        <form id="bookTypePage" method="post" name="bookTypePage">
-            <input type="hidden" id="bookType" name="bookType">
-        </form>
         <div class="sitemap_layer" id="sitemap_layer">
             <div class="sitemap_layer_wrapper">
                 <div class="side_menu_header">
@@ -273,7 +272,7 @@
                                     <li><a href="javascript:goBookStoreMobile('TECH');">기술직</a></li>
                                     <li><a href="javascript:goBookStoreMobile('POST');">계리직</a></li>
                                     <li><a href="javascript:goBookStoreMobile('CERT');">자격증</a></li>
-                                    <li><a href="javascript:goBookStoreMobile('errata');">정오표</a></li>
+                                    <li><a href="javascript:goPageNoSubmit('bookStore','errataList');">정오표</a></li>
                                 </ul>
                             </li>
                             <li class="deth1_tit">
@@ -499,4 +498,10 @@
             goPageNoSubmit('bigExam','referenceList')
         }
     }
+    function goDetailbookType(type) {
+        innerValue('bookType', type);
+        $("#bookTypePage").attr("action", "/bookStore?page_gbn=bookTypeList");
+        $("#bookTypePage").submit();
+    }
+
 </script>

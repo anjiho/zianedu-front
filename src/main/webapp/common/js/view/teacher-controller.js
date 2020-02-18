@@ -166,7 +166,11 @@ function getTeacherLearningQna(teacherKey, sPage, listLimit, searchType, searchT
                 if (cmpList.pwd == 1) lock = 'lock';
                 else if (cmpList.pwd == null) lock = '';
                 returnHtml += '<td><a href="javascript:void(0);" class="subject ' + lock + '" onclick="goDetailqna('+  cmpList.bbsKey +');">' + gfn_substr(cmpList.title, 0, 40) + '</a></td>';
-                returnHtml += '<td>' + cmpList.writeUserName + '</td>';
+                if(cmpList.writeUserName != null){
+                    returnHtml += '<td>' + cmpList.writeUserName + '</td>';
+                }else{
+                    returnHtml +='<td></td>';
+                }
                 returnHtml += '<td>' + cmpList.indate2 + '</td>';
                 returnHtml += '<td>' + cmpList.readCount + '</td>';
                 returnHtml += '</tr>';

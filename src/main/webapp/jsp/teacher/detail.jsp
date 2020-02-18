@@ -38,6 +38,7 @@
                 $("#qnaDiv").hide();
                 $("#qnaDetail").hide();
                 $("#qnaWriteDiv").hide();
+                $("#noticeList").hide();
             }else if($(this).index() == 2){
                 innerValue("divisionList", 0);
                 $("#qnaDiv").hide();
@@ -45,6 +46,7 @@
                 $("#qnaWriteDiv").hide();
                 $("#referenceList").show();
                 $("#referenceWriteDiv").hide();
+                $("#noticeList").hide();
             }else if($(this).index() == 3){
                 $("#qnaDiv").show();
                 innerValue("divisionList", 2);

@@ -28,6 +28,9 @@
         goPage('bookStore','detailErrata');
     }
 </script>
+<form id="bookTypePage" method="post" name="bookTypePage">
+    <input type="hidden" id="bookType" name="bookType">
+</form>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
     <input type="hidden" id="sPage">

@@ -63,7 +63,7 @@
                     <a href="javascript:goBookStore();" class="btn_lendingLink1"><b>온라인 서점</b></a>
                 </div>
                 <div class="w30p">
-                    <a href="#" class="btn_lendingLink2"><b>빅모의고사</b></a>
+                    <a href="javascript:goPageNoSubmit('bigExam','main');" class="btn_lendingLink2"><b>빅모의고사</b></a>
                 </div>
                 <div class="w40p">
                     <div class="mainGuide">

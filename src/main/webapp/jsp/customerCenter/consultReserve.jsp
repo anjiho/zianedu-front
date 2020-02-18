@@ -72,6 +72,8 @@
                     var dt_start = moment( $('#calendar').fullCalendar('getDate') ).format('YYYY-MM-DD');
                     innerValue("indate", dt_start);
                     var reserveLocation = getSelectboxValue("academyNumber");
+                        $("#morning").empty();
+                        $("#afternoon").empty();
                     getReserveTime(dt_start, reserveLocation);
                     var dt_start1 = moment(startDate).format('YYYY.MM.DD');
                     innerHTML("selDate", dt_start1);
@@ -126,7 +128,8 @@
 
         setTime(1,"09:00");
     });
-    
+
+
     function setTime(val, time) {
         if(val == 0 && time == 0){
             alert("이미 상담예약이 완료되었습니다.");

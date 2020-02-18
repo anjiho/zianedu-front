@@ -184,12 +184,14 @@
             innerHTML("zianPassLimitDay", result.limitDay);
             innerHTML("zianPassProgressRate", result.progressRateName);
             innerHTML("zianPassCtgName", result.ctgName);
-            var pcMobile = divisionPcMobile();
-            if(pcMobile == 'PC'){
+            if(result.kind == 100){
                 $("#zianPc").show();
                 $("#zianPcMobile").hide();
-            }else{
+            }else if(result.kind == 101){
                 $("#zianPc").hide();
+                $("#zianPcMobile").show();
+            }else{
+                $("#zianPc").show();
                 $("#zianPcMobile").show();
             }
         }
@@ -208,7 +210,6 @@
     
     function academyLecDetail(gKey) {
         var result = getAcademyProductDetail(gKey);
-        console.log(result);
         if(result != null){
             innerHTML("acaCtgName", result.ctgName);
             innerHTML("acaGoodsName", result.goodsName);
@@ -245,12 +246,14 @@
                 innerHTML("pauseCnt1", selList.pauseCnt);
                 innerHTML("pauseDay", selList.pauseDay);
                 innerHTML("pauseDay1", selList.pauseDay);
-                var pcMobile = divisionPcMobile();
-                if (pcMobile == 'PC') {
+                if(selList.kind == 100){
                     $("#pausePc").show();
                     $("#pauseMobile").hide();
-                } else {
+                }else if(result.kind == 101){
                     $("#pausePc").hide();
+                    $("#pauseMobile").show();
+                }else{
+                    $("#pausePc").show();
                     $("#pauseMobile").show();
                 }
             }
@@ -285,15 +288,12 @@
             if (kind == 100) {
                 $("#lecEndPC").show();
                 $("#lecEndMobile").hide();
-                $("#lecEndPcMobile").hide();
             } else if (kind == 101) {
                 $("#lecEndPC").hide();
                 $("#lecEndMobile").show();
-                $("#lecEndPcMobile").hide();
             } else if (kind == 102) {
-                $("#lecEndPC").hide();
-                $("#lecEndMobile").hide();
-                $("#lecEndPcMobile").show();
+                $("#lecEndPC").show();
+                $("#lecEndMobile").show();
             }
         }else{
             $("#lecEndDiv").hide();
@@ -394,7 +394,6 @@
             };
             arr.push(data);
             var saveCartInfo = JSON.stringify(arr);
-            console.log(saveCartInfo);
             var result = saveCartAtRetake(saveCartInfo);
             if(result.resultCode == 200){
                 alert("장바구니에 담겼습니다.");
@@ -887,7 +886,7 @@
                                             <div class="txt_area">
                                                 <span class="bdbox" id="lecEndPC">PC</span>
                                                 <span class="bdbox" id="lecEndMobile">모바일</span>
-                                                <span class="bdbox" id="lecEndPcMobile">PC 모바일</span>
+<%--                                                <span class="bdbox" id="lecEndPcMobile">PC 모바일</span>--%>
                                                 <p class="thumb" id="lecEndName"></p>
                                                 <span class="date"><b>수강기간</b><span id="lecEndStartDate"></span><b>종료기간</b><span id="lecEndDate"></span></span>
                                                 <div id="retake">
