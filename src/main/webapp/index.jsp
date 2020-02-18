@@ -63,7 +63,8 @@
                     <a href="javascript:goBookStore();" class="btn_lendingLink1"><b>온라인 서점</b></a>
                 </div>
                 <div class="w30p">
-                    <a href="javascript:goPageNoSubmit('bigExam','examApply')" class="btn_lendingLink2"><b>빅모의고사</b></a>
+<%--                    <a href="javascript:goPageNoSubmit('bigExam','examApply');" class="btn_lendingLink2"><b>빅모의고사</b></a>--%>
+                    <a href="javascript:goBigExam();" class="btn_lendingLink2"><b>빅모의고사</b></a>
                 </div>
                 <div class="w40p">
                     <div class="mainGuide">
@@ -234,5 +235,9 @@
         sessionStorage.setItem("noticeHeader", "examGuide");
         $("#noticeMenu li:eq(4)").addClass('active');
         location.href = location.href = "/notice?page_gbn=examGuide&idx="+idx;
+    }
+    function goBigExam() {
+        sessionStorage.setItem("leftMenu", 'bigExam');
+        goPageNoSubmit('bigExam','main');
     }
 </script>

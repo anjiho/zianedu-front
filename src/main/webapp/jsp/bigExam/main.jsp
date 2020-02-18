@@ -174,7 +174,7 @@
                         </table>
                     </div>
                     <div class="btn_crud">
-                        <a href="" class="com_btn bdgray">바로 응시하러가기 ></a>
+                        <a href="javascript:goPageNoSubmit('bigExam','examApply');" class="com_btn bdgray">바로 응시하러가기 ></a>
                     </div>
                 </div>
 
