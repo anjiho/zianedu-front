@@ -59,7 +59,6 @@ function getVideoSignUpLectureNameList(userKey, deviceType, subjectCtgKey, stepC
 
     if (infoList.result.length > 0 ) {
         var result = infoList.result;
-
         if(result.length > 0) {
             innerValue("gKey", result[0].gkey);
             var gKey = getInputTextValue("gKey");
@@ -84,6 +83,7 @@ function getVideoSignUpDetailInfo(gkey, device, jlecKey, tagId) {
         device : device
     };
     var infoList = getApi("/product/getLectureListByJLecKey/", jlecKey, data);
+
     dwr.util.removeAllRows(tagId); //테이블 리스트 초기화
     if (infoList != null) {
         var selList = infoList.result.lectureList;
@@ -509,7 +509,7 @@ function getZianPassEndList(userKey) {
                         returnHtml += "<a href=\"#modal3\" class=\"btn_modalOpen\">강좌설명</a>";
                     returnHtml += "</div>";//btn_crud
                 returnHtml += "<div class=\"txt_area\">";
-                    returnHtml += "<span class=\"bdbox\" id=\"zianPassPC\">PC</span>";
+                    returnHtml += "<span class=\"bdbox\" id=\"zianPassPC\">PC</span>&nbsp;";
                     returnHtml += "<span class=\"bdbox\" id=\"zianPassMobile\">모바일</span>";
                     returnHtml += " <p class=\"thumb\" id=\"zianPassEndName\">"+ cmpList.goodsName +"</p>";
                     returnHtml += "<span class=\"date\"><b>수강기간</b>"+ cmpList.startDt +"<b> 종료기간</b>"+ cmpList.endDt +"</span>";

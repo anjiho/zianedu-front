@@ -249,7 +249,7 @@
                 if(selList.kind == 100){
                     $("#pausePc").show();
                     $("#pauseMobile").hide();
-                }else if(result.kind == 101){
+                }else if(selList.kind == 101){
                     $("#pausePc").hide();
                     $("#pauseMobile").show();
                 }else{
