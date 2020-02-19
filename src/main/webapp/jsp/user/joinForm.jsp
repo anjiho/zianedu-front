@@ -104,6 +104,7 @@
                         <input type="hidden" id="certCode" name="certCode" value="">
                         <input type="hidden" id="idValidation" value="0">
                         <input type="hidden" id="pwdValidation" value="0">
+                        <input type="hidden" id="addressNumber"><!--구주소-->
                         <caption>회원가입 등록폼</caption>
                         <colgroup>
                             <col class="w150">
@@ -171,7 +172,7 @@
                             <td>
                                 <input type="text" value="" placeholder="" title="주소 입력" id="postcode" name="postcode" disabled>
                                 <input type="button" value="우편번호 찾기" class="btn_inline"  onclick="execDaumPostcode()"><br>
-                                <input type="text" value="" id="roadAddress" name="addressRoad" title="주소 입력" class="w60p"><br>
+                                <input type="text" value="" id="roadAddress" name="roadAddress" title="주소 입력" class="w60p"><br>
                                 <input type="text" value="" id="address" name="address" title="상세주소 입력" class="w60p">
                                 <span id="guide" style="color:#999;display:none"></span>
                             </td>
