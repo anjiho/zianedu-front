@@ -244,8 +244,8 @@
                     </div>
                 </div>
                 <div class="btnArea">
-                    <a href="javascript:" class="btn_m gray radius w110 btn_modalClose">취소</a> &nbsp;&nbsp;&nbsp;
-                    <a href="javascript:" class="btn_m blue radius w110" onclick="saveLecRoom(1);">등록</a>
+                    <a href="javascript:" class="btn_m cgray radius w110">취소</a> &nbsp;&nbsp;&nbsp;
+                    <a href="javascript:" class="btn_m cblue radius w110" onclick="saveLecRoom(1);">등록</a>
                 </div>
             </div>
         </div>
@@ -270,8 +270,8 @@
                     </div>
                 </div>
                 <div class="btnArea">
-                    <a href="javascript:" class="btn_m gray radius w110 btn_modalClose">취소</a> &nbsp;&nbsp;&nbsp;
-                    <a href="javascript:" class="btn_m blue radius w110" onclick="saveLecRoom(2);">등록</a>
+                    <a href="javascript:" class="btn_m cgray radius w110">취소</a> &nbsp;&nbsp;&nbsp;
+                    <a href="javascript:" class="btn_m cblue radius w110" onclick="saveLecRoom(2);">등록</a>
                 </div>
             </div>
         </div>
