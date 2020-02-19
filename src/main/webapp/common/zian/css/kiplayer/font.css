@@ -9,25 +9,25 @@
   font-family: 'Nanum Gothic';
   font-style: normal;
   font-weight: 400;
-  src: url(../fonts/NanumGothic-Regular.eot);
-  src: url(../fonts/NanumGothic-Regular.eot?#iefix) format('embedded-opentype'),
-       url(../fonts/NanumGothic-Regular.woff) format('woff');
+  src: url(/common/zian/css/fonts/NanumGothic-Regular.eot);
+  src: url(/common/zian/css/fonts/NanumGothic-Regular.eot?#iefix) format('embedded-opentype'),
+       url(/common/zian/css/fonts/NanumGothic-Regular.woff) format('woff');
 }
 @font-face{
   font-family: 'Nanum Gothic';
   font-style: normal;
   font-weight: 700;
-  src: url(../fonts/NanumGothic-Bold.eot);
-  src: url(../fonts/NanumGothic-Bold.eot?#iefix) format('embedded-opentype'),
-       url(../fonts/NanumGothic-Bold.woff) format('woff');
+  src: url(/common/zian/css/fonts/NanumGothic-Bold.eot);
+  src: url(/common/zian/css/fonts/NanumGothic-Bold.eot?#iefix) format('embedded-opentype'),
+       url(/common/zian/css/fonts/NanumGothic-Bold.woff) format('woff');
 }
 @font-face{
   font-family: 'Nanum Gothic';
   font-style: normal;
   font-weight: 800;
-  src: url(../fonts/NanumGothic-ExtraBold.eot);
-  src: url(../fonts/NanumGothic-ExtraBold.eot?#iefix) format('embedded-opentype'),
-       url(../fonts/NanumGothic-ExtraBold.woff) format('woff');
+  src: url(/common/zian/css/fonts/NanumGothic-ExtraBold.eot);
+  src: url(/common/zian/css/fonts/NanumGothic-ExtraBold.eot?#iefix) format('embedded-opentype'),
+       url(/common/zian/css/fonts/NanumGothic-ExtraBold.woff) format('woff');
 }
 /* @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css); */
 body,input,textarea,select,button,table{font-family:'Nanum Gothic';}
