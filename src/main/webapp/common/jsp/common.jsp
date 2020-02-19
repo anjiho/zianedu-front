@@ -29,7 +29,7 @@
     <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
     <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
     <!-- zian css-->
-    <link rel="stylesheet" type="text/csstableBox" href="/common/zian/css/kiplayer/font.css" />
+    <link rel="stylesheet" type="text/css" href="/common/zian/css/kiplayer/font.css" />
     <link rel="stylesheet" type="text/css" href="/common/zian/css/kiplayer/base.css" />
     <link rel="stylesheet" type="text/css" href="/common/zian/css/base.css">
     <link rel="stylesheet" type="text/css" href="/common/zian/css/content.css">
