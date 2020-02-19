@@ -164,31 +164,13 @@
                             <th scope="col">휴대전화</th>
                             <td>
                                 <input type="text" id="telephoneMobile"  name="telephoneMobile" class="w270" placeholder="" disabled>
-<%--                                <input type="text" name="" value="" class="w270" disabled>--%>
                                 <a href="javascript:fnNicePopup();" class="btn_inline">휴대폰 인증받기</a>
                             </td>
                         </tr>
-<%--                        <tr>--%>
-<%--                            <th scope="col">인증번호</th>--%>
-<%--                            <td>--%>
-<%--								<span class="timerWrap">--%>
-<%--									<input type="text" name="" value="123456" class="w270">--%>
-<%--									<span class="timer">02:59</span>--%>
-<%--								</span>--%>
-<%--                                <a href="#" class="btn_inline">인증번호 확인</a>--%>
-<%--                            </td>--%>
-<%--                        </tr>--%>
                         <tr>
-<%--                            <td class="multiLine">--%>
-<%--                                <input type="text" class="w150" id="postcode" name="zipcode" disabled>--%>
-<%--                                <a href="#" onclick="execDaumPostcode()" class="btn_inline">우편번호 찾기</a><br />--%>
-<%--                                <input type="text" id="roadAddress" name="addressRoad" class="w400">--%>
-<%--                                <input type="text" id="address" name="address" class="w200" placeholder="상세주소">--%>
-<%--                                <span id="guide" style="color:#999;display:none"></span>--%>
-<%--                            </td>--%>
                             <th>주소</th>
                             <td>
-                                <input type="text" value="" placeholder="" title="주소 입력" id="postcode" name="zipcode" disabled>
+                                <input type="text" value="" placeholder="" title="주소 입력" id="postcode" name="postcode" disabled>
                                 <input type="button" value="우편번호 찾기" class="btn_inline"  onclick="execDaumPostcode()"><br>
                                 <input type="text" value="" id="roadAddress" name="addressRoad" title="주소 입력" class="w60p"><br>
                                 <input type="text" value="" id="address" name="address" title="상세주소 입력" class="w60p">
@@ -306,6 +288,7 @@
         var phoneNumHypen = getPhoneNumHypen(phoneNum);
         var name = getInputTextValue("name");
         var data = getJsonObjectFromDiv("joinDiv");
+        var postcode =  getInputTextValue('postcode');
 
         data.gender = gender;
         data.email = allEmail;
@@ -314,6 +297,7 @@
         data.certCode = getInputTextValue("certCode");
         data.telephoneMobile = phoneNumHypen;
         data.name = name;
+        data.zipcode = postcode;
 
         var idValidation  = getInputTextValue("idValidation");//아이디 확인
         var pwdValidation = getInputTextValue("pwdValidation");//비밀번호 확인

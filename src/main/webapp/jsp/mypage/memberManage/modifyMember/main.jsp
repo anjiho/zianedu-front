@@ -166,7 +166,7 @@
                                     <th>주소</th>
                                     <td>
                                          <span class="input_txt">
-                                            <input type="text" value="" placeholder="" title="주소 입력" id="postcode" name="zipcode" disabled>
+                                            <input type="text" value="" placeholder="" title="주소 입력" id="postcode" name="postcode" disabled>
                                             <input type="button" value="우편번호 찾기" class="btn_inline"  onclick="execDaumPostcode()"><br>
                                             <input type="text" value="" id="roadAddress" name="addressRoad" title="주소 입력" class="w60p"><br>
                                             <input type="text" value="" id="address" name="address" title="상세주소 입력" class="w60p">

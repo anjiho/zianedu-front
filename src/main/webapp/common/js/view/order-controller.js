@@ -96,9 +96,6 @@ function getOrderSheetInfoFromCart(userKey, cartKeys) {
             if(cmpList.productGroupPrice.deliveryPriceName != null){
                 innerHTML("deliveryPriceName1", cmpList.productGroupPrice.deliveryPriceName);
             }
-            // if(cmpList.productGroupPrice.examTotalPriceName != null){
-            //     innerHTML("examTotalPriceName", cmpList.productGroupPrice.examTotalPriceName);
-            // }
             if(cmpList.productGroupPrice.promotionTotalPriceName != null){
                 innerHTML("promotionTotalPriceName", cmpList.productGroupPrice.promotionTotalPriceName);
             }else{
@@ -116,7 +113,8 @@ function getOrderSheetInfoFromCart(userKey, cartKeys) {
             innerHTML("telephoneMobile", userInfo.telephoneMobile);
             innerHTML("email", userInfo.email);
             innerHTML("zipcode", userInfo.zipcode);
-            innerHTML("address", userInfo.address);
+            innerHTML("address", userInfo.addressRoad);
+            innerHTML("detailAddres", userInfo.address);
         }
     }
 }
@@ -139,7 +137,6 @@ function getOrderSheetInfoFromPay(userKey, cartKeys) {
             for(var i = 0; i < cmpList.orderProductList.length; i++){
                 var orderInfo = cmpList.orderProductList[i];
                 if(orderInfo.type != 3){
-                  //  innerValue("orderInfoType", orderInfo.type);
                     gfn_display("deliveryInfo", false);
                 }else{
                  //   innerValue("orderInfoType", orderInfo.type);
@@ -180,9 +177,6 @@ function getOrderSheetInfoFromPay(userKey, cartKeys) {
                 returnHtml += "</tr>";
                 $("#dataList").append(returnHtml);
             }
-            //var orderGoods = JSON.stringify(orderGoodArr);
-            //console.log(orderGoods);
-            //console.log(orderGoodArr);
             sessionStorage.setItem("orderGoodsList",  JSON.stringify(orderGoodArr));
         }
 
@@ -300,9 +294,6 @@ function getOrderSheetInfoFromImmediately(userKey, gKeys) {
             if(cmpList.productGroupPrice.deliveryPriceName != null){
                 innerHTML("deliveryPriceName1", cmpList.productGroupPrice.deliveryPriceName);
             }
-            // if(cmpList.productGroupPrice.examTotalPriceName != null){
-            //     innerHTML("examTotalPriceName", cmpList.productGroupPrice.examTotalPriceName);
-            // }
             if(cmpList.productGroupPrice.promotionTotalPriceName != null){
                 innerHTML("promotionTotalPriceName", cmpList.productGroupPrice.promotionTotalPriceName);
             }else{
@@ -320,7 +311,8 @@ function getOrderSheetInfoFromImmediately(userKey, gKeys) {
             innerHTML("telephoneMobile", userInfo.telephoneMobile);
             innerHTML("email", userInfo.email);
             innerHTML("zipcode", userInfo.zipcode);
-            innerHTML("address", userInfo.address);
+            innerHTML("address", userInfo.addressRoad);
+            innerHTML("detailAddres", userInfo.address);
         }
     }
 }
@@ -442,7 +434,8 @@ function getOrderSheetInfoFromImmediatelyAtBasicPackage(userKey, goodsInfo, pack
             innerHTML("telephoneMobile", userInfo.telephoneMobile);
             innerHTML("email", userInfo.email);
             innerHTML("zipcode", userInfo.zipcode);
-            innerHTML("address", userInfo.address);
+            innerHTML("address", userInfo.addressRoad);
+            innerHTML("detailAddres", userInfo.address);
         }
     }
 }
@@ -797,7 +790,8 @@ function getOrderSheetInfoFromImmediatelyAtRetake(userKey, retakeInfo) {
             innerHTML("telephoneMobile", userInfo.telephoneMobile);
             innerHTML("email", userInfo.email);
             innerHTML("zipcode", userInfo.zipcode);
-            innerHTML("address", userInfo.address);
+            innerHTML("address", userInfo.addressRoad);
+            innerHTML("detailAddres", userInfo.address);
         }
     }
 }
@@ -943,7 +937,8 @@ function getOrderSheetInfoFromImmediatelyAtBookStore(userKey, priceKeys, bookCou
             innerHTML("telephoneMobile", userInfo.telephoneMobile);
             innerHTML("email", userInfo.email);
             innerHTML("zipcode", userInfo.zipcode);
-            innerHTML("address", userInfo.address);
+            innerHTML("address", userInfo.addressRoad);
+            innerHTML("detailAddres", userInfo.address);
         }
     }
 }

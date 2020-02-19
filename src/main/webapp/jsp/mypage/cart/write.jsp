@@ -91,6 +91,8 @@
                 /*주소*/
                 var address = $("#address").text();
                 innerValue("roadAddress", address);
+                var detailAddres = $("#detailAddres").text();
+                innerValue("detailAddres2", detailAddres);
             }else{
                 innerValue("orderNameText", "");
                 innerValue("tel1", "");
@@ -101,6 +103,7 @@
                 innerValue("email2", "");
                 innerValue("postcode", "");
                 innerValue("roadAddress", "");
+                innerValue("detailAddres2", "");
             }
         });
         $("#point").change(function() {
@@ -152,7 +155,7 @@
         innerValue("postCode1", zipCode);
         var address = getInputTextValue("roadAddress");
         innerValue("add1", address);
-        var detailAddr = getInputTextValue("detailAdress");
+        var detailAddr = getInputTextValue("detailAddres2");
         innerValue("add2", detailAddr);
 
         sessionStorage.setItem("cartNum", '<%=cartKeys%>');
@@ -348,7 +351,7 @@
                                 </tr>
                                 <tr>
                                     <th>주소</th>
-                                    <td><span class="taxt_blue">[<span id="zipcode"></span>]</span> <span id="address"></span></td>
+                                    <td><span class="taxt_blue">[<span id="zipcode"></span>]</span> <span id="address"></span>&nbsp;&nbsp;<span id="detailAddres"></span></td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -397,7 +400,7 @@
                                         </div>
                                         <div class="input_area">
                                             <input type="text" id="roadAddress"  placeholder="주소" title="주소를 입력해주세요." class="w300">
-                                            <input type="text" id="detailAdress"  placeholder="상세주소" class="w300">
+                                            <input type="text" id="detailAddres2"  placeholder="상세주소" class="w300">
                                         </div>
                                         <span id="guide" style="color:#999;display:none"></span>
                                     </td>

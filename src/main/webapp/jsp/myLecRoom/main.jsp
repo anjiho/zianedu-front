@@ -141,14 +141,6 @@
                 $("#pc").show();
                 $("#mobile").show();
             }
-            // var pcMobile = divisionPcMobile();
-            // if(pcMobile == 'PC'){
-            //     $("#pc").show();
-            //     $("#mobile").hide();
-            // }else{
-            //     $("#pc").hide();
-            //     $("#mobile").show();
-            // }
         }
     }
 
