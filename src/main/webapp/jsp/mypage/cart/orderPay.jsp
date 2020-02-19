@@ -99,11 +99,12 @@
         var goodsInfo = sessionStorage.getItem('goodsInfo');
         var retakeInfo = sessionStorage.getItem('retakeInfo');
         var resultData = JSON.parse(sessionStorage.getItem('resultData'));
-        //온라인서점 priceKey, bookCount
-        var priceKey = JSON.parse(sessionStorage.getItem('priceKey'));
-        //var priceKey = "";
-        var bookCount = JSON.parse(sessionStorage.getItem('bookCount'));
-        // var bookCount = "";
+        if(sessionStorage.getItem('priceKey') != ""){
+            var priceKey = JSON.parse(sessionStorage.getItem('priceKey'));
+        }
+        if(sessionStorage.getItem('bookCount') != ""){
+            var bookCount = JSON.parse(sessionStorage.getItem('bookCount'));
+        }
         var total = '<%=total%>';
         var totalPoint = '<%=totalPoint%>';
         var deliveryPrice = '<%=deliveryPrice%>';

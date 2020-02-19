@@ -2628,6 +2628,7 @@ function execDaumPostcode() {
     new daum.Postcode({
         width: width, //생성자에 크기 값을 명시적으로 지정해야 합니다.
         height: height,
+        autoClose: true,
         oncomplete: function(data) {
             var roadAddr = data.roadAddress; // 도로명 주소 변수
             var extraRoadAddr = ''; // 참고 항목 변수
@@ -2663,6 +2664,7 @@ function execDaumPostcode() {
                 guideTextBox.innerHTML = '';
                 guideTextBox.style.display = 'none';
             }
+            self.close();
         }
     }).open({
         left: (window.screen.width / 2) - (width / 2),

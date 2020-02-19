@@ -69,7 +69,6 @@
 <% } %>
 <%@include file="/common/jsp/common.jsp" %>
 <!-- 다음 주소 api -->
-<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
     <input type="hidden" name="m" value="checkplusSerivce">
@@ -212,6 +211,7 @@
 </form>
 </body>
 </html>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
     $(function(){
         $(".joinAgree label b").click(function(){
@@ -303,7 +303,7 @@
         var pwdValidation = getInputTextValue("pwdValidation");//비밀번호 확인
 
         //회원가입 전송
-        if(idValidation == 1 && pwdValidation ==1){
+        if(idValidation == 1 && pwdValidation == 1){
             var result  =  userReg(data);
             if(result.resultCode == 200){
                 goPage('user', 'joinResult');
