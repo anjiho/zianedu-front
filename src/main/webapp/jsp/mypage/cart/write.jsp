@@ -131,7 +131,7 @@
     function goPay() {
         var check = new isCheck();
         var orderInfoType =  getInputTextValue("orderInfoType");
-        if(orderInfoType == 3){
+        if(orderInfoType == 3) {
             if (check.input("orderNameText", comment.delivery_info) == false) return;
             if (check.input("postcode", comment.delivery_info) == false) return;
         }

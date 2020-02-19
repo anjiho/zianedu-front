@@ -172,7 +172,7 @@
                             <td>
                                 <input type="text" value="" placeholder="" title="주소 입력" id="postcode" name="postcode" disabled>
                                 <input type="button" value="우편번호 찾기" class="btn_inline"  onclick="execDaumPostcode()"><br>
-                                <input type="text" value="" id="roadAddress" name="roadAddress" title="주소 입력" class="w60p"><br>
+                                <input type="text" value="" id="addressRoad" name="addressRoad" title="주소 입력" class="w60p"><br>
                                 <input type="text" value="" id="address" name="address" title="상세주소 입력" class="w60p">
                                 <span id="guide" style="color:#999;display:none"></span>
                             </td>
@@ -274,7 +274,7 @@
         if (check.input("email", comment.input_member_email) == false) return;
         if (check.input("emailAddress", comment.input_member_email) == false) return;
         if (check.input("zipcode", comment.input_zip_code) == false) return;
-        if (check.input("roadAddress", comment.input_id_address) == false) return;
+        if (check.input("addressRoad", comment.input_id_address) == false) return;
         if (check.input("address", comment.input_address) == false) return;
         if (check.selectbox("interestCtgKey0", comment.sel_ctgkey) == false) return;
         if (check.input("telephoneMobile", comment.access_telphone) == false) return;
@@ -302,7 +302,7 @@
 
         var idValidation  = getInputTextValue("idValidation");//아이디 확인
         var pwdValidation = getInputTextValue("pwdValidation");//비밀번호 확인
-
+        console.log(data);
         //회원가입 전송
         if(idValidation == 1 && pwdValidation == 1){
             var result  =  userReg(data);

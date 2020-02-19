@@ -2646,7 +2646,7 @@ function execDaumPostcode() {
             }
 
             document.getElementById('postcode').value = data.zonecode;
-            document.getElementById("roadAddress").value = roadAddr;
+            document.getElementById("addressRoad").value = roadAddr;
             document.getElementById("addressNumber").value = data.jibunAddress;
 
             var guideTextBox = document.getElementById("guide");

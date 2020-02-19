@@ -436,7 +436,6 @@
         var goodsInfo = sessionStorage.getItem('goodsInfo');
         var resultData = JSON.parse(sessionStorage.getItem('resultData'));
         var userKey = sessionUserInfo.userKey;
-
         var orderGoodsList = sessionStorage.getItem('orderGoodsList');
         var savePayInfo = JSON.parse(sessionStorage.getItem('savePayInfo'));
 
@@ -511,6 +510,7 @@
                         isMobile: isMobile,
                         orderGoodsList: orderGoodsList
                     };
+                    console.log(savePaymentInfoData);
                     savePaymentInfo(savePaymentInfoData);
                 }
             }
