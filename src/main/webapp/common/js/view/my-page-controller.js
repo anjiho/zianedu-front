@@ -699,7 +699,9 @@ function getMyWriteExamBoard2(userKey, boardType, sPage, listLimit, searchType, 
         searchType : searchType,
         searchText : searchText
     };
+    console.log(data);
     var infoList = getPageApi("/myPage/getMyWriteBoard/", userKey, data);
+    console.log(infoList);
     var cnt = infoList.cnt;
     if(infoList != null){
         //if (infoList.result.length > 0) {

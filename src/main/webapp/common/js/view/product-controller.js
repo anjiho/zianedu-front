@@ -74,12 +74,9 @@ function getLectureApplyTeacherTypeList(menuCtgKey, subjectMenuKeys, teacherKeys
     var infoList = getApi("/product/getLectureApplyTeacherTypeList/", menuCtgKey, data);
     if (infoList != null) {
         if (infoList.result.length > 0) {
-            console.log(infoList);
             var selList = infoList.result;
             for (var i = 0; i < selList.length; i++) {
                 var cmpList  = selList[i];
-                console.log("<<<<<<<<<");
-                console.log(cmpList);
                 if(cmpList.teacherTypeInfo != null) {
                     var returnHtml = "<div class=\"lectureWrap\">";
                     if (cmpList.teacherTypeInfo != null) {
