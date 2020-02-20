@@ -17,6 +17,15 @@
     var bbsKey = '<%=bbsKey%>';
     innerValue("bbsKey", bbsKey);
     $( document ).ready(function() {
+        //modifyBtn
+        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        if(sessionUserInfo != null){
+            if(sessionUserInfo.authority != 0){
+                $("#modifyBtn").hide();
+            }
+        }else{
+            $("#modifyBtn").hide();
+        }
         var bbsmasterKey =  getBbsMasterKey();
 
         var result = getBoardDetailInfo(bbsmasterKey, bbsKey);
@@ -174,7 +183,7 @@
                     </div>
                     <div class="btnArea divGroup noMargin">
                         <div class="left">
-                            <a href="javascript:goModify()" class="btn_inline gray w110">수정</a>
+                            <a href="javascript:goModify()" class="btn_inline gray w110" id="modifyBtn">수정</a>
                         </div>
                         <div class="right">
                             <a href="javascript:goPage('notice', 'list')" class="btn_inline w110">목록</a>

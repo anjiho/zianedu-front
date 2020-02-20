@@ -231,7 +231,7 @@
                                             <input type="text" id="searchText3" onkeypress="if(event.keyCode==13) {fn_search3('new'); return false;}">
                                             <a href="javascript:fn_search3('new');" class="btn_m on w140">검색</a>
                                         </li>
-                                        <li class="right"><a href="javascript:goPageNoSubmit('review','saveLecture');" class="btn_m w140">수강수기작성하기</a></li>
+<%--                                        <li class="right"><a href="javascript:goPageNoSubmit('review','saveLecture');" class="btn_m w140">수강수기작성하기</a></li>--%>
                                     </ul>
                                 </form>
                                 <div class="tableBox">

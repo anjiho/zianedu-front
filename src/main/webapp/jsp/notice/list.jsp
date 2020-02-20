@@ -3,6 +3,14 @@
 
 <script>
     $( document ).ready(function() {
+        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        if(sessionUserInfo != null){
+            if(sessionUserInfo.authority != 0){
+                $("#writeBtn").hide();
+            }
+        }else{
+            $("#writeBtn").hide();
+        }
         var leftMenuInfo = sessionStorage.getItem('noticeHeader');
         if(leftMenuInfo == null){
             $("#noticeMenu li:eq(0)").addClass('active');
@@ -52,7 +60,7 @@
                         <input type="text" id="searchText" onkeypress="if(event.keyCode==13) {fn_search('new'); return false;}" class="w240">
                         <a href="javascript:fn_search('new');" class="btn_inline on w140">검색</a>
                         <div class="btnArea">
-                            <a href="javascript:goPageNoSubmit('notice','write')" class="btn_inline w140">글쓰기</a>
+                            <a href="javascript:goPageNoSubmit('notice','write')" class="btn_inline w140" id="writeBtn">글쓰기</a>
                         </div>
                     </div>
                     <div class="tableBox">
