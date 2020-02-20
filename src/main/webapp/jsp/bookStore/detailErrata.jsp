@@ -59,7 +59,6 @@
                 }
             }
             var prevNextInfo = result.prevNextInfo;
-            console.log(prevNextInfo);
             if(prevNextInfo.prevBbsKey != null){
                 if(prevNextInfo.prevBbsKey == 0){
                     $("#prev").hide();

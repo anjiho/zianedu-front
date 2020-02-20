@@ -82,9 +82,7 @@
         var menuCtgKey = getLecOrderCtgKey();
         var goodsType = getOnlineAcaType();
 
-        //console.log(subjectMenuKeys);
         var subjectMenuKeysString = toStrFileName(subjectMenuKeys);
-       // console.log(subjectMenuKeysString);
         var teacherKeysString = toStrFileName(teacherKeys);
         var stepCtgKeysString = toStrFileName(stepCtgKeys);
 

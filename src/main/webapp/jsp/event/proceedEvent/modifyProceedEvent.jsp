@@ -25,7 +25,6 @@
             showMonthAfterYear: true// 월, 년순의 셀렉트 박스를 년,월 순으로 바꿔준다.
         });
         var infoList = eventUpdateDetailInfo(idx);
-        console.log(infoList);
         if(infoList != null){
             innerValue('title', infoList.result.eventTitle);
             innerValue('writeContent', infoList.result.eventDesc);

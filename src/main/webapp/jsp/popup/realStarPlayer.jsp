@@ -251,9 +251,7 @@
         }*/
 
         function saveHistory() {
-            //$("#position").val(player.getCurrentPosition());
             var time = player.getPlayTime();
-            //console.log("time"+":"+time);
             setTimeout("saveHistory()", 1000 * 60);
             injectVideoPlayTime(<%=jlecKey%>, <%=curriKey%>);  //동영상 플레이시간 주입
         }

@@ -8,7 +8,6 @@
     $( document ).ready(function() {
         var bbsMasterKey = getPassReviewMasterKey();
         var result = getBoardDetailInfo(bbsMasterKey, bbsKey);
-        console.log(result);
         if(result != undefined){
             var detailInfo = result.boardDetailInfo;
 

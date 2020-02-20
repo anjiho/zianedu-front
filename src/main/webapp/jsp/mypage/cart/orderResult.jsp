@@ -510,7 +510,6 @@
                         isMobile: isMobile,
                         orderGoodsList: orderGoodsList
                     };
-                    console.log(savePaymentInfoData);
                     savePaymentInfo(savePaymentInfoData);
                 }
             }

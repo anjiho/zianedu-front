@@ -15,7 +15,6 @@
             $("#modifyBtn").hide();
         }
         var infoList = eventDetailInfo(idx);
-        console.log(infoList);
         var selList = infoList.result;
         var eventDate = selList.eventStartDate + " ~ " + selList.eventEndDate;
         innerHTML('eventDate', eventDate);

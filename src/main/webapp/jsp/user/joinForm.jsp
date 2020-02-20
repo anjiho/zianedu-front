@@ -302,7 +302,6 @@
 
         var idValidation  = getInputTextValue("idValidation");//아이디 확인
         var pwdValidation = getInputTextValue("pwdValidation");//비밀번호 확인
-        console.log(data);
         //회원가입 전송
         if(idValidation == 1 && pwdValidation == 1){
             var result  =  userReg(data);

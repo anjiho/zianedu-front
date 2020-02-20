@@ -391,7 +391,6 @@ var kiplayer = {
 						_target.addClass("active").html(data);
 					},
 					error: function(response){
-						console.log(response);
 					}
 				});
 			}
