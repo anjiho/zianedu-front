@@ -57,48 +57,26 @@
             var selList =  examCompareTotalStaticsInfo;
             for (var i=0; i<examCompareTotalStaticsInfo.length; i++) {
                 result += "<div class=\"st_graph_item\"> " +
-                    "<table> " +
-                    "<tbody> " +
-                    "<tr> " +
-                    "<td class=\"st_name\">" + selList[i].subjectName  + "</td> " +
-                    "<td> " +
-                    "<div class=\"st_graph_view\"> " +
-                    "<div class=\"st_graph_bar st_type_01\"> " +
-                    "<span>" + selList[i].mySubjectScore + "</span> " +
-                    "</div> " +
-                    "<div class=\"st_graph_bar st_type_02\"> " +
-                    "<span>" + selList[i].totalSubjectScore + "</span> " +
-                    "</div> " +
-                    "</div> " +
-                    "</td> " +
-                    "</tr> " +
-                    "</tbody> " +
-                    "</table> " +
-                    "</div>";
+                            "<table> " +
+                                "<tbody> " +
+                                    "<tr> " +
+                                        "<td class=\"st_name\">" + selList[i].subjectName  + "</td> " +
+                                        "<td> " +
+                                            "<div class=\"st_graph_view\"> " +
+                                                "<div class=\"st_graph_bar st_type_01\"> " +
+                                                    "<span>" + selList[i].mySubjectScore + "</span> " +
+                                                "</div> " +
+                                                "<div class=\"st_graph_bar st_type_02\"> " +
+                                                    "<span>" + selList[i].totalSubjectScore + "</span> " +
+                                                "</div> " +
+                                            "</div> " +
+                                        "</td> " +
+                                    "</tr> " +
+                                "</tbody> " +
+                            "</table> " +
+                            "</div>";
             }
             innerHTML("st_graph", result);
-
-            // dwr.util.addOptions("st_graph", selList, function (data) {
-            //     return "<div class=\"st_graph_item\"> " +
-            //                 "<table> " +
-            //                     "<tbody> " +
-            //                         "<tr> " +
-            //                             "<td class=\"st_name\">" + data.subjectName  + "</td> " +
-            //                         "<td> " +
-            //                         "<div class=\"st_graph_view\"> " +
-            //                             "<div class=\"st_graph_bar st_type_01\"> " +
-            //                                 "<span>" + data.mySubjectScore + "</span> " +
-            //                             "</div> " +
-            //                             "<div class=\"st_graph_bar st_type_02\"> " +
-            //                                 "<span>" + data.totalSubjectScore + "</span> " +
-            //                             "</div> " +
-            //                         "</div> " +
-            //                         "</td> " +
-            //                         "</tr> " +
-            //                     "</tbody> " +
-            //                 "</table> " +
-            //             "</div>";
-            // }, {escapeHtml: false});
         }
 
         var userStaticsScore = achievementResult.result.userStaticsScore;
