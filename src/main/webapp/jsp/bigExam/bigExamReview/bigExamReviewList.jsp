@@ -22,8 +22,7 @@
         if(searchType == undefined) searchType = "";
         if(searchText == undefined) searchText = "";
         if(val == "new") sPage = "1";
-        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-        getCommunityList2(11030,  sPage, 10, searchType, searchText);
+        getCommunityList3(11030,  sPage, 10, searchType, searchText);
     }
     
     function goDetailReview(bbsKey) {
