@@ -193,7 +193,7 @@
                                             <input type="text" id="searchText1" onkeypress="if(event.keyCode==13) {fn_search2('new'); return false;}" >
                                             <a href="javascript:fn_search2('new');" class="btn_m on w140">검색</a>
                                         </li>
-                                        <li class="right"><a href="" class="btn_m w140">합격수기작성하기</a></li>
+                                        <li class="right"><a href="javascript:goPage('review','savePass');" class="btn_m w140">합격수기작성하기</a></li>
                                     </ul>
                                 </form>
                                 <div class="tableBox">
@@ -231,7 +231,7 @@
                                             <input type="text" id="searchText3" onkeypress="if(event.keyCode==13) {fn_search3('new'); return false;}">
                                             <a href="javascript:fn_search3('new');" class="btn_m on w140">검색</a>
                                         </li>
-                                        <li class="right"><a href="./sub02010503.html" class="btn_m w140">수강수기작성하기</a></li>
+                                        <li class="right"><a href="javascript:goPageNoSubmit('review','saveLecture');" class="btn_m w140">수강수기작성하기</a></li>
                                     </ul>
                                 </form>
                                 <div class="tableBox">
@@ -270,7 +270,7 @@
                                             <input type="text" id="searchText4" onkeypress="if(event.keyCode==13) {fn_search4('new'); return false;}" >
                                             <a href="javascript:fn_search4('new');" class="btn_m on w140">검색</a>
                                         </li>
-                                        <li class="right"><a href="" class="btn_m w140">도서수기작성하기</a></li>
+                                        <li class="right"><a href="javascript:goPage('review','saveBook');" class="btn_m w140">도서수기작성하기</a></li>
                                     </ul>
                                 </form>
                                 <div class="tableBox">

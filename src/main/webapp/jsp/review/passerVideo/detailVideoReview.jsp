@@ -10,6 +10,14 @@
 <script>
     var bbsKey = '<%=bbsKey%>';
     $( document ).ready(function() {
+        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        if(sessionUserInfo != null){
+            if(sessionUserInfo.authority != 0){
+                $("#modifyBtn").hide();
+            }
+        }else{
+            $("#modifyBtn").hide();
+        }
         var bbsMasterKey = getReviewMasterKey();
         var result = getBoardDetailInfo(bbsMasterKey, bbsKey);
         if(result != undefined){
@@ -151,7 +159,7 @@
                     </div>
                     <div class="btnArea divGroup noMargin">
                         <div class="left">
-                            <a href="javascript:goPage('review','modifyVideo')" class="btn_inline gray w110">수정</a>
+                            <a href="javascript:goPage('review','modifyVideo')" class="btn_inline gray w110" id="modifyBtn"> 수정</a>
                         </div>
                         <div class="right">
                             <a href="javascript:goPageNoSubmit('review','videoList')" class="btn_inline bdblue w110">목록</a>

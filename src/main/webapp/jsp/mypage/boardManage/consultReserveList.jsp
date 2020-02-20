@@ -4,6 +4,15 @@
 <script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
 <script>
     $(document).ready(function () {
+        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        if(sessionUserInfo != null){
+            if(sessionUserInfo.authority != 0){
+                $("#passConsult").hide();
+            }
+        }else{
+            $("#passConsult").hide();
+        }
+
         var tabMenuInfo = sessionStorage.getItem('tabHeader');
         if(tabMenuInfo != null){
             if(tabMenuInfo == "tabMenuQuestion"){
@@ -187,7 +196,7 @@
                         <div class="reBtn">
                             <span>선택시 항목</span>
                             <a href="javascript:cancelConsult();">예약취소</a>
-                            <a href="javascript:saveConsult();">상담완료</a>
+                            <a href="javascript:saveConsult();" id="passConsult">상담완료</a>
                         </div>
                         <table>
                             <colgroup>
