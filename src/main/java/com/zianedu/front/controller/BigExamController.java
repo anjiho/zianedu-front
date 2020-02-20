@@ -43,7 +43,7 @@ public class BigExamController {
         }else if("popupStart".equals(page_gbn)){
             mvc.setViewName("/bigExam/popupExam/examStart");
         }else if("test".equals(page_gbn)){
-            mvc.setViewName("/bigExam/popupExam/testbigExamList");
+            mvc.setViewName("/bigExam/popupExam/testBigExamList");
         }
 
         return mvc;
