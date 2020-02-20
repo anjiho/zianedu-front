@@ -18,7 +18,9 @@
         var result = getBoardDetailInfo(bbsMasterKey, bbsKey);
         if(result != undefined){
             var detailInfo = result.boardDetailInfo;
-
+            if(detailInfo.writeUserKey == sessionUserInfo.userKey){
+                $("#modifyBtn").show();
+            }
             //본문 내용 파싱작업 시작
             var detailInfoStr = JSON.stringify(detailInfo);
             var detailInfoStrObj = JSON.parse(detailInfoStr);

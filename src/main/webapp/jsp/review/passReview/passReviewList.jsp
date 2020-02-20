@@ -3,6 +3,7 @@
 <script>
     $( document ).ready(function() {
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        console.log(sessionUserInfo);
         if(sessionUserInfo == null) {
             $("#writeBtn").hide();
         }
