@@ -186,55 +186,6 @@ function getPackageLectureList(tagId) {
     }
 }
 
-//학원인기강좌 리스트
-function getPopulateAcademyLectureList(tagId) {
-    var infoList = getApi("/banner/getPopulateAcademyLectureList","" ,"");
-
-    if (infoList.result.length > 0) {
-        var selList = infoList.result;
-        dwr.util.addRows(tagId, selList, [
-            //function(data) {return "<img src='"+ data.targetUrl +"'>";}
-        ], {escapeHtml:false});
-    }
-}
-
-//동영상 인기강좌 리스트
-function getPopulateVideoLectureList(tagId) {
-    var infoList = getApi("/banner/getPopulateVideoLectureList","" ,"");
-
-    if (infoList.result.length > 0) {
-        var selList = infoList.result;
-        dwr.util.addRows(tagId, selList, [
-            //function(data) {return "<img src='"+ data.targetUrl +"'>";}
-        ], {escapeHtml:false});
-    }
-}
-
-//직렬별 팝업 리스트
-function getPopupList(ctgKey, tagId) {
-    if (ctgKey == null || ctgKey == undefined) return;
-    var infoList = getApi("/banner/getPopupList/", ctgKey,"");
-
-    if (InfoList.result.length > 0) {
-        var selList = infoList.result;
-        dwr.util.addRows(tagId, selList, [
-            //function(data) {return "<img src='"+ data.targetUrl +"'>";}
-        ], {escapeHtml:false});
-    }
-}
-
-//인기 검색어 리스트
-function getSearchKeywordList(className) {
-    if (className == null || className == undefined) return;
-    var searchKeywordList = getApi("/banner/getSearchKeywordList/", className,"");
-
-    if (searchKeywordList.result.length > 0) {
-        var selList = searchKeywordList.result;
-        dwr.util.addRows("dataList", selList, [
-            //function(data) {return "<img src='"+ data.targetUrl +"'>";}
-        ], {escapeHtml:false});
-    }
-}
 
 //강사(지안교수진) 배너 리스트 [ 공통과목 교수진 ]
 function getTeacherBannerList(tagId, ctgKey, subjectType, teacherMenuCtgKey) {
