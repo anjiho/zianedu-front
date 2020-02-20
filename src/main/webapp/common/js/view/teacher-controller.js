@@ -398,7 +398,8 @@ function getTeacherVideoLecture(teacherKey, device, stepCtgKey) {
                                 retrunHtml += '<td class="alignCenter">' + lecList[j].lectureList[k].vodTime + '</td>';
 
                                 if (lecList[j].lectureList[k].num == 1) {
-                                    retrunHtml += '<td class="alignCenter"><span class="learnView">샘플보기 <a href="#" class="btn_s btn_quality">일반화질</a> <a href="#" class="btn_s btn_quality on">고화질</a></span></td>';
+                                    retrunHtml += '<td class="alignCenter"><span class="learnView">샘플보기 <a href="javascript:void(0);" onclick="OpenSamplePlayer(' + "'"  + lecList[j].lowVideo + "'" + ');" class="btn_s btn_quality" >일반화질</a> <a href="javascript:void(0);" onclick="OpenSamplePlayer(' + "'"  + lecList[j].highVideo + "'" + ');" class="btn_s btn_quality on">고화질</a></span></td>';
+                                    //retrunHtml += '<td class="alignCenter"><span class="learnView">샘플보기 <a href="#" class="btn_s btn_quality">일반화질</a> <a href="#" class="btn_s btn_quality on">고화질</a></span></td>';
                                 } else {
                                     retrunHtml += '<td class="alignCenter"><span class="learnView"> </span></td>';
                                 }
