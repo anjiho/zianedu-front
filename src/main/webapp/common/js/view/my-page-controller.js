@@ -432,10 +432,26 @@ function getUserPointInfo(userKey) {
     var infoList = getPayApi("/myPage/getUserPointInfo/", userKey, '');
     if(infoList != null){
         if(infoList.result != null){
-            innerHTML("earnedPoint",infoList.result.earnedPoint+" 점");
-            innerHTML("usedPoint", infoList.result.usedPoint+" 점");
-            innerHTML("usefulPoint", infoList.result.usefulPoint+" 점");
-            innerHTML("expirePoint", infoList.result.expirePoint+" 점");
+            if(infoList.result.earnedPoint != null){
+                innerHTML("earnedPoint",infoList.result.earnedPoint+" 점");
+            }else{
+                innerHTML("earnedPoint",'-');
+            }
+            if(infoList.result.usedPoint != null){
+                innerHTML("usedPoint", infoList.result.usedPoint+" 점");
+            }else{
+                innerHTML("usedPoint",'-');
+            }
+            if(infoList.result.usefulPoint != null){
+                innerHTML("usefulPoint", infoList.result.usefulPoint+" 점");
+            }else{
+                innerHTML("usefulPoint",'-');
+            }
+            if(infoList.result.expirePoint != null){
+                innerHTML("expirePoint", infoList.result.expirePoint+" 점");
+            }else{
+                innerHTML("expirePoint",'-');
+            }
         }
     }
 }
