@@ -92,7 +92,6 @@ function getMockExamListAtBuy(userKey, onOffKey, sPage, listLimit, ctgKey, searc
         searchType : searchType,
         searchText : searchText
     };
-
     var infoList = getPageApi("/exam/getMockExamListAtBuy/", userKey, data);
     var cnt = infoList.cnt;
     if(infoList != null){
@@ -111,8 +110,8 @@ function getMockExamListAtBuy(userKey, onOffKey, sPage, listLimit, ctgKey, searc
                     if(cmpList.acceptType == 0){//응시마감
                         returnHtml += "<td><span class=''>응시마감</span></td>";
                     }else if(cmpList.acceptType == 1){//응시가능
-                        //returnHtml += "<td><a href='' class='small blue'>응시가능</a></td>";
-                        returnHtml += "<td><span class='small blue'>응시가능</span></td>";
+                        //returnHtml += "<td><span class='small blue'>응시가능</span></td>";
+                        returnHtml += "<td><span class='small blue' onclick='goBigExamPopup("+ cmpList.examKey +");'>응시가능</span></td>";
                     }else{//응시완료
                         returnHtml += "<td><span class=''>응시완료</span></td>";
                     }

@@ -687,48 +687,48 @@ function getMyWriteExamBoard(userKey, boardType, sPage, listLimit, searchType, s
         }
     }
 }
-
-function getMyWriteExamBoard2(userKey, boardType, sPage, listLimit, searchType, searchText) {
-    if(userKey == null || userKey == undefined) return;
-    var paging = new Paging();
-    dwr.util.removeAllRows("dataList"); //테이블 리스트 초기화
-    var data = {
-        boardType : boardType,
-        sPage : sPage,
-        listLimit : listLimit,
-        searchType : searchType,
-        searchText : searchText
-    };
-    console.log(data);
-    var infoList = getPageApi("/myPage/getMyWriteBoard/", userKey, data);
-    console.log(infoList);
-    var cnt = infoList.cnt;
-    if(infoList != null){
-        //if (infoList.result.length > 0) {
-            var listNum = ((cnt-1)+1)-((sPage-1)*listLimit); //리스트 넘버링
-            var selList = infoList.result;
-            paging.count(sPage, cnt, '5', listLimit, comment.blank_list);
-            for(var i=0; i < selList.length; i++){
-                var cmpList = selList[i];
-
-                if (cmpList != undefined) {
-                    var cellData = [
-                        function(data) {return listNum--;},
-                        function(data) {return "<a href='javascript:goDetailReview("+ cmpList.bbsKey +");'>"+ cmpList.title +"</a>";},
-                        function(data) {return cmpList.userName;},
-                        function(data) {return cmpList.indate;},
-                        function(data) {return cmpList.readCount;}
-                    ];
-                    dwr.util.addRows("dataList", [0], cellData, {escapeHtml: false});
-                    $('#dataList tr').each(function(){
-                        var tr = $(this);
-                        tr.children().eq(1).attr("class", "left");
-                    });
-                }
-            }
-        //}
-    }
-}
+//
+// function getMyWriteExamBoard2(userKey, boardType, sPage, listLimit, searchType, searchText) {
+//     if(userKey == null || userKey == undefined) return;
+//     var paging = new Paging();
+//     dwr.util.removeAllRows("dataList"); //테이블 리스트 초기화
+//     var data = {
+//         boardType : boardType,
+//         sPage : sPage,
+//         listLimit : listLimit,
+//         searchType : searchType,
+//         searchText : searchText
+//     };
+//     console.log(userKey);
+//     var infoList = getPageApi("/board/getCommunityList2/", userKey, data);
+//     console.log(infoList);
+//     var cnt = infoList.cnt;
+//     if(infoList != null){
+//         //if (infoList.result.length > 0) {
+//             var listNum = ((cnt-1)+1)-((sPage-1)*listLimit); //리스트 넘버링
+//             var selList = infoList.result;
+//             paging.count(sPage, cnt, '5', listLimit, comment.blank_list);
+//             for(var i=0; i < selList.length; i++){
+//                 var cmpList = selList[i];
+//
+//                 if (cmpList != undefined) {
+//                     var cellData = [
+//                         function(data) {return listNum--;},
+//                         function(data) {return "<a href='javascript:goDetailReview("+ cmpList.bbsKey +");'>"+ cmpList.title +"</a>";},
+//                         function(data) {return cmpList.userName;},
+//                         function(data) {return cmpList.indate;},
+//                         function(data) {return cmpList.readCount;}
+//                     ];
+//                     dwr.util.addRows("dataList", [0], cellData, {escapeHtml: false});
+//                     $('#dataList tr').each(function(){
+//                         var tr = $(this);
+//                         tr.children().eq(1).attr("class", "left");
+//                     });
+//                 }
+//             }
+//         //}
+//     }
+// }
 
 function bookStoreReviewBoard(userKey, boardType, sPage, listLimit, searchType, searchText) {
     if(userKey == null || userKey == undefined) return;

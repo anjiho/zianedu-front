@@ -23,7 +23,7 @@
         if(searchText == undefined) searchText = "";
         if(val == "new") sPage = "1";
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-        getMyWriteExamBoard2(sessionUserInfo.userKey, 'EXAM', sPage, 10, searchType, searchText);
+        getCommunityList2(11030,  sPage, 10, searchType, searchText);
     }
     
     function goDetailReview(bbsKey) {
