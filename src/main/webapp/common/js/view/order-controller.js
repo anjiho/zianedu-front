@@ -464,7 +464,6 @@ function getUserCartInfo(userKey) {
                 returnHtml += "<td><input type=\"checkbox\" name='acaChk' id='"+ acaInfo.cartKey +"' class=\"ck\"></td>";
                 returnHtml += "<td>";
                 returnHtml += "" + acaInfo.goodsName + " <br>";
-                //returnHtml += "<span class=\"text_blue\">판매가격 : </span>" + acaInfo.kind + "개월<span class=\"thm text_blue pl30\">" + acaInfo.sellPriceName + "</span>";
                 returnHtml += "</td>";
                 returnHtml += "<td>";
                 returnHtml += "<span class=\"thm line\">" + acaInfo.priceName + "</span><span class=\"arrow\"></span>";
@@ -577,9 +576,6 @@ function getUserCartInfo(userKey) {
         if (infoList.result.bookCartInfo.length > 0) {
             for (var l = 0; l < infoList.result.bookCartInfo.length;l++) {
                 var bookInfo = infoList.result.bookCartInfo[l];
-                //totalSellPrice += bookInfo.sellPrice;
-                //totalPoint += bookInfo.point;
-                //구분 상품명 수량 판매가
                 var returnHtml = "<tr>";
                 returnHtml += "<td>";
                 returnHtml += "<input type=\"checkbox\" name='bookChk' id='"+ bookInfo.cartKey +"' class=\"ck4\"></td>";
@@ -605,37 +601,6 @@ function getUserCartInfo(userKey) {
         }
     }
 }
-
-//주문배송조회 리스트
-function getUserOrderDeliveryInfo(userKey, startDate, endDate, tagId) {
-    if (userKey == null || userKey == undefined) return;
-    var data = {
-        startDate: startDate,
-        endDate : endDate
-    };
-    var InfoList = getApi("/order/getUserOrderDeliveryInfo/", userKey, data);
-    if (InfoList.result.length > 0) {
-        var selList = InfoList.result;
-        dwr.util.addRows(tagId, selList, [
-            /*
-                TODO : addoption 추가
-             */
-            //function(data) {return data.fullFileUrl;}
-        ], {escapeHtml:false});
-    }
-}
-
-//주문배송 상세정보
-function getUserOrderDeliveryInfo(userKey, jKey) {
-    if (userKey == null || userKey == undefined) return;
-    var pathData = userKey+"/"+jKey;
-    var InfoList = getApi("/order/getUserOrderDeliveryInfo/", pathData, "");
-    if (InfoList.result.length > 0) {
-        var selList = InfoList.result;
-
-    }
-}
-
 //장바구니 담기(자유패키지 외 상품)
 function saveCart(saveCartInfo) {
     if (saveCartInfo == null || saveCartInfo == undefined) return;
@@ -645,18 +610,6 @@ function saveCart(saveCartInfo) {
     var result = postApi("/order/saveCart", data);
     return  result;
 }
-
-//장바구니 담기(자유패키지)
-//
-// function saveCartFreePackage(userKey, gKeys) {
-//     if (userKey == null || userKey == undefined) return;
-//     var data = {
-//         userKey : userKey,
-//         gKeys : gKeys
-//     };
-//     var result = postApi("/order/saveCartFreePackage", data);
-//     return  result;
-// }
 
 function saveCartAtRetake(saveCartInfo) {
     if (saveCartInfo == null || saveCartInfo == undefined) return;
