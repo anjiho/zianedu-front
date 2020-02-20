@@ -445,7 +445,6 @@ function getUserCartInfo(userKey) {
     if (userKey == null || userKey == undefined) return;
     var infoList = getApi("/order/getUserCartInfo/", userKey, "");
     if (infoList != null) {
-        console.log(infoList);
         if(infoList.result.deliveryPrice == 0){
             innerHTML("deliveryPrice", "0");
         }else{

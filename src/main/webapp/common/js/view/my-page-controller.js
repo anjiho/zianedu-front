@@ -984,5 +984,4 @@ function injectVideoPlayTime(jLecKey, curriKey) {
     };
 
     var result = postApi("/myPage/injectVideoPlayTime", data);
-    console.log(result);
 }

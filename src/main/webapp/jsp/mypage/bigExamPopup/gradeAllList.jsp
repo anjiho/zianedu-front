@@ -19,7 +19,6 @@
     function getAchievementManagementDetailInfo(examUserKey) {
         var achievementResult = getApi("/exam/getAchievementManagementDetailInfo/", examUserKey);
         if (achievementResult == null) return;
-        console.log(achievementResult);
         //상단 정보
         var achievementTopInfo = achievementResult.result.achievementTopInfo;
         if (achievementTopInfo != null) {

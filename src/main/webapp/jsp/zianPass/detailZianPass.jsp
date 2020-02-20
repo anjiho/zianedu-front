@@ -3,12 +3,6 @@
 <%
     String targetUrl = request.getParameter("zianPassUrl");
 %>
-<script>
-    $( document ).ready(function() {
-       console.log('<%=targetUrl%>');
-    });
-
-</script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
     <div id="wrap">

@@ -39,7 +39,6 @@
         var filesTempArrLen = filesTempArr.length;
         for( var i=0; i<filesArrLen; i++ ) {
             filesTempArr.push(filesArr[i]);
-            console.log(filesArr);
             $("#fileList").append("<div>" + filesArr[i].name + "<img src=\"/common/zian/images/common/icon_file.png\" onclick=\"deleteFile(event, " + (filesTempArrLen+i)+ ");\"></div>");
         }
         $(this).val('');

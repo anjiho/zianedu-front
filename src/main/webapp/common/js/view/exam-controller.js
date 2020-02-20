@@ -103,7 +103,6 @@ function getMockExamListAtBuy(userKey, onOffKey, sPage, listLimit, ctgKey, searc
         }
         for(var  i=0; i < selList.length;i++){
             var cmpList = selList[i];
-            console.log(cmpList);
             var returnHtml = "<tr>";
                     returnHtml += "<td>"+ cmpList.className +"</td>";
                     returnHtml += "<td>"+ cmpList.goodsName +"</td>";
@@ -468,7 +467,6 @@ function getWrongNote(examUserKey, isScore, isInterest) {
         $("#st_questionnote_search_pannel_Div").append(returnHtml);
 
         for (var j = 0; j < selList.length; j++){
-            console.log(selList);
             var returnHtml2 = "<div id='tab-"+ (j+1) +"' class=\"st_question_board current\" style=\"width: 800px; height: 530px;\">";
                 returnHtml2 += "<ul>";
                 for(var k = 0; k < selList[j].resultList.length; k++){

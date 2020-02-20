@@ -47,7 +47,6 @@
             innerHTML("title", detailInfo.title);
             innerHTML("readCount", detailInfo.readCount);
             innerHTML("fileName", detailInfo.fileName);
-            console.log(result);
             var prevNextInfo = result.prevNextInfo;
 
 

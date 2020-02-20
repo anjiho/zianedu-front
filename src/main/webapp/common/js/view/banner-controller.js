@@ -470,7 +470,6 @@ function getExamScheduleList(tagId) {
             if(slideNo < $(this).parent().parent().children("li").length - 3){
                 var sliderNo = parseInt($(this).parent().parent().attr("data-sliderNo"));
                 sliderItem[sliderNo].goToSlide(slideNo);
-                console.log(sliderNo+"|"+slideNo);
             }
         });
     });
