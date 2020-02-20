@@ -103,6 +103,7 @@ function getMockExamListAtBuy(userKey, onOffKey, sPage, listLimit, ctgKey, searc
         }
         for(var  i=0; i < selList.length;i++){
             var cmpList = selList[i];
+            console.log(cmpList);
             var returnHtml = "<tr>";
                     returnHtml += "<td>"+ cmpList.className +"</td>";
                     returnHtml += "<td>"+ cmpList.goodsName +"</td>";
@@ -110,8 +111,11 @@ function getMockExamListAtBuy(userKey, onOffKey, sPage, listLimit, ctgKey, searc
                     if(cmpList.acceptType == 0){//응시마감
                         returnHtml += "<td><span class=''>응시마감</span></td>";
                     }else if(cmpList.acceptType == 1){//응시가능
-                        //returnHtml += "<td><span class='small blue'>응시가능</span></td>";
-                        returnHtml += "<td><span class='small blue' onclick='goBigExamPopup("+ cmpList.examKey +");'>응시가능</span></td>";
+                        if(tagId == 'dataList'){
+                            returnHtml += "<td><span class='small blue' onclick='goBigExamPopup("+ cmpList.examUserKey +");'>응시가능</span></td>";
+                        }else{
+                            returnHtml += "<td><span class=''>응시가능</span></td>";
+                        }
                     }else{//응시완료
                         returnHtml += "<td><span class=''>응시완료</span></td>";
                     }

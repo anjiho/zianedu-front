@@ -68,6 +68,8 @@
                 var result = saveExamResult(omrList, roundMarks(playTime));
                 if(result.resultCode == 200){
                     alert("제출이 완료 되었습니다.");
+                    opener.location.reload();
+                    window.close();
                 }
                 return false;
             }else{
