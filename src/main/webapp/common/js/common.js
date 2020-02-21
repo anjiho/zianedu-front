@@ -3282,3 +3282,246 @@ function goDetailNotice2(bbsKey, tagId) {
     goPage("notice", "detail");
 }
 
+function goCompany() {
+    location.href = location.href = "/company?page_gbn=main&type=teacher";
+}
+
+function goCompany1() {
+    sessionStorage.setItem("leftMenu", 'techOnline');
+    goPageNoSubmit('company','main');
+}
+
+function goLogout() {
+    if(confirm("로그아웃 하시겠습니까?")){
+        sessionStorage.clear();
+        $("#topNav_logout").show();
+        goMain();
+    }
+}
+
+function goAcademyMenu(gbnMenu, lefMenu) {
+    if(lefMenu == 'public'){
+        sessionStorage.setItem("leftMenu", "publicAcademy");
+        var menu = "publicAcademy";
+    }else if(lefMenu == 'tech'){
+        sessionStorage.setItem("leftMenu", "techAcademy");
+        var menu = "techAcademy";
+    }else if(lefMenu == 'post'){
+        sessionStorage.setItem("leftMenu", "postAcademy");
+        var menu = "postAcademy";
+    }
+
+    if(gbnMenu == 'main') goPageNoSubmit(menu, "main");
+    else if(gbnMenu == 'myLecRoom') goPageNoSubmit('myLecRoom', 'main');
+    else if(gbnMenu == 'teacher') goPageNoSubmit('teacher', 'main');
+    else if(gbnMenu == 'lecApply') goPageNoSubmit('lectureOrder', 'academy');
+    else if(gbnMenu == 'passReview') goPassReview();
+    else if(gbnMenu == 'customerCenter')  goPageNoSubmit('customerCenter', 'saveQuestion');
+    else if(gbnMenu == 'notice'){
+        sessionStorage.setItem("noticeHeader", "openMenu");
+        $("#noticeMenu li:eq(0)").addClass('active');
+        goPageNoSubmit('notice', 'list');
+    }else if(gbnMenu == 'year'){
+        javascript:goPageNoSubmit('zianPass', 'list');
+    }else if(gbnMenu == 'free'){
+        goPageNoSubmit('freeLecture', 'theory');
+    }
+}
+
+function goOnlineMenu(gbnMenu, lefMenu) {
+    if(lefMenu == 'public'){
+        sessionStorage.setItem("leftMenu", "publicOnline");
+        var menu = "postOnline";
+    }else if(lefMenu == 'tech'){
+        sessionStorage.setItem("leftMenu", "techOnline");
+        var menu = "techOnline";
+    }else if(lefMenu == 'post'){
+        sessionStorage.setItem("leftMenu", "postOnline");
+        var menu = "postOnline";
+    }
+    if(gbnMenu == 'main') goPageNoSubmit(menu, "main");
+    else if(gbnMenu == 'myLecRoom') goPageNoSubmit('myLecRoom', 'main');
+    else if(gbnMenu == 'teacher') goPageNoSubmit('teacher', 'main');
+    else if(gbnMenu == 'lecApply') goPageNoSubmit('lectureOrder', 'academy');
+    else if(gbnMenu == 'passReview') goPassReview();
+    else if(gbnMenu == 'zianPass') goPageNoSubmit('zianPass', 'list');
+    else if(gbnMenu == 'free') goPageNoSubmit('freeLecture', 'theory');
+    else if(gbnMenu == 'customerCenter')  goPageNoSubmit('customerCenter', 'saveQuestion');
+    else if(gbnMenu == 'notice'){
+        sessionStorage.setItem("noticeHeader", "openMenu");
+        $("#noticeMenu li:eq(0)").addClass('active');
+        goPageNoSubmit('notice', 'list');
+    }
+}
+
+function goBookStoreMobile(gbnMenu) {
+    if(gbnMenu == 'main'){
+        sessionStorage.setItem("leftMenu", 'bookStore');
+        goPageNoSubmit('bookStore','main');
+    }else if (gbnMenu != 'main' && gbnMenu != 'errata') {
+        location.href = "/bookStore?page_gbn=bookTypeList&bookType=" + gbnMenu;
+    } else if(gbnMenu == 'errata'){
+        goPageNoSubmit('bookStore','errataList');
+    }
+}
+
+function goBigExamMenu(gbnMenu) {
+    sessionStorage.setItem("leftMenu", "bigExam");
+    if(gbnMenu == 'apply'){
+        goPageNoSubmit('bigExam','examApply');
+    }else if(gbnMenu == 'acaExam'){
+        goPageNoSubmit('bigExam','acaExam');
+    }else if(gbnMenu == 'weekExam'){
+        goPageNoSubmit('bigExam','weekExam');
+    }else if(gbnMenu == 'pastQuestion'){
+        goPageNoSubmit('bigExam','pastQuestion');
+    }else if(gbnMenu == 'bigReviewList'){
+        goPageNoSubmit('bigExam','bigReviewList');
+    }else if(gbnMenu == 'referenceList'){
+        goPageNoSubmit('bigExam','referenceList')
+    }
+}
+function goDetailbookType(type) {
+    innerValue('bookType', type);
+    $("#bookTypePage").attr("action", "/bookStore?page_gbn=bookTypeList");
+    $("#bookTypePage").submit();
+}
+
+function setLeftMenu() {
+    var topSubHtml = $("#topSub").html();
+    if(topSubHtml == '기술직 학원'){
+        sessionStorage.setItem("leftMenu", "techAcademy");
+        goPageNoSubmit("techAcademy", "main");
+    }else if(topSubHtml == '행정직 학원'){
+        sessionStorage.setItem("leftMenu", "publicAcademy");
+        goPageNoSubmit("publicAcademy", "main");
+    }else if(topSubHtml == '계리직 학원'){
+        sessionStorage.setItem("leftMenu", "postAcademy");
+        goPageNoSubmit("postAcademy", "main");
+    }else if(topSubHtml == '계리직 학원'){
+        sessionStorage.setItem("leftMenu", "postAcademy");
+        goPageNoSubmit("postAcademy", "main");
+    }else if(topSubHtml == '기술직 온라인'){
+        sessionStorage.setItem("leftMenu", "techOnline");
+        goPageNoSubmit("techOnline", "main");
+    }else if(topSubHtml == '행정직 온라인'){
+        sessionStorage.setItem("leftMenu", "publicOnline");
+        goPageNoSubmit("publicOnline", "main");
+    }else if(topSubHtml == '계리직 온라인'){
+        sessionStorage.setItem("leftMenu", "postOnline");
+        goPageNoSubmit("postOnline", "main");
+    }else {
+        sessionStorage.setItem("leftMenu", "publicOnline");
+    }
+}
+
+function setLeftMenu1(){
+    var subMenuHtml = $("#subMenu1").html();
+    if(subMenuHtml == '기술직'){
+        sessionStorage.setItem("leftMenu", "techOnline");
+        goPageNoSubmit("techOnline", "main");
+    }else if(subMenuHtml == '행정직'){
+        sessionStorage.setItem("leftMenu", "publicOnline");
+        goPageNoSubmit("publicOnline", "main");
+    }else if(subMenuHtml == '계리직'){
+        sessionStorage.setItem("leftMenu", "postOnline");
+        goPageNoSubmit("postOnline", "main");
+    }else{
+        sessionStorage.setItem("leftMenu", "publicOnline");
+    }
+}
+
+function setLeftMenu2(){
+    var subMenuHtml = $("#subMenu2").html();
+    if(subMenuHtml == '기술직'){
+        sessionStorage.setItem("leftMenu", "techOnline");
+        goPageNoSubmit("techOnline", "main");
+    }else if(subMenuHtml == '행정직'){
+        sessionStorage.setItem("leftMenu", "publicOnline");
+        goPageNoSubmit("publicOnline", "main");
+    }else if(subMenuHtml == '계리직'){
+        sessionStorage.setItem("leftMenu", "postOnline");
+        goPageNoSubmit("postOnline", "main");
+    }else{
+        sessionStorage.setItem("leftMenu", "publicOnline");
+    }
+}
+
+function goExamGuide() {
+    sessionStorage.setItem("noticeHeader", "examGuide");
+    $("#noticeMenu li:eq(4)").addClass('active');
+    goPageNoSubmit('notice', 'examGuide');
+}
+
+function setLeftMenu4() {
+    var subMenuHtml = $("#subMenu4").html();
+    if(subMenuHtml == '자격증/가산점'){
+        window.open("http://www.algisa.com/public/main.html", "_blank");
+        return false;
+    }else if(subMenuHtml == '온라인서점'){
+        sessionStorage.setItem("leftMenu", 'bookStore');
+        goPageNoSubmit('bookStore','main');
+    }
+}
+
+function setLeftMenu5() {
+    var subMenuHtml = $("#subMenu5").html();
+    if(subMenuHtml == '온라인서점'){
+        sessionStorage.setItem("leftMenu", 'bookStore');
+        goPageNoSubmit('bookStore','main');
+    }else if(subMenuHtml == '빅모의고사'){
+        sessionStorage.setItem("leftMenu", 'bigExam');
+        goPageNoSubmit('bigExam','main');
+    }
+}
+
+function goMyCart() {
+    sessionStorage.setItem("myPageHeader", "cart");
+    $("#myPageMenu li:eq(1)").addClass('active');
+    goPageNoSubmit('myPage', 'cart');
+}
+
+function setLeftMenu3() {
+    var subMenuHtml = $("#subMenu3").html();
+    if(subMenuHtml == '자격증/가산점'){
+        window.open("http://www.algisa.com/public/main.html", "_blank");
+        return false;
+    }else if(subMenuHtml == '온라인서점'){
+        sessionStorage.setItem("leftMenu", 'bookStore');
+        goPageNoSubmit('bookStore','main');
+    }else if(subMenuHtml == '행정직'){
+        sessionStorage.setItem("leftMenu", "publicOnline");
+        goPageNoSubmit("publicOnline", "main");
+    }
+}
+
+
+//행정직 수강후기 > 상세보기
+function detailReview(bbsKey, tagId) {
+    innerValue('bbsKey', bbsKey);
+    if(tagId == 'lecInfo'){
+        goPage('review','detailLecture');
+    }else if(tagId == 'passInfo'){
+        goPage('review','detailPass');
+    }
+}
+
+//교수 상세페이지 이동
+function goTeacherDetail(teacherKey, reqKey) {
+    innerValue("teacherKey", teacherKey);
+    innerValue("reqKey", reqKey);
+    location.href = "/teacher?page_gbn=detail&teacherKey="+teacherKey+"&reqKey="+reqKey;
+}
+
+function goDetailBook(gkey) {
+    goPage('bookStore', 'detail');
+    location.href = "/bookStore?page_gbn=detail&bbsKey="+gkey;
+}
+
+function goPassReview() {
+    var leftMenuInfo = sessionStorage.getItem('leftMenu');
+    if(leftMenuInfo == 'bookStore') {
+        sessionStorage.setItem("leftMenu", "publicOnline");
+    }
+    goPageNoSubmit('review', 'videoList');
+}

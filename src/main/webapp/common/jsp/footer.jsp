@@ -34,13 +34,3 @@
     </div>
 </div>
 <!--//하단-->
-<script>
-    function goCompany() {
-        location.href = location.href = "/company?page_gbn=main&type="+'teacher';
-    }
-
-    function goCompany1() {
-        sessionStorage.setItem("leftMenu", 'techOnline');
-        goPageNoSubmit('company','main');
-    }
-</script>

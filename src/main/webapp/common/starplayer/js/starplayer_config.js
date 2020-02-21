@@ -78,7 +78,7 @@ function OpenLecPlayer( vodPath, vodTitle, curriKey, jlecKey, videoType )
     }
 
 }
-
+//모바일 다운로드
 function OpenDownloadPlayer(vodPath, vodTitle, curriKey, jlecKey) {
     var sp = StarPlayerApp;
     var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));

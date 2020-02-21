@@ -71,6 +71,135 @@
             $("#logo").attr("src", "/common/zian/images/bigimg/logo.gif");
             $("#mainUrl").attr("href", "javascript:goPageNoSubmit('bigExam', 'main')");
         }
+
+        var leftMenuInfo = sessionStorage.getItem('leftMenu');
+        if(leftMenuInfo == "publicOnline"){
+            getMainBottomBanner(6284, 2);
+        }else if(leftMenuInfo == "publicAcademy"){
+            getMainBottomBanner(6285, 2);
+        }else if(leftMenuInfo == "techOnline"){
+            getMainBottomBanner(6287, 2);
+        }else if(leftMenuInfo == "techAcademy"){
+            getMainBottomBanner(6286, 2);
+        }else if(leftMenuInfo == "postOnline"){
+            getMainBottomBanner(6289, 2);
+        }else if(leftMenuInfo == "postAcademy"){
+            getMainBottomBanner(6288, 2);
+        }else{
+            getMainBottomBanner(6287, 2);
+        }
+
+        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        if(sessionUserInfo != null){ //로그인했을경우,
+            $("#topNav_login").show();
+            $("#side_logout").show();
+            var userName = sessionUserInfo.name;
+            innerHTML("userName", userName+" 님");
+            innerHTML("userName2", userName+" 님");
+        }else{
+            $("#side_login").show();
+            $("#topNav_logout").show();
+        }
+        //오른쪽메뉴 오늘 안보기 클릭 이벤트
+        $("#todayClose").click(function () {
+            setCookieMobile( "todayCookie", "done" , 1);
+            $("#quickBar").hide();
+        });
+
+        if(sessionUserInfo != null){
+            if(sessionUserInfo.cartCount > 0){
+                $("#cartCnt").show();
+                innerHTML('cartCnt', sessionUserInfo.cartCount);
+            }else{
+                $("#cartCnt").hide();
+            }
+        }else{
+            $("#cartCnt").hide();
+        }
+
+        if(leftMenuInfo != null){
+            if(leftMenuInfo == "publicOnline"){
+                $("#siteTab").css("background","#134c97");
+                var html = "행정직"+"<br />"+"온라인";
+                innerHTML("topName", html);
+                innerHTML("topSub", "행정직 학원");
+                innerHTML("subMenu1", "기술직");
+                innerHTML("subMenu2", "계리직");
+                innerHTML("subMenu3", "자격증/가산점");
+                innerHTML("subMenu4", "온라인서점");
+                innerHTML("subMenu5", "빅모의고사");
+            }else if(leftMenuInfo == "publicAcademy"){
+                $("#siteTab").css("background","#134c97");
+                var html = "행정직"+"<br />"+"학원";
+                innerHTML("topName", html);
+                innerHTML("topSub", "행정직 온라인");
+                innerHTML("subMenu1", "기술직");
+                innerHTML("subMenu2", "계리직");
+                innerHTML("subMenu3", "자격증/가산점");
+                innerHTML("subMenu4", "온라인서점");
+                innerHTML("subMenu5", "빅모의고사");
+            }else if(leftMenuInfo == "techOnline"){
+                $("#siteTab").css("background","#f69321");
+                var html = "기술직"+"<br />"+"온라인";
+                innerHTML("topName", html);
+                innerHTML("topSub", "기술직 학원");
+                innerHTML("subMenu1", "행정직");
+                innerHTML("subMenu2", "계리직");
+                innerHTML("subMenu3", "자격증/가산점");
+                innerHTML("subMenu4", "온라인서점");
+                innerHTML("subMenu5", "빅모의고사");
+            }else if(leftMenuInfo == "techAcademy"){
+                $("#siteTab").css("background","#f69321");
+                var html = "기술직"+"<br />"+"학원";
+                innerHTML("topName", html);
+                innerHTML("topSub", "기술직 온라인");
+                innerHTML("subMenu1", "행정직");
+                innerHTML("subMenu2", "계리직");
+                innerHTML("subMenu3", "자격증/가산점");
+                innerHTML("subMenu4", "온라인서점");
+                innerHTML("subMenu5", "빅모의고사");
+            }else if(leftMenuInfo == "postOnline"){
+                $("#siteTab").css("background","#ce1717");
+                var html = "계리직"+"<br />"+"온라인";
+                innerHTML("topName", html);
+                innerHTML("topSub", "계리직 학원");
+                innerHTML("subMenu1", "행정직");
+                innerHTML("subMenu2", "기술직");
+                innerHTML("subMenu3", "자격증/가산점");
+                innerHTML("subMenu4", "온라인서점");
+                innerHTML("subMenu5", "빅모의고사");
+            }else if(leftMenuInfo == "postAcademy"){
+                $("#siteTab").css("background-color","#ce1717");
+                var html = "계리직"+"<br />"+"학원";
+                innerHTML("topName", html);
+                innerHTML("topSub", "계리직 온라인");
+                innerHTML("subMenu1", "행정직");
+                innerHTML("subMenu2", "기술직");
+                innerHTML("subMenu3", "자격증/가산점");
+                innerHTML("subMenu4", "온라인서점");
+                innerHTML("subMenu5", "빅모의고사");
+            }else if(leftMenuInfo == "bookStore"){
+                $("#siteTab").hide();
+                $("#bookStoreTab").show();
+                innerHTML("topSub", "온라인"+"<br>"+"서점");
+                innerHTML("subMenu1", "기술직");
+                innerHTML("subMenu2", "계리직");
+                innerHTML("subMenu3", "행정직");
+                innerHTML("subMenu4", "자격증/가산점");
+                innerHTML("subMenu5", "빅모의고사");
+            }else if(leftMenuInfo == "bigExam"){
+                $("#siteTab").hide();
+                $("#bigExamTab").show();
+                innerHTML("topSub", "BIG"+"<br>"+"모의고사");
+                innerHTML("subMenu1", "기술직");
+                innerHTML("subMenu2", "계리직");
+                innerHTML("subMenu3", "행정직");
+                innerHTML("subMenu4", "자격증/가산점");
+                innerHTML("subMenu5", "온라인서점");
+            }
+        }
+        getExamScheduleList("dDayBanner"); //d-day 슬라이드 배너
+
     });
 
     function goMyPage() {
@@ -384,121 +513,3 @@
     <!--//주메뉴-->
 </div>
 <!--//상단-->
-<script>
-    $(document).ready(function () {
-        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-        if(sessionUserInfo != null){ //로그인했을경우,
-            $("#topNav_login").show();
-            $("#side_logout").show();
-            var userName = sessionUserInfo.name;
-            innerHTML("userName", userName+" 님");
-            innerHTML("userName2", userName+" 님");
-        }else{
-            $("#side_login").show();
-            $("#topNav_logout").show();
-        }
-        //오른쪽메뉴 오늘 안보기 클릭 이벤트
-        $("#todayClose").click(function () {
-            setCookieMobile( "todayCookie", "done" , 1);
-            $("#quickBar").hide();
-        });
-    });
-
-    function goLogout() {
-        if(confirm("로그아웃 하시겠습니까?")){
-            sessionStorage.clear();
-            $("#topNav_logout").show();
-            goMain();
-        }
-    }
-
-
-    function goAcademyMenu(gbnMenu, lefMenu) {
-        if(lefMenu == 'public'){
-            sessionStorage.setItem("leftMenu", "publicAcademy");
-            var menu = "publicAcademy";
-        }else if(lefMenu == 'tech'){
-            sessionStorage.setItem("leftMenu", "techAcademy");
-            var menu = "techAcademy";
-        }else if(lefMenu == 'post'){
-            sessionStorage.setItem("leftMenu", "postAcademy");
-            var menu = "postAcademy";
-        }
-
-        if(gbnMenu == 'main') goPageNoSubmit(menu, "main");
-        else if(gbnMenu == 'myLecRoom') goPageNoSubmit('myLecRoom', 'main');
-        else if(gbnMenu == 'teacher') goPageNoSubmit('teacher', 'main');
-        else if(gbnMenu == 'lecApply') goPageNoSubmit('lectureOrder', 'academy');
-        else if(gbnMenu == 'passReview') goPassReview();
-        else if(gbnMenu == 'customerCenter')  goPageNoSubmit('customerCenter', 'saveQuestion');
-        else if(gbnMenu == 'notice'){
-            sessionStorage.setItem("noticeHeader", "openMenu");
-            $("#noticeMenu li:eq(0)").addClass('active');
-            goPageNoSubmit('notice', 'list');
-        }else if(gbnMenu == 'year'){
-            javascript:goPageNoSubmit('zianPass', 'list');
-        }else if(gbnMenu == 'free'){
-            goPageNoSubmit('freeLecture', 'theory');
-        }
-    }
-
-    function goOnlineMenu(gbnMenu, lefMenu) {
-        if(lefMenu == 'public'){
-            sessionStorage.setItem("leftMenu", "publicOnline");
-            var menu = "postOnline";
-        }else if(lefMenu == 'tech'){
-            sessionStorage.setItem("leftMenu", "techOnline");
-            var menu = "techOnline";
-        }else if(lefMenu == 'post'){
-            sessionStorage.setItem("leftMenu", "postOnline");
-            var menu = "postOnline";
-        }
-        if(gbnMenu == 'main') goPageNoSubmit(menu, "main");
-        else if(gbnMenu == 'myLecRoom') goPageNoSubmit('myLecRoom', 'main');
-        else if(gbnMenu == 'teacher') goPageNoSubmit('teacher', 'main');
-        else if(gbnMenu == 'lecApply') goPageNoSubmit('lectureOrder', 'academy');
-        else if(gbnMenu == 'passReview') goPassReview();
-        else if(gbnMenu == 'zianPass') goPageNoSubmit('zianPass', 'list');
-        else if(gbnMenu == 'free') goPageNoSubmit('freeLecture', 'theory');
-        else if(gbnMenu == 'customerCenter')  goPageNoSubmit('customerCenter', 'saveQuestion');
-        else if(gbnMenu == 'notice'){
-            sessionStorage.setItem("noticeHeader", "openMenu");
-            $("#noticeMenu li:eq(0)").addClass('active');
-            goPageNoSubmit('notice', 'list');
-        }
-    }
-
-    function goBookStoreMobile(gbnMenu) {
-        if(gbnMenu == 'main'){
-            sessionStorage.setItem("leftMenu", 'bookStore');
-            goPageNoSubmit('bookStore','main');
-        }else if (gbnMenu != 'main' && gbnMenu != 'errata') {
-            location.href = "/bookStore?page_gbn=bookTypeList&bookType=" + gbnMenu;
-        } else if(gbnMenu == 'errata'){
-            goPageNoSubmit('bookStore','errataList');
-        }
-    }
-
-    function goBigExamMenu(gbnMenu) {
-        sessionStorage.setItem("leftMenu", "bigExam");
-        if(gbnMenu == 'apply'){
-            goPageNoSubmit('bigExam','examApply');
-        }else if(gbnMenu == 'acaExam'){
-            goPageNoSubmit('bigExam','acaExam');
-        }else if(gbnMenu == 'weekExam'){
-            goPageNoSubmit('bigExam','weekExam');
-        }else if(gbnMenu == 'pastQuestion'){
-            goPageNoSubmit('bigExam','pastQuestion');
-        }else if(gbnMenu == 'bigReviewList'){
-            goPageNoSubmit('bigExam','bigReviewList');
-        }else if(gbnMenu == 'referenceList'){
-            goPageNoSubmit('bigExam','referenceList')
-        }
-    }
-    function goDetailbookType(type) {
-        innerValue('bookType', type);
-        $("#bookTypePage").attr("action", "/bookStore?page_gbn=bookTypeList");
-        $("#bookTypePage").submit();
-    }
-
-</script>

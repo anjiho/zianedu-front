@@ -4,7 +4,6 @@
     $( document ).ready(function() {
         sessionStorage.setItem("leftMenu", "publicOnline");
     });
-
 </script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
@@ -13,7 +12,6 @@
     <!--상단-->
     <%@include file="/common/jsp/header.jsp" %>
     <!--//상단-->
-
     <!--본문-->
     <div id="container">
         <div class="inner">
@@ -291,34 +289,4 @@ $( document ).ready(function() {
     getBookList("productList1", 843, 1, 10);//행정직 온라인 서점
     getCommunityList(10970, 1, 2);//합격자 영상
 });
-
-//행정직 수강후기 > 상세보기
-function detailReview(bbsKey, tagId) {
-    innerValue('bbsKey', bbsKey);
-    if(tagId == 'lecInfo'){
-        goPage('review','detailLecture');
-    }else if(tagId == 'passInfo'){
-        goPage('review','detailPass');
-    }
-}
-
-//교수 상세페이지 이동
-function goTeacherDetail(teacherKey, reqKey) {
-    innerValue("teacherKey", teacherKey);
-    innerValue("reqKey", reqKey);
-    location.href = "/teacher?page_gbn=detail&teacherKey="+teacherKey+"&reqKey="+reqKey;
-}
-
-function goDetailBook(gkey) {
-    goPage('bookStore', 'detail');
-    location.href = "/bookStore?page_gbn=detail&bbsKey="+gkey;
-}
-
-function goPassReview() {
-    var leftMenuInfo = sessionStorage.getItem('leftMenu');
-    if(leftMenuInfo == 'bookStore') {
-        sessionStorage.setItem("leftMenu", "publicOnline");
-    }
-    goPageNoSubmit('review', 'videoList');
-}
 </script>
