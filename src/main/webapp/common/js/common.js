@@ -3525,3 +3525,26 @@ function goPassReview() {
     }
     goPageNoSubmit('review', 'videoList');
 }
+
+function goMyPage() {
+    goPageNoSubmit('myPage','orderList');
+}
+
+function goPassReview() {
+    var leftMenuInfo = sessionStorage.getItem('leftMenu');
+    if(leftMenuInfo == 'bookStore') {
+        sessionStorage.setItem("leftMenu", "publicOnline");
+    }
+    goPageNoSubmit('review', 'videoList');
+}
+
+function goBigExam() {
+    sessionStorage.setItem("leftMenu", "bigExam");
+    goPageNoSubmit('bigExam','main');
+}
+
+//파일다운로드
+function download(fileName) {
+    var downloadUrl = apiHost + "/download/fileDownload?filePath=" + fileName;
+    $.fileDownload(downloadUrl);
+}
