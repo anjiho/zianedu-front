@@ -284,7 +284,7 @@
                     <div id="side_login" style="display: none;">
                         <a href="javascript:goLoginPage();" class="btn_logout">로그인</a>
                     </div>
-                    <input type="button" class="btn_close_menu">닫기</input>
+                    <input type="button" class="btn_close_menu"/>
                 </div>
                 <!-- sitemap_wrap -->
                 <div class="sitemap_wrap">
