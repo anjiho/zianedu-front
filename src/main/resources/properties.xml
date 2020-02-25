@@ -10,4 +10,6 @@
     <entry key="user.reg.sms.encode.data">${user.reg.sms.encode.data}</entry>
     <entry key="find.id.sms.encode.data">${find.id.sms.encode.data}</entry>
     <entry key="find.pass.sms.encode.data">${find.pass.sms.encode.data}</entry>
+    <entry key="inipay.mid">${inipay.mid}</entry>
+    <entry key="inipay.signkey">${inipay.signkey}</entry>
 </properties>

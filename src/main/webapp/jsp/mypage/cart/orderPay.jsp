@@ -4,6 +4,7 @@
 <%@page import="com.inicis.std.util.SignatureUtil"%>
 <%@ page import="com.inicis.std.util.SignatureUtil"%>
 <%@page import="java.util.*"%>
+<%@ page import="com.zianedu.front.config.ConfigHolder" %>
 <%
 //    String cartNum = Util.isNullValue(request.getParameter("cartNum"), "");
 //    String gKeys = Util.isNullValue(request.getParameter("gKeys"), "");
@@ -26,10 +27,11 @@
 %>
 <%
     // 여기에 설정된 값은 Form 필드에 동일한 값으로 설정
-    String mid					= "INIpayTest";		// 가맹점 ID(가맹점 수정후 고정)
-
+    //String mid					= "INIpayTest";		// 가맹점 ID(가맹점 수정후 고정)
+    String mid                  = ConfigHolder.getINIPayMid();
     //인증
-    String signKey			    = "SU5JTElURV9UUklQTEVERVNfS0VZU1RS";	// 가맹점에 제공된 웹 표준 사인키(가맹점 수정후 고정)
+    //String signKey			    = "SU5JTElURV9UUklQTEVERVNfS0VZU1RS";	// 가맹점에 제공된 웹 표준 사인키(가맹점 수정후 고정)
+    String signKey              = ConfigHolder.getINIPaySignKey();
     String timestamp			= SignatureUtil.getTimestamp();			// util에 의해서 자동생성
 
     //String oid					= mid+"_"+SignatureUtil.getTimestamp();	// 가맹점 주문번호(가맹점에서 직접 설정)
@@ -222,7 +224,7 @@
                     </tr>
                 </table></td>
             </tr>
-            <input type="hidden" name="P_MID" value="INIpayTest">
+            <input type="hidden" name="P_MID" value="<%=mid%>">
             <input type=hidden name="P_NEXT_URL" id="P_NEXT_URL" value="">
             <input type=hidden name="P_RESERVED" id="P_RESERVED" value="">
             <input type=hidden name="P_NOTI_URL" value="">
