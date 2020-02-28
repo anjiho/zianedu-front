@@ -10,6 +10,7 @@
 <%@ page import="java.util.Map" %>
 <%@ page import="java.util.HashMap" %>
 <%@ page import="com.zianedu.front.utils.Util" %>
+<%@ page import="com.zianedu.front.config.ConfigHolder" %>
 <%
 	String pStatus = request.getParameter("P_STATUS");
 	String pRmesg1 = request.getParameter("P_RMESG1");
@@ -64,10 +65,11 @@
 	if ("00".equals(pStatus)) {
 		String resultJson = null;
 		HttpClient client = HttpClientBuilder.create().build();
+		String mid = ConfigHolder.getINIPayMid();
 
 		try {
 			HttpPost httpPost = new HttpPost(pReqUrl);
-			StringEntity params = new StringEntity("P_TID=" + URLEncoder.encode(pTID, "UTF-8") + "&P_MID=INIpayTest");
+			StringEntity params = new StringEntity("P_TID=" + URLEncoder.encode(pTID, "UTF-8") + "&P_MID=" + mid);
 			httpPost.addHeader("Content-Type", "application/x-www-form-urlencoded");
 			httpPost.setEntity(params);
 
