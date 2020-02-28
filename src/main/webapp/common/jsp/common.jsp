@@ -85,7 +85,7 @@
     <script src="/common/starplayer/js/starplayer_app.js"></script>
     <script src="/common/starplayer/js/starplayer_ui.js"></script>
 
-    <script src="/common/calendar/lang/ko.js"/>
+    <script src="/common/calendar/lang/ko.js"></script>
 </head>
 <body>
 <script>
