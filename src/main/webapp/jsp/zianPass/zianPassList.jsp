@@ -6,7 +6,7 @@
         if(leftMenuInfo == "publicOnline" || leftMenuInfo == "techOnline" || leftMenuInfo == "postOnline") {//온라인 지안패스
             var ctgKey = getZianPassCtgKey();
             var parentKey = getZianPassMenu(ctgKey);
-            if(parentKey != ""){
+            if(parentKey != "") {
                 getZianPassProductSubjectList(parentKey);//지안패스 과목리스트 가져오기
                 getZianPassProductList(parentKey);//지안패스 상품리스트 가져오기
                 gfn_display("yearMemberList", false);
@@ -17,7 +17,6 @@
             getYearMemberProductList(parentKey);//연간관리반 상품리스트 가져오기
             gfn_display("passList", false);
         }
-
 
         /* 지안패스 탭 선택시 스타일적용 */
         $('.selectArea dl dd ul li').each(function(){

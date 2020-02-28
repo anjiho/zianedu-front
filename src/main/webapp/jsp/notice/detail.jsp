@@ -24,7 +24,7 @@
                 $("#modifyBtn").hide();
             }
         }else{
-            $("#modifyBtn").hide();
+            $("#modifyBtn").hide();getMainBottomBanner
         }
         var bbsmasterKey =  getBbsMasterKey();
 

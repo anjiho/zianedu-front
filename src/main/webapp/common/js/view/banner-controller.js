@@ -77,9 +77,6 @@ function getMainreviewBanner(tagId, ctgKey, listNum) {
             var returnHtml = "<a href='"+ selList[i].targetUrl +"'><img src='"+ selList[i].fullFileUrl +"' alt=''></a>";
             $("#reviewBanner").append(returnHtml);
         }
-        // dwr.util.addOptions(tagId, selList, function (data) {
-        //     return "<a href='"+ data.targetUrl +"'><img src='"+ data.fullFileUrl +"' alt=''></a>"
-        // }, {escapeHtml: false});
     }
 }
 
@@ -91,7 +88,10 @@ function getMainBottomBanner(ctgKey, listNum) {
     var bannerInfoList = getApi("/banner/getMainMiniBanner/", ctgKey , data);
     if (bannerInfoList != null) {
         var selList = bannerInfoList.result;
+<<<<<<< HEAD
+=======
 
+>>>>>>> b76b850a5fdccb0cf140bae7a1f4991d4e6af67b
         $("#ABottomBanner1").attr("href", selList[0].targetUrl == null ? "#" : selList[0].targetUrl);
         $("#bottomBanner1").attr("src", selList[0].fullFileUrl);
     }else{
@@ -114,42 +114,6 @@ function getEventMiniBanner(tagId, ctgKey, listNum) {
         }
     }
 }
-
-//index 페이지 - 메인 대 배너s
-/*
-function getIndexMainBigBanner(tagId, titleTagId, listNum) {
-    var bannerInfoList = getApi("/banner/getMainBigBanner/", listNum ,"");
-    if (bannerInfoList.result.length > 0) {
-        var selList = bannerInfoList.result;
-            dwr.util.addOptions(tagId, selList, function (data) {
-                return "<a href='#'><img src='"+ data.fullFileUrl +"' alt=''></a>"
-            }, {escapeHtml: false});
-
-            var i = 0;
-            dwr.util.addOptions(titleTagId, selList, function (data) {
-                return "<a href='#' data-slide-index='"+ i++ +"'>"+ data.title +"</a>"
-            }, {escapeHtml: false});
-    }
-    initSliderOption1("visualSlider");
-}
-*/
-
-
-//행적직 온라인 - 대배너
-/*
-function getMainBigBanner(tagId, listNum) {
-    var bannerInfoList = getApi("/banner/getMainBigBanner/", listNum ,"");
-    if (bannerInfoList.result.length > 0) {
-        var selList = bannerInfoList.result;
-        dwr.util.addOptions(tagId, selList, function (data) {
-            return "<a href='#'><img src='"+ data.fullFileUrl +"' alt=''></a>"
-        }, {escapeHtml: false});
-    }
-    kiplayer.sliderBx($("#mainVisualSlider1"));
-    $(window).resize(function(){});
-    $(window).scroll(function(){});
-}
- */
 
 //메인페이지 최상단 배너
 function getMainPageTopBanner(tagId) {
