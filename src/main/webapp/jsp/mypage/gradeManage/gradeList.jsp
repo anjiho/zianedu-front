@@ -106,6 +106,8 @@
     <input type="hidden" name="page_gbn" id="page_gbn">
     <input type="hidden" id="sPage">
     <input type="hidden" id="sPage2">
+    <input type="hidden" id="sPage3">
+    <input type="hidden" id="sPage4">
     <div id="wrap">
         <%@include file="/common/jsp/leftMenu.jsp" %>
         <!--상단-->

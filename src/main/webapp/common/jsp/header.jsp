@@ -86,7 +86,7 @@
         }else if(leftMenuInfo == "postAcademy"){
             getMainBottomBanner(6288, 2);
         }else{
-            getMainBottomBanner(6287, 2);
+            getMainBottomBanner(6285, 2);
         }
 
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));

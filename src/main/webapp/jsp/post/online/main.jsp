@@ -25,12 +25,21 @@
                 <div class="right">
                     <ul id="mainVisualSlider2"></ul>
                 </div>
+                <div class="mainBannerReview disnonepc">
+                    <div class="inner">
+                        <a href="#"><img src="http://52.79.40.214/Upload/100/main/img_banner0301_20190903102820.jpg" alt=""></a>
+                    </div>
             </div>
-            <div class="mainBannerReview">
-                <div class="inner">
-                    <ul id="reviewBanner"></ul>
+<%--            <div class="mainBannerReview">--%>
+<%--                <div class="inner">--%>
+<%--                    <ul id="reviewBanner"></ul>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+                <div class="mainBannerReview disnone">
+                    <div class="inner">
+                        <a href="#"><img src="http://52.79.40.214/Upload/100/main/img_banner0301_20190903102820.jpg" alt=""></a>
+                    </div>
                 </div>
-            </div>
             <!-- 지안에듀 합격자 영상 -->
             <div class="mainBanner">
                 <div class="inner">
@@ -277,8 +286,8 @@ $( document ).ready(function() {
     getEventMiniBanner("", 6289, 5);//이벤트 배너
     getBannerNoticeList2("examNotice", 1, 4, 10010);//시험공고 리스트
     getBannerNoticeList2("openInfo", 1, 4, 10026);//개강안내 리스트
-    getBannerNoticeList("lecInfo", 1, 4, 10033);//수강후기 리스트
-    getBannerNoticeList("passInfo", 1, 4, 10032);//합격후기 리스트
+    getBannerNoticeList("lecInfo", 1, 4, 10056);//수강후기 리스트
+    getBannerNoticeList("passInfo", 1, 4, 10048);//합격후기 리스트
     getBookList("productList1", 845, 1, 10);//온라인 서점
     getCommunityList(10970, 1, 2);//합격자 영상
     getMainreviewBanner("reviewBanner", 1087, 1);//중앙 소 배너

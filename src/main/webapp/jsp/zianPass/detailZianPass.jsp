@@ -11,11 +11,14 @@
         <%@include file="/common/jsp/header.jsp" %>
         <!--//상단-->
         <!--본문-->
-        <div id="container">
-            <div class="inner">
-                <iframe src="<%=targetUrl%>" width="1000" height="1000" style="border:none;" frameborder="0" ></iframe>
-            </div>
-        </div>
+
+            <iframe src="<%=targetUrl%>" style="border:none; width: 100%; height: 1000px" frameborder="0" ></iframe>
+
+<%--        <div id="container">--%>
+<%--            <div class="inner">--%>
+<%--                <iframe src="<%=targetUrl%>" width="1000" height="1000" style="border:none;" frameborder="0" ></iframe>--%>
+<%--            </div>--%>
+<%--        </div>--%>
         <!--//본문-->
         <!--하단-->
         <%@include file="/common/jsp/footer.jsp" %>

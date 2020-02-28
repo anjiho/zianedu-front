@@ -23,9 +23,14 @@
                         <ul id="mainVisualSlider2"></ul>
                     </div>
                 </div>
-                <div class="mainBannerReview">
+<%--                <div class="mainBannerReview">--%>
+<%--                    <div class="inner">--%>
+<%--                        <ul id="reviewBanner"></ul>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+                <div class="mainBannerReview disnone">
                     <div class="inner">
-                        <ul id="reviewBanner"></ul>
+                        <a href="#"><img src="http://52.79.40.214/Upload/100/main/img_banner0102_20190903093100.jpg" alt=""></a>
                     </div>
                 </div>
 
