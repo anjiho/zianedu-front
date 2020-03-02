@@ -55,8 +55,8 @@
     });
 
 
-    function test() {
-        alert(1);
+    function getVideoLectureInfo(teacherKey, subjectCtgKey, stepCtgKeys) {
+        getApplyVideoLectureInfo(teacherKey, subjectCtgKey, stepCtgKeys);
     }
 
     //과목 클릭 했을때

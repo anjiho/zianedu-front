@@ -27,16 +27,11 @@
                         <a href="#"><img src="http://52.79.40.214/Upload/100/main/img_banner0201_20190903102230.jpg" alt=""></a>
                 </div>
             </div>
-<%--            <div class="mainBannerReview">--%>
-<%--                <div class="inner">--%>
-<%--                    <ul id="reviewBanner"></ul>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-                <div class="mainBannerReview disnone">
-                    <div class="inner">
-                        <a href="#"><img src="http://52.79.40.214/Upload/100/main/img_banner0201_20190903102230.jpg" alt=""></a>
-                    </div>
+            <div class="mainBannerReview disnone">
+                <div class="inner">
+                    <a href="#"><img src="http://52.79.40.214/Upload/100/main/img_banner0201_20190903102230.jpg" alt=""></a>
                 </div>
+            </div>
             <!-- 지안에듀 합격자 영상 -->
             <div class="mainBanner">
                 <div class="inner">
@@ -46,11 +41,9 @@
                     </div>
                     <div class="divGroup cols2">
                         <div>
-                            <%--                            <a href="#"><img src="" id="movieBanner0" alt=""></a>--%>
                             <iframe width="500" height="280" src="https://www.youtube.com/embed/aeBl2GEuMdA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </div>
                         <div>
-                            <%--                            <a href="#"><img src="" id="movieBanner1" alt=""></a>--%>
                             <iframe width="500" height="280" src="https://www.youtube.com/embed/q6Cu1LWNHmc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </div>
                     </div>
@@ -162,7 +155,7 @@
                     <li><a href="javascript:goPageNoSubmit('lectureOrder', 'single')"><img src="/common/zian/images/common/icon_quickLink2.png" alt=""> 학원실강접수</a></li>
                     <li ><a href="javascript:goOpenMenu();"><img src="/common/zian/images/common/icon_quickLink3.png" alt=""> 학원개강안내</a></li>
                     <li><a href="javascript:goLecRoom();"><img src="/common/zian/images/common/icon_quickLink4.png" alt=""> 강의실배정표</a></li>
-                    <li><a href="#"><img src="/common/zian/images/common/icon_quickLink5.png" alt=""> 모의고사신청</a></li>
+                    <li><a href="javascript:goPageNoSubmit('bigExam','examApply');"><img src="/common/zian/images/common/icon_quickLink5.png" alt=""> 모의고사신청</a></li>
                 </ul>
             </div>
 

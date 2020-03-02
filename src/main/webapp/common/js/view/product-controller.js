@@ -73,7 +73,6 @@ function getLectureApplyTeacherTypeList(menuCtgKey, subjectMenuKeys, teacherKeys
     };
     var infoList = getApi("/product/getLectureApplyTeacherTypeList/", menuCtgKey, data);
     if (infoList != null) {
-        console.log(infoList);
         if (infoList.result.length > 0) {
             var selList = infoList.result;
             for (var i = 0; i < selList.length; i++) {
@@ -106,151 +105,16 @@ function getLectureApplyTeacherTypeList(menuCtgKey, subjectMenuKeys, teacherKeys
                             returnHtml += "<li class=\"w40p\">강좌명</li>";
                             returnHtml += "<li class=\"w35p\">수강료</li>";
                             returnHtml += "</ul>";
-                            /* 유형별 뿌리기 */
-                            if (teacherInfoLIST[j].videoLectureInfo != null) {
-                                var videoLectureInfo = teacherInfoLIST[j].videoLectureInfo;
-                                returnHtml += "<div class=\"lectureBody\">";
-                                for (var k = 0; k < videoLectureInfo.length; k++) {
-                                    var teacherLectureList = videoLectureInfo[k].teacherLectureList;
-
-                                    for (var l = 0; l < teacherLectureList.length; l++) {
-                                        var teachLec = teacherLectureList[l];
-                                        var color = "";
-                                        if (videoLectureInfo[k].stepCtgKey == 207) { //단과특강
-                                            color = "blue";
-                                        } else if (videoLectureInfo[k].stepCtgKey == 203) {//이론
-                                            color = "green";
-                                        } else if (videoLectureInfo[k].stepCtgKey == 205) {//문제풀이
-                                            color = "orange";
-                                        } else if (videoLectureInfo[k].stepCtgKey == 4266) {//모의고사
-                                            color = "purple";
-                                        } else { //필기대비
-                                            color = "navy";
-                                        }
-                                        returnHtml += "<div class=\"lectureRow\">";
-                                        returnHtml += "<ul class=\"lectureList\">";
-                                        returnHtml += "<li class=\"w15p\">";
-                                        returnHtml += "<span class=\"btn_learnType " + color + "\">" + teachLec.ctgName + "</span>";
-                                        returnHtml += "</li>";
-                                        returnHtml += "<li class=\"w40p\">";
-                                        returnHtml += "<a href=\"#\" class=\"learnName\">" + teachLec.goodsName + "</a>";
-                                        returnHtml += "<span class=\"learnNum\">강의수 <b class=\"colorBlue\">" + teachLec.lecCount + "강</b> | 수강일수 <b class=\"colorBlue\">" + teachLec.limitDay + "일</b></span>";
-                                        returnHtml += "<span class=\"learnView\">샘플보기 <a href=\"#\" class=\"btn_s btn_quality\">일반화질</a> <a href=\"#\" class=\"btn_s btn_quality on\">고화질</a></span>";
-                                        returnHtml += "</li>";
-                                        returnHtml += "<li class=\"w40p ta_right\">";
-                                        returnHtml += "<ul class=\"costList\">";
-
-                                        for (var p = 0; p < teachLec.videoLectureKindList.length; p++) {
-                                            var kindInfo = teachLec.videoLectureKindList[p];
-                                            if (kindInfo.kind == 100) {
-                                                returnHtml += "<li>";
-                                                if (kindInfo.pcDiscountPercent != null) {
-                                                    returnHtml += "<span class=\"colorRed\">" + kindInfo.pcDiscountPercent + "</span>";
-                                                }
-                                                returnHtml += "<span class=\"btn_ss btn_divTag\">PC</span>";
-                                                returnHtml += "<b class=\"cost\">" + teachLec.pcSellPriceName + "</b> <input type=\"checkbox\" name='lecChk' id='" + kindInfo.priceKey + "' value='" + kindInfo.gkey + "'>";
-                                                returnHtml += "</li>";
-                                            } else if (kindInfo.kind == 101) {
-                                                returnHtml += "<li>";
-                                                if (kindInfo.mobileDiscountPercent != null) {
-                                                    returnHtml += "<span class=\"colorRed\">" + kindInfo.mobileDiscountPercent + "</span>";
-                                                }
-                                                returnHtml += "<span class=\"btn_ss btn_divTag\">모바일</span>";
-                                                returnHtml += "<b class=\"cost\">" + teachLec.mobileSellPriceName + "</b> <input type=\"checkbox\" name='lecChk' id='" + kindInfo.priceKey + "' value='" + kindInfo.gkey + "'>";
-                                                returnHtml += "</li>";
-                                            } else {
-                                                returnHtml += "<li>";
-                                                if (kindInfo.pcMobileDiscountPercent != null) {
-                                                    returnHtml += "<span class=\"colorRed\">" + kindInfo.pcMobileDiscountPercent + "</span>";
-                                                }
-                                                returnHtml += "<span class=\"btn_ss btn_divTag\">PC</span> <span class=\"btn_ss btn_divTag\">모바일</span>";
-                                                returnHtml += "<b class=\"cost\">" + teachLec.pcMobileSellPriceName + "</b> <input type=\"checkbox\" name='lecChk' id='" + kindInfo.priceKey + "' value='" + kindInfo.gkey + "'>";
-                                                returnHtml += "</li>";
-                                            }
-                                        }
-                                        returnHtml += "</ul>";
-                                        returnHtml += "</li>";
-                                        returnHtml += "</ul>";//lectureList
-
-                                        returnHtml += "<div class=\"toggleWrap\">";
-                                        returnHtml += "<div class=\"div_toggle\">";
-                                        returnHtml += "<div class=\"tableBox\">";
-                                        returnHtml += "<table class=\"lecture\">";
-                                        returnHtml += "<colgroup>";
-                                        returnHtml += "<col class=\"w10p\">";
-                                        returnHtml += "<col class=\"w40p\">";
-                                        returnHtml += "<col class=\"w10p\">";
-                                        returnHtml += "<col class=\"w40p\">";
-                                        returnHtml += "</colgroup>";
-                                        returnHtml += "<thead>";
-                                        returnHtml += "<th scope=\"row\" style='text-align: center'>회차</th>";
-                                        returnHtml += "<th scope=\"row\" style='text-align: center'>제목</th>";
-                                        returnHtml += "<th scope=\"row\" style='text-align: center'>시간</th>";
-                                        returnHtml += "<th scope=\"row\" style='text-align: center'>샘플보기</th>";
-                                        returnHtml += "</thead>";
-                                        returnHtml += "<tbody>";
-                                        var lecList = getLectureList(teachLec.gkey, 'PC');
-                                        if (lecList != null) {
-                                            var cmpList = lecList.result;
-                                            for (var m = 0; m < cmpList.lectureList.length; m++) {
-                                                var lecInfo = cmpList.lectureList[m];
-                                                returnHtml += "<tr>";
-                                                returnHtml += "<td class=\"ta_center\">" + lecInfo.numStr + "</td>";
-                                                returnHtml += "<td>" + lecInfo.name + "</td>";
-                                                returnHtml += "<td class=\"ta_center\">" + lecInfo.vodTime + "</td>";
-                                                if (lecInfo.num == 1) {
-                                                    returnHtml += "<td class=\"ta_center\"><span class=\"learnView\">샘플보기 <a href=\"#\" class=\"btn_s btn_quality\">일반화질</a> <a href=\"#\" class=\"btn_s btn_quality on\">고화질</a></span></td>";
-                                                } else {
-                                                    returnHtml += "<td class=\"ta_center\"></span></td>";
-                                                }
-                                                returnHtml += "</tr>";
-                                            }
-                                        }
-                                        returnHtml += "</tbody>";
-                                        returnHtml += "</table>";
-                                        returnHtml += "</div>";//tableBox
-                                        returnHtml += "</div>";//div_toggle
-                                        returnHtml += "<div class=\"btn_toggle\"><a href=\"#\"></a></div>";
-                                        returnHtml += "</div>";//toggleWrap
-                                        returnHtml += "</div>"//lectureRow
-                                    }
-
-                                    if (teachLec.teacherLectureBook != null) {
-                                        for (var p = 0; p < teachLec.teacherLectureBook.length; p++) {
-                                            var bookInfo = teachLec.teacherLectureBook[p];
-                                            returnHtml += "<div class=\"lectureRow\">";
-                                            returnHtml += "<ul class=\"lectureList\">";
-                                            returnHtml += "<li class=\"w15p\">";
-                                            returnHtml += "<span class=\"btn_learnType gray\">교재</span>";
-                                            returnHtml += "</li>";
-                                            returnHtml += "<li class=\"w40p\">";
-                                            returnHtml += "<span class=\"btn_ss btn_divTag\">" + bookInfo.isMain + "</span>";
-                                            returnHtml += "<a href=\"#\" class=\"learnName\">" + bookInfo.bookName + "</a>";
-                                            returnHtml += "<span class=\"learnNum\">저자 <b class=\"colorBlue\">" + bookInfo.writer + "</b> | 출판 <b class=\"colorBlue\">" + bookInfo.publishDate + "</b></span>";
-                                            returnHtml += "<li>";
-                                            returnHtml += "<li class=\"w35p ta_right\">";
-                                            returnHtml += "<ul class=\"costList\">";
-                                            returnHtml += "<li>";
-                                            returnHtml += "<b class=\"cost\">" + bookInfo.sellPriceName + "원</b> <input type=\"checkbox\" name='lecChk' id='" + bookInfo.priceKey + "' value='" + bookInfo.gkey + "'>";
-                                            returnHtml += "</li>";
-                                            returnHtml += "</ul>";
-                                            returnHtml += "</li>";
-                                            returnHtml += "<li class=\"w10p ta_center\">&nbsp;</li>";
-                                            returnHtml += "</ul>";
-                                            returnHtml += "</div>";
-                                        }
-                                    }
-                                }
+                                returnHtml += "<div class=\"lectureBody\" id='lectureBody_"+ teacherInfoLIST[j].teacherKey +"'>";
                                 returnHtml += "</div>";//lectureBody
-                            }
                             returnHtml += "</div>";//div_toggle
-                            returnHtml += "<div class=\"btn_toggle lock\" onclick='test();'></div>";
+
+                            returnHtml += "<div class=\"btn_toggle lock\" onclick='getVideoLectureInfo("+ teacherInfoLIST[j].teacherKey +", "+ teacherInfoLIST[j].subjectCtgKey +","+'"'+ stepCtgKeys +'"'+");'></div>";
                             returnHtml += "</div>";//toggleWrap
                             returnHtml += "</div>";//teacherRow
                         }//182 line for문 끝
                     }
                     returnHtml += "</div>";//teacherBody
-
                     returnHtml += "</div>";//lectureWrap
                     // }
                     $("#resultList").append(returnHtml);
@@ -266,6 +130,158 @@ function getLectureApplyTeacherTypeList(menuCtgKey, subjectMenuKeys, teacherKeys
         }
     });
 }
+
+function getApplyVideoLectureInfo(teacherKey, subjectCtgKey, stepCtgKeys) {
+    if (teacherKey == null || teacherKey == undefined) return;
+    var data = {
+        subjectCtgKey : subjectCtgKey,
+        stepCtgKeys: stepCtgKeys,
+    };
+    var infoList = getApi("/product/getApplyVideoLectureInfo/", teacherKey, data);
+    var videoLectureInfo = infoList.result;
+    for (var k = 0; k < videoLectureInfo.length; k++) {
+         var teacherLectureList = videoLectureInfo[k].teacherLectureList;
+         for (var l = 0; l < teacherLectureList.length; l++) {
+
+             var teachLec = teacherLectureList[l];
+             var color = "";
+             if (videoLectureInfo[k].stepCtgKey == 207) { //단과특강
+                 color = "blue";
+             } else if (videoLectureInfo[k].stepCtgKey == 203) {//이론
+                 color = "green";
+             } else if (videoLectureInfo[k].stepCtgKey == 205) {//문제풀이
+                 color = "orange";
+             } else if (videoLectureInfo[k].stepCtgKey == 4266) {//모의고사
+                 color = "purple";
+             } else { //필기대비
+                 color = "navy";
+             }
+             var returnHtml = "<div class=\"lectureRow\">";
+             returnHtml += "<ul class=\"lectureList\">";
+             returnHtml += "<li class=\"w15p\">";
+             returnHtml += "<span class=\"btn_learnType " + color + "\">" + teachLec.ctgName + "</span>";
+             returnHtml += "</li>";
+             returnHtml += "<li class=\"w40p\">";
+             returnHtml += "<a href=\"#\" class=\"learnName\">" + teachLec.goodsName + "</a>";
+             returnHtml += "<span class=\"learnNum\">강의수 <b class=\"colorBlue\">" + teachLec.lecCount + "강</b> | 수강일수 <b class=\"colorBlue\">" + teachLec.limitDay + "일</b></span>";
+             returnHtml += "<span class=\"learnView\">샘플보기 <a href=\"#\" class=\"btn_s btn_quality\">일반화질</a> <a href=\"#\" class=\"btn_s btn_quality on\">고화질</a></span>";
+             returnHtml += "</li>";
+             returnHtml += "<li class=\"w40p ta_right\">";
+             returnHtml += "<ul class=\"costList\">";
+
+             for (var p = 0; p < teachLec.videoLectureKindList.length; p++) {
+                 var kindInfo = teachLec.videoLectureKindList[p];
+                 if (kindInfo.kind == 100) {
+                     returnHtml += "<li>";
+                     if (kindInfo.pcDiscountPercent != null) {
+                         returnHtml += "<span class=\"colorRed\">" + kindInfo.pcDiscountPercent + "</span>";
+                     }
+                     returnHtml += "<span class=\"btn_ss btn_divTag\">PC</span>";
+                     returnHtml += "<b class=\"cost\">" + teachLec.pcSellPriceName + "</b> <input type=\"checkbox\" name='lecChk' id='" + kindInfo.priceKey + "' value='" + kindInfo.gkey + "'>";
+                     returnHtml += "</li>";
+                 } else if (kindInfo.kind == 101) {
+                     returnHtml += "<li>";
+                     if (kindInfo.mobileDiscountPercent != null) {
+                         returnHtml += "<span class=\"colorRed\">" + kindInfo.mobileDiscountPercent + "</span>";
+                     }
+                     returnHtml += "<span class=\"btn_ss btn_divTag\">모바일</span>";
+                     returnHtml += "<b class=\"cost\">" + teachLec.mobileSellPriceName + "</b> <input type=\"checkbox\" name='lecChk' id='" + kindInfo.priceKey + "' value='" + kindInfo.gkey + "'>";
+                     returnHtml += "</li>";
+                 } else {
+                     returnHtml += "<li>";
+                     if (kindInfo.pcMobileDiscountPercent != null) {
+                         returnHtml += "<span class=\"colorRed\">" + kindInfo.pcMobileDiscountPercent + "</span>";
+                     }
+                     returnHtml += "<span class=\"btn_ss btn_divTag\">PC</span> <span class=\"btn_ss btn_divTag\">모바일</span>";
+                     returnHtml += "<b class=\"cost\">" + teachLec.pcMobileSellPriceName + "</b> <input type=\"checkbox\" name='lecChk' id='" + kindInfo.priceKey + "' value='" + kindInfo.gkey + "'>";
+                     returnHtml += "</li>";
+                 }
+             }
+             returnHtml += "</ul>";
+             returnHtml += "</li>";
+             returnHtml += "</ul>";//lectureList
+
+             returnHtml += "<div class=\"toggleWrap\">";
+             returnHtml += "<div class=\"div_toggle\">";
+             returnHtml += "<div class=\"tableBox\">";
+             returnHtml += "<table class=\"lecture\">";
+             returnHtml += "<colgroup>";
+             returnHtml += "<col class=\"w10p\">";
+             returnHtml += "<col class=\"w40p\">";
+             returnHtml += "<col class=\"w10p\">";
+             returnHtml += "<col class=\"w40p\">";
+             returnHtml += "</colgroup>";
+             returnHtml += "<thead>";
+             returnHtml += "<th scope=\"row\" style='text-align: center'>회차</th>";
+             returnHtml += "<th scope=\"row\" style='text-align: center'>제목</th>";
+             returnHtml += "<th scope=\"row\" style='text-align: center'>시간</th>";
+             returnHtml += "<th scope=\"row\" style='text-align: center'>샘플보기</th>";
+             returnHtml += "</thead>";
+             returnHtml += "<tbody>";
+
+             var lecList = getLectureList(teachLec.gkey, 'PC');
+             if (lecList != null) {
+                 var cmpList = lecList.result;
+                 for (var m = 0; m < cmpList.lectureList.length; m++) {
+                     var lecInfo = cmpList.lectureList[m];
+                     returnHtml += "<tr>";
+                     returnHtml += "<td class=\"ta_center\">" + lecInfo.numStr + "</td>";
+                     returnHtml += "<td>" + lecInfo.name + "</td>";
+                     returnHtml += "<td class=\"ta_center\">" + lecInfo.vodTime + "</td>";
+                     if (lecInfo.num == 1) {
+                         returnHtml += "<td class=\"ta_center\"><span class=\"learnView\">샘플보기 <a href=\"#\" class=\"btn_s btn_quality\">일반화질</a> <a href=\"#\" class=\"btn_s btn_quality on\">고화질</a></span></td>";
+                     } else {
+                         returnHtml += "<td class=\"ta_center\"></span></td>";
+                     }
+                     returnHtml += "</tr>";
+                 }
+             }
+             returnHtml += "</tbody>";
+             returnHtml += "</table>";
+             returnHtml += "</div>";//tableBox
+             returnHtml += "</div>";//div_toggle
+             returnHtml += "<div class=\"btn_toggle1\"><a href=\"#\"></a></div>";
+             returnHtml += "</div>";//toggleWrap
+             returnHtml += "</div>"//lectureRow
+         }
+
+         if (teachLec.teacherLectureBook != null) {
+             for (var p = 0; p < teachLec.teacherLectureBook.length; p++) {
+                 var bookInfo = teachLec.teacherLectureBook[p];
+                 returnHtml += "<div class=\"lectureRow\">";
+                 returnHtml += "<ul class=\"lectureList\">";
+                 returnHtml += "<li class=\"w15p\">";
+                 returnHtml += "<span class=\"btn_learnType gray\">교재</span>";
+                 returnHtml += "</li>";
+                 returnHtml += "<li class=\"w40p\">";
+                 returnHtml += "<span class=\"btn_ss btn_divTag\">" + bookInfo.isMain + "</span>";
+                 returnHtml += "<a href=\"#\" class=\"learnName\">" + bookInfo.bookName + "</a>";
+                 returnHtml += "<span class=\"learnNum\">저자 <b class=\"colorBlue\">" + bookInfo.writer + "</b> | 출판 <b class=\"colorBlue\">" + bookInfo.publishDate + "</b></span>";
+                 returnHtml += "<li>";
+                 returnHtml += "<li class=\"w35p ta_right\">";
+                 returnHtml += "<ul class=\"costList\">";
+                 returnHtml += "<li>";
+                 returnHtml += "<b class=\"cost\">" + bookInfo.sellPriceName + "원</b> <input type=\"checkbox\" name='lecChk' id='" + bookInfo.priceKey + "' value='" + bookInfo.gkey + "'>";
+                 returnHtml += "</li>";
+                 returnHtml += "</ul>";
+                 returnHtml += "</li>";
+                 returnHtml += "<li class=\"w10p ta_center\">&nbsp;</li>";
+                 returnHtml += "</ul>";
+                 returnHtml += "</div>";
+             }
+         }
+        $("#lectureBody_"+teacherKey).append(returnHtml);
+     }
+
+    $(".toggleWrap > .btn_toggle1").click(function(){
+        if($(this).parent().hasClass("active")){
+            $(this).parent().removeClass("active");
+        }else{
+            $(this).parent().addClass("active");
+        }
+    });
+}
+
 
 
 function getLectureAcademyTeacherList(menuCtgKey, subjectMenuKeys, teacherKeys, stepCtgKeys, goodsType) {
@@ -337,6 +353,7 @@ function getLectureAcademyTeacherList(menuCtgKey, subjectMenuKeys, teacherKeys, 
         }
     });
 }
+
 
 //패키지 수강신청
 function getSpecialPackageList(menuCtgKey, subjectMenuKeys, teacherKeys, stepCtgKeys, device) {

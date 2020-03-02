@@ -161,6 +161,12 @@
 .toggleWrap.active > .btn_toggle{background:url(/common/zian/images/common/icon_lecture_up.png) no-repeat center center;}
 .toggleWrap.active > .div_toggle{display:block;}
 
+.toggleWrap > .btn_toggle1{display:block;height:30px;background:url(/common/zian/images/common/icon_lecture_down.png) no-repeat center center;cursor:pointer;}
+.toggleWrap > .btn_toggle1.lock{position:absolute;top:-30px;left:0;right:0;}
+.toggleWrap > .div_toggle1{display:none;}
+.toggleWrap.active > .btn_toggle1{background:url(/common/zian/images/common/icon_lecture_up.png) no-repeat center center;}
+.toggleWrap.active > .div_toggle{display:block;}
+
 
 .lectureWrap{margin-top:40px;border-top:1px #e5e5e5 solid;}
 .lectureTotal{padding:25px 30px;border-left:1px #e5e5e5 solid;border-right:1px #e5e5e5 solid;}
