@@ -87,7 +87,6 @@ function getLectureApplyTeacherTypeList(menuCtgKey, subjectMenuKeys, teacherKeys
                     }
                     returnHtml += "<div class=\"teacherBody\">";
                     var teacherInfoLIST = cmpList.teacherTypeInfo;
-                    console.log(teacherInfoLIST);
                     if (teacherInfoLIST != null) {
                         for (var j = 0; j < teacherInfoLIST.length; j++) {
                             returnHtml += "<div class=\"teacherRow\">";
@@ -453,7 +452,12 @@ function getSpecialPackageList(menuCtgKey, subjectMenuKeys, teacherKeys, stepCtg
                                                                         returnHtml += "<td class=\"ta_center\">"+ lecList.numStr +"</td>";
                                                                         returnHtml += "<td>"+ lecList.name +"</td>";
                                                                         returnHtml += "<td class=\"ta_center\">"+ lecList.vodTime +"</td>";
+                                                                    if (lecList.num == 1) {
                                                                         returnHtml += "<td class=\"ta_center\"><span class=\"learnView\"> <a href=\"#\" class=\"btn_s btn_quality\">일반화질</a> <a href=\"#\" class=\"btn_s btn_quality on\">고화질</a></span></td>";
+                                                                    } else {
+                                                                        returnHtml += "<td class=\"ta_center\"></span></td>";
+                                                                    }
+                                                                      //  returnHtml += "<td class=\"ta_center\"><span class=\"learnView\"> <a href=\"#\" class=\"btn_s btn_quality\">일반화질</a> <a href=\"#\" class=\"btn_s btn_quality on\">고화질</a></span></td>";
                                                                     returnHtml += "</tr>";
                                                                 } //테이블 for문
                                                                  returnHtml += "</tbody>";
