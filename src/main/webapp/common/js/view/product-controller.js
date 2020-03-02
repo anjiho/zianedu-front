@@ -244,9 +244,13 @@ function getApplyVideoLectureInfo(teacherKey, subjectCtgKey, stepCtgKeys, menuCt
              returnHtml += "</div>";//div_toggle
              returnHtml += "<div class=\"btn_toggle1\"><a href=\"#\"></a></div>";
              returnHtml += "</div>";//toggleWrap
-             returnHtml += "</div>"//lectureRow
+             returnHtml += "</div>";//lectureRow
              $("#lectureBody_"+teacherKey).append(returnHtml);
          }
+
+
+
+
 
          if (teachLec.teacherLectureBook != null) {
              for (var p = 0; p < teachLec.teacherLectureBook.length; p++) {
