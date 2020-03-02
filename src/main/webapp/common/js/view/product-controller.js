@@ -131,10 +131,11 @@ function getLectureApplyTeacherTypeList(menuCtgKey, subjectMenuKeys, teacherKeys
     });
 }
 
-function getApplyVideoLectureInfo(teacherKey, subjectCtgKey, stepCtgKeys) {
+function getApplyVideoLectureInfo(teacherKey, menuCtgKey, subjectCtgKey, stepCtgKeys) {
     if (teacherKey == null || teacherKey == undefined) return;
     var data = {
         subjectCtgKey : subjectCtgKey,
+        menuCtgKey : menuCtgKey,
         stepCtgKeys: stepCtgKeys
     };
     $("#lectureBody_"+teacherKey).empty();
