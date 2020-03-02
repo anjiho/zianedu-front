@@ -109,7 +109,7 @@ function getLectureApplyTeacherTypeList(menuCtgKey, subjectMenuKeys, teacherKeys
                                 returnHtml += "</div>";//lectureBody
                             returnHtml += "</div>";//div_toggle
 
-                            returnHtml += "<div class=\"btn_toggle lock\" onclick='getVideoLectureInfo("+ teacherInfoLIST[j].teacherKey +", "+ teacherInfoLIST[j].subjectCtgKey +","+'"'+ stepCtgKeys +'"'+");'></div>";
+                            returnHtml += "<div class=\"btn_toggle lock\" onclick='getVideoLectureInfo("+ teacherInfoLIST[j].teacherKey +", "+ teacherInfoLIST[j].subjectCtgKey +","+'"'+ stepCtgKeys +'"'+", "+ menuCtgKey + ");'></div>";
                             returnHtml += "</div>";//toggleWrap
                             returnHtml += "</div>";//teacherRow
                         }//182 line for문 끝
@@ -131,12 +131,12 @@ function getLectureApplyTeacherTypeList(menuCtgKey, subjectMenuKeys, teacherKeys
     });
 }
 
-function getApplyVideoLectureInfo(teacherKey, menuCtgKey, subjectCtgKey, stepCtgKeys) {
+function getApplyVideoLectureInfo(teacherKey, subjectCtgKey, stepCtgKeys, menuCtgKey) {
     if (teacherKey == null || teacherKey == undefined) return;
     var data = {
         subjectCtgKey : subjectCtgKey,
-        menuCtgKey : menuCtgKey,
-        stepCtgKeys: stepCtgKeys
+        stepCtgKeys: stepCtgKeys,
+        menuCtgKey : menuCtgKey
     };
     $("#lectureBody_"+teacherKey).empty();
     var infoList = getApi("/product/getApplyVideoLectureInfo/", teacherKey, data);
