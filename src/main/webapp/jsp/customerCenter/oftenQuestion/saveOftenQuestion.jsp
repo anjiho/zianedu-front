@@ -51,16 +51,6 @@
                     </ul>
                 </div>
                 <br />
-<%--                <div class="inquiry_lnfo">--%>
-<%--                    <img src="/common/zian/images/content/inquiry_img.jpg">--%>
-<%--                    <ul>--%>
-<%--                        <li>· 수강신청/결제</li>--%>
-<%--                        <li>· 사이트이용</li>--%>
-<%--                        <li>· 모바일이용</li>--%>
-<%--                        <li>· 동영상재수강</li>--%>
-<%--                        <li>· 모의고사</li>--%>
-<%--                    </ul>--%>
-<%--                </div>--%>
                 <div class="boardWrap eventBoard">
                     <div class="boardWrap">
                     <h5>글 등록하기</h5>

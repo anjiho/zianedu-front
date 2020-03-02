@@ -338,13 +338,9 @@ function getTeacherVideoLecture(teacherKey, device, stepCtgKey) {
 
                         retrunHtml += '</li>';
                         retrunHtml += '<li class="w45p">';
-                        //retrunHtml += '<input type="hidden" id="vodPath" value="'+ cmpList. +'">';
                         retrunHtml += '<span class="learnName">' + lecList[j].goodsName + '</span>';
                         retrunHtml += '<span class="learnNum">강의수 <b class="colorBlue">' + lecList[j].lecCount + '강</b> | 수강일수 <b class="colorBlue">' + lecList[j].limitDay + '일</b></span>';
-                        //retrunHtml += '<span class="learnView">샘플보기 <a href="javascript:void(0);" onclick="app(\'http://15.164.7.237/popup?page_gbn=starPlayerMobile&license=FBD4FB45-D5F4-4493-AE56-BCD6F36F646A\');" class="btn_s btn_quality" >일반화질</a> <a href="#" class="btn_s btn_quality on">고화질</a></span>';
                         retrunHtml += '<span class="learnView">샘플보기 <a href="javascript:void(0);" onclick="OpenSamplePlayer(' + "'"  + lecList[j].lowVideo + "'" + ');" class="btn_s btn_quality" >일반화질</a> <a href="javascript:void(0);" onclick="OpenSamplePlayer(' + "'"  + lecList[j].highVideo + "'" + ');" class="btn_s btn_quality on">고화질</a></span>';
-                        //retrunHtml += '<span class="learnView">샘플보기  <div class="btn_s btn_quality" data-file="zian/data/soft/01_09/190905_107226_01_H.mp4" data-lec-key="14591" data-curri-key="126979" data-high="1">일반화질</div> <a href="#" class="btn_s btn_quality on">고화질</a></span>';
-                        //retrunHtml += '<span class="learnView">샘플보기  <button class="btn_s btn_quality" data-file="zian/data/soft/01_09/190905_107226_01_H.mp4" data-lec-key="14591" data-curri-key="126979" data-high="1">일반화질</button> <a href="#" class="btn_s btn_quality on">고화질</a></span>';
                         retrunHtml += '</li>';
                         retrunHtml += '<li class="w40p alignRight">';
                         retrunHtml += '<ul class="costList">';
@@ -363,8 +359,6 @@ function getTeacherVideoLecture(teacherKey, device, stepCtgKey) {
                                     retrunHtml += '<span class="btn_ss btn_divTag">PC</span> <span class="btn_ss btn_divTag">모바일</span> ';
                                 }
                                 retrunHtml += "<b class='cost'>" + lecList[j].videoLectureKindList[a].sellPriceName + "</b> <input type='checkbox' name='lecChk' id='" + lecList[j].videoLectureKindList[a].priceKey + "' value='" + lecList[j].videoLectureKindList[a].gkey + "'>";
-                                //retrunHtml += "<a href='javascript:goShopBasket(" + lecList[j].videoLectureKindList[a].gkey + "," + lecList[j].videoLectureKindList[a].priceKey + ");' class='btn_s'>장바구니</a>&nbsp;";
-                                //retrunHtml += "<a href='javascript:goBuy(" + lecList[j].videoLectureKindList[a].gkey + "," + lecList[j].videoLectureKindList[a].priceKey + ");' class='btn_s on'>바로구매</a>";
                                 retrunHtml += '</li>';
                             }
                         }

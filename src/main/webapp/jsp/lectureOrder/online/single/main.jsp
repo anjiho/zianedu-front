@@ -54,6 +54,11 @@
         });
     });
 
+
+    function test() {
+        alert(1);
+    }
+
     //과목 클릭 했을때
     var arr1 = new Array();
     function getSearch(ctgKey) {

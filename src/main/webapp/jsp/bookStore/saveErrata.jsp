@@ -2,12 +2,15 @@
 <%@include file="/common/jsp/common.jsp" %>
 <script>
     $(document).ready(function () {
-        $('#writeContent').summernote({
-            height: 300,
-            minHeight: null,
-            maxHeight: null,
-            focus: true
-        });
+        var pcMobile = divisionPcMobile();
+        if(pcMobile == 'PC') {
+            $('#writeContent').summernote({
+                height: 300,
+                minHeight: null,
+                maxHeight: null,
+                focus: true
+            });
+        }
         $("#attachFile").on("change", addFiles);
     });
 
@@ -126,12 +129,6 @@
                                     <th scope="row">내용</th>
                                     <td><textarea id="writeContent" name="writeContent" placeholder="내용을 입력해주세요." class="w100p h240"></textarea></td>
                                 </tr>
-<%--                                <tr>--%>
-<%--                                    <th scope="row">첨부파일</th>--%>
-<%--                                    <td class="">--%>
-<%--                                        <a href="#" class="btn_m black file">파일 업로드</a>--%>
-<%--                                    </td>--%>
-<%--                                </tr>--%>
                                 <tr>
                                     <th scope="row">첨부파일</th>
                                     <td class="">

@@ -6,12 +6,15 @@
 <script>
     var jlecKey = '<%=jlecKey%>';
     $( document ).ready(function() {
-        $('#writeContent').summernote({
-            height: 300,
-            minHeight: null,
-            maxHeight: null,
-            focus: true
-        });
+        var pcMobile = divisionPcMobile();
+        if(pcMobile == 'PC') {
+            $('#writeContent').summernote({
+                height: 300,
+                minHeight: null,
+                maxHeight: null,
+                focus: true
+            });
+        }
         $("#attachFile").on("change", addFiles);
         if (jlecKey == "null") jlecKey = "";    //jLecKey가 없을때 예외처리
 

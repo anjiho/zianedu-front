@@ -2,12 +2,15 @@
 <%@include file="/common/jsp/common.jsp" %>
 <script>
     $( document ).ready(function() {
-        $('#writeContent').summernote({
-            height: 300,
-            minHeight: null,
-            maxHeight: null,
-            focus: true
-        });
+        var pcMobile = divisionPcMobile();
+        if(pcMobile == 'PC') {
+            $('#writeContent').summernote({
+                height: 300,
+                minHeight: null,
+                maxHeight: null,
+                focus: true
+            });
+        }
         $("#attachFile").on("change", addFiles);
         var bbsMasterKey = getPassReviewMasterKey();
         var reviewCnt =  getReviewBoardCount(bbsMasterKey);
@@ -146,14 +149,6 @@
                                     <th scope="row">도서명</th>
                                     <td><input type="text" id="bookName" placeholder="도서이름을 입력해주세요." class="w100p"></td>
                                 </tr>
-<%--                                <tr>--%>
-<%--                                    <th scope="row">분류</th>--%>
-<%--                                    <td>--%>
-<%--                                        <select class="w120">--%>
-<%--                                            <option>과목선택</option>--%>
-<%--                                        </select>--%>
-<%--                                    </td>--%>
-<%--                                </tr>--%>
                                 <tr>
                                     <th scope="row">내용</th>
                                     <td><textarea name="writeContent" id="writeContent" placeholder="내용을 입력해주세요." class="w100p h240"></textarea></td>

@@ -2,19 +2,17 @@
 <%@include file="/common/jsp/common.jsp" %>
 <script>
     $(document).ready(function() {
-        $('#content').summernote({
-            height: 300,                 // set editor height
-            minHeight: null,             // set minimum height of editor
-            maxHeight: null,             // set maximum height of editor
-            focus: true                  // set focus to editable area after initializing summernote
-        });
+        var pcMobile = divisionPcMobile();
+        if(pcMobile == 'PC') {
+            $('#content').summernote({
+                height: 300,                 // set editor height
+                minHeight: null,             // set minimum height of editor
+                maxHeight: null,             // set maximum height of editor
+                focus: true                  // set focus to editable area after initializing summernote
+            });
+        }
         $("#attachFile").on("change", addFiles);
     });
-    // $(document).on('change', '#attachFile', function() {
-    //     var fileValue = $("#attachFile").val().split("\\");
-    //     var fileName = fileValue[fileValue.length-1]; // 파일명
-    //     $("#fileList").append("<li><a href=\"#\"><img src=\"/common/zian/images/common/icon_file.png\" alt=\"\">"+ fileName +"</a></li>");
-    // });
 
     var filesTempArr = [];
     function addFiles(e) {
@@ -118,15 +116,13 @@
                             </tr>
                             <tr>
                                 <th scope="row">내용</th>
-                                <td><textarea name="content" id="content" value=""></textarea></td>
+                                <td><textarea name="content" id="content" ></textarea></td>
                             </tr>
                             <tr>
                                 <th scope="row">첨부파일</th>
                                 <td class="">
-<%--                                   <input type="file" id="attachFile" class="fileBtn noline nobg">--%>
-<%--                                   <ul id='fileList' class="fileList"></ul>--%>
-                                        <input type="file" name="files[]" id="attachFile" class="fileBtn noline"  multiple/>
-                                        <ul id='fileList' class="fileList"></ul>
+                                    <input type="file" name="files[]" id="attachFile" class="fileBtn noline"  multiple/>
+                                    <ul id='fileList' class="fileList"></ul>
                                 </td>
                             </tr>
                             </tbody>
@@ -137,8 +133,6 @@
                         <a href="javascript:save();" class="btn_m onBlue radius w110">등록</a>
                     </div>
                 </div>
-
-
                 <!--//서브 컨텐츠-->
             </div>
         </div>

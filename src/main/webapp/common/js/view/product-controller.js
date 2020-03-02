@@ -73,6 +73,7 @@ function getLectureApplyTeacherTypeList(menuCtgKey, subjectMenuKeys, teacherKeys
     };
     var infoList = getApi("/product/getLectureApplyTeacherTypeList/", menuCtgKey, data);
     if (infoList != null) {
+        console.log(infoList);
         if (infoList.result.length > 0) {
             var selList = infoList.result;
             for (var i = 0; i < selList.length; i++) {
@@ -243,7 +244,7 @@ function getLectureApplyTeacherTypeList(menuCtgKey, subjectMenuKeys, teacherKeys
                                 returnHtml += "</div>";//lectureBody
                             }
                             returnHtml += "</div>";//div_toggle
-                            returnHtml += "<div class=\"btn_toggle lock\"><a href=\"#\"></a></div>";
+                            returnHtml += "<div class=\"btn_toggle lock\" onclick='test();'></div>";
                             returnHtml += "</div>";//toggleWrap
                             returnHtml += "</div>";//teacherRow
                         }//182 line for문 끝

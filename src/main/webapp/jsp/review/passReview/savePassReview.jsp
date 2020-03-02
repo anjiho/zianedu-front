@@ -2,12 +2,15 @@
 <%@include file="/common/jsp/common.jsp" %>
 <script>
     $( document ).ready(function() {
-        $('#writeContent').summernote({
-            height: 300,
-            minHeight: null,
-            maxHeight: null,
-            focus: true
-        });
+        var pcMobile = divisionPcMobile();
+        if(pcMobile == 'PC') {
+            $('#writeContent').summernote({
+                height: 300,
+                minHeight: null,
+                maxHeight: null,
+                focus: true
+            });
+        }
         $("#attachFile").on("change", addFiles);
         var bbsMasterKey = getReviewMasterKey();
         var reviewCnt =  getReviewBoardCount(bbsMasterKey);
@@ -157,14 +160,6 @@
                                     <th scope="row">내용</th>
                                     <td><textarea name="writeContent" id="writeContent" placeholder="내용을 입력해주세요." class="w100p h240"></textarea></td>
                                 </tr>
-<%--                                <tr>--%>
-<%--                                    <th scope="row">평점</th>--%>
-<%--                                    <td>--%>
-<%--                                        <select class="w120">--%>
-<%--                                            <option>평점선택</option>--%>
-<%--                                        </select>--%>
-<%--                                    </td>--%>
-<%--                                </tr>--%>
                                 <tr>
                                     <th scope="row">첨부파일</th>
                                     <td class="">
