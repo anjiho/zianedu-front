@@ -77,7 +77,7 @@ function getLectureApplyTeacherTypeList(menuCtgKey, subjectMenuKeys, teacherKeys
             var selList = infoList.result;
             for (var i = 0; i < selList.length; i++) {
                 var cmpList  = selList[i];
-                console.log(cmpList);
+
                 if(cmpList.teacherTypeInfo != null) {
                     var returnHtml = "<div class=\"lectureWrap\">";
                     if (cmpList.teacherTypeInfo != null) {
@@ -87,6 +87,7 @@ function getLectureApplyTeacherTypeList(menuCtgKey, subjectMenuKeys, teacherKeys
                     }
                     returnHtml += "<div class=\"teacherBody\">";
                     var teacherInfoLIST = cmpList.teacherTypeInfo;
+                    console.log(teacherInfoLIST);
                     if (teacherInfoLIST != null) {
                         for (var j = 0; j < teacherInfoLIST.length; j++) {
                             returnHtml += "<div class=\"teacherRow\">";
@@ -106,7 +107,7 @@ function getLectureApplyTeacherTypeList(menuCtgKey, subjectMenuKeys, teacherKeys
                             returnHtml += "<li class=\"w40p\">강좌명</li>";
                             returnHtml += "<li class=\"w35p\">수강료</li>";
                             returnHtml += "</ul>";
-                                returnHtml += "<div class=\"lectureBody\" id='lectureBody_"+ teacherInfoLIST[j].teacherKey +"'>";
+                                returnHtml += "<div class=\"lectureBody\" id='lectureBody_"+ teacherInfoLIST[j].teacherKey +"_"+ teacherInfoLIST[j].subjectCtgKey+"'>";
                                 returnHtml += "</div>";//lectureBody
                             returnHtml += "</div>";//div_toggle
 
@@ -142,12 +143,10 @@ function getApplyVideoLectureInfo(teacherKey, subjectCtgKey, stepCtgKeys, menuCt
     $("#lectureBody_"+teacherKey).empty();
     var infoList = getApi("/product/getApplyVideoLectureInfo/", teacherKey, data);
     var videoLectureInfo = infoList.result;
-    console.log(videoLectureInfo);
     for (var k = 0; k < videoLectureInfo.length; k++) {
          var teacherLectureList = videoLectureInfo[k].teacherLectureList;
          for (var l = 0; l < teacherLectureList.length; l++) {
              var teachLec = teacherLectureList[l];
-             console.log(teachLec);
              var color = "";
              if (videoLectureInfo[k].stepCtgKey == 207) { //단과특강
                  color = "blue";
@@ -247,7 +246,6 @@ function getApplyVideoLectureInfo(teacherKey, subjectCtgKey, stepCtgKeys, menuCt
              returnHtml += "<div class=\"btn_toggle1\"><a href=\"#\"></a></div>";
              returnHtml += "</div>";//toggleWrap
              returnHtml += "</div>";//lectureRow
-            // $("#lectureBody_"+teacherKey).append(returnHtml);
 
              if (teachLec.teacherLectureBook != null) {
                  for (var p = 0; p < teachLec.teacherLectureBook.length; p++) {
@@ -274,7 +272,7 @@ function getApplyVideoLectureInfo(teacherKey, subjectCtgKey, stepCtgKeys, menuCt
                      returnHtml += "</div>";
                  }
              }
-             $("#lectureBody_"+teacherKey).append(returnHtml);
+             $("#lectureBody_"+teacherKey+"_"+subjectCtgKey).append(returnHtml);
          }
      }
     $(".toggleWrap > .btn_toggle1").click(function(){
