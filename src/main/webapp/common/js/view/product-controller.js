@@ -77,6 +77,7 @@ function getLectureApplyTeacherTypeList(menuCtgKey, subjectMenuKeys, teacherKeys
             var selList = infoList.result;
             for (var i = 0; i < selList.length; i++) {
                 var cmpList  = selList[i];
+                console.log(cmpList);
                 if(cmpList.teacherTypeInfo != null) {
                     var returnHtml = "<div class=\"lectureWrap\">";
                     if (cmpList.teacherTypeInfo != null) {
@@ -146,6 +147,7 @@ function getApplyVideoLectureInfo(teacherKey, subjectCtgKey, stepCtgKeys, menuCt
          var teacherLectureList = videoLectureInfo[k].teacherLectureList;
          for (var l = 0; l < teacherLectureList.length; l++) {
              var teachLec = teacherLectureList[l];
+             console.log(teachLec);
              var color = "";
              if (videoLectureInfo[k].stepCtgKey == 207) { //단과특강
                  color = "blue";
@@ -245,40 +247,36 @@ function getApplyVideoLectureInfo(teacherKey, subjectCtgKey, stepCtgKeys, menuCt
              returnHtml += "<div class=\"btn_toggle1\"><a href=\"#\"></a></div>";
              returnHtml += "</div>";//toggleWrap
              returnHtml += "</div>";//lectureRow
+            // $("#lectureBody_"+teacherKey).append(returnHtml);
+
+             if (teachLec.teacherLectureBook != null) {
+                 for (var p = 0; p < teachLec.teacherLectureBook.length; p++) {
+                     var bookInfo = teachLec.teacherLectureBook[p];
+                     returnHtml += "<div class=\"lectureRow\">";
+                     returnHtml += "<ul class=\"lectureList\">";
+                     returnHtml += "<li class=\"w15p\">";
+                     returnHtml += "<span class=\"btn_learnType gray\">교재</span>";
+                     returnHtml += "</li>";
+                     returnHtml += "<li class=\"w40p\">";
+                     returnHtml += "<span class=\"btn_ss btn_divTag\">" + bookInfo.isMain + "</span>";
+                     returnHtml += "<a href=\"#\" class=\"learnName\">" + bookInfo.bookName + "</a>";
+                     returnHtml += "<span class=\"learnNum\">저자 <b class=\"colorBlue\">" + bookInfo.writer + "</b> | 출판 <b class=\"colorBlue\">" + bookInfo.publishDate + "</b></span>";
+                     returnHtml += "<li>";
+                     returnHtml += "<li class=\"w35p ta_right\">";
+                     returnHtml += "<ul class=\"costList\">";
+                     returnHtml += "<li>";
+                     returnHtml += "<b class=\"cost\">" + bookInfo.sellPriceName + "원</b> <input type=\"checkbox\" name='lecChk' id='" + bookInfo.priceKey + "' value='" + bookInfo.gkey + "'>";
+                     returnHtml += "</li>";
+                     returnHtml += "</ul>";
+                     returnHtml += "</li>";
+                     returnHtml += "<li class=\"w10p ta_center\">&nbsp;</li>";
+                     returnHtml += "</ul>";
+                     returnHtml += "</div>";
+                 }
+             }
              $("#lectureBody_"+teacherKey).append(returnHtml);
          }
-
-
-
-
-
-         if (teachLec.teacherLectureBook != null) {
-             for (var p = 0; p < teachLec.teacherLectureBook.length; p++) {
-                 var bookInfo = teachLec.teacherLectureBook[p];
-                 returnHtml += "<div class=\"lectureRow\">";
-                 returnHtml += "<ul class=\"lectureList\">";
-                 returnHtml += "<li class=\"w15p\">";
-                 returnHtml += "<span class=\"btn_learnType gray\">교재</span>";
-                 returnHtml += "</li>";
-                 returnHtml += "<li class=\"w40p\">";
-                 returnHtml += "<span class=\"btn_ss btn_divTag\">" + bookInfo.isMain + "</span>";
-                 returnHtml += "<a href=\"#\" class=\"learnName\">" + bookInfo.bookName + "</a>";
-                 returnHtml += "<span class=\"learnNum\">저자 <b class=\"colorBlue\">" + bookInfo.writer + "</b> | 출판 <b class=\"colorBlue\">" + bookInfo.publishDate + "</b></span>";
-                 returnHtml += "<li>";
-                 returnHtml += "<li class=\"w35p ta_right\">";
-                 returnHtml += "<ul class=\"costList\">";
-                 returnHtml += "<li>";
-                 returnHtml += "<b class=\"cost\">" + bookInfo.sellPriceName + "원</b> <input type=\"checkbox\" name='lecChk' id='" + bookInfo.priceKey + "' value='" + bookInfo.gkey + "'>";
-                 returnHtml += "</li>";
-                 returnHtml += "</ul>";
-                 returnHtml += "</li>";
-                 returnHtml += "<li class=\"w10p ta_center\">&nbsp;</li>";
-                 returnHtml += "</ul>";
-                 returnHtml += "</div>";
-             }
-         }
      }
-    $("#lectureBody_"+teacherKey).append(returnHtml);
     $(".toggleWrap > .btn_toggle1").click(function(){
         if($(this).parent().hasClass("active")){
             $(this).parent().removeClass("active");
