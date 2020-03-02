@@ -64,6 +64,7 @@ function getLectureApplyTeacherList(menuCtgKey, goodsType) {
 
 //수강신청(온라인) > 단과 > 수강리스트
 function getLectureApplyTeacherTypeList(menuCtgKey, subjectMenuKeys, teacherKeys, stepCtgKeys, goodsType) {
+    console.log(stepCtgKeys);
     if (menuCtgKey == null || menuCtgKey == undefined) return;
     var data = {
         subjectMenuKeys : subjectMenuKeys,
@@ -135,8 +136,11 @@ function getApplyVideoLectureInfo(teacherKey, subjectCtgKey, stepCtgKeys) {
     if (teacherKey == null || teacherKey == undefined) return;
     var data = {
         subjectCtgKey : subjectCtgKey,
-        stepCtgKeys: stepCtgKeys,
+        stepCtgKeys: stepCtgKeys
     };
+    $("#lectureBody_"+teacherKey).empty();
+    console.log(teacherKey);
+    console.log(data);
     var infoList = getApi("/product/getApplyVideoLectureInfo/", teacherKey, data);
     var videoLectureInfo = infoList.result;
     for (var k = 0; k < videoLectureInfo.length; k++) {
@@ -412,9 +416,10 @@ function getSpecialPackageList(menuCtgKey, subjectMenuKeys, teacherKeys, stepCtg
                                 if(selList[i].includeProductList != null){
                                     for(var k = 0; k < selList[i].includeProductList.length; k++){
                                         var productInfo = selList[i].includeProductList[k];
+                                        console.log(productInfo);
                                         returnHtml += "<div class=\"lectureRow\">";
                                             returnHtml += "<ul class=\"lectureList lectureList2\">";
-                                                returnHtml += "<li><span class=\"thumb\"><img src='"+ productInfo.imageList +"' alt=\"\"></span></li>";
+                                                returnHtml += "<li><span class=\"thumb\"><img  src='"+ productInfo.imageList +"'></span></li>";
                                                 returnHtml += "<li class=\"\">";
                                                     returnHtml += "<div class=\"lectureTop\">";
                                                     returnHtml += "<span class=\"btn_learnType orange\">"+ productInfo.stepName +"</span><span class=\"sale\">"+ productInfo.discountPercent +"</span><span class=\"new\">"+ productInfo.emphasisName +"</span>";
