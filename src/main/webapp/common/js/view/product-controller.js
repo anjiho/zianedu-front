@@ -64,7 +64,6 @@ function getLectureApplyTeacherList(menuCtgKey, goodsType) {
 
 //수강신청(온라인) > 단과 > 수강리스트
 function getLectureApplyTeacherTypeList(menuCtgKey, subjectMenuKeys, teacherKeys, stepCtgKeys, goodsType) {
-    console.log(stepCtgKeys);
     if (menuCtgKey == null || menuCtgKey == undefined) return;
     var data = {
         subjectMenuKeys : subjectMenuKeys,
@@ -139,14 +138,12 @@ function getApplyVideoLectureInfo(teacherKey, subjectCtgKey, stepCtgKeys) {
         stepCtgKeys: stepCtgKeys
     };
     $("#lectureBody_"+teacherKey).empty();
-    console.log(teacherKey);
-    console.log(data);
     var infoList = getApi("/product/getApplyVideoLectureInfo/", teacherKey, data);
     var videoLectureInfo = infoList.result;
+    console.log(videoLectureInfo);
     for (var k = 0; k < videoLectureInfo.length; k++) {
          var teacherLectureList = videoLectureInfo[k].teacherLectureList;
          for (var l = 0; l < teacherLectureList.length; l++) {
-
              var teachLec = teacherLectureList[l];
              var color = "";
              if (videoLectureInfo[k].stepCtgKey == 207) { //단과특강
@@ -247,6 +244,7 @@ function getApplyVideoLectureInfo(teacherKey, subjectCtgKey, stepCtgKeys) {
              returnHtml += "<div class=\"btn_toggle1\"><a href=\"#\"></a></div>";
              returnHtml += "</div>";//toggleWrap
              returnHtml += "</div>"//lectureRow
+             $("#lectureBody_"+teacherKey).append(returnHtml);
          }
 
          if (teachLec.teacherLectureBook != null) {
@@ -274,9 +272,8 @@ function getApplyVideoLectureInfo(teacherKey, subjectCtgKey, stepCtgKeys) {
                  returnHtml += "</div>";
              }
          }
-        $("#lectureBody_"+teacherKey).append(returnHtml);
      }
-
+    $("#lectureBody_"+teacherKey).append(returnHtml);
     $(".toggleWrap > .btn_toggle1").click(function(){
         if($(this).parent().hasClass("active")){
             $(this).parent().removeClass("active");
@@ -416,7 +413,6 @@ function getSpecialPackageList(menuCtgKey, subjectMenuKeys, teacherKeys, stepCtg
                                 if(selList[i].includeProductList != null){
                                     for(var k = 0; k < selList[i].includeProductList.length; k++){
                                         var productInfo = selList[i].includeProductList[k];
-                                        console.log(productInfo);
                                         returnHtml += "<div class=\"lectureRow\">";
                                             returnHtml += "<ul class=\"lectureList lectureList2\">";
                                                 returnHtml += "<li><span class=\"thumb\"><img  src='"+ productInfo.imageList +"'></span></li>";
