@@ -7,12 +7,15 @@
     var bbsKey = <%=bbsKey%>;
     $(document).ready(function () {
         $("#attachFile").on("change", addFiles);
-        $('#writeContent').summernote({
-            height: 300,
-            minHeight: null,
-            maxHeight: null,
-            focus: true
-        });
+        var pcMobile = divisionPcMobile();
+        if(pcMobile == 'PC') {
+            $('#writeContent').summernote({
+                height: 300,
+                minHeight: null,
+                maxHeight: null,
+                focus: true
+            });
+        }
         var result = getBoardDetailInfo(11046, bbsKey);
         if(result != null){
             var detailInfo = result.boardDetailInfo;
