@@ -25,6 +25,7 @@
     <script src="/common/zian/js/ui.js"></script>
 
     <!-- include libraries(jQuery, bootstrap) -->
+    <!-- bootstrp은 필요한 곳만 include하도록 변경 -->
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
     <!-- include summernote css/js-->
