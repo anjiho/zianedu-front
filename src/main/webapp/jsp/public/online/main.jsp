@@ -200,7 +200,7 @@
             <!-- 지안에듀 배너 -->
             <div class="mainBanner">
                 <div class="inner">
-                    <a href="#"><img src="/common/zian/images/content/img_banner0001.jpg" alt=""></a>
+                    <a href="javascript:goPageNoSubmit('bigExam','examApply');"><img src="/common/zian/images/content/img_banner0001.jpg" alt=""></a>
                 </div>
             </div>
             <!--<div class="mainBanner divGroup cols2">
@@ -249,7 +249,7 @@
                 </div>
                 <div class="mainInfo w55p">
                     <ul>
-                        <li><a href="javascript:goExamNotice();" class="item1">시험공공</a></li>
+                        <li><a href="javascript:goExamNotice();" class="item1">시험공고</a></li>
                         <li><a href="javascript:goOpenMenu();" class="item2">개강안내</a></li>
                         <li><a href="#" class="item3">교재배송</a></li>
                         <li><a href="javascript:goPageNoSubmit('customerCenter','mobile');" class="item4">모바일 문의</a></li>
