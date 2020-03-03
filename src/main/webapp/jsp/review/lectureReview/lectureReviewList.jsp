@@ -1,6 +1,12 @@
+<%@ page import="com.zianedu.front.utils.Util" %>
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+<%
+    String gKey = Util.isNullValue(request.getParameter("gKey"), "");
+%>
 <%@include file="/common/jsp/common.jsp" %>
 <script>
+    var gKey = '<%=gKey%>';
+
     $( document ).ready(function() {
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         if(sessionUserInfo != null) {
@@ -23,7 +29,7 @@
         var bbsMasterKey = getLecReviewMasterKey();
         var reviewCnt =  getReviewBoardCount(bbsMasterKey);
         innerHTML('reviewCnt', reviewCnt);
-        getReviewBoardList(bbsMasterKey, sPage, 10, searchType, searchText);
+        getReviewBoardList(bbsMasterKey, sPage, 10, searchType, searchText, gKey);
     }
 
     function detailReview(bbsKey) {

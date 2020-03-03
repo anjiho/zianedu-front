@@ -124,7 +124,9 @@
         }else{
             $("#playLecListDiv").show();
             var result = infoList.result;
+            var lectureReviewBtn = "<a href='/review?page_gbn=lectureList&gKey=" + result.gkey + "' class='blue small'>수강후기</a>";
             innerValue("stopJlecKey", result.jlecKey);
+            innerHTML("l_lectureReviewBtn", lectureReviewBtn);
             innerHTML("playLecName", result.name);
             innerHTML("playLecStartDate", result.startDate);
             innerHTML("playLecEndDate", result.endDate);
@@ -551,6 +553,7 @@
                                                                 <div class="btn_crud">
                                                                     <span class="black small" id="ctgName">단과특강</span>
                                                                     <a href="#modal3" class="btn_modalOpen">강좌설명</a>
+                                                                    <span id="l_lectureReviewBtn"></span>
                                                                 </div>
 
                                                                 <div class="txt_area">

@@ -547,15 +547,17 @@ function getPasserVideoList(sPage, listLimit, searchType, searchText) {
 }
 
 //합격수기 > 합격수기,도서후기,수강후기
-function getReviewBoardList(bbsMasterKey, sPage, listLimit, searchType, searchText) {
+function getReviewBoardList(bbsMasterKey, sPage, listLimit, searchType, searchText, gKey) {
     if(bbsMasterKey == null || bbsMasterKey == undefined) return;
+    if (gKey == undefined) gKey = "";
     var paging = new Paging();
     dwr.util.removeAllRows("dataList"); //테이블 리스트 초기화
     var data = {
         sPage : sPage,
         listLimit : listLimit,
         searchType : searchType,
-        searchText : searchText
+        searchText : searchText,
+        gKey : gKey
     };
     var infoList = getPageApi("/board/getReviewBoardList/", bbsMasterKey, data);
     var cnt = infoList.cnt;
