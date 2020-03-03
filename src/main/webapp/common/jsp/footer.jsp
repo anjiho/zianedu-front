@@ -17,6 +17,7 @@
     <div id="footerCopyright">
         <div class="inner">
             <img src="/common/zian/images/common/logo_footer.png" class="footerLogo">
+            <img src="/common/zian/images/common/footerLogoM.png" class="footerLogoM">
             <p>
                 (주)지안에듀<br />
                 대표이사 : 박태순  |  사업자등록번호 : 108-86-01777   |   통신판매업 신고번호 : 제2012-서울동작-00172호<br />
