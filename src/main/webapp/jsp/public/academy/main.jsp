@@ -23,11 +23,6 @@
                         <ul id="mainVisualSlider2"></ul>
                     </div>
                 </div>
-<%--                <div class="mainBannerReview">--%>
-<%--                    <div class="inner">--%>
-<%--                        <ul id="reviewBanner"></ul>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
                 <div class="mainBannerReview disnone">
                     <div class="inner">
                         <a href="#"><img src="http://52.79.40.214/Upload/100/main/img_banner0102_20190903093100.jpg" alt=""></a>
@@ -59,7 +54,7 @@
                     <div class="inner">
                         <div class="titleBar">
                             <h5>지안에듀 합격자 STORY</h5>
-                            <a href="javascript:goPassReview();" class="btn_more">전체보기</a>
+                            <a href="javascript:goPageNoSubmit('review','passList');" class="btn_more">전체보기</a>
                         </div>
                         <div class="mainStoryList">
                             <div class="item"><div>

@@ -57,7 +57,7 @@
                 <div class="inner">
                     <div class="titleBar">
                         <h5>지안에듀 합격자 STORY</h5>
-                        <a href="javascript:goPassReview();" class="btn_more">전체보기</a>
+                        <a href="javascript:goPageNoSubmit('review','passList');" class="btn_more">전체보기</a>
                     </div>
                     <div class="mainStoryList">
                         <div class="item"><div>
