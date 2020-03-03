@@ -1,0 +1,1374 @@
+
+@media screen and (min-width:801px){
+
+    /*common*/
+    .disnonepc {display: none}
+    .lectureWrap .teacherList.disnonepc {display: none}
+
+    #header > .inner h1.logo_mb {display: none}
+    .footerLogoM {display: none}
+    .Copyright_m {display: none}
+    #topNavM {display: none}
+    .tableBox .listM {display: none}
+    .boardWrap .boardSearch .btnArea .search_ico {display: none}
+    .sitemap_layer {display: none}
+
+    .gnb_area {display: none}
+    #container .lnb {display: none}
+    .slick-slider {}
+
+
+    /*TABLE遺�遺�*/
+    .tableBox .view.viewM {display:none}
+
+    .searchArea .search_ico {display: none}
+
+    .free .myarea_list_wrap .list li {margin-bottom: 80px}
+
+
+    /*援먯닔�뚭컻 snb*/
+    #snb ul.deaph1.cols9s {display: none}
+    .shop .lectureWrap .lectureListM {display: none}
+
+
+
+    /* �쒖옉20191230異붽� */
+    .new_css {width: 100%}
+    .new_css th ul li,.new_css td ul li {float: left;height: 40px}
+    .new_css td ul li {text-align: left}
+    .new_css th:first-child {width: 100% !important;line-height: 40px}
+    .new_css th li:nth-child(1) {width:12%;}
+    .new_css th li:nth-child(2) {width:40%;}
+    .new_css th li:nth-child(3) {width:15%;}
+    .new_css th li:nth-child(4) {width:20%;}
+    .new_css td li:nth-child(1) {width:12%;text-align: center}
+    .new_css td li:nth-child(2) {width:40%;}
+    .new_css td li:nth-child(3) {width:15%;text-align: center}
+    .new_css td li:nth-child(4) {width:20%;text-align: center}
+
+    .tabPage .tbd_02 table.bd th:first-child {width: 12%}
+    .new_cssM {border-top: none !important;padding:0;}
+    .new_cssM td {height:40px !important;padding:10px 2% !important;text-align: left;}
+    .new_cssM td li {float: left;text-align: center}
+    .new_cssM td li p b {display:inline-block;width: 15%}
+    .new_cssM td li:nth-child(1) {width:58%;padding-left: 2%;text-align: left}
+    .new_cssM td li:nth-child(2) {width:15%;text-align: center}
+    .new_cssM td li:nth-child(3) {width:25%;text-align: center}
+    .new_cssM td li a.small {margin: 0 1%;  padding-left: 15px;  background: url(../images/ex/icon-replay_on.png) 10px center no-repeat;}
+    .tbw03M ul {padding: 0 2%}
+    .tbw03M ul li {float: left}
+    .tbw03M th:nth-child(1) {width:50px;}
+    .tbw03M th:nth-child(2) {width:90%;}
+    .tbw03M th ul li:nth-child(1) {width:500px;text-align: center}
+    .tbw03M th ul li:nth-child(2) {width:250px;text-align: center}
+    .tbw03M th ul li:nth-child(3) {width:100px;text-align: center}
+    .tbw03M td ul li:nth-child(1) {width:500px;}
+    .tbw03M td ul li:nth-child(2) {width:250px;text-align: center}
+    .tbw03M td ul li:nth-child(3) {width:100px;text-align: center}
+
+    .tbw03Metc th ul li:nth-child(1) {width:450px;text-align: center}
+    .tbw03Metc th ul li:nth-child(2) {width:100px;text-align: center}
+    .tbw03Metc th ul li:nth-child(3) {width:200px;text-align: center}
+    .tbw03Metc td ul li:nth-child(1) {width:450px;text-align: left}
+    .tbw03Metc td ul li:nth-child(2) {width:100px;text-align: center}
+    .tbw03Metc td ul li:nth-child(3) {width:200px;text-align: center}
+
+    .tbw03M .w50px {width: 50px !important}
+
+    .tbw04M ul {padding: 0 2%}
+    .tbw04M ul li {float: left}
+    .tbw04M th ul li:nth-child(1) {width:150px;text-align: center}
+    .tbw04M th ul li:nth-child(2) {width:600px;text-align: center}
+    .tbw04M th ul li:nth-child(3) {width:100px;text-align: center}
+    .tbw04M th ul li:nth-child(4) {width:100px;text-align: center}
+    .tbw04M td ul li:nth-child(1) {width:150px;}
+    .tbw04M td ul li:nth-child(2) {width:600px ;text-align: left}
+    .tbw04M td ul li:nth-child(3) {width:100px;text-align: center}
+    .tbw04M td ul li:nth-child(4) {width:100px;text-align: center}
+
+    .tbw05M ul li {float: left;padding: 15px 0px;}
+    .tbw05M ul li:nth-child(1) {width:80px;text-align: center}
+    .tbw05M ul li:nth-child(2) {width:600px;text-align: center}
+    .tbw05M ul li:nth-child(3) {width:100px;text-align: center}
+    .tbw05M ul li:nth-child(4) {width:100px;text-align: center}
+    .tbw05M ul li:nth-child(5) {width:100px;text-align: center}
+    .tbw05M td {padding: 15px 0px;}
+    .tbw05M td .etctxtm {width:80px;text-align: center;display: inline-block;font-weight: 400}
+    .tbw05M td .subject {display: inline-block;width:600px;}
+    .tbw05M td .subject.lock {width:575px;padding-left: 25px;background: url(../images/common/icon_lock.png) no-repeat left center;}
+    .tbw05M td .write {display: inline-block;width:100px;text-align: center}
+    .tbw05M td .date {display: inline-block;width:100px;text-align: center}
+    .tbw05M td span:last-child {display: inline-block;width:100px;text-align: center}
+    .tbw05M td .subject.reply:before {
+        display: inline-block;
+        content: 'RE:';
+        clear: both;
+        padding-left: 45px;
+        color: #144b95;
+    }
+
+
+    .two_line {width: 100%;border-top: 2px solid #1b1b1b;margin-top: 13px; color: #000;border-bottom: 1px solid #e5e5e5;font-weight: bold;}
+    .two_line:after {content: "";clear: both;display: block;}
+    .two_line .left {float: left;width: 50%}
+    .two_line .right {float: right;width: 50%;background: #f5f5f5}
+    .two_line li {font-size: 12px;padding:0 15px;height: 45px;line-height:45px}
+    .two_line li span {float: right}
+
+    .etctxt {display: none}
+
+    .coupontbw th ul li {float: left;width:14.28% }
+    .coupontbw2 th ul li {float: left;width:20% }
+    .coupontbw td span {float: left;width:14.28% }
+    .coupontbw2 td span {float: left;width:20% }
+    .Mypage .tbd_05 table td {line-height:12px}
+
+
+    .tbw06M th ul li {float: left}
+    .tbw06M th ul li:nth-child(1) {width:60%;}
+    .tbw06M th ul li:nth-child(2) {width:10%;text-align: center}
+    .tbw06M th ul li:nth-child(3) {width:15%;text-align: center}
+    .tbw06M th ul li:nth-child(4) {width:10%;text-align: center}
+    .tbw06M td p {display: inline-block;width:60%;}
+    .tbw06M td span:nth-child(1) {display: inline-block;width:10%;text-align: center}
+    .tbw06M td span:nth-child(2) {display: inline-block;width:10%;text-align: center}
+    .tbw06M td span:nth-child(3) {display: inline-block;width:18%;text-align: center}
+
+    .tbw07M .iconFile {display: block !important;width:5%;}
+    .tbw07M th {text-align: left}
+
+    /* �� 20191230異붽� */
+
+}
+
+
+@media screen and (max-width:800px){
+
+    /* �쒖옉20191230異붽� */
+    .new_css th ul li,.new_css td ul li {float: none;text-align: left}
+    .new_css td ul {position: relative;}
+    .new_css .bdbox {position: absolute;top:5px;left:90px;}
+    .new_css .replay,.new_css .text_red {position: absolute;right: 2%;top:40%;}
+    .new_css .font16 {position: absolute;left:25%;bottom:0px;}
+
+    .new_cssM td {height:40px;padding: 10px 2%}
+    .new_cssM td li {float: none;text-align: left;padding-left: 2%}
+    .new_cssM td li p {font-size: 15px}
+    .new_cssM td li a.small {margin-top: 5px; padding-left: 15px;  background: url(../images/ex/icon-replay_on.png) 10px center no-repeat;}
+
+    .tbw03M {padding: 0 2%;table-layout: auto;}
+    .tbw03M th {display: none}
+    .tbw03M td:nth-child(1) {width:50px;}
+    .tbw03M td:nth-child(2) {width:90%;}
+    .tbw03M td ul li {display: inline-block;}
+
+    .tbw04M th {display: none !important}
+    .Mypage .cart .tbd_03 .tbw04M td {padding:20px 2%;}
+    .tbw04M td ul li {text-align: left}
+    .tbw04M .etctxt {padding-right: 10px}
+
+    .tbw05M th {display: none !important}
+    .tbw05M td {padding:20px 2%;}
+    .tbw05M td span {display:inline-block;text-overflow:ellipsis;white-space:nowrap;word-wrap:normal;overflow:hidden;font-size: 13px}
+    .tbw05M td span b {padding-right: 10px;padding-top:10px;display:inline-block;font-weight:500}
+    .tbw05Mtd span.tit {font-size: 15px}
+    .tbw05M td .subject {display: inline-block;width:600px;}
+    .tbw05M td .subject.lock {width:575px;padding-left: 25px;background: url(../images/common/icon_lock.png) no-repeat left center;}
+    .tbw05M td .subject.reply:before {
+        display: inline-block;
+        content: 'RE:';
+        clear: both;
+        padding-left:15px;
+        color: #144b95;
+    }
+    .tbw05M td.p15 span.write {padding-left:15px;}
+
+    .tbw06M th {display: none !important}
+
+    .tableBox table.tbw07M {text-align: left !important;width:100%;}
+    .tbw07M th {display: none}
+    .tbw07M .iconFile {display: none !important;}
+
+    .two_line {width:96%;margin:0 2%;border-top: 2px solid #1b1b1b;margin-top: 13px; color: #000;border-bottom: 1px solid #e5e5e5;font-weight: bold;}
+    .two_line .left {float: none}
+    .two_line .right {float: none;background: #f5f5f5}
+    .two_line li {font-size: 12px;padding:0 15px;height: 45px;line-height:45px}
+    .two_line .noneh {display: none}
+    .two_line li span {float: right}
+    .coupontbw {margin-top: 10px !important}
+    .coupontbw th {display: none}
+
+    .lectureTotal.lectureTotaletc > .left {float: left;width: auto}
+    .lectureTotal.lectureTotaletc > .right {float: right;width: auto}
+
+    .etctxtm {display: none}
+
+    .skin table {table-layout: auto}
+    .skin table thead {display: none}
+    .skin tbody {display: block;width: 100%;}
+    .skin table tr {float: left;display: block;width: 100%;padding: 10px 15px; position: relative;border-bottom: 1px solid #ddd;}
+    .skin table td {text-align: left;position: relative;border-bottom: none;padding: 0}
+    .skin table .m_fc_blue {display: inline; color: #004896;line-height: 18px;}
+    .skin table .tit a {display: inline;overflow: visible; white-space: normal;line-height: 18px;padding:5px 0}
+    .skin table .tit2 {display: block;}
+    .skin table .m_date {display: block;color: #999;text-align: left;font-size: 13px}
+    .skin table .m_date span {display: inline-block;}
+    .skin table .small {margin-right: 5px;margin-top: 10px}
+    .skin table .mtxt {display: block;color: #999;text-align: left;font-size: 13px}
+    .m_none {display: none !important}
+
+    .skin2 table {table-layout: auto}
+    .skin2 table thead {display: none}
+    .skin2 tbody {display: block;width: 100%;}
+    .skin2 table tr {float: left;display: block;width: 100%;padding: 10px 15px; position: relative;border-bottom: 1px solid #ddd;}
+    .skin2 table .m_fc_blue {display: inline; color: #004896;line-height: 18px;}
+    .skin2 table .tit a {display: inline;overflow: visible; white-space: normal;line-height: 18px;padding:5px 0}
+    .skin2 table .m_date {display: block;color: #999;text-align: left;font-size: 13px}
+    .skin2 table th, .skin2 table td {border-bottom: none;padding: 0  !important}
+    .skin2 table th:last-child, .skin2 table td:last-child {text-align: left !important}
+
+    /*�⑤씪�몄꽌�� 異붽��섏젙嫄� 20191230*/
+    .shop .shopBoard .lecListM  {padding:10px 0;position: relative;}
+    .shop .shopBoard .lecListM li.mimg {float:left;width:18%;max-width: 120px;padding-right: 2%;padding-bottom:10px}
+    .shop .shopBoard .lecListM li.w35p {float:left;width:77%;padding-right: 2%;padding-bottom:10px}
+    .shop .shopBoard .lecListM li.mclear {clear:both;display: block;content: "";border-top: 1px #e5e5e5 solid;padding-top: 10px}
+    .shop .shopBoard .lecListM li.w40p.ta_right  {position: absolute;bottom:15px;}
+
+
+
+
+
+
+
+
+
+
+
+    /* �� 20191230異붽� ********************************************************/
+
+
+
+
+
+
+
+
+
+    .modalWrap .inner {width:80%}
+    .overlay {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+    .modalWrap {
+        background-color: #fff;
+        margin: auto;
+        padding:10px;
+        border: 1px solid #888;
+        width: 75%;
+        position:absolute;
+        top:30%;
+        left:10%;
+    }
+
+
+
+    /*side_menu */
+    .sitemap_layer_wrapper {position:relative; height:100%; overflow-y:auto; overflow-x:hidden;}
+    .sitemap_layer {position:fixed; top:0; bottom:0; background:#fff; width:100%; right:0;}
+    .side_menu_header {background:#000;color: #fff;height:25px;position: relative;font-size:20px;font-weight:500;padding:35px 4% 32px }
+    .side_menu_header .btn_home {float: left;}
+    .side_menu_header .btn_home span {font-size:16px;}
+    .side_menu_header .btn_logout {float: left;color: #fff}
+    .side_menu_header .bar {float: left;display: inline-block;width:1px;height:20px;background:#fff;margin: 3px 10px;}
+    .side_menu_header .btn_close_menu {width:25px;height:25px;border:none;background:url(../images/ex/side_close.png) center center no-repeat;text-indent: -9999px;position: absolute;top:35px;right:4%;}
+    .sitemap_box {z-index: 500;}
+    .sitemap_box .deth1_tit {display:block;font-size:18px;border-bottom:1px solid #cdcdcd;color:#1a1a1a;;cursor: pointer;line-height:70px}
+    .sitemap_box  .edusup_multi {margin-top:0px;margin-left:15px;position: absolute;top:14px;left:70px;}
+    .sitemap_box > ul:after {content:''; display:block; clear:both}
+    .sitemap_box > ul > li{position:relative; list-style:none; margin-bottom:4px;width:100%;font-weight:normal;}
+    .sitemap_box ul li .normal{position:relative; color:#333; display:block;}
+    .sitemap_box ul li .normal span{display:block;width:92%;padding: 0 4%; height:60px; line-height:60px; overflow:hidden; white-space: nowrap; text-overflow: ellipsis;font-size: 16px}
+    .sitemap_box ul li.deth1_tit.on > .normal{border:1px solid #e1e1e1;}
+    .sitemap_box ul li.deth1_tit.on > .normal span{background: none;}
+    .sitemap_box ul li.deth1_tit.selected > .normal{}
+    .sitemap_box ul li.deth1_tit.selected > .normal span{background: url(../images/common/icon_arrowUp.png) 94% center no-repeat;}
+    .sitemap_box ul li.deth1_tit > .normal span{background: url(../images/common/icon_arrowDown.png) 94% center no-repeat;}
+    .deth2_list{ display:none; z-index:900; background: #cdcdcd;}
+    .deth2_list > li {height: 50px; line-height:50px;}
+    .deth2_list > li a {font-size: 16px;width:91%;padding: 0 3%; }
+
+
+
+
+
+
+
+    /*common*/
+    .disnone {display: none !important}
+    .boardWrap .tableBox table.form td input[type='text'], .boardWrap .tableBox table.form td input[type='password'], .boardWrap .tableBox table.form td input[type='number'], .boardWrap .tableBox table.form td select {
+        padding-left:1%;}
+
+    #header {width:100%;}
+    #header > .inner {width:96%;margin:0 2%;position: relative;overflow: visible !important;}
+    #header > .inner h1 {margin: 18px 10px 0 10px;}
+    #header > .inner h1.logo_mb {margin: 18px 10px 0 0px;}
+    #header > .inner h1.logo_pc {display: none}
+    #header #topNavM {float:right;text-align:center;}
+    #header #topNavM > ul > li {float: left;text-align: center;margin-top:25px;position: relative;}
+    #header #topNavM > ul > li > a {display: inline-block;width:30px;height:36px}
+    #header #topNavM li a.login_btn { position: relative;background:url(../images/ex/Mlogin.png) center center no-repeat;text-indent: -9999px;}
+    #header #topNavM li a.login_btn.on {color:#000;}
+    #header #topNavM .logindrop {width:100px;height:150px;padding:25px;border:1px solid #e4e4e4;background:#fff;position: absolute;top:42px;left:-122px;z-index: 600;display: none}
+    #header #topNavM .logindrop li {}
+    #header #topNavM .logindrop li a {font-size: 15px;color:#454545;line-height:38px}
+    #header #topNavM li a.header_menu {background:url(../images/ex/Mmenu.png) center center no-repeat; text-indent: -9999px;margin-left:15px;}
+
+    #header #gnb {height:60px;border-bottom: 1px #e1e1e1 solid;}
+    #header #gnb .inner {display: none}
+    #header #gnb ul.Mdeaph1 > li > a {line-height:65px;}
+    #header #gnb ul.Mdeaph1 > li {position: inherit;}
+    #header #gnb ul.Mdeaph1 > li > a {color:#bfbfbf;}
+    #header #gnb ul.Mdeaph1 > li.active > a{color:#727272;}
+
+    .gnb_area{position:relative; }
+    .gnb_area .Mdepth1 {background:#fff;}
+    .gnb_area .Mdepth1  li{float:left; width:14.285714%; height:61px; text-align:center;}
+    .gnb_area .Mdepth1  li a{font-size:15px; height:44px; line-height:61px; color:#333; font-weight:normal; letter-spacing:-1px;color: #bfbfbf}
+    .gnb_area .Mdepth1  li.on {border-bottom: 3px solid #134c97;}
+    .gnb_area .Mdepth1  li.on > a {color: #134c97;font-weight: bold}
+
+
+    /*
+    .lnb2 {width:1000%;height:44px; border-bottom: 1px solid #d9d9d9;border-top: 1px solid #d9d9d9;}
+    .lnb2:after {clear: both;display: block;content: "";margin-bottom: 20px}
+    .lnb2 li {float: left;width:7% !important;height:44px !important;text-align: center;}
+    .lnb2 li a {line-height:43px !important;font-size: 13px;color: #bfbfbf;}
+    .lnb2 li.on {border-bottom:none !important;}
+    .lnb2 li.on > a {color: #134c97;font-weight: bold}
+    */
+
+    #container .lnb{ position: absolute;top: 142px;padding:0; border-bottom: 1px solid #d9d9d9;border-top: 1px solid #d9d9d9;width:100%}
+    #container .lnb .regular{margin:0; width:100%; height:44px;}
+    #container .lnb .regular li{text-align:center; float:left; padding-top:8px;}
+    #container .lnb .regular li a {display:block; line-height:28px; font-size:13px; letter-spacing:-1px;color: #bfbfbf }
+    #container .lnb .regular li.on > a {color: #134c97;font-weight: bold}
+    #container .lnb .regular li ul {width: 1000%}
+    #container .lnb .regular li ul li {float: left; padding:20px}
+    .slick-prev,.slick-next {display: none !important}
+    .disnoneM {display: none}
+
+
+
+    #container {width:100%}
+    .inner {width:100%;}
+    #aside {display: none}
+    #quickBar {display: none}
+    #bottomBanner {display: none}
+    #topNav {display: none}
+    #footerNav {height:auto;background: #e1e1e1 ;}
+    #footerNav ul li {float:left;width:33.3333%;padding:10px 0}
+    #footerNav ul li:after {display: none}
+    #footerNav ul li a {font-size: 13px;color:#777;}
+    #footerCopyright .inner {text-align: center;padding:0 2%;}
+    #footerCopyright .footerLogo,
+    #footerCopyright #footerMark {display: none}
+    #footerCopyright .Copyright_pc {display: none}
+    #footerCopyright .Copyright_m {font-size: 12px;padding-top: 15px}
+    #footerCopyright .Copyright_m ul {text-align: center;}
+    #footerCopyright .Copyright_m ul:after {clear: both;content: "";display: block;}
+    #footerCopyright .Copyright_m li {display: inline-block;line-height:18px}
+    #footerCopyright .Copyright_m li b.line {display: inline-block;width:1px;height:10px;background: #626262;margin:0 10px;}
+    #footerCopyright .Copyright_m span {display: block;line-height:18px}
+
+    /*main*/
+    #lendingVisual {width:100%;height:auto !important;min-height:500px;background-size: 110% !important; background: #fbfbfb url(../images/content/bg_lendingVisual.png) no-repeat 10% center;}
+    #lendingVisual .lendingVisualText {font-size: 18px;position: absolute;left:10%;}
+    #lendingVisual .lendingVisualText b {    font-size: 30px;}
+    #lendingVisual > ul {width:98%;top:66%;right:0.5%;}
+    #lendingVisual > ul li {display: inline-block;float:left;width:50%;}
+    #lendingVisual > ul li a b {font-size: 20px;}
+    #lendingVisual > ul li a {font-size: 13px;}
+    #lendingVisual .lendingVisualText .btnArea a {width: 120px;height: 40px;font-size: 13px;line-height: 44px;}
+    #lendingVisual .btnArea {margin: 14px 0;}
+    .divGroup.cols3 > div.w30p {width:50%;}
+    .divGroup.cols3 > div.w40p {width: 100%}
+    .lendingBanner {width:100%;}
+    .lendingBanner .divGroup {}
+    .lendingBanner .divGroup > div {padding: 0}
+    .lendingBanner > div > a img {display: inline-block;width: 100%}
+    .divGroup .cols3 {width:30%;}
+    .divGroup.cols3 > div > a img {width:100%;}
+    .btn_lendingLink1,.btn_lendingLink2 {background-size:75%}
+    .btn_lendingLink1 {background: #252525 url(../images/content/bg_lendingLink1.png) no-repeat center 80%;}
+    .btn_lendingLink2 {background: #0e7263 url(../images/content/bg_lendingLink2.png) no-repeat center 80%;}
+
+    /* paging */
+    .paging {width:100%; margin-top:40px;}
+    .boardnavi {position:relative; width:100%; height:18px; margin:0 auto; text-align:center;}
+
+    /* �뚯썝媛��� */
+    .joinWrap {width:96%;margin:auto 2%}
+    .joinWrap h2 {font-size:22px}
+    .joinWrap .joinAgreeAll {padding: 30px 6% 30px 2%;}
+    .joinWrap .joinAgree {padding: 25px 0px}
+    .joinWrap .statusBar li {font-size:18px;line-height:25px;padding-top: 10px;height:60px; }
+    .joinWrap .statusBar li label {font-size: 18px}
+    .joinWrap .statusBar li b {font-size:18px;display: block;}
+    .joinWrap .joinAgreeAll input[type='checkbox'] { top:45%;right:2%;font-size: 12px}
+    .joinWrap .joinAgree input[type='checkbox'] { top:29px;right:2%;font-size: 12px}
+    .joinWrap .joinAgree p { margin: 20px 0 ;padding: 15px 7% 15px 2%}
+    .joinWrap .tableBox table.form td input {width: 47%;margin-bottom: 2px}
+    .joinWrap .tableBox table.form th, .tableBox table.form td {padding: 10px 1%;}
+    .joinWrap .tableBox table.form input.w60p {width:100%;}
+    .joinWrap .joinResult b {font-size:22px}
+    .joinWrap .joinResult {font-size: 15px}
+
+    /*main �됱젙吏곸삩�쇱씤*/
+
+    .mainProductList2 .item > div img {height: auto}
+
+    #mainVisual .left {float: none;width:100%;}
+    #mainVisual .right {float:left;width: 50%}
+    #mainVisual .mainBannerReview.disnonepc {float:left;width: 50%}
+    .mainBannerReview {}
+    .mainBannerReview .inner img {width: 100%}
+    .mainBanner {margin:0 2% 20px}
+    .mainBanner .divGroup {margin:0 }
+    .mainBanner .divGroup.cols2 > div {padding:0 1%;float:left;width:50%;}
+
+    .mainBanner .divGroup > div {padding: 0}
+    .mainStory {width:98%;margin: 0 2%}
+    .mainStory .inner {width:98%;margin:0 2% 0 0 ;}
+    .mainStory .mainStoryList .item {}
+    .mainStory .slick-track {width: 1000%}
+    .mainStory .mainStoryList .item > div > .desc{display:-webkit-box;height:14.5em;max-height:80%;
+        -webkit-line-clamp:8;
+        -webkit-box-orient:vertical;overflow:hidden;
+        text-overflow:ellipsis;}
+    .mainTeacher {width:96%;margin:10px 2%}
+    .mainTeacher .mainTeacherPage .swiper-slide > div{width: 100%}
+    .mainTeacher .mainTeacherPage .swiper-slide > div .thumb span {width: 100%}
+    .mainTeacher .mainTeacherPage .swiper-slide > div .thumb img {width: 100%}
+    .mainTeacher .mainTeacherPage .swiper-slide > div .teacherInfo {width:96%;padding:20px 2%}
+    .mainTeacher .mainTeacherPage .swiper-slide > div .teacherInfo .btnArea {}
+    .mainQuickLink {width:96%;padding:20px 2%;}
+    .mainQuickLink ul {border-right: 1px solid #e1e1e1}
+    .mainQuickLink ul li {width:33.33333333333%;border-bottom: 1px solid #e1e1e1 }
+    .mainQuickLink ul li:nth-child(3) {border-right: none}
+    .mainQuickLink ul li:nth-child(4),.mainQuickLink ul li:nth-child(5) {border-bottom: none}
+    .mainBanner.mainBanner2 {margin:0}
+    .mainBanner.mainBanner2 img {width: 100%;min-height: 90px;}
+    .mainProduct {width: 96%;margin:30px 2% 0}
+
+    .mainBoard ul.tabBar li.active a {color: #fff}
+    .divGroup {margin:0;min-height:80px;}
+    .divGroup.cols2 > div {float:none;width:100%;margin-bottom:30px}
+
+    .divGroup > div.mainCustomer.w45p {float:none;height: auto;width:98%;margin: 0 1%;margin-top:30px}
+    .mainCustomer > div {height: auto;text-align: center}
+    .mainCustomer ul li {padding: 0}
+    .mainCustomer ul li .title {position: relative;font-size: 15px;font-weight: bold}
+    .mainCustomer ul li b {font-size:24px}
+    .mainCustomer .btn_apply {margin-bottom:20px}
+    .divGroup > div.mainInfo  {float:none;}
+    .mainInfo.w55p {float:none;height: auto;width:100%;}
+    .mainInfo ul {padding-top:0}
+    .mainInfo ul li {padding: 0 1% 20px;width: 33.3333%;}
+
+
+    .tabBox { margin: 45px auto 20px;width:90%;}
+    .noticeGuideWrap {width:96%;margin:0 2%;}
+    .noticeGuideWrap .tabBar {padding: 15px 0px;}
+    .noticeGuideWrap .tabBar li {width: 33.333333%;}
+
+
+    /*TABLE遺�遺�*/
+    .tableBox table {width:96%;padding:0 2%;}
+    .boardWrap .tableBox table.view th, .boardWrap .tableBox table.view td {padding: 10px 2%}
+    .tableBox colgroup {display: none}
+    .tableBox .list {display: none}
+    .tableBox .listM {margin:0 2%;width:96%;border-left: 1px solid #e1e1e1;border-right: 1px solid #e1e1e1 }
+    .tableBox .listM td {padding:20px 2%;}
+    .tableBox .listM td span {display:block;width:98%;text-overflow:ellipsis;white-space:nowrap;word-wrap:normal;overflow:hidden;font-size: 13px}
+    .tableBox .listM td span b {padding-right: 10px;padding-top:10px;display:inline-block;font-weight:500}
+    .tableBox .listM td span.tit {font-size: 15px}
+
+    .tableBox .listM.listMfix {}
+    .tableBox .listM.listMfix td:nth-child(1) {width:10%;}
+
+    .tableBox .view.viewM  {width: 96%;}
+    .tableBox .view.viewM td {font-size: 13px;}
+    .tableBox .view.viewM th.tit {width:72%;text-overflow:ellipsis;white-space:nowrap;word-wrap:normal;overflow:hidden;font-size: 15px}
+    .tableBox .view.viewM th.date {font-size: 13px;text-align: right}
+    .tableBox .view.viewM td.tb_ct {font-size: 13px;}
+    .tableBox .view.viewM td.left a {padding-left: 10px}
+
+    .boardWrap .tableBox table.form th, .boardWrap .tableBox table.form td {padding: 15px 2%;}
+    .tableBox table.form {border: 1px #e5e5e5 solid;table-layout: auto; }
+    .tableBox table.form th {width:23% !important;font-size: 15px}
+    .tableBox table.form td {font-size: 13px}
+    .tableBox table.form td input {width:100%;text-overflow:ellipsis;white-space:nowrap;word-wrap:normal;overflow:hidden;}
+
+    .boardWrap .tableBox table.form td textarea {border: 1px #ddd solid;}
+    .btnArea.noMargin {margin:0 2% !important;}
+
+
+    /*table 寃��됰씪��*/
+    .boardWrap .boardSearch {margin:0;padding: 0 20px 20px;}
+    .boardWrap .boardSearch a.btn_inline.disnonepc {display: none}
+    .boardWrap .boardSearch  select {width:70px}
+    .boardWrap .boardSearch input[type='text'] {width:150px}
+
+    .boardWrap .boardSearch .btnArea {position: relative;}
+    .boardWrap .boardSearch .search_ico {display:inline-block;width:34px;height:34px; margin-bottom:10px;line-height:32px;background:#000 url(../images/ex/ct_search_ico.png) center center no-repeat;text-indent: -9999px}
+    .boardWrap .boardSearch .btnArea .write_ico {float:right;margin-bottom:10px;width:80px !important;}
+
+    .calendarWrap .calendarBox {margin:20px auto;padding: 20px 0px;width:98%;}
+
+
+    /*�뚯궗�뚭컻*********************************************/
+    .companyInfo .greetingInner .greeting_img h3 {width:96%;margin:0 2%;font-size: 18px}
+    .companyInfo .history {width:96%;margin:0 2%;}
+    .companyInfo .location {width:96%;margin:0 2%;}
+    .companyInfo .location .company1,
+    .companyInfo .location .company2 {float:none;width: 100%}
+    .companyInfo .location .mApi {width: 100%}
+
+
+    /*怨좉컼�쇳꽣*********************************************/
+    .advice_select {width: 96%;padding:2%}
+    .advice_select .advice_input {width: 100%}
+    .advice_table {width:100%;padding:0}
+    .advice_select .advice_input > select.a_reservation {width: 100%;margin:60px 0 10px;}
+    .advice_select .advice_input > select.a_location {width: 100%;}
+    .advice_select .advice_input .l_btn {float: none;margin-left: 0;width: 100%; }
+    .advice_select .advice_input .l_btn a {width:44%;padding: 12px 2%;margin-top:10px}
+    .advice_table .calendar_wrap .calender_inner .calender_api,.advice_table .calendar_wrap .calender_inner .calender_tb {float: none;width: 100%}
+    .advice_table .calendar_wrap {width: 96%;padding:2%}
+    .form_atb {padding:2%;}
+    .advice_table .table_wrap {width:100%;padding:25px 0}
+    .table_wrap > p.t_tit {font-size:18px}
+    .form_atb > h3 {font-size:18px}
+    .form_atb table th {font-size: 15px;width:15%}
+    .form_atb table.form_atb2 th {text-align: left;}
+    .form_atb table.form_atb2 tr {height: 45px}
+    .form_atb table td select {width: 31%}
+    /*�먯＜�섎뒗吏덈Ц*/
+    .inquiry_tab {width: 96%;margin:0 2%}
+    .inquiry_tab ul {margin-bottom: 10px}
+    .inquiry_tab ul li {width:23%;margin-left: 1%}
+    .inquiry_tab ul li.ml-n {margin-left: 0;width:25%;}
+    .inquiry_lnfo {width:60%;margin: 0 20%}
+
+
+    /*援먯닔�뚭컻*****************************************************************/
+    .teacherView {width:96%;margin: 0 2%;    margin-top: 60px;}
+    #snb ul.deaph1.cols9 {display: none}
+    #snb{position:relative; }
+    #snb .cols9s {background:#fff;}
+    #snb .cols9s  li{float:left; width:14.285714%; height:48px; text-align:center;}
+    #snb .cols9s  li a{font-size:15px; height:44px; line-height:48px; color:#333; font-weight:normal; letter-spacing:-1px;color: #bfbfbf}
+    #snb .cols9s  li.active {border-bottom: 3px solid #134c97;}
+    #snb .cols9s  li.active > a {color: #134c97;font-weight: bold}
+
+    .teacherInfo .thumb, .teacherInfo .info {float: none;width:96%;padding: 0 2%}
+    .teacherInfo .info .profile {width:96%;margin:10px 0;}
+    .teacherInfo .info .teacherInfoTab {width:96%;margin:80px 2%;}
+    .teacherContentsTab > .tabBar > li > a {font-size: 15px}
+    .teacherInfo .lectureWrap .lectureHead {display: none}
+    .lectureWrap .learnName {font-size: 18px}
+    .lectureWrap .lectureList > li {display: inherit;position: relative;padding: 0 10PX}
+    .lectureWrap .lectureList > li.w40p,.lectureWrap .lectureList > li.w35p {width: 100%}
+    .lectureTotal > .left {float: none;width: 100%;font-size:18px}
+    .lectureTotal > .right {float: none;width: 100%}
+    .wishGroup {position: absolute;bottom:5px;left:2%;}
+    .wishGroup label {padding-left:2%;}
+    .otwish {bottom:40px !important;left:10px;}
+
+    .lectureWrap .tableBox {margin:0 1%}
+    .toggleWrap.active > .div_toggle .tableBox table.lecture td {padding:10px 2%;font-size: 13px}
+    .toggleWrap.active > .div_toggle .tableBox table.lecture td span {display: block;padding-top: 5px}
+    .toggleWrap.active > .div_toggle .tableBox table.lecture td:first-child {width:30%}
+    .otMovie {text-align: center;}
+    .tableBox table.reply td.ta_center {padding: 0;padding-bottom: 5px;text-align: left}
+    .tableBox table.reply textarea {border: 1px #e5e5e5 solid;width:78%}
+    .tableBox table.reply input[type='submit'] {width:20%;text-align: center}
+    .tableBox table.reply .btn_l {padding: 0}
+    .tableBox table.viewM .linkNext {width:20% }
+    .tableBox table.viewM th, .tableBox table.view td {font-size: 13px}
+
+    /*20191212異붽�*/
+    .subIntroduction {margin: 5px 2% 20px;}
+    .teacherThumb {margin: -10px 2%;}
+    .teacherThumb > li { width: 33.3333%; padding: 10px 1%;}
+
+
+
+    /*�⑷꺽�섍린review*/
+    .reviewBoard {width:98%;margin:0 1%;}
+    .reviewBoard.active {display: block;}
+    .review_point {height:auto;min-height:80px;width:98%;padding: 25px 1%;font-size: 13px}
+    .review_point p {font-size: 15px}
+    .review_point ul {padding-left: 32px;padding-top: 5px}
+    .myarea_main .myarea_list_wrap{ padding:0px; margin:0px; position: relative; width:100%;}
+    .myarea_main .myarea_list_wrap > .inner .owl-carousel{width:100%;}
+    .myarea_main .myarea_list_wrap .owl-nav{position: absolute; left:0px; top:30%; width:100%; height:0; display:block !important;}
+    .myarea_main .myarea_list_wrap .owl-nav button{display:none; width:30px; height:30px;overflow: hidden; }
+    .myarea_main .myarea_list_wrap .item {width:auto}
+    .myarea_main .myarea_list_wrap .item .inner {width:100%;height:170px; position: relative;}
+    .myarea_main .myarea_list_wrap .item .thumb {display:block; width:auto; height:auto;}
+    .myarea_main .myarea_list_wrap .item .thumb img {width:100%}
+    .myarea_main .myarea_list_wrap .item .desc{display:inline-block;position:absolute; bottom:0; left:0;width:100%;height:30px;padding:0; line-height: 30px;text-overflow:ellipsis;white-space:nowrap;word-wrap:normal;overflow:hidden;}
+    /*�⑷꺽�섍린review 怨듯넻search*/
+    .review_movie_search {}
+    .review_movie_search .list {width:100%;margin-bottom:30px;border-top:2px solid #000;display: }
+    .review_movie_search .list:after {content: "";display: block;clear:both}
+    .review_movie_search .list ul {padding-top: 30px}
+    .review_movie_search .list li {float:left;width:29.333333%;padding-left:0px;padding:0 2%;margin-bottom: 45px}
+    .review_movie_search .list li:first-child {}
+    .review_movie_search .list li img {width:100%;}
+    .review_movie_search .list li span {display:block;padding-top:10px;text-overflow:ellipsis;white-space:nowrap;word-wrap:normal;width:100%;overflow:hidden;}
+    .review_movie_search .paging {margin-top:45px}
+    .review_movie_list {margin-bottom: 60px}
+    .Bookreview .tabBar > li {width: 33.333333%}
+    .Bookreview .tabBar > li a {padding: 0;}
+    .Bookreview .tabBar > li.active > a {color:#fff}
+    /*�⑷꺽�섍린review  table �볤� */
+    .reviewBoard .view.viewM .write textarea{width:100%;padding:2%;min-height:80px}
+    .reviewBoard .view.viewM .write .single {display:inline-block;width:100px;height:35px;line-height:35px;text-align: center; background: #000;color:#fff;}
+
+
+    /*留덉씠�섏씠吏�*****************************************************************/
+    .date_sort .inner {padding: 25px 2%;width:96%;}
+    .date_5ea:after {content:"";display: block;clear: both}
+    .date_pick {float: none;width: 100%;padding-left: 0;margin:10px 0;}
+    .date_sort .search_btn {position: absolute;top:50%;right:2%;}
+    .date_sort ul {width:96%;margin:10px 2% 0 0;}
+    .date_sort > ul {width:96%;margin:10px 2%;}
+    .tbd_03 {width:96%;margin:0 2%;margin-top: 40px;}
+    .tbd_03 table.tbw03M td {text-align: left;padding: 5px 1%}
+    .tbd_03 table.tbw03M span {display: block;line-height: 20px}
+    .tbd_03 table.tbw03M span b {padding-right:10px;}
+    .tbd_03 table.tbw03M a.re_btn {text-align: center; margin-bottom: 3px;font-size: 11px;}
+    .tbd_03 table.tbw03M a.re_btn span {display: inline-block;}
+
+    .tbd_03.tbd_04 {margin-top: 70px}
+    .tbd_03.tbd_04 th,
+    .tbd_03.tbd_04 td {font-size: 13px}
+    .tbd_03 .btn_crud2 .re_btn {bottom:10px;}
+    /*�λ컮援щ땲*/
+    .Mypage .statusBar {width:96%;margin:0px 2%;}
+    .cart table.tbw03M td span {display: block;}
+    .Mypage .statusBar li {font-size:18px;line-height:25px ;padding-top: 10px;height: 60px}
+    .Mypage .statusBar li label {font-size: 18px}
+    .Mypage .statusBar li b {font-size:15px;display: block;}
+    .Mypage .cart .tbd_03 .bdbox {padding: 0px 3px;font-size: 13px;}
+    .cart table.tbw03M td p {font-weight: bold;font-size:14px}
+    .pay_total {width:96%;margin:0px 2%;}
+    .Mypage .cart .infoarea {width:92%;margin:25px 2% 0;padding: 30px 2%;}
+    .Mypage .cart .btn_area {padding-top: 10px}
+    .Mypage .cart .btn_area .left {float: none;margin:0px 2% 10px;font-size: 13px}
+    .Mypage .cart .btn_area a {    width: 85px;padding:10px;text-align: center;}
+    .Mypage .cart .btn_area .right {float: none;width: 100%;text-align: center}
+    .Mypage .cart .btn_area .right a {width:44%;margin-left: 0; padding: 10px 2%}
+    .Mypage .cart .pay {width:96%;margin:0px 2%;}
+    .Mypage .cart .pay .left {float: none;width: 100%;padding: 15px 0;}
+    .Mypage .cart .pay ul:after {content: "";display: block;clear: both;}
+    .Mypage .cart .pay li {float: none;padding-bottom: 5px}
+    .Mypage .cart .pay .pay-sum {padding-top: 10px}
+    .Mypage .cart .pay .right {float: none;width: 100%;padding: 0}
+    .Mypage .cart .pay .right .btn_area {padding: 50px 0 20px}
+    .Mypage .cart .mileinfo {width:92%;margin:0px 2%;padding:20px 2%}
+    .Mypage .cart .reserve {width:96%;margin:0px 2%;}
+    .Mypage .cart .reserve ul {padding:10px 0;}
+    .Mypage .cart .pay_com {width:96%;margin:0px 2%;}
+    .Mypage .cart .pay_com .left,
+    .Mypage .cart .pay_com .right {float: none;width:96%;padding:20px 2%;}
+    /*�뚯썝�뺣낫愿�由�*/
+    .Mypage.userinfo .tbd_05.tbd_03 table colgroup {display: none}
+    .Mypage.userinfo .tbd_05.tbd_03 th {width:30%;}
+    .Mypage.userinfo .tbd_05.tbd_03 th, .Mypage.userinfo .tbd_05.tbd_03 td {padding-left:2%;}
+    .Mypage.userinfo .input_txt input.w190 {width:138px !important;}
+    /*荑좏룿留덉씪由ъ�*/
+    .Mypage .review {width:96%;margin:0px 2%;}
+    .Mypage .review li a {font-size: 15px}
+    .Mypage .couponbox p {font-size: 15px}
+    .Mypage .couponbox .input_txt {width:75%}
+    .Mypage .couponbox .btn_move .cpbtn {width:20% }
+    .Mypage .tbd_05 table.coupontbw  {width:96%;margin:0px 2%;}
+    table.coupontbw span {display: block;text-align: left;line-height:20px;color: #bfbfbf;}
+    table.coupontbw span.tit {font-size: 15px;font-weight: bold;color: #000;}
+    table.coupontbw span b {display:inline-block;width:25%;font-size: 13px}
+    .lectureTotal .btn_m {padding: 0 10px;}
+    .Mypage .mileage {height: auto}
+    .Mypage .mileage .left,
+    .Mypage .mileage .right {float: none;width: 100%}
+    .Mypage .mileage .left ul {border-right:none;padding:0;}
+    .Mypage .mileage .right ul {padding:0;}
+    /*寃뚯떆臾쇨�由�*/
+    .searchArea {padding:10px 20px}
+    .searchArea > li.left {width: auto}
+    .searchArea input.btn_m {display: none}
+    .searchArea .w400 {width:80% !important;}
+    .searchArea select {width:70px}
+    .searchArea input[type='text'] {width:200px}
+    .searchArea > li.right {width: auto;font-size: 13px}
+    .searchArea .search_ico {display:inline-block;width:34px;height:34px; margin-bottom:10px;line-height:32px;background:#000 url(../images/ex/ct_search_ico.png) center center no-repeat;text-indent: -9999px}
+    .searchArea > li.right .btn_m.w140 {width:110px;padding:0 5px;}
+    .tabBox.review.wid30p li {width: 33.33333%}
+    .Mypage .review li.active a span {left:40%;}
+    .tableBox table.listM .subject.lock {padding-left:25px;background: url(../images/common/icon_lock.png) no-repeat left center;font-size: 15px}
+    .tableBox table.listM .subject.reply:before {display: inline-block;content: 'RE:';font-size: 15px;clear: both; padding-left:15px;color: #144b95;}
+    .tableBox table.view th, .tableBox table.view td {width:66%;padding: 15px 2%;}
+    .tableBox table.view th, .tableBox table.view td.ta_right {width:26%;}
+    .tableBox table.view td.textContent {padding:25px 15px;}
+    .tabBar.tbw25p {border:none;}
+    .tabBar.tbw25p > li {width:20%;}
+    .tabBar.tbw25p > li > a {padding: 0 ;text-align: center;border:none;background: #ddd;}
+    .tabBar > li.active > a {color:#fff;background:#134c97;}
+    .Mypage .view .tableBox {border:none;}
+    .Mypage .view .tableBox table td:first-child {padding-left: 0}
+    .Mypage .view .tableBox table td {padding:15px 0;font-size: 13px}
+    .Mypage .view .tableBox table td p {font-size: 15px}
+
+    /*�깆쟻愿�由�*/
+    .Mypage .grade .tabBar li {width: 25%}
+    .Mypage .grade .tableBox table td {padding:15px 0;font-size: 13px}
+    .Mypage .grade .tableBox table td p {font-size: 15px}
+    .Mypage .grade .tableBox table td:first-child {width:70%;padding-left: 0}
+    .Mypage .grade .tableBox table td:nth-child(2) {width:30%;text-align: center}
+    .Mypage .grade .tableBox table td .small {width: 75px;}
+    .Mypage .grade .tableBox.other .disnonepc {margin-top: 10px}
+    .Mypage .grade .tableBox.other .disnonepc span {display: block;}
+
+    /*�닿컯�섏떎*****************************************************************/
+    .Mclass .tab_topContent {width:98%;margin:20px 1%;}
+    .Mclass .tab_topContent .tabBar {margin-top:80px;font-size: 15px}
+    .Mclass .tab_topContent .tabBar > li {width:25%;}
+    .Mclass .tab_topContent .tabBar > li > a {padding: 8px 0 0 0}
+    .Mclass .tab_topContent .tabPage .btn_info {top:-100px;}
+    .tabPage .tbd_01 table th {display: none}
+    .Mclass .tab_large .tab_large_1depth .tabBar {width:100%;margin:20px 0;}
+    .Mclass .tab_large .tab_large_1depth .tabBar > li {width:33%;}
+    .Mclass .tab_large .tab_large_2depth .tabBar {width:60%;margin:20px 20%;text-align: center}
+    .Mclass .tab_large .tab_large_2depth .tabBar > li {width:47%;margin:0 1% 5px;}
+    .Mclass .tab_large .tab_large_2depth .tabBar > li a {padding: 0}
+    .Mclass .tab_large .tabPage {width:98%;margin:0px 1%;}
+    .tabContent_2depth .Dropmenu .lfloat {float: none;width: 100%;min-height: 140px}
+    .tabContent_2depth .Dropmenu .lfloat .Droptab_wrap {}
+    .tabContent_2depth .Dropmenu .lfloat .Droptab_wrap li {float:left;width: 33.33333%;margin: 0}
+
+    .tabContent_2depth .Dropmenu .rfloat {float: none;width: 100%;min-height: auto}
+    .tabContent_2depth .Dropmenu .rfloat ul {width:98%;margin:0px 1%;}
+    .tabContent_2depth .Dropmenu .rfloat li a {width:96%;padding: 12px 2%}
+    .Mclass .tab_large .tab_large_2depth .tabBar.zian_mbtn li {width: 50% !important}
+    .tabPage .tbd_01 {padding-top: 25px}
+    .tabPage .tbd_01 table td {padding:20px 1%;font-size: 13px;text-align: left}
+    .tabPage .tbd_01 table td:last-child {width:25%;text-align: center}
+    .tabPage .tbd_01 .txt {font-size: 15px}
+    .tabPage .prograss {display: none}
+    .tbd_top .stitle {font-size: 15px}
+    .tbd_top .sub_text  {position: relative;display: block;padding-top: 5px;font-size: 13px}
+    .Mclass .replay {font-size: 13px;width: 60px; height: 21px;}
+    .tabContent_2depth .Dropmenu_down .txt_area .thumb  {font-size: 15px}
+    .tabContent_2depth .Dropmenu_down .txt_area .guide {font-size: 13px}
+    .tabContent_2depth .Dropmenu_down .txt_area .total_count {position:  static;text-align: left;padding-top: 10px}
+    .boardWrap.eventBoard .colbox .col .infobox .info li {float:none;padding:5px 0}
+    .boardWrap.eventBoard .colbox .col .infobox .info li.pl30 {padding-left: 0 !important}
+
+
+    /*�대깽��*****************************************************************/
+    .boardWrap.eventBoard .colbox .col .imgbox2 {padding:0;width:30%;}
+    .boardWrap.eventBoard .colbox .col .imgbox2 img {width:90%}
+    .boardWrap.eventBoard .colbox .col .infobox {width:70%}
+    .boardWrap.eventBoard .colbox .col .infobox .title {font-size: 15px}
+    .boardWrap.eventBoard .colbox .col .list {font-size: 13px}
+    .tableBox table.form .date_pick input {width:32%;}
+    .boardWrap.eventBoard .imgbox {width:98%;margin:0px 1%;}
+    .boardWrap.eventBoard .imgbox .title {font-size: 25px}
+    .boardWrap.eventBoard .imgbox img {width: 100%}
+    .boardWrap.eventBoard .boardSearch {margin: 0}
+
+    /*臾대즺媛뺤쥖*****************************************************************/
+    .free {width:96%;margin:20px 2% 0;}
+    .free .searchArea {width: 96%;margin:30px 2% 0;padding: 0}
+    .free .direct_view .btn_inline {margin:10px 0 20px 2%}
+    .free .searchArea input.w400 {width:60% !important}
+    .searchArea input[type='submit'] {width:30%;}
+    .free .search_result { font-size: 15px; padding: 0  1%;}
+    .free .ftype {padding: 0 1% 20px;}
+    .free .tabBar {width:80%;margin:0 10%;text-align: center}
+    .free .tabBar li {width:49%}
+    .free .myarea_list_wrap .inner {width:98%;margin:0 1%;font-size: 13px}
+    .free .myarea_main .myarea_list_wrap .item .desc {height:auto;width: 98%;padding: 0 1%}
+    .free .myarea_main .myarea_list_wrap .item .inner {height:350px;}
+    .free .myarea_list_wrap .item .thumb .myarea_poster {width:100%;height:auto;}
+    .free .myarea_list_wrap .item .desc p.tit {font-size: 15px;width:100%;}
+    .free .tabBar.freetab {width: 98%;margin:0 1%;}
+    .free .tabBar.freetab li {width:19%;margin: 0 1%}
+    .free .tabBar.freetab > li > a {padding:0;}
+    .free .myarea_list_wrap .item .inner {height: 350px}
+    .free .myarea_list_wrap .list {width: 98%;margin:0 1%;padding: 0}
+    .free .myarea_list_wrap .list li {width:48%;margin: 0 1%;margin-bottom: 20px}
+    .free .myarea_list_wrap .item .thumb {width: 100%}
+    .free .myarea_list_wrap .item .desc {width: 100%}
+    .free .myarea_main .myarea_list_wrap .item .inner.h365 {height: 365px;}
+    .free .myarea_list_wrap > .inner .owl-carousel {margin:0;}
+    .free .direct_view {width: 98%;margin:0 1%;}
+    .free .direct_view .item {padding:0;}
+    .free .direct_view .item .thumb {width:48%;padding-right: 2%}
+    .free .direct_view .item .desc {width:48%;padding: 0;padding-right: 2%}
+    .free .direct_view .item .desc p.tit {font-size: 15px}
+    .free .direct_view .utill {margin-top: 10%;width: 100%}
+    .free .direct_view .utill a {width: 49%;padding-left: 0}
+    .free .direct_view .utill a.home {width:50%;background: url(../images/common/icon_home.png) 15% center no-repeat;}
+    .free .direct_view .utill a.class {background: url(../images/ex/icon_class.png) 15% center no-repeat;}
+    .tabPage .tbd_02 table th {display: none}
+    .tabPage .tbd_02 table.scrolltbw {font-size: 13px}
+    .tabPage .tbd_02 table.scrolltbw td{text-align: left;padding:10px 2%;line-height:20px}
+    .tabPage .tbd_02 table.scrolltbw td p {font-size: 15px}
+    .tabPage .tbd_02 table.scrolltbw td span {display: block;}
+    .tabPage .tbd_02 table.scrolltbw .small {font-size: 13px}
+    .free .tabBar.freetab.w2 {width: 98%}
+    .free .tabBar.freetab.w2 li {width:27.33333%;margin: 0 1%}
+    .free .myarea_main .myarea_list_wrap .item .inner.h300 {height: 360px}
+
+    /*�섍컯�좎껌*****************************************************************/
+    .selectArea {}
+    .selectArea dl {padding:30px 1%;}
+    .lectureTotal {padding: 25px 1%;border:none;}
+    .lectureWrap .teacherList.disnonepc {display: none}
+    .teacherBody .tableBox table td {padding: 10px 0}
+    .lectureWrap .pdl20 .cost {padding-left:15px !important;padding-right: 5px}
+    .lectureWrap .lectureList {padding: 10px 0 40px}
+    .alignCenter {width: 100%}
+    .alignCenter img {width: 100%}
+
+
+    /*�⑤씪�몄꽌��***********************************************************************/
+
+    .shop .submainBanner {width: 100%;}
+    .shop .submainBanner > img {width: 100%;min-height:200px}
+    .shop .submainBanner .title img {width:40%}
+
+    /*searchArea*/
+    .shop .searchArea {padding:10px 20px 0;margin:20px 0;}
+    .shop .lectureWrap {margin-top: 0}
+    .shop .shoplist {width:96%;margin:0 2%;}
+
+    .shop .lectureTotal {padding:25px 0;width: 100%}
+    .shop .lectureWrap .lectureHead {display: none}
+    /*
+    .shop .lectureWrap .lectureListM > ul {width: 100%}
+    .shop .lectureWrap .lectureListM > ul:after {clear: both;content: "";display: block;}
+    .shop .lectureWrap .lectureList {display: none}
+    .shop .shopBoard .lectureListM {width:100%;}
+    .shop .shopBoard .lectureListM div {padding:10px 2%}
+    .shop .shopBoard .lectureListM div img {float:left;max-width: 120px;padding-right: 2%}
+    .shop .shopBoard .lectureListM div:after {clear:both;display: block;content: ""}
+    .shop .shopBoard .lectureListM div > div {line-height: 25px}
+    .shop .shopBoard .lectureListM .bottom {padding:10px 2%;border-top: 1px #e5e5e5 solid;}
+    .shop .shopBoard .lectureListM .bottom ul {float:right;font-size: 13px}
+    .shop .shopBoard .lectureListM .bottom ul.bottom_left {float:left;}
+    .shop .shopBoard .lectureListM .bottom ul li.txt14 {font-size: 13px;line-height:20px;}*/
+
+    .shop .mainBoard .list ul {}
+    .shop .mainBoard .list ul li a {padding-right: 2%;width: 90%;text-overflow:ellipsis;white-space:nowrap;word-wrap:normal;}
+
+
+    .online  {width:92%;margin:20px 2%;padding:20px 2%}
+    .online .infoT_book .book_img {width:30%}
+    .online .infoT_book .book_img img {max-width: 120px;}
+    .online .infoT_book .book_info {width:70%}
+    .online .infoT_book .book_info th {padding:15px 0;}
+    .online .infoT_book .book_etc {display: none}
+    .online .infoB_book .stitle {font-size: 15px}
+    .online .infoB_book span {font-size: 13px}
+    .shop .boardWrap .boardSearch {margin: 60px 0 0px;}
+    .comment .cm_write .inner .cm_title {float:none;padding-top: 0;padding-bottom: 5px}
+    .comment .cm_write .inner .write {width:66%;padding:10px 2%;}
+    .comment .cm_write .inner .single {display:inline-block;width:25%;margin:0;padding:0;margin-left:2%;min-height:90px;line-height:90px}
+
+    .mainProductList2 {padding-bottom:0}
+    .shop #container .slick-dots {display: none !important}
+
+
+    /*吏��덊뙣��*/
+    .zianPass {width: 100%}
+    .zianPass:before {}
+    .zianPass .tabContent {padding:40% 2% 0}
+    .zianPass .tabBar > li.active > a {}
+    .zianPass:before {display: block;content: ''; clear: both; width:100%; min-height: 820px; position: absolute; top: 0;left: 0px;
+        right:0px; background: #2b80fd url(../images/content/bg_zian.jpg) no-repeat center top;z-index: -1;background-size:100%}
+    .zianPass:after {display: none}
+    .zianPass dl > dd > ul.cols3 {width:96%;margin: 2%}
+
+
+
+
+
+}
+
+@media screen and (max-width:667px){
+
+    /*�섍컯�좎껌*/
+    .lectureWrap .teacherList > li.on:before {width: 90px;height:90px;top: 50%;left: 64%;margin-top: -45px; margin-left: -56px;}
+    .btnArea .btnArea_inner {padding:30px 0;}
+    .btnArea .btnArea_inner > .left,.btnArea .btnArea_inner > .right {width:46%;margin:0 2%;}
+
+
+    /*�⑤씪�몄꽌�� 異붽��섏젙嫄� 20191230*/
+    .shop .shopBoard .lecListM li.w35p {width:70%;}
+
+
+}
+
+
+
+
+@media screen and (max-width:568px){
+
+    /*紐⑤떖�앹뾽*/
+    .modalWrap .inner .modalContent {font-size: 15px}
+
+
+    /*援먯닔�뚭컻*****************************************************************/
+    .teacherContentsTab > .tabBar > li > a {font-size: 13px}
+    .tabBar.tabLecture > li > a {font-size: 13px}
+    .lectureWrap .lectureList > li {width: 100%;display: inherit;padding: 0 10px;}
+    .btn_learnType {margin-bottom: 5px}
+
+
+    /*留덉씠�섏씠吏� *****************************************************************/
+    .Mypage .cart .pay_total2 li .txt1 {font-size:14px}
+    .Mypage .cart .pay_total2 li .txt2 {font-size:14px}
+    .Mypage .cart .pay_total2 li .txt2 b {font-size:16px;}
+
+
+
+    /*臾대즺媛뺤쥖*****************************************************************/
+    .free .myarea_list_wrap .item .inner {    height: 295px;}
+    .free .myarea_main .myarea_list_wrap .item .inner.h365 {height: 305px}
+    .free .myarea_main .myarea_list_wrap .item .inner.h300 {height: 310px;}
+
+    /*�섍컯�좎껌*****************************************************************/
+    .lectureWrap .lectureHead {display: none}
+    .selectArea ul > li {width: 20%}
+    .lectureWrap .teacherList > li:first-child {width:10% }
+    .lectureWrap .teacherList > li {width: 15%}
+    .lectureWrap .teacherList > li > b {font-size: 13px}
+    .lectureWrap .teacherList > li > .thumb > img {width:150%;height:auto;padding:25px 0 ;}
+    .lectureWrap .teacherList > li.on:before {width: 80px;height: 80px;top: 50%;left: 64%;margin-top: -41px; margin-left: -50px;}
+
+
+    /*鍮낅え�섍퀬��*****************************************************************/
+    .big .mainBanner img {padding-top:80px}
+
+    /*�⑤씪�몄꽌��*****************************************************************/
+    .shop .submainBanner > img {min-height: 120px}
+    .shop .submainBanner .Banner_txt {top:15px;
+        left:10px;width:auto;padding-bottom: 5px}
+    .shop .submainBanner .Banner_txt .txt {font-size: 13px}
+    .shop .submainBanner .Banner_txt .link {position: absolute;top:100%; left:0;padding: 5px 50px 5px 10px;background: url(../images/ex/submain_arrow.png) 90px center no-repeat;}
+    .shop .shoplist .type_wrap {width:100%}
+    .shop .shoplist .type_wrap .type_btn {width:95%;padding-left: 5%;background: url(../images/common/icon_lecture_down.png) 98% center no-repeat;}
+    .shop .shoplist .listtype {width:100%;margin:0;}
+
+    /*�⑤씪�몄꽌�� 異붽��섏젙嫄� 20191230*/
+    .shop .shopBoard .lecListM li.w35p {width:70%;}
+
+
+
+
+    .zianPass dl > dd > ul.cols4 > li {width:50%;}
+
+}
+
+
+
+
+@media screen and (max-width:480px){
+
+
+    .titleBar h5 {font-size: 18px;}
+    .titleBar .btn_more {padding-right: 10px; font-size: 12px;}
+    .mainBoard ul.tabBar li a {font-size: 18px}
+    .mainTeacher .mainTeacherPage .swiper-slide > div .thumb span {background-size:100% 60%}
+    .mainTeacher .mainTeacherPage .swiper-slide > div .thumb img {width:70% !important}
+
+    .mainQuickLink ul li a {font-size:12px}
+    .mainQuickLink ul li a img {width: 18%;margin-right: 0}
+
+    /*硫붿씤�щ씪�대뱶 �대룞踰꾪듉*/
+    #container .bx-wrapper .bx-pager { bottom: 5px;}
+    .bx-wrapper .bx-pager-item a {width:10px;height: 10px}
+    .slick-dots li button {width:10px;height: 10px}
+
+    /*�뚯썝媛���*/
+    .joinWrap h2 {margin-top: 30px;}
+    .joinWrap .joinAgreeAll {padding: 30px 9% 30px 2%;}
+    .joinWrap  .statusBar li {font-size:14px }
+    .joinWrap  .statusBar li label {font-size: 14px}
+    .joinWrap .statusBar li b {font-size:14px}
+    .joinWrap .joinAgree label {font-size:15px;}
+    .joinWrap .tableBox table.form th {font-size: 13px}
+    .joinWrap .tableBox table.form td input {width: 45%;font-size: 12px}
+    .joinWrap .tableBox table.form input[type='text'], .joinWrap .tableBox table.form select {min-width:100px;font-size: 12px}
+    .joinWrap .tableBox table.form input[type='password'] {width:100%;min-width: 120px;font-size: 12px}
+
+    .btn_lendingLink1,.btn_lendingLink2 {margin-top: 14%;background-size:90%;height:auto;min-height: 200px;}
+    .divGroup.cols3.noMargin {}
+
+    #lendingVisual > ul {width:98%;top:74%;right:0.5%;}
+    #lendingVisual > ul li a b {font-size: 17px}
+    #lendingVisual > ul li a {background: #FFF url(../images/common/icon_arrowRight.png) no-repeat 98% center;background-size:5%;    padding: 10px;}
+    #lendingVisual .lendingVisualText b {font-size: 27px;}
+
+
+    /*�뚯궗�뚭컻*********************************************/
+    .tBox4 li {width: 50%}
+
+    /*援먯닔�뚭컻 *********************************************/
+    .teacherContentsTab > .tabBar:after {clear: both;content: "";display: block;}
+
+    .teacherContentsTab > .tabBar {height: auto;margin-top: 50px}
+    .teacherContentsTab > .tabBar > li {width:33.1111%;}
+    .teacherContentsTab > .tabBar > li:last-child {border-right: 1px solid #ddd;}
+    .teacherContentsTab > .tabBar > li:nth-child(1),.teacherContentsTab > .tabBar > li:nth-child(2),.teacherContentsTab > .tabBar > li:nth-child(3) {border-bottom: 1px solid #ddd;}
+    .teacherContentsTab > .tabBar > li:nth-child(2),.teacherContentsTab > .tabBar > li:nth-child(4) {border-right: 1px solid #ddd;}
+    .teacherContentsTab > .tabPage {margin-top:20px}
+    .lectureWrap .lectureList {position:relative;}
+    .lectureWrap .lectureList > li {width: 100%;display: inherit;padding: 0 10px;}
+    .lectureWrap .lectureList > li.ta_right {}
+    .lectureWrap .lectureList > li.ottype {text-align: right;}
+    .lectureWrap .cost {padding: 0}
+    .lectureWrap .learnName {font-size: 15px}
+    .tabBar.tabLecture {width:90%}
+    .tabBar.tabLecture {}
+    .lectureWrap .cost {font-size: 15px}
+    .searchArea > li.right .txt {display: none}
+    .teacherInfo .thumb img {width:95%}
+    .teacherInfo .thumb, .teacherInfo .info {height: 400px;}
+    .teacherInfo .info .name,.teacherInfo .info .category {font-size: 20px;padding-left: 2%}
+    .teacherInfo .info .name b {font-size: 40px}
+    /*20191212異붽�*/
+    .teacherThumb > li { width:48%; padding: 10px 1%;}
+    .teacherThumb > li .thumb {width: 70%}
+    .teacherThumb > li .name { top:30px;left: 10px}
+    .teacherThumb > li .category {top:10px;left: 10px}
+
+
+
+    /*�먯＜�섎뒗吏덈Ц*/
+    .inquiry_tab {margin-bottom: 20px}
+    .inquiry_tab ul li {width:48%;margin:0;margin-top: 5px}
+    .inquiry_tab ul li.ml-n {margin-left: 0;width:48%;margin-top: 5px}
+    .inquiry_tab ul li.mb-n {margin-bottom: 0;width:48%;}
+    .tableBox table th {font-size: 15px}
+    .tableBox table td {font-size: 13px}
+
+
+    /*�⑷꺽�섍린review*/
+    .review_point {padding: 25px 1% 60px;}
+    .review_movie_search .list li {float:left;width:46%;padding-left:0px;padding:0 2%;margin-bottom: 45px}
+    .tabBox.review li {width: 50%}
+
+    /*留덉씠�섏씠吏�*****************************************************************/
+    .date_5ea {width: 100%;}
+    .date_sort .search_btn {margin-left:2%;position: relative;}
+    .Mypage .statusBar li {font-size:14px }
+    .Mypage .statusBar li label {font-size: 14px}
+    .Mypage .cart p.title {font-size: 15px}
+    .Mypage .cart .pay_total li .plus {top: 66px;right: -41px;background-size:80%;}
+    .Mypage .cart .pay_total li .icoequal {top: 66px;right: -26px;background-size:80%;}
+    .Mypage .cart .pay_total li .minus {top: 66px;right: -37px;background-size:80%;}
+    .Mypage .cart .pay_total li .txt1 {font-size: 14px}
+    .Mypage .cart .pay_total li .txt1 {font-size: 14px}
+    .Mypage .cart .pay_total li .txt2 {font-size: 15px}
+    .Mypage .cart .pay_total li .txt2 b {font-size:22px;}
+    /*留덉씠�섏씠吏� *****************************************************************/
+    .Mypage .cart .pay_total2 li .txt1 {font-size:13px}
+    .Mypage .cart .pay_total2 li .txt2 {font-size:13px}
+    .Mypage .cart .pay_total2 li .txt2 b {font-size:15px;}
+
+
+
+    .tabContent_2depth .Dropmenu_down .txt_area {}
+    .tabContent_2depth .Dropmenu_down .txt_area .btn_cart_wrap {position: inherit;padding-top: 30px }
+    .tabContent_2depth .Dropmenu_down .btn_crud {padding: 0 10px}
+    .Mypage .cart .tbd_03.tbd_05 colgroup {display: none}
+    .Mypage .cart .tbd_03.tbd_05 th {width:60px ;}
+    .Mypage .cart .tbd_03.tbd_05 th,.Mypage .cart .tbd_03.tbd_05 td {padding: 15px 1%;font-size: 13px}
+    .Mypage .cart .tbd_03.tbd_05 select,
+    .Mypage .cart .tbd_03.tbd_05 input {width:65px}
+    .Mypage .cart .tbd_03.tbd_05 .input_area button {width: 84px;font-size: 12px;margin-bottom: 5px}
+    .Mypage .cart .pay_comtitle {font-size:22px;}
+    .Mypage .cart .pay_comtitle .subtitle {font-size: 13px}
+    .Mypage .reviewBoard {margin-top:30px;}
+    .tabBar.tbw25p {margin-bottom:60px}
+    .tabBar.tbw25p > li {width:33.33333333333333333333333%}
+    .tabBar.tbw25p > li > a {padding: 0 ;text-align: center;}
+    .Mypage .grade .tabBar {margin-bottom: 60px;}
+    .Mypage .grade .tabBar li {width: 50%}
+    .Mypage .grade .tableBox table td .small {width: 75px;margin:2px 0;}
+    .Mypage .grade .tabBar > li.active > a {border-bottom: 1px solid #dedede;background-color: #fff;}
+    .searchArea.floatnone li {float:none;width: 100%;height: 36px;padding:10px 0;}
+    .searchArea.floatnone .right select {float:left;width:31.33333% !important;margin:0 1%;}
+    .Mypage.userinfo .input_txt input.w190 {width: 114px !important;}
+
+
+    /*�대깽��*****************************************************************/
+    .boardWrap.eventBoard .colbox .col .imgbox2 {float:none;text-align: center;width: 100%;}
+    .boardWrap.eventBoard .colbox .col .imgbox2 img {width:90%;}
+    .boardWrap.eventBoard .colbox .col .infobox {float:none;width: 100%;padding-top: 10px}
+
+    /*臾대즺媛뺤쥖*****************************************************************/
+    .free .myarea_main .myarea_list_wrap .item .inner { height: 276px;}
+    .free .tabBar.freetab  {margin-bottom:20px}
+    .free .tabBar.freetab li {width:41%;margin: 0 1%;margin-bottom:3px}
+    .free .myarea_list_wrap .item .inner { height:250px;}
+    .free .myarea_list_wrap .list li {margin-bottom:60px}
+    .free .myarea_list_wrap .item .desc p.tit {display:-webkit-box;-webkit-line-clamp:3; -webkit-box-orient:vertical;height:50px; line-height:20px; overflow:hidden;text-overflow:ellipsis;}
+    .free .myarea_main .myarea_list_wrap .item .inner.h365 {height:300px}
+    .free .direct_view .item .thumb {float:none;width:96%;padding: 0 2%}
+    .free .direct_view .item .desc {float:none;width:96%;padding:10px 2% 0}
+    .free .tabBar.freetab.w2 li {width: 24.33333%;}
+    .free .myarea_main .myarea_list_wrap .item .inner.h300 {height: 300px}
+
+
+
+    /*�섍컯�좎껌*****************************************************************/
+    .selectArea ul > li {width:25%}
+    .lectureWrap .teacherList.disnonepc ul.bottom li {font-size: 15px}
+    .lectureWrap .teacherList.disnonepc ul.bottom li b {font-size: 15px}
+
+    /*�⑤씪�몄꽌��*****************************************************************/
+    .online .infoT_book .book_info .stitle {margin: 10px 0}
+    .online .infoT_book .book_img {float:none;width:100%}
+    .online .infoT_book .book_info {float:none;width:100%}
+    .online .infoT_book .book_img {padding-top:0px;}
+    /*�⑤씪�몄꽌�� 異붽��섏젙嫄� 20191230*/
+    .shop .shopBoard .lecListM li.w35p {width:65%;}
+
+
+
+
+
+}
+
+
+@media screen and (max-width:414px){
+
+    /*�섍컯�좎껌*/
+
+    .lectureWrap .teacherList.disnoneM {display: none}
+    .lectureWrap .teacherList.disnonepc ul.top {width: 100%;padding-bottom: 10px}
+    .lectureWrap .teacherList.disnonepc ul.top:after {clear: both;display: block;content: ""}
+    .lectureWrap .teacherList.disnonepc ul.top li:first-child {width:30%}
+    .lectureWrap .teacherList.disnonepc ul.top li {width: 70%;}
+    .lectureWrap .teacherList.disnonepc ul.top li b {display: inline-block;width:98%;padding-left:20px}
+    .lectureWrap .teacherList.disnonepc ul.top li img {width:60%}
+    .lectureWrap .teacherList.disnonepc ul.bottom {border-top: 1px #e5e5e5 solid;}
+    .lectureWrap .teacherList.disnonepc ul.bottom li {float:left;width: 20%;height:90px;text-align: center;font-size: 18px;position: relative;margin-top:30px}
+    .lectureWrap .teacherList.disnonepc ul.bottom li b {display: block;}
+    .lectureWrap .teacherList.disnonepc ul.bottom:after {clear: both;display: block;content: ""}
+    .lectureWrap .teacherList.disnonepc{display:table;width:100%;border-left:1px #e5e5e5 solid;border-right:1px #e5e5e5 solid;box-sizing:border-box;}
+    .lectureWrap .teacherList.disnonepc:after{display:block;content:'';clear:both;}
+    .lectureWrap .teacherList.disnonepc ul.bottom li.on{color:#fff;}
+    .lectureWrap .teacherList.disnonepc ul.bottom > li.on:before{display:block;content:'';clear:both;width:70px;height:70px;position:absolute;top:-17%;left:69%;margin-left:-50px;border-radius:50px;background-color:#144b95;z-index:-1;}
+    .Mclass .tab_large .tab_large_1depth .tabBar > li {width: 32.555555%}
+
+    .boardWrap.eventBoard .colbox {margin-top:30px}
+
+    /*�⑤씪�몄꽌�� 異붽��섏젙嫄� 20191230*/
+    .shop .shopBoard .lecListM li.w35p {width:60%;}
+
+
+    .review_movie_search .list.mgt20 {margin-top:30px}
+
+}
+
+
+
+@media screen and (max-width:375px){
+
+    /*紐⑤떖�앹뾽*/
+    .modalWrap {padding:0;width:90%;top:30%;left:5%;}
+    .modalWrap .inner .modalContent {font-size: 13px}
+
+
+    .teacherInfo .thumb img {width:100%}
+    .teacherInfo .thumb, .teacherInfo .info {height:370px;}
+
+    /*留덉씠�섏씠吏� *****************************************************************/
+    .Mypage .cart .pay_total2 li .txt1 {font-size:13px}
+    .Mypage .cart .pay_total2 li .txt2 {font-size:13px}
+    .Mypage .cart .pay_total2 li .txt2 b {font-size:15px;}
+
+
+    .Mclass .tab_large .tab_large_2depth .tabBar {margin: 20px 0%;width: 100%}
+    .Mclass .tab_large .tab_large_2depth .tabBar > li {width: 47%}
+
+    .free .myarea_list_wrap .item .desc .rgreen {width: 68px}
+
+    .zianPass dl > dd > ul.cols3 {padding: 40px 0}
+    .zianPass dl > dd > ul.cols3 > li.col1 {width: 100%}
+    .zianPass dl > dd > ul.cols3 > li.col2 {width: 50%}
+    .zianPass .tabBar > li > a {padding:10px 0 0}
+    .zianPass .tabBar > li > a {font-size:15px}
+    .zianPass .tabBar > li.active > a {font-size:20px }
+
+
+    /*�⑤씪�몄꽌��*/
+    .shop .mainBoard .list ul li a {padding-right: 70px; width: 100%;display: inline-block;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;}
+    /*�⑤씪�몄꽌�� 異붽��섏젙嫄� 20191230*/
+    .shop .shopBoard .lecListM li.w35p {width:57%;}
+
+
+}
+
+
+
+
+
+@media screen and (max-width:321px){
+
+
+
+    /*寃뚯떆臾쇨�由�*/
+    .searchArea {padding:10px 20px}
+    .searchArea > li.left {width: auto}
+    .searchArea input.btn_m {display: none}
+    .searchArea select {width:70px}
+    .searchArea input[type='text'] {width:150px}
+
+    #header > .inner h1.logo_mb a {font-size:16px}
+    #header #topNavM {float:right;text-align:center;margin-top:0 }
+    #header #topNavM li a.login  {background-size:50%;}
+
+    .tabBox { margin: 45px auto 20px;width:90%;}
+    .tabBox li a {font-size: 13px;}
+    .mainTeacher .mainTeacherPage .swiper-slide > div .teacherInfo .desc {font-size: 13px}
+    .mainTeacher .mainTeacherPage .swiper-slide > div .teacherInfo .btnArea {margin-top: 10px}
+
+    /*main*/
+    #lendingVisual {height:320px;}
+    #lendingVisual .lendingVisualText {font-size:15px;position: absolute;left:10%;}
+    #lendingVisual .lendingVisualText b {font-size: 23px}
+    #lendingVisual .lendingVisualText .btnArea a { width: 91px;height: 30px;font-size: 13px;line-height: 31px;}
+    #lendingVisual > ul {top:71%;}
+    .divGroup.cols3.noMargin {margin-top:8% !important}
+    .btn_lendingLink1,.btn_lendingLink2 {margin-top:-10%;}
+
+    /*�⑷꺽�섍린review*/
+    .reviewBoard .view.viewM .write .single {width:90px;height:30px;line-height:30px;font-size: 12px}
+
+    /*援먯닔�뚭컻*****************************************************************/
+    .otwish {left:5px;}
+    .teacherContentsTab > .tabBar {margin-top:70px}
+    .teacherContentsTab > .tabBar > li {width:49.7777785%;}
+    .teacherContentsTab > .tabBar > li:last-child {border-right: 1px solid #ddd;}
+    .teacherContentsTab > .tabBar > li:nth-child(1),.teacherContentsTab > .tabBar > li:nth-child(2),.teacherContentsTab > .tabBar > li:nth-child(3) {border-bottom: 1px solid #ddd;}
+    .teacherContentsTab > .tabBar > li:nth-child(2),.teacherContentsTab > .tabBar > li:nth-child(4) {border-right:none}
+    .teacherContentsTab > .tabBar > li:nth-child(3) {border-right: 1px solid #ddd;}
+    .teacherContentsTab > .tabBar > li:nth-child(4) {border-bottom: 1px solid #ddd;}
+
+
+    /*留덉씠�섏씠吏�*****************************************************************/
+    .tbd_03 table.tbw03M a.re_btn {font-size: 11px;}
+    .tbd_03 .btn_crud2 .re_btn {bottom:6px;}
+    .Mypage .statusBar li {font-size:12px }
+    .Mypage .statusBar li label {font-size: 12px}
+    .Mypage .statusBar li b {font-size:12px}
+    .Mypage .cart .pay_total li .txt1 {font-size: 13px}
+    .Mypage .cart .pay_total li .txt2 {font-size: 14px}
+    .Mypage .cart .pay_total li .txt2 b {font-size:18px;}
+    .Mypage.userinfo .input_txt input.w190 {width: 78px !important;}
+    .cart .tbd_03.tbd_05 input {width: 63px;}
+
+    /*臾대즺媛뺤쥖*****************************************************************/
+    .free .myarea_list_wrap .item .desc .rblack {width: 32%}
+    .free .myarea_list_wrap .item .desc .rsky {width:48%}
+    .free .myarea_list_wrap .item .desc .rorange {width: 48%}
+    .free .myarea_list_wrap .item .desc .rpurple {width: 48%}
+    .free .myarea_list_wrap .item .desc > div > span.allnum {float: none}
+    .free .myarea_main .myarea_list_wrap .item .inner.h365 {height: 240px}
+    .free .myarea_main .myarea_list_wrap .item .inner.h300 {    height: 240px;}
+
+    /*�섍컯�좎껌*****************************************************************/
+    .selectArea ul > li {width:33.33333333333333%}
+    .lectureWrap .teacherList.disnonepc ul.bottom > li.on:before{width:60px;height:60px;position:absolute;top:-14%;left:81%;margin-left:-50px;border-radius:50px;background-color:#144b95;z-index:-1;}
+
+    /*吏��덊뙣��*****************************************************************/
+    .zianPass dl .btn_link {font-size: 15px}
+    .zianPass dl .btn_link:before, .zianPass dl .btn_link:after {
+        display: block;
+        content: '';
+        clear: both;
+        width: 60px;
+        height: 50px;
+        position: absolute;
+        top: 0;
+    }
+
+
+
+
+    /*�⑤씪�몄꽌��*****************************************************************/
+    .shop .lectureWrap .learnNum {font-size: 13px}
+    .shop .lectureWrap .costList li b,.shop .lectureWrap .costList li a {}
+    /*�⑤씪�몄꽌�� 異붽��섏젙嫄� 20191230*/
+    .shop .shopBoard .lecListM li.w35p {width:55%;}
+    .shop .shopBoard .lecListM li.w40p.ta_right {position: relative;float: right;bottom: 0;right:0;}
+
+
+}
+
+/* 20.01.20 異붽� �섏젙 */
+@media screen and (max-width:800px){
+    .searchArea{padding:0;}
+    .searchArea li.right{width:auto}
+    .searchArea li.right .w140{width:140px}
+
+    .list33{display:block;width:100%;}
+
+    .list33 thead{display:none}
+    .list33 tbody{display:block;width:100%}
+
+    .list33 tr{display:block;width:100%;padding:20px 15px;position:relative;box-sizing:border-box}
+    .list33 tr td{border-bottom:none;display:inline-block;height:inherit !important;}
+    .list33 tr td:nth-child(1){display:none}
+    .list33 tr td:nth-child(2){display:block;padding:0px 0px !important}
+    .list33 tr td:nth-child(2) a{display:inline;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;line-height:20px;font-size:16px;font-weight:200;}
+    .list33 tr td:nth-child(3){text-align:left;color:#666;padding:0 4px 0px 0px}
+    .list33 tr td:nth-child(4){color:#666;padding:0 4px 0}
+    .list33 tr td:nth-child(5){color:#666;padding:0 4px 0}
+
+    .pagin{margin-top:40px !important;}
+}
+.list33{width:100%;border-spacing:0;border-collapse:collapse;table-layout:fixed;border-top:2px solid #000}
+.list33 th{padding: 10px;font-weight:bold;height:50px;background:none;border-right:0px none}
+.list33 tr{border-bottom:1px solid #ddd}
+.list33 tbody td{padding:10px;height:50px;border-right:0px none;text-align:center}
+.list33 tbody td:nth-child(2){text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.boardWrap .btn_m{height:34px;line-height:32px}
+
+@media screen and (max-width:450px){
+    .searchArea{padding:0;}
+    .searchArea li.right{width:100%}
+    .searchArea li.right .w140{width:100%}
+}
+
+
+
+
+

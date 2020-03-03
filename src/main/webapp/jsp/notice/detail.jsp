@@ -55,10 +55,10 @@
             }
             //봄문 내용 파징작업 끝
 
-            innerHTML("content", contents);
+            innerHTML("contentInfo", contents);
             innerHTML("indate", detailInfo.indate);
-            innerHTML("userName", detailInfo.userName);
-            innerHTML("userId", detailInfo.userId);
+            innerHTML("writeUserName", detailInfo.userName);
+            innerHTML("userId", "(" + detailInfo.userId +")");
             innerHTML("title", detailInfo.title);
             innerHTML("readCount", detailInfo.readCount);
             innerHTML("fileName", detailInfo.fileName);
@@ -95,17 +95,17 @@
 
         }
     });
-    
+
     function goModify() {
         goPage("notice", "modify");
     }
-    
+
     function goPrev() {
         var prevKey = getInputTextValue("prevNum");
         innerValue("bbsKey", prevKey);
         goPage("notice", "detail");
     }
-    
+
     function goNext() {
         var nextKey = getInputTextValue("nextNum");
         innerValue("bbsKey", nextKey);
@@ -125,8 +125,8 @@
                 <!--서브 컨텐츠-->
                 <%@include file="/common/jsp/noticeHeader.jsp" %>
                 <div class="boardWrap">
-                    <div class="tableBox">
-                        <table class="view">
+                    <div class="tableWrap">
+                        <table class="tBoard noticeView">
                             <input type="hidden" id="bbsKey" name="bbsKey" value="<%=bbsKey%>">
                             <input type="hidden" id="prevNum">
                             <input type="hidden" id="nextNum">
@@ -137,14 +137,14 @@
                                 <col class="w140">
                             </colgroup>
                             <thead>
-                            <tr>
-                                <th colspan="2" id="title"></th>
-                                <th id="indate"></th>
-                            </tr>
+                                <tr>
+                                    <th colspan="2" id="title"></th>
+                                    <th id="indate"></th>
+                                </tr>
                             </thead>
                             <tbody>
                             <tr>
-                                <td colspan="3">작성자 : <span id="userName"></span> <span id="userId"></span>  |   조회수 : <span id="readCount"></span></td>
+                                <td colspan="3">작성자 : <span id="writeUserName"></span> <span id="userId"></span>  |   조회수 : <span id="readCount"></span></td>
                             </tr>
                             <tr>
                                 <td colspan="3">
@@ -159,16 +159,10 @@
                             </tr>
                             <tr>
                                 <td colspan="3" class="tdEditorContent">
-                                    <div class="alignCenter" id="content">
-                                    </div>
+                                    <div class="alignCenter" id="contentInfo"></div>
                                 </td>
                             </tr>
-<%--                            <tr>--%>
-<%--                                <td colspan="3">첨부파일--%>
-<%--                                    <div id="fileList"></div>--%>
-<%--                                </td>--%>
-<%--                            </tr>--%>
-                            <tr id="prev">
+                            <tr>
                                 <td class="center">이전글 ▲</td>
                                 <td class="left"><a href="javascript:goPrev();"><span id="prevTitle"></span></a></td>
                                 <td class="right"><span id="prevCreateDate"></span></td>

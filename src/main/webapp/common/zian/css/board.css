@@ -14,12 +14,13 @@
 .noticeList tbody td{padding:0 10px;height:50px;border-right:0px none;text-align:center}
 .noticeList tbody td:nth-child(2){text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 
+
 /* 공지사항 뷰페이지 */
 .noticeView{}
 .noticeView thead{background:#ebebeb;}
 .noticeView thead th{padding:0px 20px;height:50px;font-weight:normal;text-align:left;background:none;border-bottom:1px solid #e1e1e1;}
 .noticeView td{padding:0px 20px;height:50px;font-weight:normal;text-align:left;background:none;border-bottom:1px solid #e1e1e1;}
-.noticeView tr:nth-child(2) td{height:auto;padding: 10px 20px}
+.noticeView tr:nth-child(2) td{height:auto;padding:10px 20px}
 .noticeView td.tdEditorContent{padding:20px 20px !important;height:180px !important;vertical-align:top}
 
 
@@ -34,17 +35,77 @@
 .classList tbody td{padding:12px;height:60px;font-size:14px;border-bottom:1px solid #e5e5e5;box-sizing:border-box}
 
 
+/* 마이페이지 주무내역 리스트 */
+.mypageOrderList{width:100%;border-spacing:0;border-collapse:collapse;table-layout:fixed;border-top:2px solid #000}
+.mypageOrderList tr{}
+.mypageOrderList tr td:nth-child(1){width:88%;}
+.mypageOrderList tr td:nth-child(2){width:12%;text-align:center;word-break:keep-all;padding:15px 10px;}
+
+
+/* 마이페이지 상담예약내역 */
+.mypageAdvice{width:100%;border-spacing:0;table-layout:fixed;border-top:2px solid #000}
+.mypageAdvice tr{}
+.mypageAdvice tr td{text-align:center}
+.mypageAdvice tr td:nth-child(1){}
+.mypageAdvice tr td:nth-child(2){}
+
+
+/* 마이페이지 게시물관리 */
+.mypage05{width:100%;border-spacing:0;border-collapse:collapse;table-layout:fixed;border-top:2px solid #000;}
+.mypage05 tr{height:50px}
+.mypage05 tr td{text-align:center}
+.mypage05 tr td:nth-child(2){text-align:left}
+.mypage05 tr td:nth-child(2) a{background:url(../images/common/icon_lock.png) no-repeat left center;padding-left:25px}
+.mypage05 tr.reply{background:#f1f1f1}
+.mypage05 tr.reply td:nth-child(2) a{background:none;padding-left:0}
+.mypage05 tr.reply td:nth-child(2) a:before{content:'RE:';color:#144b95;}
+
+
+/* 마이페이지 내게시글 */
+.mypage05_2{width:100%;border-spacing:0;table-layout:fixed}
+.mypage05_2 tr{height:50px}
+.mypage05_2 tr td{text-align:center}
+
+
+/* 합격수기 리스트 */
+.acceptanceList{width:100%;border-spacing:0;border-collapse:collapse;table-layout:fixed;border-top:1px solid #ddd}
+.acceptanceList thead th{padding:0 10px;font-weight:bold;height:50px;background:none;border-right:0px none}
+.acceptanceList tr{border-bottom:1px solid #ddd}
+.acceptanceList tbody td{padding:0 10px;height:50px;border-right:0px none;text-align:center}
+.acceptanceList tbody td:nth-child(2){text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+
+/* 합격수기 리스트2 */
+.acceptanceList2{width:100%;border-spacing:0;border-collapse:collapse;table-layout:fixed;border-top:1px solid #ddd}
+.acceptanceList2 thead th{padding:0 10px;font-weight:bold;height:50px;background:none;border-right:0px none}
+.acceptanceList2 tr{border-bottom:1px solid #ddd}
+.acceptanceList2 tbody td{padding:0 10px;height:50px;border-right:0px none;text-align:center}
+.acceptanceList2 tbody td:nth-child(2){text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+
+/* 합격수기 뷰페이지 */
+.acceptanceView{}
+.acceptanceView thead{background:#ebebeb;}
+.acceptanceView thead th{padding:0px 20px;height:50px;font-weight:normal;text-align:left;background:none;border-bottom:1px solid #e1e1e1;}
+.acceptanceView td{padding:0px 20px;height:50px;font-weight:normal;text-align:left;background:none;border-bottom:1px solid #e1e1e1;}
+.acceptanceView tr:nth-child(2) td{height:auto;padding:10px 20px}
+.acceptanceView td.tdEditorContent{padding:20px 20px !important;height:180px !important;vertical-align:top}
+.acceptanceView td.cm_list{padding:20px 10px}
+
+
+
 
 /* 반응형 */
 @media screen and (max-width:800px){
     /*****   공통   *****/
     .tBoard{font-size:14px}
-    
+
+
     /* 테이블 박스 */
     .tableWrap{padding:0 2%;box-sizing:border-box}
     .tableWrap2{padding:10px 0}
-    
-    
+
+
     /*****   수정   *****/
     /* 공지사항 리스트 */
     .noticeList{display:block;width:100% !important;}
@@ -57,8 +118,8 @@
     .noticeList tr td:nth-child(2) a{display:inline;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;line-height:20px;font-size:16px;font-weight:200;}
     .noticeList tr td:nth-child(3){text-align:left;color:#666;padding:0 4px 0px 0px}
     .noticeList tr td:nth-child(4){color:#666;padding:0 4px 0}
-    .noticeList tr td:nth-child(5){color:#666;padding:0 4px 0}    
-    
+    .noticeList tr td:nth-child(5){color:#666;padding:0 4px 0}
+
     /* 공지사항 뷰페이지 */
     .tbView{display:block !important;width:100%;padding:none}
     .noticeView colgroup{display:none}
@@ -67,12 +128,13 @@
     .noticeView thead th:nth-child(2){width:26%;box-sizing:border-box;text-align:right}
     .noticeView tbody tr{display:block;box-sizing:border-box;width:100%;position:relative}
     .noticeView tbody tr:nth-child(1) td{display:block;width:100%;padding:14px 2%;box-sizing:border-box}
-    .noticeView tbody tr:nth-child(2) td{display:block;width:100%;padding:14px 2%;box-sizing:border-box;height:auto}
+    /*.noticeView tbody tr:nth-child(2) td{display:block;width:100%;padding:14px 2%;box-sizing:border-box;height:auto}*/
+    .noticeView tbody tr:nth-child(3) td{display:block;width:100%;padding:14px 2%;box-sizing:border-box;height:auto}
     .noticeView tbody td.tdEditorContent{display:block;width:100%;padding:4% 2% !important;box-sizing:border-box;height:auto !important;}
     .noticeView tbody td.center{display:inline-block;width:30%;box-sizing:border-box;padding:14px 2%;}
     .noticeView tbody td.left{display:inline-block;width:68%;box-sizing:border-box;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;padding:14px 1%;}
     .noticeView tbody td.right{display:none}
-    
+
     /* 수강신청 리스트 */
     .classList{display:block;width:100%;margin:0;}
     .classList thead{display:none}
@@ -81,5 +143,186 @@
     .classList tbody tr td:nth-child(1){display:none}
     .classList tbody tr td:nth-child(2){display:block;font-size:16px;font-weight:bold;padding:0;padding-bottom:4px}
     .classList tbody tr td:nth-child(3){display:inline-block;padding-left:0}
+    .classList tbody tr td:nth-child(3):before{content:'시간: '}
     .classList tbody tr td:nth-child(4){display:inline-block}
+
+
+    /* 마이페이지 주문내역조회*/
+    .mypageOrderCheck{width:100%}
+    .mypageOrderCheck thead th{display:none}
+    .mypageOrderCheck tbody tr{display:block;border-bottom:1px solid #e5e5e5;width:100%;padding:10px 2%;box-sizing:border-box;overflow:hidden}
+    .mypageOrderCheck tbody tr td{border-bottom:0 !important;height:auto;}
+    .mypageOrderCheck tbody tr td:nth-child(1){display:block;text-align:left;padding:4px 0 0}
+    .mypageOrderCheck tbody tr td:nth-child(2){display:block;text-align:left;padding:6px 0 0;font-weight:bold;font-size:18px;line-height:20px;text-overflow:ellipsis;white-space:nowrap;overflow:hidden}
+    .mypageOrderCheck tbody tr td:nth-child(3){display:inline-block;text-align:left;padding:6px 4px 0;float:left}
+    .mypageOrderCheck tbody tr td:nth-child(4){display:inline-block;text-align:left;padding:6px 4px 0;float:left}
+    .mypageOrderCheck tbody tr td:nth-child(5){display:inline-block;text-align:left;padding:6px 4px 0;float: left}
+    .mypageOrderCheck tbody tr td:nth-child(6){display:block;clear:both;float:left;padding:20px 0 4px}
+
+
+    /* 주문내역조회 리스트 */
+    .mypageOrderList{width:100%}
+    .mypageOrderList tbody tr{display:block;border-bottom:1px solid #e5e5e5;width:100%;padding:10px 2%;box-sizing:border-box;}
+    .mypageOrderList tbody tr td{border-bottom:0 !important;height:auto;}
+    .mypageOrderList tbody tr td:nth-child(1){display:block;text-align:left;padding:4px 0 6px;line-height:20px;font-size:16px;}
+    .mypageOrderList tbody tr td:nth-child(2){display:block;text-align:left;padding:0;width:100%;}
+    .mypageOrderList tbody tr td:nth-child(2) a{display:inline-block;}
+    .mypageOrderList tbody tr td:nth-child(2) > span{display:inline-block;padding:0}
+
+
+    /* 장바구니 01 */
+    .cart01{width:100%}
+    .cart01 colgroup{display:none}
+    .cart01 thead th{display:none;}
+    .cart01 tbody tr{display:block;width:100%;border-bottom:1px solid #e5e5e5;box-sizing:border-box;padding:10px 2%;overflow:hidden}
+    .cart01 tbody tr td{border-bottom:0 !important;height:auto}
+    .cart01 tbody tr td:nth-child(1){padding:10px 6px 0 !important;float:left;}
+    .cart01 tbody tr td:nth-child(2){display:block;font-size:16px;padding:10px 0 0 !important;}
+    .cart01 tbody tr td:nth-child(2) span{font-size:12px}
+    .cart01 tbody tr td:nth-child(3){display:inline-block;text-align:left;padding:0 12px 0 0!important;float:left;font-size:12px}
+    .cart01 tbody tr td:nth-child(4){display:inline-block;text-align:left;padding:0 0 10px !important;float:left;font-size:12px}
+    .cart01 tbody tr td:nth-child(5){display:inline-block;text-align:left;padding:0 0 10px 12px !important;float:left;font-size:12px}
+
+
+    /* 장바구니 02 */
+    .cart02{width:100%}
+    .cart02 colgroup{display:none}
+    .cart02 thead th{display:none}
+    .cart02 tbody tr{display:block;width:100%;border-bottom:1px solid #e5e5e5;box-sizing:border-box;padding:10px 2%;overflow: hidden}
+    .cart02 tbody tr td{border-bottom: 0;height:auto;}
+    .cart02 tbody tr td:nth-child(1){display:block;padding:0 !important;text-align:left;font-size:12px}
+    .cart02 tbody tr td:nth-child(2){display:block;padding:0 !important;text-align:left;font-size:16px}
+    .cart02 tbody tr td:nth-child(2) span{font-size:12px}
+    .cart02 tbody tr td:nth-child(3){display:inline-block;padding:0 !important;text-align:left;float:left}
+    .cart02 tbody tr td:nth-child(4){display:inline-block;padding:0 0 0 12px !important;text-align:left;float:left}
+
+    .cart02List{width:100%}
+    .cart02List colgroup{display:none}
+    .cart02List thead th{display:none}
+    .cart02List tbody tr{display:block;width:100%;overflow:hidden;box-sizing:border-box;}
+    .cart02List tbody tr:nth-child(1) th:nth-child(1){display:inline-block;width:34%;box-sizing:border-box}
+    .cart02List tbody tr:nth-child(1) td:nth-child(2){display:inline-block;width:60%;box-sizing:border-box}
+    .cart02List tbody tr:nth-child(1) th:nth-child(3){display:inline-block;width:38%;box-sizing:border-box;background:white}
+    .cart02List tbody tr:nth-child(1) td:nth-child(4){display:inline-block;width:56%;box-sizing:border-box;background:white}
+
+    .cart02List tbody tr th:nth-child(1){display:none}
+    .cart02List tbody tr td:nth-child(2){display:none}
+    .cart02List tbody tr th:nth-child(3){display:inline-block;width:38%;box-sizing:border-box;background:white}
+    .cart02List tbody tr td:nth-child(4){display:inline-block;width:56%;box-sizing:border-box;background:white}
+
+    .cart02List tbody tr:nth-child(5) th:nth-child(1){display:inline-block;width:34%;box-sizing:border-box}
+    .cart02List tbody tr:nth-child(5) td:nth-child(2){display:inline-block;width:60%;box-sizing:border-box}
+    .cart02List tbody tr:nth-child(5) th:nth-child(3){display:inline-block;width:38%;box-sizing:border-box;background:white}
+    .cart02List tbody tr:nth-child(5) td:nth-child(4){display:inline-block;width:56%;box-sizing:border-box;background:white}
+
+
+    /* 마이페이지 게시물관리 상담예약내역 */
+    .mypageAdvice{width:100%;}
+    .mypageAdvice colgroup{display:none}
+    .mypageAdvice thead th{display:none}
+    .mypageAdvice tbody tr{display:block;width:100%;border-bottom:1px solid #e5e5e5;position:relative;padding:10px 2%;box-sizing:border-box}
+    .mypageAdvice tbody tr td{display:inline-block;text-align:left;border-bottom:0;box-sizing:border-box}
+    .mypageAdvice tbody tr td:nth-child(1){display:inline-block;padding:0 !important;}
+    .mypageAdvice tbody tr td:nth-child(2){display:inline-block;padding:0 !important;}
+    .mypageAdvice tbody tr td:nth-child(3){display:block;padding:8px 0 !important}
+    .mypageAdvice tbody tr td:nth-child(3) br{display:none}
+    .mypageAdvice tbody tr td:nth-child(4){display:block;padding:2px 0 6px !important}
+    .mypageAdvice tbody tr td:nth-child(5){display:inline-block;padding:0}
+    .mypageAdvice tbody tr td:nth-child(6){display:inline-block;padding:0}
+
+
+    /* 마이페이지 게시물관리 */
+    .mypage05{width:100%}
+    .mypage05 thead{display:none}
+    .mypage05 tbody tr{display:block;width:100%;border-bottom:1px solid #e5e5e5;position:relative;padding:20px 10px;box-sizing: border-box;height:inherit}
+    .mypage05 tbody tr td{border-bottom:0}
+    .mypage05 tbody tr td:nth-child(1){display:none}
+    .mypage05 tbody tr td:nth-child(2){display:block;font-size:14px !important}
+    .mypage05 tbody tr td:nth-child(3){display:inline-block}
+    .mypage05 tbody tr td:nth-child(4){display:inline-block}
+    .mypage05 tbody tr td:nth-child(5){display:inline-block}
+
+
+    /* 마이페이지 내게시글 */
+    .mypage05_2{width:100%;margin-top:10px 0 !important}
+    .mypage05_2 thead{display:none}
+    .mypage05_2 tbody tr{display:block;width:100%;border-bottom:1px solid #e5e5e5;position:relative;padding:14px 2%;box-sizing: border-box;height:inherit !important;overflow:hidden;}
+    .mypage05_2 tbody tr td{border-bottom:0}
+    .mypage05_2 tbody tr td:nth-child(1){display:block;padding:0 0 6px !important;font-size:16px !important;font-weight:bold;}
+    .mypage05_2 tbody tr td:nth-child(2){display:inline-block;padding:0 !important;float:left;margin-right:8px}
+    .mypage05_2 tbody tr td:nth-child(3){display:inline-block;padding:0 !important;float:left;margin-right:8px}
+    .mypage05_2 tbody tr td:nth-child(4){display:inline-block;padding:0 !important;float:left}
+
+
+    /* 마이페이지 성적관리 */
+    .mypage06{width:100%;padding:0 !important;margin:0 !important}
+    .mypage06 thead{display:none}
+    .mypage06 tbody tr{display:block;width:100%;border-bottom:1px solid #e5e5e5;position:relative;padding:14px 2%;box-sizing: border-box;height:inherit !important;overflow:hidden}
+    .mypage06 tbody tr td{border-bottom:0;}
+    .mypage06 tbody tr td:nth-child(1){display:block;padding:0 0 4px !important;text-align:left;font-size:14px}
+    .mypage06 tbody tr td:nth-child(2){display:block;padding:0 0 4px !important;text-align:left;font-size:16px !important;font-weight:bold}
+    .mypage06 tbody tr td:nth-child(3){display:block;padding:0 0 4px !important;text-align:left;font-size:14px;color:#444;}
+    .mypage06 tbody tr td:nth-child(3) br{display:none;}
+    .mypage06 tbody tr td:nth-child(4){display:inline-block;padding:0 !important;float:left;margin-right:6px}
+    .mypage06 tbody tr td:nth-child(5){display:inline-block;padding:0 !important;float:left}
+    .mypage06 tbody tr td:nth-child(6){display:block;padding:6px 0 0 !important;text-align:left;font-size:14px;clear:both}
+
+
+    /* 마이페이지 최근사용내역 */
+    .mypage06_2{width:100%;margin-top:10px !important}
+    .mypage06_2 thead{display:none}
+    .mypage06_2 tbody tr{display:block;width:100%;border-bottom:1px solid #e5e5e5;position:relative;padding:14px 2%;box-sizing: border-box;height:inherit !important;overflow:hidden}
+    .mypage06_2 tbody tr td{border-bottom:0;}
+    .mypage06_2 tbody tr td:nth-child(1){display:block;padding:0 0 4px !important;text-align:left;font-size:14px}
+    .mypage06_2 tbody tr td:nth-child(2){display:block;padding:0 0 4px !important;text-align:left;font-size:16px !important;font-weight:bold}
+    .mypage06_2 tbody tr td:nth-child(3){display:block;padding:0 0 4px !important;text-align:left;}
+
+
+    /* 합격수기 리스트 */
+    .acceptanceList{display:block;width:100% !important;}
+    .acceptanceList thead{display:none}
+    .acceptanceList tbody{display:block;width:100%}
+    .acceptanceList tr{display:block;width:100%;padding:20px 15px;position:relative;box-sizing:border-box}
+    .acceptanceList tr td{border-bottom:none;display:inline-block;height:inherit !important;}
+    .acceptanceList tr td:nth-child(1){display:none}
+    .acceptanceList tr td:nth-child(2){display:block;padding:0px 0px !important}
+    .acceptanceList tr td:nth-child(2) a{display:inline;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;line-height:20px;font-size:16px;font-weight:200;}
+    .acceptanceList tr td:nth-child(3){text-align:left;color:#666;padding:0 4px 0px 0px}
+    .acceptanceList tr td:nth-child(4){color:#666;padding:0 4px 0}
+    .acceptanceList tr td:nth-child(5){color:#666;padding:0 4px 0}
+
+
+    /* 도서후기 리스트 */
+    .acceptanceList2{display:block;width:100% !important;}
+    .acceptanceList2 thead{display:none}
+    .acceptanceList2 tbody{display:block;width:100%}
+    .acceptanceList2 tr{display:block;width:100%;padding:20px 15px;position:relative;box-sizing:border-box}
+    .acceptanceList2 tr td{border-bottom:none;display:inline-block;height:inherit !important;}
+    .acceptanceList2 tr td:nth-child(1){display:none}
+    .acceptanceList2 tr td:nth-child(2){display:block;padding:0px 0px !important}
+    .acceptanceList2 tr td:nth-child(3){display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;line-height:20px;font-size:16px;font-weight:200;}
+    .acceptanceList2 tr td:nth-child(3){text-align:left;color:#666;padding:0 4px 0px 0px}
+    .acceptanceList2 tr td:nth-child(4){color:#666;padding:0 4px 0}
+    .acceptanceList2 tr td:nth-child(5){color:#666;padding:0 4px 0}
+    .acceptanceList2 tr td:nth-child(6){color:#666;padding:0 4px 0}
+
+
+    /* 합격수기 뷰페이지 */
+    .tbView{display:block !important;width:100%;padding:none}
+    .acceptanceView colgroup{display:none}
+    .acceptanceView thead th{display:inline-block;padding:14px 2%!important;box-sizing: border-box;border-bottom:none;font-size:14px;}
+    .acceptanceView thead th:nth-child(1){display:inline-block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;width:74%;box-sizing:border-box}
+    .acceptanceView thead th:nth-child(2){width:26%;box-sizing:border-box;text-align:right}
+    .acceptanceView tbody tr{display:block;box-sizing:border-box;width:100%;position:relative}
+    .acceptanceView tbody tr:nth-child(1) td{display:block;width:100%;padding:14px 2%;box-sizing:border-box}
+    .acceptanceView tbody tr:nth-child(2) td{display:block;width:100%;padding:14px 2%;box-sizing:border-box;height:auto}
+    .acceptanceView tbody td.tdEditorContent{display:block;width:100%;padding:4% 2% !important;box-sizing:border-box;height:auto !important;}
+    .acceptanceView tbody td{display:block;height:inherit}
+    .acceptanceView tbody td.comment{display:block;height:inherit}
+    .acceptanceView tbody td.cm_list{display:block;height:inherit;padding: 0}
+    .acceptanceView tbody td.cm_list div{padding-bottom:24px}
+    .acceptanceView tbody td.center{display:inline-block;width:30%;box-sizing:border-box;padding:14px 2%;}
+    .acceptanceView tbody td.left{display:inline-block;width:68%;box-sizing:border-box;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;padding:14px 1%;}
+    .acceptanceView tbody td.right{display:none}
+
 }
