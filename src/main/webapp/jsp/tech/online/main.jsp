@@ -37,7 +37,7 @@
                 <div class="inner">
                     <div class="titleBar">
                         <h5>지안에듀 합격자 영상</h5>
-                        <a href="#" class="btn_more">전체보기</a>
+                        <a href="javascript:goPageNoSubmit('review','videoList');" class="btn_more">전체보기</a>
                     </div>
                     <div class="divGroup cols2">
                         <div>
