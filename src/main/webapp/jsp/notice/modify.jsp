@@ -22,12 +22,14 @@
                 }
             }
         }
-        $('#content').summernote({
-            height: 400,
-            minHeight: 400,
-            maxHeight: 600,
-            focus: true
-        });
+        if(pcMobile == 'PC') {
+            $('#content').summernote({
+                height: 400,
+                minHeight: 400,
+                maxHeight: 600,
+                focus: true
+            });
+        }
         $("#attachFile").on("change", addFiles);
     });
 

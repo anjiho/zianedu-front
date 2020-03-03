@@ -30,18 +30,21 @@
 
         $("#attachFile").on("change", addFiles);
         $("#attachFile1").on("change", addFiles1);
-        $('#writeContent').summernote({
-            height: 300,
-            minHeight: null,
-            maxHeight: null,
-            focus: true
-        });
-        $('#writeContent1').summernote({
-            height: 300,
-            minHeight: null,
-            maxHeight: null,
-            focus: true
-        });
+        var pcMobile = divisionPcMobile();
+        if(pcMobile == 'PC') {
+            $('#writeContent').summernote({
+                height: 300,
+                minHeight: null,
+                maxHeight: null,
+                focus: true
+            });
+            $('#writeContent1').summernote({
+                height: 300,
+                minHeight: null,
+                maxHeight: null,
+                focus: true
+            });
+        }
         $('ul.tabs li').click(function(){
             var tab_id = $(this).attr('data-tab');
 
