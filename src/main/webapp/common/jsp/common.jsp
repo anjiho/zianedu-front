@@ -38,10 +38,10 @@
     <link rel="stylesheet" type="text/css" href="/common/zian/css/swiper.min.css">
     <link rel="stylesheet" type="text/css" href="/common/calendar/css/fullcalendar.min.css">
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <link rel="stylesheet" type="text/css" href="/common/zian/css/content_o.css">
+<%--    <link rel="stylesheet" type="text/css" href="/common/zian/css/content_o.css">--%>
     <link rel="stylesheet" type="text/css" href="/common/zian/css/owl.carousel.min.css">
-    <link rel="stylesheet" type="text/css" href="/common/zian/css/bigtest.css">
-    <link rel="stylesheet" type="text/css" href="/common/zian/css/big_layout.css">
+<%--    <link rel="stylesheet" type="text/css" href="/common/zian/css/bigtest.css">--%>
+<%--    <link rel="stylesheet" type="text/css" href="/common/zian/css/big_layout.css">--%>
     <link rel="stylesheet" type="text/css" href="/common/zian/css/reponsive.css">
     <link rel="stylesheet" type="text/css" href="/common/zian/css/board.css">
 

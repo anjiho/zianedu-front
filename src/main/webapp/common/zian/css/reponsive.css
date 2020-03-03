@@ -800,7 +800,7 @@
     .btn_lendingLink1,.btn_lendingLink2 {margin-top: 14%;background-size:90%;height:auto;min-height: 200px;}
     .divGroup.cols3.noMargin {}
 
-    #lendingVisual > ul {width:98%;top:74%;right:0.5%;}
+    #lendingVisual > ul {width:98%;top:71%;right:0.5%;}
     #lendingVisual > ul li a b {font-size: 17px}
     #lendingVisual > ul li a {background: #FFF url(../images/common/icon_arrowRight.png) no-repeat 98% center;background-size:5%;    padding: 10px;}
     #lendingVisual .lendingVisualText b {font-size: 27px;}
