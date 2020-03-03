@@ -22,14 +22,12 @@
 <%--                </div>--%>
 <%--            </div>--%>
             <div class="loginBanner">
-                <a href="#"><img src="/common/zian/images/content/img_loginBanner.jpg" alt=""></a>
+                <a href="#"><img src="/common/zian/images/common/c_banner.jpg" alt=""></a>
             </div>
         </div>
     </div>
     <div id="overlay"></div>
 </form>
-</body>
-</html>
 <script>
 function loginCheck() {
     var userId  = getInputTextValue("userId");
@@ -45,3 +43,5 @@ function loginCheck() {
     }
 }
 </script>
+</body>
+</html>
