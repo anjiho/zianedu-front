@@ -150,33 +150,32 @@
                     </div>
 
                     <div class="tabContent Bookreview">
-<%--                        <ul class="tabBar">--%>
-<%--                            <li class="active"><a href="#">전체<span class="bt_line"></span></a></li>--%>
-<%--                            <li><a href="#">공통과목<span class="bt_line"></span></a></li>--%>
-<%--                            <li><a href="#">행정직군<span class="bt_line"></span></a></li>--%>
-<%--                            <li><a href="#">기술직군<span class="bt_line"></span></a></li>--%>
-<%--                            <li><a href="#">계리직군<span class="bt_line"></span></a></li>--%>
-<%--                            <li><a href="#">자격증<span class="bt_line"></span></a></li>--%>
-<%--                        </ul>--%>
                         <!-- 수강중 -->
                         <div class="tabPage  active">
                             <div class="boardSearch">
-                                <select id="searchType" class="w90">
-                                    <option value="">선택</option>
-                                    <option value="title">제목</option>
-                                    <option value="content">내용</option>
-                                </select>
-                                <!--html 추가 및 수정-->
-                                <input type="text" id="searchText" onkeypress="if(event.keyCode==13) {fn_search('new'); return false;}" class="w240">
-                                <a href="javascript:fn_search('new');" class="btn_inline on w140 disnoneM">검색</a>
-                                <div class="btnArea">
-                                    <a href="javascript:goPage('review','saveBook');" class="btn_inline w140 write_ico" id="writeBtn">글쓰기</a>
-                                </div>
-                                <!--//html 추가 -->
+                                <ul class="searchArea">
+                                    <li class="left">
+                                        <select id="searchType" class="w90">
+                                            <option value="">선택</option>
+                                            <option value="title">제목</option>
+                                            <option value="content">내용</option>
+                                        </select>
+                                        <!--html 추가 및 수정-->
+                                        <input type="text" id="searchText" onkeypress="if(event.keyCode==13) {fn_search('new'); return false;}" class="w240">
+                                        <input type="button" onclick="javascript:fn_search('new');" value="검색" class="btn_m on">
+                                        <a href="javascript:fn_search('new');" class="search_ico">검색</a>
+                                    </li>
+                                    <li class="right">
+<%--                                    <div class="btnArea">--%>
+                                        <a href="javascript:goPage('review','saveBook');" class="btn_inline w140 write_ico" id="writeBtn">글쓰기</a>
+<%--                                    </div>--%>
+                                    </li>
+                                    <!--//html 추가 -->
+                                </ul>
                             </div>
 
-                            <div class="tableBox">
-                                <table class="list">
+                            <div class="tableWrap">
+                                <table class="tBoard acceptanceList2">
                                     <caption></caption>
                                     <colgroup>
                                         <col class="w100">

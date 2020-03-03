@@ -117,18 +117,23 @@
                     <!--review_movie_search : 합격자영상 검색-->
                     <div class="review_movie_search">
                         <div class="boardSearch">
-                            <select id="searchType" class="w90">
-                            <option value="">선택</option>
-                            <option value="title">제목</option>
-                            <option value="content">내용</option>
-                            </select>
-                            <!--html 추가 및 수정-->
-                            <input type="text" id="searchText" onkeypress="if(event.keyCode==13) {fn_search('new'); return false;}" class="w240">
-                            <a href="javascript:fn_search('new');" class="btn_inline on w140 disnoneM">검색</a>
-                            <div class="btnArea">
-                                <a href="javascript:goPageNoSubmit('review','saveVideo');" class="btn_inline w140 write_ico" id="writeBtn">글쓰기</a>
-                            </div>
+                            <ul class="searchArea">
+                                <li class="left">
+                                    <select id="searchType" class="w90">
+                                    <option value="">선택</option>
+                                    <option value="title">제목</option>
+                                    <option value="content">내용</option>
+                                    </select>
+                                    <!--html 추가 및 수정-->
+                                    <input type="text" id="searchText" onkeypress="if(event.keyCode==13) {fn_search('new'); return false;}" class="w240">
+                                        <input type="button" onclick="fn_search('new');" value="검색" class="btn_m on">
+                                        <a href="javascript:fn_search('new');" class="search_ico">검색</a>
+                                    </li>
+                                <li class="right">
+                                    <a href="javascript:goPageNoSubmit('review','saveVideo');" class="btn_inline w140 write_ico" id="writeBtn">글쓰기</a>
+                                </li>
                             <!--//html 추가 -->
+                            </ul>
                         </div>
                         <div class="list">
                             <ul id="dataList"></ul>

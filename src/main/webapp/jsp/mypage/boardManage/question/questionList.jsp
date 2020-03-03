@@ -90,22 +90,24 @@
                     <!--1:1 문의내역 -->
                     <div class="reviewBoard">
                         <form>
-                            <ul class="searchArea">
-                                <!--수정 -->
-                                <li class="left">
-                                    <select id="searchType">
-                                        <option value="">선택</option>
-                                        <option value="title">제목</option>
-                                    </select>
-                                    <input type="text" id="searchText" onkeypress="if(event.keyCode==13) {fn_search('new1'); return false;}">
-                                    <a href="javascript:fn_search('new1');" class="btn_m on">검색</a>
-                                </li>
-                                <li class="right"><a href="javascript:goPageNoSubmit('customerCenter', 'saveQuestion');" class="btn_m w140">1:1 문의하기</a>
-                                </li>
-                            </ul>
+                            <div class="boardSearch">
+                                <ul class="searchArea">
+                                    <!--수정 -->
+                                    <li class="left">
+                                        <select id="searchType">
+                                            <option value="">선택</option>
+                                            <option value="title">제목</option>
+                                        </select>
+                                        <input type="text" id="searchText" onkeypress="if(event.keyCode==13) {fn_search('new1'); return false;}">
+                                        <a href="javascript:fn_search('new1');" class="search_ico">검색</a>
+                                    </li>
+                                    <li class="right"><a href="javascript:goPageNoSubmit('customerCenter', 'saveQuestion');" class="btn_m w140">1:1 문의하기</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </form>
                         <div class="tableBox">
-                            <table class="list">
+                            <table class="mypage05">
                                 <colgroup>
                                     <col width="10%">
                                     <col width="60%">

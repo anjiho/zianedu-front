@@ -161,7 +161,7 @@
                                                 <option value="content">내용</option>
                                             </select>
                                             <input type="text" id="searchText" onkeypress="if(event.keyCode==13) {fn_search('new'); return false;}" >
-                                            <a href="javascript:fn_search('new');" class="btn_m on w140">검색</a>
+                                            <a href="javascript:fn_search('new');" class="btn_m on">검색</a>
                                         </li>
                                         <li class="right"></li>
                                     </ul>
@@ -227,13 +227,13 @@
                                                 <option value="content">내용</option>
                                             </select>
                                             <input type="text" id="searchText3" onkeypress="if(event.keyCode==13) {fn_search3('new'); return false;}">
-                                            <a href="javascript:fn_search3('new');" class="btn_m on w140">검색</a>
+                                            <a href="javascript:fn_search3('new');" class="btn_m on">검색</a>
                                         </li>
 <%--                                        <li class="right"><a href="javascript:goPageNoSubmit('review','saveLecture');" class="btn_m w140">수강수기작성하기</a></li>--%>
                                     </ul>
                                 </form>
                                 <div class="tableBox">
-                                    <table class=" disnoneM">
+                                    <table class="mypage05_2 disnoneM">
                                         <colgroup>
                                             <col>
                                             <col width="10%">
@@ -272,7 +272,7 @@
                                     </ul>
                                 </form>
                                 <div class="tableBox">
-                                    <table class=" disnoneM">
+                                    <table class="mypage05_2">
                                         <colgroup>
                                             <col>
                                             <col width="10%">
@@ -304,13 +304,13 @@
                                                 <option value="content">내용</option>
                                             </select>
                                             <input type="text" id="searchText5" onkeypress="if(event.keyCode==13) {fn_search5('new'); return false;}" >
-                                            <a href="javascript:fn_search5('new');" class="btn_m on w140">검색</a>
+                                            <a href="javascript:fn_search5('new');" class="btn_m on">검색</a>
                                         </li>
                                         <li class="right"><a href="javascript:goPageNoSubmit('bigExam','saveBigReview');" class="btn_m w140">응시후기작성하기</a></li>
                                     </ul>
                                 </form>
                                 <div class="tableBox">
-                                    <table class=" disnoneM">
+                                    <table class="mypage05_2">
                                         <colgroup>
                                             <col>
                                             <col width="10%">
