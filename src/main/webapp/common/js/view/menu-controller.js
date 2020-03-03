@@ -40,6 +40,7 @@ function getTeacherIntroduceLeftMenu(ctgKey, tagId) {
                             "<b class=\"name\">"+ data.teacherName +"</b>"+
                             "<span class=\"thumb\"><img src='"+ data.teacherImage + "' alt=\"\"></span>"+
                             "<a href='javascript:goTeacherDetail("+ data.teacherKey +","+ data.reqKey + ");' class=\"link_home\">교수홈</a>"+
+                            "<a href='javascript:goPageNoSubmit(\"review\",\"lectureList\");' class=\"link_comment\">수강후기</a>"+
                         "</div>";
             }, {escapeHtml: false});
         }
