@@ -139,7 +139,7 @@ function getApplyVideoLectureInfo(teacherKey, subjectCtgKey, stepCtgKeys, menuCt
         stepCtgKeys: stepCtgKeys,
         menuCtgKey : menuCtgKey
     };
-    $("#lectureBody_"+teacherKey).empty();
+    $("#lectureBody_"+teacherKey+"_"+subjectCtgKey).empty();
     var infoList = getApi("/product/getApplyVideoLectureInfo/", teacherKey, data);
     var videoLectureInfo = infoList.result;
     for (var k = 0; k < videoLectureInfo.length; k++) {
