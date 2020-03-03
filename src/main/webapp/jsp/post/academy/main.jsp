@@ -45,7 +45,7 @@
                 <div class="inner">
                     <div class="titleBar">
                         <h5>지안에듀 합격자 영상</h5>
-                        <a href="#" class="btn_more">전체보기</a>
+                        <a href="javascript:goPageNoSubmit('review','videoList');" class="btn_more">전체보기</a>
                     </div>
                     <div class="divGroup cols2">
                         <div>
@@ -202,14 +202,10 @@
                     </div>
                 </div>
             </div>
-<%--            <div class="mainBanner divGroup cols2">--%>
-<%--                <div><a href="#"><img src="/common/zian/images/content/img_banner0102.jpg" alt=""></a></div>--%>
-<%--                <div><a href="#"><img src="/common/zian/images/content/img_banner0301.jpg" alt=""></a></div>--%>
-<%--            </div>--%>
             <!-- 지안에듀 배너 -->
             <div class="mainBanner">
                 <div class="inner">
-                    <a href="#"><img src="../images/content/img_banner0001.jpg" alt=""></a>
+                    <a href="javascript:goPageNoSubmit('bigExam','examApply');"><img src="/common/zian/images/content/img_banner0001.jpg"></a>
                 </div>
             </div>
 

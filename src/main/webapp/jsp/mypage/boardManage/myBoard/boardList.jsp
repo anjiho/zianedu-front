@@ -8,7 +8,6 @@
                 $("#tabHeader li ").each(function () {$(this).removeClass('active');});
                 $("#tabHeader li:eq(0)").addClass('active');
             }else if(tabMenuInfo == "tabMenuConsult"){
-                // $("#tabHeader li:eq(0)").removeClass('active');
                 $("#tabHeader li ").each(function () {$(this).removeClass('active');});
                 $("#tabHeader li:eq(1)").addClass('active');
             }else if(tabMenuInfo == "tabMenuMyBoard"){
@@ -38,7 +37,6 @@
 
     //합격자 영상 불러오기
     function fn_search(val) {
-        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         var sPage = getInputTextValue("sPage");
         var searchType = getSelectboxValue("searchType");
         var searchText = getInputTextValue("searchText");

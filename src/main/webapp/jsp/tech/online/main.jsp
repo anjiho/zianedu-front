@@ -55,7 +55,7 @@
                 <div class="inner">
                     <div class="titleBar">
                         <h5>지안에듀 합격자 STORY</h5>
-                        <a href="#" class="btn_more">전체보기</a>
+                        <a href="javascript:goPageNoSubmit('review','videoList');" class="btn_more">전체보기</a>
                     </div>
                     <div class="mainStoryList">
                         <div class="item"><div>
@@ -197,7 +197,7 @@
             <!-- 지안에듀 배너 -->
             <div class="mainBanner">
                 <div class="inner">
-                    <a href="#"><img src="/common/zian/images/content/img_banner0001.jpg" alt=""></a>
+                    <a href="javascript:goPageNoSubmit('bigExam','examApply');"><img src="/common/zian/images/content/img_banner0001.jpg"></a>
                 </div>
             </div>
 

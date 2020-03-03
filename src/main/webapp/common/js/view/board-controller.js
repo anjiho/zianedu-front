@@ -533,12 +533,11 @@ function getPasserVideoList(sPage, listLimit, searchType, searchText) {
         var selList = infoList.result;
         paging.count(sPage, cnt, '10', listLimit, comment.blank_list);
         for(var i=0; i < selList.length; i++){
-            var cmpList = selList[i];
             function formatter(cmpList) {
                 var gopageName = '"detailLecture"';
                 return ""+
-                    "<div class=\"thub\"><a href='javascript:detailReview("+ cmpList.bbsKey +","+ gopageName +")'><img src='"+ cmpList.fileUrl +"' alt=\"\" width=\"100%\"></a></div>"+
-                    "<a href='javascript:void(0)'><sapn class='thumb'>"+ cmpList.title +"</span></a>"+
+                    "<div class=\"thub\"><a href='javascript:void(0);'><img src='"+ cmpList.fileUrl +"' alt=\"\" width=\"100%\"></a></div>"+
+                    "<a href='javascript:detailReview("+ cmpList.bbsKey +","+ gopageName +")'><sapn class='thumb'>"+ cmpList.title +"</span></a>"+
                     "";
             }
         }
@@ -605,8 +604,8 @@ function getPasserVideoListFromReview(bbsMasterKey, sPage, listLimit, searchType
         for(var i=0; i < selList.length; i++){
             function formatter(cmpList) {
                 return ""+
-                    "<div class=\"thub\"><a href='javascript:detailReview("+ cmpList.bbsKey +")'><img src='"+ cmpList.fileUrl +"' alt=\"\" width=\"100%\"></a></div>"+
-                    "<a href='javascript:void(0)'><sapn class='thumb'>"+ cmpList.title +"</span></a>"+
+                    "<div class=\"thub\"><a href='javascript:void(0);'><img src='"+ cmpList.fileUrl +"'  width=\"100%\"></a></div>"+
+                    "<a href='javascript:detailReview("+ cmpList.bbsKey +")'><sapn class='thumb'>"+ cmpList.title +"</span></a>"+
                     "";
             }
         }
