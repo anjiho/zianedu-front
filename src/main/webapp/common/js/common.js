@@ -3331,7 +3331,7 @@ function goAcademyMenu(gbnMenu, lefMenu) {
 function goOnlineMenu(gbnMenu, lefMenu) {
     if(lefMenu == 'public'){
         sessionStorage.setItem("leftMenu", "publicOnline");
-        var menu = "postOnline";
+        var menu = "publicOnline";
     }else if(lefMenu == 'tech'){
         sessionStorage.setItem("leftMenu", "techOnline");
         var menu = "techOnline";

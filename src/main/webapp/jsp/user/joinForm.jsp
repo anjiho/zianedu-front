@@ -105,16 +105,16 @@
                         <input type="hidden" id="idValidation" value="0">
                         <input type="hidden" id="pwdValidation" value="0">
                         <input type="hidden" id="addressNumber"><!--구주소-->
-                        <caption>회원가입 등록폼</caption>
+<%--                        <caption>회원가입 등록폼</caption>--%>
                         <colgroup>
-                            <col class="w150">
-                            <col>
+                            <col width="15%">
+                            <col width="85%">
                         </colgroup>
                         <tbody>
                         <tr>
-                            <th scope="col">이름</th>
+                            <th>이름</th>
                             <td>
-                                <input type="text" name="name" id="name" class="w150">
+                                <input type="text" name="name" id="name">
                                 <div class="radioGroup">
                                     <input type="radio" name="gender" id="sex_m" value="0"  checked><label>남</label>
                                     <input type="radio" name="gender" id="sex_f" value="1"><label>여</label>
@@ -124,63 +124,63 @@
                         <tr>
                             <th>아이디</th>
                             <td>
-                                <input type="text" id="userId" name="userId" class="w270">
-                                (6~12자 영문+숫자 조합)
+                                <input type="text" id="userId" name="userId">
+                                <span class="captionText">(6~12자 영문+숫자 조합)</span>
 <%--                                <div class="requiredText" id="idCaption" style="display:none;"></div>--%>
                                 <span class="requiredText" id="idCaption" style="display:none;"></span>
                             </td>
                         </tr>
                         <tr>
-                            <th scope="col">비밀번호</th>
+                            <th>비밀번호</th>
                             <td>
-                                <input type="password" id="password" name="pwd" class="w270">
-                                (특수문자+영문+숫자 8자 이상으로 조합)
-                                <div class="requiredText" id="pwdCaption" style="display:none;"></div>
+                                <input type="password" id="password" name="pwd">
+                                <span class="captionText">(특수문자+영문+숫자 8자 이상으로 조합)</span><br>
+                                <span class="requiredText" id="pwdCaption" style="display:none;"></span>
                             </td>
                         </tr>
                         <tr>
-                            <th scope="col">비밀번호 확인</th>
+                            <th>비밀번호 확인</th>
                             <td>
-                                <input type="password" id="rePassword" class="w270">
-                                <div class="requiredText" id="rePwdCaption" style="display:none;"></div>
+                                <input type="password" id="rePassword">
+                                <span class="requiredText" id="rePwdCaption" style="display:none;"></span>
                             </td>
                         </tr>
                         <tr>
-                            <th scope="col">이메일</th>
+                            <th>이메일</th>
                             <td>
-                                <input type="text" id="email" name="email" class="w180"> @
-                                <input type="text" id="emailAddress" class="w180">
-                                <select id="selEmailAddress" onchange="selEmail(this.value)" class="w180">
+                                <input type="text" id="email" name="email"> @
+                                <input type="text" id="emailAddress">
+                                <select id="selEmailAddress" onchange="selEmail(this.value)" class="w150">
                                     <option value="">직접입력</option>
                                     <option value="naver.com">naver.com</option>
                                     <option value="daum.net">daum.net</option>
                                     <option value="gmail.com">gmail.com</option>
                                     <option value="nate.com">nate.com</option>
-                                </select>
-                                <div class="captionText">※등록된 기기변경시 인증번호가 전송됩니다. 신중히 등록해주세요.</div>
+                                </select><br>
+                                <span class="requiredText">※등록된 기기변경시 인증번호가 전송됩니다. 신중히 등록해주세요.</span>
                             </td>
                         </tr>
                         <tr>
-                            <th scope="col">휴대전화</th>
+                            <th>휴대전화</th>
                             <td>
-                                <input type="text" id="telephoneMobile"  name="telephoneMobile" class="w270" placeholder="" disabled>
-                                <a href="javascript:fnNicePopup();" class="btn_inline">휴대폰 인증받기</a>
+                                <input type="text" id="telephoneMobile"  name="telephoneMobile" placeholder="" disabled>
+                                <a href="javascript:fnNicePopup();" class="btn_m">휴대폰 인증받기</a>
                             </td>
                         </tr>
                         <tr>
                             <th>주소</th>
                             <td>
                                 <input type="text" value="" placeholder="" title="주소 입력" id="postcode" name="postcode" disabled>
-                                <input type="button" value="우편번호 찾기" class="btn_inline"  onclick="execDaumPostcode()"><br>
+                                <input type="button" value="우편번호 찾기" class="btn_m"  onclick="execDaumPostcode()"><br>
                                 <input type="text" value="" id="addressRoad" name="addressRoad" title="주소 입력" class="w60p"><br>
                                 <input type="text" value="" id="address" name="address" title="상세주소 입력" class="w60p">
                                 <span id="guide" style="color:#999;display:none"></span>
                             </td>
                         </tr>
                         <tr>
-                            <th scope="col">준비직렬</th>
+                            <th>준비직렬</th>
                             <td>
-                                <select id="interestCtgKey0" name="interestCtgKey0" class="w180">
+                                <select id="interestCtgKey0" name="interestCtgKey0">
                                     <option value="">선택</option>
                                 </select>
                             </td>
