@@ -597,22 +597,6 @@ function getFreeVideoLectureListFromCategoryMenu(ctgKey, sPage, listLimit, stepC
                 }else { //필기대비 수정 필요
                     color = 'rblue';
                 }
-                // return "<li class=\"item\">"+
-                //            "<div class=\"inner\">"+
-                //                "<div class=\"thumb\">"+
-                //                 "<img class=\"myarea_poster\" src='"+ cmpList.freeThumbnailImg +"' class=\"myarea_poster\" />"+
-                //                 "</div>"+
-                //                 "<div class=\"desc\">"+
-                //                     "<div>"+
-                //                         "<span class=\"rblack\">"+ cmpList.subjectName +"</span>"+
-                //                         "<span class='"+ color +"'>"+ cmpList.ctgName +"</span>"+
-                //                         "<span class=\"allnum\">총"+ cmpList.lecCount +"강</span>"+
-                //                     "</div>"+
-                //                     "<a href='javascript:goDetailVideo("+ cmpList.lecKey +")' class=\"tit\">"+ cmpList.goodsName +"</a>"+
-                //                     "<span>"+ cmpList.teacherName +" 교수님</span>"+
-                //                 "</div>"+
-                //             "</div>"+
-                //         "</li>";
                 return "<div class=\"inner\">"+
                     "<div class=\"thumb\">"+
                     "<img class=\"myarea_poster\" src='"+ cmpList.freeThumbnailImg +"' class=\"myarea_poster\" onclick='javascript:goDetailVideo("+ cmpList.lecKey +")'/>"+
@@ -633,26 +617,14 @@ function getFreeVideoLectureListFromCategoryMenu(ctgKey, sPage, listLimit, stepC
         }
         dwr.util.addOptions(tagId, selList, formatter, {escapeHtml:false});
 
-        var phrases = [];
         $('.myarea_list_wrap').each(function(){
             // this is inner scope, in reference to the .phrase element
-            var phrase = '';
             $(this).find('li').each(function(){
                 // cache jquery var
                 var current = $(this);
-                console.log(current);
                 current.addClass("item");
-                // check if our current li has children (sub elements)
-                // if it does, skip it
-                // ps, you can work with this by seeing if the first child
-                // is a UL with blank inside and odd your custom BLANK text
-                if(current.children().size() > 0) {return true;}
-                // add current text to our current phrase
-                phrase += current.text();
             });
-            // now that our current phrase is completely build we add it to our outer array
         });
-        // note the comma in the alert shows separate phrases
     }
 
 
@@ -699,10 +671,26 @@ function getFreeVideoLectureListFromCategoryMenu2(ctgKey, sPage, listLimit, step
                 }else { //필기대비 수정 필요
                     color = 'rblue';
                 }
-                return "<li class=\"item\">"+
-                    "<div class=\"inner\">"+
+
+                // return "<li class=\"item\">"+
+                //     "<div class=\"inner\">"+
+                //     "<div class=\"thumb\">"+
+                //     "<a href=\"javascript:\"><img class=\"myarea_poster\" src='"+ cmpList.freeThumbnailImg +"' /></a>"+
+                //     "</div>"+
+                //     "<div class=\"desc\">"+
+                //     "<div>"+
+                //     "<span class=\"rblack\">"+ cmpList.subjectName +"</span>"+
+                //     "<span class='"+ color +"'>"+ cmpList.ctgName +"</span>"+
+                //     "<span class=\"allnum\">총"+ cmpList.lecCount +"강</span>"+
+                //     "</div>"+
+                //     "<a href='javascript:goDetailVideo("+ cmpList.lecKey +")' class=\"tit\">"+ cmpList.goodsName +"</a>"+
+                //     "<span>"+ cmpList.teacherName +" 교수님</span>"+
+                //     "</div>"+
+                //     "</div>"+
+                //     "</li>";
+                return "<div class=\"inner\">"+
                     "<div class=\"thumb\">"+
-                    "<a href=\"javascript:\"><img class=\"myarea_poster\" src='"+ cmpList.freeThumbnailImg +"' /></a>"+
+                    "<img class=\"myarea_poster\" src='"+ cmpList.freeThumbnailImg +"' class=\"myarea_poster\" onclick='javascript:goDetailVideo("+ cmpList.lecKey +")'/>"+
                     "</div>"+
                     "<div class=\"desc\">"+
                     "<div>"+
@@ -710,14 +698,23 @@ function getFreeVideoLectureListFromCategoryMenu2(ctgKey, sPage, listLimit, step
                     "<span class='"+ color +"'>"+ cmpList.ctgName +"</span>"+
                     "<span class=\"allnum\">총"+ cmpList.lecCount +"강</span>"+
                     "</div>"+
-                    "<a href='javascript:goDetailVideo("+ cmpList.lecKey +")' class=\"tit\">"+ cmpList.goodsName +"</a>"+
+                    "<p class='tit'>" + cmpList.goodsName  +"</p>" +
+                    // "<a href='javascript:goDetailVideo("+ cmpList.lecKey +")' class=\"tit\">"+ cmpList.goodsName +"</a>"+
                     "<span>"+ cmpList.teacherName +" 교수님</span>"+
                     "</div>"+
-                    "</div>"+
-                    "</li>";
+                    "</div>";
             }
         }
         dwr.util.addOptions(tagId, selList, formatter, {escapeHtml:false});
+
+        $('.myarea_list_wrap').each(function(){
+            // this is inner scope, in reference to the .phrase element
+            $(this).find('li').each(function(){
+                // cache jquery var
+                var current = $(this);
+                current.addClass("item");
+            });
+        });
     }
 }
 

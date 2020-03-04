@@ -15,7 +15,7 @@
         if(val == "new") sPage = "1";
 
         var stepCtgKey = getInputTextValue("stepCtgKey");
-        getFreeVideoLectureListFromCategoryMenu2(ctgKey, sPage, 1, stepCtgKey, 'PREV', 'questionList');
+        getFreeVideoLectureListFromCategoryMenu2(ctgKey, sPage, 9, stepCtgKey, 'PREV', 'questionList');
     }
 
     function setStepCtgKey(val) {
@@ -28,7 +28,7 @@
         var sPage = getInputTextValue("sPage");
         var ctgKey = getFreeLectureCtgKey();
         if(val == "new") sPage = "1";
-        getFreeVideoLectureListFromCategoryMenu(ctgKey, sPage, 1, 0, 'PREV', 'allList');
+        getFreeVideoLectureListFromCategoryMenu(ctgKey, sPage, 9, 0, 'PREV', 'allList');
     }
 
     function goDetailVideo(lecKey) {
@@ -59,12 +59,23 @@
                         </ul>
                         <!-- 이론 -->
                         <div class="tabPage">
+                            <div class="searchArea" style="display: none">
+                                <input type="text" class="w400">
+                                <input type="button" value="검색" class="btn_m on">
+                            </div>
                             <!-- 검색결과 나열 -->
                             <div class="tab_topContent tabContent">
                                 <div class="search_result">
                                     <p>총 <span id="lecCnt"></span>의 무료강좌가 있습니다</p>
                                 </div>
-                                <ul class="tabBar freetab" id="typeList" style="width: 267px;">
+                                <div class="ftype" style="display:none;">
+                                    <ul>
+                                        <li><a href="" class="text_blue">신규등록순</a></li>
+                                        <li class="bar">ㅣ</li>
+                                        <li><a href="">인기순</a></li>
+                                    </ul>
+                                </div>
+                                <ul class="tabBar freetab w2" id="typeList">
                                     <li class="rorange" onclick="setStepCtgKey(205)"><a href='javascript:void(0);'>문제풀이</a></li>
                                     <li class="rblue" onclick="setStepCtgKey(4266)"><a href='javascript:void(0);'>모의고사</a></li>
                                 </ul>
