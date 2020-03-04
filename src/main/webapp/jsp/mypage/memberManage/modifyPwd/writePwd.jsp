@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
-<%@include file="/common/jsp/common.jsp" %>
 <link rel="stylesheet" type="text/css" href="/common/zian/css/content_o.css">
+<%@include file="/common/jsp/common.jsp" %>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.5/datepicker.js' type='text/javascript'></script>
 <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.5/datepicker.css'>
 <script>
