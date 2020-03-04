@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+<%@include file="/common/zian/css/content_o.css" %>
 <%@include file="/common/jsp/common.jsp" %>
 <%@ page import="com.zianedu.front.utils.Util" %>
 <%@page import="com.inicis.std.util.SignatureUtil"%>
@@ -166,7 +167,6 @@
     table, img {border:none}
 </style>
 <script language="javascript" type="text/javascript" src="https://stgstdpay.inicis.com/stdjs/INIStdPay.js" charset="UTF-8"></script>
-<link rel="stylesheet" type="text/css" href="/common/zian/css/content_o.css">
 <form action="/mypage/cart/orderResult" id="id_frm_orderPay" method="post" name="name_frm_orderPay">
     <input type="hidden" id="allProductPrice" name="allProductPrice"><!-- 결제해야할 총 금액 -->
     <input type="hidden" id="cartNum" name="cartNum">
