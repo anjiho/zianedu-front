@@ -600,7 +600,7 @@ function getFreeVideoLectureListFromCategoryMenu(ctgKey, sPage, listLimit, stepC
                 return "<li class=\"item\">"+
                            "<div class=\"inner\">"+
                                "<div class=\"thumb\">"+
-                                "<a href=\"javascript:\"><img class=\"myarea_poster\" src='"+ cmpList.freeThumbnailImg +"' class=\"myarea_poster\" /></a>"+
+                                "<img class=\"myarea_poster\" src='"+ cmpList.freeThumbnailImg +"' class=\"myarea_poster\" />"+
                                 "</div>"+
                                 "<div class=\"desc\">"+
                                     "<div>"+

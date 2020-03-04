@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/jsp/exam_common.jsp" %>
+<link rel="stylesheet" type="text/css" href="/common/zian/css/content_o.css">
+<link rel="stylesheet" type="text/css" href="/common/zian/css/content_p.css">
 <script>
     $(document).ready(function () {
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
