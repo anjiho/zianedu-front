@@ -75,7 +75,6 @@
                                         <li><a href="">인기순</a></li>
                                     </ul>
                                 </div>
-
                                 <ul class="tabBar freetab" id="typeList">
                                     <li class="active rgreen" id="test" onclick="setStepCtgKey(203)"><a href='javascript:void(0);'>이론</a></li>
                                     <li class="rsky" id="207" onclick="setStepCtgKey(207)"><a href="javascript:void(0);" >단과특강</a></li>
