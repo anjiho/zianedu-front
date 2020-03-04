@@ -28,11 +28,11 @@
     <script src="/common/zian/js/ui.js"></script>
 
     <!-- include libraries(jQuery, bootstrap) -->
-<%--    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">--%>
-<%--    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>--%>
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
     <!-- include summernote css/js-->
-<%--    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">--%>
-<%--    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>--%>
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
     <!-- zian css-->
     <link rel="stylesheet" type="text/css" href="/common/zian/css/kiplayer/font.css" />
     <link rel="stylesheet" type="text/css" href="/common/zian/css/kiplayer/base.css" />
@@ -41,17 +41,17 @@
     <link rel="stylesheet" type="text/css" href="/common/zian/css/swiper.min.css">
     <link rel="stylesheet" type="text/css" href="/common/calendar/css/fullcalendar.min.css">
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <link rel="stylesheet" type="text/css" href="/common/zian/css/content_o.css">
+<%--    <link rel="stylesheet" type="text/css" href="/common/zian/css/content_o.css">--%>
     <link rel="stylesheet" type="text/css" href="/common/zian/css/owl.carousel.min.css">
     <link rel="stylesheet" type="text/css" href="/common/zian/css/bigtest.css">
-    <link rel="stylesheet" type="text/css" href="/common/zian/css/big_layout.css">
+<%--    <link rel="stylesheet" type="text/css" href="/common/zian/css/big_layout.css">--%>
     <link rel="stylesheet" type="text/css" href="/common/zian/css/reponsive.css">
     <link rel="stylesheet" type="text/css" href="/common/zian/css/board.css">
 
     <!--<script src="/common/assets/jquery/dist/jquery.min.js"></script>-->
     <script src="/common/js/blank-check.js"></script>
     <script src="/common/js/comment.js"></script>
-    <!--<script src="/common/js/common.js"></script>-->
+    <script src="/common/js/common.js"></script>
     <script src="/common/js/rest-api.js"></script>
     <!--paging-->
     <script src="common/js/paging-count-check.js"></script>

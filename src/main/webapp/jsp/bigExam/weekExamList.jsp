@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
-<%@include file="/common/jsp/common.jsp" %>
+<%@include file="/common/jsp/exam_common.jsp" %>
+<link rel="stylesheet" type="text/css" href="/common/zian/css/content_o.css">
 <script>
     $(document).ready(function () {
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
@@ -72,7 +73,8 @@
                                     <option value="name">시험명</option>
                                 </select>
                                 <input type="text" id="searchText" onkeypress="if(event.keyCode==13) {fn_search('new'); return false;}">
-                                <a href="javascript:fn_search('new');" class="btn_m on w140">검색</a>
+                                <input type="button" value="검색" onclick="fn_search2('new');" class="btn_m on">
+                                <a href="javascript:fn_search('new');" class="search_ico">검색</a>
                             </li>
                             <li class="right pdt0">
                                 <select id="onSel" class="w190" onchange="fn_search('new');"></select>
@@ -80,7 +82,7 @@
                         </ul>
                     </form>
                     <div class="tableBox2">
-                        <table class="disnoneM">
+                        <table class="">
                             <colgroup>
                                 <col>
                                 <col>
@@ -90,11 +92,11 @@
                             </colgroup>
                             <thead>
                             <tr>
-                                <th style="text-align: center">직렬</th>
-                                <th style="text-align: center">모의고사명</th>
-                                <th style="text-align: center">응시기간</th>
-                                <th style="text-align: center">응시</th>
-                                <th style="text-align: center">시험지</th>
+                                <th>직렬</th>
+                                <th>모의고사명</th>
+                                <th>응시기간</th>
+                                <th>응시</th>
+                                <th>시험지</th>
                             </tr>
                             </thead>
                             <tbody id="dataList">

@@ -48,11 +48,11 @@
 #container .bannerSlider .bx-wrapper .bx-pager {top:-30px;}
 .big .bannerSlider .bx-wrapper .bx-pager-item a {display: inline-block;margin: 0 40px;width: 18px;height: 18px; background: #fff;border: 1px #111 solid;text-indent:1px !important;border-radius: 50%;}
 #container .bannerSlider .bx-wrapper .bx-pager-item a {background: #fff;border: 1px solid #000;border-radius:20px;}
-#container .bannerSlider .bx-wrapper .bx-pager-item a.active {width: 18px;height: 18px;background: #fff;color:#ef244f;border: 1px solid #ef244f; font-weight:800}
+.big #container .bannerSlider .bx-wrapper .bx-pager-item a.active {width: 18px;height: 18px;background: #fff;color:#ef244f;border: 1px solid #ef244f; font-weight:800}
 /*고객센터*/
 .big .cs {border:2px solid #ededed;margin-top: 40px}
-.big .divGroup > div {height:130px;} 
-.big .divGroup > div > div {padding: 30px} 
+.big .divGroup > div {height:130px;}
+.big .divGroup > div > div {padding: 30px}
 .big .divGroup .csleft .titleBar {float:left;padding-right: 50px}
 .big .divGroup .csleft .callnumber {font-size: 14px;float:left}
 .big .divGroup .csleft .callnumber span {font-size:20px;color:#2e4261;font-weight:800;padding-left: 5px }
@@ -77,7 +77,7 @@
 .bigSub .infolist a {border:1px solid #aaaaaa;padding:10px 20px;margin-top: 10px;display: inline-block;}
 
 .bigSub .tabContent {margin-top: 115px}
-.bigSub .tabContent .tabBar {width:425px;border-top:2px solid #000;border-bottom:none;text-align: center;margin:0 auto}
+.bigSub .tabContent .tabBar {width:430px;border-top:2px solid #000;border-bottom:none;text-align: center;margin:0 auto}
 .bigSub .tabContent .tabBar li {width:213px;text-align: center;border:1px solid #e5e5e5;border-top:none;}
 .bigSub .tabBar > li > a { display: block;height:50px;line-height:50px;padding: 0 25px;color: #777;border:none;}
 .bigSub .tabContent  .tabBar > li.active > a {color: #fff;font-weight: bold;border:1px solid #134c97;background: #134c97}
@@ -86,11 +86,12 @@
 .bigSub table td {text-align: center;padding: 20px 0;border-bottom: 1px solid #e5e5e5}
 .bigSub .tableBox table .text_blue {display: block;}
 .bigSub .tableBox th {border-top:2px solid #000;background: #f1f1f1;padding: 25px 0}
-.bigSub .tableBox th:nth-child(1) {width:100px;text-align: center}
-.bigSub .tableBox td:nth-child(1) {text-align: center;font-weight: bold}
-.bigSub .tableBox th:nth-child(2) {width:330px;}
-.bigSub .tableBox th:nth-child(3) {width:180px;}
-.bigSub .tableBox th:nth-child(4) {width:180px;}
+.bigSub .tableBox th:nth-child(1) {width:260px;text-align: center}
+.bigSub .tableBox td:nth-child(1) {text-align: center;font-weight: bold;padding:0 16px;word-break:keep-all}
+.bigSub .tableBox th:nth-child(2) {width:270px;}
+.bigSub .tableBox td:nth-child(2) {word-break:keep-all}
+.bigSub .tableBox th:nth-child(3) {width:170px;}
+.bigSub .tableBox th:nth-child(4) {width:170px;}
 .bigSub .bdblue {color:#134c97;}
 .bigSub .bdgray {color:#999;}
 /*width 조절에 따른 table 네임명 변경*/
@@ -122,7 +123,7 @@
 .bigSub .tableBox4 th {background: #f4f4f4;border-top:1px solid #e5e5e5;border-bottom:1px solid #e5e5e5;}
 
 .bigSub .review_txt {margin-top: 60px;}
-.bigSub .review_point {height:85px;margin: 50px 0 20px;}
+.bigSub .review_point {height:45px;margin: 50px 0 20px;}
 
 .bigSub .boardSearch {margin: 25px 0;padding: 0 20px;}
 .bigSub .boardSearch .btnArea {float: right;margin: 0;}
@@ -158,81 +159,81 @@
 
 @media screen and (max-width:800px){
 
-.bigSub .mainStory.mainStorysub .titleBar h5 {padding-left: 0}
+    .bigSub .mainStory.mainStorysub .titleBar h5 {padding-left: 0}
 
 
-#container.bigSub .mainStory.mainStorysub .slick-prev,
-#container.bigSub .mainStory.mainStorysub .slick-next {display:none !important}
-.mainStory .mainStoryList .item > div > b,.mainStory .mainStoryList .item > div > .name b {font-size: 15px}
+    #container.bigSub .mainStory.mainStorysub .slick-prev,
+    #container.bigSub .mainStory.mainStorysub .slick-next {display:none !important}
+    .mainStory .mainStoryList .item > div > b,.mainStory .mainStoryList .item > div > .name b {font-size: 15px}
 
 
-.big .bannerSlider {width:96%;margin:0 2%;}
-.big .mainBanner, .big .bannerSlider, .big .testTable {width:96%;margin:0 2%;padding: 0 0 50px}
-.big .testTable .tbw01 {width:98%}
-.big .cs {width:96%;margin:0 2%;}
-.divGroup > div {float: none;text-align: center;}
-.big .divGroup > div > div {padding:20px 0;}
-.big .divGroup .csleft .titleBar {padding:0;}
-.big .mainBanner .titleBar > span {font-size: 15px;}
-.big .divGroup .csleft .titleBar,.big .divGroup .csleft .callnumber {float: none;text-align: center;}
-.big .divGroup .csleft .callnumber li {padding-bottom: 15px}
-.big .divGroup .line {display: none}
-.big .divGroup > div {height: auto}
-.big .divGroup .csright ul {float: none}
+    .big .bannerSlider {width:96%;margin:0 2%;}
+    .big .mainBanner, .big .bannerSlider, .big .testTable {width:96%;margin:0 2%;padding: 0 0 50px}
+    .big .testTable .tbw01 {width:98%}
+    .big .cs {width:96%;margin:0 2%;}
+    .divGroup > div {float: none;text-align: center;}
+    .big .divGroup > div > div {padding:20px 0;}
+    .big .divGroup .csleft .titleBar {padding:0;}
+    .big .mainBanner .titleBar > span {font-size: 15px;}
+    .big .divGroup .csleft .titleBar,.big .divGroup .csleft .callnumber {float: none;text-align: center;}
+    .big .divGroup .csleft .callnumber li {padding-bottom: 15px}
+    .big .divGroup .line {display: none}
+    .big .divGroup > div {height: auto}
+    .big .divGroup .csright ul {float: none}
 
 
-#container.bigSub {width:96%;margin:0 2%;}
-.bigSub .titleBar h5 {}
-.bigSub .titleBar {padding-top:20px;}
-.titleBar {width: 100%}
-.bigSub .imgbox {margin: 50px 0 0;}
-.bigSub .imgbox img {width:100%;}
-.bigSub .tabContent {margin-top:60px;}
-.bigSub .tabContent .tabBar > li {margin-right: 0}
-.bigSub .tabContent .tabBar {width: 90%}
-.bigSub .tabContent .tabBar li {width:49.5444444444444444444%}
-.bigSub .tabBar > li > a {padding: 0}
+    #container.bigSub {width:96%;margin:0 2%;}
+    .bigSub .titleBar h5 {}
+    .bigSub .titleBar {padding-top:20px;}
+    .titleBar {width: 100%}
+    .bigSub .imgbox {margin: 50px 0 0;}
+    .bigSub .imgbox img {width:100%;}
+    .bigSub .tabContent {margin-top:60px;}
+    .bigSub .tabContent .tabBar > li {margin-right: 0}
+    .bigSub .tabContent .tabBar {width: 90%}
+    .bigSub .tabContent .tabBar li {width:49.5444444444444444444%}
+    .bigSub .tabBar > li > a {padding: 0}
 
-.big .mainStory .mainStoryList .item > div > b {font-size: 15px; white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
+    .big .mainStory .mainStoryList .item > div > b {font-size: 15px; white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
 
-.bigSub .tableBox td {font-size: 12px}
-.bigSub .tableBox td span {display: block;font-weight:200;color:#555;}
-.bigSub .tableBox td:nth-child(1) {text-align: left;width:70%;line-height:20px}
-.bigSub .tableBox td  p {font-size: 15px}
-.bigSub .tableBox td b {padding-right: 5px}
-.bigSub .tableBox2 table {border:none;    border-top: 1px solid #e5e5e5;}
-.bigSub .tableBox2 td {font-size: 13px}
-.bigSub .tableBox2 td span {display: block;}
-.bigSub .tableBox2 td:nth-child(1) {text-align: left;width:70%;line-height:20px}
-.bigSub .tableBox2 td  p {font-size: 15px}
-.bigSub .tableBox2 td b {padding-right: 5px}
-.bigSub .tableBox3 table {border:none;border-top: 1px solid #e5e5e5;}
-.bigSub .tableBox3 td {font-size: 13px}
-.bigSub .tableBox3 td:nth-child(1) {text-align: left;width:70%;line-height:20px}
-.bigSub .tableBox3 td  p {font-size: 15px}
-.bigSub .tableBox3 td span {display: block;}
-.bigSub .tableBox3 td b {padding-right: 5px}
-.bigSub .tableBox4 td.left {text-align: left;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;}
+    .bigSub .tableBox td {font-size: 12px}
+    .bigSub .tableBox td span {display: block;font-weight:200;color:#555;}
+    .bigSub .tableBox td:nth-child(1) {text-align: left;width:70%;line-height:20px}
+    .bigSub .tableBox td  p {font-size: 15px}
+    .bigSub .tableBox td b {padding-right: 5px}
+    .bigSub .tableBox2 table {border:none;    border-top: 1px solid #e5e5e5;}
+    .bigSub .tableBox2 td {font-size: 13px}
+    .bigSub .tableBox2 td span {display: block;}
+    .bigSub .tableBox2 td:nth-child(1) {text-align: left;width:70%;line-height:20px}
+    .bigSub .tableBox2 td  p {font-size: 15px}
+    .bigSub .tableBox2 td b {padding-right: 5px}
+    .bigSub .tableBox3 table {border:none;border-top: 1px solid #e5e5e5;}
+    .bigSub .tableBox3 td {font-size: 13px}
+    .bigSub .tableBox3 td:nth-child(1) {text-align: left;width:70%;line-height:20px}
+    .bigSub .tableBox3 td  p {font-size: 15px}
+    .bigSub .tableBox3 td span {display: block;}
+    .bigSub .tableBox3 td b {padding-right: 5px}
+    .bigSub .tableBox4 td.left {text-align: left;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;}
 
-.bigSub .tableBox4 th {font-size: 15px}
-.bigSub .tableBox4 td {font-size: 13px}
+    .bigSub .tableBox4 th {font-size: 15px}
+    .bigSub .tableBox4 td {font-size: 13px}
 
-/*table 검색라인*/
-.review_movie_search .boardSearch {margin:0;padding: 0 20px 50px;}
-.review_movie_search .boardSearch select,
-.review_movie_search .boardSearch input,
-.review_movie_search .boardSearch > a  {display:none}
-.review_movie_search .boardSearch .btnArea {position: relative;width:100%;}
-.review_movie_search .boardSearch .btnArea .search_ico {float:left;display:inline-block;width:34px;height:34px; margin-bottom:10px;line-height:32px;background:#000 url(../images/ex/ct_search_ico.png) center center no-repeat;text-indent: -9999px}
-.review_movie_search .boardSearch .btnArea .write_ico {float:right;margin-bottom:10px;width:80px !important;}
+    /*table 검색라인*/
+    .review_movie_search .boardSearch {margin:0;padding: 0 20px 50px;}
+    .review_movie_search .boardSearch select,
+    .review_movie_search .boardSearch input,
+    .review_movie_search .boardSearch > a  {display:none}
+    .review_movie_search .boardSearch .btnArea {position: relative;width:100%;}
+    .review_movie_search .boardSearch .btnArea .search_ico {float:left;display:inline-block;width:34px;height:34px; margin-bottom:10px;line-height:32px;background:#000 url(../images/ex/ct_search_ico.png) center center no-repeat;text-indent: -9999px}
+    .review_movie_search .boardSearch .btnArea .write_ico {float:right;margin-bottom:10px;width:80px !important;}
 
-.searchArea > li.right.pdt0 select,
-.searchArea > li.right.pdt10 select {display: block !important;float: right}
-.bigSub .tableBox2 td.noti_ico:nth-child(1) {width:40px !important;text-align: center}
-.bigSub .tableBox2 td.noti_txt {text-align: left}
+    .searchArea > li.right.pdt0 select,
+    .searchArea > li.right.pdt10 select {display: block !important;float: right}
+    .bigSub .tableBox2 td.noti_ico:nth-child(1) {width:40px !important;text-align: center}
+    .bigSub .tableBox2 td.noti_txt {text-align: left}
 
 
 
@@ -241,9 +242,9 @@
 
 
 
-@media screen and (max-width:568px){ 
+@media screen and (max-width:568px){
 
-.big .mainBanner img {padding-top:80px}
+    .big .mainBanner img {padding-top:80px}
 
 
 }
@@ -251,23 +252,23 @@
 
 
 
-@media screen and (max-width:480px){ 
+@media screen and (max-width:480px){
 
-.big .titleBar h5 {font-size: 18px}
-.big .mainBanner img {padding-top:100px}
-.big .testTable .tbw01 table {font-size: 13px}
+    .big .titleBar h5 {font-size: 18px}
+    .big .mainBanner img {padding-top:100px}
+    .big .testTable .tbw01 table {font-size: 13px}
 
-.bigSub .mainStory.mainStorysub { padding: 20px 0 30px;}
+    .bigSub .mainStory.mainStorysub { padding: 20px 0 30px;}
 
-.big .mainStory .mainStoryList .item > div > b {font-size: 15px}
-.big  .mainStory .mainStoryList .item > div > .desc {height:14em}
+    .big .mainStory .mainStoryList .item > div > b {font-size: 15px}
+    .big  .mainStory .mainStoryList .item > div > .desc {height:14em}
 
-.bigSub .tabContent .tabBar li {width:49.22222222222222%}
-.searchArea > li.right {float: none;width: 100%;padding-top:45px}
-.searchArea > li.right.pdt0 {padding-top: 0;}
-.searchArea > li.right select.w120 {width:32.333333333% !important}
-.bigSub .infolist {    margin-top: 55px;}
-.bigSub .tableBox3 table {margin-top: 10px}
+    .bigSub .tabContent .tabBar li {width:49.22222222222222%}
+    .searchArea > li.right {float: none;width: 100%;padding-top:45px}
+    .searchArea > li.right.pdt0 {padding-top: 0;}
+    .searchArea > li.right select.w120 {width:32.333333333% !important}
+    .bigSub .infolist {    margin-top: 55px;}
+    .bigSub .tableBox3 table {margin-top: 10px}
 
 }
 
@@ -275,7 +276,7 @@
 
 @media screen and (max-width:321px){
 
-.searchArea > li.right {margin-left: -10px}
-.searchArea > li.right select.w120 {width:31.333333333% !important}
+    .searchArea > li.right {margin-left: -10px}
+    .searchArea > li.right select.w120 {width:31.333333333% !important}
 
 }
