@@ -59,7 +59,7 @@
                         </ul>
                         <!-- 이론 -->
                         <div class="tabPage">
-                            <div class="searchArea">
+                            <div class="searchArea" style="display: none">
                                 <input type="text" class="w400">
                                 <input type="button" value="검색" class="btn_m on">
                             </div>
