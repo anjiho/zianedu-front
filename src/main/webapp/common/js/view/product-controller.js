@@ -615,7 +615,7 @@ function getFreeVideoLectureListFromCategoryMenu(ctgKey, sPage, listLimit, stepC
                 //         "</li>";
                 return "<div class=\"inner\">"+
                     "<div class=\"thumb\">"+
-                    "<img class=\"myarea_poster\" src='"+ cmpList.freeThumbnailImg +"' class=\"myarea_poster\" />"+
+                    "<img class=\"myarea_poster\" src='"+ cmpList.freeThumbnailImg +"' class=\"myarea_poster\" onclick='javascript:goDetailVideo("+ cmpList.lecKey +")'/>"+
                     "</div>"+
                     "<div class=\"desc\">"+
                     "<div>"+
@@ -623,25 +623,36 @@ function getFreeVideoLectureListFromCategoryMenu(ctgKey, sPage, listLimit, stepC
                     "<span class='"+ color +"'>"+ cmpList.ctgName +"</span>"+
                     "<span class=\"allnum\">총"+ cmpList.lecCount +"강</span>"+
                     "</div>"+
-                    "<a href='javascript:goDetailVideo("+ cmpList.lecKey +")' class=\"tit\">"+ cmpList.goodsName +"</a>"+
+                    "<p class='tit'>" + cmpList.goodsName  +"</p>" +
+                    // "<a href='javascript:goDetailVideo("+ cmpList.lecKey +")' class=\"tit\">"+ cmpList.goodsName +"</a>"+
                     "<span>"+ cmpList.teacherName +" 교수님</span>"+
                     "</div>"+
                     "</div>";
 
             }
-            $('.myarea_list_wrap .list').each(function(i, items_list){
-                var myText = "";
-
-                $(items_list).find('li').each(function(j, li){
-                    console.log(li);
-                })
-
-                //alert(myText);
-
-            });
-
         }
         dwr.util.addOptions(tagId, selList, formatter, {escapeHtml:false});
+
+        var phrases = [];
+        $('.myarea_list_wrap').each(function(){
+            // this is inner scope, in reference to the .phrase element
+            var phrase = '';
+            $(this).find('li').each(function(){
+                // cache jquery var
+                var current = $(this);
+                console.log(current);
+                current.addClass("item");
+                // check if our current li has children (sub elements)
+                // if it does, skip it
+                // ps, you can work with this by seeing if the first child
+                // is a UL with blank inside and odd your custom BLANK text
+                if(current.children().size() > 0) {return true;}
+                // add current text to our current phrase
+                phrase += current.text();
+            });
+            // now that our current phrase is completely build we add it to our outer array
+        });
+        // note the comma in the alert shows separate phrases
     }
 
 
