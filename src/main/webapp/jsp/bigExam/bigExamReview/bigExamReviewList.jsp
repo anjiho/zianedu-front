@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
-<%@include file="/common/jsp/common.jsp" %>
+<%@include file="/common/jsp/exam_common.jsp" %>
 <script>
     $(document).ready(function () {
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
@@ -112,7 +112,7 @@
                     <div class="boardSearch">
                         <select id="searchType" class="w100">
                             <option value="title">제목</option>
-                            <option value="content">제목</option>
+                            <option value="content">내용</option>
                         </select>
                         <!--html 추가 및 수정-->
                         <input type="text" id="searchText" onkeypress="if(event.keyCode==13) {fn_search('new'); return false;}">
