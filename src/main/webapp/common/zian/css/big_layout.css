@@ -15,6 +15,10 @@ table thead tr td {
     text-align: center;
 }
 
+table tbody tr td {
+    text-align: center;
+}
+
 .st_text_left {
     text-align: left;
 }
@@ -1483,7 +1487,7 @@ iframe {
 }
 
 /*******************************************************************************
-	�뚯씪 �쒕∼ �낅줈��
+	íŒŒì¼ ë“œë¡­ ì—…ë¡œë“œ
 *******************************************************************************/
 
 .cs_filedropbox_default {
@@ -1605,7 +1609,7 @@ table.st_admin_frame tbody tr td.st_blank {
     -webkit-box-shadow: 2px 2px 10px #555555;
 }
 
-/* UL, �뺥깭 */
+/* UL, í˜•íƒœ */
 
 .st_frame .st_frameform {
     position: relative;
@@ -1654,7 +1658,7 @@ table.st_admin_frame tbody tr td.st_blank {
     margin-right: 16px;
 }
 
-/* UL, �대컯�� */
+/* UL, íˆ´ë°•ìŠ¤ */
 
 .st_frame .st_frameform .st_title .st_toolbox {
     margin: 0;
@@ -1765,7 +1769,7 @@ table.st_admin_frame tbody tr td.st_blank {
 
 
 
-/* UL, �대컮 */
+/* UL, íˆ´ë°” */
 
 .st_tasklist {
     margin: 0;
@@ -1873,7 +1877,7 @@ table.st_admin_frame tbody tr td.st_blank {
 
 
 /**********************************************************
-	�뱀뀡�띿뒪��
+	ì„¹ì…˜í…ìŠ¤íŠ¸
 **********************************************************/
 
 .st_sectiontextbox {
@@ -1901,7 +1905,7 @@ table.st_admin_frame tbody tr td.st_blank {
 
 
 /**********************************************************
-	EMail�낅젰湲�
+	EMailìž…ë ¥ê¸°
 **********************************************************/
 
 .st_email {
@@ -1941,7 +1945,7 @@ table.st_admin_frame tbody tr td.st_blank {
 }
 
 /**********************************************************
-	踰�???
+	ë²½???
 **********************************************************/
 
 .st_wall {
@@ -1966,7 +1970,7 @@ table.st_admin_frame tbody tr td.st_blank {
 }
 
 
-/* 2020.01.29 異붽� �섏젙 */
+/* 2020.01.29 ì¶”ê°€ ìˆ˜ì • */
 .st_exam .st_exam_test .st_test_main .st_content .st_tab ul li.st_subject_tab.active div{display:block}
 .st_exam .st_exam_test .st_test_main .st_content .st_tab ul li.st_subject_tab div{display:none}
 
@@ -1999,11 +2003,11 @@ li.st_answer.st_selected{color: red;font-weight: bold;}
 .st_questionnote_search_pannel div.st_on{background:#2986df}
 
 /* 2020.02.10 */
-.st_graph .st_graph_02 .st_graph_item ul{width:100%;height:100%;margin:0 0 0 0;padding:0 0 0 0}
+/*.st_graph .st_graph_02 .st_graph_item ul{width:100%;height:100%;margin:0 0 0 0;padding:0 0 0 0}
 .st_graph .st_graph_02 .st_graph_item ul li{list-style:none;float:left;}
 .st_graph .st_graph_02 .st_graph_item ul li.st_name{width:82px;font-weight:bold;padding-left:10px;padding-right:6px;padding-top:8px;line-height:52px;text-align:center}
 .st_graph .st_graph_02 .st_graph_item ul li div.st_graph_view{width:320px;padding-left:14px;margin-top:7px}
 .st_graph .st_graph_02 .st_graph_item ul li div.st_graph_view .st_graph_bar{height:27px;text-align:right;font-weight:bold;line-height:28px}
 .st_graph .st_graph_02 .st_graph_item ul li div.st_graph_view .st_graph_bar span{padding-right:5px;box-sizing:border-box}
 .st_graph .st_graph_02 .st_graph_item ul li div.st_graph_view .st_type_01{background-image:url(../images/bigimg/graph_02_01.jpg);color:#2f4c58}
-.st_graph .st_graph_02 .st_graph_item ul li div.st_graph_view .st_type_02{background-image:url(../images/bigimg/graph_02_02.jpg);color:#95271f;margin-top:3px}
+.st_graph .st_graph_02 .st_graph_item ul li div.st_graph_view .st_type_02{background-image:url(../images/bigimg/graph_02_02.jpg);color:#95271f;margin-top:3px}*/
