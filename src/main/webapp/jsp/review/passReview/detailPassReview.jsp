@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/jsp/common.jsp" %>
+
 <%
     String bbsKey = request.getParameter("bbsKey");
 %>
@@ -45,7 +46,7 @@
             }
             //봄문 내용 파징작업 끝
 
-            innerHTML("content", contents);
+            innerHTML("content1", contents);
             innerHTML("indate", detailInfo.indate);
             innerHTML("userName1", detailInfo.userName);
             innerHTML("userId", detailInfo.userId);
@@ -63,6 +64,8 @@
                         $("#fileList").append(retrunHtml);
                     }
                 }
+            }else{
+                gfn_display("fileContent", false);
             }
             var prevNextInfo = result.prevNextInfo;
             if(prevNextInfo != null){
@@ -156,7 +159,7 @@
                 <!--reviewBoard 합격수기 -->
                 <div class="boardWrap reviewBoard">
                     <div class="tableBox">
-                        <table class="view disnone">
+                        <table class="tBoard acceptanceView">
                             <caption></caption>
                             <colgroup>
                                 <col class="w110">
@@ -174,9 +177,8 @@
                             <tr>
                                 <td colspan="2">작성자 : <span id="userName1"></span> (<span id="userId"></span>)  |   조회수 : <span id="readCount"></span></td>
                                 <td style="text-align:right; padding-right:0"><span id="successSubject"></span> | <span id="lectureSubject"></span></td>
-                                <td></td>
                             </tr>
-                            <tr>
+                            <tr id="fileContent">
                                 <td colspan="3">
                                     <div class="fileWrap">
                                         <span class="label">첨부파일 : </span>
@@ -187,7 +189,7 @@
                             </tr>
                             <tr>
                                 <td colspan="4" class="tdEditorContent">
-                                    <div class="alignCenter" id="content">
+                                    <div id="content1">
                                     </div>
                                 </td>
                             </tr>

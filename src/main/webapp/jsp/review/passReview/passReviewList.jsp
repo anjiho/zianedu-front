@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+<link rel="stylesheet" type="text/css" href="/common/zian/css/content_o.css">
 <%@include file="/common/jsp/common.jsp" %>
 <script>
     $( document ).ready(function() {
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-        console.log(sessionUserInfo);
         if(sessionUserInfo == null) {
             $("#writeBtn").hide();
         }

@@ -46,6 +46,14 @@
                 sessionStorage.setItem("noticeHeader", "onlineStore");
                 $("#noticeMenu li:eq(5)").addClass('active');
                 goPageNoSubmit('notice', 'list');
+            }else if($(this).index() == 6){
+                sessionStorage.setItem("noticeHeader", "mockNotice");
+                $("#noticeMenu li:eq(6)").addClass('active');
+                goPageNoSubmit('notice', 'list');
+            }else if($(this).index() == 7){
+                sessionStorage.setItem("noticeHeader", "scoreAnnounce");
+                $("#noticeMenu li:eq(7)").addClass('active');
+                goPageNoSubmit('notice', 'list');
             }
         });
     });

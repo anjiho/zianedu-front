@@ -30,7 +30,7 @@
                     contents = contentsHTML;
                 }
                 //봄문 내용 파징작업 끝
-                innerHTML("content", contents);
+                innerHTML("content1", contents);
                 innerHTML("indate", detailInfo.indate);
                 innerHTML("writeUserName", detailInfo.userName);
                 innerHTML("userId", detailInfo.userId);
@@ -80,7 +80,7 @@
                                 </tr>
                                 <tr>
                                     <td colspan="2" class="textContent">
-                                        <div class="alignCenter" id="content">
+                                        <div id="content1">
                                         </div>
                                     </td>
                                 </tr>

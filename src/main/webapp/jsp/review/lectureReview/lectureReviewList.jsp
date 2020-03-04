@@ -3,6 +3,7 @@
 <%
     String gKey = Util.isNullValue(request.getParameter("gKey"), "");
 %>
+<link rel="stylesheet" type="text/css" href="/common/zian/css/content_o.css">
 <%@include file="/common/jsp/common.jsp" %>
 <script>
     var gKey = '<%=gKey%>';

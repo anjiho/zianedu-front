@@ -45,7 +45,7 @@
             }
             //봄문 내용 파징작업 끝
 
-            innerHTML("content", contents);
+            innerHTML("content1", contents);
             innerHTML("indate", detailInfo.indate);
             innerHTML("userName1", detailInfo.userName);
             innerHTML("userId", detailInfo.userId);
@@ -61,6 +61,8 @@
                         $("#fileList").append(retrunHtml);
                     }
                 }
+            }else{
+                gfn_display('fileContent', false);
             }
 
 
@@ -153,7 +155,7 @@
                 <!--reviewBoard 수강후기 -->
                 <div class="boardWrap reviewBoard">
                     <div class="tableBox">
-                        <table class="view disnone">
+                        <table class="tBoard acceptanceView">
                             <caption></caption>
                             <colgroup>
                                 <col class="w110">
@@ -170,7 +172,7 @@
                             <tr>
                                 <td colspan="3">작성자 : <span id="userName1"></span> (<span id="userId"></span>)  |   조회수 : <span id="readCount"></span></td>
                             </tr>
-                            <tr>
+                            <tr id="fileContent">
                                 <td colspan="3">
                                     <div class="fileWrap">
                                         <span class="label">첨부파일 : </span>
@@ -181,7 +183,7 @@
                             </tr>
                             <tr>
                                 <td colspan="3" class="tdEditorContent">
-                                    <div class="alignCenter" id="content">
+                                    <div id="content1">
                                     </div>
                                 </td>
                             </tr>

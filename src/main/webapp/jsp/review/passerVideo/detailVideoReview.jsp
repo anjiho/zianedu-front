@@ -22,7 +22,6 @@
         var result = getBoardDetailInfo(bbsMasterKey, bbsKey);
         if(result != undefined){
             var detailInfo = result.boardDetailInfo;
-            console.log(detailInfo);
             //본문 내용 파싱작업 시작
             var detailInfoStr = JSON.stringify(detailInfo);
             var detailInfoStrObj = JSON.parse(detailInfoStr);
@@ -45,23 +44,14 @@
             }
             //봄문 내용 파징작업 끝
 
-            innerHTML("content", contents);
+            innerHTML("content1", contents);
             innerHTML("indate", detailInfo.indate);
             innerHTML("userName1", detailInfo.userName);
             innerHTML("userId", detailInfo.userId);
             innerHTML("title", detailInfo.title);
             innerHTML("readCount", detailInfo.readCount);
             innerHTML("fileName", detailInfo.fileName);
-            if(detailInfo.fileInfo != null) {
-                if (detailInfo.fileInfo.length > 0) {
-                    for (var i = 0; i < detailInfo.fileInfo.length; i++) {
-                        var fileList = detailInfo.fileInfo[i];
-                        // var retrunHtml = "<a href='" + fileList.fileUrl + "' download>" + fileList.fileName + "</a>";
-                        var retrunHtml = "<li><a href=\'"+ fileList.fileUrl +"'><img src=\"/common/zian/images/common/icon_file.png\" alt=\"\"> "+ fileList.fileName +"</a></li>";
-                        $("#fileList").append(retrunHtml);
-                    }
-                }
-            }
+
 
             var prevNextInfo = result.prevNextInfo;
             if(prevNextInfo.prevBbsKey == 0){
@@ -122,7 +112,7 @@
                 <!--reviewBoard 합격자영상 -->
                 <div class="boardWrap reviewBoard">
                     <div class="tableBox">
-                        <table class="view disnone">
+                        <table class="tBoard acceptanceView">
                             <caption></caption>
                             <colgroup>
                                 <col class="w110">
@@ -130,10 +120,10 @@
                                 <col class="w140">
                             </colgroup>
                             <thead>
-                            <tr>
-                                <th colspan="2" id='title'></th>
-                                <th id="indate"></th>
-                            </tr>
+                                <tr>
+                                    <th colspan="2" id='title'></th>
+                                    <th id="indate"></th>
+                                </tr>
                             </thead>
                             <tbody>
                             <tr>
@@ -141,7 +131,7 @@
                             </tr>
                             <tr>
                                 <td colspan="3" class="tdEditorContent">
-                                    <div class="alignCenter" id="content">
+                                    <div id="content1">
                                     </div>
                                 </td>
                             </tr>

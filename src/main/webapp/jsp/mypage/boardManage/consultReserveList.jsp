@@ -3,6 +3,8 @@
 <%@include file="/common/jsp/common.jsp" %>
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
 <script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
 <script>
     $(document).ready(function () {
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
