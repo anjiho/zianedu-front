@@ -32,7 +32,7 @@
                 //봄문 내용 파징작업 끝
                 innerHTML("content", contents);
                 innerHTML("indate", detailInfo.indate);
-                innerHTML("userName", detailInfo.userName);
+                innerHTML("writeUserName", detailInfo.userName);
                 innerHTML("userId", detailInfo.userId);
                 innerHTML("title", detailInfo.title);
                 innerHTML("readCount", detailInfo.readCount);
@@ -76,7 +76,7 @@
                                     <td class="bg_gray ta_right" id="indate"></td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2">작성자 : <span id="userName"></span> (<span id="userId"></span>) | 조회수 : <span id="readCount"></span></td>
+                                    <td colspan="2">작성자 : <span id="writeUserName"></span> (<span id="userId"></span>) | 조회수 : <span id="readCount"></span></td>
                                 </tr>
                                 <tr>
                                     <td colspan="2" class="textContent">
