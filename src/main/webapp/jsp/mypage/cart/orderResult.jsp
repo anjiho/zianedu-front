@@ -427,6 +427,7 @@
         System.out.println(e);
     }
 %>
+<link rel="stylesheet" type="text/css" href="/common/zian/css/content_o.css">
 <script>
     $( document ).ready(function() {
         var resultCode = '<%=resultCode%>';
