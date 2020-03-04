@@ -71,6 +71,8 @@
                         $("#fileList").append(retrunHtml);
                     }
                 }
+            }else{
+                $("#fileContent").hide();
             }
 
 
@@ -146,14 +148,11 @@
                             <tr>
                                 <td colspan="3">작성자 : <span id="writeUserName"></span> <span id="userId"></span>  |   조회수 : <span id="readCount"></span></td>
                             </tr>
-                            <tr>
+                            <tr id="fileContent">
                                 <td colspan="3">
                                     <div class="fileWrap">
                                         <span class="label">첨부파일 : </span>
-                                        <ul class="fileList" id="fileList">
-<%--                                            <li><a href="#"><img src="../images/common/icon_file.png" alt=""> 필기시험 합격선(제1회공채)-배포용(0).hwp</a></li>--%>
-<%--                                            <li><a href="#"><img src="../images/common/icon_file.png" alt=""> 필기시험 합격선(제1회공채).hwp</a></li>--%>
-                                        </ul>
+                                        <ul class="fileList" id="fileList"></ul>
                                     </div>
                                 </td>
                             </tr>

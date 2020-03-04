@@ -257,7 +257,6 @@
         <div class="modal-content">
             <div class="mTit">
                 <h2>시간표 업로드</h2>
-                <!-- <a href="javascript:" class="btn_modalClose">닫기</a>-->
             </div>
             <div class="mCont">
                 <div class="ta_center">

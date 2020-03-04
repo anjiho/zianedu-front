@@ -62,8 +62,8 @@
                                 <li class="right"></li>
                             </ul>
                         </form>
-                        <div class="tableBox other">
-                            <table class="disnoneM">
+                        <div class="tableBox">
+                            <table class="mypage06_2">
                                 <colgroup>
                                     <col>
                                     <col width="550">

@@ -145,17 +145,16 @@
                                                     <option value="name">시험명</option>
                                                 </select>
                                                 <input type="text" id="searchText" onkeypress="if(event.keyCode==13) {fn_search('new'); return false;}">
-                                                <a href="javascript:fn_search('new');" class="btn_m on w140">검색</a>
+                                                <input type="button" onclick="fn_search('new');" value="검색" class="btn_m on">
+                                                <a href="javascript:fn_search('new');" class="search_ico">검색</a>
                                             </li>
                                             <li class="right ">
-                                                <select id="onSel" onchange="fn_search('new');" class="w120">
-<%--                                                        <option class="w190">직렬선택</option>--%>
-                                                </select>
+                                                <select id="onSel" onchange="fn_search('new');" class="w120"></select>
                                             </li>
                                         </ul>
                                     </form>
                                     <div class="tableBox">
-                                        <table class="disnoneM">
+                                        <table class="mypage06">
                                             <colgroup>
                                                 <col>
                                                 <col width="380px">
@@ -189,17 +188,18 @@
                                                     <option value="name">시험명</option>
                                                 </select>
                                                 <input type="text" id="searchText2" onkeypress="if(event.keyCode==13) {fn_search2('new'); return false;}">
-                                                <a href="javascript:fn_search2('new');" class="btn_m on w140">검색</a>
+                                                <input type="button" onclick="fn_search2('new');" value="검색" class="btn_m on">
+                                                <a href="javascript:fn_search2('new');" class="search_ico">검색</a>
                                             </li>
                                             <li class="right ">
-                                                <select id="offSel" onchange="fn_search2('new');" class="w120">
+                                                <select id="offSel" onchange="fn_search2('new');" class="w190">
                                                     <option class="w190">직렬선택</option>
                                                 </select>
                                             </li>
                                         </ul>
                                     </form>
                                     <div class="tableBox">
-                                        <table>
+                                        <table class="mypage06">
                                             <colgroup>
                                                 <col>
                                                 <col width="380px">
@@ -233,7 +233,8 @@
                                                 <option value="name">시험명</option>
                                             </select>
                                             <input type="text" id="searchText3" onkeypress="if(event.keyCode==13) {fn_search3('new'); return false;}">
-                                            <a href="javascript:fn_search3('new');" class="btn_m on w140">검색</a>
+                                            <input type="button" onclick="fn_search3('new');" value="검색" class="btn_m on">
+                                            <a href="javascript:fn_search3('new');" class="search_ico">검색</a>
                                         </li>
                                         <li class="right ">
                                             <select id="weekSel" onchange="fn_search3('new');" class="w120"></select>
@@ -241,7 +242,7 @@
                                     </ul>
                                 </form>
                                 <div class="tableBox">
-                                    <table>
+                                    <table class="mypage06">
                                         <colgroup>
                                             <col>
                                             <col width="380px">
@@ -274,7 +275,8 @@
                                                     <option value="name">시험명</option>
                                                 </select>
                                                 <input type="text" id="searchText4" onkeypress="if(event.keyCode==13) {fn_search4('new'); return false;}">
-                                                <a href="javascript:fn_search4('new');" class="btn_m on w140">검색</a>
+                                                <input type="button" onclick="fn_search4('new');" value="검색" class="btn_m on">
+                                                <a href="javascript:fn_search4('new');" class="search_ico">검색</a>
                                             </li>
                                             <li class="right">
                                                 <select id="classCtgKey" onchange="fn_search4('new');" class="w120"></select> <!--직렬-->
@@ -284,7 +286,7 @@
                                         </ul>
                                     </form>
                                     <div class="tableBox">
-                                        <table>
+                                        <table class="mypage06">
                                             <colgroup>
                                                 <col>
                                                 <col width="380px">
