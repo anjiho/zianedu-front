@@ -79,6 +79,7 @@
         gfn_winPop(600, 600, url);
     }
 </script>
+<link rel="stylesheet" type="text/css" href="/common/zian/css/content_o.css">
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
     <input type="hidden" id="allProductPrice" name="allProductPrice">

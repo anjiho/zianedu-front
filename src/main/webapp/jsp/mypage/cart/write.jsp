@@ -188,6 +188,7 @@
         $("#bookTypePage").submit();
     }
 </script>
+<link rel="stylesheet" type="text/css" href="/common/zian/css/content_o.css">
 <form id="bookTypePage" method="post" name="bookTypePage">
     <input type="hidden" id="bookType" name="bookType">
 </form>
