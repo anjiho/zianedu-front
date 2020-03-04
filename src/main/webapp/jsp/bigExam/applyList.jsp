@@ -2,7 +2,6 @@
 <%@include file="/common/jsp/exam_common.jsp" %>
 <link rel="stylesheet" type="text/css" href="/common/zian/css/content_o.css">
 <link rel="stylesheet" type="text/css" href="/common/zian/css/content_p.css">
-<link rel="stylesheet" type="text/css" href="/common/zian/css/reponsive_add.css">
 <script>
     $(document).ready(function () {
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
