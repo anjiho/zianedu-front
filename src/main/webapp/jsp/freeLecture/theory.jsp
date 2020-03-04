@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+<link rel="stylesheet" type="text/css" href="/common/zian/css/content_o.css">
 <%@include file="/common/jsp/common.jsp" %>
 <script>
     $( document ).ready(function() {
@@ -58,14 +59,25 @@
                         </ul>
                         <!-- 이론 -->
                         <div class="tabPage">
+                            <div class="searchArea">
+                                <input type="text" class="w400">
+                                <input type="button" value="검색" class="btn_m on">
+                            </div>
                             <!-- 검색결과 나열 -->
                             <div class="tab_topContent tabContent">
                                 <div class="search_result">
                                     <p>총 <span id="lecCnt"></span>의 무료강좌가 있습니다</p>
                                 </div>
+                                <div class="ftype" style="display:none;">
+                                    <ul>
+                                        <li><a href="" class="text_blue">신규등록순</a></li>
+                                        <li class="bar">ㅣ</li>
+                                        <li><a href="">인기순</a></li>
+                                    </ul>
+                                </div>
 
                                 <ul class="tabBar freetab" id="typeList">
-                                    <li class="rgreen" id="test" onclick="setStepCtgKey(203)"><a href='javascript:void(0);'>이론</a></li>
+                                    <li class="active rgreen" id="test" onclick="setStepCtgKey(203)"><a href='javascript:void(0);'>이론</a></li>
                                     <li class="rsky" id="207" onclick="setStepCtgKey(207)"><a href="javascript:void(0);" >단과특강</a></li>
                                     <li class="rblue" onclick="setStepCtgKey(774)"><a href="javascript:void(0);">아침특강</a></li>
                                     <li class="rblue" onclick="setStepCtgKey(4172)"><a href="javascript:void(0);" >필기대비</a></li>

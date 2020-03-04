@@ -589,7 +589,7 @@ legend {display:none;position:absolute;visibility:hidden;}
 .free .ftype li {float:left;line-height:36px;}
 .free .ftype li.bar {padding: 0 2px}
 .free .ftype .text_blue {font-weight: bold}
-.free .tabBar.freetab {width:600px}
+/*.free .tabBar.freetab {width:600px;}*/
 .free .tabBar.freetab.w2 {width:480px}
 .free .tabBar.freetab li {width:110px;margin:0 10px;border:none;-webkit-border-radius:20px;-moz-border-radius :20px;border-radius:20px;}
 .free .tabBar.freetab > li > a { display: block;height:30px; line-height: 30px;padding: 0 15px;border: none;background: none;color: #fff}

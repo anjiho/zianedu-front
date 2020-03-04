@@ -37,7 +37,7 @@
     <link rel="stylesheet" type="text/css" href="/common/zian/css/swiper.min.css">
     <link rel="stylesheet" type="text/css" href="/common/zian/css/base.css">
     <link rel="stylesheet" type="text/css" href="/common/zian/css/content.css">
-    <link rel="stylesheet" type="text/css" href="/common/zian/css/content_o.css">
+<%--    <link rel="stylesheet" type="text/css" href="/common/zian/css/content_o.css">--%>
     <link rel="stylesheet" type="text/css" href="/common/zian/css/reponsive.css">
 
     <link rel="stylesheet" type="text/css" href="/common/calendar/css/fullcalendar.min.css">
