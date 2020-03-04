@@ -16,6 +16,10 @@
                 $("#noticeMenu li:eq(4)").addClass('active');
             }else if(leftMenuInfo == "onlineStore"){
                 $("#noticeMenu li:eq(5)").addClass('active');
+            }else if(leftMenuInfo == "mockNotice"){
+                $("#noticeMenu li:eq(6)").addClass('active');
+            }else if(leftMenuInfo == "scoreAnnounce"){
+                $("#noticeMenu li:eq(7)").addClass('active');
             }
         }
 
@@ -66,8 +70,8 @@
         <li><a href="javascript:void(0);" >시험공고</a></li>
         <li><a href="javascript:void(0);" >수험가이드</a></li>
         <li><a href="javascript:void(0);" >온라인서점안내</a></li>
-        <li><a href="#">모의고사소식</a></li>
-        <li><a href="#">성적우수작발표</a></li>
+        <li><a href="javascript:void(0);">모의고사소식</a></li>
+        <li><a href="javascript:void(0);">성적우수작발표</a></li>
     </ul>
 </div>
 <br />
