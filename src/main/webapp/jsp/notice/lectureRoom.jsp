@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+
 <%@include file="/common/jsp/common.jsp" %>
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+<link rel="stylesheet" type="text/css" href="/common/zian/css/content_o.css">
 <script>
     $( document ).ready(function() {
         //팝업 이미지 업로드
@@ -186,6 +190,58 @@
     <input type="hidden" name="page_gbn" id="page_gbn">
     <input type="hidden" id="yyyymmdd" value="">
     <div id="wrap">
+        <!-- 안내 모달창 -->
+        <div id="uploadModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <div class="mTit">
+                    <h2>시간표 업로드</h2>
+                    <!-- <a href="javascript:" class="btn_modalClose">닫기</a>-->
+                </div>
+                <div class="mCont">
+                    <div class="ta_center">
+                        <div class="box">
+                        <span class="filetype">
+                            <input type="text" class="file-text" disabled>
+                            <span class="file-btn">찾아보기</span>
+                            <span class="file-select"><input type="file" id="attachFile" class="input-file" size="3" onchange="fileInfo(this, 1)"></span>
+                        </span>
+                        </div>
+                    </div>
+                    <div class="btnArea">
+                        <a href="javascript:" class="btn_m cgray radius w110">취소</a> &nbsp;&nbsp;&nbsp;
+                        <a href="javascript:" class="btn_m cblue radius w110" onclick="saveLecRoom(1);">등록</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- //안내 모달창 -->
+        <!-- 안내 모달창 -->
+        <div id="uploadModal1" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <div class="mTit">
+                    <h2>시간표 업로드</h2>
+                    <!-- <a href="javascript:" class="btn_modalClose">닫기</a>-->
+                </div>
+                <div class="mCont">
+                    <div class="ta_center">
+                        <div class="box">
+                        <span class="filetype">
+                            <input type="text" class="file-text" disabled>
+                            <span class="file-btn">찾아보기</span>
+                            <span class="file-select"><input type="file" id="attachFile1" class="input-file" size="3" onchange="fileInfo(this, 2)"></span>
+                        </span>
+                        </div>
+                    </div>
+                    <div class="btnArea">
+                        <a href="javascript:" class="btn_m cgray radius w110">취소</a> &nbsp;&nbsp;&nbsp;
+                        <a href="javascript:" class="btn_m cblue radius w110" onclick="saveLecRoom(2);">등록</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- //안내 모달창 -->
         <%@include file="/common/jsp/leftMenu.jsp" %>
         <!--상단-->
         <%@include file="/common/jsp/header.jsp" %>
@@ -225,57 +281,6 @@
         <%@include file="/common/jsp/footerBanner.jsp" %>
         <!--//하단고정식배너-->
     </div>
-    <!-- 안내 모달창 -->
-    <div id="uploadModal" class="modal">
-        <!-- Modal content -->
-        <div class="modal-content">
-            <div class="mTit">
-                <h2>시간표 업로드</h2>
-                <!-- <a href="javascript:" class="btn_modalClose">닫기</a>-->
-            </div>
-            <div class="mCont">
-                <div class="ta_center">
-                    <div class="box">
-                        <span class="filetype">
-                            <input type="text" class="file-text" disabled>
-                            <span class="file-btn">찾아보기</span>
-                            <span class="file-select"><input type="file" id="attachFile" class="input-file" size="3" onchange="fileInfo(this, 1)"></span>
-                        </span>
-                    </div>
-                </div>
-                <div class="btnArea">
-                    <a href="javascript:" class="btn_m cgray radius w110">취소</a> &nbsp;&nbsp;&nbsp;
-                    <a href="javascript:" class="btn_m cblue radius w110" onclick="saveLecRoom(1);">등록</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- //안내 모달창 -->
-    <!-- 안내 모달창 -->
-    <div id="uploadModal1" class="modal">
-        <!-- Modal content -->
-        <div class="modal-content">
-            <div class="mTit">
-                <h2>시간표 업로드</h2>
-            </div>
-            <div class="mCont">
-                <div class="ta_center">
-                    <div class="box">
-                        <span class="filetype">
-                            <input type="text" class="file-text" disabled>
-                            <span class="file-btn">찾아보기</span>
-                            <span class="file-select"><input type="file" id="attachFile1" class="input-file" size="3" onchange="fileInfo(this, 2)"></span>
-                        </span>
-                    </div>
-                </div>
-                <div class="btnArea">
-                    <a href="javascript:" class="btn_m cgray radius w110">취소</a> &nbsp;&nbsp;&nbsp;
-                    <a href="javascript:" class="btn_m cblue radius w110" onclick="saveLecRoom(2);">등록</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- //안내 모달창 -->
     <div id="overlay"></div>
 </form>
 </body>
