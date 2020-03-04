@@ -93,8 +93,7 @@
                                 </div>
                                 <div class="active">
                                     <div class="myarea_list_wrap" id="typeVideoWrap">
-                                        <ul class="list" id="typeVideoList">
-                                        </ul>
+                                        <ul class="list" id="typeVideoList"></ul>
                                         <%@ include file="/common/inc/com_pageNavi2.inc" %>
                                     </div>
                                 </div>
