@@ -186,7 +186,7 @@
                     <div class="cart">
                         <div class="tbd_03 mgb60" id="acaDiv">
                             <p class="title"><span class="text_blue">학원실강</span> 장바구니 담긴상품</p>
-                            <table>
+                            <table class="disnoneM">
                                 <colgroup>
                                     <col width="50px">
                                     <col>

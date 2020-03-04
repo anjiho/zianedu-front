@@ -86,13 +86,14 @@ function getConsultReserveList(userKey,reserveStartDate, reserveEndDate, sPage, 
             var cmpList = selList[i];
             if (cmpList != undefined) {
                 var cellData = [
-                    function(data) {return "<input type=\"checkbox\" name='consultChk' id='"+ cmpList.idx +"' class=\"ck4\">";},
+                    function(data) {return "<input type=\"checkbox\" name='consultChk' id='"+ cmpList.idx +"'>";},
                     function(data) {return cmpList.reserveLocationName;},
                     function(data) {return cmpList.reserveDate+"<br>"+ cmpList.reserveTimeName},
                     function(data) {return cmpList.userName;},
                     //function(data) {return "<input type='' value='상세내용' class=\"btn_modalOpen re_btn\" id='"+ cmpList.idx +"'>";},
-                    function (data) {return "<a href='javascript:detailConsult("+ cmpList.idx +");' class=\"re_btn\">상세내용<span ></span></a>";},
-                    function(data) {return cmpList.consultStatusName;}
+                    function (data) {return "<a href='javascript:detailConsult("+ cmpList.idx +");' class=\"btn_modalOpen re_btn\">상세내용<span ></span></a>";},
+                    function (data) {return "<a class=\"re_b_btn\">"+ cmpList.consultStatusName +"<span ></span></a>";}
+                    // function(data) {return cmpList.consultStatusName;}
                 ];
                 dwr.util.addRows("dataList", [0], cellData, {escapeHtml: false});
             }

@@ -53,16 +53,14 @@
                 <!--서브 컨텐츠-->
                 <%@include file="/common/jsp/myPageHeader.jsp" %>
                 <div class="Mypage">
-                    <div class="tab_topContent tabContent">
-                    <div class="tabBox review coupon">
-                        <ul id="tabHeader">
-<%--                            <li><a href="javascript:goPageNoSubmit('myPage', 'coupon');">쿠폰<span></span></a></li>--%>
-<%--                            <li class="active"><a href="javascript:void(0);">마일리지<span></span></a></li>--%>
-                                <li><a href="javascript:void(0);">쿠폰<span></span></a></li>
-                                <li class="active"><a href="javascript:void(0);">마일리지<span></span></a></li>
-                        </ul>
-                    </div>
-                    </div>
+<%--                    <div class="tab_topContent tabContent">--%>
+                        <div class="tabBox review coupon">
+                            <ul id="tabHeader">
+                                    <li><a href="javascript:void(0);">쿠폰<span></span></a></li>
+                                    <li class="active"><a href="javascript:void(0);">마일리지<span></span></a></li>
+                            </ul>
+                        </div>
+<%--                    </div>--%>
 
                     <!--마일리지-->
                     <div class="reviewBoard">
@@ -83,11 +81,11 @@
                         </div>
 
                         <div class="tbd_05">
-                            <ul class="lectureTotal">
+                            <ul class="lectureTotal lectureTotaletc">
                                 <li class="left"><a href="#" class="btn_m bgray">쿠폰 마일리지 사용안내</a></li>
                                 <li class="right"></li>
                             </ul>
-                            <table class="disnoneM">
+                            <table class="coupontbw coupontbw2">
                                 <thead>
                                 <tr>
                                     <th style="text-align: center">발급일자</th>

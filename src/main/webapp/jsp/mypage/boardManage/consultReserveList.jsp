@@ -163,6 +163,7 @@
                             <li><a href="javascript:goPageNoSubmit('myPage', 'boardList')">내게시글<span></span></a></li>
                         </ul>
                     </div>
+                    <div class="reviewBoard">
                     <div class="date_sort" style="margin-top: 65px;">
                         <div class="inner">
                             <div class="date_5ea">
@@ -198,23 +199,15 @@
                             <a href="javascript:cancelConsult();">예약취소</a>
                             <a href="javascript:saveConsult();" id="passConsult">상담완료</a>
                         </div>
-                        <table>
-                            <colgroup>
-                                <col>
-                                <col width="200px">
-                                <col width="200px">
-                                <col width="150px">
-                                <col  width="150px">
-                                <col width="150px">
-                            </colgroup>
+                        <table class="mypageAdvice">
                             <thead>
                             <tr>
-                                <th><input type="checkbox" id="allChk"  value=""></th>
-                                <th>장소</th>
-                                <th>예약날짜</th>
-                                <th>작성자</th>
-                                <th>요청내용</th>
-                                <th></th>
+                                <th style="width:10%"><input type="checkbox" id="allChk"></th>
+                                <th style="width:30%;">장소</th>
+                                <th style="width:15%">예약날짜</th>
+                                <th style="width:15%">작성자</th>
+                                <th style="width:15%">요청내용</th>
+                                <th style="width:15%"></th>
                             </tr>
                             </thead>
                             <tbody id="dataList"></tbody>
@@ -222,6 +215,7 @@
                         <!-- paging -->
                         <%@ include file="/common/inc/com_pageNavi.inc" %>
                         <!-- //paging -->
+                    </div>
                     </div>
                 </div>
                 <!--//서브 컨텐츠-->

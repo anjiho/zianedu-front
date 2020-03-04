@@ -64,26 +64,28 @@
                                     <p>총 <span id="lecCnt"></span>의 무료강좌가 있습니다</p>
                                 </div>
 
-                                <ul class="tabBar freetab" id="typeList" style="width: 526px;">
+                                <ul class="tabBar freetab" id="typeList">
                                     <li class="rgreen" id="test" onclick="setStepCtgKey(203)"><a href='javascript:void(0);'>이론</a></li>
                                     <li class="rsky" id="207" onclick="setStepCtgKey(207)"><a href="javascript:void(0);" >단과특강</a></li>
                                     <li class="rblue" onclick="setStepCtgKey(774)"><a href="javascript:void(0);">아침특강</a></li>
                                     <li class="rblue" onclick="setStepCtgKey(4172)"><a href="javascript:void(0);" >필기대비</a></li>
                                 </ul>
-                                <br><br>
+<%--                                <br><br>--%>
                                 <!-- 이론 -->
-                                <div class="myarea_list_wrap" id="allDiv">
-                                    <ul class="list" id="allList">
-                                    </ul>
-                                    <%@ include file="/common/inc/com_pageNavi.inc" %>
-                                </div>
-                                <div class="active">
-                                    <div class="myarea_list_wrap" id="typeVideoWrap">
-                                        <ul class="list" id="typeVideoList">
+                                <div class="tabPage active">
+                                    <div class="myarea_list_wrap" id="allDiv">
+                                        <ul class="list" id="allList">
                                         </ul>
-                                        <%@ include file="/common/inc/com_pageNavi2.inc" %>
+                                        <%@ include file="/common/inc/com_pageNavi.inc" %>
                                     </div>
                                 </div>
+<%--                                <div class="active">--%>
+<%--                                    <div class="myarea_list_wrap" id="typeVideoWrap">--%>
+<%--                                        <ul class="list" id="typeVideoList">--%>
+<%--                                        </ul>--%>
+<%--                                        <%@ include file="/common/inc/com_pageNavi2.inc" %>--%>
+<%--                                    </div>--%>
+<%--                                </div>--%>
                             </div>
                             <!-- //검색결과 나열 -->
                         </div>

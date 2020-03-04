@@ -598,20 +598,20 @@ function getFreeVideoLectureListFromCategoryMenu(ctgKey, sPage, listLimit, stepC
                     color = 'rblue';
                 }
                 return "<li class=\"item\">"+
-                       "<div class=\"inner\">"+
-                       "<div class=\"thumb\">"+
-                        "<a href=\"javascript:\"><img class=\"myarea_poster\" src='"+ cmpList.freeThumbnailImg +"' /></a>"+
-                        "</div>"+
-                        "<div class=\"desc\">"+
-                        "<div>"+
-                        "<span class=\"rblack\">"+ cmpList.subjectName +"</span>"+
-                        "<span class='"+ color +"'>"+ cmpList.ctgName +"</span>"+
-                        "<span class=\"allnum\">총"+ cmpList.lecCount +"강</span>"+
-                        "</div>"+
-                        "<a href='javascript:goDetailVideo("+ cmpList.lecKey +")' class=\"tit\">"+ cmpList.goodsName +"</a>"+
-                        "<span>"+ cmpList.teacherName +" 교수님</span>"+
-                        "</div>"+
-                        "</div>"+
+                           "<div class=\"inner\">"+
+                               "<div class=\"thumb\">"+
+                                "<a href=\"javascript:\"><img class=\"myarea_poster\" src='"+ cmpList.freeThumbnailImg +"' class=\"myarea_poster\" /></a>"+
+                                "</div>"+
+                                "<div class=\"desc\">"+
+                                    "<div>"+
+                                        "<span class=\"rblack\">"+ cmpList.subjectName +"</span>"+
+                                        "<span class='"+ color +"'>"+ cmpList.ctgName +"</span>"+
+                                        "<span class=\"allnum\">총"+ cmpList.lecCount +"강</span>"+
+                                    "</div>"+
+                                    "<a href='javascript:goDetailVideo("+ cmpList.lecKey +")' class=\"tit\">"+ cmpList.goodsName +"</a>"+
+                                    "<span>"+ cmpList.teacherName +" 교수님</span>"+
+                                "</div>"+
+                            "</div>"+
                         "</li>";
             }
             
