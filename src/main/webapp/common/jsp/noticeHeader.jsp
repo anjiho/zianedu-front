@@ -50,7 +50,7 @@
         });
     });
 </script>
-<div class="tabBox">
+<div class="tabBox tBox4">
     <ul id="noticeMenu">
         <li><a href="javascript:void(0);" >개강안내</a></li>
         <li><a href="javascript:void(0);" >학원소식</a></li>
@@ -58,6 +58,8 @@
         <li><a href="javascript:void(0);" >시험공고</a></li>
         <li><a href="javascript:void(0);" >수험가이드</a></li>
         <li><a href="javascript:void(0);" >온라인서점안내</a></li>
+        <li><a href="#">모의고사소식</a></li>
+        <li><a href="#">성적우수작발표</a></li>
     </ul>
 </div>
 <br />

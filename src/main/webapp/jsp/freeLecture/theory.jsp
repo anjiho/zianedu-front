@@ -91,13 +91,13 @@
                                         <%@ include file="/common/inc/com_pageNavi.inc" %>
                                     </div>
                                 </div>
-<%--                                <div class="active">--%>
-<%--                                    <div class="myarea_list_wrap" id="typeVideoWrap">--%>
-<%--                                        <ul class="list" id="typeVideoList">--%>
-<%--                                        </ul>--%>
-<%--                                        <%@ include file="/common/inc/com_pageNavi2.inc" %>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
+                                <div class="active">
+                                    <div class="myarea_list_wrap" id="typeVideoWrap">
+                                        <ul class="list" id="typeVideoList">
+                                        </ul>
+                                        <%@ include file="/common/inc/com_pageNavi2.inc" %>
+                                    </div>
+                                </div>
                             </div>
                             <!-- //검색결과 나열 -->
                         </div>
