@@ -1,6 +1,7 @@
 <%@ page import="com.zianedu.front.utils.Util" %>
 <%@ page import="java.net.URLDecoder" %>
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+<%@include file="/common/zian/css/content_o.css" %>
 <%@include file="/common/jsp/common.jsp" %>
 <%
     String name = Util.isNullValue(new String(request.getParameter("name").getBytes("iso-8859-1"), "utf-8"), "");
