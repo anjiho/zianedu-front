@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+<link rel="stylesheet" type="text/css" href="/common/zian/css/content_o.css">
+<link rel="stylesheet" type="text/css" href="/common/zian/css/content_p.css">
 <%@include file="/common/jsp/common.jsp" %>
 <script>
     $(document).ready(function(){
