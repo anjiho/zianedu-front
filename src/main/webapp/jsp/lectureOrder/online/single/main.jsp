@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+<link rel="stylesheet" type="text/css" href="/common/zian/css/content_o.css">
 <%@include file="/common/jsp/common.jsp" %>
 <script>
     $( document ).ready(function() {
@@ -163,6 +164,7 @@
                             <a href="#" class="btn_m btn_release right" id="uncheck">전체해제</a>
                         </div>
                     </div>
+
                 </div>
                 <div class="lectureTotal leTotal">
                     <div class="right">
