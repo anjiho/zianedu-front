@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/jsp/common.jsp" %>
+<link rel="stylesheet" type="text/css" href="/common/zian/css/content_o.css">
 <script>
     $(document).ready(function () {
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
@@ -61,6 +62,7 @@
                         </select>
                         <input type="text" id="searchText" class="w240" onkeypress="if(event.keyCode==13) {fn_search('new'); return false;}" >
                         <a href="javascript:fn_search('new');" class="btn_inline on w140 disnoneM">검색</a>
+                        <a href="javascript:fn_search('new');" class="search_ico disnonepc">검색</a>
                         <!--html 추가 및 수정-->
                         <div class="btnArea">
                             <a href="javascript:goPageNoSubmit('event','saveProceed')" class="btn_inline w140 write_ico" id="writeBtn">글쓰기</a>

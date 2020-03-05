@@ -19,7 +19,7 @@
                 focus: true
             });
             $("#attachFile").on("change", addFiles);
-            var result = getBoardDetailInfo(11030, bbsKey);
+            var result = getBoardDetailInfo(11051, bbsKey);
             if(result != null){
                 var detailInfo = result.boardDetailInfo;
                 $("#writeContent").summernote("code", detailInfo.contents);
