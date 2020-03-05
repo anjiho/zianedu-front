@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
-<%@include file="/common/jsp/common.jsp" %>
 <link rel="stylesheet" type="text/css" href="/common/zian/css/content_o.css">
+<%@include file="/common/jsp/common.jsp" %>
 <script>
     var pcMobile = divisionPcMobile();
     $( document ).ready(function() {
@@ -537,7 +537,7 @@
                                                                 <p class="tit">유형</p>
                                                                 <ul class="Droptab_wrap" id="playType"></ul>
                                                             </div>
-                                                            <div style="float: left;width: 828px;min-height: 346px; border: 1px solid #e5e5e5;overflow: hidden;">
+                                                            <div class="rfloat">
                                                                 <p class="tit">강좌명</p>
                                                                 <ul class="1depth-1" id="typeLectureList">
 
@@ -580,7 +580,8 @@
                                                                         <span class="unit">강좌목차</span>
                                                                         <strong>총<span id="playLecTotalCnt"></span>강</strong>
                                                                     </div>
-                                                                    <table>
+                                                                    <div class="scroll">
+                                                                    <table class="new_cssM">
                                                                         <caption>최근수강강좌</caption>
                                                                         <colgroup>
                                                                             <col></col>
@@ -598,6 +599,7 @@
                                                                         </thead>
                                                                         <tbody id="dataList"></tbody>
                                                                     </table>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                             <!--//inner-->
