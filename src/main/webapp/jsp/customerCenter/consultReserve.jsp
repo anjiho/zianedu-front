@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+<link rel="stylesheet" type="text/css" href="/common/zian/css/content_o.css">
+<link rel="stylesheet" type="text/css" href="/common/zian/css/content_p.css">
 <%@include file="/common/jsp/common.jsp" %>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2149f737a2468c19787b4ef4a9ea6a2b&libraries=services"></script>
 <script>
