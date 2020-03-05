@@ -229,7 +229,7 @@
                             최단기간합격, 지안공무원 학원이 함께 합니다.<br><br><br>
                             이미 상담을 신청하셨나요?<br>
                             마이페이지 > 게시물 관리 > 상담예약내역에서 확인하세요.</p>
-                        <a href="#" class="advice_btn">나의 상담내역 확인 &nbsp;</a>
+                        <a href="javascript:goPageNoSubmit('myPage', 'consult');" class="advice_btn">나의 상담내역 확인 &nbsp;</a>
                     </div>
                     <!-- //수강생 안내 -->
 
