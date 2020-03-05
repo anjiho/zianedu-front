@@ -57,7 +57,7 @@
         if (filesTempArr.length == 0) { //파일 없을때
             var title = getInputTextValue("title");
             var content = $('textarea[name="writeContent"]').val();
-            var result = saveBoard(11030, sessionUserInfo.userKey, title, content, 0, 0, '');
+            var result = saveBoard(11051, sessionUserInfo.userKey, title, content, 0, 0, '');
             if (result.resultCode == 200) {
                 alert("성공적으로 등록 완료되었습니다");
                 return false;
@@ -80,7 +80,7 @@
                         var fileName = data.keyValue;
                         var title = getInputTextValue("title");
                         var content = $('textarea[name="writeContent"]').val();
-                        var result = saveBoard(11030, sessionUserInfo.userKey, title, content, 0, 0, fileName);
+                        var result = saveBoard(11051, sessionUserInfo.userKey, title, content, 0, 0, fileName);
                         var str = toStrFileName(fileName);
                         saveBoardFileList(result.keyValue, str);
                         if (result.resultCode == 200) {

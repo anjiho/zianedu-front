@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/jsp/exam_common.jsp" %>
+<link rel="stylesheet" type="text/css" href="/common/zian/css/content_o.css">
 <%
     String bbsKey = request.getParameter("bbsKey");
 %>
 <script>
     var bbsKey = <%=bbsKey%>;
     $(document).ready(function () {
-        var result = getBoardDetailInfo(11030, bbsKey);
+        var result = getBoardDetailInfo(11051, bbsKey);
         if(result != undefined){
             var detailInfo = result.boardDetailInfo;
 
