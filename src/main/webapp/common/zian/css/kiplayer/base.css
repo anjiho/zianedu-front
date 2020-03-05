@@ -94,36 +94,36 @@ input[type='checkbox'],input[type='radio']{margin-right:5px;}
 = Datepicker를 사용중인 입력박스, 달력형태 스타일 지정
 = 사용방법 : 입력박스에 useDatepicker / useMonthpicker 클래스를 추가하여 사용함
 ============================================================================================================== */
-input.useDatepicker{width:105px;background:#fff url(../../images/injeinc/bg_inputDate.png) no-repeat 95% center;}
-input.useMonthpicker{width:90px;background:#fff url(../../images/injeinc/bg_inputDate.png) no-repeat 95% center;}
-#ui-datepicker-div{display:none;width:180px;background:#fff;border:1px #ccc solid;z-index:102 !important;}
-.ui-datepicker{position:relative;padding:5px;}
-.ui-datepicker table{width:100%;font-size:12px;}
-.ui-datepicker table thead th{height:24px;color:#777;line-height:24px;text-align:center;}
-.ui-datepicker table tbody td{width:14.2857%;text-align:center;height:22px;}
-.ui-datepicker table tbody td a{display:block;height:22px;color:#4b4b4b;line-height:22px;text-align:center;}
-.ui-datepicker table tbody td span{color:#aaa;}
-.ui-datepicker table tbody td.date-holiday a{color:#eb3c3c;}
-.ui-datepicker tr td:first-child *{color:#eb3c3c;}
-.ui-datepicker tr td:last-child *{color:#4084d2;}
-.ui-datepicker th{padding:0;}
-.ui-datepicker td a.ui-state-active{color:#fff;background:#4b4b4b;}
-.ui-datepicker td a.ui-state-highlight{color:#4b4b4b;background:#dfdfdf;}
-.ui-datepicker .ui-datepicker-header{position:relative;padding:0;}
-.ui-datepicker .ui-datepicker-title{margin:0;height:30px;line-height:30px;font-size:14px;font-weight:normal;color:#242424;letter-spacing:-1px;text-align:center;}
-.ui-datepicker .ui-datepicker-prev,
-.ui-datepicker .ui-datepicker-next{position:absolute;left:50%;top:5px;width:20px;height:20px;line-height:26px;border-radius:2px;border:1px solid #d9d9d9;text-indent:-9999em;cursor:pointer;}
-.ui-datepicker .ui-datepicker-prev{margin-left:-66px;background:url(../../images/injeinc/btn_calendarPrev.png) no-repeat center center;}
-.ui-datepicker .ui-datepicker-next{margin-left:44px;background:url(../../images/injeinc/btn_calendarNext.png) no-repeat center center;}
-#ui-monthpicker-div.ui-datepicker{display:none;width:200px;background:#fff;border:1px #ccc solid;z-index:10 !important;box-sizing:border-box;}
-#ui-monthpicker-div.ui-datepicker td{height:28px;}
-#ui-monthpicker-div.ui-datepicker td a{cursor:pointer;}
-#ui-monthpicker-div.ui-datepicker td a.ui-state-active{background:#4b4b4b;color:#fff;}
-#ui-monthpicker-div.ui-datepicker tr td:first-child *{color:#4b4b4b;}
-#ui-monthpicker-div.ui-datepicker tr td:last-child *{color:#4b4b4b;}
-#ui-monthpicker-div.ui-datepicker .ui-datepicker-header{margin-bottom:8px;}
-#ui-monthpicker-div.ui-datepicker .ui-datepicker-title select::-ms-expand{display:none;}
-#ui-monthpicker-div.ui-datepicker .ui-datepicker-title .ui-datepicker-year{min-width:75px;padding:0 0 0 10px;}
+/*input.useDatepicker{width:105px;background:#fff url(../../images/injeinc/bg_inputDate.png) no-repeat 95% center;}*/
+/*input.useMonthpicker{width:90px;background:#fff url(../../images/injeinc/bg_inputDate.png) no-repeat 95% center;}*/
+/*#ui-datepicker-div{display:none;width:180px;background:#fff;border:1px #ccc solid;z-index:102 !important;}*/
+/*.ui-datepicker{position:relative;padding:5px;}*/
+/*.ui-datepicker table{width:100%;font-size:12px;}*/
+/*.ui-datepicker table thead th{height:24px;color:#777;line-height:24px;text-align:center;}*/
+/*.ui-datepicker table tbody td{width:14.2857%;text-align:center;height:22px;}*/
+/*.ui-datepicker table tbody td a{display:block;height:22px;color:#4b4b4b;line-height:22px;text-align:center;}*/
+/*.ui-datepicker table tbody td span{color:#aaa;}*/
+/*.ui-datepicker table tbody td.date-holiday a{color:#eb3c3c;}*/
+/*.ui-datepicker tr td:first-child *{color:#eb3c3c;}*/
+/*.ui-datepicker tr td:last-child *{color:#4084d2;}*/
+/*.ui-datepicker th{padding:0;}*/
+/*.ui-datepicker td a.ui-state-active{color:#fff;background:#4b4b4b;}*/
+/*.ui-datepicker td a.ui-state-highlight{color:#4b4b4b;background:#dfdfdf;}*/
+/*.ui-datepicker .ui-datepicker-header{position:relative;padding:0;}*/
+/*.ui-datepicker .ui-datepicker-title{margin:0;height:30px;line-height:30px;font-size:14px;font-weight:normal;color:#242424;letter-spacing:-1px;text-align:center;}*/
+/*.ui-datepicker .ui-datepicker-prev,*/
+/*.ui-datepicker .ui-datepicker-next{position:absolute;left:50%;top:5px;width:20px;height:20px;line-height:26px;border-radius:2px;border:1px solid #d9d9d9;text-indent:-9999em;cursor:pointer;}*/
+/*.ui-datepicker .ui-datepicker-prev{margin-left:-66px;background:url(../../images/injeinc/btn_calendarPrev.png) no-repeat center center;}*/
+/*.ui-datepicker .ui-datepicker-next{margin-left:44px;background:url(../../images/injeinc/btn_calendarNext.png) no-repeat center center;}*/
+/*#ui-monthpicker-div.ui-datepicker{display:none;width:200px;background:#fff;border:1px #ccc solid;z-index:10 !important;box-sizing:border-box;}*/
+/*#ui-monthpicker-div.ui-datepicker td{height:28px;}*/
+/*#ui-monthpicker-div.ui-datepicker td a{cursor:pointer;}*/
+/*#ui-monthpicker-div.ui-datepicker td a.ui-state-active{background:#4b4b4b;color:#fff;}*/
+/*#ui-monthpicker-div.ui-datepicker tr td:first-child *{color:#4b4b4b;}*/
+/*#ui-monthpicker-div.ui-datepicker tr td:last-child *{color:#4b4b4b;}*/
+/*#ui-monthpicker-div.ui-datepicker .ui-datepicker-header{margin-bottom:8px;}*/
+/*#ui-monthpicker-div.ui-datepicker .ui-datepicker-title select::-ms-expand{display:none;}*/
+/*#ui-monthpicker-div.ui-datepicker .ui-datepicker-title .ui-datepicker-year{min-width:75px;padding:0 0 0 10px;}*/
 
 
 /* ==============================================================================================================
