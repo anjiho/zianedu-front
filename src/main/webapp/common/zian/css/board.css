@@ -7,8 +7,8 @@
 
 /************ 수정 CSS ***************/
 /* 공지사항 리스트 */
-.noticeList{width:100%;border-spacing:0;border-collapse:collapse;table-layout:fixed;border-top:1px solid #ddd}
-.noticeList th{padding:0 10px;font-weight:bold;height:50px;background:none;border-right:0px none}
+.noticeList{width:100%;border-spacing:0;border-collapse:collapse;table-layout:fixed;border-top:1px solid #ddd;font-size:16px}
+.noticeList th{padding:0 10px;font-weight:bold;height:50px;background:none;border-right:0px none;text-align:center}
 .noticeList tr{border-bottom:1px solid #ddd}
 .noticeList tr.notice{border-bottom:1px solid #ddd;background:#f4f4f4}
 .noticeList tbody td{padding:0 10px;height:50px;border-right:0px none;text-align:center}
@@ -16,7 +16,7 @@
 
 
 /* 공지사항 뷰페이지 */
-.noticeView{}
+.noticeView{font-size:14px;}
 .noticeView thead{background:#ebebeb;}
 .noticeView thead th{padding:0px 20px;height:50px;font-weight:normal;text-align:left;background:none;border-bottom:1px solid #e1e1e1;}
 .noticeView td{padding:0px 20px;height:50px;font-weight:normal;text-align:left;background:none;border-bottom:1px solid #e1e1e1;}
@@ -93,6 +93,61 @@
 .acceptanceView td.cm_list{padding:20px 10px}
 
 
+/* 빅모의고사 - 모의고사 */
+.bigList{width:100%;font-size:14px}
+.bigList thead{background:#ebebeb;border-top:2px solid #000;}
+.bigList thead th{font-weight:bold;text-align:center;background:none;border-bottom:1px solid #e1e1e1;padding: 25px 0}
+.bigList tbody tr td{padding:0px 20px;padding:20px 0;font-weight:normal;text-align:center;border-bottom:1px solid #e1e1e1;}
+.bigList tbody tr td:nth-child(1){word-break:keep-all;font-weight:bold}
+.bigList tbody tr td:nth-child(2){word-break:keep-all;}
+.bigList thead th:nth-child(1){width:260px;text-align:center;}
+.bigList thead th:nth-child(2){width:270px;word-break:keep-all}
+.bigList thead th:nth-child(3){width:170px;}
+.bigList thead th:nth-child(4){width:170px;}
+
+
+/* 빅모의고사 - 학원모의고사 */
+.bigList2{width:100%;border-right:1px solid #e5e5e5;border-left:1px solid #e5e5e5;font-size:14px}
+.bigList2 thead{}
+.bigList2 thead th{border-top:1px solid #e5e5e5;border-bottom:1px solid #e5e5e5;padding: 10px 0;text-align:center;}
+.bigList2 tbody tr td{padding:0px 20px;padding:20px 0;font-weight:normal;text-align:center;border-bottom:1px solid #e1e1e1;}
+.bigList2 tbody tr td:nth-child(1){font-weight:bold}
+.bigList2 tbody tr td:nth-child(2){word-break:keep-all;}
+.bigList2 thead th:nth-child(1){width:150px;}
+.bigList2 thead th:nth-child(2){width:230px;}
+.bigList2 thead th:nth-child(3){width:180px;}
+.bigList2 thead th:nth-child(4){width:180px;}
+.bigList2 thead th:nth-child(5){width:100px;}
+
+
+/* 빅모의고사 - 학원모의고사 - 오프라인, 주간모의고사 응시하기 */
+.bigList2_offline{width:100%;border-right:1px solid #e5e5e5;border-left:1px solid #e5e5e5;font-size:14px}
+.bigList2_offline thead{}
+.bigList2_offline thead th{border-top:1px solid #e5e5e5;border-bottom:1px solid #e5e5e5;padding: 10px 0;text-align:center;}
+.bigList2_offline tbody tr td{padding:0px 20px;padding:20px 0;font-weight:normal;text-align:center;border-bottom:1px solid #e1e1e1;}
+.bigList2_offline tbody tr td:nth-child(1){font-weight:bold}
+.bigList2_offline tbody tr td:nth-child(2){word-break:keep-all;}
+.bigList2_offline thead th:nth-child(1){width:180px;}
+.bigList2_offline thead th:nth-child(2){width:350px;}
+.bigList2_offline thead th:nth-child(3){width:280px;}
+
+
+/* 빅모의고사 - 기출문제 */
+.bigList3{width:100%;border-right:1px solid #e5e5e5;border-left:1px solid #e5e5e5;font-size:14px}
+.bigList3 thead{}
+.bigList3 thead th{border-top:1px solid #e5e5e5;border-bottom:1px solid #e5e5e5;padding: 10px 0;text-align:center;}
+.bigList3 tbody tr td{padding:0px 20px;padding:20px 0;font-weight:normal;text-align:center;border-bottom:1px solid #e1e1e1;}
+.bigList3 tbody tr td:nth-child(1){font-weight:bold}
+.bigList3 tbody tr td:nth-child(2){font-weight:bold}
+.bigList3 tbody tr td:nth-child(3){font-weight:bold}
+.bigList3 thead th:nth-child(1){width:150px;}
+.bigList3 thead th:nth-child(2){width:150px;}
+.bigList3 thead th:nth-child(3){width:150px;}
+.bigList3 thead th:nth-child(4){width:320px;}
+.bigList3 thead th:nth-child(5){width:100px;}
+
+
+
 
 
 /* 반응형 */
@@ -128,8 +183,7 @@
     .noticeView thead th:nth-child(2){width:26%;box-sizing:border-box;text-align:right}
     .noticeView tbody tr{display:block;box-sizing:border-box;width:100%;position:relative}
     .noticeView tbody tr:nth-child(1) td{display:block;width:100%;padding:14px 2%;box-sizing:border-box}
-    /*.noticeView tbody tr:nth-child(2) td{display:block;width:100%;padding:14px 2%;box-sizing:border-box;height:auto}*/
-    .noticeView tbody tr:nth-child(3) td{display:block;width:100%;padding:14px 2%;box-sizing:border-box;height:auto}
+    .noticeView tbody tr:nth-child(2) td{display:block;width:100%;padding:14px 2%;box-sizing:border-box;height:auto}
     .noticeView tbody td.tdEditorContent{display:block;width:100%;padding:4% 2% !important;box-sizing:border-box;height:auto !important;}
     .noticeView tbody td.center{display:inline-block;width:30%;box-sizing:border-box;padding:14px 2%;}
     .noticeView tbody td.left{display:inline-block;width:68%;box-sizing:border-box;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;padding:14px 1%;}
@@ -194,6 +248,7 @@
     .cart02 tbody tr td:nth-child(2){display:block;padding:0 !important;text-align:left;font-size:16px}
     .cart02 tbody tr td:nth-child(2) span{font-size:12px}
     .cart02 tbody tr td:nth-child(3){display:inline-block;padding:0 !important;text-align:left;float:left}
+    .cart02 tbody tr td:nth-child(3):after{content:'개';}
     .cart02 tbody tr td:nth-child(4){display:inline-block;padding:0 0 0 12px !important;text-align:left;float:left}
 
     .cart02List{width:100%}
@@ -227,6 +282,7 @@
     .mypageAdvice tbody tr td:nth-child(3){display:block;padding:8px 0 !important}
     .mypageAdvice tbody tr td:nth-child(3) br{display:none}
     .mypageAdvice tbody tr td:nth-child(4){display:block;padding:2px 0 6px !important}
+    .mypageAdvice tbody tr td:nth-child(4):before{content:'작성자 : '}
     .mypageAdvice tbody tr td:nth-child(5){display:inline-block;padding:0}
     .mypageAdvice tbody tr td:nth-child(6){display:inline-block;padding:0}
 
@@ -325,4 +381,64 @@
     .acceptanceView tbody td.left{display:inline-block;width:68%;box-sizing:border-box;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;padding:14px 1%;}
     .acceptanceView tbody td.right{display:none}
 
+
+    /* 빅모의고사 - 모의고사 신청 */
+    .bigList{display:block !important;width:100%;padding:none;width:100%;margin-top:12px;}
+    .bigList thead{display:none;}
+    .bigList tbody{display:block;width:100%;}
+    .bigList tbody tr{display:block;box-sizing:border-box;width:100%;position:relative;border-bottom:1px solid #e5e5e5;padding:10px 2%;}
+    .bigList tbody tr td{text-align:left;border-bottom:0;padding:4px 0}
+    .bigList tbody tr td br{display:none}
+    .bigList tbody tr td:nth-child(1){display:block;font-weight:bold;font-size:16px}
+    .bigList tbody tr td:nth-child(2){display:block;}
+    .bigList tbody tr td:nth-child(3){display:block;padding:0;}
+    .bigList tbody tr td:nth-child(3):before{content:'신청기간 : '}
+    .bigList tbody tr td:nth-child(4){display:block;padding:0;}
+    .bigList tbody tr td:nth-child(4):before{content:'응시기간 : '}
+    .bigList tbody tr td:nth-child(5){display:block;}
+
+
+    /* 빅모의고사 - 학원모의고사 */
+    .bigList2{display:block !important;width:100%;padding:none;width:100%;margin-top:12px;border-left:none;border-right:none;border-top:1px solid #e5e5e5;}
+    .bigList2 thead{display:none;}
+    .bigList2 tbody{display:block;width:100%;}
+    .bigList2 tbody tr{display:block;box-sizing:border-box;width:100%;position:relative;border-bottom:1px solid #e5e5e5;padding:10px 2%;}
+    .bigList2 tbody tr td{text-align:left;border-bottom:0;padding:4px 0}
+    .bigList2 tbody tr td br{display:none}
+    .bigList2 tbody tr td:nth-child(1){display:block;font-weight:normal}
+    .bigList2 tbody tr td:nth-child(2){display:block;font-weight:bold;font-size:16px}
+    .bigList2 tbody tr td:nth-child(3){display:block;padding:0;}
+    .bigList2 tbody tr td:nth-child(3):before{content:'신청기간 : '}
+    .bigList2 tbody tr td:nth-child(4){display:block;padding:0;}
+    .bigList2 tbody tr td:nth-child(4):before{content:'응시기간 : '}
+    .bigList2 tbody tr td:nth-child(5){display:block;}
+
+
+    /* 빅모의고사 - 학원모의고사 - 오프라인 , 주간모의고사 응시하기 */
+    .bigList2_offline{display:block !important;width:100%;padding:none;width:100%;margin-top:12px;border-left:none;border-right:none;border-top:1px solid #e5e5e5;}
+    .bigList2_offline thead{display:none;}
+    .bigList2_offline tbody{display:block;width:100%;}
+    .bigList2_offline tbody tr{display:block;box-sizing:border-box;width:100%;position:relative;border-bottom:1px solid #e5e5e5;padding:10px 2%;}
+    .bigList2_offline tbody tr td{text-align:left;border-bottom:0;padding:4px 0}
+    .bigList2_offline tbody tr td br{display:none}
+    .bigList2_offline tbody tr td:nth-child(1){display:block;font-weight:normal}
+    .bigList2_offline tbody tr td:nth-child(2){display:block;font-weight:bold;font-size:16px}
+    .bigList2_offline tbody tr td:nth-child(3){display:block;padding:0;}
+    .bigList2_offline tbody tr td:nth-child(3):before{content:'응시기간 : '}
+    .bigList2_offline tbody tr td:nth-child(4){display:block;padding:8px 0;}
+    .bigList2_offline tbody tr td:nth-child(5){display:block;padding:0;}
+
+
+    /* 빅모의고사 - 기출문제 */
+    .bigList3{display:block !important;width:100%;padding:none;width:100%;margin-top:12px;border-left:none;border-right:none;border-top:1px solid #e5e5e5;}
+    .bigList3 thead{display:none;}
+    .bigList3 tbody{display:block;width:100%;}
+    .bigList3 tbody tr{display:block;box-sizing:border-box;width:100%;position:relative;border-bottom:1px solid #e5e5e5;padding:10px 2%;}
+    .bigList3 tbody tr td{text-align:left;border-bottom:0;padding:4px 0}
+    .bigList3 tbody tr td br{display:none}
+    .bigList3 tbody tr td:nth-child(1){display:inline-block;font-weight:normal;padding-right:10px}
+    .bigList3 tbody tr td:nth-child(2){display:inline-block;font-weight:normal;padding-right:10px}
+    .bigList3 tbody tr td:nth-child(3){display:inline-block;font-weight:normal;}
+    .bigList3 tbody tr td:nth-child(4){display:block;font-size:16px;font-weight:bold}
+    .bigList3 tbody tr td:nth-child(5){display:block;}
 }

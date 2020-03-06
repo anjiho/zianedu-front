@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/jsp/exam_common.jsp" %>
-<link rel="stylesheet" type="text/css" href="/common/zian/css/content_o.css">
 <script>
     $(document).ready(function () {
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
@@ -99,13 +98,13 @@
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
     <input type="hidden" id="sPage">
-    <div id="wrap">
+    <div id="wrap" class="big">
         <%@include file="/common/jsp/leftMenu.jsp" %>
         <!--상단-->
         <%@include file="/common/jsp/header.jsp" %>
         <!--//상단-->
         <!--본문-->
-        <div id="container" class="big bigSub">
+        <div id="container" class="bigSub">
             <div class="inner">
                 <!--서브 컨텐츠-->
                 <div class="titleBar">

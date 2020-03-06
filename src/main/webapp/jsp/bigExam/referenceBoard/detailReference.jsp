@@ -33,7 +33,7 @@
             }
             //봄문 내용 파징작업 끝
 
-            innerHTML("content", contents);
+            innerHTML("contentInfo", contents);
             innerHTML("indate", detailInfo.indate);
             innerHTML("userName", detailInfo.userName);
             innerHTML("userId", detailInfo.userId);
@@ -89,7 +89,7 @@
     <input type="hidden" name="bbsKey" id="bbsKey" value="<%=bbsKey%>">
     <input type="hidden" id="prevNum">
     <input type="hidden" id="nextNum">
-    <div id="wrap">
+    <div id="wrap" class="big">
         <%@include file="/common/jsp/leftMenu.jsp" %>
         <!--상단-->
         <%@include file="/common/jsp/header.jsp" %>
@@ -125,15 +125,13 @@
                                     <div class="fileWrap">
                                         <span class="label">첨부파일 : </span>
                                         <ul class="fileList" id="fileList">
-                                            <%--                                            <li><a href="#"><img src="../images/common/icon_file.png" alt=""> 필기시험 합격선(제1회공채)-배포용(0).hwp</a></li>--%>
-                                            <%--                                            <li><a href="#"><img src="../images/common/icon_file.png" alt=""> 필기시험 합격선(제1회공채).hwp</a></li>--%>
                                         </ul>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td colspan="3" class="tdEditorContent">
-                                    <div class="alignCenter" id="content">
+                                    <div id="contentInfo">
                                     </div>
                                 </td>
                             </tr>

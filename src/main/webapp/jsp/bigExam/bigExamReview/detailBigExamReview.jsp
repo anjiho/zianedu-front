@@ -33,7 +33,7 @@
             }
             //봄문 내용 파징작업 끝
 
-            innerHTML("content", contents);
+            innerHTML("contentInfo", contents);
             innerHTML("indate", detailInfo.indate);
             innerHTML("writeUserName", detailInfo.userName);
             innerHTML("userId", detailInfo.userId);
@@ -86,7 +86,7 @@
     <input type="hidden" name="bbsKey" id="bbsKey" value="<%=bbsKey%>">
     <input type="hidden" id="prevNum">
     <input type="hidden" id="nextNum">
-    <div id="wrap">
+    <div id="wrap" class="big">
         <%@include file="/common/jsp/leftMenu.jsp" %>
         <!--상단-->
         <%@include file="/common/jsp/header.jsp" %>
@@ -132,8 +132,7 @@
                             </tr>
                             <tr>
                                 <td colspan="3" class="tdEditorContent">
-                                    <div class="alignCenter" id="content">
-                                    </div>
+                                    <div id="contentInfo"></div>
                                 </td>
                             </tr>
                             <tr id="prev">

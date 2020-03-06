@@ -120,7 +120,7 @@
     <input type="hidden" name="page_gbn" id="page_gbn">
     <input type="hidden" id="sPage">
     <input type="hidden" id="bbsKey" value="<%=bbsKey%>">
-    <div id="wrap">
+    <div id="wrap" class="big">
         <%@include file="/common/jsp/leftMenu.jsp" %>
         <!--상단-->
         <%@include file="/common/jsp/header.jsp" %>

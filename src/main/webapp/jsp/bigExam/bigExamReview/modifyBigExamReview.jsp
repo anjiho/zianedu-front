@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/jsp/exam_common.jsp" %>
-<%--<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">--%>
-<%--<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>--%>
 <%
     String bbsKey = request.getParameter("bbsKey");
 %>
@@ -125,7 +123,7 @@
     <input type="hidden" name="page_gbn" id="page_gbn">
     <input type="hidden" id="sPage">
     <input type="hidden" id="bbsKey" value="<%=bbsKey%>">
-    <div id="wrap">
+    <div id="wrap" class="big">
         <%@include file="/common/jsp/leftMenu.jsp" %>
         <!--상단-->
         <%@include file="/common/jsp/header.jsp" %>

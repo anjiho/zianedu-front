@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/jsp/exam_common.jsp" %>
-<link rel="stylesheet" type="text/css" href="/common/zian/css/content_o.css">
-<link rel="stylesheet" type="text/css" href="/common/zian/css/content_p.css">
 <script>
     $(document).ready(function () {
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
@@ -101,7 +99,7 @@
                             </ul>
                         </form>
                         <div class="tableBox">
-                            <table>
+                            <table class="bigList">
                                 <colgroup>
                                     <col>
                                     <col>
@@ -115,7 +113,6 @@
                                     <th>응시직렬/응시과목</th>
                                     <th>신청기간</th>
                                     <th>응시기간</th>
-                                    <%--                                    <th>결과확인</th>--%>
                                     <th>신청</th>
                                 </tr>
                                 </thead>
@@ -147,7 +144,7 @@
                             </ul>
                         </form>
                         <div class="tableBox">
-                            <table class="disnoneM">
+                            <table class="bigList">
                                 <colgroup>
                                     <col width="200px">
                                     <col width="300px">

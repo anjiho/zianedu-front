@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/jsp/exam_common.jsp" %>
-<link rel="stylesheet" type="text/css" href="/common/zian/css/content_o.css">
-<link rel="stylesheet" type="text/css" href="/common/zian/css/content_p.css">
 <script>
     $(document).ready(function () {
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
@@ -36,7 +34,7 @@
     <input type="hidden" name="page_gbn" id="page_gbn">
     <input type="hidden" id="sPage">
     <input type="hidden" id="bbsKey" name="bbsKey">
-    <div id="wrap">
+    <div id="wrap" class="big">
         <%@include file="/common/jsp/leftMenu.jsp" %>
         <!--상단-->
         <%@include file="/common/jsp/header.jsp" %>
@@ -112,20 +110,24 @@
 
                 <div class="review_movie_search">
                     <div class="boardSearch">
-                        <select id="searchType" class="w100">
-                            <option value="title">제목</option>
-                            <option value="content">내용</option>
-                        </select>
-                        <!--html 추가 및 수정-->
-                        <input type="text" id="searchText" onkeypress="if(event.keyCode==13) {fn_search('new'); return false;}">
-                        <a href="javascript:fn_search('new');" class="btn_m on w140">검색</a>
-                        <div class="btnArea">
-                            <a href="javascript:goPageNoSubmit('bigExam','saveBigReview');" class="btn_inline w140 write_ico">글쓰기</a>
-                        </div>
-                        <!--//html 추가 -->
+                        <ul class="searchArea">
+                            <li class="left">
+                                <select id="searchType" class="w100">
+                                    <option value="title">제목</option>
+                                    <option value="content">내용</option>
+                                </select>
+                                <!--html 추가 및 수정-->
+                                <input type="text" id="searchText" onkeypress="if(event.keyCode==13) {fn_search('new'); return false;}">
+                                <input type="button" value="검색" onclick="fn_search('new');" class="btn_m on">
+                                <a href="javascript:fn_search('new');" class="search_ico">검색</a>
+                            </li>
+                            <li class="right">
+                                <a href="javascript:goPageNoSubmit('bigExam','saveBigReview');" class="btn_inline w140 write_ico">글쓰기</a>
+                            </li>
+                        </ul>
                     </div>
                     <div class="tableBox2">
-                        <table class="disnoneM">
+                        <table class="noticeList">
                             <caption></caption>
                             <colgroup>
                                 <col class="w100">
@@ -136,11 +138,11 @@
                             </colgroup>
                             <thead>
                             <tr>
-                                <th scope="col" style="text-align: center">번호</th>
-                                <th scope="col" style="text-align: center">제목</th>
-                                <th scope="col" style="text-align: center">작성자</th>
-                                <th scope="col" style="text-align: center">등록일</th>
-                                <th scope="col" style="text-align: center">조회</th>
+                                <th scope="col">번호</th>
+                                <th scope="col">제목</th>
+                                <th scope="col">작성자</th>
+                                <th scope="col">등록일</th>
+                                <th scope="col">조회</th>
                             </tr>
                             </thead>
                             <tbody id="dataList">
