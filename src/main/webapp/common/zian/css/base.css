@@ -192,7 +192,7 @@ body{color:#1b1b1b;}
 #container .bx-next{display:block;position:absolute;top:50%;right:-1px;margin-top:-15px;width:30px;height:30px;text-indent:-9999em;background:#fff url(../images/common/btn_slideNext.png) no-repeat center center;border:1px #e1e1e1 solid;}
 
 /*메인*/
-.titleBar{display:block;position:relative;margin-bottom:10px;height:30px;line-height:30px;}
+.titleBar{display:block;position:relative;margin-bottom:10px;/*height:30px;*/line-height:30px;}
 .titleBar .btn_more{display:block;position:absolute;top:0;right:0;padding-right:17px;font-size:13px;background:url(../images/common/icon_more.png) no-repeat center right;}
 .titleBar h5{display:block;margin:0;font-size:19px;}
 

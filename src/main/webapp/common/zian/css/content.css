@@ -1,5 +1,13 @@
 @charset "utf-8";
 
+
+/*********************************************/
+/*********************************************/
+/****              content              *****/
+/*********************************************/
+/*********************************************/
+
+
 /*Login*/
 .loginWrap{margin:100px auto 0;width:500px;}
 .loginWrap h1{margin-bottom:60px;text-align:center;}
@@ -113,11 +121,11 @@
 .teacherInfo .info .teacherInfoTab .tabPage{height:190px;background-color:#f7f7f7;overflow:hidden;}
 .teacherInfo .info .teacherInfoTab .lectureList{height:190px;padding:20px 25px;line-height:180%;font-size:12px;box-sizing:border-box;overflow-y:auto;}
 
-.teacherContentsTab > .tabBar{height:50px;margin-bottom:0;border:1px #e5e5e5 solid;}
+.teacherContentsTab > .tabBar{height:48px;margin-bottom:0;border:1px #e5e5e5 solid;}
 .teacherContentsTab > .tabBar > li{width:20%;margin:0;}
 .teacherContentsTab > .tabBar > li > a{height:48px;line-height:48px;border:0;font-size:16px;font-weight:bold;color:#000;text-align:center;}
 .teacherContentsTab > .tabBar > li.active > a{background-color:#144b95;color:#fff;}
-/*.teacherContentsTab > .tabPage{overflow:hidden;}*/
+.teacherContentsTab > .tabPage{overflow:hidden;}
 .teacherContentsTab > .tabPage img{max-width:100%;}
 .teacherContentsTab .searchArea{border-left:1px #e5e5e5 solid;border-right:1px #e5e5e5 solid;}
 .teacherContentsTab .tableBox{margin:0;border-left:1px #e5e5e5 solid;border-right:1px #e5e5e5 solid;}
@@ -291,7 +299,7 @@
 .tBox4{display: block;margin:45px auto;width:852px;border-top: 2px #000 solid;border-left: 1px solid #e5e5e5;}
 .tBox4 li{display: block;float: left;width:25%;}
 
-.boardWrap{}
+.boardWrap{padding:0 10px;box-sizing:border-box}
 .boardWrap h4{}
 .boardWrap h5{display:block;padding:0 20px;font-size:17px;font-weight:bold;color:#000;line-height:45px;}
 .boardWrap .boardSearch{margin:25px 0;padding:0 20px;}
@@ -314,12 +322,13 @@
 .boardWrap .btn_s.gray,
 .boardWrap .btn_m.gray,
 .boardWrap .btn_l.gray,
-.boardWrap .btn_inline.gray{color:#44445B;border-color:#aeaeae;}
+.boardWrap .btn_inline.gray{color:#444444;border-color:#aeaeae;}
 .boardWrap .btn_ss.blue,
 .boardWrap .btn_s.blue,
 .boardWrap .btn_m.blue,
 .boardWrap .btn_l.blue,
-.boardWrap .btn_inline.blue{color:#134c97;border-color:#134c97;}
+.boardWrap .btn_inline.br_blue{color:#134c97;border-color:#134c97;}
+.btnArea .bg_blue{color:white;background:#134c97;}
 .boardWrap .btn_m.radius{border-radius:20px;}
 .boardWrap .btn_l.radius{border-radius:23px;}
 .boardWrap .btn_inline.radius{border-radius:17px;}
@@ -404,6 +413,10 @@
 .tbd_03 .reBtn span{padding-right: 10px}
 .tbd_03 .reBtn a{border:1px solid #d4d4d4;border-radius:20px;padding:8px 12px;color:#666}
 .tbd_03 .reBtn a:nth-child(3){border-color:#134c97;color:#134c97}
+
+
+
+
 
 /*********************************************/
 /*********************************************/
@@ -706,7 +719,7 @@
 .myarea_main .myarea_list_wrap .item .thumb{display:block; width:240px; height:auto;}
 
 .myarea_main .myarea_list_wrap .item .thumb .myarea_poster{height:120px;width:100%;}
-.myarea_main .myarea_list_wrap .item .desc{position:absolute; bottom:0; left:0;height:30px;padding:0 20px line-height: 30px;text-overflow:ellipsis;white-space:nowrap;word-wrap:normal;width:220px;overflow:hidden;}
+.myarea_main .myarea_list_wrap .item span.desc{position:absolute; bottom:0; left:0;height:30px;padding:0 20px;line-height: 30px;text-overflow:ellipsis;white-space:nowrap;word-wrap:normal;width:220px;overflow:hidden;}
 
 
 /*도서후기*************************************************************************/
@@ -972,8 +985,9 @@
 .free .myarea_list_wrap .item .inner {height:330px; position: relative;}
 .free .myarea_list_wrap .item .thumb{display:block; width:290px; height:auto;cursor: pointer;}
 .free .myarea_list_wrap .item .thumb .myarea_poster{height:200px;width:100%;}
-.free .myarea_list_wrap .item .desc{position:absolute; bottom:0; left:0;height:120px;padding:0 0px; line-height: 30px;width:290px;}
-.free .myarea_list_wrap .item .desc a.tit {display:block;width:290px;overflow:hidden;font-size: 18px;font-weight:bold;line-height:20px;padding: 10px 0}
+.free .myarea_list_wrap .item .desc{height:120px;padding:10px 0px; line-height: 30px;width:290px;}
+.free .myarea_list_wrap .item .desc p.tit {width:290px;overflow:hidden;font-size:18px;font-weight:bold;line-height:1.2rem;padding:10px 0}
+.free .myarea_list_wrap .item .desc a.tit {display:-webkit-box;width:100%;overflow:hidden;font-size:18px;font-weight:bold;line-height:20px;padding:0;-webkit-line-clamp:2;-webkit-box-orient:vertical;font-size:15px;}
 .free .myarea_list_wrap .item .desc a.tit:hover{text-decoration:underline}
 .free .myarea_list_wrap .item .desc > div > span.allnum {float: right}
 .free .myarea_list_wrap .item .desc .rblack {display:inline-block;-webkit-border-radius:17px;-moz-border-radius :17px;border-radius:17px;padding:2px 4px !important;width:70px ;text-align: center}
@@ -1013,7 +1027,7 @@
 .free .direct_view .item:after {content: "";display: block;clear: both}
 .free .direct_view .item .inner { position: relative;}
 .free .direct_view .item .thumb{float:left;width:290px; height:auto;cursor: pointer;}
-.free .direct_view .item .thumb .myarea_poster{height:200px;width:100%;}
+.free .direct_view .item .thumb .myarea_poster{height:auto;width:100%;}
 .free .direct_view .item .desc{float:left;width:567px;padding:0 30px; line-height: 30px;}
 .free .direct_view .item .desc p.tit {overflow:hidden;font-size: 18px;font-weight:bold;line-height:20px;padding: 10px 0}
 .free .direct_view .item .desc > div > span.allnum {float: right}
@@ -1575,4 +1589,13 @@ li.pl_30{padding-left:30px !important}
 .new_cssM tbody tr td:nth-child(1){width:12%}
 .new_cssM tbody tr td:nth-child(2){width:50%}
 .new_cssM tbody tr td:nth-child(3){width:10%}
-.new_cssM tbody tr td:nth-child(4){}
+
+/* 2020.03.06 추가 */
+.classfreeList tbody tr td:nth-child(1){width:12%}
+.classfreeList tbody tr td:nth-child(2){width:50%}
+.classfreeList tbody tr td:nth-child(3){width:10%}
+
+.myarea_list_wrap .paging{padding:0 0 30px;margin: 0}
+.myarea_list_wrap .paging.pt80{padding-top:30px !important}
+
+

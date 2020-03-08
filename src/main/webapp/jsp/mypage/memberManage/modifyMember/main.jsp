@@ -1,6 +1,5 @@
 <%@ page import="com.zianedu.front.utils.Util" %>
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
-<link rel="stylesheet" type="text/css" href="/common/zian/css/content_o.css">
 <%
     //라이브
     String EncodeData = "AgAFRzQ1Mjg28Iznf4sOuSMswvbFq+g4AXOiqT7dHZ0LUVn6iJZ2mL5S49ZNORP1/FUJpGiUujufqGX6E2fn1EK5iOl4bITVbpBrFOtDOOjne/51tvS+RPvyE1+ZV3FrUjszjS3ui9P081O+aqMpiQtS8otJ75xtBTD71kuus7jnwGTBfqZA1pS28wl2qJbs/cotZBSvC8kG/9B4te31mEsttPAofWZM+8fNkq5Uurvw3wBzG5KEe1J9FEtW5Q1hlAHswKuzM04LN5ZcUyr5xIEmnI52W236Pow/MrHKVAJbUfqdfxcRFPxaY59v0GDi8/hTP44FbJrPlFU3a/Ts6fQ44POOblDGGdb4TW+rjpc8IxzzPU9i2a1Vbwkn1WvhcO+BRjfTdGar23lpofiEpH4QoXwhogr312m531SVrb5mApNXq2Utxqdef7VQeuW6sB0YmcRff/PyNc4D2hTHW5keXfimyK+dwCcWK9vY3+x7y8Vr30K3VFm1qGK2jYKP8XM0s33lm7g=";
