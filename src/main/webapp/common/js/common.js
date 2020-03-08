@@ -3548,3 +3548,22 @@ function download(fileName) {
     var downloadUrl = apiHost + "/download/fileDownload?filePath=" + fileName;
     $.fileDownload(downloadUrl);
 }
+
+//오늘날짜와 날짜비교
+function compareToday(compareDate) {
+    var bl = true;
+    if (compareDate != "") {
+        var today = this.today();
+        var todayArr = today.split('-');
+
+        var compareDateArr = compareDate.split('-');
+
+        var todayCompare = new Date(todayArr[0], parseInt(todayArr[1])-1, todayArr[2]);
+        var compareDateCompare = new Date(compareDateArr[0], parseInt(compareDateArr[1])-1, compareDateArr[2]);
+
+        if(todayCompare.getTime() > compareDateCompare.getTime()) {
+            bl = false;
+        }
+    }
+    return bl;
+}

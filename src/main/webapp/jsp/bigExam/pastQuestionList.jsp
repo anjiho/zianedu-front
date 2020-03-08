@@ -80,7 +80,8 @@
                                     <option value="name">시험명</option>
                                 </select>
                                 <input type="text" id="searchText" onkeypress="if(event.keyCode==13) {fn_search('new'); return false;}">
-                                <a href="javascript:fn_search('new');" class="btn_m on w140">검색</a>
+                                <input type="button" value="검색" class="btn_m on" onclick="javascript:fn_search('new');">
+                                <a href="javascript:fn_search('new');" class="search_ico">검색</a>
                             </li>
                             <li class="right pdt10">
                                 <select id="classCtgKey" class="w120" onchange="fn_search('new');">
@@ -96,7 +97,7 @@
                         </ul>
                     </form>
                     <div class="tableBox3">
-                        <table class="disnoneM">
+                        <table class="bigList3">
                             <colgroup>
                                 <col>
                                 <col>
@@ -107,12 +108,12 @@
                             </colgroup>
                             <thead>
                             <tr>
-                                <th style="text-align: center">직렬</th>
-                                <th style="text-align: center">급수</th>
-                                <th style="text-align: center">과목</th>
-                                <th style="text-align: center">모의고사명</th>
-                                <th style="text-align: center">응시</th>
-                                <th style="text-align: center">시험지</th>
+                                <th>직렬</th>
+                                <th>급수</th>
+                                <th>과목</th>
+                                <th>모의고사명</th>
+                                <th>응시</th>
+                                <th>시험지</th>
                             </tr>
                             </thead>
                             <tbody id="dataList"></tbody>

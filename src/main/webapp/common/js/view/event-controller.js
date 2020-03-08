@@ -62,9 +62,10 @@ function eventDetailInfo(idx) {
         innerHTML('eventTitle', selList.eventDesc);
         $("#eventImg").attr("src", selList.targetUrl);
 
-        window.location = selList.targetUrl + "&idx=" + idx;
-        //window.location = selList.targetUrl;
-            return infoList;
+        var isLiveEvent = compareToday(selList.eventEndDate);
+        window.location = selList.targetUrl + "&idx=" + idx + "&isLiveEvent=" + isLiveEvent;
+
+        return infoList;
     }
 }
 

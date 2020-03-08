@@ -97,7 +97,7 @@
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
     <input type="hidden" id="sPage">
-    <div id="wrap">
+    <div id="wrap" class="big">
         <%@include file="/common/jsp/leftMenu.jsp" %>
         <!--상단-->
         <%@include file="/common/jsp/header.jsp" %>
@@ -109,7 +109,7 @@
                     <h5>자료실</h5>
                     <span>지안에듀 회원이라면 자유롭게 이용할 수 있는 모의고사 자료실 입니다.</span>
                 </div>
-                <br>
+                <br><br><br>
                 <div class="infolist">
                     <ul>
                         <li><span class="tit">※안내사항</span></li>
@@ -138,13 +138,6 @@
                             </tr>
                             <tr>
                                 <th scope="row">첨부파일</th>
-                                <%--                                <td class="">--%>
-                                <%--                                    <a href="#" class="btn_m gray w110">파일 업로드</a>--%>
-                                <%--                                    <ul class="fileList">--%>
-                                <%--                                        <li><a href="#"><img src="../images/common/icon_file.png" alt=""> 파일001.png</a></li>--%>
-                                <%--                                        <li><a href="#"><img src="../images/common/icon_file.png" alt=""> 파일002.png</a></li>--%>
-                                <%--                                    </ul>--%>
-                                <%--                                </td>--%>
                                 <td class="">
                                     <label for="attachFile">파일 업로드</label>
                                     <input type="file" name="attachFile[]" id="attachFile" class="btn_m gray w110"  multiple/>
@@ -155,7 +148,7 @@
                         </table>
                     </div>
                     <div class="btnArea">
-                        <a href="javascript:goPageNoSubmit('bigExam','bigReviewList')" class="btn_m gray radius w110">취소</a> &nbsp;&nbsp;&nbsp;
+                        <a href="javascript:goPageNoSubmit('bigExam','referenceList')" class="btn_m gray radius w110">취소</a> &nbsp;&nbsp;&nbsp;
                         <a href="javascript:saveReview();" class="btn_m radius w110">등록</a>
                     </div>
                 </div>

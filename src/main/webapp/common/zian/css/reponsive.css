@@ -117,7 +117,7 @@
     #header #topNavM .logindrop li a {font-size: 15px;color:#454545;line-height:38px}
     #header #topNavM li a.header_menu {background:url(../images/ex/Mmenu.png) center center no-repeat; text-indent: -9999px;margin-left:15px;}
 
-    #header #gnb {height:60px;border-bottom: 1px #e1e1e1 solid;}
+    #header #gnb {height:60px;border-bottom: 1px #e1e1e1 solid;box-sizing:initial;}
     #header #gnb .inner {display: none}
     #header #gnb ul.Mdeaph1 > li > a {line-height:65px;}
     #header #gnb ul.Mdeaph1 > li {position: inherit;}
@@ -496,7 +496,7 @@
     .Mypage .mileage .right ul {padding:0;}
 
     /*게시물관리*/
-    .boardSearch{margin:0;padding:0 20px 20px}
+    .boardSearch{margin:0;/*padding:0 20px 20px*/}
     .searchArea {padding:0}
     .searchArea > li.left {width: auto}
     .searchArea input.btn_m {display: none}
@@ -800,7 +800,7 @@
     .btn_lendingLink1,.btn_lendingLink2 {margin-top: 14%;background-size:90%;height:auto;min-height: 200px;}
     .divGroup.cols3.noMargin {}
 
-    #lendingVisual > ul {width:98%;top:71%;right:0.5%;}
+    #lendingVisual > ul {width:98%;top:74%;right:0.5%;}
     #lendingVisual > ul li a b {font-size: 17px}
     #lendingVisual > ul li a {background: #FFF url(../images/common/icon_arrowRight.png) no-repeat 98% center;background-size:5%;    padding: 10px;}
     #lendingVisual .lendingVisualText b {font-size: 27px;}
@@ -1004,7 +1004,7 @@
 
 
     /*게시물관리*/
-    .searchArea {padding:10px 20px}
+    /*.searchArea {padding:10px 20px}*/
     .searchArea > li.left {width: auto}
     .searchArea input.btn_m {display: none}
     .searchArea select {width:70px}
@@ -1079,7 +1079,6 @@
     }
 
 
-
     /*온라인서점*****************************************************************/
     .shop .lectureWrap .learnNum {font-size: 13px}
     .shop .lectureWrap .costList li b,.shop .lectureWrap .costList li a {float:left}
@@ -1090,6 +1089,16 @@
 
 /* 추가 수정 */
 @media screen and (max-width:800px){
+    /* 지안패스 */
+    .selectAreaFixed{width:100%;left:0;margin-left:0;box-sizing:border-box}
+    .selectAreaFixed dl{width:100%;box-sizing:border-box}
+    .selectAreaFixed dl ul li{width:25%}
+
+    .pb40{padding:0 !important}
+
+    .lectureList p{width:40%}
+    .lectureList .costList li{width: }
+
     .payBd{width:100%}
     .payBd tr td:nth-child(1){width:60%}
     .payBd tr td:nth-child(2){width:40%}
@@ -1122,7 +1131,7 @@
     .new_cssM td li:nth-child(1) {width:58%;padding-left: 2%;text-align: left}
     .new_cssM td li:nth-child(2) {width:15%;text-align: center}
     .new_cssM td li:nth-child(3) {width:25%;text-align: center}
-    .new_cssM td li a.small {margin: 0 1%;  padding-left: 15px;  background: url(../images/ex/icon-replay_on.png) 10px center no-repeat;}
+    .new_cssM td a.small {margin: 0 1%;  padding-left: 15px;  background: url(../images/ex/icon-replay_on.png) 10px center no-repeat;}
     .tbw03M ul {padding: 0 2%}
     .tbw03M ul li {float: left}
     .tbw03M th:nth-child(1) {width:50px;}
@@ -1226,10 +1235,16 @@
     .new_css .replay,.new_css .text_red {position: absolute;right: 2%;top:40%;}
     .new_css .font16 {position: absolute;left:25%;bottom:0px;}
 
-    .new_cssM td {height:40px;padding: 10px 2%}
-    .new_cssM td li {float: none;text-align: left;padding-left: 2%}
-    .new_cssM td li p {font-size: 15px}
-    .new_cssM td li a.small {margin-top: 5px; padding-left: 15px;  background: url(../images/ex/icon-replay_on.png) 10px center no-repeat;}
+    .new_cssM{width: 100%;display:block;}
+    .new_cssM tbody{display:block}
+    .new_cssM tbody tr{display:block;height:auto;border-bottom:1px solid #e5e5e5;padding:10px 0;box-sizing:border-box}
+    .new_cssM tbody tr td{height:initial !important;width:initial !important;border-bottom:none !important}
+    .new_cssM tbody td:nth-child(1){display:inline-block;text-align: left;padding-left: 2%;}
+    .new_cssM tbody td:nth-child(2){display:inline-block;text-align: left;padding-left: 2%;}
+    .new_cssM tbody td:nth-child(3){display:block;text-align: left;padding-left: 2%;}
+    .new_cssM tbody td:nth-child(4){display:block;float: none;text-align: left;padding-left: 2%;}
+    .new_cssM td {font-size: 15px}
+    .new_cssM td a.small {margin-top: 5px;padding-left:15px;background: url(../images/ex/icon-replay_on.png) 10px center no-repeat;}
 
     .tbw03M {padding: 0 2%;table-layout: auto;}
     .tbw03M th {display: none}
@@ -1237,7 +1252,7 @@
     .tbw03M td:nth-child(2) {width:90%;}
     .tbw03M td ul li {display: inline-block;}
 
-    .tbw04M th {display: none !important}
+    .tbw04M th {display:none !important}
     .Mypage .cart .tbd_03 .tbw04M td {padding:20px 2%;}
     .tbw04M td ul li {text-align: left}
     .tbw04M .etctxt {padding-right: 10px}
@@ -1310,8 +1325,8 @@
     .Mclass .tab_topContent .tabPage .btn_info {top:-100px;}
     .tabPage .tbd_01 table th {display: none}
     .Mclass .tab_large .tab_large_1depth .tabBar {width:100%;margin:20px 0;}
-    .Mclass .tab_large .tab_large_1depth .tabBar > li {width:33%;}
-    .Mclass .tab_large .tab_large_2depth .tabBar {width:60%;margin:20px 20%;text-align: center}
+    /*.Mclass .tab_large .tab_large_1depth .tabBar > li {width:33%;}*/
+    .Mclass .tab_large .tab_large_2depth .tabBar {width:60 %;margin:20px 20%;text-align: center}
     .Mclass .tab_large .tab_large_2depth .tabBar > li {width:47%;margin:0 1% 5px;}
     .Mclass .tab_large .tab_large_2depth .tabBar > li a {padding: 0}
     .Mclass .tab_large .tabPage {width:98%;margin:0px 1%;}
@@ -1359,4 +1374,3 @@
     /* 2020.02.28 */
 
 }
-

@@ -1,11 +1,40 @@
+<%@ page import="com.zianedu.front.utils.Util" %>
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/jsp/common.jsp" %>
 <link rel="stylesheet" type="text/css" href="/common/zian/css/content_o.css">
 <%
     String idx = request.getParameter("idx");
+    String isLiveEvent = Util.isNullValue(request.getParameter("isLiveEvent"), "");
 %>
 <script>
-    var idx = <%=idx%>;
+    var isLiveEvent = '<%=isLiveEvent%>';
+    $(document).ready(function() {
+        if (isLiveEvent == "false") {
+            //$(".tabBox > ul > li:first").addClass("active");
+            $('.tabBox').each(function(){
+                // this is inner scope, in reference to the .phrase element
+                $(this).find('li').each(function(i){
+                    // cache jquery var
+                    var current = $(this);
+                    if (i == 1) {
+                        current.addClass("active");
+                    }
+                });
+            });
+        } else {
+            $('.tabBox').each(function(){
+                // this is inner scope, in reference to the .phrase element
+                $(this).find('li').each(function(i){
+                    // cache jquery var
+                    var current = $(this);
+                    if (i == 0) {
+                        current.addClass("active");
+                    }
+                });
+            });
+        }
+    });
+
 </script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
@@ -26,7 +55,7 @@
 
                         <div class="tabBox">
                             <ul>
-                                <li class="active"><a href="javascript:goPageNoSubmit('event','proceedList');">진행중이벤트</a></li>
+                                <li><a href="javascript:goPageNoSubmit('event','proceedList');">진행중이벤트</a></li>
                                 <li><a href="javascript:goPageNoSubmit('event','deadList');">마감된이벤트</a></li>
                                 <li><a href="javascript:goPageNoSubmit('event','winList');">담청자발표</a></li>
                             </ul>

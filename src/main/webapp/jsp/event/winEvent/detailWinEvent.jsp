@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/jsp/common.jsp" %>
+<link rel="stylesheet" type="text/css" href="/common/zian/css/content_o.css">
 <%
     String bbsKey = request.getParameter("bbsKey");
 %>
@@ -40,9 +41,9 @@
             }
             //봄문 내용 파징작업 끝
 
-            innerHTML("content", contents);
+            innerHTML("contentInfo", contents);
             innerHTML("indate", detailInfo.indate);
-            innerHTML("userName", detailInfo.userName);
+            innerHTML("writeUserName", detailInfo.userName);
             innerHTML("userId", detailInfo.userId);
             innerHTML("title", detailInfo.title);
             innerHTML("readCount", detailInfo.readCount);
@@ -130,7 +131,7 @@
                             </thead>
                             <tbody>
                             <tr>
-                                <td colspan="3">작성자 : <span id="userName"></span> (<span id="userId"></span>)  |   조회수 : <span id="readCount"></span></td>
+                                <td colspan="3">작성자 : <span id="writeUserName"></span> (<span id="userId"></span>)  |   조회수 : <span id="readCount"></span></td>
                             </tr>
                             <tr>
                                 <td colspan="3">
@@ -145,7 +146,7 @@
                             </tr>
                             <tr>
                                 <td colspan="3" class="tdEditorContent">
-                                    <div class="alignCenter" id="content">
+                                    <div class="" id="contentInfo">
                                     </div>
                                 </td>
                             </tr>

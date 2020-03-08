@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/jsp/exam_common.jsp" %>
-<link rel="stylesheet" type="text/css" href="/common/zian/css/content_o.css">
 <script>
     $(document).ready(function () {
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
@@ -103,7 +102,7 @@
                             </ul>
                         </form>
                         <div class="tableBox2">
-                            <table class="">
+                            <table class="bigList2">
                                 <colgroup>
                                     <col>
                                     <col>
@@ -148,7 +147,7 @@
                             </ul>
                         </form>
                         <div class="tableBox2">
-                            <table class="">
+                            <table class="bigList2">
                                 <colgroup>
                                     <col>
                                     <col>

@@ -163,7 +163,7 @@ function getWeekBigExamList(userKey, sPage, listLimit, ctgKey, searchType, searc
             returnHtml += "<td>"+ cmpList.goodsName +"</td>";
             returnHtml += "<td>"+ cmpList.acceptStartDate +"<br>~"+ cmpList.acceptEndDate +"</td>";
             if(cmpList.iscomplete == 0){//응시가능
-                returnHtml += "<td><span class='small blue' onclick='goBigExamPopup("+ cmpList.examKey +");'>응시가능</span></td>";
+                returnHtml += "<td><span class='b_small blue' onclick='goBigExamPopup("+ cmpList.examKey +");'>응시가능</span></td>";
             }else if(cmpList.iscomplete == 1){//응시완료
                 returnHtml += "<td><span class=''>응시완료</span></td>";
             }
@@ -217,9 +217,9 @@ function getGichulProblemList(userKey, sPage, listLimit, searchType, searchText,
             returnHtml += "<td>"+ cmpList.subjectCtgName +"</td>";
             returnHtml += "<td>"+ cmpList.goodsName +"</td>";
             if(cmpList.iscomplete == 0){//응시가능
-                returnHtml += "<td><span class='small blue' onclick='goBigExamPopup("+ cmpList.examKey +");'>응시가능</span></td>";
+                returnHtml += "<td><span class='b_small blue' onclick='goBigExamPopup("+ cmpList.examKey +");'>응시가능</span></td>";
             }else if(cmpList.iscomplete == 1){//응시완료
-                returnHtml += "<td><span class=''>응시완료</span></td>";
+                returnHtml += "<td><span class='b_small bdgray'>응시완료</span></td>";
             }
             returnHtml += "<td>";
                 returnHtml += "<ul class=\"fileList\">";
@@ -234,10 +234,6 @@ function getGichulProblemList(userKey, sPage, listLimit, searchType, searchText,
             returnHtml += "</tr>";
             $("#dataList").append(returnHtml);
         }
-        $('#dataList tr').each(function(){
-            var tr = $(this);
-            tr.children().eq(1).attr("class", "left");
-        });
     }
 }
 
