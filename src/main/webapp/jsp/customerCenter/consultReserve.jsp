@@ -20,10 +20,6 @@
         /*다음지도 API 호출*/
         daumMapApi('map1', '서울시 동작구 노량진동 117-2 영빌딩');
         daumMapApi('map2', '서울특별시 동작구 노량진로 196');
-        // var a_reservation = getSelectboxValue("a_reservation");
-        // if(a_reservation == ""){
-        //     $("#consultDiv").hide();
-        // }
 
         $("#a_reservation").change(function(){
             if($(this).val() == 1){
