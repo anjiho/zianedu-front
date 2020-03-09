@@ -1,9 +1,5 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
-
 <%@include file="/common/jsp/common.jsp" %>
-<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
-<link rel="stylesheet" type="text/css" href="/common/zian/css/content_o.css">
 <script>
     $( document ).ready(function() {
         //팝업 이미지 업로드
