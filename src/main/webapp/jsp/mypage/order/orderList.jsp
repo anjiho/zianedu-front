@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
-<link rel="stylesheet" type="text/css" href="/common/zian/css/content_o.css">
 <%@include file="/common/jsp/common.jsp" %>
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
 <script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
@@ -103,14 +102,14 @@
 
                     <div class="tbd_03">
                         <p class="title">주문 상품정보</p>
-                        <table>
+                        <table class="mypageOrderCheck">
                             <thead>
                             <tr>
-                                <th>주문일자<br>[주문번호]</th>
-                                <th>상품명</th>
-                                <th>결재금액</th>
-                                <th>주문상태</th>
-                                <th>배송상태</th>
+                                <th style="text-align: center">주문일자<br>[주문번호]</th>
+                                <th style="text-align: center">상품명</th>
+                                <th style="text-align: center">결재금액</th>
+                                <th style="text-align: center">주문상태</th>
+                                <th style="text-align: center">배송상태</th>
                             </tr>
                             </thead>
                             <tbody id="dataList"></tbody>
