@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
-<link rel="stylesheet" type="text/css" href="/common/zian/css/content_o.css">
 <%@include file="/common/jsp/common.jsp" %>
 
 <script>
@@ -188,7 +187,7 @@
                     <div class="cart">
                         <div class="tbd_03 mgb60" id="acaDiv">
                             <p class="title"><span class="text_blue">학원실강</span> 장바구니 담긴상품</p>
-                            <table class="disnoneM">
+                            <table class="cart01">
                                 <colgroup>
                                     <col width="50px">
                                     <col>
@@ -208,7 +207,7 @@
                         </div>
                         <div class="tbd_03 mgb60" id="playDiv">
                             <p class="title"><span class="text_blue">동영상</span> 장바구니 담긴상품</p>
-                            <table>
+                            <table class="cart01">
                                 <colgroup>
                                     <col width="50px">
                                     <col>
@@ -254,7 +253,7 @@
                         </div>
                         <div class="tbd_03 mgb60" id="promotionDiv">
                             <p class="title"><span class="text_blue">프로모션</span> 장바구니 담긴상품</p>
-                            <table>
+                            <table class="cart01">
                                 <colgroup>
                                     <col width="50px">
                                     <col>
@@ -274,7 +273,7 @@
                         </div>
                         <div class="tbd_03 mgb60" id="bookDiv">
                             <p class="title"><span class="text_blue">도서</span> 장바구니 담긴상품</p>
-                            <table>
+                            <table class="cart01">
                                 <colgroup>
                                     <col width="50px">
                                     <col>
