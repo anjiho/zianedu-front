@@ -474,10 +474,21 @@
         $("html").click(function(e){
             var $len = $('.new_cssM tbody').find('tr').length + 1;
             for(var i=1;i<$len;i++){ //일반 클래스로 적용되지 않아 반복문 선언
-                if($(".myPlay[data-index='"+i+"']").css('display') == 'block' || $(".myDownload[data-index='"+i+"']").css('display') == 'block'){
-                    if(!$(e.target).is('.brBlack, .brBlue')){ //지정된 타겟 외에 나머지에게만 클릭허용
-                        $('.myPlay').css('display','none');
-                        $('.myDownload').css('display','none');
+                //console.log($(".myPlay[data-index='"+i+"']").css('display'));
+                if ($(".myPlay[data-index='"+i+"']").css('display') == 'block') {
+                    //console.log($(e.target));
+                    //console.log($(e.target).is('.brBlack, .brBlue'));
+                    if ($(e.target).is('.brBlack, .brBlue') == false) {
+                        console.log($(e.target));
+                        $(".myPlay[data-index='"+i+"']").css('display', 'block');
+                        $(".myDownload[data-index='"+i+"']").css('display','block');
+                        if (!$(e.target).is('.myPy')) {
+                            $(".myPlay[data-index='"+i+"']").css('display', 'none');
+                            $(".myDownload[data-index='"+i+"']").css('display','none');
+                        }
+                    } else {
+                        $(".myPlay[data-index='"+i+"']").css('display', 'none');
+                        $(".myDownload[data-index='"+i+"']").css('display','none');
                     }
                 }
             }
