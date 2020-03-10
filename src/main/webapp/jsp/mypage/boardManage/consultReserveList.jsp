@@ -118,8 +118,9 @@
     }
 
     function detailConsult(idx) {
-        kiplayer.modalOpen('#modal1');
+        kiplayer.modalOpen("#modal1");
         var consultInfo = getCounselReserveDetailInfo(idx);
+        console.log(">>>"+ consultInfo);
         if(consultInfo != null){
             if(consultInfo.result.userName != null){
                 innerHTML('conusltName', consultInfo.result.userName);
@@ -233,7 +234,7 @@
 </body>
 </html>
 <!--팝업 수강안내사항 modal1-->
-<div id="modal1" class="modalWrap" style="">
+<div id="modal1" class="modalWrap">
     <div class="inner">
         <div class="modalTitle">
             <h2>상세내용</h2>
