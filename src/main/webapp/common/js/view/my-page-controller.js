@@ -92,13 +92,40 @@ function getVideoSignUpDetailInfo(gkey, device, jlecKey, tagId) {
         if(tagId == 'dataList') countId = 'playLecTotalCnt';
         else countId = 'zianPassTotalCnt';
         innerHTML(countId, infoList.result.totalCnt);
-        dwr.util.addRows(tagId, selList, [
-            function(data) {return data.numStr;},
-            function(data) {return data.name;},
-            function(data) {return data.vodTime;},
-            function(data) {return '<a href="javascript:void(0);" onclick="OpenLecPlayer(' + "'"  + data.vodFileLow + "'" + ',' + "'"  + data.name + "'" + ','+ data.curriKey +','+ jlecKey +','+ detailInfo.result.kind +');" class="black small">일반화질</a>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="OpenLecPlayer(' + "'"  + data.vodFileHigh + "'" + ',' + "'"  + data.name + "'" + ','+ data.curriKey +','+ jlecKey +','+ detailInfo.result.kind +');" class="blue small">고화질</a>';}
-            //function(data) {return '<a href="javascript:void(0);" onclick="OpenDownloadPlayer(' + "'"  + data.vodFileLow + "'" + ',' + "'"  + data.name + "'" + ','+ data.curriKey +','+ jlecKey +','+ detailInfo.result.kind +');" class="black small">일반화질</a>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="OpenLecPlayer(' + "'"  + data.vodFileHigh + "'" + ',' + "'"  + data.name + "'" + ','+ data.curriKey +','+ jlecKey +','+ detailInfo.result.kind +');" class="blue small">고화질</a>';}
-        ], {escapeHtml:false});
+        // dwr.util.addRows(tagId, selList, [
+        //     function(data) {return data.numStr;},
+        //     function(data) {return data.name;},
+        //     function(data) {return data.vodTime;},
+        //     function(data) {return '<div class="myPlay" data-index="1"><a href="javascript:void(0);" onclick="OpenLecPlayer(' + "'"  + data.vodFileLow + "'" + ',' + "'"  + data.name + "'" + ','+ data.curriKey +','+ jlecKey +','+ detailInfo.result.kind +');" class="black small">일반화질</a>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="OpenLecPlayer(' + "'"  + data.vodFileHigh + "'" + ',' + "'"  + data.name + "'" + ','+ data.curriKey +','+ jlecKey +','+ detailInfo.result.kind +');" class="blue small">고화질</a></div>';}
+        //
+        // ], {escapeHtml:false});
+        for(var i=0; i<selList.length;i++){
+            var num = i+1;
+            var returnHtml = "<tr>";
+                    returnHtml += "<td>"+selList[i].numStr+"강</td>";
+                    returnHtml += "<td>"+selList[i].name+"</td>";
+                    returnHtml += "<td>"+selList[i].vodTime+"</td>";
+                    returnHtml += "<td>";
+                        returnHtml += "<div class=\"myVideo\">";
+                                        returnHtml += '<a href="javascript:void(0);" onclick="OpenLecPlayer(' + "'"  + data.vodFileLow + "'" + ',' + "'"  + data.name + "'" + ','+ data.curriKey +','+ jlecKey +','+ detailInfo.result.kind +');" class=\"black small\">일반화질</a>';
+                                        returnHtml += '<a href="javascript:void(0);" onclick="OpenLecPlayer(' + "'"  + data.vodFileHigh + "'" + ',' + "'"  + data.name + "'" + ','+ data.curriKey +','+ jlecKey +','+ detailInfo.result.kind +');"  class=\"blue small\">고화질</a>';
+                        returnHtml += "</div>";
+                        returnHtml += "<div class=\"myVideoM\">";
+                            returnHtml += '<a href="javascript:void(0);" onclick="myPlay('+num+');" class="black small myPy">재생</a>&nbsp;';
+                            returnHtml += "<div class='myPlay' data-index='"+ num +"'>";
+                                returnHtml += '<a href="javascript:void(0);" onclick="OpenLecPlayer(' + "'"  + data.vodFileLow + "'" + ',' + "'"  + data.name + "'" + ','+ data.curriKey +','+ jlecKey +','+ detailInfo.result.kind +');" class=\"brBlack\">일반화질</a>';
+                                returnHtml += '<a href="javascript:void(0);" class=\"brBlue\">고화질</a>';
+                            returnHtml += "</div>";
+                            returnHtml += '<a href="javascript:void(0);" onclick="myDownload('+num+');" class="blue small myDn">다운로드</a>';
+                            returnHtml += '<div class="myDownload" data-index="'+ num +'">';
+                                returnHtml += '<a href="javascript:void(0);" onclick="OpenLecPlayer(' + "'"  + data.vodFileLow + "'" + ',' + "'"  + data.name + "'" + ','+ data.curriKey +','+ jlecKey +','+ detailInfo.result.kind +');" class=\"brBlack\">일반화질</a>';
+                                returnHtml += '<a href="javascript:void(0);" onclick="OpenLecPlayer(' + "'"  + data.vodFileHigh + "'" + ',' + "'"  + data.name + "'" + ','+ data.curriKey +','+ jlecKey +','+ detailInfo.result.kind +');" class=\"brBlue\">고화질</a>';
+                            returnHtml += "</div>";
+                    returnHtml += "</div>";
+                    returnHtml += "</td>";
+            returnHtml += "</tr>";
+            $("#dataList").append(returnHtml);
+        }
     }
     return detailInfo;
 }
