@@ -120,7 +120,6 @@
     function detailConsult(idx) {
         kiplayer.modalOpen("#modal1");
         var consultInfo = getCounselReserveDetailInfo(idx);
-        console.log(">>>"+ consultInfo);
         if(consultInfo != null){
             if(consultInfo.result.userName != null){
                 innerHTML('conusltName', consultInfo.result.userName);
