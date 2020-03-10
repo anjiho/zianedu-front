@@ -118,8 +118,8 @@ function getVideoSignUpDetailInfo(gkey, device, jlecKey, tagId) {
                             returnHtml += "</div>";
                             returnHtml += '<a href="javascript:myDownload('+num+');" class="blue small myDn">다운로드</a>';
                             returnHtml += '<div class="myDownload" data-index="'+ num +'">';
-                                returnHtml += '<a href="javascript:void(0);" onclick="OpenLecPlayer(' + "'"  + selList[i].vodFileLow + "'" + ',' + "'"  + selList[i].name + "'" + ','+ selList[i].curriKey +','+ jlecKey +','+ detailInfo.result.kind +');" class=\"brBlack\">일반화질</a>';
-                                returnHtml += '<a href="javascript:void(0);" onclick="OpenLecPlayer(' + "'"  + selList[i].vodFileHigh + "'" + ',' + "'"  + selList[i].name + "'" + ','+ selList[i].curriKey +','+ jlecKey +','+ detailInfo.result.kind +');" class=\"brBlue\">고화질</a>';
+                                returnHtml += '<a href="javascript:void(0);" onclick="OpenDownloadPlayer(' + "'"  + selList[i].vodFileLow + "'" + ',' + "'"  + selList[i].name + "'" + ','+ selList[i].curriKey +','+ jlecKey +');" class=\"brBlack\">일반화질</a>';
+                                returnHtml += '<a href="javascript:void(0);" onclick="OpenDownloadPlayer(' + "'"  + selList[i].vodFileHigh + "'" + ',' + "'"  + selList[i].name + "'" + ','+ selList[i].curriKey +','+ jlecKey +');" class=\"brBlue\">고화질</a>';
                             returnHtml += "</div>";
                     returnHtml += "</div>";
                     returnHtml += "</td>";
