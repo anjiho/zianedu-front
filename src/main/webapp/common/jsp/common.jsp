@@ -36,7 +36,10 @@
     <link rel="stylesheet" type="text/css" href="/common/zian/css/kiplayer/base.css"/>
     <link rel="stylesheet" type="text/css" href="/common/zian/css/swiper.min.css">
     <link rel="stylesheet" type="text/css" href="/common/zian/css/base.css">
-    <link rel="stylesheet" type="text/css" href="/common/zian/css/content.css">
+
+    <link rel="stylesheet" type="text/css" id="cssDivsion" href="/common/zian/css/content.css">
+
+
     <link rel="stylesheet" type="text/css" href="/common/zian/css/board.css">
 <%--    <link rel="stylesheet" type="text/css" href="/common/zian/css/content_o.css">--%>
     <link rel="stylesheet" type="text/css" href="/common/zian/css/reponsive.css">
@@ -93,5 +96,14 @@
 </head>
 <body>
 <script>
-
+    $( document ).ready(function() {
+        var leftMenuInfo = sessionStorage.getItem('leftMenu');//직렬 구분
+        if(leftMenuInfo == 'publicOnline' || leftMenuInfo == "publicAcademy"){
+            $("#cssDivsion").prop('href', '/common/zian/css/content.css');
+        }else if(leftMenuInfo == "postOnline" || leftMenuInfo == "postAcademy"){
+            $("#cssDivsion").prop('href', '/common/zian/css/content.css');
+        }else{
+            $("#cssDivsion").prop('href', '/common/zian/css/content123.css');
+        }
+    });
 </script>

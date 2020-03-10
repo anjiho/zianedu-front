@@ -3,6 +3,22 @@
 <%@include file="/common/jsp/common.jsp" %>
 <script>
     $( document ).ready(function() {
+        var leftMenuInfo = sessionStorage.getItem('leftMenu');//직렬 구분
+        if(leftMenuInfo == 'publicOnline' || leftMenuInfo == "publicAcademy"){
+            $(".selectArea ul > li > a.active").attr('style','border: 1px #144b95 solid');
+            $(".selectArea ul > li > a.active").attr('style','color: #fff');
+            $(".selectArea ul > li > a.active").attr('style','background-color: #144b95;');
+        }else if(leftMenuInfo == "postOnline" || leftMenuInfo == "postAcademy"){
+            $(".selectArea ul > li > a.active").attr('style','border: 1px #ce1717 solid');
+            $(".selectArea ul > li > a.active").attr('style','color: #fff');
+            $(".selectArea ul > li > a.active").attr('style','background: rgb(206, 23, 23)');
+        }else{
+            $(".selectArea ul > li > a.active").attr('style','border: 1px #f69321 solid');
+            $(".selectArea ul > li > a.active").attr('style','color: #fff');
+            $(".selectArea ul > li > a.active").attr('style','background: rgb(246, 147, 33)');
+        }
+
+
         $("#selDivision li a:eq(0)").addClass('active');
         $("#subject li a:eq(0)").addClass('active'); //전체로 default
         $("#teacher li a:eq(0)").addClass('active');
@@ -102,7 +118,6 @@
 
         getLectureApplyTeacherTypeList(menuCtgKey, subjectMenuKeysString, teacherKeysString, stepCtgKeysString, goodsType);
     }
-
 </script>
 <form id="id_frm_singleMypage" method="post" name="id_frm_singleMypage">
     <input type="hidden" id="gKeys" name="gKeys">
@@ -124,7 +139,7 @@
                         <dt>분류</dt>
                         <dd>
                             <ul id="selDivision">
-                                <li><a href="" class="chk">단과</a></li>
+                                <li><a href="" class="chk test11">단과</a></li>
                                 <li id="package"><a href="javascript:goPage('lectureOrder','package')" class="chk">패키지</a></li>
                             </ul>
                         </dd>
