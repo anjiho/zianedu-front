@@ -415,7 +415,7 @@ function getSpecialPackageList(menuCtgKey, subjectMenuKeys, teacherKeys, stepCtg
                                         var productInfo = selList[i].includeProductList[k];
                                         returnHtml += "<div class=\"lectureRow\">";
                                             returnHtml += "<ul class=\"lectureList lectureList2\">";
-                                                returnHtml += "<li><span class=\"thumb\"><img  src='"+ productInfo.imageList +"'></span></li>";
+                                                returnHtml += "<li><span class=\"thumb\"><img src='"+ productInfo.imageList +"'></span></li>";
                                                 returnHtml += "<li class=\"\">";
                                                     returnHtml += "<div class=\"lectureTop\">";
                                                     returnHtml += "<span class=\"btn_learnType orange\">"+ productInfo.stepName +"</span><span class=\"sale\">"+ productInfo.discountPercent +"</span><span class=\"new\">"+ productInfo.emphasisName +"</span>";

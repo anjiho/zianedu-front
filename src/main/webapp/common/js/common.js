@@ -3007,11 +3007,12 @@ function goCheckedShopBasket() {
             };
             arr.push(data);
         });
+
         var saveCartInfo = JSON.stringify(arr);
         var result = saveCart(saveCartInfo);
         if(result.resultCode == 200){
             alert("장바구니에 담겼습니다.");
-            event.returnValue = false;
+            return false;
         }
     }else{
         alert("로그인을 해주세요");

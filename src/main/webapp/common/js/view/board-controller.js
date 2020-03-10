@@ -168,10 +168,6 @@ function getCommunityList2(bbsMaterKey, sPage, listLimit, searchType, searchText
                         function(data) {return cmpList.readCount;}
                     ];
                     dwr.util.addRows("dataList", [0], cellData, {escapeHtml: false});
-                    $('#dataList tr').each(function(){
-                        var tr = $(this);
-                        tr.children().eq(1).attr("class", "left");
-                    });
                 }
             }
      //   }

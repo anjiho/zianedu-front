@@ -67,8 +67,8 @@
                             </div>
                         </div>
 
-                        <div class="tableBox">
-                            <table class="list">
+                        <div class="skin">
+                            <table class="noticeList">
                                 <caption></caption>
                                 <colgroup>
                                     <col class="w100">
@@ -86,43 +86,7 @@
                                     <th scope="col" style="text-align: center">조회</th>
                                 </tr>
                                 </thead>
-                                <tbody id="dataList">
-<%--                                <tr>--%>
-<%--                                    <td>5</td>--%>
-<%--                                    <td class="left"><a href="#">2019 가스기농장 실기 정오표 입니다</a></td>--%>
-<%--                                    <td>지안에듀</td>--%>
-<%--                                    <td>2019.08.09</td>--%>
-<%--                                    <td>31</td>--%>
-<%--                                </tr>--%>
-<%--                                <tr>--%>
-<%--                                    <td>4</td>--%>
-<%--                                    <td class="left"><a href="#">2019 물리학개론 정오표 입니다</a></td>--%>
-<%--                                    <td>지안에듀</td>--%>
-<%--                                    <td>2019.08.09</td>--%>
-<%--                                    <td>31</td>--%>
-<%--                                </tr>--%>
-<%--                                <tr>--%>
-<%--                                    <td>3</td>--%>
-<%--                                    <td class="left"><a href="#">2019 우편 및 금융상식 정오표 입니다</a></td>--%>
-<%--                                    <td>지안에듀</td>--%>
-<%--                                    <td>2019.08.09</td>--%>
-<%--                                    <td>31</td>--%>
-<%--                                </tr>--%>
-<%--                                <tr>--%>
-<%--                                    <td>2</td>--%>
-<%--                                    <td class="left"><a href="#">2019 신은진 생물학 개론 정오표</a></td>--%>
-<%--                                    <td>지안에듀</td>--%>
-<%--                                    <td>2019.08.09</td>--%>
-<%--                                    <td>31</td>--%>
-<%--                                </tr>--%>
-<%--                                <tr>--%>
-<%--                                    <td>1</td>--%>
-<%--                                    <td class="left"><a href="#">2019 행정학 정오표 입니다</a></td>--%>
-<%--                                    <td>지안에듀</td>--%>
-<%--                                    <td>2019.08.09</td>--%>
-<%--                                    <td>31</td>--%>
-<%--                                </tr>--%>
-                                </tbody>
+                                <tbody id="dataList"></tbody>
                             </table>
                         </div>
                     </div>
