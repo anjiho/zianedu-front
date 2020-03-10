@@ -461,6 +461,12 @@
         }
     }
 
+
+    function goPopup1() {
+        alert(1);
+        kiplayer.modalOpen("#modal1");
+    }
+
     /* 재생버튼 클릭시 버튼 교체 */
     function myPlay(num){
         $(".myPlay[data-index='"+num+"']").css('display','block');
@@ -482,7 +488,7 @@
                 }
             }
         });
-    })
+    });
 
 </script>
 <form action="/Player/Axis" id="id_frm_player" method="post" name="name_frm_player">
@@ -534,7 +540,7 @@
                             </ul>
                             <!-- 수강중 -->
                             <div class="tabPage  active">
-                                <a href="#modal1" class="btn_info btn_modalOpen">수강안내사항</a>
+                                <a href="javascript:goPopup1();" class="btn_info btn_modalOpen">수강안내사항</a>
                                 <!--상단 table-->
                                 <div class="tbd_01">
                                     <div class="tbd_top">
@@ -1243,20 +1249,6 @@
                                                 <option value="">20일</option>
                                                 <option value="">30일</option>
                                             </select>
-<%--                                            <ul class="edusup_multi_layer">--%>
-<%--                                                <li>--%>
-<%--                                                    <a href="#">전체</a>--%>
-<%--                                                </li>--%>
-<%--                                                <li>--%>
-<%--                                                    <a href="#">10일</a>--%>
-<%--                                                </li>--%>
-<%--                                                <li>--%>
-<%--                                                    <a href="#">20일</a>--%>
-<%--                                                </li>--%>
-<%--                                                <li>--%>
-<%--                                                    <a href="#">30일</a>--%>
-<%--                                                </li>--%>
-<%--                                            </ul>--%>
                                         </li>
                                     </ul>
                                 </div>
