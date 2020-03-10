@@ -511,6 +511,94 @@
                             <!-- 수강중 -->
                             <div class="tabPage  active">
                                 <a href="#modal1" class="btn_info btn_modalOpen">수강안내사항</a>
+                                <!--상단 table-->
+                                <div class="tbd_01">
+                                    <div class="tbd_top">
+                                        <p class="stitle">최근수강강좌</p>
+                                        <span class="sub_text">가장 최근 수강한 <span class="text_red">3</span> 개 온라인 강좌 리스트 입니다</span>
+                                    </div>
+                                    <table class="new_css">
+                                        <thead>
+                                        <tr>
+                                            <th colspan="4">
+                                                <ul>
+                                                    <li>분류</li>
+                                                    <li>강좌명</li>
+                                                    <li>수강기간</li>
+                                                    <li>진도율</li>
+                                                    <li>일시정지</li>
+                                                </ul>
+                                            </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td colspan="4">
+                                                <ul>
+                                                    <li>
+                                                        <a href="" class="black small">동영상</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="">
+                                                            <span class="bdbox">PC</span>
+                                                            <span class="txt">2020 시험대비 얼리버드 기초영어 특강</span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="txt_gray"><span>2019.05.15<br>~2019.08.15</span></li>
+                                                    <li><span class="font16">60%</span></li>
+                                                    <li>
+                                                        <a href="" class="replay on">해제</a>
+                                                    </li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="4">
+                                                <ul>
+                                                    <li>
+                                                        <a href="" class="black small">동영상</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="">
+                                                            <span class="bdbox">PC</span>
+                                                            <span class="txt">2020 시험대비 얼리버드 기초영어 특강</span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="txt_gray"><span>2019.05.15<br>~2019.08.15</span></li>
+                                                    <li><span class="font16">60%</span></li>
+                                                    <li>
+                                                        <span class="text_red font12">기간제 상품은<br>일시정시 불가능</span>
+                                                    </li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="4">
+                                                <ul>
+                                                    <li>
+                                                        <a href="" class="black small">동영상</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="">
+                                                            <span class="bdbox">PC</span>
+                                                            <span class="txt">2020 시험대비 얼리버드 기초영어 특강</span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="txt_gray"><span>2019.05.15<br>~2019.08.15</span></li>
+                                                    <li><span class="font16">60%</span>
+                                                        <span class="prograss">
+                                                            <img src="../images/ex/sample-img01.png" alt="">
+                                                        </span>
+                                                    </li>
+                                                    <li>
+                                                        <a href="" class="replay off">신청</a>
+                                                    </li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                                 <!-- tab_large-->
                                 <div class="tab_large">
                                     <div class="tab_large_1depth tabContent">
@@ -859,10 +947,7 @@
                                     <div class="Dropmenu">
                                         <div class="lfloat">
                                             <p class="tit">유형</p>
-                                            <ul class="Droptab_wrap" id="lecEndType">
-<%--                                                <li class="tab" data-tab="5depth-1" ><a href="#aa">이론</a></li>--%>
-<%--                                                <li class="tab" data-tab="5depth-1"><a href="#aa">모의고사</a></li>--%>
-                                            </ul>
+                                            <ul class="Droptab_wrap" id="lecEndType"></ul>
                                         </div>
                                         <div style="float: left;width: 828px;min-height: 346px; border: 1px solid #e5e5e5;overflow: hidden;">
                                             <p class="tit">강좌명</p>

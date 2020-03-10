@@ -612,7 +612,7 @@ function getPasserVideoListFromReview(bbsMasterKey, sPage, listLimit, searchType
         for(var i=0; i < selList.length; i++){
             function formatter(cmpList) {
                 return ""+
-                    "<div class=\"thub\"><a href='javascript:void(0);'><img src='"+ cmpList.fileUrl +"'  width=\"100%\"></a></div>"+
+                    "<div class=\"thub\"><a href='javascript:void(0);'><img src='"+ cmpList.fileUrl +"' width=\"100%\"></a></div>"+
                     "<a href='javascript:detailReview("+ cmpList.bbsKey +")'><sapn class='thumb'>"+ cmpList.title +"</span></a>"+
                     "";
             }

@@ -2,8 +2,7 @@
 <link rel="stylesheet" type="text/css" href="/common/zian/css/content_o.css">
 <link rel="stylesheet" type="text/css" href="/common/zian/css/content_p.css">
 <%@include file="/common/jsp/common.jsp" %>
-<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2149f737a2468c19787b4ef4a9ea6a2b&libraries=services"></script>
 <script>
     $(document).ready(function () {

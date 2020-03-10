@@ -94,7 +94,7 @@
             $("#topNav_login").show();
             $("#side_logout").show();
             var userName = sessionUserInfo.name;
-            innerHTML("userName", userName+" 님");
+            innerHTML("loginUserName", userName+" 님");
             innerHTML("userName2", userName+" 님");
         }else{
             $("#side_login").show();
@@ -212,7 +212,7 @@
         <div id="topNav">
             <ul id="topNav_login" style="display: none;">
                 <li><a href="javascript:addFavorite();" class="btn_bookmark">즐겨찾기에 등록</a></li>
-                <li id="userName"><a href="#"></a></li>
+                <li id="loginUserName"><a href="#"></a></li>
                 <li><a href="javascript:goMyPage();">마이페이지</a></li>
                 <li><a href="javascript:goLogout();">로그아웃</a></li>
                 <li id="mypage"><a href="javascript:goPassReview();">합격수기</a></li>

@@ -127,7 +127,7 @@
                             </tr>
                             <tr>
                                 <td colspan="3" class="tdEditorContent">
-                                    <div class="alignCenter" id="content">
+                                    <div class="left" id="content">
                                     </div>
                                 </td>
                             </tr>
