@@ -399,7 +399,7 @@ var kiplayer = {
 	'modal':function(){
 		$(document).on("click",".btn_modalOpen",function(e){
 			e.preventDefault();
-			var targetModal = $(this).attr("id");
+			var targetModal = $(this).attr("href");
 			kiplayer.modalOpen(targetModal);
 		});
 		$(document).on("click","#overlay, .btn_modalClose",function(e){
