@@ -65,7 +65,6 @@ function getVideoSignUpLectureNameList(userKey, deviceType, subjectCtgKey, stepC
             getTypeLectureDetail(gKey, result[0].jlecKey); //강좌상세설명
             var pcMobile = divisionPcMobile();
             getVideoSignUpDetailInfo(gKey, pcMobile, result[0].jlecKey, 'dataList'); //강좌 리스트
-            console.log(result);
             dwr.util.addOptions('typeLectureList', result, function (data) {
                 return "<a href='javascript:getTypeLectureDetail(" + data.gkey + ","+ data.jlecKey +");'>" + data.name + "</a>"
             }, {escapeHtml: false});

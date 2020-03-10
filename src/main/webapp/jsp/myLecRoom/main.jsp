@@ -171,6 +171,9 @@
         if(infoList != null){
             $("#zianPassListDiv").show();
             var result = infoList.result;
+
+            var lectureReviewBtn = "<a href='/review?page_gbn=lectureList&gKey=" + result.gkey + "' class='blue small'>수강후기</a>";
+            innerHTML("l_lectureReviewBtn2", lectureReviewBtn);
             innerValue("stopZianJlecKey", result.jlecKey);
             innerHTML("zianPassName", result.name);
             innerHTML("zianPassLecStartDate", result.startDate);
@@ -767,6 +770,7 @@
                                                                 <div class="btn_crud">
                                                                     <span class="black small" id="zianPassCtgName"></span>
                                                                     <a href="#modal3" class="btn_modalOpen">강좌설명</a>
+                                                                    <span id="l_lectureReviewBtn2"></span>
                                                                 </div>
 
                                                                 <div class="txt_area">
