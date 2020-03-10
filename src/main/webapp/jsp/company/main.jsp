@@ -562,13 +562,6 @@
                                 </tr>
                                 </thead>
                                 <tbody id="dataList">
-<%--                                <tr class="notice">--%>
-<%--                                    <td><img src="/common/zian/images/common/icon_notice.png" alt=""></td>--%>
-<%--                                    <td class="left"><a href="javascript:goTeacherDetail('123', 'teacher')">공무원임용시험령 개정</a></td>--%>
-<%--                                    <td>지안에듀</td>--%>
-<%--                                    <td>2019.08.09</td>--%>
-<%--                                    <td>31</td>--%>
-<%--                                </tr>--%>
                                 </tbody>
                             </table>
                         </div>
