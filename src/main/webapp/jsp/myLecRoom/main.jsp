@@ -476,7 +476,6 @@
             for(var i=1;i<$len;i++){ //일반 클래스로 적용되지 않아 반복문 선언
                 if ($(".myPlay[data-index='"+i+"']").css('display') == 'block') {
                     if ($(e.target).is('.brBlack, .brBlue') == false) {
-                        console.log($(e.target));
                         $(".myPlay[data-index='"+i+"']").css('display', 'block');
                         $(".myDownload[data-index='"+i+"']").css('display','block');
                         if (!$(e.target).is('.myPy')) {
