@@ -85,14 +85,19 @@ function getConsultReserveList(userKey,reserveStartDate, reserveEndDate, sPage, 
         for(var i=0; i < selList.length; i++){
             var cmpList = selList[i];
             if (cmpList != undefined) {
+                var colorClass = "";
+                if (cmpList.consultStatusName == "상담대기") colorClass = "re_gr_btn";
+                else if (cmpList.consultStatusName == "상담완료") colorClass = "re_b_btn";
+                else colorClass = "re_g_btn";
+
                 var cellData = [
                     function(data) {return "<input type=\"checkbox\" name='consultChk' id='"+ cmpList.idx +"'>";},
                     function(data) {return cmpList.reserveLocationName;},
                     function(data) {return cmpList.reserveDate+"<br>"+ cmpList.reserveTimeName},
                     function(data) {return cmpList.userName;},
                     //function(data) {return "<input type='' value='상세내용' class=\"btn_modalOpen re_btn\" id='"+ cmpList.idx +"'>";},
-                    function (data) {return "<a href='javascript:detailConsult("+ cmpList.idx +");' class=\"btn_modalOpen re_btn\">상세내용<span ></span></a>";},
-                    function (data) {return "<a class=\"re_b_btn\">"+ cmpList.consultStatusName +"<span ></span></a>";}
+                    function (data) {return "<a href='javascript:detailConsult("+ cmpList.idx +");' id=\"#modal1\" class=\"btn_modalOpen1 re_btn\">상세내용<span ></span></a>";},
+                    function (data) {return "<a class="+ colorClass +">"+ cmpList.consultStatusName +"<span ></span></a>";}
                     // function(data) {return cmpList.consultStatusName;}
                 ];
                 dwr.util.addRows("dataList", [0], cellData, {escapeHtml: false});
