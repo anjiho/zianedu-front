@@ -2,7 +2,7 @@
 <%
     String examUserKey = request.getParameter("examUserKey");
 %>
-<%@include file="/common/jsp/exam_common.jsp" %>
+<%@include file="/common/jsp/exam_popup_common.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
