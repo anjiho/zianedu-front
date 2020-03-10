@@ -460,6 +460,29 @@
             goLoginPage();
         }
     }
+
+    /* 재생버튼 클릭시 버튼 교체 */
+    function myPlay(num){
+        $(".myPlay[data-index='"+num+"']").css('display','block');
+    }
+    /* 다운로드 클릭시 버튼 교체 */
+    function myDownload(num){
+        $(".myDownload[data-index='"+num+"']").css('display','block');
+    }
+    /* 지정된 외에 바깥쪽 클릭시 원래 버튼으로 설정 */
+    $(function(){
+        $("html").click(function(e){
+            var $len = $('.new_cssM tbody').find('tr').length + 1;
+            for(var i=1;i<$len;i++){ //일반 클래스로 적용되지 않아 반복문 선언
+                if($(".myPlay[data-index='"+i+"']").css('display') == 'block' || $(".myDownload[data-index='"+i+"']").css('display') == 'block'){
+                    if(!$(e.target).is('.brBlack, .brBlue')){ //지정된 타겟 외에 나머지에게만 클릭허용
+                        $('.myPlay').css('display','none');
+                        $('.myDownload').css('display','none');
+                    }
+                }
+            }
+        });
+    })
 </script>
 <form action="/Player/Axis" id="id_frm_player" method="post" name="name_frm_player">
     <input id="vodPath" name="vodPath" type="hidden" value="" />
@@ -667,8 +690,7 @@
                                                                         <span class="unit">강좌목차</span>
                                                                         <strong>총<span id="playLecTotalCnt"></span>강</strong>
                                                                     </div>
-                                                                    <div class="scroll">
-                                                                    <table class="new_cssM">
+                                                                    <table class="bd">
                                                                         <caption>최근수강강좌</caption>
                                                                         <colgroup>
                                                                             <col></col>
@@ -684,6 +706,9 @@
                                                                             <th>동영상</th>
                                                                         </tr>
                                                                         </thead>
+                                                                    </table>
+                                                                    <div class="scroll">
+                                                                    <table class="new_cssM">
                                                                         <tbody id="dataList"></tbody>
                                                                     </table>
                                                                     </div>
