@@ -1598,4 +1598,11 @@ li.pl_30{padding-left:30px !important}
 .myarea_list_wrap .paging{padding:0 0 30px;margin: 0}
 .myarea_list_wrap .paging.pt80{padding-top:30px !important}
 
+/* 2020.03.10 추가 */
+@media screen and (max-width:520px){
+    .myroomBar li:nth-child(4) a{word-break: keep-all;line-height:18px;}
+}
+@media screen and (max-width:410px){
+    .myroomBar li:nth-child(3) a{word-break: keep-all;line-height:18px;}
+}
 

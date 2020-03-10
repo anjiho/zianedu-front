@@ -42,6 +42,16 @@
 .mypageOrderList tr td:nth-child(2){width:12%;text-align:center;word-break:keep-all;padding:15px 10px;}
 
 
+/* 장바구니01 */
+.cart01{width:100%;border-spacing:0;border-collapse:collapse;table-layout:fixed;border-top:2px solid #000}
+.cart01 thead th{text-align:center}
+
+
+/* 장바구니02 */
+.cart02{width:100%;border-spacing:0;border-collapse:collapse;table-layout:fixed;border-top:2px solid #000}
+.cart02 thead th{text-align:center}
+
+
 /* 마이페이지 상담예약내역 */
 .mypageAdvice{width:100%;border-spacing:0;table-layout:fixed;border-top:2px solid #000}
 .mypageAdvice tr{}
@@ -147,6 +157,21 @@
 .bigList3 thead th:nth-child(5){width:100px;}
 
 
+/* 온라인서점 */
+.lecturList{width:100%;border-right:1px solid #e5e5e5;border-left:1px solid #e5e5e5;font-size:14px}
+.lecturList thead{}
+.lecturList thead th{border-top:1px solid #e5e5e5;border-bottom:1px solid #e5e5e5;padding: 10px 0;text-align:center;}
+.lecturList tbody tr td{padding:14px 20px;font-weight:normal;text-align:center;border-bottom:1px solid #e1e1e1;}
+.lecturList tbody tr td:nth-child(1) div{width:120px;}
+.lecturList tbody tr td:nth-child(1) img{width:100%;}
+.lecturList tbody tr td:nth-child(2){text-align:left;}
+.lecturList tbody tr td:nth-child(2) a{padding:10px 0}
+.lecturList tbody tr td:nth-child(3){font-weight:bold}
+.lecturList tbody tr td:nth-child(4) br{display:none}
+.lecturList thead th:nth-child(1){width:160px;}
+.lecturList thead th:nth-child(2){width:340px;}
+.lecturList thead th:nth-child(3){width:120px;}
+
 
 
 
@@ -225,9 +250,10 @@
 
 
     /* 장바구니 01 */
-    .cart01{width:100%}
+    .cart01{width:100%;}
     .cart01 colgroup{display:none}
     .cart01 thead th{display:none;}
+    .cart01 tbody{border-top:1px solid #e5e5e5}
     .cart01 tbody tr{display:block;width:100%;border-bottom:1px solid #e5e5e5;box-sizing:border-box;padding:10px 2%;overflow:hidden}
     .cart01 tbody tr td{border-bottom:0 !important;height:auto}
     .cart01 tbody tr td:nth-child(1){padding:10px 6px 0 !important;float:left;}
@@ -242,6 +268,7 @@
     .cart02{width:100%}
     .cart02 colgroup{display:none}
     .cart02 thead th{display:none}
+    .cart02 tbody{border-top:1px solid #e5e5e5}
     .cart02 tbody tr{display:block;width:100%;border-bottom:1px solid #e5e5e5;box-sizing:border-box;padding:10px 2%;overflow: hidden}
     .cart02 tbody tr td{border-bottom: 0;height:auto;}
     .cart02 tbody tr td:nth-child(1){display:block;padding:0 !important;text-align:left;font-size:12px}
@@ -441,4 +468,27 @@
     .bigList3 tbody tr td:nth-child(3){display:inline-block;font-weight:normal;}
     .bigList3 tbody tr td:nth-child(4){display:block;font-size:16px;font-weight:bold}
     .bigList3 tbody tr td:nth-child(5){display:block;}
+
+
+
+    /* 온라인서점 */
+    .lecturList{width:100%;border-top:1px solid #e5e5e5;font-size:14px;}
+    .lecturList thead{display:none}
+    .lecturList tbody tr{display:block;position:relative;padding: 20px 0;border-bottom:1px solid #e5e5e5;}
+    .lecturList tbody tr td{border-bottom:none;padding:initial;box-sizing:border-box}
+    .lecturList tbody tr td:nth-child(1){display:inline-block;padding:3px 10px;}
+    .lecturList tbody tr td:nth-child(1) div{width:100%;}
+    /*.lecturList tbody tr td:nth-child(2){display:inline-block;padding:3px 10px 0;vertical-align:top;width:69%}*/
+    .lecturList tbody tr td:nth-child(2){width:60%;position:absolute;left:154px;top:24px;}
+    .lecturList tbody tr td:nth-child(2) a{width:100%;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
+    .lecturList tbody tr td:nth-child(3){position:absolute;bottom:80px;left:154px;}
+    .lecturList tbody tr td:nth-child(4){position:absolute;bottom:40px;left:154px;}
+}
+
+@media screen and (max-width:380px){
+    .lecturList tbody tr td:nth-child(2){width:50%;position:absolute;left:154px;top:24px;}
+    .lecturList tbody tr td:nth-child(2) span.learnNum{font-size:12px}
+    .lecturList tbody tr td:nth-child(4) br{display:block}
+    .lecturList tbody tr td:nth-child(4){position:absolute;bottom:30px;left:154px;}
+    .lecturList tbody tr td:nth-child(4) ul{text-align:left;}
 }

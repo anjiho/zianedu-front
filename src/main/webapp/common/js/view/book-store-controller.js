@@ -99,17 +99,13 @@ function getSalesBookList(bookMenuType, searchText, orderType, sPage, listLimit,
                 var cmpList = selList[i];
                 if (cmpList != undefined) {
                     var cellData = [
-                        function(data) {return '<img src="'+ cmpList.bookImageUrl +'" style="width: 120px;height: 170px">'},
+                        function(data) {return '<div><img src="'+ cmpList.bookImageUrl +'" style="width: 120px;height: 170px"></div>'},
                         function(data) {return cmpList.name != null ? '<a href="javascript:goDetailBook('+ cmpList.priceKey +');"><span class="black small">'+ cmpList.subjectName +'</span><a href="javascript:goDetailBook('+ cmpList.gkey +');" class="learnName">'+ cmpList.goodsName +'</a><span class="learnNum">'+ cmpList.writer +' | '+ cmpList.name +' |  <b class="">'+ cmpList.publishDate +'</b></span>'  : '<span class="black small">'+ cmpList.subjectName +'</span><a href="javascript:goDetailBook('+ cmpList.gkey +');" class="learnName">'+ cmpList.goodsName +'</a><span class="learnNum">'+ cmpList.writer +' | 탑스팟 |  <b class="">'+ cmpList.publishDate +'</b></span>';},
-                        function(data) {return '<li class="txt14"><span class="text_red">'+ cmpList.discountPercent +'</span>할인</li><li class="txt14"><span class="text_red">'+ cmpList.accrualRate +'</span>적립</li>';},
-                        function(data) {return "<ul class=\"costList\"><li><b class=\"cost\">"+ cmpList.sellPrice +"원</b> <input type=\"checkbox\" name=\"lecChk\" id='"+  cmpList.priceKey +"' value='"+ cmpList.gkey +"'><a href='javascript:goOneLecCheckedShopBasket("+ cmpList.priceKey +","+ cmpList.gkey +");' class=\"btn_s\">장바구니</a>&nbsp;<a href='javascript:goOneLecCheckedBuy("+ cmpList.priceKey +");' class=\"btn_s on\">바로구매</a></li></ul>";}
+                        function(data) {return '<ul><li class="txt14"><span class="text_red">'+ cmpList.discountPercent +'</span>할인</li></ul>';},
+                        //<li class="txt14"><span class="text_red">'+ cmpList.accrualRate +'</span>적립</li>'
+                        function(data) {return "<ul class=\"costList\"><li><input type=\"checkbox\" name=\"lecChk\" id='"+  cmpList.priceKey +"' value='"+ cmpList.gkey +"'><b class=\"cost\">"+ cmpList.sellPrice +"원</b><br><a href='javascript:goOneLecCheckedShopBasket("+ cmpList.priceKey +","+ cmpList.gkey +");' class=\"btn_s\">장바구니</a>&nbsp;<a href='javascript:goOneLecCheckedBuy("+ cmpList.priceKey +");' class=\"btn_s on\">바로구매</a></li></ul>";}
                     ];
                     dwr.util.addRows("dataList", [0], cellData, {escapeHtml: false});
-                    //text-align: left;
-                    $('#dataList tr').each(function(){
-                        var tr = $(this);
-                        tr.children().eq(1).attr("style", "text-align: left");
-                    });
                 }
             }
       //  }

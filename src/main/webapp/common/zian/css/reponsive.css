@@ -450,7 +450,7 @@
     .Mypage .statusBar {width:96%;margin:0px 2%;}
     .cart table.tbw03M .w10p {width: 10%;text-align: center}
     .cart table.tbw03M td span {display: block;}
-    .Mypage .statusBar li {font-size:18px;line-height:25px ;padding-top: 10px;height: 60px}
+    .Mypage .statusBar li {font-size:18px;line-height:25px ;padding-top: 10px;height:60px}
     .Mypage .statusBar li label {font-size: 18px}
     .Mypage .statusBar li b {font-size:15px;display: block;}
     .Mypage .cart .tbd_03 .bdbox {padding: 0px 3px;font-size: 13px;}
@@ -1084,8 +1084,8 @@
 
 
     /*온라인서점*****************************************************************/
-    .shop .lectureWrap .learnNum {font-size: 13px}
-    .shop .lectureWrap .costList li b,.shop .lectureWrap .costList li a {float:left}
+    .shop .lectureWrap .learnNum {font-size: 12px}
+    /*.shop .lectureWrap .costList li b,.shop .lectureWrap .costList li a {float:left}*/
 
 }
 
@@ -1346,7 +1346,9 @@
     .tabContent_2depth .Dropmenu .rfloat {float: none;width: 100%;min-height: auto}
     .tabContent_2depth .Dropmenu .rfloat ul {width:98%;margin:0px 1%;}
     .tabContent_2depth .Dropmenu .rfloat li a {width:96%;padding: 12px 2%}
-    .Mclass .tab_large .tab_large_2depth .tabBar.zian_mbtn li {width: 50% !important}
+    .Mclass .tab_large .tab_large_2depth .tabBar.zian_mbtn li {width: 80% !important}
+    .Mclass .tab_large .tab_large_2depth .tabBar.zian_mbtn li a{height:initial !important;line-height:1.2;display:block;padding:10px 0}
+
     .tabPage .tbd_01 {padding-top: 25px}
     .tabPage .tbd_01 table td {padding:20px 1%;font-size: 13px;text-align: left}
     .tabPage .tbd_01 table td:last-child {width:25%;text-align: center}

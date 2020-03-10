@@ -142,7 +142,8 @@
                 <form>
                     <div class="searchArea">
                         <input type="text" class="w400" id="searchText" onkeypress="if(event.keyCode==13) {fn_search('new'); return false;}">
-                        <a href="javascript:fn_search('new');" class="btn_m on w140">검색</a>
+                        <input type="button" onclick="fn_search('new');" value="검색" class="btn_m on">
+                        <a href="javascript:fn_search('new');" class="search_ico disnonepc">검색</a>
                     </div>
                 </form>
 
@@ -173,21 +174,14 @@
                                     </li>
                                 </ul>
                             </div>
-                            <div class="tableBox">
-                                <table class="list">
-                                    <caption></caption>
-                                    <colgroup>
-                                        <col class="w100">
-                                        <col class="w200">
-                                        <col class="w70">
-                                        <col class="w150">
-                                    </colgroup>
+                            <div class="shopBoard">
+                                <table class="lecturList">
                                     <thead>
                                     <tr>
-                                        <th scope="col" style="text-align: center">이미지</th>
-                                        <th scope="col" style="text-align: center">도서명</th>
-                                        <th scope="col" style="text-align: center">할인적립</th>
-                                        <th scope="col" style="text-align: center">교재비</th>
+                                        <th>이미지</th>
+                                        <th>도서명</th>
+                                        <th>할인적립</th>
+                                        <th>교재비</th>
                                     </tr>
                                     </thead>
                                     <tbody id="dataList"></tbody>
