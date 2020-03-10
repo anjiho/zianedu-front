@@ -2994,7 +2994,7 @@ function goCheckedShopBasket() {
         var userKey = sessionUserInfo.userKey;
         if($("input:checkbox[name=lecChk]:checked").length == 0 ){
             alert("체크된 상품이 없습니다.");
-            return false;
+            event.returnValue = false;
         }
         $('input[name=lecChk]:checked').each(function() {
             var priceKey = $(this).attr('id');
@@ -3011,7 +3011,7 @@ function goCheckedShopBasket() {
         var result = saveCart(saveCartInfo);
         if(result.resultCode == 200){
             alert("장바구니에 담겼습니다.");
-            return false;
+            event.returnValue = false;
         }
     }else{
         alert("로그인을 해주세요");

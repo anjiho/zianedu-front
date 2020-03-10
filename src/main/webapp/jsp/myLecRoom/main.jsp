@@ -793,7 +793,7 @@
                                                                         <span class="unit">강좌목차</span>
                                                                         <strong>총 <span id="zianPassTotalCnt"></span>강</strong>
                                                                     </div>
-                                                                    <table>
+                                                                    <table class="bd">
                                                                         <caption>최근수강강좌</caption>
                                                                         <colgroup>
                                                                             <col></col>
@@ -809,8 +809,12 @@
                                                                             <th>동영상</th>
                                                                         </tr>
                                                                         </thead>
-                                                                        <tbody id="zianPassDataList"></tbody>
                                                                     </table>
+                                                                    <div class="scroll">
+                                                                        <table class="new_cssM">
+                                                                            <tbody id="zianPassDataList"></tbody>
+                                                                        </table>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                             <!--//inner-->
