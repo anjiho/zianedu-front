@@ -111,7 +111,7 @@ function getVideoSignUpDetailInfo(gkey, device, jlecKey, tagId) {
                                         returnHtml += '<a href="javascript:void(0);" onclick="OpenLecPlayer(' + "'"  + data.vodFileHigh + "'" + ',' + "'"  + data.name + "'" + ','+ data.curriKey +','+ jlecKey +','+ detailInfo.result.kind +');"  class=\"blue small\">고화질</a>';
                         returnHtml += "</div>";
                         returnHtml += "<div class=\"myVideoM\">";
-                            returnHtml += '<a href="javascript:void(0);" onclick="myPlay('+num+');" class="black small myPy">재생</a>&nbsp;';
+                            returnHtml += '<a href="javascript:myPlay('+num+');" class="black small myPy">재생</a>&nbsp;';
                             returnHtml += "<div class='myPlay' data-index='"+ num +"'>";
                                 returnHtml += '<a href="javascript:void(0);" onclick="OpenLecPlayer(' + "'"  + data.vodFileLow + "'" + ',' + "'"  + data.name + "'" + ','+ data.curriKey +','+ jlecKey +','+ detailInfo.result.kind +');" class=\"brBlack\">일반화질</a>';
                                 returnHtml += '<a href="javascript:void(0);" class=\"brBlue\">고화질</a>';
