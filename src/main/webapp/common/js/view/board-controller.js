@@ -540,8 +540,8 @@ function getPasserVideoList(sPage, listLimit, searchType, searchText) {
             function formatter(cmpList) {
                 var gopageName = '"detailLecture"';
                 return ""+
-                    "<div class=\"fthub\"><a href='javascript:void(0);'><img src='"+ cmpList.fileUrl +"' alt=\"\" width=\"100%\"></a></div>"+
-                    "<a href='javascript:detailReview("+ cmpList.bbsKey +","+ gopageName +")'><sapn class='thumb'>"+ cmpList.title +"</span></a>"+
+                    "<a href='javascript:void(0);'><img src='"+ cmpList.fileUrl +"' width=\"100%\"></a>"+
+                    "<a href='javascript:detailReview("+ cmpList.bbsKey +","+ gopageName +")'><sapn class='thumb'>"+  gfn_substr(cmpList.title, 0, 12) +"</span></a>"+
                     "";
             }
         }
