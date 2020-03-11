@@ -94,16 +94,6 @@ function getBoardDetailInfo(bbsMasterKey, bbsKey) {
 
 }
 
-//게시판 답글 저장
-function saveBoardCommnet() {
-
-}
-
-//게시판 답글 수정
-function updateBoardComment() {
-
-}
-
 //게시판 답글 삭제
 function deleteBoard(bbsCommentKey) {
     if (bbsCommentKey == null || bbsCommentKey == undefined) return;
@@ -119,10 +109,6 @@ function deleteBoard(bbsCommentKey) {
     }
 }
 
-//상품 리뷰 저장
-function saveProductReview() {
-
-}
 
 //커뮤니티 리스트
 function getCommunityList(bbsMaterKey, sPage, listLimit) {
