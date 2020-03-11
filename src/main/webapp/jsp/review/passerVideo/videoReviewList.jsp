@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
-<link rel="stylesheet" type="text/css" href="/common/zian/css/content_o.css">
 <%@include file="/common/jsp/common.jsp" %>
 <script>
     $( document ).ready(function() {
@@ -120,10 +119,10 @@
                         <div class="boardSearch">
                             <ul class="searchArea">
                                 <li class="left">
-                                    <select id="searchType" class="w90">
-                                    <option value="">선택</option>
-                                    <option value="title">제목</option>
-                                    <option value="content">내용</option>
+                                    <select id="searchType">
+                                        <option value="">선택</option>
+                                        <option value="title">제목</option>
+                                        <option value="content">내용</option>
                                     </select>
                                     <!--html 추가 및 수정-->
                                     <input type="text" id="searchText" onkeypress="if(event.keyCode==13) {fn_search('new'); return false;}" class="w240">

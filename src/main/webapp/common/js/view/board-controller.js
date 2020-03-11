@@ -608,9 +608,8 @@ function getPasserVideoListFromReview(bbsMasterKey, sPage, listLimit, searchType
         for(var i=0; i < selList.length; i++){
             function formatter(cmpList) {
                 return ""+
-                    "<div class=\"fthub\"><a href='javascript:void(0);'><img src='"+ cmpList.fileUrl +"' width=\"100%\"></a></div>"+
-                    "<a href='javascript:detailReview("+ cmpList.bbsKey +")'><sapn class='thumb'>"+ cmpList.title +"</span></a>"+
-                    "";
+                    "<div class=\"fthub\"><a href='javascript:void(0);'><img src='"+ cmpList.fileUrl +"'></a></div>"+
+                    "<a href='javascript:detailReview("+ cmpList.bbsKey +")'><sapn class='thumb'>"+ gfn_substr(cmpList.title, 0, 12) +"</span></a>";
             }
         }
         dwr.util.addOptions('dataList', selList, formatter, {escapeHtml:false});
