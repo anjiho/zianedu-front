@@ -865,11 +865,11 @@
 			                   		    			</span>
                                                     </div>
                                                     <ul class="total_date">
-                                                        <li><span>기존 수강기간</span><span id="pauseLectureDate1"></span> (<span id="pauseLimitDay1"></span>일)</li>
+                                                        <li><span class="up_date">기존 수강기간</span><span id="pauseLectureDate1"></span> (<span id="pauseLimitDay1"></span>일)</li>
                                                         <li><span>변경된 수강기간</span><span id="pauseChangeLectureDate"></span> (<span id="pauseChangeLimitDay"></span>일)</li>
                                                     </ul>
                                                     <div class="total_count">
-                                                        <p>중지신청수 : <span><span id="pauseCnt"></span>회사용 / 총 3회중</span></p>
+                                                        <p>중지신청수 : <span><span id="pauseCnt"></span>회사용slick-dots / 총 3회중</span></p>
                                                         <p>중지신청일수 : <span><span id="pauseDay"></span>일사용 / 총 60일중</span></p>
                                                     </div>
                                                 </div>

@@ -90,6 +90,7 @@ function getSalesBookList(bookMenuType, searchText, orderType, sPage, listLimit,
         subjectKey : subjectKey
     };
     var infoList = getPageApi("/bookStore/getSalesBookList/", bookMenuType, data);
+    console.log(infoList);
     var cnt = infoList.cnt;
     if(infoList != null){
         //if (infoList.result.length > 0) {

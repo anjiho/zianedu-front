@@ -1139,7 +1139,7 @@
 .shop .shoplist .listtype li:after {display: block;content: '';position: absolute;top: 50%;right: 0;margin-top: -7px;height: 14px;border-right: 1px #1b1b1b solid;}
 .shop .shoplist .listtype li.last:after{display:none;}
 .shop .shoplist .listtype li.active a{color:#CE1717;font-weight: bold}
-.shopBoard {display: none;}
+
 .shopBoard.active {display: block;}
 .shopBoard .small.black {height:30px;line-height:30px;padding:0px 5px;min-width:50px}
 .shopBoard .txt14 {font-size:14px;line-height:24px}
