@@ -4,18 +4,6 @@
 <%
     String lecKey = request.getParameter("lecKey");
 %>
-<script>
-    $( document ).ready(function() {
-        var lecKey = <%=lecKey%>;
-        var pcMobile = divisionPcMobile();
-        getFreeVideoLectureDetailInfo(lecKey, pcMobile);
-    });
-    function goTeacherHome(reqKey, teacherKey) {
-        innerValue("teacherKey", teacherKey);
-        innerValue("reqKey", reqKey);
-        goPage("teacher", "detail");
-    }
-</script>
 <form id="id_frm_player" method="post" name="name_frm_player">
     <input id="vodPath" name="vodPath" type="hidden" value="" />
     <input id="vodTitle" name="vodTitle" type="hidden" value="" />
@@ -90,7 +78,7 @@
                                     </thead>
                                 </table>
                                 <div class="scroll">
-                                    <table class="disnoneM">
+                                    <table class="classfreeList">
                                         <tbody id="dataList"></tbody>
                                     </table>
                                 </div>
@@ -117,3 +105,15 @@
 </form>
 </body>
 </html>
+<script>
+    $( document ).ready(function() {
+        var lecKey = <%=lecKey%>;
+        var pcMobile = divisionPcMobile();
+        getFreeVideoLectureDetailInfo(lecKey, pcMobile);
+    });
+    function goTeacherHome(reqKey, teacherKey) {
+        innerValue("teacherKey", teacherKey);
+        innerValue("reqKey", reqKey);
+        goPage("teacher", "detail");
+    }
+</script>

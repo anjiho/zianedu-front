@@ -1,41 +1,6 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/jsp/common.jsp" %>
 <link rel="stylesheet" type="text/css" href="/common/zian/css/content_o.css">
-<script>
-    $( document ).ready(function() {
-        fn_search('new');
-    });
-
-    function fn_search2(val){
-        gfn_display("allDiv", false);
-        $("#questionList").empty();
-
-        var sPage = getInputTextValue("sPage2");
-        var ctgKey = getFreeLectureCtgKey();
-        if(val == "new") sPage = "1";
-
-        var stepCtgKey = getInputTextValue("stepCtgKey");
-        getFreeVideoLectureListFromCategoryMenu2(ctgKey, sPage, 9, stepCtgKey, 'PREV', 'questionList');
-    }
-
-    function setStepCtgKey(val) {
-        innerValue("stepCtgKey", val);
-        fn_search2('new');
-    }
-
-    //전체 가져오기
-    function fn_search(val) {
-        var sPage = getInputTextValue("sPage");
-        var ctgKey = getFreeLectureCtgKey();
-        if(val == "new") sPage = "1";
-        getFreeVideoLectureListFromCategoryMenu(ctgKey, sPage, 9, 0, 'PREV', 'allList');
-    }
-
-    function goDetailVideo(lecKey) {
-        innerValue("lecKey", lecKey);
-        goPage("freeLecture", "detailExamQuestion");
-    }
-</script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
     <input type="hidden" name="lecKey" id="lecKey">
@@ -114,3 +79,38 @@
 </form>
 </body>
 </html>
+<script>
+    $( document ).ready(function() {
+        fn_search('new');
+    });
+
+    function fn_search2(val){
+        gfn_display("allDiv", false);
+        $("#questionList").empty();
+
+        var sPage = getInputTextValue("sPage2");
+        var ctgKey = getFreeLectureCtgKey();
+        if(val == "new") sPage = "1";
+
+        var stepCtgKey = getInputTextValue("stepCtgKey");
+        getFreeVideoLectureListFromCategoryMenu2(ctgKey, sPage, 9, stepCtgKey, 'PREV', 'questionList');
+    }
+
+    function setStepCtgKey(val) {
+        innerValue("stepCtgKey", val);
+        fn_search2('new');
+    }
+
+    //전체 가져오기
+    function fn_search(val) {
+        var sPage = getInputTextValue("sPage");
+        var ctgKey = getFreeLectureCtgKey();
+        if(val == "new") sPage = "1";
+        getFreeVideoLectureListFromCategoryMenu(ctgKey, sPage, 9, 0, 'PREV', 'allList');
+    }
+
+    function goDetailVideo(lecKey) {
+        innerValue("lecKey", lecKey);
+        goPage("freeLecture", "detailExamQuestion");
+    }
+</script>

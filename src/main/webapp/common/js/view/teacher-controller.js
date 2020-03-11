@@ -243,6 +243,8 @@ function getTeacherAcademyLecture(teacherKey, stepCtgKey) {
                             returnHtml += '<span class="btn_learnType blue">단과특강</span>';
                         }else if(cmpList.stepCtgKey == 774){
                             returnHtml += '<span class="btn_learnType navy">아침특강</span>';
+                        }else if(cmpList.stepCtgKey == 4266){
+                            returnHtml += '<span class="btn_learnType navy">모의고사</span>';
                         }
                         returnHtml += '</li>';
                         returnHtml += '<li class="w45p">';
