@@ -669,7 +669,7 @@
                                                                 <p class="tit">유형</p>
                                                                 <ul class="Droptab_wrap" id="zianPassType"></ul>
                                                             </div>
-                                                            <div style="float: left;width: 828px;min-height: 346px; border: 1px solid #e5e5e5;overflow: hidden;">
+                                                            <div class="rfloat">
                                                                 <p class="tit">강좌명</p>
                                                                 <ul class="2depth-1" id="zianPassLecList"></ul>
                                                             </div>
@@ -770,7 +770,7 @@
                                                             <ul class="Droptab_wrap" id="academyType">
                                                             </ul>
                                                         </div>
-                                                        <div style="float: left;width: 828px;min-height: 346px; border: 1px solid #e5e5e5;overflow: hidden;">
+                                                        <div class="rfloat">
                                                             <p class="tit">강좌명</p>
                                                             <ul class="3depth-1" id="acaLecList">
                                                             </ul>
