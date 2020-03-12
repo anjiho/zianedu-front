@@ -6,12 +6,14 @@
 <%@page import="java.util.*"%>
 <%@ page import="com.zianedu.front.config.ConfigHolder" %>
 <%
-//    String cartNum = Util.isNullValue(request.getParameter("cartNum"), "");
-//    String gKeys = Util.isNullValue(request.getParameter("gKeys"), "");
-//    String goodsInfo = Util.isNullValue(request.getParameter("goodsInfo"), "");
-//    String retakeInfo = Util.isNullValue(request.getParameter("retakeInfo"), "");
-    //String allProductPrice = Util.isNullValue(request.getParameter("allProductPrice"), "");
-    String allProductPrice = "150";
+    String cartNum = Util.isNullValue(request.getParameter("cartNum"), "");
+    String gKeys = Util.isNullValue(request.getParameter("gKeys"), "");
+    String goodsInfo = Util.isNullValue(request.getParameter("goodsInfo"), "");
+    String retakeInfo = Util.isNullValue(request.getParameter("retakeInfo"), "");
+    String allProductPrice = Util.isNullValue(request.getParameter("allProductPrice"), "");
+    if ("INIpayTest".equals(ConfigHolder.getINIPayMid())) {
+        allProductPrice = "1000";
+    }
     String userName = Util.isNullValue(request.getParameter("postName"), "");
     String phoneNum = Util.isNullValue(request.getParameter("allPhone"), "");
     String email = Util.isNullValue(request.getParameter("allEmail"), "");

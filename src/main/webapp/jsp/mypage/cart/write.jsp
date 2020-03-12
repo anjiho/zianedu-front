@@ -245,7 +245,7 @@
                     <div class="cart">
                         <div class="tbd_03 mgb20">
                             <p class="title"><span class="text_blue">주문상품</span>정보</p>
-                            <table>
+                            <table class="cart02">
                                 <colgroup>
                                     <col width="100px">
                                     <col>
@@ -265,7 +265,7 @@
                             </table>
                         </div>
                         <div class="tbd_06 mgb60">
-                            <table>
+                            <table class="cart02List">
                                 <colgroup>
                                     <col>
                                     <col>
