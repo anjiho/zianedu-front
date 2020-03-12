@@ -3287,7 +3287,6 @@ function goCompany() {
 }
 
 function goCompany1() {
-    sessionStorage.setItem("leftMenu", 'techOnline');
     goPageNoSubmit('company','main');
 }
 

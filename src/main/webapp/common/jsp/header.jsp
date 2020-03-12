@@ -2,7 +2,6 @@
 <script>
     $( document ).ready(function() {
         var leftMenuInfo = sessionStorage.getItem('leftMenu');//직렬 구분
-
         if(leftMenuInfo == 'publicOnline' || leftMenuInfo == "publicAcademy"){
             $("#cssDivsion").prop('href', '/common/zian/css/publicContent.css');
         }else if(leftMenuInfo == "postOnline" || leftMenuInfo == "postAcademy"){
