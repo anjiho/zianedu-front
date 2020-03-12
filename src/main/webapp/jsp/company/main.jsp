@@ -533,17 +533,21 @@
                     <input type="hidden" id="sPage">
                     <div class="boardWrap" id="teacherList">
                         <div class="boardSearch">
-                            <select id="searchType" class="w90">
-                                <option value="title">제목</option>
-                            </select>
-                            <input type="text" id="searchText" onkeypress="if(event.keyCode==13) {fn_search('new'); return false;}" class="w240">
-                            <a href="javascript:fn_search('new');" class="btn_inline on w140">검색</a>
-                            <div class="btnArea">
-                                <a href="javascript:goWrite('teacher');" class="btn_inline w140">글쓰기</a>
-                            </div>
+                            <ul class="searchArea">
+                                <!--수정 -->
+                                <li class="left">
+                                    <select id="searchType">
+                                        <option value="">제목</option>
+                                    </select>
+                                    <input type="text" id="searchText" onkeypress="if(event.keyCode==13) {fn_search('new'); return false;}">
+                                    <input type="button" onclick="fn_search('new');" value="검색" class="btn_m on">
+                                    <a href="javascript:fn_search('new');" class="search_ico">검색</a>
+                                </li>
+                                <li class="right"><a href="javascript:goWrite('teacher');" class="btn_inline w140 write_ico">글쓰기</a></li>
+                            </ul>
                         </div>
-                        <div class="tableBox">
-                            <table class="list">
+                        <div class="tableWrap">
+                            <table class="tBoard noticeList">
                                 <caption></caption>
                                 <colgroup>
                                     <col class="w100">
@@ -554,11 +558,11 @@
                                 </colgroup>
                                 <thead>
                                 <tr>
-                                    <th scope="col" style="text-align: center">번호</th>
-                                    <th scope="col" style="text-align: center">제목</th>
-                                    <th scope="col" style="text-align: center">작성자</th>
-                                    <th scope="col" style="text-align: center">등록일</th>
-                                    <th scope="col" style="text-align: center">조회</th>
+                                    <th scope="col">번호</th>
+                                    <th scope="col">제목</th>
+                                    <th scope="col">작성자</th>
+                                    <th scope="col">등록일</th>
+                                    <th scope="col">조회</th>
                                 </tr>
                                 </thead>
                                 <tbody id="dataList">
@@ -592,10 +596,7 @@
                                         <label for="attachFile">업로드</label>
 <%--                                        <input type="file" id="ex_file">--%>
                                         <input type="file" name="files[]" id="attachFile" multiple/>
-                                        <ul class="fileList" id="fileList">
-<%--                                            <li><a href="#"><img src="../images/common/icon_file.png" alt=""> 파일001.jpg</a></li>--%>
-<%--                                            <li><a href="#"><img src="../images/common/icon_file.png" alt=""> 파일002.jpg</a></li>--%>
-                                        </ul>
+                                        <ul class="fileList" id="fileList"></ul>
                                     </td>
                                 </tr>
                                 </tbody>
@@ -649,7 +650,7 @@
                                 <a href="javascript:modifyDetail('teacher');" class="btn_inline gray w110">수정</a>
                             </div>
                             <div class="right">
-                                <a href="javascript:goBackList('teacher')" class="btn_inline blue w110">목록</a>
+                                <a href="javascript:goBackList('teacher')" class="btn_inline br_blue w110">목록</a>
                             </div>
                         </div>
                     </div>
@@ -659,17 +660,21 @@
                 <!--제휴문의-->
                     <div class="boardWrap" id="questionList">
                         <div class="boardSearch">
-                            <select id="searchType2" class="w90">
-                                <option value="title">제목</option>
-                            </select>
-                            <input type="text" id="searchText2" onkeypress="if(event.keyCode==13) {fn_search1('new'); return false;}" class="w240">
-                            <a href="javascript:fn_search1('new');" class="btn_inline on w140">검색</a>
-                            <div class="btnArea">
-                                <a href="javascript:goWrite('question')" class="btn_inline w140">글쓰기</a>
-                            </div>
+                            <ul class="searchArea">
+                                <!--수정 -->
+                                <li class="left">
+                                    <select id="searchType2">
+                                        <option value="">제목</option>
+                                    </select>
+                                    <input type="text" id="searchText2" onkeypress="if(event.keyCode==13) {fn_search1('new'); return false;}">
+                                    <input type="button" onclick="fn_search1('new');" value="검색" class="btn_m on">
+                                    <a href="javascript:fn_search1('new');" class="search_ico">검색</a>
+                                </li>
+                                <li class="right"><a href="javascript:goWrite('question');" class="btn_inline w140 write_ico">글쓰기</a></li>
+                            </ul>
                         </div>
-                        <div class="tableBox">
-                            <table class="list">
+                        <div class="tableWrap">
+                            <table class="tBoard noticeList">
                                 <input type="hidden" id="sPage2">
                                 <caption></caption>
                                 <colgroup>
@@ -681,22 +686,14 @@
                                 </colgroup>
                                 <thead>
                                 <tr>
-                                    <th scope="col" style="text-align: center">번호</th>
-                                    <th scope="col" style="text-align: center">제목</th>
-                                    <th scope="col" style="text-align: center">작성자</th>
-                                    <th scope="col" style="text-align: center">등록일</th>
-                                    <th scope="col" style="text-align: center">조회</th>
+                                    <th scope="col">번호</th>
+                                    <th scope="col">제목</th>
+                                    <th scope="col">작성자</th>
+                                    <th scope="col">등록일</th>
+                                    <th scope="col">조회</th>
                                 </tr>
                                 </thead>
-                                <tbody id="dataList1">
-<%--                                <tr>--%>
-<%--                                    <td>1</td>--%>
-<%--                                    <td class="left"><a href="javascript:goDetail('123','question');">안녕하세요 교육전문 플랫폼 단골닷컴에서 입점제휴드립니다.</a></td>--%>
-<%--                                    <td>지안에듀</td>--%>
-<%--                                    <td>2019.08.09</td>--%>
-<%--                                    <td>31</td>--%>
-<%--                                </tr>--%>
-                                </tbody>
+                                <tbody id="dataList1"></tbody>
                             </table>
                         </div>
                         <%@ include file="/common/inc/com_pageNavi2.inc" %>
@@ -779,7 +776,7 @@
                                 <a href="javascript:modifyDetail('question');" class="btn_inline gray w110">수정</a>
                             </div>
                             <div class="right">
-                                <a href="javascript:goBackList('question')" class="btn_inline blue w110">목록</a>
+                                <a href="javascript:goBackList('question')" class="btn_inline br_blue w110">목록</a>
                             </div>
                         </div>
                     </div>
