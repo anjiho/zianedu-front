@@ -769,17 +769,17 @@
                                     <td class="right"><span id="nextDate1"></span></td>
                                 </tr>
                                 </tbody>
-                            </table>
-                        </div>
-                        <div class="btnArea divGroup noMargin">
-                            <div class="left">
-                                <a href="javascript:modifyDetail('question');" class="btn_inline gray w110">수정</a>
-                            </div>
-                            <div class="right">
-                                <a href="javascript:goBackList('question')" class="btn_inline br_blue w110">목록</a>
-                            </div>
-                        </div>
+                    </table>
+                </div>
+                <div class="btnArea divGroup noMargin">
+                    <div class="left">
+                        <a href="javascript:modifyDetail('question');" class="btn_inline gray w110">수정</a>
                     </div>
+                    <div class="right">
+                        <a href="javascript:goBackList('question')" class="btn_inline br_blue w110">목록</a>
+                    </div>
+                </div>
+            </div>
                     <!--강사모집 상세보기 끝-->
 
                 </div>
