@@ -96,11 +96,7 @@
         });
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         var userKey = sessionUserInfo.userKey;
-        if(sessionStorage.getItem('gKeys') != ""){
-            var cartKeys = sessionStorage.getItem('cartNum');
-        }else{
-            cartKeys = "";
-        }
+        var cartKeys = sessionStorage.getItem('cartNum');
         if(sessionStorage.getItem('gKeys') != ""){
             var gKeys = JSON.parse(sessionStorage.getItem('gKeys'));
         }else{
