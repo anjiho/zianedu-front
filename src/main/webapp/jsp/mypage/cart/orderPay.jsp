@@ -96,12 +96,15 @@
         });
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         var userKey = sessionUserInfo.userKey;
+        console.log(1);
         var cartKeys = sessionStorage.getItem('cartNum');
+        console.log(2);
         if(sessionStorage.getItem('gKeys') != ""){
-            var gKeys = JSON.parse(sessionStorage.getItem('gKeys'));
+            var gKeys = sessionStorage.getItem('gKeys');
         }else{
             gKeys = "";
         }
+        console.log(3);
         if(sessionStorage.getItem('goodsInfo') != "") {
             var goodsInfo = sessionStorage.getItem('goodsInfo');
         }else{
@@ -141,7 +144,9 @@
         if(sessionStorage.getItem('savePayInfo') != "") {
             sessionStorage.setItem("savePayInfo", JSON.stringify(data));
         }
+        console.log(5);
         if(gKeys != ""){//바로구매
+           console.log(gKeys);
             innerValue("gKeys", gKeys);
             getOrderSheetInfoFromImmediately(userKey, gKeys);
         }else if(gKeys == "" && goodsInfo == "" && retakeInfo == '' && priceKey == "" && bookCount == ''){
