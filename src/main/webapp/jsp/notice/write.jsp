@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
 <%@include file="/common/jsp/common.jsp" %>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
 <script>
     $(document).ready(function() {
         var pcMobile = divisionPcMobile();
@@ -130,7 +132,7 @@
                     </div>
                     <div class="btnArea">
                         <a href="javascript:goPage('notice','list');" class="btn_m gray radius w110">취소</a> &nbsp;&nbsp;&nbsp;
-                        <a href="javascript:save();" class="btn_m onBlue radius w110">등록</a>
+                        <a href="javascript:save();" class="btn_m bg_blue radius w110">등록</a>
                     </div>
                 </div>
                 <!--//서브 컨텐츠-->

@@ -552,7 +552,8 @@
     .tabContent_2depth .Dropmenu .rfloat {float: none;width: 100%;min-height: auto}
     .tabContent_2depth .Dropmenu .rfloat ul {width:98%;margin:0px 1%;}
     .tabContent_2depth .Dropmenu .rfloat li a {width:96%;padding: 12px 2%}
-    .Mclass .tab_large .tab_large_2depth .tabBar.zian_mbtn li {width: 50% !important}
+    .Mclass .tab_large .tab_large_2depth .tabBar.zian_mbtn li {width: 80% !important}
+    .Mclass .tab_large .tab_large_2depth .tabBar.zian_mbtn li a{height:initial !important;line-height:1.2;display:block;padding:10px 0}
     .tabPage .tbd_01 {padding-top: 25px}
     .tabPage .tbd_01 table td {padding:20px 1%;font-size: 13px;text-align: left}
     .tabPage .tbd_01 table td:last-child {width:25%;text-align: center}
@@ -568,7 +569,7 @@
     .boardWrap.eventBoard .colbox .col .infobox .info li.pl30 {padding-left: 0 !important}
 
 
-    /*이벤트*****************************************************************/
+    /* 이벤트 *****************************************************************/
     .boardWrap.eventBoard .colbox .col .imgbox2 {padding:0;width:30%;}
     .boardWrap.eventBoard .colbox .col .imgbox2 img {width:90%}
     .boardWrap.eventBoard .colbox .col .infobox {width:70%}
@@ -1396,5 +1397,30 @@
     .classfreeList tbody tr td:nth-child(4){display:block;float: none;text-align:left;padding-left: 2%;}
     .classfreeList td {font-size: 15px}
     .classfreeList td a.small {margin-top: 5px;padding-left:15px;background: url(../images/ex/icon-replay_on.png) 10px center no-repeat;}
+
+
+    /* 2020.03.11 */
+    .calendarInfo{width:100%;padding:0 1%;box-sizing:border-box}
+    .calendarInfo div.cCom > p{font-size:14px;}
+    .calendarInfo div.cCom > p span{font-size:14px}
+    .calendarInfo a{width:80px;}
+    .calendarInfo a img{margin-top:-2px;}
+
+    #uploadModal .modal-content{width:98%;}
+    #uploadModal .filetype .file-text{left:120px;width:70%;}
 }
+/* //media screen 800 */
+
+@media screen and (max-width:500px){
+    #uploadModal .filetype .file-text{left:120px;width:50%;}
+}
+
+@media screen and (max-width:400px){
+    /* 2020.03.11 */
+    .calendarInfo div.cCom > p{display:block;}
+    .calendarInfo a{float:initial;display:block;}
+    .calendarInfo a img{margin-top:10px}
+    #uploadModal .filetype .file-text{left:120px;width:40%;}
+}
+/* //media screen 400 */
 
