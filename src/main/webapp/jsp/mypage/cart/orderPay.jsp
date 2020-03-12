@@ -311,7 +311,7 @@
                     <div class="cart">
                         <div class="tbd_03 mgb20">
                             <p class="title"><span class="text_blue">최종 주문상품</span> 확인</p>
-                            <table>
+                            <table class="cart02">
                                 <colgroup>
                                     <col width="100px">
                                     <col>
@@ -363,7 +363,7 @@
                         </div>
                         <div class="tbd_03 tbd_05 mgb60" id="deliveryInfo">
                             <p class="title"><span class="text_blue">배송지</span>정보확인</p>
-                            <table>
+                            <table class="">
                                 <colgroup>
                                     <col width="100px">
                                     <col>

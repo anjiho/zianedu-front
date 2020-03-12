@@ -92,7 +92,7 @@
                 var address = $("#address").text();
                 innerValue("roadAddress", address);
                 var detailAddres = $("#detailAddres").text();
-                innerValue("detailAddres2", detailAddres);
+                innerValue("roadAddress", detailAddres);
             }else{
                 innerValue("orderNameText", "");
                 innerValue("tel1", "");
