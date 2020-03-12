@@ -6,10 +6,10 @@
 <%@page import="java.util.*"%>
 <%@ page import="com.zianedu.front.config.ConfigHolder" %>
 <%
-    String cartNum = Util.isNullValue(request.getParameter("cartNum"), "");
-    String gKeys = Util.isNullValue(request.getParameter("gKeys"), "");
-    String goodsInfo = Util.isNullValue(request.getParameter("goodsInfo"), "");
-    String retakeInfo = Util.isNullValue(request.getParameter("retakeInfo"), "");
+//    String cartNum = Util.isNullValue(request.getParameter("cartNum"), "");
+//    String gKeys = Util.isNullValue(request.getParameter("gKeys"), "");
+//    String goodsInfo = Util.isNullValue(request.getParameter("goodsInfo"), "");
+//    String retakeInfo = Util.isNullValue(request.getParameter("retakeInfo"), "");
     String allProductPrice = Util.isNullValue(request.getParameter("allProductPrice"), "");
     if ("INIpayTest".equals(ConfigHolder.getINIPayMid())) {
         allProductPrice = "1000";
