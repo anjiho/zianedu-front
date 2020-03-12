@@ -98,39 +98,36 @@
         });
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         var userKey = sessionUserInfo.userKey;
-        var cartKeys = sessionStorage.getItem('cartNum');
-        //var gKeys = sessionStorage.getItem('gKeys');
-        console.log(1);
+        if(sessionStorage.getItem('gKeys') != ""){
+            var cartKeys = sessionStorage.getItem('cartNum');
+        }else{
+            cartKeys = "";
+        }
         if(sessionStorage.getItem('gKeys') != ""){
             var gKeys = JSON.parse(sessionStorage.getItem('gKeys'));
         }else{
             gKeys = "";
         }
-        console.log(2);
         if(sessionStorage.getItem('goodsInfo') != "") {
             var goodsInfo = sessionStorage.getItem('goodsInfo');
         }else{
             goodsInfo = "";
         }
-        console.log(3);
         if(sessionStorage.getItem('retakeInfo') != "") {
             var retakeInfo = sessionStorage.getItem('retakeInfo');
         }else{
             retakeInfo = "";
         }
-        console.log(4);
         if(sessionStorage.getItem('resultData') != "") {
             var resultData = JSON.parse(sessionStorage.getItem('resultData'));
         }else{
             resultData = "";
         }
-        console.log(5);
         if(sessionStorage.getItem('priceKey') != ""){
             var priceKey = JSON.parse(sessionStorage.getItem('priceKey'));
         }else{
             priceKey = "";
         }
-        console.log(6);
         if(sessionStorage.getItem('bookCount') != ""){
             var bookCount = JSON.parse(sessionStorage.getItem('bookCount'));
         }else{
@@ -147,16 +144,13 @@
             discountPoint : parseInt(discountPoint),
             deliveryPrice : parseInt(deliveryPrice)
         };
-        console.log(7);
         if(sessionStorage.getItem('savePayInfo') != "") {
             sessionStorage.setItem("savePayInfo", JSON.stringify(data));
         }
-        console.log(8);
         if(gKeys != ""){//바로구매
             innerValue("gKeys", gKeys);
             getOrderSheetInfoFromImmediately(userKey, gKeys);
         }else if(gKeys == "" && goodsInfo == "" && retakeInfo == '' && priceKey == "" && bookCount == ''){
-            console.log(11);
             innerValue("cartNum", cartKeys);
             getOrderSheetInfoFromPay(userKey, cartKeys);
         }else if(gKeys == "" && cartKeys == "" && retakeInfo == '' && priceKey == "" && bookCount == ''){//패키지
@@ -165,7 +159,6 @@
         }else if(gKeys == "" && cartKeys == "" && goodsInfo == '' && priceKey == "" && bookCount == ''){//재수강
             getOrderSheetInfoFromImmediatelyAtRetake(userKey, retakeInfo);
         }else{
-            console.log(10);
             var arr = new Array();
             arr.push(priceKey);
             var priceList = toStrFileName(arr);
