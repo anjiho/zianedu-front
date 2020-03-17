@@ -1,13 +1,11 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
-<%
-    String page_gbn = request.getParameter("page_gbn");
-%>
 <script>
     $( document ).ready(function() {
         var leftMenuInfo = sessionStorage.getItem('leftMenu');//직렬 구분
         var prevLeftMenu = sessionStorage.getItem('prevLeftMenu');//직렬 구분
         if(leftMenuInfo == "bigExam" || leftMenuInfo == "bookStore"){
             leftMenuInfo = prevLeftMenu;
+            sessionStorage.setItem("leftMenu", prevLeftMenu);
         }
         if(leftMenuInfo == 'publicOnline' || leftMenuInfo == "publicAcademy"){
             $("#cssDivsion").prop('href', '/common/zian/css/publicContent.css');
