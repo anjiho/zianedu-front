@@ -491,6 +491,10 @@ function getSpecialPackageList(menuCtgKey, subjectMenuKeys, teacherKeys, stepCtg
 function getLecOrderCtgKey() {
     var menuCtgKey = '';
     var leftMenuInfo = sessionStorage.getItem('leftMenu');//직렬 구분
+    var prevLeftMenu = sessionStorage.getItem('prevLeftMenu');//직렬 구분
+    if(leftMenuInfo == "bigExam"){
+        leftMenuInfo = prevLeftMenu;
+    }
     if(leftMenuInfo == "publicOnline"){
         menuCtgKey = 234;
     }else if(leftMenuInfo == "publicAcademy"){
@@ -521,6 +525,10 @@ function getPackageCtgKey() {
 function getOnlineAcaType() {
     var str = '';
     var leftMenuInfo = sessionStorage.getItem('leftMenu');//직렬 구분
+    var prevLeftMenu = sessionStorage.getItem('prevLeftMenu');//직렬 구분
+    if(leftMenuInfo == "bigExam"){
+        leftMenuInfo = prevLeftMenu;
+    }
     if(leftMenuInfo == "publicOnline" || leftMenuInfo == "techOnline" || leftMenuInfo == "postOnline"){
         str = 'VIDEO';
     }else if(leftMenuInfo == "publicAcademy" || leftMenuInfo == "techAcademy" || leftMenuInfo == "postAcademy"){
@@ -840,7 +848,7 @@ function getYearMemberProductSubjectList(parentKey) {
 //지안패스 상품 리스트
 function getYearMemberProductList(parentKey) {
     if (parentKey == null || parentKey == undefined) return;
-    var infoList = getApi("/product//getYearMemberProductList/", parentKey, '');
+    var infoList = getApi("/product/getYearMemberProductList/", parentKey, '');
     if (infoList != null) {
         var selList = infoList.result;
         if(selList.length > 0){

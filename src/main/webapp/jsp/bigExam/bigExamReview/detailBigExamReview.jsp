@@ -89,7 +89,7 @@
     <div id="wrap" class="big">
         <%@include file="/common/jsp/leftMenu.jsp" %>
         <!--상단-->
-        <%@include file="/common/jsp/header.jsp" %>
+        <%@include file="/common/jsp/bigExamHeader.jsp" %>
         <!--//상단-->
         <!--본문-->
         <div id="container" class="big bigSub">

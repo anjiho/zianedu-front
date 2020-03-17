@@ -3,6 +3,10 @@
 <script>
     $( document ).ready(function() {
         var leftMenuInfo = sessionStorage.getItem('leftMenu');//직렬 구분
+        var prevLeftMenu = sessionStorage.getItem('prevLeftMenu');//직렬 구분
+        if(leftMenuInfo == "bigExam" || leftMenuInfo == "bookStore"){
+            leftMenuInfo = prevLeftMenu;
+        }
         if(leftMenuInfo == "publicOnline" || leftMenuInfo == "techOnline" || leftMenuInfo == "postOnline") {//온라인 지안패스
             var ctgKey = getZianPassCtgKey();
             var parentKey = getZianPassMenu(ctgKey);

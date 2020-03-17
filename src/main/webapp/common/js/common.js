@@ -3458,6 +3458,10 @@ function setLeftMenu4() {
         window.open("http://www.algisa.com/public/main.html", "_blank");
         return false;
     }else if(subMenuHtml == '온라인서점'){
+        var leftMenuInfo = sessionStorage.getItem('leftMenu');//직렬 구분
+        if(leftMenuInfo != 'bookStore') {
+            sessionStorage.setItem("prevLeftMenu", leftMenuInfo);
+        }
         sessionStorage.setItem("leftMenu", 'bookStore');
         goPageNoSubmit('bookStore','main');
     }
@@ -3466,6 +3470,10 @@ function setLeftMenu4() {
 function setLeftMenu5() {
     var subMenuHtml = $("#subMenu5").html();
     if(subMenuHtml == '온라인서점'){
+        var leftMenuInfo = sessionStorage.getItem('leftMenu');//직렬 구분
+        if(leftMenuInfo != 'bookStore') {
+            sessionStorage.setItem("prevLeftMenu", leftMenuInfo);
+        }
         sessionStorage.setItem("leftMenu", 'bookStore');
         goPageNoSubmit('bookStore','main');
     }else if(subMenuHtml == '빅모의고사'){
@@ -3486,6 +3494,10 @@ function setLeftMenu3() {
         window.open("http://www.algisa.com/public/main.html", "_blank");
         return false;
     }else if(subMenuHtml == '온라인서점'){
+        var leftMenuInfo = sessionStorage.getItem('leftMenu');//직렬 구분
+        if(leftMenuInfo != 'bookStore') {
+            sessionStorage.setItem("prevLeftMenu", leftMenuInfo);
+        }
         sessionStorage.setItem("leftMenu", 'bookStore');
         goPageNoSubmit('bookStore','main');
     }else if(subMenuHtml == '행정직'){
@@ -3538,8 +3550,12 @@ function goPassReview() {
 }
 
 function goBigExam() {
+    var leftMenuInfo = sessionStorage.getItem('leftMenu');//직렬 구분
+    if(leftMenuInfo != 'bigExam') {
+        sessionStorage.setItem("prevLeftMenu", leftMenuInfo);
+    }
     sessionStorage.setItem("leftMenu", "bigExam");
-    goPageNoSubmit('bigExam','main');
+    goPageNoSubmit('bigExam','bigExamMain');
 }
 
 //파일다운로드

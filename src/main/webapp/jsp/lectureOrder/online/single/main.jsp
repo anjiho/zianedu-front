@@ -3,20 +3,6 @@
 <%@include file="/common/jsp/common.jsp" %>
 <script>
     $( document ).ready(function() {
-        var leftMenuInfo = sessionStorage.getItem('leftMenu');//직렬 구분
-        if(leftMenuInfo == 'publicOnline' || leftMenuInfo == "publicAcademy"){
-            $(".selectArea ul > li > a.active").attr('style','border: 1px #144b95 solid');
-            $(".selectArea ul > li > a.active").attr('style','color: #fff');
-            $(".selectArea ul > li > a.active").attr('style','background-color: #144b95;');
-        }else if(leftMenuInfo == "postOnline" || leftMenuInfo == "postAcademy"){
-            $(".selectArea ul > li > a.active").attr('style','border: 1px #ce1717 solid');
-            $(".selectArea ul > li > a.active").attr('style','color: #fff');
-            $(".selectArea ul > li > a.active").attr('style','background: rgb(206, 23, 23)');
-        }else{
-            $(".selectArea ul > li > a.active").attr('style','border: 1px #f69321 solid');
-            $(".selectArea ul > li > a.active").attr('style','color: #fff');
-            $(".selectArea ul > li > a.active").attr('style','background: rgb(246, 147, 33)');
-        }
 
 
         $("#selDivision li a:eq(0)").addClass('active');

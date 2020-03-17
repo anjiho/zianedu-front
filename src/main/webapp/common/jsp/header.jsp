@@ -1,7 +1,14 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+<%
+    String page_gbn = request.getParameter("page_gbn");
+%>
 <script>
     $( document ).ready(function() {
         var leftMenuInfo = sessionStorage.getItem('leftMenu');//직렬 구분
+        var prevLeftMenu = sessionStorage.getItem('prevLeftMenu');//직렬 구분
+        if(leftMenuInfo == "bigExam" || leftMenuInfo == "bookStore"){
+            leftMenuInfo = prevLeftMenu;
+        }
         if(leftMenuInfo == 'publicOnline' || leftMenuInfo == "publicAcademy"){
             $("#cssDivsion").prop('href', '/common/zian/css/publicContent.css');
         }else if(leftMenuInfo == "postOnline" || leftMenuInfo == "postAcademy"){
@@ -71,16 +78,16 @@
             $(".bigExam").hide();
             $("#logo").attr("src", "/common/zian/images/common/logo04.png");
             $("#mainUrl").attr("href", "javascript:goPageNoSubmit('bookStore', 'main')");
-        }else if(leftMenuInfo == "bigExam"){
-            $(".onlineTopMenu").hide();
-            $(".acaTopMenu").hide();
-            $(".bookStore").hide();
-            $(".bigExam").show();
-            $("#logo").attr("src", "/common/zian/images/bigimg/logo.gif");
-            $("#mainUrl").attr("href", "javascript:goPageNoSubmit('bigExam', 'main')");
         }
+        // }else if(leftMenuInfo == "bigExam"){
+        //     $(".onlineTopMenu").hide();
+        //     $(".acaTopMenu").hide();
+        //     $(".bookStore").hide();
+        //     $(".bigExam").show();
+        //     $("#logo").attr("src", "/common/zian/images/bigimg/logo.gif");
+        //     $("#mainUrl").attr("href", "javascript:goPageNoSubmit('bigExam', 'main')");
+        // }
 
-        var leftMenuInfo = sessionStorage.getItem('leftMenu');
         if(leftMenuInfo == "publicOnline"){
             getMainBottomBanner(6284, 2);
         }else if(leftMenuInfo == "publicAcademy"){
@@ -176,9 +183,9 @@
                 innerHTML("subMenu3", "자격증/가산점");
                 innerHTML("subMenu4", "온라인서점");
                 innerHTML("subMenu5", "빅모의고사");
-            }else if(leftMenuInfo == "postAcademy"){
-                $("#siteTab").css("background-color","#ce1717");
-                var html = "계리직"+"<br />"+"학원";
+            }else if(leftMenuInfo == "postAcademy") {
+                $("#siteTab").css("background-color", "#ce1717");
+                var html = "계리직" + "<br />" + "학원";
                 innerHTML("topName", html);
                 innerHTML("topSub", "계리직 온라인");
                 innerHTML("subMenu1", "행정직");
@@ -186,25 +193,27 @@
                 innerHTML("subMenu3", "자격증/가산점");
                 innerHTML("subMenu4", "온라인서점");
                 innerHTML("subMenu5", "빅모의고사");
-            }else if(leftMenuInfo == "bookStore"){
-                $("#siteTab").hide();
-                $("#bookStoreTab").show();
-                innerHTML("topSub", "온라인"+"<br>"+"서점");
-                innerHTML("subMenu1", "기술직");
-                innerHTML("subMenu2", "계리직");
-                innerHTML("subMenu3", "행정직");
-                innerHTML("subMenu4", "자격증/가산점");
-                innerHTML("subMenu5", "빅모의고사");
-            }else if(leftMenuInfo == "bigExam"){
-                $("#siteTab").hide();
-                $("#bigExamTab").show();
-                innerHTML("topSub", "BIG"+"<br>"+"모의고사");
-                innerHTML("subMenu1", "기술직");
-                innerHTML("subMenu2", "계리직");
-                innerHTML("subMenu3", "행정직");
-                innerHTML("subMenu4", "자격증/가산점");
-                innerHTML("subMenu5", "온라인서점");
             }
+            // }else if(leftMenuInfo == "bookStore") {
+            //     $("#siteTab").hide();
+            //     $("#bookStoreTab").show();
+            //     innerHTML("topSub", "온라인" + "<br>" + "서점");
+            //     innerHTML("subMenu1", "기술직");
+            //     innerHTML("subMenu2", "계리직");
+            //     innerHTML("subMenu3", "행정직");
+            //     innerHTML("subMenu4", "자격증/가산점");
+            //     innerHTML("subMenu5", "빅모의고사");
+            // }
+            // }else if(leftMenuInfo == "bigExam"){
+            //     $("#siteTab").hide();
+            //     $("#bigExamTab").show();
+            //     innerHTML("topSub", "BIG"+"<br>"+"모의고사");
+            //     innerHTML("subMenu1", "기술직");
+            //     innerHTML("subMenu2", "계리직");
+            //     innerHTML("subMenu3", "행정직");
+            //     innerHTML("subMenu4", "자격증/가산점");
+            //     innerHTML("subMenu5", "온라인서점");
+            // }
         }
         getExamScheduleList("dDayBanner"); //d-day 슬라이드 배너
 
@@ -438,22 +447,22 @@
                 <li><a href="javascript:goBigExam()">빅모의고사</a></li>
                 <li><a href="javascript:goPassReview();">합격수기</a></li>
             </ul>
-            <ul class="deaph1 cols7 bookStore" style="display: none;">
-                <li><a href="javascript:goBookStoreMobile('COMMON');">공통과목</a></li>
-                <li><a href="javascript:goBookStoreMobile('PUBLIC');">행정직군</a></li>
-                <li><a href="javascript:goBookStoreMobile('TECH');">기술직군</a></li>
-                <li><a href="javascript:goBookStoreMobile('POST');">계리직군</a></li>
-                <li><a href="javascript:goBookStoreMobile('CERT');">자격증</a></li>
-                <li><a href="javascript:goPageNoSubmit('bookStore','errataList')">정오표</a></li>
-            </ul>
-            <ul class="deaph1 cols7 bigExam" style="display: none;">
-                <li><a href="javascript:goPageNoSubmit('bigExam','examApply')">모의고사신청</a></li>
-                <li><a href="javascript:goPageNoSubmit('bigExam','acaExam')">학원모의고사</a></li>
-                <li><a href="javascript:goPageNoSubmit('bigExam','weekExam')">주간모의고사</a></li>
-                <li><a href="javascript:goPageNoSubmit('bigExam','pastQuestion')">기출문제</a></li>
-                <li><a href="javascript:goPageNoSubmit('bigExam','bigReviewList')">응시후기</a></li>
-                <li><a href="javascript:goPageNoSubmit('bigExam','referenceList')">자료실</a></li>
-            </ul>
+<%--            <ul class="deaph1 cols7 bookStore" style="display: none;">--%>
+<%--                <li><a href="javascript:goBookStoreMobile('COMMON');">공통과목</a></li>--%>
+<%--                <li><a href="javascript:goBookStoreMobile('PUBLIC');">행정직군</a></li>--%>
+<%--                <li><a href="javascript:goBookStoreMobile('TECH');">기술직군</a></li>--%>
+<%--                <li><a href="javascript:goBookStoreMobile('POST');">계리직군</a></li>--%>
+<%--                <li><a href="javascript:goBookStoreMobile('CERT');">자격증</a></li>--%>
+<%--                <li><a href="javascript:goPageNoSubmit('bookStore','errataList')">정오표</a></li>--%>
+<%--            </ul>--%>
+<%--            <ul class="deaph1 cols7 bigExam" style="display: none;">--%>
+<%--                <li><a href="javascript:goPageNoSubmit('bigExam','examApply')">모의고사신청</a></li>--%>
+<%--                <li><a href="javascript:goPageNoSubmit('bigExam','acaExam')">학원모의고사</a></li>--%>
+<%--                <li><a href="javascript:goPageNoSubmit('bigExam','weekExam')">주간모의고사</a></li>--%>
+<%--                <li><a href="javascript:goPageNoSubmit('bigExam','pastQuestion')">기출문제</a></li>--%>
+<%--                <li><a href="javascript:goPageNoSubmit('bigExam','bigReviewList')">응시후기</a></li>--%>
+<%--                <li><a href="javascript:goPageNoSubmit('bigExam','referenceList')">자료실</a></li>--%>
+<%--            </ul>--%>
         </div>
 
         <!-- gnb_area -->

@@ -108,19 +108,28 @@ function getTeacherListCtgKey() {
 
 function getZianPassCtgKey() {
     var leftMenuInfo = sessionStorage.getItem('leftMenu');//직렬 구분
+
+    var prevLeftMenu = sessionStorage.getItem('prevLeftMenu');//직렬 구분
+    if(leftMenuInfo == "bigExam"){
+        leftMenuInfo = prevLeftMenu;
+    }
     var ctgKey = "";
     if(leftMenuInfo == "publicOnline") ctgKey = 239;
     else if(leftMenuInfo == "techOnline") ctgKey = 454;
     else if(leftMenuInfo == "postOnline") ctgKey = 587;
+    else ctgKey = 454;
+
     return ctgKey;
 }
 
 function getYearMemberCtgKey() {
     var leftMenuInfo = sessionStorage.getItem('leftMenu');//직렬 구분
+
     var parentKey = "";
     if(leftMenuInfo == "publicAcademy") parentKey = 761;
     else if(leftMenuInfo == "techAcademy") parentKey = 762;
     else if(leftMenuInfo == "postAcademy") parentKey = 763;
+    else parentKey = 762;
     return parentKey;
 }
 
