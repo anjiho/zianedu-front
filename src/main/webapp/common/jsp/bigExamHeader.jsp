@@ -1,4 +1,37 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+<script>
+    $( document ).ready(function() {
+        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        if(sessionUserInfo != null){ //로그인했을경우,
+            $("#topNav_login").show();
+            $("#side_logout").show();
+            var userName = sessionUserInfo.name;
+            innerHTML("loginUserName", userName+" 님");
+            innerHTML("userName2", userName+" 님");
+        }else{
+            $("#side_login").show();
+            $("#topNav_logout").show();
+        }
+        //오른쪽메뉴 오늘 안보기 클릭 이벤트
+        $("#todayClose").click(function () {
+            setCookieMobile( "todayCookie", "done" , 1);
+            $("#quickBar").hide();
+        });
+
+        if(sessionUserInfo != null){
+            if(sessionUserInfo.cartCount > 0){
+                $("#cartCnt").show();
+                innerHTML('cartCnt', sessionUserInfo.cartCount);
+            }else{
+                $("#cartCnt").hide();
+            }
+        }else{
+            $("#cartCnt").hide();
+        }
+        getMainBottomBanner(6285, 2);
+    });
+
+</script>
 <div id="wrap" class="big">
     <div id="skipLink" class="administration">
         <a href="#">본문바로가기</a>
@@ -26,29 +59,13 @@
                 <li class="noBg"><a href="javascript:goExamGuide();"><span class="icon item3"></span>수험가이드</a></li>
                 <li><a href="javascript:goPageNoSubmit('myLecRoom', 'main');"><span class="icon item4"></span>내강의실</a></li>
                 <li><a href="javascript:goPageNoSubmit('myLecRoom', 'main');"><span class="icon item5"></span>학원수강내역</a></li>
-                <li><a href="javascript:goMyCart();"><span class="icon item6"><em>30</em></span>장바구니</a></li>
+                <li><a href="javascript:goMyCart();"><span class="icon item6"><em id="cartCnt"></em></span>장바구니</a></li>
                 <li><a href="javascript:goOpenMenu();"><span class="icon item7"></span>공지사항</a></li>
                 <li><a href="javascript:goPageNoSubmit('customerCenter','consult');"><span class="icon item8"></span>1:1문의</a></li>
             </ul>
         </div>
         <div id="examBanner" class="slider useBx">
-            <ul>
-                <li>
-                    <span>2019 국가직 7급 필기시험</span>
-                    <b>D-116</b>
-                    <a href="#">상세정보</a>
-                </li>
-                <li>
-                    <span>2019 국가직 7급 필기시험</span>
-                    <b>D-116</b>
-                    <a href="#">상세정보</a>
-                </li>
-                <li>
-                    <span>2019 국가직 7급 필기시험</span>
-                    <b>D-116</b>
-                    <a href="#">상세정보</a>
-                </li>
-            </ul>
+            <ul id="dDayBanner"></ul>
         </div>
         <div id="snsLink">
             <b>지안에듀 SNS</b>
@@ -68,11 +85,19 @@
         <h1 class="logo_mb"><a href="#"><img src="/common/zian/images/ex/logo08.png" alt="빅모의고사"></a></h1>
         <!--최상단메뉴-->
         <div id="topNav">
-            <ul>
-                <li><a href="#">로그인</a></li>
-                <li><a href="#">회원가입</a></li>
-                <li><a href="#">합격수기</a></li>
-                <li><a href="#">이벤트</a></li>
+            <ul id="topNav_login" style="display: none;">
+                <li><a href="javascript:addFavorite();" class="btn_bookmark">즐겨찾기에 등록</a></li>
+                <li id="loginUserName"><a href="#"></a></li>
+                <li><a href="javascript:goMyPage();">마이페이지</a></li>
+                <li><a href="javascript:goLogout();">로그아웃</a></li>
+                <li id="mypage"><a href="javascript:goPassReview();">합격수기</a></li>
+                <li><a href="javascript:goPageNoSubmit('event', 'proceedList');">이벤트</a></li>
+            </ul>
+            <ul id="topNav_logout" style="display: none;">
+                <li><a href="javascript:addFavorite();" class="btn_bookmark">즐겨찾기에 등록</a></li>
+                <li id="login"><a href="javascript:goLoginPage();">로그인</a></li>
+                <li id="join"><a href="javascript:goPage('user', 'joinAgree');">회원가입</a></li>
+                <li><a href="javascript:goPageNoSubmit('event', 'proceedList');">이벤트</a></li>
             </ul>
         </div>
         <!--//최상단메뉴-->
@@ -95,10 +120,15 @@
         <div class="sitemap_layer" id="sitemap_layer">
             <div class="sitemap_layer_wrapper">
                 <div class="side_menu_header">
-                    <p class="btn_home">지안에듀<span>님</span></p>
-                    <span class="bar"></span>
-                    <a href="" class="btn_logout">로그아웃</a>
-                    <button class="btn_close_menu">닫기</button>
+                    <div id="side_logout" style="display: none;">
+                        <p class="btn_home"><span id="userName2"></span><span></span></p>
+                        <span class="bar"></span>
+                        <a href="javascript:goLogout();" class="btn_logout">로그아웃</a>
+                    </div>
+                    <div id="side_login" style="display: none;">
+                        <a href="javascript:goLoginPage();" class="btn_logout">로그인</a>
+                    </div>
+                    <input type="button" class="btn_close_menu"/>
                 </div>
                 <!-- sitemap_wrap -->
                 <div class="sitemap_wrap">
@@ -208,25 +238,26 @@
     </div>
     <!--//주메뉴-->
 </div>
-    <script>
-        function bigLeftMenu(val) {
-            if(val == 'tech'){
-                sessionStorage.setItem("leftMenu", "techOnline");
-                goPageNoSubmit("techOnline", "main");
-            }else if(val == 'post'){
-                sessionStorage.setItem("leftMenu", "postOnline");
-                goPageNoSubmit("postOnline", "main");
-            }else if(val == 'public'){
-                sessionStorage.setItem("leftMenu", "publicOnline");
-                goPageNoSubmit("publicOnline", "main");
-            }else if(val == 'book'){
-                sessionStorage.setItem("leftMenu", 'bookStore');
-                goPageNoSubmit('bookStore','main');
-            }
+<script>
+    getExamScheduleList("dDayBanner"); //d-day 슬라이드 배너
+    function bigLeftMenu(val) {
+        if(val == 'tech'){
+            sessionStorage.setItem("leftMenu", "techOnline");
+            goPageNoSubmit("techOnline", "main");
+        }else if(val == 'post'){
+            sessionStorage.setItem("leftMenu", "postOnline");
+            goPageNoSubmit("postOnline", "main");
+        }else if(val == 'public'){
+            sessionStorage.setItem("leftMenu", "publicOnline");
+            goPageNoSubmit("publicOnline", "main");
+        }else if(val == 'book'){
+            sessionStorage.setItem("leftMenu", 'bookStore');
+            goPageNoSubmit('bookStore','main');
         }
-        
-        function goAlgisa() {
-            window.open("http://www.algisa.com/public/main.html", "_blank");
-            return false;
-        }
-    </script>
+    }
+
+    function goAlgisa() {
+        window.open("http://www.algisa.com/public/main.html", "_blank");
+        return false;
+    }
+</script>

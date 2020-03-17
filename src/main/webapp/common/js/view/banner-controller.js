@@ -386,7 +386,6 @@ function getExamScheduleList(tagId) {
         });
     });
 }
-
 //커뮤니티 리스트
 function getRandingBannerList(ctgKey, listNum) {
     var data = {

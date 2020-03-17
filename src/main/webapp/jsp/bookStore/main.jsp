@@ -82,7 +82,6 @@
     <input type="hidden" id="sPage2">
 <%--    <div id="wrap" class="shop">--%>
     <div id="wrap">
-        <%@include file="/common/jsp/leftMenu.jsp" %>
         <!--상단-->
         <%@include file="/common/jsp/bookStoreHeader.jsp" %>
         <!--//상단-->
