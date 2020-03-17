@@ -82,6 +82,10 @@ function getTechVodZianPassLeftMenu(tagId) {
 
 function getTeacherMenuCtgKey() {
     var leftMenuInfo = sessionStorage.getItem('leftMenu');//직렬 구분
+    var prevLeftMenu = sessionStorage.getItem('prevLeftMenu');//직렬 구분
+    if(leftMenuInfo == "bigExam"){
+        leftMenuInfo = prevLeftMenu;
+    }
     var menuCtgKey = "";
     if(leftMenuInfo == "publicOnline") menuCtgKey = 242;
     else if(leftMenuInfo == "publicAcademy") menuCtgKey = 337;
@@ -95,6 +99,10 @@ function getTeacherMenuCtgKey() {
 
 function getTeacherListCtgKey() {
     var leftMenuInfo = sessionStorage.getItem('leftMenu');//직렬 구분
+    var prevLeftMenu = sessionStorage.getItem('prevLeftMenu');//직렬 구분
+    if(leftMenuInfo == "bigExam"){
+        leftMenuInfo = prevLeftMenu;
+    }
     var teacherCtgKey = "";
     if(leftMenuInfo == "publicOnline") teacherCtgKey = 328;
     else if(leftMenuInfo == "publicAcademy") teacherCtgKey = 352;
@@ -124,7 +132,10 @@ function getZianPassCtgKey() {
 
 function getYearMemberCtgKey() {
     var leftMenuInfo = sessionStorage.getItem('leftMenu');//직렬 구분
-
+    var prevLeftMenu = sessionStorage.getItem('prevLeftMenu');//직렬 구분
+    if(leftMenuInfo == "bigExam"){
+        leftMenuInfo = prevLeftMenu;
+    }
     var parentKey = "";
     if(leftMenuInfo == "publicAcademy") parentKey = 761;
     else if(leftMenuInfo == "techAcademy") parentKey = 762;
