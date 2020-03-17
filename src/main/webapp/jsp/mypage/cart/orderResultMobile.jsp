@@ -108,7 +108,7 @@
                         </p>
                         <div class="tbd_03 mgb20">
                             <p class="title"><span class="text_blue">구매상품</span>정보</p>
-                            <table>
+                            <table class="cart02">
                                 <colgroup>
                                     <col width="100px">
                                     <col>

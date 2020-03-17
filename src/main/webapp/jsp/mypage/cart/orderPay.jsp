@@ -10,8 +10,10 @@
 //    String gKeys = Util.isNullValue(request.getParameter("gKeys"), "");
 //    String goodsInfo = Util.isNullValue(request.getParameter("goodsInfo"), "");
 //    String retakeInfo = Util.isNullValue(request.getParameter("retakeInfo"), "");
-    //String allProductPrice = Util.isNullValue(request.getParameter("allProductPrice"), "");
-    String allProductPrice = "150";
+    String allProductPrice = Util.isNullValue(request.getParameter("allProductPrice"), "");
+    if ("INIpayTest".equals(ConfigHolder.getINIPayMid())) {
+        allProductPrice = "1000";
+    }
     String userName = Util.isNullValue(request.getParameter("postName"), "");
     String phoneNum = Util.isNullValue(request.getParameter("allPhone"), "");
     String email = Util.isNullValue(request.getParameter("allEmail"), "");
@@ -309,7 +311,7 @@
                     <div class="cart">
                         <div class="tbd_03 mgb20">
                             <p class="title"><span class="text_blue">최종 주문상품</span> 확인</p>
-                            <table>
+                            <table class="cart02">
                                 <colgroup>
                                     <col width="100px">
                                     <col>
@@ -361,7 +363,7 @@
                         </div>
                         <div class="tbd_03 tbd_05 mgb60" id="deliveryInfo">
                             <p class="title"><span class="text_blue">배송지</span>정보확인</p>
-                            <table>
+                            <table class="">
                                 <colgroup>
                                     <col width="100px">
                                     <col>
