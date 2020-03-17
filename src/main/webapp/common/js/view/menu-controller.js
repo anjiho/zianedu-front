@@ -83,7 +83,7 @@ function getTechVodZianPassLeftMenu(tagId) {
 function getTeacherMenuCtgKey() {
     var leftMenuInfo = sessionStorage.getItem('leftMenu');//직렬 구분
     var prevLeftMenu = sessionStorage.getItem('prevLeftMenu');//직렬 구분
-    if(leftMenuInfo == "bigExam"){
+    if(leftMenuInfo == "bigExam" || leftMenuInfo == "bookStore"){
         leftMenuInfo = prevLeftMenu;
     }
     var menuCtgKey = "";
@@ -100,7 +100,7 @@ function getTeacherMenuCtgKey() {
 function getTeacherListCtgKey() {
     var leftMenuInfo = sessionStorage.getItem('leftMenu');//직렬 구분
     var prevLeftMenu = sessionStorage.getItem('prevLeftMenu');//직렬 구분
-    if(leftMenuInfo == "bigExam"){
+    if(leftMenuInfo == "bigExam" || leftMenuInfo == "bookStore"){
         leftMenuInfo = prevLeftMenu;
     }
     var teacherCtgKey = "";
@@ -118,7 +118,7 @@ function getZianPassCtgKey() {
     var leftMenuInfo = sessionStorage.getItem('leftMenu');//직렬 구분
 
     var prevLeftMenu = sessionStorage.getItem('prevLeftMenu');//직렬 구분
-    if(leftMenuInfo == "bigExam"){
+    if(leftMenuInfo == "bigExam" || leftMenuInfo == "bookStore"){
         leftMenuInfo = prevLeftMenu;
     }
     var ctgKey = "";
@@ -133,7 +133,7 @@ function getZianPassCtgKey() {
 function getYearMemberCtgKey() {
     var leftMenuInfo = sessionStorage.getItem('leftMenu');//직렬 구분
     var prevLeftMenu = sessionStorage.getItem('prevLeftMenu');//직렬 구분
-    if(leftMenuInfo == "bigExam"){
+    if(leftMenuInfo == "bigExam" || leftMenuInfo == "bookStore"){
         leftMenuInfo = prevLeftMenu;
     }
     var parentKey = "";
