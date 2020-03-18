@@ -64,6 +64,7 @@ function getLectureApplyTeacherList(menuCtgKey, goodsType) {
 
 //수강신청(온라인) > 단과 > 수강리스트
 function getLectureApplyTeacherTypeList(menuCtgKey, subjectMenuKeys, teacherKeys, stepCtgKeys, goodsType) {
+    alert(menuCtgKey);
     if (menuCtgKey == null || menuCtgKey == undefined) return;
     var data = {
         subjectMenuKeys : subjectMenuKeys,
@@ -71,6 +72,7 @@ function getLectureApplyTeacherTypeList(menuCtgKey, subjectMenuKeys, teacherKeys
         stepCtgKeys: stepCtgKeys,
         goodsType : goodsType
     };
+    alert(subjectMenuKeys);
     var infoList = getApi("/product/getLectureApplyTeacherTypeList/", menuCtgKey, data);
     if (infoList != null) {
         if (infoList.result.length > 0) {
@@ -89,14 +91,15 @@ function getLectureApplyTeacherTypeList(menuCtgKey, subjectMenuKeys, teacherKeys
                     var teacherInfoLIST = cmpList.teacherTypeInfo;
                     if (teacherInfoLIST != null) {
                         for (var j = 0; j < teacherInfoLIST.length; j++) {
+                            console.log(">>" + teacherInfoLIST[j].subjectCtgKey);
                             returnHtml += "<div class=\"teacherRow\">";
                             returnHtml += "<ul class=\"teacherList\">";
                             returnHtml += "<li><span class=\"thumb\"><img src='" + teacherInfoLIST[j].imageTeacherList + "'></span></li>";
                             returnHtml += "<li><b>" + teacherInfoLIST[j].teacherName + "</b></li>";
                             returnHtml += "<li class=\"rchk\"><b>이론</b>" + teacherInfoLIST[j].theoryCnt + "개</li>";
                             returnHtml += "<li class=\"rchk\"><b>문제풀이</b>" + teacherInfoLIST[j].problemSolveCnt + "개</li>";
-                            returnHtml += "<li class=\"rchk\"><b>단과특강</b>" + teacherInfoLIST[j].singleSpecialCnt + "개</li>";
-                            returnHtml += "<li class=\"rchk\"><b>필기대비</b>" + teacherInfoLIST[j].prepareNoteCnt + "개</li>";
+                            returnHtml += "<li class=\"rchk\"><b>단과</b>" + teacherInfoLIST[j].singleSpecialCnt + "개</li>";
+                            returnHtml += "<li class=\"rchk\"><b>종합반</b>" + teacherInfoLIST[j].prepareNoteCnt + "개</li>";
                             returnHtml += "<li class=\"rchk\"><b>모의고사</b>" + teacherInfoLIST[j].mockExamCnt + "개</li>";
                             returnHtml += "</ul>";
                             returnHtml += "<div class=\"toggleWrap\">";
