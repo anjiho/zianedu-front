@@ -3,8 +3,6 @@
 <%@include file="/common/jsp/common.jsp" %>
 <script>
     $( document ).ready(function() {
-
-
         $("#selDivision li a:eq(0)").addClass('active');
         $("#subject li a:eq(0)").addClass('active'); //전체로 default
         $("#teacher li a:eq(0)").addClass('active');
