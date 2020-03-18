@@ -95,8 +95,8 @@ function getLectureApplyTeacherTypeList(menuCtgKey, subjectMenuKeys, teacherKeys
                             returnHtml += "<li><b>" + teacherInfoLIST[j].teacherName + "</b></li>";
                             returnHtml += "<li class=\"rchk\"><b>이론</b>" + teacherInfoLIST[j].theoryCnt + "개</li>";
                             returnHtml += "<li class=\"rchk\"><b>문제풀이</b>" + teacherInfoLIST[j].problemSolveCnt + "개</li>";
-                            returnHtml += "<li class=\"rchk\"><b>단과특강</b>" + teacherInfoLIST[j].singleSpecialCnt + "개</li>";
-                            returnHtml += "<li class=\"rchk\"><b>필기대비</b>" + teacherInfoLIST[j].prepareNoteCnt + "개</li>";
+                            returnHtml += "<li class=\"rchk\"><b>단과</b>" + teacherInfoLIST[j].singleSpecialCnt + "개</li>";
+                            returnHtml += "<li class=\"rchk\"><b>종합반</b>" + teacherInfoLIST[j].prepareNoteCnt + "개</li>";
                             returnHtml += "<li class=\"rchk\"><b>모의고사</b>" + teacherInfoLIST[j].mockExamCnt + "개</li>";
                             returnHtml += "</ul>";
                             returnHtml += "<div class=\"toggleWrap\">";
