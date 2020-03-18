@@ -545,7 +545,8 @@
                             <div class="tabPage  active">
                                 <a href="#modal1" class="btn_info btn_modalOpen">수강안내사항</a>
                                 <!--상단 table-->
-
+                                <div class="tbd_01">
+                                </div>
                                 <!-- tab_large-->
                                 <div class="tab_large">
                                     <div class="tab_large_1depth tabContent">
