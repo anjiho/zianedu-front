@@ -64,7 +64,6 @@ function getLectureApplyTeacherList(menuCtgKey, goodsType) {
 
 //수강신청(온라인) > 단과 > 수강리스트
 function getLectureApplyTeacherTypeList(menuCtgKey, subjectMenuKeys, teacherKeys, stepCtgKeys, goodsType) {
-    alert(menuCtgKey);
     if (menuCtgKey == null || menuCtgKey == undefined) return;
     var data = {
         subjectMenuKeys : subjectMenuKeys,
@@ -72,7 +71,6 @@ function getLectureApplyTeacherTypeList(menuCtgKey, subjectMenuKeys, teacherKeys
         stepCtgKeys: stepCtgKeys,
         goodsType : goodsType
     };
-    alert(subjectMenuKeys);
     var infoList = getApi("/product/getLectureApplyTeacherTypeList/", menuCtgKey, data);
     if (infoList != null) {
         if (infoList.result.length > 0) {

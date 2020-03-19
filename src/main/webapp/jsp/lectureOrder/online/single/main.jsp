@@ -151,7 +151,7 @@
                                 <li><a href="javascript:void(0);">전체</a></li>
                                 <li><a href="javascript:getSearch(203);" id="203">이론</a></li>
                                 <li><a href="javascript:getSearch(205);" id="205">문제풀이</a></li>
-                                <li><a href="javascript:getSearch(204);" id="207">단과</a></li>
+                                <li><a href="javascript:getSearch(204);" id="204">단과</a></li>
                                 <li><a href="javascript:getSearch(767);" id="767">종합반</a></li>
                                 <li><a href="javascript:getSearch(4266);" id="4266">모의고사</a></li>
                             </ul>
