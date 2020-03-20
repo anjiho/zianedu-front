@@ -73,7 +73,7 @@
         var userInputId = getInputTextValue('userId');
         if(mobileNo != ''){
             var userInfo  = getUserInfoByMobileNumber(phoneNum);
-            if(userInfo != null){
+            if(userInfo.result != null){
                 var userId = userInfo.result.userId;
                 window.opener.document.getElementById("userIdText").innerHTML = "가입하신 아이디는 <span style='font-weight: bold'>" + userId + " </span>입니다";
                 window.opener.document.getElementById("phoneBtn").style.display ='none';
