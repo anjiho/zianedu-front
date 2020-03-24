@@ -141,6 +141,23 @@ function requestVideoStartStop(jLecKey, pauseDay, requestType) {
     
 }
 
+//패키지 분류 리스트
+function getPackageSignUpList(userKey) {
+    if (userKey == null || userKey == undefined) return;
+
+    var infoList = getApi("/myPage/getPackageSignUpList/", userKey, "");
+
+    if (infoList == null || Number(infoList.result.length) == 0) {
+        $("#packageListDiv").hide();
+        return false;
+    } else if (infoList != null || infoList.result.length > 0) { //과목 리스트
+        innerValue("packageJKey", infoList.result[0].jkey);
+        dwr.util.addOptions('packageList', infoList.result, function (data) {
+            return "<a href='javascript:zianPassTypeList("+ data.jkey +");'>"+ data.gname +"</a>"
+        }, {escapeHtml: false});
+    }
+}
+
 //지안패스 분류 리스트
 function getZianPassSignUpList(userKey) {
     if (userKey == null || userKey == undefined) return;

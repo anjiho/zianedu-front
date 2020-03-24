@@ -160,7 +160,6 @@
             var priceList = toStrFileName(arr);
             getOrderSheetInfoFromImmediatelyAtBookStore(userKey, priceList, bookCount);
         }
-
         innerValue("allProductPrice", resultData.allProductPrice);
         innerHTML("allPrice", format(resultData.allProductPrice));
         innerHTML("orderName1", resultData.postName);
