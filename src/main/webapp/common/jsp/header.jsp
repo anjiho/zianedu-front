@@ -84,35 +84,21 @@
             $("#mainLogoImg").attr("src", "/common/zian/images/ex/logo07.png");
             $("#mainUrl").attr("href", "javascript:goPageNoSubmit('bookStore', 'main')");
         }
-        // }else if(leftMenuInfo == "bigExam"){
-        //     $(".onlineTopMenu").hide();
-        //     $(".acaTopMenu").hide();
-        //     $(".bookStore").hide();
-        //     $(".bigExam").show();
-        //     $("#logo").attr("src", "/common/zian/images/bigimg/logo.gif");
-        //     $("#mainUrl").attr("href", "javascript:goPageNoSubmit('bigExam', 'main')");
-        // }
 
-        if(leftMenuInfo == "publicOnline"){
-            getMainBottomBanner(6284, 2);
-        }else if(leftMenuInfo == "publicAcademy"){
-            getMainBottomBanner(6285, 2);
-        }else if(leftMenuInfo == "techOnline"){
-            getMainBottomBanner(6287, 2);
-        }else if(leftMenuInfo == "techAcademy"){
-            getMainBottomBanner(6286, 2);
-        }else if(leftMenuInfo == "postOnline"){
-            getMainBottomBanner(6289, 2);
-        }else if(leftMenuInfo == "postAcademy"){
-            getMainBottomBanner(6288, 2);
-        }else{
-            getMainBottomBanner(6285, 2);
-        }
+        if(leftMenuInfo == "publicOnline") getMainBottomBanner(6284, 2);
+        else if(leftMenuInfo == "publicAcademy") getMainBottomBanner(6285, 2);
+        else if(leftMenuInfo == "techOnline") getMainBottomBanner(6287, 2);
+        else if(leftMenuInfo == "techAcademy") getMainBottomBanner(6286, 2);
+        else if(leftMenuInfo == "postOnline") getMainBottomBanner(6289, 2);
+        else if(leftMenuInfo == "postAcademy") getMainBottomBanner(6288, 2);
+        else getMainBottomBanner(6285, 2);
+
 
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         if(sessionUserInfo != null){ //로그인했을경우,
             $("#topNav_login").show();
             $("#side_logout").show();
+            innerHTML('topNavM_state', '로그아웃');
             //$(".topNavClass").show();
             var userName = sessionUserInfo.name;
             innerHTML("loginUserName", userName+" 님");
@@ -120,7 +106,7 @@
         }else{
             $("#topNav_logout").show();
             $("#side_login").show();
-          //  $(".topNavClass2").show();
+            innerHTML('topNavM_state', '로그인');
         }
         //오른쪽메뉴 오늘 안보기 클릭 이벤트
         $("#todayClose").click(function () {
@@ -201,30 +187,17 @@
                 innerHTML("subMenu4", "온라인서점");
                 innerHTML("subMenu5", "빅모의고사");
             }
-            // }else if(leftMenuInfo == "bookStore") {
-            //     $("#siteTab").hide();
-            //     $("#bookStoreTab").show();
-            //     innerHTML("topSub", "온라인" + "<br>" + "서점");
-            //     innerHTML("subMenu1", "기술직");
-            //     innerHTML("subMenu2", "계리직");
-            //     innerHTML("subMenu3", "행정직");
-            //     innerHTML("subMenu4", "자격증/가산점");
-            //     innerHTML("subMenu5", "빅모의고사");
-            // }
-            // }else if(leftMenuInfo == "bigExam"){
-            //     $("#siteTab").hide();
-            //     $("#bigExamTab").show();
-            //     innerHTML("topSub", "BIG"+"<br>"+"모의고사");
-            //     innerHTML("subMenu1", "기술직");
-            //     innerHTML("subMenu2", "계리직");
-            //     innerHTML("subMenu3", "행정직");
-            //     innerHTML("subMenu4", "자격증/가산점");
-            //     innerHTML("subMenu5", "온라인서점");
-            // }
         }
         getExamScheduleList("dDayBanner"); //d-day 슬라이드 배너
 
     });
+
+    //모바일 로그인,로그아웃 버튼 연동
+    function mobileLoginChk() {
+        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        if(sessionUserInfo != null) goLogout();
+        else goLoginPage();
+    }
 </script>
 <!--상단-->
 <div id="header">
@@ -256,7 +229,7 @@
                         <li><a href="">장바구니</a></li>
                         <li><a href="">내강의실</a></li>
                         <li><a href="">마이페이지</a></li>
-                        <li><a href="">로그아웃</a></li>
+                        <li><a href="javascript:mobileLoginChk();" id="topNavM_state">로그아웃</a></li>
                     </ul>
                 </li>
                 <li><a href="#" class="header_menu" id="header_menu">메뉴</a></li>

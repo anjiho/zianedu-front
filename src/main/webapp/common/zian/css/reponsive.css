@@ -540,7 +540,7 @@
     .Mclass .tab_topContent .tabPage .btn_info {top:-100px;}
     .tabPage .tbd_01 table th {display: none}
     .Mclass .tab_large .tab_large_1depth .tabBar {width:100%;margin:20px 0;}
-    .Mclass .tab_large .tab_large_1depth .tabBar > li {width:33%;}
+    .Mclass .tab_large .tab_large_1depth .tabBar > li {width:24.6%;}
     .Mclass .tab_large .tab_large_2depth .tabBar {width:60%;margin:20px 20%;text-align: center}
     .Mclass .tab_large .tab_large_2depth .tabBar > li {width:47%;margin:0 1% 5px;}
     .Mclass .tab_large .tab_large_2depth .tabBar > li a {padding: 0}
@@ -961,7 +961,7 @@
     .lectureWrap .teacherList.disnonepc:after{display:block;content:'';clear:both;}
     .lectureWrap .teacherList.disnonepc ul.bottom li.on{color:#fff;}
     .lectureWrap .teacherList.disnonepc ul.bottom > li.on:before{display:block;content:'';clear:both;width:70px;height:70px;position:absolute;top:-17%;left:69%;margin-left:-50px;border-radius:50px;background-color:#144b95;z-index:-1;}
-    .Mclass .tab_large .tab_large_1depth .tabBar > li {width: 32.555555%}
+    .Mclass .tab_large .tab_large_1depth .tabBar > li {width: 24.6%}
 
     .boardWrap.eventBoard .colbox {margin-top:30px}
 }

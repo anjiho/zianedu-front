@@ -3,7 +3,6 @@
 <script>
     $( document ).ready(function() {
         sessionStorage.setItem("leftMenu", "publicOnline");
-        var leftMenuInfo = sessionStorage.getItem('leftMenu');//직렬 구분
     });
 </script>
 <form name="frm" method="get">

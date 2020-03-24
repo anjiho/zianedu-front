@@ -153,7 +153,6 @@
         innerValue("zianPassjKey", jkey);
         getSignUpZianPassTypeList(jkey, pcMobile);
         $("#zianPassType li:eq(0)").addClass('active');
-        //$("#zianPassType li").addClass('active').siblings().removeClass('active');
     }
 
     function zianPassLecTitleList(ctgKey) {
@@ -552,6 +551,7 @@
                                     <div class="tab_large_1depth tabContent">
                                         <ul class="tabBar">
                                             <li class="active"><a href="#">동영상</a></li>
+                                            <li><a href="#">패키지</a></li>
                                             <li><a href="#">지안패스</a></li>
                                             <li><a href="#">학원실강</a></li>
                                         </ul>
@@ -650,6 +650,105 @@
                                             <!-- //동영상 하단 메뉴tab_large_2dept -->
                                         </div>
                                         <!-- //동영상 -->
+
+
+
+                                        <!-- 패키지 -->
+                                        <div class="tabPage active">
+                                            <!-- 동영상 하단 메뉴 tab_large_2dept-->
+                                            <div class="tab_large_2depth tabContent">
+                                                <ul class="tabBar playSubject" id="packageSubject"></ul> <!-- 과목리스트 -->
+                                                <!-- 한국사 -->
+                                                <div class="tabPage active">
+                                                    <div class="tabContent_2depth">
+                                                        <p class="title">수강중인강좌</p>
+
+                                                        <!-- Dropmenu -->
+                                                        <div class="Dropmenu">
+                                                            <div class="lfloat">
+                                                                <p class="tit">유형</p>
+                                                                <ul class="Droptab_wrap" id="packageType"></ul>
+                                                            </div>
+                                                            <div class="rfloat">
+                                                                <p class="tit">강좌명</p>
+                                                                <ul class="1depth-1" id="packageLectureList">
+
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                        <!--//Dropmenu -->
+
+                                                        <!--Dropmenu_down 상단 메뉴 클릭시 내용 드롭다운 -->
+                                                        <div class="Dropmenu_down" id="packageLecListDiv">
+                                                            <!--inner-->
+                                                            <div class="inner">
+                                                                <div class="btn_crud">
+                                                                    <span class="black small" id="packageCtgName">단과특강</span>
+                                                                    <a href="#modal3" class="btn_modalOpen">강좌설명</a>
+                                                                    <span id="package_lectureReviewBtn"></span>
+                                                                </div>
+
+                                                                <div class="txt_area">
+                                                                    <span class="bdbox" id="packagePc">PC</span>
+                                                                    <span class="bdbox" id="packageMobile">모바일</span>
+                                                                    <p class="thumb" id="packageLecName"></p>
+                                                                    <span class="date"><b>수강기간</b><span id="packageLecStartDate"></span> ~ <span id="packageLecEndDate"></span> (<span id="packageLimitDay"></span>일)</span>
+                                                                    <!--guide-->
+                                                                    <div class="guide">
+                                                                        <div class="play">
+                                                                            <span>일시정지</span>
+                                                                            <a href="javascript:goStop('stop');" class="replay off">신청</a>
+                                                                        </div>
+                                                                        <div class="prograss_wrap">
+                                                                            <span class="text">진도율&nbsp;&nbsp; <span id="packageProgressRate"></span></span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!--//guide-->
+                                                                </div>
+
+                                                                <div class="tbd_02">
+                                                                    <div class="crud_area">
+                                                                        <span class="unit">강좌목차</span>
+                                                                        <strong>총<span id="packageLecTotalCnt"></span>강</strong>
+                                                                    </div>
+                                                                    <table class="bd">
+                                                                        <caption>최근수강강좌</caption>
+                                                                        <colgroup>
+                                                                            <col></col>
+                                                                            <col></col>
+                                                                            <col></col>
+                                                                            <col></col>
+                                                                        </colgroup>
+                                                                        <thead>
+                                                                        <tr>
+                                                                            <th>회차</th>
+                                                                            <th>제목</th>
+                                                                            <th>시간</th>
+                                                                            <th>동영상</th>
+                                                                        </tr>
+                                                                        </thead>
+                                                                    </table>
+                                                                    <div class="scroll">
+                                                                        <table class="new_cssM">
+                                                                            <tbody id="dataList2"></tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!--//inner-->
+                                                        </div>
+                                                        <!--//Dropmenu_down -->
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <!-- //동영상 하단 메뉴tab_large_2dept -->
+                                        </div>
+                                        <!-- //패키지 -->
+
+
+
 
                                         <!-- 지안패스 -->
                                         <div class="tabPage">

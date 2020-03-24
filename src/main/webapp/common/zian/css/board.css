@@ -74,7 +74,7 @@
 .mypage05 tr.reply{background:#f1f1f1}
 .mypage05 tr.reply td:nth-child(2) a{background:none;padding-left:0}
 .mypage05 tr.reply td:nth-child(2) a:before{content:'RE:';color:#144b95;}
-
+.mypage05 tr th{text-align:center}
 
 /* 마이페이지 내게시글 */
 .mypage05_2{width:100%;border-spacing:0;table-layout:fixed}
