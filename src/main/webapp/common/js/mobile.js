@@ -5,7 +5,7 @@ $(document).ready(function() {
 		$(this).removeClass('on').next().slideUp();
 		if($(this).next("ul.logindrop").is(":visible")){
 			$(this).next("ul.logindrop").slideUp("500");
-		} else {
+		} else {topNavM
 			$(this).addClass('on');
 			$("#topNavM .logindrop").slideUp("500");
 			$(this).next("ul.logindrop").slideToggle("500");

@@ -165,7 +165,9 @@ function getTeacherPageList(tagId, ctgKey, subjectType, teacherMenuCtgKey) {
             returnHtml += '       <span>'+ selList[i].teacherName +'</span>';
             returnHtml += '        </div>';
             returnHtml += '       <div class="row3">';
-            returnHtml += '       <span>쉽고 재미있는, 공무원 국어 마스터</span>';
+            if(selList[i].greeting != undefined){
+                returnHtml += '       <span>'+ selList[i].greeting +'</span>';
+            }
             returnHtml += '    </div>';
             returnHtml += '    </div>';
             returnHtml += '   <div class="img-box">';
@@ -272,7 +274,9 @@ function getMajorTeacherPageList(tagId, ctgKey, subjectType, teacherMenuCtgKey) 
                 returnHtml += '       <span>'+ selList[i].teacherName +'</span>';
                 returnHtml += '        </div>';
                 returnHtml += '       <div class="row3">';
-                returnHtml += '       <span>쉽고 재미있는, 공무원 국어 마스터</span>';
+                if(selList[i].greeting != undefined){
+                    returnHtml += '       <span>'+ selList[i].greeting +'</span>';
+                }
                 returnHtml += '    </div>';
                 returnHtml += '    </div>';
                 returnHtml += '   <div class="img-box">';
