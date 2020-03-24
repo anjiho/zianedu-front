@@ -17,6 +17,8 @@ public class ConfigHolder {
     private String findIdSmsEncodeData;
     @Value("#{config['find.pass.sms.encode.data']}")
     private String findPassSmsEncodeData;
+    @Value("#{config['user.modify.sms.encode.data']}")
+    private String userModifySmsEncodeData;
     @Value("#{config['inipay.mid']}")
     private String inipayMID;
     @Value("#{config['inipay.signkey']}")
@@ -32,6 +34,10 @@ public class ConfigHolder {
 
     public static String getFindPassSmsEncodeData() {
         return configHolder.findPassSmsEncodeData;
+    }
+
+    public static String getUserModifySmsEncodeData() {
+        return configHolder.userModifySmsEncodeData;
     }
 
     public static String getINIPayMid() {
