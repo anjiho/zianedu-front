@@ -113,12 +113,14 @@
         if(sessionUserInfo != null){ //로그인했을경우,
             $("#topNav_login").show();
             $("#side_logout").show();
+            //$(".topNavClass").show();
             var userName = sessionUserInfo.name;
             innerHTML("loginUserName", userName+" 님");
             innerHTML("userName2", userName+" 님");
         }else{
-            $("#side_login").show();
             $("#topNav_logout").show();
+            $("#side_login").show();
+          //  $(".topNavClass2").show();
         }
         //오른쪽메뉴 오늘 안보기 클릭 이벤트
         $("#todayClose").click(function () {
@@ -247,17 +249,6 @@
                 <li><a href="javascript:goPageNoSubmit('event', 'proceedList');">이벤트</a></li>
             </ul>
         </div>
-        <!-- 로그아웃 -->
-        <%--        <div id="topNav" class="logout" style="display: none;">--%>
-        <%--            <ul>--%>
-        <%--                <li><a href="javascript:addFavorite();" class="btn_bookmark">즐겨찾기에 등록</a></li>--%>
-        <%--                <li id="login"><a href="javascript:goLoginPage();">로그인</a></li>--%>
-        <%--                <li id="join"><a href="javascript:goPage('user', 'joinAgree');">회원가입</a></li>--%>
-        <%--                <li><a href="javascript:goPageNoSubmit('event', 'proceedList');">이벤트</a></li>--%>
-        <%--            </ul>--%>
-        <%--        </div>--%>
-        <!--//최상단메뉴-->
-        <!--추가-->
         <div id="topNavM">
             <ul>
                 <li><a href="#" class="login_btn">로그인</a>
@@ -271,7 +262,6 @@
                 <li><a href="#" class="header_menu" id="header_menu">메뉴</a></li>
             </ul>
         </div>
-
         <div class="sitemap_layer" id="sitemap_layer">
             <div class="sitemap_layer_wrapper">
                 <div class="side_menu_header">
