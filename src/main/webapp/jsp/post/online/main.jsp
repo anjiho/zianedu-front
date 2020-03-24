@@ -29,12 +29,8 @@
                     <div class="inner">
                         <a href="#"><img src="http://52.79.40.214/Upload/100/main/img_banner0301_20190903102820.jpg" alt=""></a>
                     </div>
+                </div>
             </div>
-<%--            <div class="mainBannerReview">--%>
-<%--                <div class="inner">--%>
-<%--                    <ul id="reviewBanner"></ul>--%>
-<%--                </div>--%>
-<%--            </div>--%>
                 <div class="mainBannerReview disnone">
                     <div class="inner">
                         <a href="#"><img src="http://52.79.40.214/Upload/100/main/img_banner0301_20190903102820.jpg" alt=""></a>

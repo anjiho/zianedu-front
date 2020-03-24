@@ -22,6 +22,7 @@
             $(".bigExam").hide();
             $("#logo").attr("src", "/common/zian/images/common/logo01.png");
             $("#mainUrl").attr("href", "javascript:goPageNoSubmit('publicOnline', 'main')");
+            $("#mainLogoImg").attr("src", "/common/zian/images/ex/logo01.png");
             innerHTML("mainName", "온라인");
             $("#mainName").css('color', '#134c97');
         }else if(leftMenuInfo == "publicAcademy") {
@@ -31,6 +32,7 @@
             $(".bigExam").hide();
             $("#logo").attr("src", "/common/zian/images/common/logo01.png");
             $("#mainUrl").attr("href", "javascript:goPageNoSubmit('publicAcademy', 'main')");
+            $("#mainLogoImg").attr("src", "/common/zian/images/ex/logo02.png");
             innerHTML("mainName", "학원");
             $("#mainName").css('color', '#134c97');
         }else if(leftMenuInfo == "techOnline") {
@@ -40,6 +42,7 @@
             $(".bigExam").hide();
             $("#logo").attr("src", "/common/zian/images/common/logo02.png");
             $("#mainUrl").attr("href", "javascript:goPageNoSubmit('techOnline', 'main')");
+            $("#mainLogoImg").attr("src", "/common/zian/images/ex/logo03.png");
             innerHTML("mainName", "온라인");
             $("#mainName").css('color', '#f69321');
         }else if(leftMenuInfo == "techAcademy") {
@@ -49,6 +52,7 @@
             $(".bigExam").hide();
             $("#logo").attr("src", "/common/zian/images/common/logo02.png");
             $("#mainUrl").attr("href", "javascript:goPageNoSubmit('techAcademy', 'main')");
+            $("#mainLogoImg").attr("src", "/common/zian/images/ex/logo04.png");
             innerHTML("mainName", "학원");
             $("#mainName").css('color', '#f69321');
         }else if(leftMenuInfo == "postOnline") {
@@ -58,6 +62,7 @@
             $(".bigExam").hide();
             $("#logo").attr("src", "/common/zian/images/common/logo03.png");
             $("#mainUrl").attr("href", "javascript:goPageNoSubmit('postOnline', 'main')");
+            $("#mainLogoImg").attr("src", "/common/zian/images/ex/logo05.png");
             innerHTML("mainName", "온라인");
             $("#mainName").css('color', '#ce1717');
         }else if(leftMenuInfo == "postAcademy") {
@@ -67,6 +72,7 @@
             $(".bigExam").hide();
             $("#logo").attr("src", "/common/zian/images/common/logo03.png");
             $("#mainUrl").attr("href", "javascript:goPageNoSubmit('postAcademy', 'main')");
+            $("#mainLogoImg").attr("src", "/common/zian/images/ex/logo06.png");
             innerHTML("mainName", "학원");
             $("#mainName").css('color', '#ce1717');
         }else if(leftMenuInfo == "bookStore") {
@@ -75,6 +81,7 @@
             $(".bookStore").show();
             $(".bigExam").hide();
             $("#logo").attr("src", "/common/zian/images/common/logo04.png");
+            $("#mainLogoImg").attr("src", "/common/zian/images/ex/logo07.png");
             $("#mainUrl").attr("href", "javascript:goPageNoSubmit('bookStore', 'main')");
         }
         // }else if(leftMenuInfo == "bigExam"){
@@ -221,7 +228,7 @@
 <div id="header">
     <div class="inner">
         <h1 class="logo_pc"><a href="" id="mainUrl"><img src="" id="logo"> <span id="mainName"></span></a></h1>
-        <h1 class="logo_mb"><a href="#"><img src="/common/zian/images/ex/logo01.png" alt="지안에듀 행정직"></a></h1>
+        <h1 class="logo_mb"><a href="#"><img src="" id="mainLogoImg"></a></h1>
         <!--최상단메뉴-->
         <!-- 로그인 -->
         <div id="topNav">

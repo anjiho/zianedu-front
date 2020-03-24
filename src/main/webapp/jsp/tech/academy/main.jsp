@@ -26,6 +26,7 @@
                     <div class="inner">
                         <a href="#"><img src="http://52.79.40.214/Upload/100/main/img_banner0201_20190903102230.jpg" alt=""></a>
                     </div>
+                </div>
             </div>
             <div class="mainBannerReview disnone">
                 <div class="inner">

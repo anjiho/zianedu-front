@@ -76,10 +76,38 @@ function getBookList(tagId , leftMenuCtgKey, sPage, listLimit) {
             " </div>";
         }, {escapeHtml: false});
     }
-    $(function(){
-        kiplayer.sliderSlick($(".product1"));
-        $('.slick-dots').attr('style', "display:none;");
-    });
+    $(".product1").slick({
+        	dots: true,
+        	infinite: true,
+        	slidesToShow: 4,
+        	slidesToScroll: 1,
+        	variableWidth: false,
+        	arrows: true,
+        	autoplay:true,
+        	responsive: [
+        		{ autoplay:true,
+        			breakpoint: 800,
+        			settings: {
+        				slidesToShow: 3,
+        				slidesToScroll: 1,
+        			}
+        		},
+        		{ autoplay:true,
+        			breakpoint: 480,
+        			settings: {
+        				slidesToShow: 2,
+        				slidesToScroll: 1
+        			}
+        		},
+        		{autoplay:true,
+        			breakpoint: 321,
+        			settings: {
+        				slidesToShow: 2,
+        				slidesToScroll: 1
+        			}
+        		}
+        	]
+        });
 }
 
 function getSalesBookList(bookMenuType, searchText, orderType, sPage, listLimit, subjectKey) {
