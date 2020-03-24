@@ -25,13 +25,13 @@
                 </div>
                 <div class="mainBannerReview disnonepc">
                     <div class="inner">
-                        <a href="#"><img src="http://52.79.40.214/Upload/100/main/img_mainVisual01021.jpg" alt=""></a>
-                </div>
+                        <a href="#"><img src="/common/zian/images/content/img_mainVisual01021.jpg" alt=""></a>
+                    </div>
                 </div>
             </div>
             <div class="mainBannerReview disnone">
                 <div class="inner">
-                    <a href="#"><img src="http://52.79.40.214/Upload/100/main/img_banner0101_20190903091022.jpg" alt=""></a>
+                    <a href="#"><img src="/common/zian/images/content/img_banner0101" alt=""></a>
                 </div>
             </div>
 
@@ -260,6 +260,7 @@ $( document ).ready(function() {
     getEventMiniBanner("", 6284, 5);//이벤트 배너
     getBookList("productList1", 843, 1, 10);//행정직 온라인 서점
     getCommunityList(10970, 1, 2);//합격자 영상
+
 });
 
 </script>

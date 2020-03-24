@@ -10,18 +10,6 @@ function getBookStoreCenterBanner(tagId) {
     }
 }
 
-//온라인서점 중앙 오른쪽 이벤트 배너
-function getBookStoreCenterRightBanner(tagId) {
-    var bannerInfoList = getApi("/banner/getBookStoreCenterRightBanner","" ,"");
-
-    if (bannerInfoList.result.length > 0) {
-        var selList = bannerInfoList.result;
-        dwr.util.addRows(tagId, selList, [
-            //function(data) {return "<img src='"+ data.targetUrl +"'>";}
-        ], {escapeHtml:false});
-    }
-}
-
 //직렬별 메인 대 배너 불러오기
 function getMainBigBanner(tagId, ctgKey, listNum) {
     var data = {
@@ -110,43 +98,6 @@ function getEventMiniBanner(tagId, ctgKey, listNum) {
         }
     }
 }
-
-//메인페이지 최상단 배너
-function getMainPageTopBanner(tagId) {
-    var infoList = getApi("/banner/getMainPageTopBanner","" ,"");
-
-    if (infoList.result.length > 0) {
-        var selList = infoList.result;
-        dwr.util.addRows(tagId, selList, [
-            //function(data) {return "<img src='"+ data.targetUrl +"'>";}
-        ], {escapeHtml:false});
-    }
-}
-
-//배너 온라인 서점 리스트
-function getOnlineBookList(tagId) {
-    var infoList = getApi("/banner/getOnlineBookList","" ,"");
-
-    if (infoList.result.length > 0) {
-        var selList = infoList.result;
-        dwr.util.addRows(tagId, selList, [
-            //function(data) {return "<img src='"+ data.targetUrl +"'>";}
-        ], {escapeHtml:false});
-    }
-}
-
-//패키지 강좌 리스트
-function getPackageLectureList(tagId) {
-    var infoList = getApi("/banner/getPackageLectureList","" ,"");
-
-    if (infoList.result.length > 0) {
-        var selList = infoList.result;
-        dwr.util.addRows(tagId, selList, [
-            //function(data) {return "<img src='"+ data.targetUrl +"'>";}
-        ], {escapeHtml:false});
-    }
-}
-
 
 //강사(지안교수진) 배너 리스트 [ 공통과목 교수진 ]
 function getTeacherBannerList(tagId, ctgKey, subjectType, teacherMenuCtgKey) {
