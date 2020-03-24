@@ -108,43 +108,21 @@
                         </div>
                     </div>
                 </div>
+
                 <!-- 지안에듀 교수진 -->
                 <div class="mainTeacher">
-                    <div class="inner tabContent">
-                        <ul class="tabBar">
-                            <li class="active"><a href="#">공통과목</a></li>
-                            <li><a href="#">전공과목</a></li>
-                        </ul>
-                        <div class="tabPage active" id="mainTeacherTab1">
-                            <!-- Swiper -->
-                            <div class="sliderWrap">
-                                <div class="swiper-container mainTeacherTitle">
-                                    <div class="swiper-wrapper" id="teacherList1"></div><!--공통과목 선생님 리스트-->
-                                </div>
-                                <div class="swiper-container mainTeacherPage">
-                                    <div class="swiper-wrapper" id="teacherPage1"></div><!--공통과목 선생님 페이지 리스트-->
-                                    <!-- Add Arrows -->
-                                    <div class="swiper-button-next swiper-button-white"></div>
-                                    <div class="swiper-button-prev swiper-button-white"></div>
-                                </div>
-                            </div>
+                    <h2>지안에듀 교수진</h2>
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper" id="teacherList">
                         </div>
-                        <div class="tabPage" id="mainTeacherTab2">
-                            <!-- Swiper -->
-                            <div class="sliderWrap">
-                                <div class="swiper-container mainTeacherTitle">
-                                    <div class="swiper-wrapper" id="teacherList2"></div>
-                                </div>
-                                <div class="swiper-container mainTeacherPage">
-                                    <div class="swiper-wrapper" id="teacherPage2"></div>
-                                    <!-- Add Arrows -->
-                                    <div class="swiper-button-next swiper-button-white"></div>
-                                    <div class="swiper-button-prev swiper-button-white"></div>
-                                </div>
-                            </div>
-                        </div>
+                        <!-- Add Pagination -->
+                        <div class="swiper-pagination"></div>
                     </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
                 </div>
+                <!-- //지안에듀 교수진 -->
+
 
                 <!-- 지안에듀 바로가기 -->
                 <div class="mainQuickLink">
@@ -204,7 +182,7 @@
                         <h5>행정직 온라인 서점</h5>
                     </div>
                     <div class="mainProductList">
-                        <ul class="productList" id="productList1"></ul>
+                        <ul class="product1" id="productList1"></ul>
                     </div>
                 </div>
                 <!-- 지안에듀 고객센터 -->
@@ -273,9 +251,9 @@ $( document ).ready(function() {
     getMainMiniBanner("mainVisualSlider2", 787, 5);//대배너 옆 미니 배너
     var teacherMenuCtgKey = getTeacherListCtgKey();
     getTeacherPageList("teacherPage1", 788, 0, teacherMenuCtgKey);//공통과목 교수진 페이지 리스트
-    getTeacherBannerList("teacherList1", 788, 0, teacherMenuCtgKey);//공통과목 교수진 리스트
+    //getTeacherBannerList("teacherList1", 788, 0, teacherMenuCtgKey);//공통과목 교수진 리스트
     getMajorTeacherPageList("teacherPage2", 788, 1, teacherMenuCtgKey);//전공과목 교수진 페이지 리스트
-    getMajorTeacherBannerList("teacherList2", 788, 1, teacherMenuCtgKey );//전공과목 교수진 리스트
+    //getMajorTeacherBannerList("teacherList2", 788, 1, teacherMenuCtgKey );//전공과목 교수진 리스트
     getBannerNoticeList2("examNotice", 1, 4, 10010);//행정직 시험공고 리스트
     getBannerNoticeList2("openInfo", 1, 4, 10001);//행정직 개강안내 리스트
     getBannerNoticeList("lecInfo", 1, 4, 10014);//행정직 수강후기 리스트

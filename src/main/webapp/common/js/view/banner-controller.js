@@ -205,51 +205,56 @@ function getTeacherPageList(tagId, ctgKey, subjectType, teacherMenuCtgKey) {
     if (infoList.result.length > 0) {
         var selList = infoList.result;
         for(var i = 0; i < selList.length; i++) {
-            var cmpList = selList[i];
-            var retrunHtml = "<div class=\"swiper-slide\">";
-            retrunHtml += '<div>';
-            retrunHtml += '<div class="thumb"><span><img src="'+ cmpList.teacherImageUrl +'" alt=""></span></div>';
-            retrunHtml += '<div class="teacherInfo">';
-            retrunHtml += '<span class="category">'+ cmpList.subjectName +'</span>';
-            retrunHtml += '<b>'+ cmpList.teacherName +'</b>';
-            retrunHtml += '<span class="btnArea">';
-            retrunHtml += '<a href="javascript:goTeacherDetail('+ cmpList.teacherKey +','+ cmpList.reqKey + ');"><img src="/common/zian/images/common/icon_home.png" alt=""> 교수홈</a>';
-            retrunHtml += '<a href="javascript:goPageNoSubmit(\'review\',\'lectureList\');"><img src="/common/zian/images/common/icon_review.png" alt=""> 수강후기</a>';
-            retrunHtml += '</span>';
-            retrunHtml += '<span class="desc">';
-            retrunHtml += '<b>약력</b>';
-            retrunHtml += cmpList.teacherInfo.history+'<br />';
-            retrunHtml += '</span>';
-            if(cmpList.teacherInfo.bookWriting != null){
-                retrunHtml += '<span class="desc">';
-                retrunHtml += '<b>저서</b>';
-                retrunHtml += cmpList.teacherInfo.bookWriting +'<br />';
-                retrunHtml += '</span>';
-            }
-            retrunHtml += '</span>';
-            retrunHtml += '</div>';
-            retrunHtml += '</div>';
-            retrunHtml += '</div>';
-            $("#teacherPage1").append(retrunHtml);
+            var returnHtml = '<div class="swiper-slide">';
+            returnHtml += '<div class="text-box">';
+            returnHtml += '        <div class="row1">';
+            returnHtml += '      <span>'+ selList[i].subjectName +'</span>';
+            returnHtml += '       </div>';
+            returnHtml += '       <div class="row2">';
+            returnHtml += '       <span>'+ selList[i].teacherName +'</span>';
+            returnHtml += '        </div>';
+            returnHtml += '       <div class="row3">';
+            returnHtml += '       <span>쉽고 재미있는, 공무원 국어 마스터</span>';
+            returnHtml += '    </div>';
+            returnHtml += '    </div>';
+            returnHtml += '   <div class="img-box">';
+            returnHtml += '       <img src="'+ selList[i].teacherImageUrl +'" alt="" />';
+            returnHtml += '        </div>';
+            returnHtml += '      <div class="btn-box">';
+            returnHtml += '      <div class="lf-menu"><a href="javascript:goTeacherDetail('+ selList[i].teacherKey +','+ selList[i].reqKey + ');">교수님 홈</a></div>';
+            returnHtml += '    <div class="rh-menu"><a href="goPageNoSubmit(\'review\',\'lectureList\');">수강후기</a></div>';
+            returnHtml += '   </div>';
+            returnHtml += '     </div>';
+            $("#teacherList").append(returnHtml);
         }
-        var galleryThumbs1 = new Swiper('#mainTeacherTab1 .mainTeacherTitle', {
-            spaceBetween:0,
-            slidesPerView:6,
-            loop:true,
-            freeMode:true,
-            loopedSlides:7, //looped slides should be the same
-            watchSlidesVisibility:true,
-            watchSlidesProgress:true,
-            breakpointsInverse: true, breakpoints:
-                { // when window width is >= 320px
-                    320: { slidesPerView: 2, spaceBetween: 0 },
-                    // when window width is >= 480px
-                    600: { slidesPerView: 3, spaceBetween: 0 },
-                    // when window width is >= 640px
-                    800: { slidesPerView: 4, spaceBetween: 0 } ,
-                    // when window width is >= 640px
-                    1024: { slidesPerView: 6, spaceBetween: 0 }
+        var swiper = new Swiper(".swiper-container", {
+            spaceBetween: 12,
+            slidesPerView: 4,
+            slidesPerColumn: 2,
+            slidesPerGroup:4,
+            /* loop: true, */
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev"
+            },
+            breakpoints: {
+                800: {
+                    slidesPerView: 4,
+                    slidesPerColumn: 2
+                },
+                500: {
+                    slidesPerView: 2,
+                    slidesPerColumn: 2
+                },
+                100: {
+                    slidesPerView: 2,
+                    slidesPerColumn: 2
                 }
+            }
         });
     }
 }
@@ -307,56 +312,58 @@ function getMajorTeacherPageList(tagId, ctgKey, subjectType, teacherMenuCtgKey) 
     if (infoList.result.length > 0) {
         var selList = infoList.result;
         for(var i = 0; i < selList.length; i++) {
-            var cmpList = selList[i];
-
-            var retrunHtml = "<div class=\"swiper-slide\">";
-            retrunHtml += '<div>';
-            retrunHtml += '<div class="thumb"><span><img src="'+ cmpList.teacherImageUrl +'" alt=""></span></div>';
-            retrunHtml += '<div class="teacherInfo">';
-            retrunHtml += '<span class="category">'+ cmpList.subjectName +'</span>';
-            retrunHtml += '<b>'+ cmpList.teacherName +'</b>';
-            retrunHtml += '<span class="btnArea">';
-            retrunHtml += '<a href="javascript:goTeacherDetail('+ cmpList.teacherKey +','+ cmpList.reqKey + ');"><img src="/common/zian/images/common/icon_home.png" alt=""> 교수홈</a>';
-            retrunHtml += '<a href="javascript:goPageNoSubmit(\'review\',\'lectureList\');"><img src="/common/zian/images/common/icon_review.png" alt=""> 수강후기</a>';
-            retrunHtml += '</span>';
-            retrunHtml += '<span class="desc">';
-            retrunHtml += '<b>약력</b>';
-            retrunHtml += cmpList.teacherInfo.history+'<br />';
-            retrunHtml += '</span>';
-            if(cmpList.teacherInfo.bookWriting != null) {
-                retrunHtml += '<span class="desc">';
-                retrunHtml += '<b>저서</b>';
-                retrunHtml += cmpList.teacherInfo.bookWriting + '<br />';
-                retrunHtml += '</span>';
-            }
-            retrunHtml += '</span>';
-            retrunHtml += '</div>';
-            retrunHtml += '</div>';
-            retrunHtml += '</div>';
-            $("#teacherPage2").append(retrunHtml);
+            var returnHtml = '<div class="swiper-slide">';
+                returnHtml += '<div class="text-box">';
+                returnHtml += '        <div class="row1">';
+                returnHtml += '      <span>'+ selList[i].subjectName +'</span>';
+                returnHtml += '       </div>';
+                returnHtml += '       <div class="row2">';
+                returnHtml += '       <span>'+ selList[i].teacherName +'</span>';
+                returnHtml += '        </div>';
+                returnHtml += '       <div class="row3">';
+                returnHtml += '       <span>쉽고 재미있는, 공무원 국어 마스터</span>';
+                returnHtml += '    </div>';
+                returnHtml += '    </div>';
+                returnHtml += '   <div class="img-box">';
+                returnHtml += '       <img src="'+ selList[i].teacherImageUrl +'" alt="" />';
+                returnHtml += '        </div>';
+                returnHtml += '      <div class="btn-box">';
+                returnHtml += '      <div class="lf-menu"><a href="javascript:goTeacherDetail('+ selList[i].teacherKey +','+ selList[i].reqKey + ');">교수님 홈</a></div>';
+                returnHtml += '    <div class="rh-menu"><a href="goPageNoSubmit(\'review\',\'lectureList\');">수강후기</a></div>';
+                returnHtml += '   </div>';
+            returnHtml += '     </div>';
+            $("#teacherList").append(returnHtml);
         }
-        var galleryThumbs2 = new Swiper('#mainTeacherTab2 .mainTeacherTitle', {
-            spaceBetween:0,
-            slidesPerView:6,
-            loop:true,
-            freeMode:true,
-            loopedSlides:7, //looped slides should be the same
-            watchSlidesVisibility:true,
-            watchSlidesProgress:true,
-            breakpointsInverse: true, breakpoints:
-                { // when window width is >= 320px
-                    320: { slidesPerView: 2, spaceBetween: 0 },
-                    // when window width is >= 480px
-                    600: { slidesPerView: 3, spaceBetween: 0 },
-                    // when window width is >= 640px
-                    800: { slidesPerView: 4, spaceBetween: 0 } ,
-                    // when window width is >= 640px
-                    1024: { slidesPerView: 6, spaceBetween: 0 }
+        var swiper = new Swiper(".swiper-container", {
+            spaceBetween: 12,
+            slidesPerView: 4,
+            slidesPerColumn: 2,
+            slidesPerGroup:4,
+            /* loop: true, */
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev"
+            },
+            breakpoints: {
+                800: {
+                    slidesPerView: 4,
+                    slidesPerColumn: 2
+                },
+                500: {
+                    slidesPerView: 2,
+                    slidesPerColumn: 2
+                },
+                100: {
+                    slidesPerView: 2,
+                    slidesPerColumn: 2
                 }
+            }
         });
     }
-
-
 }
 
 //leftMenu D-day 리스트 불러오기
