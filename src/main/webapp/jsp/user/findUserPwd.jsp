@@ -114,18 +114,18 @@
                     </ul>
                 </div>
                 <div class="serchBox"  id="searchDiv">
-                    <div class="serchBoard">
+                    <div class="serchBoard active">
                         <p id="userIdPwd">아이디와 가입당시 입력한 휴대폰 번호를 통해<br>비밀번호를 찾을 수 있습니다.</p>
                         <input type="text" id="userId" placeholder="아이디를 입력해주세요">
                         <a href="javascript:fnNicePopup();">휴대폰인증</a>
                     </div>
                 </div>
                 <div class="serchBox" id="changePwdDiv" style="display:none;">
-                    <div class="serchBoard">
+                    <div class="serchBoard active">
                         <input type="password" id="changeUserPwd" placeholder="변경할 비밀번호를 입력해 주세요." style="margin-top: 100px;">
-                        <div class="requiredText" id="pwdCaption" style="display:none;color:red;text-align: center;"></div>
+                        <div class="requiredText" id="pwdCaption" style="display:none;color:red;text-align: center; font-size: 12px;"></div>
                         <input type="password" id="reUserPwd" placeholder="변경비밀번호 재확인" >
-                        <div class="requiredText" id="rePwdCaption" style="display:none;color:red;text-align: center;"></div>
+                        <div class="requiredText" id="rePwdCaption" style="display:none;color:red;text-align: center; font-size: 12px;"></div>
                         <div class="loginBtn">
                             <a href="javascript:goChangePwd();" class="btn_join">비밀번호 변경</a>
                         </div>

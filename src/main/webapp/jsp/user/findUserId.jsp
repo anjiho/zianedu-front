@@ -73,7 +73,7 @@
         var userInputId = getInputTextValue('userId');
         if(mobileNo != ''){
             var userInfo  = getUserInfoByMobileNumber(phoneNum);
-            if(userInfo != null){
+            if(userInfo.result != null){
                 var userId = userInfo.result.userId;
                 window.opener.document.getElementById("userIdText").innerHTML = "가입하신 아이디는 <span style='font-weight: bold'>" + userId + " </span>입니다";
                 window.opener.document.getElementById("phoneBtn").style.display ='none';
@@ -104,7 +104,7 @@
                     </ul>
                 </div>
                 <div class="serchBox">
-                    <div class="serchBoard">
+                    <div class="serchBoard active">
                         <p id="userIdText">가입 당시 입력한 휴대폰 번호를 통해<br>아이디를 찾을 수 있습니다.</p>
                         <a href="javascript:fnNicePopup();" id="phoneBtn">휴대폰인증</a>
                     </div>
