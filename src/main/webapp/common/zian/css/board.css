@@ -22,6 +22,11 @@
 .noticeView td{padding:0px 20px;height:50px;font-weight:normal;text-align:left;background:none;border-bottom:1px solid #e1e1e1;}
 .noticeView tr:nth-child(2) td{height:auto;padding:10px 20px}
 .noticeView td.tdEditorContent{padding:20px 20px !important;height:180px !important;vertical-align:top}
+.noticeView td .fileWrap{position:relative;padding-left:80px;}
+.noticeView td .fileWrap .label{display:block;position:absolute;top:0;left:0;font-weight:200;font-size:14px;color:#000;padding:initial;line-height:initial;}
+.noticeView td .fileWrap .fileList{display:block;}
+.noticeView td .fileWrap .fileList li{display:block;margin:5px 0}
+.noticeView td .fileWrap .fileList li{display:block;margin:5px 0}
 
 
 /* 선생님 리스트 */
@@ -30,7 +35,7 @@
 
 
 /* 수강신청 리스트 */
-.classList{border:1px solid #e5e5e5;border-bottom:0;width:96%;margin:0px 2%}
+.classList{border:1px solid #e5e5e5;border-bottom:0;width:96% !important;margin:0px 2%}
 .classList thead th{padding:10px;border-bottom:1px solid #e5e5e5}
 .classList tbody td{padding:12px;height:60px;font-size:14px;border-bottom:1px solid #e5e5e5;box-sizing:border-box}
 
@@ -174,6 +179,44 @@
 
 
 
+/* 댓글 */
+.replyList{width: 100%;font-size:16px;padding-top:30px}
+.replyList td{padding:0 5px 60px;border:0;}
+.replyList td textarea{width:100%;height:90px;vertical-align:top}
+.replyList td input[type='submit']{width:100%;min-height:90px;vertical-align:top}
+
+
+/* 댓글 2 */
+.commentsList{width:100%;font-size:16px;background:#f9f9f9;padding:20px 2% 0;box-sizing:border-box;margin-bottom:20px}
+.commentsList ul{width:100%;}
+.commentsList ul li:first-child{border-top:1px dotted #ccc;}
+.commentsList ul li{width:100%;border-bottom:1px dotted #ccc;min-height:80px;padding:20px 20px;box-sizing:border-box;position:relative}
+.commentsList ul li div:first-child(1){width:100%;}
+.commentsList ul li div span.cName{font-weight:bold;font-size:14px}
+.commentsList ul li div span.cDate{font-size:14px;margin-left:10px;color:#666;}
+.commentsList ul li div p.cComment{margin-top:12px;font-size:14px;color:#444;}
+.commentsList ul li.cm_write{width:100%;padding:20px 10px 30px}
+.commentsList ul li.cm_write div.inner{width:100%;overflow:hidden}
+.commentsList ul li.cm_write div.inner textarea{float:left;width:88%;margin-right:2%;min-height:80px;font-size:14px;border: 1px solid #ededed}
+.commentsList ul li.cm_write div.inner a{display:block;width:10%;height:80px;border:1px solid #ccc;box-sizing: border-box;background:white;color:#333;float:left;text-align:center;line-height:80px;font-size:13px;font-weight:bold;}
+.commentsList ul li div.cmlist{position:absolute;right:20px;top:20px}
+.commentsList ul li div.cmlist a{font-size:13px;color:#333;position:relative}
+.commentsList ul li div.cmlist a.cDel{padding-left:10px}
+.commentsList ul li div.cmlist a.cUpdate:before{content:'|';position:absolute;left:32px;top:0px}
+
+/* 윗글 아랫글 */
+.prNeList{width:100%;}
+.prNeList td{padding:0px 20px;height:50px;font-weight:normal;text-align:left;background:none;}
+
+
+/* 윗글 아랫글 2 */
+.sentence{width:100%;margin-bottom:20px}
+.sentence tr:first-child{border-top:1px solid #e5e5e5;}
+.sentence tr{border-bottom:1px solid #e5e5e5;}
+.sentence td{height:50px;padding:0 20px;font-weight:normal;text-align:left;font-size:14px;}
+.sentence td:nth-child(1){width:106px;text-align:center;}
+.sentence td:nth-child(3){width:140px;text-align:center;}
+
 
 /* 반응형 */
 @media screen and (max-width:800px){
@@ -196,6 +239,7 @@
     .noticeList tr td:nth-child(1){display:none}
     .noticeList tr td:nth-child(2){display:block;padding:0px 0px !important}
     .noticeList tr td:nth-child(2) a{display:inline;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;line-height:20px;font-size:16px;font-weight:200;}
+    .noticeList tr td:nth-child(2) a span{display:block;}
     .noticeList tr td:nth-child(3){text-align:left;color:#666;padding:0 4px 0px 0px}
     .noticeList tr td:nth-child(4){color:#666;padding:0 4px 0}
     .noticeList tr td:nth-child(5){color:#666;padding:0 4px 0}
@@ -203,9 +247,11 @@
     /* 공지사항 뷰페이지 */
     .tbView{display:block !important;width:100%;padding:none}
     .noticeView colgroup{display:none}
-    .noticeView thead th{display:inline-block;padding:14px 2%!important;box-sizing: border-box;border-bottom:none;font-size:14px;}
-    .noticeView thead th:nth-child(1){display:inline-block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;width:74%;box-sizing:border-box}
-    .noticeView thead th:nth-child(2){width:26%;box-sizing:border-box;text-align:right}
+    .noticeView thead{display:block !important;}
+    .noticeView thead tr{display:block}
+    .noticeView thead th{display:block;padding: 12px 2% 2px!important;height:initial !important;box-sizing: border-box;border-bottom:none;font-size:14px;width:initial !important;}
+    .noticeView thead th:nth-child(1){width:initial !important;overflow:hidden;box-sizing:border-box;font-size:16px;}
+    .noticeView thead th:nth-child(2){box-sizing:border-box;text-align:left}
     .noticeView tbody tr{display:block;box-sizing:border-box;width:100%;position:relative}
     .noticeView tbody tr:nth-child(1) td{display:block;width:100%;padding:14px 2%;box-sizing:border-box}
     .noticeView tbody tr:nth-child(2) td{display:block;width:100%;padding:14px 2%;box-sizing:border-box;height:auto}
@@ -214,9 +260,11 @@
     .noticeView tbody td.left{display:inline-block;width:68%;box-sizing:border-box;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;padding:14px 1%;}
     .noticeView tbody td.right{display:none}
 
+
     /* 수강신청 리스트 */
-    .classList{display:block;width:100%;margin:0;}
+    .classList{display:block;width:100% !important;margin:0;}
     .classList thead{display:none}
+    .classList tbody{display:block;}
     .classList tbody tr{display:block;border-bottom:1px solid #e5e5e5;width:100%;padding:10px 2%;box-sizing:border-box;}
     .classList tbody tr td{border-bottom:0 !important;height:auto;padding: inherit;}
     .classList tbody tr td:nth-child(1){display:none}
@@ -302,6 +350,7 @@
     .mypageAdvice{width:100%;}
     .mypageAdvice colgroup{display:none}
     .mypageAdvice thead th{display:none}
+    .mypageAdvice tbody{border-top: 1px solid #e5e5e5}
     .mypageAdvice tbody tr{display:block;width:100%;border-bottom:1px solid #e5e5e5;position:relative;padding:10px 2%;box-sizing:border-box}
     .mypageAdvice tbody tr td{display:inline-block;text-align:left;border-bottom:0;box-sizing:border-box}
     .mypageAdvice tbody tr td:nth-child(1){display:inline-block;padding:0 !important;}
@@ -393,9 +442,10 @@
     /* 합격수기 뷰페이지 */
     .tbView{display:block !important;width:100%;padding:none}
     .acceptanceView colgroup{display:none}
-    .acceptanceView thead th{display:inline-block;padding:14px 2%!important;box-sizing: border-box;border-bottom:none;font-size:14px;}
-    .acceptanceView thead th:nth-child(1){display:inline-block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;width:74%;box-sizing:border-box}
-    .acceptanceView thead th:nth-child(2){width:26%;box-sizing:border-box;text-align:right}
+    .acceptanceView thead{display:block !important;}
+    .acceptanceView thead th{display:inline-block;box-sizing: border-box;border-bottom:none;font-size:14px;}
+    .acceptanceView thead th:nth-child(1){display:block;width:initial;box-sizing:border-box;height:initial;padding:12px 2% 2px!important;font-size:16px;font-weight:bold;}
+    .acceptanceView thead th:nth-child(2){display:block;width:initial;box-sizing:border-box;text-align:left;height:initial;padding:2px 2% 12px!important;}
     .acceptanceView tbody tr{display:block;box-sizing:border-box;width:100%;position:relative}
     .acceptanceView tbody tr:nth-child(1) td{display:block;width:100%;padding:14px 2%;box-sizing:border-box}
     .acceptanceView tbody tr:nth-child(2) td{display:block;width:100%;padding:14px 2%;box-sizing:border-box;height:auto}
@@ -470,19 +520,56 @@
     .bigList3 tbody tr td:nth-child(5){display:block;}
 
 
-
     /* 온라인서점 */
     .lecturList{width:100%;border-top:1px solid #e5e5e5;font-size:14px;}
     .lecturList thead{display:none}
     .lecturList tbody tr{display:block;position:relative;padding: 20px 0;border-bottom:1px solid #e5e5e5;}
     .lecturList tbody tr td{border-bottom:none;padding:initial;box-sizing:border-box}
     .lecturList tbody tr td:nth-child(1){display:inline-block;padding:3px 10px;}
-    .lecturList tbody tr td:nth-child(1) div{width:100%;}
+    .lecturList tbody tr td:nth-child(1) div{width:120px;}
     /*.lecturList tbody tr td:nth-child(2){display:inline-block;padding:3px 10px 0;vertical-align:top;width:69%}*/
     .lecturList tbody tr td:nth-child(2){width:60%;position:absolute;left:154px;top:24px;}
     .lecturList tbody tr td:nth-child(2) a{width:100%;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
     .lecturList tbody tr td:nth-child(3){position:absolute;bottom:80px;left:154px;}
     .lecturList tbody tr td:nth-child(4){position:absolute;bottom:40px;left:154px;}
+
+
+    /* 댓글 2 */
+    .commentsList{width:100%;font-size:16px;background:#fff;padding:20px 0;box-sizing:border-box;margin-bottom:20px}
+    .commentsList ul li{width:100%;border-bottom:1px dotted #ccc;min-height:80px;padding:20px 0px;box-sizing:border-box;position:relative}
+    .commentsList ul li div span.cDate{display:block;margin-left:0;font-size:13px}
+    .commentsList ul li.cm_write{width:100%;padding:20px 0px 30px}
+    .commentsList ul li.cm_write div.inner{width:100%;overflow:hidden}
+    .commentsList ul li.cm_write div.inner textarea{float:left;width:100%;min-height:80px;font-size:14px;border: 1px solid #ededed}
+    .commentsList ul li.cm_write div.inner a{display:block;width:100%;height:40px;border:1px solid #ccc;box-sizing: border-box;background:#000;color:#fff;float:left;text-align:center;line-height:40px;font-size:13px;font-weight:bold;}
+    .commentsList ul li div.cmlist{position:absolute;right:0px;top:18px}
+
+
+    /* 댓글 1 */
+    .replyList{width: 100%;font-size:16px;padding-top:30px;margin-bottom:30px}
+    .replyList colgroup{display:none;}
+    .replyList td:nth-child(1){display: block;padding:0 0 10px 10px;text-align:left;}
+    .replyList td:nth-child(2){display: block;padding:0 0 6px 0;}
+    .replyList td:nth-child(3){display: block;padding:0;}
+    .replyList td textarea{width:100%;min-height:120px;vertical-align:top}
+    .replyList td input[type='submit']{width:100%;min-height:44px;vertical-align:top}
+
+
+    /* 윗글 아랫글 */
+    .prNeList{width:100%;font-size:14px;}
+    .prNeList td:nth-child(1){width:32%;font-size:14px}
+    .prNeList td:nth-child(2){box-sizing:border-box;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;padding:14px 1%;}
+    .prNeList td a{font-size:14px;}
+
+
+    /* 윗글 아랫글 2 */
+    .sentence{width:100%;margin-bottom:20px}
+    .sentence tr:first-child{border-top:1px solid #e5e5e5;}
+    .sentence tr{border-bottom:1px solid #e5e5e5;}
+    .sentence td{height:50px;padding:0 20px;font-weight:normal;text-align:left;font-size:14px;}
+    .sentence td:nth-child(1){display:inline-block;width:28%;text-align:center;padding:14px 2%;height:initial;}
+    .sentence td:nth-child(2){display:inline-block;padding:0;width:68%;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;padding:14px 1%;box-sizing:border-box;height:initial;}
+    .sentence td:nth-child(3){display:none;}
 }
 
 @media screen and (max-width:380px){

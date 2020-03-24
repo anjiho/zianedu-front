@@ -2122,7 +2122,7 @@ li.st_answer.st_selected{color: red;font-weight: bold;}
 .bigSub .tableBox4 th {background: #f4f4f4;border-top:1px solid #e5e5e5;border-bottom:1px solid #e5e5e5;}
 
 .bigSub .review_txt {margin-top: 60px;}
-.bigSub .review_point {height:100px;margin: 50px 0 20px;}
+.bigSub .review_point {height:auto;margin: 50px 0 20px;}
 
 /*.bigSub .boardSearch {margin: 25px 0;padding: 0 20px;}
 .bigSub .boardSearch .btnArea {float: right;margin: 0;}*/
