@@ -375,7 +375,7 @@ function getSpecialPackageList(menuCtgKey, subjectMenuKeys, teacherKeys, stepCtg
                         returnHtml += "<li class=\"right\">";
                             returnHtml += "선택한 항목 <span class=\"colorRed\" id='selCount'></span>개를";
                             returnHtml += "<a href='javascript:goCheckedShopBasket();' class=\"btn_m\">장바구니 담기</a>&nbsp;";
-                            returnHtml += "<a href='javascript:goCheckedBuy();' class=\"btn_m on\">바로구매</a>";
+                            returnHtml += "<a href='javascript:goPackageCheckedBuy();' class=\"btn_m on\">바로구매</a>";
                         returnHtml += "</li>";
                     returnHtml += "</ul>";
             for(var i = 0; i < selList.length; i++){

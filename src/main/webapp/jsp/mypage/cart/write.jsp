@@ -92,7 +92,7 @@
                 var address = $("#address").text();
                 innerValue("roadAddress", address);
                 var detailAddres = $("#detailAddres").text();
-                innerValue("roadAddress", detailAddres);
+                innerValue("detailAddres2", detailAddres);
             }else{
                 innerValue("orderNameText", "");
                 innerValue("tel1", "");
@@ -141,6 +141,9 @@
         var tel1 = getInputTextValue("tel1");
         var tel2 = getInputTextValue("tel2");
         var allTel = tel+"-"+tel1+"-"+tel2;
+        if (tel == undefined) allTel = "";
+
+
         innerValue("allTel", allTel);
         var phone = getSelectboxValue("selPhone");
         var phone1 = getInputTextValue("phone1");
