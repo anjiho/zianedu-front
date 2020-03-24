@@ -27,13 +27,13 @@
                 </div>
                 <div class="mainBannerReview disnonepc">
                     <div class="inner">
-                        <a href="#"><img src="http://52.79.40.214/Upload/100/main/img_banner0301_20190903102820.jpg" alt=""></a>
+                        <a href="#"><img src="/common/zian/images/content/img_mainVisual0320_05.jpg" alt=""></a>
                     </div>
                 </div>
             </div>
                 <div class="mainBannerReview disnone">
                     <div class="inner">
-                        <a href="#"><img src="http://52.79.40.214/Upload/100/main/img_banner0301_20190903102820.jpg" alt=""></a>
+                        <a href="#"><img src="/common/zian/images/content/img_banner0301.jpg" alt=""></a>
                     </div>
                 </div>
             <!-- 지안에듀 합격자 영상 -->

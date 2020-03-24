@@ -25,13 +25,13 @@
                 </div>
                 <div class="mainBannerReview disnonepc">
                     <div class="inner">
-                        <a href="#"><img src="http://52.79.40.214/Upload/100/main/img_mainVisual01021.jpg" alt=""></a>
+                        <a href="#"><img src="/common/zian/images/content/img_mainVisual01021.jpg" alt=""></a>
                     </div>
                 </div>
             </div>
             <div class="mainBannerReview disnone">
                 <div class="inner">
-                    <a href="#"><img src="http://52.79.40.214/Upload/100/main/img_banner0101_20190903091022.jpg" alt=""></a>
+                    <a href="#"><img src="/common/zian/images/content/img_banner0101" alt=""></a>
                 </div>
             </div>
 
