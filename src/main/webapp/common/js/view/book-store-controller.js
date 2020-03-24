@@ -67,14 +67,17 @@ function getBookList(tagId , leftMenuCtgKey, sPage, listLimit) {
             else name = "|" + data.name;
 
             return "<div class=\"item\">" +
+                " <div>"+
                 "<a href='javascript:goDetailBook("+ data.gkey +");'><img src='"+ data.bookImageUrl +"' alt=\"\"></a>"+
-                "<span class=\"name\">"+ data.goodsName +"</span>"+
+                "<span class=\"name\">"+ gfn_substr(data.goodsName, 0, 12) +"</span>"+
                 "<span class=\"writer\">"+ data.writer + name +"</span>" +
-                "<span class=\"price\"><b>"+ data.sellPrice +"</b>원 <span style='color: red;'>"+"("+data.discountPercent+")"+"</span></span>";
+                "<span class=\"price\"><b>"+ data.sellPrice +"</b>원 <span style='color: red;'>"+"("+data.discountPercent+")"+"</span></span>"+
+            " </div>"+
+            " </div>";
         }, {escapeHtml: false});
     }
     $(function(){
-        kiplayer.sliderSlick($(".productList"));
+        kiplayer.sliderSlick($(".product1"));
         $('.slick-dots').attr('style', "display:none;");
     });
 }

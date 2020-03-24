@@ -22,6 +22,7 @@
     <script src="/common/zian/js/submain.js"></script>
     <script src="/common/zian/js/owl.carousel.min.js"></script>
     <script src="/common/zian/js/swiper.min.js"></script>
+
     <script src="/common/zian/js/ui.js"></script>
 
     <!-- include libraries(jQuery, bootstrap) -->
@@ -38,18 +39,12 @@
     <link rel="stylesheet" type="text/css" href="/common/zian/css/base.css">
 
     <link rel="stylesheet" type="text/css" id="cssDivsion" href="/common/zian/css/content.css">
-
-
     <link rel="stylesheet" type="text/css" href="/common/zian/css/board.css">
-<%--    <link rel="stylesheet" type="text/css" href="/common/zian/css/content_o.css">--%>
     <link rel="stylesheet" type="text/css" href="/common/zian/css/reponsive.css">
     <link rel="stylesheet" type="text/css" href="/common/zian/css/owl.carousel.min.css">
 
     <link rel="stylesheet" type="text/css" href="/common/calendar/css/fullcalendar.min.css">
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-
-<%--    <link rel="stylesheet" type="text/css" href="/common/zian/css/bigtest.css">--%>
-<%--    <link rel="stylesheet" type="text/css" href="/common/zian/css/big_layout.css">--%>
 
 
     <!--<script src="/common/assets/jquery/dist/jquery.min.js"></script>-->
