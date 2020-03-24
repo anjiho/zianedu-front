@@ -156,6 +156,8 @@ function getTeacherPageList(tagId, ctgKey, subjectType, teacherMenuCtgKey) {
     if (infoList.result.length > 0) {
         var selList = infoList.result;
         for(var i = 0; i < selList.length; i++) {
+            var greeting = selList[i].teacherInfo.greeting;
+            if (greeting == null || greeting == 'undefined') greeting = "";
             var returnHtml = '<div class="swiper-slide">';
             returnHtml += '<div class="text-box">';
             returnHtml += '        <div class="row1">';
@@ -165,7 +167,7 @@ function getTeacherPageList(tagId, ctgKey, subjectType, teacherMenuCtgKey) {
             returnHtml += '       <span>'+ selList[i].teacherName +'</span>';
             returnHtml += '        </div>';
             returnHtml += '       <div class="row3">';
-            returnHtml += '       <span>쉽고 재미있는, 공무원 국어 마스터</span>';
+            returnHtml += '       <span>' + greeting + '</span>';
             returnHtml += '    </div>';
             returnHtml += '    </div>';
             returnHtml += '   <div class="img-box">';
@@ -173,7 +175,7 @@ function getTeacherPageList(tagId, ctgKey, subjectType, teacherMenuCtgKey) {
             returnHtml += '        </div>';
             returnHtml += '      <div class="btn-box">';
             returnHtml += '      <div class="lf-menu"><a href="javascript:goTeacherDetail('+ selList[i].teacherKey +','+ selList[i].reqKey + ');">교수님 홈</a></div>';
-            returnHtml += '    <div class="rh-menu"><a href="goPageNoSubmit(\'review\',\'lectureList\');">수강후기</a></div>';
+            returnHtml += '    <div class="rh-menu"><a href="javascript:goPageNoSubmit(\'review\', \'lectureList\');">수강후기</a></div>';
             returnHtml += '   </div>';
             returnHtml += '     </div>';
             $("#teacherList").append(returnHtml);
@@ -263,6 +265,8 @@ function getMajorTeacherPageList(tagId, ctgKey, subjectType, teacherMenuCtgKey) 
     if (infoList.result.length > 0) {
         var selList = infoList.result;
         for(var i = 0; i < selList.length; i++) {
+            var greeting = selList[i].teacherInfo.greeting;
+            if (greeting == null || greeting == 'undefined') greeting = "";
             var returnHtml = '<div class="swiper-slide">';
                 returnHtml += '<div class="text-box">';
                 returnHtml += '        <div class="row1">';
@@ -272,7 +276,7 @@ function getMajorTeacherPageList(tagId, ctgKey, subjectType, teacherMenuCtgKey) 
                 returnHtml += '       <span>'+ selList[i].teacherName +'</span>';
                 returnHtml += '        </div>';
                 returnHtml += '       <div class="row3">';
-                returnHtml += '       <span>쉽고 재미있는, 공무원 국어 마스터</span>';
+                returnHtml += '       <span>' + greeting + '</span>';
                 returnHtml += '    </div>';
                 returnHtml += '    </div>';
                 returnHtml += '   <div class="img-box">';
@@ -280,7 +284,7 @@ function getMajorTeacherPageList(tagId, ctgKey, subjectType, teacherMenuCtgKey) 
                 returnHtml += '        </div>';
                 returnHtml += '      <div class="btn-box">';
                 returnHtml += '      <div class="lf-menu"><a href="javascript:goTeacherDetail('+ selList[i].teacherKey +','+ selList[i].reqKey + ');">교수님 홈</a></div>';
-                returnHtml += '    <div class="rh-menu"><a href="goPageNoSubmit(\'review\',\'lectureList\');">수강후기</a></div>';
+                returnHtml += '    <div class="rh-menu"><a href="javascript:goPageNoSubmit(\'review\', \'lectureList\');">수강후기</a></div>';
                 returnHtml += '   </div>';
             returnHtml += '     </div>';
             $("#teacherList").append(returnHtml);
