@@ -262,10 +262,10 @@
             <ul>
                 <li><a href="#" class="login_btn">로그인</a>
                     <ul class="logindrop">
-<%--                        <li><a href="">장바구니</a></li>--%>
-<%--                        <li><a href="">내강의실</a></li>--%>
-<%--                        <li><a href="">마이페이지</a></li>--%>
-                        <li><a href="javascript:goLoginPage();">로그인</a></li>
+                        <li><a href="">장바구니</a></li>
+                        <li><a href="">내강의실</a></li>
+                        <li><a href="">마이페이지</a></li>
+                        <li><a href="">로그아웃</a></li>
                     </ul>
                 </li>
                 <li><a href="#" class="header_menu" id="header_menu">메뉴</a></li>
