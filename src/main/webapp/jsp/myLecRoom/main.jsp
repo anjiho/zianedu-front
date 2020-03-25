@@ -43,6 +43,7 @@
                 $(this).addClass('active').siblings().removeClass('active');
             });
 
+
             /* 학원실강 */
             getSignUpAcademyTypeList(userKey);
             var acaCtgKey = getInputTextValue("acaCtgKey");

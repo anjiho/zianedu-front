@@ -176,7 +176,7 @@ function getTeacherLearningQna(teacherKey, sPage, listLimit, searchType, searchT
                 returnHtml += '</tr>';
                 $("#dataList3").append(returnHtml);
             } else if (cmpList.level == 2) {//답글
-                var returnHtml = '<tr>';
+                var returnHtml = '<tr class="reply">';
                 returnHtml += '<td>' + listNum-- + '</td>';
                 var lock = '';
                 if (cmpList.pwd == 1) lock = 'lock';
@@ -371,7 +371,7 @@ function getTeacherVideoLecture(teacherKey, device, stepCtgKey) {
                             retrunHtml += '<div class="toggleWrap">';
                             retrunHtml += '<div class="div_toggle">';
                             retrunHtml += '<div class="tableBox">';
-                            retrunHtml += '<table class="lecture">';
+                            retrunHtml += '<table class="classList">';
                             retrunHtml += '<colgroup>';
                             retrunHtml += '<col class="w10p">';
                             retrunHtml += '<col class="w40p">';
@@ -380,24 +380,24 @@ function getTeacherVideoLecture(teacherKey, device, stepCtgKey) {
                             retrunHtml += '</colgroup>';
                             retrunHtml += '<thead>';
                             retrunHtml += '<tr>';
-                            retrunHtml += '<th scope="row" class="alignCenter">회차</th>';
-                            retrunHtml += '<th scope="row" class="alignCenter">제목</th>';
-                            retrunHtml += '<th scope="row" class="alignCenter">시간</th>';
-                            retrunHtml += '<th scope="row" class="alignCenter">샘플보기</th>';
+                            retrunHtml += '<th scope="row">회차</th>';
+                            retrunHtml += '<th scope="row">제목</th>';
+                            retrunHtml += '<th scope="row">시간</th>';
+                            retrunHtml += '<th scope="row">샘플보기</th>';
                             retrunHtml += '<tr>';
                             retrunHtml += '</thead>';
                             retrunHtml += '<tbody>';
                             for (var k = 0; k < lecList[j].lectureList.length; k++) {
                                 retrunHtml += '<tr>';
-                                retrunHtml += '<td class="alignCenter">' + lecList[j].lectureList[k].num + '</td>';
+                                retrunHtml += '<td class="ta_center">' + lecList[j].lectureList[k].num + '</td>';
                                 retrunHtml += '<td>' + lecList[j].lectureList[k].name + '</td>';
-                                retrunHtml += '<td class="alignCenter">' + lecList[j].lectureList[k].vodTime + '</td>';
+                                retrunHtml += '<td class="ta_center">' + lecList[j].lectureList[k].vodTime + '</td>';
 
                                 if (lecList[j].lectureList[k].num == 1) {
-                                    retrunHtml += '<td class="alignCenter"><span class="learnView">샘플보기 <a href="javascript:void(0);" onclick="OpenSamplePlayer(' + "'"  + lecList[j].lowVideo + "'" + ');" class="btn_s btn_quality" >일반화질</a> <a href="javascript:void(0);" onclick="OpenSamplePlayer(' + "'"  + lecList[j].highVideo + "'" + ');" class="btn_s btn_quality on">고화질</a></span></td>';
+                                    retrunHtml += '<td class="ta_center"><span class="learnView">샘플보기 <a href="javascript:void(0);" onclick="OpenSamplePlayer(' + "'"  + lecList[j].lowVideo + "'" + ');" class="btn_s btn_quality" >일반화질</a> <a href="javascript:void(0);" onclick="OpenSamplePlayer(' + "'"  + lecList[j].highVideo + "'" + ');" class="btn_s btn_quality on">고화질</a></span></td>';
                                     //retrunHtml += '<td class="alignCenter"><span class="learnView">샘플보기 <a href="#" class="btn_s btn_quality">일반화질</a> <a href="#" class="btn_s btn_quality on">고화질</a></span></td>';
                                 } else {
-                                    retrunHtml += '<td class="alignCenter"><span class="learnView"> </span></td>';
+                                    retrunHtml += '<td class="ta_center"><span class="learnView"> </span></td>';
                                 }
                                 retrunHtml += '</tr>';
                             }
