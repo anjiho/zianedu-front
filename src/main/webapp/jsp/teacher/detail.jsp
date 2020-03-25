@@ -703,7 +703,9 @@
                                                         <option value="title">제목</option>
                                                     </select>
                                                     <input type="text" id="searchText1" onkeypress="if(event.keyCode==13) {fn_search('new'); return false;}" >
-                                                    <a href="javascript:fn_search('new');" class="btn_m on">검색</a>
+<%--                                                    <a href="javascript:fn_search('new');" class="btn_m on">검색</a>--%>
+                                                    <input type="button" class="btn_m on" value="검색" onclick="fn_search('new');">
+                                                    <a href="fn_search('new');" class="search_ico">검색</a>
                                                 </li>
                                                 <li class="right">
                                                     <a href="javascript:referenceWrite();" class="btn_inline w140">글쓰기</a>
@@ -711,21 +713,21 @@
                                             </ul>
                                         </form>
                                         <div class="tableBox">
-                                            <table class="list">
+                                            <table class="noticeList">
                                                 <colgroup>
                                                     <col class="w10p">
-                                                    <col class="w50p">
+                                                    <col class="w60p">
                                                     <col class="w10p">
-                                                    <col class="w20p">
+                                                    <col class="w10p">
                                                     <col class="w10p">
                                                 </colgroup>
                                                 <thead>
                                                 <tr>
-                                                    <th scope="row" style="text-align:center">유형</th>
-                                                    <th scope="row" style="text-align:center">제목</th>
-                                                    <th scope="row" style="text-align:center">작성자</th>
-                                                    <th scope="row" style="text-align:center">등록일</th>
-                                                    <th scope="row" style="text-align:center">조회</th>
+                                                    <th scope="row">유형</th>
+                                                    <th scope="row">제목</th>
+                                                    <th scope="row">작성자</th>
+                                                    <th scope="row">등록일</th>
+                                                    <th scope="row">조회</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody id="dataList"></tbody>
@@ -743,7 +745,9 @@
                                                         <option value="title">제목</option>
                                                     </select>
                                                     <input type="text"  id="searchText2" onkeypress="if(event.keyCode==13) {fn_search1('new'); return false;}">
-                                                    <a href="javascript:fn_search1('new');" class="btn_m on">검색</a>
+                                                    <input type="button" class="btn_m on" value="검색" onclick="fn_search1('new');">
+<%--                                                    <a href="javascript:fn_search1('new');" class="btn_m on">검색</a>--%>
+                                                    <a href="fn_search1('new');" class="search_ico">검색</a>
                                                 </li>
                                                 <li class="right">
                                                     <a href="javascript:referenceWrite();" class="btn_inline w140">글쓰기</a>
@@ -751,21 +755,21 @@
                                             </ul>
                                         </form>
                                         <div class="tableBox">
-                                            <table class="list">
+                                            <table class="noticeList">
                                                 <colgroup>
                                                     <col class="w10p">
-                                                    <col class="w50p">
+                                                    <col class="w60p">
                                                     <col class="w10p">
-                                                    <col class="w20p">
+                                                    <col class="w10p">
                                                     <col class="w10p">
                                                 </colgroup>
                                                 <thead>
                                                 <tr>
-                                                    <th scope="row" style="text-align:center">유형</th>
-                                                    <th scope="row" style="text-align:center">제목</th>
-                                                    <th scope="row" style="text-align:center">작성자</th>
-                                                    <th scope="row" style="text-align:center">등록일</th>
-                                                    <th scope="row" style="text-align:center">조회</th>
+                                                    <th scope="row" >유형</th>
+                                                    <th scope="row">제목</th>
+                                                    <th scope="row">작성자</th>
+                                                    <th scope="row">등록일</th>
+                                                    <th scope="row">조회</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody id="dataList2"></tbody>
@@ -902,21 +906,21 @@
                                     </ul>
                                 </form>
                                 <div class="tableBox">
-                                    <table class="list">
+                                    <table class="mypage05">
                                         <colgroup>
                                             <col width="10%">
-                                            <col width="55%">
+                                            <col width="60%">
                                             <col width="10%">
-                                            <col width="15%">
+                                            <col width="10%">
                                             <col width="10%">
                                         </colgroup>
                                         <thead>
                                         <tr>
-                                            <th scope="row" style="text-align:center">유형</th>
-                                            <th scope="row" style="text-align:center">제목</th>
-                                            <th scope="row" style="text-align:center">작성자</th>
-                                            <th scope="row" style="text-align:center">등록일</th>
-                                            <th scope="row" style="text-align:center">조회</th>
+                                            <th scope="row" >유형</th>
+                                            <th scope="row">제목</th>
+                                            <th scope="row">작성자</th>
+                                            <th scope="row">등록일</th>
+                                            <th scope="row">조회</th>
                                         </tr>
                                         </thead>
                                         <tbody id="dataList3">
@@ -935,20 +939,35 @@
                                 </li>
                             </ul>
                             <div class="tableBox">
-                                <table class="view">
+                                <table class="tBoard noticeView">
+                                    <colgroup>
+                                        <col class="w110">
+                                        <col>
+                                        <col class="w140">
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <td colspan="2" id="qnaTitle"></td>
+                                            <td id="qnaIndate"></td>
+                                        </tr>
+                                    </thead>
                                     <tbody>
+<%--                                    <tr>--%>
+<%--                                        <td class="bg_gray" id="qnaTitle"></td>--%>
+<%--                                        <td class="bg_gray alignRight" id="qnaIndate"></td>--%>
+<%--                                    </tr>--%>
                                     <tr>
-                                        <td class="bg_gray" id="qnaTitle"></td>
-                                        <td class="bg_gray alignRight" id="qnaIndate"></td>
+                                        <td colspan="2">작성자 : <span id="qnaWriter"></span> (<span id="qnaUserId"></span>) | 조회수 : <span id="qnaCount"></span></td>
+                                        <td class="ta_right" ><span class="iconLock" id="iconLock" style="display: none;">비밀글</span></td>
                                     </tr>
                                     <tr>
-                                        <td>작성자 : <span id="qnaWriter"></span> (<span id="qnaUserId"></span>) | 조회수 : <span id="qnaCount"></span></td>
-                                        <td class="alignRight" ><span class="iconLock" id="iconLock" style="display: none;">비밀글</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>첨부파일 :</td>
-                                        <td>
-                                            <ul id='fileDetailList1' class="fileDetailList"></ul>
+                                        <td colspan="3">
+                                            <div class="fileWrap">
+                                                <span class="label">첨부파일 : </span>
+                                                <ul class="fileList" id="fileDetailList1">
+
+                                                </ul>
+                                            </div>
                                         </td>
                                     </tr>
                                     <tr>
@@ -956,9 +975,13 @@
                                     </tr>
                                     </tbody>
                                 </table>
+
+                                <div class="commentsList">
+
+                                </div>
+
                             </div>
-                            <br>
-                            <br>
+
                             <!-- ㅋ -->
                             <div style="display: none;" id="replyDiv">
                                 <div class="tabPage active">
