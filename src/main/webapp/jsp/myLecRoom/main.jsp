@@ -19,7 +19,7 @@
 
             /* 지안패스 */
             getZianPassSignUpList(userKey);
-            getPackageSignUpList(userKey);//패키지
+            getPackageSignUpList(userKey,  pcMobile);//패키지
 
             var zianJkey = getInputTextValue("zianPassjKey");
             var packageJKey = getInputTextValue("packageJKey");//패키지

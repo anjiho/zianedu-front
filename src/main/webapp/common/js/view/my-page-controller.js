@@ -184,9 +184,12 @@ function requestVideoStartStop(jLecKey, pauseDay, requestType) {
 }
 
 //패키지 분류 리스트
-function getPackageSignUpList(userKey) {
+function getPackageSignUpList(userKey, deviceType) {
     if (userKey == null || userKey == undefined) return;
-    var infoList = getApi("/myPage/getPackageSignUpList/", userKey, "");
+    var data = {
+        deviceType : deviceType
+    };
+    var infoList = getApi("/myPage/getPackageSignUpList/", userKey, data);
     if (infoList == null || Number(infoList.result.length) == 0) {
         $("#packageListDiv").hide();
         return false;
