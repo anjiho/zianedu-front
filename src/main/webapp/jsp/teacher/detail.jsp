@@ -982,10 +982,6 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-<%--                                    <tr>--%>
-<%--                                        <td class="bg_gray" id="qnaTitle"></td>--%>
-<%--                                        <td class="bg_gray alignRight" id="qnaIndate"></td>--%>
-<%--                                    </tr>--%>
                                     <tr>
                                         <td colspan="2">작성자 : <span id="qnaWriter"></span> (<span id="qnaUserId"></span>) | 조회수 : <span id="qnaCount"></span></td>
                                         <td class="ta_right" ><span class="iconLock" id="iconLock" style="display: none;">비밀글</span></td>

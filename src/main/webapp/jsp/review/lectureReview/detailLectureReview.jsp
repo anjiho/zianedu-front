@@ -83,21 +83,49 @@
                 innerHTML("nextCreateDate", prevNextInfo.nextCreateDate);
                 innerValue("nextNum", prevNextInfo.nextBbsKey);
             }
+
+            // var commentInfo = result.commentInfo;
+            // if(commentInfo.length > 0){
+            //     for(var j =0; j<commentInfo.length;j++){
+            //         //var commentHtml = "<tr>";
+            //         var commentHtml = "<td colspan=\"3\">";
+            //         commentHtml += " <div class='cm_list'>";
+            //         commentHtml += "<strong class='names'>"+ commentInfo[j].userName +"("+ commentInfo[j].userId +")</strong>";
+            //         commentHtml += "<span class='ctn'>"+ commentInfo[j].contents +"</span>";
+            //         commentHtml += "<span class='date'>"+ commentInfo[j].indate +"</span>";
+            //         commentHtml += "</div>";
+            //         commentHtml += "</td>";
+            //         //commentHtml += "</tr>";
+            //         $("#commentList").append(commentHtml);
+            //     }
+            // }
             var commentInfo = result.commentInfo;
+            //댓글 시작
+            $('#commentList ul').remove();  //댓글 영역 초기화
+            var commentHtml = "<ul>";
             if(commentInfo.length > 0){
                 for(var j =0; j<commentInfo.length;j++){
-                    //var commentHtml = "<tr>";
-                    var commentHtml = "<td colspan=\"3\">";
-                    commentHtml += " <div class='cm_list'>";
-                    commentHtml += "<strong class='names'>"+ commentInfo[j].userName +"("+ commentInfo[j].userId +")</strong>";
-                    commentHtml += "<span class='ctn'>"+ commentInfo[j].contents +"</span>";
-                    commentHtml += "<span class='date'>"+ commentInfo[j].indate +"</span>";
-                    commentHtml += "</div>";
-                    commentHtml += "</td>";
-                    //commentHtml += "</tr>";
-                    $("#commentList").append(commentHtml);
+                    commentHtml += "<li>";
+                    commentHtml += "<div>";
+                    commentHtml += "<span class='cName'>" + commentInfo[j].userName + '('+ commentInfo[j].userId +')' + '</span>';
+                    commentHtml += "<span class='cDate'>" + commentInfo[j].indate + "</span>";
+                    commentHtml += "<p class='cComment'>" + commentInfo[j].contents + "</p>";
+                    /** 추후 본사 유지보수건으로 주석처리 **/
+                    // commentHtml += "<div>";
+                    // commentHtml += "<a class='cUdate'>수정</a>";
+                    // commentHtml += "<a class='cDel'>삭제</a>";
+                    // commentHtml += "</div>";
                 }
             }
+            commentHtml += "<li class='cm_write'>";
+            commentHtml += "<div class='inner'>";
+            commentHtml += "<textarea id='commentContent'></textarea>";
+            commentHtml += "<a class='single' onclick='commentSave();'>댓글</a>";
+            commentHtml += "</div>";
+            commentHtml += "</li>";
+            commentHtml += "</ul>";
+            $("#commentList").append(commentHtml);
+            //댓글 끝
 
         }
     });
@@ -155,18 +183,17 @@
                 <!--reviewBoard 수강후기 -->
                 <div class="boardWrap reviewBoard">
                     <div class="tableBox">
-                        <table class="tBoard acceptanceView">
-                            <caption></caption>
+                        <table class="tBoard noticeView">
                             <colgroup>
                                 <col class="w110">
                                 <col>
                                 <col class="w140">
                             </colgroup>
                             <thead>
-                            <tr>
-                                <th colspan="2" id="title"></th>
-                                <th id="indate"></th>
-                            </tr>
+                                <tr>
+                                    <th colspan="2" id="title"></th>
+                                    <th id="indate"></th>
+                                </tr>
                             </thead>
                             <tbody>
                             <tr>
@@ -182,38 +209,14 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="3" class="tdEditorContent">
-                                    <div id="content1">
-                                    </div>
-                                </td>
+                                <td colspan="3" class="tdEditorContent" id="content1"></td>
                             </tr>
+                            </tbody>
+                        </table>
+                        <div class="commentsList" id="commentList"></div>
+                        <table class="sentence">
+                            <tbody>
                             <tr>
-                                <td colspan="3">
-                                    <div class="comment">
-                                        <div class="cm_write">
-                                            <form id="" name="">
-                                                <fieldset>
-                                                    <legend>댓글작성</legend>
-                                                    <div class="inner">
-                                                        <p class="cm_title">댓글</p>
-                                                        <div class="write">
-                                                            <textarea id="commentContent" placeholder=""></textarea>
-                                                        </div>
-                                                        <a href="javascript:commentSave();" class="single">댓글</a>
-                                                    </div>
-                                                </fieldset>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr id="commentList">
-                            </tr>
-                            <tr>
-                                <td colspan="3">
-                                </td>
-                            </tr>
-                            <tr id="prev">
                                 <td class="center">이전글 ▲</td>
                                 <td class="left"><a href="javascript:goPrev();"><span id="prevTitle"></span></a></td>
                                 <td class="right"><span id="prevCreateDate"></span></td>
