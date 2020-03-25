@@ -283,6 +283,7 @@ function getSignUpZianPassSubjectNameList(jKey, deviceType, stepCtgKey) {
 }
 
 function getSignUpPackageSubjectNameList(jKey, deviceType, stepCtgKey) {
+
     if (jKey == null || jKey == undefined) return;
     var data = {
         deviceType : deviceType,

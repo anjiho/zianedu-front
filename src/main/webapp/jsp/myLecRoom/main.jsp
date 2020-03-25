@@ -19,10 +19,11 @@
 
             /* 지안패스 */
             getZianPassSignUpList(userKey);
-            getPackageSignUpList(userKey, pcMobile);//패키지
+            getPackageSignUpList(userKey,  pcMobile);//패키지
 
             var zianJkey = getInputTextValue("zianPassjKey");
             var packageJKey = getInputTextValue("packageJKey");//패키지
+
             if (zianJkey != '') {
                 zianPassTypeList(zianJkey);
             }
@@ -39,7 +40,7 @@
                 packageLecTitleList(packageCtgKey);
             }
             var zainJlecKey = getInputTextValue("zianPassjLecKey");
-            var packageJlecKey = getInputTextValue("zianPassjLecKey");
+            var packageJlecKey = getInputTextValue("packageJlecKey");
             if (zainJlecKey != '') {
                 zianPassDetail(zainJlecKey);
             }
@@ -223,13 +224,13 @@
             innerHTML("zianPassCtgName", result.ctgName);
             if (result.kind == 100) {
                 $("#zianPc").show();
-                $("#zianMobile").hide();
+                $("#zianPcMobile").hide();
             } else if (result.kind == 101) {
                 $("#zianPc").hide();
-                $("#zianMobile").show();
+                $("#zianPcMobile").show();
             } else {
                 $("#zianPc").show();
-                $("#zianMobile").show();
+                $("#zianPcMobile").show();
             }
         } else {
             $("#zianPassListDiv").hide();
@@ -253,6 +254,7 @@
             innerHTML("packageLimitDay", result.limitDay);
             innerHTML("packageProgressRate", result.progressRateName);
             innerHTML("packageCtgName", result.ctgName);
+           
             if(result.kind == 100){
                 gfn_display("packagePc", true);
                 gfn_display("packageMobile", false);
@@ -538,7 +540,6 @@
 
 
     function goPopup1() {
-        alert(1);
         kiplayer.modalOpen("#modal1");
     }
 
