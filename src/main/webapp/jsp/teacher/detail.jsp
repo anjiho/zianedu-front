@@ -299,9 +299,11 @@
         innerValue("bbsKey1", bbskey);
         //var bbsKey = getInputTextValue("bbsKey");
         var detailInfo = getTeacherLearningQnaDetail(teacherKey, bbskey);
+
         if(detailInfo != null){
             var referenceInfo   = detailInfo.result.referenceRoomDetailInfo;
             var prevNextBbsList = detailInfo.result.prevNextBbsList;
+            var commentInfo = detailInfo.result.commentInfo;
 
             if(referenceInfo.pwd == 1){
                 $("#iconLock").show();
@@ -340,6 +342,34 @@
             }
             //봄문 내용 파징작업 끝
             innerHTML("qnaContent", contents);
+
+            //댓글 시작
+            $('#commentList ul').remove();  //댓글 영역 초기화
+            var commentHtml = "<ul>";
+            if(commentInfo.length > 0){
+                for(var j =0; j<commentInfo.length;j++){
+                    commentHtml += "<li>";
+                    commentHtml += "<div>";
+                    commentHtml += "<span class='cName'>" + commentInfo[j].userName + '('+ commentInfo[j].userId +')' + '</span>';
+                    commentHtml += "<span class='cDate'>" + commentInfo[j].indate + "</span>";
+                    commentHtml += "<p class='cComment'>" + commentInfo[j].contents + "</p>";
+                    /** 추후 본사 유지보수건으로 주석처리 **/
+                    // commentHtml += "<div>";
+                    // commentHtml += "<a class='cUdate'>수정</a>";
+                    // commentHtml += "<a class='cDel'>삭제</a>";
+                    // commentHtml += "</div>";
+                }
+            }
+            commentHtml += "<li class='cm_write'>";
+            commentHtml += "<div class='inner'>";
+            commentHtml += "<textarea id='commentContent'></textarea>";
+            commentHtml += "<a class='single' onclick='commentSave();'>댓글</a>";
+            commentHtml += "</div>";
+            commentHtml += "</li>";
+            commentHtml += "</ul>";
+            $("#commentList").append(commentHtml);
+            //댓글 끝
+
 
             for(var i = 0;  i < prevNextBbsList.length; i++){ /* 이전글 다음글 기능 */
                 if(prevNextBbsList[i].prevTitle == '이전글'){
@@ -947,8 +977,8 @@
                                     </colgroup>
                                     <thead>
                                         <tr>
-                                            <td colspan="2" id="qnaTitle"></td>
-                                            <td id="qnaIndate"></td>
+                                            <th colspan="2" id="qnaTitle"></th>
+                                            <th id="qnaIndate"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -971,14 +1001,12 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td colspan="2" class="textContent" id="qnaContent"></td>
+                                        <td colspan="3" class="tdEditorContent" id="qnaContent"></td>
                                     </tr>
                                     </tbody>
                                 </table>
 
-                                <div class="commentsList">
-
-                                </div>
+                                <div class="commentsList" id="commentList"></div>
 
                             </div>
 
@@ -1023,24 +1051,24 @@
                                 <a href="javascript:goReferenceList();" class="btn_m w140">목록으로</a>
                             </div>
 
-                            <div class="tableBox noLine">
-                                <form>
-                                    <table class="reply">
-                                        <colgroup>
-                                            <col class="w10p">
-                                            <col>
-                                            <col class="w100">
-                                        </colgroup>
-                                        <tbody>
-                                        <tr>
-                                            <td class="alignCenter">댓글</td>
-                                            <td><textarea class="w100p" id="commentContent"></textarea></td>
-                                            <td><input type="button" onclick="commentSave();" value="등록" class="btn_l on"></td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </form>
-                            </div>
+<%--                            <div class="tableBox noLine">--%>
+<%--                                <form>--%>
+<%--                                    <table class="reply">--%>
+<%--                                        <colgroup>--%>
+<%--                                            <col class="w10p">--%>
+<%--                                            <col>--%>
+<%--                                            <col class="w100">--%>
+<%--                                        </colgroup>--%>
+<%--                                        <tbody>--%>
+<%--                                        <tr>--%>
+<%--                                            <td class="alignCenter">댓글</td>--%>
+<%--                                            <td><textarea class="w100p" id="commentContent"></textarea></td>--%>
+<%--                                            <td><input type="button" onclick="commentSave();" value="등록" class="btn_l on"></td>--%>
+<%--                                        </tr>--%>
+<%--                                        </tbody>--%>
+<%--                                    </table>--%>
+<%--                                </form>--%>
+<%--                            </div>--%>
 
                             <div class="tableBox">
                                 <table class="view">

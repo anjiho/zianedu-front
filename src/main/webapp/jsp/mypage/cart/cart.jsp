@@ -8,6 +8,10 @@
         sessionStorage.removeItem('goodsInfo');
         sessionStorage.removeItem('resultData');
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        if (sessionUserInfo == null) {
+            alert("로그인이 필요합니다.");
+            goLoginPage();
+        }
         var userKey = sessionUserInfo.userKey;
         getUserCartInfo(userKey);
         $("#acaAll").click(function(){

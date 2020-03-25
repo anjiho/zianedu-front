@@ -123,6 +123,55 @@ function getVideoSignUpDetailInfo(gkey, device, jlecKey, tagId) {
     return detailInfo;
 }
 
+function getPromotionVideoSignUpDetailInfo(gkey, device, jlecKey, tagId) {
+    if (gkey == null || gkey == undefined) return;
+
+    var detailInfo = getApi("/myPage/getPromotionUserVideoOnlineSignUpLectureList/", jlecKey);
+
+    var data = {
+        device : device
+    };
+    var infoList = getApi("/product/getLectureListByJLecKey/", jlecKey, data);
+
+    dwr.util.removeAllRows(tagId); //테이블 리스트 초기화
+    if (infoList != null) {
+        var selList = infoList.result.lectureList;
+        var countId = '';
+        if(tagId == 'dataList') countId = 'playLecTotalCnt';
+        else if(tagId == 'zianPassDataList') countId = 'zianPassTotalCnt';
+        else countId = 'packageTotalCnt';
+        innerHTML(countId, infoList.result.totalCnt);
+        for(var i=0; i<selList.length;i++){
+            var num = i+1;
+            var returnHtml = "<tr>";
+            returnHtml += "<td>"+selList[i].numStr+"강</td>";
+            returnHtml += "<td>"+selList[i].name+"</td>";
+            returnHtml += "<td>"+selList[i].vodTime+"</td>";
+            returnHtml += "<td>";
+            returnHtml += "<div class=\"myVideo\">";
+            returnHtml += '<a href="javascript:void(0);" onclick="OpenLecPlayer(' + "'"  + selList[i].vodFileLow + "'" + ',' + "'"  + selList[i].name + "'" + ','+ selList[i].curriKey +','+ jlecKey +','+ detailInfo.result.kind +');" class=\"black small\">일반화질</a>';
+            returnHtml += '<a href="javascript:void(0);" onclick="OpenLecPlayer(' + "'"  + selList[i].vodFileHigh + "'" + ',' + "'"  + selList[i].name + "'" + ','+ selList[i].curriKey +','+ jlecKey +','+ detailInfo.result.kind +');"  class=\"blue small\">고화질</a>';
+            returnHtml += "</div>";
+            returnHtml += "<div class=\"myVideoM\">";
+            returnHtml += '<a href="javascript:myPlay('+num+');" class="black small myPy">재생</a>&nbsp;';
+            returnHtml += "<div class='myPlay' data-index='"+ num +"'>";
+            returnHtml += '<a href="javascript:void(0);" onclick="OpenLecPlayer(' + "'"  + selList[i].vodFileLow + "'" + ',' + "'"  + selList[i].name + "'" + ','+ selList[i].curriKey +','+ jlecKey +','+ detailInfo.result.kind +');" class=\"brBlack\">일반화질</a>';
+            returnHtml += '<a href="javascript:void(0);" onclick="OpenLecPlayer(' + "'"  + selList[i].vodFileHigh + "'" + ',' + "'"  + selList[i].name + "'" + ','+ selList[i].curriKey +','+ jlecKey +','+ detailInfo.result.kind +');" class=\"brBlue\">고화질</a>';
+            returnHtml += "</div>";
+            returnHtml += '<a href="javascript:myDownload('+num+');" class="blue small myDn">다운로드</a>';
+            returnHtml += '<div class="myDownload" data-index="'+ num +'">';
+            returnHtml += '<a href="javascript:void(0);" onclick="OpenDownloadPlayer(' + "'"  + selList[i].vodFileLow + "'" + ',' + "'"  + selList[i].name + "'" + ','+ selList[i].curriKey +','+ jlecKey +');" class=\"brBlack\">일반화질</a>';
+            returnHtml += '<a href="javascript:void(0);" onclick="OpenDownloadPlayer(' + "'"  + selList[i].vodFileHigh + "'" + ',' + "'"  + selList[i].name + "'" + ','+ selList[i].curriKey +','+ jlecKey +');" class=\"brBlue\">고화질</a>';
+            returnHtml += "</div>";
+            returnHtml += "</div>";
+            returnHtml += "</td>";
+            returnHtml += "</tr>";
+            $("#"+tagId).append(returnHtml);
+        }
+    }
+    return detailInfo;
+}
+
 
 //강좌 일시정지 요청, 일시정지 해제
 function requestVideoStartStop(jLecKey, pauseDay, requestType) {

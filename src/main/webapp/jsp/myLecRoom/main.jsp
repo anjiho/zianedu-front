@@ -207,7 +207,7 @@
 
     function zianPassDetail(jlecKey) {
         var pcMobile = divisionPcMobile();
-        var infoList = getVideoSignUpDetailInfo("", pcMobile, jlecKey, 'zianPassDataList');
+        var infoList = getPromotionVideoSignUpDetailInfo("", pcMobile, jlecKey, 'zianPassDataList');
         if (infoList != null) {
             $("#zianPassListDiv").show();
             var result = infoList.result;
@@ -239,7 +239,7 @@
 
     function packageDetail(jlecKey) {
         var pcMobile = divisionPcMobile();
-        var infoList = getVideoSignUpDetailInfo("", pcMobile, jlecKey, 'packageDataList');
+        var infoList = getPromotionVideoSignUpDetailInfo("", pcMobile, jlecKey, 'packageDataList');
         if(infoList != null){
             $("#packageListDiv").show();
             var result = infoList.result;
@@ -1085,7 +1085,7 @@
                                                         </li>
                                                     </ul>
                                                     <div class="total_count">
-                                                        <p>중지신청수 : <span><span id="pauseCnt"></span>회사용slick-dots / 총 3회중</span>
+                                                        <p>중지신청수 : <span><span id="pauseCnt"></span>회사용 / 총 3회중</span>
                                                         </p>
                                                         <p>중지신청일수 : <span><span id="pauseDay"></span>일사용 / 총 60일중</span>
                                                         </p>
