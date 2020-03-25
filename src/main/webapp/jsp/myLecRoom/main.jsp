@@ -41,10 +41,11 @@
             }
             var zainJlecKey = getInputTextValue("zianPassjLecKey");
             var packageJlecKey = getInputTextValue("packageJlecKey");
-            if (zainJlecKey != '') {
+            if (zainJlecKey != undefined) {
                 zianPassDetail(zainJlecKey);
             }
-            if (packageJlecKey != '') {//패키지
+
+            if (packageJlecKey != undefined) {//패키지
                 packageDetail(packageJlecKey);
             }
 
