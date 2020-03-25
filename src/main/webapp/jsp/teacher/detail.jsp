@@ -297,7 +297,7 @@
         $("#qnaDetail").show();
         $("#fileDetailList1").children().remove();
         innerValue("bbsKey1", bbskey);
-        //var bbsKey = getInputTextValue("bbsKey");
+
         var detailInfo = getTeacherLearningQnaDetail(teacherKey, bbskey);
         if(detailInfo != null){
             var referenceInfo   = detailInfo.result.referenceRoomDetailInfo;
@@ -797,20 +797,11 @@
                                                 <tr>
                                                     <td colspan="2">작성자 : <span id="referenceWriter"></span> (<span id="referenceUserId"></span>) | 조회수 : <span id="referenceCount"></span></td>
                                                 </tr>
-<%--                                                <tr>--%>
-<%--                                                        <td>첨부파일 :</td>--%>
-<%--                                                        <td>--%>
-<%--                                                            <ul id='fileDetailList' class="fileDetailList"></ul>--%>
-<%--                                                        </td>--%>
-<%--                                                </tr>--%>
                                                 <tr>
                                                     <td colspan="">
                                                         <div class="fileWrap">
                                                             <span>첨부파일 : </span>
-                                                            <ul class="fileList" id="fileDetailList">
-                                                                <%--                                            <li><a href="#"><img src="../images/common/icon_file.png" alt=""> 필기시험 합격선(제1회공채)-배포용(0).hwp</a></li>--%>
-                                                                <%--                                            <li><a href="#"><img src="../images/common/icon_file.png" alt=""> 필기시험 합격선(제1회공채).hwp</a></li>--%>
-                                                            </ul>
+                                                            <ul class="fileList" id="fileDetailList"></ul>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -952,10 +943,6 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-<%--                                    <tr>--%>
-<%--                                        <td class="bg_gray" id="qnaTitle"></td>--%>
-<%--                                        <td class="bg_gray alignRight" id="qnaIndate"></td>--%>
-<%--                                    </tr>--%>
                                     <tr>
                                         <td colspan="2">작성자 : <span id="qnaWriter"></span> (<span id="qnaUserId"></span>) | 조회수 : <span id="qnaCount"></span></td>
                                         <td class="ta_right" ><span class="iconLock" id="iconLock" style="display: none;">비밀글</span></td>
@@ -975,14 +962,8 @@
                                     </tr>
                                     </tbody>
                                 </table>
-
-                                <div class="commentsList">
-
-                                </div>
-
+                                <div class="commentsList"></div>
                             </div>
-
-                            <!-- ㅋ -->
                             <div style="display: none;" id="replyDiv">
                                 <div class="tabPage active">
                                     <form>
@@ -1092,7 +1073,6 @@
                                                 <tr>
                                                     <th scope="row">첨부파일</th>
                                                     <td class="">
-<%--                                                        <input type="file" id="attachFile1" class="fileBtn noline nobg">--%>
                                                         <input type="file" name="files[]" id="attachFile1" class="fileBtn noline"  multiple/>
                                                         <ul id='fileList1' class="fileList"></ul>
                                                     </td>

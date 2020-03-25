@@ -123,17 +123,6 @@ function getVideoSignUpDetailInfo(gkey, device, jlecKey, tagId) {
     return detailInfo;
 }
 
-
-//강좌 일시정지 요청, 일시정지 해제
-function requestVideoStartStop(jLecKey, pauseDay, requestType) {
-    var data = {
-        jLecKey : jLecKey,
-        pauseDay : pauseDay,
-        requestType : requestType
-    };
-    
-}
-
 //패키지 분류 리스트
 function getPackageSignUpList(userKey) {
     if (userKey == null || userKey == undefined) return;
