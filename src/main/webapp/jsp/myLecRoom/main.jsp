@@ -2,9 +2,9 @@
 <%@include file="/common/jsp/common.jsp" %>
 <script>
     var pcMobile = divisionPcMobile();
-    $( document ).ready(function() {
+    $(document).ready(function () {
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-        if(sessionUserInfo != null){
+        if (sessionUserInfo != null) {
             /* 동영상 */
             var userKey = sessionUserInfo.userKey;
             getVideoSignUp(userKey, pcMobile);//수강중인강좌 - 동영상 -과목 불러오기
@@ -19,19 +19,32 @@
 
             /* 지안패스 */
             getZianPassSignUpList(userKey);
+            getPackageSignUpList(userKey);//패키지
 
             var zianJkey = getInputTextValue("zianPassjKey");
+            var packageJKey = getInputTextValue("packageJKey");//패키지
             if (zianJkey != '') {
                 zianPassTypeList(zianJkey);
             }
+            if (packageJKey != '') {
+                packageTypeList(packageJKey);
+            }
 
             var zianPassCtgKey = getInputTextValue("zianPassCtgKey");
+            var packageCtgKey = getInputTextValue("packageCtgKey");
             if (zianPassCtgKey != '') {
                 zianPassLecTitleList(zianPassCtgKey);
             }
-            var zainJlecKey  = getInputTextValue("zianPassjLecKey");
+            if (packageCtgKey != '') {
+                packageLecTitleList(packageCtgKey);
+            }
+            var zainJlecKey = getInputTextValue("zianPassjLecKey");
+            var packageJlecKey = getInputTextValue("zianPassjLecKey");
             if (zainJlecKey != '') {
                 zianPassDetail(zainJlecKey);
+            }
+            if (packageJlecKey != '') {//패키지
+                packageDetail(packageJlecKey);
             }
 
             $("#zianPassList li:eq(0)").addClass('active');
@@ -43,15 +56,23 @@
                 $(this).addClass('active').siblings().removeClass('active');
             });
 
+            $("#packageList li:eq(0)").addClass('active');
+            $("#packageList li").click(function () { // 과목메뉴 클릭시 class active 기능
+                $(this).addClass('active').siblings().removeClass('active');
+            });
+            $("#packageType li:eq(0)").addClass('active');
+            $("#packageType li").click(function () {
+                $(this).addClass('active').siblings().removeClass('active');
+            });
 
             /* 학원실강 */
             getSignUpAcademyTypeList(userKey);
             var acaCtgKey = getInputTextValue("acaCtgKey");
-            if(acaCtgKey != ''){
+            if (acaCtgKey != '') {
                 academyLecList(acaCtgKey);
             }
             var acaGkey = getInputTextValue("acaGkey");
-            if(acaGkey != ''){
+            if (acaGkey != '') {
                 academyLecDetail(acaGkey);
             }
             $("#academyType li:eq(0)").addClass('active');
@@ -62,11 +83,11 @@
             /* 일시정지 */
             getSignUpVideoLecturePauseTypeList(userKey);
             var pauseCtgKey = getInputTextValue("pauseCtgKey");
-            if(pauseCtgKey != ''){
+            if (pauseCtgKey != '') {
                 pauseLecTitleList(pauseCtgKey);
             }
             var pauseJlecKey = getInputTextValue("pauseJlecKey");
-            if(pauseJlecKey != ''){
+            if (pauseJlecKey != '') {
                 pauseLecDetail(pauseJlecKey);
             }
             $("#pauseType li:eq(0)").addClass('active');
@@ -77,11 +98,11 @@
             /* 수강완료 단과*/
             getSignUpVideoLectureEndTypeList(userKey, divisionPcMobile());
             var lecEndCtgKey = getInputTextValue("lecEndCtgKey");
-            if(lecEndCtgKey != ''){
+            if (lecEndCtgKey != '') {
                 lecEndTitleList(lecEndCtgKey);
             }
             var lecEndJlecKey = getInputTextValue("lecEndJlecKey");
-            if(lecEndJlecKey != ''){
+            if (lecEndJlecKey != '') {
                 lecEndDetail(lecEndJlecKey);
             }
             $("#lecEndType li:eq(0)").addClass('active');
@@ -92,7 +113,7 @@
             /*수강완료 지안패스*/
             getZianPassEndList(userKey);
 
-        }else{
+        } else {
             alert("로그인이 필요합니다.");
             goLoginPage();
         }
@@ -106,7 +127,7 @@
         var userKey = sessionUserInfo.userKey;
         getVideoSignUpLectureNameList(userKey, pcMobile, subjectCtgKey, stepCtgKey);
     }
-    
+
     function playDepthList(subjectCtgKey) {
         innerValue("subjectCtgKey", subjectCtgKey);
         $("#typeLectureList li").remove();
@@ -120,9 +141,9 @@
     function getTypeLectureDetail(gkey, jlecKey) {
         var pcMobile = divisionPcMobile();
         var infoList = getVideoSignUpDetailInfo(gkey, pcMobile, jlecKey, 'dataList');
-        if(infoList == null){
+        if (infoList == null) {
             $("#playLecListDiv").hide();
-        }else{
+        } else {
             $("#playLecListDiv").show();
             var result = infoList.result;
             var lectureReviewBtn = "<a href='/review?page_gbn=lectureList&gKey=" + result.gkey + "' class='blue small'>수강후기</a>";
@@ -134,13 +155,13 @@
             innerHTML("limitDay", result.limitDay);
             innerHTML("PlayProgressRate", result.progressRateName);
             innerHTML("ctgName", result.ctgName);
-            if(result.kind == 100){
+            if (result.kind == 100) {
                 $("#pc").show();
                 $("#mobile").hide();
-            }else if(result.kind == 101){
+            } else if (result.kind == 101) {
                 $("#pc").hide();
                 $("#mobile").show();
-            }else{
+            } else {
                 $("#pc").show();
                 $("#mobile").show();
             }
@@ -156,19 +177,38 @@
         $("#zianPassType li:eq(0)").addClass('active');
     }
 
+    //패키지 > 유형 불러오기
+    function packageTypeList(jkey) {
+        $("#packageType li").remove();
+        $("#packageLecList li").remove();
+        innerValue("packageJKey", jkey);
+        getSignUpPackageTypeList(jkey, pcMobile);
+        $("#packageType li:eq(0)").addClass('active');
+    }
+
     function zianPassLecTitleList(ctgKey) {
         $("#zianPassLecList li").remove();
         $("#zianPassType li").click(function () {
             $(this).addClass('active').siblings().removeClass('active');
         });
-        var jKey =  getInputTextValue("zianPassjKey");
+        var jKey = getInputTextValue("zianPassjKey");
         getSignUpZianPassSubjectNameList(jKey, pcMobile, ctgKey);
     }
-    
+
+    function packageLecTitleList(ctgKey) {
+        $("#packageLecList li").remove();
+        $("#packageType li").click(function () {
+            $(this).addClass('active').siblings().removeClass('active');
+        });
+        var jKey = getInputTextValue("packageJKey");
+        getSignUpPackageSubjectNameList(jKey, pcMobile, ctgKey);
+    }
+
+
     function zianPassDetail(jlecKey) {
         var pcMobile = divisionPcMobile();
         var infoList = getVideoSignUpDetailInfo("", pcMobile, jlecKey, 'zianPassDataList');
-        if(infoList != null){
+        if (infoList != null) {
             $("#zianPassListDiv").show();
             var result = infoList.result;
 
@@ -181,19 +221,51 @@
             innerHTML("zianPassLimitDay", result.limitDay);
             innerHTML("zianPassProgressRate", result.progressRateName);
             innerHTML("zianPassCtgName", result.ctgName);
-            if(result.kind == 100){
+            if (result.kind == 100) {
                 $("#zianPc").show();
                 $("#zianPcMobile").hide();
-            }else if(result.kind == 101){
+            } else if (result.kind == 101) {
                 $("#zianPc").hide();
                 $("#zianPcMobile").show();
-            }else{
+            } else {
                 $("#zianPc").show();
                 $("#zianPcMobile").show();
             }
+        } else {
+            $("#zianPassListDiv").hide();
+        }
+    }
+
+
+    function packageDetail(jlecKey) {
+        var pcMobile = divisionPcMobile();
+        var infoList = getVideoSignUpDetailInfo("", pcMobile, jlecKey, 'packageDataList');
+        if(infoList != null){
+            $("#packageListDiv").show();
+            var result = infoList.result;
+
+            var lectureReviewBtn = "<a href='/review?page_gbn=lectureList&gKey=" + result.gkey + "' class='blue small'>수강후기</a>";
+            innerHTML("package_lectureReviewBtn2", lectureReviewBtn);
+            innerValue("stopPackageJlecKey", result.jlecKey);
+            innerHTML("packageName", result.name);
+            innerHTML("packageLecStartDate", result.startDate);
+            innerHTML("packageLecEndDate", result.endDate);
+            innerHTML("packageLimitDay", result.limitDay);
+            innerHTML("packageProgressRate", result.progressRateName);
+            innerHTML("packageCtgName", result.ctgName);
+            if(result.kind == 100){
+                $("#packagePc").show();
+                $("#packagePcMobile").hide();
+            }else if(result.kind == 101){
+                $("#packagePc").hide();
+                $("#packagePcMobile").show();
+            }else{
+                $("#packagePc").show();
+                $("#packagePcMobile").show();
+            }
         }
         else{
-            $("#zianPassListDiv").hide();
+            $("#packageListDiv").hide();
         }
     }
 
@@ -204,10 +276,10 @@
         var userKey = sessionUserInfo.userKey;
         getSignUpAcademySubjectNameList(userKey, ctgKey);
     }
-    
+
     function academyLecDetail(gKey) {
         var result = getAcademyProductDetail(gKey);
-        if(result != null){
+        if (result != null) {
             innerHTML("acaCtgName", result.ctgName);
             innerHTML("acaGoodsName", result.goodsName);
             innerHTML("acaLectureDate", result.lectureDate);
@@ -226,7 +298,7 @@
     //일시정지 강좌상세설명
     function pauseLecDetail(jlecKey) {
         var detailInfo = getOnlineVideoPauseListByJLecKey(jlecKey);
-        if(detailInfo != null) {
+        if (detailInfo != null) {
             for (var i = 0; i < detailInfo.result.length; i++) {
                 var selList = detailInfo.result[i];
                 innerValue("stopEndjLecKey", selList.jlecKey);
@@ -243,22 +315,22 @@
                 innerHTML("pauseCnt1", selList.pauseCnt);
                 innerHTML("pauseDay", selList.pauseDay);
                 innerHTML("pauseDay1", selList.pauseDay);
-                if(selList.kind == 100){
+                if (selList.kind == 100) {
                     $("#pausePc").show();
                     $("#pauseMobile").hide();
-                }else if(selList.kind == 101){
+                } else if (selList.kind == 101) {
                     $("#pausePc").hide();
                     $("#pauseMobile").show();
-                }else{
+                } else {
                     $("#pausePc").show();
                     $("#pauseMobile").show();
                 }
             }
-        }else{
+        } else {
             $("#pauseLecDiv").hide();
         }
     }
-    
+
     function lecEndTitleList(ctgKey) {
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         var userKey = sessionUserInfo.userKey;
@@ -266,10 +338,10 @@
         $("#lecEndNameList li").remove();
         getSignUpVideoLectureEndSubjectList(userKey, ctgKey, deviceType);
     }
-    
+
     function lecEndDetail(jlecKey) {
         var detailInfo = getSignUpVideoLectureEndInfo(jlecKey);
-        if(detailInfo != null) {
+        if (detailInfo != null) {
             var selList = detailInfo.result;
             innerHTML("lecEndCtgName", selList.ctgName);
             innerHTML("lecEndName", selList.name);
@@ -279,7 +351,7 @@
             innerValue("gkey1", selList.gkey);
 
             //재수강 Y,N
-            if(selList.retakeYn == 'N') $("#retake").hide();
+            if (selList.retakeYn == 'N') $("#retake").hide();
 
             var kind = selList.kind;
             if (kind == 100) {
@@ -292,43 +364,43 @@
                 $("#lecEndPC").show();
                 $("#lecEndMobile").show();
             }
-        }else{
+        } else {
             $("#lecEndDiv").hide();
         }
     }
 
     function goStop(val) {
-        if(val == 'stop'){
-            if(confirm("일시정지 신청 하시겠습니까?")){
+        if (val == 'stop') {
+            if (confirm("일시정지 신청 하시겠습니까?")) {
                 var stopJlecKey = getInputTextValue("stopJlecKey");
                 var result = requestVideoStartStop(stopJlecKey, 10, 'STOP');
-                if(result.resultCode == 200){
+                if (result.resultCode == 200) {
                     alert("일시정지 신청 완료");
                     return false;
-                }else if(result.resultCode == 905){
+                } else if (result.resultCode == 905) {
                     alert("일시정지 횟수가 초과 되었습니다\n운영자에게 문의하시기 바랍니다.");
                     return false;
                 }
             }
-        }else if(val == 'pass'){
-            if(confirm("일시정지 신청 하시겠습니까?")) {
+        } else if (val == 'pass') {
+            if (confirm("일시정지 신청 하시겠습니까?")) {
                 var stopZianJlecKey = getInputTextValue("stopZianJlecKey");
                 var result = requestVideoStartStop(stopZianJlecKey, 10, 'STOP');
                 if (result.resultCode == 200) {
                     alert("일시정지 신청 완료");
                     return false;
-                }else if(result.resultCode == 905){
+                } else if (result.resultCode == 905) {
                     alert("일시정지 횟수가 초과 되었습니다\n운영자에게 문의하시기 바랍니다.");
                     return false;
                 }
             }
-        }else if(val == 'stopEnd'){
+        } else if (val == 'stopEnd') {
             var stopEndjLecKey = getInputTextValue("stopEndjLecKey");
-            var result =  requestVideoStartStop(stopEndjLecKey, 10, 'START');
-            if(result.resultCode == 200){
+            var result = requestVideoStartStop(stopEndjLecKey, 10, 'START');
+            if (result.resultCode == 200) {
                 $('#modal4').hide();
                 //$('#overlay').css("","");
-            }else if(result.resultCode == 905){
+            } else if (result.resultCode == 905) {
                 alert("일시정지 해제 횟수가 초과 되었습니다\n운영자에게 문의하시기 바랍니다.");
                 return false;
             }
@@ -338,7 +410,7 @@
     //장바구니
     function goBasket() {
         var reLecSel = getSelectboxValue("reLecSel");
-        if(reLecSel == ''){
+        if (reLecSel == '') {
             alert("재수강 일수를 선택해 주세요.");
             return false;
         }
@@ -347,86 +419,86 @@
         var extendDay = getSelectboxValue("reLecSel");
         var arr = new Array();
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-        if(sessionUserInfo != undefined){
+        if (sessionUserInfo != undefined) {
             var userKey = sessionUserInfo.userKey;
             var data = {
-                userKey : userKey,
-                gKey : gKey,
-                priceKey : priceKey,
-                gCount : 1,
-                extendDay : extendDay
+                userKey: userKey,
+                gKey: gKey,
+                priceKey: priceKey,
+                gCount: 1,
+                extendDay: extendDay
             };
             arr.push(data);
             var saveCartInfo = JSON.stringify(arr);
             var result = saveCartAtRetake(saveCartInfo);
-            if(result.resultCode == 200){
+            if (result.resultCode == 200) {
                 alert("장바구니에 담겼습니다.");
                 return false;
             }
-        }else{
+        } else {
             alert("로그인을 해주세요");
             goLoginPage();
         }
     }
 
     function zianPassGoBasket(gkey, priceKey) {
-        var reLecSel = getSelectboxValue("zianPassReSel_"+gkey);
+        var reLecSel = getSelectboxValue("zianPassReSel_" + gkey);
 
-        if(reLecSel == ''){
+        if (reLecSel == '') {
             alert("재수강 일수를 선택해 주세요.");
             return false;
-        }else{
+        } else {
             var extendDay = reLecSel * 30;
         }
         var arr = new Array();
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-        if(sessionUserInfo != undefined){
+        if (sessionUserInfo != undefined) {
             var userKey = sessionUserInfo.userKey;
             var data = {
-                userKey : userKey,
-                gKey : gkey,
-                priceKey : priceKey,
-                gCount : 1,
-                extendDay : extendDay
+                userKey: userKey,
+                gKey: gkey,
+                priceKey: priceKey,
+                gCount: 1,
+                extendDay: extendDay
             };
             arr.push(data);
             var saveCartInfo = JSON.stringify(arr);
             var result = saveCartAtRetake(saveCartInfo);
-            if(result.resultCode == 200){
+            if (result.resultCode == 200) {
                 alert("장바구니에 담겼습니다.");
                 return false;
             }
-        }else{
+        } else {
             alert("로그인을 해주세요");
             goLoginPage();
         }
     }
-    
+
     function zianPassGoProductBuy(gkey, priceKey) {
-        var reLecSel = getSelectboxValue("zianPassReSel_"+gkey);
-        if(reLecSel == ''){
+        var reLecSel = getSelectboxValue("zianPassReSel_" + gkey);
+        if (reLecSel == '') {
             alert("재수강 일수를 선택해 주세요.");
             return false;
-        }else{
+        } else {
             var extendDay = reLecSel * 30;
         }
         var arr = new Array();
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-        if(sessionUserInfo != undefined){
+        if (sessionUserInfo != undefined) {
             var userKey = sessionUserInfo.userKey;
             var data = {
-                userKey : userKey,
-                gKey : gkey,
-                priceKey : priceKey,
-                gCount : 1,
-                extendDay : extendDay
+                userKey: userKey,
+                gKey: gkey,
+                priceKey: priceKey,
+                gCount: 1,
+                extendDay: extendDay
             };
             arr.push(data);
             var retakeInfo = JSON.stringify(arr);
             innerValue("retakeInfo", retakeInfo);
             $("#id_frm_singleMypage").attr("action", "/myPage?page_gbn=write");
             $("#id_frm_singleMypage").submit();
-        }else{
+        } else {
             alert("로그인을 해주세요");
             goLoginPage();
         }
@@ -435,7 +507,7 @@
     //바로구매
     function goProductBuy() {
         var reLecSel = getSelectboxValue("reLecSel");
-        if(reLecSel == ''){
+        if (reLecSel == '') {
             alert("재수강 일수를 선택해 주세요.");
             return false;
         }
@@ -444,21 +516,21 @@
         var extendDay = getSelectboxValue("reLecSel");
         var arr = new Array();
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-        if(sessionUserInfo != undefined){
+        if (sessionUserInfo != undefined) {
             var userKey = sessionUserInfo.userKey;
             var data = {
-                userKey : userKey,
-                gKey : gKey,
-                priceKey : priceKey,
-                gCount : 1,
-                extendDay : extendDay
+                userKey: userKey,
+                gKey: gKey,
+                priceKey: priceKey,
+                gCount: 1,
+                extendDay: extendDay
             };
             arr.push(data);
             var retakeInfo = JSON.stringify(arr);
             innerValue("retakeInfo", retakeInfo);
             $("#id_frm_singleMypage").attr("action", "/myPage?page_gbn=write");
             $("#id_frm_singleMypage").submit();
-        }else{
+        } else {
             alert("로그인을 해주세요");
             goLoginPage();
         }
@@ -471,22 +543,24 @@
     }
 
     /* 재생버튼 클릭시 버튼 교체 */
-    function myPlay(num){
-        $(".myPlay[data-index='"+num+"']").css('display','block');
+    function myPlay(num) {
+        $(".myPlay[data-index='" + num + "']").css('display', 'block');
     }
+
     /* 다운로드 클릭시 버튼 교체 */
-    function myDownload(num){
-        $(".myDownload[data-index='"+num+"']").css('display','block');
+    function myDownload(num) {
+        $(".myDownload[data-index='" + num + "']").css('display', 'block');
     }
+
     /* 지정된 외에 바깥쪽 클릭시 원래 버튼으로 설정 */
-    $(function(){
-        $("html").click(function(e){
+    $(function () {
+        $("html").click(function (e) {
             var $len = $('.new_cssM tbody').find('tr').length + 1;
-            for(var i=1;i<$len;i++){ //일반 클래스로 적용되지 않아 반복문 선언
-                if($(".myPlay[data-index='"+i+"']").css('display') == 'block' || $(".myDownload[data-index='"+i+"']").css('display') == 'block'){
-                    if(!$(e.target).is('.brBlack, .brBlue')){ //지정된 타겟 외에 나머지에게만 클릭허용
-                        $('.myPlay').css('display','none');
-                        $('.myDownload').css('display','none');
+            for (var i = 1; i < $len; i++) { //일반 클래스로 적용되지 않아 반복문 선언
+                if ($(".myPlay[data-index='" + i + "']").css('display') == 'block' || $(".myDownload[data-index='" + i + "']").css('display') == 'block') {
+                    if (!$(e.target).is('.brBlack, .brBlue')) { //지정된 타겟 외에 나머지에게만 클릭허용
+                        $('.myPlay').css('display', 'none');
+                        $('.myDownload').css('display', 'none');
                     }
                 }
             }
@@ -495,9 +569,9 @@
 
 </script>
 <form action="/Player/Axis" id="id_frm_player" method="post" name="name_frm_player">
-    <input id="vodPath" name="vodPath" type="hidden" value="" />
-    <input id="vodTitle" name="vodTitle" type="hidden" value="" />
-    <input id="starPlayerUrl" name="starPlayerUrl" type="hidden" value="" />
+    <input id="vodPath" name="vodPath" type="hidden" value=""/>
+    <input id="vodTitle" name="vodTitle" type="hidden" value=""/>
+    <input id="starPlayerUrl" name="starPlayerUrl" type="hidden" value=""/>
 </form>
 <form id="id_frm_singleMypage" method="post" name="id_frm_singleMypage">
     <input type="hidden" id="retakeInfo" name="retakeInfo">
@@ -506,9 +580,12 @@
     <input type="hidden" name="page_gbn" id="page_gbn">
     <input type="hidden" id="subjectCtgKey">
     <input type="hidden" id="gKey">
-    <input type="hidden" id="zianPassjKey" value="">
+    <input type="hidden" id="zianPassjKey">
+    <input type="hidden" id="packageJKey">
     <input type="hidden" id="zianPassCtgKey">
+    <input type="hidden" id="packageCtgKey">
     <input type="hidden" id="zianPassjLecKey">
+    <input type="hidden" id="packagejLecKey">
     <input type="hidden" id="acaCtgKey">
     <input type="hidden" id="acaGkey">
     <input type="hidden" id="pauseCtgKey">
@@ -518,6 +595,7 @@
 
     <input type="hidden" id="stopJlecKey">
     <input type="hidden" id="stopZianJlecKey">
+    <input type="hidden" id="stopPackageJlecKey">
     <input type="hidden" id="stopEndjLecKey">
     <input type="hidden" id="priceKey">
     <input type="hidden" id="gkey1">
@@ -586,7 +664,7 @@
                                                         <div class="Dropmenu_down" id="playLecListDiv">
                                                             <!--inner-->
                                                             <div class="inner">
-<%--                                                                <a href="" class="btn_modalClose">모달팝업닫기</a>--%>
+                                                                <%--                                                                <a href="" class="btn_modalClose">모달팝업닫기</a>--%>
                                                                 <div class="btn_crud">
                                                                     <span class="black small" id="ctgName">단과특강</span>
                                                                     <a href="#modal3" class="btn_modalOpen">강좌설명</a>
@@ -597,15 +675,20 @@
                                                                     <span class="bdbox" id="pc">PC</span>
                                                                     <span class="bdbox" id="mobile">모바일</span>
                                                                     <p class="thumb" id="playLecName"></p>
-                                                                    <span class="date"><b>수강기간</b><span id="playLecStartDate"></span> ~ <span id="playLecEndDate"></span> (<span id="limitDay"></span>일)</span>
+                                                                    <span class="date"><b>수강기간</b><span
+                                                                            id="playLecStartDate"></span> ~ <span
+                                                                            id="playLecEndDate"></span> (<span
+                                                                            id="limitDay"></span>일)</span>
                                                                     <!--guide-->
                                                                     <div class="guide">
                                                                         <div class="play">
                                                                             <span>일시정지</span>
-                                                                            <a href="javascript:goStop('stop');" class="replay off">신청</a>
+                                                                            <a href="javascript:goStop('stop');"
+                                                                               class="replay off">신청</a>
                                                                         </div>
                                                                         <div class="prograss_wrap">
-                                                                            <span class="text">진도율&nbsp;&nbsp; <span id="PlayProgressRate"></span></span>
+                                                                            <span class="text">진도율&nbsp;&nbsp; <span
+                                                                                    id="PlayProgressRate"></span></span>
                                                                         </div>
                                                                     </div>
                                                                     <!--//guide-->
@@ -614,103 +697,8 @@
                                                                 <div class="tbd_02">
                                                                     <div class="crud_area">
                                                                         <span class="unit">강좌목차</span>
-                                                                        <strong>총<span id="playLecTotalCnt"></span>강</strong>
-                                                                    </div>
-                                                                    <table class="bd">
-                                                                        <caption>최근수강강좌</caption>
-                                                                        <colgroup>
-                                                                            <col></col>
-                                                                            <col></col>
-                                                                            <col></col>
-                                                                            <col></col>
-                                                                        </colgroup>
-                                                                        <thead>
-                                                                        <tr>
-                                                                            <th>회차</th>
-                                                                            <th>제목</th>
-                                                                            <th>시간</th>
-                                                                            <th>동영상</th>
-                                                                        </tr>
-                                                                        </thead>
-                                                                    </table>
-                                                                    <div class="scroll">
-                                                                    <table class="new_cssM">
-                                                                        <tbody id="dataList"></tbody>
-                                                                    </table>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <!--//inner-->
-                                                        </div>
-                                                        <!--//Dropmenu_down -->
-
-                                                    </div>
-                                                </div>
-                                                <!-- //한국사 -->
-                                            </div>
-                                            <!-- //동영상 하단 메뉴tab_large_2dept -->
-                                        </div>
-                                        <!-- //동영상 -->
-
-
-
-                                        <!-- 패키지 -->
-                                        <div class="tabPage active">
-                                            <!-- 동영상 하단 메뉴 tab_large_2dept-->
-                                            <div class="tab_large_2depth tabContent">
-                                                <ul class="tabBar playSubject" id="packageSubject"></ul> <!-- 과목리스트 -->
-                                                <!-- 한국사 -->
-                                                <div class="tabPage active">
-                                                    <div class="tabContent_2depth">
-                                                        <p class="title">수강중인강좌</p>
-
-                                                        <!-- Dropmenu -->
-                                                        <div class="Dropmenu">
-                                                            <div class="lfloat">
-                                                                <p class="tit">유형</p>
-                                                                <ul class="Droptab_wrap" id="packageType"></ul>
-                                                            </div>
-                                                            <div class="rfloat">
-                                                                <p class="tit">강좌명</p>
-                                                                <ul class="1depth-1" id="packageLectureList">
-
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                        <!--//Dropmenu -->
-
-                                                        <!--Dropmenu_down 상단 메뉴 클릭시 내용 드롭다운 -->
-                                                        <div class="Dropmenu_down" id="packageLecListDiv">
-                                                            <!--inner-->
-                                                            <div class="inner">
-                                                                <div class="btn_crud">
-                                                                    <span class="black small" id="packageCtgName">단과특강</span>
-                                                                    <a href="#modal3" class="btn_modalOpen">강좌설명</a>
-                                                                    <span id="package_lectureReviewBtn"></span>
-                                                                </div>
-
-                                                                <div class="txt_area">
-                                                                    <span class="bdbox" id="packagePc">PC</span>
-                                                                    <span class="bdbox" id="packageMobile">모바일</span>
-                                                                    <p class="thumb" id="packageLecName"></p>
-                                                                    <span class="date"><b>수강기간</b><span id="packageLecStartDate"></span> ~ <span id="packageLecEndDate"></span> (<span id="packageLimitDay"></span>일)</span>
-                                                                    <!--guide-->
-                                                                    <div class="guide">
-                                                                        <div class="play">
-                                                                            <span>일시정지</span>
-                                                                            <a href="javascript:goStop('stop');" class="replay off">신청</a>
-                                                                        </div>
-                                                                        <div class="prograss_wrap">
-                                                                            <span class="text">진도율&nbsp;&nbsp; <span id="packageProgressRate"></span></span>
-                                                                        </div>
-                                                                    </div>
-                                                                    <!--//guide-->
-                                                                </div>
-
-                                                                <div class="tbd_02">
-                                                                    <div class="crud_area">
-                                                                        <span class="unit">강좌목차</span>
-                                                                        <strong>총<span id="packageLecTotalCnt"></span>강</strong>
+                                                                        <strong>총<span
+                                                                                id="playLecTotalCnt"></span>강</strong>
                                                                     </div>
                                                                     <table class="bd">
                                                                         <caption>최근수강강좌</caption>
@@ -731,7 +719,7 @@
                                                                     </table>
                                                                     <div class="scroll">
                                                                         <table class="new_cssM">
-                                                                            <tbody id="dataList2"></tbody>
+                                                                            <tbody id="dataList"></tbody>
                                                                         </table>
                                                                     </div>
                                                                 </div>
@@ -742,13 +730,125 @@
 
                                                     </div>
                                                 </div>
-
+                                                <!-- //한국사 -->
                                             </div>
                                             <!-- //동영상 하단 메뉴tab_large_2dept -->
                                         </div>
-                                        <!-- //패키지 -->
+                                        <!-- //동영상 -->
 
 
+                                        <!-- 지안패스 -->
+                                        <div class="tabPage">
+
+                                            <!-- 지안패스 하단 메뉴 tab_large_2dept-->
+                                            <div class="tab_large_2depth tabContent">
+                                                <ul class="tabBar zian_mbtn" id="packageList">
+                                                    <%--                                                    <li class="active"><a href="#">행정직9급 연간회원제용</a></li>--%>
+                                                    <%--                                                    <li><a href="#">행정직9급 연간관리반용</a></li>--%>
+                                                </ul>
+                                                <!-- 2019 지안패스 행정직9급 연간회원제용 -->
+                                                <div class="tabPage active">
+                                                    <div class="tabContent_2depth">
+                                                        <p class="title">수강중인강좌</p>
+                                                        <!--Dropmenu -->
+                                                        <div class="Dropmenu">
+                                                            <div class="lfloat">
+                                                                <p class="tit">유형</p>
+                                                                <ul class="Droptab_wrap" id="packageType"></ul>
+                                                            </div>
+                                                            <div class="rfloat">
+                                                                <p class="tit">강좌명</p>
+                                                                <ul class="2depth-1" id="packageLecList"></ul>
+                                                            </div>
+                                                        </div>
+                                                        <!--//Dropmenu -->
+
+                                                        <!--Dropmenu_down 상단 메뉴 클릭시 내용 드롭다운 -->
+                                                        <div class="Dropmenu_down" id="packageListDiv">
+                                                            <!--inner-->
+                                                            <div class="inner">
+                                                                <%--                                                                <a href="#" class="btn_modalClose">모달팝업닫기</a>--%>
+                                                                <div class="btn_crud">
+                                                                    <span class="black small"
+                                                                          id="packageCtgName"></span>
+                                                                    <a href="#modal3" class="btn_modalOpen">강좌설명</a>
+                                                                    <span id="package_lectureReviewBtn2"></span>
+                                                                </div>
+
+                                                                <div class="txt_area">
+                                                                    <span class="bdbox" id="packagePc">PC</span>
+                                                                    <span class="bdbox" id="packageMobile">모바일</span>
+                                                                    <p class="thumb" id="packageName"></p>
+                                                                    <span class="date"><b>수강기간</b><span
+                                                                            id="packageLecStartDate"></span> ~ <span
+                                                                            id="packageLecEndDate"></span> (<span
+                                                                            id="packageLimitDay"></span>일)</span>
+                                                                    <!--guide-->
+                                                                    <div class="guide">
+                                                                        <div class="play">
+                                                                            <span>일시정지</span>
+                                                                            <a href="javascript:goStop('pass');"
+                                                                               class="replay off">신청</a>
+                                                                        </div>
+                                                                        <div class="prograss_wrap">
+                                                                            <span class="text">진도율&nbsp;<span
+                                                                                    id="packageProgressRate"></span></span>
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!--//guide-->
+                                                                </div>
+
+                                                                <div class="tbd_02">
+                                                                    <div class="crud_area">
+                                                                        <span class="unit">강좌목차</span>
+                                                                        <strong>총 <span
+                                                                                id="packageTotalCnt"></span>강</strong>
+                                                                    </div>
+                                                                    <table class="bd">
+                                                                        <caption>최근수강강좌</caption>
+                                                                        <colgroup>
+                                                                            <col></col>
+                                                                            <col></col>
+                                                                            <col></col>
+                                                                            <col></col>
+                                                                        </colgroup>
+                                                                        <thead>
+                                                                        <tr>
+                                                                            <th>회차</th>
+                                                                            <th>제목</th>
+                                                                            <th>시간</th>
+                                                                            <th>동영상</th>
+                                                                        </tr>
+                                                                        </thead>
+                                                                    </table>
+                                                                    <div class="scroll">
+                                                                        <table class="new_cssM">
+                                                                            <tbody id="packageDataList"></tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <!--//inner-->
+                                                        </div>
+                                                        <!--//Dropmenu_down -->
+                                                    </div>
+                                                </div>
+                                                <!-- //2019 지안패스 행정직9급 연간회원제용 -->
+
+                                                <!-- 2020 지안패스 행정직9급 연간관리반용 -->
+                                                <div class="tabPage">
+                                                    <div class="tabContent_2depth">
+                                                        <p class="title">2020 지안패스 행정직9급 연간관리반용</p>
+                                                    </div>
+                                                </div>
+                                                <!-- //2020 지안패스 행정직9급 연간관리반용 -->
+
+                                            </div>
+                                            <!-- //지안패스 하단 메뉴tab_large_2dept -->
+
+                                        </div>
+                                        <!-- //지안패스 -->
 
 
                                         <!-- 지안패스 -->
@@ -757,8 +857,8 @@
                                             <!-- 지안패스 하단 메뉴 tab_large_2dept-->
                                             <div class="tab_large_2depth tabContent">
                                                 <ul class="tabBar zian_mbtn" id="zianPassList">
-<%--                                                    <li class="active"><a href="#">행정직9급 연간회원제용</a></li>--%>
-<%--                                                    <li><a href="#">행정직9급 연간관리반용</a></li>--%>
+                                                    <%--                                                    <li class="active"><a href="#">행정직9급 연간회원제용</a></li>--%>
+                                                    <%--                                                    <li><a href="#">행정직9급 연간관리반용</a></li>--%>
                                                 </ul>
                                                 <!-- 2019 지안패스 행정직9급 연간회원제용 -->
                                                 <div class="tabPage active">
@@ -781,9 +881,10 @@
                                                         <div class="Dropmenu_down" id="zianPassListDiv">
                                                             <!--inner-->
                                                             <div class="inner">
-<%--                                                                <a href="#" class="btn_modalClose">모달팝업닫기</a>--%>
+                                                                <%--                                                                <a href="#" class="btn_modalClose">모달팝업닫기</a>--%>
                                                                 <div class="btn_crud">
-                                                                    <span class="black small" id="zianPassCtgName"></span>
+                                                                    <span class="black small"
+                                                                          id="zianPassCtgName"></span>
                                                                     <a href="#modal3" class="btn_modalOpen">강좌설명</a>
                                                                     <span id="l_lectureReviewBtn2"></span>
                                                                 </div>
@@ -792,16 +893,21 @@
                                                                     <span class="bdbox" id="zianPc">PC</span>
                                                                     <span class="bdbox" id="zianMobile">모바일</span>
                                                                     <p class="thumb" id="zianPassName"></p>
-                                                                    <span class="date"><b>수강기간</b><span id="zianPassLecStartDate"></span> ~ <span id="zianPassLecEndDate"></span> (<span id="zianPassLimitDay"></span>일)</span>
+                                                                    <span class="date"><b>수강기간</b><span
+                                                                            id="zianPassLecStartDate"></span> ~ <span
+                                                                            id="zianPassLecEndDate"></span> (<span
+                                                                            id="zianPassLimitDay"></span>일)</span>
                                                                     <!--guide-->
                                                                     <div class="guide">
                                                                         <div class="play">
                                                                             <span>일시정지</span>
-                                                                            <a href="javascript:goStop('pass');" class="replay off">신청</a>
+                                                                            <a href="javascript:goStop('pass');"
+                                                                               class="replay off">신청</a>
                                                                         </div>
                                                                         <div class="prograss_wrap">
-                                                                            <span class="text">진도율&nbsp;<span id="zianPassProgressRate"></span></span>
-							                   		    			</span>
+                                                                            <span class="text">진도율&nbsp;<span
+                                                                                    id="zianPassProgressRate"></span></span>
+                                                                            </span>
                                                                         </div>
                                                                     </div>
                                                                     <!--//guide-->
@@ -810,7 +916,8 @@
                                                                 <div class="tbd_02">
                                                                     <div class="crud_area">
                                                                         <span class="unit">강좌목차</span>
-                                                                        <strong>총 <span id="zianPassTotalCnt"></span>강</strong>
+                                                                        <strong>총 <span
+                                                                                id="zianPassTotalCnt"></span>강</strong>
                                                                     </div>
                                                                     <table class="bd">
                                                                         <caption>최근수강강좌</caption>
@@ -890,7 +997,9 @@
 
                                                             <div class="txt_area">
                                                                 <p class="thumb" id="acaGoodsName"></p>
-                                                                <span class="date"><b>수강기간</b><span id="acaLectureDate"></span> (<span id="acaLimitDay"></span>일)</span>
+                                                                <span class="date"><b>수강기간</b><span
+                                                                        id="acaLectureDate"></span> (<span
+                                                                        id="acaLimitDay"></span>일)</span>
                                                             </div>
                                                         </div>
                                                         <!--//inner-->
@@ -926,15 +1035,15 @@
                                         <div class="lfloat">
                                             <p class="tit">유형</p>
                                             <ul class="Droptab_wrap" id="pauseType">
-<%--                                                <li class="tab" data-tab="4depth-1"><a href="#aa">이론</a></li>--%>
-<%--                                                <li class="tab" data-tab="4depth-2"><a href="#aa">모의고사</a></li>--%>
+                                                <%--                                                <li class="tab" data-tab="4depth-1"><a href="#aa">이론</a></li>--%>
+                                                <%--                                                <li class="tab" data-tab="4depth-2"><a href="#aa">모의고사</a></li>--%>
                                             </ul>
                                         </div>
                                         <div style="float: left;width: 828px;min-height: 346px; border: 1px solid #e5e5e5;overflow: hidden;">
                                             <p class="tit">강좌명</p>
                                             <ul class="4depth-1" id="pauseLecNameList">
-<%--                                                <li><a href="">2020 시험대비 임찬호 한국사 단원별 홀수문항 기출문제풀이 강의</a></li>--%>
-<%--                                                <li><a href="">2020 행정직대비 행정학 모의고사 문제풀이 강의</a></li>--%>
+                                                <%--                                                <li><a href="">2020 시험대비 임찬호 한국사 단원별 홀수문항 기출문제풀이 강의</a></li>--%>
+                                                <%--                                                <li><a href="">2020 행정직대비 행정학 모의고사 문제풀이 강의</a></li>--%>
                                             </ul>
                                         </div>
                                     </div>
@@ -953,7 +1062,8 @@
                                                 <span class="bdbox" id="pausePc">PC</span>
                                                 <span class="bdbox" id="pauseMobile">모바일</span>
                                                 <p class="thumb" id="pauseLecName"></p>
-                                                <span class="date"><b>수강기간</b><span id="pauseLectureDate"></span> (<span id="pauseLimitDay"></span>일)</span>
+                                                <span class="date"><b>수강기간</b><span id="pauseLectureDate"></span> (<span
+                                                        id="pauseLimitDay"></span>일)</span>
                                                 <!--guide-->
                                                 <div class="guide">
                                                     <div class="play">
@@ -962,16 +1072,25 @@
                                                         <a href="" class="replay off hidden">신청</a>
                                                     </div>
                                                     <div class="prograss_wrap">
-                                                        <span class="text">진도율&nbsp;&nbsp; <span id="pauseProgressRate"></span></span>
-			                   		    			</span>
+                                                        <span class="text">진도율&nbsp;&nbsp; <span
+                                                                id="pauseProgressRate"></span></span>
+                                                        </span>
                                                     </div>
                                                     <ul class="total_date">
-                                                        <li><span class="up_date">기존 수강기간</span><span id="pauseLectureDate1"></span> (<span id="pauseLimitDay1"></span>일)</li>
-                                                        <li><span>변경된 수강기간</span><span id="pauseChangeLectureDate"></span> (<span id="pauseChangeLimitDay"></span>일)</li>
+                                                        <li><span class="up_date">기존 수강기간</span><span
+                                                                id="pauseLectureDate1"></span> (<span
+                                                                id="pauseLimitDay1"></span>일)
+                                                        </li>
+                                                        <li><span>변경된 수강기간</span><span
+                                                                id="pauseChangeLectureDate"></span> (<span
+                                                                id="pauseChangeLimitDay"></span>일)
+                                                        </li>
                                                     </ul>
                                                     <div class="total_count">
-                                                        <p>중지신청수 : <span><span id="pauseCnt"></span>회사용slick-dots / 총 3회중</span></p>
-                                                        <p>중지신청일수 : <span><span id="pauseDay"></span>일사용 / 총 60일중</span></p>
+                                                        <p>중지신청수 : <span><span id="pauseCnt"></span>회사용slick-dots / 총 3회중</span>
+                                                        </p>
+                                                        <p>중지신청일수 : <span><span id="pauseDay"></span>일사용 / 총 60일중</span>
+                                                        </p>
                                                     </div>
                                                 </div>
                                                 <!--//guide-->
@@ -1023,9 +1142,11 @@
                                             <div class="txt_area">
                                                 <span class="bdbox" id="lecEndPC">PC</span>
                                                 <span class="bdbox" id="lecEndMobile">모바일</span>
-<%--                                                <span class="bdbox" id="lecEndPcMobile">PC 모바일</span>--%>
+                                                <%--                                                <span class="bdbox" id="lecEndPcMobile">PC 모바일</span>--%>
                                                 <p class="thumb" id="lecEndName"></p>
-                                                <span class="date"><b>수강기간</b><span id="lecEndStartDate"></span><b>종료기간</b><span id="lecEndDate"></span></span>
+                                                <span class="date"><b>수강기간</b><span
+                                                        id="lecEndStartDate"></span><b>종료기간</b><span
+                                                        id="lecEndDate"></span></span>
                                                 <div id="retake">
                                                     <!--guide-->
                                                     <div class="guide">
@@ -1044,8 +1165,8 @@
                                                     </div>
                                                     <!--//guide-->
                                                     <div class="btn_cart_wrap">
-                                                        <a href="javascript:goBasket();"  class="cart">장바구니</a>
-                                                        <a href="javascript:goProductBuy();"  class="buying">바로구매</a>
+                                                        <a href="javascript:goBasket();" class="cart">장바구니</a>
+                                                        <a href="javascript:goProductBuy();" class="buying">바로구매</a>
                                                     </div>
                                                 </div>
                                             </div>

@@ -144,16 +144,14 @@ function requestVideoStartStop(jLecKey, pauseDay, requestType) {
 //패키지 분류 리스트
 function getPackageSignUpList(userKey) {
     if (userKey == null || userKey == undefined) return;
-
     var infoList = getApi("/myPage/getPackageSignUpList/", userKey, "");
-
     if (infoList == null || Number(infoList.result.length) == 0) {
         $("#packageListDiv").hide();
         return false;
     } else if (infoList != null || infoList.result.length > 0) { //과목 리스트
         innerValue("packageJKey", infoList.result[0].jkey);
         dwr.util.addOptions('packageList', infoList.result, function (data) {
-            return "<a href='javascript:zianPassTypeList("+ data.jkey +");'>"+ data.gname +"</a>"
+            return "<a href='javascript:packageTypeList("+ data.jkey +");'>"+ data.gname +"</a>"
         }, {escapeHtml: false});
     }
 }
@@ -197,6 +195,31 @@ function getSignUpZianPassTypeList(jKey, deviceType) {
     }
 }
 
+
+//패키지 > 유형 불러오기
+function getSignUpPackageTypeList(jKey, deviceType) {
+    if (jKey == null || jKey == undefined) return;
+
+    var data = {
+        deviceType : deviceType
+    };
+
+    var infoList = getApi("/myPage/getSignUpPackageTypeList/", jKey, data);
+    if (infoList.result.length > 0) { //과목 리스트
+        innerValue("packageCtgKey", infoList.result[0].ctgKey);
+        var pcMobile = divisionPcMobile();
+        getSignUpPackageSubjectNameList(jKey, pcMobile, infoList.result[0].ctgKey);
+        dwr.util.addOptions('packageType', infoList.result, function (data) {
+            return "<a href='javascript:packageLecTitleList("+ data.ctgKey +");'>"+ data.ctgName +"</a>"
+        }, {escapeHtml: false});
+    }else{
+        $("#zianPassListDiv").hide();
+        return false;
+    }
+}
+
+
+
 function getSignUpZianPassSubjectNameList(jKey, deviceType, stepCtgKey) {
     if (jKey == null || jKey == undefined) return;
     var data = {
@@ -213,6 +236,24 @@ function getSignUpZianPassSubjectNameList(jKey, deviceType, stepCtgKey) {
         }, {escapeHtml: false});
     }
 }
+
+function getSignUpPackageSubjectNameList(jKey, deviceType, stepCtgKey) {
+    if (jKey == null || jKey == undefined) return;
+    var data = {
+        deviceType : deviceType,
+        stepCtgKey : stepCtgKey
+    };
+
+    var infoList = getApi("/myPage/getSignUpZianPassSubjectNameList/", jKey, data);
+    if (infoList != null) { //과목 리스트
+        innerValue("jLecKey", infoList.result[0].jlecKey);
+        packageDetail(infoList.result[0].jlecKey);
+        dwr.util.addOptions('packageLecList', infoList.result, function (data) {
+            return "<a href='javascript:packageDetail("+ data.jlecKey +");'>"+ data.name +"</a>"
+        }, {escapeHtml: false});
+    }
+}
+
 
 //학원 실강 > 유형 불러오기
 function getSignUpAcademyTypeList(userKey) {
