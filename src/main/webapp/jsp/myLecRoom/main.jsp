@@ -41,7 +41,7 @@
             }
             var zainJlecKey = getInputTextValue("zianPassjLecKey");
             var packageJlecKey = getInputTextValue("packageJlecKey");
-            if (zainJlecKey != undefined) {
+            if (zainJlecKey != "") {
                 zianPassDetail(zainJlecKey);
             }
 
