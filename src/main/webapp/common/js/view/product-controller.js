@@ -167,7 +167,11 @@ function getApplyVideoLectureInfo(teacherKey, subjectCtgKey, stepCtgKeys, menuCt
              returnHtml += "<li class=\"w40p\">";
              returnHtml += "<a href=\"#\" class=\"learnName\">" + teachLec.goodsName + "</a>";
              returnHtml += "<span class=\"learnNum\">강의수 <b class=\"colorBlue\">" + teachLec.lecCount + "강</b> | 수강일수 <b class=\"colorBlue\">" + teachLec.limitDay + "일</b></span>";
-             returnHtml += "<span class=\"learnView\">샘플보기 <a href=\"#\" class=\"btn_s btn_quality\">일반화질</a> <a href=\"#\" class=\"btn_s btn_quality on\">고화질</a></span>";
+             /** TODO  샘플강의 api작업 해야함 **/
+             returnHtml += '<span class="learnView">샘플보기 <a href="javascript:void(0);" onclick="OpenSamplePlayer(' + "'"+ teachLec.vodFileLow + "'" + ');" class="btn_s btn_quality">일반화질</a> <a href="javascript:void(0);" onclick="OpenSamplePlayer(' + "'"+ teachLec.vodFileHigh + "'" + ');"  class="btn_s btn_quality on">고화질</a></span>';
+
+             //returnHtml += '<td class="ta_center"><span class="learnView">샘플보기 <a href="javascript:void(0);" onclick="OpenSamplePlayer(' + "'"+ lecList.vodFileLow + "'" + ');" class="btn_s btn_quality">일반화질</a><a href="javascript:void(0);" onclick="OpenSamplePlayer(' + "'"+ lecList.vodFileHigh + "'" + ');" class="btn_s btn_quality on">고화질</a></span></td>';
+
              returnHtml += "</li>";
              returnHtml += "<li class=\"w40p ta_right\">";
              returnHtml += "<ul class=\"costList\">";
@@ -206,8 +210,8 @@ function getApplyVideoLectureInfo(teacherKey, subjectCtgKey, stepCtgKeys, menuCt
 
              returnHtml += "<div class=\"toggleWrap\">";
              returnHtml += "<div class=\"div_toggle\">";
-             returnHtml += "<div class=\"tableBox\">";
-             returnHtml += "<table class=\"lecture\">";
+             returnHtml += "<div class=\"tableWrap\">";
+             returnHtml += "<table class=\"classList\">";
              returnHtml += "<colgroup>";
              returnHtml += "<col class=\"w10p\">";
              returnHtml += "<col class=\"w40p\">";
@@ -215,10 +219,10 @@ function getApplyVideoLectureInfo(teacherKey, subjectCtgKey, stepCtgKeys, menuCt
              returnHtml += "<col class=\"w40p\">";
              returnHtml += "</colgroup>";
              returnHtml += "<thead>";
-             returnHtml += "<th scope=\"row\" style='text-align: center'>회차</th>";
-             returnHtml += "<th scope=\"row\" style='text-align: center'>제목</th>";
-             returnHtml += "<th scope=\"row\" style='text-align: center'>시간</th>";
-             returnHtml += "<th scope=\"row\" style='text-align: center'>샘플보기</th>";
+             returnHtml += "<th scope=\"row\">회차</th>";
+             returnHtml += "<th scope=\"row\">제목</th>";
+             returnHtml += "<th scope=\"row\">시간</th>";
+             returnHtml += "<th scope=\"row\">샘플보기</th>";
              returnHtml += "</thead>";
              returnHtml += "<tbody>";
 
@@ -232,7 +236,8 @@ function getApplyVideoLectureInfo(teacherKey, subjectCtgKey, stepCtgKeys, menuCt
                      returnHtml += "<td>" + lecInfo.name + "</td>";
                      returnHtml += "<td class=\"ta_center\">" + lecInfo.vodTime + "</td>";
                      if (lecInfo.num == 1) {
-                         returnHtml += "<td class=\"ta_center\"><span class=\"learnView\">샘플보기 <a href=\"#\" class=\"btn_s btn_quality\">일반화질</a> <a href=\"#\" class=\"btn_s btn_quality on\">고화질</a></span></td>";
+                         //returnHtml += "<td class=\"ta_center\"><span class=\"learnView\">샘플보기 <a href=\"#\" class=\"btn_s btn_quality\">일반화질</a> <a href=\"#\" class=\"btn_s btn_quality on\">고화질</a></span></td>";
+                         returnHtml += '<td class="ta_center"><span class="learnView">샘플보기 <a href="javascript:void(0);" onclick="OpenSamplePlayer(' + "'"+ lecInfo.vodFileLow + "'" + ');" class="btn_s btn_quality">일반화질</a><a href="javascript:void(0);" onclick="OpenSamplePlayer(' + "'"+ lecInfo.vodFileHigh + "'" + ');" class="btn_s btn_quality on">고화질</a></span></td>';
                      } else {
                          returnHtml += "<td class=\"ta_center\"></span></td>";
                      }
@@ -400,7 +405,7 @@ function getSpecialPackageList(menuCtgKey, subjectMenuKeys, teacherKeys, stepCtg
                                                         if(pcMobileKind.kind == 100) pcMobileName = 'PC';
                                                         else pcMobileName = '모바일';
                                                         returnHtml += "<span class='btn_ss btn_divTag'>"+ pcMobileName +"</span>";
-                                                        returnHtml += "<b class='cost'>"+ pcMobileKind.priceName +"원</b> <input type=\"checkbox\" name='lecChk' id='"+ pcMobileKind.priceKey +"' value='"+ pcMobileKind.gkey +"'>";
+                                                        returnHtml += "<b class='cost'>"+ pcMobileKind.sellPriceName +"원</b> <input type=\"checkbox\" name='lecChk' id='"+ pcMobileKind.priceKey +"' value='"+ pcMobileKind.gkey +"'>";
                                                     returnHtml += "<li>";
                                                 }
                                             }
@@ -429,9 +434,9 @@ function getSpecialPackageList(menuCtgKey, subjectMenuKeys, teacherKeys, stepCtg
                                         if(productInfo.lectureList != null){
                                             returnHtml += "<div class=\"toggleWrap\">";
                                                 returnHtml += "<div class=\"div_toggle\">";
-                                                    returnHtml += "<div class=\"lectureRow\">";
-                                                        returnHtml += "<div class=\"tableBox tableBox2\">";
-                                                            returnHtml += "<table class=\"lecture\">";
+                                                    returnHtml += "<div class=\"tableWrap\">";
+                                                        //returnHtml += "<div class=\"tableBox tableBox2\">";
+                                                            returnHtml += "<table class=\"classList\">";
                                                                 returnHtml += "<colgroup>";
                                                                     returnHtml += "<col class=\"w10p\">";
                                                                     returnHtml += "<col class=\"w40p\">";
@@ -449,12 +454,13 @@ function getSpecialPackageList(menuCtgKey, subjectMenuKeys, teacherKeys, stepCtg
                                                                 returnHtml += "<tbody>";
                                                                 for(var l = 0; l < productInfo.lectureList.length; l++){
                                                                     var lecList = productInfo.lectureList[l];
+                                                                    console.log(lecList);
                                                                     returnHtml += "<tr>";
                                                                         returnHtml += "<td class=\"ta_center\">"+ lecList.numStr +"</td>";
                                                                         returnHtml += "<td>"+ lecList.name +"</td>";
                                                                         returnHtml += "<td class=\"ta_center\">"+ lecList.vodTime +"</td>";
                                                                     if (lecList.num == 1) {
-                                                                        returnHtml += "<td class=\"ta_center\"><span class=\"learnView\"> <a href=\"#\" class=\"btn_s btn_quality\">일반화질</a> <a href=\"#\" class=\"btn_s btn_quality on\">고화질</a></span></td>";
+                                                                        returnHtml += '<td class="ta_center"><span class="learnView">샘플보기 <a href="javascript:void(0);" onclick="OpenSamplePlayer(' + "'"+ lecList.vodFileLow + "'" + ');" class="btn_s btn_quality">일반화질</a><a href="javascript:void(0);" onclick="OpenSamplePlayer(' + "'"+ lecList.vodFileHigh + "'" + ');" class="btn_s btn_quality on">고화질</a></span></td>';
                                                                     } else {
                                                                         returnHtml += "<td class=\"ta_center\"></span></td>";
                                                                     }
@@ -463,7 +469,7 @@ function getSpecialPackageList(menuCtgKey, subjectMenuKeys, teacherKeys, stepCtg
                                                                 } //테이블 for문
                                                                  returnHtml += "</tbody>";
                                                             returnHtml += "</table>";
-                                                        returnHtml += "</div>";//tableBox tableBox2
+                                                        //returnHtml += "</div>";//tableBox tableBox2
                                                     returnHtml += "</div>";//lectureRow
                                                 returnHtml += "</div>";//div_toggle
                                             returnHtml += "<div class=\"btn_toggle lock\"><a href=\"#\"></a></div>";

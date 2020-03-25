@@ -84,21 +84,6 @@
                 innerValue("nextNum", prevNextInfo.nextBbsKey);
             }
 
-            // var commentInfo = result.commentInfo;
-            // if(commentInfo.length > 0){
-            //     for(var j =0; j<commentInfo.length;j++){
-            //         //var commentHtml = "<tr>";
-            //         var commentHtml = "<td colspan=\"3\">";
-            //         commentHtml += " <div class='cm_list'>";
-            //         commentHtml += "<strong class='names'>"+ commentInfo[j].userName +"("+ commentInfo[j].userId +")</strong>";
-            //         commentHtml += "<span class='ctn'>"+ commentInfo[j].contents +"</span>";
-            //         commentHtml += "<span class='date'>"+ commentInfo[j].indate +"</span>";
-            //         commentHtml += "</div>";
-            //         commentHtml += "</td>";
-            //         //commentHtml += "</tr>";
-            //         $("#commentList").append(commentHtml);
-            //     }
-            // }
             var commentInfo = result.commentInfo;
             //댓글 시작
             $('#commentList ul').remove();  //댓글 영역 초기화

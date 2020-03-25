@@ -37,6 +37,34 @@
                 innerHTML("title", detailInfo.title);
                 innerHTML("readCount", detailInfo.readCount);
             }
+            var commentInfo = resultInfo.result.commentInfo;
+            //댓글 시작
+            $('#commentList ul').remove();  //댓글 영역 초기화
+            var commentHtml = "<ul>";
+            if(commentInfo.length > 0){
+                for(var j =0; j<commentInfo.length;j++){
+                    commentHtml += "<li>";
+                    commentHtml += "<div>";
+                    commentHtml += "<span class='cName'>" + commentInfo[j].userName + '('+ commentInfo[j].userId +')' + '</span>';
+                    commentHtml += "<span class='cDate'>" + commentInfo[j].indate + "</span>";
+                    commentHtml += "<p class='cComment'>" + commentInfo[j].contents + "</p>";
+                    /** 추후 본사 유지보수건으로 주석처리 **/
+                    // commentHtml += "<div>";
+                    // commentHtml += "<a class='cUdate'>수정</a>";
+                    // commentHtml += "<a class='cDel'>삭제</a>";
+                    // commentHtml += "</div>";
+                }
+            }
+            commentHtml += "<li class='cm_write'>";
+            commentHtml += "<div class='inner'>";
+            commentHtml += "<textarea id='commentContent'></textarea>";
+            commentHtml += "<a class='single' onclick='commentSave();'>댓글</a>";
+            commentHtml += "</div>";
+            commentHtml += "</li>";
+            commentHtml += "</ul>";
+            $("#commentList").append(commentHtml);
+            //댓글 끝
+
         }
     });
 </script>
@@ -86,6 +114,7 @@
                                 </tr>
                                 </tbody>
                             </table>
+                            <div class="commentsList" id="commentList"></div>
                         </div>
                         <div class="btnArea right">
                             <a href="javascript:goPageNoSubmit('myPage', 'questionList')" class="btn_m">목록으로</a>

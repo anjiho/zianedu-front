@@ -3582,3 +3582,16 @@ function compareToday(compareDate) {
     }
     return bl;
 }
+
+//댓글 저장
+function commentSave() {
+    var commentContent = getInputTextValue("commentContent");
+    var bbsKey = getInputTextValue("bbsKey");
+    var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+    var userKey = sessionUserInfo.userKey;
+    var result = saveBoardComment(bbsKey, userKey, commentContent);
+    if(result.resultCode == 200){
+        alert("댓글이 등록 되었습니다.");
+        isReloadPage();
+    }
+}

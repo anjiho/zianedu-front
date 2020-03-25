@@ -189,7 +189,7 @@
                             </table>
                         </div>
                         <div class="btnArea">
-                            <a href="#" class="btn_m gray radius w110">취소</a> &nbsp;&nbsp;&nbsp;
+                            <a href="javascript:goBack();" class="btn_m gray radius w110">취소</a> &nbsp;&nbsp;&nbsp;
                             <a href="javascript:saveQuestion();" class="btn_m onBlue radius w110">등록</a>
                         </div>
                     </div>
