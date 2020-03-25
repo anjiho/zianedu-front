@@ -19,7 +19,7 @@
 
             /* 지안패스 */
             getZianPassSignUpList(userKey);
-            getPackageSignUpList(userKey);//패키지
+            getPackageSignUpList(userKey, pcMobile);//패키지
 
             var zianJkey = getInputTextValue("zianPassjKey");
             var packageJKey = getInputTextValue("packageJKey");//패키지
@@ -223,13 +223,13 @@
             innerHTML("zianPassCtgName", result.ctgName);
             if (result.kind == 100) {
                 $("#zianPc").show();
-                $("#zianPcMobile").hide();
+                $("#zianMobile").hide();
             } else if (result.kind == 101) {
                 $("#zianPc").hide();
-                $("#zianPcMobile").show();
+                $("#zianMobile").show();
             } else {
                 $("#zianPc").show();
-                $("#zianPcMobile").show();
+                $("#zianMobile").show();
             }
         } else {
             $("#zianPassListDiv").hide();
