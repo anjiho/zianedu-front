@@ -297,11 +297,13 @@
         $("#qnaDetail").show();
         $("#fileDetailList1").children().remove();
         innerValue("bbsKey1", bbskey);
-
+        //var bbsKey = getInputTextValue("bbsKey");
         var detailInfo = getTeacherLearningQnaDetail(teacherKey, bbskey);
+
         if(detailInfo != null){
             var referenceInfo   = detailInfo.result.referenceRoomDetailInfo;
             var prevNextBbsList = detailInfo.result.prevNextBbsList;
+            var commentInfo = detailInfo.result.commentInfo;
 
             if(referenceInfo.pwd == 1){
                 $("#iconLock").show();
@@ -340,6 +342,34 @@
             }
             //봄문 내용 파징작업 끝
             innerHTML("qnaContent", contents);
+
+            //댓글 시작
+            $('#commentList ul').remove();  //댓글 영역 초기화
+            var commentHtml = "<ul>";
+            if(commentInfo.length > 0){
+                for(var j =0; j<commentInfo.length;j++){
+                    commentHtml += "<li>";
+                    commentHtml += "<div>";
+                    commentHtml += "<span class='cName'>" + commentInfo[j].userName + '('+ commentInfo[j].userId +')' + '</span>';
+                    commentHtml += "<span class='cDate'>" + commentInfo[j].indate + "</span>";
+                    commentHtml += "<p class='cComment'>" + commentInfo[j].contents + "</p>";
+                    /** 추후 본사 유지보수건으로 주석처리 **/
+                    // commentHtml += "<div>";
+                    // commentHtml += "<a class='cUdate'>수정</a>";
+                    // commentHtml += "<a class='cDel'>삭제</a>";
+                    // commentHtml += "</div>";
+                }
+            }
+            commentHtml += "<li class='cm_write'>";
+            commentHtml += "<div class='inner'>";
+            commentHtml += "<textarea id='commentContent'></textarea>";
+            commentHtml += "<a class='single' onclick='commentSave();'>댓글</a>";
+            commentHtml += "</div>";
+            commentHtml += "</li>";
+            commentHtml += "</ul>";
+            $("#commentList").append(commentHtml);
+            //댓글 끝
+
 
             for(var i = 0;  i < prevNextBbsList.length; i++){ /* 이전글 다음글 기능 */
                 if(prevNextBbsList[i].prevTitle == '이전글'){
@@ -797,11 +827,20 @@
                                                 <tr>
                                                     <td colspan="2">작성자 : <span id="referenceWriter"></span> (<span id="referenceUserId"></span>) | 조회수 : <span id="referenceCount"></span></td>
                                                 </tr>
+<%--                                                <tr>--%>
+<%--                                                        <td>첨부파일 :</td>--%>
+<%--                                                        <td>--%>
+<%--                                                            <ul id='fileDetailList' class="fileDetailList"></ul>--%>
+<%--                                                        </td>--%>
+<%--                                                </tr>--%>
                                                 <tr>
                                                     <td colspan="">
                                                         <div class="fileWrap">
                                                             <span>첨부파일 : </span>
-                                                            <ul class="fileList" id="fileDetailList"></ul>
+                                                            <ul class="fileList" id="fileDetailList">
+                                                                <%--                                            <li><a href="#"><img src="../images/common/icon_file.png" alt=""> 필기시험 합격선(제1회공채)-배포용(0).hwp</a></li>--%>
+                                                                <%--                                            <li><a href="#"><img src="../images/common/icon_file.png" alt=""> 필기시험 합격선(제1회공채).hwp</a></li>--%>
+                                                            </ul>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -938,11 +977,15 @@
                                     </colgroup>
                                     <thead>
                                         <tr>
-                                            <td colspan="2" id="qnaTitle"></td>
-                                            <td id="qnaIndate"></td>
+                                            <th colspan="2" id="qnaTitle"></th>
+                                            <th id="qnaIndate"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
+<%--                                    <tr>--%>
+<%--                                        <td class="bg_gray" id="qnaTitle"></td>--%>
+<%--                                        <td class="bg_gray alignRight" id="qnaIndate"></td>--%>
+<%--                                    </tr>--%>
                                     <tr>
                                         <td colspan="2">작성자 : <span id="qnaWriter"></span> (<span id="qnaUserId"></span>) | 조회수 : <span id="qnaCount"></span></td>
                                         <td class="ta_right" ><span class="iconLock" id="iconLock" style="display: none;">비밀글</span></td>
@@ -958,12 +1001,16 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td colspan="2" class="textContent" id="qnaContent"></td>
+                                        <td colspan="3" class="tdEditorContent" id="qnaContent"></td>
                                     </tr>
                                     </tbody>
                                 </table>
-                                <div class="commentsList"></div>
+
+                                <div class="commentsList" id="commentList"></div>
+
                             </div>
+
+                            <!-- ㅋ -->
                             <div style="display: none;" id="replyDiv">
                                 <div class="tabPage active">
                                     <form>
@@ -1004,24 +1051,24 @@
                                 <a href="javascript:goReferenceList();" class="btn_m w140">목록으로</a>
                             </div>
 
-                            <div class="tableBox noLine">
-                                <form>
-                                    <table class="reply">
-                                        <colgroup>
-                                            <col class="w10p">
-                                            <col>
-                                            <col class="w100">
-                                        </colgroup>
-                                        <tbody>
-                                        <tr>
-                                            <td class="alignCenter">댓글</td>
-                                            <td><textarea class="w100p" id="commentContent"></textarea></td>
-                                            <td><input type="button" onclick="commentSave();" value="등록" class="btn_l on"></td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </form>
-                            </div>
+<%--                            <div class="tableBox noLine">--%>
+<%--                                <form>--%>
+<%--                                    <table class="reply">--%>
+<%--                                        <colgroup>--%>
+<%--                                            <col class="w10p">--%>
+<%--                                            <col>--%>
+<%--                                            <col class="w100">--%>
+<%--                                        </colgroup>--%>
+<%--                                        <tbody>--%>
+<%--                                        <tr>--%>
+<%--                                            <td class="alignCenter">댓글</td>--%>
+<%--                                            <td><textarea class="w100p" id="commentContent"></textarea></td>--%>
+<%--                                            <td><input type="button" onclick="commentSave();" value="등록" class="btn_l on"></td>--%>
+<%--                                        </tr>--%>
+<%--                                        </tbody>--%>
+<%--                                    </table>--%>
+<%--                                </form>--%>
+<%--                            </div>--%>
 
                             <div class="tableBox">
                                 <table class="view">
@@ -1073,6 +1120,7 @@
                                                 <tr>
                                                     <th scope="row">첨부파일</th>
                                                     <td class="">
+<%--                                                        <input type="file" id="attachFile1" class="fileBtn noline nobg">--%>
                                                         <input type="file" name="files[]" id="attachFile1" class="fileBtn noline"  multiple/>
                                                         <ul id='fileList1' class="fileList"></ul>
                                                     </td>

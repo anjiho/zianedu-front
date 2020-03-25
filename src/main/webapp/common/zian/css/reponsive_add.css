@@ -1041,9 +1041,9 @@
     .teacherContentsTab > .tabBar:after {clear: both;content: "";display: block;}
 
     .teacherContentsTab > .tabBar {height: auto;margin-top: 50px}
-    .teacherContentsTab > .tabBar > li {width:33.1111%;}
+    .teacherContentsTab > .tabBar > li {width:33.3%;}
     .teacherContentsTab > .tabBar > li:last-child {border-right: 1px solid #ddd;}
-    .teacherContentsTab > .tabBar > li:nth-child(1),.teacherContentsTab > .tabBar > li:nth-child(2),.teacherContentsTab > .tabBar > li:nth-child(3) {border-bottom: 1px solid #ddd;}
+    .teacherContentsTab > .tabBar > li:nth-child(1),.teacherContentsTab > .tabBar > li:nth-child(2),.teacherContentsTab > .tabBar > li:nth-child(3) {border-bottom: 1px solid #ddd;border-right: 1px solid #ddd;}
     .teacherContentsTab > .tabBar > li:nth-child(2),.teacherContentsTab > .tabBar > li:nth-child(4) {border-right: 1px solid #ddd;}
     .teacherContentsTab > .tabPage {margin-top:20px}
     .lectureWrap .lectureList {position:relative;}

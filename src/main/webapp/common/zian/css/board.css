@@ -16,17 +16,17 @@
 
 
 /* 공지사항 뷰페이지 */
-.noticeView{font-size:14px;}
+.noticeView{font-size:14px;margin-top:24px}
 .noticeView thead{background:#ebebeb;}
 .noticeView thead th{padding:0px 20px;height:50px;font-weight:normal;text-align:left;background:none;border-bottom:1px solid #e1e1e1;}
 .noticeView td{padding:0px 20px;height:50px;font-weight:normal;text-align:left;background:none;border-bottom:1px solid #e1e1e1;}
 .noticeView tr:nth-child(2) td{height:auto;padding:10px 20px}
 .noticeView td.tdEditorContent{padding:20px 20px !important;height:180px !important;vertical-align:top}
-.noticeView td .fileWrap{position:relative;padding-left:80px;}
-.noticeView td .fileWrap .label{display:block;position:absolute;top:0;left:0;font-weight:200;font-size:14px;color:#000;padding:initial;line-height:initial;}
-.noticeView td .fileWrap .fileList{display:block;}
-.noticeView td .fileWrap .fileList li{display:block;margin:5px 0}
-.noticeView td .fileWrap .fileList li{display:block;margin:5px 0}
+.noticeView td .fileWrap{position:relative;}
+.noticeView td .fileWrap .label{display:inline-block;font-weight:200;font-size:14px;color:#000;padding:initial;line-height:initial;vertical-align:top;padding-top:4px}
+.noticeView td .fileWrap .fileList{display:inline-block;}
+.noticeView td .fileWrap .fileList li{display:block;margin:initial}
+.noticeView td .fileWrap .fileList li{display:block;margin:initial}
 
 
 /* 선생님 리스트 */
@@ -68,13 +68,14 @@
 /* 마이페이지 게시물관리 */
 .mypage05{width:100%;border-spacing:0;border-collapse:collapse;table-layout:fixed;border-top:2px solid #000;}
 .mypage05 tr{height:50px}
+.mypage05 tr th{text-align:center}
 .mypage05 tr td{text-align:center}
 .mypage05 tr td:nth-child(2){text-align:left}
-.mypage05 tr td:nth-child(2) a{background:url(../images/common/icon_lock.png) no-repeat left center;padding-left:25px}
+.mypage05 tr td:nth-child(2) a.lock{background:url(../images/common/icon_lock.png) no-repeat left center;padding-left:25px}
 .mypage05 tr.reply{background:#f1f1f1}
 .mypage05 tr.reply td:nth-child(2) a{background:none;padding-left:0}
 .mypage05 tr.reply td:nth-child(2) a:before{content:'RE:';color:#144b95;}
-.mypage05 tr th{text-align:center}
+
 
 /* 마이페이지 내게시글 */
 .mypage05_2{width:100%;border-spacing:0;table-layout:fixed}
@@ -190,6 +191,7 @@
 .commentsList{width:100%;font-size:16px;background:#f9f9f9;padding:20px 2% 0;box-sizing:border-box;margin-bottom:20px}
 .commentsList ul{width:100%;}
 .commentsList ul li:first-child{border-top:1px dotted #ccc;}
+.commentsList ul li.cm_write{border-top:none;}
 .commentsList ul li{width:100%;border-bottom:1px dotted #ccc;min-height:80px;padding:20px 20px;box-sizing:border-box;position:relative}
 .commentsList ul li div:first-child(1){width:100%;}
 .commentsList ul li div span.cName{font-weight:bold;font-size:14px}
@@ -249,9 +251,9 @@
     .noticeView colgroup{display:none}
     .noticeView thead{display:block !important;}
     .noticeView thead tr{display:block}
-    .noticeView thead th{display:block;padding: 12px 2% 2px!important;height:initial !important;box-sizing: border-box;border-bottom:none;font-size:14px;width:initial !important;}
-    .noticeView thead th:nth-child(1){width:initial !important;overflow:hidden;box-sizing:border-box;font-size:16px;}
-    .noticeView thead th:nth-child(2){box-sizing:border-box;text-align:left}
+    .noticeView thead th{display:block;height:initial !important;box-sizing: border-box;border-bottom:none;font-size:14px;width:initial !important;}
+    .noticeView thead th:nth-child(1){width:initial !important;overflow:hidden;box-sizing:border-box;font-size:16px;padding: 12px 2% 2px!important;}
+    .noticeView thead th:nth-child(2){box-sizing:border-box;text-align:left;padding:2px 2% 12px!important;}
     .noticeView tbody tr{display:block;box-sizing:border-box;width:100%;position:relative}
     .noticeView tbody tr:nth-child(1) td{display:block;width:100%;padding:14px 2%;box-sizing:border-box}
     .noticeView tbody tr:nth-child(2) td{display:block;width:100%;padding:14px 2%;box-sizing:border-box;height:auto}

@@ -226,9 +226,9 @@
             <ul>
                 <li><a href="#" class="login_btn">로그인</a>
                     <ul class="logindrop">
-                        <li><a href="">장바구니</a></li>
-                        <li><a href="">내강의실</a></li>
-                        <li><a href="">마이페이지</a></li>
+                        <li><a href="javascript:goPageNoSubmit('myPage', 'cart');">장바구니</a></li>
+                        <li><a href="javascript:goPageNoSubmit('myLecRoom', 'main');">내강의실</a></li>
+                        <li><a href="javascript:goMyPage();">마이페이지</a></li>
                         <li><a href="javascript:mobileLoginChk();" id="topNavM_state">로그아웃</a></li>
                     </ul>
                 </li>

@@ -4,6 +4,11 @@
 <script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
 <script>
     $( document ).ready(function() {
+        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        if (sessionUserInfo == null) {
+            alert("로그인이 필요합니다.");
+            goLoginPage();
+        }
         // var leftMenuInfo = sessionStorage.getItem('myPageHeader');
         // if(leftMenuInfo == null){
         //     $("#noticeMenu li:eq(0)").addClass('active');
