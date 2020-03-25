@@ -87,18 +87,11 @@ function getVideoSignUpDetailInfo(gkey, device, jlecKey, tagId) {
     dwr.util.removeAllRows(tagId); //테이블 리스트 초기화
     if (infoList != null) {
         var selList = infoList.result.lectureList;
-        console.log(selList);
         var countId = '';
         if(tagId == 'dataList') countId = 'playLecTotalCnt';
-        else countId = 'zianPassTotalCnt';
+        else if(tagId == 'zianPassDataList') countId = 'zianPassTotalCnt';
+        else countId = 'packageTotalCnt';
         innerHTML(countId, infoList.result.totalCnt);
-        // dwr.util.addRows(tagId, selList, [
-        //     function(data) {return data.numStr;},
-        //     function(data) {return data.name;},
-        //     function(data) {return data.vodTime;},
-        //     function(data) {return '<div class="myPlay" data-index="1"><a href="javascript:void(0);" onclick="OpenLecPlayer(' + "'"  + data.vodFileLow + "'" + ',' + "'"  + data.name + "'" + ','+ data.curriKey +','+ jlecKey +','+ detailInfo.result.kind +');" class="black small">일반화질</a>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="OpenLecPlayer(' + "'"  + data.vodFileHigh + "'" + ',' + "'"  + data.name + "'" + ','+ data.curriKey +','+ jlecKey +','+ detailInfo.result.kind +');" class="blue small">고화질</a></div>';}
-        //
-        // ], {escapeHtml:false});
         for(var i=0; i<selList.length;i++){
             var num = i+1;
             var returnHtml = "<tr>";

@@ -802,8 +802,7 @@
                                                                 <div class="tbd_02">
                                                                     <div class="crud_area">
                                                                         <span class="unit">강좌목차</span>
-                                                                        <strong>총 <span
-                                                                                id="packageTotalCnt"></span>강</strong>
+                                                                        <strong>총 <span id="packageTotalCnt"></span>강</strong>
                                                                     </div>
                                                                     <table class="bd">
                                                                         <caption>최근수강강좌</caption>
@@ -916,8 +915,7 @@
                                                                 <div class="tbd_02">
                                                                     <div class="crud_area">
                                                                         <span class="unit">강좌목차</span>
-                                                                        <strong>총 <span
-                                                                                id="zianPassTotalCnt"></span>강</strong>
+                                                                        <strong>총 <span id="zianPassTotalCnt"></span>강</strong>
                                                                     </div>
                                                                     <table class="bd">
                                                                         <caption>최근수강강좌</caption>
