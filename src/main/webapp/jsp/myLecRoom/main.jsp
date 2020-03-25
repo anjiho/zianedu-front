@@ -41,10 +41,11 @@
             }
             var zainJlecKey = getInputTextValue("zianPassjLecKey");
             var packageJlecKey = getInputTextValue("packageJlecKey");
-            if (zainJlecKey != '') {
+            if (zainJlecKey != "") {
                 zianPassDetail(zainJlecKey);
             }
-            if (packageJlecKey != '' || packageJlecKey != undefined) {//패키지
+
+            if (packageJlecKey != undefined) {//패키지
                 packageDetail(packageJlecKey);
             }
 
@@ -110,6 +111,7 @@
             $("#lecEndType li").click(function () {
                 $(this).addClass('active').siblings().removeClass('active');
             });
+
             /*수강완료 지안패스*/
             getZianPassEndList(userKey);
 
@@ -253,7 +255,7 @@
             innerHTML("packageLimitDay", result.limitDay);
             innerHTML("packageProgressRate", result.progressRateName);
             innerHTML("packageCtgName", result.ctgName);
-
+           
             if(result.kind == 100){
                 gfn_display("packagePc", true);
                 gfn_display("packageMobile", false);
