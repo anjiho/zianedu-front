@@ -255,15 +255,16 @@
             innerHTML("packageLimitDay", result.limitDay);
             innerHTML("packageProgressRate", result.progressRateName);
             innerHTML("packageCtgName", result.ctgName);
+            console.log(result.kind);
             if(result.kind == 100){
-                $("#packagePc").show();
-                $("#packagePcMobile").hide();
+                gfn_display("packagePc", true);
+                gfn_display("packageMobile", false);
             }else if(result.kind == 101){
-                $("#packagePc").hide();
-                $("#packagePcMobile").show();
+                gfn_display("packagePc", false);
+                gfn_display("packageMobile", false);
             }else{
-                $("#packagePc").show();
-                $("#packagePcMobile").show();
+                gfn_display("packagePc", true);
+                gfn_display("packageMobile", true);
             }
         }
         else{
@@ -778,8 +779,8 @@
                                                                 </div>
 
                                                                 <div class="txt_area">
-                                                                    <span class="bdbox" id="packagePc">PC</span>
-                                                                    <span class="bdbox" id="packageMobile">모바일</span>
+                                                                    <span class="bdbox" id="packagePc" style="display: none">PC</span>
+                                                                    <span class="bdbox" id="packageMobile" style="display: none">모바일</span>
                                                                     <p class="thumb" id="packageName"></p>
                                                                     <span class="date"><b>수강기간</b><span
                                                                             id="packageLecStartDate"></span> ~ <span
