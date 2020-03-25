@@ -30,7 +30,7 @@
             </div>
             <div class="mainBannerReview disnone">
                 <div class="inner">
-                    <a href="#"><img src="/common/zian/images/content/img_banner0101" alt=""></a>
+                    <a href="#"><img src="/common/zian/images/content/img_banner0101.jpg" alt=""></a>
                 </div>
             </div>
 
