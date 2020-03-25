@@ -44,7 +44,7 @@
             if (zainJlecKey != '') {
                 zianPassDetail(zainJlecKey);
             }
-            if (packageJlecKey != '') {//패키지
+            if (packageJlecKey != '' || packageJlecKey != undefined) {//패키지
                 packageDetail(packageJlecKey);
             }
 
