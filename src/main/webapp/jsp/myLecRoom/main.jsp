@@ -23,6 +23,7 @@
 
             var zianJkey = getInputTextValue("zianPassjKey");
             var packageJKey = getInputTextValue("packageJKey");//패키지
+
             if (zianJkey != '') {
                 zianPassTypeList(zianJkey);
             }
@@ -39,7 +40,7 @@
                 packageLecTitleList(packageCtgKey);
             }
             var zainJlecKey = getInputTextValue("zianPassjLecKey");
-            var packageJlecKey = getInputTextValue("zianPassjLecKey");
+            var packageJlecKey = getInputTextValue("packageJlecKey");
             if (zainJlecKey != '') {
                 zianPassDetail(zainJlecKey);
             }
@@ -238,6 +239,7 @@
 
 
     function packageDetail(jlecKey) {
+        alert(1);
         var pcMobile = divisionPcMobile();
         var infoList = getPromotionVideoSignUpDetailInfo("", pcMobile, jlecKey, 'packageDataList');
         if(infoList != null){
