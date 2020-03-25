@@ -239,7 +239,6 @@
 
 
     function packageDetail(jlecKey) {
-        alert(1);
         var pcMobile = divisionPcMobile();
         var infoList = getPromotionVideoSignUpDetailInfo("", pcMobile, jlecKey, 'packageDataList');
         if(infoList != null){
@@ -255,7 +254,7 @@
             innerHTML("packageLimitDay", result.limitDay);
             innerHTML("packageProgressRate", result.progressRateName);
             innerHTML("packageCtgName", result.ctgName);
-            console.log(result.kind);
+           
             if(result.kind == 100){
                 gfn_display("packagePc", true);
                 gfn_display("packageMobile", false);
@@ -541,7 +540,6 @@
 
 
     function goPopup1() {
-        alert(1);
         kiplayer.modalOpen("#modal1");
     }
 
