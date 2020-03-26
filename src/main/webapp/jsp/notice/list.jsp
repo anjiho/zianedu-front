@@ -60,7 +60,7 @@
                                     <option value="content">내용</option>
                                 </select>
                                 <input type="text" id="searchText" onkeypress="if(event.keyCode==13) {fn_search('new'); return false;}" class="w240">
-                                <input type="button" value="검색" class="btn_m on">
+                                <input type="button" value="검색" class="btn_m on" onclick="javascript:fn_search('new');">
                                 <a href="javascript:fn_search('new');" class="search_ico">검색</a>
                             </li>
                             <li class="right">

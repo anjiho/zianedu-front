@@ -53,13 +53,13 @@
                     for (var i = 0; i < detailInfo.fileInfo.length; i++) {
                         var fileList = detailInfo.fileInfo[i];
                         // var retrunHtml = "<a href='" + fileList.fileUrl + "' download>" + fileList.fileName + "</a>";
-                        var retrunHtml = "<li><a href=\'"+ fileList.fileUrl +"'><img src=\"/common/zian/images/common/icon_file.png\" alt=\"\"> "+ fileList.fileName +"</a></li>";
+                        var retrunHtml = '<li><a href="javascript:download(' + "'" + fileList.fileName + "'" + ')"><img src="/common/zian/images/common/icon_file.png" alt="">'+ fileList.fileName +'</a></li>';
                         $("#fileList").append(retrunHtml);
                     }
                 }
             }
+            /** 2020. 03. 27 안지호 수정 **/
             var prevNextInfo = result.prevNextInfo;
-
             if(prevNextInfo.prevBbsKey == 0){
                 $("#prev").hide();
                 innerHTML("prevTitle", "");
@@ -71,9 +71,18 @@
                 innerHTML("prevCreateDate", prevNextInfo.prevCreateDate);
                 innerValue("prevNum", prevNextInfo.prevBbsKey);
             }
-            innerHTML("nextTitle", prevNextInfo.nextTitle);
-            innerHTML("nextCreateDate", prevNextInfo.nextCreateDate);
-            innerValue("nextNum", prevNextInfo.nextBbsKey);
+
+            if(prevNextInfo.nextBbsKey == 0){
+                $("#next1").hide();
+                innerHTML("nextTitle", "");
+                innerHTML("nextCreateDate", "");
+                innerValue("nextNum", "");
+            }else{
+                $("#next1").show();
+                innerHTML("nextTitle", prevNextInfo.nextTitle);
+                innerHTML("nextCreateDate", prevNextInfo.nextCreateDate);
+                innerValue("nextNum", prevNextInfo.nextBbsKey);
+            }
         }
     });
 
@@ -155,7 +164,7 @@
                                 <td class="left"><a href="javascript:goPrev();"><span id="prevTitle"></span></a></td>
                                 <td class="right"><span id="prevCreateDate"></span></td>
                             </tr>
-                            <tr>
+                            <tr id="next1">
                                 <td class="center">다음글 ▼</td>
                                 <td class="left"><a href="javascript:goNext();"><span id="nextTitle"></span></a></td>
                                 <td class="right"><span id="nextCreateDate"></span></td>

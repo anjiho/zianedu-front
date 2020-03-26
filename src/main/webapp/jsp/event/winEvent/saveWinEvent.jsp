@@ -53,7 +53,7 @@
                 var result = saveBoard(11046, sessionUserInfo.userKey, title, content, 0, 0, '');
                 if (result.resultCode == 200) {
                     alert("성공적으로 등록 완료되었습니다");
-                    return false;
+                    goPageNoSubmit('event','winList');
                 }
             } else {
                 var formData = new FormData();
@@ -78,7 +78,7 @@
                             saveBoardFileList(result.keyValue, str);
                             if (result.resultCode == 200) {
                                 alert("성공적으로 등록 완료되었습니다");
-                                return false;
+                                goPageNoSubmit('event','winList');
                             }
                         }
                     }
