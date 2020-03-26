@@ -14,7 +14,6 @@
         }else{
             $("#cssDivsion").prop('href', '/common/zian/css/techContent.css');
         }
-
         if(leftMenuInfo == "publicOnline") {
             $(".onlineTopMenu").show();
             $(".acaTopMenu").hide();
@@ -83,6 +82,16 @@
             $("#logo").attr("src", "/common/zian/images/common/logo04.png");
             $("#mainLogoImg").attr("src", "/common/zian/images/ex/logo07.png");
             $("#mainUrl").attr("href", "javascript:goPageNoSubmit('bookStore', 'main')");
+        } else {
+            $(".onlineTopMenu").show();
+            $(".acaTopMenu").hide();
+            $(".bookStore").hide();
+            $(".bigExam").hide();
+            $("#logo").attr("src", "/common/zian/images/common/logo02.png");
+            $("#mainUrl").attr("href", "javascript:goPageNoSubmit('techOnline', 'main')");
+            $("#mainLogoImg").attr("src", "/common/zian/images/ex/logo03.png");
+            innerHTML("mainName", "온라인");
+            $("#mainName").css('color', '#f69321');
         }
 
         if(leftMenuInfo == "publicOnline") getMainBottomBanner(6284, 2);
@@ -186,7 +195,27 @@
                 innerHTML("subMenu3", "자격증/가산점");
                 innerHTML("subMenu4", "온라인서점");
                 innerHTML("subMenu5", "빅모의고사");
+            } else {
+                $("#siteTab").css("background","#f69321");
+                var html = "기술직"+"<br />"+"온라인";
+                innerHTML("topName", html);
+                innerHTML("topSub", "기술직 학원");
+                innerHTML("subMenu1", "행정직");
+                innerHTML("subMenu2", "계리직");
+                innerHTML("subMenu3", "자격증/가산점");
+                innerHTML("subMenu4", "온라인서점");
+                innerHTML("subMenu5", "빅모의고사");
             }
+        } else {
+            $("#siteTab").css("background","#f69321");
+            var html = "기술직"+"<br />"+"온라인";
+            innerHTML("topName", html);
+            innerHTML("topSub", "기술직 학원");
+            innerHTML("subMenu1", "행정직");
+            innerHTML("subMenu2", "계리직");
+            innerHTML("subMenu3", "자격증/가산점");
+            innerHTML("subMenu4", "온라인서점");
+            innerHTML("subMenu5", "빅모의고사");
         }
         getExamScheduleList("dDayBanner"); //d-day 슬라이드 배너
 
