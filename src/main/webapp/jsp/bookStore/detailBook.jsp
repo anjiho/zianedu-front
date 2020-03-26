@@ -33,13 +33,13 @@
 
         var otherBookInfo = detailInfo.result.otherBookInfo;
         if(otherBookInfo.goodsName != null){
-            innerHTML("writerName", otherBookInfo.writer);
+            innerHTML("writerName", "저자의 책 “" + otherBookInfo.writer + "”");
             $("#bookImg2").attr("src", otherBookInfo.bookImageUrl);
-            innerHTML('goodName2', otherBookInfo.goodsName);
-            innerHTML('writer2', otherBookInfo.writer);
-            innerHTML('publishName2', otherBookInfo.name);
+            innerHTML('goodName2', otherBookInfo.goodsName + "<br>" + otherBookInfo.writer + " I " + otherBookInfo.name);
+            //innerHTML('writer2', otherBookInfo.writer);
+            //innerHTML('publishName2', otherBookInfo.name);
             innerHTML('sellPrice2', otherBookInfo.sellPrice);
-            innerHTML('discountPercent2', otherBookInfo.discountPercent);
+            innerHTML('discountPercent2', "(" + otherBookInfo.discountPercent + "할인)");
             innerValue('otherGkey', otherBookInfo.gkey);
         }else{
             $(".book_etc").hide();
@@ -132,7 +132,7 @@
         <%@include file="/common/jsp/bookStoreHeader.jsp" %>
         <!--//상단-->
         <!--본문-->
-        <div id="container" class="shop">
+        <div id="container">
             <div class="inner">
                 <!--서브 컨텐츠-->
                 <div class="online">
@@ -193,11 +193,11 @@
                             </table>
                         </div>
                         <div class="book_etc">
-                            <p class="stitle">저자의 책 “<span id="writerName"></span>”</p>
+                            <p class="stitle" id="writerName"></p>
                             <img src="" id="bookImg2" style="width: 120px;height: 200px;">
-                            <span><span id="goodName2"></span><br>
-                                <span id="writer2"></span> I <span id="publishName2"></span> </span>
-                            <span><b id="sellPrice2"></b>원<span class="text_red">(<span id="discountPercent2"></span>할인)</span></span>
+                            <span><span id="goodName2"></span>
+<%--                            <span id="writer2"></span> I <span id="publishName2"></span> </span>--%>
+                            <span><b id="sellPrice2"></b>원<span class="text_red" id="discountPercent2"></span></span>
                             <a href="javascript:goDetailBook();" class="btn_inline">자세히 보기</a>
                         </div>
                     </div>
@@ -209,10 +209,10 @@
 
                     <div class="infoB_book">
                         <p class="stitle">도서설명</p>
-                        <div class="" id="content" style="margin-left: 0px;">
-                        </div>
+                        <span id="content"></span>
                         <p class="stitle">목차</p>
-                        <div class="" id="content1" style="margin-left: 0px;"></div>
+                        <span id="content1"></span>
+<%--                        <div class="" id="content1"></div>--%>
                     </div>
                 </div>
                 <!--//서브 컨텐츠-->

@@ -86,13 +86,13 @@
         <%@include file="/common/jsp/bookStoreHeader.jsp" %>
         <!--//상단-->
         <!--본문-->
-        <div id="container" class="shop">
+        <div id="container">
             <div class="inner">
                 <!--컨텐츠-->
                 <!-- 새로나온책 -->
                 <div class="mainProduct2">
                     <div class="titleBar">
-                        <h5 style="font-weight: bold;">새로나온 책</h5>
+                        <h5>새로나온 책</h5>
                         <span>지안에듀 신규 도서를 확인 해 보세요!</span>
                     </div>
                     <div class="mainProductList2" id="newBookList"> </div>
