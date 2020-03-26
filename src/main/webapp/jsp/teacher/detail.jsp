@@ -248,7 +248,7 @@
             if(referenceInfo.fileInfo != null){
                 for(var i = 0; i < referenceInfo.fileInfo.length; i++){
                    // $("#fileDetailList").append("<li><a href='"+ referenceInfo.fileInfo[i].fileUrl +"'>"+ referenceInfo.fileInfo[i].fileName +"</a>"+" "+"<img src=\"/common/zian/images/common/icon_file.png\" alt=\"\"></li>");
-                    $("#fileDetailList").append("<li><a href='"+ referenceInfo.fileInfo[i].fileUrl +"'><img src='/common/zian/images/common/icon_file.png' alt=''> "+ referenceInfo.fileInfo[i].fileName +"</a></li>");
+                    $("#fileDetailList").append('<li><a href="javascript:download('+ "'" + referenceInfo.fileInfo[i].fileName + "'" +')"><img src="/common/zian/images/common/icon_file.png" alt="">'+ referenceInfo.fileInfo[i].fileName +'</a></li>');
                 }                               //<li><a href="#"><img src="../images/common/icon_file.png" alt=""> 필기시험 합격선(제1회공채)-배포용(0).hwp</a></li>
             }
 
@@ -371,15 +371,16 @@
             //댓글 끝
 
 
+            /** 이전 다음글 조건 수정 2020.03.26  안지호 **/
             for(var i = 0;  i < prevNextBbsList.length; i++){ /* 이전글 다음글 기능 */
-                if(prevNextBbsList[i].prevTitle == '이전글'){
+                if(prevNextBbsList[i].prevBbsKey == 0){
                     innerHTML("qnaPrevTitle", "");
                 } else {
                     innerHTML("qnaPrevTitle", prevNextBbsList[i].prevTitle);
                     $("#qnaPrevLink").attr("href", "javascript:goDetailqna("+ prevNextBbsList[i].prevBbsKey +");");
                 }
 
-                if(prevNextBbsList[i].prevTitle == '다음글') {
+                if(prevNextBbsList[i].nextBbsKey == 0) {
                     innerHTML("qnaPrevTitle", "");
                 } else {
                     innerHTML("qnaNextTitle", prevNextBbsList[i].nextTitle);
@@ -818,34 +819,32 @@
                                             </li>
                                         </ul>
                                         <div class="tableBox">
-                                            <table class="view">
+                                            <table class="tBoard noticeView">
+                                                <colgroup>
+                                                    <col class="w110">
+                                                    <col>
+                                                    <col class="w140">
+                                                </colgroup>
+                                                <thead>
+                                                    <tr>
+                                                        <th colspan="2" id="referenceTitle"></th>
+                                                        <th id="referenceIndate"></th>
+                                                    </tr>
+                                                </thead>
                                                 <tbody>
                                                 <tr>
-                                                    <td class="bg_gray" id="referenceTitle"></td>
-                                                    <td class="bg_gray alignRight" id="referenceIndate"></td>
+                                                    <td colspan="3">작성자 : <span id="referenceWriter"></span> (<span id="referenceUserId"></span>) | 조회수 : <span id="referenceCount"></span></td>
                                                 </tr>
                                                 <tr>
-                                                    <td colspan="2">작성자 : <span id="referenceWriter"></span> (<span id="referenceUserId"></span>) | 조회수 : <span id="referenceCount"></span></td>
-                                                </tr>
-<%--                                                <tr>--%>
-<%--                                                        <td>첨부파일 :</td>--%>
-<%--                                                        <td>--%>
-<%--                                                            <ul id='fileDetailList' class="fileDetailList"></ul>--%>
-<%--                                                        </td>--%>
-<%--                                                </tr>--%>
-                                                <tr>
-                                                    <td colspan="">
+                                                    <td colspan="3">
                                                         <div class="fileWrap">
-                                                            <span>첨부파일 : </span>
-                                                            <ul class="fileList" id="fileDetailList">
-                                                                <%--                                            <li><a href="#"><img src="../images/common/icon_file.png" alt=""> 필기시험 합격선(제1회공채)-배포용(0).hwp</a></li>--%>
-                                                                <%--                                            <li><a href="#"><img src="../images/common/icon_file.png" alt=""> 필기시험 합격선(제1회공채).hwp</a></li>--%>
-                                                            </ul>
+                                                            <span class="label">첨부파일 : </span>
+                                                            <ul class="fileList" id="fileDetailList"></ul>
                                                         </div>
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td colspan="2" class="textContent" id="referenceContent"></td>
+                                                    <td colspan="3" class="tdEditorContent" id="referenceContent"></td>
                                                 </tr>
                                                 </tbody>
                                             </table>
