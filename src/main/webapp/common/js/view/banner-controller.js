@@ -184,30 +184,30 @@ function getTeacherPageList(tagId, ctgKey, subjectType, teacherMenuCtgKey) {
             spaceBetween: 12,
             slidesPerView: 4,
             slidesPerColumn: 2,
-            slidesPerGroup:4,
+            /*slidesPerGroup:4,*/
             /* loop: true, */
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true
-            },
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev"
-            },
-            breakpoints: {
-                800: {
-                    slidesPerView: 4,
-                    slidesPerColumn: 2
-                },
-                500: {
-                    slidesPerView: 2,
-                    slidesPerColumn: 2
-                },
-                100: {
-                    slidesPerView: 2,
-                    slidesPerColumn: 2
-                }
-            }
+            // pagination: {
+            //     el: ".swiper-pagination",
+            //     clickable: true
+            // },
+            // navigation: {
+            //     nextEl: ".swiper-button-next",
+            //     prevEl: ".swiper-button-prev"
+            // },
+            // breakpoints: {
+            //     800: {
+            //         slidesPerView: 4,
+            //         slidesPerColumn: 2
+            //     },
+            //     500: {
+            //         slidesPerView: 2,
+            //         slidesPerColumn: 2
+            //     },
+            //     100: {
+            //         slidesPerView: 2,
+            //         slidesPerColumn: 2
+            //     }
+            // }
         });
     }
 }
