@@ -638,7 +638,7 @@
 .review_txt p {font-size: 18px;font-weight:bold;line-height: 20px;padding-bottom: 30px}
 .review_txt span {font-size: 14px;color:#555;}
 .review_txt span b {color:#e41248;font-weight:normal;}
-.review_point {height:60px;padding:25px 120px;margin:50px 0 90px;border:1px solid #e0e0e0;background-color: #fafafa;font-size:14px;}
+.review_point {height:auto;overflow:hidden;padding:25px 120px;margin:50px 0 90px;border:1px solid #e0e0e0;background-color: #fafafa;font-size:14px;}
 .review_point p {float:left;font-size:16px;color:#777;font-weight: bold}
 .review_point p span.ico {display:inline-block;width:20px;height:20px;background:url(../images/content/ico_review.png) bottom center no-repeat;margin-right: 10px;vertical-align: bottom;}
 .review_point ul {float:left;line-height: 20px;padding-left: 50px;}

@@ -40,7 +40,7 @@
         <%@include file="/common/jsp/bigExamHeader.jsp" %>
         <!--//상단-->
         <!--본문-->
-        <div id="container" class="big bigSub">
+        <div id="container" class="bigSub">
             <div class="inner">
                 <!--서브 컨텐츠-->
                 <div class="titleBar">
