@@ -1367,25 +1367,25 @@
 #uploadModal .btnArea .btn_m.cgray{color:#444;border:1px solid #ccc}
 #uploadModal .btnArea .btn_m.cblue{color:#134c97;border:1px solid #134c97;}
 
-#uploadModal2{display: none;position: fixed;z-index:91;left: 0;top: 0;width:100%;height: 100%;overflow: auto;background-color: rgb(0,0,0);background-color: rgba(0,0,0,0.4);overflow-y:hidden}
-#uploadModal2 .modal-content{background-color: #fefefe;margin:19% auto;border: 1px solid #888;width:518px;}
+#uploadModal2{display: none;position: fixed;z-index:91;left:0;top:0;width:100%;height: 100%;overflow: auto;background-color: rgb(0,0,0);background-color: rgba(0,0,0,0.4);}
+#uploadModal2 .modal-content{background-color: #fefefe;margin:300px auto !important;border: 1px solid #888;width:518px;}
 #uploadModal2 .modal-content .mTit{background: #333;padding:10px 20px}
 #uploadModal2 .modal-content .mTit h2{display:inline-block;color:white;}
 #uploadModal2 .modal-content .mTit a{display: inline-block;color:white;float:right}
 #uploadModal2 .modal-content .mCont{padding:20px}
-#uploadModal2 table{width:100%}
-#uploadModal2 table tr{height:50px}
-#uploadModal2 .filebox{position:relative;}
-#uploadModal2 .filebox *{vertical-align: middle;}
-#uploadModal2 .filebox .file-text {position:absolute;width:340px;right:0;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;display: inline-block;height: 20px;margin: 0;border: 1px solid #cdd3d4;line-height: 20px;z-index: 10;padding:20px 10px;top: 0;}
-#uploadModal2 .filebox .file-select {position: absolute;top: 0;left: 0;width:84px;overflow: hidden;z-index:20;}
-#uploadModal2 .filebox .file-select .input-file {width:100%;filter: alpha(opacity=0);opacity: 0;height: 42px;}
-#uploadModal2 .filebox .file-text + .file-btn{position:absolute;left:0;display: inline-block;height:42px;line-height:42px;padding:0 15px;color:#000 !important;cursor:pointer;top:0;border:1px solid #cdd3d4;box-sizing:border-box;font-weight:bold}
+#uploadModal2 .modal-content .ta_center{height: 50px}
+#uploadModal2 .box{position:relative;margin:30px auto;width:500px;}
+#uploadModal2 .filetype{display:inline-block;vertical-align:top;margin-right: 4px;}
+#uploadModal2 .filetype *{vertical-align: middle;}
+#uploadModal2 .filetype .file-text{position:absolute;width:320px;text-overflow:ellipsis;white-space: nowrap;overflow:hidden;display:inline-block;height: 40px;margin:0;border:1px solid #cdd3d4;line-height: 20px;z-index:10;right:50px;top:0;font-size:14px}
+#uploadModal2 .filetype .file-select{position: absolute;top:0;left:26px;width:82px;overflow:hidden;margin-left:4px}
+#uploadModal2 .filetype .file-select .input-file{width:82px;filter:alpha(opacity=0);opacity: 0;height:40px}
+#uploadModal2 .filetype .file-text + .file-btn {position:absolute;display:inline-block;height:40px;line-height:40px;padding:0 15px;color: #000 !important;cursor:pointer;margin-left:4px;left:26px;top:0;font-weight:bold;border:1px solid #cdd3d4;box-sizing:border-box;font-weight: bold}
 #uploadModal2 .btnArea{margin-top:30px;}
 #uploadModal2 .btnArea .btn_m.radius{border-radius:20px}
 #uploadModal2 .btnArea .btn_m{height:40px;line-height:38px}
-#uploadModal2 .btnArea .btn_m.gray{color:#444;border:1px solid #ccc}
-#uploadModal2 .btnArea .btn_m.blue{color:#134c97;border:1px solid #134c97;}
+#uploadModal2 .btnArea .btn_m.cgray{color:#444;border:1px solid #ccc}
+#uploadModal2 .btnArea .btn_m.cblue{color:#134c97;border:1px solid #134c97;}
 
 
 .locationModal{display:none;position: fixed;z-index:91;left: 0;top: 0;width:100%;height: 100%;overflow: auto;background-color: rgb(0,0,0);background-color: rgba(0,0,0,0.4);}
@@ -1553,7 +1553,7 @@ li.pl_30{padding-left:30px !important}
 .dtFixed{display:none}
 
 /* 강의실 배정표 */
-.calendarInfo{display:none;width:740px;margin:auto;margin-top:50px}
+.calendarInfo{width:740px;margin:auto;margin-top:50px}
 .calendarInfo div.cCom > p{display:inline-block;font-size:20px;}
 .calendarInfo div.cCom > p span{font-size:18px;}
 .calendarInfo div.cCom > p span b{color:#ec6941;}

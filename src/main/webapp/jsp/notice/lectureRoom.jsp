@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
 <%@include file="/common/jsp/common.jsp" %>
-    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
 <script>
     $( document ).ready(function() {
         //팝업 이미지 업로드
@@ -15,6 +15,16 @@
                 $fileText.attr('disabled', 'disabled').val(fileName);
             })
         })
+
+        /* Create function to initialize the correct view */
+        function mobileCheck() {
+            if (window.innerWidth >= 768 ) {
+                return false;
+            } else {
+                return true;
+            }
+        };
+
         var calendarInfo = null;
         //달력 주입 시작
         $('#calendar').fullCalendar({
@@ -24,15 +34,17 @@
             var dayOfWeek = moment( $('#calendar').fullCalendar('getDate') ).format('dddd');
             getLectureRoom(dt_start, dayOfWeek);
         },
+
             lang:'ko',
             header: {
                 left: 'prev,next,today',
                 center: 'title',
                 right: ''
             },
+
             selectable:true,
             //editable: true,
-            defaultView: 'month',
+            defaultView: mobileCheck() ? 'basicDay' : 'month',
             dayPopoverFormat: 'yyyy-MM-dd',
             select: function (startDate, endDate, jsEvent, view) {
                 var dt_start = moment(startDate).format('YYYY-MM-DD');
@@ -145,7 +157,7 @@
 
     function upLoadPop(){
         var uModal = $('#uploadModal');
-        var mClose = $('.btn_modalClose');
+        var mClose = $('.cgray');
         /* modal */
         uModal.css('display','block');
         mClose.click(function(){
@@ -155,8 +167,8 @@
     }
 
     function upLoadPop1() {
-        var uModal = $('#uploadModal1');
-        var mClose = $('.btn_modalClose');
+        var uModal = $('#uploadModal2');
+        var mClose = $('.cgray');
         /* modal */
         uModal.css('display','block');
         mClose.click(function(){
@@ -178,6 +190,7 @@
         });
 
     }
+
 </script>
 <style>
     /*달력 토,일 색변경*/
@@ -215,7 +228,7 @@
         </div>
         <!-- //안내 모달창 -->
         <!-- 안내 모달창 -->
-        <div id="uploadModal1" class="modal">
+        <div id="uploadModal2" class="modal">
             <!-- Modal content -->
             <div class="modal-content">
                 <div class="mTit">
@@ -250,6 +263,7 @@
                 <%@include file="/common/jsp/noticeHeader.jsp" %>
                 <div class="calendarWrap">
                     <p>날짜를 선택하시면 강의실배정표를 확인하실 수 있습니다.</p>
+                    <br><br>
                     <div class="calendarTable">
                         <div id="calendar"></div>
                     </div>
