@@ -99,11 +99,11 @@
                 </div>
 
                 <!-- 지안에듀 BEST도서 -->
-                <div class="mainProduct3">
+                <div class="mainProduct2">
                     <div class="titleBar">
                         <h5 style="font-weight: bold;">지안에듀 BEST 도서</h5>
                     </div>
-                    <div class="mainProductList3 disnoneM" id="bestBookList"></div>
+                    <div class="mainProductList2" id="bestBookList"></div>
                 </div>
 
                 <!-- 온라인서점 안내 -->

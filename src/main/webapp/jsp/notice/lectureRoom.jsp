@@ -16,14 +16,14 @@
             })
         })
 
-        /* Create function to initialize the correct view */
-        function mobileCheck() {
-            if (window.innerWidth >= 768 ) {
-                return false;
-            } else {
-                return true;
-            }
-        };
+        // /* Create function to initialize the correct view */
+        // function mobileCheck() {
+        //     if (window.innerWidth >= 768 ) {
+        //         return false;
+        //     } else {
+        //         return true;
+        //     }
+        // };
 
         var calendarInfo = null;
         //달력 주입 시작
@@ -44,7 +44,7 @@
 
             selectable:true,
             //editable: true,
-            defaultView: mobileCheck() ? 'basicDay' : 'month',
+            defaultView: divisionPcMobile() == 'MOBILE' ? 'basicDay' : 'month',
             dayPopoverFormat: 'yyyy-MM-dd',
             select: function (startDate, endDate, jsEvent, view) {
                 var dt_start = moment(startDate).format('YYYY-MM-DD');

@@ -219,7 +219,7 @@
 
     /*main 행정직온라인*/
 
-    .mainProductList2 .item > div img{height: auto}
+    .mainProductList2 .item > div img{height: auto;width: 120px}
 
     #mainVisual .left{float: none;width:100%;}
     #mainVisual .right{float:left;width: 50%}

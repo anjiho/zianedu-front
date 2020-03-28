@@ -685,8 +685,8 @@
                                                                     <div class="guide">
                                                                         <div class="play">
                                                                             <span>일시정지</span>
-                                                                            <a href="javascript:goStop('stop');"
-                                                                               class="replay off">신청</a>
+<%--                                                                            <a href="javascript:goStop('stop');" class="replay off">신청</a>--%>
+                                                                            <a href="#modal6" class="replay off btn_modalOpen">신청</a>
                                                                         </div>
                                                                         <div class="prograss_wrap">
                                                                             <span class="text">진도율&nbsp;&nbsp; <span
@@ -789,8 +789,8 @@
                                                                     <div class="guide">
                                                                         <div class="play">
                                                                             <span>일시정지</span>
-                                                                            <a href="javascript:goStop('pass');"
-                                                                               class="replay off">신청</a>
+<%--                                                                            <a href="javascript:goStop('pass');" class="replay off">신청</a>--%>
+                                                                            <a href="#modal7" class="replay off btn_modalOpen">신청</a>
                                                                         </div>
                                                                         <div class="prograss_wrap">
                                                                             <span class="text">진도율&nbsp;<span
@@ -902,8 +902,8 @@
                                                                     <div class="guide">
                                                                         <div class="play">
                                                                             <span>일시정지</span>
-                                                                            <a href="javascript:goStop('pass');"
-                                                                               class="replay off">신청</a>
+<%--                                                                            <a href="javascript:goStop('pass');" class="replay off">신청</a>--%>
+                                                                            <a href="#modal8" class="replay off btn_modalOpen">신청</a>
                                                                         </div>
                                                                         <div class="prograss_wrap">
                                                                             <span class="text">진도율&nbsp;<span
@@ -1367,7 +1367,7 @@
 				</span>
                 </div>
                 <div class="pop_cont">
-                    <table>
+                    <table class="pop_list">
                         <tbody>
                         <tr>
                             <th>강좌명</th>
@@ -1379,24 +1379,13 @@
                         </tr>
                         <tr>
                             <th>일시정지 일수 선택</th>
-                            <td><span>회원님의 일시정지 가능일 수는 [<strong></strong>] 입니다</span>
-                                <!-- edusup_multi -->
-                                <div class="edusup_multi">
-                                    <ul>
-                                        <li class="sub_cont">
-                                            <a href="#" class="normal">
-                                                <span>정지일수 선택</span>
-                                            </a>
-                                            <select>
-                                                <option value="">전체</option>
-                                                <option value="">10일</option>
-                                                <option value="">20일</option>
-                                                <option value="">30일</option>
-                                            </select>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <!-- //edusup_multi -->
+                            <td><span>회원님의 일시정지 가능일 수는 [<strong>58</strong>] 입니다</span>
+                                <select style="width: 80px;">
+                                    <option>선택</option>
+                                    <option>10일</option>
+                                    <option>20일</option>
+                                    <option>30일</option>
+                                </select>
                             </td>
                         </tr>
                         <tr>
@@ -1418,7 +1407,135 @@
                 </div>
                 <div class="modal_btn_box">
                     <a href="" class="confirm_btn">확인</a>
-                    <a href="" class="caencel_btn">취소</a>
+<%--                    <a href="" class="caencel_btn">취소</a>--%>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--//팝업-->
+    <!--수강중인강좌 : 강좌 일시 정지안내  modal7-->
+    <div id="modal7" class="modalWrap">
+        <div class="inner">
+            <div class="modalTitle">
+                <h2>수강중인 강좌</h2>
+                <a href="#" class="btn_modalClose">모달팝업닫기</a>
+            </div>
+            <div class="modalContent">
+                <div class="pop_cont bggray">
+                    <p class="stitle">강좌 일시 정지안내</p>
+                    <span class="txtBox">일시정지의 경우 강좌당 3회만 신청가능하며<br>
+				일시정지 기간은 최소 1일에서 최대 60일까지 선택 가능합니다<br>
+				일시정지는 신청 후 바로 적용됩니다.<br>
+				강의 종료일에는 신청하실 수 없습니다.<br>
+				일시정지를 신청하시면 신청하신 기간동안 강의 수강이 불가능 합니다.
+				</span>
+                </div>
+                <div class="pop_cont">
+                    <table class="pop_list">
+                        <tbody>
+                        <tr>
+                            <th>강좌명</th>
+                            <td><span style="font-weight:bold">2021 시험대비 얼리버드 조재권 기초영어 특강 [5%적립]</span></td>
+                        </tr>
+                        <tr>
+                            <th>현재 수강기간</th>
+                            <td>2019.05.15 ~ 2091.08.25</td>
+                        </tr>
+                        <tr>
+                            <th>일시정지 일수 선택</th>
+                            <td><span>회원님의 일시정지 가능일 수는 [<strong>58</strong>] 입니다</span>
+                                <select style="width: 80px;">
+                                    <option>선택</option>
+                                    <option>10일</option>
+                                    <option>20일</option>
+                                    <option>30일</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>일시정지 일수 선택</th>
+                            <td>
+                                <span class="date">2019.05.15 ~ 2091.08.25</span>
+                                <span>(정지일수를 선택하시면 자동으로 일시정지 기간이 표시 됩니다)</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>변경 수강기간</th>
+                            <td>
+                                <span class="date">2019.05.15 ~ 2091.08.25</span>
+                                <span>(정지일수를 선택하시면 자동으로 일시정지 기간이 표시 됩니다)</span>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal_btn_box">
+                    <a href="" class="confirm_btn">확인</a>
+                    <%--                    <a href="" class="caencel_btn">취소</a>--%>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--//팝업-->
+    <!--수강중인강좌 : 강좌 일시 정지안내  modal8-->
+    <div id="modal8" class="modalWrap">
+        <div class="inner">
+            <div class="modalTitle">
+                <h2>수강중인 강좌</h2>
+                <a href="#" class="btn_modalClose">모달팝업닫기</a>
+            </div>
+            <div class="modalContent">
+                <div class="pop_cont bggray">
+                    <p class="stitle">강좌 일시 정지안내</p>
+                    <span class="txtBox">일시정지의 경우 강좌당 3회만 신청가능하며<br>
+				일시정지 기간은 최소 1일에서 최대 60일까지 선택 가능합니다<br>
+				일시정지는 신청 후 바로 적용됩니다.<br>
+				강의 종료일에는 신청하실 수 없습니다.<br>
+				일시정지를 신청하시면 신청하신 기간동안 강의 수강이 불가능 합니다.
+				</span>
+                </div>
+                <div class="pop_cont">
+                    <table class="pop_list">
+                        <tbody>
+                        <tr>
+                            <th>강좌명</th>
+                            <td><span style="font-weight:bold">2021 시험대비 얼리버드 조재권 기초영어 특강 [5%적립]</span></td>
+                        </tr>
+                        <tr>
+                            <th>현재 수강기간</th>
+                            <td>2019.05.15 ~ 2091.08.25</td>
+                        </tr>
+                        <tr>
+                            <th>일시정지 일수 선택</th>
+                            <td><span>회원님의 일시정지 가능일 수는 [<strong>58</strong>] 입니다</span>
+                                <select style="width: 80px;">
+                                    <option>선택</option>
+                                    <option>10일</option>
+                                    <option>20일</option>
+                                    <option>30일</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>일시정지 일수 선택</th>
+                            <td>
+                                <span class="date">2019.05.15 ~ 2091.08.25</span>
+                                <span>(정지일수를 선택하시면 자동으로 일시정지 기간이 표시 됩니다)</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>변경 수강기간</th>
+                            <td>
+                                <span class="date">2019.05.15 ~ 2091.08.25</span>
+                                <span>(정지일수를 선택하시면 자동으로 일시정지 기간이 표시 됩니다)</span>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal_btn_box">
+                    <a href="" class="confirm_btn">확인</a>
+                    <%--                    <a href="" class="caencel_btn">취소</a>--%>
                 </div>
             </div>
         </div>

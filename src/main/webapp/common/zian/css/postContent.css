@@ -578,7 +578,7 @@
 .tabContent_2depth .Dropmenu {font-size: 16px;}
 .tabContent_2depth .Dropmenu .lfloat {float:left;width:158px;min-height:322px;margin-right: 10px;border:1px solid #e5e5e5;text-align:center}
 .tabContent_2depth .Dropmenu .rfloat {float:left;width:828px;min-height:322px;border:1px solid #e5e5e5;overflow:hidden}
-.tabContent_2depth .Dropmenu .rfloat ul {display: none;overflow-y:scroll;height:278px;overflow-x:hidden}
+.tabContent_2depth .Dropmenu .rfloat ul {overflow-y:scroll;height:278px;overflow-x:hidden}
 .tabContent_2depth .Dropmenu .rfloat ul.active {display: block;}
 .tabContent_2depth .Dropmenu .rfloat li {text-align: left}
 .tabContent_2depth .Dropmenu .rfloat li a {width:768px;padding:12px 20px;}
@@ -1217,6 +1217,34 @@
 #modal6 table td {padding :15px 5px ;border-bottom: 1px solid #e1e1e1;}
 #modal6 table span {display: block;}
 #modal6 .date {color: #ce1717;}
+.modal_btn_box {text-align: center;font-size: 14px}
+.modal_btn_box a {display: inline-block;padding:10px 50px;text-align: center;margin:0 2px;}
+.modal_btn_box .confirm_btn {background:#000; color:#fff;}
+.modal_btn_box .caencel_btn {color:#000;border:1px solid #e1e1e1;}
+
+#modal7.modalWrap .inner .modalContent {width:100%;padding:25px 0px ;}
+#modal7.modalWrap .inner .modalContent .pop_cont a {font-weight:normal}
+#modal7 .pop_cont {padding:25px 25px;}
+#modal7 table {width:100%;border: 1px solid #e1e1e1;border-bottom:none;font-size: 14px;line-height:16px}
+#modal7 table th {width:130px;border-right: 1px solid #e1e1e1;font-weight:bold}
+#modal7 table th,
+#modal7 table td {padding :15px 5px ;border-bottom: 1px solid #e1e1e1;}
+#modal7 table span {display: block;}
+#modal7 .date {color: #ce1717;}
+.modal_btn_box {text-align: center;font-size: 14px}
+.modal_btn_box a {display: inline-block;padding:10px 50px;text-align: center;margin:0 2px;}
+.modal_btn_box .confirm_btn {background:#000; color:#fff;}
+.modal_btn_box .caencel_btn {color:#000;border:1px solid #e1e1e1;}
+
+#modal8.modalWrap .inner .modalContent {width:100%;padding:25px 0px ;}
+#modal8.modalWrap .inner .modalContent .pop_cont a {font-weight:normal}
+#modal8 .pop_cont {padding:25px 25px;}
+#modal8 table {width:100%;border: 1px solid #e1e1e1;border-bottom:none;font-size: 14px;line-height:16px}
+#modal8 table th {width:130px;border-right: 1px solid #e1e1e1;font-weight:bold}
+#modal8 table th,
+#modal8 table td {padding :15px 5px ;border-bottom: 1px solid #e1e1e1;}
+#modal8 table span {display: block;}
+#modal8 .date {color: #ce1717;}
 .modal_btn_box {text-align: center;font-size: 14px}
 .modal_btn_box a {display: inline-block;padding:10px 50px;text-align: center;margin:0 2px;}
 .modal_btn_box .confirm_btn {background:#000; color:#fff;}
