@@ -1406,7 +1406,7 @@
                     </table>
                 </div>
                 <div class="modal_btn_box">
-                    <a href="" class="confirm_btn">확인</a>
+                    <a href="" class="confirm_btn">신청</a>
 <%--                    <a href="" class="caencel_btn">취소</a>--%>
                 </div>
             </div>
@@ -1470,7 +1470,7 @@
                     </table>
                 </div>
                 <div class="modal_btn_box">
-                    <a href="" class="confirm_btn">확인</a>
+                    <a href="" class="confirm_btn">신청</a>
                     <%--                    <a href="" class="caencel_btn">취소</a>--%>
                 </div>
             </div>
@@ -1534,7 +1534,7 @@
                     </table>
                 </div>
                 <div class="modal_btn_box">
-                    <a href="" class="confirm_btn">확인</a>
+                    <a href="" class="confirm_btn">신청</a>
                     <%--                    <a href="" class="caencel_btn">취소</a>--%>
                 </div>
             </div>
