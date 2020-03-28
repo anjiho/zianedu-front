@@ -1598,11 +1598,59 @@ li.pl_30{padding-left:30px !important}
 .myarea_list_wrap .paging{padding:0 0 30px;margin: 0}
 .myarea_list_wrap .paging.pt80{padding-top:30px !important}
 
-/* 2020.03.10 추가 */
+
+/* 2020.03.20 추가 */
+.mainTeacher h2{text-align:center;padding-bottom:16px;}
+.mainTeacher .swiper-container {max-width: 1000px;margin: 0 auto;height:470px;}.swiper-wrapper {text-align: center;}
+.mainTeacher .swiper-container .swiper-wrapper .swiper-slide {background: #fff;width: 241px;height: 210px;position: relative;overflow: hidden;border: 1px solid #e5e5e5;box-sizing:border-box;/* Center slide text vertically *//*display: -webkit-box;display: -ms-flexbox;display: -webkit-flex;display: flex;-webkit-box-pack: center;-ms-flex-pack: center;-webkit-justify-content: center;justify-content: center;-webkit-box-align: center;-ms-flex-align: center;-webkit-align-items: center;align-items: center;*/}
+.mainTeacher .swiper-container .swiper-wrapper .swiper-slide .text-box {position: absolute;top: 30px;left: 15px;}
+.mainTeacher .swiper-container .swiper-wrapper .swiper-slide .text-box .row1 {text-align: left;}
+.mainTeacher .swiper-container .swiper-wrapper .swiper-slide .text-box .row1 span {font-size: 20px;color: #898989;font-weight: bold; }
+.mainTeacher .swiper-container .swiper-wrapper .swiper-slide .text-box .row2 {text-align: left;padding: 5px 0;}
+.mainTeacher .swiper-container .swiper-wrapper .swiper-slide .text-box .row2 span {font-size: 24px;color: #000000;font-weight: bold;}
+.mainTeacher .swiper-container .swiper-wrapper .swiper-slide .text-box .row3{width: 117px;text-align: left;}
+.mainTeacher .swiper-container .swiper-wrapper .swiper-slide .text-box .row3 span {font-weight: bold;font-size: 14px;color: #898989;}
+.mainTeacher .swiper-container .swiper-wrapper .swiper-slide .img-box {width: 61%;position: absolute;bottom: -3px;right: -25px;}
+.mainTeacher .swiper-container .swiper-wrapper .swiper-slide .img-box img {width: 100%;}
+.mainTeacher .swiper-container .swiper-wrapper .swiper-slide .btn-box {width: 100%;position: absolute;left: 0;bottom: 0;}
+.mainTeacher .swiper-container .swiper-wrapper .swiper-slide .btn-box .lf-menu {background: rgba(98, 87, 85, 0.5);float: left;width: 50%;border-right: 1px solid #ccc;box-sizing: border-box;}
+.mainTeacher .swiper-container .swiper-wrapper .swiper-slide .btn-box .lf-menu a {display: inline-block;width: 100%;line-height: 24px;font-weight: bold;height: 24px;color: #fff;font-size: 14px;}
+.mainTeacher .swiper-container .swiper-wrapper .swiper-slide .btn-box .rh-menu {background: rgba(98, 87, 85, 0.5);float: left;width: 50%;}
+.mainTeacher .swiper-container .swiper-wrapper .swiper-slide .btn-box .rh-menu a {display: inline-block;width: 100%;line-height: 24px;font-weight: bold;height: 24px;color: #fff;font-size: 14px;}
+.mainTeacher .swiper-container .swiper-wrapper .swiper-slide:hover {background: #dae3ec;}
+.mainTeacher .swiper-container .swiper-wrapper .swiper-slide:hover .row1 span {color: #036db7;}
+.mainTeacher .swiper-container .swiper-wrapper .swiper-slide:hover .btn-box div {background: rgba(82, 88, 140, 0.5);}
+.mainTeacher .swiper-container .swiper-wrapper .swiper-slide .img-box {width: 60%;}
+.mainTeacher .swiper-container .swiper-wrapper .swiper-slide .text-box .row3 {width: 100px;}
+
+
+/* 2020.03.24 */
+.Dropmenu_down .inner{position: relative;}
+.Dropmenu_down .inner .btn_modalClose{background:url(../images/ex/pop_close.png) no-repeat;text-indent:-9999px;width:32px;display:block;height:50px;position: absolute;right:10px;top:10px;}
+
+/* 2020.03.27 */
+#modal6 .pop_list select{display:block;width:100px;margin-top:10px}
+
+
 @media screen and (max-width:520px){
+    /* 2020.03.10 추가 */
     .myroomBar li:nth-child(4) a{word-break: keep-all;line-height:18px;}
 }
 @media screen and (max-width:410px){
     .myroomBar li:nth-child(3) a{word-break: keep-all;line-height:18px;}
 }
+@media (max-width: 800px) {
+    .mainTeacher .swiper-container .swiper-wrapper .swiper-slide .img-box {width:160px;}
+}
+@media (max-width: 500px) {
+    .mainTeacher .swiper-container .swiper-wrapper .swiper-slide .img-box {width: 68%;}
+    .mainTeacher .swiper-container .swiper-wrapper .swiper-slide .text-box .row1 span {font-size: 17px;}
+    .mainTeacher .swiper-container .swiper-wrapper .swiper-slide .text-box .row2 span {font-size: 24px;}
+    .mainTeacher .swiper-container .swiper-wrapper .swiper-slide .text-box .row3 span {font-size: 12px;}
+    .mainTeacher .swiper-container .swiper-wrapper .swiper-slide .text-box {width: 79px;top: 30px;}
+    .swiper-container .swiper-wrapper .swiper-slide .text-box .row3 {width: 100%;}
+}
+@media (max-width:410px) {
+    .swiper-container .swiper-wrapper .swiper-slide .img-box {width: 85%;}
+   
 

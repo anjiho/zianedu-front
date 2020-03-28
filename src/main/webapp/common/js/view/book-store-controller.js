@@ -5,8 +5,10 @@ function getNewBookList() {
         var selList = infoList.result;
         for(var i=0; i<selList.length;i++){
             var returnHtml = "<div class=\"item\"><div>";
-            returnHtml += "<a href='javascript:goDetailBook("+ selList[i].gkey +");'><img src='"+ selList[i].bookImageUrl +"' alt=\"\"></a>";
-            returnHtml += "<a href='javascript:goDetailBook("+ selList[i].gkey +");'><span class=\"name\">"+ selList[i].goodsName +"</span></a>";
+            returnHtml += "<img src='"+ selList[i].bookImageUrl +"' alt=\"\">";
+            returnHtml += "<span class=\"name\">"+ selList[i].goodsName +"</span>";
+            // returnHtml += "<a href='javascript:goDetailBook("+ selList[i].gkey +");'><img src='"+ selList[i].bookImageUrl +"' alt=\"\"></a>";
+            // returnHtml += "<a href='javascript:goDetailBook("+ selList[i].gkey +");'><span class=\"name\">"+ selList[i].goodsName +"</span></a>";
             if(selList[i].name != null){
                 returnHtml += "<span class=\"writer\">"+ selList[i].writer + " | "+ selList[i].name +"</span>";
             }else{
@@ -17,11 +19,6 @@ function getNewBookList() {
             $("#newBookList").append(returnHtml);
         }
     }
-    $(function(){
-        $(".mainProductList2").each(function(){
-            kiplayer.sliderSlickNew($(this));
-        });
-    });
 }
 
 //지안에듀 베스트 도서

@@ -14,7 +14,6 @@
             var count = $("input[name=lecChk]:checkbox:checked").length;
             innerHTML("selCount", count);
         });
-        $(".slick-dots").hide();
     });
     
     function goList(orderType) {
@@ -68,6 +67,9 @@
         goPage('review','detailBook');
     }
 </script>
+<style>
+    #wrap #container .mainProduct2 .slick-dots {display: none !important}
+</style>
 <form id="bookTypePage" method="post" name="bookTypePage">
     <input type="hidden" id="bookType" name="bookType">
 </form>
@@ -99,11 +101,11 @@
                 </div>
 
                 <!-- 지안에듀 BEST도서 -->
-                <div class="mainProduct2">
+                <div class="mainProduct3">
                     <div class="titleBar">
                         <h5 style="font-weight: bold;">지안에듀 BEST 도서</h5>
                     </div>
-                    <div class="mainProductList2" id="bestBookList"></div>
+                    <div class="mainProductList3 disnoneM" id="bestBookList"></div>
                 </div>
 
                 <!-- 온라인서점 안내 -->
@@ -244,3 +246,4 @@
 </form>
 </body>
 </html>
+
