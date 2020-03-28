@@ -5,10 +5,10 @@ function getNewBookList() {
         var selList = infoList.result;
         for(var i=0; i<selList.length;i++){
             var returnHtml = "<div class=\"item\"><div>";
-            returnHtml += "<img src='"+ selList[i].bookImageUrl +"' alt=\"\">";
-            returnHtml += "<span class=\"name\">"+ selList[i].goodsName +"</span>";
-            // returnHtml += "<a href='javascript:goDetailBook("+ selList[i].gkey +");'><img src='"+ selList[i].bookImageUrl +"' alt=\"\"></a>";
-            // returnHtml += "<a href='javascript:goDetailBook("+ selList[i].gkey +");'><span class=\"name\">"+ selList[i].goodsName +"</span></a>";
+            // returnHtml += "<img src='"+ selList[i].bookImageUrl +"' alt=\"\">";
+            // returnHtml += "<span class=\"name\">"+ selList[i].goodsName +"</span>";
+            returnHtml += "<a href='javascript:goDetailBook("+ selList[i].gkey +");'><img src='"+ selList[i].bookImageUrl +"' alt=\"\"></a>";
+            returnHtml += "<a href='javascript:goDetailBook("+ selList[i].gkey +");'><span class=\"name\">"+ selList[i].goodsName +"</span></a>";
             if(selList[i].name != null){
                 returnHtml += "<span class=\"writer\">"+ selList[i].writer + " | "+ selList[i].name +"</span>";
             }else{
@@ -40,12 +40,12 @@ function getBestBookList() {
             $("#bestBookList").append(returnHtml);
         }
     }
-    $(function(){
-        $(".mainProductList3").each(function(){
-            kiplayer.sliderSlickNew2($(this));
-        });
-        $(".slick-dots").hide();
-    });
+    // $(function(){
+    //     $(".mainProductList3").each(function(){
+    //         kiplayer.sliderSlickNew2($(this));
+    //     });
+    //     $(".slick-dots").hide();
+    // });
 }
 
 //온라인서점 도서 목록(페이징)
