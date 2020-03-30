@@ -397,6 +397,9 @@
             var stopDaySel2 = getSelectboxValue('stopDaySel2');
             var stopDay2 = getInputTextValue("stopDay2");
             var userRemain3 = getInputTextValue("userRemain3");
+
+
+
             if(stopDaySel2 == ""){
                 alert("일시정지 일수를 선택해 주세요.");
                 return false;
