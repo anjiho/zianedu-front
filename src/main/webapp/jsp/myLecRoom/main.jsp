@@ -374,6 +374,11 @@
 
     function goStop(val) {
         var stopDay = getInputTextValue('stopDay');
+        var stopDay2 = getInputTextValue('stopDay2');
+        if(stopDay == "" || stopDay2 == ""){
+            alert("일시정지 일수를 선택해 주세요.");
+            return false;
+        }
         if (val == 'stop') {
             if (confirm("일시정지 신청 하시겠습니까?")) {
                 var stopJlecKey = getInputTextValue("stopJlecKey");
@@ -387,9 +392,10 @@
                 }
             }
         } else if (val == 'pacakge') {
-            if (confirm("일시정지 신청 하시겠습니까?")) {
+            if (confirm("패키지 일시정지 신청 하시겠습니까?")) {
                 var stopPackageJlecKey = getInputTextValue("stopPackageJlecKey");
-                var result = requestVideoStartStop(stopPackageJlecKey, stopDay, 'STOP');
+
+                var result = requestVideoStartStop(stopPackageJlecKey, stopDay2, 'STOP');
                 if (result.resultCode == 200) {
                     alert("일시정지 신청 완료되었습니다.");
                     isReloadPage();
@@ -1473,7 +1479,7 @@
                     </table>
                 </div>
                 <div class="modal_btn_box">
-                    <a href="javascript:goStop('stop');" class="confirm_btn">신청</a>
+                    <a href="javascript:goStop('pacakge');" class="confirm_btn">신청</a>
                     <%--                    <a href="" class="caencel_btn">취소</a>--%>
                 </div>
             </div>

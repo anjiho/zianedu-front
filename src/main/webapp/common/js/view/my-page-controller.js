@@ -435,6 +435,7 @@ function requestVideoStartStop(jLecKey, pauseDay, requestType) {
         pauseDay: pauseDay,
         requestType: requestType
     };
+    console.log(data);
     var result = postApi("/myPage/requestVideoStartStop", data);
     return result;
 }
