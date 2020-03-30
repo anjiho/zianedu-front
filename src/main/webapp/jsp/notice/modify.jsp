@@ -168,7 +168,7 @@
                         </table>
                     </div>
                     <div class="btnArea">
-                        <a href="javascript:goPage('notice','list');" class="btn_m gray radius w110">취소</a> &nbsp;&nbsp;&nbsp;
+                        <a href="javascript:goPageNoSubmit('notice','list');" class="btn_m gray radius w110">취소</a> &nbsp;&nbsp;&nbsp;
                         <a href="javascript:modify();" class="btn_m onBlue radius w110">수정</a>
                     </div>
                 </div>

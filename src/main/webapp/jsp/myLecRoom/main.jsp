@@ -1485,69 +1485,116 @@
 </html>
 <script>
     $(document).on("click",".btn_modalOpen1",function(e){
-        e.preventDefault();
-        var targetModal = $(this).attr("href");
-        kiplayer.modalOpen(targetModal);
         var stopJlecKey = getInputTextValue("stopJlecKey");
         var stopDetailInfo = getVideoPauseRequestPopup(stopJlecKey);
-        if(stopDetailInfo != null){
-            var info = stopDetailInfo.result;
-            innerHTML("stopLecName", info.name);
-            innerHTML("startDate", info.startDt);
-            innerHTML("endDate", info.endDt);
-            innerHTML("remainStopDay", info.remainStopDay);
-            innerValue('startDt', info.startDt);
-            innerValue('endDt', info.endDt);
+        if (stopDetailInfo.resultCode == 905) {
+            alert("일시정지 회수가 초과되었습니다.");
+            return;
+        } else {
+            e.preventDefault();
+            var targetModal = $(this).attr("href");
+            kiplayer.modalOpen(targetModal);
+            if(stopDetailInfo != null){
+                var info = stopDetailInfo.result;
+                innerHTML("stopLecName", info.name);
+                innerHTML("startDate", info.startDt);
+                innerHTML("endDate", info.endDt);
+                innerHTML("remainStopDay", info.remainStopDay);
+                innerValue('startDt', info.startDt);
+                innerValue('endDt', info.endDt);
+            }
+
+            $(document).on("click","#overlay, .btn_modalClose",function(e){
+                kiplayer.modalClose();
+            });
+
+            $("#stopDaySel").change(function () {
+                $("#stopDay").val(this.value);
+                var today = new Date();
+                var todayDate = getFormatDate(today);
+                var result = addDate(todayDate, this.value);
+                var dateHtml = todayDate + "~" + result;
+                innerHTML("searchStartDate", dateHtml);
+
+                var endDateInfo = getInputTextValue('endDt');
+                var startDt = getInputTextValue('startDt');
+                var result2 = addDate(endDateInfo, this.value);
+                var dateHtml2 = startDt + "~" + result2;
+                innerHTML("changeLecDate", dateHtml2);
+            });
+
+            $("#stopDaySel2").change(function () {
+                $("#stopDay2").val(this.value);
+                var today = new Date();
+                var todayDate = getFormatDate(today);
+                var result = addDate(todayDate, this.value);
+                var dateHtml = todayDate + "~" + result;
+                innerHTML("searchStartDate2", dateHtml);
+
+                var endDateInfo = getInputTextValue('endDt2');
+                var startDt = getInputTextValue('startDt2');
+                var result2 = addDate(endDateInfo, this.value);
+                var dateHtml2 = startDt + "~" + result2;
+                innerHTML("changeLecDate2", dateHtml2);
+            });
         }
+
     });
     $(document).on("click",".btn_modalOpen2",function(e){
-        e.preventDefault();
-        var targetModal = $(this).attr("href");
-        kiplayer.modalOpen(targetModal);
         var stopJlecKey = getInputTextValue("stopPackageJlecKey");
 
         var stopDetailInfo = getVideoPauseRequestPopup(stopJlecKey);
-        if(stopDetailInfo != null){
-            var info = stopDetailInfo.result;
-            innerHTML("stopLecName2", info.name);
-            innerHTML("startDate2", info.startDt);
-            innerHTML("endDate2", info.endDt);
-            innerHTML("remainStopDay2", info.remainStopDay);
-            innerValue('startDt2', info.startDt);
-            innerValue('endDt2', info.endDt);
+        if (stopDetailInfo.resultCode == 905) {
+            alert("일시정지 회수가 초과되었습니다.");
+            return;
+        } else {
+            e.preventDefault();
+            var targetModal = $(this).attr("href");
+            kiplayer.modalOpen(targetModal);
+
+            if(stopDetailInfo != null){
+                var info = stopDetailInfo.result;
+                innerHTML("stopLecName2", info.name);
+                innerHTML("startDate2", info.startDt);
+                innerHTML("endDate2", info.endDt);
+                innerHTML("remainStopDay2", info.remainStopDay);
+                innerValue('startDt2', info.startDt);
+                innerValue('endDt2', info.endDt);
+            }
+            $(document).on("click","#overlay, .btn_modalClose",function(e){
+                kiplayer.modalClose();
+            });
+
+            $("#stopDaySel").change(function () {
+                $("#stopDay").val(this.value);
+                var today = new Date();
+                var todayDate = getFormatDate(today);
+                var result = addDate(todayDate, this.value);
+                var dateHtml = todayDate + "~" + result;
+                innerHTML("searchStartDate", dateHtml);
+
+                var endDateInfo = getInputTextValue('endDt');
+                var startDt = getInputTextValue('startDt');
+                var result2 = addDate(endDateInfo, this.value);
+                var dateHtml2 = startDt + "~" + result2;
+                innerHTML("changeLecDate", dateHtml2);
+            });
+
+            $("#stopDaySel2").change(function () {
+                $("#stopDay2").val(this.value);
+                var today = new Date();
+                var todayDate = getFormatDate(today);
+                var result = addDate(todayDate, this.value);
+                var dateHtml = todayDate + "~" + result;
+                innerHTML("searchStartDate2", dateHtml);
+
+                var endDateInfo = getInputTextValue('endDt2');
+                var startDt = getInputTextValue('startDt2');
+                var result2 = addDate(endDateInfo, this.value);
+                var dateHtml2 = startDt + "~" + result2;
+                innerHTML("changeLecDate2", dateHtml2);
+            });
         }
     });
-    $(document).on("click","#overlay, .btn_modalClose",function(e){
-        kiplayer.modalClose();
-    });
-    
-    $("#stopDaySel").change(function () {
-        $("#stopDay").val(this.value);
-        var today = new Date();
-        var todayDate = getFormatDate(today);
-        var result = addDate(todayDate, this.value);
-        var dateHtml = todayDate + "~" + result;
-        innerHTML("searchStartDate", dateHtml);
 
-        var endDateInfo = getInputTextValue('endDt');
-        var startDt = getInputTextValue('startDt');
-        var result2 = addDate(endDateInfo, this.value);
-        var dateHtml2 = startDt + "~" + result2;
-        innerHTML("changeLecDate", dateHtml2);
-    });
-
-    $("#stopDaySel2").change(function () {
-        $("#stopDay2").val(this.value);
-        var today = new Date();
-        var todayDate = getFormatDate(today);
-        var result = addDate(todayDate, this.value);
-        var dateHtml = todayDate + "~" + result;
-        innerHTML("searchStartDate2", dateHtml);
-
-        var endDateInfo = getInputTextValue('endDt2');
-        var startDt = getInputTextValue('startDt2');
-        var result2 = addDate(endDateInfo, this.value);
-        var dateHtml2 = startDt + "~" + result2;
-        innerHTML("changeLecDate2", dateHtml2);
-    });
 </script>
