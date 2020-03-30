@@ -157,6 +157,7 @@ function getTeacherLearningQna(teacherKey, sPage, listLimit, searchType, searchT
         paging.count3(sPage, cnt, '5', '20', comment.blank_list);
         var listNum = ((cnt - 1) + 1) - ((sPage - 1) * 20); //리스트 넘버링
         var selList = infoList.result;
+        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         for (var i = 0; i < selList.length; i++) {
             var cmpList = selList[i];
             if (cmpList.level == 1) {//본문
@@ -165,7 +166,22 @@ function getTeacherLearningQna(teacherKey, sPage, listLimit, searchType, searchT
                 var lock = '';
                 if (cmpList.pwd == 1) lock = 'lock';
                 else if (cmpList.pwd == null) lock = '';
-                returnHtml += '<td><a href="javascript:void(0);" class="subject ' + lock + '" onclick="goDetailqna('+  cmpList.bbsKey +');">' + gfn_substr(cmpList.title, 0, 40) + '</a></td>';
+                if (cmpList.pwd == 1){
+                    if(sessionUserInfo.userKey == cmpList.writeUserKey){
+                        returnHtml += '<td><a href="javascript:void(0);" disabled class="subject ' + lock + '" onclick="goDetailqna('+  cmpList.bbsKey +');">' + gfn_substr(cmpList.title, 0, 40) + '</a></td>';
+                    }else{
+                        //returnHtml += '<td><a href="javascript:void(0);" class="subject ' + lock + '" onclick="">' + gfn_substr(cmpList.title, 0, 40) + '</a></td>';
+                        if(sessionUserInfo.authority != 0) {
+                            returnHtml += '<td><a class="subject ' + lock + ' nonBoard">비밀글입니다</a></td>';
+                        }else{
+                            returnHtml += '<td><a href="javascript:void(0);" class="subject ' + lock + '" onclick="goDetailqna('+  cmpList.bbsKey +');">' + gfn_substr('비밀글입니다 ', 0, 40) + '</a></td>';
+                        }
+
+                    }
+                }else{
+                    returnHtml += '<td><a href="javascript:void(0);" disabled class="subject" onclick="goDetailqna('+  cmpList.bbsKey +');">' + gfn_substr(cmpList.title, 0, 40) + '</a></td>';
+                }
+
                 if(cmpList.writeUserName != null){
                     returnHtml += '<td>' + cmpList.writeUserName + '</td>';
                 }else{
@@ -178,10 +194,24 @@ function getTeacherLearningQna(teacherKey, sPage, listLimit, searchType, searchT
             } else if (cmpList.level == 2) {//답글
                 var returnHtml = '<tr class="reply">';
                 returnHtml += '<td>' + listNum-- + '</td>';
+
                 var lock = '';
                 if (cmpList.pwd == 1) lock = 'lock';
                 else if (cmpList.pwd == null) lock = '';
-                returnHtml += '<td><a href="javascript:void(0);" class="subject reply" onclick="goDetailqna(' + cmpList.bbsKey + ');">' + gfn_substr(cmpList.title, 0, 40) + '</a></td>';
+                if (cmpList.pwd == 1){
+                    if(sessionUserInfo.userKey == cmpList.writeUserKey){
+                        returnHtml += '<td><a href="javascript:void(0);" disabled class="subject reply ' + lock + '" onclick="goDetailqna('+  cmpList.bbsKey +');">' + gfn_substr(cmpList.title, 0, 40) + '</a></td>';
+                    }else{
+                        if(sessionUserInfo.authority != 0) {
+                            returnHtml += '<td><a class="subject  reply ' + lock + ' nonBoard">비밀글입니다</a></td>';
+                        }else{
+                            returnHtml += '<td><a href="javascript:void(0);" class="subject reply ' + lock + '" onclick="goDetailqna('+  cmpList.bbsKey +');">' + gfn_substr('비밀글입니다 ', 0, 40) + '</a></td>';
+                        }
+
+                    }
+                }else{
+                    returnHtml += '<td><a href="javascript:void(0);" class="subject reply" onclick="goDetailqna(' + cmpList.bbsKey + ');">' + gfn_substr(cmpList.title, 0, 40) + '</a></td>';
+                }
                 returnHtml += '<td>' + cmpList.writeUserName + '</td>';
                 returnHtml += '<td>' + cmpList.indate2 + '</td>';
                 returnHtml += '<td>' + cmpList.readCount + '</td>';
