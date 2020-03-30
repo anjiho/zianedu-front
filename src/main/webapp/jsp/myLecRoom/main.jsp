@@ -901,11 +901,11 @@
                                                                             id="zianPassLimitDay"></span>일)</span>
                                                                     <!--guide-->
                                                                     <div class="guide">
-                                                                        <div class="play">
-                                                                            <span>일시정지</span>
-<%--                                                                            <a href="javascript:goStop('pass');" class="replay off">신청</a>--%>
-                                                                            <a href="#modal6" class="replay off btn_modalOpen1">신청</a>
-                                                                        </div>
+<%--                                                                        <div class="play">--%>
+<%--                                                                            <span>일시정지</span>--%>
+<%--&lt;%&ndash;                                                                            <a href="javascript:goStop('pass');" class="replay off">신청</a>&ndash;%&gt;--%>
+<%--                                                                            <a href="#modal6" class="replay off btn_modalOpen1">신청</a>--%>
+<%--                                                                        </div>--%>
                                                                         <div class="prograss_wrap">
                                                                             <span class="text">진도율&nbsp;<span
                                                                                     id="zianPassProgressRate"></span></span>

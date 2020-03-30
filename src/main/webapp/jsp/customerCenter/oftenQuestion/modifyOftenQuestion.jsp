@@ -8,20 +8,43 @@
 <script>
     var bbsKey = <%=bbsKey%>;
     $(document).ready(function () {
-        var pcMobile = divisionPcMobile();
-        if(pcMobile == 'PC') {
-            $('#title').summernote({
+        if(divisionPcMobile() == 'PC') {
+            $('#Recontent').summernote({
                 height: 300,                 // set editor height
                 minHeight: null,             // set minimum height of editor
                 maxHeight: null,             // set maximum height of editor
                 focus: true                  // set focus to editable area after initializing summernote
             });
+        } else {
+            $('#replyContent').attr("cols", 40);
+            $('#replyContent').attr("rows", 15);
         }
+
         var result = getBoardDetailInfo(10018, bbsKey);
         if(result != null){
             var detailInfo = result.boardDetailInfo;
+
+            var detailInfoStr = JSON.stringify(detailInfo);
+            var detailInfoStrObj = JSON.parse(detailInfoStr);
+            var contentsObj = detailInfoStrObj.contents;
+            var contentsStr = JSON.stringify(contentsObj);
+            var contentsStrRep = contentsStr.replace(/['"]+/g, '');
+            var contentsStrRep3 = contentsStrRep.replace(/\\n/g,'');   //역슬러쉬 제거하기
+            var contentsStrRep4 = contentsStrRep3.replace(/\\r/g,'');   //역슬러쉬 제거하기
+            var contentsStrRep5 = contentsStrRep4.replace(/\\/gi, "");   //역슬러쉬 제거하기
+            var contentsHTML = $.parseHTML(contentsStrRep5);
+            var contents = null;
+            var findString = "&lt";
+            //HTML 포함 여부 화인
+            if(detailInfoStr.indexOf(findString) != -1) {
+                contents = contentsHTML[0].data.replace("rn", "");
+            } else {
+                contents = contentsHTML;
+            }
+
             $("#title").val(detailInfo.title);
-            $("#Recontent").val(detailInfo.contents);
+            $("#Recontent").summernote("code", contents);
+            //$("#Recontent").val(detailInfo.contents);
             $("#type").val(detailInfo.ctgKey);
         }
     });
@@ -38,14 +61,14 @@
         var type = getSelectboxValue('type');
         var bbsKey = getInputTextValue('bbsKey');
         var content = $('textarea[name="Recontent"]').val();
-        var title = $('textarea[name="title"]').val();
+        var title = getInputTextValue("title");
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         if(sessionUserInfo != null) {
             var result = updateFaqBoard(bbsKey, type, title, content);
             if(result.resultCode == 200){
                 alert("수정이 완료 되었습니다.");
+                goPageNoSubmit('customerCenter','oftenList');
             }
-
         }else{
             alert("로그인을 해주세요.");
             goLoginPage();
@@ -101,7 +124,7 @@
                                 </tr>
                                 <tr>
                                     <th scope="row">질문</th>
-                                    <td><textarea name="title" id="title" placeholder="내용을 입력해주세요." class="w100p h240"></textarea></td>
+                                    <td><input type="text" name="title" id="title" placeholder="내용을 입력해주세요." class="w100p h240"></input></td>
                                 </tr>
                                 <tr>
                                     <th scope="row">답변내용</th>

@@ -24,7 +24,25 @@
         var result = getBoardDetailInfo(bbsMasterKey, bbsKey);
         if(result != undefined){
             var detailInfo = result.boardDetailInfo;
-            $("#writeContent").summernote("code", detailInfo.contents);
+
+            var detailInfoStr = JSON.stringify(detailInfo);
+            var detailInfoStrObj = JSON.parse(detailInfoStr);
+            var contentsObj = detailInfoStrObj.contents;
+            var contentsStr = JSON.stringify(contentsObj);
+            var contentsStrRep = contentsStr.replace(/['"]+/g, '');
+            var contentsStrRep3 = contentsStrRep.replace(/\\n/g,'');   //역슬러쉬 제거하기
+            var contentsStrRep4 = contentsStrRep3.replace(/\\r/g,'');   //역슬러쉬 제거하기
+            var contentsStrRep5 = contentsStrRep4.replace(/\\/gi, "");   //역슬러쉬 제거하기
+            var contentsHTML = $.parseHTML(contentsStrRep5);
+            var contents = null;
+            var findString = "&lt";
+            //HTML 포함 여부 화인
+            if(detailInfoStr.indexOf(findString) != -1) {
+                contents = contentsHTML[0].data.replace("rn", "");
+            } else {
+                contents = contentsHTML;
+            }
+            $("#writeContent").summernote("code", contents);
             innerValue("title", detailInfo.title);
             innerValue("bookName", detailInfo.lectureSubject);
             if(detailInfo.fileInfo != null) {
