@@ -62,6 +62,7 @@ function getVideoSignUpLectureNameList(userKey, deviceType, subjectCtgKey, stepC
         if(result.length > 0) {
             innerValue("gKey", result[0].gkey);
             var gKey = getInputTextValue("gKey");
+            innerValue("stopJlecKey", result[0].jlecKey);
             getTypeLectureDetail(gKey, result[0].jlecKey); //강좌상세설명
             var pcMobile = divisionPcMobile();
             getVideoSignUpDetailInfo(gKey, pcMobile, result[0].jlecKey, 'dataList'); //강좌 리스트
@@ -127,6 +128,7 @@ function getPromotionVideoSignUpDetailInfo(gkey, device, jlecKey, tagId) {
     if (gkey == null || gkey == undefined) return;
 
     var detailInfo = getApi("/myPage/getPromotionUserVideoOnlineSignUpLectureList/", jlecKey);
+
 
     var data = {
         device : device
@@ -282,6 +284,7 @@ function getSignUpPackageSubjectNameList(jKey, deviceType, stepCtgKey) {
     var infoList = getApi("/myPage/getSignUpZianPassSubjectNameList/", jKey, data);
     if (infoList != null) { //과목 리스트
         innerValue("jLecKey", infoList.result[0].jlecKey);
+        innerValue("stopPackageJlecKey", infoList.result[0].jlecKey);
         packageDetail(infoList.result[0].jlecKey);
         dwr.util.addOptions('packageLecList', infoList.result, function (data) {
             return "<a href='javascript:packageDetail("+ data.jlecKey +");'>"+ data.name +"</a>"

@@ -19,7 +19,7 @@
 
             /* 지안패스 */
             getZianPassSignUpList(userKey);
-            getPackageSignUpList(userKey,  pcMobile);//패키지
+            getPackageSignUpList(userKey, pcMobile);//패키지
 
             var zianJkey = getInputTextValue("zianPassjKey");
             var packageJKey = getInputTextValue("packageJKey");//패키지
@@ -149,7 +149,7 @@
             $("#playLecListDiv").show();
             var result = infoList.result;
             var lectureReviewBtn = "<a href='/review?page_gbn=lectureList&gKey=" + result.gkey + "' class='blue small'>수강후기</a>";
-            innerValue("stopJlecKey", result.jlecKey);
+           // innerValue("stopJlecKey", result.jlecKey);
             innerHTML("l_lectureReviewBtn", lectureReviewBtn);
             innerHTML("playLecName", result.name);
             innerHTML("playLecStartDate", result.startDate);
@@ -216,7 +216,7 @@
 
             var lectureReviewBtn = "<a href='/review?page_gbn=lectureList&gKey=" + result.gkey + "' class='blue small'>수강후기</a>";
             innerHTML("l_lectureReviewBtn2", lectureReviewBtn);
-            innerValue("stopJlecKey", result.jlecKey);
+            //innerValue("stopJlecKey", result.jlecKey);
             innerHTML("zianPassName", result.name);
             innerHTML("zianPassLecStartDate", result.startDate);
             innerHTML("zianPassLecEndDate", result.endDate);
@@ -248,7 +248,7 @@
 
             var lectureReviewBtn = "<a href='/review?page_gbn=lectureList&gKey=" + result.gkey + "' class='blue small'>수강후기</a>";
             innerHTML("package_lectureReviewBtn2", lectureReviewBtn);
-            innerValue("stopJlecKey", result.jlecKey);
+            innerValue("stopPackageJlecKey", result.jlecKey);
             innerHTML("packageName", result.name);
             innerHTML("packageLecStartDate", result.startDate);
             innerHTML("packageLecEndDate", result.endDate);
@@ -739,10 +739,8 @@
                                         </div>
                                         <!-- //동영상 -->
 
-
                                         <!-- 지안패스 -->
                                         <div class="tabPage">
-
                                             <!-- 지안패스 하단 메뉴 tab_large_2dept-->
                                             <div class="tab_large_2depth tabContent">
                                                 <ul class="tabBar zian_mbtn" id="packageList">
@@ -788,11 +786,11 @@
                                                                             id="packageLimitDay"></span>일)</span>
                                                                     <!--guide-->
                                                                     <div class="guide">
-                                                                        <div class="play">
-                                                                            <span>일시정지</span>
-<%--                                                                            <a href="javascript:goStop('pass');" class="replay off">신청</a>--%>
-                                                                            <a href="#modal6" class="replay off btn_modalOpen1">신청</a>
-                                                                        </div>
+<%--                                                                        <div class="play">--%>
+<%--                                                                            <span>일시정지</span>--%>
+<%--&lt;%&ndash;                                                                            <a href="javascript:goStop('pass');" class="replay off">신청</a>&ndash;%&gt;--%>
+<%--                                                                            <a href="#modal7" class="replay off btn_modalOpen2">신청</a>--%>
+<%--                                                                        </div>--%>
                                                                         <div class="prograss_wrap">
                                                                             <span class="text">진도율&nbsp;<span
                                                                                     id="packageProgressRate"></span></span>
@@ -1347,7 +1345,6 @@
     </div>
     <!--//팝업-->
 
-
     <!--수강중인강좌 : 강좌 일시 정지안내  modal6-->
     <div id="modal6" class="modalWrap">
         <div class="inner">
@@ -1415,6 +1412,74 @@
         </div>
     </div>
     <!--//팝업-->
+
+    <!--패키지 : 일시 정지안내  modal7-->
+    <div id="modal7" class="modalWrap">
+        <div class="inner">
+            <div class="modalTitle">
+                <h2>패키지 강좌</h2>
+                <a href="#" class="btn_modalClose">모달팝업닫기</a>
+            </div>
+            <div class="modalContent">
+                <div class="pop_cont bggray">
+                    <p class="stitle">패키지강좌 일시 정지안내</p>
+                    <span class="txtBox">일시정지의 경우 강좌당 3회만 신청가능하며<br>
+				일시정지 기간은 최소 1일에서 최대 60일까지 선택 가능합니다<br>
+				일시정지는 신청 후 바로 적용됩니다.<br>
+				강의 종료일에는 신청하실 수 없습니다.<br>
+				일시정지를 신청하시면 신청하신 기간동안 강의 수강이 불가능 합니다.
+				</span>
+                </div>
+                <div class="pop_cont">
+                    <table class="pop_list">
+                        <input type="hidden" id="startDt2">
+                        <input type="hidden" id="endDt2">
+                        <input type="hidden" id="stopDay2">
+                        <tbody>
+                        <tr>
+                            <th>강좌명</th>
+                            <td><span style="font-weight:bold" id="stopLecName2"></span></td>
+                        </tr>
+                        <tr>
+                            <th>현재 수강기간</th>
+                            <td><span id="startDate2" style="display: inline;"></span> ~ <span id="endDate2"  style="display: inline;"></span></td>
+                        </tr>
+                        <tr>
+                            <th>일시정지 일수 선택</th>
+                            <td><span>회원님의 일시정지 가능일 수는 [<strong id="remainStopDay2"></strong>] 입니다</span><br>
+                                <select style="width: 80px;" id="stopDaySel2">
+                                    <option>선택</option>
+                                    <option value="10">10일</option>
+                                    <option value="20">20일</option>
+                                    <option value="30">30일</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>일시정지 일수 선택</th>
+                            <td>
+                                <span class="date" id="searchStartDate2"></span>
+                                <span>(정지일수를 선택하시면 자동으로 일시정지 기간이 표시 됩니다)</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>변경 수강기간</th>
+                            <td>
+                                <span class="date" id="changeLecDate2"></span>
+                                <span>(정지일수를 선택하시면 자동으로 변경수강 기간이 표시 됩니다)</span>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal_btn_box">
+                    <a href="javascript:goStop('stop');" class="confirm_btn">신청</a>
+                    <%--                    <a href="" class="caencel_btn">취소</a>--%>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--//팝업-->
 </form>
 </body>
 </html>
@@ -1435,6 +1500,23 @@
             innerValue('endDt', info.endDt);
         }
     });
+    $(document).on("click",".btn_modalOpen2",function(e){
+        e.preventDefault();
+        var targetModal = $(this).attr("href");
+        kiplayer.modalOpen(targetModal);
+        var stopJlecKey = getInputTextValue("stopPackageJlecKey");
+
+        var stopDetailInfo = getVideoPauseRequestPopup(stopJlecKey);
+        if(stopDetailInfo != null){
+            var info = stopDetailInfo.result;
+            innerHTML("stopLecName2", info.name);
+            innerHTML("startDate2", info.startDt);
+            innerHTML("endDate2", info.endDt);
+            innerHTML("remainStopDay2", info.remainStopDay);
+            innerValue('startDt2', info.startDt);
+            innerValue('endDt2', info.endDt);
+        }
+    });
     $(document).on("click","#overlay, .btn_modalClose",function(e){
         kiplayer.modalClose();
     });
@@ -1452,5 +1534,20 @@
         var result2 = addDate(endDateInfo, this.value);
         var dateHtml2 = startDt + "~" + result2;
         innerHTML("changeLecDate", dateHtml2);
+    });
+
+    $("#stopDaySel2").change(function () {
+        $("#stopDay2").val(this.value);
+        var today = new Date();
+        var todayDate = getFormatDate(today);
+        var result = addDate(todayDate, this.value);
+        var dateHtml = todayDate + "~" + result;
+        innerHTML("searchStartDate2", dateHtml);
+
+        var endDateInfo = getInputTextValue('endDt2');
+        var startDt = getInputTextValue('startDt2');
+        var result2 = addDate(endDateInfo, this.value);
+        var dateHtml2 = startDt + "~" + result2;
+        innerHTML("changeLecDate2", dateHtml2);
     });
 </script>

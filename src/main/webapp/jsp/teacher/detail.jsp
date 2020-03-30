@@ -15,6 +15,15 @@
     var menuCtgKey = '<%=reqKey%>';
 
     $( document ).ready(function() {
+        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        if(sessionUserInfo != null){
+            if(sessionUserInfo.authority != 0){
+                $(".writeBtn").hide();
+            }
+        }else{
+            $(".writeBtn").hide();
+        }
+
         $("#attachFile1").on("change", addFiles);
         $("#attachFile").on("change", addFiles1);
         var pcMobile = divisionPcMobile();
@@ -761,7 +770,7 @@
                                                     <a href="fn_search('new');" class="search_ico">검색</a>
                                                 </li>
                                                 <li class="right">
-                                                    <a href="javascript:referenceWrite();" class="btn_inline w140">글쓰기</a>
+                                                    <a href="javascript:referenceWrite();" class="btn_inline w140 writeBtn">글쓰기</a>
                                                 </li>
                                             </ul>
                                         </form>
@@ -802,7 +811,7 @@
                                                     <a href="fn_search1('new');" class="search_ico">검색</a>
                                                 </li>
                                                 <li class="right">
-                                                    <a href="javascript:referenceWrite();" class="btn_inline w140">글쓰기</a>
+                                                    <a href="javascript:referenceWrite();" class="btn_inline w140 writeBtn">글쓰기</a>
                                                 </li>
                                             </ul>
                                         </form>
@@ -836,7 +845,7 @@
                                         <br>
                                         <ul class="searchArea">
                                             <li class="right">
-                                                <a href="javascript:getModifyDetail();" class="btn_m w140">수정</a>
+                                                <a href="javascript:getModifyDetail();" class="btn_m w140 writeBtn">수정</a>
                                             </li>
                                         </ul>
                                         <div class="tableBox">
@@ -926,8 +935,8 @@
                                                 </table>
                                             </div>
                                             <div class="btnArea">
-                                                <a href="javascript:goReferenceList();" class="btn_l w200">취소</a>
-                                                <a href="javascript:goWriteSave();" class="btn_l onBlue w200">등록</a>
+                                                <a href="javascript:goReferenceList();" class="btn_m gray radius w110">취소</a>
+                                                <a href="javascript:goWriteSave();" class="btn_m bg_blue radius w110">등록</a>
                                             </div>
                                         </form>
                                         </div>
@@ -951,7 +960,7 @@
                                             <a href="javascript:fn_search3('new');" class="btn_m on">검색</a>
                                         </li>
                                         <li class="right">
-                                            학습에 관련된 질문을 올려주세요&nbsp; <a href="javascript:qnaWrite();" class="btn_m w140">글쓰기</a>
+                                            학습에 관련된 질문을 올려주세요&nbsp; <a href="javascript:qnaWrite();" class="btn_m w140 writeBtn">글쓰기</a>
                                         </li>
                                     </ul>
                                 </form>
@@ -984,8 +993,8 @@
                         <div class="" id="qnaDetail" style="display: none;">
                             <ul class="searchArea">
                                 <li class="right">
-                                    <a href="javascript:getModifyDetailqna();" class="btn_m w140">수정</a>
-                                    <a href="javascript:goReplayWrite();" class="btn_m w140">답변등록</a>
+                                    <a href="javascript:getModifyDetailqna();" class="btn_m w140 writeBtn">수정</a>
+                                    <a href="javascript:goReplayWrite();" class="btn_m w140 writeBtn">답변등록</a>
                                 </li>
                             </ul>
                             <div class="tableBox">
@@ -1120,8 +1129,8 @@
                                             </table>
                                         </div>
                                         <div class="btnArea">
-                                            <a href="javascript:goReferenceList();" class="btn_m bdgray radius w110">취소</a>
-                                            <a href="javascript:goWriteQnaSave();" class="btn_m radius w110 bdblue">등록</a>
+                                            <a href="javascript:goReferenceList();" class="btn_m gray radius w110">취소</a>
+                                            <a href="javascript:goWriteQnaSave();" class="btn_m bg_blue radius w110">등록</a>
                                         </div>
                                     </form>
                                 </div>
