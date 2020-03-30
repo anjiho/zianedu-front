@@ -38,8 +38,14 @@
                 focus: true                  // set focus to editable area after initializing summernote
             });
         } else {
+            $('#writeContent').attr("cols", 40);
+            $('#writeContent').attr("rows", 15);
+
             $('#qnaWriteContent').attr("cols", 40);
             $('#qnaWriteContent').attr("rows", 15);
+
+            $('#replyContent').attr("cols", 40);
+            $('#replyContent').attr("rows", 15);
         }
 
         $("#teacherHeader li").click(function() {
@@ -1096,8 +1102,8 @@
                                             </table>
                                         </div>
                                         <div class="btnArea">
-                                            <a href="javascript:goReferenceList();" class="btn_l w200">취소</a>
-                                            <a href="javascript:goWriteQnaSave();" class="btn_l onBlue w200">등록</a>
+                                            <a href="javascript:goReferenceList();" class="btn_m bdgray radius w110">취소</a>
+                                            <a href="javascript:goWriteQnaSave();" class="btn_m radius w110 bdblue">등록</a>
                                         </div>
                                     </form>
                                 </div>
