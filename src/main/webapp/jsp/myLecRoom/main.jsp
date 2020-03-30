@@ -386,10 +386,10 @@
                     isReloadPage();
                 }
             }
-        } else if (val == 'pass') {
+        } else if (val == 'pacakge') {
             if (confirm("일시정지 신청 하시겠습니까?")) {
-                var stopZianJlecKey = getInputTextValue("stopZianJlecKey");
-                var result = requestVideoStartStop(stopZianJlecKey, 10, 'STOP');
+                var stopPackageJlecKey = getInputTextValue("stopPackageJlecKey");
+                var result = requestVideoStartStop(stopPackageJlecKey, stopDay, 'STOP');
                 if (result.resultCode == 200) {
                     alert("일시정지 신청 완료되었습니다.");
                     isReloadPage();
