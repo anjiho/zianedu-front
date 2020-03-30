@@ -373,15 +373,10 @@
     }
 
     function goStop(val) {
-        var stopDaySel = getSelectboxValue('stopDaySel');
-        var stopDaySel2 = getSelectboxValue('stopDaySel2');
-        if(stopDaySel == ""){alert("일시정지 일수를 선택해 주세요.");return false;}
-        if(stopDaySel2 == null){
-            alert("일시정지 일수를 선택해 주세요.");
-            return false;
-        }
-
         if (val == 'stop') {
+            var stopDaySel = getSelectboxValue('stopDaySel');
+            var stopDay = getInputTextValue("stopDay");
+            if(stopDaySel == ""){alert("일시정지 일수를 선택해 주세요.");return false;}
             if (confirm("일시정지 신청 하시겠습니까?")) {
                 var stopJlecKey = getInputTextValue("stopJlecKey");
                 var result = requestVideoStartStop(stopJlecKey, stopDay, 'STOP');
@@ -394,6 +389,12 @@
                 }
             }
         } else if (val == 'pacakge') {
+            var stopDaySel2 = getSelectboxValue('stopDaySel2');
+            var stopDay2 = getInputTextValue("stopDay2");
+            if(stopDaySel2 == ""){
+                alert("일시정지 일수를 선택해 주세요.");
+                return false;
+            }
             if (confirm("패키지 일시정지 신청 하시겠습니까?")) {
                 var stopPackageJlecKey = getInputTextValue("stopPackageJlecKey");
 
@@ -1443,6 +1444,8 @@
                         <input type="hidden" id="startDt2">
                         <input type="hidden" id="endDt2">
                         <input type="hidden" id="stopDay2">
+                        <input type="hidden" id="userRemain2">
+                        <input type="hidden" id="userRemain3">
                         <tbody>
                         <tr>
                             <th>강좌명</th>
@@ -1510,6 +1513,7 @@
                 innerHTML("remainStopDay", info.remainStopDay);
                 innerValue('startDt', info.startDt);
                 innerValue('endDt', info.endDt);
+                innerValue('userRemain2', info.remainStopDay);
             }
 
             $(document).on("click","#overlay, .btn_modalClose",function(e){
@@ -1517,6 +1521,11 @@
             });
 
             $("#stopDaySel").change(function () {
+                var userRemain2 = getInputTextValue("userRemain2");
+                if(userRemain2 < this.value){
+                    alert("일시정지 가능일 수를 초과하였습니다.");
+                    return;
+                }
                 $("#stopDay").val(this.value);
                 var today = new Date();
                 var todayDate = getFormatDate(today);
@@ -1532,6 +1541,11 @@
             });
 
             $("#stopDaySel2").change(function () {
+                var userRemain3 = getInputTextValue("userRemain3");
+                if(userRemain3 < this.value){
+                    alert("일시정지 가능일 수를 초과하였습니다.");
+                    return;
+                }
                 $("#stopDay2").val(this.value);
                 var today = new Date();
                 var todayDate = getFormatDate(today);
@@ -1567,6 +1581,7 @@
                 innerHTML("remainStopDay2", info.remainStopDay);
                 innerValue('startDt2', info.startDt);
                 innerValue('endDt2', info.endDt);
+                innerValue('userRemain3', info.remainStopDay);
             }
             $(document).on("click","#overlay, .btn_modalClose",function(e){
                 kiplayer.modalClose();
