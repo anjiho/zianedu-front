@@ -25,23 +25,23 @@
                 maxHeight: null,             // set maximum height of editor
                 focus: true                  // set focus to editable area after initializing summernote
             });
-        }
-        if(pcMobile == 'PC') {
             $('#qnaWriteContent').summernote({
                 height: 300,                 // set editor height
                 minHeight: null,             // set minimum height of editor
                 maxHeight: null,             // set maximum height of editor
                 focus: true                  // set focus to editable area after initializing summernote
             });
-        }
-        if(pcMobile == 'PC') {
             $('#replyContent').summernote({
                 height: 300,                 // set editor height
                 minHeight: null,             // set minimum height of editor
                 maxHeight: null,             // set maximum height of editor
                 focus: true                  // set focus to editable area after initializing summernote
             });
+        } else {
+            $('#qnaWriteContent').attr("cols", 40);
+            $('#qnaWriteContent').attr("rows", 15);
         }
+
         $("#teacherHeader li").click(function() {
             if($(this).index() == 0 || $(this).index() == 1){
                 $("#qnaDiv").hide();
@@ -1083,7 +1083,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td>내용</td>
-                                                    <td><textarea placeholder="내용을 입력하세요" name="qnaWriteContent" id="qnaWriteContent"></textarea></td>
+                                                    <td><textarea placeholder="내용을 입력하세요" name="qnaWriteContent" id="qnaWriteContent" ></textarea></td>
                                                 </tr>
                                                 <tr>
                                                     <th scope="row">첨부파일</th>
