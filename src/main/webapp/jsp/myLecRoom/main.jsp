@@ -376,7 +376,12 @@
         if (val == 'stop') {
             var stopDaySel = getSelectboxValue('stopDaySel');
             var stopDay = getInputTextValue("stopDay");
+            var userRemain2 = getInputTextValue("userRemain2");
             if(stopDaySel == ""){alert("일시정지 일수를 선택해 주세요.");return false;}
+            if(userRemain2 < stopDaySel) {
+                alert("일시정지 수강일 수를 초과하였습니다.");
+                return false;
+            }
             if (confirm("일시정지 신청 하시겠습니까?")) {
                 var stopJlecKey = getInputTextValue("stopJlecKey");
                 var result = requestVideoStartStop(stopJlecKey, stopDay, 'STOP');
@@ -391,8 +396,13 @@
         } else if (val == 'pacakge') {
             var stopDaySel2 = getSelectboxValue('stopDaySel2');
             var stopDay2 = getInputTextValue("stopDay2");
+            var userRemain3 = getInputTextValue("userRemain3");
             if(stopDaySel2 == ""){
                 alert("일시정지 일수를 선택해 주세요.");
+                return false;
+            }
+            if(userRemain3 < stopDaySel) {
+                alert("일시정지 수강일 수를 초과하였습니다.");
                 return false;
             }
             if (confirm("패키지 일시정지 신청 하시겠습니까?")) {
@@ -1521,11 +1531,6 @@
             });
 
             $("#stopDaySel").change(function () {
-                var userRemain2 = getInputTextValue("userRemain2");
-                if(userRemain2 < this.value){
-                    alert("일시정지 가능일 수를 초과하였습니다.");
-                    return;
-                }
                 $("#stopDay").val(this.value);
                 var today = new Date();
                 var todayDate = getFormatDate(today);
@@ -1541,11 +1546,6 @@
             });
 
             $("#stopDaySel2").change(function () {
-                var userRemain3 = getInputTextValue("userRemain3");
-                if(userRemain3 < this.value){
-                    alert("일시정지 가능일 수를 초과하였습니다.");
-                    return;
-                }
                 $("#stopDay2").val(this.value);
                 var today = new Date();
                 var todayDate = getFormatDate(today);
@@ -1568,7 +1568,7 @@
         var stopDetailInfo = getVideoPauseRequestPopup(stopJlecKey);
         if (stopDetailInfo.resultCode == 905) {
             alert("일시정지 회수가 초과되었습니다.");
-            return;
+            return false;
         } else {
             e.preventDefault();
             var targetModal = $(this).attr("href");
