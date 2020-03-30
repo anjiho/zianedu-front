@@ -166,22 +166,29 @@ function getTeacherLearningQna(teacherKey, sPage, listLimit, searchType, searchT
                 var lock = '';
                 if (cmpList.pwd == 1) lock = 'lock';
                 else if (cmpList.pwd == null) lock = '';
-                if (cmpList.pwd == 1){
-                    if(sessionUserInfo.userKey == cmpList.writeUserKey){
-                        returnHtml += '<td><a href="javascript:void(0);" disabled class="subject ' + lock + '" onclick="goDetailqna('+  cmpList.bbsKey +');">' + gfn_substr(cmpList.title, 0, 40) + '</a></td>';
-                    }else{
-                        //returnHtml += '<td><a href="javascript:void(0);" class="subject ' + lock + '" onclick="">' + gfn_substr(cmpList.title, 0, 40) + '</a></td>';
-                        if(sessionUserInfo.authority != 0) {
-                            returnHtml += '<td><a class="subject ' + lock + ' nonBoard">비밀글입니다</a></td>';
+                if(sessionUserInfo != null){
+                    if (cmpList.pwd == 1){
+                        if(sessionUserInfo.userKey == cmpList.writeUserKey){
+                            returnHtml += '<td><a href="javascript:void(0);"  class="subject ' + lock + '" onclick="goDetailqna('+  cmpList.bbsKey +');">' + gfn_substr(cmpList.title, 0, 40) + '</a></td>';
                         }else{
-                            returnHtml += '<td><a href="javascript:void(0);" class="subject ' + lock + '" onclick="goDetailqna('+  cmpList.bbsKey +');">' + gfn_substr('비밀글입니다 ', 0, 40) + '</a></td>';
-                        }
+                            //returnHtml += '<td><a href="javascript:void(0);" class="subject ' + lock + '" onclick="">' + gfn_substr(cmpList.title, 0, 40) + '</a></td>';
+                            if(sessionUserInfo.authority != 0) {
+                                returnHtml += '<td><a class="subject ' + lock + ' nonBoard">비밀글입니다</a></td>';
+                            }else{
+                                returnHtml += '<td><a href="javascript:void(0);" class="subject ' + lock + '" onclick="goDetailqna('+  cmpList.bbsKey +');">' + gfn_substr('비밀글입니다 ', 0, 40) + '</a></td>';
+                            }
 
+                        }
+                    }else{
+                        returnHtml += '<td><a href="javascript:void(0);"  class="subject" onclick="goDetailqna('+  cmpList.bbsKey +');">' + gfn_substr(cmpList.title, 0, 40) + '</a></td>';
                     }
                 }else{
-                    returnHtml += '<td><a href="javascript:void(0);" disabled class="subject" onclick="goDetailqna('+  cmpList.bbsKey +');">' + gfn_substr(cmpList.title, 0, 40) + '</a></td>';
+                    if (cmpList.pwd == 1){
+                        returnHtml += '<td><a href="javascript:void(0);"  class="subject nonBoard ' + lock + '" onclick="goDetailqna('+  cmpList.bbsKey +');">' + gfn_substr(cmpList.title, 0, 40) + '</a></td>';
+                    }else{
+                        returnHtml += '<td><a href="javascript:void(0);"  class="subject" onclick="goDetailqna('+  cmpList.bbsKey +');">' + gfn_substr(cmpList.title, 0, 40) + '</a></td>';
+                    }
                 }
-
                 if(cmpList.writeUserName != null){
                     returnHtml += '<td>' + cmpList.writeUserName + '</td>';
                 }else{
@@ -198,19 +205,26 @@ function getTeacherLearningQna(teacherKey, sPage, listLimit, searchType, searchT
                 var lock = '';
                 if (cmpList.pwd == 1) lock = 'lock';
                 else if (cmpList.pwd == null) lock = '';
-                if (cmpList.pwd == 1){
-                    if(sessionUserInfo.userKey == cmpList.writeUserKey){
-                        returnHtml += '<td><a href="javascript:void(0);" disabled class="subject reply ' + lock + '" onclick="goDetailqna('+  cmpList.bbsKey +');">' + gfn_substr(cmpList.title, 0, 40) + '</a></td>';
-                    }else{
-                        if(sessionUserInfo.authority != 0) {
-                            returnHtml += '<td><a class="subject  reply ' + lock + ' nonBoard">비밀글입니다</a></td>';
-                        }else{
-                            returnHtml += '<td><a href="javascript:void(0);" class="subject reply ' + lock + '" onclick="goDetailqna('+  cmpList.bbsKey +');">' + gfn_substr('비밀글입니다 ', 0, 40) + '</a></td>';
+                if(sessionUserInfo != null) {
+                    if (cmpList.pwd == 1) {
+                        if (sessionUserInfo.userKey == cmpList.writeUserKey) {
+                            returnHtml += '<td><a href="javascript:void(0);"  class="subject reply ' + lock + '" onclick="goDetailqna(' + cmpList.bbsKey + ');">' + gfn_substr(cmpList.title, 0, 40) + '</a></td>';
+                        } else {
+                            if (sessionUserInfo.authority != 0) {
+                                returnHtml += '<td><a class="subject  reply ' + lock + ' nonBoard">비밀글입니다</a></td>';
+                            } else {
+                                returnHtml += '<td><a href="javascript:void(0);" class="subject reply ' + lock + '" onclick="goDetailqna(' + cmpList.bbsKey + ');">' + gfn_substr('비밀글입니다 ', 0, 40) + '</a></td>';
+                            }
                         }
-
+                    } else {
+                        returnHtml += '<td><a href="javascript:void(0);" class="subject reply" onclick="goDetailqna(' + cmpList.bbsKey + ');">' + gfn_substr(cmpList.title, 0, 40) + '</a></td>';
                     }
                 }else{
-                    returnHtml += '<td><a href="javascript:void(0);" class="subject reply" onclick="goDetailqna(' + cmpList.bbsKey + ');">' + gfn_substr(cmpList.title, 0, 40) + '</a></td>';
+                    if (cmpList.pwd == 1){
+                        returnHtml += '<td><a href="javascript:void(0);"  class="subject reply ' + lock + '" onclick="goDetailqna('+  cmpList.bbsKey +');">' + gfn_substr(cmpList.title, 0, 40) + '</a></td>';
+                    }else{
+                        returnHtml += '<td><a href="javascript:void(0);"  class="subject reply" onclick="goDetailqna('+  cmpList.bbsKey +');">' + gfn_substr(cmpList.title, 0, 40) + '</a></td>';
+                    }
                 }
                 returnHtml += '<td>' + cmpList.writeUserName + '</td>';
                 returnHtml += '<td>' + cmpList.indate2 + '</td>';

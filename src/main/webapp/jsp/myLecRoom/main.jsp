@@ -1424,6 +1424,7 @@
         var targetModal = $(this).attr("href");
         kiplayer.modalOpen(targetModal);
         var stopJlecKey = getInputTextValue("stopJlecKey");
+        alert(stopJlecKey);
         var stopDetailInfo = getVideoPauseRequestPopup(stopJlecKey);
         if(stopDetailInfo != null){
             var info = stopDetailInfo.result;
