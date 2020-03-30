@@ -373,12 +373,14 @@
     }
 
     function goStop(val) {
-        var stopDay = getInputTextValue('stopDay');
-        var stopDay2 = getInputTextValue('stopDay2');
-        if(stopDay == "" || stopDay2 == ""){
+        var stopDaySel = getSelectboxValue('stopDaySel');
+        var stopDaySel2 = getSelectboxValue('stopDaySel2');
+        if(stopDaySel == ""){alert("일시정지 일수를 선택해 주세요.");return false;}
+        if(stopDaySel2 == null){
             alert("일시정지 일수를 선택해 주세요.");
             return false;
         }
+
         if (val == 'stop') {
             if (confirm("일시정지 신청 하시겠습니까?")) {
                 var stopJlecKey = getInputTextValue("stopJlecKey");
@@ -1386,7 +1388,7 @@
                             <th>일시정지 일수 선택</th>
                             <td><span>회원님의 일시정지 가능일 수는 [<strong id="remainStopDay"></strong>] 입니다</span><br>
                                 <select style="width: 80px;" id="stopDaySel">
-                                    <option>선택</option>
+                                    <option value="">선택</option>
                                     <option value="10">10일</option>
                                     <option value="20">20일</option>
                                     <option value="30">30일</option>
@@ -1454,7 +1456,7 @@
                             <th>일시정지 일수 선택</th>
                             <td><span>회원님의 일시정지 가능일 수는 [<strong id="remainStopDay2"></strong>] 입니다</span><br>
                                 <select style="width: 80px;" id="stopDaySel2">
-                                    <option>선택</option>
+                                    <option value="">선택</option>
                                     <option value="10">10일</option>
                                     <option value="20">20일</option>
                                     <option value="30">30일</option>
