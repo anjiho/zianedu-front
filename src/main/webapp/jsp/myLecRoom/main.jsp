@@ -1,598 +1,5 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/jsp/common.jsp" %>
-<script>
-    var pcMobile = divisionPcMobile();
-    $(document).ready(function () {
-        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-        if (sessionUserInfo != null) {
-            /* 동영상 */
-            var userKey = sessionUserInfo.userKey;
-            getVideoSignUp(userKey, pcMobile);//수강중인강좌 - 동영상 -과목 불러오기
-            $("#playSubject li:eq(0)").addClass('active');
-            $("#playSubject li").click(function () { // 과목메뉴 클릭시 class active 기능
-                $(this).addClass('active').siblings().removeClass('active');
-            });
-            $("#playType li:eq(0)").addClass('active');
-            $("#playType li").click(function () {
-                $(this).addClass('active').siblings().removeClass('active');
-            });
-
-            /* 지안패스 */
-            getZianPassSignUpList(userKey);
-            getPackageSignUpList(userKey, pcMobile);//패키지
-
-            var zianJkey = getInputTextValue("zianPassjKey");
-            var packageJKey = getInputTextValue("packageJKey");//패키지
-
-            if (zianJkey != '') {
-                zianPassTypeList(zianJkey);
-            }
-            if (packageJKey != '') {
-                packageTypeList(packageJKey);
-            }
-
-            var zianPassCtgKey = getInputTextValue("zianPassCtgKey");
-            var packageCtgKey = getInputTextValue("packageCtgKey");
-            if (zianPassCtgKey != '') {
-                zianPassLecTitleList(zianPassCtgKey);
-            }
-            if (packageCtgKey != '') {
-                packageLecTitleList(packageCtgKey);
-            }
-            var zainJlecKey = getInputTextValue("zianPassjLecKey");
-            var packageJlecKey = getInputTextValue("packageJlecKey");
-            if (zainJlecKey != "") {
-                zianPassDetail(zainJlecKey);
-            }
-
-            if (packageJlecKey != undefined) {//패키지
-                packageDetail(packageJlecKey);
-            }
-
-            $("#zianPassList li:eq(0)").addClass('active');
-            $("#zianPassList li").click(function () { // 과목메뉴 클릭시 class active 기능
-                $(this).addClass('active').siblings().removeClass('active');
-            });
-            $("#zianPassType li:eq(0)").addClass('active');
-            $("#zianPassType li").click(function () {
-                $(this).addClass('active').siblings().removeClass('active');
-            });
-
-            $("#packageList li:eq(0)").addClass('active');
-            $("#packageList li").click(function () { // 과목메뉴 클릭시 class active 기능
-                $(this).addClass('active').siblings().removeClass('active');
-            });
-            $("#packageType li:eq(0)").addClass('active');
-            $("#packageType li").click(function () {
-                $(this).addClass('active').siblings().removeClass('active');
-            });
-
-            /* 학원실강 */
-            getSignUpAcademyTypeList(userKey);
-            var acaCtgKey = getInputTextValue("acaCtgKey");
-            if (acaCtgKey != '') {
-                academyLecList(acaCtgKey);
-            }
-            var acaGkey = getInputTextValue("acaGkey");
-            if (acaGkey != '') {
-                academyLecDetail(acaGkey);
-            }
-            $("#academyType li:eq(0)").addClass('active');
-            $("#academyType li").click(function () {
-                $(this).addClass('active').siblings().removeClass('active');
-            });
-
-            /* 일시정지 */
-            getSignUpVideoLecturePauseTypeList(userKey);
-            var pauseCtgKey = getInputTextValue("pauseCtgKey");
-            if (pauseCtgKey != '') {
-                pauseLecTitleList(pauseCtgKey);
-            }
-            var pauseJlecKey = getInputTextValue("pauseJlecKey");
-            if (pauseJlecKey != '') {
-                pauseLecDetail(pauseJlecKey);
-            }
-            $("#pauseType li:eq(0)").addClass('active');
-            $("#pauseType li").click(function () {
-                $(this).addClass('active').siblings().removeClass('active');
-            });
-
-            /* 수강완료 단과*/
-            getSignUpVideoLectureEndTypeList(userKey, divisionPcMobile());
-            var lecEndCtgKey = getInputTextValue("lecEndCtgKey");
-            if (lecEndCtgKey != '') {
-                lecEndTitleList(lecEndCtgKey);
-            }
-            var lecEndJlecKey = getInputTextValue("lecEndJlecKey");
-            if (lecEndJlecKey != '') {
-                lecEndDetail(lecEndJlecKey);
-            }
-            $("#lecEndType li:eq(0)").addClass('active');
-            $("#lecEndType li").click(function () {
-                $(this).addClass('active').siblings().removeClass('active');
-            });
-
-            /*수강완료 지안패스*/
-            getZianPassEndList(userKey);
-
-        } else {
-            alert("로그인이 필요합니다.");
-            goLoginPage();
-        }
-    });
-
-    //동영상 - 유형 - 강좌명 리스트
-    function getPlaySubjectList(stepCtgKey) {
-        $("#typeLectureList li").remove();
-        var subjectCtgKey = getInputTextValue("subjectCtgKey");
-        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-        var userKey = sessionUserInfo.userKey;
-        getVideoSignUpLectureNameList(userKey, pcMobile, subjectCtgKey, stepCtgKey);
-    }
-
-    function playDepthList(subjectCtgKey) {
-        innerValue("subjectCtgKey", subjectCtgKey);
-        $("#typeLectureList li").remove();
-        $("#playLecListDiv").hide();
-        $("#playType li").addClass('active').siblings().removeClass('active');
-        $("#playType li:eq(0)").addClass('active');
-        changePlayLectureList(86942, pcMobile);
-    }
-
-    //동영상 - 유형 - 강좌리스트 - 강좌상세보기
-    function getTypeLectureDetail(gkey, jlecKey) {
-        var pcMobile = divisionPcMobile();
-        var infoList = getVideoSignUpDetailInfo(gkey, pcMobile, jlecKey, 'dataList');
-        if (infoList == null) {
-            $("#playLecListDiv").hide();
-        } else {
-            $("#playLecListDiv").show();
-            var result = infoList.result;
-            var lectureReviewBtn = "<a href='/review?page_gbn=lectureList&gKey=" + result.gkey + "' class='blue small'>수강후기</a>";
-           // innerValue("stopJlecKey", result.jlecKey);
-            innerHTML("l_lectureReviewBtn", lectureReviewBtn);
-            innerHTML("playLecName", result.name);
-            innerHTML("playLecStartDate", result.startDate);
-            innerHTML("playLecEndDate", result.endDate);
-            innerHTML("limitDay", result.limitDay);
-            innerHTML("PlayProgressRate", result.progressRateName);
-            innerHTML("ctgName", result.ctgName);
-            if (result.kind == 100) {
-                $("#pc").show();
-                $("#mobile").hide();
-            } else if (result.kind == 101) {
-                $("#pc").hide();
-                $("#mobile").show();
-            } else {
-                $("#pc").show();
-                $("#mobile").show();
-            }
-        }
-    }
-
-    //지안패스 > 유형 불러오기
-    function zianPassTypeList(jkey) {
-        $("#zianPassType li").remove();
-        $("#zianPassLecList li").remove();
-        innerValue("zianPassjKey", jkey);
-        getSignUpZianPassTypeList(jkey, pcMobile);
-        $("#zianPassType li:eq(0)").addClass('active');
-    }
-
-    //패키지 > 유형 불러오기
-    function packageTypeList(jkey) {
-        $("#packageType li").remove();
-        $("#packageLecList li").remove();
-        innerValue("packageJKey", jkey);
-        getSignUpPackageTypeList(jkey, pcMobile);
-        $("#packageType li:eq(0)").addClass('active');
-    }
-
-    function zianPassLecTitleList(ctgKey) {
-        $("#zianPassLecList li").remove();
-        $("#zianPassType li").click(function () {
-            $(this).addClass('active').siblings().removeClass('active');
-        });
-        var jKey = getInputTextValue("zianPassjKey");
-        getSignUpZianPassSubjectNameList(jKey, pcMobile, ctgKey);
-    }
-
-    function packageLecTitleList(ctgKey) {
-        $("#packageLecList li").remove();
-        $("#packageType li").click(function () {
-            $(this).addClass('active').siblings().removeClass('active');
-        });
-        var jKey = getInputTextValue("packageJKey");
-        getSignUpPackageSubjectNameList(jKey, pcMobile, ctgKey);
-    }
-
-
-    function zianPassDetail(jlecKey) {
-        var pcMobile = divisionPcMobile();
-        var infoList = getPromotionVideoSignUpDetailInfo("", pcMobile, jlecKey, 'zianPassDataList');
-        if (infoList != null) {
-            $("#zianPassListDiv").show();
-            var result = infoList.result;
-
-            var lectureReviewBtn = "<a href='/review?page_gbn=lectureList&gKey=" + result.gkey + "' class='blue small'>수강후기</a>";
-            innerHTML("l_lectureReviewBtn2", lectureReviewBtn);
-            //innerValue("stopJlecKey", result.jlecKey);
-            innerHTML("zianPassName", result.name);
-            innerHTML("zianPassLecStartDate", result.startDate);
-            innerHTML("zianPassLecEndDate", result.endDate);
-            innerHTML("zianPassLimitDay", result.limitDay);
-            innerHTML("zianPassProgressRate", result.progressRateName);
-            innerHTML("zianPassCtgName", result.ctgName);
-            if (result.kind == 100) {
-                $("#zianPc").show();
-                $("#zianPcMobile").hide();
-            } else if (result.kind == 101) {
-                $("#zianPc").hide();
-                $("#zianPcMobile").show();
-            } else {
-                $("#zianPc").show();
-                $("#zianPcMobile").show();
-            }
-        } else {
-            $("#zianPassListDiv").hide();
-        }
-    }
-
-
-    function packageDetail(jlecKey) {
-        var pcMobile = divisionPcMobile();
-        var infoList = getPromotionVideoSignUpDetailInfo("", pcMobile, jlecKey, 'packageDataList');
-        if(infoList != null){
-            $("#packageListDiv").show();
-            var result = infoList.result;
-
-            var lectureReviewBtn = "<a href='/review?page_gbn=lectureList&gKey=" + result.gkey + "' class='blue small'>수강후기</a>";
-            innerHTML("package_lectureReviewBtn2", lectureReviewBtn);
-            innerValue("stopPackageJlecKey", result.jlecKey);
-            innerHTML("packageName", result.name);
-            innerHTML("packageLecStartDate", result.startDate);
-            innerHTML("packageLecEndDate", result.endDate);
-            innerHTML("packageLimitDay", result.limitDay);
-            innerHTML("packageProgressRate", result.progressRateName);
-            innerHTML("packageCtgName", result.ctgName);
-           
-            if(result.kind == 100){
-                gfn_display("packagePc", true);
-                gfn_display("packageMobile", false);
-            }else if(result.kind == 101){
-                gfn_display("packagePc", false);
-                gfn_display("packageMobile", false);
-            }else{
-                gfn_display("packagePc", true);
-                gfn_display("packageMobile", true);
-            }
-        }
-        else{
-            $("#packageListDiv").hide();
-        }
-    }
-
-    //학원실강 유형 > 강의리스트 불러오기
-    function academyLecList(ctgKey) {
-        $("#acaLecList li").remove();
-        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-        var userKey = sessionUserInfo.userKey;
-        getSignUpAcademySubjectNameList(userKey, ctgKey);
-    }
-
-    function academyLecDetail(gKey) {
-        var result = getAcademyProductDetail(gKey);
-        if (result != null) {
-            innerHTML("acaCtgName", result.ctgName);
-            innerHTML("acaGoodsName", result.goodsName);
-            innerHTML("acaLectureDate", result.lectureDate);
-            innerHTML("acaLimitDay", result.limitDay);
-        }
-    }
-
-    //일시정지 강좌리스트 불러오기
-    function pauseLecTitleList(ctgKey) {
-        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-        var userKey = sessionUserInfo.userKey;
-        $("#pauseLecNameList li").remove();
-        getSignUpVideoLecturePauseSubjectList(userKey, ctgKey);
-    }
-
-    //일시정지 강좌상세설명
-    function pauseLecDetail(jlecKey) {
-        var detailInfo = getOnlineVideoPauseListByJLecKey(jlecKey);
-        if (detailInfo != null) {
-            for (var i = 0; i < detailInfo.result.length; i++) {
-                var selList = detailInfo.result[i];
-                innerValue("stopEndjLecKey", selList.jlecKey);
-                innerHTML("pauseCtgName", selList.ctgName);
-                innerHTML("pauseLecName", selList.name);
-                innerHTML("pauseLectureDate", selList.lectureDate);//수강기간
-                innerHTML("pauseLimitDay", selList.limitDay);//수강일수
-                innerHTML("pauseProgressRate", selList.progressRateName);//진도율
-                innerHTML("pauseLectureDate1", selList.lectureDate);//기존수강기간
-                innerHTML("pauseLimitDay1", selList.limitDay);//기존수강일수
-                innerHTML("pauseChangeLectureDate", selList.changeLectureDate);//변경된수강기간
-                innerHTML("pauseChangeLimitDay", selList.changeLimitDay);//변경된수강일수
-                innerHTML("pauseCnt", selList.pauseCnt);
-                innerHTML("pauseCnt1", selList.pauseCnt);
-                innerHTML("pauseDay", selList.pauseDay);
-                innerHTML("pauseDay1", selList.pauseDay);
-                if (selList.kind == 100) {
-                    $("#pausePc").show();
-                    $("#pauseMobile").hide();
-                } else if (selList.kind == 101) {
-                    $("#pausePc").hide();
-                    $("#pauseMobile").show();
-                } else {
-                    $("#pausePc").show();
-                    $("#pauseMobile").show();
-                }
-            }
-        } else {
-            $("#pauseLecDiv").hide();
-        }
-    }
-
-    function lecEndTitleList(ctgKey) {
-        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-        var userKey = sessionUserInfo.userKey;
-        var deviceType = divisionPcMobile();
-        $("#lecEndNameList li").remove();
-        getSignUpVideoLectureEndSubjectList(userKey, ctgKey, deviceType);
-    }
-
-    function lecEndDetail(jlecKey) {
-        var detailInfo = getSignUpVideoLectureEndInfo(jlecKey);
-        if (detailInfo != null) {
-            var selList = detailInfo.result;
-            innerHTML("lecEndCtgName", selList.ctgName);
-            innerHTML("lecEndName", selList.name);
-            innerHTML("lecEndStartDate", selList.startDate);//수강기간
-            innerHTML("lecEndDate", selList.endDate);//수강일수
-            innerValue("priceKey", selList.priceKey);
-            innerValue("gkey1", selList.gkey);
-
-            //재수강 Y,N
-            if (selList.retakeYn == 'N') $("#retake").hide();
-
-            var kind = selList.kind;
-            if (kind == 100) {
-                $("#lecEndPC").show();
-                $("#lecEndMobile").hide();
-            } else if (kind == 101) {
-                $("#lecEndPC").hide();
-                $("#lecEndMobile").show();
-            } else if (kind == 102) {
-                $("#lecEndPC").show();
-                $("#lecEndMobile").show();
-            }
-        } else {
-            $("#lecEndDiv").hide();
-        }
-    }
-
-    function goStop(val) {
-        if (val == 'stop') {
-            var stopDaySel = getSelectboxValue('stopDaySel');
-            var stopDay = getInputTextValue("stopDay");
-            var userRemain2 = getInputTextValue("userRemain2");
-            if(stopDaySel == ""){alert("일시정지 일수를 선택해 주세요.");return false;}
-            if(userRemain2 < stopDaySel) {
-                alert("일시정지 수강일 수를 초과하였습니다.");
-                return false;
-            }
-            if (confirm("일시정지 신청 하시겠습니까?")) {
-                var stopJlecKey = getInputTextValue("stopJlecKey");
-                var result = requestVideoStartStop(stopJlecKey, stopDay, 'STOP');
-                if (result.resultCode == 200) {
-                    alert("일시정지 신청 완료었습니다.");
-                    isReloadPage();
-                } else if (result.resultCode == 905) {
-                    alert("일시정지 횟수가 초과 되었습니다\n운영자에게 문의하시기 바랍니다.");
-                    isReloadPage();
-                }
-            }
-        } else if (val == 'pacakge') {
-            var stopDaySel2 = getSelectboxValue('stopDaySel2');
-            var stopDay2 = getInputTextValue("stopDay2");
-            var userRemain3 = getInputTextValue("userRemain3");
-
-
-
-            if(stopDaySel2 == ""){
-                alert("일시정지 일수를 선택해 주세요.");
-                return false;
-            }
-            if(userRemain3 < stopDaySel) {
-                alert("일시정지 수강일 수를 초과하였습니다.");
-                return false;
-            }
-            if (confirm("패키지 일시정지 신청 하시겠습니까?")) {
-                var stopPackageJlecKey = getInputTextValue("stopPackageJlecKey");
-
-                var result = requestVideoStartStop(stopPackageJlecKey, stopDay2, 'STOP');
-                if (result.resultCode == 200) {
-                    alert("일시정지 신청 완료되었습니다.");
-                    isReloadPage();
-                } else if (result.resultCode == 905) {
-                    alert("일시정지 횟수가 초과 되었습니다\n운영자에게 문의하시기 바랍니다.");
-                    isReloadPage();
-                }
-            }
-        } else if (val == 'stopEnd') {
-            var stopEndjLecKey = getInputTextValue("stopEndjLecKey");
-            var result = requestVideoStartStop(stopEndjLecKey, 10, 'START');
-            if (result.resultCode == 200) {
-                alert("일시정지가 해제 되었습니다.");
-                isReloadPage();
-            } else if (result.resultCode == 905) {
-                alert("일시정지 해제 횟수가 초과 되었습니다\n운영자에게 문의하시기 바랍니다.");
-                isReloadPage();
-            }
-        }
-    }
-
-    //장바구니
-    function goBasket() {
-        var reLecSel = getSelectboxValue("reLecSel");
-        if (reLecSel == '') {
-            alert("재수강 일수를 선택해 주세요.");
-            return false;
-        }
-        var priceKey = getInputTextValue("priceKey");
-        var gKey = getInputTextValue("gkey1");
-        var extendDay = getSelectboxValue("reLecSel");
-        var arr = new Array();
-        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-        if (sessionUserInfo != undefined) {
-            var userKey = sessionUserInfo.userKey;
-            var data = {
-                userKey: userKey,
-                gKey: gKey,
-                priceKey: priceKey,
-                gCount: 1,
-                extendDay: extendDay
-            };
-            arr.push(data);
-            var saveCartInfo = JSON.stringify(arr);
-            var result = saveCartAtRetake(saveCartInfo);
-            if (result.resultCode == 200) {
-                alert("장바구니에 담겼습니다.");
-                return false;
-            }
-        } else {
-            alert("로그인을 해주세요");
-            goLoginPage();
-        }
-    }
-
-    function zianPassGoBasket(gkey, priceKey) {
-        var reLecSel = getSelectboxValue("zianPassReSel_" + gkey);
-
-        if (reLecSel == '') {
-            alert("재수강 일수를 선택해 주세요.");
-            return false;
-        } else {
-            var extendDay = reLecSel * 30;
-        }
-        var arr = new Array();
-        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-        if (sessionUserInfo != undefined) {
-            var userKey = sessionUserInfo.userKey;
-            var data = {
-                userKey: userKey,
-                gKey: gkey,
-                priceKey: priceKey,
-                gCount: 1,
-                extendDay: extendDay
-            };
-            arr.push(data);
-            var saveCartInfo = JSON.stringify(arr);
-            var result = saveCartAtRetake(saveCartInfo);
-            if (result.resultCode == 200) {
-                alert("장바구니에 담겼습니다.");
-                return false;
-            }
-        } else {
-            alert("로그인을 해주세요");
-            goLoginPage();
-        }
-    }
-
-    function zianPassGoProductBuy(gkey, priceKey) {
-        var reLecSel = getSelectboxValue("zianPassReSel_" + gkey);
-        if (reLecSel == '') {
-            alert("재수강 일수를 선택해 주세요.");
-            return false;
-        } else {
-            var extendDay = reLecSel * 30;
-        }
-        var arr = new Array();
-        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-        if (sessionUserInfo != undefined) {
-            var userKey = sessionUserInfo.userKey;
-            var data = {
-                userKey: userKey,
-                gKey: gkey,
-                priceKey: priceKey,
-                gCount: 1,
-                extendDay: extendDay
-            };
-            arr.push(data);
-            var retakeInfo = JSON.stringify(arr);
-            innerValue("retakeInfo", retakeInfo);
-            $("#id_frm_singleMypage").attr("action", "/myPage?page_gbn=write");
-            $("#id_frm_singleMypage").submit();
-        } else {
-            alert("로그인을 해주세요");
-            goLoginPage();
-        }
-    }
-
-    //바로구매
-    function goProductBuy() {
-        var reLecSel = getSelectboxValue("reLecSel");
-        if (reLecSel == '') {
-            alert("재수강 일수를 선택해 주세요.");
-            return false;
-        }
-        var priceKey = getInputTextValue("priceKey");
-        var gKey = getInputTextValue("gkey1");
-        var extendDay = getSelectboxValue("reLecSel");
-        var arr = new Array();
-        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-        if (sessionUserInfo != undefined) {
-            var userKey = sessionUserInfo.userKey;
-            var data = {
-                userKey: userKey,
-                gKey: gKey,
-                priceKey: priceKey,
-                gCount: 1,
-                extendDay: extendDay
-            };
-            arr.push(data);
-            var retakeInfo = JSON.stringify(arr);
-            innerValue("retakeInfo", retakeInfo);
-            $("#id_frm_singleMypage").attr("action", "/myPage?page_gbn=write");
-            $("#id_frm_singleMypage").submit();
-        } else {
-            alert("로그인을 해주세요");
-            goLoginPage();
-        }
-    }
-
-
-    function goPopup1() {
-        kiplayer.modalOpen("#modal1");
-    }
-
-    /* 재생버튼 클릭시 버튼 교체 */
-    function myPlay(num) {
-        $(".myPlay[data-index='" + num + "']").css('display', 'block');
-    }
-
-    /* 다운로드 클릭시 버튼 교체 */
-    function myDownload(num) {
-        $(".myDownload[data-index='" + num + "']").css('display', 'block');
-    }
-
-    /* 지정된 외에 바깥쪽 클릭시 원래 버튼으로 설정 */
-    $(function () {
-        $("html").click(function (e) {
-            var $len = $('.new_cssM tbody').find('tr').length + 1;
-            for (var i = 1; i < $len; i++) { //일반 클래스로 적용되지 않아 반복문 선언
-                if ($(".myPlay[data-index='" + i + "']").css('display') == 'block' || $(".myDownload[data-index='" + i + "']").css('display') == 'block') {
-                    if (!$(e.target).is('.brBlack, .brBlue')) { //지정된 타겟 외에 나머지에게만 클릭허용
-                        $('.myPlay').css('display', 'none');
-                        $('.myDownload').css('display', 'none');
-                    }
-                }
-            }
-        });
-    });
-
-</script>
 <form action="/Player/Axis" id="id_frm_player" method="post" name="name_frm_player">
     <input id="vodPath" name="vodPath" type="hidden" value=""/>
     <input id="vodTitle" name="vodTitle" type="hidden" value=""/>
@@ -1221,6 +628,597 @@
         <%@include file="/common/jsp/footerBanner.jsp" %>
         <!--//하단고정식배너-->
     </div>
+    <script>
+        var pcMobile = divisionPcMobile();
+        $(document).ready(function () {
+            var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+            if (sessionUserInfo != null) {
+                /* 동영상 */
+                var userKey = sessionUserInfo.userKey;
+                getVideoSignUp(userKey, pcMobile);//수강중인강좌 - 동영상 -과목 불러오기
+                $("#playSubject li:eq(0)").addClass('active');
+                $("#playSubject li").click(function () { // 과목메뉴 클릭시 class active 기능
+                    $(this).addClass('active').siblings().removeClass('active');
+                });
+                $("#playType li:eq(0)").addClass('active');
+                $("#playType li").click(function () {
+                    $(this).addClass('active').siblings().removeClass('active');
+                });
+
+                /* 지안패스 */
+                getZianPassSignUpList(userKey);
+                getPackageSignUpList(userKey, pcMobile);//패키지
+
+                var zianJkey = getInputTextValue("zianPassjKey");
+                var packageJKey = getInputTextValue("packageJKey");//패키지
+
+                if (zianJkey != '') {
+                    zianPassTypeList(zianJkey);
+                }
+                if (packageJKey != '') {
+                    packageTypeList(packageJKey);
+                }
+
+                var zianPassCtgKey = getInputTextValue("zianPassCtgKey");
+                var packageCtgKey = getInputTextValue("packageCtgKey");
+                if (zianPassCtgKey != '') {
+                    zianPassLecTitleList(zianPassCtgKey);
+                }
+                if (packageCtgKey != '') {
+                    packageLecTitleList(packageCtgKey);
+                }
+                var zainJlecKey = getInputTextValue("zianPassjLecKey");
+                var packageJlecKey = getInputTextValue("packageJlecKey");
+                if (zainJlecKey != "") {
+                    zianPassDetail(zainJlecKey);
+                }
+
+                if (packageJlecKey != undefined) {//패키지
+                    packageDetail(packageJlecKey);
+                }
+
+                $("#zianPassList li:eq(0)").addClass('active');
+                $("#zianPassList li").click(function () { // 과목메뉴 클릭시 class active 기능
+                    $(this).addClass('active').siblings().removeClass('active');
+                });
+                $("#zianPassType li:eq(0)").addClass('active');
+                $("#zianPassType li").click(function () {
+                    $(this).addClass('active').siblings().removeClass('active');
+                });
+
+                $("#packageList li:eq(0)").addClass('active');
+                $("#packageList li").click(function () { // 과목메뉴 클릭시 class active 기능
+                    $(this).addClass('active').siblings().removeClass('active');
+                });
+                $("#packageType li:eq(0)").addClass('active');
+                $("#packageType li").click(function () {
+                    $(this).addClass('active').siblings().removeClass('active');
+                });
+
+                /* 학원실강 */
+                getSignUpAcademyTypeList(userKey);
+                var acaCtgKey = getInputTextValue("acaCtgKey");
+                if (acaCtgKey != '') {
+                    academyLecList(acaCtgKey);
+                }
+                var acaGkey = getInputTextValue("acaGkey");
+                if (acaGkey != '') {
+                    academyLecDetail(acaGkey);
+                }
+                $("#academyType li:eq(0)").addClass('active');
+                $("#academyType li").click(function () {
+                    $(this).addClass('active').siblings().removeClass('active');
+                });
+
+                /* 일시정지 */
+                getSignUpVideoLecturePauseTypeList(userKey);
+                var pauseCtgKey = getInputTextValue("pauseCtgKey");
+                if (pauseCtgKey != '') {
+                    pauseLecTitleList(pauseCtgKey);
+                }
+                var pauseJlecKey = getInputTextValue("pauseJlecKey");
+                if (pauseJlecKey != '') {
+                    pauseLecDetail(pauseJlecKey);
+                }
+                $("#pauseType li:eq(0)").addClass('active');
+                $("#pauseType li").click(function () {
+                    $(this).addClass('active').siblings().removeClass('active');
+                });
+
+                /* 수강완료 단과*/
+                getSignUpVideoLectureEndTypeList(userKey, divisionPcMobile());
+                var lecEndCtgKey = getInputTextValue("lecEndCtgKey");
+                if (lecEndCtgKey != '') {
+                    lecEndTitleList(lecEndCtgKey);
+                }
+                var lecEndJlecKey = getInputTextValue("lecEndJlecKey");
+                if (lecEndJlecKey != '') {
+                    lecEndDetail(lecEndJlecKey);
+                }
+                $("#lecEndType li:eq(0)").addClass('active');
+                $("#lecEndType li").click(function () {
+                    $(this).addClass('active').siblings().removeClass('active');
+                });
+
+                /*수강완료 지안패스*/
+                getZianPassEndList(userKey);
+
+            } else {
+                alert("로그인이 필요합니다.");
+                goLoginPage();
+            }
+        });
+
+        //동영상 - 유형 - 강좌명 리스트
+        function getPlaySubjectList(stepCtgKey) {
+            $("#typeLectureList li").remove();
+            var subjectCtgKey = getInputTextValue("subjectCtgKey");
+            var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+            var userKey = sessionUserInfo.userKey;
+            getVideoSignUpLectureNameList(userKey, pcMobile, subjectCtgKey, stepCtgKey);
+        }
+
+        function playDepthList(subjectCtgKey) {
+            innerValue("subjectCtgKey", subjectCtgKey);
+            $("#typeLectureList li").remove();
+            $("#playLecListDiv").hide();
+            $("#playType li").addClass('active').siblings().removeClass('active');
+            $("#playType li:eq(0)").addClass('active');
+            changePlayLectureList(86942, pcMobile);
+        }
+
+        //동영상 - 유형 - 강좌리스트 - 강좌상세보기
+        function getTypeLectureDetail(gkey, jlecKey) {
+            var pcMobile = divisionPcMobile();
+            var infoList = getVideoSignUpDetailInfo(gkey, pcMobile, jlecKey, 'dataList');
+            if (infoList == null) {
+                $("#playLecListDiv").hide();
+            } else {
+                $("#playLecListDiv").show();
+                var result = infoList.result;
+                var lectureReviewBtn = "<a href='/review?page_gbn=lectureList&gKey=" + result.gkey + "' class='blue small'>수강후기</a>";
+                // innerValue("stopJlecKey", result.jlecKey);
+                innerHTML("l_lectureReviewBtn", lectureReviewBtn);
+                innerHTML("playLecName", result.name);
+                innerHTML("playLecStartDate", result.startDate);
+                innerHTML("playLecEndDate", result.endDate);
+                innerHTML("limitDay", result.limitDay);
+                innerHTML("PlayProgressRate", result.progressRateName);
+                innerHTML("ctgName", result.ctgName);
+                if (result.kind == 100) {
+                    $("#pc").show();
+                    $("#mobile").hide();
+                } else if (result.kind == 101) {
+                    $("#pc").hide();
+                    $("#mobile").show();
+                } else {
+                    $("#pc").show();
+                    $("#mobile").show();
+                }
+            }
+        }
+
+        //지안패스 > 유형 불러오기
+        function zianPassTypeList(jkey) {
+            $("#zianPassType li").remove();
+            $("#zianPassLecList li").remove();
+            innerValue("zianPassjKey", jkey);
+            getSignUpZianPassTypeList(jkey, pcMobile);
+            $("#zianPassType li:eq(0)").addClass('active');
+        }
+
+        //패키지 > 유형 불러오기
+        function packageTypeList(jkey) {
+            $("#packageType li").remove();
+            $("#packageLecList li").remove();
+            innerValue("packageJKey", jkey);
+            getSignUpPackageTypeList(jkey, pcMobile);
+            $("#packageType li:eq(0)").addClass('active');
+        }
+
+        function zianPassLecTitleList(ctgKey) {
+            $("#zianPassLecList li").remove();
+            $("#zianPassType li").click(function () {
+                $(this).addClass('active').siblings().removeClass('active');
+            });
+            var jKey = getInputTextValue("zianPassjKey");
+            getSignUpZianPassSubjectNameList(jKey, pcMobile, ctgKey);
+        }
+
+        function packageLecTitleList(ctgKey) {
+            $("#packageLecList li").remove();
+            $("#packageType li").click(function () {
+                $(this).addClass('active').siblings().removeClass('active');
+            });
+            var jKey = getInputTextValue("packageJKey");
+            getSignUpPackageSubjectNameList(jKey, pcMobile, ctgKey);
+        }
+
+
+        function zianPassDetail(jlecKey) {
+            var pcMobile = divisionPcMobile();
+            var infoList = getPromotionVideoSignUpDetailInfo("", pcMobile, jlecKey, 'zianPassDataList');
+            if (infoList != null) {
+                $("#zianPassListDiv").show();
+                var result = infoList.result;
+
+                var lectureReviewBtn = "<a href='/review?page_gbn=lectureList&gKey=" + result.gkey + "' class='blue small'>수강후기</a>";
+                innerHTML("l_lectureReviewBtn2", lectureReviewBtn);
+                //innerValue("stopJlecKey", result.jlecKey);
+                innerHTML("zianPassName", result.name);
+                innerHTML("zianPassLecStartDate", result.startDate);
+                innerHTML("zianPassLecEndDate", result.endDate);
+                innerHTML("zianPassLimitDay", result.limitDay);
+                innerHTML("zianPassProgressRate", result.progressRateName);
+                innerHTML("zianPassCtgName", result.ctgName);
+                if (result.kind == 100) {
+                    $("#zianPc").show();
+                    $("#zianPcMobile").hide();
+                } else if (result.kind == 101) {
+                    $("#zianPc").hide();
+                    $("#zianPcMobile").show();
+                } else {
+                    $("#zianPc").show();
+                    $("#zianPcMobile").show();
+                }
+            } else {
+                $("#zianPassListDiv").hide();
+            }
+        }
+
+
+        function packageDetail(jlecKey) {
+            var pcMobile = divisionPcMobile();
+            var infoList = getPromotionVideoSignUpDetailInfo("", pcMobile, jlecKey, 'packageDataList');
+            if(infoList != null){
+                $("#packageListDiv").show();
+                var result = infoList.result;
+
+                var lectureReviewBtn = "<a href='/review?page_gbn=lectureList&gKey=" + result.gkey + "' class='blue small'>수강후기</a>";
+                innerHTML("package_lectureReviewBtn2", lectureReviewBtn);
+                innerValue("stopPackageJlecKey", result.jlecKey);
+                innerHTML("packageName", result.name);
+                innerHTML("packageLecStartDate", result.startDate);
+                innerHTML("packageLecEndDate", result.endDate);
+                innerHTML("packageLimitDay", result.limitDay);
+                innerHTML("packageProgressRate", result.progressRateName);
+                innerHTML("packageCtgName", result.ctgName);
+
+                if(result.kind == 100){
+                    gfn_display("packagePc", true);
+                    gfn_display("packageMobile", false);
+                }else if(result.kind == 101){
+                    gfn_display("packagePc", false);
+                    gfn_display("packageMobile", false);
+                }else{
+                    gfn_display("packagePc", true);
+                    gfn_display("packageMobile", true);
+                }
+            }
+            else{
+                $("#packageListDiv").hide();
+            }
+        }
+
+        //학원실강 유형 > 강의리스트 불러오기
+        function academyLecList(ctgKey) {
+            $("#acaLecList li").remove();
+            var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+            var userKey = sessionUserInfo.userKey;
+            getSignUpAcademySubjectNameList(userKey, ctgKey);
+        }
+
+        function academyLecDetail(gKey) {
+            var result = getAcademyProductDetail(gKey);
+            if (result != null) {
+                innerHTML("acaCtgName", result.ctgName);
+                innerHTML("acaGoodsName", result.goodsName);
+                innerHTML("acaLectureDate", result.lectureDate);
+                innerHTML("acaLimitDay", result.limitDay);
+            }
+        }
+
+        //일시정지 강좌리스트 불러오기
+        function pauseLecTitleList(ctgKey) {
+            var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+            var userKey = sessionUserInfo.userKey;
+            $("#pauseLecNameList li").remove();
+            getSignUpVideoLecturePauseSubjectList(userKey, ctgKey);
+        }
+
+        //일시정지 강좌상세설명
+        function pauseLecDetail(jlecKey) {
+            var detailInfo = getOnlineVideoPauseListByJLecKey(jlecKey);
+            if (detailInfo != null) {
+                for (var i = 0; i < detailInfo.result.length; i++) {
+                    var selList = detailInfo.result[i];
+                    innerValue("stopEndjLecKey", selList.jlecKey);
+                    innerHTML("pauseCtgName", selList.ctgName);
+                    innerHTML("pauseLecName", selList.name);
+                    innerHTML("pauseLectureDate", selList.lectureDate);//수강기간
+                    innerHTML("pauseLimitDay", selList.limitDay);//수강일수
+                    innerHTML("pauseProgressRate", selList.progressRateName);//진도율
+                    innerHTML("pauseLectureDate1", selList.lectureDate);//기존수강기간
+                    innerHTML("pauseLimitDay1", selList.limitDay);//기존수강일수
+                    innerHTML("pauseChangeLectureDate", selList.changeLectureDate);//변경된수강기간
+                    innerHTML("pauseChangeLimitDay", selList.changeLimitDay);//변경된수강일수
+                    innerHTML("pauseCnt", selList.pauseCnt);
+                    innerHTML("pauseCnt1", selList.pauseCnt);
+                    innerHTML("pauseDay", selList.pauseTotalDay);
+                    innerHTML("pauseDay1", selList.pauseDay);
+                    if (selList.kind == 100) {
+                        $("#pausePc").show();
+                        $("#pauseMobile").hide();
+                    } else if (selList.kind == 101) {
+                        $("#pausePc").hide();
+                        $("#pauseMobile").show();
+                    } else {
+                        $("#pausePc").show();
+                        $("#pauseMobile").show();
+                    }
+                }
+            } else {
+                $("#pauseLecDiv").hide();
+            }
+        }
+
+        function lecEndTitleList(ctgKey) {
+            var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+            var userKey = sessionUserInfo.userKey;
+            var deviceType = divisionPcMobile();
+            $("#lecEndNameList li").remove();
+            getSignUpVideoLectureEndSubjectList(userKey, ctgKey, deviceType);
+        }
+
+        function lecEndDetail(jlecKey) {
+            var detailInfo = getSignUpVideoLectureEndInfo(jlecKey);
+            if (detailInfo != null) {
+                var selList = detailInfo.result;
+                innerHTML("lecEndCtgName", selList.ctgName);
+                innerHTML("lecEndName", selList.name);
+                innerHTML("lecEndStartDate", selList.startDate);//수강기간
+                innerHTML("lecEndDate", selList.endDate);//수강일수
+                innerValue("priceKey", selList.priceKey);
+                innerValue("gkey1", selList.gkey);
+
+                //재수강 Y,N
+                if (selList.retakeYn == 'N') $("#retake").hide();
+
+                var kind = selList.kind;
+                if (kind == 100) {
+                    $("#lecEndPC").show();
+                    $("#lecEndMobile").hide();
+                } else if (kind == 101) {
+                    $("#lecEndPC").hide();
+                    $("#lecEndMobile").show();
+                } else if (kind == 102) {
+                    $("#lecEndPC").show();
+                    $("#lecEndMobile").show();
+                }
+            } else {
+                $("#lecEndDiv").hide();
+            }
+        }
+
+        function goStop(val) {
+            if (val == 'stop') {
+                var stopDaySel = getSelectboxValue('stopDaySel');
+                var stopDay = getInputTextValue("stopDay");
+                var userRemain2 = getInputTextValue("userRemain2");
+                if(stopDaySel == ""){alert("일시정지 일수를 선택해 주세요.");return false;}
+                if(userRemain2 < stopDaySel) {
+                    alert("일시정지 수강일 수를 초과하였습니다.");
+                    return false;
+                }
+                if (confirm("일시정지 신청 하시겠습니까?")) {
+                    var stopJlecKey = getInputTextValue("stopJlecKey");
+                    var result = requestVideoStartStop(stopJlecKey, stopDay, 'STOP');
+                    if (result.resultCode == 200) {
+                        alert("일시정지 신청 완료었습니다.");
+                        isReloadPage();
+                    } else if (result.resultCode == 905) {
+                        alert("일시정지 횟수가 초과 되었습니다\n운영자에게 문의하시기 바랍니다.");
+                        isReloadPage();
+                    }
+                }
+            } else if (val == 'pacakge') {
+                var stopDaySel2 = getSelectboxValue('stopDaySel2');
+                var stopDay2 = getInputTextValue("stopDay2");
+                var userRemain3 = getInputTextValue("userRemain3");
+                if(stopDaySel2 == ""){
+                    alert("일시정지 일수를 선택해 주세요.");
+                    return false;
+                }
+                if(userRemain3 < stopDaySel) {
+                    alert("일시정지 수강일 수를 초과하였습니다.");
+                    return false;
+                }
+                if (confirm("패키지 일시정지 신청 하시겠습니까?")) {
+                    var stopPackageJlecKey = getInputTextValue("stopPackageJlecKey");
+
+                    var result = requestVideoStartStop(stopPackageJlecKey, stopDay2, 'STOP');
+                    if (result.resultCode == 200) {
+                        alert("일시정지 신청 완료되었습니다.");
+                        isReloadPage();
+                    } else if (result.resultCode == 905) {
+                        alert("일시정지 횟수가 초과 되었습니다\n운영자에게 문의하시기 바랍니다.");
+                        isReloadPage();
+                    }
+                }
+            } else if (val == 'stopEnd') {
+                var stopEndjLecKey = getInputTextValue("stopEndjLecKey");
+                var result = requestVideoStartStop(stopEndjLecKey, 10, 'START');
+                if (result.resultCode == 200) {
+                    alert("일시정지가 해제 되었습니다.");
+                    isReloadPage();
+                } else if (result.resultCode == 905) {
+                    alert("일시정지 해제 횟수가 초과 되었습니다\n운영자에게 문의하시기 바랍니다.");
+                    isReloadPage();
+                }
+            }
+        }
+
+        //장바구니
+        function goBasket() {
+            var reLecSel = getSelectboxValue("reLecSel");
+            if (reLecSel == '') {
+                alert("재수강 일수를 선택해 주세요.");
+                return false;
+            }
+            var priceKey = getInputTextValue("priceKey");
+            var gKey = getInputTextValue("gkey1");
+            var extendDay = getSelectboxValue("reLecSel");
+            var arr = new Array();
+            var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+            if (sessionUserInfo != undefined) {
+                var userKey = sessionUserInfo.userKey;
+                var data = {
+                    userKey: userKey,
+                    gKey: gKey,
+                    priceKey: priceKey,
+                    gCount: 1,
+                    extendDay: extendDay
+                };
+                arr.push(data);
+                var saveCartInfo = JSON.stringify(arr);
+                var result = saveCartAtRetake(saveCartInfo);
+                if (result.resultCode == 200) {
+                    alert("장바구니에 담겼습니다.");
+                    return false;
+                }
+            } else {
+                alert("로그인을 해주세요");
+                goLoginPage();
+            }
+        }
+
+        function zianPassGoBasket(gkey, priceKey) {
+            var reLecSel = getSelectboxValue("zianPassReSel_" + gkey);
+
+            if (reLecSel == '') {
+                alert("재수강 일수를 선택해 주세요.");
+                return false;
+            } else {
+                var extendDay = reLecSel * 30;
+            }
+            var arr = new Array();
+            var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+            if (sessionUserInfo != undefined) {
+                var userKey = sessionUserInfo.userKey;
+                var data = {
+                    userKey: userKey,
+                    gKey: gkey,
+                    priceKey: priceKey,
+                    gCount: 1,
+                    extendDay: extendDay
+                };
+                arr.push(data);
+                var saveCartInfo = JSON.stringify(arr);
+                var result = saveCartAtRetake(saveCartInfo);
+                if (result.resultCode == 200) {
+                    alert("장바구니에 담겼습니다.");
+                    return false;
+                }
+            } else {
+                alert("로그인을 해주세요");
+                goLoginPage();
+            }
+        }
+
+        function zianPassGoProductBuy(gkey, priceKey) {
+            var reLecSel = getSelectboxValue("zianPassReSel_" + gkey);
+            if (reLecSel == '') {
+                alert("재수강 일수를 선택해 주세요.");
+                return false;
+            } else {
+                var extendDay = reLecSel * 30;
+            }
+            var arr = new Array();
+            var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+            if (sessionUserInfo != undefined) {
+                var userKey = sessionUserInfo.userKey;
+                var data = {
+                    userKey: userKey,
+                    gKey: gkey,
+                    priceKey: priceKey,
+                    gCount: 1,
+                    extendDay: extendDay
+                };
+                arr.push(data);
+                var retakeInfo = JSON.stringify(arr);
+                innerValue("retakeInfo", retakeInfo);
+                $("#id_frm_singleMypage").attr("action", "/myPage?page_gbn=write");
+                $("#id_frm_singleMypage").submit();
+            } else {
+                alert("로그인을 해주세요");
+                goLoginPage();
+            }
+        }
+
+        //바로구매
+        function goProductBuy() {
+            var reLecSel = getSelectboxValue("reLecSel");
+            if (reLecSel == '') {
+                alert("재수강 일수를 선택해 주세요.");
+                return false;
+            }
+            var priceKey = getInputTextValue("priceKey");
+            var gKey = getInputTextValue("gkey1");
+            var extendDay = getSelectboxValue("reLecSel");
+            var arr = new Array();
+            var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+            if (sessionUserInfo != undefined) {
+                var userKey = sessionUserInfo.userKey;
+                var data = {
+                    userKey: userKey,
+                    gKey: gKey,
+                    priceKey: priceKey,
+                    gCount: 1,
+                    extendDay: extendDay
+                };
+                arr.push(data);
+                var retakeInfo = JSON.stringify(arr);
+                innerValue("retakeInfo", retakeInfo);
+                $("#id_frm_singleMypage").attr("action", "/myPage?page_gbn=write");
+                $("#id_frm_singleMypage").submit();
+            } else {
+                alert("로그인을 해주세요");
+                goLoginPage();
+            }
+        }
+
+
+        function goPopup1() {
+            kiplayer.modalOpen("#modal1");
+        }
+
+        /* 재생버튼 클릭시 버튼 교체 */
+        function myPlay(num) {
+            $(".myPlay[data-index='" + num + "']").css('display', 'block');
+        }
+
+        /* 다운로드 클릭시 버튼 교체 */
+        function myDownload(num) {
+            $(".myDownload[data-index='" + num + "']").css('display', 'block');
+        }
+
+        /* 지정된 외에 바깥쪽 클릭시 원래 버튼으로 설정 */
+        $(function () {
+            $("html").click(function (e) {
+                var $len = $('.new_cssM tbody').find('tr').length + 1;
+                for (var i = 1; i < $len; i++) { //일반 클래스로 적용되지 않아 반복문 선언
+                    if ($(".myPlay[data-index='" + i + "']").css('display') == 'block' || $(".myDownload[data-index='" + i + "']").css('display') == 'block') {
+                        if (!$(e.target).is('.brBlack, .brBlue')) { //지정된 타겟 외에 나머지에게만 클릭허용
+                            $('.myPlay').css('display', 'none');
+                            $('.myDownload').css('display', 'none');
+                        }
+                    }
+                }
+            });
+        });
+
+    </script>
+
     <div id="overlay"></div>
     <!--팝업 수강안내사항 modal1-->
     <div id="modal1" class="modalWrap">
@@ -1567,7 +1565,6 @@
     });
     $(document).on("click",".btn_modalOpen2",function(e){
         var stopJlecKey = getInputTextValue("stopPackageJlecKey");
-
         var stopDetailInfo = getVideoPauseRequestPopup(stopJlecKey);
         if (stopDetailInfo.resultCode == 905) {
             alert("일시정지 회수가 초과되었습니다.");
