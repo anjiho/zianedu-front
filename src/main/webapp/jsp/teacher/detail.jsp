@@ -186,6 +186,7 @@
         if(val == "new") sPage3 = "1";
 
         getTeacherLearningQna(teacherKey, sPage3, 20, searchType3,  searchText3, 'dataList3');//학습안내 (학습자료실) 리스트 불러오기
+        $(".nonBoard").css({ 'pointer-events': 'none' });
     }
 
     //학습Q&A 답변등록하기
@@ -732,7 +733,6 @@
                                                         <option value="title">제목</option>
                                                     </select>
                                                     <input type="text" id="searchText1" onkeypress="if(event.keyCode==13) {fn_search('new'); return false;}" >
-<%--                                                    <a href="javascript:fn_search('new');" class="btn_m on">검색</a>--%>
                                                     <input type="button" class="btn_m on" value="검색" onclick="fn_search('new');">
                                                     <a href="fn_search('new');" class="search_ico">검색</a>
                                                 </li>
@@ -775,7 +775,6 @@
                                                     </select>
                                                     <input type="text"  id="searchText2" onkeypress="if(event.keyCode==13) {fn_search1('new'); return false;}">
                                                     <input type="button" class="btn_m on" value="검색" onclick="fn_search1('new');">
-<%--                                                    <a href="javascript:fn_search1('new');" class="btn_m on">검색</a>--%>
                                                     <a href="fn_search1('new');" class="search_ico">검색</a>
                                                 </li>
                                                 <li class="right">
@@ -1087,9 +1086,8 @@
                                                 </tr>
                                                 <tr>
                                                     <th scope="row">첨부파일</th>
-                                                    <td class="">
-<%--                                                        <input type="file" id="attachFile1" class="fileBtn noline nobg">--%>
-                                                        <input type="file" name="files[]" id="attachFile1" class="fileBtn noline"  multiple/>
+                                                    <td>
+                                                        <input type="file" name="files[]" id="attachFile1" class="fileBtn noline" multiple/>
                                                         <ul id='fileList1' class="fileList"></ul>
                                                     </td>
 
