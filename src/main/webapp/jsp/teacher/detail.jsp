@@ -40,6 +40,10 @@
         } else {
             $('#qnaWriteContent').attr("cols", 40);
             $('#qnaWriteContent').attr("rows", 15);
+            $('#qnaWriteContent').attr("cols", 40);
+            $('#qnaWriteContent').attr("rows", 15);
+            $('#replyContent').attr("cols", 40);
+            $('#replyContent').attr("rows", 15);
         }
 
         $("#teacherHeader li").click(function() {
@@ -889,7 +893,7 @@
                                                     </tr>
                                                     <tr>
                                                         <th scope="row">내용</th>
-                                                        <td><textarea name="writeContent" id="writeContent" value=""></textarea></td>
+                                                        <td><textarea name="writeContent" id="writeContent"></textarea></td>
                                                     </tr>
                                                     <tr>
                                                         <th scope="row">첨부파일</th>
@@ -902,8 +906,8 @@
                                                 </table>
                                             </div>
                                             <div class="btnArea">
-                                                <a href="javascript:goReferenceList();" class="btn_l w200">취소</a>
-                                                <a href="javascript:goWriteSave();" class="btn_l onBlue w200">등록</a>
+                                                <a href="javascript:goReferenceList();" class="btn_m gray radius w110">취소</a>
+                                                <a href="javascript:goWriteSave();" class="btn_m bg_blue radius w110">등록</a>
                                             </div>
                                         </form>
                                         </div>
