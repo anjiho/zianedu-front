@@ -1548,7 +1548,6 @@
     });
     $(document).on("click",".btn_modalOpen2",function(e){
         var stopJlecKey = getInputTextValue("stopPackageJlecKey");
-        alert(stopJlecKey);
         var stopDetailInfo = getVideoPauseRequestPopup(stopJlecKey);
         if (stopDetailInfo.resultCode == 905) {
             alert("일시정지 회수가 초과되었습니다.");
