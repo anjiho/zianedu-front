@@ -9,7 +9,7 @@
         $('#a_reservation').val(1).trigger('change');
         $('#academyNumber').val(1).trigger('change');
         innerHTML('reserveTitle', '전화상담예약');
-        calendar();
+        //calendar();
 
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         if(sessionUserInfo == null){
@@ -35,9 +35,10 @@
             var academyNumber = getSelectboxValue("academyNumber");
             if(a_reservation != ""){
                 //$("#consultDiv").show();
-                calendar();
+                //calendar();
                 var today = getToday();
                 var today2 = getToday2();
+
                 innerValue("indate", today);
                 innerHTML("selDate", today2);
                 innerHTML("academy", $("#academyNumber option:checked").text());
@@ -63,66 +64,135 @@
             getUserRegSerialList("interestCtgKey2"); //준비직렬
         }
 
+        var calendarInfo = null;
+        //달력 주입 시작
+        $('#searchStartDate').fullCalendar({
+            viewRender: function(startDate, view, element) {
+                var dt_start = moment( $('#searchStartDate').fullCalendar('getDate') ).format('YYYY-MM-DD');
+                innerValue("indate", dt_start);
+                var reserveLocation = getSelectboxValue("academyNumber");
+                $("#morning").empty();
+                $("#afternoon").empty();
+                getReserveTime(dt_start, reserveLocation);
+                var dt_start1 = moment(startDate).format('YYYY.MM.DD');
+                innerHTML("selDate", dt_start1);
+                var dayOfWeek = moment(startDate).format('dddd'); //요일
+                innerHTML("selDay", dayOfWeek);
+                innerValue("indate", dt_start);
+                innerHTML("academy", $("#academyNumber option:checked").text());
+            },
+            lang:'ko',
+            header: {
+                left: 'prev,next,today',
+                center: 'title',
+                right: ''
+            },
+            selectable:true,
+            defaultView: divisionPcMobile() == 'MOBILE' ? 'basicDay' : 'month',
+            //defaultView: isMobile ? 'basicDay' : 'month',
+            contentHeight:"auto",
+            handleWindowResize:true,
+            dayPopoverFormat: 'yyyy-MM-dd',
+            select: function (startDate, endDate, jsEvent, view) {
+                var dt_start = moment(startDate).format('YYYY-MM-DD');
+                var dt_start1 = moment(startDate).format('YYYY.MM.DD');
+                innerHTML("selDate", dt_start1);
+                var dayOfWeek = moment(startDate).format('dddd'); //요일
+                innerHTML("selDay", dayOfWeek);
+                innerValue("indate", dt_start);
+                var reserveLocation = getSelectboxValue("academyNumber");
+                if(reserveLocation == ''){
+                    alert("학원관을 선택해 주세요.");
+                    $("#academyNumber").focus();
+                    return false;
+                }
+                $("#morning").empty();
+                $("#afternoon").empty();
+                getReserveTime(dt_start, reserveLocation);
+                $(".fc-body").unbind('click');
+                $(".fc-body").on('click', 'td', function (e) {
+                    $("#contextMenu")
+                        .addClass("contextOpened")
+                        .css({
+                            display: "block",
+                            left: e.pageX,
+                            top: e.pageY
+                        });
+                    return false;
+                });
+            },
+            events:calendarInfo
+        });
+        //달력 주입 끝
+
+
         function calendar() {
-            var calendarInfo = null;
-            //달력 주입 시작
-            $('#searchStartDate').fullCalendar({
-                viewRender: function(startDate, view, element) {
-                    var dt_start = moment( $('#calendar').fullCalendar('getDate') ).format('YYYY-MM-DD');
-                    innerValue("indate", dt_start);
-                    var reserveLocation = getSelectboxValue("academyNumber");
-                        $("#morning").empty();
-                        $("#afternoon").empty();
-                    getReserveTime(dt_start, reserveLocation);
-                    var dt_start1 = moment(startDate).format('YYYY.MM.DD');
-                    innerHTML("selDate", dt_start1);
-                    var dayOfWeek = moment(startDate).format('dddd'); //요일
-                    innerHTML("selDay", dayOfWeek);
-                    innerValue("indate", dt_start);
-                    innerHTML("academy", $("#academyNumber option:checked").text());
-                },
-                lang:'ko',
-                header: {
-                    left: 'prev,next,today',
-                    center: 'title',
-                    right: ''
-                },
-                selectable:true,
-                defaultView: 'month',
-                contentHeight:"auto",
-                handleWindowResize:true,
-                dayPopoverFormat: 'yyyy-MM-dd',
-                select: function (startDate, endDate, jsEvent, view) {
-                    var dt_start = moment(startDate).format('YYYY-MM-DD');
-                    var dt_start1 = moment(startDate).format('YYYY.MM.DD');
-                    innerHTML("selDate", dt_start1);
-                    var dayOfWeek = moment(startDate).format('dddd'); //요일
-                    innerHTML("selDay", dayOfWeek);
-                    innerValue("indate", dt_start);
-                    var reserveLocation = getSelectboxValue("academyNumber");
-                    if(reserveLocation == ''){
-                        alert("학원관을 선택해 주세요.");
-                        $("#academyNumber").focus();
-                        return false;
-                    }
-                    $("#morning").empty();
-                    $("#afternoon").empty();
-                    getReserveTime(dt_start, reserveLocation);
-                    $(".fc-body").unbind('click');
-                    $(".fc-body").on('click', 'td', function (e) {
-                        $("#contextMenu")
-                            .addClass("contextOpened")
-                            .css({
-                                display: "block",
-                                left: e.pageX,
-                                top: e.pageY
-                            });
-                        return false;
-                    });
-                },
-                events:calendarInfo
-            });
-            //달력 주입 끝
+            // var isMobile = "";
+            // if( $(window).width() < 765 ) {
+            //     isMobile = true
+            // } else {
+            //     isMobile = false;
+            // }
+            // var calendarInfo = null;
+            // //달력 주입 시작
+            // $('#searchStartDate').fullCalendar({
+            //     viewRender: function(startDate, view, element) {
+            //         var dt_start = moment( $('#calendar').fullCalendar('getDate') ).format('YYYY-MM-DD');
+            //         innerValue("indate", dt_start);
+            //         var reserveLocation = getSelectboxValue("academyNumber");
+            //             $("#morning").empty();
+            //             $("#afternoon").empty();
+            //         getReserveTime(dt_start, reserveLocation);
+            //         var dt_start1 = moment(startDate).format('YYYY.MM.DD');
+            //         innerHTML("selDate", dt_start1);
+            //         var dayOfWeek = moment(startDate).format('dddd'); //요일
+            //         innerHTML("selDay", dayOfWeek);
+            //         innerValue("indate", dt_start);
+            //         innerHTML("academy", $("#academyNumber option:checked").text());
+            //     },
+            //     lang:'ko',
+            //     header: {
+            //         left: 'prev,next,today',
+            //         center: 'title',
+            //         right: ''
+            //     },
+            //     selectable:true,
+            //     //defaultView: divisionPcMobile() == 'MOBILE' ? 'basicDay' : 'month',
+            //     defaultView: isMobile ? 'basicDay' : 'month',
+            //     contentHeight:"auto",
+            //     handleWindowResize:true,
+            //     dayPopoverFormat: 'yyyy-MM-dd',
+            //     select: function (startDate, endDate, jsEvent, view) {
+            //         var dt_start = moment(startDate).format('YYYY-MM-DD');
+            //         var dt_start1 = moment(startDate).format('YYYY.MM.DD');
+            //         innerHTML("selDate", dt_start1);
+            //         var dayOfWeek = moment(startDate).format('dddd'); //요일
+            //         innerHTML("selDay", dayOfWeek);
+            //         innerValue("indate", dt_start);
+            //         var reserveLocation = getSelectboxValue("academyNumber");
+            //         if(reserveLocation == ''){
+            //             alert("학원관을 선택해 주세요.");
+            //             $("#academyNumber").focus();
+            //             return false;
+            //         }
+            //         $("#morning").empty();
+            //         $("#afternoon").empty();
+            //         getReserveTime(dt_start, reserveLocation);
+            //         $(".fc-body").unbind('click');
+            //         $(".fc-body").on('click', 'td', function (e) {
+            //             $("#contextMenu")
+            //                 .addClass("contextOpened")
+            //                 .css({
+            //                     display: "block",
+            //                     left: e.pageX,
+            //                     top: e.pageY
+            //                 });
+            //             return false;
+            //         });
+            //     },
+            //     events:calendarInfo
+            // });
+            // //달력 주입 끝
         }
 
        // setTime(1,"09:00");
