@@ -1,10 +1,19 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
 <%@include file="/common/jsp/common.jsp" %>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
 <script>
     $(document).ready(function () {
-
+        var pcMobile = divisionPcMobile();
+        if(pcMobile == 'PC') {
+            $('#title').summernote({
+                height: 300,
+                minHeight: null,
+                maxHeight: null,
+                focus: true
+            });
+        }
     });
-
     function saveOftenQuestion() {
         if($('textarea[name="content"]').val() == ''){
             alert('답변내용을 입력해 주세요.');

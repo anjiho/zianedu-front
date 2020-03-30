@@ -8,12 +8,15 @@
 <script>
     var bbsKey = '<%=bbsKey%>';
     $( document ).ready(function() {
-        $('#writeContent').summernote({
-            height: 300,
-            minHeight: null,
-            maxHeight: null,
-            focus: true
-        });
+        var pcMobile = divisionPcMobile();
+        if(pcMobile == 'PC') {
+            $('#writeContent').summernote({
+                height: 300,
+                minHeight: null,
+                maxHeight: null,
+                focus: true
+            });
+        }
         $("#attachFile").on("change", addFiles);
 
         var bbsMasterKey = getPassReviewMasterKey();

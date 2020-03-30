@@ -54,9 +54,8 @@
                 if (detailInfo.fileInfo.length > 0) {
                     for (var i = 0; i < detailInfo.fileInfo.length; i++) {
                         var fileList = detailInfo.fileInfo[i];
-                        // var retrunHtml = "<a href='" + fileList.fileUrl + "' download>" + fileList.fileName + "</a>";
-                        var retrunHtml = "<li><a href=\'"+ fileList.fileUrl +"'><img src=\"/common/zian/images/common/icon_file.png\" alt=\"\"> "+ fileList.fileName +"</a></li>";
-                        $("#fileList").append(retrunHtml);
+                        var returnHtml = '<li><a href="javascript:download('+ "'" + fileList.fileName + "'" +')"><img src=\"/common/zian/images/common/icon_file.png\">'+ fileList.fileName +'</a></li>';
+                        $("#fileList").append(returnHtml);
                     }
                 }
             }else{
@@ -108,18 +107,6 @@
         goPage('review','detailBook');
     }
 
-    //댓글 저장
-    function commentSave() {
-        var commentContent = getInputTextValue("commentContent");
-        var bbsKey = getInputTextValue("bbsKey");
-        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-        var userKey = sessionUserInfo.userKey;
-        var result = saveBoardComment(bbsKey, userKey, commentContent);
-        if(result.resultCode == 200){
-            alert("댓글이 등록 되었습니다.");
-            isReloadPage();
-        }
-    }
 </script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
@@ -179,33 +166,6 @@
                                 <td colspan="3" class="tdEditorContent">
                                     <div id="content1">
                                     </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="3">
-                                    <div class="comment">
-                                        <div class="cm_write">
-                                            <form id="" name="">
-                                                <fieldset>
-                                                    <legend>댓글작성</legend>
-                                                    <div class="inner">
-                                                        <p class="cm_title">댓글</p>
-                                                        <div class="write">
-                                                            <textarea id="commentContent" placeholder=""></textarea>
-                                                        </div>
-                                                        <a href="javascript:commentSave();" class="single">댓글</a>
-                                                    </div>
-                                                </fieldset>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr id="commentList">
-
-                            </tr>
-                            <tr>
-                                <td colspan="3">
                                 </td>
                             </tr>
                             <tr id="prev">

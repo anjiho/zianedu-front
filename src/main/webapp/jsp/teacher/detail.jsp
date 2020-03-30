@@ -247,9 +247,8 @@
 
             if(referenceInfo.fileInfo != null){
                 for(var i = 0; i < referenceInfo.fileInfo.length; i++){
-                   // $("#fileDetailList").append("<li><a href='"+ referenceInfo.fileInfo[i].fileUrl +"'>"+ referenceInfo.fileInfo[i].fileName +"</a>"+" "+"<img src=\"/common/zian/images/common/icon_file.png\" alt=\"\"></li>");
                     $("#fileDetailList").append('<li><a href="javascript:download('+ "'" + referenceInfo.fileInfo[i].fileName + "'" +')"><img src="/common/zian/images/common/icon_file.png" alt="">'+ referenceInfo.fileInfo[i].fileName +'</a></li>');
-                }                               //<li><a href="#"><img src="../images/common/icon_file.png" alt=""> 필기시험 합격선(제1회공채)-배포용(0).hwp</a></li>
+                }
             }
 
             var detailInfoStr = JSON.stringify(detailInfo);
@@ -369,7 +368,6 @@
             commentHtml += "</ul>";
             $("#commentList").append(commentHtml);
             //댓글 끝
-
 
             /** 이전 다음글 조건 수정 2020.03.26  안지호 **/
             for(var i = 0;  i < prevNextBbsList.length; i++){ /* 이전글 다음글 기능 */
@@ -1000,12 +998,8 @@
                                     </tr>
                                     </tbody>
                                 </table>
-
                                 <div class="commentsList" id="commentList"></div>
-
                             </div>
-
-                            <!-- ㅋ -->
                             <div style="display: none;" id="replyDiv">
                                 <div class="tabPage active">
                                     <form>
@@ -1041,30 +1035,9 @@
                                     <a href="javascript:goReplySave();" class="btn_l onBlue w200">답변등록</a>
                                 </div>
                             </div>
-                            <!-- z -->
                             <div class="btnArea right">
                                 <a href="javascript:goReferenceList();" class="btn_m w140">목록으로</a>
                             </div>
-
-<%--                            <div class="tableBox noLine">--%>
-<%--                                <form>--%>
-<%--                                    <table class="reply">--%>
-<%--                                        <colgroup>--%>
-<%--                                            <col class="w10p">--%>
-<%--                                            <col>--%>
-<%--                                            <col class="w100">--%>
-<%--                                        </colgroup>--%>
-<%--                                        <tbody>--%>
-<%--                                        <tr>--%>
-<%--                                            <td class="alignCenter">댓글</td>--%>
-<%--                                            <td><textarea class="w100p" id="commentContent"></textarea></td>--%>
-<%--                                            <td><input type="button" onclick="commentSave();" value="등록" class="btn_l on"></td>--%>
-<%--                                        </tr>--%>
-<%--                                        </tbody>--%>
-<%--                                    </table>--%>
-<%--                                </form>--%>
-<%--                            </div>--%>
-
                             <div class="tableBox">
                                 <table class="view">
                                     <colgroup>

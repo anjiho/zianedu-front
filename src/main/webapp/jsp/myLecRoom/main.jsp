@@ -216,7 +216,7 @@
 
             var lectureReviewBtn = "<a href='/review?page_gbn=lectureList&gKey=" + result.gkey + "' class='blue small'>수강후기</a>";
             innerHTML("l_lectureReviewBtn2", lectureReviewBtn);
-            innerValue("stopZianJlecKey", result.jlecKey);
+            innerValue("stopJlecKey", result.jlecKey);
             innerHTML("zianPassName", result.name);
             innerHTML("zianPassLecStartDate", result.startDate);
             innerHTML("zianPassLecEndDate", result.endDate);
@@ -248,7 +248,7 @@
 
             var lectureReviewBtn = "<a href='/review?page_gbn=lectureList&gKey=" + result.gkey + "' class='blue small'>수강후기</a>";
             innerHTML("package_lectureReviewBtn2", lectureReviewBtn);
-            innerValue("stopPackageJlecKey", result.jlecKey);
+            innerValue("stopJlecKey", result.jlecKey);
             innerHTML("packageName", result.name);
             innerHTML("packageLecStartDate", result.startDate);
             innerHTML("packageLecEndDate", result.endDate);
@@ -373,16 +373,17 @@
     }
 
     function goStop(val) {
+        var stopDay = getInputTextValue('stopDay');
         if (val == 'stop') {
             if (confirm("일시정지 신청 하시겠습니까?")) {
                 var stopJlecKey = getInputTextValue("stopJlecKey");
-                var result = requestVideoStartStop(stopJlecKey, 10, 'STOP');
+                var result = requestVideoStartStop(stopJlecKey, stopDay, 'STOP');
                 if (result.resultCode == 200) {
-                    alert("일시정지 신청 완료");
-                    return false;
+                    alert("일시정지 신청 완료었습니다.");
+                    isReloadPage();
                 } else if (result.resultCode == 905) {
                     alert("일시정지 횟수가 초과 되었습니다\n운영자에게 문의하시기 바랍니다.");
-                    return false;
+                    isReloadPage();
                 }
             }
         } else if (val == 'pass') {
@@ -390,22 +391,22 @@
                 var stopZianJlecKey = getInputTextValue("stopZianJlecKey");
                 var result = requestVideoStartStop(stopZianJlecKey, 10, 'STOP');
                 if (result.resultCode == 200) {
-                    alert("일시정지 신청 완료");
-                    return false;
+                    alert("일시정지 신청 완료되었습니다.");
+                    isReloadPage();
                 } else if (result.resultCode == 905) {
                     alert("일시정지 횟수가 초과 되었습니다\n운영자에게 문의하시기 바랍니다.");
-                    return false;
+                    isReloadPage();
                 }
             }
         } else if (val == 'stopEnd') {
             var stopEndjLecKey = getInputTextValue("stopEndjLecKey");
             var result = requestVideoStartStop(stopEndjLecKey, 10, 'START');
             if (result.resultCode == 200) {
-                $('#modal4').hide();
-                //$('#overlay').css("","");
+                alert("일시정지가 해제 되었습니다.");
+                isReloadPage();
             } else if (result.resultCode == 905) {
                 alert("일시정지 해제 횟수가 초과 되었습니다\n운영자에게 문의하시기 바랍니다.");
-                return false;
+                isReloadPage();
             }
         }
     }
@@ -686,7 +687,7 @@
                                                                         <div class="play">
                                                                             <span>일시정지</span>
 <%--                                                                            <a href="javascript:goStop('stop');" class="replay off">신청</a>--%>
-                                                                            <a href="#modal6" class="replay off btn_modalOpen">신청</a>
+                                                                            <a href="#modal6" class="replay off btn_modalOpen1">신청</a>
                                                                         </div>
                                                                         <div class="prograss_wrap">
                                                                             <span class="text">진도율&nbsp;&nbsp; <span
@@ -790,7 +791,7 @@
                                                                         <div class="play">
                                                                             <span>일시정지</span>
 <%--                                                                            <a href="javascript:goStop('pass');" class="replay off">신청</a>--%>
-                                                                            <a href="#modal7" class="replay off btn_modalOpen">신청</a>
+                                                                            <a href="#modal6" class="replay off btn_modalOpen1">신청</a>
                                                                         </div>
                                                                         <div class="prograss_wrap">
                                                                             <span class="text">진도율&nbsp;<span
@@ -903,7 +904,7 @@
                                                                         <div class="play">
                                                                             <span>일시정지</span>
 <%--                                                                            <a href="javascript:goStop('pass');" class="replay off">신청</a>--%>
-                                                                            <a href="#modal8" class="replay off btn_modalOpen">신청</a>
+                                                                            <a href="#modal6" class="replay off btn_modalOpen1">신청</a>
                                                                         </div>
                                                                         <div class="prograss_wrap">
                                                                             <span class="text">진도율&nbsp;<span
@@ -1099,9 +1100,7 @@
                                         <!--//inner-->
                                     </div>
                                     <!--//Dropmenu_down -->
-
                                 </div>
-
                             </div>
                             <!--// 일시정지 -->
 
@@ -1368,174 +1367,49 @@
                 </div>
                 <div class="pop_cont">
                     <table class="pop_list">
+                        <input type="hidden" id="startDt">
+                        <input type="hidden" id="endDt">
+                        <input type="hidden" id="stopDay">
                         <tbody>
                         <tr>
                             <th>강좌명</th>
-                            <td><span style="font-weight:bold">2020 시험대비 얼리버드 조재권 기초영어 특강 [5%적립]</span></td>
+                            <td><span style="font-weight:bold" id="stopLecName"></span></td>
                         </tr>
                         <tr>
                             <th>현재 수강기간</th>
-                            <td>2019.05.15 ~ 2091.08.25</td>
+                            <td><span id="startDate" style="display: inline;"></span> ~ <span id="endDate"  style="display: inline;"></span></td>
                         </tr>
                         <tr>
                             <th>일시정지 일수 선택</th>
-                            <td><span>회원님의 일시정지 가능일 수는 [<strong>58</strong>] 입니다</span>
-                                <select style="width: 80px;">
+                            <td><span>회원님의 일시정지 가능일 수는 [<strong id="remainStopDay"></strong>] 입니다</span><br>
+                                <select style="width: 80px;" id="stopDaySel">
                                     <option>선택</option>
-                                    <option>10일</option>
-                                    <option>20일</option>
-                                    <option>30일</option>
+                                    <option value="10">10일</option>
+                                    <option value="20">20일</option>
+                                    <option value="30">30일</option>
                                 </select>
                             </td>
                         </tr>
                         <tr>
                             <th>일시정지 일수 선택</th>
                             <td>
-                                <span class="date">2019.05.15 ~ 2091.08.25</span>
+                                <span class="date" id="searchStartDate"></span>
                                 <span>(정지일수를 선택하시면 자동으로 일시정지 기간이 표시 됩니다)</span>
                             </td>
                         </tr>
                         <tr>
                             <th>변경 수강기간</th>
                             <td>
-                                <span class="date">2019.05.15 ~ 2091.08.25</span>
-                                <span>(정지일수를 선택하시면 자동으로 일시정지 기간이 표시 됩니다)</span>
+                                <span class="date" id="changeLecDate"></span>
+                                <span>(정지일수를 선택하시면 자동으로 변경수강 기간이 표시 됩니다)</span>
                             </td>
                         </tr>
                         </tbody>
                     </table>
                 </div>
                 <div class="modal_btn_box">
-                    <a href="" class="confirm_btn">신청</a>
+                    <a href="javascript:goStop('stop');" class="confirm_btn">신청</a>
 <%--                    <a href="" class="caencel_btn">취소</a>--%>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--//팝업-->
-    <!--수강중인강좌 : 강좌 일시 정지안내  modal7-->
-    <div id="modal7" class="modalWrap">
-        <div class="inner">
-            <div class="modalTitle">
-                <h2>수강중인 강좌</h2>
-                <a href="#" class="btn_modalClose">모달팝업닫기</a>
-            </div>
-            <div class="modalContent">
-                <div class="pop_cont bggray">
-                    <p class="stitle">강좌 일시 정지안내</p>
-                    <span class="txtBox">일시정지의 경우 강좌당 3회만 신청가능하며<br>
-				일시정지 기간은 최소 1일에서 최대 60일까지 선택 가능합니다<br>
-				일시정지는 신청 후 바로 적용됩니다.<br>
-				강의 종료일에는 신청하실 수 없습니다.<br>
-				일시정지를 신청하시면 신청하신 기간동안 강의 수강이 불가능 합니다.
-				</span>
-                </div>
-                <div class="pop_cont">
-                    <table class="pop_list">
-                        <tbody>
-                        <tr>
-                            <th>강좌명</th>
-                            <td><span style="font-weight:bold">2021 시험대비 얼리버드 조재권 기초영어 특강 [5%적립]</span></td>
-                        </tr>
-                        <tr>
-                            <th>현재 수강기간</th>
-                            <td>2019.05.15 ~ 2091.08.25</td>
-                        </tr>
-                        <tr>
-                            <th>일시정지 일수 선택</th>
-                            <td><span>회원님의 일시정지 가능일 수는 [<strong>58</strong>] 입니다</span>
-                                <select style="width: 80px;">
-                                    <option>선택</option>
-                                    <option>10일</option>
-                                    <option>20일</option>
-                                    <option>30일</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>일시정지 일수 선택</th>
-                            <td>
-                                <span class="date">2019.05.15 ~ 2091.08.25</span>
-                                <span>(정지일수를 선택하시면 자동으로 일시정지 기간이 표시 됩니다)</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>변경 수강기간</th>
-                            <td>
-                                <span class="date">2019.05.15 ~ 2091.08.25</span>
-                                <span>(정지일수를 선택하시면 자동으로 일시정지 기간이 표시 됩니다)</span>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="modal_btn_box">
-                    <a href="" class="confirm_btn">신청</a>
-                    <%--                    <a href="" class="caencel_btn">취소</a>--%>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--//팝업-->
-    <!--수강중인강좌 : 강좌 일시 정지안내  modal8-->
-    <div id="modal8" class="modalWrap">
-        <div class="inner">
-            <div class="modalTitle">
-                <h2>수강중인 강좌</h2>
-                <a href="#" class="btn_modalClose">모달팝업닫기</a>
-            </div>
-            <div class="modalContent">
-                <div class="pop_cont bggray">
-                    <p class="stitle">강좌 일시 정지안내</p>
-                    <span class="txtBox">일시정지의 경우 강좌당 3회만 신청가능하며<br>
-				일시정지 기간은 최소 1일에서 최대 60일까지 선택 가능합니다<br>
-				일시정지는 신청 후 바로 적용됩니다.<br>
-				강의 종료일에는 신청하실 수 없습니다.<br>
-				일시정지를 신청하시면 신청하신 기간동안 강의 수강이 불가능 합니다.
-				</span>
-                </div>
-                <div class="pop_cont">
-                    <table class="pop_list">
-                        <tbody>
-                        <tr>
-                            <th>강좌명</th>
-                            <td><span style="font-weight:bold">2021 시험대비 얼리버드 조재권 기초영어 특강 [5%적립]</span></td>
-                        </tr>
-                        <tr>
-                            <th>현재 수강기간</th>
-                            <td>2019.05.15 ~ 2091.08.25</td>
-                        </tr>
-                        <tr>
-                            <th>일시정지 일수 선택</th>
-                            <td><span>회원님의 일시정지 가능일 수는 [<strong>58</strong>] 입니다</span>
-                                <select style="width: 80px;">
-                                    <option>선택</option>
-                                    <option>10일</option>
-                                    <option>20일</option>
-                                    <option>30일</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>일시정지 일수 선택</th>
-                            <td>
-                                <span class="date">2019.05.15 ~ 2091.08.25</span>
-                                <span>(정지일수를 선택하시면 자동으로 일시정지 기간이 표시 됩니다)</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>변경 수강기간</th>
-                            <td>
-                                <span class="date">2019.05.15 ~ 2091.08.25</span>
-                                <span>(정지일수를 선택하시면 자동으로 일시정지 기간이 표시 됩니다)</span>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="modal_btn_box">
-                    <a href="" class="confirm_btn">신청</a>
-                    <%--                    <a href="" class="caencel_btn">취소</a>--%>
                 </div>
             </div>
         </div>
@@ -1544,3 +1418,39 @@
 </form>
 </body>
 </html>
+<script>
+    $(document).on("click",".btn_modalOpen1",function(e){
+        e.preventDefault();
+        var targetModal = $(this).attr("href");
+        kiplayer.modalOpen(targetModal);
+        var stopJlecKey = getInputTextValue("stopJlecKey");
+        var stopDetailInfo = getVideoPauseRequestPopup(stopJlecKey);
+        if(stopDetailInfo != null){
+            var info = stopDetailInfo.result;
+            innerHTML("stopLecName", info.name);
+            innerHTML("startDate", info.startDt);
+            innerHTML("endDate", info.endDt);
+            innerHTML("remainStopDay", info.remainStopDay);
+            innerValue('startDt', info.startDt);
+            innerValue('endDt', info.endDt);
+        }
+    });
+    $(document).on("click","#overlay, .btn_modalClose",function(e){
+        kiplayer.modalClose();
+    });
+    
+    $("#stopDaySel").change(function () {
+        $("#stopDay").val(this.value);
+        var today = new Date();
+        var todayDate = getFormatDate(today);
+        var result = addDate(todayDate, this.value);
+        var dateHtml = todayDate + "~" + result;
+        innerHTML("searchStartDate", dateHtml);
+
+        var endDateInfo = getInputTextValue('endDt');
+        var startDt = getInputTextValue('startDt');
+        var result2 = addDate(endDateInfo, this.value);
+        var dateHtml2 = startDt + "~" + result2;
+        innerHTML("changeLecDate", dateHtml2);
+    });
+</script>

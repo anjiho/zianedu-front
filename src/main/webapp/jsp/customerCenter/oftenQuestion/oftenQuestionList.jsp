@@ -1,6 +1,4 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
-<link rel="stylesheet" type="text/css" href="/common/zian/css/content_o.css">
-<link rel="stylesheet" type="text/css" href="/common/zian/css/content_p.css">
 <%@include file="/common/jsp/common.jsp" %>
 <script>
     $(document).ready(function(){
@@ -107,21 +105,23 @@
                 </div>
                 <div class="boardWrap">
                     <div class="boardSearch">
-                        <select id="searchType" class="w90">
-                            <option value="">선택</option>
-                            <option value="title">제목</option>
-                            <option value="content">내용</option>
-                        </select>
-                        <!--html 추가 및 수정-->
-                        <input type="text" id="searchText" class="w240" onkeypress="if(event.keyCode==13) {fn_search('new'); return false;}" >
-                        <a href="javascript:fn_search('new');" class="btn_inline on w140 disnoneM">검색</a>
-                        <div class="btnArea">
-                            <a href="javascript:goPageNoSubmit('customerCenter','saveOften')" class="btn_inline w140 write_ico" id="writeBtn">글쓰기</a>
-                        </div>
+                        <ul class="searchArea">
+                            <li class="left">
+                                <select id="searchType" class="">
+                                    <option value="">선택</option>
+                                    <option value="title">제목</option>
+                                    <option value="content">내용</option>
+                                </select>
+                                <input type="text" id="searchText"  onkeypress="if(event.keyCode==13) {fn_search('new'); return false;}" >
+                                <input type="button" onclick="fn_search('new');" value="검색" class="btn_m on">
+                                <a href="javascript:fn_search('new');" class="search_ico">검색</a>
+                            </li>
+                            <li class="right"><a href="javascript:goPageNoSubmit('customerCenter','saveOften');" class="btn_inline w140 write_ico" id="writeBtn">글쓰기</a></li>
+                        </ul>
                         <!--//html 추가 -->
                     </div>
                     <div class="tableBox">
-                        <table class="list">
+                        <table class="noticeList">
                             <caption></caption>
                             <colgroup>
                                 <col class="w100">

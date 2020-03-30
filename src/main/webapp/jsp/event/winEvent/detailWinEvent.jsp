@@ -52,9 +52,8 @@
                 if (detailInfo.fileInfo.length > 0) {
                     for (var i = 0; i < detailInfo.fileInfo.length; i++) {
                         var fileList = detailInfo.fileInfo[i];
-                        // var retrunHtml = "<a href='" + fileList.fileUrl + "' download>" + fileList.fileName + "</a>";
-                        var retrunHtml = '<li><a href="javascript:download(' + "'" + fileList.fileName + "'" + ')"><img src="/common/zian/images/common/icon_file.png" alt="">'+ fileList.fileName +'</a></li>';
-                        $("#fileList").append(retrunHtml);
+                        var returnHtml = '<li><a href="javascript:download(' + "'" + fileList.fileName + "'" + ')"><img src="/common/zian/images/common/icon_file.png" alt="">'+ fileList.fileName +'</a></li>';
+                        $("#fileList").append(returnHtml);
                     }
                 }
             }

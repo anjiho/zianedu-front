@@ -1,6 +1,4 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
-<link rel="stylesheet" type="text/css" href="/common/zian/css/content_o.css">
-<link rel="stylesheet" type="text/css" href="/common/zian/css/content_p.css">
 <%@include file="/common/jsp/common.jsp" %>
 <%
     String bbsKey = request.getParameter("bbsKey");
@@ -106,9 +104,9 @@
                 </div>
                 <br />
                 <!--담청자발표-->
-                <div class="boardWrap eventBoard">
-                    <div class="tableBox">
-                        <table class="view">
+                <div class="boardWrap">
+                    <div class="tableWrap">
+                        <table class="tBoard noticeView">
                             <caption></caption>
                             <colgroup>
                                 <col class="w110">
@@ -127,8 +125,7 @@
                             </tr>
                             <tr>
                                 <td colspan="3" class="tdEditorContent">
-                                    <div class="left" id="content">
-                                    </div>
+                                    <div id="content" style="margin-left:0px;"></div>
                                 </td>
                             </tr>
                             <tr id="prev">
@@ -146,10 +143,10 @@
                     </div>
                     <div class="btnArea divGroup noMargin">
                         <div class="left">
-                            <a href="javascript:goPage('customerCenter','modifyOften')" class="btn_inline w110" id="modifyBtn">수정</a>
+                            <a href="javascript:goPage('customerCenter','modifyOften')" class="btn_inline gray w110" id="modifyBtn">수정</a>
                         </div>
                         <div class="right">
-                            <a href="javascript:goPage('customerCenter','oftenList')" class="btn_inline bdblue w110">목록</a>
+                            <a href="javascript:goPage('customerCenter','oftenList')" class="btn_inline br_blue w110">목록</a>
                         </div>
                     </div>
                 </div>

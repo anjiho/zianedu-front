@@ -2580,7 +2580,6 @@ function setSearchDate(start, startId, endId){
     }else{
         $('#'+startId).val(startDate);
     }
-
 }
 function allChk(obj, chkId){
     var chkObj = document.getElementsByName(chkId);
@@ -3594,4 +3593,19 @@ function commentSave() {
         alert("댓글이 등록 되었습니다.");
         isReloadPage();
     }
+}
+
+//날짜 더하기
+function addDate(ymd, addDay) {
+    //var today = new Date();
+    //var ymd = getFormatDate(today);
+    var yyyy = ymd.substr(0,4);
+    var mm = eval(ymd.substr(5,2) + "- 1") ;
+    var dd = ymd.substr(8,2);
+    var dt3 = new Date(yyyy, mm, eval(dd + '+' + addDay));
+    yyyy = dt3.getFullYear();
+    mm = (dt3.getMonth()+1)<10? "0" + (dt3.getMonth()+1) : (dt3.getMonth()+1) ;
+    dd = dt3.getDate()<10 ? "0" + dt3.getDate() : dt3.getDate();
+    var result =  yyyy + "-" + mm + "-" + dd ;
+    return result;
 }

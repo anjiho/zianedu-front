@@ -26,6 +26,26 @@
             $("#companyHeader li").eq(0).addClass('active');
             $("#tab-1").addClass('active');
         }
+
+        //6개 이상일때  1관 더보기 노출
+        $('.station1 ul').each(function(){
+            var $len = $(this).find('li').length;
+
+            if($len >= 6){
+                $('.station1 .lastImg').css('display','block');
+            }
+        })
+
+        //2관 더보기 노출
+        $('.station2 ul').each(function(){
+            var $len = $(this).find('li').length;
+
+            if($len >= 6){
+                $('.station2 .lastImg').css('display','block');
+            }
+        })
+
+
         /*다음지도 API 호출*/
         daumMapApi('map1', '서울시 동작구 노량진동 117-2 영빌딩');
         daumMapApi('map2', '서울특별시 동작구 노량진로 196');
@@ -789,14 +809,16 @@
                         <!-- 지안에듀 1관 -->
                         <div class="gallery station1">
                             <h2>지안에듀 1관</h2>
-                            <a href="javascript:upLoadPop2()"><img src="/common/zian/images/common/t_upload.jpg" alt=""></a>
+<%--                            <a href="javascript:upLoadPop2()"><img src="/common/zian/images/common/t_upload.jpg" alt=""></a>--%>
                             <ul class="img-list">
-                                <li><a href="javascript:#myModal"><img class="myImg" src="http://52.79.40.214/Upload/100/company/info_gallery00.jpg" alt="이미지1"></a></li>
-                                <li><a href="javascript:#myModal"><img class="myImg" src="http://52.79.40.214/Upload/100/company/info_gallery01.jpg" alt="이미지2"></a></li>
-                                <li><a href="javascript:#myModal"><img class="myImg" src="http://52.79.40.214/Upload/100/company/info_gallery02.jpg" alt=""></a></li>
-                                <li><a href="javascript:#myModal"><img class="myImg" src="http://52.79.40.214/Upload/100/company/info_gallery03.jpg" alt=""></a></li>
-                                <li><a href="javascript:#myModal"><img class="myImg" src="http://52.79.40.214/Upload/100/company/info_gallery04.jpg" alt=""></a></li>
-                                <li><a href="javascript:openLayer('.gList01')"><p>전체보기<br>(총 <span class="cTit"></span>장)</p></a></li>
+                                <li><a href="javascript:" class="myModal"><img class="myImg" src="/common/zian/images/content/info_gallery00.jpg" alt="이미지1"></a></li>
+                                <li><a href="javascript:" class="myModal"><img class="myImg" src="/common/zian/images/content/info_gallery01.jpg" alt="이미지2"></a></li>
+                                <li><a href="javascript:" class="myModal"><img class="myImg" src="/common/zian/images/content/info_gallery02.jpg" alt=""></a></li>
+                                <li><a href="javascript:" class="myModal"><img class="myImg" src="/common/zian/images/content/info_gallery03.jpg" alt=""></a></li>
+                                <li><a href="javascript:" class="myModal"><img class="myImg" src="/common/zian/images/content/info_gallery04.jpg" alt=""></a></li>
+                                <!-- 이미지가 5개 이상이면 노출 -->
+                                <li class="lastImg"><a href="javascript:openLayer('.gList01')"><p>더보기<br>(총 <span class="cTit"></span>장)</p></a></li>
+                                <!-- //이미지가 5개 이상이면 노출 -->
                             </ul>
                         </div>
                         <!-- //지안에듀 1관 -->
@@ -804,13 +826,16 @@
                         <!-- 지안에듀 2관 -->
                         <div class="gallery station2">
                             <h2>지안에듀 2관</h2>
-                            <a href="javascript:upLoadPop2()"><img src="/common/zian/images/common/t_upload.jpg" alt=""></a>
-                            <ul>
-                                <li><a href="javascript:openLayer('.gList02')"></a></li>
-                                <li><a href="javascript:openLayer('.gList02')"></a></li>
+<%--                            <a href="javascript:upLoadPop2()"><img src="/common/zian/images/common/t_upload.jpg" alt=""></a>--%>
+                            <ul class="img-list">
+                                <li><a href="javascript:" class="myModal"><img class="myImg" src="/common/zian/images/content/info_gallery01.jpg" alt="이미지1"></a></li>
+                                <li><a href="javascript:" class="myModal"><img class="myImg" src="/common/zian/images/content/info_gallery02.jpg" alt="이미지2"></a></li>
+                                <!-- 이미지가 5개 이상이면 노출 -->
+                                <li class="lastImg"><a href="javascript:openLayer('.gList02')"><p>더보기<br>(총 <span class="cTit2"></span>장)</p></a></li>
+                                <!-- //이미지가 5개 이상이면 노출 -->
                             </ul>
                         </div>
-                        <!-- //지안에듀 1관 -->
+                        <!-- //지안에듀 2관 -->
                     </div>
                 </div>
                 <!-- 안내 모달창 -->
@@ -860,7 +885,299 @@
 </form>
 </body>
 </html>
+<!-- 이미지 자세히보기 1관 -->
+<div class="gList modal mGy" id="myModal">
+    <div class="dim dim2"></div>
+    <div class="ly_gallery">
+        <div id="wrapper">
+            <div id="slider-wrap">
+                <ul id="slider">
+                    <li>
+                        <div class="">
+                            <img class="modal-content" src="">
+                        </div>
+                    </li>
+                </ul>
+                <a href="javascript:closelayer('.modal')" class="cls">닫기</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- //이미지 자세히보기 1관 -->
 
+<!-- 이미지 자세히보기 2관 -->
+<div class="gList modal2 mGy" id="myModal2">
+    <div class="dim dim2"></div>
+    <div class="ly_gallery">
+        <div id="wrapper">
+            <div id="slider-wrap">
+                <ul id="slider">
+                    <li>
+                        <div class="">
+                            <img class="modal-content" src="">
+                        </div>
+                    </li>
+                </ul>
+                <a href="javascript:closelayer('.modal2')" class="cls">닫기</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- //이미지 자세히보기 2관 -->
+<script type="text/javascript">
+    var modal = $("#myModal");
+    var imgUrl;
+
+    $('.station1 .img-list li > a.myModal').on('click',function(){
+        var _index = $(this).parent().index();
+        var _indexTar = $('.station1 .img-list li').eq(_index);
+
+        $('.station1 .img-list li').removeClass('open');
+        _indexTar.addClass('open');
+        imgUrl = _indexTar.find('.myImg').attr('src');
+
+        modal.find(".modal-content").attr('src', imgUrl);
+        modal.find('.modal-content').attr('id', '');
+        modal.find('.modal-content').attr('id', 'imgs_' + _index);
+
+        modal.css('display','block');
+    });
+
+
+
+    var modal2 = $("#myModal2");
+    var imgUrl2;
+
+    $('.station2 .img-list li > a.myModal').on('click',function(){
+        var _index = $(this).parent().index();
+        var _indexTar = $('.station2 .img-list li').eq(_index);
+
+        $('.station2 .img-list li').removeClass('open');
+        _indexTar.addClass('open');
+        imgUrl2 = _indexTar.find('.myImg').attr('src');
+
+        modal2.find(".modal-content").attr('src', imgUrl2);
+        modal2.find('.modal-content').attr('id', '');
+        modal2.find('.modal-content').attr('id', 'imgs_' + _index);
+
+        modal2.css('display','block');
+    });
+
+    var cnt=0;
+    function openLayer(idName){
+        if(cnt==0){
+            cnt++;
+            var pop = $(idName);
+            pop.css('display','block');
+        }
+    }
+
+    function closelayer(idName){
+        var pop = $(idName);
+        pop.css('display','none');
+        cnt = 0;
+    }
+</script>
+
+
+<!-- 이미지 더보기 팝업 지안에듀 1관 -->
+<div class="gList gList01 mGlist" id="myModal">
+    <div class="dim dim2"></div>
+    <div class="ly_gallery">
+        <h2>지안에듀 1관</h2>
+        <div id="wrapper">
+            <div id="slider-wrap" class="ly_gl01 sWrap">
+                <ul id="slider">
+                    <li>
+                        <div>
+                            <img src="../images/content/info_gallery01.jpg"> <!-- 갯수 초과시 나머지 이미지들은 여기로 이동 -->
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <img src="../images/content/info_gallery00.jpg">
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <img src="../images/content/info_gallery02.jpg">
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <img src="../images/content/info_gallery03.jpg">
+                        </div>
+                    </li>
+                </ul>
+                <a href="javascript:closelayer('.gList01')" class="cls popReset">닫기</a>
+            </div>
+        </div>
+    </div>
+    <div class="btn">
+        <div class="btns" id="next">
+            <img src="" alt="">
+        </div>
+        <div class="btns" id="previous">
+            <img src="" alt="">
+        </div>
+    </div>
+    <div id="counter"></div>
+</div>
+
+
+<!-- 이미지 더보기 팝업 지안에듀 2관 -->
+<div class="gList gList02 mGlist">
+    <div class="dim dim2"></div>
+    <div class="ly_gallery">
+        <h2>지안에듀 2관</h2>
+        <div id="wrapper">
+            <div id="slider-wrap" class="ly_gl02 sWrap2">
+                <ul id="slider">
+                    <li>
+                        <div class="">
+                            <img src="../images/content/pop_gallery00.jpg">
+                        </div>
+                    </li>
+                    <li>
+                        <div class="">
+                            <img src="../images/content/info_gallery02.jpg">
+                        </div>
+                    </li>
+                    <li>
+                        <div class="">
+                            <img src="../images/content/info_gallery03.jpg">
+                        </div>
+                    </li>
+                </ul>
+                <a href="javascript:closelayer('.gList02')" class="cls popReset">닫기</a>
+            </div>
+        </div>
+    </div>
+    <div class="btn">
+        <div class="btns" id="next2">
+            <img src="" alt="">
+        </div>
+        <div class="btns" id="previous2">
+            <img src="" alt="">
+        </div>
+    </div>
+    <div id="counter2"></div>
+</div>
 <script>
+    var pos = 0;
+    var totalSlides = $('.ly_gl01 ul li').length;
+    var sliderWidth = $('.ly_gl01').width();
+    $(document).ready(function(){
+        $('.sWrap ul#slider').width(sliderWidth*totalSlides);
 
+        $('#next').click(function(){
+            slideRight();
+        });
+
+        $('#previous').click(function(){
+            slideLeft();
+        });
+
+        /*$.each($('#slider-wrap ul li'), function(){
+           var li = document.createElement('li');
+           $('#pagination-wrap ul').append(li);
+        });*/
+
+        countSlides();
+        /*pagination();*/
+    });
+
+    function slideLeft(){
+        pos--;
+        if(pos==-1){ pos = totalSlides-1; }
+        $('.sWrap ul#slider').css('left', -(sliderWidth*pos));
+
+        countSlides();
+        /*pagination();*/
+    }
+
+    function slideRight(){
+        pos++;
+        if(pos==totalSlides){ pos = 0; }
+        $('.sWrap ul#slider').css('left', -(sliderWidth*pos));
+
+        countSlides();
+        /*pagination();*/
+    }
+
+    function countSlides(){
+        $('#counter').html(pos+1 + ' / ' + totalSlides);
+        $('.cTit').html(totalSlides);
+    }
+
+    //닫았을 때 강제 리셋
+    $('.popReset').click(function(){
+        pos=0;
+        $('.sWrap ul#slider').css('left', -(sliderWidth*0));
+        countSlides();
+        /*pagination();*/
+    })
+    /*function pagination(){
+         $('#pagination-wrap ul li').removeClass('active');
+         $('#pagination-wrap ul li:eq('+pos+')').addClass('active');
+     }*/
+
+
+    var pos2 = 0;
+    var totalSlides2 = $('.ly_gl02 ul li').length;
+    var sliderWidth2 = $('.ly_gl02').width();
+    $(document).ready(function(){
+        $('.sWrap2 ul#slider').width(sliderWidth2 * totalSlides2);
+
+        $('#next2').click(function(){
+            slideRight2();
+        });
+
+        $('#previous2').click(function(){
+            slideLeft2();
+        });
+
+        /* $.each($('#slider-wrap2 ul li'), function(){
+            var li = document.createElement('li');
+            $('#pagination-wrap2 ul').append(li);
+         });*/
+
+        countSlides2();
+        /*pagination2();*/
+    });
+
+    function slideLeft2(){
+        pos2--;
+        if(pos2==-1){ pos2 = totalSlides2-1; }
+        $('.sWrap2 ul#slider').css('left', -(sliderWidth2*pos2));
+
+        countSlides2();
+        /*pagination2();*/
+    }
+
+    function slideRight2(){
+        pos2++;
+        if(pos2==totalSlides2){ pos2 = 0; }
+        $('.sWrap2 ul#slider').css('left', -(sliderWidth2*pos2));
+
+        countSlides2();
+        /*pagination2();*/
+    }
+
+    function countSlides2(){
+        $('#counter2').html(pos2+1 + ' / ' + totalSlides2);
+        $('.cTit2').html(totalSlides2);
+    }
+
+    //닫았을 때 강제 리셋
+    $('.popReset').click(function(){
+        pos2=0;
+        $('.sWrap2 ul#slider').css('left', -(sliderWidth2*0));
+        countSlides2();
+        /*pagination();*/
+    })
+    /*function pagination2(){
+        $('#pagination-wrap ul li').removeClass('active');
+        $('#pagination-wrap ul li:eq('+pos2+')').addClass('active');
+    }*/
 </script>
