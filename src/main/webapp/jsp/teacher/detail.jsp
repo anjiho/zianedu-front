@@ -551,7 +551,7 @@
         var pcMobile = divisionPcMobile();
         if(pcMobile == 'PC') {
             $('#writeContent').summernote({
-                height: 300,        
+                height: 300,
                 minHeight: null,
                 maxHeight: null,
                 focus: true

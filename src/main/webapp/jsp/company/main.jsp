@@ -572,7 +572,7 @@
                                 <!--수정 -->
                                 <li class="left">
                                     <select id="searchType">
-                                        <option value="">제목</option>
+                                        <option value="title">제목</option>
                                     </select>
                                     <input type="text" id="searchText" onkeypress="if(event.keyCode==13) {fn_search('new'); return false;}">
                                     <input type="button" onclick="fn_search('new');" value="검색" class="btn_m on">
