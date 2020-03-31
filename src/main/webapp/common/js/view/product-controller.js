@@ -210,8 +210,8 @@ function getApplyVideoLectureInfo(teacherKey, subjectCtgKey, stepCtgKeys, menuCt
 
              returnHtml += "<div class=\"toggleWrap\">";
              returnHtml += "<div class=\"div_toggle\">";
-             returnHtml += "<div class=\"lectureRow\">";
-             returnHtml += "<div class=\"tableWrap tableWrap2\">";
+             //returnHtml += "<div class=\"lectureRow\">";
+             returnHtml += "<div class=\"tableWrap\">";
              returnHtml += "<table class=\"classList\">";
              returnHtml += "<colgroup>";
              returnHtml += "<col class=\"w10p\">";
@@ -249,7 +249,7 @@ function getApplyVideoLectureInfo(teacherKey, subjectCtgKey, stepCtgKeys, menuCt
              returnHtml += "</table>";
              returnHtml += "</div>";//tableBox
              returnHtml += "</div>";//div_toggle
-             returnHtml += "</div>";//div_toggle
+             //returnHtml += "</div>";//div_toggle
              returnHtml += "<div class=\"btn_toggle1\"><a href=\"#\"></a></div>";
              returnHtml += "</div>";//toggleWrap
              returnHtml += "</div>";//lectureRow
