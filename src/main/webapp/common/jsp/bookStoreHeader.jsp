@@ -291,7 +291,18 @@
                     <li><a href="javascript:goPageNoSubmit('bookStore','errataList');">정오표</a></li>
                 </ul>
             </div>
-
+            <!-- gnb_area -->
+            <div class="gnb_area">
+                <ul class="Mdepth1">
+                    <li><a href="javascript:goBookStoreMobile('COMMON');">공통과목</a></li>
+                    <li><a href="javascript:goBookStoreMobile('PUBLIC');">행정직</a></li>
+                    <li><a href="javascript:goBookStoreMobile('TECH');">기술직</a></li>
+                    <li><a href="javascript:goBookStoreMobile('POST');">계리직</a></li>
+                    <li><a href="javascript:goBookStoreMobile('CERT');">자격증</a></li>
+                    <li><a href="javascript:goPageNoSubmit('bookStore','errataList');">정오표</a></li>
+                </ul>
+            </div>
+            <!-- //gnb_area -->
         </div>
         <!--//주메뉴-->
     </div>

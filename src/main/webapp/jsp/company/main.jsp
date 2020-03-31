@@ -27,6 +27,8 @@
             $("#tab-1").addClass('active');
         }
 
+
+
         //6개 이상일때  1관 더보기 노출
         $('.station1 ul').each(function(){
             var $len = $(this).find('li').length;
@@ -91,6 +93,12 @@
                 $("#questionDetail").hide();
             }
         });
+
+        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        if(sessionUserInfo != null){
+            if (sessionUserInfo.authority == 0) gfn_display("teacherWriteBtn", true);
+            gfn_display("requestQuestionBtn", true);
+        }
 
     });
 
@@ -569,7 +577,7 @@
                                     <input type="button" onclick="fn_search('new');" value="검색" class="btn_m on">
                                     <a href="javascript:fn_search('new');" class="search_ico">검색</a>
                                 </li>
-                                <li class="right"><a href="javascript:goWrite('teacher');" class="btn_inline w140 write_ico">글쓰기</a></li>
+                                <li class="right"><a href="javascript:goWrite('teacher');" class="btn_inline w140 write_ico" id="teacherWriteBtn" style="display: none">글쓰기</a></li>
                             </ul>
                         </div>
                         <div class="tableWrap">
@@ -696,7 +704,7 @@
                                     <input type="button" onclick="fn_search1('new');" value="검색" class="btn_m on">
                                     <a href="javascript:fn_search1('new');" class="search_ico">검색</a>
                                 </li>
-                                <li class="right"><a href="javascript:goWrite('question');" class="btn_inline w140 write_ico">글쓰기</a></li>
+                                <li class="right"><a href="javascript:goWrite('question');" class="btn_inline w140 write_ico" id="requestQuestionBtn" style="display: none">글쓰기</a></li>
                             </ul>
                         </div>
                         <div class="tableWrap">
