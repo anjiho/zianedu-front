@@ -72,7 +72,6 @@
     $( document ).ready(function() {
 
         var locationHost = location.host;
-        alert(locationHost);
         var returnUrl = "http://" + locationHost + "/myPage?page_gbn=orderResult";
         var notiUrl = "http://" + locationHost + "/jsp/payment/INIPayMobileNoti.jsp";
         var nextUrl = "http://" + locationHost + "/jsp/payment/INIPayMobileNext.jsp";
@@ -190,7 +189,8 @@
     body, tr, td {font-size:10pt; font-family:돋움,verdana; color:#433F37; line-height:19px;}
     table, img {border:none}
 </style>
-<script language="javascript" type="text/javascript" src="https://stgstdpay.inicis.com/stdjs/INIStdPay.js" charset="UTF-8"></script>
+<%--<script language="javascript" type="text/javascript" src="https://stgstdpay.inicis.com/stdjs/INIStdPay.js" charset="UTF-8"></script>--%>
+<script language="javascript" type="text/javascript" src="https://stdpay.inicis.com/stdjs/INIStdPay.js" charset="UTF-8"></script>
 <form action="/mypage/cart/orderResult" id="id_frm_orderPay" method="post" name="name_frm_orderPay">
     <input type="hidden" id="allProductPrice" name="allProductPrice"><!-- 결제해야할 총 금액 -->
     <input type="hidden" id="cartNum" name="cartNum">
