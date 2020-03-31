@@ -572,6 +572,20 @@
     .sentence td:nth-child(1){display:inline-block;width:28%;text-align:center;padding:14px 2%;height:initial;}
     .sentence td:nth-child(2){display:inline-block;padding:0;width:68%;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;padding:14px 1%;box-sizing:border-box;height:initial;}
     .sentence td:nth-child(3){display:none;}
+
+    /* 내강의실 일시정지신청 팝업 & 내강의실 팝업 */
+    #modal6 .pop_cont{padding:14px 1%;}
+    #modal4 .btn_crud .btn_confirm{padding:4px 20px}
+    #modal4 .btn_crud .btn_cancel{padding:4px 20px;}
+    .pop_list{width:100%;display:block;border:none !important;border-top:1px solid #e5e5e5;}
+    .pop_list thead{display:none;}
+    .pop_list tbody{display:block;}
+    .pop_list tbody tr{display:block;border-bottom: 1px solid #e5e5e5;padding:20px 0px}
+    .pop_list tbody tr:nth-child(1){border-top:1px solid #e5e5e5;}
+    .pop_list tbody tr th{border:none !important;padding:0 !important;font-size:16px}
+    .pop_list tbody tr td{border:none !important;padding:0 !important}
+    .pop_list tbody tr th{display:block;}
+    .pop_list tbody tr td{display:block;margin-top:10px}
 }
 
 @media screen and (max-width:380px){

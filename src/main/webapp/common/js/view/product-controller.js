@@ -210,7 +210,8 @@ function getApplyVideoLectureInfo(teacherKey, subjectCtgKey, stepCtgKeys, menuCt
 
              returnHtml += "<div class=\"toggleWrap\">";
              returnHtml += "<div class=\"div_toggle\">";
-             returnHtml += "<div class=\"tableWrap\">";
+             returnHtml += "<div class=\"lectureRow\">";
+             returnHtml += "<div class=\"tableWrap tableWrap2\">";
              returnHtml += "<table class=\"classList\">";
              returnHtml += "<colgroup>";
              returnHtml += "<col class=\"w10p\">";
@@ -247,6 +248,7 @@ function getApplyVideoLectureInfo(teacherKey, subjectCtgKey, stepCtgKeys, menuCt
              returnHtml += "</tbody>";
              returnHtml += "</table>";
              returnHtml += "</div>";//tableBox
+             returnHtml += "</div>";//div_toggle
              returnHtml += "</div>";//div_toggle
              returnHtml += "<div class=\"btn_toggle1\"><a href=\"#\"></a></div>";
              returnHtml += "</div>";//toggleWrap
@@ -454,7 +456,6 @@ function getSpecialPackageList(menuCtgKey, subjectMenuKeys, teacherKeys, stepCtg
                                                                 returnHtml += "<tbody>";
                                                                 for(var l = 0; l < productInfo.lectureList.length; l++){
                                                                     var lecList = productInfo.lectureList[l];
-                                                                    console.log(lecList);
                                                                     returnHtml += "<tr>";
                                                                         returnHtml += "<td class=\"ta_center\">"+ lecList.numStr +"</td>";
                                                                         returnHtml += "<td>"+ lecList.name +"</td>";
