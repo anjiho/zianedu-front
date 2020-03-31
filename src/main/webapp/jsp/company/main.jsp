@@ -220,23 +220,25 @@
         //봄문 내용 파징작업 끝
         innerHTML("detailTeacherContent", contents);
         if(result.prevNextInfo != null){
-            innerHTML("prevTitle", result.prevNextInfo.prevTitle);
-            innerHTML("nextTitle", result.prevNextInfo.nextTitle);
-            innerHTML("prevDate", result.prevNextInfo.prevCreateDate);
-            innerHTML("nextDate", result.prevNextInfo.nextCreateDate);
-
-            if(result.prevNextInfo.prevTitle == '이전글'){
+            var prevNextInfo = result.prevNextInfo;
+            if(prevNextInfo.prevBbsKey == 0){
                 innerHTML("prevTitle", "");
+                innerHTML("prevDate", "");
             }else{
+                innerHTML("prevTitle", result.prevNextInfo.prevTitle);
+                innerHTML("prevDate", result.prevNextInfo.prevCreateDate);
                 $("#prevLink").attr("href", "javascript:goTeacherDetail("+ result.prevNextInfo.prevBbsKey +");");
             }
-
-            if(result.prevNextInfo.nextTitle == '다음글'){
+            if(prevNextInfo.nextBbsKey == 0){
                 innerHTML("nextTitle", "");
+                innerHTML("nextDate", "");
             }else{
+                innerHTML("nextTitle", result.prevNextInfo.nextTitle);
+                innerHTML("nextDate", result.prevNextInfo.nextCreateDate);
                 $("#nextLink").attr("href", "javascript:goTeacherDetail("+ result.prevNextInfo.nextBbsKey +");");
             }
         }
+
     }
     
     function goQuestionDetail(bbskey) {
@@ -270,22 +272,26 @@
         }
         //봄문 내용 파징작업 끝
         innerHTML("detailQuestionContent", contents);
-        if(result.prevNextInfo != null) {
-            innerHTML("prevTitle1", result.prevNextInfo.prevTitle);
-            innerHTML("nextTitle1", result.prevNextInfo.nextTitle);
-            innerHTML("prevDate1", result.prevNextInfo.prevCreateDate);
-            innerHTML("nextDate1", result.prevNextInfo.nextCreateDate);
 
-            if (result.prevNextInfo.prevTitle == '이전글') {
+
+        if(result.prevNextInfo != null){
+            var prevNextInfo = result.prevNextInfo;
+            console.log(prevNextInfo);
+            if(prevNextInfo.prevBbsKey == 0){
                 innerHTML("prevTitle1", "");
-            } else {
-                $("#prevLink1").attr("href", "javascript:goQuestionDetail(" + result.prevNextInfo.prevBbsKey + ");");
+                innerHTML("prevDate1", "");
+            }else{
+                innerHTML("prevTitle1", prevNextInfo.prevTitle);
+                innerHTML("prevDate1", prevNextInfo.prevCreateDate);
+                $("#prevLink1").attr("href", "javascript:goQuestionDetail("+ prevNextInfo.prevBbsKey +");");
             }
-
-            if (result.prevNextInfo.nextTitle == '다음글') {
-                innerHTML("nextTitle", "");
-            } else {
-                $("#nextLink1").attr("href", "javascript:goQuestionDetail(" + result.prevNextInfo.nextBbsKey + ");");
+            if(prevNextInfo.nextBbsKey == 0){
+                innerHTML("nextTitle1", "");
+                innerHTML("nextDate1", "");
+            }else{
+                innerHTML("nextTitle1", prevNextInfo.nextTitle);
+                innerHTML("nextDate1", prevNextInfo.nextCreateDate);
+                $("#nextLink1").attr("href", "javascript:goQuestionDetail("+ prevNextInfo.nextBbsKey +");");
             }
         }
     }
@@ -780,12 +786,12 @@
                                 </tr>
                                 <tr>
                                     <td class="center">이전글 ▲</td>
-                                    <td class="left"><a href="" id="nextLink1"><span id="prevTitle1"></span></a></td>
+                                    <td class="left"><a href="" id="prevLink1"><span id="prevTitle1"></span></a></td>
                                     <td class="right"><span id="prevDate1"></span></td>
                                 </tr>
                                 <tr>
                                     <td class="center">다음글 ▼</td>
-                                    <td class="left"><a href="" id="prevLink1"><span id="nextTitle1"></span></a></td>
+                                    <td class="left"><a href="" id="nextLink1"><span id="nextTitle1"></span></a></td>
                                     <td class="right"><span id="nextDate1"></span></td>
                                 </tr>
                                 </tbody>

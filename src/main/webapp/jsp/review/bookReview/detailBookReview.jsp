@@ -62,22 +62,26 @@
                 gfn_display('fileContent', false);
             }
             var prevNextInfo = result.prevNextInfo;
-            if(prevNextInfo.prevBbsKey != null){
+            if(prevNextInfo != null){
                 if(prevNextInfo.prevBbsKey == 0){
-                    $("#prev").hide();
                     innerHTML("prevTitle", "");
                     innerHTML("prevCreateDate", "");
                     innerValue("prevNum", "");
                 }else{
-                    $("#prev").show();
                     innerHTML("prevTitle", prevNextInfo.prevTitle);
                     innerHTML("prevCreateDate", prevNextInfo.prevCreateDate);
                     innerValue("prevNum", prevNextInfo.prevBbsKey);
                 }
+                if(prevNextInfo.nextBbsKey == 0){
+                    innerHTML("nextTitle", "");
+                    innerHTML("nextCreateDate", "");
+                    innerValue("nextNum", "");
+                }else{
+                    innerHTML("nextTitle", prevNextInfo.nextTitle);
+                    innerHTML("nextCreateDate", prevNextInfo.nextCreateDate);
+                    innerValue("nextNum", prevNextInfo.nextBbsKey);
+                }
             }
-            innerHTML("nextTitle", prevNextInfo.nextTitle);
-            innerHTML("nextCreateDate", prevNextInfo.nextCreateDate);
-            innerValue("nextNum", prevNextInfo.nextBbsKey);
 
             var commentInfo = result.commentInfo;
             if(commentInfo.length > 0){

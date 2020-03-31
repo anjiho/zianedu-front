@@ -62,21 +62,6 @@ function updateBoard(bbskey, title, content, isSecret, fileName) {
     return result;
 }
 
-//게 시판 글 삭제
-function deleteBoard(bbsKey) {
-    if (bbsKey == null || bbsKey == undefined) return;
-
-    var data = {
-        bbsKey : bbsKey
-    };
-    if(confirm(comment.isDelete)){
-        var result = postApi("/board/deleteBoard", data);
-        /*
-            TODO : result 값으로 alert
-         */
-    }
-}
-
 //게시판 상세정보(공지,커뮤니티)
 function getBoardDetailInfo(bbsMasterKey, bbsKey) {
     if (bbsKey == null || bbsKey == undefined) return;

@@ -17,8 +17,6 @@
             $("#modifyBtn").hide();
         }
         var bbsMasterKey = getPassReviewMasterKey();
-        console.log(bbsMasterKey);
-        console.log(bbsKey);
         var result = getBoardDetailInfo(bbsMasterKey, bbsKey);
         if(result != undefined){
             var detailInfo = result.boardDetailInfo;
@@ -70,6 +68,7 @@
             }else{
                 gfn_display("fileContent", false);
             }
+
             var prevNextInfo = result.prevNextInfo;
             if(prevNextInfo != null){
                 if(prevNextInfo.prevBbsKey == 0){

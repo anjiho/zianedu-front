@@ -95,6 +95,7 @@
                     innerValue("nextNum", prevNextInfo.nextBbsKey);
                 }
             }
+
         }
     });
 
