@@ -533,7 +533,12 @@
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         //referenceWriteBtn  학습자료실 글쓰기
         if(sessionUserInfo != null){
-            if(sessionUserInfo.authority != 0 || sessionUserInfo.authority != 5 ){//선생님일때, 관리자일때 show
+            alert(sessionUserInfo.authority);
+            if(sessionUserInfo.authority == 0 || sessionUserInfo.authority == 5 ){//선생님일때, 관리자일때 show
+                $(".referenceWriteBtn").show();
+                $(".referenceModifyBtn").show();
+                $(".qnaWriteBtn").show();
+            }else{
                 $(".referenceWriteBtn").hide();
                 $(".referenceModifyBtn").hide();
                 $(".qnaWriteBtn").hide();
@@ -845,6 +850,11 @@
             var referenceInfo   = detailInfo.result.referenceRoomDetailInfo;
             var prevNextBbsList = detailInfo.result.prevNextBbsList;
             var commentInfo = detailInfo.result.commentInfo;
+
+            var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+            if(referenceInfo.writeUserKey == sessionUserInfo.userKey){
+                $(".qnaWriteBtn").show();
+            }
 
             if(referenceInfo.pwd == 1){
                 $("#iconLock").show();

@@ -233,7 +233,6 @@ function getSignUpZianPassTypeList(jKey, deviceType) {
     }
 }
 
-
 //패키지 > 유형 불러오기
 function getSignUpPackageTypeList(jKey, deviceType) {
     if (jKey == null || jKey == undefined) return;

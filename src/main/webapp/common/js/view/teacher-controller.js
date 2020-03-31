@@ -30,18 +30,6 @@ function getTeacherNameSubjectName(teacherKey, menuCtgKey) {
     innerHTML("teacherName", result.teacherName);
 }
 
-//직렬별 교수소개 리스트
-function getTeacherIntroduceList(ctgKey, pos, tagId) {
-    if (ctgKey == null || ctgKey == undefined) return;
-    var data = {
-        pos : pos
-    };
-    var InfoList = getApi("/teacher/getTeacherIntroduceList/", ctgKey, data);
-    if (InfoList.result.length > 0) {
-        var selList = InfoList.result;
-    }
-}
-
 //강사소개 > 학습Q/A 상세정보
 function getTeacherLearningQnaDetail(teacherKey, bbsKey) {
     if (teacherKey == null || teacherKey == undefined) return;
