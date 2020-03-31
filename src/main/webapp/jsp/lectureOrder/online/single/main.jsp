@@ -1,108 +1,6 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <link rel="stylesheet" type="text/css" href="/common/zian/css/content_o.css">
 <%@include file="/common/jsp/common.jsp" %>
-<script>
-    $( document ).ready(function() {
-        $("#selDivision li a:eq(0)").addClass('active');
-        $("#subject li a:eq(0)").addClass('active'); //전체로 default
-        $("#teacher li a:eq(0)").addClass('active');
-        $("#type li a:eq(0)").addClass('active');
-
-        var menuCtgKey = getLecOrderCtgKey(); // 직렬별 ctgkey 가져오기
-        var goodsType = getOnlineAcaType();
-
-        if(menuCtgKey != '') {
-            if(menuCtgKey == 585 || menuCtgKey == 518) $("#package").hide();
-            getLectureApplySubjectList(menuCtgKey, goodsType); //과목 리스트 불러오기
-            getLectureApplyTeacherList(menuCtgKey, goodsType); //교수 리스트 불러오기
-            getLectureApplyTeacherTypeList(menuCtgKey, "", "", "", goodsType); //강의정보 불러오기
-        }
-
-        $("#subject li").click(function () {
-            if($(this).index() == 0){ //전체클릭햇을때
-                $("#subject li a").each(function () {$(this).removeClass('active');});
-                $("#subject li a:eq(0)").toggleClass("active");
-            }else{
-                $(this).find("a").toggleClass('active');
-                $("#subject li a:eq(0)").removeClass('active');
-            }
-        });
-
-        $("#teacher li").click(function () {
-            if($(this).index() == 0){ //전체클릭햇을때
-                $("#teacher li a").each(function () {$(this).removeClass('active');});
-                $("#teacher li a:eq(0)").toggleClass("active");
-            }else{
-                $(this).find("a").toggleClass('active');
-                $("#teacher li a:eq(0)").removeClass('active');
-            }
-        });
-
-        $("#type li").click(function () {
-            if($(this).index() == 0){ //전체클릭햇을때
-                $("#type li a").each(function () {$(this).removeClass('active');});
-                $("#type li a:eq(0)").toggleClass("active");
-            }else{
-                $(this).find("a").toggleClass('active');
-                $("#type li a:eq(0)").removeClass('active');
-            }
-        });
-
-        innerHTML("selCount", 0);
-        $("input[name=lecChk]").click(function(index){//체크박스 카운트 처리
-            var count = $("input[name=lecChk]:checkbox:checked").length;
-            innerHTML("selCount", count);
-        });
-    });
-
-
-    function getVideoLectureInfo(teacherKey, subjectCtgKey, stepCtgKeys, menuCtgKey) {
-        getApplyVideoLectureInfo(teacherKey, subjectCtgKey, stepCtgKeys, menuCtgKey);
-    }
-
-    //과목 클릭 했을때
-    var arr1 = new Array();
-    function getSearch(ctgKey) {
-        arr1.push(ctgKey);
-
-    }
-
-    function search() {
-        $("#resultList").empty();
-        var subjectMenuKeys = new Array();
-        var teacherKeys = new Array();
-        var stepCtgKeys = new Array();
-        $("#subject").find(".active").each(function () {
-            if($(this).attr("id") == undefined){
-                subjectMenuKeys = "";
-            }else{
-                subjectMenuKeys.push($(this).attr("id"));
-            }
-        });
-        $("#teacher").find(".active").each(function () {
-            if($(this).attr("id") == undefined){
-                teacherKeys = "";
-            }else{
-                teacherKeys.push($(this).attr("id"));
-            }
-        });
-        $("#type").find(".active").each(function () {
-            if($(this).attr("id") == undefined){
-                stepCtgKeys = "";
-            }else{
-                stepCtgKeys.push($(this).attr("id"));
-            }
-        });
-        var menuCtgKey = getLecOrderCtgKey();
-        var goodsType = getOnlineAcaType();
-
-        var subjectMenuKeysString = toStrFileName(subjectMenuKeys);
-        var teacherKeysString = toStrFileName(teacherKeys);
-        var stepCtgKeysString = toStrFileName(stepCtgKeys);
-
-        getLectureApplyTeacherTypeList(menuCtgKey, subjectMenuKeysString, teacherKeysString, stepCtgKeysString, goodsType);
-    }
-</script>
 <form id="id_frm_singleMypage" method="post" name="id_frm_singleMypage">
     <input type="hidden" id="gKeys" name="gKeys">
 </form>
@@ -187,4 +85,103 @@
 </form>
 </body>
 </html>
+<script>
+    $( document ).ready(function() {
+        $("#selDivision li a:eq(0)").addClass('active');
+        $("#subject li a:eq(0)").addClass('active'); //전체로 default
+        $("#teacher li a:eq(0)").addClass('active');
+        $("#type li a:eq(0)").addClass('active');
+
+        var menuCtgKey = getLecOrderCtgKey(); // 직렬별 ctgkey 가져오기
+        var goodsType = getOnlineAcaType();
+
+        if(menuCtgKey != '') {
+            if(menuCtgKey == 585 || menuCtgKey == 518) $("#package").hide();
+            getLectureApplySubjectList(menuCtgKey, goodsType); //과목 리스트 불러오기
+            getLectureApplyTeacherList(menuCtgKey, goodsType); //교수 리스트 불러오기
+            getLectureApplyTeacherTypeList(menuCtgKey, "", "", "", goodsType); //강의정보 불러오기
+        }
+
+        $("#subject li").click(function () {
+            if($(this).index() == 0){ //전체클릭햇을때
+                $("#subject li a").each(function () {$(this).removeClass('active');});
+                $("#subject li a:eq(0)").toggleClass("active");
+            }else{
+                $(this).find("a").toggleClass('active');
+                $("#subject li a:eq(0)").removeClass('active');
+            }
+        });
+
+        $("#teacher li").click(function () {
+            if($(this).index() == 0){ //전체클릭햇을때
+                $("#teacher li a").each(function () {$(this).removeClass('active');});
+                $("#teacher li a:eq(0)").toggleClass("active");
+            }else{
+                $(this).find("a").toggleClass('active');
+                $("#teacher li a:eq(0)").removeClass('active');
+            }
+        });
+
+        $("#type li").click(function () {
+            if($(this).index() == 0){ //전체클릭햇을때
+                $("#type li a").each(function () {$(this).removeClass('active');});
+                $("#type li a:eq(0)").toggleClass("active");
+            }else{
+                $(this).find("a").toggleClass('active');
+                $("#type li a:eq(0)").removeClass('active');
+            }
+        });
+
+        innerHTML("selCount", 0);
+    });
+
+
+    function getVideoLectureInfo(teacherKey, subjectCtgKey, stepCtgKeys, menuCtgKey) {
+        getApplyVideoLectureInfo(teacherKey, subjectCtgKey, stepCtgKeys, menuCtgKey);
+    }
+
+    //과목 클릭 했을때
+    var arr1 = new Array();
+    function getSearch(ctgKey) {
+        arr1.push(ctgKey);
+
+    }
+
+    function search() {
+        $("#resultList").empty();
+        var subjectMenuKeys = new Array();
+        var teacherKeys = new Array();
+        var stepCtgKeys = new Array();
+        $("#subject").find(".active").each(function () {
+            if($(this).attr("id") == undefined){
+                subjectMenuKeys = "";
+            }else{
+                subjectMenuKeys.push($(this).attr("id"));
+            }
+        });
+        $("#teacher").find(".active").each(function () {
+            if($(this).attr("id") == undefined){
+                teacherKeys = "";
+            }else{
+                teacherKeys.push($(this).attr("id"));
+            }
+        });
+        $("#type").find(".active").each(function () {
+            if($(this).attr("id") == undefined){
+                stepCtgKeys = "";
+            }else{
+                stepCtgKeys.push($(this).attr("id"));
+            }
+        });
+        var menuCtgKey = getLecOrderCtgKey();
+        var goodsType = getOnlineAcaType();
+
+        var subjectMenuKeysString = toStrFileName(subjectMenuKeys);
+        var teacherKeysString = toStrFileName(teacherKeys);
+        var stepCtgKeysString = toStrFileName(stepCtgKeys);
+
+        getLectureApplyTeacherTypeList(menuCtgKey, subjectMenuKeysString, teacherKeysString, stepCtgKeysString, goodsType);
+    }
+</script>
+
 

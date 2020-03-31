@@ -109,6 +109,16 @@
         $("#point").change(function() {
             var userMaxPoint = getInputTextValue("userMaxPoint");
             var currentVal = $(this).val();
+            if (userMaxPoint < 1000) {
+                alert("보유 마일리지는 1000점이상일때만 사용가능합니다.");
+                $("#point").val("");
+                currentVal = 0;
+            }
+            if(currentVal.length <= 2) {
+                alert("백단위 이상 사용 가능합니다.");
+                $("#point").val("");
+                currentVal = 0;
+            }
             if(Number(currentVal) > Number(removeComma(userMaxPoint))){
                 alert("보유포인트를 초과 하였습니다.");
                 $("#point").val("");

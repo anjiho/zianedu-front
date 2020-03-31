@@ -61,7 +61,8 @@
     String signature = SignatureUtil.makeSignature(signParam);
 
     /* 기타 */
-    String siteDomain = "http://15.164.7.237"; //가맹점 도메인 입력
+    //String siteDomain = "http://localhost:8000"; //가맹점 도메인 입력
+    String siteDomain = "http://15.164.7.237";
     // 페이지 URL에서 고정된 부분을 적는다.
     // Ex) returnURL이 http://localhost:8080INIpayStdSample/INIStdPayReturn.jsp 라면
     // http://localhost:8080/INIpayStdSample 까지만 기입한다.
@@ -188,7 +189,8 @@
     body, tr, td {font-size:10pt; font-family:돋움,verdana; color:#433F37; line-height:19px;}
     table, img {border:none}
 </style>
-<script language="javascript" type="text/javascript" src="https://stgstdpay.inicis.com/stdjs/INIStdPay.js" charset="UTF-8"></script>
+<%--<script language="javascript" type="text/javascript" src="https://stgstdpay.inicis.com/stdjs/INIStdPay.js" charset="UTF-8"></script>--%>
+<script language="javascript" type="text/javascript" src="https://stdpay.inicis.com/stdjs/INIStdPay.js" charset="UTF-8"></script>
 <form action="/mypage/cart/orderResult" id="id_frm_orderPay" method="post" name="name_frm_orderPay">
     <input type="hidden" id="allProductPrice" name="allProductPrice"><!-- 결제해야할 총 금액 -->
     <input type="hidden" id="cartNum" name="cartNum">
@@ -271,18 +273,18 @@
         <input type="hidden" name="returnUrl" id="returnUrl" value="">
         <input type="hidden" name="mKey" value="<%=mKey%>">
     </div>
-        <input type="hidden" name="gopaymethod" id="gopaymethod">
-        <input type="hidden" name="offerPeriod" value="20151001-20151231">
+        <input type="hidden" name="gopaymethod" id="gopaymethod" value="" >
+        <input type="hidden" name="offerPeriod" value="20151001-20151231" >
         <input type="hidden" name="acceptmethod" value="CARDPOINT:HPP(1):no_receipt:va_receipt:vbanknoreg(0):below1000" >
-        <input type="hidden" name="languageView">
-        <input type="hidden" name="charset">
-        <input type="hidden" name="payViewType">
-        <input type="hidden" name="closeUrl" id="closeUrl">
+        <input type="hidden" name="languageView" value="" >
+        <input type="hidden" name="charset" value="" >
+        <input type="hidden" name="payViewType" value="" >
+        <input type="hidden" name="closeUrl" id="closeUrl" >
         <input type="hidden" name="popupUrl" value="<%=siteDomain%>/popup.jsp" >
         <input type="hidden" name="quotabase" value="<%=cardQuotaBase%>" >
-        <input type="hidden" name="ini_onlycardcode">
-        <input type="hidden" name="ini_cardcode">
-        <input type="hidden" name="ansim_quota">
+        <input type="hidden" name="ini_onlycardcode" value="" >
+        <input type="hidden" name="ini_cardcode" value="" >
+        <input type="hidden" name="ansim_quota" value="" >
         <input type="hidden" name="INIregno" value="" >
         <input type="hidden" name="merchantData" value="" >
 </form>
@@ -306,7 +308,7 @@
                         <li class="active"><label>03.<b>결제하기</b></label></li>
                         <li class="last"><label>04.<b>주문완료</b></label></li>
                     </ul>
-                    <!-- cart -->
+                    <!--cart -->
                     <div class="cart">
                         <div class="tbd_03 mgb20">
                             <p class="title"><span class="text_blue">최종 주문상품</span> 확인</p>
@@ -402,7 +404,7 @@
                                 </ul>
                                 <ul id="mobilePaymentMethodUl" style="display: none">
                                     <li class="tit">결제수단</li>
-                                    <li><input type="radio" name="ckbox2" value="wcard" id="ckbox1">신용카드</li>
+                                    <li><input type="radio" name="ckbox2" value="wcard" id="ckbox1" checked>신용카드</li>
                                     <li><input type="radio" name="ckbox2" value="bank" id="ckbox2">실시간 계좌이체</li>
                                     <li><input type="radio" name="ckbox2" value="vbank" id="ckbox3">무통장입금</li>
                                 </ul>
@@ -413,7 +415,7 @@
                                     <span class="txt2"><b id="allPrice"></b>원</span>
                                 </li>
                                 <div class="btn_area">
-                                    <a href="javascript:void(0);" onclick="INIStdPay.pay('SendPayForm_id')" class="blue" id="pcBtn" style="display: none;">결제하기</a>
+                                    <a href="javascript:void(0);" onclick="INIStdPay.pay('SendPayForm_id')"  class="blue" id="pcBtn" style="display: none;">결제하기</a>
                                     <a href="javascript:void(0);" onclick="javascript:onSubmit();"  class="blue" id="mobileBtn" style="display: none;">결제하기</a>
                                     <a href="javascript:window.history.back();" class="gray">이전으로</a>
                                 </div>
