@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Value;
 import javax.annotation.PostConstruct;
 
 /**
- * Created by jihoan on 2017. 11. 2..
+ * Created by jihoan on 2019. 11. 01
  */
 public class ConfigHolder {
 
