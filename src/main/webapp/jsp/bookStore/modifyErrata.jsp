@@ -14,6 +14,9 @@
                 maxHeight: null,
                 focus: true
             });
+        } else {
+            $('#content').attr("cols", 40);
+            $('#content').attr("rows", 15);
         }
         $("#attachFile").on("change", addFiles);
         var result = getBoardDetailInfo(10059, bbsKey);

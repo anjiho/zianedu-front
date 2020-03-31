@@ -11,9 +11,9 @@
     .video-container iframe,.video-container object,.video-container embed{position: absolute; top:0; left:0; width:100%; height: 100%}
 </style>
 <form action="/Player/Axis" id="id_frm_player" method="post" name="name_frm_player">
-    <input id="vodPath" name="vodPath" type="hidden" value="" />
-    <input id="vodTitle" name="vodTitle" type="hidden" value="" />
-    <input id="starPlayerUrl" name="starPlayerUrl" type="hidden" value="" />
+    <input id="vodPath" name="vodPath" type="hidden"/>
+    <input id="vodTitle" name="vodTitle" type="hidden"/>
+    <input id="starPlayerUrl" name="starPlayerUrl" type="hidden"/>
 </form>
 <form id="id_frm_singleMypage" method="post" name="id_frm_singleMypage">
     <input type="hidden" id="gKeys" name="gKeys">
@@ -145,7 +145,7 @@
                                                     <a href="fn_search('new');" class="search_ico">검색</a>
                                                 </li>
                                                 <li class="right">
-                                                    <a href="javascript:referenceWrite();" class="btn_inline w140 writeBtn">글쓰기</a>
+                                                    <a href="javascript:referenceWrite();" class="btn_inline w140 referenceWriteBtn">글쓰기</a>
                                                 </li>
                                             </ul>
                                         </form>
@@ -186,7 +186,7 @@
                                                     <a href="fn_search1('new');" class="search_ico">검색</a>
                                                 </li>
                                                 <li class="right">
-                                                    <a href="javascript:referenceWrite();" class="btn_inline w140 writeBtn">글쓰기</a>
+                                                    <a href="javascript:referenceWrite();" class="btn_inline w140 referenceWriteBtn">글쓰기</a>
                                                 </li>
                                             </ul>
                                         </form>
@@ -220,7 +220,7 @@
                                         <br>
                                         <ul class="searchArea">
                                             <li class="right">
-                                                <a href="javascript:getModifyDetail();" class="btn_m w140 writeBtn">수정</a>
+                                                <a href="javascript:getModifyDetail();" class="btn_m w140 referenceModifyBtn">수정</a>
                                             </li>
                                         </ul>
                                         <div class="tableBox">
@@ -335,7 +335,7 @@
                                             <a href="javascript:fn_search3('new');" class="btn_m on">검색</a>
                                         </li>
                                         <li class="right">
-                                            학습에 관련된 질문을 올려주세요&nbsp; <a href="javascript:qnaWrite();" class="btn_m w140 writeBtn">글쓰기</a>
+                                            학습에 관련된 질문을 올려주세요&nbsp; <a href="javascript:qnaWrite();" class="btn_m w140">글쓰기</a>
                                         </li>
                                     </ul>
                                 </form>
@@ -368,8 +368,8 @@
                         <div class="" id="qnaDetail" style="display: none;">
                             <ul class="searchArea">
                                 <li class="right">
-                                    <a href="javascript:getModifyDetailqna();" class="btn_m w140 writeBtn">수정</a>
-                                    <a href="javascript:goReplayWrite();" class="btn_m w140 writeBtn">답변등록</a>
+                                    <a href="javascript:getModifyDetailqna();" class="btn_m w140 qnaWriteBtn">수정</a>
+                                    <a href="javascript:goReplayWrite();" class="btn_m w140 qnaWriteBtn">답변등록</a>
                                 </li>
                             </ul>
                             <div class="tableBox">
@@ -531,12 +531,16 @@
 
     $( document ).ready(function() {
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        //referenceWriteBtn  학습자료실 글쓰기
         if(sessionUserInfo != null){
-            if(sessionUserInfo.authority != 0){
-                $(".writeBtn").hide();
+            if(sessionUserInfo.authority != 0 || sessionUserInfo.authority != 5 ){//선생님일때, 관리자일때 show
+                $(".referenceWriteBtn").hide();
+                $(".referenceModifyBtn").hide();
+                $(".qnaWriteBtn").hide();
             }
         }else{
-            $(".writeBtn").hide();
+            $(".referenceWriteBtn").hide();
+            $(".referenceModifyBtn").hide();
         }
 
         $("#attachFile1").on("change", addFiles);
@@ -834,7 +838,7 @@
         $("#qnaDetail").show();
         $("#fileDetailList1").children().remove();
         innerValue("bbsKey1", bbskey);
-        //var bbsKey = getInputTextValue("bbsKey");
+
         var detailInfo = getTeacherLearningQnaDetail(teacherKey, bbskey);
 
         if(detailInfo != null){

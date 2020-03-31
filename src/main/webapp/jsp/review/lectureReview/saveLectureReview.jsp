@@ -16,6 +16,9 @@
                 maxHeight: null,
                 focus: true
             });
+        } else {
+            $('#content').attr("cols", 40);
+            $('#content').attr("rows", 15);
         }
         $("#attachFile").on("change", addFiles);
         if (jlecKey == "null") jlecKey = "";    //jLecKey가 없을때 예외처리

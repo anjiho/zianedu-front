@@ -12,6 +12,9 @@
                 maxHeight: null,             // set maximum height of editor
                 focus: true                  // set focus to editable area after initializing summernote
             });
+        } else {
+            $('#content').attr("cols", 40);
+            $('#content').attr("rows", 15);
         }
         $("#attachFile").on("change", addFiles);
     });
