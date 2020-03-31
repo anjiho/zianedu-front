@@ -368,7 +368,7 @@
                         <div class="" id="qnaDetail" style="display: none;">
                             <ul class="searchArea">
                                 <li class="right">
-                                    <a href="javascript:getModifyDetailqna();" class="btn_m w140 qnaWriteBtn">수정</a>
+                                    <a href="javascript:getModifyDetailqna();" class="btn_m w140 qnaWriteBtn" id="modifyBtn">수정</a>
                                     <a href="javascript:goReplayWrite();" class="btn_m w140 qnaWriteBtn">답변등록</a>
                                 </li>
                             </ul>
@@ -531,9 +531,7 @@
 
     $( document ).ready(function() {
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-        //referenceWriteBtn  학습자료실 글쓰기
         if(sessionUserInfo != null){
-            alert(sessionUserInfo.authority);
             if(sessionUserInfo.authority == 0 || sessionUserInfo.authority == 5 ){//선생님일때, 관리자일때 show
                 $(".referenceWriteBtn").show();
                 $(".referenceModifyBtn").show();
@@ -553,10 +551,10 @@
         var pcMobile = divisionPcMobile();
         if(pcMobile == 'PC') {
             $('#writeContent').summernote({
-                height: 300,                 // set editor height
-                minHeight: null,             // set minimum height of editor
-                maxHeight: null,             // set maximum height of editor
-                focus: true                  // set focus to editable area after initializing summernote
+                height: 300,        
+                minHeight: null,
+                maxHeight: null,
+                focus: true
             });
             $('#qnaWriteContent').summernote({
                 height: 300,                 // set editor height
@@ -853,7 +851,9 @@
 
             var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
             if(referenceInfo.writeUserKey == sessionUserInfo.userKey){
-                $(".qnaWriteBtn").show();
+                $("#modifyBtn").show();
+            }else{
+                $("#modifyBtn").hide();
             }
 
             if(referenceInfo.pwd == 1){
