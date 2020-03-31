@@ -61,7 +61,7 @@
     String signature = SignatureUtil.makeSignature(signParam);
 
     /* 기타 */
-    String siteDomain = "http://localhost:8000"; //가맹점 도메인 입력
+    String siteDomain = "http://15.164.7.237"; //가맹점 도메인 입력
     // 페이지 URL에서 고정된 부분을 적는다.
     // Ex) returnURL이 http://localhost:8080INIpayStdSample/INIStdPayReturn.jsp 라면
     // http://localhost:8080/INIpayStdSample 까지만 기입한다.
@@ -271,18 +271,18 @@
         <input type="hidden" name="returnUrl" id="returnUrl" value="">
         <input type="hidden" name="mKey" value="<%=mKey%>">
     </div>
-        <input type="hidden" name="gopaymethod" id="gopaymethod" value="" >
-        <input type="hidden" name="offerPeriod" value="20151001-20151231" >
+        <input type="hidden" name="gopaymethod" id="gopaymethod">
+        <input type="hidden" name="offerPeriod" value="20151001-20151231">
         <input type="hidden" name="acceptmethod" value="CARDPOINT:HPP(1):no_receipt:va_receipt:vbanknoreg(0):below1000" >
-        <input type="hidden" name="languageView" value="" >
-        <input type="hidden" name="charset" value="" >
-        <input type="hidden" name="payViewType" value="" >
-        <input type="hidden" name="closeUrl" id="closeUrl" >
+        <input type="hidden" name="languageView">
+        <input type="hidden" name="charset">
+        <input type="hidden" name="payViewType">
+        <input type="hidden" name="closeUrl" id="closeUrl">
         <input type="hidden" name="popupUrl" value="<%=siteDomain%>/popup.jsp" >
         <input type="hidden" name="quotabase" value="<%=cardQuotaBase%>" >
-        <input type="hidden" name="ini_onlycardcode" value="" >
-        <input type="hidden" name="ini_cardcode" value="" >
-        <input type="hidden" name="ansim_quota" value="" >
+        <input type="hidden" name="ini_onlycardcode">
+        <input type="hidden" name="ini_cardcode">
+        <input type="hidden" name="ansim_quota">
         <input type="hidden" name="INIregno" value="" >
         <input type="hidden" name="merchantData" value="" >
 </form>
@@ -306,7 +306,7 @@
                         <li class="active"><label>03.<b>결제하기</b></label></li>
                         <li class="last"><label>04.<b>주문완료</b></label></li>
                     </ul>
-                    <!--cart -->
+                    <!-- cart -->
                     <div class="cart">
                         <div class="tbd_03 mgb20">
                             <p class="title"><span class="text_blue">최종 주문상품</span> 확인</p>
@@ -413,7 +413,7 @@
                                     <span class="txt2"><b id="allPrice"></b>원</span>
                                 </li>
                                 <div class="btn_area">
-                                    <a href="javascript:void(0);" onclick="INIStdPay.pay('SendPayForm_id')"  class="blue" id="pcBtn" style="display: none;">결제하기</a>
+                                    <a href="javascript:void(0);" onclick="INIStdPay.pay('SendPayForm_id')" class="blue" id="pcBtn" style="display: none;">결제하기</a>
                                     <a href="javascript:void(0);" onclick="javascript:onSubmit();"  class="blue" id="mobileBtn" style="display: none;">결제하기</a>
                                     <a href="javascript:window.history.back();" class="gray">이전으로</a>
                                 </div>
