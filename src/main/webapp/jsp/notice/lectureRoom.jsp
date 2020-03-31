@@ -4,6 +4,14 @@
 <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
 <script>
     $( document ).ready(function() {
+        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        if(sessionUserInfo != null){
+            if(sessionUserInfo.authority == 0){
+                gfn_display("uploadBtn1", true);
+                gfn_display("uploadBtn2", true);
+            }
+        }
+
         //팝업 이미지 업로드
         var $fileBox = $('.filetype');
 
@@ -271,12 +279,12 @@
                 <div class="calendarInfo">
                     <div class="branch01 cCom">
                         <p>[1관] <span><b><span class="todayDate"></span></b> 강의실배정표입니다.</span></p>
-                        <a href="javascript:upLoadPop()"><img src="/common/zian/images/common/t_upload.jpg" alt=""></a>
+                        <a href="javascript:upLoadPop()" id="uploadBtn1" style="display: none"><img src="/common/zian/images/common/t_upload.jpg" alt=""></a>
                         <div id="img_box"></div>
                     </div>
                     <div class="branch02 cCom">
                         <p>[2관] <span><b><span class="todayDate"></span></b> 강의실배정표입니다.</span></p>
-                        <a href="javascript:upLoadPop1()"><img src="/common/zian/images/common/t_upload.jpg" alt=""></a>
+                        <a href="javascript:upLoadPop1()" id="uploadBtn2" style="display: none"><img src="/common/zian/images/common/t_upload.jpg" alt=""></a>
                         <div id="img_box1"></div>
                     </div>
                 </div>
