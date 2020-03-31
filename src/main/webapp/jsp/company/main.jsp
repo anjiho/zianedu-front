@@ -699,10 +699,10 @@
                                 <!--수정 -->
                                 <li class="left">
                                     <select id="searchType2">
-                                        <option value="">제목</option>
+                                        <option value="title">제목</option>
                                     </select>
                                     <input type="text" id="searchText2" onkeypress="if(event.keyCode==13) {fn_search1('new'); return false;}">
-                                    <input type="button" onclick="fn_search1('new');" value="검색" class="btn_m on">
+                                    <input type="button" onclick="javascript:fn_search1('new');" value="검색" class="btn_m on">
                                     <a href="javascript:fn_search1('new');" class="search_ico">검색</a>
                                 </li>
                                 <li class="right"><a href="javascript:goWrite('question');" class="btn_inline w140 write_ico" id="requestQuestionBtn" style="display: none">글쓰기</a></li>

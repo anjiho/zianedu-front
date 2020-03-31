@@ -240,7 +240,7 @@ function getNoticeList2(sPage, listLimit, bbsMaterKey, searchType, searchText) {
         searchType : searchType,
         searchText : searchText
     };
-
+    console.log(data);
     var infoList = getPageApi("/board/getNoticeList/", bbsMaterKey, data);
     var cnt = infoList.cnt;
     if (infoList.result.length > 0) {
