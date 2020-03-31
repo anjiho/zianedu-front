@@ -799,7 +799,7 @@
             } else {
                 contents = contentsHTML;
 
-                
+
             }
 
             //봄문 내용 파징작업 끝
@@ -813,7 +813,7 @@
                     $("#referencePrevLink").attr("href", "javascript:goDetailReference("+ prevNextBbsList[j].prevBbsKey +");");
                 }
 
-                if(prevNextBbsList[j].nextBbsKey == 0) {
+                if(prevNextBbsList[j].nextBbsKey == 1) {
                     innerHTML("referencePrevTitle", "");
                 } else {
                     innerHTML("referenceNextTitle", prevNextBbsList[j].nextTitle);
