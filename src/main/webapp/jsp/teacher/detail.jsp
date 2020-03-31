@@ -43,7 +43,7 @@
                         <div class="info">
                             <span class="category" id="subject"></span>
                             <span class="name"><b id="teacherName"></b> 교수님</span>
-<%--                            <span class="infoText">쉽고 재미있는, 공무원 국어마스터</span>--%>
+                            <%--                            <span class="infoText">쉽고 재미있는, 공무원 국어마스터</span>--%>
                             <dl class="profile">
                                 <dt>약력</dt>
                                 <dd id="history"></dd>
@@ -231,10 +231,10 @@
                                                     <col class="w140">
                                                 </colgroup>
                                                 <thead>
-                                                    <tr>
-                                                        <th colspan="2" id="referenceTitle"></th>
-                                                        <th id="referenceIndate"></th>
-                                                    </tr>
+                                                <tr>
+                                                    <th colspan="2" id="referenceTitle"></th>
+                                                    <th id="referenceIndate"></th>
+                                                </tr>
                                                 </thead>
                                                 <tbody>
                                                 <tr>
@@ -280,40 +280,40 @@
                                     <!--학습자료실 글쓰기-->
                                     <div class="" id="referenceWriteDiv" style="display: none;">
                                         <div class="tabPage active">
-                                        <form>
-                                            <ul class="searchArea">
-                                                <li class="left"><b>글 등록하기</b></li>
-                                            </ul>
-                                            <div class="tableBox">
-                                                <table class="form">
-                                                    <colgroup>
-                                                        <col class="w15p">
-                                                        <col>
-                                                    </colgroup>
-                                                    <tbody>
-                                                    <tr>
-                                                        <td>제목</td>
-                                                        <td><input type="text" placeholder="제목을 입력하세요" class="w100p" id="writeTitle"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">내용</th>
-                                                        <td><textarea name="writeContent" id="writeContent" value=""></textarea></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">첨부파일</th>
-                                                        <td class="">
-                                                            <input type="file" name="files[]" id="attachFile" class="fileBtn noline"  multiple/>
-                                                            <ul id='fileList' class="fileList"></ul>
-                                                        </td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div class="btnArea">
-                                                <a href="javascript:goReferenceList();" class="btn_m gray radius w110">취소</a>
-                                                <a href="javascript:goWriteSave();" class="btn_m bg_blue radius w110">등록</a>
-                                            </div>
-                                        </form>
+                                            <form>
+                                                <ul class="searchArea">
+                                                    <li class="left"><b>글 등록하기</b></li>
+                                                </ul>
+                                                <div class="tableBox">
+                                                    <table class="form">
+                                                        <colgroup>
+                                                            <col class="w15p">
+                                                            <col>
+                                                        </colgroup>
+                                                        <tbody>
+                                                        <tr>
+                                                            <td>제목</td>
+                                                            <td><input type="text" placeholder="제목을 입력하세요" class="w100p" id="writeTitle"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">내용</th>
+                                                            <td><textarea name="writeContent" id="writeContent" value=""></textarea></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">첨부파일</th>
+                                                            <td class="">
+                                                                <input type="file" name="files[]" id="attachFile" class="fileBtn noline"  multiple/>
+                                                                <ul id='fileList' class="fileList"></ul>
+                                                            </td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div class="btnArea">
+                                                    <a href="javascript:goReferenceList();" class="btn_m gray radius w110">취소</a>
+                                                    <a href="javascript:goWriteSave();" class="btn_m bg_blue radius w110">등록</a>
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
                                     <!--//학습자료실 글쓰기 끝-->
@@ -380,10 +380,10 @@
                                         <col class="w140">
                                     </colgroup>
                                     <thead>
-                                        <tr>
-                                            <th colspan="2" id="qnaTitle"></th>
-                                            <th id="qnaIndate"></th>
-                                        </tr>
+                                    <tr>
+                                        <th colspan="2" id="qnaTitle"></th>
+                                        <th id="qnaIndate"></th>
+                                    </tr>
                                     </thead>
                                     <tbody>
                                     <tr>
@@ -468,47 +468,47 @@
 
                         <!--학습qna 등록 -->
                         <div class="" id="qnaWriteDiv" style="display: none;">
-                                <div class="tabPage active">
-                                    <form>
-                                        <ul class="searchArea">
-                                            <li class="left"><b>글 등록하기</b></li>
-                                            <li class="right">
-                                                <input type="checkbox" name="chkPwd" value="1"> 비공개
-                                            </li>
-                                        </ul>
+                            <div class="tabPage active">
+                                <form>
+                                    <ul class="searchArea">
+                                        <li class="left"><b>글 등록하기</b></li>
+                                        <li class="right">
+                                            <input type="checkbox" name="chkPwd" value="1"> 비공개
+                                        </li>
+                                    </ul>
 
-                                        <div class="tableBox">
-                                            <table class="form">
-                                                <colgroup>
-                                                    <col class="w15p">
-                                                    <col>
-                                                </colgroup>
-                                                <tbody>
-                                                <tr>
-                                                    <td>제목</td>
-                                                    <td><input type="text" placeholder="제목을 입력하세요" class="w100p" id="qnaWriteTitle"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>내용</td>
-                                                    <td><textarea placeholder="내용을 입력하세요" name="qnaWriteContent" id="qnaWriteContent" ></textarea></td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">첨부파일</th>
-                                                    <td>
-                                                        <input type="file" name="files[]" id="attachFile1" class="fileBtn noline" multiple/>
-                                                        <ul id='fileList1' class="fileList"></ul>
-                                                    </td>
+                                    <div class="tableBox">
+                                        <table class="form">
+                                            <colgroup>
+                                                <col class="w15p">
+                                                <col>
+                                            </colgroup>
+                                            <tbody>
+                                            <tr>
+                                                <td>제목</td>
+                                                <td><input type="text" placeholder="제목을 입력하세요" class="w100p" id="qnaWriteTitle"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>내용</td>
+                                                <td><textarea placeholder="내용을 입력하세요" name="qnaWriteContent" id="qnaWriteContent" ></textarea></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">첨부파일</th>
+                                                <td>
+                                                    <input type="file" name="files[]" id="attachFile1" class="fileBtn noline" multiple/>
+                                                    <ul id='fileList1' class="fileList"></ul>
+                                                </td>
 
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <div class="btnArea">
-                                            <a href="javascript:goReferenceList();" class="btn_m gray radius w110">취소</a>
-                                            <a href="javascript:goWriteQnaSave();" class="btn_m bg_blue radius w110">등록</a>
-                                        </div>
-                                    </form>
-                                </div>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="btnArea">
+                                        <a href="javascript:goReferenceList();" class="btn_m gray radius w110">취소</a>
+                                        <a href="javascript:goWriteQnaSave();" class="btn_m bg_blue radius w110">등록</a>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                         <!--//학습qna 등록 끝-->
                     </div>
