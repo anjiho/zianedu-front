@@ -181,10 +181,12 @@ function getPackageSignUpList(userKey, deviceType) {
         deviceType : deviceType
     };
     var infoList = getApi("/myPage/getPackageSignUpList/", userKey, data);
+
     if (infoList == null || Number(infoList.result.length) == 0) {
         $("#packageListDiv").hide();
         return false;
     } else if (infoList != null || infoList.result.length > 0) { //과목 리스트
+
         innerValue("packageJKey", infoList.result[0].jkey);
         dwr.util.addOptions('packageList', infoList.result, function (data) {
             return "<a href='javascript:packageTypeList("+ data.jkey +");'>"+ data.gname +"</a>"
@@ -241,6 +243,7 @@ function getSignUpPackageTypeList(jKey, deviceType) {
     };
 
     var infoList = getApi("/myPage/getSignUpPackageTypeList/", jKey, data);
+
     if (infoList.result.length > 0) { //과목 리스트
         innerValue("packageCtgKey", infoList.result[0].ctgKey);
         var pcMobile = divisionPcMobile();
@@ -249,7 +252,7 @@ function getSignUpPackageTypeList(jKey, deviceType) {
             return "<a href='javascript:packageLecTitleList("+ data.ctgKey +");'>"+ data.ctgName +"</a>"
         }, {escapeHtml: false});
     }else{
-        $("#zianPassListDiv").hide();
+        $("#packageListDiv").hide();
         return false;
     }
 }

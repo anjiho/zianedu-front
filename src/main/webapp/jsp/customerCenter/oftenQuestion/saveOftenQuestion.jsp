@@ -12,6 +12,9 @@
                 maxHeight: null,
                 focus: true
             });
+        } else {
+            $('#content').attr("cols", 40);
+            $('#content').attr("rows", 15);
         }
     });
     function saveOftenQuestion() {
