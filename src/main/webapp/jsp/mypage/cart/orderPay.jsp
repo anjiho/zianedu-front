@@ -61,7 +61,8 @@
     String signature = SignatureUtil.makeSignature(signParam);
 
     /* 기타 */
-    String siteDomain = "http://localhost:8000"; //가맹점 도메인 입력
+    //String siteDomain = "http://localhost:8000"; //가맹점 도메인 입력
+    String siteDomain = "http://15.164.7.237";
     // 페이지 URL에서 고정된 부분을 적는다.
     // Ex) returnURL이 http://localhost:8080INIpayStdSample/INIStdPayReturn.jsp 라면
     // http://localhost:8080/INIpayStdSample 까지만 기입한다.
@@ -71,6 +72,7 @@
     $( document ).ready(function() {
 
         var locationHost = location.host;
+        alert(locationHost);
         var returnUrl = "http://" + locationHost + "/myPage?page_gbn=orderResult";
         var notiUrl = "http://" + locationHost + "/jsp/payment/INIPayMobileNoti.jsp";
         var nextUrl = "http://" + locationHost + "/jsp/payment/INIPayMobileNext.jsp";
