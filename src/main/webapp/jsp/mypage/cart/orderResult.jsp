@@ -263,7 +263,35 @@
                     acctBankCode = resultMap.get("VACT_BankCode");
 
                     if ("04".equals(acctBankCode)) bankName = "국민은행";
+                    else if ("05".equals(acctBankCode)) bankName = "하나은행(구외환)";
+                    else if ("06".equals(acctBankCode)) bankName = "국민은행(구 주택)";
+                    else if ("07".equals(acctBankCode)) bankName = "수협중항회";
                     else if ("11".equals(acctBankCode)) bankName = "농협";
+                    else if ("12".equals(acctBankCode)) bankName = "단위농협";
+                    else if ("16".equals(acctBankCode)) bankName = "축협중앙회";
+                    else if ("20".equals(acctBankCode)) bankName = "우리은행";
+                    else if ("21".equals(acctBankCode)) bankName = "신한은행(조흥은행)";
+                    else if ("23".equals(acctBankCode)) bankName = "SC제일은행";
+                    else if ("25".equals(acctBankCode)) bankName = "하나은행(서울은행)";
+                    else if ("26".equals(acctBankCode)) bankName = "신한은행";
+                    else if ("27".equals(acctBankCode)) bankName = "한국씨티은행(한미은행)";
+                    else if ("31".equals(acctBankCode)) bankName = "대구은행";
+                    else if ("32".equals(acctBankCode)) bankName = "부산은행";
+                    else if ("34".equals(acctBankCode)) bankName = "광주은행";
+                    else if ("35".equals(acctBankCode)) bankName = "제주은행";
+                    else if ("37".equals(acctBankCode)) bankName = "전북은행";
+                    else if ("38".equals(acctBankCode)) bankName = "강원은행";
+                    else if ("39".equals(acctBankCode)) bankName = "경남은행";
+                    else if ("41".equals(acctBankCode)) bankName = "비씨카드";
+                    else if ("53".equals(acctBankCode)) bankName = "씨티은행";
+                    else if ("54".equals(acctBankCode)) bankName = "홍콩상하이은행";
+                    else if ("71".equals(acctBankCode)) bankName = "우체국";
+                    else if ("81".equals(acctBankCode)) bankName = "하나은행";
+                    else if ("83".equals(acctBankCode)) bankName = "평화은행";
+                    else if ("87".equals(acctBankCode)) bankName = "신세계";
+                    else if ("88".equals(acctBankCode)) bankName = "신한은행(조흥 통합)";
+                    else if ("97".equals(acctBankCode)) bankName = "카카오 머니";
+                    else if ("98".equals(acctBankCode)) bankName = "페이코(포인트 100%사용)";
 
 
 //                    out.println("<tr><th class='line' colspan='2'><p></p></th></tr>");
