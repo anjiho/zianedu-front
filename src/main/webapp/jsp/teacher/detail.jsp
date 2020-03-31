@@ -799,6 +799,7 @@
             } else {
                 contents = contentsHTML;
             }
+            
             //봄문 내용 파징작업 끝
             innerHTML("referenceContent", contents);
 
