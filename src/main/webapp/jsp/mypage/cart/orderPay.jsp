@@ -404,7 +404,7 @@
                                 </ul>
                                 <ul id="mobilePaymentMethodUl" style="display: none">
                                     <li class="tit">결제수단</li>
-                                    <li><input type="radio" name="ckbox2" value="wcard" id="ckbox1">신용카드</li>
+                                    <li><input type="radio" name="ckbox2" value="wcard" id="ckbox1" checked>신용카드</li>
                                     <li><input type="radio" name="ckbox2" value="bank" id="ckbox2">실시간 계좌이체</li>
                                     <li><input type="radio" name="ckbox2" value="vbank" id="ckbox3">무통장입금</li>
                                 </ul>
