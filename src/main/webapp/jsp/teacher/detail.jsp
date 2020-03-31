@@ -813,7 +813,7 @@
                     $("#referencePrevLink").attr("href", "javascript:goDetailReference("+ prevNextBbsList[j].prevBbsKey +");");
                 }
 
-                if(prevNextBbsList[j].nextBbsKey == 1) {
+                if(prevNextBbsList[j].nextBbsKey == 0) {
                     innerHTML("referencePrevTitle", "");
                 } else {
                     innerHTML("referenceNextTitle", prevNextBbsList[j].nextTitle);
