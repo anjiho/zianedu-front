@@ -80,7 +80,7 @@
         });
 
         fn_search('new'); //강사모집 리스트 불러오기
-        fn_search1('new'); //제휴문의 리스트 불러오기
+        fn_search2('new'); //제휴문의 리스트 불러오기
 
         $("#companyHeader li").click(function () {
             if($(this).index() == 1){
@@ -158,7 +158,7 @@
         getNoticeList3(sPage, 10, 10011, searchType, searchText);
     }
 
-    function fn_search1(val) {
+    function fn_search2(val) {
         var sPage2 = getInputTextValue("sPage2");
         var searchType2 = getSelectboxValue("searchType2");
         var searchText2 = getInputTextValue("searchText2");
@@ -166,6 +166,7 @@
         if(searchText2 == undefined) searchText2 = "";
 
         if(val == "new") sPage2 = "1";
+
         getNoticeList2(sPage2, 10, 10062, searchType2, searchText2);
     }
 
@@ -575,7 +576,7 @@
                                         <option value="title">제목</option>
                                     </select>
                                     <input type="text" id="searchText" onkeypress="if(event.keyCode==13) {fn_search('new'); return false;}">
-                                    <input type="button" onclick="fn_search('new');" value="검색" class="btn_m on">
+                                    <input type="button" onclick="javascript:fn_search('new');" value="검색" class="btn_m on">
                                     <a href="javascript:fn_search('new');" class="search_ico">검색</a>
                                 </li>
                                 <li class="right"><a href="javascript:goWrite('teacher');" class="btn_inline w140 write_ico" id="teacherWriteBtn" style="display: none">글쓰기</a></li>
@@ -699,11 +700,11 @@
                                 <!--수정 -->
                                 <li class="left">
                                     <select id="searchType2">
-                                        <option value="">제목</option>
+                                        <option value="title">제목</option>
                                     </select>
-                                    <input type="text" id="searchText2" onkeypress="if(event.keyCode==13) {fn_search1('new'); return false;}">
-                                    <input type="button" onclick="fn_search1('new');" value="검색" class="btn_m on">
-                                    <a href="javascript:fn_search1('new');" class="search_ico">검색</a>
+                                    <input type="text" id="searchText2" onkeypress="if(event.keyCode==13) {fn_search2('new'); return false;}">
+                                    <input type="button" onclick="fn_search2('new');" value="검색" class="btn_m on">
+                                    <a href="javascript:fn_search2('new');" class="search_ico">검색</a>
                                 </li>
                                 <li class="right"><a href="javascript:goWrite('question');" class="btn_inline w140 write_ico" id="requestQuestionBtn" style="display: none">글쓰기</a></li>
                             </ul>

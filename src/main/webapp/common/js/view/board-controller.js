@@ -243,8 +243,9 @@ function getNoticeList2(sPage, listLimit, bbsMaterKey, searchType, searchText) {
 
     var infoList = getPageApi("/board/getNoticeList/", bbsMaterKey, data);
     var cnt = infoList.cnt;
+    paging.count2(sPage, cnt, '10', '10', comment.blank_list);
     if (infoList.result.length > 0) {
-        paging.count2(sPage, cnt, '10', '10', comment.blank_list);
+        //paging.count2(sPage, cnt, '10', '10', comment.blank_list);
         var listNum = ((cnt-1)+1)-((sPage-1)*10); //리스트 넘버링
         var selList = infoList.result;
         for(var i=0; i < selList.length; i++){
@@ -284,8 +285,9 @@ function getNoticeList3(sPage, listLimit, bbsMaterKey, searchType, searchText) {
     var infoList = getPageApi("/board/getNoticeList/", bbsMaterKey, data);
 
     var cnt = infoList.cnt;
+    paging.count(sPage, cnt, '10', '10', comment.blank_list);
     if (infoList.result.length > 0) {
-        paging.count(sPage, cnt, '10', '10', comment.blank_list);
+        //paging.count(sPage, cnt, '10', '10', comment.blank_list);
         var listNum = ((cnt-1)+1)-((sPage-1)*10); //리스트 넘버링
         var selList = infoList.result;
         for(var i=0; i < selList.length; i++){
