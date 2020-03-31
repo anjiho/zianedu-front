@@ -172,9 +172,8 @@ function getTeacherLearningQna(teacherKey, sPage, listLimit, searchType, searchT
                         if(sessionUserInfo.userKey == cmpList.writeUserKey){
                             returnHtml += '<td><a href="javascript:void(0);"  class="subject ' + lock + '" onclick="goDetailqna('+  cmpList.bbsKey +');">' + gfn_substr(cmpList.title, 0, 40) + '</a></td>';
                         }else{
-                            //returnHtml += '<td><a href="javascript:void(0);" class="subject ' + lock + '" onclick="">' + gfn_substr(cmpList.title, 0, 40) + '</a></td>';
                             if(sessionUserInfo.authority != 0) {
-                                returnHtml += '<td><a class="subject ' + lock + ' nonBoard">비밀글입니다</a></td>';
+                                returnHtml += '<td><a href="javascript:goDetailqna(0);" class="subject ' + lock + ' ">비밀글입니다</a></td>';
                             }else{
                                 returnHtml += '<td><a href="javascript:void(0);" class="subject ' + lock + '" onclick="goDetailqna('+  cmpList.bbsKey +');">' + gfn_substr('비밀글입니다 ', 0, 40) + '</a></td>';
                             }
@@ -185,7 +184,7 @@ function getTeacherLearningQna(teacherKey, sPage, listLimit, searchType, searchT
                     }
                 }else{
                     if (cmpList.pwd == 1){
-                        returnHtml += '<td><a href="javascript:void(0);"  class="subject nonBoard ' + lock + '" onclick="goDetailqna('+  cmpList.bbsKey +');">' + gfn_substr(cmpList.title, 0, 40) + '</a></td>';
+                        returnHtml += '<td><a href="javascript:void(0);"  class="subject ' + lock + '" onclick="goDetailqna('+  cmpList.bbsKey +');">' + gfn_substr(cmpList.title, 0, 40) + '</a></td>';
                     }else{
                         returnHtml += '<td><a href="javascript:void(0);"  class="subject" onclick="goDetailqna('+  cmpList.bbsKey +');">' + gfn_substr(cmpList.title, 0, 40) + '</a></td>';
                     }
@@ -212,7 +211,7 @@ function getTeacherLearningQna(teacherKey, sPage, listLimit, searchType, searchT
                             returnHtml += '<td><a href="javascript:void(0);"  class="subject reply ' + lock + '" onclick="goDetailqna(' + cmpList.bbsKey + ');">' + gfn_substr(cmpList.title, 0, 40) + '</a></td>';
                         } else {
                             if (sessionUserInfo.authority != 0) {
-                                returnHtml += '<td><a class="subject  reply ' + lock + ' nonBoard">비밀글입니다</a></td>';
+                                returnHtml += '<td><a class="subject  reply ' + lock + '" href="javascript:goDetailqna(0);">비밀글입니다</a></td>';
                             } else {
                                 returnHtml += '<td><a href="javascript:void(0);" class="subject reply ' + lock + '" onclick="goDetailqna(' + cmpList.bbsKey + ');">' + gfn_substr('비밀글입니다 ', 0, 40) + '</a></td>';
                             }
@@ -247,16 +246,6 @@ function getTeacherReferenceRoomDetail(teacherKey, bbsKey) {
     };
     var infoList = getApi("/teacher/getTeacherReferenceRoomDetail/", teacherKey, data);
     return infoList;
-}
-
-//강사소개 > 수강후기 > 강사의 상품목록 셀렉트박스
-function getTeacherVideoAcademyProductList(teacherKey) {
-    if (teacherKey == null || teacherKey == undefined) return;
-
-    var InfoList = getApi("/teacher/getTeacherVideoAcademyProductList/", teacherKey, "");
-    if (InfoList.result.length > 0) {
-        var selList = InfoList.result;
-    }
 }
 
 //강사소개 > 학원 강좌 정보
