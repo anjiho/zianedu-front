@@ -154,6 +154,7 @@
         if(searchText == undefined) searchText = "";
 
         if(val == "new") sPage = "1";
+
         getNoticeList3(sPage, 10, 10011, searchType, searchText);
     }
 
@@ -284,7 +285,7 @@
 
         if(result.prevNextInfo != null){
             var prevNextInfo = result.prevNextInfo;
-            console.log(prevNextInfo);
+
             if(prevNextInfo.prevBbsKey == 0){
                 innerHTML("prevTitle1", "");
                 innerHTML("prevDate1", "");

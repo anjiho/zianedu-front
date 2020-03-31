@@ -282,6 +282,7 @@ function getNoticeList3(sPage, listLimit, bbsMaterKey, searchType, searchText) {
     };
 
     var infoList = getPageApi("/board/getNoticeList/", bbsMaterKey, data);
+
     var cnt = infoList.cnt;
     if (infoList.result.length > 0) {
         paging.count(sPage, cnt, '10', '10', comment.blank_list);
@@ -295,7 +296,7 @@ function getNoticeList3(sPage, listLimit, bbsMaterKey, searchType, searchText) {
                     function(data) {return "<a href='javascript:void(0);' onclick='goTeacherDetail("+ cmpList.bbsKey +");'>" + gfn_substr(cmpList.title, 0, 40) + "</a>";},
                     function(data) {return cmpList.writerName;},
                     function(data) {return cmpList.createDate;},
-                    function(data) {return cmpList.readCount;},
+                    function(data) {return cmpList.readCount;}
                 ];
                 dwr.util.addRows("dataList", [0], cellData, {escapeHtml: false});
                 $('#dataList tr').each(function(){
