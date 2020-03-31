@@ -17,6 +17,8 @@
             $("#modifyBtn").hide();
         }
         var bbsMasterKey = getPassReviewMasterKey();
+        console.log(bbsMasterKey);
+        console.log(bbsKey);
         var result = getBoardDetailInfo(bbsMasterKey, bbsKey);
         if(result != undefined){
             var detailInfo = result.boardDetailInfo;
@@ -71,19 +73,24 @@
             var prevNextInfo = result.prevNextInfo;
             if(prevNextInfo != null){
                 if(prevNextInfo.prevBbsKey == 0){
-                    $("#prev").hide();
                     innerHTML("prevTitle", "");
                     innerHTML("prevCreateDate", "");
                     innerValue("prevNum", "");
                 }else{
-                    $("#prev").show();
                     innerHTML("prevTitle", prevNextInfo.prevTitle);
                     innerHTML("prevCreateDate", prevNextInfo.prevCreateDate);
                     innerValue("prevNum", prevNextInfo.prevBbsKey);
                 }
-                innerHTML("nextTitle", prevNextInfo.nextTitle);
-                innerHTML("nextCreateDate", prevNextInfo.nextCreateDate);
-                innerValue("nextNum", prevNextInfo.nextBbsKey);
+
+                if(prevNextInfo.prevBbsKey == 0){
+                    innerHTML("nextTitle", "");
+                    innerHTML("nextCreateDate", "");
+                    innerValue("nextNum", "");
+                }else{
+                    innerHTML("nextTitle", prevNextInfo.nextTitle);
+                    innerHTML("nextCreateDate", prevNextInfo.nextCreateDate);
+                    innerValue("nextNum", prevNextInfo.nextBbsKey);
+                }
             }
 
             var commentInfo = result.commentInfo;
