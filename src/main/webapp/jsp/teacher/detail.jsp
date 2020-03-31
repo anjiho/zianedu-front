@@ -188,7 +188,7 @@
 
         if(val == "new") sPage2 = "1";
 
-        getTeacherReferenceRoom2(teacherKey, sPage2, 10, searchType2,  searchText2, 1, 'dataList2');//학습안내 (학습자료실) 리스트 불러오기
+        getTeacherReferenceRoom2(teacherKey, sPage2, 10, searchType2,  searchText2, 1, 'dataList2');//학습안내 (학습공지) 리스트 불러오기
     }
 
     function fn_search3(val) {
@@ -767,7 +767,7 @@
                                                     </select>
                                                     <input type="text" id="searchText1" onkeypress="if(event.keyCode==13) {fn_search('new'); return false;}" >
                                                     <input type="button" class="btn_m on" value="검색" onclick="fn_search('new');">
-                                                    <a href="fn_search('new');" class="search_ico">검색</a>
+                                                    <a href="javascript:fn_search('new');" class="search_ico">검색</a>
                                                 </li>
                                                 <li class="right">
                                                     <a href="javascript:referenceWrite();" class="btn_inline w140 writeBtn">글쓰기</a>

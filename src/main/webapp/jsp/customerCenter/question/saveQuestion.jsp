@@ -73,7 +73,7 @@
                 var result = saveBoard(10019, userKey, title, content, 0, ctgKey, '');
                 if (result.resultCode == 200) {
                     alert("문의가 등록되었습니다");
-                    return false;
+                    isReloadPage(true);
                 }
             } else {
                 var formData = new FormData();
@@ -96,6 +96,7 @@
                             saveBoardFileList(result.keyValue, str);
                             if (result.resultCode == 200) {
                                 alert("성공적으로 등록 완료되었습니다");
+                                isReloadPage(true);
                             }
                         }
                     }

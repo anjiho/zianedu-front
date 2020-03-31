@@ -82,8 +82,9 @@ function getTeacherReferenceRoom(teacherKey, sPage, listLimit, searchType,  sear
 
     var infoList = getPageApi("/teacher/getTeacherReferenceRoom/", teacherKey, data);
     var cnt = infoList.cnt;
+    paging.count(sPage, cnt, '10', '10', comment.blank_list);
     if (infoList.result.length > 0) {
-        paging.count(sPage, cnt, '10', '10', comment.blank_list);
+        //paging.count(sPage, cnt, '10', '10', comment.blank_list);
         var listNum = ((cnt-1)+1)-((sPage-1)*10); //리스트 넘버링
         var selList = infoList.result;
         for(var i=0; i < selList.length; i++){
@@ -118,9 +119,9 @@ function getTeacherReferenceRoom2(teacherKey, sPage, listLimit, searchType,  sea
 
     var infoList = getPageApi("/teacher/getTeacherReferenceRoom/", teacherKey, data);
     var cnt = infoList.cnt;
-
+    paging.count2(sPage, cnt, '10', '10', comment.blank_list);
     if (infoList.result.length > 0) {
-        paging.count2(sPage, cnt, '10', '10', comment.blank_list);
+        //paging.count2(sPage, cnt, '10', '10', comment.blank_list);
         var listNum = ((cnt-1)+1)-((sPage-1)*10); //리스트 넘버링
         var selList = infoList.result;
         for(var i=0; i < selList.length; i++){
@@ -153,8 +154,8 @@ function getTeacherLearningQna(teacherKey, sPage, listLimit, searchType, searchT
     };
     var infoList = getPageApi("/teacher/getTeacherLearningQna/", teacherKey, data);
     var cnt = infoList.cnt;
+    paging.count3(sPage, cnt, '5', '20', comment.blank_list);
     if (infoList.result.length > 0) {
-        paging.count3(sPage, cnt, '5', '20', comment.blank_list);
         var listNum = ((cnt - 1) + 1) - ((sPage - 1) * 20); //리스트 넘버링
         var selList = infoList.result;
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));

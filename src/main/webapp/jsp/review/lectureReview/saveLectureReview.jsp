@@ -75,7 +75,7 @@
                         addLectureLimitDay(jlecKey);
                     }
                     alert("성공적으로 등록 완료되었습니다.");
-                    return false;
+                    goPageNoSubmit('review','lectureList');
                 }
             } else {
                 var formData = new FormData();
@@ -105,7 +105,7 @@
                                     addLectureLimitDay(jlecKey);
                                 }
                                 alert("성공적으로 등록 완료되었습니다");
-                                return false;
+                                goPageNoSubmit('review','lectureList');
                             }
                         }
                     }

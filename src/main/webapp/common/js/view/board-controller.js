@@ -519,9 +519,9 @@ function getPasserVideoList(sPage, listLimit, searchType, searchText) {
 
     var infoList = getPageApi("/board/getPasserVideoList/", '', data);
     var cnt = infoList.cnt;
+    paging.count(sPage, cnt, '10', listLimit, comment.blank_list);
     if (infoList.result.length > 0) {
         var selList = infoList.result;
-        paging.count(sPage, cnt, '10', listLimit, comment.blank_list);
         for(var i=0; i < selList.length; i++){
             function formatter(cmpList) {
                 var gopageName = '"detailLecture"';
