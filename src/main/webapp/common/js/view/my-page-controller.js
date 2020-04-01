@@ -15,7 +15,7 @@ function getVideoSignUp(userKey, deviceType) {
         innerValue("subjectCtgKey", result[0].subjectCtgKey);
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         var pcMobile = divisionPcMobile();
-        getVideoSignUpTypeList(sessionUserInfo.userKey, result[0].subjectCtgKey, pcMobile);
+       getVideoSignUpTypeList(sessionUserInfo.userKey, result[0].subjectCtgKey, pcMobile);
         dwr.util.addOptions('playSubject', result, function (data) {
             return "<a href='javascript:playDepthList("+ data.subjectCtgKey +");' id='"+ data.subjectCtgKey +"'>"+ data.subjectName +"</a>"
         }, {escapeHtml: false});
@@ -27,6 +27,7 @@ function getVideoSignUp(userKey, deviceType) {
 
 function getVideoSignUpTypeList(userKey, subjectCtgKey, deviceType) {
     if (userKey == null || userKey == undefined) return;
+
     var data = {
         subjectCtgKey : subjectCtgKey,
         deviceType : deviceType
@@ -70,7 +71,6 @@ function getVideoSignUpLectureNameList(userKey, deviceType, subjectCtgKey, stepC
     };
 
     var infoList = getApi("/myPage/getVideoSignUpLectureNameList/", userKey, data);
-        console.log(infoList);
     if (infoList.result.length > 0 ) {
         var result = infoList.result;
         if(result.length > 0) {
