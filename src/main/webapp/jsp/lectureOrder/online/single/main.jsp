@@ -71,8 +71,7 @@
                     </div>
                 </div>
                 <!--검색결과 리스트-->
-                <div id="resultList">
-                </div>
+                <span id="resultList"></span>
                 <!--//검색결과 리스트-->
             </div>
         </div>
