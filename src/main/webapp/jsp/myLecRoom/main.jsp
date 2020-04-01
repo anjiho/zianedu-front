@@ -760,6 +760,10 @@
 
         function playDepthList(subjectCtgKey) {
             innerValue("subjectCtgKey", subjectCtgKey);
+            var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+            var userKey = sessionUserInfo.userKey;
+            getVideoSignUpTypeList(userKey, subjectCtgKey, pcMobile);
+
             $("#typeLectureList li").remove();
             $("#playLecListDiv").hide();
             $("#playType li").addClass('active').siblings().removeClass('active');

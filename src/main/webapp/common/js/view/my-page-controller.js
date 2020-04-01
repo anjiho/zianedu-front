@@ -20,15 +20,36 @@ function getVideoSignUp(userKey, deviceType) {
         return false;
     }
 
-    if(selList.typeInfo.length > 0){
-        var result = infoList.result.typeInfo;
-            getPlaySubjectList(result[0].ctgKey); // 강좌 리스트 불러오기
-            dwr.util.addOptions('playType', result, function (data) {
-                return "<a href='javascript:getPlaySubjectList("+ data.ctgKey +");'>"+ data.ctgName +"</a>"
-            }, {escapeHtml: false});
-    }else{
-        return false;
-    }
+    // if(selList.typeInfo.length > 0){
+    //     var result = infoList.result.typeInfo;
+    //         getPlaySubjectList(result[0].ctgKey); // 강좌 리스트 불러오기
+    //         dwr.util.addOptions('playType', result, function (data) {
+    //             return "<a href='javascript:getPlaySubjectList("+ data.ctgKey +");'>"+ data.ctgName +"</a>"
+    //         }, {escapeHtml: false});
+    // }else{
+    //     return false;
+    // }
+}
+
+function getVideoSignUpTypeList(userKey, subjectCtgKey, deviceType) {
+    if (userKey == null || userKey == undefined) return;
+    var data = {
+        subjectCtgKey : subjectCtgKey,
+        deviceType : deviceType
+    };
+
+    var infoList = getApi("/myPage/getVideoSignUpTypeList/", userKey, data);
+    var selList = infoList.result;
+    console.log(selList);
+    // if(selList.typeInfo.length > 0){
+    //     var result = infoList.result.typeInfo;
+    //         getPlaySubjectList(result[0].ctgKey); // 강좌 리스트 불러오기
+    //         dwr.util.addOptions('playType', result, function (data) {
+    //             return "<a href='javascript:getPlaySubjectList("+ data.ctgKey +");'>"+ data.ctgName +"</a>"
+    //         }, {escapeHtml: false});
+    // }else{
+    //     return false;
+    // }
 }
 
 function changePlayLectureList(userKey, deviceType) {
@@ -218,6 +239,7 @@ function getSignUpZianPassTypeList(jKey, deviceType) {
         deviceType : deviceType
     };
     var infoList = getApi("/myPage/getSignUpZianPassTypeList/", jKey, data);
+    console.log(jKey);
     if (infoList.result.length > 0) { //과목 리스트
         innerValue("zianPassCtgKey", infoList.result[0].ctgKey);
         var pcMobile = divisionPcMobile();
