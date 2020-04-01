@@ -323,7 +323,7 @@ function getBannerNoticeList(tagId, sPage, listLimit, bbsMaterKey) {
         var selList = InfoList.result;
         var tagStr = '"'+ tagId +'"';
         dwr.util.addOptions(tagId, selList, function (data) {
-            return "<a href='javascript:detailReview("+ data.bbsKey +","+ tagStr +");'>"+ ellipsis(data.title,28) +"<span class='date'>" + data.createDate + "</span></a>"
+            return "<a href='javascript:detailReview("+ data.bbsKey +","+ tagStr +");'><p>"+ ellipsis(data.title,28) +"</p><span class='date'>" + data.createDate + "</span></a>"
         }, {escapeHtml: false});
     }
 }
@@ -342,7 +342,7 @@ function getBannerNoticeList2(tagId, sPage, listLimit, bbsMaterKey) {
         var selList = InfoList.result;
         var tagStr = '"'+ tagId +'"';
         dwr.util.addOptions(tagId, selList, function (data) {
-            return "<a href='javascript:goDetailNotice2("+ data.bbsKey +","+ tagStr +");'>"+ ellipsis(data.title,28) +"<span class='date'>" + data.createDate + "</span></a>"
+            return "<a href='javascript:goDetailNotice2("+ data.bbsKey +","+ tagStr +");'><p>"+ ellipsis(data.title,28) +"</p><span class='date'>" + data.createDate + "</span></a>"
         }, {escapeHtml: false});
     }
 }
