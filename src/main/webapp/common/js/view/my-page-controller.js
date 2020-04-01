@@ -181,15 +181,14 @@ function getPackageSignUpList(userKey, deviceType) {
         deviceType : deviceType
     };
     var infoList = getApi("/myPage/getPackageSignUpList/", userKey, data);
-
     if (infoList == null || Number(infoList.result.length) == 0) {
         $("#packageListDiv").hide();
         return false;
     } else if (infoList != null || infoList.result.length > 0) { //과목 리스트
 
-        innerValue("packageJKey", infoList.result[0].jkey);
+        innerValue("packageJKey", infoList.result[0].jgkey);
         dwr.util.addOptions('packageList', infoList.result, function (data) {
-            return "<a href='javascript:packageTypeList("+ data.jkey +");'>"+ data.gname +"</a>"
+            return "<a href='javascript:packageTypeList("+ data.jgkey +");'>"+ data.gname +"</a>"
         }, {escapeHtml: false});
     }
 }
@@ -204,9 +203,9 @@ function getZianPassSignUpList(userKey) {
         $("#zianPassListDiv").hide();
         return false;
     } else if (infoList != null || infoList.result.length > 0) { //과목 리스트
-        innerValue("zianPassjKey", infoList.result[0].jkey);
+        innerValue("zianPassjKey", infoList.result[0].jgkey);
         dwr.util.addOptions('zianPassList', infoList.result, function (data) {
-            return "<a href='javascript:zianPassTypeList("+ data.jkey +");'>"+ data.gname +"</a>"
+            return "<a href='javascript:zianPassTypeList("+ data.jgkey +");'>"+ data.gname +"</a>"
         }, {escapeHtml: false});
     }
 }
@@ -240,9 +239,8 @@ function getSignUpPackageTypeList(jKey, deviceType) {
     var data = {
         deviceType : deviceType
     };
-
     var infoList = getApi("/myPage/getSignUpPackageTypeList/", jKey, data);
-
+    console.log(">> " + infoList);
     if (infoList.result.length > 0) { //과목 리스트
         innerValue("packageCtgKey", infoList.result[0].ctgKey);
         var pcMobile = divisionPcMobile();
