@@ -106,7 +106,6 @@ function getLectureApplyTeacherTypeList(menuCtgKey, subjectMenuKeys, teacherKeys
                             returnHtml += "<li class=\"w15p\">유형</li>";
                             returnHtml += "<li class=\"w40p\">강좌명</li>";
                             returnHtml += "<li class=\"w35p\">수강료</li>";
-                            returnHtml += "<li class=\"w15p\">관심</li>";
                             returnHtml += "</ul>";
                                 returnHtml += "<div class=\"lectureBody\" id='lectureBody_"+ teacherInfoLIST[j].teacherKey +"_"+ teacherInfoLIST[j].subjectCtgKey+"'>";
                                 returnHtml += "</div>";//lectureBody
