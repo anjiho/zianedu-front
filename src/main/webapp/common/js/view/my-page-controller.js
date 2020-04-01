@@ -8,10 +8,14 @@ function getVideoSignUp(userKey, deviceType) {
     };
 
     var infoList = getApi("/myPage/getVideoSignUp/", userKey, data);
+
     var selList = infoList.result;
     if(selList.subjectInfo.length > 0){
         var result = infoList.result.subjectInfo;
         innerValue("subjectCtgKey", result[0].subjectCtgKey);
+        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        var pcMobile = divisionPcMobile();
+        getVideoSignUpTypeList(sessionUserInfo.userKey, result[0].subjectCtgKey, pcMobile);
         dwr.util.addOptions('playSubject', result, function (data) {
             return "<a href='javascript:playDepthList("+ data.subjectCtgKey +");' id='"+ data.subjectCtgKey +"'>"+ data.subjectName +"</a>"
         }, {escapeHtml: false});
@@ -19,16 +23,6 @@ function getVideoSignUp(userKey, deviceType) {
         $("#playLecListDiv").hide();
         return false;
     }
-
-    // if(selList.typeInfo.length > 0){
-    //     var result = infoList.result.typeInfo;
-    //         getPlaySubjectList(result[0].ctgKey); // 강좌 리스트 불러오기
-    //         dwr.util.addOptions('playType', result, function (data) {
-    //             return "<a href='javascript:getPlaySubjectList("+ data.ctgKey +");'>"+ data.ctgName +"</a>"
-    //         }, {escapeHtml: false});
-    // }else{
-    //     return false;
-    // }
 }
 
 function getVideoSignUpTypeList(userKey, subjectCtgKey, deviceType) {
@@ -40,28 +34,27 @@ function getVideoSignUpTypeList(userKey, subjectCtgKey, deviceType) {
 
     var infoList = getApi("/myPage/getVideoSignUpTypeList/", userKey, data);
     var selList = infoList.result;
-    console.log(selList);
-    // if(selList.typeInfo.length > 0){
-    //     var result = infoList.result.typeInfo;
-    //         getPlaySubjectList(result[0].ctgKey); // 강좌 리스트 불러오기
-    //         dwr.util.addOptions('playType', result, function (data) {
-    //             return "<a href='javascript:getPlaySubjectList("+ data.ctgKey +");'>"+ data.ctgName +"</a>"
-    //         }, {escapeHtml: false});
-    // }else{
-    //     return false;
-    // }
+    if(selList.length > 0){
+            getPlaySubjectList(selList[0].ctgKey); // 강좌 리스트 불러오기
+            dwr.util.addOptions('playType', selList, function (data) {
+                return "<a href='javascript:getPlaySubjectList("+ data.ctgKey +");'>"+ data.ctgName +"</a>"
+            }, {escapeHtml: false});
+    }else{
+        return false;
+    }
 }
 
-function changePlayLectureList(userKey, deviceType) {
+function changePlayLectureList(userKey, subjectCtgKey, deviceType) {
     if (userKey == null || userKey == undefined) return;
 
     var data = {
+        subjectCtgKey : subjectCtgKey,
         deviceType : deviceType
     };
 
-    var infoList = getApi("/myPage/getVideoSignUp/", userKey, data);
+    var infoList = getApi("/myPage/getVideoSignUpTypeList/", userKey, data);
     if(infoList != null){ // 유형 리스트
-        var result = infoList.result.typeInfo;
+        var result = infoList.result;
         getPlaySubjectList(result[0].ctgKey); // 강좌 리스트 불러오기
     }
 }
@@ -77,7 +70,7 @@ function getVideoSignUpLectureNameList(userKey, deviceType, subjectCtgKey, stepC
     };
 
     var infoList = getApi("/myPage/getVideoSignUpLectureNameList/", userKey, data);
-
+        console.log(infoList);
     if (infoList.result.length > 0 ) {
         var result = infoList.result;
         if(result.length > 0) {
@@ -238,7 +231,6 @@ function getSignUpZianPassTypeList(jKey, deviceType) {
         deviceType : deviceType
     };
     var infoList = getApi("/myPage/getSignUpZianPassTypeList/", jKey, data);
-    console.log(jKey);
     if (infoList.result.length > 0) { //과목 리스트
         innerValue("zianPassCtgKey", infoList.result[0].ctgKey);
         var pcMobile = divisionPcMobile();

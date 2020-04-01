@@ -759,6 +759,7 @@
         }
 
         function playDepthList(subjectCtgKey) {
+            $("#playType").empty();
             innerValue("subjectCtgKey", subjectCtgKey);
             var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
             var userKey = sessionUserInfo.userKey;
@@ -768,7 +769,7 @@
             $("#playLecListDiv").hide();
             $("#playType li").addClass('active').siblings().removeClass('active');
             $("#playType li:eq(0)").addClass('active');
-            changePlayLectureList(86942, pcMobile);
+            changePlayLectureList(userKey, subjectCtgKey, pcMobile);
         }
 
         //동영상 - 유형 - 강좌리스트 - 강좌상세보기
