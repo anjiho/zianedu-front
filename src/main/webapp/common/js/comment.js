@@ -23,7 +23,7 @@ var comment = {
     isChange : "변경하시겠습니까?",
 
     check_item : "항목을 체크하세요.",
-    check_agreement : "약관동의를 체크해 주세요.",
+    check_agreement : "필수 약관동의를 체크해 주세요.",
     check_user_id : "아이디를 다시 확인해 주세요.",
     check_user_pwd : "비밀번호를 다시 확인해 주세요.",
     not_update_item : "변경될 항목이 없습니다.",
