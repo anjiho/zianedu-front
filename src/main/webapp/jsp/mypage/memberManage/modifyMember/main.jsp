@@ -166,7 +166,7 @@
                                          <span class="input_txt">
                                             <input type="text" value="" placeholder="" title="주소 입력" id="postcode" name="postcode" disabled>
                                             <input type="button" value="우편번호 찾기" class="btn_inline"  onclick="execDaumPostcode()"><br>
-                                            <input type="text" value="" id="roadAddress" name="addressRoad" title="주소 입력" class="w60p"><br>
+                                            <input type="text" value="" id="addressRoad" name="addressRoad" title="주소 입력" class="w60p"><br>
                                             <input type="text" value="" id="address" name="address" title="상세주소 입력" class="w60p">
                                             <span id="guide" style="color:#999;display:none"></span>
                                          </span>
@@ -245,7 +245,8 @@
             innerValue("telephoneMobile", result.telephoneMobile);
             getUserRegSerialList("interestCtgKey0"); //준비직렬
             innerValue("postcode", result.zipcode);
-            innerValue("roadAddress", result.addressRoad);
+
+            innerValue("addressRoad", result.addressRoad);
             innerValue("address", result.address);
             getUserRegSerialList("interestCtgKey0");
             innerValue("interestCtgKey0", result.interestCtgKey0);
@@ -262,7 +263,7 @@
             var postcode = getInputTextValue("postcode");
             var address = getInputTextValue("address");//상세주소
             var addressNumber = getInputTextValue("addressNumber");//구주소
-            var roadAddress =  getInputTextValue("roadAddress");
+            var roadAddress =  getInputTextValue("addressRoad");
             var ctgKey =  getSelectboxValue("interestCtgKey0");
             var memberResult  = memberModify(sessionUserInfo.userKey, telephoneMobile, postcode, roadAddress, addressNumber, address, ctgKey);
             if(memberResult.resultCode == 200){
