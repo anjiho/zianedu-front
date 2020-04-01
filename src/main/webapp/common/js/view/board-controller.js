@@ -199,7 +199,7 @@ function getNoticeList(sPage, listLimit, bbsMaterKey, searchType, searchText) {
 
     var infoList = getPageApi("/board/getNoticeList/", bbsMaterKey, data);
     var cnt = infoList.cnt;
-    paging.count(sPage, cnt, '10', '10', comment.blank_list);
+    paging.count(sPage, cnt, '5', '10', comment.blank_list);
     if (infoList.result.length > 0) {
         var listNum = ((cnt-1)+1)-((sPage-1)*10); //리스트 넘버링
         var selList = infoList.result;

@@ -34,8 +34,6 @@
             var a_reservation = getSelectboxValue("a_reservation");
             var academyNumber = getSelectboxValue("academyNumber");
             if(a_reservation != ""){
-                //$("#consultDiv").show();
-                //calendar();
                 var today = getToday();
                 var today2 = getToday2();
 
@@ -202,7 +200,7 @@
     function setTime(val, time) {
         if(val == 0 && time == 0){
             alert("이미 상담예약이 완료되었습니다.");
-            return false;
+            isReloadPage();
         }
         $("#morning li a").each(function () {$(this).removeClass('active');});
         $("#afternoon li a").each(function () {$(this).removeClass('active');});
