@@ -359,7 +359,7 @@
                                 <div class="form_atb">
                                     <h3>예약자정보</h3>
                                     <p><img src="/common/zian/images/common/icon_formChk.png">필수입력</p>
-                                    <table class="disnoneM">
+                                    <table class="csList">
                                         <tbody>
                                         <tr>
                                             <th width="25%"><img src="/common/zian/images/common/icon_formChk.png">예약자</th>

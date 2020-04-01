@@ -206,10 +206,19 @@
 .commentsList ul li div.cmlist a.cDel{padding-left:10px}
 .commentsList ul li div.cmlist a.cUpdate:before{content:'|';position:absolute;left:32px;top:0px}
 
+/* 예약자정보 */
+.csList{width:100%;border-top:2px solid #c1c1c1;margin-top:8px;}
+.csList tbody tr{height:70px}
+.csList tbody tr th{text-align:right;font-size:16px;}
+.csList tbody tr td{text-align:left;padding:0 20px;}
+.csList tbody tr td input{width:100%;height:48px;font-size:14px}
+.csList tbody tr td input[type=checkbox]{height:inherit;width:inherit;display:inline-block;font-size:12px;}
+.csList tbody tr td select{width:32%;height:48px;margin-left:4px;}
+.csList tbody tr td select:nth-child(1){margin-left:0;}
+
 /* 윗글 아랫글 */
 .prNeList{width:100%;}
 .prNeList td{padding:0px 20px;height:50px;font-weight:normal;text-align:left;background:none;}
-
 
 /* 윗글 아랫글 2 */
 .sentence{width:100%;margin-bottom:20px}
@@ -534,6 +543,17 @@
     .lecturList tbody tr td:nth-child(2) a{width:100%;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
     .lecturList tbody tr td:nth-child(3){position:absolute;bottom:80px;left:154px;}
     .lecturList tbody tr td:nth-child(4){position:absolute;bottom:40px;left:154px;}
+
+    /* 예약자정보 */
+    .csList{width:100%;border-top:2px solid #c1c1c1;margin-top:8px;}
+    .csList tbody tr{display:block;height:initial;padding:10px 0}
+    .csList tbody tr th{display:block;width:100%;text-align:left;padding-bottom:4px}
+    .csList tbody tr td{display:block;width:100%;text-align:left;padding:0;}
+    .csList tbody tr td input{width:98%;height:48px;font-size:14px}
+    .csList tbody tr td label{display:inline-block;}
+    .csList tbody tr td input[type=checkbox]{height:inherit;width:auto;;display:inline-block;font-size:12px;}
+    .csList tbody tr td select{width:31%;height:48px;margin-left:1%;}
+    .csList tbody tr td select:nth-child(1){margin-left:0;}
 
 
     /* 댓글 2 */

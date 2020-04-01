@@ -61,8 +61,7 @@ function setOid()
     document.ini.P_OID.value = ""+date_str;
 }
 
-function on_web()
-{
+function on_web() {
     var order_form = document.ini;
     var paymethod = get_radio_value("ckbox2");
     if(paymethod == 'wcard'){
