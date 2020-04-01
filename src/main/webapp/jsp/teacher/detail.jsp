@@ -335,7 +335,7 @@
                                             <a href="javascript:fn_search3('new');" class="btn_m on">검색</a>
                                         </li>
                                         <li class="right">
-                                            학습에 관련된 질문을 올려주세요&nbsp; <a href="javascript:qnaWrite();" class="btn_m w140">글쓰기</a>
+                                            학습에 관련된 질문을 올려주세요&nbsp; <a href="javascript:qnaWrite();" class="btn_m w140" id="qnaWriteBtn">글쓰기</a>
                                         </li>
                                     </ul>
                                 </form>
@@ -544,6 +544,7 @@
         }else{
             $(".referenceWriteBtn").hide();
             $(".referenceModifyBtn").hide();
+            gfn_display("qnaWriteBtn", false);
         }
 
         $("#attachFile1").on("change", addFiles);
