@@ -89,7 +89,6 @@ function getLectureApplyTeacherTypeList(menuCtgKey, subjectMenuKeys, teacherKeys
                     var teacherInfoLIST = cmpList.teacherTypeInfo;
                     if (teacherInfoLIST != null) {
                         for (var j = 0; j < teacherInfoLIST.length; j++) {
-                            console.log(">>" + teacherInfoLIST[j].subjectCtgKey);
                             returnHtml += "<div class=\"teacherRow\">";
                             returnHtml += "<ul class=\"teacherList\">";
                             returnHtml += "<li><span class=\"thumb\"><img src='" + teacherInfoLIST[j].imageTeacherList + "'></span></li>";

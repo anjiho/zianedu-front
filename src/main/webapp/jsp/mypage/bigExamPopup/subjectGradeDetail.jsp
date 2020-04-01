@@ -2,7 +2,7 @@
 <%
     String examUserKey = request.getParameter("examUserKey");
 %>
-<%@include file="/common/jsp/exam_common.jsp" %>
+<%@include file="/common/jsp/exam_popup_common.jsp" %>
 <script>
     $( document ).ready(function() {
         var examUserKey = '<%=examUserKey%>';
@@ -74,11 +74,6 @@
                                     <a href="javascript:goPage('myPage','subjectGradeDetail');"><img src="/common/zian/images/bigimg/img_tabmenu_02_on.png" alt="과목별 성적 상세분석" title="과목별 성적 상세분석" /></a>
                                 </div>
                             </li>
-<%--                            <li class="sts_button" data-index="2">--%>
-<%--                                <div>--%>
-<%--                                    <a href="javascript:goPage('myPage','answerNote');"><img src="/common/zian/images/bigimg/img_tabmenu_03_off.png" alt="오답노트" title="오답노트" /></a>--%>
-<%--                                </div>--%>
-<%--                            </li>--%>
                             <li><img src="/common/zian/images/bigimg/img_tabbg_right.png" alt="right" /></li>
                         </ul>
                     </div>

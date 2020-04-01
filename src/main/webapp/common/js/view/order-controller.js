@@ -200,7 +200,6 @@ function getOrderSheetInfoFromImmediately(userKey, gKeys) {
         priceKeys : gKeys
     };
     var infoList = getApi("/order/getOrderSheetInfoFromImmediately/", userKey, data);
-    console.log(data);
     if(infoList != null){
         var cmpList = infoList.result;
         innerHTML("userPoint", format(cmpList.userPoint));

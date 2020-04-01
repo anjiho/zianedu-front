@@ -281,7 +281,6 @@ function getNoticeList3(sPage, listLimit, bbsMaterKey, searchType, searchText) {
         searchType : searchType,
         searchText : searchText
     };
-    console.log(data);
     var infoList = getPageApi("/board/getNoticeList/", bbsMaterKey, data);
 
     var cnt = infoList.cnt;

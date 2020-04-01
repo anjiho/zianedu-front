@@ -500,18 +500,51 @@ function getWrongNote(examUserKey, isScore, isInterest) {
                     returnHtml2 += "<img src='"+ resultList.questionImage +"'/>";
                     returnHtml2 +=     "<br />";
                     returnHtml2 +=    "<img src='"+ resultList.commentaryImage +"'/>";
+                    if( resultList.review != null){
                     returnHtml2 +=    "<div class='st_review'>";
                     returnHtml2 +=    resultList.review;
                         returnHtml2 += "</div>";
+                    }else{
+                        returnHtml2 +=    "<div class='st_review'>";
+                        returnHtml2 += "</div>";
+                    }
                     returnHtml2 += "<div class='st_total_review_icon'>평가</div>";
                     returnHtml2 +=     "<div class='st_total_review'>";
-                    returnHtml2 +=     "* 난도 <span>: "+ resultList.examLevelName +"</span>";
+                    if(resultList.examLevelName != null){
+                         returnHtml2 +=     "* 난이도 <span>: "+ resultList.examLevelName +"</span>";
+                    }else{
+                        returnHtml2 +=     "* 난이도 <span>:</span>";
+                    }
 
-                    returnHtml2 += "* 정답률 <span>: "+ resultList.scorePercent +" %</span><br />";
-                    returnHtml2 += "* 문제유형 <span>: "+ resultList.stepName +"</span><br />";
-                    returnHtml2 += "* 문제단원 <span>: "+  resultList.unitName +"</span><br />";
-                    returnHtml2 += " * 제출답안 <span>: "+ resultList.userAnswer +"</span><br />";
-                    returnHtml2 += "* 답안선택이유 <span>: "+ resultList.answerComment +"</span>";
+                    if(resultList.scorePercent != null){
+                        returnHtml2 += "* 정답률 <span>: "+ resultList.scorePercent +" %</span><br />";
+                    }else{
+                        returnHtml2 += "* 정답률 <span>:</span><br />";
+                    }
+
+                    if(resultList.stepName != null){
+                        returnHtml2 += "* 문제유형 <span>: "+ resultList.stepName +"</span><br />";
+                    }else{
+                        returnHtml2 += "* 문제유형 <span>:</span><br />";
+                    }
+
+                    if(resultList.unitName != null){
+                        returnHtml2 += "* 문제단원 <span>: "+  resultList.unitName +"</span><br />";
+                    }else{
+                        returnHtml2 += "* 문제단원 <span>: </span><br />";
+                    }
+
+                    if(resultList.userAnswer != null){
+                        returnHtml2 += " * 제출답안 <span>: "+ resultList.userAnswer +"</span><br />";
+                    }else{
+                        returnHtml2 += " * 제출답안 <span>: </span><br />";
+                    }
+
+                    if(resultList.answerComment != null){
+                        returnHtml2 += "* 답안선택이유 <span>: "+ resultList.answerComment +"</span>";
+                    }else{
+                        returnHtml2 += "* 답안선택이유 <span>: </span>";
+                    }
                     returnHtml2 +=  "</div>";
                     returnHtml2 +=  "</li>";
                 }
@@ -550,7 +583,11 @@ function getWrongNote(examUserKey, isScore, isInterest) {
                 returnHtml3 += "<span class='st_wrong'>"+ resultList.userAnswer +"</span>";
                 returnHtml3 += "</td>";
                 returnHtml3 += "<td>"+ resultList.answer +"</td>";
-                returnHtml3 +=  "<td>"+ resultList.examLevelName +"</td>";
+                if(resultList.examLevelName != null){
+                    returnHtml3 +=  "<td>"+ resultList.examLevelName +"</td>";
+                }else{
+                    returnHtml3 +=  "<td>-</td>";
+                }
                 returnHtml3 +=  "</tr>";
             }
             returnHtml3 += "</tbody>";

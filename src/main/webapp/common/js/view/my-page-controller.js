@@ -252,7 +252,6 @@ function getSignUpPackageTypeList(jKey, deviceType) {
         deviceType : deviceType
     };
     var infoList = getApi("/myPage/getSignUpPackageTypeList/", jKey, data);
-    console.log(">> " + infoList);
     if (infoList.result.length > 0) { //과목 리스트
         innerValue("packageCtgKey", infoList.result[0].ctgKey);
         var pcMobile = divisionPcMobile();
@@ -447,7 +446,6 @@ function requestVideoStartStop(jLecKey, pauseDay, requestType) {
         pauseDay: pauseDay,
         requestType: requestType
     };
-    console.log(data);
     var result = postApi("/myPage/requestVideoStartStop", data);
     return result;
 }
@@ -1052,7 +1050,7 @@ function getUserFreeExamResultList2(userKey, examType, sPage, listLimit, groupCt
                     function(data) {return cmpList.goodsName;},
                     function(data) {return "~"+cmpList.acceptStartDate+"<br>~"+cmpList.acceptEndDate;},
                     function(data) {return "<a href='javascript:goBigExamPopup("+ cmpList.examUserKey +");' class='blue small'>성적보기</a>";},
-                    function(data) {return "<a href='javascript:goBigExamPopup("+ cmpList.examUserKey +");' class='black small'>오답노트</a>";},
+                    function(data) {return "<a href='javascript:goAnswersPopup("+ cmpList.examUserKey +");' class='black small'>오답노트</a>";},
                     function(data) {return '<a href="'+ cmpList.printQuestionFileUrl +'" class="iconFile" target="_blank" title="새창열림">문제지</a><a href="'+ cmpList.printCommentaryFileUrl +'" class="iconFile" target="_blank" title="새창열림">해설지</a>';}
                 ];
                 dwr.util.addRows('dataList4', [0], cellData, {escapeHtml: false});
