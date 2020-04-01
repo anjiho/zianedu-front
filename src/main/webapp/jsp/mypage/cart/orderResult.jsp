@@ -576,14 +576,17 @@
             }
         }
         if(cartKeys == "" && goodsInfo == ""){//바로구매
-            //var gKeys = toStrFileName(gKeys);
             getOrderSheetInfoFromImmediately(userKey, gKeys);
         }else if(gKeys == "" && goodsInfo == ""){
-            //var cartKeys = toStrFileName(cartNum);
             getOrderSheetInfoFromPay(userKey, cartKeys);
         }else{//패키지
-            //var goodsInfo = goodsInfo;
             getOrderSheetInfoFromImmediatelyAtBasicPackage(userKey, goodsInfo, 1);
+        }
+
+        if(resultData.orderInfoType != 3){
+            gfn_display("deliveryInfo", false);
+        }else{
+            gfn_display("deliveryInfo", true);
         }
 
         innerValue("allProductPrice", resultData.allProductPrice);

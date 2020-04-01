@@ -214,11 +214,9 @@ function getZianPassSignUpList(userKey) {
 //지안패스 > 유형 불러오기
 function getSignUpZianPassTypeList(jKey, deviceType) {
     if (jKey == null || jKey == undefined) return;
-
     var data = {
         deviceType : deviceType
     };
-
     var infoList = getApi("/myPage/getSignUpZianPassTypeList/", jKey, data);
     if (infoList.result.length > 0) { //과목 리스트
         innerValue("zianPassCtgKey", infoList.result[0].ctgKey);

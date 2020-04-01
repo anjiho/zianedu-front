@@ -163,6 +163,7 @@
         }
         innerValue("allProductPrice", resultData.allProductPrice);
         innerHTML("allPrice", format(resultData.allProductPrice));
+
         innerHTML("orderName1", resultData.postName);
         innerHTML("telephone1", resultData.allTel);
         innerHTML("telephoneMobile1", resultData.allPhone);
