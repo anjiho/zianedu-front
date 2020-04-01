@@ -29,7 +29,7 @@
 
         if(val == "new") sPage = "1";
         var bbsmasterKey =  getBbsMasterKey();
-        getNoticeList(sPage, 5, bbsmasterKey, searchType, searchText);
+        getNoticeList(sPage, 10, bbsmasterKey, searchType, searchText);
     }
 </script>
 <style>
