@@ -525,6 +525,7 @@
                         userKey: userKey,
                         price: savePayInfo.price,
                         pricePay: savePayInfo.pricePay,
+                        payType :payType,
                         point: point,
                         discountPoint: discountPoint,
                         deliveryPrice: deliveryPrice,
