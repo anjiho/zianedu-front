@@ -196,7 +196,7 @@ function getNoticeList(sPage, listLimit, bbsMaterKey, searchType, searchText) {
         searchType : searchType,
         searchText : searchText
     };
-
+    alert(bbsMaterKey);
     var infoList = getPageApi("/board/getNoticeList/", bbsMaterKey, data);
     var cnt = infoList.cnt;
     paging.count(sPage, cnt, '5', '10', comment.blank_list);
