@@ -752,6 +752,9 @@
         //동영상 - 유형 - 강좌명 리스트
         function getPlaySubjectList(stepCtgKey) {
             $("#typeLectureList li").remove();
+            $("#playType li").click(function () {
+                $(this).addClass('active').siblings().removeClass('active');
+            });
             var subjectCtgKey = getInputTextValue("subjectCtgKey");
             var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
             var userKey = sessionUserInfo.userKey;
