@@ -513,6 +513,11 @@
             var payStatus = 2;
             if('<%=payMethod%>' == 'VBank') payStatus = 0;
 
+            var payType = 0;
+            if ('<%=acctBankCode%>' != '') {
+                payType = 19;
+            }
+
             if('<%=resultCode%>' == '0000'){
                 if(InipayInfoResult.resultCode == 200) {
                     var savePaymentInfoData = {
