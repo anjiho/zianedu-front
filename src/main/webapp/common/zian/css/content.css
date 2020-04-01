@@ -1107,10 +1107,12 @@
 /*온라인서점 > 온라인서점안내 및 도서후기*/
 .shop .divGroup {margin-bottom: 20px}
 .shop .mainBoard .stitle {margin: 0 20px;padding: 0 0px;height: 60px;font-size: 20px;font-weight: bold;color: #000;line-height: 60px;text-align: center; border: 0px none;border-bottom: 1px #e1e1e1 solid;}
-.shop .mainBoard .list ul {padding: 0 20px;}
-.shop .mainBoard .list ul li {display: block;border-bottom: 1px #e1e1e1 solid;}
+.shop .mainBoard .list ul {display:block;padding: 0 20px;}
+.shop .mainBoard .list ul li {display:block;border-bottom: 1px #e1e1e1 solid;}
 .shop .mainBoard .list ul li:last-child {border-bottom:none;}
-.shop .mainBoard .list ul li a {position: relative;padding-right: 70px;height: 50px;font-size: 13px;line-height: 50px;}
+.shop .mainBoard .list ul li a {display:block;position:relative;padding-right:70px;font-size:13px;height:50px;line-height:50px;text-align:left;}
+.shop .mainBoard .list ul li a p{width:90%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.shop .mainBoard .list ul li a span.date{position:absolute;right: 0;top:0;}
 .shop .mainBoard .list .btn_more {display: block; position: absolute;bottom: 0;right: 30px;padding-right: 17px;font-size: 13px;line-height: 40px;background: url(../images/common/icon_more.png) no-repeat center right;}
 /*온라인서점 > 고객센터*/
 .shop  .mainCustomer ul li b {color: #000;}
