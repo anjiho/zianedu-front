@@ -196,7 +196,7 @@ function getNoticeList(sPage, listLimit, bbsMaterKey, searchType, searchText) {
         searchType : searchType,
         searchText : searchText
     };
-    alert(bbsMaterKey);
+
     var infoList = getPageApi("/board/getNoticeList/", bbsMaterKey, data);
     var cnt = infoList.cnt;
     paging.count(sPage, cnt, '5', '10', comment.blank_list);
@@ -206,26 +206,14 @@ function getNoticeList(sPage, listLimit, bbsMaterKey, searchType, searchText) {
         for(var i=0; i < selList.length; i++){
             var cmpList = selList[i];
             if (cmpList != undefined) {
-                var cellData = [];
-                if (cmpList.isNotice == 1) {
-                    cellData = [
-                        function(data) {return "<img src=\"/common/zian/images/common/icon_notice.png\" alt=\"\">"},
-                        function(data) {return "<a href='javascript:void(0);' onclick='goDetailNotice("+ cmpList.bbsKey +");'>" + gfn_substr(cmpList.title, 0, 40) + "</a>";},
-                        function(data) {return cmpList.writerName;},
-                        function(data) {return cmpList.createDate;},
-                        function(data) {return cmpList.readCount;},
-                        function(data) {return cmpList.isNotice == 1 ?  "1"  : "0";}
-                    ];
-                } else {
-                    cellData = [
-                        function(data) {return cmpList.isNotice == 1 ?  "<img src=\"/common/zian/images/common/icon_notice.png\" alt=\"\">"  : listNum--;},
-                        function(data) {return "<a href='javascript:void(0);' onclick='goDetailNotice("+ cmpList.bbsKey +");'>" + gfn_substr(cmpList.title, 0, 40) + "</a>";},
-                        function(data) {return cmpList.writerName;},
-                        function(data) {return cmpList.createDate;},
-                        function(data) {return cmpList.readCount;},
-                        function(data) {return cmpList.isNotice == 1 ?  "1"  : "0";}
-                    ];
-                }
+                var cellData = [
+                    function(data) {return cmpList.isNotice == 1 ?  "<img src=\"/common/zian/images/common/icon_notice.png\" alt=\"\">"  : listNum--;},
+                    function(data) {return "<a href='javascript:void(0);' onclick='goDetailNotice("+ cmpList.bbsKey +");'>" + gfn_substr(cmpList.title, 0, 40) + "</a>";},
+                    function(data) {return cmpList.writerName;},
+                    function(data) {return cmpList.createDate;},
+                    function(data) {return cmpList.readCount;},
+                    function(data) {return cmpList.isNotice == 1 ?  "1"  : "0";}
+                ];
                 dwr.util.addRows("dataList", [0], cellData, {escapeHtml: false});
                 $('#dataList tr').each(function(){
                     var tr = $(this);
