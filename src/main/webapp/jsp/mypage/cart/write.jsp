@@ -188,7 +188,8 @@
             postCode : zipCode,
             add1 : address,
             add2 : detailAddr,
-            productNames : productNames
+            productNames : productNames,
+            orderInfoType : orderInfoType
         };
         sessionStorage.setItem("resultData", JSON.stringify(resultData));
         $("#id_frm_orderPay").attr( "action", "/myPage?page_gbn=pay");
