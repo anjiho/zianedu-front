@@ -41,7 +41,7 @@
             }
             //봄문 내용 파징작업 끝
 
-            innerHTML("content", contents);
+            innerHTML("contentInfo", contents);
             innerHTML("indate", detailInfo.indate);
             innerHTML("userName", detailInfo.userName);
             innerHTML("userId", detailInfo.userId);
@@ -133,26 +133,25 @@
                             <a href="javascript:goPage('bookStore','modifyErrata')" class="btn_m w120" id="modifyBtn">수정</a>
                         </div>
                         <div class="tableBox">
-                            <table class="view">
+                            <table class="tBoard acceptanceView">
                                 <caption></caption>
                                 <colgroup>
                                     <col class="w110">
                                     <col>
-                                    <col width="300px">
-                                    <col class="w110">
+                                    <col class="w140">
                                 </colgroup>
                                 <thead>
                                 <tr>
                                     <th colspan="2" id="title"></th>
-                                    <th colspan="2" style="text-align:right" id="indate"></th>
+                                    <th id="indate"></th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <tr>
-                                    <td colspan="4">작성자 : <span id="userName"></span>  (<span id="userId"></span>)  |   조회수 : <span id="readCount"></span></td>
+                                    <td colspan="3">작성자 : <span id="userName"></span>  (<span id="userId"></span>)  |   조회수 : <span id="readCount"></span></td>
                                 </tr>
                                 <tr>
-                                    <td colspan="4">
+                                    <td colspan="3">
                                         <div class="fileWrap">
                                             <span class="label">첨부파일 : </span>
                                             <ul class="fileList" id="fileList">
@@ -163,38 +162,43 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td colspan="4" class="tdEditorContent">
-                                        <div class="" id="content">
-                                        </div>
+                                    <td colspan="3" class="tdEditorContent" id="contentInfo">
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td colspan="4" >
-                                        <div class="btnArea right">
-                                            <a href="javascript:goPageNoSubmit('bookStore','errataList')" class="btn_m w120">목록으로</a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="4">
-                                        <div class="comment">
-                                            <div class="cm_write">
-                                                <form id="" name="">
-                                                    <fieldset>
-                                                        <legend>댓글작성</legend>
-                                                        <div class="inner">
-                                                            <p class="cm_title">댓글</p>
-                                                            <div class="write">
-                                                                <textarea id="commentContent" placeholder=""></textarea>
-                                                            </div>
-                                                            <a href="javascript:commentSave();" class="single">댓글</a>
-                                                        </div>
-                                                    </fieldset>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
+<%--                                <tr>--%>
+<%--                                    <td colspan="4">--%>
+<%--                                        <div class="comment">--%>
+<%--                                            <div class="cm_write">--%>
+<%--                                                <form id="" name="">--%>
+<%--                                                    <fieldset>--%>
+<%--                                                        <legend>댓글작성</legend>--%>
+<%--                                                        <div class="inner">--%>
+<%--                                                            <p class="cm_title">댓글</p>--%>
+<%--                                                            <div class="write">--%>
+<%--                                                                <textarea id="commentContent" placeholder=""></textarea>--%>
+<%--                                                            </div>--%>
+<%--                                                            <a href="javascript:commentSave();" class="single">댓글</a>--%>
+<%--                                                        </div>--%>
+<%--                                                    </fieldset>--%>
+<%--                                                </form>--%>
+<%--                                            </div>--%>
+<%--                                        </div>--%>
+<%--                                    </td>--%>
+<%--                                </tr>--%>
+<%--                                <tr id="prev">--%>
+<%--                                    <td class="center">이전글 ▲</td>--%>
+<%--                                    <td colspan="2" class="left"><a href="javascript:goPrev();"><span id="prevTitle"></span></a></td>--%>
+<%--                                    <td class="center"><span id="prevCreateDate"></span></td>--%>
+<%--                                </tr>--%>
+<%--                                <tr>--%>
+<%--                                    <td class="center">다음글 ▼</td>--%>
+<%--                                    <td colspan="2" class="left"><a href="javascript:goNext();"><span id="nextTitle"></span></a></td>--%>
+<%--                                    <td class="center"><span id="nextCreateDate"></span></td>--%>
+<%--                                </tr>--%>
+                                </tbody>
+                            </table>
+                            <table class="sentence">
+                                <tbody>
                                 <tr id="prev">
                                     <td class="center">이전글 ▲</td>
                                     <td colspan="2" class="left"><a href="javascript:goPrev();"><span id="prevTitle"></span></a></td>
@@ -207,6 +211,11 @@
                                 </tr>
                                 </tbody>
                             </table>
+                            <div class="btnArea divGroup noMargin">
+                                <div class="right">
+                                    <a href="javascript:goPageNoSubmit('bookStore','errataList')" class="btn_m w120">목록으로</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

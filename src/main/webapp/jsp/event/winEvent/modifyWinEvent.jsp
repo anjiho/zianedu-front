@@ -15,6 +15,9 @@
                 maxHeight: null,
                 focus: true
             });
+        } else {
+            $('#content').attr("cols", 40);
+            $('#content').attr("rows", 15);
         }
         var result = getBoardDetailInfo(11046, bbsKey);
         if(result != null){

@@ -12,12 +12,19 @@
                 kiplayer.sliderSlick($(this));
             });
             $(".slick-dots").hide();
-            $('#writeContent').summernote({
-                height: 300,
-                minHeight: null,
-                maxHeight: null,
-                focus: true
-            });
+
+            var pcMobile = divisionPcMobile();
+            if(pcMobile == 'PC') {
+                $('#writeContent').summernote({
+                    height: 300,
+                    minHeight: null,
+                    maxHeight: null,
+                    focus: true
+                });
+            } else {
+                $('#content').attr("cols", 40);
+                $('#content').attr("rows", 15);
+            }
             $("#attachFile").on("change", addFiles);
             var result = getBoardDetailInfo(11051, bbsKey);
             if(result != null){
