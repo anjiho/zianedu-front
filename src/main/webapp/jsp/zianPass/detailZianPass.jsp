@@ -5,6 +5,7 @@
 %>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
+    <input type="hidden" id="userKey" value="">
     <div id="wrap">
         <%@include file="/common/jsp/leftMenu.jsp" %>
         <!--상단-->
@@ -34,3 +35,12 @@
 </form>
 </body>
 </html>
+<script>
+    if (sessionUserInfo == null) {
+        //alert("로그인이 필요합니다.");
+        //goLoginPage();
+        innerValue("userKey", 100);
+    } else {
+        innerValue("userKey", sessionUserInfo.userKey);
+    }
+</script>
