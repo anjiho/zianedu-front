@@ -21,7 +21,6 @@
     <!--상단-->
     <div id="header">
         <div class="inner">
-            <h1><input type="button" value="입력" onclick="javascript:test1234();"></h1>
             <h1><a href="#"><img src="/common/zian/images/common/logo.png" alt="지안에듀"></a></h1>
             <!--최상단메뉴-->
             <div id="topNav">
@@ -425,30 +424,5 @@
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         if(sessionUserInfo != null) goLogout();
         else goLoginPage();
-    }
-
-    function test1234() {
-        var data = {
-            USER_ID : "test1234566",
-            USER_KEY : "123898",
-            NAME : "안지호",
-            PWD : "c7684301-+",
-            GENDER : "0",
-            EMAIL :  "anjo0070@naver.com",
-            TELEPHONE_MOBILE : "010-6258-5228",
-            RECV_SMS : "1",
-            RECV_EMAIL : "1",
-            AUTHORITY : "10",
-            ZIPCODE : "12345",
-            ADDRESS_ROAD : "경기 성남시 수정구 탄리로 81",
-            ADDRESS : "302"
-        };
-        var resultData = null;
-        $.post("http://118.217.181.175:8088/login/memberInsert.html", data, function (response) {
-            resultData = response;
-            console.log(resultData);
-        }).fail(function() {
-            alert(comment.error);
-        });
     }
 </script>
