@@ -13,7 +13,7 @@
         <!--//상단-->
         <!--본문-->
 
-            <iframe src="<%=targetUrl%>" style="border:none; width: 100%; height: 1000px" frameborder="0" ></iframe>
+            <iframe src="<%=targetUrl%>" style="border:none; width: 100%; height: 1000px" frameborder="0" id="frame"></iframe>
 
 <%--        <div id="container">--%>
 <%--            <div class="inner">--%>
@@ -35,12 +35,3 @@
 </form>
 </body>
 </html>
-<script>
-    if (sessionUserInfo == null) {
-        //alert("로그인이 필요합니다.");
-        //goLoginPage();
-        innerValue("userKey", 100);
-    } else {
-        innerValue("userKey", sessionUserInfo.userKey);
-    }
-</script>
