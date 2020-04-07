@@ -369,7 +369,7 @@
                             <ul class="searchArea">
                                 <li class="right">
                                     <a href="javascript:getModifyDetailqna();" class="btn_m w140 qnaWriteBtn" id="modifyBtn">수정</a>
-                                    <a href="javascript:goReplayWrite();" class="btn_m w140 qnaWriteBtn">답변등록</a>
+                                    <a href="javascript:goReplayWrite();" class="btn_m w140 qnaWriteBtn" id="replyBtn" style="display: none">답변등록</a>
                                 </li>
                             </ul>
                             <div class="tableBox">
@@ -763,6 +763,7 @@
         var result = saveBoardComment(bbsKey, userKey, commentContent);
         if(result.resultCode == 200){
             alert("댓글이 등록 되었습니다.");
+            isReloadPage(true);
         }
     }
 
@@ -851,16 +852,27 @@
             var commentInfo = detailInfo.result.commentInfo;
 
             var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-            if(referenceInfo.writeUserKey == sessionUserInfo.userKey){
-                $("#modifyBtn").show();
-            }else{
-                $("#modifyBtn").hide();
-            }
+            if (sessionUserInfo == null) {
+                gfn_display("modifyBtn", false);
+                gfn_display("iconLock", false);
+                //gfn_display("replyBtn", false);
 
-            if(referenceInfo.pwd == 1){
-                $("#iconLock").show();
-            }else{
-                $("#iconLock").hide();
+            } else {
+                if (sessionUserInfo.authority == 0 || sessionUserInfo.authority == 5) {
+                    gfn_display("replyBtn", true);
+                }
+
+                if(referenceInfo.writeUserKey == sessionUserInfo.userKey){
+                    $("#modifyBtn").show();
+                }else{
+                    $("#modifyBtn").hide();
+                }
+
+                if(referenceInfo.pwd == 1){
+                    $("#iconLock").show();
+                }else{
+                    $("#iconLock").hide();
+                }
             }
 
             innerHTML("qnaTitle",referenceInfo.title);
@@ -1079,6 +1091,7 @@
             }
             if(result.resultCode == 200){
                 alert("성공적으로 등록 완료되었습니다");
+                isReloadPage(true);
             }
         }else{
             var data = new FormData();
@@ -1108,6 +1121,7 @@
                         }
                         if(result.resultCode == 200){
                             alert("성공적으로 등록 완료되었습니다");
+                            isReloadPage(true);
                         }
                     }
                 }

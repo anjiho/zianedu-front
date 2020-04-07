@@ -161,9 +161,9 @@ function getTeacherLearningQna(teacherKey, sPage, listLimit, searchType, searchT
                             returnHtml += '<td><a href="javascript:void(0);"  class="subject ' + lock + '" onclick="goDetailqna('+  cmpList.bbsKey +');">' + gfn_substr(cmpList.title, 0, 40) + '</a></td>';
                         }else{
                             if(sessionUserInfo.authority != 0) {
-                                returnHtml += '<td><a href="javascript:goDetailqna(0);" class="subject ' + lock + ' ">비밀글입니다</a></td>';
+                                returnHtml += '<td><a href="javascript:goDetailqna(0);" class="subject ' + lock + ' ">' + gfn_substr(cmpList.title, 0, 40) + '</a></td>';
                             }else{
-                                returnHtml += '<td><a href="javascript:void(0);" class="subject ' + lock + '" onclick="goDetailqna('+  cmpList.bbsKey +');">' + gfn_substr('비밀글입니다 ', 0, 40) + '</a></td>';
+                                returnHtml += '<td><a href="javascript:void(0);" class="subject ' + lock + '" onclick="goDetailqna('+  cmpList.bbsKey +');">' + gfn_substr(cmpList.title, 0, 40) + '</a></td>';
                             }
 
                         }
@@ -172,7 +172,7 @@ function getTeacherLearningQna(teacherKey, sPage, listLimit, searchType, searchT
                     }
                 }else{
                     if (cmpList.pwd == 1){
-                        returnHtml += '<td><a href="javascript:void(0);"  class="subject ' + lock + '" onclick="goDetailqna('+  cmpList.bbsKey +');">' + gfn_substr(cmpList.title, 0, 40) + '</a></td>';
+                        returnHtml += '<td><a href="javascript:void(0);"  class="subject ' + lock + '" onclick="goDetailqna(0);">' + gfn_substr(cmpList.title, 0, 40) + '</a></td>';
                     }else{
                         returnHtml += '<td><a href="javascript:void(0);"  class="subject" onclick="goDetailqna('+  cmpList.bbsKey +');">' + gfn_substr(cmpList.title, 0, 40) + '</a></td>';
                     }
