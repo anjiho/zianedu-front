@@ -962,8 +962,8 @@
     function goAgree() {
         var chk0 = isCheckedCheckbox("joinAgreeChk0", "ID");
         var chk1 = isCheckedCheckbox("joinAgreeChk1", "ID");
-        var chk2 = isCheckedCheckbox("joinAgreeChk2", "ID");
-        if(chk0 == false || chk1 == false || chk2 == false){
+        //var chk2 = isCheckedCheckbox("joinAgreeChk2", "ID");
+        if(chk0 == false || chk1 == false){
             alert(comment.check_agreement);
             return false;
         }else{

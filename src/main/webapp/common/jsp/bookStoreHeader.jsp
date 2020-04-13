@@ -84,8 +84,8 @@
     <!--상단-->
     <div id="header">
         <div class="inner">
-            <h1 class="logo_pc"><a href="#"><img src="/common/zian/images/common/logo04.png" alt="지안에듀 온라인서점"></a></h1>
-            <h1 class="logo_mb"><a href="#"><img src="/common/zian/images/ex/logo07.png" alt="지안에듀 온라인서점"></a></h1>
+            <h1 class="logo_pc"><a href="javascript:goBookStore();"><img src="/common/zian/images/common/logo04.png" alt="지안에듀 온라인서점"></a></h1>
+            <h1 class="logo_mb"><a href="javascript:goBookStore();"><img src="/common/zian/images/ex/logo07.png" alt="지안에듀 온라인서점"></a></h1>
             <!--최상단메뉴-->
             <div id="topNav">
                 <ul id="topNav_login" style="display: none;">
@@ -332,5 +332,10 @@
     function goAlgisa() {
         window.open("http://www.algisa.com/public/main.html", "_blank");
         return false;
+    }
+
+    function goBookStore() {
+        sessionStorage.setItem("leftMenu", 'bookStore');
+        goPageNoSubmit('bookStore','main');
     }
 </script>

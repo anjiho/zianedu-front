@@ -81,7 +81,7 @@
                     innerValue("prevNum", prevNextInfo.prevBbsKey);
                 }
 
-                if(prevNextInfo.prevBbsKey == 0){
+                if(prevNextInfo.nextBbsKey == 0){
                     innerHTML("nextTitle", "");
                     innerHTML("nextCreateDate", "");
                     innerValue("nextNum", "");

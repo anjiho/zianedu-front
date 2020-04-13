@@ -7,6 +7,7 @@
 </script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
+    <input type="hidden" id="bbsKey" name="bbsKey">
 <div id="wrap" class="accounting">
     <%@include file="/common/jsp/leftMenu.jsp" %>
     <!--상단-->

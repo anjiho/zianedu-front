@@ -665,7 +665,7 @@
     .shop .shopBoard .lectureListM .bottom ul li.txt14 {font-size: 13px;line-height:20px;}
 
     .shop .mainBoard .list ul {}
-    .shop .mainBoard .list ul li a {padding-right: 2%;width: 90%;text-overflow:ellipsis;white-space:nowrap;word-wrap:normal;}
+    /*.shop .mainBoard .list ul li a {padding-right: 2%;width: 90%;text-overflow:ellipsis;white-space:nowrap;word-wrap:normal;}*/
 
 
     .online  {width:92%;margin:20px 2%;padding:20px 2%}
@@ -998,7 +998,7 @@
 
 
     /*온라인서점*/
-    .shop .mainBoard .list ul li a {padding-right: 70px; width: 100%;display: inline-block;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;}
+    /*.shop .mainBoard .list ul li a {padding-right: 70px; width: 100%;display: inline-block;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;}*/
 
 
 

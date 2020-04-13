@@ -5,6 +5,7 @@
 %>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
+    <input type="hidden" id="userKey" value="">
     <div id="wrap">
         <%@include file="/common/jsp/leftMenu.jsp" %>
         <!--상단-->
@@ -12,7 +13,7 @@
         <!--//상단-->
         <!--본문-->
 
-            <iframe src="<%=targetUrl%>" style="border:none; width: 100%; height: 1000px" frameborder="0" ></iframe>
+            <iframe src="<%=targetUrl%>" style="border:none; width: 100%; height: 1000px" frameborder="0" id="frame"></iframe>
 
 <%--        <div id="container">--%>
 <%--            <div class="inner">--%>

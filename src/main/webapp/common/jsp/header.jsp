@@ -291,7 +291,7 @@
                                     <li><a href="javascript:goAcademyMenu('myLecRoom', 'public');">내강의실</a></li>
                                     <li><a href="javascript:goAcademyMenu('teacher', 'public');">교수소개</a></li>
                                     <li><a href="javascript:goAcademyMenu('lecApply', 'public');">수강신청</a></li>
-                                    <li><a href="javascript:goAcademyMenu('year', 'public');">1:1관리반</a></li>
+                                    <li><a href="javascript:goAcademyMenu('year', 'public');">연간관리반</a></li>
                                     <li><a href="javascript:goAcademyMenu('free', 'public');">무료강좌</a></li>
                                     <li><a href="javascript:goAcademyMenu('passReview', 'public');">합격수기</a></li>
                                     <li><a href="javascript:goAcademyMenu('customerCenter', 'public');">고객센터</a></li>
@@ -323,7 +323,7 @@
                                     <li><a href="javascript:goAcademyMenu('myLecRoom', 'tech');">내강의실</a></li>
                                     <li><a href="javascript:goAcademyMenu('teacher', 'tech');">교수소개</a></li>
                                     <li><a href="javascript:goAcademyMenu('lecApply', 'tech');">수강신청</a></li>
-                                    <li><a href="javascript:goAcademyMenu('main', 'tech');">연간관리반</a></li>
+                                    <li><a href="javascript:goAcademyMenu('year', 'tech');">연간관리반</a></li>
                                     <li><a href="javascript:goAcademyMenu('free', 'tech');">무료강좌</a></li>
                                     <li><a href="javascript:goAcademyMenu('main', 'tech');">합격수기</a></li>
                                     <li><a href="javascript:goAcademyMenu('customerCenter', 'tech');">고객센터</a></li>
@@ -355,7 +355,7 @@
                                     <li><a href="javascript:goAcademyMenu('myLecRoom', 'post');">내강의실</a></li>
                                     <li><a href="javascript:goAcademyMenu('teacher', 'post');">교수소개</a></li>
                                     <li><a href="javascript:goAcademyMenu('lecApply', 'post');">수강신청</a></li>
-                                    <li><a href="javascript:goAcademyMenu('year', 'post');">1:1관리반</a></li>
+                                    <li><a href="javascript:goAcademyMenu('year', 'post');">연간관리반</a></li>
                                     <li><a href="javascript:goAcademyMenu('free', 'post');">무료강좌</a></li>
                                     <li><a href="javascript:goAcademyMenu('passReview', 'post');">합격수기</a></li>
                                     <li><a href="javascript:goAcademyMenu('customerCenter', 'post');">고객센터</a></li>

@@ -252,7 +252,7 @@ $( document ).ready(function() {
     getEventMiniBanner("", 6287, 5);//이벤트 배너
     getBannerNoticeList2("examNotice", 1, 4, 10030);//시험공고 리스트
     getBannerNoticeList2("openInfo", 1, 4, 10026);//개강안내 리스트
-    getBannerNoticeList("lecInfo", 1, 4, 10033);//수강후기 리스트
+    getBannerNoticeList("lecInfo", 1, 4, 10034);//수강후기 리스트
     getBannerNoticeList("passInfo", 1, 4, 10032);//합격후기 리스트
     getBookList("productList1", 844, 1, 10);//온라인 서점 배너
     getCommunityList(830, 1, 2);//중앙 소 배너

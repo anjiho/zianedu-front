@@ -2,6 +2,12 @@
 <%@include file="/common/jsp/common.jsp" %>
 <script>
     $( document ).ready(function() {
+        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        // if (sessionUserInfo == null) {
+        //     alert("로그인이 필요합니다.");
+        //     goLoginPage();
+        // }
+
         var leftMenuInfo = sessionStorage.getItem('leftMenu');//직렬 구분
         var prevLeftMenu = sessionStorage.getItem('prevLeftMenu');//직렬 구분
         if(leftMenuInfo == "bigExam" || leftMenuInfo == "bookStore"){

@@ -172,6 +172,11 @@
                                     </div>
                                 </td>
                             </tr>
+
+                            </tbody>
+                        </table>
+                        <table class="sentence">
+                            <tbody>
                             <tr id="prev">
                                 <td class="center">이전글 ▲</td>
                                 <td class="left"><a href="javascript:goPrev();"><span id="prevTitle"></span></a></td>
