@@ -53,63 +53,123 @@
 
             <!-- 지안에듀 합격자 STORY -->
             <div class="mainStory">
-                <div class="inner">
-                    <div class="titleBar">
-                        <h5>지안에듀 합격자 STORY</h5>
-                        <a href="javascript:goPageNoSubmit('review','passList');" class="btn_more">전체보기</a>
-                    </div>
-                    <div class="mainStoryList">
-                        <div class="item"><div>
-                            <span class="name">안성진</span>
-                            <b>2018 지방직 합격</b>
-                            <span class="star count4">별점</span>
-                            <span class="desc">
-								공대를 재학하며 뒤늦게 공무원 시험에 뛰어들었기 때문에 지안공무원학원 기출문제교재 먼저구입하고 무작정시작했습니다. 기출문제를 거의 다 외웠습니다. 기본이론강의, 기출문제풀이, 빅모의고사
+            <div class="inner">
+                <div class="titleBar">
+                    <h5>지안에듀 합격자 STORY</h5>
+                    <a href="javascript:goPageNoSubmit('review','passList');" class="btn_more">전체보기</a>
+                </div>
+                <div class="mainStoryList">
+                    <div class="item"><div>
+                        <span class="name">정영한</span>
+                        <b>2019 지방직 건축직9급 합격</b>
+                        <span class="star count4">별점</span>
+                        <span class="desc">
+								김창훈 교수님 강의는 정말 추천드립니다. 예전에 기사공부하던 시절 이해하지 않고 무작정 공부했던 구조 내용들이 교수님 강의 듣고 하나하나 정리되어 가는게 너무나 신기했습니다. 즉 어렵기도 어렵고 필수적인 내용들을 아주 쉽게 설명해주십니다. 앞서 언급했듯 전 비전공자입니다. 또한 이번에 김창훈 교수님이 만드신 10개년 구조기출문제 또한 결정적이었습니다.
 							</span>
-                            <span class="btnArea">
-								<a href="#">9급 지방직</a>
-								<a href="#">365 지안패스</a>
+                        <span class="btnArea">
+								<a href="#">지방직 건축직9급</a>
+								<a href="#"></a>
 							</span>
-                        </div></div>
-                        <div class="item"><div>
-                            <span class="name">신예은</span>
-                            <b>2018 임업직 합격</b>
-                            <span class="star count5">별점</span>
-                            <span class="desc">
-								항상 합격수기를 보면서 나도 빨리 합격하고 싶은 생각을 하였습니다. 정말 기쁩니다. 자격증없이 시작했기 때문에 먼저 자격증을 땄습니다. 기출문제를 풀고 주간 빅모의고사를 통해 약점을 보완하 …
+                    </div></div>
+                    <div class="item"><div>
+                        <span class="name">김성규</span>
+                        <b>2019 군무원 전산직7급 합격</b>
+                        <span class="star count5">별점</span>
+                        <span class="desc">
+								조현준 교수님이 제공하는 기본이론, 심화이론, 문제풀이, 모의고사 전과정으로 진행했습니다. 정보보호론은 이론이 계속 바뀌는데 그런 바뀌는 부분들 까지도 놓치지 않고 교재에 잘 정리해주십니다. 조현준 교수님이 잘 가르쳐 주셔서 그런진 몰라도 학원내에 공무원이나 군무원 합격하신 분들은 모두 정보보호론은 평균적으로 90점 정도로 고득점 하셨습니다.
 							</span>
-                            <span class="btnArea">
-								<a href="#">9급 임업직</a>
-								<a href="#">빅모의고사</a>
+                        <span class="btnArea">
+								<a href="#">군무원 전산직7급</a>
+								<a href="#"></a>
 							</span>
-                        </div></div>
-                        <div class="item"><div>
-                            <span class="name">이재권</span>
-                            <b>2018 토목직 합격</b>
-                            <span class="star count5">별점</span>
-                            <span class="desc">
-								꿈꾸던 합격수기를 쓰게되어 더욱 새롭네요. 최종적인 단어로 요약하자면 ‘꾸준함 ! 실력보단 꾸준함이 중요하고 지안공무원에서 꾸준하게 공부할 수 있도록 도와주셔서 새로운 인생을 맞이하게 되었습니다. 화이팅 하세요
+                    </div></div>
+                    <div class="item"><div>
+                        <span class="name">이정민</span>
+                        <b>2019 지방직 농업직9급 합격</b>
+                        <span class="star count5">별점</span>
+                        <span class="desc">
+								지안에듀 김동이 교수님이 농업직에서 제일 유명하고 꼼꼼히 잘 가르쳐주신다고 해서 2018년, 2019년 모두 김동이 교수님 강의를 들었습니다. 국가직 시험에서 나왔던 부분은 지방직에서도 나올 확률이 크다고 해서 국가직에 나왔던 부분들은 김동이 교수님 해설지를 참고해서 더 완벽히 보고 가려고 했습니다. 이렇게 해서 재배학 100점을 받을 수 있었습니다. 김동이 교수님의 도움을 많이 받은 것 같습니다! 농업직 교수님 강추!!
 							</span>
-                            <span class="btnArea">
-								<a href="#">9급 토목직</a>
-								<a href="#">365 지안패스</a>
+                        <span class="btnArea">
+								<a href="#">지방직 농업직9급</a>
+								<a href="#"></a>
 							</span>
-                        </div></div>
-                        <div class="item"><div>
-                            <span class="name">안성진</span>
-                            <b>2018 지방직 합격</b>
-                            <span class="star count4">별점</span>
-                            <span class="desc">
-								공대를 재학하며 뒤늦게 공무원 시험에 뛰어들었기 때문에 지안공무원학원 기출문제교재 먼저구입하고 무작정시작했습니다. 기출문제를 거의 다 외웠습니다. 기본이론강의, 기출문제풀이, 빅모의고사
+                    </div></div>
+                    <div class="item"><div>
+                        <span class="name">오승현</span>
+                        <b>2019 지방직 방송통신직9급 합격</b>
+                        <span class="star count4">별점</span>
+                        <span class="desc">
+								 양윤석 교수님의 강의의 최대 장점은 압축성이라 생각합니다. 오답노트나 요약노트를 작성하는데도 반영되어 크게 도움되었습니다. 그래서 몰라도 되는 이론에 신경 쓰거나 스트레스를 받지 않도록 해주셔서 전공을 공부하는데 덜 부담이 되었습니다. 교재는 지안에듀 학원 교제로 진행하였고 챕터를 끝날 때마다 관련 문제은행이 있었습니다. 그 문제들을 1회독하면서 풀었고 또한 과년도 문제풀이에서 시간을 절약할 수 있는 노하우와 최신 경향 기술도 알려주셔서 처음 보는 이론도 당황하지 않고 풀이할 수 있었습니다
 							</span>
-                            <span class="btnArea">
-								<a href="#">9급 지방직</a>
-								<a href="#">365 지안패스</a>
+                        <span class="btnArea">
+								<a href="#">지방직 방송통신직9급</a>
+								<a href="#"></a>
 							</span>
-                        </div></div>
-                    </div>
+                    </div></div>
+                    <div class="item"><div>
+                        <span class="name">임경민</span>
+                        <b>2019 지방직 임업직9급 합격</b>
+                        <span class="star count4">별점</span>
+                        <span class="desc">
+								 임업직렬에는 김동이쌤의 수업이 필수로 들어야 하는거 같습니다. 제 지인 중 같이 시험을 봤는데 구지 강의 들을 필요가 뭐 있냐며 책만 사고 독학하다가 떨어졌습니다.  강의를 들으신 분들은 아시겠지만 중요한 부분을 계속 강조해 주시고 반복을 계속 해주셔서 강의 듣다보면 저절로 암기가 됩니다. 또한 출제유형을 분석을 해주셔서 이번에 출제빈도가 높다는 것을 찍어 주시기 때문에 믿고 따라만 간다면 고득점 하실 수 있습니다.
+							</span>
+                        <span class="btnArea">
+								<a href="#">지방직 임업직9급</a>
+								<a href="#"></a>
+							</span>
+                    </div></div>
+                    <div class="item"><div>
+                        <span class="name">조원기</span>
+                        <b>2019 지방직 전산직9급 합격</b>
+                        <span class="star count4">별점</span>
+                        <span class="desc">
+								 컴퓨터일반은 박태순 선생님을 들었습니다. 1년차때 점수가 터무니없이 나와서 카페에서 정보를 알아보다가 합격생들이 박태순 선생님꺼를 많이 듣는다고 하더라고요. 일단 기본서가 두꺼운 만큼 정말 상세하게 풀이되어있습니다. 저는 비전공자임에도 불구하고 정말 이 기본서 하나로 고득점을 받을 수 있었습니다. 박태순 선생님의 가장 큰 장점이라면 비공개 문제까지도 전부 가지고 계시다는 겁니다. 또한 카페에 질문을 올리면 적어도 2일 이내에 바로 답변을 달아주셔서 정말 많은 도움이 되었습니다.
+							</span>
+                        <span class="btnArea">
+								<a href="#">지방직 전산직9급</a>
+								<a href="#"></a>
+							</span>
+                    </div></div>
+                    <div class="item"><div>
+                        <span class="name">신새봄</span>
+                        <b>2019 지방직 방송통신직9급 합격</b>
+                        <span class="star count4">별점</span>
+                        <span class="desc">
+								비전공이였던 저는 인터넷 강의가 꼭 필요했습니다. 선생님의 얇은 기본서를 보면서 시험 때까지 이 한 권을 통째로 외우지 못하면 시험에 떨어진다는 생각으로 책을 통째로 외우려 노력했습니다. 선생님의 기본 이론편과 기출+모고 수업을 듣고 시험까지 남은 일수가 70일 정도였을 때쯤 책 10회독을 목표로 잡았습니다. 선생님의 강의가 개설되지 않았더라면 도전할 생각조차 못했을텐데 컴팩트한 교재와 다양한 보충자료를 제공해주셔서 공부하기 훨씬 수월했습니다.
+							</span>
+                        <span class="btnArea">
+								<a href="#">지방직 방송통신직9급</a>
+								<a href="#"></a>
+							</span>
+                    </div></div>
+                    <div class="item"><div>
+                        <span class="name">이성민</span>
+                        <b>2019 지방직 토목직9급 합격</b>
+                        <span class="star count4">별점</span>
+                        <span class="desc">
+								갓갓 이학민 교수님! 비전공자로서 정말 막막하였고 강의를 2번씩 들어야 간신히 이해가 되었습니다. 하지만 강의를 들으면 이학민 교수님이 늘 이야기를 해주는 것이 있습니다. 인강으로 듣고 계신 분들처럼 모두 어렵고 모두가 힘들어 한다고 또 비전공자들도 정말 많고 1월에 가장 많이들 시작한다고 여러분도 가능하다고 좀만 힘내보자고 늘 한강의에 한번씩은 말씀해 주시는 것 같습니다. 그게 정말 큰 도움이 되었고 하기 싫고 포기하고 싶어도 자리에 앉아있는 힘이 되었습니다. 이학민 교수님께 정말 감사합니다
+							</span>
+                        <span class="btnArea">
+								<a href="#">지방직 토목직9급</a>
+								<a href="#"></a>
+							</span>
+                    </div></div>
+                    <div class="item"><div>
+                        <span class="name">이경환</span>
+                        <b>2019 지방직 화공직9급 합격</b>
+                        <span class="star count4">별점</span>
+                        <span class="desc">
+								이병관 교수님은 시험에 필요한 부분을 딱딱 정리해주셨으며 비전공자도 쉽게 따라올 수 있도록 자세히 설명해주셔서 공부하기에 편했습니다. 공무원 문제는 계산이나 내용이 쉽기 때문에 기사문제나 7급 문제도 적절히 섞으셔서 어려운 문제에 대비할 수 있도록 하였습니다. 비전공자 같은 경우 화공직에 대해 진입장벽이 높다고 겁먹고 도전 못하시는 분이 많다고 생각합니다. 하지만 이병관 교수님의 커리큘럼을 타면 무리없이 합격할 수 있다고 생각합니다.
+							</span>
+                        <span class="btnArea">
+								<a href="#">지방직 화공직9급</a>
+								<a href="#"></a>
+							</span>
+                    </div></div>
                 </div>
             </div>
+        </div>
 
                 <!-- 지안에듀 교수진 -->
                 <div class="mainTeacher">

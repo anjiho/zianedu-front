@@ -61,51 +61,94 @@
                     </div>
                     <div class="mainStoryList">
                         <div class="item"><div>
-                            <span class="name">안성진</span>
-                            <b>2018 지방직 합격</b>
+                            <span class="name">송동욱</span>
+                            <b>2019 서울시 7급, 9급 일반행정 합격</b>
                             <span class="star count4">별점</span>
                             <span class="desc">
-								공대를 재학하며 뒤늦게 공무원 시험에 뛰어들었기 때문에 지안공무원학원 기출문제교재 먼저구입하고 무작정시작했습니다. 기출문제를 거의 다 외웠습니다. 기본이론강의, 기출문제풀이, 빅모의고사
+								2년만에 2019 서울시 7급 9급 일행직 모두 최종합격!
+                                합격 후에 지급되는 장학금을 상상하면서 고난의 행군 기간을 극복할 수 있었습니다. 제가 아마 지안에듀에 등록하지 않았더라면 불안함 속에서 공부하다가 서울시 시험에서 떨어지고 수험기간이 더 길어졌을 것이라고 생각합니다.
+							</span>
+                            <span class="btnArea">
+								<a href="#">7급, 9급 일반행정</a>
+								<a href="#"></a>
+							</span>
+                        </div></div>
+                        <div class="item"><div>
+                            <span class="name">윤지용</span>
+                            <b>2019 국가직 경찰행정 합격</b>
+                            <span class="star count5">별점</span>
+                            <span class="desc">
+								공부라는 것이 쉬운 것은 아니지만 설명회에 참석하여 해볼 만하다는 생각을 하였습니다. 노량진은 열심히 하는 사람은 열심히 하고 노는 사람은 놉니다. 그만큼 허수도 많습니다. 엄청난 경쟁률은 숫자에 불과하다고 생각했습니다.
+                                마침 지안 공무원 학원에서 장학생을 모집한다는 글을 보았고 지안 공무원 학원에 등록하여 공부하게 되었습니다.
+							</span>
+                            <span class="btnArea">
+								<a href="#">2019 국가직 경찰행정</a>
+								<a href="#"></a>
+							</span>
+                        </div></div>
+                        <div class="item"><div>
+                            <span class="name">문재황</span>
+                            <b>2019 국가직 병무청 합격</b>
+                            <span class="star count5">별점</span>
+                            <span class="desc">
+								지안에서 가장 좋았던 점을 뽑으라고 한다면 1:1 맞춤형 관리를 뽑고 싶어요.
+                                스스로를 너무 과신하지 마세요. 본인의 의지가 아무리 강하다고 해도 1년 혹은 몇년 이상의 장기레이스를 뛰는데 혼자 아무 슬럼프 없이 공부해서 바로 합격하는 분들은 소수입니다.
+                                그런데 그러한 장기레이스를 최대한 슬럼프 없이 뛸 수 있도록 만들어주는 시스템이 지안의 관리 시스템이에요.
+							</span>
+                            <span class="btnArea">
+								<a href="#">2019 국가직 병무청</a>
+								<a href="#"></a>
+							</span>
+                        </div></div>
+                        <div class="item"><div>
+                            <span class="name">서은상</span>
+                            <b>2019 국가직 9급 일반행정 합격</b>
+                            <span class="star count4">별점</span>
+                            <span class="desc">
+								나이와 스펙의 제한없이 시험 성적으로 합격의 당락이 결정되는 공무원이 저와 맞다고 생각해, 공무원 시험에 도전하게 되었습니다.
+                                공부하는데 관리도 받고 선생님들이 항상 학원에 계셔서 모르는 것들을 수시로 질문할 수 있는 게 좋아서 지안공무원학원에 다니게 됐습니다.
 							</span>
                             <span class="btnArea">
 								<a href="#">9급 지방직</a>
-								<a href="#">365 지안패스</a>
+								<a href="#"></a>
 							</span>
                         </div></div>
                         <div class="item"><div>
-                            <span class="name">김기한</span>
-                            <b>2018 국가직 합격</b>
-                            <span class="star count5">별점</span>
-                            <span class="desc">
-								전년도에 비해 국어와 한국사가 어려워져서 걱정했지만 빠르고 짧게 필요한 것만 알려주시고 불필요한 내용은 과감히 지워주셨습니다. 기출문제가 매우 중요하여 인강으로 들으면서 시간.…
-							</span>
-                            <span class="btnArea">
-								<a href="#">9급 국가직</a>
-								<a href="#">공통과목이론</a>
-							</span>
-                        </div></div>
-                        <div class="item"><div>
-                            <span class="name">신예은</span>
-                            <b>2018 임업직 합격</b>
-                            <span class="star count5">별점</span>
-                            <span class="desc">
-								항상 합격수기를 보면서 나도 빨리 합격하고 싶은 생각을 하였습니다. 정말 기쁩니다. 자격증없이 시작했기 때문에 먼저 자격증을 땄습니다. 기출문제를 풀고 주간 빅모의고사를 통해 약점을 보완하 …
-							</span>
-                            <span class="btnArea">
-								<a href="#">9급 임업직</a>
-								<a href="#">빅모의고사</a>
-							</span>
-                        </div></div>
-                        <div class="item"><div>
-                            <span class="name">안성진</span>
-                            <b>2018 지방직 합격</b>
+                            <span class="name">유대호</span>
+                            <b>2018 국가직 9급 군무원 합격</b>
                             <span class="star count4">별점</span>
                             <span class="desc">
-								공대를 재학하며 뒤늦게 공무원 시험에 뛰어들었기 때문에 지안공무원학원 기출문제교재 먼저구입하고 무작정시작했습니다. 기출문제를 거의 다 외웠습니다. 기본이론강의, 기출문제풀이, 빅모의고사
+								국어 공부는 안효선 선생님이 시키는 대로 그대로 따라갔습니다. 안효선 선생님께서 수업 때 출제되었던 영역의 기출 문제를 모두 분석해서 시험에 나오는 부분 위주로 정리해서 주셨어요. 범위를 넓히지 말고 이것만 다 외우자고 생각해 반복해서 외웠습니다.
+                                안효선선생님께서 고유어, 한자를 잘 정리해 주신 자료가 도움이 많이 되었습니다. 사실 어느 정도 문법에 자신이 생기고 문학과 비문학 문제도 잘 안 틀리게 되면 가장 어려운 건 어휘랑 한자잖아요.
+                                안효선 선생님께서는 모양이 비슷한 한자를 다 묶어서 수업해주시는데요.
 							</span>
                             <span class="btnArea">
 								<a href="#">9급 지방직</a>
-								<a href="#">365 지안패스</a>
+								<a href="#"></a>
+							</span>
+                        </div></div>
+                        <div class="item"><div>
+                            <span class="name">김하림</span>
+                            <b>2018 지방직 7급, 서울시 9급 일반행정 합격</b>
+                            <span class="star count4">별점</span>
+                            <span class="desc">
+							    쑥쓰러움보다는 아는 것이 더 중요했기 때문에 선생님들께 질문도 많이 드렸던 것 같습니다.학원 선생님들 다들 친절하시고 실력도 좋으시니 잘 활용하시기를 추천드립니다.
+							</span>
+                            <span class="btnArea">
+								<a href="#">지방직 7급, 서울시 9급</a>
+								<a href="#"></a>
+							</span>
+                        </div></div>
+                        <div class="item"><div>
+                            <span class="name">이하진</span>
+                            <b>2019 직업상담직 합격</b>
+                            <span class="star count4">별점</span>
+                            <span class="desc">
+							    수업에 빠지지 않고 출석해서 평소에 대비했습니다. 한달 전부터는 휘발성이 강한 암기사항 점검했습니다. 어릴 때부터 책 읽는 것을 좋아해, 항상 모의고사 1~2등급이 나왔어서 비문학, 문학은 공부하지 않고 문법을 집중적으로 했습니다. 학원 수업을 들으며 최소한의 감을 잡고 모의고사를 풀고 틀린 것은 한번 더 보는 식으로 했습니다. 시험 한달 전부터 암기가 필요한 것들을 대비했습니다.
+							</span>
+                            <span class="btnArea">
+								<a href="#">2019 직업상담직</a>
+								<a href="#"></a>
 							</span>
                         </div></div>
                     </div>
