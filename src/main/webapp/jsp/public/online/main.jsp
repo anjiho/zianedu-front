@@ -297,7 +297,7 @@ $( document ).ready(function() {
     // getMajorTeacherBannerList("teacherList2", 794, 1, teacherMenuCtgKey);//전공과목 교수진 리스트
     getBannerNoticeList2("examNotice", 1, 4, 10010);//행정직 시험공고 리스트
     getBannerNoticeList2("openInfo", 1, 4, 10001);//행정직 개강안내 리스트
-    getBannerNoticeList("lecInfo", 1, 4, 10014);//행정직 수강후기 리스트
+    getBannerNoticeList("lecInfo", 1, 4, 10015);//행정직 수강후기 리스트
     getBannerNoticeList("passInfo", 1, 4, 10013);//행정직 합격후기 리스트
     getEventMiniBanner("", 6284, 5);//이벤트 배너
     getBookList("productList1", 843, 1, 10);//행정직 온라인 서점
