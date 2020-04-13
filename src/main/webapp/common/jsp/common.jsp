@@ -104,5 +104,14 @@
         }else{
             $("#cssDivsion").prop('href', '/common/zian/css/techContent.css');
         }
+
+        $('.desc').each(function(){
+            var $this = $(this);
+            var len = 150;
+            if($this.text().length >= len){
+                $this.text($(this).text().substr(0,len)+'…');
+            }
+        })
+
     });
 </script>

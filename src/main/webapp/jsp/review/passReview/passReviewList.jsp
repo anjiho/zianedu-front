@@ -73,7 +73,7 @@
 
                     <!--review_movie_list : BEST 합격자영상 :index 페이지코드 그대로 사용-->
                     <div class="review_movie_list">
-                        <p>BEST 합격자영상</p>
+                        <p>지안에듀 BEST 합격수기</p>
 
                         <div class="mainStory">
                             <div class="inner">
