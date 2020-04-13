@@ -7,6 +7,9 @@
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         if(sessionUserInfo != null){
             innerHTML("userName", sessionUserInfo.name);
+        } else {
+            alert("로그인이 필요합니다.");
+            goLoginPage();
         }
         getLeftQuestionMenu(316);
 
