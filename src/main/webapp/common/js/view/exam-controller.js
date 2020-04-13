@@ -374,7 +374,6 @@ function getAchievementManagementDetailInfoBySubject(examUserKey) {
                                 else if(k == 1) var scoreNum = "②";
                                 else if(k == 2) var scoreNum = "③";
                                 else var scoreNum = "④";
-
                                 returnHtml += "<div style='float: left; text-align: left; width: 25%;'>";
                                    returnHtml += scoreNum+" "+resultList.problemScoreList[k].scorePercent;
                                 returnHtml += "</div>";
@@ -496,24 +495,24 @@ function getWrongNote(examUserKey, isScore, isInterest) {
                     returnHtml2 +=    "<a class='st_btn_0000 st_do_study' href='"+ resultList.theoryLearningUrl +"' target='_blank'>이론 학습 하기</a>&nbsp;&nbsp;";
                     returnHtml2 +=  '<a href="javascript:void(0);" class="st_btn_0000 st_do_lec" onclick="OpenSamplePlayer(' + "'"  + resultList.commentaryUrl + "'" + ');" >해설 강의</a>';
                     returnHtml2 +=  "</div>";
-                    returnHtml2 += "<br />";
+                    returnHtml2 += "<br/>";
                     returnHtml2 += "<img src='"+ resultList.questionImage +"'/>";
-                    returnHtml2 +=     "<br />";
+                    returnHtml2 +=     "<br/>";
                     returnHtml2 +=    "<img src='"+ resultList.commentaryImage +"'/>";
                     if( resultList.review != null){
                     returnHtml2 +=    "<div class='st_review'>";
-                    returnHtml2 +=    resultList.review;
+                        returnHtml2 +=    resultList.review;
                         returnHtml2 += "</div>";
                     }else{
-                        returnHtml2 +=    "<div class='st_review'>";
+                        returnHtml2 += "<div class='st_review'>";
                         returnHtml2 += "</div>";
                     }
                     returnHtml2 += "<div class='st_total_review_icon'>평가</div>";
                     returnHtml2 +=     "<div class='st_total_review'>";
                     if(resultList.examLevelName != null){
-                         returnHtml2 +=     "* 난이도 <span>: "+ resultList.examLevelName +"</span>";
+                         returnHtml2 += "* 난이도 <span>: "+ resultList.examLevelName +"</span>";
                     }else{
-                        returnHtml2 +=     "* 난이도 <span>:</span>";
+                        returnHtml2 += "* 난이도 <span>:</span>";
                     }
 
                     if(resultList.scorePercent != null){
