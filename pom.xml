@@ -160,12 +160,6 @@
             <version>4.0.2.RELEASE</version>
         </dependency>
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.16.6</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
             <groupId>org.directwebremoting</groupId>
             <artifactId>dwr</artifactId>
             <version>3.0.0-rc3-RELEASE</version>

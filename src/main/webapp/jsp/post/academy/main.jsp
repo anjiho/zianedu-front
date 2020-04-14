@@ -58,7 +58,7 @@
             </div>
 
             <!-- 지안에듀 합격자 STORY -->
-            <<div class="mainStory">
+            <div class="mainStory">
             <div class="inner">
                 <div class="titleBar">
                     <h5>지안에듀 합격자 STORY</h5>
