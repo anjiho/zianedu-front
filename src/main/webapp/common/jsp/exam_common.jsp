@@ -27,6 +27,7 @@
     <script src="/common/zian/js/submain.js"></script>
     <script src="/common/zian/js/swiper.min.js"></script>
     <script src="/common/zian/js/ui.js"></script>
+    <script src="/common/zian/js/jquery.fileDownload.js"></script>
 
     <!-- include libraries(jQuery, bootstrap) -->
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">

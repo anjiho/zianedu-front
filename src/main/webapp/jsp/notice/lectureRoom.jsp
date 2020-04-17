@@ -106,6 +106,15 @@
     }
 
     function fileInfo(f, val){
+        if(!/\.(jpeg|jpg|png)$/i.test(f.value)){
+            alert('이미지 파일만 업로드 가능합니다.');
+            f.value = '';
+            $(".file-text").html("");
+            $("#attachFile").val("");
+            f.focus();
+            return false;
+        }
+
         var file = f.files;
         var reader = new FileReader();
         reader.onload = function(rst){
@@ -249,7 +258,7 @@
                         <span class="filetype">
                             <input type="text" class="file-text" disabled>
                             <span class="file-btn">찾아보기</span>
-                            <span class="file-select"><input type="file" id="attachFile1" class="input-file" size="3" onchange="fileInfo(this, 2)"></span>
+                            <span class="file-select"><input type="file" id="attachFile1" class="input-file" size="3" onchange="fileInfo(this, 2)" accept=".png, .jpg, .jpeg"></span>
                         </span>
                         </div>
                     </div>

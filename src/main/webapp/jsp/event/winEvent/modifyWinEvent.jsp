@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
 <%@include file="/common/jsp/common.jsp" %>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
 <%
     String bbsKey = request.getParameter("bbsKey");
 %>
@@ -73,8 +75,8 @@
                 var bbsKey = getInputTextValue('bbsKey');
                 var result = updateBoard(bbsKey, title, content, 0, '');
                 if (result.resultCode == 200) {
-                    alert("성공적으로 등록 완료되었습니다");
-                    return false;
+                    alert("수정이 완료되었습니다");
+                    goPageNoSubmit('event','winList');
                 }
             } else {
                 var formData = new FormData();
@@ -99,8 +101,8 @@
                             var str = toStrFileName(fileName);
                             saveBoardFileList(result.keyValue, str);
                             if (result.resultCode == 200) {
-                                alert("성공적으로 등록 완료되었습니다");
-                                return false;
+                                alert("수정이 완료되었습니다");
+                                goPageNoSubmit('event','winList');
                             }
                         }
                     }

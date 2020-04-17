@@ -85,7 +85,7 @@
                 var result = updateBoard(bbsKey, title, content, 0, '');
                 if (result.resultCode == 200) {
                     alert("수정이 완료되었습니다.");
-                    return false;
+                    goPageNoSubmit('bigExam','referenceList');
                 }
             } else {
                 var formData = new FormData();
@@ -111,7 +111,7 @@
                             saveBoardFileList(result.keyValue, str);
                             if (result.resultCode == 200) {
                                 alert("수정이 완료되었습니다.");
-                                return false;
+                                goPageNoSubmit('bigExam','referenceList');
                             }
                         }
                     }
