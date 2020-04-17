@@ -275,8 +275,8 @@
         <input type="hidden" name="mKey" value="<%=mKey%>">
     </div>
         <input type="hidden" name="gopaymethod" id="gopaymethod" value="" >
-        <input type="hidden" name="offerPeriod" value="20151001-20151231" >
-        <input type="hidden" name="acceptmethod" value="CARDPOINT:HPP(1):no_receipt:va_receipt:vbanknoreg(0):below1000" >
+<%--        <input type="hidden" name="offerPeriod" value="20151001-20151231" >--%>
+        <input type=hidden name=acceptmethod value="HPP(1):no_receipt:va_receipt:below1000">
         <input type="hidden" name="languageView" value="" >
         <input type="hidden" name="charset" value="" >
         <input type="hidden" name="payViewType" value="" >

@@ -519,6 +519,8 @@
             }
 
             if('<%=resultCode%>' == '0000'){
+                gfn_display("successDiv", true);
+                gfn_display("failDiv", false);
                 if(InipayInfoResult.resultCode == 200) {
                     var savePaymentInfoData = {
                         jId: '<%=moId %>',
@@ -547,6 +549,10 @@
                     };
                     savePaymentInfo(savePaymentInfoData);
                 }
+            } else {
+                gfn_display("successDiv", false);
+                gfn_display("failDiv", true);
+                innerHTML("errorCode", '<%=resultCode%>');
             }
         var payMethod = '<%=payMethod%>';
         var vactDate = '<%=vactDate%>';
@@ -614,14 +620,14 @@
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
     <input type="hidden" id="allProductPrice" name="allProductPrice">
-    <div id="wrap">
+    <div id="wrap" id="">
         <%@include file="/common/jsp/leftMenu.jsp" %>
         <!--상단-->
         <%@include file="/common/jsp/header.jsp" %>
         <!--//상단-->
         <!--본문-->
         <div id="container">
-            <div class="inner">
+            <div class="inner" id="successDiv">
                 <!--서브 컨텐츠-->
 
                 <%@include file="/common/jsp/myPageHeader.jsp" %>
@@ -747,6 +753,24 @@
                             </div>
                         </div>
                     </div>
+                    <!--//cart -->
+                </div>
+
+                <!--//서브 컨텐츠-->
+            </div>
+            <div class="inner" id="failDiv">
+                <!--서브 컨텐츠-->
+
+                <%@include file="/common/jsp/myPageHeader.jsp" %>
+                <div class="Mypage">
+                    <ul class="statusBar">
+                        <li><label>01.<b>장바구니</b></label></li>
+                        <li><label>02.<b>주문서작성</b></label></li>
+                        <li><label>03.<b>결제하기</b></label></li>
+                        <li class="active last"><label>04.<b>주문완료</b></label></li>
+                    </ul>
+                    <!--cart -->
+                        결제실패 입니다. 에러코드 : <span id="errorCode"></span>
                     <!--//cart -->
                 </div>
 
