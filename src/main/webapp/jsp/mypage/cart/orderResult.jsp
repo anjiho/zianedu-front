@@ -263,6 +263,7 @@
                     acctBankCode = resultMap.get("VACT_BankCode");
 
                     if ("04".equals(acctBankCode)) bankName = "국민은행";
+                    else if ("03".equals(acctBankCode)) bankName = "기업은행";
                     else if ("05".equals(acctBankCode)) bankName = "하나은행(구외환)";
                     else if ("06".equals(acctBankCode)) bankName = "국민은행(구 주택)";
                     else if ("07".equals(acctBankCode)) bankName = "수협중항회";

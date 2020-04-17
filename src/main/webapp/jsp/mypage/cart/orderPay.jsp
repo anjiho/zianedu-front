@@ -117,6 +117,8 @@
         }
         if(sessionStorage.getItem('resultData') != "") {
             var resultData = JSON.parse(sessionStorage.getItem('resultData'));
+            innerValue("buyername", resultData.postName);
+            innerValue("P_UNAME", resultData.postName);
         }else{
             resultData = "";
         }
@@ -253,6 +255,7 @@
             <input type="hidden" name="P_MID" value="<%=mid%>">
             <input type=hidden name="P_NEXT_URL" id="P_NEXT_URL" value="">
             <input type=hidden name="P_RESERVED" id="P_RESERVED" value="">
+            <input type=hidden name="P_UNAME" id="P_UNAME" value="">
             <input type=hidden name="P_NOTI_URL" value="">
             <input type=hidden name="P_HPP_METHOD" value="1">
         </form>
@@ -266,7 +269,7 @@
         <input type="hidden" name="oid" value="<%=oid%>">
         <input type="hidden" name="price" value="<%=price%>">
         <input type="hidden" name="currency" value="WON">
-        <input type="hidden" name="buyername" value="<%=userName%>">
+        <input type="hidden" name="buyername" id="buyername" value="">
         <input type="hidden" name="buyertel" value="<%=phoneNum%>">
         <input type="hidden" name="buyeremail" value="<%=email%>">
         <input type="hidden" name="timestamp" value="<%=timestamp %>">

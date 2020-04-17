@@ -23,6 +23,7 @@
         var bankCodeName = '';
 
         if(vactBankCode == '04')bankCodeName = '국민은행';
+        else if (vactBankCode == '03') bankCodeName = '기업은행';
         else if (vactBankCode == '05') bankCodeName = '하나은행(구외환)';
         else if (vactBankCode == '06') bankName = "국민은행(구 주택)";
         else if (vactBankCode == '07') bankName = "수협중항회";

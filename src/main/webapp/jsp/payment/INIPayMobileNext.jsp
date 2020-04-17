@@ -117,6 +117,7 @@
 				resultPVactName = Util.isNullValue(resultMap.get("P_VACT_NAME"), "");
 
 				if ("04".equals(resultPVactBankCode)) bankName = "국민은행";
+				else if ("03".equals(resultPVactBankCode)) bankName = "기업은행";
 				else if ("05".equals(resultPVactBankCode)) bankName = "하나은행(구외환)";
 				else if ("06".equals(resultPVactBankCode)) bankName = "국민은행(구 주택)";
 				else if ("07".equals(resultPVactBankCode)) bankName = "수협중항회";
@@ -200,7 +201,7 @@
 			vactDate : '<%=resultPVactDate%>',
 			vactTime : '<%=resultPVactTime%>',
 			vactBankCode : '<%=resultPVactBankCode%>',
-			vactName : '<%=resultPVactName%>',
+			vactName : '<%=bankName%>',
 			resulterrorcode : '',
 			isMobile : isMobile
 		};
@@ -214,6 +215,11 @@
 		var resultData = JSON.parse(sessionStorage.getItem('resultData'));
 		var orderGoodsList = sessionStorage.getItem('orderGoodsList');
 
+		var payType = 0;
+		if ('<%=resultPVactBankCode%>' != '') {
+			payType = 19;
+		}
+
 		if('<%=resultPStatus%>' == '00') {
 			if (inipayInfoResult.resultCode == 200) {
 				var savePaymentInfoData = {
@@ -221,6 +227,7 @@
 					userKey: userKey,
 					price: savePayInfo.price,
 					pricePay: savePayInfo.pricePay,
+					payType :payType,
 					point: point,
 					discountPoint: discountPoint,
 					deliveryPrice: deliveryPrice,

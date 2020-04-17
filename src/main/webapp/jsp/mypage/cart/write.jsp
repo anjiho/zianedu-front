@@ -179,9 +179,10 @@
         sessionStorage.setItem("bookCount", '<%=bookCount%>');
         var allProductPrice =  getInputTextValue("allProductPrice");
         var productNames = getInputTextValue("productNames");
+        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         var resultData = {
             allProductPrice : allProductPrice,
-            postName : orderName,
+            postName : sessionUserInfo.name,
             allTel : allTel,
             allPhone : allPhone,
             allEmail : allEmail,
