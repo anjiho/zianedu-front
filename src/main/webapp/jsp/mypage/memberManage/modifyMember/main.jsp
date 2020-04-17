@@ -294,6 +294,9 @@
         }else if(result.resultCode == 908){//mobile
             alert("기기변경은 총 모바일 1번, PC 1번씩  변경 가능합니다.");
             return false;
+        }else if(result.resultCode == 913){
+            alert("기기변경 횟수가 초가되었습니다. 관리자에게 문의하세요.");
+            return false;
         }
     }
 </script>
