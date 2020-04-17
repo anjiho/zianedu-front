@@ -417,6 +417,7 @@ function getWrongNote(examUserKey, isScore, isInterest) {
         isInterest : isInterest
     };
     var infoList = getApi("/exam/getWrongNote/", examUserKey, data);
+
     if (infoList != null) {
         var selList = infoList.result;
         innerHTML("examName", selList[0].examHeaderInfo.examName);
@@ -462,7 +463,7 @@ function getWrongNote(examUserKey, isScore, isInterest) {
         $("#st_questionnote_search_pannel_Div").append(returnHtml);
 
         for (var j = 0; j < selList.length; j++){
-            var returnHtml2 = "<div id='tab-"+ (j+1) +"' class=\"st_question_board current\" style=\"width: 800px; height: 530px;\">";
+            var returnHtml2 = "<div id='tab-"+ (j+1) +"' class=\"st_question_board\" style=\"width: 800px; height: 530px;\">";
                 returnHtml2 += "<ul>";
                 for(var k = 0; k < selList[j].resultList.length; k++){
                     var resultList = selList[j].resultList[k];
@@ -596,6 +597,7 @@ function getWrongNote(examUserKey, isScore, isInterest) {
         }
     }
 }
+
 
 //문제 즐겨찾기 추가/취소
 function addFavoriteExamProblem(examQuestionUserKey, isInterest) {

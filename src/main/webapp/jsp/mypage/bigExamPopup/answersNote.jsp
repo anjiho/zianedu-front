@@ -25,6 +25,7 @@
             var isScore = -1;
             var isInterest = -1;
             getWrongNote(examUserKey, isScore, isInterest);
+            $("#tab-1").addClass('current');
             /* tab메뉴 */
             $('.st_questionnote_search_pannel > div').click(function(){
                 var $this = $(this).attr('data-tab');
@@ -37,6 +38,7 @@
                 $(this).addClass('st_on');
                 $('#'+$this).addClass('current');
                 $('#'+$th).addClass('current2');
+
             });
 
             /* Switch */
