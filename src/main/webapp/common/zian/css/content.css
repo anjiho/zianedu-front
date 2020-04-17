@@ -365,7 +365,7 @@
 .boardWrap .paging > a.active{background:#134c97;border:1px #134c97 solid;}
 .boardWrap .paging > a{border:1px #e1e1e1 solid;}
 .boardWrap .fileWrap{position:relative;padding-left:80px;}
-.boardWrap .fileWrap .label{display:block;position:absolute;top:0;left:0;}
+.boardWrap .fileWrap .label{display: block;position: absolute;top: 0;left: 0;font-weight: 200;font-size: 14px;color: #000;padding: initial;line-height: initial;}
 .boardWrap .fileList{display:block;}
 .boardWrap .fileList li{display:block;margin:5px 0;}
 

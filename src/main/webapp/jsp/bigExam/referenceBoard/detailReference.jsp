@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/jsp/exam_common.jsp" %>
-<link rel="stylesheet" type="text/css" href="/common/zian/css/content_o.css">
 <%
     String bbsKey = request.getParameter("bbsKey");
 %>
 <script>
     var bbsKey = <%=bbsKey%>;
+
     $(document).ready(function () {
         var result = getBoardDetailInfo(11051, bbsKey);
         if(result != undefined){
@@ -44,7 +44,7 @@
                 if (detailInfo.fileInfo.length > 0) {
                     for (var i = 0; i < detailInfo.fileInfo.length; i++) {
                         var fileList = detailInfo.fileInfo[i];
-                        var retrunHtml = "<li><a href=\'"+ fileList.fileUrl +"'><img src=\"/common/zian/images/common/icon_file.png\" alt=\"\"> "+ fileList.fileName +"</a></li>";
+                        var retrunHtml = '<li><a href="javascript:download('+ "'" + fileList.fileUrl + "'" +')"><img src=\"/common/zian/images/common/icon_file.png\" alt=\"\"> '+ fileList.fileName +'</a></li>';
                         $("#fileList").append(retrunHtml);
                     }
                 }
@@ -79,10 +79,6 @@
         innerValue("bbsKey", nextKey);
         goPage("bigExam", "detailReference");
     }
-    function fn_search(val) {
-
-    }
-
 </script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
@@ -120,7 +116,7 @@
                             <tr>
                                 <td colspan="3">작성자 : <span id="userName"></span> (<span id="userId"></span>)  |   조회수 : <span id="readCount"></span></td>
                             </tr>
-                            <tr>
+                            <tr id="fileContent">
                                 <td colspan="3">
                                     <div class="fileWrap">
                                         <span class="label">첨부파일 : </span>

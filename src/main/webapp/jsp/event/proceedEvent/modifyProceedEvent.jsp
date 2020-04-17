@@ -89,7 +89,7 @@
                             saveBoardFileList(result.keyValue, str);
                             if (result.resultCode == 200) {
                                 alert("성공적으로 수정이 완료되었습니다");
-                                return false;
+                                goPageNoSubmit('event','proceedList');
                             }
                         }
                     }
