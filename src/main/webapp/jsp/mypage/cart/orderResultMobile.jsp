@@ -15,16 +15,44 @@
         var userKey = sessionUserInfo.userKey;
 
         var iniResult = JSON.parse(sessionStorage.getItem('saveInipayInfoData'));
+        console.log(iniResult);
         var payMethod = iniResult.paymethod;
         var vactDate = iniResult.vactDate;
         var vateDateStr = gfn_dateFormat(vactDate, 14, 'F');
         var vactBankCode =  iniResult.vactBankCode;
         var bankCodeName = '';
-        if(vactBankCode == '04'){
-            bankCodeName = '국민은행';
-        }else{
-            bankCodeName = '농협';
-        }
+
+        if(vactBankCode == '04')bankCodeName = '국민은행';
+        else if (vactBankCode == '05') bankCodeName = '하나은행(구외환)';
+        else if (vactBankCode == '06') bankName = "국민은행(구 주택)";
+        else if (vactBankCode == '07') bankName = "수협중항회";
+        else if (vactBankCode == '11') bankName = "농협";
+        else if (vactBankCode == '12') bankName = "단위농협";
+        else if (vactBankCode == '16') bankName = "축협중앙회";
+        else if (vactBankCode == '20') bankName = "우리은행";
+        else if (vactBankCode == '21') bankName = "신한은행(조흥은행)";
+        else if (vactBankCode == '23') bankName = "SC제일은행";
+        else if (vactBankCode == '25') bankName = "하나은행(서울은행)";
+        else if (vactBankCode == '26') bankName = "신한은행";
+        else if (vactBankCode == '27') bankName = "한국씨티은행(한미은행)";
+        else if (vactBankCode == '31') bankName = "대구은행";
+        else if (vactBankCode == '32') bankName = "부산은행";
+        else if (vactBankCode == '34') bankName = "광주은행";
+        else if (vactBankCode == '35') bankName = "제주은행";
+        else if (vactBankCode == '37') bankName = "전북은행";
+        else if (vactBankCode == '38') bankName = "강원은행";
+        else if (vactBankCode == '39') bankName = "경남은행";
+        else if (vactBankCode == '41') bankName = "비씨카드";
+        else if (vactBankCode == '53') bankName = "씨티은행";
+        else if (vactBankCode == '54') bankName = "홍콩상하이은행";
+        else if (vactBankCode == '71') bankName = "우체국";
+        else if (vactBankCode == '81') bankName = "하나은행";
+        else if (vactBankCode == '83') bankName = "평화은행";
+        else if (vactBankCode == '87') bankName = "신세계";
+        else if (vactBankCode == '88') bankName = "신한은행(조흥 통합)";
+        else if (vactBankCode == '97') bankName = "카카오 머니";
+        else if (vactBankCode == '98') bankName = "페이코(포인트 100%사용)";
+
         if(payMethod == 'VBANK'){
             innerHTML("bankName", bankCodeName);//
             innerHTML("vactNum", iniResult.vactNum);//

@@ -117,7 +117,36 @@
 				resultPVactName = Util.isNullValue(resultMap.get("P_VACT_NAME"), "");
 
 				if ("04".equals(resultPVactBankCode)) bankName = "국민은행";
+				else if ("05".equals(resultPVactBankCode)) bankName = "하나은행(구외환)";
+				else if ("06".equals(resultPVactBankCode)) bankName = "국민은행(구 주택)";
+				else if ("07".equals(resultPVactBankCode)) bankName = "수협중항회";
 				else if ("11".equals(resultPVactBankCode)) bankName = "농협";
+				else if ("12".equals(resultPVactBankCode)) bankName = "단위농협";
+				else if ("16".equals(resultPVactBankCode)) bankName = "축협중앙회";
+				else if ("20".equals(resultPVactBankCode)) bankName = "우리은행";
+				else if ("21".equals(resultPVactBankCode)) bankName = "신한은행(조흥은행)";
+				else if ("23".equals(resultPVactBankCode)) bankName = "SC제일은행";
+				else if ("25".equals(resultPVactBankCode)) bankName = "하나은행(서울은행)";
+				else if ("26".equals(resultPVactBankCode)) bankName = "신한은행";
+				else if ("27".equals(resultPVactBankCode)) bankName = "한국씨티은행(한미은행)";
+				else if ("31".equals(resultPVactBankCode)) bankName = "대구은행";
+				else if ("32".equals(resultPVactBankCode)) bankName = "부산은행";
+				else if ("34".equals(resultPVactBankCode)) bankName = "광주은행";
+				else if ("35".equals(resultPVactBankCode)) bankName = "제주은행";
+				else if ("37".equals(resultPVactBankCode)) bankName = "전북은행";
+				else if ("38".equals(resultPVactBankCode)) bankName = "강원은행";
+				else if ("39".equals(resultPVactBankCode)) bankName = "경남은행";
+				else if ("41".equals(resultPVactBankCode)) bankName = "비씨카드";
+				else if ("53".equals(resultPVactBankCode)) bankName = "씨티은행";
+				else if ("54".equals(resultPVactBankCode)) bankName = "홍콩상하이은행";
+				else if ("71".equals(resultPVactBankCode)) bankName = "우체국";
+				else if ("81".equals(resultPVactBankCode)) bankName = "하나은행";
+				else if ("83".equals(resultPVactBankCode)) bankName = "평화은행";
+				else if ("87".equals(resultPVactBankCode)) bankName = "신세계";
+				else if ("88".equals(resultPVactBankCode)) bankName = "신한은행(조흥 통합)";
+				else if ("97".equals(resultPVactBankCode)) bankName = "카카오 머니";
+				else if ("98".equals(resultPVactBankCode)) bankName = "페이코(포인트 100%사용)";
+
 			}
 
 		} catch (Exception e) {
