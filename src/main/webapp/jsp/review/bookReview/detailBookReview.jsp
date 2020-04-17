@@ -7,7 +7,6 @@
     var bbsKey = '<%=bbsKey%>';
     $( document ).ready(function() {
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
-        alert(sessionUserInfo);
         if(sessionUserInfo != null){
             if(sessionUserInfo.authority != 0){
                 $("#modifyBtn").hide();
