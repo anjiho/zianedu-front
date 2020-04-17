@@ -10,7 +10,7 @@
         var result = getBoardDetailInfo(11051, bbsKey);
         if(result != undefined){
             var detailInfo = result.boardDetailInfo;
-
+            console.log(detailInfo);
             //본문 내용 파싱작업 시작
             var detailInfoStr = JSON.stringify(detailInfo);
             var detailInfoStrObj = JSON.parse(detailInfoStr);
@@ -44,7 +44,7 @@
                 if (detailInfo.fileInfo.length > 0) {
                     for (var i = 0; i < detailInfo.fileInfo.length; i++) {
                         var fileList = detailInfo.fileInfo[i];
-                        var retrunHtml = '<li><a href="javascript:download('+ "'" + fileList.fileUrl + "'" +')"><img src=\"/common/zian/images/common/icon_file.png\" alt=\"\"> '+ fileList.fileName +'</a></li>';
+                        var retrunHtml = '<li><a href="javascript:download('+ "'" + fileList.fileName + "'" +')"><img src=\"/common/zian/images/common/icon_file.png\" alt=\"\"> '+ fileList.fileName +'</a></li>';
                         $("#fileList").append(retrunHtml);
                     }
                 }
