@@ -3503,6 +3503,8 @@ function detailReview(bbsKey, tagId) {
         goPage('review','detailLecture');
     }else if(tagId == 'passInfo'){
         goPage('review','detailPass');
+    }else if(tagId == 'bookInfo'){
+        goDetailNotice(bbsKey);
     }
 }
 
