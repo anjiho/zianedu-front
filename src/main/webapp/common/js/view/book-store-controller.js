@@ -108,6 +108,7 @@ function getBookList(tagId , leftMenuCtgKey, sPage, listLimit) {
 }
 
 function getSalesBookList(bookMenuType, searchText, orderType, sPage, listLimit, subjectKey) {
+    alert("2");
     var paging = new Paging();
     dwr.util.removeAllRows("dataList"); //테이블 리스트 초기화
     var data = {
@@ -117,6 +118,7 @@ function getSalesBookList(bookMenuType, searchText, orderType, sPage, listLimit,
         listLimit : listLimit,
         subjectKey : subjectKey
     };
+
     var infoList = getPageApi("/bookStore/getSalesBookList/", bookMenuType, data);
 
     var cnt = infoList.cnt;

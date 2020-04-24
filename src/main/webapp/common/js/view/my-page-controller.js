@@ -474,7 +474,7 @@ function getUserOrderList(userKey, startDate, endDate, sPage, listLimit) {
                         function(data) {return cmpList.indate +"<br><a href='javascript:goDetailOrder("+ cmpList.jkey +");'>"+cmpList.jid;+"<a>"},
                         function(data) {return cmpList.orderGoodsName;},
                         function(data) {return cmpList.sellPriceName;},
-                        function(data) {return '결제완료';},
+                        function(data) {return cmpList.payStatusName},
                         function(data) {return cmpList.deliveryStatusName;}
                     ];
                     dwr.util.addRows("dataList", [0], cellData, {escapeHtml: false});
