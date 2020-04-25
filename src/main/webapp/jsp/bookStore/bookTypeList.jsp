@@ -26,8 +26,8 @@
                 //innerHTML('subjectTitle', '계리직군');
                 getBookStoreSelectBoxList('POST');
             }else if(bookType == 'CERT'){
-                $("#subBanner").attr("src", "http://52.79.40.214/Upload/100/contents/0423_book_03.jpg");
-                //innerHTML('subjectTitle', '자격증');
+                $("#typeBannerImg").attr("src", "/common/zian/images/content/submain_img05.png");
+                innerHTML('subjectTitle', '자격증');
                 getBookStoreSelectBoxList('CERT');
             }
         innerValue('orderType', 'date');
