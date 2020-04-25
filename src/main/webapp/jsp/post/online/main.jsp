@@ -269,9 +269,9 @@
                                 <span class="title">2관학원</span>
                                 <b>070-4870-0634</b>
                                 <span class="desc">
-									1번 학원동영상 상담 및 결재문의<br />
+									1번 학원동영상 상담 및 결제문의<br />
 									2번 도서재고 및 배송문의<br />
-									3번 동영상 결재 및 환불문의
+									3번 동영상 결제 및 환불문의
 								</span>
                                 <span class="desc">
 									운영시간 09:00~18:00 (주말,공휴일 제외)<br />
@@ -284,7 +284,7 @@
                 </div>
                 <div class="mainInfo w55p">
                     <ul>
-                        <li><a href="javascript:goExamNotice();" class="item1">시험공공</a></li>
+                        <li><a href="javascript:goExamNotice();" class="item1">시험공고</a></li>
                         <li><a href="javascript:goOpenMenu();" class="item2">개강안내</a></li>
                         <li><a href="javascript:goMyPage();" class="item3">교재배송</a></li>
                         <li><a href="javascript:goPageNoSubmit('customerCenter','mobile');" class="item4">모바일 문의</a></li>

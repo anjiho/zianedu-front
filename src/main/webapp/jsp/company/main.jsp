@@ -8,7 +8,7 @@
 <style>
     .tab-content{
         display: none;
-        padding: 15px;
+        /*padding: 15px;*/
     }
 
     .tab-content.active{

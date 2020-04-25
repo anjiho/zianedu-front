@@ -264,7 +264,7 @@
                     <a id="eventBannerHref0" href=""><img id="eventBanner0" src="" alt=""></a>
                 </div>
                 <div>
-                    <a href="#"><img src="/common/zian/images/content/img_banner0003.jpg" alt=""></a>
+                    <a href="#"><img src="http://52.79.40.214/Upload/100/contents/0102_index_line.jpg" alt=""></a>
                 </div>
                 <div class="divGroup cols3">
                     <!-- DB 배너 -->

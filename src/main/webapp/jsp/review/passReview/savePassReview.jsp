@@ -154,7 +154,7 @@
                                     <td><input type="text" id="title" placeholder="제목을 입력해주세요." class="w100p"></td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">합격과목</th>
+                                    <th scope="row">합격직렬</th>
                                     <td><input type="text" id="passSubject" placeholder="과목이름을 입력해주세요." class="w100p"></td>
                                 </tr>
                                 <tr>

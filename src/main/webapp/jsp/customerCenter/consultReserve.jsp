@@ -17,8 +17,8 @@
             goLoginPage();
         }
         /*다음지도 API 호출*/
-        daumMapApi('map1', '서울시 동작구 노량진동 117-2 영빌딩');
-        daumMapApi('map2', '서울특별시 동작구 노량진로 196');
+        //daumMapApi('map1', '서울시 동작구 노량진동 117-2 영빌딩');
+        //daumMapApi('map2', '서울특별시 동작구 노량진로 196');
 
         $("#a_reservation").change(function(){
             if($(this).val() == 1){
@@ -122,6 +122,11 @@
             events:calendarInfo
         });
         //달력 주입 끝
+
+        $('.btn_info').click(function(){  //클릭 이벤트 추가
+            setTimeOutDaumMapApi('map1', '서울시 동작구 노량진동 117-2 영빌딩');
+            setTimeOutDaumMapApi('map2', '서울특별시 동작구 노량진로 196');
+        });
 
 
         function calendar() {
@@ -252,6 +257,7 @@
             return false;
         }
     }
+
 
 </script>
 <style>
@@ -429,7 +435,7 @@
         <div class="modalContent">
             <div class="pop_cont">
                 <div class="locationP">
-                    <h3>2관 찾아오시는 길</h3>
+                    <h3>1관 찾아오시는 길</h3>
                     <table>
                         <colgroup>
                             <col width="10%">
@@ -501,7 +507,7 @@
                             <th>TEL</th>
                             <td>02-6080-1725</td>
                             <th>FAX</th>
-                            <td>02-816-1720</td>
+                            <td>02-816-1721</td>
                         </tr>
                         </tbody>
                     </table>
