@@ -19,7 +19,8 @@ function getMainBigBanner(tagId, ctgKey, listNum) {
     if (bannerInfoList.result.length > 0) {
         var selList = bannerInfoList.result;
         dwr.util.addOptions(tagId, selList, function (data) {
-            return "<a href='"+ data.targetUrl +"'><img src='"+ data.fullFileUrl +"' alt=''></a>"
+            //return "<a href='"+ data.targetUrl +"'><img src='"+ data.fullFileUrl +"' alt=''></a>"
+            return "<a href='#'><img src='"+ data.fullFileUrl +"' alt=''></a>"
         }, {escapeHtml: false});
     }
     kiplayer.sliderBx($("#" + tagId));
@@ -34,7 +35,8 @@ function getMainMiniBanner(tagId, ctgKey, listNum) {
     if (bannerInfoList.result.length > 0) {
         var selList = bannerInfoList.result;
         dwr.util.addOptions(tagId, selList, function (data) {
-            return "<a href='"+ data.targetUrl +"'><img src='"+ data.fullFileUrl +"' alt=''></a>"
+            //return "<a href='"+ data.targetUrl +"'><img src='"+ data.fullFileUrl +"' alt=''></a>"
+            return "<a href='#'><img src='"+ data.fullFileUrl +"' alt=''></a>"
         }, {escapeHtml: false});
     }
     kiplayer.sliderBx($("#" + tagId));

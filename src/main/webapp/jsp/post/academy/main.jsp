@@ -27,13 +27,13 @@
                 </div>
                 <div class="mainBannerReview disnonepc">
                     <div class="inner">
-                        <a href="#"><img src="/common/zian/images/content/img_mainVisual0320_06.jpg" alt=""></a>
+                        <a href="#"><img src="http://52.79.40.214/Upload/100/contents/0424_gg_zianpass_mobile.jpg" alt=""></a>
                     </div>
                 </div>
             </div>
             <div class="mainBannerReview disnone">
                 <div class="inner">
-                    <a href="#"><img src="/common/zian/images/content/img_banner0302.jpg" alt=""></a>
+                    <a href="#"><img src="http://52.79.40.214/Upload/100/contents/0424_gg_zianpass_pc.jpg" alt=""></a>
                 </div>
             </div>
 
@@ -239,7 +239,7 @@
             <!-- 지안에듀 배너 -->
             <div class="mainBanner">
                 <div class="inner">
-                    <a href="javascript:goPageNoSubmit('bigExam','examApply');"><img src="/common/zian/images/content/img_banner0001.jpg"></a>
+                    <a href="javascript:goPageNoSubmit('bigExam','examApply');"><img src="http://52.79.40.214/Upload/100/contents/0102_on_03.jpg"></a>
                 </div>
             </div>
 

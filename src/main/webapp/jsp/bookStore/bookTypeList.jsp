@@ -10,24 +10,24 @@
         var bookType = '<%=bookType%>';
             innerValue('bookType',bookType);
             if(bookType == 'COMMON'){
-                $("#typeBannerImg").attr("src", "/common/zian/images/content/submain_img01.png");
-                innerHTML('subjectTitle', '공통과목');
+                $("#subBanner").attr("src", "http://52.79.40.214/Upload/100/contents/0423_book_01.jpg");
+                //innerHTML('subjectTitle', '공통과목');
                 getBookStoreSelectBoxList('COMMON');
             }else if(bookType == 'PUBLIC'){
-                $("#typeBannerImg").attr("src", "/common/zian/images/content/submain_img02.png");
-                innerHTML('subjectTitle', '행정직군');
+                $("#subBanner").attr("src", "http://52.79.40.214/Upload/100/contents/0423_book_02.jpg");
+               // innerHTML('subjectTitle', '행정직군');
                 getBookStoreSelectBoxList('PUBLIC');
             }else if(bookType == 'TECH'){
-                $("#typeBannerImg").attr("src", "/common/zian/images/content/submain_img03.png");
-                innerHTML('subjectTitle', '기술직군');
+                $("#subBanner").attr("src", "http://52.79.40.214/Upload/100/contents/0423_book_03.jpg");
+                //innerHTML('subjectTitle', '기술직군');
                 getBookStoreSelectBoxList('TECH');
             }else if(bookType == 'POST'){
-                $("#typeBannerImg").attr("src", "/common/zian/images/content/submain_img04.png");
-                innerHTML('subjectTitle', '계리직군');
+                $("#subBanner").attr("src", "http://52.79.40.214/Upload/100/contents/0423_book_04.jpg");
+                //innerHTML('subjectTitle', '계리직군');
                 getBookStoreSelectBoxList('POST');
             }else if(bookType == 'CERT'){
-                $("#typeBannerImg").attr("src", "/common/zian/images/content/submain_img05.png");
-                innerHTML('subjectTitle', '자격증');
+                $("#subBanner").attr("src", "http://52.79.40.214/Upload/100/contents/0423_book_03.jpg");
+                //innerHTML('subjectTitle', '자격증');
                 getBookStoreSelectBoxList('CERT');
             }
         innerValue('orderType', 'date');
@@ -105,11 +105,11 @@
 
                 <!--서브상단공통배너-->
                 <div class="submainBanner">
-                    <img src="/common/zian/images/content/subBanner_bg.jpg">
+                    <img id="subBanner" src="">
                     <div class="Banner_txt">
                         <p class="title"><img src="" alt="" id="typeBannerImg"></p>
-                        <span class="txt">부가설명을 써주세요써주세요써주세요</span>
-                        <a href="javascript:goBookReviewList();" class="link">도서후기</a>
+<%--                        <span class="txt">부가설명을 써주세요써주세요써주세요</span>--%>
+<%--                        <a href="javascript:goBookReviewList();" class="link">도서후기</a>--%>
                     </div>
                 </div>
 

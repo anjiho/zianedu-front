@@ -59,7 +59,7 @@
                 </div>
                 <br>
                 <div class="imgbox">
-                    <img src="/common/zian/images/bigimg/img01.png">
+                    <img src="http://52.79.40.214/Upload/100/contents/0102_big_banner01.jpg">
                 </div>
 
                 <div class="infolist">
