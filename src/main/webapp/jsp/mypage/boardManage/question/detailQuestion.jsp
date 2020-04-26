@@ -36,6 +36,17 @@
                 innerHTML("userId", detailInfo.userId);
                 innerHTML("title", detailInfo.title);
                 innerHTML("readCount", detailInfo.readCount);
+                if(detailInfo.fileInfo != null) {
+                    if (detailInfo.fileInfo.length > 0) {
+                        for (var i = 0; i < detailInfo.fileInfo.length; i++) {
+                            var fileList = detailInfo.fileInfo[i];
+                            var retrunHtml = '<li><a href="javascript:download('+ "'" + fileList.fileName + "'" +')"><img src=\"/common/zian/images/common/icon_file.png\" alt=\"\"> '+ fileList.fileName +'</a></li>';
+                            $("#fileList").append(retrunHtml);
+                        }
+                    }
+                }else{
+                    gfn_display("fileContent", false);
+                }
             }
             var commentInfo = resultInfo.result.commentInfo;
             //댓글 시작
@@ -105,6 +116,15 @@
                                 </tr>
                                 <tr>
                                     <td colspan="2">작성자 : <span id="writeUserName"></span> (<span id="userId"></span>) | 조회수 : <span id="readCount"></span></td>
+                                </tr>
+                                <tr id="fileContent">
+                                    <td colspan="3">
+                                        <div class="fileWrap">
+                                            <span class="label">첨부파일 : </span>
+                                            <ul class="fileList" id="fileList">
+                                            </ul>
+                                        </div>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td colspan="2" class="textContent">

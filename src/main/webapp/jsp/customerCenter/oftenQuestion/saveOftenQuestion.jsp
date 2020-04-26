@@ -88,7 +88,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">질문</th>
+                                <th scope="row">제목</th>
                                 <td><textarea name="title" id="title" placeholder="내용을 입력해주세요." class="w100p h240"></textarea></td>
                             </tr>
                             <tr>

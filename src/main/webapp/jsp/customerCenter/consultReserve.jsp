@@ -6,6 +6,7 @@
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2149f737a2468c19787b4ef4a9ea6a2b&libraries=services"></script>
 <script>
     $(document).ready(function () {
+
         $('#a_reservation').val(1).trigger('change');
         $('#academyNumber').val(1).trigger('change');
         innerHTML('reserveTitle', '전화상담예약');
@@ -92,6 +93,11 @@
             handleWindowResize:true,
             dayPopoverFormat: 'yyyy-MM-dd',
             select: function (startDate, endDate, jsEvent, view) {
+                if(startDate.isBefore(moment())) {
+                    alert('오늘 이전날짜는 선택 불가능 합니다.');
+                    return false;
+                }
+
                 var dt_start = moment(startDate).format('YYYY-MM-DD');
                 var dt_start1 = moment(startDate).format('YYYY.MM.DD');
                 innerHTML("selDate", dt_start1);
@@ -254,7 +260,10 @@
         var result = reserveConsult(data);
         if(result.resultCode == 200){
             alert("상담예약이 완료 되었습니다.");
-            return false;
+            sessionStorage.setItem("myPageHeader", "board");
+            sessionStorage.setItem("tabHeader", "tabMenuConsult");
+            $("#myPageMenu li:eq(4)").addClass('active');
+            goPageNoSubmit('myPage', 'consult');
         }
     }
 

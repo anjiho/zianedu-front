@@ -126,7 +126,7 @@
             }
             var produceTotal = getInputTextValue("produceTotal");
             var changeTotal = produceTotal-currentVal;
-            innerHTML("productTotalPriceName", format(changeTotal));
+           // innerHTML("productTotalPriceName", format(changeTotal));
             innerHTML("productTotalPriceName1", format(changeTotal));
             innerValue("changeTotal", changeTotal);
             var result  = getInputTextValue("changeTotal");

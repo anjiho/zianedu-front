@@ -593,7 +593,6 @@ function getUserPointInfo(userKey) {
 }
 
 function getOneByOneQuestionList(userKey, sPage, listLimit, searchType, searchText) {
-    if (userKey == null || userKey == undefined) return;
     var paging = new Paging();
     dwr.util.removeAllRows("dataList"); //테이블 리스트 초기화
     var data = {
@@ -605,7 +604,7 @@ function getOneByOneQuestionList(userKey, sPage, listLimit, searchType, searchTe
     var infoList = getPageApi("/myPage/getOneByOneQuestionList/", userKey, data);
     var cnt = infoList.cnt;
     if(infoList != null){
-        if (infoList.result.length > 0) {
+       // if (infoList.result.length > 0) {
             var selList = infoList.result;
             paging.count(sPage, cnt, '10', listLimit, comment.blank_list);
             var listNum = ((cnt-1)+1)-((sPage-1)*10); //리스트 넘버링
@@ -637,7 +636,7 @@ function getOneByOneQuestionList(userKey, sPage, listLimit, searchType, searchTe
                     $("#dataList").append(returnHtml);
                 }
             }
-        }
+       // }
     }
 }
 

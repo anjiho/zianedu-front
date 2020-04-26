@@ -158,6 +158,7 @@
 
     function search() {
         $("#resultList").empty();
+        $("#selCount").html(0);
         var subjectMenuKeys = new Array();
         var teacherKeys = new Array();
         var stepCtgKeys = new Array();
