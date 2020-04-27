@@ -30,7 +30,6 @@
     function fn_search(val) {
         innerHTML("selCount", 0);
         var orderType = getInputTextValue('orderType');
-        console.log("1"+orderType);
         var sPage = getInputTextValue("sPage");
         var searchText = getInputTextValue("searchText");
         var searchType = getSelectboxValue("searchType");
@@ -44,7 +43,6 @@
     function fn_search2(val) {
         innerHTML("selCount", 0);
         var orderType = getInputTextValue('orderType');
-        console.log("2"+orderType);
         var sPage = getInputTextValue("sPage2");
         var searchText = getInputTextValue("searchText");
         var searchType = getSelectboxValue("searchType");
@@ -56,7 +54,12 @@
     }
 
     function searchBookList() {
-        fn_search('new');
+        var orderType = getInputTextValue('orderType');
+        if(orderType == 'date'){
+            fn_search('new');
+        }else{
+            fn_search2('new');
+        }
     }
 
     function goDetailBook(gkey) {
@@ -174,7 +177,7 @@
                         <div class="lectureWrap">
                             <div class="shoplist">
                                 <div class="type_wrap">
-                                    <select id="searchType" class="w140"  onchange="searchBookList();">
+                                    <select id="searchType" class="w140" onchange="searchBookList();">
                                         <option value="COMMON">공통과목</option>
                                         <option value="PUBLIC">행정직군</option>
                                         <option value="TECH">기술직군</option>

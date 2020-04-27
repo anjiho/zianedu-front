@@ -73,7 +73,12 @@
     }
 
     function searchBookList() {
-        fn_search('new');
+        var orderType = getInputTextValue('orderType');
+        if(orderType == 'date'){
+            fn_search('new');
+        }else{
+            fn_search2('new');
+        }
     }
 
     function goDetailbookType(type) {
