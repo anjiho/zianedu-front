@@ -138,7 +138,7 @@
                         </div>
                         <div class="btnArea divGroup noMargin">
                             <div class="left">
-                                <a href="" class="btn_inline gray w110" id="modifyBtn">수정</a>
+<%--                                <a href="" class="btn_inline gray w110" id="modifyBtn">수정</a>--%>
                             </div>
                             <div class="right">
                                 <a href="javascript:goPageNoSubmit('myPage', 'questionList');" class="btn_m">목록</a>

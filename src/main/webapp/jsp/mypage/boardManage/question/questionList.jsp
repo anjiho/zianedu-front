@@ -95,7 +95,7 @@
                                         <select id="searchType">
                                             <option value="">선택</option>
                                             <option value="title">제목</option>
-                                            <option value="content">내용</option>
+                                            <option value="contents">내용</option>
                                         </select>
                                         <input type="text" id="searchText" onkeypress="if(event.keyCode==13) {fn_search('new'); return false;}">
                                         <a href="javascript:fn_search('new');" class="btn_m on">검색</a>
