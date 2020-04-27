@@ -11,6 +11,9 @@
 %>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
+    $(window).bind("pageshow", function() {
+        $('#point').val("");
+    });
     $( document ).ready(function() {
         var leftMenuInfo = sessionStorage.getItem('leftMenu');//직렬 구분
         if(leftMenuInfo == 'bookStore'){
