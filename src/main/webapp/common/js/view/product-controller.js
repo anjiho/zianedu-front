@@ -328,7 +328,9 @@ function getLectureAcademyTeacherList(menuCtgKey, subjectMenuKeys, teacherKeys, 
                                 else color = "navy";
 
                                 retrunHtml += "<span class=\"btn_learnType " + color + "\">"+ cmpList.academyLectureInfo[j].ctgName +"</span>";
-                                retrunHtml += "<span class=\"sale\">"+ cmpList.academyLectureInfo[j].discountPercent +"</span>";
+                                if(cmpList.academyLectureInfo[j].discountPercent != null){
+                                    retrunHtml += "<span class=\"sale\">"+ cmpList.academyLectureInfo[j].discountPercent +"</span>";
+                                }
                                 retrunHtml += "<span class=\"new\">"+ cmpList.academyLectureInfo[j].emphasisStr +"</span>";
                             retrunHtml += "</div>";
                             retrunHtml += "<ul class=\"lectureList\">";
