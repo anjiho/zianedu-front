@@ -365,6 +365,10 @@ function getLectureAcademyTeacherList(menuCtgKey, subjectMenuKeys, teacherKeys, 
             $(this).parent().addClass("active");
         }
     });
+    $("input[name=lecChk]").click(function(index){//체크박스 카운트 처리(학습자료실)
+        var count = $("input[name=lecChk]:checkbox:checked").length;
+        innerHTML("selCount", count);
+    });
 }
 
 

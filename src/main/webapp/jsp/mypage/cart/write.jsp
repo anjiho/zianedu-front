@@ -13,6 +13,7 @@
 <script>
     $( document ).ready(function() {
         var leftMenuInfo = sessionStorage.getItem('leftMenu');//직렬 구분
+
         if(leftMenuInfo == 'bookStore'){
             sessionStorage.setItem("myPageHeader", "cart");
         }
@@ -90,7 +91,7 @@
                 innerValue("postcode", zipcode);
                 /*주소*/
                 var address = $("#address").text();
-                innerValue("roadAddress", address);
+                innerValue("addressRoad", address);
                 var detailAddres = $("#detailAddres").text();
                 innerValue("detailAddres2", detailAddres);
             }else{
@@ -102,7 +103,7 @@
                 innerValue("email1", "");
                 innerValue("email2", "");
                 innerValue("postcode", "");
-                innerValue("roadAddress", "");
+                innerValue("addressRoad", "");
                 innerValue("detailAddres2", "");
             }
         });
@@ -153,7 +154,6 @@
         var allTel = tel+"-"+tel1+"-"+tel2;
         if (tel == undefined) allTel = "";
 
-
         innerValue("allTel", allTel);
         var phone = getSelectboxValue("selPhone");
         var phone1 = getInputTextValue("phone1");
@@ -166,7 +166,7 @@
         innerValue("allEmail", allEmail);
         var zipCode = getInputTextValue("postcode");
         innerValue("postCode1", zipCode);
-        var address = getInputTextValue("roadAddress");
+        var address = getInputTextValue("addressRoad");
         innerValue("add1", address);
         var detailAddr = getInputTextValue("detailAddres2");
         innerValue("add2", detailAddr);
@@ -332,7 +332,7 @@
                                 <p class="title"><span class="text_blue">적립금</span>사용</p>
                                 <div class="inner">
                                     <ul>
-                                        <li><span class="tit">마일리지 사용 :</span><span><input type="text" id="point"></span><span >(보유마일리지 : <span class="text_blue" id="userPoint">원</span> / 최대 사용 마일리지 보유 :<span class="text_blue" id="maxUserPoint"> 점</span>)</span></li>
+                                        <li><span class="tit">마일리지 사용 :</span><span><input type="text" id="point" value=''></span><span >(보유마일리지 : <span class="text_blue" id="userPoint">원</span> / 최대 사용 마일리지 보유 :<span class="text_blue" id="maxUserPoint"> 점</span>)</span></li>
                                         <li class="txt_gray2">(단, 마일리지는 1,000점 이상 적립 되었을 때, 현금과 동일하게 100원 단위로 사용이 가능합니다.)</li>
                                     </ul>
                                     <ul>
@@ -374,6 +374,7 @@
                         </div>
                         <div class="tbd_03 tbd_05 mgb60" id="deliveryInfo">
                             <p class="title"><span class="text_blue">배송지</span>정보입력</p>
+                            <input type="hidden" id="addressNumber"><!--구주소-->
                             <table>
                                 <colgroup>
                                     <col width="100px">
@@ -415,7 +416,7 @@
                                             <input type="text" id="postcode"  title="우편번호 앞자리를 입력해주세요." class="input_number"> <button type="button" onclick="execDaumPostcode()">우편번호 찾기</button>
                                         </div>
                                         <div class="input_area">
-                                            <input type="text" id="roadAddress"  placeholder="주소" title="주소를 입력해주세요." class="w300">
+                                            <input type="text" id="addressRoad"  placeholder="주소" title="주소를 입력해주세요." class="w300">
                                             <input type="text" id="detailAddres2"  placeholder="상세주소" class="w300">
                                         </div>
                                         <span id="guide" style="color:#999;display:none"></span>

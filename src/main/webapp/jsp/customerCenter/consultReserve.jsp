@@ -6,7 +6,6 @@
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2149f737a2468c19787b4ef4a9ea6a2b&libraries=services"></script>
 <script>
     $(document).ready(function () {
-
         $('#a_reservation').val(1).trigger('change');
         $('#academyNumber').val(1).trigger('change');
         innerHTML('reserveTitle', '전화상담예약');
@@ -203,10 +202,14 @@
             // });
             // //달력 주입 끝
         }
-
-       // setTime(1,"09:00");
     });
-
+    
+    function numberMaxLength(e) {
+        if(e.value.length > e.maxLength){
+            alert("20자까지 입력할 수 있습니다.");
+            e.value = e.value.slice(0, e.maxLength);
+        }
+    }
 
     function setTime(val, time) {
         if(val == 0 && time == 0){
@@ -408,7 +411,7 @@
                                         </tr>
                                         <tr>
                                             <th><img src="/common/zian/images/common/icon_formChk.png">상담요청내용</th>
-                                            <td><input type="text" id="consultContent" placeholder="간략하게 적어주세요."></td>
+                                            <td><input type="text" id="consultContent" maxlength="20" placeholder="간략하게 적어주세요." oninput="numberMaxLength(this);"></td>
                                         </tr>
                                         </tbody>
                                     </table>
