@@ -1103,6 +1103,7 @@ function fn_clear(val1, val2) {
 }
 
 function fn_CheckStrLength(sourceID, cnt, str) {
+
     //변수의 초기화
     var obj = document.getElementById(sourceID);
     var now_str = obj.value;                     //이벤트가 발생한 컨트롤의 value값
@@ -1126,7 +1127,7 @@ function fn_CheckStrLength(sourceID, cnt, str) {
             cnt_byte++;
         }
     }
-
+    
     // 만약 전체 크기가 제한 글자 수를 넘으면
     if (cnt_byte > max_len) {
         alert(str + " " + max_len + "자 이내로 입력하세요.");
