@@ -503,6 +503,41 @@
         <%@include file="/common/jsp/footerBanner.jsp" %>
     </div>
     <div id="overlay"></div>
+    <!--  modal5-->
+    <div id="modal02" class="modalWrap">
+        <div class="inner">
+            <div class="modalTitle">
+                <h2 style="font-size:18px;font-weight: bold;font-size:20px;text-align:left">쿠폰사용하기</h2>
+            </div>
+            <div class="modalContent" style="min-height:420px">
+                <div class="pop_cont">
+                    <p class="stitle" style="text-align: center">쿠폰 사용가능한 쿠폰</p>
+                    <table class="coupon_list">
+                        <tbody>
+                        <tr>
+                            <td><input type="checkbox" name="" id=""></td>
+                            <td>지안에듀 5000원 할인 쿠폰</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="" id=""></td>
+                            <td>지안에듀 10000원 할인 쿠폰</td>
+                        </tr>
+                        <!--<tr>
+                            <td style="height:80px">쿠폰이 없습니다.</td>
+                        </tr>-->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="pb_wrap">
+                    <p>총 할인 금액 : <span>0</span>원</p>
+                    <div>
+                        <a href="#" class="pb_btn_blue">등록</a>
+                        <a href="#" class="btn_modalClose">취소</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </form>
 </body>
 </html>

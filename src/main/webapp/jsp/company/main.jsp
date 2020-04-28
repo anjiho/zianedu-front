@@ -519,7 +519,7 @@
                                             <th>TEL</th>
                                             <td>02-6080-1725</td>
                                             <th>FAX</th>
-                                            <td>02-816-1720</td>
+                                            <td>02-816-1721</td>
                                         </tr>
                                         </tbody>
                                     </table>
@@ -553,7 +553,7 @@
                                             <th>TEL</th>
                                             <td>02-6080-1725</td>
                                             <th>FAX</th>
-                                            <td>02-816-1720</td>
+                                            <td>02-816-1721</td>
                                         </tr>
                                         </tbody>
                                     </table>
