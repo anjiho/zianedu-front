@@ -8,7 +8,7 @@
 <style>
     .tab-content{
         display: none;
-        padding: 15px;
+        /*padding: 15px;*/
     }
 
     .tab-content.active{
@@ -26,8 +26,6 @@
             $("#companyHeader li").eq(0).addClass('active');
             $("#tab-1").addClass('active');
         }
-
-
 
         //6개 이상일때  1관 더보기 노출
         $('.station1 ul').each(function(){
@@ -521,7 +519,7 @@
                                             <th>TEL</th>
                                             <td>02-6080-1725</td>
                                             <th>FAX</th>
-                                            <td>02-816-1720</td>
+                                            <td>02-816-1721</td>
                                         </tr>
                                         </tbody>
                                     </table>
@@ -555,7 +553,7 @@
                                             <th>TEL</th>
                                             <td>02-6080-1725</td>
                                             <th>FAX</th>
-                                            <td>02-816-1720</td>
+                                            <td>02-816-1721</td>
                                         </tr>
                                         </tbody>
                                     </table>
@@ -825,7 +823,6 @@
                         <!-- 지안에듀 1관 -->
                         <div class="gallery station1">
                             <h2>지안에듀 1관</h2>
-<%--                            <a href="javascript:upLoadPop2()"><img src="/common/zian/images/common/t_upload.jpg" alt=""></a>--%>
                             <ul class="img-list">
                                 <li><a href="javascript:" class="myModal"><img class="myImg" src="/common/zian/images/content/info_gallery00.jpg" alt="이미지1"></a></li>
                                 <li><a href="javascript:" class="myModal"><img class="myImg" src="/common/zian/images/content/info_gallery01.jpg" alt="이미지2"></a></li>
@@ -842,7 +839,6 @@
                         <!-- 지안에듀 2관 -->
                         <div class="gallery station2">
                             <h2>지안에듀 2관</h2>
-<%--                            <a href="javascript:upLoadPop2()"><img src="/common/zian/images/common/t_upload.jpg" alt=""></a>--%>
                             <ul class="img-list">
                                 <li><a href="javascript:" class="myModal"><img class="myImg" src="/common/zian/images/content/info_gallery01.jpg" alt="이미지1"></a></li>
                                 <li><a href="javascript:" class="myModal"><img class="myImg" src="/common/zian/images/content/info_gallery02.jpg" alt="이미지2"></a></li>
@@ -1006,22 +1002,22 @@
                 <ul id="slider">
                     <li>
                         <div>
-                            <img src="../images/content/info_gallery01.jpg"> <!-- 갯수 초과시 나머지 이미지들은 여기로 이동 -->
+                            <img src="/common/zian/images/content/info_gallery01.jpg"> <!-- 갯수 초과시 나머지 이미지들은 여기로 이동 -->
                         </div>
                     </li>
                     <li>
                         <div>
-                            <img src="../images/content/info_gallery00.jpg">
+                            <img src="/common/zian/images/content/info_gallery00.jpg">
                         </div>
                     </li>
                     <li>
                         <div>
-                            <img src="../images/content/info_gallery02.jpg">
+                            <img src="/common/zian/images/content/info_gallery02.jpg">
                         </div>
                     </li>
                     <li>
                         <div>
-                            <img src="../images/content/info_gallery03.jpg">
+                            <img src="/common/zian/images/content/info_gallery03.jpg">
                         </div>
                     </li>
                 </ul>

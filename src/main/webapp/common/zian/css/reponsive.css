@@ -1527,3 +1527,13 @@
 }
 /* //media screen 400 */
 
+/* 2020.04.24 */
+@media screen and (max-width:800px){
+    .selectArea ul > li{width:25%}
+}
+@media screen and (max-width:500px){
+    .selectArea ul > li{width:33.3%}
+}
+@media screen and (max-width:390px){
+    .selectArea ul > li{width:50%}
+}

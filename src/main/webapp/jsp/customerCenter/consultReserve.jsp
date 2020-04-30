@@ -17,8 +17,8 @@
             goLoginPage();
         }
         /*다음지도 API 호출*/
-        daumMapApi('map1', '서울시 동작구 노량진동 117-2 영빌딩');
-        daumMapApi('map2', '서울특별시 동작구 노량진로 196');
+        //daumMapApi('map1', '서울시 동작구 노량진동 117-2 영빌딩');
+        //daumMapApi('map2', '서울특별시 동작구 노량진로 196');
 
         $("#a_reservation").change(function(){
             if($(this).val() == 1){
@@ -92,6 +92,11 @@
             handleWindowResize:true,
             dayPopoverFormat: 'yyyy-MM-dd',
             select: function (startDate, endDate, jsEvent, view) {
+                if(startDate.isBefore(moment())) {
+                    alert('오늘 이전날짜는 선택 불가능 합니다.');
+                    return false;
+                }
+
                 var dt_start = moment(startDate).format('YYYY-MM-DD');
                 var dt_start1 = moment(startDate).format('YYYY.MM.DD');
                 innerHTML("selDate", dt_start1);
@@ -122,6 +127,11 @@
             events:calendarInfo
         });
         //달력 주입 끝
+
+        $('.btn_info').click(function(){  //클릭 이벤트 추가
+            setTimeOutDaumMapApi('map1', '서울시 동작구 노량진동 117-2 영빌딩');
+            setTimeOutDaumMapApi('map2', '서울특별시 동작구 노량진로 196');
+        });
 
 
         function calendar() {
@@ -192,10 +202,14 @@
             // });
             // //달력 주입 끝
         }
-
-       // setTime(1,"09:00");
     });
-
+    
+    function numberMaxLength(e) {
+        if(e.value.length > e.maxLength){
+            alert("20자까지 입력할 수 있습니다.");
+            e.value = e.value.slice(0, e.maxLength);
+        }
+    }
 
     function setTime(val, time) {
         if(val == 0 && time == 0){
@@ -249,9 +263,13 @@
         var result = reserveConsult(data);
         if(result.resultCode == 200){
             alert("상담예약이 완료 되었습니다.");
-            return false;
+            sessionStorage.setItem("myPageHeader", "board");
+            sessionStorage.setItem("tabHeader", "tabMenuConsult");
+            $("#myPageMenu li:eq(4)").addClass('active');
+            goPageNoSubmit('myPage', 'consult');
         }
     }
+
 
 </script>
 <style>
@@ -393,7 +411,7 @@
                                         </tr>
                                         <tr>
                                             <th><img src="/common/zian/images/common/icon_formChk.png">상담요청내용</th>
-                                            <td><input type="text" id="consultContent" placeholder="간략하게 적어주세요."></td>
+                                            <td><input type="text" id="consultContent" maxlength="20" placeholder="간략하게 적어주세요." oninput="numberMaxLength(this);"></td>
                                         </tr>
                                         </tbody>
                                     </table>
@@ -429,7 +447,7 @@
         <div class="modalContent">
             <div class="pop_cont">
                 <div class="locationP">
-                    <h3>2관 찾아오시는 길</h3>
+                    <h3>1관 찾아오시는 길</h3>
                     <table>
                         <colgroup>
                             <col width="10%">
@@ -455,7 +473,7 @@
                             <th>TEL</th>
                             <td>02-6080-1725</td>
                             <th>FAX</th>
-                            <td>02-816-1720</td>
+                            <td>02-816-1721</td>
                         </tr>
                         </tbody>
                     </table>
@@ -486,7 +504,7 @@
                         <tbody>
                         <tr>
                             <th>주소</th>
-                            <td colspan="3">서울시 동작구 노량진동 117-2 영빌딩 2층 (올리브영 맞은편 다이소건물 2층)</td>
+                            <td colspan="3">서울특별시 동작구 노량진로 196 JH빌딩 6층 지안공무원학원 2관</td>
                         </tr>
                         <tr>
                             <th>지하철</th>
@@ -501,7 +519,7 @@
                             <th>TEL</th>
                             <td>02-6080-1725</td>
                             <th>FAX</th>
-                            <td>02-816-1720</td>
+                            <td>02-816-1721</td>
                         </tr>
                         </tbody>
                     </table>

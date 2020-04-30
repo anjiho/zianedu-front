@@ -13,6 +13,16 @@
             var count = $("input[name=lecChk]:checkbox:checked").length;
             innerHTML("selCount", count);
         });
+
+        $('.selectArea ul li a').each(function(){
+            var $this = $(this);
+            var $text = $this.text();
+
+            if($text.length > 8){
+                $this.css({fontSize:'14px',lineHeight:'18px'});
+                $this.html($text.substr(0,9)+'<br>'+$text.substr(9,18));
+            }
+        })
     });
 
 </script>

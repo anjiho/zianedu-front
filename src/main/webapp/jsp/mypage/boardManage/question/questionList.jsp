@@ -44,23 +44,20 @@
         var sPage = getInputTextValue("sPage");
         var searchType = getSelectboxValue("searchType");
         var searchText = getInputTextValue("searchText");
+        if(searchType == undefined) searchType = "";
+        if(searchText == undefined) searchText = "";
+        if(val == "new") sPage = "1";
         if(searchType == 'title') {
             if(searchText == ''){
                 alert('검색값을 입력해 주세요.');
                 focusInputText("searchText");
                 return false;
             }
-        }else{
-            if(val == 'new1'){
-                alert("유형을 선택해 주세요.");
-                return false;
-            }
         }
         if(searchText == undefined) searchText = "";
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         var userKey = sessionUserInfo.userKey;
-        if(val == "new") sPage = "1";
-        else if(val == "new1") sPage = '1';
+
         getOneByOneQuestionList(userKey, sPage, 10,  searchType, searchText);
     }
 
@@ -98,9 +95,10 @@
                                         <select id="searchType">
                                             <option value="">선택</option>
                                             <option value="title">제목</option>
+                                            <option value="contents">내용</option>
                                         </select>
-                                        <input type="text" id="searchText" onkeypress="if(event.keyCode==13) {fn_search('new1'); return false;}">
-                                        <a href="javascript:fn_search('new1');" class="search_ico">검색</a>
+                                        <input type="text" id="searchText" onkeypress="if(event.keyCode==13) {fn_search('new'); return false;}">
+                                        <a href="javascript:fn_search('new');" class="btn_m on">검색</a>
                                     </li>
                                     <li class="right"><a href="javascript:goPageNoSubmit('customerCenter', 'saveQuestion');" class="btn_m w140">1:1 문의하기</a>
                                     </li>

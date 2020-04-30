@@ -66,12 +66,12 @@
                 <!--후강후기-->
                 <div class="boardWrap reviewBoard">
                     <div class="review_txt">
-                        <p>수강색분들의 합격을 축하드립니다.</p>
+                        <p>수강생분들의 합격을 축하드립니다.</p>
                         <span>총<b id="reviewCnt"></b>개의 합격자 영상이 있습니다. <br> 지안에듀에서만 가능한 합격비법을 확인해 보세요</span>
                     </div>
                     <!--review_point : 합격수기 포인트-->
                     <div class="review_point">
-                        <p><span class="ico"></span>합격수기 포인트 지급안내</p>
+                        <p><span class="ico"></span>수강후기 포인트 지급안내</p>
                         <ul>
                             <li>1. 작성 시 무조건 <b>200P</b> 지급 (월 1회까지만 지급되며, 매달 추가 작성 가능)</li>
                             <li>2. BEST 선정 시 무려 <b>1000P </b>추가 지급!</li>

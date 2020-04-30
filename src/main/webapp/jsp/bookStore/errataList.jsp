@@ -47,11 +47,11 @@
 
                 <!--서브상단공통배너-->
                 <div class="submainBanner">
-                    <img src="/common/zian/images/content/subBanner_bg.jpg">
-                    <div class="Banner_txt">
-                        <p class="title"><img src="/common/zian/images/content/submain_img06.png" alt="정오표 안내"></p>
-                        <span class="txt">불편을 드려 죄송합니다. <br> 더 좋은 교재를 만들기 위해 노력하겠습니다</span>
-                    </div>
+                    <img src="http://52.79.40.214/Upload/100/contents/0427_book_05.jpg">
+<%--                    <div class="Banner_txt">--%>
+<%--                        <p class="title"><img src="/common/zian/images/content/submain_img06.png" alt="정오표 안내"></p>--%>
+<%--                        <span class="txt">불편을 드려 죄송합니다. <br> 더 좋은 교재를 만들기 위해 노력하겠습니다</span>--%>
+<%--                    </div>--%>
                 </div>
                 <div class="boardWrap">
                     <div class="boardWrap_inner">

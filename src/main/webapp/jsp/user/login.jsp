@@ -22,7 +22,7 @@
 <%--                </div>--%>
 <%--            </div>--%>
             <div class="loginBanner">
-                <a href="#"><img src="/common/zian/images/common/c_banner.jpg" alt=""></a>
+                <a href="#"><img src="http://52.79.40.214/Upload/100/contents/0427_login_banner.jpg" alt=""></a>
             </div>
         </div>
     </div>

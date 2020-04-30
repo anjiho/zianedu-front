@@ -10,6 +10,7 @@
         innerValue('orderType', 'date');
         innerHTML("selCount", 0);
         fn_search('new');
+        fn_search2('new');
         $("input[name=lecChk]").click(function(index){//체크박스 카운트 처리
             var count = $("input[name=lecChk]:checkbox:checked").length;
             innerHTML("selCount", count);
@@ -19,6 +20,11 @@
     function goList(orderType) {
         innerValue('orderType', orderType);
         fn_search('new');
+    }
+
+    function goList2(orderType) {
+        innerValue('orderType', orderType);
+        fn_search2('new');
     }
 
     function fn_search(val) {
@@ -34,8 +40,26 @@
         getSalesBookList(searchType, searchText, orderType, sPage, 5);
     }
 
+    function fn_search2(val) {
+        innerHTML("selCount", 0);
+        var orderType = getInputTextValue('orderType');
+        var sPage = getInputTextValue("sPage2");
+        var searchText = getInputTextValue("searchText");
+        var searchType = getSelectboxValue("searchType");
+        if(searchText == undefined) searchText = "";
+        if(searchType == undefined) searchType = "";
+
+        if(val == "new") sPage = "1";
+        getSalesBookList2(searchType, searchText, orderType, sPage, 5);
+    }
+
     function searchBookList() {
-        fn_search('new');
+        var orderType = getInputTextValue('orderType');
+        if(orderType == 'date'){
+            fn_search('new');
+        }else{
+            fn_search2('new');
+        }
     }
 
     function goDetailBook(gkey) {
@@ -153,7 +177,7 @@
                         <div class="lectureWrap">
                             <div class="shoplist">
                                 <div class="type_wrap">
-                                    <select id="searchType" class="w140"  onchange="searchBookList();">
+                                    <select id="searchType" class="w140" onchange="searchBookList();">
                                         <option value="COMMON">공통과목</option>
                                         <option value="PUBLIC">행정직군</option>
                                         <option value="TECH">기술직군</option>
@@ -163,7 +187,7 @@
                                 </div>
                                 <ul class="listtype" id="listtype">
                                     <li><a href="javascript:goList('date');">출간일순</a></li>
-                                    <li class="last"><a href="javascript:goList('name');">저자순</a></li>
+                                    <li class="last"><a href="javascript:goList2('name');">저자순</a></li>
                                 </ul>
 
                                 <ul class="lectureTotal">
@@ -187,8 +211,24 @@
                                     </thead>
                                     <tbody id="dataList"></tbody>
                                 </table>
+                                <%@ include file="/common/inc/com_pageNavi.inc" %>
                             </div>
-                            <%@ include file="/common/inc/com_pageNavi.inc" %>
+                            <div class="shopBoard">
+                                <table class="lecturList">
+                                    <thead>
+                                    <tr>
+                                        <th>이미지</th>
+                                        <th>도서명</th>
+                                        <th>할인적립</th>
+                                        <th>교재비</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="dataList2"></tbody>
+                                </table>
+                                <%@ include file="/common/inc/com_pageNavi2.inc" %>
+                            </div>
+
+
                             </div>
                     </form>
                 </div>

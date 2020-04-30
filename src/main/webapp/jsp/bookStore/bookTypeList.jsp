@@ -10,20 +10,20 @@
         var bookType = '<%=bookType%>';
             innerValue('bookType',bookType);
             if(bookType == 'COMMON'){
-                $("#typeBannerImg").attr("src", "/common/zian/images/content/submain_img01.png");
-                innerHTML('subjectTitle', '공통과목');
+                $("#subBanner").attr("src", "http://52.79.40.214/Upload/100/contents/0423_book_01.jpg");
+                //innerHTML('subjectTitle', '공통과목');
                 getBookStoreSelectBoxList('COMMON');
             }else if(bookType == 'PUBLIC'){
-                $("#typeBannerImg").attr("src", "/common/zian/images/content/submain_img02.png");
-                innerHTML('subjectTitle', '행정직군');
+                $("#subBanner").attr("src", "http://52.79.40.214/Upload/100/contents/0423_book_02.jpg");
+               // innerHTML('subjectTitle', '행정직군');
                 getBookStoreSelectBoxList('PUBLIC');
             }else if(bookType == 'TECH'){
-                $("#typeBannerImg").attr("src", "/common/zian/images/content/submain_img03.png");
-                innerHTML('subjectTitle', '기술직군');
+                $("#subBanner").attr("src", "http://52.79.40.214/Upload/100/contents/0423_book_03.jpg");
+                //innerHTML('subjectTitle', '기술직군');
                 getBookStoreSelectBoxList('TECH');
             }else if(bookType == 'POST'){
-                $("#typeBannerImg").attr("src", "/common/zian/images/content/submain_img04.png");
-                innerHTML('subjectTitle', '계리직군');
+                $("#subBanner").attr("src", "http://52.79.40.214/Upload/100/contents/0423_book_04.jpg");
+                //innerHTML('subjectTitle', '계리직군');
                 getBookStoreSelectBoxList('POST');
             }else if(bookType == 'CERT'){
                 $("#typeBannerImg").attr("src", "/common/zian/images/content/submain_img05.png");
@@ -58,8 +58,27 @@
         getSalesBookList(bookType, searchText, orderType, sPage, 5, searchType);
     }
 
+    function fn_search2(val) {
+        var bookType = '<%=bookType%>';
+        innerHTML("selCount", 0);
+        var orderType = getInputTextValue('orderType');
+        var sPage = getInputTextValue("sPage2");
+        var searchText = getInputTextValue("searchText");
+        var searchType = getSelectboxValue("searchType");
+        if(searchText == undefined) searchText = "";
+        if(searchType == undefined) searchType = "";
+
+        if(val == "new") sPage = "1";
+        getSalesBookList2(bookType, searchText, orderType, sPage, 5, searchType);
+    }
+
     function searchBookList() {
-        fn_search('new');
+        var orderType = getInputTextValue('orderType');
+        if(orderType == 'date'){
+            fn_search('new');
+        }else{
+            fn_search2('new');
+        }
     }
 
     function goDetailbookType(type) {
@@ -71,6 +90,11 @@
     function goList(orderType) {
         innerValue('orderType', orderType);
         fn_search('new');
+    }
+
+    function goList2(orderType) {
+        innerValue('orderType', orderType);
+        fn_search2('new');
     }
     
     function goBookReviewList() {
@@ -105,11 +129,11 @@
 
                 <!--서브상단공통배너-->
                 <div class="submainBanner">
-                    <img src="/common/zian/images/content/subBanner_bg.jpg">
+                    <img id="subBanner" src="">
                     <div class="Banner_txt">
                         <p class="title"><img src="" alt="" id="typeBannerImg"></p>
-                        <span class="txt">부가설명을 써주세요써주세요써주세요</span>
-                        <a href="javascript:goBookReviewList();" class="link">도서후기</a>
+<%--                        <span class="txt">부가설명을 써주세요써주세요써주세요</span>--%>
+<%--                        <a href="javascript:goBookReviewList();" class="link">도서후기</a>--%>
                     </div>
                 </div>
 
@@ -133,7 +157,7 @@
                                 </div>
                                 <ul class="listtype">
                                     <li><a href="javascript:goList('date');">출간일순</a></li>
-                                    <li class="last"><a href="javascript:goList('name');">저자순</a></li>
+                                    <li class="last"><a href="javascript:goList2('name');">저자순</a></li>
                                 </ul>
 
                                 <ul class="lectureTotal">
@@ -158,8 +182,22 @@
                                     </thead>
                                     <tbody id="dataList"></tbody>
                                 </table>
+                                <%@ include file="/common/inc/com_pageNavi.inc" %>
                             </div>
-                            <%@ include file="/common/inc/com_pageNavi.inc" %>
+                            <div class="shopBoard">
+                                <table class="lecturList">
+                                    <thead>
+                                    <tr>
+                                        <th>이미지</th>
+                                        <th>도서명</th>
+                                        <th>할인적립</th>
+                                        <th>교재비</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="dataList2"></tbody>
+                                </table>
+                                <%@ include file="/common/inc/com_pageNavi2.inc" %>
+                            </div>
                         </div>
                     </form>
                 </div>

@@ -368,9 +368,9 @@ body{color:#1b1b1b;}
 .mainGuide ul:after{display:block;content:'';clear:both;}
 .mainGuide ul li{display:block;float:left;width:33.3333%;border-bottom:1px #fff solid;border-right:1px #fff solid;box-sizing:border-box;}
 .mainGuide ul li a{display:block;height:38px;font-size:13px;color:#fff;line-height:38px;text-align:center;}
-.btn_lendingLink1{display:block;padding:20px;height:260px;color:#fff;background:#252525 url(../images/content/bg_lendingLink1.png) no-repeat center bottom;box-sizing:border-box;}
+.btn_lendingLink1{display:block;padding:20px;height:260px;color:#fff;background:#252525 url(http://52.79.40.214/Upload/100/contents/0102_index_online.jpg) no-repeat center bottom;box-sizing:border-box;}
 .btn_lendingLink1 b{display:block;margin-bottom:10px;padding:0 10px;font-size:20px;line-height:130%;}
-.btn_lendingLink2{display:block;padding:20px;height:260px;color:#fff;background:#0e7263 url(../images/content/bg_lendingLink2.png) no-repeat center bottom;box-sizing:border-box;}
+.btn_lendingLink2{display:block;padding:20px;height:260px;color:#fff;background:#0e7263 url(http://52.79.40.214/Upload/100/contents/0102_index_big.jpg) no-repeat center bottom;box-sizing:border-box;}
 .btn_lendingLink2 b{display:block;margin-bottom:10px;padding:0 10px;font-size:20px;line-height:130%;}
 
 .mainQuickLink{margin-bottom:20px;}
@@ -397,3 +397,6 @@ body{color:#1b1b1b;}
 #wrap.accounting #header > .inner h1 a,
 #wrap.accounting .mainTeacher .mainTeacherTitle > li > b,
 #wrap.accounting .mainCustomer ul li b{color:#ce1717;}
+
+#header > .inner h1 a{ display:block; height:100% }
+.ledingBanner{background:#154b95}

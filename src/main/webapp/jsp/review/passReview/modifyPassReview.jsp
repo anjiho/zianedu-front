@@ -101,9 +101,8 @@
             if (filesTempArr.length == 0) { //파일 없을때
                 var result = updateBoardReview(bbsKey, title, content, 0, '', '', '', passSubject, lecSubject);
                 if (result.resultCode == 200) {
-                    //$("#modal9").show();
                     alert("성공적으로 등록 완료되었습니다.");
-                    goPageNoSubmit('review','lectureList');
+                    goPageNoSubmit('review','passList');
                 }
             } else {
                 var formData = new FormData();
@@ -128,7 +127,7 @@
                             saveBoardFileList(result.keyValue, str);
                             if (result.resultCode == 200) {
                                 alert("성공적으로 수정이 완료되었습니다");
-                                goPageNoSubmit('review','lectureList');
+                                goPageNoSubmit('review','passList');
                             }
                         }
                     }
@@ -195,7 +194,7 @@
                                     <td><input type="text" id="title" value="제목을 입력해주세요." class="w100p"></td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">합격과목</th>
+                                    <th scope="row">합격직렬</th>
                                     <td><input type="text" id="passSubject" value="과목이름을 입력해주세요." class="w100p"></td>
                                 </tr>
                                 <tr>

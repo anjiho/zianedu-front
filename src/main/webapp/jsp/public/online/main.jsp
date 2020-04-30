@@ -24,13 +24,13 @@
                 </div>
                 <div class="mainBannerReview disnonepc">
                     <div class="inner">
-                        <a href="#"><img src="/common/zian/images/content/img_mainVisual01021.jpg" alt=""></a>
+                        <a href="#"><img src="http://52.79.40.214/Upload/100/contents/0424_h_zianpass_mobile.jpg" alt=""></a>
                     </div>
                 </div>
             </div>
             <div class="mainBannerReview disnone">
                 <div class="inner">
-                    <a href="#"><img src="/common/zian/images/content/img_banner0101.jpg" alt=""></a>
+                    <a href="#"><img src="http://52.79.40.214/Upload/100/contents/0424_h_zianpass_pc.jpg" alt=""></a>
                 </div>
             </div>
 
@@ -218,7 +218,7 @@
             <!-- 지안에듀 배너 -->
             <div class="mainBanner">
                 <div class="inner">
-                    <a href="javascript:goPageNoSubmit('bigExam','examApply');"><img src="/common/zian/images/content/img_banner0001.jpg" alt=""></a>
+                    <a href="javascript:goPageNoSubmit('bigExam','examApply');"><img src="http://52.79.40.214/Upload/100/contents/0102_on_01.jpg" alt=""></a>
                 </div>
             </div>
             <!-- 온라인서점 -->
@@ -248,13 +248,13 @@
                                 <span class="title">2관학원</span>
                                 <b>070-4870-0634</b>
                                 <span class="desc">
-									1번 학원동영상 상담 및 결재문의<br />
+									1번 학원동영상 상담 및 결제문의<br />
 									2번 도서재고 및 배송문의<br />
-									3번 동영상 결재 및 환불문의
+									3번 동영상 결제 및 환불문의
 								</span>
                                 <span class="desc">
 									운영시간 09:00~18:00 (주말,공휴일 제외)<br />
-									점심시간 12:00~13:00
+									점심시간 12:30~13:30
 								</span>
                             </li>
                         </ul>

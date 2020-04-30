@@ -47,14 +47,26 @@
         });
 
         innerHTML("selCount", 0);
-        $("input[name=lecChk]").click(function(index){//체크박스 카운트 처리
-            var count = $("input[name=lecChk]:checkbox:checked").length;
-            innerHTML("selCount", count);
-        });
+        // $("input[name=lecChk]").click(function(){//체크박스 카운트 처리
+        //     var count = $("input[name=lecChk]:checkbox:checked").length;
+        //     alert(111);
+        //     innerHTML("selCount", count);
+        // });
+
+        $('.selectArea ul li a').each(function(){
+            var $this = $(this);
+            var $text = $this.text();
+
+            if($text.length > 8){
+                $this.css({fontSize:'14px',lineHeight:'18px'});
+                $this.html($text.substr(0,9)+'<br>'+$text.substr(9,18));
+            }
+        })
     });
 
     function search() {
         $("#resultList").empty();
+        innerHTML("selCount", 0);
         var subjectMenuKeys = new Array();
         var teacherKeys = new Array();
         var stepCtgKeys = new Array();
