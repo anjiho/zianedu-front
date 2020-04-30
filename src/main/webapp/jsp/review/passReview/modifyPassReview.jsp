@@ -102,7 +102,8 @@
                 var result = updateBoardReview(bbsKey, title, content, 0, '', '', '', passSubject, lecSubject);
                 if (result.resultCode == 200) {
                     alert("성공적으로 등록 완료되었습니다.");
-                    goPageNoSubmit('review','passList');
+                    //goPageNoSubmit('review','passList');
+                    detailReview(bbsKey);
                 }
             } else {
                 var formData = new FormData();
@@ -127,7 +128,8 @@
                             saveBoardFileList(result.keyValue, str);
                             if (result.resultCode == 200) {
                                 alert("성공적으로 수정이 완료되었습니다");
-                                goPageNoSubmit('review','passList');
+                                //goPageNoSubmit('review','passList');
+                                detailReview(bbsKey);
                             }
                         }
                     }
@@ -139,9 +141,14 @@
         }
     }
 
+    function detailReview(bbsKey) {
+        innerValue('bbsKey', bbsKey);
+        goPage('review','detailPass');
+    }
 </script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
+    <input type="hidden" name="bbsKey" id="bbsKey">
     <div id="wrap">
         <%@include file="/common/jsp/leftMenu.jsp" %>
         <!--상단-->
