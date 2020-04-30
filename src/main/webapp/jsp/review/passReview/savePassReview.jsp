@@ -62,7 +62,7 @@
                 if (result.resultCode == 200) {
                     //$("#modal9").show();
                     alert("성공적으로 등록 완료되었습니다.");
-                    goPageNoSubmit('review','lectureList');
+                    goPageNoSubmit('review','passList');
                 }
             } else {
                 var formData = new FormData();
@@ -87,7 +87,7 @@
                             saveBoardFileList(result.keyValue, str);
                             if (result.resultCode == 200) {
                                 alert("성공적으로 등록 완료되었습니다");
-                                goPageNoSubmit('review','lectureList');
+                                goPageNoSubmit('review','passList');
                             }
                         }
                     }

@@ -3549,9 +3549,15 @@ function goBigExam() {
     goPageNoSubmit('bigExam','bigExamMain');
 }
 
-//파일다운로드
+//파일다운로드(파일명만 있을때)
 function download(fileName) {
     var downloadUrl = apiHost + "/download/fileDownload?filePath=" + fileName;
+    $.fileDownload(downloadUrl);
+}
+
+//파일다운로드(경로가 있을때)
+function downloadExamFile(filePath) {
+    var downloadUrl = apiHost + "/download/fileDownloadFullPath?filePath=" + filePath;
     $.fileDownload(downloadUrl);
 }
 
