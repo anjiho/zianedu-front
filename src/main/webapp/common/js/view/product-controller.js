@@ -33,7 +33,7 @@ function getLectureApplySubjectList(menuCtgKey, goodsType) {
             var selList = infoList.result;
             if(selList.length > 0){
                 for(var i = 0; i< selList.length; i++){
-                    var returnHtml = "<li>";
+                    var returnHtml = "<li>";btn_asideToggle
                     returnHtml += "<a href='javascript:void(0);' id='"+ selList[i].ctgKey +"'>"+ selList[i].name +"</a>";
                     returnHtml += "</li>";
                     $("#subject").append(returnHtml);
