@@ -47,7 +47,7 @@
                         <dd>
                             <ul id="selDivision">
                                 <li><a href="javascript:goPage('lectureOrder','single')" class="chk">단과</a></li>
-                                <li><a href="" class="chk">패키지</a></li>
+                                <li><a href="javascript:goPage('lectureOrder','package')" class="chk">패키지</a></li>
                             </ul>
                         </dd>
                     </dl>

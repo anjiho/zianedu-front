@@ -335,7 +335,7 @@ function getSignUpAcademySubjectNameList(userKey, stepCtgKey) {
             return "<a href='javascript:academyLecDetail("+ data.gkey +");'>"+ data.name +"</a>"
         }, {escapeHtml: false});
     }
-    
+
 }
 
 //수강중 > 학원 실강 > 강의상세 불러오기
@@ -924,17 +924,24 @@ function getUserMockExamResultListAtBuy(userKey, onOffKey, sPage, listLimit, ctg
     var cnt = infoList.cnt;
     if(infoList != null){
         var selList = infoList.result;
+        console.log(selList);
         paging.count(sPage, cnt, '5', listLimit, comment.blank_list);
             for(var i=0; i < selList.length; i++){
                 var cmpList = selList[i];
                 if (cmpList != undefined) {
+                    var printQuestionFileHTML = '';
+                    var printCommentaryFileHTML = '';
+                    if (cmpList.printQuestionFile != null) printQuestionFileHTML = '<a href="javascript:downloadExamFile('+ "'" + cmpList.printQuestionFile + "'" + ');" class="iconFile">문제지</a>';
+                    if (cmpList.printCommentaryFile != null) printCommentaryFileHTML = '<a href="javascript:downloadExamFile('+ "'" + cmpList.printCommentaryFile + "'" + ');" class="iconFile">해설지</a>';
+
                     var cellData = [
                         function(data) {return cmpList.classCtgName;},
                         function(data) {return cmpList.goodsName;},
                         function(data) {return "~"+cmpList.acceptStartDate+"<br>~"+cmpList.acceptEndDate;},
                         function(data) {return "<a href='javascript:goBigExamPopup("+ cmpList.examUserKey +");' class='blue small'>성적보기</a>";},
                         function(data) {return "<a href='javascript:goAnswersPopup("+ cmpList.examUserKey +");' class='black small'>오답노트</a>";},
-                        function(data) {return '<a href="'+ cmpList.printQuestionFileUrl +'" class="iconFile" target="_blank" title="새창열림">문제지</a><a href="'+ cmpList.printCommentaryFileUrl +'" class="iconFile" target="_blank" title="새창열림">해설지</a>';}
+                        function(data) {return printQuestionFileHTML + printCommentaryFileHTML}
+                        //function(data) {return '<a href="'+ cmpList.printQuestionFileUrl +'" class="iconFile" target="_blank" title="새창열림">문제지</a><a href="'+ cmpList.printCommentaryFileUrl +'" class="iconFile" target="_blank" title="새창열림">해설지</a>';}
                     ];
                     dwr.util.addRows('dataList', [0], cellData, {escapeHtml: false});
                     $('#dataList tr').each(function(){
@@ -1129,5 +1136,5 @@ function getVideoPauseRequestPopup(jLecKey) {
     if (jLecKey == null || jLecKey == undefined) return;
     var result = getPayApi("/myPage/getVideoPauseRequestPopup/", jLecKey, '');
     return result;
-    
+
 }

@@ -38,7 +38,7 @@
                                         <div class="thumb">
                                             <img class="myarea_poster" src="" id="lecImg">
                                         </div>
-                                        <div class="desc">
+                                        <div class="desc2">
                                             <div>
                                                 <span class="rblack" id="subjectName"></span>
                                                 <span class="" id="ctgName"></span>

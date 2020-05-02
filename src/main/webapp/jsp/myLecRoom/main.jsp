@@ -1362,7 +1362,7 @@
             <div class="modalContent">
                 <div class="pop_cont">
                     <p class="stitle">수강완료 강좌 안내</p>
-                    <span class="txtBox">원님의 수강 완료된 강좌내역 입니다.<br>
+                    <span class="txtBox">회원님의 수강 완료된 강좌내역 입니다.<br>
 				재수강은 재수강이 가능한 상품만 선택 기간이 출력됩니다. (신청당시 판매중인 상품만 가능)<br>
 				재수강은 단과 상품만 가능합니다.<br>
 				재수강은 강의 종료일부터 90이내 신청 가능 하십니다.

@@ -67,7 +67,7 @@
         $('#searchStartDate').fullCalendar({
             viewRender: function(startDate, view, element) {
                 var dt_start = moment( $('#searchStartDate').fullCalendar('getDate') ).format('YYYY-MM-DD');
-                innerValue("indate", dt_start);
+                //innerValue("indate", dt_start);
                 var reserveLocation = getSelectboxValue("academyNumber");
                 $("#morning").empty();
                 $("#afternoon").empty();
@@ -76,7 +76,7 @@
                 innerHTML("selDate", dt_start1);
                 var dayOfWeek = moment(startDate).format('dddd'); //요일
                 innerHTML("selDay", dayOfWeek);
-                innerValue("indate", dt_start);
+                //innerValue("indate", dt_start);
                 innerHTML("academy", $("#academyNumber option:checked").text());
             },
             lang:'ko',
@@ -203,7 +203,7 @@
             // //달력 주입 끝
         }
     });
-    
+
     function numberMaxLength(e) {
         if(e.value.length > e.maxLength){
             alert("20자까지 입력할 수 있습니다.");
@@ -224,7 +224,7 @@
         var timeStr = "/ " +time;
         innerHTML("selTime", timeStr);
     }
-    
+
     function consultSave() {
         if ($("input:checkbox[name='consentChk']").is(":checked") == false){
             alert('수신동의를 체크해 주세요.');
@@ -473,7 +473,7 @@
                             <th>TEL</th>
                             <td>02-6080-1725</td>
                             <th>FAX</th>
-                            <td>02-816-1720</td>
+                            <td>02-816-1721</td>
                         </tr>
                         </tbody>
                     </table>
@@ -504,7 +504,7 @@
                         <tbody>
                         <tr>
                             <th>주소</th>
-                            <td colspan="3">서울시 동작구 노량진동 117-2 영빌딩 2층 (올리브영 맞은편 다이소건물 2층)</td>
+                            <td colspan="3">서울특별시 동작구 노량진로 196 JH빌딩 6층 지안공무원학원 2관</td>
                         </tr>
                         <tr>
                             <th>지하철</th>

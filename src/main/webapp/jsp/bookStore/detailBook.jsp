@@ -137,7 +137,7 @@
                 <!--서브 컨텐츠-->
                 <div class="online">
                     <div class="btnArea">
-                        <a href="javascript:goPageNoSubmit('bookStore','main')" class="btn_inline w140">목록으로</a>
+                        <a href="javascript:goBack();" class="btn_inline w140">목록으로</a>
                     </div>
                     <div class="infoT_book">
                         <div class="book_img">

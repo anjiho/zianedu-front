@@ -546,6 +546,7 @@
                         deliveryAddressAdd: resultData.add2,
                         payKey: InipayInfoResult.keyValue,
                         isMobile: isMobile,
+                        depositDate: '<%=vactDate%>',
                         orderGoodsList: orderGoodsList
                     };
                     savePaymentInfo(savePaymentInfoData);
@@ -612,7 +613,7 @@
         innerHTML("address1", resultData.add1);
         innerHTML("address2", resultData.add2);
     });
-    
+
     function goReceiptPopup() {
         var url = "https://iniweb.inicis.com/DefaultWebApp/mall/cr/cm/mCmReceipt_head.jsp?noTid="+ '<%=tId%>' +"&noMethod=1";
         gfn_winPop(600, 600, url);

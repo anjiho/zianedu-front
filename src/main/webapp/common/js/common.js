@@ -1127,7 +1127,7 @@ function fn_CheckStrLength(sourceID, cnt, str) {
             cnt_byte++;
         }
     }
-    
+
     // 만약 전체 크기가 제한 글자 수를 넘으면
     if (cnt_byte > max_len) {
         alert(str + " " + max_len + "자 이내로 입력하세요.");
@@ -3053,7 +3053,7 @@ function goCheckedShopBasket() {
         var result = saveCart(saveCartInfo);
         if(result.resultCode == 200){
             alert("장바구니에 담겼습니다.");
-            return false;
+            isReloadPage(true);
         }
     }else{
         alert("로그인을 해주세요");
@@ -3591,9 +3591,15 @@ function goBigExam() {
     goPageNoSubmit('bigExam','bigExamMain');
 }
 
-//파일다운로드
+//파일다운로드(파일명만 있을때)
 function download(fileName) {
     var downloadUrl = apiHost + "/download/fileDownload?filePath=" + fileName;
+    $.fileDownload(downloadUrl);
+}
+
+//파일다운로드(경로가 있을때)
+function downloadExamFile(filePath) {
+    var downloadUrl = apiHost + "/download/fileDownloadFullPath?filePath=" + filePath;
     $.fileDownload(downloadUrl);
 }
 
@@ -3622,6 +3628,12 @@ function commentSave() {
     var bbsKey = getInputTextValue("bbsKey");
     var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
     var userKey = sessionUserInfo.userKey;
+
+    if (commentContent == '') {
+        alert("댓글을 입력하세요.");
+        focusInputText("commentContent");
+        return false;
+    }
     var result = saveBoardComment(bbsKey, userKey, commentContent);
     if(result.resultCode == 200){
         alert("댓글이 등록 되었습니다.");

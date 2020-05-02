@@ -84,7 +84,7 @@
 
                         <div class="tbd_05">
                             <ul class="lectureTotal lectureTotaletc">
-                                <li class="left"><a href="#" class="btn_m bgray">쿠폰 마일리지 사용안내</a></li>
+                                <li class="left"><a href="#modal1" class="btn_m bgray btn_modalOpen">쿠폰 마일리지 사용안내</a></li>
                                 <li class="right"></li>
                             </ul>
                             <table class="coupontbw coupontbw2">
@@ -116,6 +116,26 @@
         <%@include file="/common/jsp/footerBanner.jsp" %>
     </div>
     <div id="overlay"></div>
-</form>
-</body>
-</html>
+    <!-- modal1-->
+    <div id="modal1" class="modalWrap">
+        <div class="inner">
+            <div class="modalTitle">
+                <h2>쿠폰 마일리지 사용 안내사항</h2>
+                <a href="#" class="btn_modalClose">모달팝업닫기</a>
+            </div>
+            <div class="modalContent">
+                <div class="pop_cont">
+                    <p class="stitle">꼭 확인해 주세요.</p>
+                    <ul>
+                        <li>- 마일리지 유효기간은 6개월 입니다.</li>
+                        <li>- 유효기간이 지난 마일리지는 자동소멸됩니다.</li>
+                        <li>- 마일리지 내역에서는 유효기간과 상관없이 내역 확인이 가능합니다.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--// modal1 —>
+    </form>
+    </body>
+    </html>

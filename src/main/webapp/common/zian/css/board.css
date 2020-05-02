@@ -220,6 +220,7 @@
 .prNeList{width:100%;}
 .prNeList td{padding:0px 20px;height:50px;font-weight:normal;text-align:left;background:none;}
 
+
 /* 윗글 아랫글 2 */
 .sentence{width:100%;margin-bottom:20px}
 .sentence tr:first-child{border-top:1px solid #e5e5e5;}
@@ -555,7 +556,6 @@
     .csList tbody tr td select{width:31%;height:48px;margin-left:1%;}
     .csList tbody tr td select:nth-child(1){margin-left:0;}
 
-
     /* 댓글 2 */
     .commentsList{width:100%;font-size:16px;background:#fff;padding:20px 0;box-sizing:border-box;margin-bottom:20px}
     .commentsList ul li{width:100%;border-bottom:1px dotted #ccc;min-height:80px;padding:20px 0px;box-sizing:border-box;position:relative}
@@ -592,6 +592,7 @@
     .sentence td:nth-child(1){display:inline-block;width:28%;text-align:center;padding:14px 2%;height:initial;}
     .sentence td:nth-child(2){display:inline-block;padding:0;width:68%;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;padding:14px 1%;box-sizing:border-box;height:initial;}
     .sentence td:nth-child(3){display:none;}
+
 
     /* 내강의실 일시정지신청 팝업 & 내강의실 팝업 */
     #modal6 .pop_cont{padding:14px 1%;}

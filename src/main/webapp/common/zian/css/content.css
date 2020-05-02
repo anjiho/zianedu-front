@@ -108,7 +108,7 @@
 .teacherInfo .info .name{display:block;margin-top:10px;font-size:30px;}
 .teacherInfo .info .name b{font-size:46px;}
 .teacherInfo .info .infoText{display:block;margin-top:10px;font-size:18px;}
-.teacherInfo .info .profile{width:338px;margin-top:20px;position:absolute;border:1px #e5e5e5 solid;background-color:#fff;z-index:9;}
+.teacherInfo .info .profile{width:340px;margin-top:20px;position:absolute;border:1px #e5e5e5 solid;background-color:#fff;z-index:9;}
 .teacherInfo .info .profile > dt{display:block;height:28px;line-height:28px;text-align:center;font-size:16px;font-weight:bold;background:url(../images/common/icon_arrowDown.png) no-repeat 95% center;cursor:pointer;}
 .teacherInfo .info .profile > dd{display:none;height:160px;padding:20px 25px;line-height:160%;font-size:12px;border-top:1px #e5e5e5 solid;overflow-y:auto;}
 .teacherInfo .info .profile.active > dt{background:url(../images/common/icon_arrowUp.png) no-repeat 95% center;}
@@ -1654,5 +1654,16 @@ li.pl_30{padding-left:30px !important}
 }
 @media (max-width:410px) {
     .swiper-container .swiper-wrapper .swiper-slide .img-box {width: 85%;}
-   
 
+
+    /* 2020.04.28 */
+    .pb_wrap{position:absolute;left:24px;bottom:0px;height:62px;line-height:62px;border-top:1px solid #000;width:92%;}
+    .pb_wrap p{font-size:16px;font-weight:bold;color:#666;display:inline-block;}
+    .pb_wrap p span{color:#134c97;}
+    .pb_wrap div{display: inline-block;float: right}
+    .pb_wrap div a{;display:inline-block;width: 80px;height:38px;line-height:38px;text-align:center;font-size:12px}
+    .pb_wrap div .pb_btn_blue{background:#134c97;color:white;}
+    .pb_wrap div .btn_modalClose{background:#e5e5e5;margin-left:4px}
+    @media (max-width:430px) {
+        .pb_wrap{bottom:60px}
+    }

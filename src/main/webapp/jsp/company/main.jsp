@@ -182,7 +182,7 @@
             $("#questionDetail").hide();
         }
     }
-    
+
     function goBackList(val) {
         if(val == 'teacher'){
             $("#teacherList").show();
@@ -194,7 +194,7 @@
             $("#questionDetail").hide();
         }
     }
-    
+
     function goTeacherDetail(bbskey) {
         innerValue("bbsKey", bbskey);
         $("#teacherList").hide();
@@ -248,7 +248,7 @@
         }
 
     }
-    
+
     function goQuestionDetail(bbskey) {
         innerValue("bbsKey", bbskey);
         $("#questionList").hide();
@@ -303,7 +303,7 @@
             }
         }
     }
-    
+
     function goSave(val) {
         var check = new isCheck();
         if(val == 'teacher'){ //강사모집 글쓰기 저장
@@ -484,7 +484,7 @@
                             <!-- 회사연혁 -->
                             <div class="history">
                                 <h2>회사연혁</h2>
-                                <img src="/common/zian/images/content/history.jpg" alt="회사연혁">
+                                <img src="/common/zian/images/content/0428_history.jpg" alt="회사연혁">
                             </div>
                             <!-- //회사연혁 -->
 
@@ -519,7 +519,7 @@
                                             <th>TEL</th>
                                             <td>02-6080-1725</td>
                                             <th>FAX</th>
-                                            <td>02-816-1720</td>
+                                            <td>02-816-1721</td>
                                         </tr>
                                         </tbody>
                                     </table>
@@ -553,7 +553,7 @@
                                             <th>TEL</th>
                                             <td>02-6080-1725</td>
                                             <th>FAX</th>
-                                            <td>02-816-1720</td>
+                                            <td>02-816-1721</td>
                                         </tr>
                                         </tbody>
                                     </table>
