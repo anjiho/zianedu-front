@@ -67,7 +67,7 @@
         $('#searchStartDate').fullCalendar({
             viewRender: function(startDate, view, element) {
                 var dt_start = moment( $('#searchStartDate').fullCalendar('getDate') ).format('YYYY-MM-DD');
-                innerValue("indate", dt_start);
+                //innerValue("indate", dt_start);
                 var reserveLocation = getSelectboxValue("academyNumber");
                 $("#morning").empty();
                 $("#afternoon").empty();
@@ -76,7 +76,7 @@
                 innerHTML("selDate", dt_start1);
                 var dayOfWeek = moment(startDate).format('dddd'); //요일
                 innerHTML("selDay", dayOfWeek);
-                innerValue("indate", dt_start);
+                //innerValue("indate", dt_start);
                 innerHTML("academy", $("#academyNumber option:checked").text());
             },
             lang:'ko',
@@ -203,7 +203,7 @@
             // //달력 주입 끝
         }
     });
-    
+
     function numberMaxLength(e) {
         if(e.value.length > e.maxLength){
             alert("20자까지 입력할 수 있습니다.");
@@ -224,7 +224,7 @@
         var timeStr = "/ " +time;
         innerHTML("selTime", timeStr);
     }
-    
+
     function consultSave() {
         if ($("input:checkbox[name='consentChk']").is(":checked") == false){
             alert('수신동의를 체크해 주세요.');

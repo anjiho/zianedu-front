@@ -35,7 +35,7 @@
                     <div class="customer_inner">
                         <div class="imgd" style="width:800px;margin:auto;position:relative">
                             <img src="http://52.79.40.214/Upload/100/contents/0427_mb_kakao.jpg" alt="" style="border-radius:20px;">
-                            <a href="#" class="dragonboll" style="position: absolute;bottom:90px;left:50%;margin-left:-160px;width: 320px;height:44px;background: #000;color:white;line-height:40px;font-weight:800;text-align:center">상담하기</a>
+<%--                            <a href="#" class="dragonboll" style="position: absolute;bottom:90px;left:50%;margin-left:-160px;width: 320px;height:44px;background: #000;color:white;line-height:40px;font-weight:800;text-align:center">상담하기</a>--%>
                         </div>
                     </div>
                     <!-- //카카오톡 상담 이미지 -->

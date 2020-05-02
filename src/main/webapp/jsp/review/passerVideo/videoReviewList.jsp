@@ -27,7 +27,7 @@
         innerHTML('reviewCnt', reviewCnt);
         getPasserVideoListFromReview(bbsMasterKey, sPage, 8, searchType, searchText);
     }
-    
+
     function detailReview(bbsKey) {
         innerValue('bbsKey', bbsKey);
         goPage('review','detailVideo');
@@ -64,14 +64,14 @@
                         <span>총<b id="reviewCnt">5</b>개의 합격자 영상이 있습니다. <br> 지안에듀에서만 가능한 합격비법을 확인해 보세요</span>
                     </div>
                     <!--review_point : 합격수기 포인트-->
-                    <div class="review_point">
-                        <p><span class="ico"></span>합격수기 포인트 지급안내</p>
-                        <ul>
-                            <li>1. 작성 시 무조건 <b>200P</b> 지급 (월 1회까지만 지급되며, 매달 추가 작성 가능)</li>
-                            <li>2. BEST 선정 시 무려 <b>1000P </b>추가 지급!</li>
-                            <li>3. 매월 연속 작성 시 마다 추가 100P 지급 (단, 연속 6회까지는 추가 지급 )</li>
-                        </ul>
-                    </div>
+<%--                    <div class="review_point">--%>
+<%--                        <p><span class="ico"></span>합격수기 포인트 지급안내</p>--%>
+<%--                        <ul>--%>
+<%--                            <li>1. 작성 시 무조건 <b>200P</b> 지급 (월 1회까지만 지급되며, 매달 추가 작성 가능)</li>--%>
+<%--                            <li>2. BEST 선정 시 무려 <b>1000P </b>추가 지급!</li>--%>
+<%--                            <li>3. 매월 연속 작성 시 마다 추가 100P 지급 (단, 연속 6회까지는 추가 지급 )</li>--%>
+<%--                        </ul>--%>
+<%--                    </div>--%>
                     <!--//review_point : 합격수기 포인트-->
 
                     <!--review_movie_list : 합격자영상-->

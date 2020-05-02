@@ -72,7 +72,7 @@
     function selTab(num){
         var offset = $("#vl_" + num).offset();
         $('html, body').stop().animate({scrollTop : offset.top - 192}, 400);
-        return false;
+        return;
     }
 
     function goDetailLec(zianPassUrl) {
