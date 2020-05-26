@@ -93,6 +93,10 @@ function getVideoSignUpDetailInfo(gkey, device, jlecKey, tagId) {
     if (gkey == null || gkey == undefined) return;
 
     var detailInfo = getApi("/myPage/getVideoSignUpDetailInfo/", jlecKey);
+    var goodsDevice = detailInfo.result.kind;
+    var deviceCheck = 0;
+    if(device == 'PC') deviceCheck = 100;
+    else if(device == 'MOBILE') deviceCheck = 101;
 
     var data = {
         device : device
@@ -114,6 +118,7 @@ function getVideoSignUpDetailInfo(gkey, device, jlecKey, tagId) {
                     returnHtml += "<td>"+selList[i].name+"</td>";
                     returnHtml += "<td>"+selList[i].vodTime+"</td>";
                     returnHtml += "<td>";
+            if (goodsDevice == deviceCheck || goodsDevice == 102){
                         returnHtml += "<div class=\"myVideo\">";
                                         returnHtml += '<a href="javascript:void(0);" onclick="OpenLecPlayer(' + "'"  + selList[i].vodFileLow + "'" + ',' + "'"  + selList[i].name + "'" + ','+ selList[i].curriKey +','+ jlecKey +','+ detailInfo.result.kind +');" class=\"black small\">일반화질</a>';
                                         returnHtml += '<a href="javascript:void(0);" onclick="OpenLecPlayer(' + "'"  + selList[i].vodFileHigh + "'" + ',' + "'"  + selList[i].name + "'" + ','+ selList[i].curriKey +','+ jlecKey +','+ detailInfo.result.kind +');"  class=\"blue small\">고화질</a>';
@@ -129,7 +134,8 @@ function getVideoSignUpDetailInfo(gkey, device, jlecKey, tagId) {
                                 returnHtml += '<a href="javascript:void(0);" onclick="OpenDownloadPlayer(' + "'"  + selList[i].vodFileLow + "'" + ',' + "'"  + selList[i].name + "'" + ','+ selList[i].curriKey +','+ jlecKey +');" class=\"brBlack\">일반화질</a>';
                                 returnHtml += '<a href="javascript:void(0);" onclick="OpenDownloadPlayer(' + "'"  + selList[i].vodFileHigh + "'" + ',' + "'"  + selList[i].name + "'" + ','+ selList[i].curriKey +','+ jlecKey +');" class=\"brBlue\">고화질</a>';
                             returnHtml += "</div>";
-                    returnHtml += "</div>";
+                        returnHtml += "</div>";
+            }
                     returnHtml += "</td>";
             returnHtml += "</tr>";
             $("#"+tagId).append(returnHtml);
