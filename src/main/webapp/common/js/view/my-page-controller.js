@@ -536,6 +536,49 @@ function getUserOrderDetail(jKey) {
     }
 }
 
+//쿠폰 리스트
+function getUserCouponList(userKey, sPage, listLimit) {
+    if (userKey == null || userKey == undefined) return;
+    var paging = new Paging();
+    dwr.util.removeAllRows("dataList"); //테이블 리스트 초기화
+    var data = {
+        sPage : sPage,
+        listLimit : listLimit
+    };
+    var infoList = getPageApi("/myPage/getUserCouponList/", userKey, data);
+    var cnt = infoList.cnt;
+    if(infoList != null){
+        if (infoList.result.length > 0) {
+            paging.count(sPage, cnt, '5', listLimit, comment.blank_list);
+            var selList = infoList.result;
+            for(var i=0; i < selList.length; i++){
+                var cmpList = selList[i];
+                if (cmpList != undefined) {
+                    var cellData = [
+                        function(data) {return split_minute_getDay(cmpList.indate)},
+                        function(data) {return cmpList.description;},
+                        function(data) {return cmpList.dcType == 0 ? cmpList.dcValue + "원" : cmpList.dcValue + "%";},
+                        function(data) {return cmpList.device == 0 ? "MOBILE/PC에서 사용" : cmpList.device == 1?"PC에서 사용" : "MOBILE에서 사용";},
+                        function(data) {return cmpList.periodType == 0? "발급일로 부터<br/>" + cmpList.limitDay + "일 안에 사용 가능" : split_minute_getDay(cmpList.startDate) + "에서<br/>" + split_minute_getDay(cmpList.endDate) + "까지";},
+                        function(data) {return cmpList.name == ""? "-" : cmpList.name;}
+                    ];
+                    dwr.util.addRows("dataList", [0], cellData, {escapeHtml: false});
+                }
+            }
+        }
+    }
+}
+
+function saveCouponOffline(couponNumber,userKey) {
+    if(couponNumber == null || couponNumber == undefined) return;
+    var data = {
+        couponNumber : couponNumber,
+        userKey : userKey
+    };
+    var result = postApi("/myPage/saveCouponOffline", data);
+    return result;
+}
+
 //마일리지 리스트
 function getUserPointList(userKey, sPage, listLimit) {
     if (userKey == null || userKey == undefined) return;

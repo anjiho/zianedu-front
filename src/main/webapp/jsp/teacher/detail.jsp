@@ -64,6 +64,7 @@
                             <li><a href="#">강좌소개</a></li>
                             <li><a href="#">학습안내</a></li>
                             <li><a href="#">학습 Q&A</a></li>
+                            <li><a href="#">수강 후기</a></li>
                         </ul>
                         <div class="tabPage active"><!--커리큘럼 tab-->
                             <div class="tab_curriculum">
@@ -511,6 +512,58 @@
                             </div>
                         </div>
                         <!--//학습qna 등록 끝-->
+                        <div class="tabPage">
+                            <!-- 수강후기  -->
+                            <div class="lectureWrap">
+                                <form>
+                                    <div class="review_movie_search">
+                                        <div class="boardSearch">
+                                            <ul class="searchArea" style="border:none">
+                                                <!--수정 -->
+                                                <li class="left">
+                                                    <select name="" class="">
+                                                        <option value="">제목</option>
+                                                    </select>
+                                                    <input type="text">
+                                                    <input type="submit" value="검색" class="btn_m on">
+                                                    <a href="#" class="search_ico">검색</a>
+                                                </li>
+                                                <li class="right"><a href="#" class="btn_inline w140 write_ico">글쓰기</a></li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="tableWrap">
+                                            <table class="tBoard acceptanceList">
+                                                <caption></caption>
+                                                <colgroup>
+                                                    <col class="w100">
+                                                    <col>
+                                                    <col class="w140">
+                                                    <col class="w140">
+                                                    <col class="w100">
+                                                </colgroup>
+                                                <thead>
+                                                <tr>
+                                                    <th scope="col">번호</th>
+                                                    <th scope="col">제목</th>
+                                                    <th scope="col">작성자</th>
+                                                    <th scope="col">등록일</th>
+                                                    <th scope="col">조회</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody id="dataList4">
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <!-- paging -->
+                                        <%@ include file="/common/inc/com_pageNavi4.inc" %>
+                                        <!-- //paging -->
+                                    </div>
+                                </form>
+                            </div>
+                            <!— //수강후기 —>
+                        </div>
+
                     </div>
                 </div>
                 <!--//서브 컨텐츠-->

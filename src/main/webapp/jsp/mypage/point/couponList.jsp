@@ -3,6 +3,8 @@
 <%@include file="/common/jsp/common.jsp" %>
 <script>
     $(document).ready(function () {
+        fn_search('new');
+
         var tabMenuInfo = sessionStorage.getItem('tabHeader');
         if(tabMenuInfo != null){
             if(tabMenuInfo == "tabMenu1"){
@@ -23,6 +25,34 @@
             }
         });
     });
+
+    function fn_search(val) {
+        var sPage = getInputTextValue("sPage");
+        if(val == "new") sPage = "1";
+        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        var userKey = sessionUserInfo.userKey;
+        getUserCouponList(userKey, sPage, 5);
+    }
+
+    function couponEnroll() {
+        var couponNumber = $('#couponNumber').val();
+        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        var userKey = sessionUserInfo.userKey;
+
+        if(couponNumber != ''){
+            var result = saveCouponOffline(couponNumber,userKey);
+            if (result.resultCode == 200) {
+                alert("쿠폰 등록이 완료되었습니다");
+                isReloadPage(true);
+            }else if (result.resultCode == 900){
+                alert("존재하지 않는 쿠폰 번호입니다.");
+                isReloadPage(true);
+            }else if (result.resultCode == 902){
+                alert("이미 등록된 쿠폰 번호입니다.");
+                isReloadPage(true);
+            }
+        }
+    }
 </script>
 <form name="frm" method="get">
     <input type="hidden" name="page_gbn" id="page_gbn">
@@ -49,76 +79,47 @@
                     </div>
                     </div>
                     <!--쿠폰 -->
-<%--                    <div class="reviewBoard">--%>
-<%--                        <div class="date_sort">--%>
-<%--                            <div class="inner">--%>
-<%--                                <div class="couponbox">--%>
-<%--                                    <p>오프라인 쿠폰번호를 정확히 입력 후, [쿠폰교환]버튼을 클릭하세요.</p>--%>
-<%--                                    <span class="input_txt">--%>
-<%--			                            <input type="text"  id="" name="" value="">--%>
-<%--			                        </span>--%>
-<%--                                    <span class="btn_move">--%>
-<%--		                                <input type="button" name="" id=""  value="쿠폰교환" class="cpbtn">--%>
-<%--		                            </span>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
+                    <div class="reviewBoard">
+                        <div class="date_sort">
+                            <div class="inner">
+                                <div class="couponbox">
+                                    <p>오프라인 쿠폰번호를 정확히 입력 후, [쿠폰교환]버튼을 클릭하세요.</p>
+                                    <span class="input_txt">
+			                            <input type="text"  id="couponNumber" name="couponNumber" value="">
+			                        </span>
+                                    <span class="btn_move">
+		                                <input type="button" value="쿠폰교환" class="cpbtn" onclick="couponEnroll()">
+		                            </span>
+                                </div>
+                            </div>
+                        </div>
 
-<%--                        <div class="tbd_05">--%>
-<%--                            <ul class="lectureTotal">--%>
-<%--                                <li class="left"><a href="#" class="btn_m bgray">쿠폰 마일리지 사용안내</a></li>--%>
-<%--&lt;%&ndash;                                <li class="right"><span class="btn_m bdnone">사용가능 쿠폰:<span>2장</span></span></li>&ndash;%&gt;--%>
-<%--                            </ul>--%>
-<%--                            <!-- 수정 및 추가-->--%>
-<%--                            <table class="disnoneM">--%>
-<%--                                <thead>--%>
-<%--                                <tr>--%>
-<%--                                    <th>발급일자</th>--%>
-<%--                                    <th>내역</th>--%>
-<%--                                    <th>할인금액</th>--%>
-<%--                                    <th>사용조건</th>--%>
-<%--                                    <th>유효기간</th>--%>
-<%--                                    <th>발급사유</th>--%>
-<%--                                    <th>사용가능여부</th>--%>
-<%--                                </tr>--%>
-<%--                                </thead>--%>
-<%--                                <tbody>--%>
-<%--                                <tr>--%>
-<%--                                    <td>2019-07-15</td>--%>
-<%--                                    <td>행정직 특별 할인쿠폰 지급</td>--%>
-<%--                                    <td>10,000원</td>--%>
-<%--                                    <td>전체</td>--%>
-<%--                                    <td>2019-07-15<br>--%>
-<%--                                        2019-07-25</td>--%>
-<%--                                    <td>수강</td>--%>
-<%--                                    <td>관리자발급</td>--%>
-<%--                                </tr>--%>
-<%--                                <tr>--%>
-<%--                                    <td>2019-07-15</td>--%>
-<%--                                    <td>행정직 특별 할인쿠폰 지급</td>--%>
-<%--                                    <td>10,000원</td>--%>
-<%--                                    <td>전체</td>--%>
-<%--                                    <td>2019-07-15<br>--%>
-<%--                                        2019-07-25</td>--%>
-<%--                                    <td>수강</td>--%>
-<%--                                    <td>관리자발급</td>--%>
-<%--                                </tr>--%>
-<%--                                </tbody>--%>
-<%--                            </table>--%>
-<%--                            <!-- //수정 및 추가-->--%>
-<%--                        </div>--%>
-<%--                        <!-- paging -->--%>
-<%--                        <div class="paging">--%>
-<%--                            <div class="boardnavi">--%>
-<%--                                <a class="prev" href="#">이전 목록이동</a>--%>
-<%--                                <span>--%>
-<%--									<strong class="selected">1</strong>--%>
-<%--								</span>--%>
-<%--                                <a class="next" href="#">다음 목록이동</a>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                        <!-- //paging -->--%>
-<%--                    </div>--%>
+                        <div class="tbd_05">
+                            <ul class="lectureTotal">
+                                <li class="left"><a href="#" class="btn_m bgray">쿠폰 마일리지 사용안내</a></li>
+<%--                                <li class="right"><span class="btn_m bdnone">사용가능 쿠폰:<span>2장</span></span></li>--%>
+                            </ul>
+                            <!-- 수정 및 추가-->
+                            <table class="disnoneM">
+                                <thead>
+                                <tr>
+                                    <th>발급일자</th>
+                                    <th>내역</th>
+                                    <th>할인금액</th>
+                                    <th>사용조건</th>
+                                    <th>유효기간</th>
+                                    <th>발급사유</th>
+                                </tr>
+                                </thead>
+                                <tbody id="dataList">
+                                </tbody>
+                            </table>
+                            <!-- //수정 및 추가-->
+                        </div>
+                        <!-- paging -->
+                        <%@ include file="/common/inc/com_pageNavi.inc" %>
+                        <!-- //paging -->
+                    </div>
                 </div>
 
                 <!--//서브 컨텐츠-->
