@@ -31,6 +31,9 @@
     <input type="hidden" id="stopEndjLecKey">
     <input type="hidden" id="priceKey">
     <input type="hidden" id="gkey1">
+    <input type="hidden" name="teacherKey" id="teacherKey">
+    <input type="hidden" name="reqKey" id="reqKey">
+    <input type="hidden" name="jlecKey" id="jlecKey">
     <div id="wrap">
         <%@include file="/common/jsp/leftMenu.jsp" %>
         <!--상단-->
@@ -784,7 +787,7 @@
             } else {
                 $("#playLecListDiv").show();
                 var result = infoList.result;
-                var lectureReviewBtn = "<a href='/review?page_gbn=lectureList&gKey=" + result.gkey + "' class='blue small'>수강후기</a>";
+                var lectureReviewBtn = "<a onclick='goReview("+ jlecKey +");'>수강후기</a>";
                 // innerValue("stopJlecKey", result.jlecKey);
                 innerHTML("l_lectureReviewBtn", lectureReviewBtn);
                 innerHTML("playLecName", result.name);
@@ -1384,8 +1387,8 @@
                 <div class="pop_cont bggray">
                     <p class="stitle">강좌 일시 정지안내</p>
                     <span class="txtBox">일시정지의 경우 강좌당 3회만 신청가능하며<br>
-				일시정지 기간은 최소 1일에서 최대 60일까지 선택 가능합니다<br>
-				일시정지는 신청 후 바로 적용됩니다.<br>
+				일시정지 기간은 최소 1일에서 최대 30일까지 선택 가능합니다<br>
+				일시정지는 신청 후 바로 적용되며, 일시정지 선택 기간 종료시 자동 진행됩니다.<br>
 				강의 종료일에는 신청하실 수 없습니다.<br>
 				일시정지를 신청하시면 신청하신 기간동안 강의 수강이 불가능 합니다.
 				</span>

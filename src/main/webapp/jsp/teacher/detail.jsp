@@ -5,6 +5,7 @@
 <%
     String teacherKey = request.getParameter("teacherKey");
     String reqKey = request.getParameter("reqKey");
+    String jlecKey = request.getParameter("jlecKey");
 %>
 <style>
     .video-container {position: relative;padding-bottom: 56.25%;height: 0;overflow: hidden;}
@@ -23,6 +24,11 @@
     <input type="hidden" id="divisionList">
     <input type="hidden" id="bbsKey">
     <input type="hidden" id="bbsKey1">
+    <input type="hidden" id="teacherKey">
+    <input type="hidden" id="reqKey">
+    <input type="hidden" id="jlecKey">
+    <input type="hidden" id="gReviewKey">
+    <input type="hidden" id="reviewOfGKey">
     <div id="wrap">
         <%@include file="/common/jsp/leftMenu.jsp" %>
         <!--상단-->
@@ -512,23 +518,19 @@
                             </div>
                         </div>
                         <!--//학습qna 등록 끝-->
-                        <div class="tabPage">
+                        <div class="tabPage" id="reviewDiv">
                             <!-- 수강후기  -->
                             <div class="lectureWrap">
                                 <form>
+                                    <input type="hidden" id="sPage4">
                                     <div class="review_movie_search">
                                         <div class="boardSearch">
                                             <ul class="searchArea" style="border:none">
-                                                <!--수정 -->
                                                 <li class="left">
-                                                    <select name="" class="">
-                                                        <option value="">제목</option>
-                                                    </select>
-                                                    <input type="text">
-                                                    <input type="submit" value="검색" class="btn_m on">
-                                                    <a href="#" class="search_ico">검색</a>
+                                                    <span id="lectureList"></span>
+                                                    <a href="javascript:fn_search4('new');" class="btn_m on">검색</a>
                                                 </li>
-                                                <li class="right"><a href="#" class="btn_inline w140 write_ico">글쓰기</a></li>
+                                                <li class="right"><a href="javascript:reviewWrite();" class="btn_inline w140 write_ico">글쓰기</a></li>
                                             </ul>
                                         </div>
 
@@ -536,19 +538,21 @@
                                             <table class="tBoard acceptanceList">
                                                 <caption></caption>
                                                 <colgroup>
-                                                    <col class="w100">
-                                                    <col>
-                                                    <col class="w140">
-                                                    <col class="w140">
-                                                    <col class="w100">
+                                                    <col style="width: 0%">
+                                                    <col class="w20p">
+                                                    <col class="w40p">
+                                                    <col style="width: 0%">
+                                                    <col class="w20p">
+                                                    <col class="w20p">
                                                 </colgroup>
                                                 <thead>
                                                 <tr>
+                                                    <th scope="col"></th>
                                                     <th scope="col">번호</th>
                                                     <th scope="col">제목</th>
+                                                    <th scope="col"></th>
                                                     <th scope="col">작성자</th>
                                                     <th scope="col">등록일</th>
-                                                    <th scope="col">조회</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody id="dataList4">
@@ -561,8 +565,87 @@
                                     </div>
                                 </form>
                             </div>
-                            <!— //수강후기 —>
+                            <%--//수강후기--%>
                         </div>
+                        <!-- 수강후기 상세 시작-->
+                        <div class="" id="reviewDetail" style="display: none;">
+                            <ul class="searchArea">
+                                <li class="right">
+                                    <a href="javascript:getModifyDetailReview();" class="btn_m w140 qnaWriteBtn" id="modifyBtn">수정</a>
+                                </li>
+                            </ul>
+                            <div class="tableBox">
+                                <table class="tBoard noticeView">
+                                    <colgroup>
+                                        <col class="w110">
+                                        <col>
+                                        <col class="w140">
+                                    </colgroup>
+                                    <thead>
+                                    <tr>
+                                        <th colspan="2" id="reviewTitle"></th>
+                                        <th id="reviewIndate"></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td colspan="2">작성자 : <span id="reviewWriter"></span> (<span id="reviewUserId"></span>) </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3" class="tdEditorContent" id="reviewContents"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="btnArea right">
+                                    <a href="javascript:goReferenceList();" class="btn_m w140">목록으로</a>
+                            </div>
+                        </div>
+                        <!--//수강후기 상세 끝-->
+
+                        <!--수강후기 등록 -->
+                        <div class="" id="reviewWriteDiv" style="display: none;">
+                            <div class="tabPage active">
+                                <form>
+                                    <div class="boardWrap">
+                                        <h5>글 등록하기</h5>
+                                        <div class="tableBox">
+                                            <table class="form">
+                                                <caption></caption>
+                                                <colgroup>
+                                                    <col class="w130">
+                                                    <col>
+                                                </colgroup>
+                                                <tbody>
+                                                <tr>
+                                                    <th scope="row">제목</th>
+                                                    <td><input type="text" id="title" placeholder="제목을 입력해주세요." class="w100p"></td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">수강과목</th>
+                                                    <td><input type="text" id="lecSubject" placeholder="과목이름을 입력해주세요." class="w100p"></td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">교수님</th>
+                                                    <td><input type="text" id="teacherName" placeholder="교수님이름을 입력해주세요." class="w100p"></td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">내용</th>
+                                                    <td><textarea name="writeContent" id="writeContent" placeholder="내용을 입력해주세요." class="w100p h240"></textarea></td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="btnArea">
+                                            <a href="javascript:goReferenceList();" class="btn_m gray radius w110">취소</a>
+                                            <a href="javascript:goReviewWriteSave();" class="btn_m bg_blue radius w110">등록</a>
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                        <!--//수강후기 등록 끝-->
 
                     </div>
                 </div>
@@ -581,8 +664,10 @@
 <script>
     var teacherKey = '<%=teacherKey%>';
     var menuCtgKey = '<%=reqKey%>';
+    var jlecKey = '<%=jlecKey%>';
 
     $( document ).ready(function() {
+
         var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
         if(sessionUserInfo != null){
             if(sessionUserInfo.authority == 0 || sessionUserInfo.authority == 5 ){//선생님일때, 관리자일때 show
@@ -652,6 +737,10 @@
             }else if($(this).index() == 3){
                 $("#qnaDiv").show();
                 innerValue("divisionList", 2);
+            }else if($(this).index() == 4){
+                $("#reviewDiv").show();
+                innerValue("divisionList", 3);
+                alert("tab이 active되도록 처리");
             }
         });
 
@@ -665,9 +754,12 @@
         getTeacherVideoLecture(teacherKey, pcMobile, 0);//강좌소개 (동영상) 리스트 불러오기
         getTeacherAcademyLecture(teacherKey, 0);//강좌소개 (학원) 리스트 불러오기
 
+        getGKeyListSelectBox(teacherKey,0); // 선생님 상품 리스트 가져오기(판매중)
+
         fn_search1('new');//학습안내 (학습공지) 리스트 불러오기
         fn_search('new');//학습안내 (학습자료실) 리스트 불러오기
         fn_search3('new');//학습Q&A리스트 불러오기
+        fn_search4('new');//수강 후기 리스트 불러오기
 
         $("#referenceList").show();
 
@@ -697,6 +789,11 @@
             $("#noticeList").hide();
             innerValue("divisionList", 0);
         });
+
+        if (jlecKey !=""){
+            $("#reviewWriteDiv").show();
+            innerValue("divisionList", 3);
+        }
     });
 
     var filesTempArr = [];
@@ -778,6 +875,14 @@
 
         getTeacherLearningQna(teacherKey, sPage3, 20, searchType3,  searchText3, 'dataList3');//학습안내 (학습자료실) 리스트 불러오기
         $(".nonBoard").css({ 'pointer-events': 'none' });
+    }
+
+    function fn_search4(val) {
+        var sPage4 = getInputTextValue("sPage4");
+
+        if(val == "new") sPage4 = "1";
+        var gKey = getSelectboxValue("lectureList");
+        getTeacherLecReviewList(teacherKey, sPage4, 15, gKey, 'dataList4');//수강 후기 리스트 불러오기
     }
 
     //학습Q&A 답변등록하기
@@ -1006,6 +1111,46 @@
         }
     }
 
+
+    //수강후기 상세보기
+    function goDetailReview(val) {
+        $("#commentDiv").hide();
+        $("#reviewDiv").hide();
+        $("#reviewDetail").show();
+        $("#fileDetailList1").children().remove();
+
+        var detailInfo = getTeacherReviewDetail(teacherKey, val);
+
+        if(detailInfo != null){
+            var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+            if (sessionUserInfo == null) {
+                gfn_display("modifyBtn", false);
+                gfn_display("iconLock", false);
+                //gfn_display("replyBtn", false);
+
+            } else {
+                if (sessionUserInfo.authority == 0 || detailInfo.result.userKey == 5) {
+                    gfn_display("replyBtn", true);
+                }
+
+                if(detailInfo.result.userKey == sessionUserInfo.userKey){
+                    $("#modifyBtn").show();
+                }else{
+                    $("#modifyBtn").hide();
+                }
+            }
+
+            innerHTML("reviewTitle",detailInfo.result.title);
+            innerHTML("reviewIndate",detailInfo.result.indate);
+            innerHTML("reviewWriter",detailInfo.result.name);
+            innerHTML("reviewUserId",detailInfo.result.userId);
+            innerHTML("reviewContents", detailInfo.result.contents);
+
+            innerValue("gReviewKey", detailInfo.result.greviewKey);
+            innerValue("reviewOfGKey", detailInfo.result.gKey);
+        }
+    }
+
     //목록으로 이동 버튼 함수
     function goReferenceList(){
         var val = getInputTextValue("divisionList");
@@ -1023,6 +1168,10 @@
             $("#qnaDiv").show();
             $("#qnaDetail").hide();
             $("#qnaWriteDiv").hide();
+        }else if(val == 3) {
+            $("#reviewDiv").show();
+            $("#reviewDetail").hide();
+            $("#reviewWriteDiv").hide();
         }
     }
 
@@ -1055,6 +1204,13 @@
         $("#qnaDiv").hide();
         $("#qnaDetail").hide();
         $("#qnaWriteDiv").show();
+    }
+
+    function reviewWrite() {
+        $("#fileList1 li").remove();
+        $("#reviewDiv").hide();
+        $("#reviewDetail").hide();
+        $("#reviewWriteDiv").show();
     }
 
     //수정버튼 클릭시 상세정보 가져오기
@@ -1118,6 +1274,22 @@
                     }
                 }
             }
+        }
+    }
+
+    function getModifyDetailReview() {
+        $("#reviewDiv").hide();
+        $("#reviewDetail").hide();
+        $("#reviewWriteDiv").show();
+
+        var gReviewKey = getInputTextValue("gReviewKey");
+        var result = getTeacherReviewDetail(teacherKey, gReviewKey);
+
+        if(result != undefined){
+            var detailInfo = result.result;
+            $("#reviewWriteContent").summernote("code", detailInfo.contents);
+            innerValue("reviewWriteTitle", detailInfo.title);
+            // innerHTML("fileList1", detailInfo.fileName);
         }
     }
 
@@ -1236,6 +1408,28 @@
                     }
                 }
             });
+        }
+    }
+
+    function goReviewWriteSave() {
+        var check = new isCheck();
+        if (check.input("reviewWriteTitle ", comment.input_title) == false) return;
+
+        var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+        var userKey = sessionUserInfo.userKey;
+        var title   = getInputTextValue("reviewWriteTitle");
+        var content = $('textarea[name="reviewWriteContent"]').val();
+        var gKey  = getInputTextValue("reviewOfGKey");
+
+
+        if(gKey == ""){ //등록
+            var result = saveTeacherReveiw(teacherKey, userKey, title, content, 0, isSecret, "");
+        }else{ //수정
+            var result = updateTeacherReview(gKey, title, content, isSecret, "");
+        }
+        if(result.resultCode == 200){
+            alert("성공적으로 등록 완료되었습니다");
+            isReloadPage(true);
         }
     }
 </script>

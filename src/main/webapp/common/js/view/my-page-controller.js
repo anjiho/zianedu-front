@@ -1187,3 +1187,46 @@ function getVideoPauseRequestPopup(jLecKey) {
     return result;
 
 }
+
+//후기작성
+function goReview(jlecKey) {
+    var sessionUserInfo = JSON.parse(sessionStorage.getItem('userInfo'));
+    var availableReview = getAvailabilityLectureReview(sessionUserInfo.userKey, jlecKey);
+    if(availableReview == false){
+        alert("후기 작성을 할 수 없습니다.");
+        return false;
+    }else{
+        var resultList = getPageApi("/myPage/getLecCtgInfo/", jlecKey);
+        var teacherKey = resultList.result.teacherKey;
+        var ctgKey = resultList.result.ctgKey;
+
+        var teacherCtgKey = "";
+        var reqKey ="";
+
+        if (ctgKey ==216) teacherCtgKey = 352;
+        else if (ctgKey ==217) teacherCtgKey = 328;
+        else if (ctgKey ==218) teacherCtgKey = 414;
+        else if (ctgKey ==219) teacherCtgKey = 481;
+        else if (ctgKey ==220) teacherCtgKey = 562;
+        else if (ctgKey ==221) teacherCtgKey = 632;
+
+        var InfoList = getApi("/menu/getTeacherIntroduceLeftMenu/", teacherCtgKey,"");
+
+        if (InfoList.result.length > 0) {
+            var selList = InfoList.result;
+            var teacherList = selList[0].teacherList;
+            for(var i = 0 ; i <  teacherList.length; i++){
+                if(teacherKey == teacherList[i].teacherKey){
+                    reqKey = teacherList[i].reqKey;
+                    break;
+                }
+            }
+        }
+
+        innerValue("teacherKey", teacherKey);
+        innerValue("reqKey", reqKey);
+        innerValue("jlecKey", jlecKey);
+
+        goPage('teacher','detail');
+    }
+}

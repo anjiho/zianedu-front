@@ -40,6 +40,16 @@ function getTeacherLearningQnaDetail(teacherKey, bbsKey) {
     return infoList;
 }
 
+//강사소개 > 수강후기 상세정보
+function getTeacherReviewDetail(teacherKey, gReviewKey) {
+    if (teacherKey == null || teacherKey == undefined) return;
+    var data = {
+        gReviewKey : gReviewKey
+    };
+    var infoList = getApi("/teacher/getTeacherReviewDetail/", teacherKey, data);
+    return infoList;
+}
+
 //강사소개 > 수강후기, 온라인 상품 상세 > 회원리뷰
 function getTeacherLectureReview(teacherKey, gKey, sPage, listLimit) {
     if (teacherKey == null || teacherKey == undefined) return;
@@ -492,4 +502,65 @@ function getTeacherCurriculum(teacherKey, device, menuCtgKey) {
         innerHTML("curriculum", "");
     }
 
+}
+
+//강사소개 > 수강후기(판매중) > 상품리스트
+function getGKeyListSelectBox(teacherKey, gKey) {
+    if (teacherKey == null || teacherKey == undefined) return;
+    var infoList = getApi("/teacher/getGKeyListSelectBox/", teacherKey);
+
+    var result = infoList.result;
+
+    var returnLecListHtml = '';
+    returnLecListHtml = "<select id='lecture' name='lecture' class ='seSerch' style=\"width:430px !important\"  >";
+
+    if (gKey == 0) returnLecListHtml += "<option value=\'0\' selected>전체</option>";
+    else returnLecListHtml += "<option value=\'0\'>전체</option>";
+
+    if (result.length > 0) {
+        for (var b = 0; b < result.length; b++) {
+            var lecValue = result[b].gkey;
+            var lecName = result[b].goodsName;
+            if (lecValue == gKey) returnLecListHtml += "<option value='" + lecValue + "' selected>" + lecName + "</option>";
+            else returnLecListHtml += "<option value='" + lecValue + "'>" + lecName + "</option>"
+        }
+    }
+    returnLecListHtml += '</select>';
+    $("#lectureList").append(returnLecListHtml);
+    return infoList;
+}
+
+//강사소개 > 수강후기(판매중) > 상품리스트 > 후기 리스트
+function getTeacherLecReviewList(teacherKey, sPage, listLimit, gKey, tagId) {
+    if (teacherKey == null || teacherKey == undefined) return;
+    var paging = new Paging();
+    dwr.util.removeAllRows(tagId); //테이블 리스트 초기화
+
+    var data = {
+        sPage: sPage,
+        listLimit: listLimit,
+        gKey : gKey
+    };
+    var infoList = getPageApi("/teacher/getTeacherLecReviewList/", teacherKey, data);
+    var cnt = infoList.cnt;
+    paging.count4(sPage, cnt, '5', '15', comment.blank_list);
+    if (infoList.result.length > 0) {
+        //paging.count(sPage, cnt, '10', '10', comment.blank_list);
+        var listNum = ((cnt-1)+1)-((sPage-1)*15); //리스트 넘버링
+        var selList = infoList.result;
+        for(var i=0; i < selList.length; i++){
+            var cmpList = selList[i];
+            if (cmpList != undefined) {
+                var cellData = [
+                    function(data) {return "<input type='hidden' name='gReviewKey' id='gReviewKey' value='" + cmpList.greviewKey + "'>";},
+                    function(data) {return listNum--;},
+                    function(data) {return "<a href='javascript:void(0);' class='subject' onclick='goDetailReview(" + cmpList.greviewKey+ ");'>" + gfn_substr(cmpList.title, 0, 40) + "</a>";},
+                    function(data) {return "<input type='hidden' name='reviewContent' id='reviewContent' value='" + cmpList.contents + "'>";},
+                    function(data) {return cmpList.name;},
+                    function(data) {return split_minute_getDay(cmpList.indate);}
+                ];
+                dwr.util.addRows(tagId, [0], cellData, {escapeHtml: false});
+            }
+        }
+    }
 }

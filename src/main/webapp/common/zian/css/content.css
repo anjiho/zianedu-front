@@ -415,7 +415,12 @@
 .tbd_03 .reBtn a:nth-child(3){border-color:#134c97;color:#134c97}
 
 
+/* 2020.05.29 */
+.seSerch{width:430px !important}
 
+@media (max-width:800px){
+    .seSerch{width:84% !important}
+}
 
 
 /*********************************************/
@@ -1023,7 +1028,7 @@
 .free .tbd_02 .crud_area .unit {position: absolute;left:40px;bottom: 15px}
 .free .tbd_02 .crud_area strong {position: absolute;right:40px;bottom: 15px}
 .free .direct_view .btn_inline {margin:50px 0 20px 40px}
-.free .direct_view .item{width:300px box-sizing: border-box;padding: 0 40px}
+.free .direct_view .item{width:300px; box-sizing: border-box;padding: 0 40px}
 .free .direct_view .item:after {content: "";display: block;clear: both}
 .free .direct_view .item .inner { position: relative;}
 .free .direct_view .item .thumb{float:left;width:290px; height:auto;cursor: pointer;}
@@ -1657,13 +1662,13 @@ li.pl_30{padding-left:30px !important}
 
 
     /* 2020.04.28 */
-    .pb_wrap{position:absolute;left:24px;bottom:0px;height:62px;line-height:62px;border-top:1px solid #000;width:92%;}
-    .pb_wrap p{font-size:16px;font-weight:bold;color:#666;display:inline-block;}
-    .pb_wrap p span{color:#134c97;}
-    .pb_wrap div{display: inline-block;float: right}
-    .pb_wrap div a{;display:inline-block;width: 80px;height:38px;line-height:38px;text-align:center;font-size:12px}
+    .pb_wrap{position:absolute !important;left:24px !important;bottom:0px !important;height:62px !important;line-height:62px !important;border-top:1px solid #000 !important;width:92% !important;}
+    .pb_wrap p{font-size:16px;font-weight:bold;color:#666;display:inline-block !important;}
+    .pb_wrap p span{color:#134c97 !important;}
+    .pb_wrap div{display: inline-block !important;float: right !important}
+    .pb_wrap div a{;display:inline-block !important;width: 80px !important;height:38px !important;line-height:38px;text-align:center;font-size:12px !important}
     .pb_wrap div .pb_btn_blue{background:#134c97;color:white;}
-    .pb_wrap div .btn_modalClose{background:#e5e5e5;margin-left:4px}
+    .pb_wrap div .btn_modalClose{background:#e5e5e5 !important;margin-left:4px}
     @media (max-width:430px) {
-        .pb_wrap{bottom:60px}
+        .pb_wrap{bottom:60px !important}
     }

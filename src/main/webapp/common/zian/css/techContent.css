@@ -1709,3 +1709,8 @@ li.pl_30{padding-left:30px !important}
 - .loginWrap .loginForm input[type='text'],
   .loginWrap .loginForm input[type='password']{margin-bottom:15px;padding:0 25px;width:100%;height:70px;font-size:17px;border:1px #e5e5e5 solid;box-sizing:border-box;}
 .loginWrap .loginForm .btn_login{margin-bottom:15px;padding:0 25px;width:100%;height:70px;line-height:60px;font-size:17px;font-weight:bold;color:#fff;text-align:center;border:0px none;background:#134c97;box-sizing:border-box;}
+
+@media screen and (max-width:800px){
+    .Mypage .cart .pay .left div.ckctn:nth-child(3){height:0 !important;}
+    .Mypage .cart .pay .left div.ckctn:nth-child(4){height:0 !important;}
+}
